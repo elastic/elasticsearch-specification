@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      * If true, the results are sorted in descending order.
      * @server_default false
      */
-     desc?: boolean    
+    desc?: boolean
     /**
      * Returns records with timestamps earlier than this time. The default value
      * means results are not limited to specific timestamps.
@@ -83,7 +83,7 @@ export interface Request extends RequestBase {
      * Specifies the sort field for the requested records.
      * @server_default record_score
      */
-     sort?: Field
+    sort?: Field
     /**
      * Returns records with timestamps after this time. The default value means
      * results are not limited to specific timestamps.
@@ -101,7 +101,7 @@ export interface Request extends RequestBase {
      * Refer to the description for the `end` query parameter.
      * @server_default -1
      */
-     end?: DateString
+    end?: DateString
     /**
      * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
@@ -112,7 +112,7 @@ export interface Request extends RequestBase {
      * Refer to the description for the `record_score` query parameter.
      * @server_default 0.0
      */
-     record_score?: double
+    record_score?: double
     /**
      * Refer to the description for the `sort` query parameter.
      * @server_default record_score

@@ -119100,7 +119100,108 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Refer to the description for the `allow_no_match` query parameter.",
+            "name": "allow_no_match",
+            "required": false,
+            "serverDefault": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `bucket_span` query parameter.",
+            "name": "bucket_span",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `end` query parameter.",
+            "name": "end",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `exclude_interim` query parameter.",
+            "name": "exclude_interim",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `overall_score` query parameter.",
+            "name": "overall_score",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "_types"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "description": "Refer to the description for the `start` query parameter.",
+            "name": "start",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `top_n` query parameter.",
+            "name": "top_n",
+            "required": false,
+            "serverDefault": 1,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
       },
       "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
       "inherits": {
@@ -119276,7 +119377,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "If true, the results are sorted in descending order.",
+            "description": "Refer to the description for the `desc` query parameter.",
             "name": "desc",
             "required": false,
             "serverDefault": false,
@@ -119289,7 +119390,20 @@
             }
           },
           {
-            "description": "If true, the output excludes interim results.",
+            "description": "Refer to the description for the `end` query parameter.",
+            "name": "end",
+            "required": false,
+            "serverDefault": "-1",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `exclude_interim` query parameter.",
             "name": "exclude_interim",
             "required": false,
             "serverDefault": false,
@@ -119313,7 +119427,7 @@
             }
           },
           {
-            "description": "Returns records with anomaly scores greater or equal than this value.",
+            "description": "Refer to the description for the `record_score` query parameter.",
             "name": "record_score",
             "required": false,
             "serverDefault": 0,
@@ -119326,7 +119440,7 @@
             }
           },
           {
-            "description": "Specifies the sort field for the requested records.",
+            "description": "Refer to the description for the `sort` query parameter.",
             "name": "sort",
             "required": false,
             "serverDefault": "record_score",
@@ -119339,21 +119453,8 @@
             }
           },
           {
-            "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
+            "description": "Refer to the description for the `start` query parameter.",
             "name": "start",
-            "required": false,
-            "serverDefault": "-1",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
-            "name": "end",
             "required": false,
             "serverDefault": "-1",
             "type": {
@@ -119394,6 +119495,32 @@
       ],
       "query": [
         {
+          "description": "If true, the results are sorted in descending order.",
+          "name": "desc",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
+          "name": "end",
+          "required": false,
+          "serverDefault": "-1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If `true`, the output excludes interim results.",
           "name": "exclude_interim",
           "required": false,
@@ -119420,6 +119547,19 @@
           }
         },
         {
+          "description": "Returns records with anomaly scores greater or equal than this value.",
+          "name": "record_score",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Specifies the maximum number of records to obtain.",
           "name": "size",
           "required": false,
@@ -119433,21 +119573,21 @@
           }
         },
         {
-          "description": "Returns records with timestamps after this time. The default value means\nresults are not limited to specific timestamps.",
-          "name": "start",
+          "description": "Specifies the sort field for the requested records.",
+          "name": "sort",
           "required": false,
-          "serverDefault": "-1",
+          "serverDefault": "record_score",
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Field",
               "namespace": "_types"
             }
           }
         },
         {
-          "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
-          "name": "end",
+          "description": "Returns records with timestamps after this time. The default value means\nresults are not limited to specific timestamps.",
+          "name": "start",
           "required": false,
           "serverDefault": "-1",
           "type": {

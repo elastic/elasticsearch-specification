@@ -125,11 +125,11 @@ export interface Request extends RequestBase {
      * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
      */
-     exclude_interim?: boolean
+    exclude_interim?: boolean
     /**
      * Refer to the description for the `overall_score` query parameter.
      */
-     overall_score?: double | string
+    overall_score?: double | string
     /**
      * Refer to the description for the `start` query parameter.
      */
