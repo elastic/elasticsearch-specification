@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -48,6 +49,15 @@ export interface Request extends RequestBase {
      */
     size?: integer
     /** Specifies to get events with timestamps after this time. */
+    start?: string
+  }
+  body: {
+    /** Refer to the description for the `end` query parameter. */
+    end?: DateString
+    /** Refer to the description for the `job_id` query parameter. */
+    job_id?: Id
+    page?: Page
+    /** Refer to the description for the `start` query parameter. */
     start?: string
   }
 }

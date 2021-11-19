@@ -49,6 +49,17 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * If true, the results are sorted in descending order.
+     * @server_default false
+     */
+     desc?: boolean    
+    /**
+     * Returns records with timestamps earlier than this time. The default value
+     * means results are not limited to specific timestamps.
+     * @server_default -1
+     */
+    end?: DateString
+    /**
      * If `true`, the output excludes interim results.
      * @server_default false
      */
@@ -59,56 +70,58 @@ export interface Request extends RequestBase {
      */
     from?: integer
     /**
+     * Returns records with anomaly scores greater or equal than this value.
+     * @server_default 0.0
+     */
+    record_score?: double
+    /**
      * Specifies the maximum number of records to obtain.
      * @server_default 100
      */
     size?: integer
+    /**
+     * Specifies the sort field for the requested records.
+     * @server_default record_score
+     */
+     sort?: Field
     /**
      * Returns records with timestamps after this time. The default value means
      * results are not limited to specific timestamps.
      * @server_default -1
      */
     start?: DateString
-    /**
-     * Returns records with timestamps earlier than this time. The default value
-     * means results are not limited to specific timestamps.
-     * @server_default -1
-     */
-    end?: DateString
   }
   body: {
     /**
-     * If true, the results are sorted in descending order.
+     * Refer to the description for the `desc` query parameter.
      * @server_default false
      */
     desc?: boolean
     /**
-     * If true, the output excludes interim results.
+     * Refer to the description for the `end` query parameter.
+     * @server_default -1
+     */
+     end?: DateString
+    /**
+     * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
      */
     exclude_interim?: boolean
     page?: Page
     /**
-     * Returns records with anomaly scores greater or equal than this value.
+     * Refer to the description for the `record_score` query parameter.
      * @server_default 0.0
      */
-    record_score?: double
+     record_score?: double
     /**
-     * Specifies the sort field for the requested records.
+     * Refer to the description for the `sort` query parameter.
      * @server_default record_score
      */
     sort?: Field
     /**
-     * Returns records with timestamps earlier than this time. The default value
-     * means results are not limited to specific timestamps.
+     * Refer to the description for the `start` query parameter.
      * @server_default -1
      */
     start?: DateString
-    /**
-     * Returns records with timestamps earlier than this time. The default value
-     * means results are not limited to specific timestamps.
-     * @server_default -1
-     */
-    end?: DateString
   }
 }
