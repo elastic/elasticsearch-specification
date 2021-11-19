@@ -113,4 +113,37 @@ export interface Request extends RequestBase {
      */
     allow_no_jobs?: boolean
   }
+  body: {
+    /**
+     * Refer to the description for the `allow_no_match` query parameter.
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * Refer to the description for the `bucket_span` query parameter.
+     */
+    bucket_span?: Time
+    /**
+     * Refer to the description for the `end` query parameter.
+     */
+    end?: Time
+    /**
+     * Refer to the description for the `exclude_interim` query parameter.
+     * @server_default false
+     */
+    exclude_interim?: boolean
+    /**
+     * Refer to the description for the `overall_score` query parameter.
+     */
+    overall_score?: double | string
+    /**
+     * Refer to the description for the `start` query parameter.
+     */
+    start?: Time
+    /**
+     * Refer to the description for the `top_n` query parameter.
+     * @server_default 1
+     */
+    top_n?: integer
+  }
 }
