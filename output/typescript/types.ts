@@ -9042,6 +9042,11 @@ export interface IndicesNumericFielddata {
 
 export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 
+export interface IndicesOverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
+}
+
 export type IndicesSegmentSortMissing = '_last' | '_first'
 
 export type IndicesSegmentSortMode = 'min' | 'max'
