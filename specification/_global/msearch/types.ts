@@ -58,7 +58,7 @@ export class MultisearchBody {
   suggest?: Suggester
 }
 
-export class MultisearchResponseBase<TDocument> {
+export class MultisearchResult<TDocument> {
   took: long
   responses: Array<ResponseItem<TDocument>>
 }

@@ -18146,7 +18146,7 @@
       ],
       "kind": "interface",
       "name": {
-        "name": "MultisearchResponseBase",
+        "name": "MultisearchResult",
         "namespace": "_global.msearch"
       },
       "properties": [
@@ -18403,8 +18403,23 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": []
+        "kind": "value",
+        "value": {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "_global.msearch"
+              }
+            }
+          ],
+          "kind": "instance_of",
+          "type": {
+            "name": "MultisearchResult",
+            "namespace": "_global.msearch"
+          }
+        }
       },
       "generics": [
         {
@@ -18412,21 +18427,6 @@
           "namespace": "_global.msearch"
         }
       ],
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.msearch"
-            }
-          }
-        ],
-        "type": {
-          "name": "MultisearchResponseBase",
-          "namespace": "_global.msearch"
-        }
-      },
       "kind": "response",
       "name": {
         "name": "Response",
@@ -18617,8 +18617,23 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": []
+        "kind": "value",
+        "value": {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "_global.msearch_template"
+              }
+            }
+          ],
+          "kind": "instance_of",
+          "type": {
+            "name": "MultisearchResult",
+            "namespace": "_global.msearch"
+          }
+        }
       },
       "generics": [
         {
@@ -18626,21 +18641,6 @@
           "namespace": "_global.msearch_template"
         }
       ],
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.msearch_template"
-            }
-          }
-        ],
-        "type": {
-          "name": "MultisearchResponseBase",
-          "namespace": "_global.msearch"
-        }
-      },
       "kind": "response",
       "name": {
         "name": "Response",

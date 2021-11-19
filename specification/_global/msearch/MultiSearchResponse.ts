@@ -17,6 +17,8 @@
  * under the License.
  */
 
-import { MultisearchResponseBase } from '@global/msearch/types'
+import { MultisearchResult } from '@global/msearch/types'
 
-export class Response<TDocument> extends MultisearchResponseBase<TDocument> {}
+export class Response<TDocument> {
+  body: MultisearchResult<TDocument>
+}
