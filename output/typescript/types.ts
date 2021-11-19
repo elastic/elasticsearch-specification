@@ -11701,6 +11701,11 @@ export interface MlCloseJobRequest extends RequestBase {
   allow_no_match?: boolean
   force?: boolean
   timeout?: Time
+  body?: {
+    allow_no_match?: boolean
+    force?: boolean
+    timeout?: Time
+  }
 }
 
 export interface MlCloseJobResponse {
@@ -12184,6 +12189,15 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
   overall_score?: double | string
   start?: Time
   top_n?: integer
+  body?: {
+    allow_no_match?: boolean
+    bucket_span?: Time
+    end?: Time
+    exclude_interim?: boolean
+    overall_score?: double | string
+    start?: Time
+    top_n?: integer
+  }
 }
 
 export interface MlGetOverallBucketsResponse {
@@ -12193,19 +12207,22 @@ export interface MlGetOverallBucketsResponse {
 
 export interface MlGetRecordsRequest extends RequestBase {
   job_id: Id
+  desc?: boolean
+  end?: DateString
   exclude_interim?: boolean
   from?: integer
+  record_score?: double
   size?: integer
+  sort?: Field
   start?: DateString
-  end?: DateString
   body?: {
     desc?: boolean
+    end?: DateString
     exclude_interim?: boolean
     page?: MlPage
     record_score?: double
     sort?: Field
     start?: DateString
-    end?: DateString
   }
 }
 
@@ -12282,6 +12299,7 @@ export interface MlInfoResponse {
 
 export interface MlOpenJobRequest extends RequestBase {
   job_id: Id
+  timeout?: Time
   body?: {
     timeout?: Time
   }
