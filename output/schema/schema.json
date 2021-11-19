@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "6c2d196",
+    "hash": "a5c3aca",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -91360,6 +91360,40 @@
         "name": "NumericFielddataFormat",
         "namespace": "indices._types"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OverlappingIndexTemplate",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_patterns",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
