@@ -121642,9 +121642,10 @@
       ],
       "query": [
         {
-          "description": "Ignore if the source indices expressions resolves to no concrete indices (default: true)",
+          "description": "If true, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the `_all`\nstring or when no indices are specified.",
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121654,9 +121655,10 @@
           }
         },
         {
-          "description": "Whether source index expressions should get expanded to open or closed indices (default: open)",
+          "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values.",
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "open",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121666,9 +121668,14 @@
           }
         },
         {
-          "description": "Ignore indices that are marked as throttled (default: true)",
+          "deprecation": {
+            "description": "",
+            "version": "7.16.0"
+          },
+          "description": "If true, concrete, expanded, or aliased indices are ignored when frozen.",
           "name": "ignore_throttled",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121678,9 +121685,10 @@
           }
         },
         {
-          "description": "Ignore unavailable indexes (default: false)",
+          "description": "If true, unavailable indices (missing or closed) are ignored.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -123376,7 +123384,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "If true, deletes the results in the time period between the latest\nresults and the time of the reverted snapshot. It also resets the model\nto accept records for this time period. If you choose not to delete\nintervening results when reverting a snapshot, the job will not accept\ninput data that is older than the current time. If you want to resend\ndata, then delete the intervening results.",
+            "description": "Refer to the description for the `delete_intervening_results` query parameter.",
             "name": "delete_intervening_results",
             "required": false,
             "serverDefault": false,
@@ -123428,7 +123436,21 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "If true, deletes the results in the time period between the latest\nresults and the time of the reverted snapshot. It also resets the model\nto accept records for this time period. If you choose not to delete\nintervening results when reverting a snapshot, the job will not accept\ninput data that is older than the current time. If you want to resend\ndata, then delete the intervening results.",
+          "name": "delete_intervening_results",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {

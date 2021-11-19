@@ -1359,12 +1359,6 @@
       ],
       "response": []
     },
-    "ml.revert_model_snapshot": {
-      "request": [
-        "Request: missing json spec query parameter 'delete_intervening_results'"
-      ],
-      "response": []
-    },
     "ml.set_upgrade_mode": {
       "request": [
         "Request: should not have a body"
