@@ -61,4 +61,20 @@ export interface Request extends RequestBase {
      * @server_default 30m */
     timeout?: Time
   }
+  body: {
+    /**
+     * Refer to the description for the `allow_no_match` query parameter.
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * Refer to the descriptiion for the `force` query parameter.
+     * @server_default false
+     */
+    force?: boolean
+    /**
+     * Refer to the description for the `timeout` query parameter.
+     * @server_default 30m */
+    timeout?: Time
+  }
 }

@@ -1370,14 +1370,6 @@
       ],
       "response": []
     },
-    "ml.get_records": {
-      "request": [
-        "Request: missing json spec query parameter 'record_score'",
-        "Request: missing json spec query parameter 'sort'",
-        "Request: missing json spec query parameter 'desc'"
-      ],
-      "response": []
-    },
     "ml.get_trained_models": {
       "request": [
         "Request: missing json spec query parameter 'include_model_definition'",

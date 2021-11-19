@@ -115813,7 +115813,48 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Refer to the description for the `allow_no_match` query parameter.",
+            "name": "allow_no_match",
+            "required": false,
+            "serverDefault": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the descriptiion for the `force` query parameter.",
+            "name": "force",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `timeout` query parameter.",
+            "name": "timeout",
+            "required": false,
+            "serverDefault": "30m",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
       },
       "description": "Closes one or more anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "inherits": {
@@ -119946,17 +119987,101 @@
         "kind": "properties",
         "properties": [
           {
-            "deprecation": {
-              "description": "",
-              "version": "7.10.0"
-            },
-            "name": "allow_no_jobs",
+            "description": "Refer to the description for the `allow_no_match` query parameter.",
+            "name": "allow_no_match",
             "required": false,
+            "serverDefault": true,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "boolean",
                 "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `bucket_span` query parameter.",
+            "name": "bucket_span",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `end` query parameter.",
+            "name": "end",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `exclude_interim` query parameter.",
+            "name": "exclude_interim",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `overall_score` query parameter.",
+            "name": "overall_score",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "_types"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "description": "Refer to the description for the `start` query parameter.",
+            "name": "start",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `top_n` query parameter.",
+            "name": "top_n",
+            "required": false,
+            "serverDefault": 1,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -120136,7 +120261,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "If true, the results are sorted in descending order.",
+            "description": "Refer to the description for the `desc` query parameter.",
             "name": "desc",
             "required": false,
             "serverDefault": false,
@@ -120149,7 +120274,20 @@
             }
           },
           {
-            "description": "If true, the output excludes interim results.",
+            "description": "Refer to the description for the `end` query parameter.",
+            "name": "end",
+            "required": false,
+            "serverDefault": "-1",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `exclude_interim` query parameter.",
             "name": "exclude_interim",
             "required": false,
             "serverDefault": false,
@@ -120173,7 +120311,7 @@
             }
           },
           {
-            "description": "Returns records with anomaly scores greater or equal than this value.",
+            "description": "Refer to the description for the `record_score` query parameter.",
             "name": "record_score",
             "required": false,
             "serverDefault": 0,
@@ -120186,7 +120324,7 @@
             }
           },
           {
-            "description": "Specifies the sort field for the requested records.",
+            "description": "Refer to the description for the `sort` query parameter.",
             "name": "sort",
             "required": false,
             "serverDefault": "record_score",
@@ -120199,21 +120337,8 @@
             }
           },
           {
-            "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
+            "description": "Refer to the description for the `start` query parameter.",
             "name": "start",
-            "required": false,
-            "serverDefault": "-1",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
-            "name": "end",
             "required": false,
             "serverDefault": "-1",
             "type": {
@@ -120254,6 +120379,32 @@
       ],
       "query": [
         {
+          "description": "If true, the results are sorted in descending order.",
+          "name": "desc",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
+          "name": "end",
+          "required": false,
+          "serverDefault": "-1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If `true`, the output excludes interim results.",
           "name": "exclude_interim",
           "required": false,
@@ -120280,6 +120431,19 @@
           }
         },
         {
+          "description": "Returns records with anomaly scores greater or equal than this value.",
+          "name": "record_score",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Specifies the maximum number of records to obtain.",
           "name": "size",
           "required": false,
@@ -120293,21 +120457,21 @@
           }
         },
         {
-          "description": "Returns records with timestamps after this time. The default value means\nresults are not limited to specific timestamps.",
-          "name": "start",
+          "description": "Specifies the sort field for the requested records.",
+          "name": "sort",
           "required": false,
-          "serverDefault": "-1",
+          "serverDefault": "record_score",
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Field",
               "namespace": "_types"
             }
           }
         },
         {
-          "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
-          "name": "end",
+          "description": "Returns records with timestamps after this time. The default value means\nresults are not limited to specific timestamps.",
+          "name": "start",
           "required": false,
           "serverDefault": "-1",
           "type": {
@@ -120908,7 +121072,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Controls the time to wait until a job has opened.",
+            "description": "Refer to the description for the `timeout` query parameter.",
             "name": "timeout",
             "required": false,
             "serverDefault": "30m",
@@ -120948,7 +121112,21 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Controls the time to wait until a job has opened.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30m",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
