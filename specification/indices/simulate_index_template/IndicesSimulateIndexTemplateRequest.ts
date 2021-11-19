@@ -58,6 +58,7 @@ export interface Request extends RequestBase {
     master_timeout?: Time
   }
   body: {
+    allow_auto_create?: boolean
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndexTemplateMapping

@@ -82042,19 +82042,6 @@
           }
         },
         {
-          "description": "A boolean value which controls whether to return HTTP 200 status code instead of HTTP 408 in case of a cluster health timeout from the server side.",
-          "name": "return_200_for_cluster_health_timeout",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.",
           "name": "wait_for_active_shards",
           "required": false,
@@ -100228,6 +100215,17 @@
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "name": "allow_auto_create",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
           {
             "name": "index_patterns",
             "required": false,

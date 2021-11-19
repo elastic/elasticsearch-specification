@@ -7928,7 +7928,6 @@ export interface ClusterHealthRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
   timeout?: Time
-  return_200_for_cluster_health_timeout?: boolean
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
   wait_for_nodes?: string
@@ -9976,6 +9975,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   create?: boolean
   master_timeout?: Time
   body?: {
+    allow_auto_create?: boolean
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
