@@ -114491,6 +114491,18 @@
           }
         },
         {
+          "description": "The model type",
+          "name": "model_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelType",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
           "description": "A comma delimited string of tags. A trained model can have many tags, or none.",
           "name": "tags",
           "required": true,
@@ -114895,6 +114907,27 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The model definition is an ensemble model of decision trees.",
+          "name": "tree_ensemble"
+        },
+        {
+          "description": "A special type reserved for language identification models.",
+          "name": "lang_ident"
+        },
+        {
+          "description": "The stored definition is a PyTorch (specifically a TorchScript) model.\nCurrently only NLP models are supported.",
+          "name": "pytorch"
+        }
+      ],
+      "name": {
+        "name": "TrainedModelType",
+        "namespace": "ml._types"
+      }
     },
     {
       "kind": "interface",
@@ -122585,6 +122618,19 @@
             "required": false,
             "type": {
               "kind": "user_defined_value"
+            }
+          },
+          {
+            "description": "The model type.",
+            "name": "model_type",
+            "required": false,
+            "serverDefault": "tree_ensemble",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelType",
+                "namespace": "ml._types"
+              }
             }
           },
           {

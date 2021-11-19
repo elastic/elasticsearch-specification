@@ -22,6 +22,7 @@ import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Definition, Input } from './types'
+import { TrainedModelType } from '../_types/TrainedModel'
 
 /**
  * The create trained model API enables you to supply a trained model that is
@@ -68,6 +69,11 @@ export interface Request extends RequestBase {
      * An object map that contains metadata about the model.
      */
     metadata?: UserDefinedValue
+    /**
+     * The model type.
+     * @server_default tree_ensemble
+     */
+    model_type?: TrainedModelType
     /**
      * An array of tags to organize the model.
      */
