@@ -58,16 +58,16 @@ export class MultisearchBody {
   suggest?: Suggester
 }
 
-export class MultisearchResult<TDocument> {
+export class MultiSearchResult<TDocument> {
   took: long
   responses: Array<ResponseItem<TDocument>>
 }
 
 /** @codegen_names result, failure */
 export type ResponseItem<TDocument> =
-  | MultiSearchResult<TDocument>
+  | MultiSearchItem<TDocument>
   | ErrorResponseBase
 
-export class MultiSearchResult<TDocument> extends SearchResponse<TDocument> {
+export class MultiSearchItem<TDocument> extends SearchResponse<TDocument> {
   status: integer
 }

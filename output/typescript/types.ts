@@ -551,8 +551,13 @@ export interface MgetResponse<TDocument = unknown> {
 
 export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
 
-export interface MsearchMultiSearchResult<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponse<TDocument> {
   status: integer
+}
+
+export interface MsearchMultiSearchResult<TDocument = unknown> {
+  took: long
+  responses: MsearchResponseItem<TDocument>[]
 }
 
 export interface MsearchMultisearchBody {
@@ -577,11 +582,6 @@ export interface MsearchMultisearchHeader {
   search_type?: SearchType
 }
 
-export interface MsearchMultisearchResult<TDocument = unknown> {
-  took: long
-  responses: MsearchResponseItem<TDocument>[]
-}
-
 export interface MsearchRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -600,9 +600,9 @@ export interface MsearchRequest extends RequestBase {
 
 export type MsearchRequestItem = MsearchMultisearchHeader | MsearchMultisearchBody
 
-export type MsearchResponse<TDocument = unknown> = MsearchMultisearchResult<TDocument>
+export type MsearchResponse<TDocument = unknown> = MsearchMultiSearchResult<TDocument>
 
-export type MsearchResponseItem<TDocument = unknown> = MsearchMultiSearchResult<TDocument> | ErrorResponseBase
+export type MsearchResponseItem<TDocument = unknown> = MsearchMultiSearchItem<TDocument> | ErrorResponseBase
 
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
@@ -616,7 +616,7 @@ export interface MsearchTemplateRequest extends RequestBase {
 
 export type MsearchTemplateRequestItem = MsearchMultisearchHeader | MsearchTemplateTemplateConfig
 
-export type MsearchTemplateResponse<TDocument = unknown> = MsearchMultisearchResult<TDocument>
+export type MsearchTemplateResponse<TDocument = unknown> = MsearchMultiSearchResult<TDocument>
 
 export interface MsearchTemplateTemplateConfig {
   explain?: boolean

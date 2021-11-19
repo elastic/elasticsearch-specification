@@ -17922,7 +17922,7 @@
       },
       "kind": "interface",
       "name": {
-        "name": "MultiSearchResult",
+        "name": "MultiSearchItem",
         "namespace": "_global.msearch"
       },
       "properties": [
@@ -17934,6 +17934,55 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.msearch"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchResult",
+        "namespace": "_global.msearch"
+      },
+      "properties": [
+        {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "responses",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "_global.msearch"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "ResponseItem",
+                "namespace": "_global.msearch"
+              }
             }
           }
         }
@@ -18132,55 +18181,6 @@
             "type": {
               "name": "SearchType",
               "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "generics": [
-        {
-          "name": "TDocument",
-          "namespace": "_global.msearch"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "MultisearchResult",
-        "namespace": "_global.msearch"
-      },
-      "properties": [
-        {
-          "name": "took",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "responses",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TDocument",
-                    "namespace": "_global.msearch"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "ResponseItem",
-                "namespace": "_global.msearch"
-              }
             }
           }
         }
@@ -18416,7 +18416,7 @@
           ],
           "kind": "instance_of",
           "type": {
-            "name": "MultisearchResult",
+            "name": "MultiSearchResult",
             "namespace": "_global.msearch"
           }
         }
@@ -18463,7 +18463,7 @@
             ],
             "kind": "instance_of",
             "type": {
-              "name": "MultiSearchResult",
+              "name": "MultiSearchItem",
               "namespace": "_global.msearch"
             }
           },
@@ -18630,7 +18630,7 @@
           ],
           "kind": "instance_of",
           "type": {
-            "name": "MultisearchResult",
+            "name": "MultiSearchResult",
             "namespace": "_global.msearch"
           }
         }
