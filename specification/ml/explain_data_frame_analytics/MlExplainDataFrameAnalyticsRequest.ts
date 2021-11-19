@@ -65,7 +65,7 @@ export interface Request extends RequestBase {
      * perform one of the following types of analysis: classification, outlier
      * detection, or regression.
      */
-    analysis: DataframeAnalysisContainer
+    analysis?: DataframeAnalysisContainer
     /**
      * A description of the job.
      */

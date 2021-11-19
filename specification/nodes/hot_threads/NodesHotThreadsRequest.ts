@@ -29,14 +29,50 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * List of node IDs or names used to limit returned information.
+     */
     node_id?: NodeIds
   }
   query_parameters: {
+    /**
+     * If true, known idle threads (e.g. waiting in a socket select, or to get
+     * a task from an empty queue) are filtered out.
+     * @server_default true
+     */
     ignore_idle_threads?: boolean
+    /**
+     * The interval to do the second sampling of threads.
+     * @server_default 500ms
+     */
     interval?: Time
+    /**
+     * Number of samples of thread stacktrace.
+     * @server_default 10
+     */
     snapshots?: long
+    /**
+     * Period to wait for a connection to the master node. If no response
+     * is received before the timeout expires, the request fails and
+     * returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Specifies the number of hot threads to provide information for.
+     * @server_default 3
+     */
     threads?: long
-    thread_type?: ThreadType
+    /**
+     * Period to wait for a response. If no response is received
+     * before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Time
+    /**
+     * The type to sample.
+     * @server_default cpu
+     */
+    type?: ThreadType
   }
 }
