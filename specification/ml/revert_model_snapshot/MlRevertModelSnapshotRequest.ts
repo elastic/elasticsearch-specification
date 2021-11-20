@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
      */
     snapshot_id: Id
   }
-  body: {
+  query_parameters: {
     /**
      * If true, deletes the results in the time period between the latest
      * results and the time of the reverted snapshot. It also resets the model
@@ -55,6 +55,13 @@ export interface Request extends RequestBase {
      * intervening results when reverting a snapshot, the job will not accept
      * input data that is older than the current time. If you want to resend
      * data, then delete the intervening results.
+     * @server_default false
+     */
+    delete_intervening_results?: boolean
+  }
+  body: {
+    /**
+     * Refer to the description for the `delete_intervening_results` query parameter.
      * @server_default false
      */
     delete_intervening_results?: boolean

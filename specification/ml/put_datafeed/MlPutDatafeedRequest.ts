@@ -59,9 +59,28 @@ export interface Request extends RequestBase {
     datafeed_id: Id
   }
   query_parameters: {
+    /**
+     * If true, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the `_all`
+     * string or when no indices are specified.
+     * @server_default true
+     */
     allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match. If the request can target data streams, this argument determines
+     * whether wildcard expressions match hidden data streams. Supports comma-separated values.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If true, concrete, expanded, or aliased indices are ignored when frozen.
+     * @server_default true
+     * @deprecated 7.16.0
+     */
     ignore_throttled?: boolean
+    /**
+     * If true, unavailable indices (missing or closed) are ignored.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
   }
   body: {
