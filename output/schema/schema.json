@@ -13588,7 +13588,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -15143,7 +15143,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -15673,7 +15673,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -15863,7 +15863,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -16180,7 +16180,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -16617,6 +16617,142 @@
       }
     },
     {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.get"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GetResult",
+        "namespace": "_global.get"
+      },
+      "properties": [
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "_global.get"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "",
+            "version": "7.0.0"
+          },
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -16733,7 +16869,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -16802,130 +16938,23 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "_index",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "fields",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "name": "found",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "_id",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "_primary_term",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "_routing",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "_seq_no",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SequenceNumber",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "_source",
-            "required": false,
-            "type": {
+        "kind": "value",
+        "value": {
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
                 "namespace": "_global.get"
               }
             }
-          },
-          {
-            "deprecation": {
-              "description": "",
-              "version": "7.0.0"
-            },
-            "name": "_type",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Type",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "_version",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "VersionNumber",
-                "namespace": "_types"
-              }
-            }
+          ],
+          "kind": "instance_of",
+          "type": {
+            "name": "GetResult",
+            "namespace": "_global.get"
           }
-        ]
+        }
       },
       "generics": [
         {
@@ -17398,7 +17427,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -17800,55 +17829,20 @@
       }
     },
     {
-      "generics": [
-        {
-          "name": "TDocument",
-          "namespace": "_global.mget"
-        }
-      ],
       "kind": "interface",
       "name": {
-        "name": "Hit",
+        "name": "MultiGetError",
         "namespace": "_global.mget"
       },
       "properties": [
         {
           "name": "error",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "ErrorCause",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "found",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         },
@@ -17875,50 +17869,10 @@
           }
         },
         {
-          "name": "_primary_term",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_seq_no",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_source",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.mget"
-            }
-          }
-        },
-        {
+          "deprecation": {
+            "description": "",
+            "version": "7.0.0"
+          },
           "name": "_type",
           "required": false,
           "type": {
@@ -17928,45 +17882,8 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "_version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
         }
       ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "MultiGetId",
-        "namespace": "_global.mget"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
     },
     {
       "kind": "interface",
@@ -17981,8 +17898,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MultiGetId",
-              "namespace": "_global.mget"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         },
@@ -18090,13 +18007,10 @@
             "name": "ids",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "MultiGetId",
-                  "namespace": "_global.mget"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "Ids",
+                "namespace": "_types"
               }
             }
           }
@@ -18196,7 +18110,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -18260,7 +18174,7 @@
                 ],
                 "kind": "instance_of",
                 "type": {
-                  "name": "Hit",
+                  "name": "ResponseItem",
                   "namespace": "_global.mget"
                 }
               }
@@ -18281,9 +18195,144 @@
       }
     },
     {
+      "codegenNames": [
+        "result",
+        "failure"
+      ],
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.mget"
+        }
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "ResponseItem",
+        "namespace": "_global.mget"
+      },
+      "type": {
+        "items": [
+          {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TDocument",
+                  "namespace": "_global.mget"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "GetResult",
+              "namespace": "_global.get"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiGetError",
+              "namespace": "_global.mget"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.msearch"
+        }
+      ],
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "_global.msearch"
+            }
+          }
+        ],
+        "type": {
+          "name": "Response",
+          "namespace": "_global.search"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "Body",
+        "name": "MultiSearchItem",
+        "namespace": "_global.msearch"
+      },
+      "properties": [
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.msearch"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchResult",
+        "namespace": "_global.msearch"
+      },
+      "properties": [
+        {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "responses",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "_global.msearch"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "ResponseItem",
+                "namespace": "_global.msearch"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MultisearchBody",
         "namespace": "_global.msearch"
       },
       "properties": [
@@ -18384,7 +18433,7 @@
       "description": "Contains parameters used to limit or change the subsequent search body request.",
       "kind": "interface",
       "name": {
-        "name": "Header",
+        "name": "MultisearchHeader",
         "namespace": "_global.msearch"
       },
       "properties": [
@@ -18488,23 +18537,11 @@
         "value": {
           "kind": "array_of",
           "value": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Header",
-                  "namespace": "_global.msearch"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Body",
-                  "namespace": "_global.msearch"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "RequestItem",
+              "namespace": "_global.msearch"
+            }
           }
         }
       },
@@ -18688,56 +18725,54 @@
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
+      "codegenNames": [
+        "header",
+        "body"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "RequestItem",
+        "namespace": "_global.msearch"
+      },
+      "type": {
+        "items": [
           {
-            "name": "took",
-            "required": true,
+            "kind": "instance_of",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
+              "name": "MultisearchHeader",
+              "namespace": "_global.msearch"
             }
           },
           {
-            "name": "responses",
-            "required": true,
+            "kind": "instance_of",
             "type": {
-              "kind": "array_of",
-              "value": {
-                "items": [
-                  {
-                    "generics": [
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "name": "TDocument",
-                          "namespace": "_global.msearch"
-                        }
-                      }
-                    ],
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SearchResult",
-                      "namespace": "_global.msearch"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "ErrorResponseBase",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
+              "name": "MultisearchBody",
+              "namespace": "_global.msearch"
             }
           }
-        ]
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "_global.msearch"
+              }
+            }
+          ],
+          "kind": "instance_of",
+          "type": {
+            "name": "MultiSearchResult",
+            "namespace": "_global.msearch"
+          }
+        }
       },
       "generics": [
         {
@@ -18752,45 +18787,49 @@
       }
     },
     {
+      "codegenNames": [
+        "result",
+        "failure"
+      ],
       "generics": [
         {
           "name": "TDocument",
           "namespace": "_global.msearch"
         }
       ],
-      "inherits": {
-        "generics": [
+      "kind": "type_alias",
+      "name": {
+        "name": "ResponseItem",
+        "namespace": "_global.msearch"
+      },
+      "type": {
+        "items": [
+          {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TDocument",
+                  "namespace": "_global.msearch"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiSearchItem",
+              "namespace": "_global.msearch"
+            }
+          },
           {
             "kind": "instance_of",
             "type": {
-              "name": "TDocument",
-              "namespace": "_global.msearch"
-            }
-          }
-        ],
-        "type": {
-          "name": "Response",
-          "namespace": "_global.search"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SearchResult",
-        "namespace": "_global.msearch"
-      },
-      "properties": [
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
+              "name": "ErrorResponseBase",
               "namespace": "_types"
             }
           }
-        }
-      ]
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "attachedBehaviors": [
@@ -18804,7 +18843,7 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "TemplateItem",
+              "name": "RequestItem",
               "namespace": "_global.msearch_template"
             }
           }
@@ -18912,56 +18951,54 @@
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
+      "codegenNames": [
+        "header",
+        "body"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "RequestItem",
+        "namespace": "_global.msearch_template"
+      },
+      "type": {
+        "items": [
           {
-            "name": "responses",
-            "required": true,
+            "kind": "instance_of",
             "type": {
-              "kind": "array_of",
-              "value": {
-                "items": [
-                  {
-                    "generics": [
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "name": "TDocument",
-                          "namespace": "_global.msearch_template"
-                        }
-                      }
-                    ],
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Response",
-                      "namespace": "_global.search"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "ErrorResponseBase",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
+              "name": "MultisearchHeader",
+              "namespace": "_global.msearch"
             }
           },
           {
-            "name": "took",
-            "required": true,
+            "kind": "instance_of",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
+              "name": "TemplateConfig",
+              "namespace": "_global.msearch_template"
             }
           }
-        ]
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "_global.msearch_template"
+              }
+            }
+          ],
+          "kind": "instance_of",
+          "type": {
+            "name": "MultiSearchResult",
+            "namespace": "_global.msearch"
+          }
+        }
       },
       "generics": [
         {
@@ -18978,28 +19015,30 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TemplateItem",
+        "name": "TemplateConfig",
         "namespace": "_global.msearch_template"
       },
       "properties": [
         {
+          "name": "explain",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "ID of the search template to use. If no source is specified,\nthis parameter is required.",
           "name": "id",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
               "namespace": "_types"
             }
           }
@@ -19023,6 +19062,19 @@
           }
         },
         {
+          "name": "profile",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
           "name": "source",
           "required": false,
           "type": {
@@ -22738,7 +22790,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -24762,36 +24814,6 @@
           }
         }
       ]
-    },
-    {
-      "codegenNames": [
-        "fetch",
-        "fields"
-      ],
-      "kind": "type_alias",
-      "name": {
-        "name": "GetSourceConfig",
-        "namespace": "_global.search._types"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
     },
     {
       "kind": "interface",
@@ -27349,6 +27371,37 @@
             "type": {
               "name": "SourceFilter",
               "namespace": "_global.search._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "codegenNames": [
+        "fetch",
+        "fields"
+      ],
+      "description": "Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.\nUsed as a query parameter along with the `_source_includes` and `_source_excludes` parameters.",
+      "kind": "type_alias",
+      "name": {
+        "name": "SourceConfigParam",
+        "namespace": "_global.search._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
             }
           }
         ],
@@ -30002,7 +30055,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -30466,7 +30519,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }
@@ -66167,7 +66220,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GetSourceConfig",
+              "name": "SourceConfigParam",
               "namespace": "_global.search._types"
             }
           }

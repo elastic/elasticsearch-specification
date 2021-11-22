@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Indices, SearchType, Types } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TemplateItem } from './types'
+import { RequestItem } from './types'
 
 /**
  * @rest_spec_name msearch_template
@@ -41,5 +41,5 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   /** @codegen_name search_templates */
-  body: Array<TemplateItem>
+  body: Array<RequestItem>
 }

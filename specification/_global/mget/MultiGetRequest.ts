@@ -18,9 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, IndexName, Routing, Type } from '@_types/common'
-import { MultiGetId, Operation } from './types'
-import { GetSourceConfig } from '@global/search/_types/SourceFilter'
+import { Fields, Ids, IndexName, Routing, Type } from '@_types/common'
+import { Operation } from './types'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name mget
@@ -38,13 +38,13 @@ export interface Request extends RequestBase {
     realtime?: boolean // default: true
     refresh?: boolean // default: false
     routing?: Routing
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     stored_fields?: Fields
   }
   body: {
     docs?: Operation[]
-    ids?: MultiGetId[]
+    ids?: Ids
   }
 }

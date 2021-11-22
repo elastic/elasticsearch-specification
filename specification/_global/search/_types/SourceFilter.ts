@@ -36,5 +36,10 @@ export class SourceFilter {
  */
 export type SourceConfig = boolean | SourceFilter
 
-/** @codegen_names fetch, fields */
-export type GetSourceConfig = boolean | Fields
+/**
+ * Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.
+ * Used as a query parameter along with the `_source_includes` and `_source_excludes` parameters.
+ *
+ * @codegen_names fetch, fields
+ */
+export type SourceConfigParam = boolean | Fields

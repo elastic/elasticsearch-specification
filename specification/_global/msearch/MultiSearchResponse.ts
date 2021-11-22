@@ -17,13 +17,8 @@
  * under the License.
  */
 
-import { ErrorResponseBase } from '@_types/Base'
-import { long } from '@_types/Numeric'
-import { SearchResult } from './types'
+import { MultiSearchResult } from '@global/msearch/types'
 
 export class Response<TDocument> {
-  body: {
-    took: long
-    responses: Array<SearchResult<TDocument> | ErrorResponseBase>
-  }
+  body: MultiSearchResult<TDocument>
 }
