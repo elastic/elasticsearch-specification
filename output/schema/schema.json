@@ -2805,9 +2805,16 @@
       "description": "Returns the current global checkpoints for an index. This API is design for internal use by the fleet server project.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-global-checkpoints.html",
       "name": "fleet.global_checkpoints",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "fleet.global_checkpoints"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "fleet.global_checkpoints"
+      },
+      "since": "7.13.0",
       "stability": "stable",
       "urls": [
         {
@@ -87594,6 +87601,160 @@
       "name": {
         "name": "Response",
         "namespace": "features.reset_features"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Checkpoint",
+        "namespace": "fleet._types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "long",
+          "namespace": "_types"
+        }
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Returns the current global checkpoints for an index. This API is design for internal use by the fleet server project.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "fleet.global_checkpoints"
+      },
+      "path": [
+        {
+          "description": "A single index or index alias that resolves to a single index.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexAlias",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "A boolean value which controls whether to wait (until the timeout) for the global checkpoints\nto advance past the provided `checkpoints`.",
+          "name": "wait_for_advance",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A boolean value which controls whether to wait (until the timeout) for the target index to exist\nand all primary shards be active. Can only be true when `wait_for_advance` is true.",
+          "name": "wait_for_index",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A comma separated list of previous global checkpoints. When used in combination with `wait_for_advance`,\nthe API will only return once the global checkpoints advances past the checkpoints. Providing an empty list\nwill cause Elasticsearch to immediately return the current global checkpoints.",
+          "name": "checkpoints",
+          "required": false,
+          "serverDefault": [],
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Checkpoint",
+                "namespace": "fleet._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a global checkpoints to advance past `checkpoints`.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "global_checkpoints",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Checkpoint",
+                  "namespace": "fleet._types"
+                }
+              }
+            }
+          },
+          {
+            "name": "timed_out",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "fleet.global_checkpoints"
       }
     },
     {
