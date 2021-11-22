@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Health } from '@_types/common'
+import { HealthStatus } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class IndexHealthStats {
@@ -29,7 +29,7 @@ export class IndexHealthStats {
   number_of_shards: integer
   relocating_shards: integer
   shards?: Dictionary<string, ShardHealthStats>
-  status: Health
+  status: HealthStatus
   unassigned_shards: integer
 }
 
@@ -38,6 +38,6 @@ export class ShardHealthStats {
   initializing_shards: integer
   primary_active: boolean
   relocating_shards: integer
-  status: Health
+  status: HealthStatus
   unassigned_shards: integer
 }

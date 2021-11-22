@@ -32366,20 +32366,29 @@
       "kind": "enum",
       "members": [
         {
+          "aliases": [
+            "GREEN"
+          ],
           "description": "All shards are assigned.",
           "name": "green"
         },
         {
+          "aliases": [
+            "YELLOW"
+          ],
           "description": "All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.",
           "name": "yellow"
         },
         {
+          "aliases": [
+            "RED"
+          ],
           "description": "One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.",
           "name": "red"
         }
       ],
       "name": {
-        "name": "Health",
+        "name": "HealthStatus",
         "namespace": "_types"
       }
     },
@@ -36024,24 +36033,6 @@
       ],
       "name": {
         "name": "WaitForEvents",
-        "namespace": "_types"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "green"
-        },
-        {
-          "name": "yellow"
-        },
-        {
-          "name": "red"
-        }
-      ],
-      "name": {
-        "name": "WaitForStatus",
         "namespace": "_types"
       }
     },
@@ -69552,7 +69543,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Health",
+              "name": "HealthStatus",
               "namespace": "_types"
             }
           }
@@ -79780,27 +79771,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "All shards are assigned.",
-          "name": "green"
-        },
-        {
-          "description": "All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.",
-          "name": "yellow"
-        },
-        {
-          "description": "One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.",
-          "name": "red"
-        }
-      ],
-      "name": {
-        "name": "ClusterStatus",
-        "namespace": "cluster._types"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "ComponentTemplate",
@@ -81673,7 +81643,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Health",
+              "name": "HealthStatus",
               "namespace": "_types"
             }
           }
@@ -81859,7 +81829,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "WaitForStatus",
+              "name": "HealthStatus",
               "namespace": "_types"
             }
           }
@@ -82029,7 +81999,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Health",
+                "name": "HealthStatus",
                 "namespace": "_types"
               }
             }
@@ -82135,7 +82105,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Health",
+              "name": "HealthStatus",
               "namespace": "_types"
             }
           }
@@ -85446,8 +85416,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterStatus",
-                "namespace": "cluster._types"
+                "name": "HealthStatus",
+                "namespace": "_types"
               }
             }
           },
@@ -89599,36 +89569,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "aliases": [
-            "GREEN"
-          ],
-          "description": "All shards are assigned.",
-          "name": "green"
-        },
-        {
-          "aliases": [
-            "YELLOW"
-          ],
-          "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
-          "name": "yellow"
-        },
-        {
-          "aliases": [
-            "RED"
-          ],
-          "description": "One or more primary shards are unassigned, so some data is unavailable.",
-          "name": "red"
-        }
-      ],
-      "name": {
-        "name": "DataStreamHealthStatus",
-        "namespace": "indices._types"
-      }
     },
     {
       "kind": "interface",
@@ -94827,8 +94767,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataStreamHealthStatus",
-              "namespace": "indices._types"
+              "name": "HealthStatus",
+              "namespace": "_types"
             }
           }
         },
@@ -99498,7 +99438,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ShardStatus",
+                  "name": "ShardStoreStatus",
                   "namespace": "indices.shard_stores"
                 }
               },
@@ -99507,7 +99447,7 @@
                 "value": {
                   "kind": "instance_of",
                   "type": {
-                    "name": "ShardStatus",
+                    "name": "ShardStoreStatus",
                     "namespace": "indices.shard_stores"
                   }
                 }
@@ -99549,31 +99489,6 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "indices.shard_stores"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "The primary shard and all replica shards are assigned.",
-          "name": "green"
-        },
-        {
-          "description": "One or more replica shards are unassigned.",
-          "name": "yellow"
-        },
-        {
-          "description": "The primary shard is unassigned.",
-          "name": "red"
-        },
-        {
-          "description": "Return all shards, regardless of health status.",
-          "name": "all"
-        }
-      ],
-      "name": {
-        "name": "ShardStatus",
         "namespace": "indices.shard_stores"
       }
     },
@@ -99729,6 +99644,31 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The primary shard and all replica shards are assigned.",
+          "name": "green"
+        },
+        {
+          "description": "One or more replica shards are unassigned.",
+          "name": "yellow"
+        },
+        {
+          "description": "The primary shard is unassigned.",
+          "name": "red"
+        },
+        {
+          "description": "Return all shards, regardless of health status.",
+          "name": "all"
+        }
+      ],
+      "name": {
+        "name": "ShardStoreStatus",
+        "namespace": "indices.shard_stores"
+      }
     },
     {
       "kind": "interface",

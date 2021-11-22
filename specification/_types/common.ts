@@ -200,12 +200,22 @@ export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
 /**
  * Health status of the cluster, based on the state of its primary and replica shards.
  */
-export enum Health {
-  /** All shards are assigned. */
+export enum HealthStatus {
+  // ES will send this enum as upper or lowercase depending on the APIs
+  /**
+   * All shards are assigned.
+   * @aliases GREEN
+   */
   green = 0,
-  /** All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired. */
+  /**
+   * All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.
+   * @aliases YELLOW
+   */
   yellow = 1,
-  /** One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned. */
+  /**
+   * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
+   * @aliases RED
+   */
   red = 2
 }
 
@@ -266,12 +276,6 @@ export enum WaitForEvents {
   normal = 3,
   low = 4,
   languid = 5
-}
-
-export enum WaitForStatus {
-  green = 0,
-  yellow = 1,
-  red = 2
 }
 
 // Additional properties are the meta fields
