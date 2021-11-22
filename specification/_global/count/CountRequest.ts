@@ -18,14 +18,10 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  DefaultOperator,
-  ExpandWildcards,
-  Indices,
-  Routing
-} from '@_types/common'
+import { ExpandWildcards, Indices, Routing } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * @rest_spec_name count
@@ -40,7 +36,7 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
-    default_operator?: DefaultOperator
+    default_operator?: Operator
     df?: string
     expand_wildcards?: ExpandWildcards
     ignore_throttled?: boolean

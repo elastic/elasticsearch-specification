@@ -13717,8 +13717,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -14350,8 +14350,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -15545,8 +15545,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -22065,8 +22065,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -29878,8 +29878,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -31203,21 +31203,6 @@
           "name": "string",
           "namespace": "internal"
         }
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "AND"
-        },
-        {
-          "name": "OR"
-        }
-      ],
-      "name": {
-        "name": "DefaultOperator",
-        "namespace": "_types"
       }
     },
     {
@@ -65509,8 +65494,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -102422,8 +102407,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DefaultOperator",
-              "namespace": "_types"
+              "name": "Operator",
+              "namespace": "_types.query_dsl"
             }
           }
         },
