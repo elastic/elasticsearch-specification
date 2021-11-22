@@ -4756,7 +4756,7 @@ export interface MappingSuggestContext {
   precision?: integer | string
 }
 
-export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads'
+export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads' | 'with_positions_payloads'
 
 export interface MappingTextIndexPrefixes {
   max_chars: integer
