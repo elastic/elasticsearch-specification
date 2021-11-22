@@ -26,7 +26,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { GetSourceConfig } from '@global/search/_types/SourceFilter'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name get_source
@@ -69,7 +69,7 @@ export interface Request {
     /**
      * True or false to return the _source field or not, or a list of fields to return.
      */
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     /**
      * A comma-separated list of source fields to exclude in the response.
      */
