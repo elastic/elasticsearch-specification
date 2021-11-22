@@ -18,10 +18,11 @@
  */
 
 export enum TermVectorOption {
-  no = 0,
-  yes = 1,
-  with_offsets = 2,
-  with_positions = 3,
-  with_positions_offsets = 4,
-  with_positions_offsets_payloads = 5
+  no,
+  yes,
+  with_offsets,
+  with_positions,
+  with_positions_offsets,
+  with_positions_offsets_payloads,
+  with_positions_payloads
 }
