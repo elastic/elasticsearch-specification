@@ -19,11 +19,27 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, Indices } from '@_types/common'
+import { Id } from '@_types/common'
+import { MultisearchHeader } from '@global/msearch/types'
 
-export class TemplateItem {
+/** @codegen_names header, body */
+export type RequestItem = MultisearchHeader | TemplateConfig
+
+export class TemplateConfig {
+  /** @server_default false */
+  explain?: boolean
+  /**
+   * ID of the search template to use. If no source is specified,
+   * this parameter is required.
+   */
   id?: Id
-  index?: Indices
   params?: Dictionary<string, UserDefinedValue>
+  /** @server_default false */
+  profile?: boolean
+  /**
+   * An inline search template. Supports the same parameters as the search API's
+   * request body. Also supports Mustache variables. If no id is specified, this
+   * parameter is required.
+   */
   source?: string
 }

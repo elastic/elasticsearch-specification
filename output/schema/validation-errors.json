@@ -1135,6 +1135,12 @@
       ],
       "response": []
     },
+    "mget": {
+      "request": [],
+      "response": [
+        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget:TDocument'"
+      ]
+    },
     "migration.deprecations": {
       "request": [
         "Request: should not have a body"
@@ -1396,12 +1402,8 @@
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
-      "response": []
-    },
-    "msearch_template": {
-      "request": [],
       "response": [
-        "response definition _global.msearch_template:Response / body / Property 'responses' / array_of / union_of / instance_of - Non-leaf type cannot be used here: '_global.search:Response'"
+        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
       ]
     },
     "nodes.clear_repositories_metering_archive": {

@@ -27,7 +27,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { GetSourceConfig } from '@global/search/_types/SourceFilter'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name exists_source
@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
     realtime?: boolean
     refresh?: boolean
     routing?: Routing
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     version?: VersionNumber

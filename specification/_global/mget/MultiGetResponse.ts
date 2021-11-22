@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Hit } from './types'
+import { ResponseItem } from './types'
 
 export class Response<TDocument> {
   body: {
-    docs: Hit<TDocument>[]
+    docs: ResponseItem<TDocument>[]
   }
 }
