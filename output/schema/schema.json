@@ -56946,6 +56946,9 @@
         },
         {
           "name": "with_positions_offsets_payloads"
+        },
+        {
+          "name": "with_positions_payloads"
         }
       ],
       "name": {
