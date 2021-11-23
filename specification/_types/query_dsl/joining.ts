@@ -22,11 +22,19 @@ import { Field, Id, RelationName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryBase, QueryContainer } from './abstractions'
 
+/**
+ * How to aggregate multiple child hit scores into a single parent score.
+ */
 export enum ChildScoreMode {
+  /* Do no scoring. */
   none = 0,
+  /* Parent hit's score is the average of all child scores. */
   avg = 1,
+  /* Parent hit's score is the max of all child scores. */
   sum = 2,
+  /* Parent hit's score is the sum of all child scores. */
   max = 3,
+  /* Parent hit's score is the min of all child scores. */
   min = 4
 }
 
@@ -59,15 +67,7 @@ export class NestedQuery extends QueryBase {
   path: Field
   query: QueryContainer
   /** @server_default 'avg' */
-  score_mode?: NestedScoreMode
-}
-
-export enum NestedScoreMode {
-  avg = 0,
-  sum = 1,
-  min = 2,
-  max = 3,
-  none = 4
+  score_mode?: ChildScoreMode
 }
 
 export class ParentIdQuery extends QueryBase {

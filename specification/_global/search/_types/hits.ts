@@ -34,9 +34,9 @@ import { double, integer, long } from '@_types/Numeric'
 import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
-import { Sort, SortResults } from './sort'
 import { SourceConfig } from './SourceFilter'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
+import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName

@@ -17,15 +17,11 @@
  * under the License.
  */
 
-import {
-  ChunkingConfig,
-  DatafeedIndicesOptions,
-  DelayedDataCheckConfig
-} from '@ml/_types/Datafeed'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, Indices } from '@_types/common'
+import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -54,7 +50,7 @@ export interface Request extends RequestBase {
     frequency?: Time
     /** @aliases indexes */
     indices?: string[]
-    indices_options?: DatafeedIndicesOptions
+    indices_options?: IndicesOptions
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer

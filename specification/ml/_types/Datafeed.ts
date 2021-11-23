@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ExpandWildcards, Id, Indices } from '@_types/common'
+import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -43,7 +43,7 @@ export class Datafeed {
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
   runtime_mappings?: RuntimeFields
-  indices_options?: DatafeedIndicesOptions
+  indices_options?: IndicesOptions
 }
 
 export class DatafeedConfig {
@@ -76,7 +76,7 @@ export class DatafeedConfig {
   /**
    * Specifies index expansion options that are used during search.
    */
-  indices_options?: DatafeedIndicesOptions
+  indices_options?: IndicesOptions
   job_id?: Id
   /**
    * If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.
@@ -116,6 +116,7 @@ export class DelayedDataCheckConfig {
   enabled: boolean // default: true
 }
 
+// Identical to WatcherState, but kept separate as they're different enums in ES
 export enum DatafeedState {
   started = 0,
   stopped = 1,
@@ -155,11 +156,4 @@ export class ChunkingConfig {
    * The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.
    * @server_default 3h */
   time_span?: Time
-}
-
-export class DatafeedIndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
 }

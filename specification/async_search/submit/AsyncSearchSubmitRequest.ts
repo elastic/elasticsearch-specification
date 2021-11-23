@@ -41,7 +41,7 @@ import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
 import { Rescore } from '@global/search/_types/rescoring'
-import { Sort, SortResults } from '@global/search/_types/sort'
+import { Sort, SortResults } from '@_types/sort'
 import {
   SourceConfigParam,
   SourceConfig
