@@ -12635,6 +12635,19 @@ export interface MlPutTrainedModelAliasRequest extends RequestBase {
 export interface MlPutTrainedModelAliasResponse extends AcknowledgedResponseBase {
 }
 
+export interface MlPutTrainedModelDefinitionPartRequest extends RequestBase {
+  model_id: Id
+  part: integer
+  body?: {
+    definition: string
+    total_definition_length: number
+    total_parts: number
+  }
+}
+
+export interface MlPutTrainedModelDefinitionPartResponse extends AcknowledgedResponseBase {
+}
+
 export interface MlResetJobRequest extends RequestBase {
   job_id: Id
   wait_for_completion?: boolean

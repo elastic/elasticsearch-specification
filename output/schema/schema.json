@@ -7681,9 +7681,21 @@
       "description": "Creates part of a trained model definition",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html",
       "name": "ml.put_trained_model_definition_part",
-      "request": null,
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "ml.put_trained_model_definition_part"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.put_trained_model_definition_part"
+      },
+      "since": "8.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -123442,6 +123454,108 @@
       "name": {
         "name": "Response",
         "namespace": "ml.put_trained_model_alias"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The definition part for the model. Must be a base64 encoded string.",
+            "name": "definition",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The total uncompressed definition length in bytes. Not base64 encoded.",
+            "name": "total_definition_length",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "number",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The total number of parts that will be uploaded. Must be greater than 0.",
+            "name": "total_parts",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "number",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates part of a trained model definition.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.put_trained_model_definition_part"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The definition part number. When the definition is loaded for inference the definition parts are streamed in the\norder of their part number. The first part must be `0` and the final part must be `total_parts - 1`.",
+          "name": "part",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.put_trained_model_definition_part"
       }
     },
     {
