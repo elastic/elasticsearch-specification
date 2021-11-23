@@ -23,6 +23,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ExpandWildcards,
   IndexName,
+  IndicesOptions,
   Password,
   SearchType,
   Username
@@ -84,13 +85,6 @@ export class HttpInputRequestDefinition {
   read_timeout?: Time
   scheme?: ConnectionScheme
   url?: string
-}
-
-export class IndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
 }
 
 export class Input {}

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SortOrder } from '@global/search/_types/sort'
+import { SortOrder } from '@_types/query_dsl/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, Id, Name } from '@_types/common'

@@ -858,7 +858,7 @@ export interface ReindexSource {
   remote?: ReindexRemoteSource
   size?: integer
   slice?: SlicedScroll
-  sort?: SearchSort
+  sort?: QueryDslSort
   _source?: Fields
   runtime_mappings?: MappingRuntimeFields
 }
@@ -1008,10 +1008,10 @@ export interface SearchRequest extends RequestBase {
     query?: QueryDslQueryContainer
     rescore?: SearchRescore | SearchRescore[]
     script_fields?: Record<string, ScriptField>
-    search_after?: SearchSortResults
+    search_after?: QueryDslSortResults
     size?: integer
     slice?: SlicedScroll
-    sort?: SearchSort
+    sort?: QueryDslSort
     _source?: SearchSourceConfig
     fields?: (QueryDslFieldAndFormat | Field)[]
     suggest?: SearchSuggester
@@ -1193,18 +1193,6 @@ export interface SearchFieldCollapse {
   max_concurrent_group_searches?: integer
 }
 
-export interface SearchFieldSort {
-  missing?: AggregationsMissing
-  mode?: SearchSortMode
-  nested?: SearchNestedSortValue
-  order?: SearchSortOrder
-  unmapped_type?: MappingFieldType
-  numeric_type?: SearchFieldSortNumericType
-  format?: string
-}
-
-export type SearchFieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
-
 export interface SearchFieldSuggester {
   completion?: SearchCompletionSuggester
   phrase?: SearchPhraseSuggester
@@ -1213,16 +1201,6 @@ export interface SearchFieldSuggester {
   term?: SearchTermSuggester
   text?: string
 }
-
-export interface SearchGeoDistanceSortKeys {
-  mode?: SearchSortMode
-  distance_type?: GeoDistanceType
-  ignore_unmapped?: boolean
-  order?: SearchSortOrder
-  unit?: DistanceUnit
-}
-export type SearchGeoDistanceSort = SearchGeoDistanceSortKeys
-  & { [property: string]: GeoLocation | GeoLocation[] | SearchSortMode | GeoDistanceType | boolean | SearchSortOrder | DistanceUnit }
 
 export interface SearchHighlight {
   fields: Record<Field, SearchHighlightField>
@@ -1300,7 +1278,7 @@ export interface SearchHit<TDocument = unknown> {
   _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
-  sort?: SearchSortResults
+  sort?: QueryDslSortResults
 }
 
 export interface SearchHitsMetadata<T = unknown> {
@@ -1321,7 +1299,7 @@ export interface SearchInnerHits {
   script_fields?: Record<Field, ScriptField>
   seq_no_primary_term?: boolean
   fields?: Fields
-  sort?: SearchSort
+  sort?: QueryDslSort
   _source?: SearchSourceConfig
   stored_field?: Fields
   track_scores?: boolean
@@ -1346,13 +1324,6 @@ export interface SearchNestedIdentity {
   field: Field
   offset: integer
   _nested?: SearchNestedIdentity
-}
-
-export interface SearchNestedSortValue {
-  filter?: QueryDslQueryContainer
-  max_children?: integer
-  nested?: SearchNestedSortValue
-  path: Field
 }
 
 export interface SearchPhraseSuggestCollate {
@@ -1445,20 +1416,6 @@ export interface SearchRescoreQuery {
 
 export type SearchScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
-export interface SearchScoreSort {
-  order?: SearchSortOrder
-}
-
-export interface SearchScriptSort {
-  order?: SearchSortOrder
-  script: Script
-  type?: SearchScriptSortType
-  mode?: SearchSortMode
-  nested?: SearchNestedSortValue
-}
-
-export type SearchScriptSortType = 'string' | 'number'
-
 export interface SearchSearchProfile {
   collector: SearchCollector[]
   query: SearchQueryProfile[]
@@ -1477,25 +1434,6 @@ export interface SearchSmoothingModelContainer {
   linear_interpolation?: SearchLinearInterpolationSmoothingModel
   stupid_backoff?: SearchStupidBackoffSmoothingModel
 }
-
-export type SearchSort = SearchSortCombinations | SearchSortCombinations[]
-
-export type SearchSortCombinations = Field | SearchSortOptions
-
-export type SearchSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
-
-export interface SearchSortOptionsKeys {
-  _score?: SearchScoreSort
-  _doc?: SearchScoreSort
-  _geo_distance?: SearchGeoDistanceSort
-  _script?: SearchScriptSort
-}
-export type SearchSortOptions = SearchSortOptionsKeys
-  & { [property: string]: SearchFieldSort | SearchSortOrder | SearchScoreSort | SearchGeoDistanceSort | SearchScriptSort }
-
-export type SearchSortOrder = 'asc' | 'desc'
-
-export type SearchSortResults = (long | double | string | null)[]
 
 export type SearchSourceConfig = boolean | SearchSourceFilter | Fields
 
@@ -1596,7 +1534,7 @@ export interface SearchMvtRequest extends RequestBase {
     query?: QueryDslQueryContainer
     runtime_mappings?: MappingRuntimeFields
     size?: integer
-    sort?: SearchSort
+    sort?: QueryDslSort
   }
 }
 
@@ -2093,6 +2031,13 @@ export interface IndexingStats {
 
 export type Indices = IndexName | IndexName[]
 
+export interface IndicesOptions {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  ignore_throttled?: boolean
+}
+
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }
@@ -2262,7 +2207,7 @@ export interface RequestCacheStats {
   miss_count: long
 }
 
-export type Result = 'Error' | 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
+export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
 
 export interface Retries {
   bulk: long
@@ -2676,7 +2621,7 @@ export interface AggregationsBucketSortAggregation extends AggregationsAggregati
   from?: integer
   gap_policy?: AggregationsGapPolicy
   size?: integer
-  sort?: SearchSort
+  sort?: QueryDslSort
 }
 
 export type AggregationsBuckets<TBucket = unknown> = Record<string, TBucket> | TBucket[]
@@ -2950,7 +2895,7 @@ export interface AggregationsGeoLineAggregation {
   point: AggregationsGeoLinePoint
   sort: AggregationsGeoLineSort
   include_sort?: boolean
-  sort_order?: SearchSortOrder
+  sort_order?: QueryDslSortOrder
   size?: integer
 }
 
@@ -3024,8 +2969,8 @@ export type AggregationsHistogramBucket = AggregationsHistogramBucketKeys
   & { [property: string]: AggregationsAggregate | string | double | long }
 
 export interface AggregationsHistogramOrder {
-  _count?: SearchSortOrder
-  _key?: SearchSortOrder
+  _count?: QueryDslSortOrder
+  _key?: QueryDslSortOrder
 }
 
 export interface AggregationsHoltLinearModelSettings {
@@ -3149,7 +3094,7 @@ export interface AggregationsMatrixStatsAggregate extends AggregationsAggregateB
 }
 
 export interface AggregationsMatrixStatsAggregation extends AggregationsMatrixAggregation {
-  mode?: AggregationsMatrixStatsMode
+  mode?: QueryDslSortMode
 }
 
 export interface AggregationsMatrixStatsFields {
@@ -3162,8 +3107,6 @@ export interface AggregationsMatrixStatsFields {
   covariance: Record<Field, double>
   correlation: Record<Field, double>
 }
-
-export type AggregationsMatrixStatsMode = 'avg' | 'min' | 'max' | 'sum' | 'median'
 
 export interface AggregationsMaxAggregate extends AggregationsSingleMetricAggregateBase {
 }
@@ -3608,7 +3551,7 @@ export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_f
 
 export type AggregationsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 
-export type AggregationsTermsAggregationOrder = Record<Field, SearchSortOrder> | Record<Field, SearchSortOrder>[]
+export type AggregationsTermsAggregationOrder = Record<Field, QueryDslSortOrder> | Record<Field, QueryDslSortOrder>[]
 
 export interface AggregationsTermsBucketBase extends AggregationsMultiBucketBase {
   doc_count_error?: long
@@ -3640,7 +3583,7 @@ export interface AggregationsTopHitsAggregation extends AggregationsMetricAggreg
   highlight?: SearchHighlight
   script_fields?: Record<string, ScriptField>
   size?: integer
-  sort?: SearchSort
+  sort?: QueryDslSort
   _source?: SearchSourceConfig
   stored_fields?: Fields
   track_scores?: boolean
@@ -3659,7 +3602,7 @@ export interface AggregationsTopMetricsAggregate extends AggregationsMultiBucket
 export interface AggregationsTopMetricsAggregation extends AggregationsMetricAggregationBase {
   metrics?: AggregationsTopMetricsValue | AggregationsTopMetricsValue[]
   size?: integer
-  sort?: SearchSort
+  sort?: QueryDslSort
 }
 
 export interface AggregationsTopMetricsBucketKeys extends AggregationsMultiBucketBase {
@@ -4924,6 +4867,18 @@ export interface QueryDslFieldLookup {
   routing?: Routing
 }
 
+export interface QueryDslFieldSort {
+  missing?: AggregationsMissing
+  mode?: QueryDslSortMode
+  nested?: QueryDslNestedSortValue
+  order?: QueryDslSortOrder
+  unmapped_type?: MappingFieldType
+  numeric_type?: QueryDslFieldSortNumericType
+  format?: string
+}
+
+export type QueryDslFieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
+
 export type QueryDslFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
 
 export interface QueryDslFieldValueFactorScoreFunction extends QueryDslScoreFunctionBase {
@@ -4989,6 +4944,16 @@ export interface QueryDslGeoDistanceQueryKeys extends QueryDslQueryBase {
 }
 export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
   & { [property: string]: GeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | float | string }
+
+export interface QueryDslGeoDistanceSortKeys {
+  mode?: QueryDslSortMode
+  distance_type?: GeoDistanceType
+  ignore_unmapped?: boolean
+  order?: QueryDslSortOrder
+  unit?: DistanceUnit
+}
+export type QueryDslGeoDistanceSort = QueryDslGeoDistanceSortKeys
+  & { [property: string]: GeoLocation | GeoLocation[] | QueryDslSortMode | GeoDistanceType | boolean | QueryDslSortOrder | DistanceUnit }
 
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
@@ -5223,10 +5188,15 @@ export interface QueryDslNestedQuery extends QueryDslQueryBase {
   inner_hits?: SearchInnerHits
   path: Field
   query: QueryDslQueryContainer
-  score_mode?: QueryDslNestedScoreMode
+  score_mode?: QueryDslChildScoreMode
 }
 
-export type QueryDslNestedScoreMode = 'avg' | 'sum' | 'min' | 'max' | 'none'
+export interface QueryDslNestedSortValue {
+  filter?: QueryDslQueryContainer
+  max_children?: integer
+  nested?: QueryDslNestedSortValue
+  path: Field
+}
 
 export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
   gt?: double
@@ -5423,6 +5393,10 @@ export interface QueryDslScoreFunctionBase {
   weight?: double
 }
 
+export interface QueryDslScoreSort {
+  order?: QueryDslSortOrder
+}
+
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
   script: Script
 }
@@ -5436,6 +5410,16 @@ export interface QueryDslScriptScoreQuery extends QueryDslQueryBase {
   query: QueryDslQueryContainer
   script: Script
 }
+
+export interface QueryDslScriptSort {
+  order?: QueryDslSortOrder
+  script: Script
+  type?: QueryDslScriptSortType
+  mode?: QueryDslSortMode
+  nested?: QueryDslNestedSortValue
+}
+
+export type QueryDslScriptSortType = 'string' | 'number'
 
 export interface QueryDslShapeFieldQuery {
   indexed_shape?: QueryDslFieldLookup
@@ -5468,6 +5452,25 @@ export interface QueryDslSimpleQueryStringQuery extends QueryDslQueryBase {
   query: string
   quote_field_suffix?: string
 }
+
+export type QueryDslSort = QueryDslSortCombinations | QueryDslSortCombinations[]
+
+export type QueryDslSortCombinations = Field | QueryDslSortOptions
+
+export type QueryDslSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
+
+export interface QueryDslSortOptionsKeys {
+  _score?: QueryDslScoreSort
+  _doc?: QueryDslScoreSort
+  _geo_distance?: QueryDslGeoDistanceSort
+  _script?: QueryDslScriptSort
+}
+export type QueryDslSortOptions = QueryDslSortOptionsKeys
+  & { [property: string]: QueryDslFieldSort | QueryDslSortOrder | QueryDslScoreSort | QueryDslGeoDistanceSort | QueryDslScriptSort }
+
+export type QueryDslSortOrder = 'asc' | 'desc'
+
+export type QueryDslSortResults = (long | double | string | null)[]
 
 export interface QueryDslSpanContainingQuery extends QueryDslQueryBase {
   big: QueryDslSpanQuery
@@ -5689,10 +5692,10 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     query?: QueryDslQueryContainer
     rescore?: SearchRescore | SearchRescore[]
     script_fields?: Record<string, ScriptField>
-    search_after?: SearchSortResults
+    search_after?: QueryDslSortResults
     size?: integer
     slice?: SlicedScroll
-    sort?: SearchSort
+    sort?: QueryDslSort
     _source?: SearchSourceConfig
     fields?: (QueryDslFieldAndFormat | Field)[]
     suggest?: SearchSuggester
@@ -10558,7 +10561,7 @@ export type IngestShapeType = 'geo_shape' | 'shape'
 
 export interface IngestSortProcessor extends IngestProcessorBase {
   field: Field
-  order: SearchSortOrder
+  order: QueryDslSortOrder
   target_field: Field
 }
 
@@ -11067,7 +11070,7 @@ export interface MlDatafeed {
   scroll_size?: integer
   delayed_data_check_config: MlDelayedDataCheckConfig
   runtime_mappings?: MappingRuntimeFields
-  indices_options?: MlDatafeedIndicesOptions
+  indices_options?: IndicesOptions
 }
 
 export interface MlDatafeedConfig {
@@ -11079,7 +11082,7 @@ export interface MlDatafeedConfig {
   frequency?: Timestamp
   indexes?: string[]
   indices: string[]
-  indices_options?: MlDatafeedIndicesOptions
+  indices_options?: IndicesOptions
   job_id?: Id
   max_empty_searches?: integer
   query: QueryDslQueryContainer
@@ -11087,13 +11090,6 @@ export interface MlDatafeedConfig {
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
   scroll_size?: integer
-}
-
-export interface MlDatafeedIndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
 }
 
 export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
@@ -12450,7 +12446,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     frequency?: Time
     indices?: string[]
     indexes?: string[]
-    indices_options?: MlDatafeedIndicesOptions
+    indices_options?: IndicesOptions
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryDslQueryContainer
@@ -12469,7 +12465,7 @@ export interface MlPutDatafeedResponse {
   frequency: Time
   indices: string[]
   job_id: Id
-  indices_options?: MlDatafeedIndicesOptions
+  indices_options?: IndicesOptions
   max_empty_searches: integer
   query: QueryDslQueryContainer
   query_delay: Time
@@ -12757,7 +12753,7 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
     frequency?: Time
     indices?: string[]
     indexes?: string[]
-    indices_options?: MlDatafeedIndicesOptions
+    indices_options?: IndicesOptions
     max_empty_searches?: integer
     query?: QueryDslQueryContainer
     query_delay?: Time
@@ -12775,7 +12771,7 @@ export interface MlUpdateDatafeedResponse {
   frequency: Time
   indices: string[]
   job_id: Id
-  indices_options?: MlDatafeedIndicesOptions
+  indices_options?: IndicesOptions
   max_empty_searches: integer
   query: QueryDslQueryContainer
   query_delay: Time
@@ -14942,7 +14938,7 @@ export interface SqlTranslateResponse {
   size: long
   _source: SearchSourceConfig
   fields: Record<Field, string>[]
-  sort: SearchSort
+  sort: QueryDslSort
 }
 
 export interface SslCertificatesCertificateInformation {
@@ -15564,13 +15560,6 @@ export interface WatcherIndexResultSummary {
   type?: Type
 }
 
-export interface WatcherIndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
-}
-
 export interface WatcherInputContainer {
   chain?: WatcherChainInput
   http?: WatcherHttpInput
@@ -15674,7 +15663,7 @@ export interface WatcherSearchInputRequestBody {
 export interface WatcherSearchInputRequestDefinition {
   body?: WatcherSearchInputRequestBody
   indices?: IndexName[]
-  indices_options?: WatcherIndicesOptions
+  indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequest
   rest_total_hits_as_int?: boolean
@@ -15903,8 +15892,8 @@ export interface WatcherQueryWatchesRequest extends RequestBase {
     from?: integer
     size?: integer
     query?: QueryDslQueryContainer
-    sort?: SearchSort
-    search_after?: SearchSortResults
+    sort?: QueryDslSort
+    search_after?: QueryDslSortResults
   }
 }
 
@@ -16427,10 +16416,6 @@ export interface XpackUsageWatcherWatchTriggerSchedule extends XpackUsageCounter
   _all: XpackUsageCounter
 }
 
-export interface SpecUtilsAdditionalProperty<TKey = unknown, TValue = unknown> {
-  [key: string]: never
-}
-
 export interface SpecUtilsAdditionalProperties<TKey = unknown, TValue = unknown> {
   [key: string]: never
 }
@@ -16440,6 +16425,10 @@ export interface SpecUtilsCommonQueryParameters {
   filter_path?: string | string[]
   human?: boolean
   pretty?: boolean
+}
+
+export interface SpecUtilsAdditionalProperty<TKey = unknown, TValue = unknown> {
+  [key: string]: never
 }
 
 export interface SpecUtilsCommonCatQueryParameters {

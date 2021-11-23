@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort, SortResults } from '@global/search/_types/sort'
+import { Sort, SortResults } from '@_types/query_dsl/sort'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'

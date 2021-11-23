@@ -18,14 +18,10 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id } from '@_types/common'
+import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import {
-  ChunkingConfig,
-  DatafeedIndicesOptions,
-  DelayedDataCheckConfig
-} from '@ml/_types/Datafeed'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Time } from '@_types/Time'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -120,7 +116,7 @@ export interface Request extends RequestBase {
     /**
      * Specifies index expansion options that are used during search.
      */
-    indices_options?: DatafeedIndicesOptions
+    indices_options?: IndicesOptions
     /**
      * If a real-time datafeed has never seen any data (including during any initial training period), it automatically
      * stops and closes the associated job after this many real-time searches return no documents. In other words,

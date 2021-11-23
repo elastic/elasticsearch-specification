@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/_types/sort'
+import { Sort } from '@_types/query_dsl/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name, Field, EmptyObject } from '@_types/common'
 import { integer, double, float } from '@_types/Numeric'
