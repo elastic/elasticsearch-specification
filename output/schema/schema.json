@@ -91097,6 +91097,18 @@
           }
         },
         {
+          "description": "Default settings, included when the request's `include_default` is `true`.",
+          "name": "defaults",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
           "name": "data_stream",
           "required": false,
           "type": {
