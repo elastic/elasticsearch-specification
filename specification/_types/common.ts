@@ -170,11 +170,6 @@ export enum Conflicts {
 export type Username = string
 export type Password = string
 
-export enum DefaultOperator {
-  AND = 0,
-  OR = 1
-}
-
 export class ElasticsearchResponseBase {}
 
 export class ElasticsearchUrlFormatter {}

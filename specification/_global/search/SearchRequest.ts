@@ -21,7 +21,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
-  DefaultOperator,
   ExpandWildcards,
   Field,
   Fields,
@@ -46,6 +45,7 @@ import { Sort, SortResults } from './_types/sort'
 import { SourceConfigParam, SourceConfig } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
+import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * @rest_spec_name search
@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
     analyze_wildcard?: boolean
     batched_reduce_size?: long
     ccs_minimize_roundtrips?: boolean
-    default_operator?: DefaultOperator
+    default_operator?: Operator
     df?: string
     docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
