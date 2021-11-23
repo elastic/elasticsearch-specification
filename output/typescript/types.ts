@@ -122,7 +122,7 @@ export interface CountRequest extends RequestBase {
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
@@ -184,7 +184,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   analyzer?: string
   analyze_wildcard?: boolean
   conflicts?: Conflicts
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   expand_wildcards?: ExpandWildcards
   from?: long
@@ -307,7 +307,7 @@ export interface ExplainRequest extends RequestBase {
   type?: Type
   analyzer?: string
   analyze_wildcard?: boolean
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   lenient?: boolean
   preference?: string
@@ -936,7 +936,7 @@ export interface SearchRequest extends RequestBase {
   analyze_wildcard?: boolean
   batched_reduce_size?: long
   ccs_minimize_roundtrips?: boolean
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   docvalue_fields?: Fields
   expand_wildcards?: ExpandWildcards
@@ -1767,7 +1767,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   analyzer?: string
   analyze_wildcard?: boolean
   conflicts?: Conflicts
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   expand_wildcards?: ExpandWildcards
   from?: long
@@ -1916,8 +1916,6 @@ export type DateMath = string
 export type DateMathTime = string
 
 export type DateString = string
-
-export type DefaultOperator = 'AND' | 'OR'
 
 export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
   [key: string]: TValue
@@ -5620,7 +5618,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   analyze_wildcard?: boolean
   batched_reduce_size?: long
   ccs_minimize_roundtrips?: boolean
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   docvalue_fields?: Fields
   expand_wildcards?: ExpandWildcards
@@ -10316,7 +10314,7 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   all_shards?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
-  default_operator?: DefaultOperator
+  default_operator?: QueryDslOperator
   df?: string
   expand_wildcards?: ExpandWildcards
   explain?: boolean
