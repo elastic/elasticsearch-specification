@@ -8877,7 +8877,7 @@ export interface IndicesIndexRoutingAllocation {
 }
 
 export interface IndicesIndexRoutingAllocationDisk {
-  threshold_enabled: boolean | string
+  threshold_enabled?: boolean | string
 }
 
 export interface IndicesIndexRoutingAllocationInclude {
@@ -8900,8 +8900,8 @@ export type IndicesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replica
 export interface IndicesIndexSegmentSort {
   field: Fields
   order: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
-  mode?: IndicesSegmentSortMode
-  missing?: IndicesSegmentSortMissing
+  mode?: IndicesSegmentSortMode | IndicesSegmentSortMode[]
+  missing?: IndicesSegmentSortMissing | IndicesSegmentSortMissing[]
 }
 
 export interface IndicesIndexSettingBlocks {
