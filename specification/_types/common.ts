@@ -284,3 +284,32 @@ export class InlineGet<TDocument>
   _routing?: Routing
   _source: TDocument
 }
+
+/**
+ * Controls how to deal with unavailable concrete indices (closed or missing), how wildcard expressions are expanded
+ * to actual indices (all, closed or open indices) and how to deal with wildcard expressions that resolve to no indices.
+ */
+export class IndicesOptions {
+  /**
+   * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only
+   * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
+   * a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+   */
+  allow_no_indices?: boolean
+  /**
+   * Type of index that wildcard patterns can match. If the request can target data streams, this argument
+   * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+   * such as `open,hidden`.
+   */
+  expand_wildcards?: ExpandWildcards
+  /**
+   * If true, missing or closed indices are not included in the response.
+   * @server_default false
+   */
+  ignore_unavailable?: boolean
+  /**
+   * If true, concrete, expanded or aliased indices are ignored when frozen.
+   * @server_default true
+   */
+  ignore_throttled?: boolean
+}

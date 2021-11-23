@@ -41,11 +41,11 @@ import { FieldCollapse } from './_types/FieldCollapse'
 import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'
 import { Rescore } from './_types/rescoring'
-import { Sort, SortResults } from './_types/sort'
 import { SourceConfigParam, SourceConfig } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
+import { Sort, SortResults } from '@_types/sort'
 
 /**
  * @rest_spec_name search
