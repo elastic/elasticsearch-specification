@@ -58,6 +58,7 @@ export class IndexRoutingAllocationInitialRecovery {
   _id?: Id
 }
 
+// ES: DiskThresholdSettings
 export class IndexRoutingAllocationDisk {
-  threshold_enabled: boolean | string
+  threshold_enabled?: boolean | string
 }
