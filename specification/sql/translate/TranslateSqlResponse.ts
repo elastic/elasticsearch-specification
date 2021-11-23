@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@_types/query_dsl/sort'
+import { Sort } from '@_types/sort'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'

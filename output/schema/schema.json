@@ -20759,7 +20759,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -21765,7 +21765,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SortResults",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           },
@@ -21801,7 +21801,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           },
@@ -25071,7 +25071,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortResults",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -25298,7 +25298,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -27225,7 +27225,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           }
@@ -31141,6 +31141,114 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "FieldSort",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Missing",
+              "namespace": "_types.aggregations"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "unmapped_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldType",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "name": "numeric_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSortNumericType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "shortcutProperty": "order"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "long"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "date"
+        },
+        {
+          "name": "date_nanos"
+        }
+      ],
+      "name": {
+        "name": "FieldSortNumericType",
+        "namespace": "_types"
+      }
+    },
+    {
       "codegenNames": [
         "long",
         "double",
@@ -31405,6 +31513,112 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GeoLocation",
+                    "namespace": "_types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "GeoLocation",
+                      "namespace": "_types"
+                    }
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GeoDistanceSort",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "distance_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDistanceType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "unit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DistanceUnit",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -32835,6 +33049,59 @@
     {
       "kind": "interface",
       "name": {
+        "name": "NestedSortValue",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "max_children",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeAttributes",
         "namespace": "_types"
       },
@@ -33844,6 +34111,26 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ScoreSort",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "codegenNames": [
         "inline",
         "stored"
@@ -33960,6 +34247,85 @@
           }
         ],
         "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptSort",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptSortType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "string"
+        },
+        {
+          "name": "number"
+        }
+      ],
+      "name": {
+        "name": "ScriptSortType",
+        "namespace": "_types"
       }
     },
     {
@@ -34740,6 +35106,231 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Sort",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortCombinations",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortCombinations",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "codegenNames": [
+        "field",
+        "options"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "SortCombinations",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOptions",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "min"
+        },
+        {
+          "name": "max"
+        },
+        {
+          "name": "sum"
+        },
+        {
+          "name": "avg"
+        },
+        {
+          "name": "median"
+        }
+      ],
+      "name": {
+        "name": "SortMode",
+        "namespace": "_types"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldSort",
+                "namespace": "_types"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html",
+      "kind": "interface",
+      "name": {
+        "name": "SortOptions",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreSort",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_doc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreSort",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_geo_distance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDistanceSort",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptSort",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "asc"
+        },
+        {
+          "name": "desc"
+        }
+      ],
+      "name": {
+        "name": "SortOrder",
+        "namespace": "_types"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "SortResults",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "null",
+                "namespace": "internal"
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -37880,7 +38471,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -40181,7 +40772,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -40692,7 +41283,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -40703,7 +41294,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -41640,7 +42231,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortMode",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -45455,7 +46046,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SortOrder",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           },
@@ -45475,7 +46066,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SortOrder",
-                  "namespace": "_types.query_dsl"
+                  "namespace": "_types"
                 }
               }
             }
@@ -45789,7 +46380,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -46000,7 +46591,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -57614,114 +58205,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "FieldSort",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Missing",
-              "namespace": "_types.aggregations"
-            }
-          }
-        },
-        {
-          "name": "mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortMode",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "nested",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NestedSortValue",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "order",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "unmapped_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldType",
-              "namespace": "_types.mapping"
-            }
-          }
-        },
-        {
-          "name": "numeric_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldSortNumericType",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "shortcutProperty": "order"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "long"
-        },
-        {
-          "name": "double"
-        },
-        {
-          "name": "date"
-        },
-        {
-          "name": "date_nanos"
-        }
-      ],
-      "name": {
-        "name": "FieldSortNumericType",
-        "namespace": "_types.query_dsl"
-      }
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -58399,112 +58882,6 @@
             "type": {
               "name": "GeoValidationMethod",
               "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "AdditionalProperty"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GeoLocation",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "GeoLocation",
-                      "namespace": "_types"
-                    }
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperty",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "GeoDistanceSort",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortMode",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "distance_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoDistanceType",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_unmapped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "order",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "unit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DistanceUnit",
-              "namespace": "_types"
             }
           }
         }
@@ -60722,59 +61099,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "NestedSortValue",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "filter",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "max_children",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "nested",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NestedSortValue",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "path",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "RangeQueryBase",
@@ -62734,26 +63058,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "ScoreSort",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "order",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -62852,85 +63156,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptSort",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "order",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Script",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptSortType",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortMode",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "nested",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NestedSortValue",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "string"
-        },
-        {
-          "name": "number"
-        }
-      ],
-      "name": {
-        "name": "ScriptSortType",
-        "namespace": "_types.query_dsl"
-      }
     },
     {
       "kind": "interface",
@@ -63271,231 +63496,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Sort",
-        "namespace": "_types.query_dsl"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortCombinations",
-              "namespace": "_types.query_dsl"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SortCombinations",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "codegenNames": [
-        "field",
-        "options"
-      ],
-      "kind": "type_alias",
-      "name": {
-        "name": "SortCombinations",
-        "namespace": "_types.query_dsl"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOptions",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "min"
-        },
-        {
-          "name": "max"
-        },
-        {
-          "name": "sum"
-        },
-        {
-          "name": "avg"
-        },
-        {
-          "name": "median"
-        }
-      ],
-      "name": {
-        "name": "SortMode",
-        "namespace": "_types.query_dsl"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "AdditionalProperty"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "FieldSort",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperty",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html",
-      "kind": "interface",
-      "name": {
-        "name": "SortOptions",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScoreSort",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "_doc",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScoreSort",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "_geo_distance",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoDistanceSort",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "_script",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptSort",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "asc"
-        },
-        {
-          "name": "desc"
-        }
-      ],
-      "name": {
-        "name": "SortOrder",
-        "namespace": "_types.query_dsl"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "SortResults",
-        "namespace": "_types.query_dsl"
-      },
-      "type": {
-        "kind": "array_of",
-        "value": {
-          "items": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "null",
-                "namespace": "internal"
-              }
-            }
-          ],
-          "kind": "union_of"
-        }
-      }
     },
     {
       "inherits": {
@@ -65156,7 +65156,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SortResults",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           },
@@ -65192,7 +65192,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           },
@@ -104816,7 +104816,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -143553,7 +143553,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           }
@@ -151760,7 +151760,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           },
@@ -151772,7 +151772,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SortResults",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           }
@@ -156176,6 +156176,25 @@
       "properties": []
     },
     {
+      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
+      "generics": [
+        {
+          "name": "TKey",
+          "namespace": "_spec_utils"
+        },
+        {
+          "name": "TValue",
+          "namespace": "_spec_utils"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AdditionalProperty",
+        "namespace": "_spec_utils"
+      },
+      "properties": []
+    },
+    {
       "description": "Implements a set of common query parameters all API's support.\nSince these can break the request structure these are listed explicitly as a behavior.\nIts up to individual clients to define support although `error_trace` and `pretty` are\nrecommended as a minimum.",
       "kind": "interface",
       "name": {
@@ -156250,25 +156269,6 @@
           }
         }
       ]
-    },
-    {
-      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
-      "generics": [
-        {
-          "name": "TKey",
-          "namespace": "_spec_utils"
-        },
-        {
-          "name": "TValue",
-          "namespace": "_spec_utils"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "AdditionalProperty",
-        "namespace": "_spec_utils"
-      },
-      "properties": []
     },
     {
       "description": "Implements a set of common query parameters all Cat API's support.\nSince these can break the request structure these are listed explicitly as a behavior.",

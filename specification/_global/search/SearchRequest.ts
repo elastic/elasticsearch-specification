@@ -45,7 +45,7 @@ import { SourceConfigParam, SourceConfig } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
-import { Sort, SortResults } from '@_types/query_dsl/sort'
+import { Sort, SortResults } from '@_types/sort'
 
 /**
  * @rest_spec_name search

@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Fields, Field } from '@_types/common'
 import { double } from '@_types/Numeric'
 import { Aggregation } from './Aggregation'
-import { SortMode } from '@_types/query_dsl/sort'
+import { SortMode } from '@_types/sort'
 
 export class MatrixAggregation extends Aggregation {
   fields?: Fields

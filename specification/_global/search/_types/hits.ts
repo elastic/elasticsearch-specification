@@ -36,7 +36,7 @@ import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { SourceConfig } from './SourceFilter'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
-import { Sort, SortResults } from '@_types/query_dsl/sort'
+import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName

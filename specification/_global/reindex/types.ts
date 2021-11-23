@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@_types/query_dsl/sort'
+import { Sort } from '@_types/sort'
 import {
   Fields,
   IndexName,
