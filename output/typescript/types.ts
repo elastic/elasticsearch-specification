@@ -9040,6 +9040,7 @@ export interface IndicesIndexState {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
+  defaults?: IndicesIndexSettings
   data_stream?: DataStreamName
 }
 
