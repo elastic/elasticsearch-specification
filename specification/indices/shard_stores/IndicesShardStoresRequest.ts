@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
-import { ShardStatus } from './types'
+import { ShardStoreStatus } from './types'
 
 /**
  * @rest_spec_name indices.shard_stores
@@ -54,6 +54,6 @@ export interface Request extends RequestBase {
     /**
      * List of shard health statuses used to limit the request.
      */
-    status?: ShardStatus | ShardStatus[]
+    status?: ShardStoreStatus | ShardStoreStatus[]
   }
 }

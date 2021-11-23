@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { ClusterStatus } from '@cluster/_types/ClusterStatus'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Name, Uuid } from '@_types/common'
+import { HealthStatus, Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { ClusterIndices, ClusterNodes } from './types'
 
@@ -46,7 +45,7 @@ export class Response extends NodesResponseBase {
     /**
      * Health status of the cluster, based on the state of its primary and replica shards.
      */
-    status: ClusterStatus
+    status: HealthStatus
     /**
      * Unix timestamp, in milliseconds, of the last time the cluster statistics were refreshed.
      * @doc_url https://en.wikipedia.org/wiki/Unix_time
