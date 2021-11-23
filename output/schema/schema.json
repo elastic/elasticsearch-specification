@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "f23bf34",
+    "hash": "47078b712",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -89717,7 +89717,7 @@
       "properties": [
         {
           "name": "threshold_enabled",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -89901,22 +89901,52 @@
           "name": "mode",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SegmentSortMode",
-              "namespace": "indices._types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SegmentSortMode",
+                  "namespace": "indices._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SegmentSortMode",
+                    "namespace": "indices._types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "missing",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SegmentSortMissing",
-              "namespace": "indices._types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SegmentSortMissing",
+                  "namespace": "indices._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SegmentSortMissing",
+                    "namespace": "indices._types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]

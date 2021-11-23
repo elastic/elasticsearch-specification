@@ -22,8 +22,8 @@ import { Fields } from '@_types/common'
 export class IndexSegmentSort {
   field: Fields
   order: SegmentSortOrder | SegmentSortOrder[]
-  mode?: SegmentSortMode
-  missing?: SegmentSortMissing
+  mode?: SegmentSortMode | SegmentSortMode[]
+  missing?: SegmentSortMissing | SegmentSortMissing[]
 }
 
 export enum SegmentSortOrder {
