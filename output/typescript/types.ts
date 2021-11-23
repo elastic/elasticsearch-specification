@@ -11699,6 +11699,14 @@ export interface MlTrainedModelConfigMetadata {
   total_feature_importance?: MlTotalFeatureImportance[]
 }
 
+export interface MlTrainedModelEntities {
+  class_name: string
+  class_probability: double
+  entity: string
+  start_pos: number
+  end_pos: number
+}
+
 export interface MlTrainedModelInferenceStats {
   failure_count: long
   inference_count: long
@@ -12282,6 +12290,20 @@ export interface MlGetTrainedModelsStatsRequest extends RequestBase {
 export interface MlGetTrainedModelsStatsResponse {
   count: integer
   trained_model_stats: MlTrainedModelStats[]
+}
+
+export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  timeout?: Time
+  body?: {
+    docs: string[]
+  }
+}
+
+export interface MlInferTrainedModelDeploymentResponse {
+  entities?: MlTrainedModelEntities[]
+  predicted_value?: string
+  prediction_probability?: double
 }
 
 export interface MlInfoAnomalyDetectors {

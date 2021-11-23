@@ -1301,12 +1301,6 @@
       ],
       "response": []
     },
-    "ml.infer_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.info": {
       "request": [
         "Request: should not have a body"
