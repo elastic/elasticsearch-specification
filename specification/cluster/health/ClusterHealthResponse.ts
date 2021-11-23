@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Health, IndexName } from '@_types/common'
+import { HealthStatus, IndexName } from '@_types/common'
 import { integer, Percentage } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
 import { IndexHealthStats } from './types'
@@ -49,7 +49,7 @@ export class Response {
     number_of_pending_tasks: integer
     /** The number of shards that are under relocation. */
     relocating_shards: integer
-    status: Health
+    status: HealthStatus
     /** The time expressed in milliseconds since the earliest initiated task is waiting for being performed. */
     task_max_waiting_in_queue_millis: EpochMillis
     /** If false the response returned within the period of time that is specified by the timeout parameter (30s by default) */

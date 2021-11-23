@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DataStreamHealthStatus } from '@indices/_types/DataStreamStatus'
 import {
   DataStreamName,
   Field,
+  HealthStatus,
   IndexName,
   Metadata,
   Name,
@@ -41,7 +41,7 @@ export class IndicesGetDataStreamItem {
   hidden: boolean
   /** @since 7.10.0 */
   system?: boolean
-  status: DataStreamHealthStatus
+  status: HealthStatus
   ilm_policy?: Name
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
   _meta?: Metadata

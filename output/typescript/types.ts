@@ -2040,7 +2040,7 @@ export interface GetStats {
   total: long
 }
 
-export type Health = 'green' | 'yellow' | 'red'
+export type HealthStatus = 'green' | 'GREEN' | 'yellow' | 'YELLOW' | 'red' | 'RED'
 
 export type Host = string
 
@@ -2444,8 +2444,6 @@ export type WaitForActiveShardOptions = 'all'
 export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 export type WaitForEvents = 'immediate' | 'urgent' | 'high' | 'normal' | 'low' | 'languid'
-
-export type WaitForStatus = 'green' | 'yellow' | 'red'
 
 export interface WarmerStats {
   current: long
@@ -6212,7 +6210,7 @@ export interface CatIndicesRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
   expand_wildcards?: ExpandWildcards
-  health?: Health
+  health?: HealthStatus
   include_unloaded_segments?: boolean
   pri?: boolean
 }
@@ -7737,8 +7735,6 @@ export interface CcrUnfollowRequest extends RequestBase {
 export interface CcrUnfollowResponse extends AcknowledgedResponseBase {
 }
 
-export type ClusterClusterStatus = 'green' | 'yellow' | 'red'
-
 export interface ClusterComponentTemplate {
   name: Name
   component_template: ClusterComponentTemplateNode
@@ -7932,7 +7928,7 @@ export interface ClusterHealthIndexHealthStats {
   number_of_shards: integer
   relocating_shards: integer
   shards?: Record<string, ClusterHealthShardHealthStats>
-  status: Health
+  status: HealthStatus
   unassigned_shards: integer
 }
 
@@ -7948,7 +7944,7 @@ export interface ClusterHealthRequest extends RequestBase {
   wait_for_nodes?: string
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
-  wait_for_status?: WaitForStatus
+  wait_for_status?: HealthStatus
 }
 
 export interface ClusterHealthResponse {
@@ -7964,7 +7960,7 @@ export interface ClusterHealthResponse {
   number_of_nodes: integer
   number_of_pending_tasks: integer
   relocating_shards: integer
-  status: Health
+  status: HealthStatus
   task_max_waiting_in_queue_millis: EpochMillis
   timed_out: boolean
   unassigned_shards: integer
@@ -7975,7 +7971,7 @@ export interface ClusterHealthShardHealthStats {
   initializing_shards: integer
   primary_active: boolean
   relocating_shards: integer
-  status: Health
+  status: HealthStatus
   unassigned_shards: integer
 }
 
@@ -8358,7 +8354,7 @@ export interface ClusterStatsResponse extends NodesNodesResponseBase {
   cluster_uuid: Uuid
   indices: ClusterStatsClusterIndices
   nodes: ClusterStatsClusterNodes
-  status: ClusterClusterStatus
+  status: HealthStatus
   timestamp: long
 }
 
@@ -8856,8 +8852,6 @@ export interface IndicesAliasDefinition {
 export interface IndicesDataStream {
   hidden?: boolean
 }
-
-export type IndicesDataStreamHealthStatus = 'green' | 'yellow' | 'red'
 
 export interface IndicesFielddataFrequencyFilter {
   max: double
@@ -9476,7 +9470,7 @@ export interface IndicesGetDataStreamIndicesGetDataStreamItem {
   template: Name
   hidden: boolean
   system?: boolean
-  status: IndicesDataStreamHealthStatus
+  status: HealthStatus
   ilm_policy?: Name
   _meta?: Metadata
 }
@@ -9985,14 +9979,12 @@ export interface IndicesShardStoresRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  status?: IndicesShardStoresShardStatus | IndicesShardStoresShardStatus[]
+  status?: IndicesShardStoresShardStoreStatus | IndicesShardStoresShardStoreStatus[]
 }
 
 export interface IndicesShardStoresResponse {
   indices: Record<IndexName, IndicesShardStoresIndicesShardStores>
 }
-
-export type IndicesShardStoresShardStatus = 'green' | 'yellow' | 'red' | 'all'
 
 export interface IndicesShardStoresShardStore {
   allocation: IndicesShardStoresShardStoreAllocation
@@ -10011,6 +10003,8 @@ export interface IndicesShardStoresShardStoreException {
   reason: string
   type: string
 }
+
+export type IndicesShardStoresShardStoreStatus = 'green' | 'yellow' | 'red' | 'all'
 
 export interface IndicesShardStoresShardStoreWrapper {
   stores: IndicesShardStoresShardStore[]

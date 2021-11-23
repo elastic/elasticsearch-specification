@@ -20,11 +20,11 @@
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
+  HealthStatus,
   Indices,
   Level,
   WaitForActiveShards,
-  WaitForEvents,
-  WaitForStatus
+  WaitForEvents
 } from '@_types/common'
 import { Time } from '@_types/Time'
 
@@ -90,6 +90,6 @@ export interface Request extends RequestBase {
     /**
      * One of green, yellow or red. Will wait (until the timeout provided) until the status of the cluster changes to the one provided or better, i.e. green > yellow > red. By default, will not wait for any status.
      */
-    wait_for_status?: WaitForStatus
+    wait_for_status?: HealthStatus
   }
 }
