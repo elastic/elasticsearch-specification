@@ -98,6 +98,9 @@ export type Sort = SortCombinations | SortCombinations[]
 
 export type SortResults = Array<long | double | string | null>
 
+/**
+ * Defines what values to pick in the case a document contains multiple values for a particular field.
+ */
 export enum SortMode {
   min = 0,
   max = 1,

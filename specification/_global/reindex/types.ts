@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/_types/sort'
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   IndexName,
@@ -35,6 +33,7 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
+import { Sort } from '@_types/sort'
 
 export class Destination {
   /** The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform. */
