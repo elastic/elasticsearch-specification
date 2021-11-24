@@ -11636,6 +11636,12 @@ export interface MlTimingStats {
   iteration_time?: integer
 }
 
+export interface MlTopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
+}
+
 export interface MlTotalFeatureImportance {
   feature_name: Name
   importance: MlTotalFeatureImportanceStatistics[]
@@ -12302,8 +12308,12 @@ export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
 
 export interface MlInferTrainedModelDeploymentResponse {
   entities?: MlTrainedModelEntities[]
-  predicted_value?: string
+  is_truncated?: boolean
+  predicted_value?: string | double[]
+  predicted_value_sequence?: string
   prediction_probability?: double
+  top_classes: MlTopClassEntry[]
+  warning?: string
 }
 
 export interface MlInfoAnomalyDetectors {

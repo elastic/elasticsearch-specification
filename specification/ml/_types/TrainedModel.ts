@@ -242,3 +242,8 @@ export class TrainedModelEntities {
   start_pos: integer
   end_pos: integer
 }
+export class TopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
+}

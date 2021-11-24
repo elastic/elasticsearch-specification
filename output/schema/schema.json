@@ -114592,6 +114592,48 @@
     {
       "kind": "interface",
       "name": {
+        "name": "TopClassEntry",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "class_probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "class_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TotalFeatureImportance",
         "namespace": "ml._types"
       },
@@ -120521,8 +120563,47 @@
             }
           },
           {
-            "description": "If the model is trained for a text classification task, the response is a predicted label.\nFor named entity recognition (NER) tasks, the response contains the annotated text output.",
+            "description": "Indicates whether the input text was truncated to meet the model's maximum sequence length limit. This property\nis present only when it is true.",
+            "name": "is_truncated",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "If the model is trained for a text classification or zero shot classification task, the response is the\npredicted class.\nFor named entity recognition (NER) tasks, it contains the annotated text output.\nFor fill mask tasks, it contains the top prediction for replacing the mask token.\nFor text embedding tasks, it contains the raw numerical text embedding values.",
             "name": "predicted_value",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "double",
+                      "namespace": "_types"
+                    }
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "description": "For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted\nvalue.",
+            "name": "predicted_value_sequence",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -120533,7 +120614,7 @@
             }
           },
           {
-            "description": "If the model is trained for a text classification task, the response is a confidence score.",
+            "description": "Specifies a confidence score for the predicted value.",
             "name": "prediction_probability",
             "required": false,
             "type": {
@@ -120541,6 +120622,33 @@
               "type": {
                 "name": "double",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "For fill mask, text classification, and zero shot classification tasks, the response contains a list of top\nclass entries.",
+            "name": "top_classes",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TopClassEntry",
+                  "namespace": "ml._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "If the request failed, the response contains the reason for the failure.",
+            "name": "warning",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
             }
           }
