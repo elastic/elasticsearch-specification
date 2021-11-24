@@ -239,6 +239,6 @@ export class TrainedModelEntities {
   class_name: string
   class_probability: double
   entity: string
-  start_pos: number
-  end_pos: number
+  start_pos: integer
+  end_pos: integer
 }

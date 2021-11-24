@@ -115202,8 +115202,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         },
@@ -115213,8 +115213,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         }
