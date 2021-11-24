@@ -12648,6 +12648,16 @@ export interface MlPutTrainedModelDefinitionPartRequest extends RequestBase {
 export interface MlPutTrainedModelDefinitionPartResponse extends AcknowledgedResponseBase {
 }
 
+export interface MlPutTrainedModelVocabularyRequest extends RequestBase {
+  model_id: Id
+  body?: {
+    vocabulary: string[]
+  }
+}
+
+export interface MlPutTrainedModelVocabularyResponse extends AcknowledgedResponseBase {
+}
+
 export interface MlResetJobRequest extends RequestBase {
   job_id: Id
   wait_for_completion?: boolean

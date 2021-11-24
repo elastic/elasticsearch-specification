@@ -7717,9 +7717,21 @@
       "description": "Creates a trained model vocabulary",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html",
       "name": "ml.put_trained_model_vocabulary",
-      "request": null,
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "ml.put_trained_model_vocabulary"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.put_trained_model_vocabulary"
+      },
+      "since": "8.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -123556,6 +123568,75 @@
       "name": {
         "name": "Response",
         "namespace": "ml.put_trained_model_definition_part"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The model vocabulary, which must not be empty.",
+            "name": "vocabulary",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.put_trained_model_vocabulary"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.put_trained_model_vocabulary"
       }
     },
     {

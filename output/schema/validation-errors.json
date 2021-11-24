@@ -1346,12 +1346,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model_vocabulary": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.reset_job": {
       "request": [
         "Request: should not have a body"
