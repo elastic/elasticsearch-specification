@@ -35,5 +35,9 @@ export class Response {
      * If the model is trained for a text classification task, the response is a confidence score.
      */
     prediction_probability?: double
+      /**
+       * True if the input text was truncated to meet the model's maximum sequence length limit. is_truncated is present only when it is true.
+       */
+      is_truncated?: boolean
   }
 }
