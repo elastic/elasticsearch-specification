@@ -36,7 +36,7 @@ export class Response {
      */
     prediction_probability?: double
       /**
-       * True if the input text was truncated to meet the model's maximum sequence length limit. is_truncated is present only when it is true.
+       * Indicates whether the input text was truncated to meet the model's maximum sequence length limit. This property is present only when it is true.
        */
       is_truncated?: boolean
   }
