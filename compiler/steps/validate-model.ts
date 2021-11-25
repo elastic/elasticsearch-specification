@@ -164,7 +164,9 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     typeDefByName.set(fqn(typeName), {
       kind: 'interface',
       name: typeName,
-      properties: []
+      properties: [],
+      // arbitrary location, it's not written to schema.json
+      specLocation: {path: "", line: -1}
     })
   }
 

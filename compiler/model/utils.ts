@@ -37,7 +37,7 @@ import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
 import { EOL } from 'os'
-import { dirname, sep } from 'path'
+import {dirname, join, sep} from 'path'
 
 /**
  * Behaviors that the compiler recognized
@@ -412,6 +412,7 @@ export function modelGenerics (node: TypeParameterDeclaration): string {
  */
 export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum {
   return {
+    specLocation: sourceLocation(declaration),
     name: {
       name: declaration.getName(),
       namespace: getNameSpace(declaration)
@@ -447,6 +448,7 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
 
   const alias = modelType(type)
   const typeAlias: model.TypeAlias = {
+    specLocation: sourceLocation(declaration),
     name: {
       name: declaration.getName(),
       namespace: getNameSpace(declaration)
@@ -1176,5 +1178,15 @@ export function deepEqual (a: any, b: any): boolean {
     return true
   } catch (err) {
     return false
+  }
+}
+
+const basePath = join(__dirname, "..", "..", "specification") + "/"
+
+export function sourceLocation(node: Node): model.SourceLocation {
+  const sourceFile = node.getSourceFile()
+  return {
+    path: sourceFile.getFilePath().replace(basePath, ""),
+    line: sourceFile.getLineAndColumnAtPos(node.getPos()).line
   }
 }

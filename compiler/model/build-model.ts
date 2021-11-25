@@ -52,7 +52,7 @@ import {
   parseVariantsTag,
   verifyUniqueness,
   parseJsDocTags,
-  deepEqual
+  deepEqual, sourceLocation
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specification')
@@ -188,6 +188,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     const namespace = getNameSpace(declaration)
     if (name === 'Request') {
       type = {
+        specLocation: sourceLocation(declaration),
         kind: 'request',
         name: { name, namespace },
         path: new Array<model.Property>(),
@@ -305,6 +306,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       }
     } else {
       type = {
+        specLocation: sourceLocation(declaration),
         kind: 'response',
         name: { name, namespace: getNameSpace(declaration) },
         body: { kind: 'no_body' }
@@ -386,6 +388,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   // Every other class or interface will be handled here
   } else {
     const type: model.Interface = {
+      specLocation: sourceLocation(declaration),
       kind: 'interface',
       name: { name, namespace: getNameSpace(declaration) },
       properties: new Array<model.Property>()
