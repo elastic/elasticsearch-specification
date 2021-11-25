@@ -208,7 +208,6 @@ export enum RoutingState {
   stopping = 4
 }
 
-
 export class TrainedModelAllocationRoutingTable {
   /**
    * The reason for the current state. It is usually populated only when the
@@ -229,7 +228,7 @@ export class TrainedModelAllocation {
   /**
    * The allocation state for each node.
    */
-  routing_table: Dictionary<string,TrainedModelAllocationRoutingTable>
+  routing_table: Dictionary<string, TrainedModelAllocationRoutingTable>
   /**
    * The timestamp when the deployment started.
    */

@@ -114471,6 +114471,35 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The allocation attempt failed.",
+          "name": "failed"
+        },
+        {
+          "description": "The trained model is allocated and ready to accept inference requests.",
+          "name": "started"
+        },
+        {
+          "description": "The trained model is attempting to allocate on this node; inference requests are not yet accepted.",
+          "name": "starting"
+        },
+        {
+          "description": "The trained model is fully deallocated from this node.",
+          "name": "stopped"
+        },
+        {
+          "description": "The trained model is being deallocated from this node.",
+          "name": "stopping"
+        }
+      ],
+      "name": {
+        "name": "RoutingState",
+        "namespace": "ml._types"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "description": "The result will not be created. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.",
           "name": "skip_result"
         },
@@ -114702,6 +114731,7 @@
       },
       "properties": [
         {
+          "description": "The overall allocation state.",
           "name": "allocation_state",
           "required": true,
           "type": {
@@ -114713,10 +114743,19 @@
           }
         },
         {
+          "description": "The allocation state for each node.",
           "name": "routing_table",
           "required": true,
           "type": {
-            "kind": "array_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
             "value": {
               "kind": "instance_of",
               "type": {
@@ -114727,6 +114766,7 @@
           }
         },
         {
+          "description": "The timestamp when the deployment started.",
           "name": "start_time",
           "required": true,
           "type": {
@@ -114758,6 +114798,7 @@
       },
       "properties": [
         {
+          "description": "The reason for the current state. It is usually populated only when the\n`routing_state` is `failed`.",
           "name": "reason",
           "required": true,
           "type": {
@@ -114769,13 +114810,14 @@
           }
         },
         {
+          "description": "The current routing state.",
           "name": "routing_state",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "RoutingState",
+              "namespace": "ml._types"
             }
           }
         }
@@ -114789,6 +114831,7 @@
       },
       "properties": [
         {
+          "description": "The size of the trained model in bytes.",
           "name": "model_bytes",
           "required": true,
           "type": {
@@ -114800,6 +114843,7 @@
           }
         },
         {
+          "description": "The unique identifier for the trained model.",
           "name": "model_id",
           "required": true,
           "type": {

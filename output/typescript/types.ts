@@ -11622,6 +11622,8 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
+export type MlRoutingState = 'failed' | 'started' | 'starting' | 'stopped' | 'stopping'
+
 export type MlRuleAction = 'skip_result' | 'skip_model_update'
 
 export interface MlRuleCondition {
@@ -11654,14 +11656,14 @@ export interface MlTotalFeatureImportanceStatistics {
 
 export interface MlTrainedModelAllocation {
   allocation_state: MlDeploymentState
-  routing_table: MlTrainedModelAllocationRoutingTable[]
+  routing_table: Record<string, MlTrainedModelAllocationRoutingTable>
   start_time: DateString
   task_parameters: MlTrainedModelAllocationTaskParameters
 }
 
 export interface MlTrainedModelAllocationRoutingTable {
   reason: string
-  routing_state: string
+  routing_state: MlRoutingState
 }
 
 export interface MlTrainedModelAllocationTaskParameters {
