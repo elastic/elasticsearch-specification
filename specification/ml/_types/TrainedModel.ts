@@ -175,18 +175,64 @@ export enum DeploymentState {
 }
 
 export class TrainedModelAllocationTaskParameters {
+  /**
+   * The size of the trained model in bytes.
+   */
   model_bytes: integer
+  /**
+   * The unique identifier for the trained model.
+   */
   model_id: Id
 }
 
+export enum RoutingState {
+  /**
+   * The allocation attempt failed.
+   */
+  failed = 0,
+  /**
+   * The trained model is allocated and ready to accept inference requests.
+   */
+  started = 1,
+  /**
+   * The trained model is attempting to allocate on this node; inference requests are not yet accepted.
+   */
+  starting = 2,
+  /**
+   * The trained model is fully deallocated from this node.
+   */
+  stopped = 3,
+  /**
+   * The trained model is being deallocated from this node.
+   */
+  stopping = 4
+}
+
+
 export class TrainedModelAllocationRoutingTable {
+  /**
+   * The reason for the current state. It is usually populated only when the
+   * `routing_state` is `failed`.
+   */
   reason: string
-  routing_state: string
+  /**
+   * The current routing state.
+   */
+  routing_state: RoutingState
 }
 
 export class TrainedModelAllocation {
+  /**
+   * The overall allocation state.
+   */
   allocation_state: DeploymentState
-  routing_table: TrainedModelAllocationRoutingTable[]
+  /**
+   * The allocation state for each node.
+   */
+  routing_table: Dictionary<string,TrainedModelAllocationRoutingTable>
+  /**
+   * The timestamp when the deployment started.
+   */
   start_time: DateString
   task_parameters: TrainedModelAllocationTaskParameters
 }
