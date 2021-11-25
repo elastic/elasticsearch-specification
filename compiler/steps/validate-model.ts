@@ -166,7 +166,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       name: typeName,
       properties: [],
       // arbitrary location, it's not written to schema.json
-      specLocation: {path: "", line: -1}
+      specLocation: { path: '', line: -1 }
     })
   }
 

@@ -37,7 +37,7 @@ import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
 import { EOL } from 'os'
-import {dirname, join, sep} from 'path'
+import { dirname, join, sep } from 'path'
 
 /**
  * Behaviors that the compiler recognized
@@ -1181,12 +1181,12 @@ export function deepEqual (a: any, b: any): boolean {
   }
 }
 
-const basePath = join(__dirname, "..", "..", "specification") + "/"
+const basePath = join(__dirname, '..', '..', 'specification') + '/'
 
-export function sourceLocation(node: Node): model.SourceLocation {
+export function sourceLocation (node: Node): model.SourceLocation {
   const sourceFile = node.getSourceFile()
   return {
-    path: sourceFile.getFilePath().replace(basePath, ""),
+    path: sourceFile.getFilePath().replace(basePath, ''),
     line: sourceFile.getLineAndColumnAtPos(node.getPos()).line
   }
 }
