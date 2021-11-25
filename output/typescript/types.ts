@@ -12302,7 +12302,7 @@ export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
   timeout?: Time
   body?: {
-    docs: string[]
+    docs: Partial<Record<string, string>>[]
   }
 }
 
