@@ -23,6 +23,7 @@ import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import { Field, Id, Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { DateString } from '@_types/Time'
 
 export class TrainedModelStats {
   /** The unique identifier of the trained model. */
@@ -156,4 +157,36 @@ export enum TrainedModelType {
    * Currently only NLP models are supported.
    */
   pytorch
+}
+
+export enum DeploymentState {
+  /**
+   * The trained model is started on at least one node.
+   */
+  started = 0,
+  /**
+   * Trained model deployment is starting but it is not yet deployed on any nodes.
+   */
+  starting = 1,
+  /**
+   * Trained model deployment has started on all valid nodes.
+   */
+  fully_allocated = 3
+}
+
+export class TrainedModelAllocationTaskParameters {
+  model_bytes: integer
+  model_id: Id
+}
+
+export class TrainedModelAllocationRoutingTable {
+  reason: string
+  routing_state: string
+}
+
+export class TrainedModelAllocation {
+  allocation_state: DeploymentState
+  routing_table: TrainedModelAllocationRoutingTable[]
+  start_time: DateString
+  task_parameters: TrainedModelAllocationTaskParameters
 }
