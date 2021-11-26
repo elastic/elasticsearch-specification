@@ -145639,17 +145639,6 @@
               }
             }
           }
-        },
-        {
-          "name": "max_page_search_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
         }
       ]
     },
@@ -146962,7 +146951,7 @@
           }
         ]
       },
-      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and \n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
+      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",

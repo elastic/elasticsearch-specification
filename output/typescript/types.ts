@@ -15146,7 +15146,6 @@ export interface TransformPivot {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
   group_by?: Record<string, TransformPivotGroupByContainer>
-  max_page_search_size?: integer
 }
 
 export interface TransformPivotGroupByContainer {

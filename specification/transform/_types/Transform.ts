@@ -65,7 +65,6 @@ export class Pivot {
    * currently supported: date histogram, geotile grid, histogram, terms.
    */
   group_by?: Dictionary<string, PivotGroupByContainer>
-  max_page_search_size?: integer
 }
 
 /**
