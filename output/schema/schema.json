@@ -12130,6 +12130,17 @@
       "description": "Instantiates a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
       "name": "transform.put_transform",
+      "privileges": {
+        "cluster": [
+          "manage_transform"
+        ],
+        "index": [
+          "create_index",
+          "read",
+          "index",
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "transform.put_transform"
@@ -145584,6 +145595,7 @@
           "aliases": [
             "aggs"
           ],
+          "description": "Defines how to aggregate the grouped data. The following aggregations are currently supported: average, bucket\nscript, bucket selector, cardinality, filter, geo bounds, geo centroid, geo line, max, median absolute deviation,\nmin, missing, percentiles, rare terms, scripted metric, stats, sum, terms, top metrics, value count, weighted\naverage.",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -145606,6 +145618,7 @@
           }
         },
         {
+          "description": "Defines how to group the data. More than one grouping can be defined per pivot. The following groupings are\ncurrently supported: date histogram, geotile grid, histogram, terms.",
           "name": "group_by",
           "required": false,
           "type": {
@@ -145716,7 +145729,7 @@
           }
         },
         {
-          "description": "Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index.",
+          "description": "Specifies the maximum age of a document in the destination index. Documents that are older than the configured\nvalue are removed from the destination index.",
           "name": "max_age",
           "required": true,
           "type": {
@@ -145762,7 +145775,20 @@
       },
       "properties": [
         {
-          "description": "Defines if dates in the ouput should be written as ISO formatted string (default) or as millis since epoch. epoch_millis has been the default for transforms created before version 7.11. For compatible output set this to true.",
+          "description": "Specifies whether the transform checkpoint ranges should be optimized for performance. Such optimization can align\ncheckpoint ranges with the date histogram interval when date histogram is specified as a group source in the\ntransform config. As a result, less document updates in the destination index will be performed thus improving\noverall performance.",
+          "name": "align_checkpoints",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
           "name": "dates_as_epoch_millis",
           "required": false,
           "serverDefault": false,
@@ -145775,7 +145801,7 @@
           }
         },
         {
-          "description": "Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a wait time between search requests. The default value is null, which disables throttling.",
+          "description": "Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a\nwait time between search requests. The default value is null, which disables throttling.",
           "name": "docs_per_second",
           "required": false,
           "type": {
@@ -145787,7 +145813,7 @@
           }
         },
         {
-          "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.",
+          "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker\nexceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`.",
           "name": "max_page_search_size",
           "required": false,
           "serverDefault": 500,
@@ -145836,6 +145862,7 @@
           "description": "The time delay between the current time and the latest input data time.",
           "name": "delay",
           "required": false,
+          "serverDefault": "60s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -145845,7 +145872,7 @@
           }
         },
         {
-          "description": "The date field that is used to identify new documents in the source.",
+          "description": "The date field that is used to identify new documents in the source. In general, it’s a good idea to use a field\nthat contains the ingest timestamp. If you use a different field, you might need to set the delay such that it\naccounts for data transmission delays.",
           "name": "field",
           "required": true,
           "type": {
@@ -146826,7 +146853,7 @@
             }
           },
           {
-            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.",
+            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also\ndetermines the retry interval in the event of transient failures while the transform is searching or indexing.\nThe minimum value is `1s` and the maximum is `1h`.",
             "name": "frequency",
             "required": false,
             "serverDefault": "1m",
@@ -146839,13 +146866,72 @@
             }
           },
           {
-            "description": "The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields and the aggregation to reduce the data.",
+            "description": "The latest method transforms the data by finding the latest document for each unique key.",
+            "name": "latest",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Latest",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines optional transform metadata.",
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "description": "The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields\nand the aggregation to reduce the data.",
             "name": "pivot",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "Pivot",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the\ndestination index.",
+            "name": "retention_policy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RetentionPolicyContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines optional transform settings.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Settings",
                 "namespace": "transform._types"
               }
             }
@@ -146863,18 +146949,6 @@
             }
           },
           {
-            "description": "Defines optional transform settings.",
-            "name": "settings",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Settings",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
             "description": "Defines the properties transforms require to run continuously.",
             "name": "sync",
             "required": false,
@@ -146885,34 +146959,10 @@
                 "namespace": "transform._types"
               }
             }
-          },
-          {
-            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index.",
-            "name": "retention_policy",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RetentionPolicyContainer",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "description": "The latest method transforms the data by finding the latest document for each unique key.",
-            "name": "latest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Latest",
-                "namespace": "transform._types"
-              }
-            }
           }
         ]
       },
-      "description": "Instantiates a transform.",
+      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and \n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -146926,7 +146976,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "description": "Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),\nhyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.",
           "name": "transform_id",
           "required": true,
           "type": {
@@ -146940,9 +146990,10 @@
       ],
       "query": [
         {
-          "description": "When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created.",
+          "description": "When the transform is created, a series of validations occur to ensure its success. For example, there is a\ncheck for the existence of the source indices and a check that the destination index is not part of the source\nindex pattern. You can use this parameter to skip the checks, for example when the source index does not exist\nuntil after the transform is created. The validations are always run when you start the transform, however, with\nthe exception of privilege checks.",
           "name": "defer_validation",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
