@@ -388,7 +388,7 @@ export class StringTermsBucket extends TermsBucketBase {
 export class LongTermsAggregate extends TermsAggregateBase<LongTermsBucket> {}
 
 export class LongTermsBucket extends TermsBucketBase {
-  key: string
+  key: long
   key_as_string?: string
 }
 

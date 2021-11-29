@@ -3139,11 +3139,11 @@ export interface AggregationsLongTermsAggregate extends AggregationsTermsAggrega
 }
 
 export interface AggregationsLongTermsBucketKeys extends AggregationsTermsBucketBase {
-  key: string
+  key: long
   key_as_string?: string
 }
 export type AggregationsLongTermsBucket = AggregationsLongTermsBucketKeys
-  & { [property: string]: AggregationsAggregate | string | long }
+  & { [property: string]: AggregationsAggregate | long | string }
 
 export interface AggregationsMatrixAggregation extends AggregationsAggregation {
   fields?: Fields
