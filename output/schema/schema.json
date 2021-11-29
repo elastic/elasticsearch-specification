@@ -22873,20 +22873,6 @@
             }
           },
           {
-            "name": "documents",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TDocument",
-                  "namespace": "_global.search"
-                }
-              }
-            }
-          },
-          {
             "name": "fields",
             "required": false,
             "type": {

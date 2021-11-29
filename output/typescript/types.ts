@@ -1033,7 +1033,6 @@ export interface SearchResponse<TDocument = unknown> {
   hits: SearchHitsMetadata<TDocument>
   aggregations?: Record<AggregateName, AggregationsAggregate>
   _clusters?: ClusterStatistics
-  documents?: TDocument[]
   fields?: Record<string, any>
   max_score?: double
   num_reduce_phases?: long
