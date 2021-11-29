@@ -12497,6 +12497,11 @@
       "description": "Deletes an existing transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
       "name": "transform.delete_transform",
+      "privileges": {
+        "cluster": [
+          "manage_transform"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "transform.delete_transform"
@@ -146299,7 +146304,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing transform.",
+      "description": "Deletes a transform.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -146313,13 +146318,13 @@
       },
       "path": [
         {
-          "description": "The id of the transform to delete",
+          "description": "Identifier for the transform.",
           "name": "transform_id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -146327,9 +146332,10 @@
       ],
       "query": [
         {
-          "description": "When `true`, the transform is deleted regardless of its current state. The default value is `false`, meaning that the transform must be `stopped` before it can be deleted.",
+          "description": "If this value is false, the transform must be stopped before it can be deleted. If true, the transform is\ndeleted regardless of its current state.",
           "name": "force",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {

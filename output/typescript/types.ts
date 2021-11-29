@@ -15170,7 +15170,7 @@ export interface TransformTimeSync {
 }
 
 export interface TransformDeleteTransformRequest extends RequestBase {
-  transform_id: Name
+  transform_id: Id
   force?: boolean
 }
 
