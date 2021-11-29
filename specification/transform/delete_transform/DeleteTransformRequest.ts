@@ -18,18 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Id } from '@_types/common'
 
 /**
+ * Deletes a transform.
  * @rest_spec_name transform.delete_transform
  * @since 7.5.0
  * @stability stable
+ * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {
   path_parts: {
-    transform_id: Name
+    /**
+     * Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
+     * hyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.
+     */
+    transform_id: Id
   }
   query_parameters: {
+    /**
+     * If this value is false, the transform must be stopped before it can be deleted. If true, the transform is
+     * deleted regardless of its current state.
+     * @server_default false
+     */
     force?: boolean
   }
 }
