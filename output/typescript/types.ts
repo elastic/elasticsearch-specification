@@ -12781,6 +12781,7 @@ export interface MlStopTrainedModelDeploymentRequest extends RequestBase {
 }
 
 export interface MlStopTrainedModelDeploymentResponse {
+  stopped: boolean
 }
 
 export interface MlUpdateDataFrameAnalyticsRequest extends RequestBase {

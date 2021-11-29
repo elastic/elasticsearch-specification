@@ -18,5 +18,5 @@
  */
 
 export class Response {
-  body: {}
+  body: { stopped: boolean }
 }

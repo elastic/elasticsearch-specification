@@ -124730,7 +124730,19 @@
     {
       "body": {
         "kind": "properties",
-        "properties": []
+        "properties": [
+          {
+            "name": "stopped",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
       },
       "kind": "response",
       "name": {
