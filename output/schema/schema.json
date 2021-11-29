@@ -145898,7 +145898,7 @@
       ],
       "query": [
         {
-          "description": "If this value is false, the transform must be stopped before it can be deleted. If true, the transform is \ndeleted regardless of its current state.",
+          "description": "If this value is false, the transform must be stopped before it can be deleted. If true, the transform is\ndeleted regardless of its current state.",
           "name": "force",
           "required": false,
           "serverDefault": false,
