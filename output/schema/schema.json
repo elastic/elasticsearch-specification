@@ -145884,7 +145884,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),\nhyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.",
+          "description": "Identifier for the transform.",
           "name": "transform_id",
           "required": true,
           "type": {
