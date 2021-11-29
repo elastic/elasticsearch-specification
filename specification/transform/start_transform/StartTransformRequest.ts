@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
- * Starts one or more transforms.
+ * Starts a transform.
  *
  * When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is
  * set to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping
