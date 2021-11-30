@@ -15135,7 +15135,6 @@ export interface TransformPivot {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
   group_by?: Record<string, TransformPivotGroupByContainer>
-  max_page_search_size?: integer
 }
 
 export interface TransformPivotGroupByContainer {
@@ -15155,6 +15154,7 @@ export interface TransformRetentionPolicyContainer {
 }
 
 export interface TransformSettings {
+  align_checkpoints?: boolean
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
@@ -15281,12 +15281,13 @@ export interface TransformPutTransformRequest extends RequestBase {
     dest: ReindexDestination
     description?: string
     frequency?: Time
-    pivot?: TransformPivot
-    source: ReindexSource
-    settings?: TransformSettings
-    sync?: TransformSyncContainer
-    retention_policy?: TransformRetentionPolicyContainer
     latest?: TransformLatest
+    _meta?: Record<string, string>
+    pivot?: TransformPivot
+    retention_policy?: TransformRetentionPolicyContainer
+    settings?: TransformSettings
+    source: ReindexSource
+    sync?: TransformSyncContainer
   }
 }
 
