@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "21676f5",
+    "hash": "5c1dbdf51",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -22638,20 +22638,6 @@
               "type": {
                 "name": "ClusterStatistics",
                 "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "documents",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TDocument",
-                  "namespace": "_global.search"
-                }
               }
             }
           },
