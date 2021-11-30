@@ -7129,9 +7129,16 @@
       "description": "Evaluate a trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model-deployment.html",
       "name": "ml.infer_trained_model_deployment",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "ml.infer_trained_model_deployment"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.infer_trained_model_deployment"
+      },
+      "since": "8.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -114480,6 +114487,32 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "PredictedValue",
+        "namespace": "ml._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -114597,6 +114630,48 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TopClassEntry",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "class_probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "class_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
               "namespace": "_types"
             }
           }
@@ -115165,6 +115240,70 @@
                 "name": "TotalFeatureImportance",
                 "namespace": "ml._types"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelEntities",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "class_probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "entity",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "start_pos",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "end_pos",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         }
@@ -120383,6 +120522,188 @@
       "name": {
         "name": "Response",
         "namespace": "ml.get_trained_models_stats"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "An array of objects to pass to the model for inference. The objects should contain a field matching your\nconfigured trained model input. Typically, the field name is `text_field`. Currently, only a single value is allowed.",
+            "name": "docs",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "description": "Evaluates a trained model.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.infer_trained_model_deployment"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Controls the amount of time to wait for inference results.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "10s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "If the model is trained for named entity recognition (NER) tasks, the response contains the recognized entities.",
+            "name": "entities",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TrainedModelEntities",
+                  "namespace": "ml._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "Indicates whether the input text was truncated to meet the model's maximum sequence length limit. This property\nis present only when it is true.",
+            "name": "is_truncated",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "If the model is trained for a text classification or zero shot classification task, the response is the\npredicted class.\nFor named entity recognition (NER) tasks, it contains the annotated text output.\nFor fill mask tasks, it contains the top prediction for replacing the mask token.\nFor text embedding tasks, it contains the raw numerical text embedding values.",
+            "name": "predicted_value",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "PredictedValue",
+                  "namespace": "ml._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted\nvalue.",
+            "name": "predicted_value_sequence",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Specifies a confidence score for the predicted value.",
+            "name": "prediction_probability",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "For fill mask, text classification, and zero shot classification tasks, the response contains a list of top\nclass entries.",
+            "name": "top_classes",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TopClassEntry",
+                  "namespace": "ml._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "If the request failed, the response contains the reason for the failure.",
+            "name": "warning",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.infer_trained_model_deployment"
       }
     },
     {

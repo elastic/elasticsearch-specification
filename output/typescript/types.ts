@@ -11621,6 +11621,8 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
+export type MlPredictedValue = string | double
+
 export type MlRoutingState = 'failed' | 'started' | 'starting' | 'stopped' | 'stopping'
 
 export type MlRuleAction = 'skip_result' | 'skip_model_update'
@@ -11634,6 +11636,12 @@ export interface MlRuleCondition {
 export interface MlTimingStats {
   elapsed_time: integer
   iteration_time?: integer
+}
+
+export interface MlTopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
 }
 
 export interface MlTotalFeatureImportance {
@@ -11697,6 +11705,14 @@ export interface MlTrainedModelConfigMetadata {
   feature_importance_baseline?: Record<string, string>
   hyperparameters?: MlHyperparameter[]
   total_feature_importance?: MlTotalFeatureImportance[]
+}
+
+export interface MlTrainedModelEntities {
+  class_name: string
+  class_probability: double
+  entity: string
+  start_pos: integer
+  end_pos: integer
 }
 
 export interface MlTrainedModelInferenceStats {
@@ -12282,6 +12298,24 @@ export interface MlGetTrainedModelsStatsRequest extends RequestBase {
 export interface MlGetTrainedModelsStatsResponse {
   count: integer
   trained_model_stats: MlTrainedModelStats[]
+}
+
+export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  timeout?: Time
+  body?: {
+    docs: Record<string, string>[]
+  }
+}
+
+export interface MlInferTrainedModelDeploymentResponse {
+  entities?: MlTrainedModelEntities[]
+  is_truncated?: boolean
+  predicted_value?: MlPredictedValue[]
+  predicted_value_sequence?: string
+  prediction_probability?: double
+  top_classes: MlTopClassEntry[]
+  warning?: string
 }
 
 export interface MlInfoAnomalyDetectors {
