@@ -32,11 +32,14 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 
 export class Destination {
-  /** The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform. */
+  /**
+   * The destination index for the transform. The mappings of the destination index are deduced based on the source
+   * fields when possible. If alternate mappings are required, use the create index API prior to starting the
+   * transform.
+   */
   index?: IndexName
   /**
    * The unique identifier for an ingest pipeline.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
    */
   pipeline?: string
 }
@@ -49,10 +52,19 @@ export class Latest {
 }
 
 export class Pivot {
-  /** @aliases aggs */
+  /**
+   * Defines how to aggregate the grouped data. The following aggregations are currently supported: average, bucket
+   * script, bucket selector, cardinality, filter, geo bounds, geo centroid, geo line, max, median absolute deviation,
+   * min, missing, percentiles, rare terms, scripted metric, stats, sum, terms, top metrics, value count, weighted
+   * average.
+   * @aliases aggs
+   */
   aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * Defines how to group the data. More than one grouping can be defined per pivot. The following groupings are
+   * currently supported: date histogram, geotile grid, histogram, terms.
+   */
   group_by?: Dictionary<string, PivotGroupByContainer>
-  max_page_search_size?: integer
 }
 
 /**
@@ -76,7 +88,10 @@ export class RetentionPolicyContainer {
 export class RetentionPolicy {
   /** The date field that is used to calculate the age of the document. */
   field: Field
-  /** Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index. */
+  /**
+   * Specifies the maximum age of a document in the destination index. Documents that are older than the configured
+   * value are removed from the destination index.
+   */
   max_age: Time
 }
 
@@ -85,31 +100,48 @@ export class RetentionPolicy {
  */
 export class Settings {
   /**
-   * Defines if dates in the ouput should be written as ISO formatted string (default) or as millis since epoch. epoch_millis has been the default for transforms created before version 7.11. For compatible output set this to true.
+   * Specifies whether the transform checkpoint ranges should be optimized for performance. Such optimization can align
+   * checkpoint ranges with the date histogram interval when date histogram is specified as a group source in the
+   * transform config. As a result, less document updates in the destination index will be performed thus improving
+   * overall performance.
+   * @server_default true
+   */
+  align_checkpoints?: boolean
+  /**
+   * Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was
+   * the default for transforms created before version 7.11. For compatible output set this value to `true`.
    * @server_default false
    */
   dates_as_epoch_millis?: boolean
   /**
-   * Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a wait time between search requests. The default value is null, which disables throttling.
+   * Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a
+   * wait time between search requests. The default value is null, which disables throttling.
    */
   docs_per_second?: float
   /**
-   * Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.
+   * Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker
+   * exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the
+   * maximum is `65,536`.
    * @server_default 500
    */
   max_page_search_size?: integer
 }
 
 export class Source {
-  /**The source indices for the transform. */
+  /**
+   * The source indices for the transform. It can be a single index, an index pattern (for example, `"my-index-*""`), an
+   * array of indices (for example, `["my-index-000001", "my-index-000002"]`), or an array of index patterns (for
+   * example, `["my-index-*", "my-other-index-*"]`. For remote indices use the syntax `"remote_name:index_name"`. If
+   * any indices are in remote clusters then the master node and at least one transform node must have the `remote_cluster_client` node role.
+   */
   index: Indices
   /**
    * A query clause that retrieves a subset of data from the source index.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
    */
   query?: QueryContainer
   /**
-   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.
+   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data
+   * nodes, including remote nodes, must be 7.12 or later.
    * @since 7.12.0
    */
   runtime_mappings?: RuntimeFields
@@ -126,8 +158,15 @@ export class SyncContainer {
 }
 
 export class TimeSync {
-  /** The time delay between the current time and the latest input data time. */
+  /**
+   * The time delay between the current time and the latest input data time.
+   * @server_default 60s
+   */
   delay?: Time
-  /** The date field that is used to identify new documents in the source. */
+  /**
+   * The date field that is used to identify new documents in the source. In general, it’s a good idea to use a field
+   * that contains the ingest timestamp. If you use a different field, you might need to set the delay such that it
+   * accounts for data transmission delays.
+   */
   field: Field
 }
