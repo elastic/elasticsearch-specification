@@ -12184,6 +12184,27 @@
       "accept": [
         "application/json"
       ],
+      "description": "Resets an existing transform.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html",
+      "name": "transform.reset_transform",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_transform/{transform_id}/_reset"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Starts one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
       "name": "transform.start_transform",
