@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Types } from '@_types/common'
+import { ExpandWildcards, Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
@@ -30,7 +30,6 @@ import { Operator } from '@_types/query_dsl/Operator'
 export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
-    type?: Types
   }
   query_parameters: {
     allow_no_indices?: boolean

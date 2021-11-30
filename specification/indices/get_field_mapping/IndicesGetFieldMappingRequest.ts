@@ -35,7 +35,6 @@ export interface Request extends RequestBase {
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
     include_defaults?: boolean
-    include_type_name?: boolean
     local?: boolean
   }
 }

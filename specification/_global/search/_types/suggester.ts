@@ -25,8 +25,7 @@ import {
   Id,
   IndexName,
   Routing,
-  SuggestMode,
-  Type
+  SuggestMode
 } from '@_types/common'
 import { GeoHash, GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
@@ -74,7 +73,6 @@ export class CompletionSuggestOption<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   _id: string
   _index: IndexName
-  _type?: Type
   _routing?: Routing
   _score: double
   _source: TDocument

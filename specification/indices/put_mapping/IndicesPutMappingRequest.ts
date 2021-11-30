@@ -47,7 +47,6 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
-    include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
     write_index_only?: boolean

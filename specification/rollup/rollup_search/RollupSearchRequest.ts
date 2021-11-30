@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { Indices, Type } from '@_types/common'
+import { Indices } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
@@ -32,7 +32,6 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 export interface Request extends RequestBase {
   path_parts: {
     index: Indices
-    type?: Type
   }
   query_parameters: {
     rest_total_hits_as_int?: boolean

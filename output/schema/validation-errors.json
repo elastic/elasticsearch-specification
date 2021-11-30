@@ -54,6 +54,14 @@
       ],
       "response": []
     },
+    "bulk": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Request: missing json spec query parameter 'type'",
+        "Url path property 'type' is missing in request definition"
+      ],
+      "response": []
+    },
     "cat.aliases": {
       "request": [
         "Request: missing json spec query parameter 'format'",
@@ -366,9 +374,7 @@
     },
     "cat.thread_pool": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
@@ -521,6 +527,13 @@
       ],
       "response": []
     },
+    "create": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Url path property 'type' is missing in request definition"
+      ],
+      "response": []
+    },
     "dangling_indices.delete_dangling_index": {
       "request": [
         "Request: should not have a body"
@@ -541,13 +554,14 @@
     },
     "delete": {
       "request": [
-        "Request: should not have a body"
+        "Request: missing json spec path parameter 'type'",
+        "Request: should not have a body",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
     "delete_by_query": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter '_source'",
         "Request: missing json spec query parameter '_source_excludes'",
         "Request: missing json spec query parameter '_source_includes'"
@@ -624,7 +638,9 @@
     },
     "exists_source": {
       "request": [
-        "Request: should not have a body"
+        "Request: missing json spec path parameter 'type'",
+        "Request: should not have a body",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -773,12 +789,6 @@
       ],
       "response": []
     },
-    "indices.create": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.create_data_stream": {
       "request": [
         "Request: should not have a body"
@@ -860,7 +870,7 @@
     },
     "indices.exists_type": {
       "request": [
-        "Request: should not have a body"
+        "Missing request & response"
       ],
       "response": []
     },
@@ -884,7 +894,6 @@
     },
     "indices.get": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": [
@@ -905,21 +914,18 @@
     },
     "indices.get_field_mapping": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get_index_template": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get_mapping": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -934,7 +940,6 @@
     },
     "indices.get_template": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -971,16 +976,9 @@
       ],
       "response": []
     },
-    "indices.put_mapping": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.put_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -1006,12 +1004,6 @@
     "indices.resolve_index": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "indices.rollover": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1041,6 +1033,7 @@
     },
     "indices.stats": {
       "request": [
+        "Request: missing json spec query parameter 'types'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1048,6 +1041,13 @@
     "indices.unfreeze": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "indices.validate_query": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -1492,6 +1492,13 @@
     "rollup.get_rollup_index_caps": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "rollup.rollup_search": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -1972,11 +1979,16 @@
       ],
       "response": []
     },
+    "update": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Url path property 'type' is missing in request definition"
+      ],
+      "response": []
+    },
     "update_by_query": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter 'q'",
-        "Request: missing json spec query parameter 'max_docs'",
         "Request: missing json spec query parameter '_source'",
         "Request: missing json spec query parameter '_source_excludes'",
         "Request: missing json spec query parameter '_source_includes'"

@@ -22,7 +22,6 @@ import {
   Id,
   IndexName,
   SequenceNumber,
-  Type,
   VersionNumber,
   VersionString
 } from './common'
@@ -41,7 +40,6 @@ export class WriteResponseBase {
   result: Result
   _seq_no: SequenceNumber
   _shards: ShardStatistics
-  _type?: Type
   _version: VersionNumber
   forced_refresh?: boolean
 }

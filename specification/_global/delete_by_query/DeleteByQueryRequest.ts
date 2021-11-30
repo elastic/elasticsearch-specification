@@ -63,7 +63,6 @@ export interface Request extends RequestBase {
     scroll_size?: long
     search_timeout?: Time
     search_type?: SearchType
-    size?: long
     slices?: long
     sort?: string[]
     stats?: string[]

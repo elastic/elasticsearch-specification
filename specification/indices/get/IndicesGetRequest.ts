@@ -55,11 +55,6 @@ export interface Request extends RequestBase {
      */
     include_defaults?: boolean
     /**
-     * If true, a mapping type is expected in the body of mappings.
-     * @server_default false
-     */
-    include_type_name?: boolean
-    /**
      * If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.
      * @server_default false
      */

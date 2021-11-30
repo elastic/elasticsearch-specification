@@ -23,7 +23,6 @@ import {
   IndexName,
   Refresh,
   Routing,
-  Type,
   WaitForActiveShards
 } from '@_types/common'
 import { Time } from '@_types/Time'
@@ -39,7 +38,6 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 export interface Request<TSource> extends RequestBase {
   path_parts: {
     index?: IndexName
-    type?: Type
   }
   query_parameters: {
     pipeline?: string
@@ -49,7 +47,6 @@ export interface Request<TSource> extends RequestBase {
     _source_excludes?: Fields
     _source_includes?: Fields
     timeout?: Time
-    type?: Type
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }

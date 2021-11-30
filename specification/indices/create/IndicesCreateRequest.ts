@@ -36,7 +36,6 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   query_parameters: {
-    include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
