@@ -1261,7 +1261,7 @@ export type SearchHighlighterType = SearchBuiltinHighlighterType | string
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
   _id: Id
-  _score?: double
+  _score?: double | null
   _type?: Type
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
@@ -1283,7 +1283,7 @@ export interface SearchHit<TDocument = unknown> {
 export interface SearchHitsMetadata<T = unknown> {
   total: SearchTotalHits | long
   hits: SearchHit<T>[]
-  max_score?: double
+  max_score?: double | null
 }
 
 export interface SearchInnerHits {

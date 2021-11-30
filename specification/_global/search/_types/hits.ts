@@ -42,7 +42,7 @@ export class Hit<TDocument> {
   _index: IndexName
   _id: Id
 
-  _score?: double
+  _score?: double | null
   _type?: Type
 
   _explanation?: Explanation
@@ -67,7 +67,7 @@ export class HitsMetadata<T> {
   total: TotalHits | long
   hits: Hit<T>[]
 
-  max_score?: double
+  max_score?: double | null
 }
 
 export class HitMetadata<TDocument> {
