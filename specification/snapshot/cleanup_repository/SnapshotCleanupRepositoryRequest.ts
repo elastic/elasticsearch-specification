@@ -22,17 +22,28 @@ import { Name } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Triggers the review of a snapshot repository’s contents and deletes any stale data that is not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
  * @since 7.4.0
  * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     *  Name of the snapshot repository to review and clean up.
+     * @codegen_name name */
     repository: Name
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Time
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Time
   }
 }

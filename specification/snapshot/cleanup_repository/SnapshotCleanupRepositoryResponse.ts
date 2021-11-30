@@ -20,10 +20,18 @@
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { results: CleanupRepositoryResults }
+  body: {
+    /** Statistics for cleanup operations. */
+    results: CleanupRepositoryResults
+  }
 }
 
 export class CleanupRepositoryResults {
+  /**
+   * Number of binary large objects (blobs) removed from the snapshot repository during cleanup operations.
+   * Any non-zero value implies that unreferenced blobs were found and subsequently cleaned up.
+   */
   deleted_blobs: long
+  /** Number of bytes freed by cleanup operations. */
   deleted_bytes: long
 }
