@@ -36,6 +36,15 @@ export class TypeName {
   name: string
 }
 
+/**
+ * Location of an item. The path is relative to the "specification" directory, e.g "_types/common.ts"
+ */
+export class SourceLocation {
+  path: string
+  startLine: number
+  endLine: number
+}
+
 // ------------------------------------------------------------------------------------------------
 // Value types
 
@@ -168,6 +177,8 @@ export abstract class BaseType {
    *   additional property
    */
   codegenNames?: string[]
+  /** Location in the API spec where this type is defined */
+  specLocation: SourceLocation
 }
 
 export type Variants = ExternalTag | InternalTag | Container
