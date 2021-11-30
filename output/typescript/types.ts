@@ -12073,8 +12073,8 @@ export interface MlGetCategoriesRequest extends RequestBase {
   job_id: Id
   category_id?: CategoryId
   from?: integer
-  size?: integer
   partition_field_value?: string
+  size?: integer
   body?: {
     page?: MlPage
   }
