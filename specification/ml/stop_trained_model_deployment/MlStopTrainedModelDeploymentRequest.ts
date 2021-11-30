@@ -19,12 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-/*
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
-import { Definition, Input } from './types'
-import { TrainedModelType } from '../_types/TrainedModel'
-*/
+
 /**
  * Stops a trained model deployment.
  * @rest_spec_name ml.stop_trained_model_deployment
