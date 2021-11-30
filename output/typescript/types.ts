@@ -15383,7 +15383,7 @@ export interface TransformPutTransformResponse extends AcknowledgedResponseBase 
 }
 
 export interface TransformStartTransformRequest extends RequestBase {
-  transform_id: Name
+  transform_id: Id
   timeout?: Time
 }
 
