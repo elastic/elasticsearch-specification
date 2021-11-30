@@ -52,7 +52,8 @@ import {
   parseVariantsTag,
   verifyUniqueness,
   parseJsDocTags,
-  deepEqual, sourceLocation
+  deepEqual,
+  sourceLocation
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specification')
