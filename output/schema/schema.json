@@ -114466,6 +114466,32 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "PredictedValue",
+        "namespace": "ml._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -120499,7 +120525,7 @@
                   }
                 },
                 "kind": "dictionary_of",
-                "singleKey": true,
+                "singleKey": false,
                 "value": {
                   "kind": "instance_of",
                   "type": {
@@ -120590,26 +120616,14 @@
             "name": "predicted_value",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "double",
-                      "namespace": "_types"
-                    }
-                  }
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "PredictedValue",
+                  "namespace": "ml._types"
                 }
-              ],
-              "kind": "union_of"
+              }
             }
           },
           {

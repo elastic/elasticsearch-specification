@@ -18,7 +18,11 @@
  */
 
 import { double } from '@_types/Numeric'
-import { TopClassEntry, TrainedModelEntities } from '@ml/_types/TrainedModel'
+import {
+  PredictedValue,
+  TopClassEntry,
+  TrainedModelEntities
+} from '@ml/_types/TrainedModel'
 
 export class Response {
   body: {
@@ -38,7 +42,7 @@ export class Response {
      * For fill mask tasks, it contains the top prediction for replacing the mask token.
      * For text embedding tasks, it contains the raw numerical text embedding values.
      */
-    predicted_value?: string | double[]
+    predicted_value?: PredictedValue[]
     /**
      * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
      * value.

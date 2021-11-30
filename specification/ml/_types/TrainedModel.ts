@@ -247,3 +247,5 @@ export class TopClassEntry {
   class_probability: double
   class_score: double
 }
+
+export type PredictedValue = string | double

@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Evaluates a trained model.
@@ -47,6 +47,6 @@ export interface Request extends RequestBase {
      * An array of objects to pass to the model for inference. The objects should contain a field matching your
      * configured trained model input. Typically, the field name is `text_field`. Currently, only a single value is allowed.
      */
-    docs: SingleKeyDictionary<string, string>[]
+    docs: Dictionary<string, string>[]
   }
 }

@@ -11621,6 +11621,8 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
+export type MlPredictedValue = string | double
+
 export type MlRoutingState = 'failed' | 'started' | 'starting' | 'stopped' | 'stopping'
 
 export type MlRuleAction = 'skip_result' | 'skip_model_update'
@@ -12302,14 +12304,14 @@ export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
   timeout?: Time
   body?: {
-    docs: Partial<Record<string, string>>[]
+    docs: Record<string, string>[]
   }
 }
 
 export interface MlInferTrainedModelDeploymentResponse {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
-  predicted_value?: string | double[]
+  predicted_value?: MlPredictedValue[]
   predicted_value_sequence?: string
   prediction_probability?: double
   top_classes: MlTopClassEntry[]
