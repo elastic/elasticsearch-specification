@@ -11358,6 +11358,8 @@ export interface MlDelayedDataCheckConfig {
   enabled: boolean
 }
 
+export type MlDeploymentState = 'started' | 'starting' | 'fully_allocated'
+
 export interface MlDetectionRule {
   actions?: MlRuleAction[]
   conditions?: MlRuleCondition[]
@@ -11619,6 +11621,8 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
+export type MlRoutingState = 'failed' | 'started' | 'starting' | 'stopped' | 'stopping'
+
 export type MlRuleAction = 'skip_result' | 'skip_model_update'
 
 export interface MlRuleCondition {
@@ -11647,6 +11651,23 @@ export interface MlTotalFeatureImportanceStatistics {
   mean_magnitude: double
   max: integer
   min: integer
+}
+
+export interface MlTrainedModelAllocation {
+  allocation_state: MlDeploymentState
+  routing_table: Record<string, MlTrainedModelAllocationRoutingTable>
+  start_time: DateString
+  task_parameters: MlTrainedModelAllocationTaskParameters
+}
+
+export interface MlTrainedModelAllocationRoutingTable {
+  reason: string
+  routing_state: MlRoutingState
+}
+
+export interface MlTrainedModelAllocationTaskParameters {
+  model_bytes: integer
+  model_id: Id
 }
 
 export interface MlTrainedModelConfig {
@@ -12712,6 +12733,19 @@ export interface MlStartDatafeedResponse {
   started: boolean
 }
 
+export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  inference_threads?: integer
+  model_threads?: integer
+  queue_capacity?: integer
+  timeout?: Time
+  wait_for?: MlDeploymentState
+}
+
+export interface MlStartTrainedModelDeploymentResponse {
+  allocation: MlTrainedModelAllocation
+}
+
 export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   allow_no_match?: boolean
@@ -12736,6 +12770,16 @@ export interface MlStopDatafeedRequest extends RequestBase {
 }
 
 export interface MlStopDatafeedResponse {
+  stopped: boolean
+}
+
+export interface MlStopTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  allow_no_match?: boolean
+  force?: boolean
+}
+
+export interface MlStopTrainedModelDeploymentResponse {
   stopped: boolean
 }
 

@@ -7934,9 +7934,21 @@
       "description": "Start a trained model deployment.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html",
       "name": "ml.start_trained_model_deployment",
-      "request": null,
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "ml.start_trained_model_deployment"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.start_trained_model_deployment"
+      },
+      "since": "8.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -8030,9 +8042,21 @@
       "description": "Stop a trained model deployment.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html",
       "name": "ml.stop_trained_model_deployment",
-      "request": null,
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "ml.stop_trained_model_deployment"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.stop_trained_model_deployment"
+      },
+      "since": "8.0.0",
       "stability": "experimental",
       "urls": [
         {
@@ -112005,6 +112029,27 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The trained model is started on at least one node.",
+          "name": "started"
+        },
+        {
+          "description": "Trained model deployment is starting but it is not yet deployed on any nodes.",
+          "name": "starting"
+        },
+        {
+          "description": "Trained model deployment has started on all valid nodes.",
+          "name": "fully_allocated"
+        }
+      ],
+      "name": {
+        "name": "DeploymentState",
+        "namespace": "ml._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "DetectionRule",
@@ -114417,6 +114462,35 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The allocation attempt failed.",
+          "name": "failed"
+        },
+        {
+          "description": "The trained model is allocated and ready to accept inference requests.",
+          "name": "started"
+        },
+        {
+          "description": "The trained model is attempting to allocate on this node; inference requests are not yet accepted.",
+          "name": "starting"
+        },
+        {
+          "description": "The trained model is fully deallocated from this node.",
+          "name": "stopped"
+        },
+        {
+          "description": "The trained model is being deallocated from this node.",
+          "name": "stopping"
+        }
+      ],
+      "name": {
+        "name": "RoutingState",
+        "namespace": "ml._types"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "description": "The result will not be created. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.",
           "name": "skip_result"
         },
@@ -114634,6 +114708,139 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelAllocation",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The overall allocation state.",
+          "name": "allocation_state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DeploymentState",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The allocation state for each node.",
+          "name": "routing_table",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelAllocationRoutingTable",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The timestamp when the deployment started.",
+          "name": "start_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "task_parameters",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelAllocationTaskParameters",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelAllocationRoutingTable",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The reason for the current state. It is usually populated only when the\n`routing_state` is `failed`.",
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The current routing state.",
+          "name": "routing_state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoutingState",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelAllocationTaskParameters",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The size of the trained model in bytes.",
+          "name": "model_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier for the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -124095,6 +124302,130 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.start_trained_model_deployment"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the trained model. Currently, only PyTorch models are supported.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Specifies the number of threads that are used by the inference process. If you increase this value, inference\nspeed generally increases. However, the actual number of threads is limited by the number of available CPU\ncores.",
+          "name": "inference_threads",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the number of threads that are used when sending inference requests to the model. If you increase this value,\nthroughput generally increases.",
+          "name": "model_threads",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the number of inference requests that are allowed in the queue. After the number of requests exceeds\nthis value, new requests are rejected with a 429 error.",
+          "name": "queue_capacity",
+          "required": false,
+          "serverDefault": 1024,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the amount of time to wait for the model to deploy.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the allocation status to wait for before returning.",
+          "name": "wait_for",
+          "required": false,
+          "serverDefault": "started",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DeploymentState",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "allocation",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelAllocation",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.start_trained_model_deployment"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
       "description": "Stops one or more data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
       "inherits": {
         "type": {
@@ -124323,6 +124654,91 @@
       "name": {
         "name": "Response",
         "namespace": "ml.stop_datafeed"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Stops a trained model deployment.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.stop_trained_model_deployment"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;\ncontains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and\nthere are only partial matches. By default, it returns an empty array when there are no matches and the subset of results when there are partial matches.\nIf `false`, the request returns a 404 status code when there are no matches or only partial matches.",
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Forcefully stops the deployment, even if it is used by ingest pipelines. You can't use these pipelines until you\nrestart the model deployment.",
+          "name": "force",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stopped",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.stop_trained_model_deployment"
       }
     },
     {

@@ -1360,19 +1360,16 @@
     },
     "ml.start_trained_model_deployment": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'inference_threads' does not exist in the json spec",
+        "Request: query parameter 'model_threads' does not exist in the json spec",
+        "Request: query parameter 'queue_capacity' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
-    },
-    "ml.stop_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
