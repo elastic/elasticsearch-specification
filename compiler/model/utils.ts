@@ -1185,8 +1185,10 @@ const basePath = join(__dirname, '..', '..', 'specification') + '/'
 
 export function sourceLocation (node: Node): model.SourceLocation {
   const sourceFile = node.getSourceFile()
+  //const pos = sourceFile.getLineAndColumnAtPos(node.getPos())
   return {
     path: sourceFile.getFilePath().replace(basePath, ''),
-    line: sourceFile.getLineAndColumnAtPos(node.getPos()).line
+    startLine: node.getStartLineNumber(true),
+    endLine: node.getEndLineNumber()
   }
 }

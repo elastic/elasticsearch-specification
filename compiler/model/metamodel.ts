@@ -41,7 +41,8 @@ export class TypeName {
  */
 export class SourceLocation {
   path: string
-  line: number
+  startLine: number
+  endLine: number
 }
 
 // ------------------------------------------------------------------------------------------------
