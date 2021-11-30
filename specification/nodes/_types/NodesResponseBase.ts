@@ -25,5 +25,5 @@ export class NodesResponseBase {
    * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
    * @codegen_name node_stats
    */
-  _nodes: NodeStatistics
+  _nodes?: NodeStatistics
 }
