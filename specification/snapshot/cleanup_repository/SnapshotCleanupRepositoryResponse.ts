@@ -27,9 +27,7 @@ export class Response {
 }
 
 export class CleanupRepositoryResults {
-  /**
-   * Number of binary large objects (blobs) removed during cleanup.
-   */
+  /** Number of binary large objects (blobs) removed during cleanup. */
   deleted_blobs: long
   /** Number of bytes freed by cleanup operations. */
   deleted_bytes: long

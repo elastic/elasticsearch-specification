@@ -30,7 +30,7 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     *  Snapshot repository to clean up.
+     * Snapshot repository to clean up.
      * @codegen_name name */
     repository: Name
   }
