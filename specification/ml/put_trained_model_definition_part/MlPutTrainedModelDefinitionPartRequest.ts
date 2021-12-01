@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { Id } from '@_types/common'
 
 /**
@@ -48,10 +48,10 @@ export interface Request extends RequestBase {
     /**
      * The total uncompressed definition length in bytes. Not base64 encoded.
      */
-    total_definition_length: number
+    total_definition_length: long
     /**
      * The total number of parts that will be uploaded. Must be greater than 0.
      */
-    total_parts: number
+    total_parts: integer
   }
 }
