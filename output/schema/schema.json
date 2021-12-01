@@ -14678,54 +14678,6 @@
           }
         },
         {
-          "description": "True or false to return the _source field or not, or a list of fields to return",
-          "name": "_source",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "description": "A list of fields to exclude from the returned _source field",
-          "name": "_source_excludes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A list of fields to extract and return from the _source field",
-          "name": "_source_includes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Specific 'tag' of the request for logging and statistical purposes",
           "name": "stats",
           "required": false,
@@ -29896,54 +29848,6 @@
                 "name": "string",
                 "namespace": "internal"
               }
-            }
-          }
-        },
-        {
-          "description": "True or false to return the _source field or not, or a list of fields to return",
-          "name": "_source",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "description": "A list of fields to exclude from the returned _source field",
-          "name": "_source_excludes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A list of fields to extract and return from the _source field",
-          "name": "_source_includes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
             }
           }
         },
