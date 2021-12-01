@@ -12688,8 +12688,8 @@ export interface MlPutTrainedModelDefinitionPartRequest extends RequestBase {
   part: integer
   body?: {
     definition: string
-    total_definition_length: number
-    total_parts: number
+    total_definition_length: long
+    total_parts: integer
   }
 }
 
