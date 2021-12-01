@@ -598,6 +598,14 @@
       ],
       "response": []
     },
+    "delete_by_query": {
+      "request": [
+        "Request: missing json spec query parameter '_source'",
+        "Request: missing json spec query parameter '_source_excludes'",
+        "Request: missing json spec query parameter '_source_includes'"
+      ],
+      "response": []
+    },
     "delete_by_query_rethrottle": {
       "request": [
         "Request: should not have a body"
@@ -2050,7 +2058,10 @@
     "update_by_query": {
       "request": [
         "Request: missing json spec query parameter 'q'",
-        "Request: missing json spec query parameter 'max_docs'"
+        "Request: missing json spec query parameter 'max_docs'",
+        "Request: missing json spec query parameter '_source'",
+        "Request: missing json spec query parameter '_source_excludes'",
+        "Request: missing json spec query parameter '_source_includes'"
       ],
       "response": []
     },
