@@ -402,6 +402,12 @@
       ],
       "response": []
     },
+    "delete_by_query": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "delete_by_query_rethrottle": {
       "request": [
         "Endpoint has \"@stability: TODO"

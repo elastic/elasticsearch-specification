@@ -22,7 +22,6 @@ import {
   Conflicts,
   DefaultOperator,
   ExpandWildcards,
-  Fields,
   Indices,
   Routing,
   SearchType,
@@ -34,6 +33,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
+import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * @rest_spec_name update_by_query
@@ -70,9 +70,6 @@ export interface Request extends RequestBase {
     size?: long
     slices?: long
     sort?: string[]
-    _source?: boolean | Fields
-    _source_excludes?: Fields
-    _source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time

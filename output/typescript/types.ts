@@ -213,9 +213,6 @@ export interface DeleteByQueryRequest extends RequestBase {
   size?: long
   slices?: long
   sort?: string[]
-  _source?: boolean | Fields
-  _source_excludes?: Fields
-  _source_includes?: Fields
   stats?: string[]
   terminate_after?: long
   timeout?: Time
@@ -1771,9 +1768,6 @@ export interface UpdateByQueryRequest extends RequestBase {
   size?: long
   slices?: long
   sort?: string[]
-  _source?: boolean | Fields
-  _source_excludes?: Fields
-  _source_includes?: Fields
   stats?: string[]
   terminate_after?: long
   timeout?: Time
