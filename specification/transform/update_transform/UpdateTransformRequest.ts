@@ -40,6 +40,11 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created. */
     defer_validation?: boolean
+   /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Time
   }
   body: {
     /** The destination for the transform. */
