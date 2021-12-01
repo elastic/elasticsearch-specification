@@ -31,10 +31,11 @@
         "required": false,
         "description": "If validations should be deferred until transform starts, defaults to false."
       },
-      "timeout":{
-        "type":"time",
-        "required":false,
-        "description":"Controls the time to wait for the update"
+      "timeout": {
+        "type": "time",
+        "required": false,
+        "description": "Controls the time to wait for the update"
+      }
     },
     "body": {
       "description": "The update transform definition",

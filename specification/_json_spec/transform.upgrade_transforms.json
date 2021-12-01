@@ -24,10 +24,10 @@
         "required": false,
         "description": "Whether to only check for updates but don't execute"
       },
-      "timeout":{
-        "type":"time",
-        "required":false,
-        "description":"Controls the time to wait for the upgrade"
+      "timeout": {
+        "type": "time",
+        "required": false,
+        "description": "Controls the time to wait for the upgrade"
       }
     }
   }

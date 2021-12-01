@@ -28,11 +28,11 @@
         }
       ]
     },
-    "params":{
-      "timeout":{
-        "type":"time",
-        "required":false,
-        "description":"Controls the time to wait for the preview"
+    "params": {
+      "timeout": {
+        "type": "time",
+        "required": false,
+        "description": "Controls the time to wait for the preview"
       }
     },
     "body": {
