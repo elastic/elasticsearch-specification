@@ -12214,6 +12214,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
   exclude_interim?: boolean
   allow_no_match?: boolean
   body?: {
+    allow_no_jobs?: boolean
     allow_no_match?: boolean
     bucket_span?: Time
     end?: Time
