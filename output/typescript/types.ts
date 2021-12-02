@@ -14950,7 +14950,7 @@ export interface SqlTranslateResponse {
 }
 
 export interface SslCertificatesCertificateInformation {
-  alias?: string
+  alias: string | null
   expiry: DateString
   format: string
   has_private_key: boolean
