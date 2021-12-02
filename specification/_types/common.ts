@@ -56,9 +56,6 @@ export type IndexAlias = string
 export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
 
-export type Type = string
-export type Types = Type | Type[]
-
 export type Routing = string
 export type LongId = string
 //TODO encode metrics as API specific enums

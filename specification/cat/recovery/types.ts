@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, Type } from '@_types/common'
+import { IndexName } from '@_types/common'
 import { Percentage } from '@_types/Numeric'
 
 export class RecoveryRecord {
@@ -60,7 +60,7 @@ export class RecoveryRecord {
    * recovery type
    * @aliases ty
    */
-  'type'?: Type
+  'type'?: string
   /**
    * recovery stage
    * @aliases st

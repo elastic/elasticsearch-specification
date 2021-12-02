@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { Id, IndexName, Type, InlineGet } from '@_types/common'
+import { Id, IndexName, InlineGet } from '@_types/common'
 import { ExplanationDetail } from './types'
 
 export class Response<TDocument> {
   body: {
     _index: IndexName
-    _type?: Type
     _id: Id
     matched: boolean
     explanation?: ExplanationDetail

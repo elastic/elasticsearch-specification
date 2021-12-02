@@ -23,8 +23,7 @@ import {
   Fields,
   Indices,
   Level,
-  Metrics,
-  Types
+  Metrics
 } from '@_types/common'
 
 /**
@@ -47,6 +46,5 @@ export interface Request extends RequestBase {
     include_segment_file_sizes?: boolean
     include_unloaded_segments?: boolean
     level?: Level
-    types?: Types
   }
 }

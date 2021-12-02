@@ -29,7 +29,6 @@ import {
   Refresh,
   Routing,
   SequenceNumber,
-  Type,
   WaitForActiveShards
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
@@ -45,7 +44,6 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters: {
     /**

@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import { ThreadPoolSize } from '@cat/thread_pool/types'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cat.thread_pool
@@ -28,9 +28,15 @@ import { ThreadPoolSize } from '@cat/thread_pool/types'
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /**
+     * List of thread pool names used to limit the request. Accepts wildcard expressions.
+     */
     thread_pool_patterns?: Names
   }
   query_parameters: {
-    size?: ThreadPoolSize
+    /**
+     * Unit used to display time values.
+     */
+    time?: Time
   }
 }

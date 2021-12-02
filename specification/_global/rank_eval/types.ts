@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, Type } from '@_types/common'
+import { Id, IndexName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
@@ -141,7 +141,6 @@ export class RankEvalHitItem {
 export class RankEvalHit {
   _id: Id
   _index: IndexName
-  _type?: Type
   _score: double
 }
 

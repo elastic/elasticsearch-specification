@@ -23,7 +23,6 @@ import {
   Id,
   IndexName,
   Routing,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -36,7 +35,6 @@ export class Operation {
   routing?: Routing
   _source?: SourceConfig
   stored_fields?: Fields
-  _type?: Type
   version?: VersionNumber
   version_type?: VersionType
 }
@@ -50,6 +48,4 @@ export class MultiGetError {
   error: ErrorCause
   _id: Id
   _index: IndexName
-  /** @deprecated 7.0.0 */
-  _type?: Type
 }

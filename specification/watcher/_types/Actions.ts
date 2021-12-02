@@ -23,7 +23,6 @@ import {
   Id,
   IndexName,
   Refresh,
-  Type,
   VersionNumber
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -178,7 +177,6 @@ export class IndexResultSummary {
   index: IndexName
   result: Result
   version: VersionNumber
-  type?: Type
 }
 
 // Logging ------------------------------ //

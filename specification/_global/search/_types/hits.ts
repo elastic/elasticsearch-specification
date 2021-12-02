@@ -27,7 +27,6 @@ import {
   IndexName,
   Name,
   SequenceNumber,
-  Type,
   VersionNumber
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
@@ -43,7 +42,6 @@ export class Hit<TDocument> {
   _id: Id
 
   _score?: double
-  _type?: Type
 
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
@@ -77,7 +75,6 @@ export class HitMetadata<TDocument> {
   _routing: string
   _seq_no: SequenceNumber
   _source: TDocument
-  _type: Type
   _version: VersionNumber
 }
 

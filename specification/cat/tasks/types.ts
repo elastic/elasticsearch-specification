@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, NodeId, Type, VersionString } from '@_types/common'
+import { Id, NodeId, VersionString } from '@_types/common'
 
 export class TasksRecord {
   /**
@@ -43,7 +43,7 @@ export class TasksRecord {
    * task type
    * @aliases ty
    */
-  'type'?: Type
+  'type'?: string
   /**
    * start time in ms
    * @aliases start

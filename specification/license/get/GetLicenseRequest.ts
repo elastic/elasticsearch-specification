@@ -26,6 +26,10 @@ import { RequestBase } from '@_types/Base'
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * @deprecated 7.6.0
+     * @server_default true
+     */
     accept_enterprise?: boolean
     local?: boolean
   }
