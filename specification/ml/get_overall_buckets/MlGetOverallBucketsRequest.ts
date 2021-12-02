@@ -112,8 +112,6 @@ export interface Request extends RequestBase {
      * @deprecated 7.10.0
      */
     allow_no_jobs?: boolean
-  }
-  body: {
     /**
      * Refer to the description for the `allow_no_match` query parameter.
      * @server_default true
