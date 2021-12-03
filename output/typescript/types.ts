@@ -15167,6 +15167,7 @@ export interface TransformTimeSync {
 export interface TransformDeleteTransformRequest extends RequestBase {
   transform_id: Id
   force?: boolean
+  timeout?: Time
 }
 
 export interface TransformDeleteTransformResponse extends AcknowledgedResponseBase {
@@ -15251,6 +15252,7 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformPreviewTransformRequest extends RequestBase {
   transform_id?: Id
+  timeout?: Time
   body?: {
     dest?: ReindexDestination
     description?: string
@@ -15272,6 +15274,7 @@ export interface TransformPreviewTransformResponse<TTransform = unknown> {
 export interface TransformPutTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
+  timeout?: Time
   body?: {
     dest: ReindexDestination
     description?: string
@@ -15312,6 +15315,7 @@ export interface TransformStopTransformResponse extends AcknowledgedResponseBase
 export interface TransformUpdateTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
+  timeout?: Time
   body?: {
     dest?: ReindexDestination
     description?: string
