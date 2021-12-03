@@ -2007,7 +2007,6 @@
     },
     "transform.delete_transform": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -2025,18 +2024,10 @@
       "response": []
     },
     "transform.preview_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
+      "request": [],
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
-    },
-    "transform.put_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
     },
     "transform.start_transform": {
       "request": [
@@ -2047,12 +2038,6 @@
     "transform.stop_transform": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "transform.update_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
