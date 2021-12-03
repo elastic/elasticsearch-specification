@@ -56,9 +56,7 @@
     },
     "bulk": {
       "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Request: missing json spec query parameter 'type'",
-        "Url path property 'type' is missing in request definition"
+        "Request: missing json spec query parameter 'type'"
       ],
       "response": []
     },
@@ -527,13 +525,6 @@
       ],
       "response": []
     },
-    "create": {
-      "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Url path property 'type' is missing in request definition"
-      ],
-      "response": []
-    },
     "dangling_indices.delete_dangling_index": {
       "request": [
         "Request: should not have a body"
@@ -554,17 +545,7 @@
     },
     "delete": {
       "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Request: should not have a body",
-        "Url path property 'type' is missing in request definition"
-      ],
-      "response": []
-    },
-    "delete_by_query": {
-      "request": [
-        "Request: missing json spec query parameter '_source'",
-        "Request: missing json spec query parameter '_source_excludes'",
-        "Request: missing json spec query parameter '_source_includes'"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -638,9 +619,7 @@
     },
     "exists_source": {
       "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Request: should not have a body",
-        "Url path property 'type' is missing in request definition"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -868,12 +847,6 @@
       ],
       "response": []
     },
-    "indices.exists_type": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "indices.field_usage_stats": {
       "request": [
         "Missing request & response"
@@ -1033,7 +1006,6 @@
     },
     "indices.stats": {
       "request": [
-        "Request: missing json spec query parameter 'types'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1041,13 +1013,6 @@
     "indices.unfreeze": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "indices.validate_query": {
-      "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -1492,13 +1457,6 @@
     "rollup.get_rollup_index_caps": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "rollup.rollup_search": {
-      "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -1979,19 +1937,9 @@
       ],
       "response": []
     },
-    "update": {
-      "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Url path property 'type' is missing in request definition"
-      ],
-      "response": []
-    },
     "update_by_query": {
       "request": [
-        "Request: missing json spec query parameter 'q'",
-        "Request: missing json spec query parameter '_source'",
-        "Request: missing json spec query parameter '_source_excludes'",
-        "Request: missing json spec query parameter '_source_includes'"
+        "Request: missing json spec query parameter 'q'"
       ],
       "response": []
     },
