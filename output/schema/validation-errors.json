@@ -598,14 +598,6 @@
       ],
       "response": []
     },
-    "delete_by_query": {
-      "request": [
-        "Request: missing json spec query parameter '_source'",
-        "Request: missing json spec query parameter '_source_excludes'",
-        "Request: missing json spec query parameter '_source_includes'"
-      ],
-      "response": []
-    },
     "delete_by_query_rethrottle": {
       "request": [
         "Request: should not have a body"
@@ -2015,6 +2007,7 @@
     },
     "transform.delete_transform": {
       "request": [
+        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -2032,10 +2025,18 @@
       "response": []
     },
     "transform.preview_transform": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'timeout'"
+      ],
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
+    },
+    "transform.put_transform": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
     },
     "transform.start_transform": {
       "request": [
@@ -2049,6 +2050,12 @@
       ],
       "response": []
     },
+    "transform.update_transform": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
     "transform.upgrade_transforms": {
       "request": [
         "Missing request & response"
@@ -2058,10 +2065,7 @@
     "update_by_query": {
       "request": [
         "Request: missing json spec query parameter 'q'",
-        "Request: missing json spec query parameter 'max_docs'",
-        "Request: missing json spec query parameter '_source'",
-        "Request: missing json spec query parameter '_source_excludes'",
-        "Request: missing json spec query parameter '_source_includes'"
+        "Request: missing json spec query parameter 'max_docs'"
       ],
       "response": []
     },
