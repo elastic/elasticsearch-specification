@@ -15379,6 +15379,17 @@ export interface TransformUpdateTransformResponse {
   version: VersionString
 }
 
+export interface TransformUpgradeTransformsRequest extends RequestBase {
+  dry_run?: boolean
+  timeout?: Time
+}
+
+export interface TransformUpgradeTransformsResponse {
+  needs_update: integer
+  no_action: integer
+  updated: integer
+}
+
 export interface WatcherAcknowledgeState {
   state: WatcherAcknowledgementOptions
   timestamp: DateString
