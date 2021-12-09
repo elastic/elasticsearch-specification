@@ -30,16 +30,11 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
- * Generates a preview of the results that you will get when you run the create
- * transforms API with the same configuration. It returns a maximum of 100
- * results. The calculations are based on all the current data in the source
- * index.
- * It also generates a list of mappings and settings for the destination index.
- * If the destination index does not exist when you start a transform, these are
- * the mappings and settings that are used. These values are determined based on
- * the field types of the source index and the transform aggregations.
- * You must choose either the `latest` or `pivot` method for your transform; you
- * cannot use both in a single transform.
+ * Previews a transform.
+ * 
+ * It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also
+ * generates a list of mappings and settings for the destination index. These values are determined based on the field
+ * types of the source index and the transform aggregations.
  * @rest_spec_name transform.preview_transform
  * @since 7.2.0
  * @stability stable
@@ -49,8 +44,7 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Identifier for the transform to preview. If you provide the
-     * `<transform_id>` as a path parameter, you cannot provide transform
+     * Identifier for the transform to preview. If you specify this path parameter, you cannot provide transform
      * configuration details in the request body.
      */
     transform_id?: Id

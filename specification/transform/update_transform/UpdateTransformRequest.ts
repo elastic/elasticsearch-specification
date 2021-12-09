@@ -28,23 +28,23 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
- * Updates an existing transform. The list of properties that you can update is
- * a subset of the list that you can define when you create a transform.
- * All updated properties except description do not take effect until after the
- * transform starts the next checkpoint. This is so there is data consistency in
- * each checkpoint.
+ * Updates certain properties of a transform.
+ * 
+ * All updated properties except `description` do not take effect until after the transform starts the next checkpoint,
+ * thus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`
+ * privileges for the source indices. You must also have `index` and `read` privileges for the destination index. When
+ * Elasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the
+ * time of update and runs with those privileges.
  * @rest_spec_name transform.update_transform
  * @since 7.2.0
  * @stability stable
  * @cluster_privileges manage_transform
- * @index_privileges read, view_index_metadata, index
+ * @index_privileges read, index, view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Identifier for the transform. This identifier can contain lowercase
-     * alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must
-     * start and end with alphanumeric characters.
+     * Identifier for the transform.
      */
     transform_id: Id
   }
