@@ -15331,6 +15331,14 @@ export interface TransformPutTransformRequest extends RequestBase {
 export interface TransformPutTransformResponse extends AcknowledgedResponseBase {
 }
 
+export interface TransformResetTransformRequest extends RequestBase {
+  transform_id: Id
+  force?: boolean
+}
+
+export interface TransformResetTransformResponse extends AcknowledgedResponseBase {
+}
+
 export interface TransformStartTransformRequest extends RequestBase {
   transform_id: Id
   timeout?: Time
