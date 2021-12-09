@@ -29,7 +29,7 @@ import { Time } from '@_types/Time'
 
 /**
  * Updates certain properties of a transform.
- * 
+ *
  * All updated properties except `description` do not take effect until after the transform starts the next checkpoint,
  * thus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`
  * privileges for the source indices. You must also have `index` and `read` privileges for the destination index. When

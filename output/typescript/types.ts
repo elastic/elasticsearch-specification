@@ -15372,7 +15372,9 @@ export interface TransformUpdateTransformResponse {
   dest: ReindexDestination
   frequency: Time
   id: Id
-  pivot: TransformPivot
+  latest?: TransformLatest
+  pivot?: TransformPivot
+  retention_policy?: TransformRetentionPolicyContainer
   settings: TransformSettings
   source: ReindexSource
   sync?: TransformSyncContainer

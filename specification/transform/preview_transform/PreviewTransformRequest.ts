@@ -31,7 +31,7 @@ import { Time } from '@_types/Time'
 
 /**
  * Previews a transform.
- * 
+ *
  * It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also
  * generates a list of mappings and settings for the destination index. These values are determined based on the field
  * types of the source index and the transform aggregations.
