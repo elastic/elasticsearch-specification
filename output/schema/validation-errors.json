@@ -1915,7 +1915,8 @@
     },
     "transform.reset_transform": {
       "request": [
-        "Missing request & response"
+        "Request: missing json spec query parameter 'timeout'",
+        "Request: should not have a body"
       ],
       "response": []
     },
