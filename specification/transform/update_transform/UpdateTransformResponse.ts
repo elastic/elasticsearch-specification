@@ -18,7 +18,13 @@
  */
 
 import { Destination, Source } from '@global/reindex/types'
-import { Pivot, Settings, SyncContainer } from '@transform/_types/Transform'
+import {
+  Latest,
+  Pivot,
+  RetentionPolicyContainer,
+  Settings,
+  SyncContainer
+} from '@transform/_types/Transform'
 import { Id, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
@@ -31,7 +37,9 @@ export class Response {
     dest: Destination
     frequency: Time
     id: Id
-    pivot: Pivot
+    latest?: Latest
+    pivot?: Pivot
+    retention_policy?: RetentionPolicyContainer
     settings: Settings
     source: Source
     sync?: SyncContainer
