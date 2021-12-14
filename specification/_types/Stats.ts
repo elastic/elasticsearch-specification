@@ -62,7 +62,7 @@ export class FieldSizeUsage {
 
 export class DocStats {
   count: long
-  deleted: long
+  deleted?: long
 }
 
 export class FielddataStats {
