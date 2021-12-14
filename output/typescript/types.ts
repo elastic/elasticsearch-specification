@@ -13921,13 +13921,19 @@ export interface SecurityUser {
   enabled: boolean
 }
 
+export interface SecurityAuthenticateApiKey {
+  id: string
+  name: Name
+}
+
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
 
 export interface SecurityAuthenticateResponse {
+  api_key?: SecurityAuthenticateApiKey
   authentication_realm: SecurityRealmInfo
-  email?: string
-  full_name?: Name
+  email?: string | null
+  full_name?: Name | null
   lookup_realm: SecurityRealmInfo
   metadata: Metadata
   roles: string[]

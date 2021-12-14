@@ -24,3 +24,8 @@ export class Token {
   /** @since 7.14.0 */
   type?: string
 }
+
+export class ApiKey {
+  id: string
+  name: Name
+}
