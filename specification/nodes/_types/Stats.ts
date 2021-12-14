@@ -410,6 +410,8 @@ export class ScriptCache {
 }
 
 export class Transport {
+  inbound_handling_time_histogram?: TransportHistogram[]
+  outbound_handling_time_histogram?: TransportHistogram[]
   rx_count?: long
   rx_size?: string
   rx_size_in_bytes?: long
@@ -418,4 +420,10 @@ export class Transport {
   tx_size?: string
   tx_size_in_bytes?: long
   total_outbound_connections?: long
+}
+
+export class TransportHistogram {
+  count?: long
+  lt_millis?: long
+  ge_millis?: long
 }

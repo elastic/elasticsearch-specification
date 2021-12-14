@@ -13341,6 +13341,8 @@ export interface NodesThreadCount {
 }
 
 export interface NodesTransport {
+  inbound_handling_time_histogram?: NodesTransportHistogram[]
+  outbound_handling_time_histogram?: NodesTransportHistogram[]
   rx_count?: long
   rx_size?: string
   rx_size_in_bytes?: long
@@ -13349,6 +13351,12 @@ export interface NodesTransport {
   tx_size?: string
   tx_size_in_bytes?: long
   total_outbound_connections?: long
+}
+
+export interface NodesTransportHistogram {
+  count?: long
+  lt_millis?: long
+  ge_millis?: long
 }
 
 export interface NodesHotThreadsHotThread {
