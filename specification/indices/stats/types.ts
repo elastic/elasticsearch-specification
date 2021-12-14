@@ -53,6 +53,8 @@ export class IndexStats {
   get?: GetStats
   /** Contains statistics about indexing operations for the node. */
   indexing?: IndexingStats
+  /** Contains statistics about indices operations for the node. */
+  indices?: IndicesStats
   /** Contains statistics about merge operations for the node. */
   merges?: MergesStats
   /** Contains statistics about the query cache across all shards assigned to the node. */
@@ -75,13 +77,13 @@ export class IndexStats {
   warmer?: WarmerStats
   bulk?: BulkStats
   /** @since 7.15.0 */
-  shards?: ShardsTotalStats
+  shard_stats?: ShardsTotalStats
 }
 
 export class IndicesStats {
-  primaries: IndexStats
+  primaries?: IndexStats
   shards?: Dictionary<string, ShardStats[]>
-  total: IndexStats
+  total?: IndexStats
   uuid?: Uuid
 }
 
@@ -160,28 +162,30 @@ export class ShardsTotalStats {
 }
 
 export class ShardStats {
-  commit: ShardCommit
-  completion: CompletionStats
-  docs: DocStats
-  fielddata: FielddataStats
-  flush: FlushStats
-  get: GetStats
-  indexing: IndexingStats
-  merges: MergesStats
-  shard_path: ShardPath
-  query_cache: ShardQueryCache
-  recovery: RecoveryStats
-  refresh: RefreshStats
-  request_cache: RequestCacheStats
-  retention_leases: ShardRetentionLeases
-  routing: ShardRouting
-  search: SearchStats
-  segments: SegmentsStats
-  seq_no: ShardSequenceNumber
-  store: StoreStats
-  translog: TranslogStats
-  warmer: WarmerStats
+  commit?: ShardCommit
+  completion?: CompletionStats
+  docs?: DocStats
+  fielddata?: FielddataStats
+  flush?: FlushStats
+  get?: GetStats
+  indexing?: IndexingStats
+  merges?: MergesStats
+  shard_path?: ShardPath
+  query_cache?: ShardQueryCache
+  recovery?: RecoveryStats
+  refresh?: RefreshStats
+  request_cache?: RequestCacheStats
+  retention_leases?: ShardRetentionLeases
+  routing?: ShardRouting
+  search?: SearchStats
+  segments?: SegmentsStats
+  seq_no?: ShardSequenceNumber
+  store?: StoreStats
+  translog?: TranslogStats
+  warmer?: WarmerStats
   bulk?: BulkStats
   /** @since 7.15.0 */
-  shards: ShardsTotalStats
+  shards?: ShardsTotalStats
+  shard_stats?: ShardsTotalStats
+  indices?: IndicesStats
 }
