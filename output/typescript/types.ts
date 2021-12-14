@@ -1247,12 +1247,7 @@ export type SearchHighlighterType = SearchBuiltinHighlighterType | string
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
   _id: Id
-<<<<<<< HEAD
   _score?: double | null
-  _type?: Type
-=======
-  _score?: double
->>>>>>> main
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
   highlight?: Record<string, string[]>
