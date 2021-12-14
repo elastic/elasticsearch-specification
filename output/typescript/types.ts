@@ -1266,7 +1266,7 @@ export interface SearchHit<TDocument = unknown> {
 }
 
 export interface SearchHitsMetadata<T = unknown> {
-  total: SearchTotalHits | long
+  total?: SearchTotalHits | long
   hits: SearchHit<T>[]
   max_score?: double | null
 }

@@ -60,7 +60,8 @@ export class Hit<TDocument> {
 }
 
 export class HitsMetadata<T> {
-  total: TotalHits | long
+  /** Total hit count information, present only if `track_total_hits` wasn't `false` in the search request. */
+  total?: TotalHits | long
   hits: Hit<T>[]
 
   max_score?: double | null
