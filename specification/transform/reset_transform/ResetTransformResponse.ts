@@ -17,23 +17,6 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Types } from '@_types/common'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-/**
- * @rest_spec_name indices.exists_type
- * @since 0.0.0
- * @stability stable
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    index: Indices
-    type: Types
-  }
-  query_parameters: {
-    allow_no_indices?: boolean
-    expand_wildcards?: ExpandWildcards
-    ignore_unavailable?: boolean
-    local?: boolean
-  }
-}
+export class Response extends AcknowledgedResponseBase {}

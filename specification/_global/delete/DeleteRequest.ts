@@ -24,7 +24,6 @@ import {
   Refresh,
   Routing,
   SequenceNumber,
-  Type,
   VersionNumber,
   VersionType,
   WaitForActiveShards
@@ -41,7 +40,6 @@ export interface Request extends RequestBase {
   path_parts: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters: {
     if_primary_term?: long

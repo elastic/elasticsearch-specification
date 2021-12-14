@@ -23,6 +23,7 @@ import { CategoryId, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Retrieves anomaly detection job results for one or more categories.
  * @rest_spec_name ml.get_categories
  * @since 5.4.0
  * @stability stable
@@ -50,14 +51,14 @@ export interface Request extends RequestBase {
      */
     from?: integer
     /**
+     * Only return categories for the specified partition.
+     */
+    partition_field_value?: string
+    /**
      * Specifies the maximum number of categories to obtain.
      * @server_default 100
      */
     size?: integer
-    /**
-     * Only return categories for the specified partition.
-     */
-    partition_field_value?: string
   }
   body: {
     page?: Page

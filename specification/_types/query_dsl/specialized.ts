@@ -27,7 +27,6 @@ import {
   IndexName,
   MinimumShouldMatch,
   Routing,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -93,7 +92,6 @@ export class LikeDocument {
   doc?: UserDefinedValue
   fields?: Field[]
   _id?: Id
-  _type?: Type
   _index?: IndexName
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing

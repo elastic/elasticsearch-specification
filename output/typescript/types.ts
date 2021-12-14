@@ -47,7 +47,6 @@ export type BulkOperationType = 'index' | 'create' | 'update' | 'delete'
 
 export interface BulkRequest<TSource = unknown> extends RequestBase {
   index?: IndexName
-  type?: Type
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
@@ -145,7 +144,6 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
@@ -162,7 +160,6 @@ export interface CreateResponse extends WriteResponseBase {
 export interface DeleteRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   refresh?: Refresh
@@ -199,12 +196,8 @@ export interface DeleteByQueryRequest extends RequestBase {
   scroll_size?: long
   search_timeout?: Time
   search_type?: SearchType
-  size?: long
   slices?: long
   sort?: string[]
-  _source?: SearchSourceConfigParam
-  _source_excludes?: Fields
-  _source_includes?: Fields
   stats?: string[]
   terminate_after?: long
   timeout?: Time
@@ -272,7 +265,6 @@ export type ExistsResponse = boolean
 export interface ExistsSourceRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -320,7 +312,6 @@ export interface ExplainRequest extends RequestBase {
 
 export interface ExplainResponse<TDocument = unknown> {
   _index: IndexName
-  _type?: Type
   _id: Id
   matched: boolean
   explanation?: ExplainExplanationDetail
@@ -365,7 +356,6 @@ export interface GetGetResult<TDocument = unknown> {
   _routing?: string
   _seq_no?: SequenceNumber
   _source?: TDocument
-  _type?: Type
   _version?: VersionNumber
 }
 
@@ -515,7 +505,6 @@ export interface MgetMultiGetError {
   error: ErrorCause
   _id: Id
   _index: IndexName
-  _type?: Type
 }
 
 export interface MgetOperation {
@@ -524,7 +513,6 @@ export interface MgetOperation {
   routing?: Routing
   _source?: SearchSourceConfig
   stored_fields?: Fields
-  _type?: Type
   version?: VersionNumber
   version_type?: VersionType
 }
@@ -712,7 +700,6 @@ export interface RankEvalDocumentRating {
 export interface RankEvalRankEvalHit {
   _id: Id
   _index: IndexName
-  _type?: Type
   _score: double
 }
 
@@ -1132,7 +1119,6 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
   fields?: Record<string, any>
   _id: string
   _index: IndexName
-  _type?: Type
   _routing?: Routing
   _score: double
   _source: TDocument
@@ -1261,8 +1247,12 @@ export type SearchHighlighterType = SearchBuiltinHighlighterType | string
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
   _id: Id
+<<<<<<< HEAD
   _score?: double | null
   _type?: Type
+=======
+  _score?: double
+>>>>>>> main
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
   highlight?: Record<string, string[]>
@@ -1659,7 +1649,6 @@ export interface TermvectorsResponse {
   _index: IndexName
   term_vectors?: Record<Field, TermvectorsTermVector>
   took: long
-  _type?: Type
   _version: VersionNumber
 }
 
@@ -1686,7 +1675,6 @@ export interface TermvectorsToken {
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   lang?: string
@@ -1726,6 +1714,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   from?: long
   ignore_unavailable?: boolean
   lenient?: boolean
+  max_docs?: long
   pipeline?: string
   preference?: string
   refresh?: boolean
@@ -1736,12 +1725,8 @@ export interface UpdateByQueryRequest extends RequestBase {
   scroll_size?: long
   search_timeout?: Time
   search_type?: SearchType
-  size?: long
   slices?: long
   sort?: string[]
-  _source?: SearchSourceConfigParam
-  _source_excludes?: Fields
-  _source_includes?: Fields
   stats?: string[]
   terminate_after?: long
   timeout?: Time
@@ -2447,10 +2432,6 @@ export interface TranslogStats {
 
 export type TransportAddress = string
 
-export type Type = string
-
-export type Types = Type | Type[]
-
 export type Username = string
 
 export type Uuid = string
@@ -2485,7 +2466,6 @@ export interface WriteResponseBase {
   result: Result
   _seq_no: SequenceNumber
   _shards: ShardStatistics
-  _type?: Type
   _version: VersionNumber
   forced_refresh?: boolean
 }
@@ -5121,7 +5101,6 @@ export interface QueryDslLikeDocument {
   doc?: any
   fields?: Field[]
   _id?: Id
-  _type?: Type
   _index?: IndexName
   per_field_analyzer?: Record<Field, string>
   routing?: Routing
@@ -6255,8 +6234,8 @@ export type CatMasterResponse = CatMasterMasterRecord[]
 
 export interface CatMlDataFrameAnalyticsDataFrameAnalyticsRecord {
   id?: Id
-  type?: Type
-  t?: Type
+  type?: string
+  t?: string
   create_time?: string
   ct?: string
   createTime?: string
@@ -6626,8 +6605,8 @@ export interface CatNodesNodesRecord {
   v?: VersionString
   flavor?: string
   f?: string
-  type?: Type
-  t?: Type
+  type?: string
+  t?: string
   build?: string
   b?: string
   jdk?: string
@@ -6914,8 +6893,8 @@ export interface CatPluginsPluginsRecord {
   v?: VersionString
   description?: string
   d?: string
-  type?: Type
-  t?: Type
+  type?: string
+  t?: string
 }
 
 export interface CatPluginsRequest extends CatCatRequestBase {
@@ -6941,8 +6920,8 @@ export interface CatRecoveryRecoveryRecord {
   time?: string
   t?: string
   ti?: string
-  type?: Type
-  ty?: Type
+  type?: string
+  ty?: string
   stage?: string
   st?: string
   source_host?: string
@@ -7330,8 +7309,8 @@ export interface CatTasksTasksRecord {
   ti?: Id
   parent_task_id?: string
   pti?: string
-  type?: Type
-  ty?: Type
+  type?: string
+  ty?: string
   start_time?: string
   start?: string
   timestamp?: string
@@ -7379,7 +7358,7 @@ export interface CatTemplatesTemplatesRecord {
 
 export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
-  size?: CatThreadPoolThreadPoolSize
+  time?: Time
 }
 
 export type CatThreadPoolResponse = CatThreadPoolThreadPoolRecord[]
@@ -7426,8 +7405,6 @@ export interface CatThreadPoolThreadPoolRecord {
   keep_alive?: string
   ka?: string
 }
-
-export type CatThreadPoolThreadPoolSize = 'k' | 'm' | 'g' | 't' | 'p'
 
 export interface CatTransformsRequest extends CatCatRequestBase {
   transform_id?: Id
@@ -9245,7 +9222,6 @@ export interface IndicesCloseResponse extends AcknowledgedResponseBase {
 
 export interface IndicesCreateRequest extends RequestBase {
   index: IndexName
-  include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
@@ -9390,17 +9366,6 @@ export interface IndicesExistsTemplateRequest extends RequestBase {
 
 export type IndicesExistsTemplateResponse = boolean
 
-export interface IndicesExistsTypeRequest extends RequestBase {
-  index: Indices
-  type: Types
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  local?: boolean
-}
-
-export type IndicesExistsTypeResponse = boolean
-
 export interface IndicesFlushRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -9433,7 +9398,6 @@ export interface IndicesGetRequest extends RequestBase {
   flat_settings?: boolean
   ignore_unavailable?: boolean
   include_defaults?: boolean
-  include_type_name?: boolean
   local?: boolean
   master_timeout?: Time
 }
@@ -9495,7 +9459,6 @@ export interface IndicesGetFieldMappingRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   include_defaults?: boolean
-  include_type_name?: boolean
   local?: boolean
 }
 
@@ -9532,7 +9495,6 @@ export interface IndicesGetIndexTemplateRequest extends RequestBase {
   name?: Name
   local?: boolean
   flat_settings?: boolean
-  include_type_name?: boolean
   master_timeout?: Time
 }
 
@@ -9550,7 +9512,6 @@ export interface IndicesGetMappingRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  include_type_name?: boolean
   local?: boolean
   master_timeout?: Time
 }
@@ -9576,7 +9537,6 @@ export interface IndicesGetSettingsResponse extends DictionaryResponseBase<Index
 export interface IndicesGetTemplateRequest extends RequestBase {
   name?: Names
   flat_settings?: boolean
-  include_type_name?: boolean
   local?: boolean
   master_timeout?: Time
 }
@@ -9655,7 +9615,6 @@ export interface IndicesPutMappingRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
   write_index_only?: boolean
@@ -9696,7 +9655,6 @@ export interface IndicesPutTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   flat_settings?: boolean
-  include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
   order?: integer
@@ -9799,7 +9757,7 @@ export interface IndicesRecoveryShardRecovery {
   total_time?: DateString
   total_time_in_millis: EpochMillis
   translog: IndicesRecoveryTranslogStatus
-  type: Type
+  type: string
   verify_index: IndicesRecoveryVerifyIndex
 }
 
@@ -9876,20 +9834,17 @@ export interface IndicesResolveIndexResponse {
   data_streams: IndicesResolveIndexResolveIndexDataStreamsItem[]
 }
 
-export type IndicesRolloverIndexRolloverMapping = MappingTypeMapping | Record<string, MappingTypeMapping>
-
 export interface IndicesRolloverRequest extends RequestBase {
   alias: IndexAlias
   new_index?: IndexName
   dry_run?: boolean
-  include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, IndicesAlias>
     conditions?: IndicesRolloverRolloverConditions
-    mappings?: IndicesRolloverIndexRolloverMapping
+    mappings?: MappingTypeMapping
     settings?: Record<string, any>
   }
 }
@@ -10109,7 +10064,6 @@ export interface IndicesStatsRequest extends RequestBase {
   include_segment_file_sizes?: boolean
   include_unloaded_segments?: boolean
   level?: Level
-  types?: Types
 }
 
 export interface IndicesStatsResponse {
@@ -10274,7 +10228,6 @@ export interface IndicesValidateQueryIndicesValidationExplanation {
 
 export interface IndicesValidateQueryRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   all_shards?: boolean
   analyzer?: string
@@ -10680,7 +10633,6 @@ export interface IngestSimulateDocumentSimulation {
   _parent?: string
   _routing?: string
   _source: Record<string, any>
-  _type?: Type
 }
 
 export interface IngestSimulateIngest {
@@ -11358,6 +11310,8 @@ export interface MlDelayedDataCheckConfig {
   enabled: boolean
 }
 
+export type MlDeploymentState = 'started' | 'starting' | 'fully_allocated'
+
 export interface MlDetectionRule {
   actions?: MlRuleAction[]
   conditions?: MlRuleCondition[]
@@ -11619,6 +11573,10 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
+export type MlPredictedValue = string | double
+
+export type MlRoutingState = 'failed' | 'started' | 'starting' | 'stopped' | 'stopping'
+
 export type MlRuleAction = 'skip_result' | 'skip_model_update'
 
 export interface MlRuleCondition {
@@ -11630,6 +11588,12 @@ export interface MlRuleCondition {
 export interface MlTimingStats {
   elapsed_time: integer
   iteration_time?: integer
+}
+
+export interface MlTopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
 }
 
 export interface MlTotalFeatureImportance {
@@ -11647,6 +11611,23 @@ export interface MlTotalFeatureImportanceStatistics {
   mean_magnitude: double
   max: integer
   min: integer
+}
+
+export interface MlTrainedModelAllocation {
+  allocation_state: MlDeploymentState
+  routing_table: Record<string, MlTrainedModelAllocationRoutingTable>
+  start_time: DateString
+  task_parameters: MlTrainedModelAllocationTaskParameters
+}
+
+export interface MlTrainedModelAllocationRoutingTable {
+  reason: string
+  routing_state: MlRoutingState
+}
+
+export interface MlTrainedModelAllocationTaskParameters {
+  model_bytes: integer
+  model_id: Id
 }
 
 export interface MlTrainedModelConfig {
@@ -11676,6 +11657,14 @@ export interface MlTrainedModelConfigMetadata {
   feature_importance_baseline?: Record<string, string>
   hyperparameters?: MlHyperparameter[]
   total_feature_importance?: MlTotalFeatureImportance[]
+}
+
+export interface MlTrainedModelEntities {
+  class_name: string
+  class_probability: double
+  entity: string
+  start_pos: integer
+  end_pos: integer
 }
 
 export interface MlTrainedModelInferenceStats {
@@ -12050,8 +12039,8 @@ export interface MlGetCategoriesRequest extends RequestBase {
   job_id: Id
   category_id?: CategoryId
   from?: integer
-  size?: integer
   partition_field_value?: string
+  size?: integer
   body?: {
     page?: MlPage
   }
@@ -12261,6 +12250,24 @@ export interface MlGetTrainedModelsStatsRequest extends RequestBase {
 export interface MlGetTrainedModelsStatsResponse {
   count: integer
   trained_model_stats: MlTrainedModelStats[]
+}
+
+export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  timeout?: Time
+  body?: {
+    docs: Record<string, string>[]
+  }
+}
+
+export interface MlInferTrainedModelDeploymentResponse {
+  entities?: MlTrainedModelEntities[]
+  is_truncated?: boolean
+  predicted_value?: MlPredictedValue[]
+  predicted_value_sequence?: string
+  prediction_probability?: double
+  top_classes: MlTopClassEntry[]
+  warning?: string
 }
 
 export interface MlInfoAnomalyDetectors {
@@ -12639,8 +12646,8 @@ export interface MlPutTrainedModelDefinitionPartRequest extends RequestBase {
   part: integer
   body?: {
     definition: string
-    total_definition_length: number
-    total_parts: number
+    total_definition_length: long
+    total_parts: integer
   }
 }
 
@@ -12712,6 +12719,19 @@ export interface MlStartDatafeedResponse {
   started: boolean
 }
 
+export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  inference_threads?: integer
+  model_threads?: integer
+  queue_capacity?: integer
+  timeout?: Time
+  wait_for?: MlDeploymentState
+}
+
+export interface MlStartTrainedModelDeploymentResponse {
+  allocation: MlTrainedModelAllocation
+}
+
 export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   allow_no_match?: boolean
@@ -12736,6 +12756,16 @@ export interface MlStopDatafeedRequest extends RequestBase {
 }
 
 export interface MlStopDatafeedResponse {
+  stopped: boolean
+}
+
+export interface MlStopTrainedModelDeploymentRequest extends RequestBase {
+  model_id: Id
+  allow_no_match?: boolean
+  force?: boolean
+}
+
+export interface MlStopTrainedModelDeploymentResponse {
   stopped: boolean
 }
 
@@ -13728,7 +13758,6 @@ export type RollupRollupResponse = any
 
 export interface RollupRollupSearchRequest extends RequestBase {
   index: Indices
-  type?: Type
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body?: {
@@ -14965,7 +14994,7 @@ export interface SqlTranslateResponse {
 }
 
 export interface SslCertificatesCertificateInformation {
-  alias?: string
+  alias: string | null
   expiry: DateString
   format: string
   has_private_key: boolean
@@ -15145,7 +15174,6 @@ export interface TransformPivot {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
   group_by?: Record<string, TransformPivotGroupByContainer>
-  max_page_search_size?: integer
 }
 
 export interface TransformPivotGroupByContainer {
@@ -15165,6 +15193,7 @@ export interface TransformRetentionPolicyContainer {
 }
 
 export interface TransformSettings {
+  align_checkpoints?: boolean
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
@@ -15182,6 +15211,7 @@ export interface TransformTimeSync {
 export interface TransformDeleteTransformRequest extends RequestBase {
   transform_id: Id
   force?: boolean
+  timeout?: Time
 }
 
 export interface TransformDeleteTransformResponse extends AcknowledgedResponseBase {
@@ -15266,6 +15296,7 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformPreviewTransformRequest extends RequestBase {
   transform_id?: Id
+  timeout?: Time
   body?: {
     dest?: ReindexDestination
     description?: string
@@ -15287,24 +15318,34 @@ export interface TransformPreviewTransformResponse<TTransform = unknown> {
 export interface TransformPutTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
+  timeout?: Time
   body?: {
     dest: ReindexDestination
     description?: string
     frequency?: Time
-    pivot?: TransformPivot
-    source: ReindexSource
-    settings?: TransformSettings
-    sync?: TransformSyncContainer
-    retention_policy?: TransformRetentionPolicyContainer
     latest?: TransformLatest
+    _meta?: Record<string, string>
+    pivot?: TransformPivot
+    retention_policy?: TransformRetentionPolicyContainer
+    settings?: TransformSettings
+    source: ReindexSource
+    sync?: TransformSyncContainer
   }
 }
 
 export interface TransformPutTransformResponse extends AcknowledgedResponseBase {
 }
 
+export interface TransformResetTransformRequest extends RequestBase {
+  transform_id: Id
+  force?: boolean
+}
+
+export interface TransformResetTransformResponse extends AcknowledgedResponseBase {
+}
+
 export interface TransformStartTransformRequest extends RequestBase {
-  transform_id: Name
+  transform_id: Id
   timeout?: Time
 }
 
@@ -15326,6 +15367,7 @@ export interface TransformStopTransformResponse extends AcknowledgedResponseBase
 export interface TransformUpdateTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
+  timeout?: Time
   body?: {
     dest?: ReindexDestination
     description?: string
@@ -15343,11 +15385,24 @@ export interface TransformUpdateTransformResponse {
   dest: ReindexDestination
   frequency: Time
   id: Id
-  pivot: TransformPivot
+  latest?: TransformLatest
+  pivot?: TransformPivot
+  retention_policy?: TransformRetentionPolicyContainer
   settings: TransformSettings
   source: ReindexSource
   sync?: TransformSyncContainer
   version: VersionString
+}
+
+export interface TransformUpgradeTransformsRequest extends RequestBase {
+  dry_run?: boolean
+  timeout?: Time
+}
+
+export interface TransformUpgradeTransformsResponse {
+  needs_update: integer
+  no_action: integer
+  updated: integer
 }
 
 export interface WatcherAcknowledgeState {
@@ -15580,7 +15635,6 @@ export interface WatcherIndexResultSummary {
   index: IndexName
   result: Result
   version: VersionNumber
-  type?: Type
 }
 
 export interface WatcherInputContainer {

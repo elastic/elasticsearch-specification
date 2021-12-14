@@ -139,7 +139,7 @@ async function resolve (version, hash) {
 
 function fromBranch (branch) {
   if (branch === 'main') {
-    return '8.0.0-SNAPSHOT'
+    return '8.1.0-SNAPSHOT'
   } else if (branch === '7.x') {
     return '7.x-SNAPSHOT'
   } else if (branch.startsWith('7.') && !isNaN(Number(branch.split('.')[1]))) {

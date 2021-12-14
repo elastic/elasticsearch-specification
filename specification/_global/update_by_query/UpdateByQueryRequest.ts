@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 import {
   Conflicts,
   ExpandWildcards,
-  Fields,
   Indices,
   Routing,
   SearchType,
@@ -32,7 +31,6 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
@@ -55,6 +53,7 @@ export interface Request extends RequestBase {
     from?: long
     ignore_unavailable?: boolean
     lenient?: boolean
+    max_docs?: long
     pipeline?: string
     preference?: string
     refresh?: boolean
@@ -65,12 +64,8 @@ export interface Request extends RequestBase {
     scroll_size?: long
     search_timeout?: Time
     search_type?: SearchType
-    size?: long
     slices?: long
     sort?: string[]
-    _source?: SourceConfigParam
-    _source_excludes?: Fields
-    _source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time

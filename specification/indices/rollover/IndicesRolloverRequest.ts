@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
 import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Time } from '@_types/Time'
-import { IndexRolloverMapping, RolloverConditions } from './types'
+import { RolloverConditions } from './types'
 
 /**
  * @rest_spec_name indices.rollover
@@ -38,7 +38,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     dry_run?: boolean
-    include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
@@ -46,8 +45,7 @@ export interface Request extends RequestBase {
   body: {
     aliases?: Dictionary<IndexName, Alias>
     conditions?: RolloverConditions
-    // Mappings is a dictionary if include_type_name is true, which is deprecated in 7.0 and removed in 8.0
-    mappings?: IndexRolloverMapping
+    mappings?: TypeMapping
     settings?: Dictionary<string, UserDefinedValue>
   }
 }

@@ -54,6 +54,12 @@
       ],
       "response": []
     },
+    "bulk": {
+      "request": [
+        "Request: missing json spec query parameter 'type'"
+      ],
+      "response": []
+    },
     "cat.aliases": {
       "request": [
         "Request: missing json spec query parameter 'format'",
@@ -366,9 +372,7 @@
     },
     "cat.thread_pool": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
@@ -542,12 +546,6 @@
     "delete": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "delete_by_query": {
-      "request": [
-        "Request: query parameter 'size' does not exist in the json spec"
       ],
       "response": []
     },
@@ -770,12 +768,6 @@
       ],
       "response": []
     },
-    "indices.create": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.create_data_stream": {
       "request": [
         "Request: should not have a body"
@@ -855,12 +847,6 @@
       ],
       "response": []
     },
-    "indices.exists_type": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
     "indices.field_usage_stats": {
       "request": [
         "Missing request & response"
@@ -875,13 +861,13 @@
     },
     "indices.forcemerge": {
       "request": [
+        "Request: missing json spec query parameter 'wait_for_completion'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": [
@@ -902,21 +888,18 @@
     },
     "indices.get_field_mapping": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get_index_template": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get_mapping": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -931,7 +914,6 @@
     },
     "indices.get_template": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -968,16 +950,9 @@
       ],
       "response": []
     },
-    "indices.put_mapping": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.put_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -1003,12 +978,6 @@
     "indices.resolve_index": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "indices.rollover": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1215,6 +1184,7 @@
     "ml.delete_trained_model": {
       "request": [
         "Request: missing json spec query parameter 'timeout'",
+        "Request: missing json spec query parameter 'force'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1233,12 +1203,6 @@
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'msle' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'",
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'r_squared' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'"
       ]
-    },
-    "ml.forecast": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
     },
     "ml.get_calendar_events": {
       "request": [
@@ -1301,19 +1265,7 @@
       ],
       "response": []
     },
-    "ml.infer_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.info": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "ml.open_job": {
       "request": [
         "Request: should not have a body"
       ],
@@ -1360,19 +1312,16 @@
     },
     "ml.start_trained_model_deployment": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'inference_threads' does not exist in the json spec",
+        "Request: query parameter 'model_threads' does not exist in the json spec",
+        "Request: query parameter 'queue_capacity' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
-    },
-    "ml.stop_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1953,6 +1902,13 @@
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
     },
+    "transform.reset_transform": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'",
+        "Request: should not have a body"
+      ],
+      "response": []
+    },
     "transform.start_transform": {
       "request": [
         "Request: should not have a body"
@@ -1967,15 +1923,13 @@
     },
     "transform.upgrade_transforms": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "update_by_query": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
-        "Request: missing json spec query parameter 'q'",
-        "Request: missing json spec query parameter 'max_docs'"
+        "Request: missing json spec query parameter 'q'"
       ],
       "response": []
     },

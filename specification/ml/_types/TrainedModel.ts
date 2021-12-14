@@ -23,6 +23,7 @@ import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import { Field, Id, Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { DateString } from '@_types/Time'
 
 export class TrainedModelStats {
   /** The unique identifier of the trained model. */
@@ -157,3 +158,94 @@ export enum TrainedModelType {
    */
   pytorch
 }
+
+export enum DeploymentState {
+  /**
+   * The trained model is started on at least one node.
+   */
+  started = 0,
+  /**
+   * Trained model deployment is starting but it is not yet deployed on any nodes.
+   */
+  starting = 1,
+  /**
+   * Trained model deployment has started on all valid nodes.
+   */
+  fully_allocated = 3
+}
+
+export class TrainedModelAllocationTaskParameters {
+  /**
+   * The size of the trained model in bytes.
+   */
+  model_bytes: integer
+  /**
+   * The unique identifier for the trained model.
+   */
+  model_id: Id
+}
+
+export enum RoutingState {
+  /**
+   * The allocation attempt failed.
+   */
+  failed = 0,
+  /**
+   * The trained model is allocated and ready to accept inference requests.
+   */
+  started = 1,
+  /**
+   * The trained model is attempting to allocate on this node; inference requests are not yet accepted.
+   */
+  starting = 2,
+  /**
+   * The trained model is fully deallocated from this node.
+   */
+  stopped = 3,
+  /**
+   * The trained model is being deallocated from this node.
+   */
+  stopping = 4
+}
+
+export class TrainedModelAllocationRoutingTable {
+  /**
+   * The reason for the current state. It is usually populated only when the
+   * `routing_state` is `failed`.
+   */
+  reason: string
+  /**
+   * The current routing state.
+   */
+  routing_state: RoutingState
+}
+
+export class TrainedModelAllocation {
+  /**
+   * The overall allocation state.
+   */
+  allocation_state: DeploymentState
+  /**
+   * The allocation state for each node.
+   */
+  routing_table: Dictionary<string, TrainedModelAllocationRoutingTable>
+  /**
+   * The timestamp when the deployment started.
+   */
+  start_time: DateString
+  task_parameters: TrainedModelAllocationTaskParameters
+}
+export class TrainedModelEntities {
+  class_name: string
+  class_probability: double
+  entity: string
+  start_pos: integer
+  end_pos: integer
+}
+export class TopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
+}
+
+export type PredictedValue = string | double

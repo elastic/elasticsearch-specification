@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
-import { Id, IndexName, Name, Type } from '@_types/common'
+import { Id, IndexName, Name } from '@_types/common'
 import { DateString } from '@_types/Time'
 
 export class Ingest {
@@ -49,5 +49,4 @@ export class DocumentSimulation {
   _parent?: string
   _routing?: string
   _source: Dictionary<string, UserDefinedValue>
-  _type?: Type
 }

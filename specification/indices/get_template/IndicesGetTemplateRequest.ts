@@ -32,7 +32,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     flat_settings?: boolean
-    include_type_name?: boolean
     local?: boolean
     master_timeout?: Time
   }
