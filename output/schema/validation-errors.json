@@ -1498,9 +1498,8 @@
     "nodes.reload_secure_settings": {
       "request": [],
       "response": [
-        "interface definition nodes._types:Process / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
-        "interface definition nodes._types:Jvm / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
-        "interface definition nodes._types:OperatingSystem / Property 'swap' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'"
+        "interface definition nodes._types:OperatingSystem / Property 'swap' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
+        "interface definition nodes._types:Process / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'"
       ]
     },
     "nodes.stats": {
