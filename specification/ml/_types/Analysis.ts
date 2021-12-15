@@ -58,7 +58,8 @@ export class AnalysisConfig {
    */
   latency?: Time
   /**
-   * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.
+   * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model.
+   * @server_default 30d
    */
   model_prune_window?: Time
   /**
