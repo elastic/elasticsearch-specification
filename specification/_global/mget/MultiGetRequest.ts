@@ -34,8 +34,10 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     preference?: string
-    realtime?: boolean // default: true
-    refresh?: boolean // default: false
+    /** @server_default true */
+    realtime?: boolean
+    /** @server_default false */
+    refresh?: boolean
     routing?: Routing
     _source?: SourceConfigParam
     _source_excludes?: Fields
