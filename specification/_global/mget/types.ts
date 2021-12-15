@@ -35,7 +35,7 @@ export class Operation {
    */
   _id: Id
   /**
-   * The index that contains the document. Required if no index is specified in the request URI.
+   * The index that contains the document.
    */
   _index?: IndexName
   /**
@@ -43,7 +43,7 @@ export class Operation {
    */
   routing?: Routing
   /**
-   * If false, excludes all _source fields. Defaults to true.
+   * If `false`, excludes all _source fields.
    */
   _source?: SourceConfig
   /**
