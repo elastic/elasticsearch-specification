@@ -82,7 +82,7 @@ export class PivotGroupByContainer {
  */
 export class RetentionPolicyContainer {
   /** Specifies that the transform uses a time field to set the retention policy. */
-  time: RetentionPolicy
+  time?: RetentionPolicy
 }
 
 export class RetentionPolicy {
@@ -154,7 +154,7 @@ export class Sync {}
  */
 export class SyncContainer {
   /** Specifies that the transform uses a time field to synchronize the source and destination indices. */
-  time: TimeSync
+  time?: TimeSync
 }
 
 export class TimeSync {
