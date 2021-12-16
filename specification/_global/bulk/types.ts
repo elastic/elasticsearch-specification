@@ -36,13 +36,11 @@ export class ResponseItem {
   _id?: string | null
   _index: string
   status: integer
-
   error?: ErrorCause
   _primary_term?: long
   result?: string
   _seq_no?: SequenceNumber
   _shards?: ShardStatistics
-  _type?: string
   _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Dictionary<string, UserDefinedValue>>

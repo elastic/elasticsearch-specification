@@ -75,7 +75,6 @@ export interface BulkResponseItem {
   result?: string
   _seq_no?: SequenceNumber
   _shards?: ShardStatistics
-  _type?: string
   _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Record<string, any>>
