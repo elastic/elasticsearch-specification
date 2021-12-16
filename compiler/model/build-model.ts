@@ -416,6 +416,13 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         'Class and interfaces can only have property declarations or signatures'
       )
       const property = modelProperty(member)
+      if (type.variants?.kind === 'container' && property.containerProperty == null) {
+        assert(
+          member,
+          !property.required,
+          'All @variants container properties must be optional'
+        )
+      }
       type.properties.push(property)
     }
 
