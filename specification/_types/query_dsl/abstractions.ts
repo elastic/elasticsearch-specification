@@ -151,7 +151,7 @@ export class QueryContainer {
   terms?: TermsQuery
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
-  wrapper: WrapperQuery
+  wrapper?: WrapperQuery
 
   /**
    * @deprecated 7.0.0 https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
