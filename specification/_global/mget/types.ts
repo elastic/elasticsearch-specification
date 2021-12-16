@@ -30,10 +30,25 @@ import { ErrorCause } from '@_types/Errors'
 import { GetResult } from '@global/get/types'
 
 export class Operation {
+  /**
+   * The unique document ID.
+   */
   _id: Id
+  /**
+   * The index that contains the document.
+   */
   _index?: IndexName
+  /**
+   * The key for the primary shard the document resides on. Required if routing is used during indexing.
+   */
   routing?: Routing
+  /**
+   * If `false`, excludes all _source fields.
+   */
   _source?: SourceConfig
+  /**
+   * The stored fields you want to retrieve.
+   */
   stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
