@@ -24,7 +24,7 @@ import { ScheduleContainer, ScheduleTriggerEvent } from './Schedule'
  * @variants container
  */
 export class TriggerContainer {
-  schedule: ScheduleContainer
+  schedule?: ScheduleContainer
 }
 
 export class TriggerEvent {}
@@ -33,7 +33,7 @@ export class TriggerEvent {}
  * @variants container
  */
 export class TriggerEventContainer {
-  schedule: ScheduleTriggerEvent
+  schedule?: ScheduleTriggerEvent
 }
 
 export class TriggerEventResult {
