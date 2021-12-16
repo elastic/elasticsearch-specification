@@ -14203,6 +14203,7 @@ export interface SecurityCreateApiKeyResponse {
   expiration?: long
   id: Id
   name: Name
+  encoded: string
 }
 
 export interface SecurityCreateApiKeyRoleDescriptor {
