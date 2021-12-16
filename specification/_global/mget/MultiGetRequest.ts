@@ -30,21 +30,63 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Name of the index to retrieve documents from when `ids` are specified, or when a document in the `docs` array does not specify an index.
+     */
     index?: IndexName
     type?: Type
   }
   query_parameters: {
+    /**
+     * Specifies the node or shard the operation should be performed on. Random by default.
+     */
     preference?: string
-    realtime?: boolean // default: true
-    refresh?: boolean // default: false
+    /**
+     * If `true`, the request is real-time as opposed to near-real-time.
+     * @server_default true
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
+     */
+    realtime?: boolean
+    /**
+     * If `true`, the request refreshes relevant shards before retrieving documents.
+     * @server_default false
+     */
+    refresh?: boolean
+    /**
+     * Custom value used to route operations to a specific shard.
+     */
     routing?: Routing
+    /**
+     * True or false to return the `_source` field or not, or a list of fields to return.
+     */
     _source?: SourceConfigParam
+    /**
+     * A comma-separated list of source fields to exclude from the response.
+     * You can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
+     */
     _source_excludes?: Fields
+    /**
+     * A comma-separated list of source fields to include in the response.
+     * If this parameter is specified, only these source fields are returned. You can exclude fields from this subset using the `_source_excludes` query parameter.
+     * If the `_source` parameter is `false`, this parameter is ignored.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
+     */
     _source_includes?: Fields
+    /**
+     * If `true`, retrieves the document fields stored in the index rather than the document `_source`.
+     * @server_default false
+     */
     stored_fields?: Fields
   }
   body: {
+    /**
+     * The documents you want to retrieve. Required if no index is specified in the request URI.
+     */
     docs?: Operation[]
+    /**
+     * The IDs of the documents you want to retrieve. Allowed when the index is specified in the request URI.
+     */
     ids?: Ids
   }
 }
