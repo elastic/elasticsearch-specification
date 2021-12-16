@@ -1368,6 +1368,12 @@
       ],
       "response": []
     },
+    "ml.get_model_snapshot_upgrade_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_overall_buckets": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_jobs'"
