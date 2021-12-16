@@ -40,7 +40,7 @@ import { Sort, SortResults } from '@_types/sort'
 export class Hit<TDocument> {
   _index: IndexName
   _id: Id
-  _score?: double | null
+  _score: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
@@ -64,7 +64,7 @@ export class HitsMetadata<T> {
   total?: TotalHits | long
   hits: Hit<T>[]
 
-  max_score?: double | null
+  max_score: double | null
 }
 
 export class HitMetadata<TDocument> {
