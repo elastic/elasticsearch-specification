@@ -1907,7 +1907,10 @@
       "response": []
     },
     "transform.preview_transform": {
-      "request": [],
+      "request": [
+        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required",
+        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required"
+      ],
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
@@ -1975,9 +1978,12 @@
     "watcher.execute_watch": {
       "request": [
         "interface definition watcher._types:SearchInputRequestDefinition / Property 'template' / instance_of - '_global.search_template:Request' is a request and must only be used in endpoints",
-        "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'"
+        "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
+        "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
       ],
-      "response": []
+      "response": [
+        "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
+      ]
     },
     "watcher.get_watch": {
       "request": [

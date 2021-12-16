@@ -15396,7 +15396,7 @@ export interface TransformRetentionPolicy {
 }
 
 export interface TransformRetentionPolicyContainer {
-  time: TransformRetentionPolicy
+  time?: TransformRetentionPolicy
 }
 
 export interface TransformSettings {
@@ -15407,7 +15407,7 @@ export interface TransformSettings {
 }
 
 export interface TransformSyncContainer {
-  time: TransformTimeSync
+  time?: TransformTimeSync
 }
 
 export interface TransformTimeSync {
@@ -16016,11 +16016,11 @@ export interface WatcherTimeOfYear {
 }
 
 export interface WatcherTriggerContainer {
-  schedule: WatcherScheduleContainer
+  schedule?: WatcherScheduleContainer
 }
 
 export interface WatcherTriggerEventContainer {
-  schedule: WatcherScheduleTriggerEvent
+  schedule?: WatcherScheduleTriggerEvent
 }
 
 export interface WatcherTriggerEventResult {
