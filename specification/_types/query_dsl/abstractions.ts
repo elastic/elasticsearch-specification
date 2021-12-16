@@ -151,6 +151,7 @@ export class QueryContainer {
   terms?: TermsQuery
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
+  wrapper: WrapperQuery
 
   /**
    * @deprecated 7.0.0 https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
@@ -189,6 +190,11 @@ export class CombinedFieldsQuery extends QueryBase {
 
   /** @server_default none */
   zero_terms_query?: CombinedFieldsZeroTerms
+}
+
+export class WrapperQuery extends QueryBase {
+  /** A base64 encoded query. The binary data format can be any of JSON, YAML, CBOR or SMILE encodings */
+  query: string
 }
 
 export enum CombinedFieldsOperator {
