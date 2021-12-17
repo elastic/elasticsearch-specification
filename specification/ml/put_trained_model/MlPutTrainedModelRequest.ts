@@ -21,6 +21,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { Definition, Input } from './types'
 import { TrainedModelType } from '../_types/TrainedModel'
 
@@ -73,6 +74,11 @@ export interface Request extends RequestBase {
      * @server_default tree_ensemble
      */
     model_type?: TrainedModelType
+    /**
+     * The estimated memory usage in bytes to keep the trained model in memory.
+     * Provide this when the model definition is not supplied.
+     */
+    model_size_bytes?: long
     /**
      * An array of tags to organize the model.
      */
