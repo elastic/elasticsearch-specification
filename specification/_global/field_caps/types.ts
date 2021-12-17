@@ -18,7 +18,8 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices } from '@_types/common'
+import { IndexName, Indices } from '@_types/common'
+import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 
 export class FieldCapability {
   aggregatable: boolean
@@ -29,4 +30,27 @@ export class FieldCapability {
   searchable: boolean
   type: string
   metadata_field?: boolean
+  /**
+   * [experimental] Whether this field is used as a time series dimension.
+   * @since 8.0.0
+   */
+  time_series_dimension?: boolean
+  /**
+   * [experimental] Contains metric type if this fields is used as a time series
+   * metrics, absent if the field is not used as metric.
+   * @since 8.0.0
+   */
+  time_series_metric?: TimeSeriesMetricType
+  /**
+   * [experimental] If this list is present in response then some indices have the
+   * field marked as a dimension and other indices, the ones in this list, do not.
+   * @since 8.0.0
+   */
+  non_dimension_indices?: IndexName[]
+  /**
+   * [experimental] The list of indices where this field is present if these indices
+   * don’t have the same `time_series_metric` value for this field.
+   * @since 8.0.0
+   */
+  metric_conflicts_indices?: IndexName[]
 }
