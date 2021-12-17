@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ApiKey } from "@security/_types/ApiKey";
-import { integer } from "@_types/Numeric";
+import { ApiKey } from '@security/_types/ApiKey'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {

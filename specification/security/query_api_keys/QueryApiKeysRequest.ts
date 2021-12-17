@@ -41,8 +41,8 @@ export interface Request extends RequestBase {
      * search_after parameter.
      * @server_default 0
      */
-     from?: integer
-     /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html */
+    from?: integer
+    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html */
     sort?: Sort
     /**
      * The number of hits to return. By default, you cannot page through more
@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
      * hits, use the search_after parameter.
      * @server_default 10
      */
-     size?: integer
-     search_after?: SortResults
+    size?: integer
+    search_after?: SortResults
   }
 }
