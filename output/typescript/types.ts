@@ -12592,6 +12592,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     input: MlPutTrainedModelInput
     metadata?: any
     model_type?: MlTrainedModelType
+    model_size_bytes?: long
     tags?: string[]
   }
 }
