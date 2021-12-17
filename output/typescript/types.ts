@@ -14042,6 +14042,17 @@ export interface SearchableSnapshotsStatsResponse {
   total: any
 }
 
+export interface SecurityApiKey {
+  creation: long
+  expiration?: long
+  id: Id
+  invalidated: boolean
+  name: Name
+  realm: string
+  username: Username
+  metadata?: Metadata
+}
+
 export interface SecurityApplicationGlobalUserPrivileges {
   manage: SecurityManageUserPrivileges
 }
@@ -14126,16 +14137,11 @@ export interface SecurityUser {
   enabled: boolean
 }
 
-export interface SecurityAuthenticateApiKey {
-  id: string
-  name: Name
-}
-
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
 
 export interface SecurityAuthenticateResponse {
-  api_key?: SecurityAuthenticateApiKey
+  api_key?: SecurityApiKey
   authentication_realm: SecurityRealmInfo
   email?: string | null
   full_name?: Name | null
@@ -14330,17 +14336,6 @@ export interface SecurityEnableUserRequest extends RequestBase {
 export interface SecurityEnableUserResponse {
 }
 
-export interface SecurityGetApiKeyApiKey {
-  creation: long
-  expiration?: long
-  id: Id
-  invalidated: boolean
-  name: Name
-  realm: string
-  username: Username
-  metadata?: Metadata
-}
-
 export interface SecurityGetApiKeyRequest extends RequestBase {
   id?: Id
   name?: Name
@@ -14350,7 +14345,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
 }
 
 export interface SecurityGetApiKeyResponse {
-  api_keys: SecurityGetApiKeyApiKey[]
+  api_keys: SecurityApiKey[]
 }
 
 export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
@@ -14507,17 +14502,17 @@ export interface SecurityGetUserPrivilegesResponse {
   run_as: string[]
 }
 
-export interface SecurityGrantApiKeyApiKey {
+export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
+
+export interface SecurityGrantApiKeyGrantApiKey {
   name: Name
   expiration?: Time
   role_descriptors?: Record<string, any>[]
 }
 
-export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
-
 export interface SecurityGrantApiKeyRequest extends RequestBase {
   body?: {
-    api_key: SecurityGrantApiKeyApiKey
+    api_key: SecurityGrantApiKeyGrantApiKey
     grant_type: SecurityGrantApiKeyApiKeyGrantType
     access_token?: string
     username?: Username
@@ -14667,6 +14662,22 @@ export interface SecurityPutUserRequest extends RequestBase {
 
 export interface SecurityPutUserResponse {
   created: boolean
+}
+
+export interface SecurityQueryApiKeysRequest extends RequestBase {
+  body?: {
+    query?: QueryDslQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryApiKeysResponse {
+  total: integer
+  count: integer
+  api_keys: SecurityApiKey[]
 }
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
