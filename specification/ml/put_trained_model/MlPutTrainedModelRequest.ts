@@ -76,7 +76,8 @@ export interface Request extends RequestBase {
     model_type?: TrainedModelType
     /**
      * The estimated memory usage in bytes to keep the trained model in memory.
-     * Provide this when the model definition is not supplied.
+     * This property is supported only if defer_definition_decompression is true
+     * or the model definition is not supplied.
      */
     model_size_bytes?: long
     /**
