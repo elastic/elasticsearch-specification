@@ -186,7 +186,7 @@ export class CombinedFieldsQuery extends QueryBase {
   /** @server_default or */
   operator?: CombinedFieldsOperator
 
-  mimimum_should_match?: MinimumShouldMatch
+  minimum_should_match?: MinimumShouldMatch
 
   /** @server_default none */
   zero_terms_query?: CombinedFieldsZeroTerms
