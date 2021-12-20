@@ -4822,7 +4822,7 @@ export interface QueryDslCombinedFieldsQuery extends QueryDslQueryBase {
   query: string
   auto_generate_synonyms_phrase_query?: boolean
   operator?: QueryDslCombinedFieldsOperator
-  mimimum_should_match?: MinimumShouldMatch
+  minimum_should_match?: MinimumShouldMatch
   zero_terms_query?: QueryDslCombinedFieldsZeroTerms
 }
 
