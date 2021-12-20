@@ -2000,7 +2000,7 @@ export type Host = string
 
 export type HttpHeaders = Record<string, string | string[]>
 
-export type Id = string
+export type Id = string | number
 
 export type Ids = Id | Id[]
 

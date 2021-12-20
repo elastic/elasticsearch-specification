@@ -425,6 +425,10 @@ function buildEnum (type: M.Enum): string {
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {
+  // A lot of yaml tests use numbers for document ids, even if it really should be a string
+  if (type.name.name === 'Id' && type.name.namespace === '_types') {
+    return 'export type Id = string | number\n'
+  }
   const openGenerics = type.generics?.map(t => t.name) ?? []
   return `export type ${createName(type.name)}${buildGenerics(type.generics)} = ${buildValue(type.type, openGenerics)}\n`
 }
