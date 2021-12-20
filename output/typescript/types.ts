@@ -704,7 +704,7 @@ export interface RankEvalRankEvalHit {
 
 export interface RankEvalRankEvalHitItem {
   hit: RankEvalRankEvalHit
-  rating?: double
+  rating?: double | null
 }
 
 export interface RankEvalRankEvalMetric {
@@ -2140,6 +2140,7 @@ export interface NodeShard {
   allocation_id?: Record<string, Id>
   recovery_source?: Record<string, Id>
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
+  relocating_node?: null
 }
 
 export interface NodeStatistics {
