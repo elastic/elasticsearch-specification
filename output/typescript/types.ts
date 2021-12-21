@@ -708,7 +708,7 @@ export interface RankEvalRankEvalHit {
 
 export interface RankEvalRankEvalHitItem {
   hit: RankEvalRankEvalHit
-  rating?: double
+  rating?: double | null
 }
 
 export interface RankEvalRankEvalMetric {
@@ -2144,6 +2144,7 @@ export interface NodeShard {
   allocation_id?: Record<string, Id>
   recovery_source?: Record<string, Id>
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
+  relocating_node?: null
 }
 
 export interface NodeStatistics {
@@ -3267,7 +3268,7 @@ export interface AggregationsPercentageScoreHeuristic {
 
 export interface AggregationsPercentileRanksAggregation extends AggregationsFormatMetricAggregationBase {
   keyed?: boolean
-  values?: double[]
+  values?: double[] | null
   hdr?: AggregationsHdrMethod
   tdigest?: AggregationsTDigest
 }
@@ -4857,8 +4858,8 @@ export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase {
   gte?: DateMath
   lt?: DateMath
   lte?: DateMath
-  from?: DateMath
-  to?: DateMath
+  from?: DateMath | null
+  to?: DateMath | null
   format?: DateFormat
   time_zone?: TimeZone
 }
@@ -5212,8 +5213,8 @@ export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
   gte?: double
   lt?: double
   lte?: double
-  from?: double
-  to?: double
+  from?: double | null
+  to?: double | null
 }
 
 export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
@@ -5788,24 +5789,24 @@ export type CatAliasesResponse = CatAliasesAliasesRecord[]
 export interface CatAllocationAllocationRecord {
   shards?: string
   s?: string
-  'disk.indices'?: ByteSize
-  di?: ByteSize
-  diskIndices?: ByteSize
-  'disk.used'?: ByteSize
-  du?: ByteSize
-  diskUsed?: ByteSize
-  'disk.avail'?: ByteSize
-  da?: ByteSize
-  diskAvail?: ByteSize
-  'disk.total'?: ByteSize
-  dt?: ByteSize
-  diskTotal?: ByteSize
-  'disk.percent'?: Percentage
-  dp?: Percentage
-  diskPercent?: Percentage
-  host?: Host
-  h?: Host
-  ip?: Ip
+  'disk.indices'?: ByteSize | null
+  di?: ByteSize | null
+  diskIndices?: ByteSize | null
+  'disk.used'?: ByteSize | null
+  du?: ByteSize | null
+  diskUsed?: ByteSize | null
+  'disk.avail'?: ByteSize | null
+  da?: ByteSize | null
+  diskAvail?: ByteSize | null
+  'disk.total'?: ByteSize | null
+  dt?: ByteSize | null
+  diskTotal?: ByteSize | null
+  'disk.percent'?: Percentage | null
+  dp?: Percentage | null
+  diskPercent?: Percentage | null
+  host?: Host | null
+  h?: Host | null
+  ip?: Ip | null
   node?: string
   n?: string
 }
@@ -5938,20 +5939,20 @@ export interface CatIndicesIndicesRecord {
   r?: string
   'shards.replica'?: string
   shardsReplica?: string
-  'docs.count'?: string
-  dc?: string
-  docsCount?: string
-  'docs.deleted'?: string
-  dd?: string
-  docsDeleted?: string
+  'docs.count'?: string | null
+  dc?: string | null
+  docsCount?: string | null
+  'docs.deleted'?: string | null
+  dd?: string | null
+  docsDeleted?: string | null
   'creation.date'?: string
   cd?: string
   'creation.date.string'?: string
   cds?: string
-  'store.size'?: string
-  ss?: string
-  storeSize?: string
-  'pri.store.size'?: string
+  'store.size'?: string | null
+  ss?: string | null
+  storeSize?: string | null
+  'pri.store.size'?: string | null
   'completion.size'?: string
   cs?: string
   completionSize?: string
@@ -7053,15 +7054,15 @@ export interface CatShardsShardsRecord {
   primaryOrReplica?: string
   state?: string
   st?: string
-  docs?: string
-  d?: string
-  dc?: string
-  store?: string
-  sto?: string
-  ip?: string
+  docs?: string | null
+  d?: string | null
+  dc?: string | null
+  store?: string | null
+  sto?: string | null
+  ip?: string | null
   id?: string
-  node?: string
-  n?: string
+  node?: string | null
+  n?: string | null
   sync_id?: string
   'unassigned.reason'?: string
   ur?: string
@@ -7353,8 +7354,8 @@ export interface CatTemplatesTemplatesRecord {
   order?: string
   o?: string
   p?: string
-  version?: VersionString
-  v?: VersionString
+  version?: VersionString | null
+  v?: VersionString | null
   composed_of?: string
   c?: string
 }
@@ -7399,14 +7400,14 @@ export interface CatThreadPoolThreadPoolRecord {
   l?: string
   completed?: string
   c?: string
-  core?: string
-  cr?: string
-  max?: string
-  mx?: string
-  size?: string
-  sz?: string
-  keep_alive?: string
-  ka?: string
+  core?: string | null
+  cr?: string | null
+  max?: string | null
+  mx?: string | null
+  size?: string | null
+  sz?: string | null
+  keep_alive?: string | null
+  ka?: string | null
 }
 
 export interface CatTransformsRequest extends CatCatRequestBase {
@@ -7427,14 +7428,14 @@ export interface CatTransformsTransformsRecord {
   documents_processed?: string
   docp?: string
   documentsProcessed?: string
-  checkpoint_progress?: string
-  cp?: string
-  checkpointProgress?: string
-  last_search_time?: string
-  lst?: string
-  lastSearchTime?: string
-  changes_last_detection_time?: string
-  cldt?: string
+  checkpoint_progress?: string | null
+  cp?: string | null
+  checkpointProgress?: string | null
+  last_search_time?: string | null
+  lst?: string | null
+  lastSearchTime?: string | null
+  changes_last_detection_time?: string | null
+  cldt?: string | null
   create_time?: string
   ct?: string
   createTime?: string
@@ -8710,6 +8711,8 @@ export interface IlmPolicy {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   policy: Name
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
@@ -8724,6 +8727,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
+  index_creation_date_millis?: EpochMillis
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
   managed: true
@@ -8734,6 +8738,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   step_info?: Record<string, any>
   step_time_millis: EpochMillis
   phase_execution: IlmExplainLifecycleLifecycleExplainPhaseExecution
+  time_since_index_creation?: Time
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
@@ -8751,6 +8756,8 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmExplainLifecycleResponse {
