@@ -687,12 +687,16 @@
     },
     "ilm.delete_lifecycle": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ilm.explain_lifecycle": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -1667,12 +1671,6 @@
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
-      ],
-      "response": []
-    },
-    "security.query_api_keys": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
