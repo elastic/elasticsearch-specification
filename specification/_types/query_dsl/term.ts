@@ -74,8 +74,8 @@ export class DateRangeQuery extends RangeQueryBase {
   gte?: DateMath
   lt?: DateMath
   lte?: DateMath
-  from?: DateMath
-  to?: DateMath
+  from?: DateMath | null
+  to?: DateMath | null
   format?: DateFormat
   time_zone?: TimeZone
 }
@@ -85,8 +85,8 @@ export class NumberRangeQuery extends RangeQueryBase {
   gte?: double
   lt?: double
   lte?: double
-  from?: double
-  to?: double
+  from?: double | null
+  to?: double | null
 }
 
 /** @codegen_names date, number */

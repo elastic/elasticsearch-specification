@@ -58,6 +58,7 @@ export class NodeShard {
   allocation_id?: Dictionary<string, Id>
   recovery_source?: Dictionary<string, Id>
   unassigned_info?: UnassignedInformation
+  relocating_node?: null
 }
 
 /**
