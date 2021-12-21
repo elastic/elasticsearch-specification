@@ -512,6 +512,7 @@ export interface MgetOperation {
   routing?: Routing
   _source?: SearchSourceConfig
   stored_fields?: Fields
+  version?: VersionNumber
   version_type?: VersionType
 }
 

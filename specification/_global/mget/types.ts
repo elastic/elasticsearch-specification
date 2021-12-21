@@ -18,7 +18,14 @@
  */
 
 import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Fields, Id, IndexName, Routing, VersionNumber, VersionType } from '@_types/common'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { GetResult } from '@global/get/types'
 
