@@ -509,11 +509,13 @@ export interface MgetMultiGetError {
 export interface MgetOperation {
   _id: Id
   _index?: IndexName
+  _routing?: Routing
   routing?: Routing
   _source?: SearchSourceConfig
+  _stored_fields?: Fields
   stored_fields?: Fields
+  _version?: VersionNumber
   version?: VersionNumber
-  version_type?: VersionType
 }
 
 export interface MgetRequest extends RequestBase {

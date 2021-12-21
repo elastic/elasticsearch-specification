@@ -24,7 +24,6 @@ import {
   IndexName,
   Routing,
   VersionNumber,
-  VersionType
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { GetResult } from '@global/get/types'
@@ -40,6 +39,7 @@ export class Operation {
   _index?: IndexName
   /**
    * The key for the primary shard the document resides on. Required if routing is used during indexing.
+   * @aliases routing
    */
   _routing?: Routing
   /**
@@ -48,10 +48,13 @@ export class Operation {
   _source?: SourceConfig
   /**
    * The stored fields you want to retrieve.
+   * @aliases stored_fields
    */
   _stored_fields?: Fields
+  /**
+   * @aliases version
+   */
   _version?: VersionNumber
-  version_type?: VersionType
 }
 
 /**
