@@ -8692,9 +8692,20 @@ export interface GraphExploreResponse {
 
 export type IlmActions = any
 
+export interface IlmConfiguration {
+  rollover?: IndicesRolloverRolloverConditions
+  forcemerge?: IlmForceMergeConfiguration
+  shrink?: IlmShrinkConfiguration
+}
+
+export interface IlmForceMergeConfiguration {
+  max_num_segments: integer
+}
+
 export interface IlmPhase {
   actions?: IlmActions
   min_age?: Time
+  configurations?: IlmConfiguration
 }
 
 export interface IlmPhases {
@@ -8707,6 +8718,10 @@ export interface IlmPhases {
 export interface IlmPolicy {
   phases: IlmPhases
   name?: Name
+}
+
+export interface IlmShrinkConfiguration {
+  number_of_shards: integer
 }
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
@@ -9874,7 +9889,10 @@ export interface IndicesRolloverRolloverConditions {
   max_age?: Time
   max_docs?: long
   max_size?: string
+  max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
+  max_primary_shard_size_bytes?: ByteSize
+  max_age_millis?: EpochMillis
 }
 
 export interface IndicesSegmentsIndexSegment {
@@ -16506,6 +16524,18 @@ export interface XpackUsageMlDataFrameAnalyticsJobsMemory {
 export interface XpackUsageMlInference {
   ingest_processors: Record<string, XpackUsageMlInferenceIngestProcessor>
   trained_models: XpackUsageMlInferenceTrainedModels
+  deployments?: XpackUsageMlInferenceDeployments
+}
+
+export interface XpackUsageMlInferenceDeployments {
+  count: integer
+  inference_counts: MlJobStatistics
+  model_sizes_bytes: MlJobStatistics
+  time_ms: XpackUsageMlInferenceDeploymentsTimeMs
+}
+
+export interface XpackUsageMlInferenceDeploymentsTimeMs {
+  avg: double
 }
 
 export interface XpackUsageMlInferenceIngestProcessor {
@@ -16526,14 +16556,15 @@ export interface XpackUsageMlInferenceTrainedModels {
   estimated_heap_memory_usage_bytes?: MlJobStatistics
   count?: XpackUsageMlInferenceTrainedModelsCount
   _all: XpackUsageMlCounter
+  model_size_bytes?: MlJobStatistics
 }
 
 export interface XpackUsageMlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
-  regression: long
-  classification: long
+  regression?: long
+  classification?: long
 }
 
 export interface XpackUsageMonitoring extends XpackUsageBase {
