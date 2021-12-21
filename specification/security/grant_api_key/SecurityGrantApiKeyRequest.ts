@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Password, Username } from '@_types/common'
-import { ApiKey, ApiKeyGrantType } from './types'
+import { GrantApiKey, ApiKeyGrantType } from './types'
 
 /**
  * @rest_spec_name security.grant_api_key
@@ -28,7 +28,7 @@ import { ApiKey, ApiKeyGrantType } from './types'
  */
 export interface Request extends RequestBase {
   body: {
-    api_key: ApiKey
+    api_key: GrantApiKey
     grant_type: ApiKeyGrantType
     access_token?: string
     username?: Username
