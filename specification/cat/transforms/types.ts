@@ -43,17 +43,17 @@ export class TransformsRecord {
    * progress of the checkpoint
    * @aliases cp, checkpointProgress
    */
-  'checkpoint_progress'?: string
+  'checkpoint_progress'?: string | null
   /**
    * last time transform searched for updates
    * @aliases lst, lastSearchTime
    */
-  'last_search_time'?: string
+  'last_search_time'?: string | null
   /**
    * changes last detected time
    * @aliases cldt
    */
-  'changes_last_detection_time'?: string
+  'changes_last_detection_time'?: string | null
   /**
    * transform creation time
    * @aliases ct, createTime
