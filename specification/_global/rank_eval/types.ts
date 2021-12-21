@@ -135,7 +135,7 @@ export class RankEvalMetricDetail {
 
 export class RankEvalHitItem {
   hit: RankEvalHit
-  rating?: double
+  rating?: double | null
 }
 
 export class RankEvalHit {
