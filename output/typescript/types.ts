@@ -8772,6 +8772,8 @@ export interface IlmGetLifecycleLifecycle {
 
 export interface IlmGetLifecycleRequest extends RequestBase {
   policy?: Name
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecycle> {
