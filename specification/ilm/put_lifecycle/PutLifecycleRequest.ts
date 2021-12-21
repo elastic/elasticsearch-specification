@@ -20,6 +20,7 @@
 import { Policy } from '@ilm/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ilm.put_lifecycle
@@ -28,8 +29,23 @@ import { Name } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * Identifier for the policy.
+     * @codegen_name name
+     */
     policy: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Time
   }
   body: {
     policy?: Policy
