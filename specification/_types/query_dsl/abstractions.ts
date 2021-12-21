@@ -95,6 +95,7 @@ import {
 
 /**
  * @variants container
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
  */
 export class QueryContainer {
   bool?: BoolQuery

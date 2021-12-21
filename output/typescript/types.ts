@@ -320,7 +320,7 @@ export interface ExplainResponse<TDocument = unknown> {
 export interface FieldCapsFieldCapability {
   aggregatable: boolean
   indices?: Indices
-  meta?: Record<string, string[]>
+  meta?: Metadata
   non_aggregatable_indices?: Indices
   non_searchable_indices?: Indices
   searchable: boolean
