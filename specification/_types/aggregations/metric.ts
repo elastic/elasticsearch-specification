@@ -95,7 +95,7 @@ export class MinAggregation extends FormatMetricAggregationBase {}
 
 export class PercentileRanksAggregation extends FormatMetricAggregationBase {
   keyed?: boolean
-  values?: double[]
+  values?: double[] | null
   hdr?: HdrMethod
   tdigest?: TDigest
 }
