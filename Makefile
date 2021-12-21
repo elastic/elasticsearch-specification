@@ -1,24 +1,7 @@
 SHELL := /bin/bash
 
-validation-all:  ## Run Validation on all Endpoints
-	@echo ">> running validations for all endpoints .."
-	./run-validations.sh
-
-validation-all-fresh:  ## Run Validation on all Endpoints with a fresh setup
-	@echo ">> running validations for all endpoints .."
-	PULL_LATEST=true ./run-validations.sh
-
-validation-api:  ## Validate Endpoint with param: api=<api-name>
-	@echo ">> validating request and response of Endpoint: $(api)"
-	./run-validations.sh --api $(api)
-
-validation-api-request:  ## Validate request of Endpoint with param: api=<api-name>
-	@echo ">> validating request of Endpoint: $(api)"
-	./run-validations.sh --api $(api) --request
-
-validation-api-response:  ## Validate response of Endpoint with param: api=<api-name>
-	@echo ">> validating response of Endpoint: $(api)"
-	./run-validations.sh --api $(api) --response
+validate: # Validate a given endpoint request or response
+	@node compiler/run-validations.mjs --api $(api) --type $(type) --stack-version $(stack-version)
 
 license-check:	## Add the license headers to the files
 	@echo ">> checking license headers .."

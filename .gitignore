@@ -49,3 +49,5 @@ specification/lib
 
 artifacts
 .github/download-artifacts/package-lock.json
+
+.validation.json
