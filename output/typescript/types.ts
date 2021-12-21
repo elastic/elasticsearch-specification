@@ -8709,6 +8709,8 @@ export interface IlmPolicy {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   policy: Name
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
@@ -8723,6 +8725,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
+  index_creation_date_millis?: EpochMillis
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
   managed: true
@@ -8733,6 +8736,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   step_info?: Record<string, any>
   step_time_millis: EpochMillis
   phase_execution: IlmExplainLifecycleLifecycleExplainPhaseExecution
+  time_since_index_creation?: Time
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
@@ -8750,6 +8754,8 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmExplainLifecycleResponse {
