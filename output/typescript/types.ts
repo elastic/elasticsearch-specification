@@ -320,12 +320,16 @@ export interface ExplainResponse<TDocument = unknown> {
 export interface FieldCapsFieldCapability {
   aggregatable: boolean
   indices?: Indices
-  meta?: Record<string, string[]>
+  meta?: Metadata
   non_aggregatable_indices?: Indices
   non_searchable_indices?: Indices
   searchable: boolean
   type: string
   metadata_field?: boolean
+  time_series_dimension?: boolean
+  time_series_metric?: MappingTimeSeriesMetricType
+  non_dimension_indices?: IndexName[]
+  metric_conflicts_indices?: IndexName[]
 }
 
 export interface FieldCapsRequest extends RequestBase {
