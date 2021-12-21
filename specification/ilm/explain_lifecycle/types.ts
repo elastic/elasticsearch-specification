@@ -30,6 +30,7 @@ export class LifecycleExplainManaged {
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
+  index_creation_date_millis?: EpochMillis
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
   managed: true
@@ -40,6 +41,7 @@ export class LifecycleExplainManaged {
   step_info?: Dictionary<string, UserDefinedValue>
   step_time_millis: EpochMillis
   phase_execution: LifecycleExplainPhaseExecution
+  time_since_index_creation?: Time
 }
 
 export class LifecycleExplainUnmanaged {
