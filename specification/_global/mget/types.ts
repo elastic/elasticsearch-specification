@@ -41,7 +41,7 @@ export class Operation {
   /**
    * The key for the primary shard the document resides on. Required if routing is used during indexing.
    */
-  routing?: Routing
+  _routing?: Routing
   /**
    * If `false`, excludes all _source fields.
    */
@@ -49,8 +49,8 @@ export class Operation {
   /**
    * The stored fields you want to retrieve.
    */
-  stored_fields?: Fields
-  version?: VersionNumber
+  _stored_fields?: Fields
+  _version?: VersionNumber
   version_type?: VersionType
 }
 
