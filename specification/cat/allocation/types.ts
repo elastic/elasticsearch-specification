@@ -31,36 +31,36 @@ export class AllocationRecord {
    * disk used by ES indices
    * @aliases di,diskIndices
    */
-  'disk.indices'?: ByteSize
+  'disk.indices'?: ByteSize | null
   /**
    * disk used (total, not just ES)
    * @aliases du,diskUsed
    */
-  'disk.used'?: ByteSize
+  'disk.used'?: ByteSize | null
   /**
    * disk available
    * @aliases da,diskAvail
    */
-  'disk.avail'?: ByteSize
+  'disk.avail'?: ByteSize | null
   /**
    * total capacity of all volumes
    * @aliases dt,diskTotal
    */
-  'disk.total'?: ByteSize
+  'disk.total'?: ByteSize | null
   /**
    * percent disk used
    * @aliases dp,diskPercent
    */
-  'disk.percent'?: Percentage
+  'disk.percent'?: Percentage | null
   /**
    * host of node
    * @aliases h
    */
-  host?: Host
+  host?: Host | null
   /**
    * ip of node
    */
-  ip?: Ip
+  ip?: Ip | null
   /**
    * name of node
    * @aliases n

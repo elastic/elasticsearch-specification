@@ -42,16 +42,16 @@ export class ShardsRecord {
    * number of docs in shard
    * @aliases d,dc
    */
-  'docs'?: string
+  'docs'?: string | null
   /**
    * store size of shard (how much disk it uses)
    * @aliases sto
    */
-  'store'?: string
+  'store'?: string | null
   /**
    * ip of node where it lives
    */
-  'ip'?: string
+  'ip'?: string | null
   /**
    * unique id of node where it lives
    */
@@ -60,7 +60,7 @@ export class ShardsRecord {
    * name of node where it lives
    * @aliases n
    */
-  'node'?: string
+  'node'?: string | null
   /**
    * sync id
    */

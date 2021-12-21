@@ -39,7 +39,7 @@ export class TemplatesRecord {
    * version
    * @aliases v
    */
-  'version'?: VersionString
+  'version'?: VersionString | null
   /**
    * component templates comprising index template
    * @aliases c
