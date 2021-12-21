@@ -9,15 +9,15 @@ validation-all-fresh:  ## Run Validation on all Endpoints with a fresh setup
 	PULL_LATEST=true ./run-validations.sh
 
 validation-api:  ## Validate Endpoint with param: api=<api-name>
-	@echo ">> validating request and response of Endpoint: $(api)"
+	test -n "$(api)"    # missing api param
 	./run-validations.sh --api $(api)
 
 validation-api-request:  ## Validate request of Endpoint with param: api=<api-name>
-	@echo ">> validating request of Endpoint: $(api)"
+	test -n "$(api)"    # missing api param
 	./run-validations.sh --api $(api) --request
 
 validation-api-response:  ## Validate response of Endpoint with param: api=<api-name>
-	@echo ">> validating response of Endpoint: $(api)"
+	test -n "$(api)"    # missing api param
 	./run-validations.sh --api $(api) --response
 
 license-check:	## Add the license headers to the files
