@@ -23,9 +23,12 @@ import { Name } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Creates a lifecycle policy. If the specified policy exists, the policy is replaced and the policy version is incremented.
  * @rest_spec_name ilm.put_lifecycle
  * @since 6.6.0
  * @stability stable
+ * @cluster_privileges manage_ilm
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
