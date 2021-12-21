@@ -18,7 +18,7 @@
  */
 
 import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Fields, Id, IndexName, Routing, VersionNumber } from '@_types/common'
+import { Fields, Id, IndexName, Routing, VersionNumber, VersionType } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { GetResult } from '@global/get/types'
 
@@ -33,22 +33,18 @@ export class Operation {
   _index?: IndexName
   /**
    * The key for the primary shard the document resides on. Required if routing is used during indexing.
-   * @aliases routing
    */
-  _routing?: Routing
+  routing?: Routing
   /**
    * If `false`, excludes all _source fields.
    */
   _source?: SourceConfig
   /**
    * The stored fields you want to retrieve.
-   * @aliases stored_fields
    */
-  _stored_fields?: Fields
-  /**
-   * @aliases version
-   */
-  _version?: VersionNumber
+  stored_fields?: Fields
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 /**
