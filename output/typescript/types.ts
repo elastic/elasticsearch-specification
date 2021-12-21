@@ -2004,7 +2004,7 @@ export type Host = string
 
 export type HttpHeaders = Record<string, string | string[]>
 
-export type Id = string
+export type Id = string | number
 
 export type Ids = Id | Id[]
 
@@ -4825,7 +4825,7 @@ export interface QueryDslCombinedFieldsQuery extends QueryDslQueryBase {
   query: string
   auto_generate_synonyms_phrase_query?: boolean
   operator?: QueryDslCombinedFieldsOperator
-  mimimum_should_match?: MinimumShouldMatch
+  minimum_should_match?: MinimumShouldMatch
   zero_terms_query?: QueryDslCombinedFieldsZeroTerms
 }
 
