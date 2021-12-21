@@ -104,20 +104,20 @@ export class ThreadPoolRecord {
    * core number of threads in a scaling thread pool
    * @aliases cr
    */
-  'core'?: string
+  'core'?: string | null
   /**
    * maximum number of threads in a scaling thread pool
    * @aliases mx
    */
-  'max'?: string
+  'max'?: string | null
   /**
    * number of threads in a fixed thread pool
    * @aliases sz
    */
-  'size'?: string
+  'size'?: string | null
   /**
    * thread keep alive time
    * @aliases ka
    */
-  'keep_alive'?: string
+  'keep_alive'?: string | null
 }
