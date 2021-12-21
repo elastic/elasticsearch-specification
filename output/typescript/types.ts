@@ -8706,6 +8706,8 @@ export interface IlmPolicy {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   policy: Name
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
