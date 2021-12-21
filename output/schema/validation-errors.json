@@ -1679,12 +1679,6 @@
       ],
       "response": []
     },
-    "security.query_api_keys": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.saml_authenticate": {
       "request": [
         "Missing request & response"
