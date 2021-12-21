@@ -14,11 +14,11 @@ validation-api:  ## Validate Endpoint with param: api=<api-name>
 
 validation-api-request:  ## Validate request of Endpoint with param: api=<api-name>
 	test -n "$(api)"    # missing api param
-	./run-validations.sh --api $(api) --request
+	./run-validations.sh --api $(api) --request --verbose
 
 validation-api-response:  ## Validate response of Endpoint with param: api=<api-name>
 	test -n "$(api)"    # missing api param
-	./run-validations.sh --api $(api) --response
+	./run-validations.sh --api $(api) --response --verbose
 
 license-check:	## Add the license headers to the files
 	@echo ">> checking license headers .."
