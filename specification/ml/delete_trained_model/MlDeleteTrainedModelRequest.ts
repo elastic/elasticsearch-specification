@@ -35,4 +35,7 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  query_parameters: {
+    force?: boolean
+  }
 }

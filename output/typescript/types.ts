@@ -11813,6 +11813,7 @@ export interface MlDeleteModelSnapshotResponse extends AcknowledgedResponseBase 
 
 export interface MlDeleteTrainedModelRequest extends RequestBase {
   model_id: Id
+  force?: boolean
 }
 
 export interface MlDeleteTrainedModelResponse extends AcknowledgedResponseBase {
