@@ -32,7 +32,7 @@ nvm install 14
 $ git clone https://github.com/elastic/elasticsearch-specification.git
 
 # install the dependencies
-$ make setup-env
+$ make setup
 
 # generate the JSON representation
 $ make spec-generate
@@ -46,11 +46,8 @@ $ cat output/schema/schema.json
 ```
 Usage:
   make <target>
-  validation-all   Run Validation on all Endpoints
-  validation-all-fresh  Run Validation on all Endpoints with a fresh setup
-  validation-api   Validate Endpoint with param: api=<api-name>
-  validation-api-request  Validate request of Endpoint with param: api=<api-name>
-  validation-api-response  Validate response of Endpoint with param: api=<api-name>
+  validate         Validate a given endpoint request or response
+  validate-no-cache  Validate a given endpoint request or response without local cache
   license-check    Add the license headers to the files
   license-add      Add the license headers to the files
   spec-format-check  Check specification formatting rules
@@ -60,6 +57,7 @@ Usage:
   spec-imports-fix  Fix the TypeScript imports
   spec-dangling-types  Generate the dangling types rreport
   setup-env        Install dependencies for contrib target
+  clean-dep        Clean npm dependencies
   contrib          Pre contribution target
   help             Display help
 ```
@@ -189,39 +187,17 @@ git clone https://github.com/elastic/elasticsearch-specification.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
 cd elasticsearch-specification
-STACK_VERSION=... ./run-validations.sh
+# this will validate the xpack.info request type agains the 8.1.0 stack version
+make validate api=xpack.info type=request stack-version=8.1.0-SNAPSHOT
 ```
 
 The last command above will install all the dependencies and run, download
 the test recordings and finally validate the specification.
-If you need to download the recordings again, run `STACK_VERSION=... PULL_LATEST=true ./run-validations.sh`.
-
-You can validate a specific API with the `--api` option, same goes for `--request` and `--response`.
-For example, the following command validates the index request api:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api index --request
-```
-The following command validates the index response api:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api index --response
-```
-The following command validates the index request and response api:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api index --request --response
-```
+If you need to download the recordings again, run `make validate-no-cache api=xpack.info type=request stack-version=8.1.0-SNAPSHOT`.
 
 Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.
 Finally open a pull request with your changes.
-
-Namespaced APIs can be validated in the same way, for example:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api cat.health --request
-```
 
 ## Documentation
 
@@ -269,12 +245,7 @@ You should copy from there the updated endpoint defintion and change it here.
 
 ### The validation in broken on GitHub but works on my machine!
 
-Very likely the recordings on your machine are stale, you can download
-the latest version with:
-
-```sh
-STACK_VERSION=... PULL_LATEST=true ./run-validations.sh
-```
+Very likely the recordings on your machine are stale, rerun the validation with the `validate-no-cache` make target.
 
 You should pull the latest change from the `client-flight-recorder` as well.
 
@@ -309,7 +280,7 @@ If you are using MacOS, run the following command to fix the issue:
 brew install coreutils
 ```
 
-### The `recordings-dev` folder contains a zip file and not the `tmp-*` folders
+### The `recordings` folder contains a zip file and not the `tmp-*` folders
 
 Very likely your system does not have the `zip` command installed.
 ```sh
