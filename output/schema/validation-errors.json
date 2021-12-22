@@ -949,7 +949,6 @@
     },
     "indices.put_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
         "Request: missing json spec query parameter 'master_timeout'"
       ],

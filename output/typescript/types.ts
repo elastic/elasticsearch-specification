@@ -9618,6 +9618,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
   name: Name
+  create?: boolean
   body?: {
     index_patterns?: Indices
     composed_of?: Name[]
