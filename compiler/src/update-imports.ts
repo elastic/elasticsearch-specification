@@ -46,7 +46,7 @@ Example: npm run imports:fix -- --help
   process.exit(0)
 }
 
-const specsFolder = join(__dirname, '..', 'specification')
+const specsFolder = join(__dirname, '..', '..', 'specification')
 const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 
 const aliasedImports: string[] = []
@@ -81,11 +81,13 @@ async function fixImports (): Promise<void> {
     console.log(`Updating imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`)
     sourceFile.fixMissingImports({ semicolons: ts.SemicolonPreference.Remove }, {
       quotePreference: 'single',
+      // @ts-expect-error
       importModuleSpecifierPreference: 'auto',
       includePackageJsonAutoImports: 'off'
     })
     sourceFile.organizeImports({ semicolons: ts.SemicolonPreference.Remove }, {
       quotePreference: 'single',
+      // @ts-expect-error
       importModuleSpecifierPreference: 'auto',
       includePackageJsonAutoImports: 'off'
     })
