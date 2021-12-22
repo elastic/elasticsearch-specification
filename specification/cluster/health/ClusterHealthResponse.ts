@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { HealthStatus, IndexName } from '@_types/common'
+import { HealthStatus, IndexName, Name } from '@_types/common'
 import { integer, Percentage } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
 import { IndexHealthStats } from './types'
@@ -28,13 +28,14 @@ import { IndexHealthStats } from './types'
  */
 export class Response {
   body: {
-    /** The number of active primary shards. */ active_primary_shards: integer
+    /** The number of active primary shards. */
+    active_primary_shards: integer
     /** The total number of active primary and replica shards. */
     active_shards: integer
     /** The ratio of active shards in the cluster expressed as a percentage. */
     active_shards_percent_as_number: Percentage
     /** The name of the cluster. */
-    cluster_name: string
+    cluster_name: Name
     /** The number of shards whose allocation has been delayed by the timeout settings. */
     delayed_unassigned_shards: integer
     indices?: Dictionary<IndexName, IndexHealthStats>
@@ -42,6 +43,7 @@ export class Response {
     initializing_shards: integer
     /** The number of nodes that are dedicated data nodes. */
     number_of_data_nodes: integer
+    /** The number of unfinished fetches. */
     number_of_in_flight_fetch: integer
     /** The number of nodes within the cluster. */
     number_of_nodes: integer

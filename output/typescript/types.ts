@@ -7947,7 +7947,7 @@ export interface ClusterHealthRequest extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
-  wait_for_nodes?: string
+  wait_for_nodes?: string | integer
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
   wait_for_status?: HealthStatus
@@ -7957,7 +7957,7 @@ export interface ClusterHealthResponse {
   active_primary_shards: integer
   active_shards: integer
   active_shards_percent_as_number: Percentage
-  cluster_name: string
+  cluster_name: Name
   delayed_unassigned_shards: integer
   indices?: Record<IndexName, ClusterHealthIndexHealthStats>
   initializing_shards: integer
