@@ -26,9 +26,8 @@ import {
   SyncContainer
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, Metadata } from '@_types/common'
 import { Time } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Creates a transform.
@@ -101,7 +100,7 @@ export interface Request extends RequestBase {
     /**
      * Defines optional transform metadata.
      */
-    _meta?: Dictionary<string, string>
+    _meta?: Metadata
     /**
      * The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields
      * and the aggregation to reduce the data.

@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, PropertyName } from '@_types/common'
+import { ExpandWildcards, Indices, Metadata, PropertyName } from '@_types/common'
 import {
   DynamicMapping,
   DynamicTemplate
@@ -81,7 +81,7 @@ export interface Request extends RequestBase {
      * not used at all by Elasticsearch, but can be used to store
      * application-specific metadata.
      */
-    _meta?: Dictionary<string, UserDefinedValue>
+    _meta?: Metadata
     /**
      * Automatically map strings into numeric data types for all fields.
      * @server_default false

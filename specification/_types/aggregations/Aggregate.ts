@@ -21,7 +21,7 @@ import { HitsMetadata } from '@global/search/_types/hits'
 import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AggregateName, Field, FieldValue } from '@_types/common'
+import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
 import { GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DateMathTime, EpochMillis } from '@_types/Time'
@@ -118,7 +118,7 @@ export type Aggregate =
 // Exceptions to this scheme exist and are indicated in the relevant aggregates
 
 export class AggregateBase {
-  meta?: Dictionary<string, UserDefinedValue>
+  meta?: Metadata
 }
 
 /** @variant name=cardinality */

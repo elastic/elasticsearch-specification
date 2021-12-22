@@ -17,13 +17,12 @@
  * under the License.
  */
 
+import { TransientMetadata } from '@security/get_role/types'
 import {
   IndicesPrivileges,
   GlobalPrivilege,
   ApplicationPrivileges
 } from '@security/_types/Privileges'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata } from '@_types/common'
 
 export class RoleDescriptorWrapper {
@@ -37,5 +36,5 @@ export class RoleDescriptor {
   applications?: ApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
-  transient_metadata?: Dictionary<string, UserDefinedValue>
+  transient_metadata?: TransientMetadata
 }

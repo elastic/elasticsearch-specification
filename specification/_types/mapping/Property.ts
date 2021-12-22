@@ -41,7 +41,7 @@ import {
 
 export class PropertyBase {
   local_metadata?: Metadata
-  meta?: Dictionary<string, string>
+  meta?: Metadata
   name?: PropertyName
   properties?: Dictionary<PropertyName, Property>
   ignore_above?: integer

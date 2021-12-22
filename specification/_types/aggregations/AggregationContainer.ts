@@ -19,6 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata } from '@_types/common'
 import { integer, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import {
@@ -110,7 +111,7 @@ export class AggregationContainer {
   /**
    * @variant container_property
    */
-  meta?: Dictionary<string, UserDefinedValue>
+  meta?: Metadata
 
   adjacency_matrix?: AdjacencyMatrixAggregation
   auto_date_histogram?: AutoDateHistogramAggregation
