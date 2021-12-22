@@ -10679,12 +10679,12 @@ export interface IngestSimulateResponse {
 export interface LicenseLicense {
   expiry_date_in_millis: EpochMillis
   issue_date_in_millis: EpochMillis
+  start_date_in_millis?: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes?: long
+  max_nodes?: long | null
   max_resource_units?: long
   signature: string
-  start_date_in_millis: EpochMillis
   type: LicenseLicenseType
   uid: string
 }
@@ -10745,8 +10745,7 @@ export interface LicensePostAcknowledgement {
 export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
-    license?: LicenseLicense
-    licenses?: LicenseLicense[]
+    licenses: LicenseLicense[]
   }
 }
 
