@@ -12942,6 +12942,7 @@ export interface MlValidateRequest extends RequestBase {
     data_description?: MlDataDescription
     description?: string
     model_plot?: MlModelPlotConfig
+    model_snapshot_id?: Id
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
   }
