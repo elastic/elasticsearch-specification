@@ -542,10 +542,6 @@ export interface MgetResponse<TDocument = unknown> {
 
 export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
 
-export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponse<TDocument> {
-  status: integer
-}
-
 export interface MsearchMultiSearchResult<TDocument = unknown> {
   took: long
   responses: MsearchResponseItem<TDocument>[]
@@ -593,7 +589,7 @@ export type MsearchRequestItem = MsearchMultisearchHeader | MsearchMultisearchBo
 
 export type MsearchResponse<TDocument = unknown> = MsearchMultiSearchResult<TDocument>
 
-export type MsearchResponseItem<TDocument = unknown> = MsearchMultiSearchItem<TDocument> | ErrorResponseBase
+export type MsearchResponseItem<TDocument = unknown> = SearchResponse<TDocument> | ErrorResponseBase
 
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
@@ -1897,7 +1893,7 @@ export type ErrorCause = ErrorCauseKeys
 
 export interface ErrorResponseBase {
   error: ErrorCause
-  status: integer
+  status?: integer
 }
 
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'

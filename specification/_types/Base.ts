@@ -73,7 +73,7 @@ export class ErrorResponseBase {
   // If the error is a string, it means that it was not caused by an exception on ES side, but on the HTTP routing layer.
   // This should never happen in clients, because we assume we will never send malformed request.
   error: ErrorCause
-  status: integer
+  status?: integer
 }
 
 export class IndicesResponseBase extends AcknowledgedResponseBase {

@@ -65,9 +65,5 @@ export class MultiSearchResult<TDocument> {
 
 /** @codegen_names result, failure */
 export type ResponseItem<TDocument> =
-  | MultiSearchItem<TDocument>
+  | SearchResponse<TDocument>
   | ErrorResponseBase
-
-export class MultiSearchItem<TDocument> extends SearchResponse<TDocument> {
-  status: integer
-}
