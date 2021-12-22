@@ -42,6 +42,7 @@ const DAY = 1000 * 60 * 60 * 24
 async function run () {
   spinner.text = 'Checking requirements'
 
+  const noCache = argv.cache === false
   const metadata = await readMetadata()
   const lastRun = metadata.lastRun ? new Date(metadata.lastRun) : new Date(0)
 
@@ -68,7 +69,7 @@ async function run () {
 
   const isCompilerInstalled = await $`[[ -d ${path.join(compilerPath, 'node_modules')} ]]`.exitCode === 0
   const isTsGeneratorInstalled = await $`[[ -d ${path.join(tsGeneratorPath, 'node_modules')} ]]`.exitCode === 0
-  if (!isCompilerInstalled || !isTsGeneratorInstalled) {
+  if (noCache || !isCompilerInstalled || !isTsGeneratorInstalled) {
     spinner.text = 'It looks like you didn\'t installed the project dependencies, doing that for you'
     await $`npm install --prefix ${compilerPath}`
     await $`npm install --prefix ${tsGeneratorPath}`
@@ -78,7 +79,7 @@ async function run () {
   const isUploadRecordingInstalled = await $`[[ -d ${path.join(uploadRecordingsPath, 'node_modules')} ]]`.exitCode === 0
   const isTypesValidatorInstalled = await $`[[ -d ${path.join(tsValidationPath, 'node_modules')} ]]`.exitCode === 0
 
-  if (!isCloneEsInstalled || !isUploadRecordingInstalled || !isTypesValidatorInstalled) {
+  if (noCache || !isCloneEsInstalled || !isUploadRecordingInstalled || !isTypesValidatorInstalled) {
     spinner.text = 'It looks like you didn\'t installed the flight recorder project dependencies, doing that for you'
     await $`npm install --prefix ${cloneEsPath}`
     await $`npm install --prefix ${uploadRecordingsPath}`
@@ -86,13 +87,13 @@ async function run () {
   }
 
   const isCompilerBuilt = await $`[[ -d ${path.join(compilerPath, 'lib')} ]]`.exitCode === 0
-  if (!isCompilerBuilt) {
+  if (noCache || !isCompilerBuilt) {
     spinner.text = 'Optimizing the compiler'
     await $`npm run build --prefix ${compilerPath}`
   }
 
   const isTsGeneratorBuilt = await $`[[ -d ${path.join(tsGeneratorPath, 'lib')} ]]`.exitCode === 0
-  if (!isTsGeneratorBuilt) {
+  if (noCache || !isTsGeneratorBuilt) {
     spinner.text = 'Optimizing the ts generator'
     await $`npm run build --prefix ${tsGeneratorPath}`
   }
@@ -129,7 +130,7 @@ async function run () {
 
   const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : 'master'
 
-  if (lastRun.getTime() + DAY < Date.now() || metadata.branchName !== branchName || metadata.branchName !== branchName) {
+  if (noCache || lastRun.getTime() + DAY < Date.now() || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
     metadata.branchName = branchName
 
