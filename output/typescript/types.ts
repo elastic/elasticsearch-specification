@@ -10700,14 +10700,14 @@ export interface LicenseDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface LicenseGetLicenseInformation {
-  expiry_date: DateString
-  expiry_date_in_millis: EpochMillis
+  expiry_date?: DateString
+  expiry_date_in_millis?: EpochMillis
   issue_date: DateString
   issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes: long
-  max_resource_units?: integer
+  max_nodes: long | null
+  max_resource_units?: integer | null
   status: LicenseLicenseStatus
   type: LicenseLicenseType
   uid: Uuid

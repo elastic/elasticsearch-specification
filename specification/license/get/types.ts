@@ -23,14 +23,14 @@ import { integer, long } from '@_types/Numeric'
 import { DateString, EpochMillis } from '@_types/Time'
 
 export class LicenseInformation {
-  expiry_date: DateString
-  expiry_date_in_millis: EpochMillis
+  expiry_date?: DateString
+  expiry_date_in_millis?: EpochMillis
   issue_date: DateString
   issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes: long
-  max_resource_units?: integer
+  max_nodes: long | null
+  max_resource_units?: integer | null
   status: LicenseStatus
   type: LicenseType
   uid: Uuid
