@@ -2500,18 +2500,18 @@ export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucke
 export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsChildrenAggregate | AggregationsGeoLineAggregate
 
 export interface AggregationsAggregateBase {
-  meta?: Record<string, any>
+  meta?: Metadata
 }
 
 export interface AggregationsAggregation {
-  meta?: Record<string, any>
+  meta?: Metadata
   name?: string
 }
 
 export interface AggregationsAggregationContainer {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  meta?: Record<string, any>
+  meta?: Metadata
   adjacency_matrix?: AggregationsAdjacencyMatrixAggregation
   auto_date_histogram?: AggregationsAutoDateHistogramAggregation
   avg?: AggregationsAverageAggregation
@@ -4639,7 +4639,7 @@ export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | M
 
 export interface MappingPropertyBase {
   local_metadata?: Metadata
-  meta?: Record<string, string>
+  meta?: Metadata
   name?: PropertyName
   properties?: Record<PropertyName, MappingProperty>
   ignore_above?: integer
@@ -9636,7 +9636,7 @@ export interface IndicesPutMappingRequest extends RequestBase {
     dynamic_date_formats?: string[]
     dynamic_templates?: Record<string, MappingDynamicTemplate> | Record<string, MappingDynamicTemplate>[]
     _field_names?: MappingFieldNamesField
-    _meta?: Record<string, any>
+    _meta?: Metadata
     numeric_detection?: boolean
     properties?: Record<PropertyName, MappingProperty>
     _routing?: MappingRoutingField
@@ -14428,7 +14428,7 @@ export interface SecurityGetServiceAccountsRoleDescriptor {
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
-  transient_metadata?: Record<string, any>
+  transient_metadata?: SecurityGetRoleTransientMetadata
 }
 
 export interface SecurityGetServiceAccountsRoleDescriptorWrapper {
@@ -15556,7 +15556,7 @@ export interface TransformPutTransformRequest extends RequestBase {
     description?: string
     frequency?: Time
     latest?: TransformLatest
-    _meta?: Record<string, string>
+    _meta?: Metadata
     pivot?: TransformPivot
     retention_policy?: TransformRetentionPolicyContainer
     settings?: TransformSettings
