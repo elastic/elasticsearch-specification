@@ -51,3 +51,5 @@ artifacts
 .github/download-artifacts/package-lock.json
 
 .validation.json
+compiler/lib
+typescript-generator/lib

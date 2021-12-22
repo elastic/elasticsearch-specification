@@ -22,9 +22,9 @@
 import assert from 'assert'
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
-import * as M from '../compiler/model/metamodel'
+import * as M from './metamodel'
 
-const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', 'schema', 'schema.json'), 'utf8'))
+const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
 
 // We don't skip `CommonQueryParameters` and `CommonCatQueryParameters`
 // behaviors because we ue them for sharing common query parameters
@@ -59,7 +59,7 @@ for (const type of model.types) {
 }
 
 writeFileSync(
-  join(__dirname, '..', 'output', 'typescript', 'types.ts'),
+  join(__dirname, '..', '..', 'output', 'typescript', 'types.ts'),
   definitions,
   'utf8'
 )
