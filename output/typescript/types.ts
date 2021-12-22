@@ -8865,6 +8865,7 @@ export interface IndicesAliasDefinition {
   is_write_index?: boolean
   routing?: string
   search_routing?: string
+  is_hidden?: boolean
 }
 
 export interface IndicesDataStream {
