@@ -11956,13 +11956,13 @@ export interface MlFlushJobRequest extends RequestBase {
   advance_time?: DateString
   calc_interim?: boolean
   end?: DateString
-  skip_time?: string
+  skip_time?: EpochMillis
   start?: DateString
   body?: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString
-    skip_time?: string
+    skip_time?: EpochMillis
     start?: DateString
   }
 }
