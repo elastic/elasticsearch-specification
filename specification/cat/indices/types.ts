@@ -58,13 +58,13 @@ export class IndicesRecord {
    * available docs
    * @aliases dc,docsCount
    */
-  'docs.count'?: string
+  'docs.count'?: string | null
 
   /**
    * deleted docs
    * @aliases dd,docsDeleted
    */
-  'docs.deleted'?: string
+  'docs.deleted'?: string | null
 
   /**
    * index creation date (millisecond value)
@@ -82,12 +82,12 @@ export class IndicesRecord {
    * store size of primaries & replicas
    * @aliases ss,storeSize
    */
-  'store.size'?: string
+  'store.size'?: string | null
 
   /**
    * store size of primaries
    */
-  'pri.store.size'?: string
+  'pri.store.size'?: string | null
 
   /**
    * size of completion
