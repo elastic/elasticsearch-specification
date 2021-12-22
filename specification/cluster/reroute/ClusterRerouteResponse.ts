@@ -18,9 +18,10 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AcknowledgedResponseBase } from '@_types/Base'
 import { RerouteExplanation } from './types'
 
-export class Response {
+export class Response extends AcknowledgedResponseBase {
   body: {
     explanations?: RerouteExplanation[]
     /**
