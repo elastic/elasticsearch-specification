@@ -4787,6 +4787,11 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
+  _data_stream_timestamp?: MappingTypeMappingDataStreamTimestamp
+}
+
+export interface MappingTypeMappingDataStreamTimestamp {
+  enabled: boolean
 }
 
 export interface MappingUnsignedLongNumberProperty extends MappingNumberPropertyBase {
@@ -9010,6 +9015,8 @@ export interface IndicesIndexSettings {
   'index.provided_name'?: Name
   creation_date?: DateString
   'index.creation_date'?: DateString
+  creation_date_string?: DateString
+  'index.creation_date_string'?: DateString
   uuid?: Uuid
   'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
@@ -9056,6 +9063,7 @@ export interface IndicesIndexState {
 
 export interface IndicesIndexVersioning {
   created: VersionString
+  created_string?: VersionString
 }
 
 export interface IndicesNumericFielddata {

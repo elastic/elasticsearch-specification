@@ -227,6 +227,10 @@ export class IndexSettings {
    */
   creation_date?: DateString
   /**
+   * @aliases index.creation_date_string
+   */
+  creation_date_string?: DateString
+  /**
    * @aliases index.uuid
    */
   uuid?: Uuid
@@ -288,6 +292,7 @@ export enum IndexCheckOnStartup {
 
 export class IndexVersioning {
   created: VersionString
+  created_string?: VersionString
 }
 
 export class IndexSettingsLifecycle {
