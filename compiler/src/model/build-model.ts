@@ -56,7 +56,7 @@ import {
   sourceLocation
 } from './utils'
 
-const specsFolder = join(__dirname, '..', '..', 'specification')
+const specsFolder = join(__dirname, '..', '..', '..', 'specification')
 const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 const jsonSpec = buildJsonSpec()
 
@@ -121,7 +121,7 @@ export function compileSpecification (endpointMappings: Record<string, model.End
   }
 
   writeFileSync(
-    join(__dirname, '..', '..', 'output', 'dangling-types', 'dangling.csv'),
+    join(__dirname, '..', '..', '..', 'output', 'dangling-types', 'dangling.csv'),
     definedButNeverUsed.join('\n'),
     'utf8'
   )

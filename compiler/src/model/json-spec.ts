@@ -23,7 +23,7 @@ import { join } from 'path'
 import { readdirSync } from 'fs'
 import * as model from './metamodel'
 
-const jsonSpecPath = join(__dirname, '..', '..', 'specification', '_json_spec')
+const jsonSpecPath = join(__dirname, '..', '..', '..', 'specification', '_json_spec')
 
 export interface JsonSpec {
   documentation: {

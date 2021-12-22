@@ -20,9 +20,9 @@
 import assert from 'assert'
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
-import * as M from '../compiler/model/metamodel'
+import * as M from './metamodel'
 
-const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', 'schema', 'schema.json'), 'utf8'))
+const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
 
 const clientDefinitions = `/*
  * Licensed to Elasticsearch B.V. under one or more contributor

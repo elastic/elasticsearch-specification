@@ -59,7 +59,7 @@ export default class Compiler {
     }
 
     await writeFile(
-      join(__dirname, '..', 'output', 'schema', 'schema.json'),
+      join(__dirname, '..', '..', 'output', 'schema', 'schema.json'),
       stringify(this.model, null, 2),
       'utf8'
     )
@@ -67,7 +67,7 @@ export default class Compiler {
     this.errors.log()
 
     await writeFile(
-      join(__dirname, '..', 'output', 'schema', 'validation-errors.json'),
+      join(__dirname, '..', '..', 'output', 'schema', 'validation-errors.json'),
       stringify(this.errors, null, 2),
       'utf8'
     )
