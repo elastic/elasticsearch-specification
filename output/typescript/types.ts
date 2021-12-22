@@ -8174,6 +8174,27 @@ export interface ClusterStatsClusterFileSystem {
   total_in_bytes: long
 }
 
+export interface ClusterStatsClusterIndexingPressure {
+  memory: ClusterStatsClusterIndexingPressureMemory
+}
+
+export interface ClusterStatsClusterIndexingPressureMemory {
+  limit_in_bytes: long
+  current: ClusterStatsClusterIndexingPressureMemorySummary
+  total: ClusterStatsClusterIndexingPressureMemorySummary
+}
+
+export interface ClusterStatsClusterIndexingPressureMemorySummary {
+  all_in_bytes: long
+  combined_coordinating_and_primary_in_bytes: long
+  coordinating_in_bytes: long
+  coordinating_rejections?: long
+  primary_in_bytes: long
+  primary_rejections?: long
+  replica_in_bytes: long
+  replica_rejections?: long
+}
+
 export interface ClusterStatsClusterIndices {
   completion: CompletionStats
   count: long
@@ -8262,6 +8283,7 @@ export interface ClusterStatsClusterNodes {
   plugins: PluginStats[]
   process: ClusterStatsClusterProcess
   versions: VersionString[]
+  indexing_pressure: ClusterStatsClusterIndexingPressure
 }
 
 export interface ClusterStatsClusterOperatingSystem {
@@ -8347,6 +8369,7 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
   total_in_bytes: long
   used_in_bytes: long
   used_percent: integer
+  adjusted_total_in_bytes?: long
 }
 
 export interface ClusterStatsRequest extends RequestBase {
