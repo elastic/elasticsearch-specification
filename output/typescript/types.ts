@@ -9398,6 +9398,7 @@ export interface IndicesForcemergeRequest extends RequestBase {
   ignore_unavailable?: boolean
   max_num_segments?: long
   only_expunge_deletes?: boolean
+  wait_for_completion?: boolean
 }
 
 export interface IndicesForcemergeResponse extends ShardsOperationResponseBase {
