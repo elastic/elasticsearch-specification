@@ -37,16 +37,15 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Defines the type of evaluation you want to perform.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html#ml-evaluate-dfanalytics-resources
+     * See [Data frame analytics evaluation resources](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html#ml-evaluate-dfanalytics-resources).
      */
     evaluation: DataframeEvaluationContainer
     /**
-     * Defines the index in which the evaluation will be performed.
+     * Defines the `index` in which the evaluation will be performed.
      */
     index: IndexName
     /**
-     * A query clause that retrieves a subset of data from the source index.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+     * A query clause that retrieves a subset of data from the source index. See [QueryDSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
      */
     query?: QueryContainer
   }
