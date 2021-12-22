@@ -19,10 +19,15 @@
 
 /* global $ argv, path, cd, nothrow */
 
-import 'zx/globals'
-import ora from 'ora'
-import { readFile, writeFile } from 'fs/promises'
-import { join, dirname } from 'desm'
+try {
+  require('zx/globals')
+} catch (err) {
+  console.log('It looks like you didn\'t install the project dependencies, please run \'make setup-env\'')
+  process.exit(1)
+}
+
+const ora = require('ora')
+const { readFile, writeFile } = require('fs/promises')
 
 // enable subprocess colors
 process.env.COLOR = true
@@ -31,12 +36,12 @@ process.env.FORCE_COLOR = 3
 $.verbose = false
 
 const spinner = ora('Loading').start()
-const compilerPath = dirname(import.meta.url)
-const tsGeneratorPath = join(import.meta.url, '..', 'typescript-generator')
-const outputPath = join(import.meta.url, '..', 'output')
-const cloneEsPath = join(import.meta.url, '..', '..', 'clients-flight-recorder', 'scripts', 'clone-elasticsearch')
-const uploadRecordingsPath = join(import.meta.url, '..', '..', 'clients-flight-recorder', 'scripts', 'upload-recording')
-const tsValidationPath = join(import.meta.url, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
+const compilerPath = __dirname
+const tsGeneratorPath = path.join(__dirname, '..', 'typescript-generator')
+const outputPath = path.join(__dirname, '..', 'output')
+const cloneEsPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'clone-elasticsearch')
+const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'upload-recording')
+const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 const DAY = 1000 * 60 * 60 * 24
 
 async function run () {
@@ -61,10 +66,10 @@ async function run () {
     process.exit(1)
   }
 
-  const isFlightRecorderCloned = await $`[[ -d ${join(import.meta.url, '..', '..', 'clients-flight-recorder')} ]]`.exitCode === 0
+  const isFlightRecorderCloned = await $`[[ -d ${path.join(__dirname, '..', '..', 'clients-flight-recorder')} ]]`.exitCode === 0
   if (!isFlightRecorderCloned) {
     spinner.text = 'It looks like you didn\'t cloned the flight recorder, doing that for you'
-    await $`git clone https://github.com/elastic/clients-flight-recorder.git ${join(import.meta.url, '..', '..', 'clients-flight-recorder')}`
+    await $`git clone https://github.com/elastic/clients-flight-recorder.git ${path.join(__dirname, '..', '..', 'clients-flight-recorder')}`
   }
 
   const isCompilerInstalled = await $`[[ -d ${path.join(compilerPath, 'node_modules')} ]]`.exitCode === 0

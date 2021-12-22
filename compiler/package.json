@@ -27,7 +27,7 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "desm": "^1.2.0",
-    "ora": "^6.0.1",
+    "ora": "^5.4.1",
     "safe-stable-stringify": "^2.2.0",
     "semver": "^7.3.5",
     "ts-morph": "^12.2.0",

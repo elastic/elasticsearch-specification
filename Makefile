@@ -1,10 +1,10 @@
 SHELL := /bin/bash
 
 validate: ## Validate a given endpoint request or response
-	@node compiler/run-validations.mjs --api $(api) --type $(type) --stack-version $(stack-version)
+	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version)
 
 validate-no-cache: ## Validate a given endpoint request or response without local cache
-	@node compiler/run-validations.mjs --api $(api) --type $(type) --stack-version $(stack-version) --no-cache
+	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version) --no-cache
 
 license-check:	## Add the license headers to the files
 	@echo ">> checking license headers .."
