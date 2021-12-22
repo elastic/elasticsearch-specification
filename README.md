@@ -32,7 +32,7 @@ nvm install 14
 $ git clone https://github.com/elastic/elasticsearch-specification.git
 
 # install the dependencies
-$ make setup-env
+$ make setup
 
 # generate the JSON representation
 $ make spec-generate

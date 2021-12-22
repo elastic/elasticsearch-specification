@@ -22,7 +22,7 @@
 try {
   require('zx/globals')
 } catch (err) {
-  console.log('It looks like you didn\'t install the project dependencies, please run \'make setup-env\'')
+  console.log('It looks like you didn\'t install the project dependencies, please run \'make setup\'')
   process.exit(1)
 }
 
@@ -50,6 +50,7 @@ async function run () {
   const noCache = argv.cache === false
   const metadata = await readMetadata()
   const lastRun = metadata.lastRun ? new Date(metadata.lastRun) : new Date(0)
+  const isStale = lastRun.getTime() + DAY < Date.now()
 
   if (typeof argv.api !== 'string') {
     spinner.fail('You must specify the api, for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
@@ -92,13 +93,13 @@ async function run () {
   }
 
   const isCompilerBuilt = await $`[[ -d ${path.join(compilerPath, 'lib')} ]]`.exitCode === 0
-  if (noCache || !isCompilerBuilt) {
+  if (noCache || isStale || !isCompilerBuilt) {
     spinner.text = 'Optimizing the compiler'
     await $`npm run build --prefix ${compilerPath}`
   }
 
   const isTsGeneratorBuilt = await $`[[ -d ${path.join(tsGeneratorPath, 'lib')} ]]`.exitCode === 0
-  if (noCache || !isTsGeneratorBuilt) {
+  if (noCache || isStale || !isTsGeneratorBuilt) {
     spinner.text = 'Optimizing the ts generator'
     await $`npm run build --prefix ${tsGeneratorPath}`
   }
@@ -135,7 +136,7 @@ async function run () {
 
   const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : 'master'
 
-  if (noCache || lastRun.getTime() + DAY < Date.now() || metadata.branchName !== branchName) {
+  if (noCache || isStale || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
     metadata.branchName = branchName
 

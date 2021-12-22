@@ -34,7 +34,7 @@ spec-imports-fix:	## Fix the TypeScript imports
 spec-dangling-types:	## Generate the dangling types rreport
 	@npm run generate-dangling --prefix compiler
 
-setup-env:	## Install dependencies for contrib target
+setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
