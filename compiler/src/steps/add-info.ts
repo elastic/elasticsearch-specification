@@ -45,7 +45,7 @@ export default async function addInfo (model: model.Model, jsonSpec: Map<string,
     }
   } else {
     const current: model.Model = JSON.parse(
-      readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8')
+      readFileSync(join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json'), 'utf8')
     )
     model._info = {
       version: current._info!.version, // eslint-disable-line

@@ -2,16 +2,17 @@
   "name": "elasticsearch-client-specification",
   "version": "0.0.1",
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
-  "main": "compiler/index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "lint": "ts-standard",
-    "lint:fix": "ts-standard --fix",
+    "lint": "ts-standard src",
+    "lint:fix": "ts-standard --fix src",
     "format:check": "prettier --config .prettierrc.json --check ../specification/",
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
-    "imports:fix": "ts-node update-imports.ts",
-    "generate-schema": "ts-node index.ts",
+    "imports:fix": "ts-node src/update-imports.ts",
+    "generate-schema": "ts-node src/index.ts",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
-    "generate-dangling": "ts-node dangling-types-report.ts"
+    "build": "rm -rf lib && tsc",
+    "generate-dangling": "ts-node src dangling-types-report.ts"
   },
   "author": "Elastic",
   "license": "Apache-2.0",
@@ -25,9 +26,12 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
+    "desm": "^1.2.0",
+    "ora": "^5.4.1",
     "safe-stable-stringify": "^2.2.0",
     "semver": "^7.3.5",
-    "ts-morph": "^12.2.0"
+    "ts-morph": "^12.2.0",
+    "zx": "^4.2.0"
   },
   "engines": {
     "node": ">=14"

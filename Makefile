@@ -1,24 +1,10 @@
 SHELL := /bin/bash
 
-validation-all:  ## Run Validation on all Endpoints
-	@echo ">> running validations for all endpoints .."
-	./run-validations.sh
+validate: ## Validate a given endpoint request or response
+	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version)
 
-validation-all-fresh:  ## Run Validation on all Endpoints with a fresh setup
-	@echo ">> running validations for all endpoints .."
-	PULL_LATEST=true ./run-validations.sh
-
-validation-api:  ## Validate Endpoint with param: api=<api-name>
-	test -n "$(api)"    # missing api param
-	./run-validations.sh --api $(api)
-
-validation-api-request:  ## Validate request of Endpoint with param: api=<api-name>
-	test -n "$(api)"    # missing api param
-	./run-validations.sh --api $(api) --request --verbose
-
-validation-api-response:  ## Validate response of Endpoint with param: api=<api-name>
-	test -n "$(api)"    # missing api param
-	./run-validations.sh --api $(api) --response --verbose
+validate-no-cache: ## Validate a given endpoint request or response without local cache
+	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version) --no-cache
 
 license-check:	## Add the license headers to the files
 	@echo ">> checking license headers .."
@@ -48,8 +34,8 @@ spec-imports-fix:	## Fix the TypeScript imports
 spec-dangling-types:	## Generate the dangling types rreport
 	@npm run generate-dangling --prefix compiler
 
-setup-env:	## Install dependencies for contrib target
-	clean-dep
+setup:	## Install dependencies for contrib target
+	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
 

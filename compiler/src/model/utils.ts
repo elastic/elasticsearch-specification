@@ -1181,7 +1181,7 @@ export function deepEqual (a: any, b: any): boolean {
   }
 }
 
-const basePath = join(__dirname, '..', '..', 'specification') + '/'
+const basePath = join(__dirname, '..', '..', '..', 'specification') + '/'
 
 export function sourceLocation (node: Node): model.SourceLocation {
   const sourceFile = node.getSourceFile()
