@@ -22,7 +22,7 @@ import { join } from 'path'
 import { Project } from 'ts-morph'
 import { isDefinedButNeverUsed, customTypes } from './model/utils'
 
-const specsFolder = join(__dirname, '..', 'specification')
+const specsFolder = join(__dirname, '..', '..', 'specification')
 const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 
 function findDanglingTypes (): void {
@@ -54,7 +54,7 @@ function findDanglingTypes (): void {
   }
 
   writeFileSync(
-    join(__dirname, '..', 'output', 'dangling-types', 'dangling.csv'),
+    join(__dirname, '..', '..', 'output', 'dangling-types', 'dangling.csv'),
     definedButNeverUsed.join('\n'),
     'utf8'
   )
