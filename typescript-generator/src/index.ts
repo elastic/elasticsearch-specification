@@ -348,15 +348,15 @@ function buildRequest (type: M.Request): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
   let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.path) {
-    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+    code += `  ${cleanPropertyName(property.codegenName ?? property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
 
   // It might happen that the same property is present in both
   // path and query parameters, we should keep only one
-  const pathPropertiesNames = type.path.map(property => property.name)
+  const pathPropertiesNames = type.path.map(property => property.codegenName ?? property.name)
   for (const property of type.query) {
     if (pathPropertiesNames.includes(property.name)) continue
-    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+    code += `  ${cleanPropertyName(property.codegenName ?? property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
   if (type.body.kind === 'properties' && type.body.properties.length > 0) {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
