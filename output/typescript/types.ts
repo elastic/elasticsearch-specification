@@ -10728,12 +10728,12 @@ export interface IngestSimulateResponse {
 export interface LicenseLicense {
   expiry_date_in_millis: EpochMillis
   issue_date_in_millis: EpochMillis
+  start_date_in_millis?: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes?: long
+  max_nodes?: long | null
   max_resource_units?: long
   signature: string
-  start_date_in_millis: EpochMillis
   type: LicenseLicenseType
   uid: string
 }
@@ -10749,14 +10749,14 @@ export interface LicenseDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface LicenseGetLicenseInformation {
-  expiry_date: DateString
-  expiry_date_in_millis: EpochMillis
+  expiry_date?: DateString
+  expiry_date_in_millis?: EpochMillis
   issue_date: DateString
   issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes: long
-  max_resource_units?: integer
+  max_nodes: long | null
+  max_resource_units?: integer | null
   status: LicenseLicenseStatus
   type: LicenseLicenseType
   uid: Uuid
@@ -10795,7 +10795,7 @@ export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: LicenseLicense
-    licenses?: LicenseLicense[]
+    licenses: LicenseLicense[]
   }
 }
 
@@ -10810,9 +10810,10 @@ export interface LicensePostStartBasicRequest extends RequestBase {
 }
 
 export interface LicensePostStartBasicResponse extends AcknowledgedResponseBase {
-  acknowledge: Record<string, string | string[]>
   basic_was_started: boolean
-  error_message: string
+  error_message?: string
+  type?: LicenseLicenseType
+  acknowledge?: Record<string, string | string[]>
 }
 
 export interface LicensePostStartTrialRequest extends RequestBase {
@@ -10823,7 +10824,7 @@ export interface LicensePostStartTrialRequest extends RequestBase {
 export interface LicensePostStartTrialResponse extends AcknowledgedResponseBase {
   error_message?: string
   trial_was_started: boolean
-  type: LicenseLicenseType
+  type?: LicenseLicenseType
 }
 
 export interface LogstashPipeline {
