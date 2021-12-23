@@ -14000,12 +14000,14 @@ export interface RollupGetRollupIndexCapsRollupJobSummaryField {
 export interface RollupPutJobRequest extends RequestBase {
   id: Id
   body?: {
-    cron?: string
-    groups?: RollupGroupings
-    index_pattern?: string
+    cron: string
+    groups: RollupGroupings
+    index_pattern: string
     metrics?: RollupFieldMetric[]
-    page_size?: long
-    rollup_index?: IndexName
+    page_size: integer
+    rollup_index: IndexName
+    timeout?: Time
+    headers?: HttpHeaders
   }
 }
 
