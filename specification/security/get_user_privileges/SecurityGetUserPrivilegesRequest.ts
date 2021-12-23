@@ -31,5 +31,6 @@ export interface Request extends RequestBase {
     application?: Name
     /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
     priviledge?: Name
+    username?: Name | null
   }
 }
