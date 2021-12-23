@@ -15325,8 +15325,9 @@ export interface TasksListRequest extends RequestBase {
   actions?: string | string[]
   detailed?: boolean
   group_by?: TasksGroupBy
-  nodes?: string[]
+  node_id?: string[]
   parent_task_id?: Id
+  master_timeout?: Time
   timeout?: Time
   wait_for_completion?: boolean
 }
@@ -15334,7 +15335,7 @@ export interface TasksListRequest extends RequestBase {
 export interface TasksListResponse {
   node_failures?: ErrorCause[]
   nodes?: Record<string, TasksTaskExecutingNode>
-  tasks?: Record<string, TasksInfo>
+  tasks?: TasksInfo[] | Record<string, TasksInfo>
 }
 
 export interface TextStructureFindStructureFieldStat {
