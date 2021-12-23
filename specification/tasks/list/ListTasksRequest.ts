@@ -30,14 +30,6 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {
-  //  path_parts: {
-  //
-  // ID of the task to return (`node_id:task_number`)
-  //
-  // TODO -- the param below does not exist in the spec
-  // but is indicated in the docs: https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html
-  //    task_id?: TaskId
-  //  }
   query_parameters: {
     /**
      * Comma-separated list or wildcard expression of actions used to limit the request.
