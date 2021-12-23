@@ -38,7 +38,6 @@ $.verbose = false
 const spinner = ora('Loading').start()
 const compilerPath = __dirname
 const tsGeneratorPath = path.join(__dirname, '..', 'typescript-generator')
-const outputPath = path.join(__dirname, '..', 'output')
 const cloneEsPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'clone-elasticsearch')
 const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'upload-recording')
 const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
@@ -71,6 +70,11 @@ async function run () {
   if (!isFlightRecorderCloned) {
     spinner.text = 'It looks like you didn\'t cloned the flight recorder, doing that for you'
     await $`git clone https://github.com/elastic/clients-flight-recorder.git ${path.join(__dirname, '..', '..', 'clients-flight-recorder')}`
+  } else if (isStale) {
+    spinner.text = 'Pulling the latest flight recorder changes'
+    cd(path.join(__dirname, '..', '..', 'clients-flight-recorder'))
+    await $`git pull`
+    cd(path.join(compilerPath, '..'))
   }
 
   const isCompilerInstalled = await $`[[ -d ${path.join(compilerPath, 'node_modules')} ]]`.exitCode === 0
@@ -147,12 +151,9 @@ async function run () {
     await $`node ${path.join(cloneEsPath, 'index.js')} --version ${argv['stack-version']}`
   }
 
-  spinner.text = 'Preparing testing environment'
-  await $`cp ${path.join(outputPath, 'schema', 'schema.json')} ${path.join(tsValidationPath, 'schema.json')}`
-  await $`cp ${path.join(outputPath, 'typescript', 'types.ts')} ${path.join(tsValidationPath, 'types.ts')}`
-
   cd(tsValidationPath)
   spinner.text = 'Validating endpoints'
+  // the ts validator will copy types.ts and schema.json autonomously
   const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} --${argv.type} --verbose`
 
   cd(path.join(compilerPath, '..'))
