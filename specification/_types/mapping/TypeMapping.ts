@@ -54,6 +54,6 @@ export class TypeMapping {
   _data_stream_timestamp?: TypeMappingDataStreamTimestamp
 }
 
-export class TypeMappingDataStreamTimestamp {
+export class DataStreamTimestamp {
   enabled: boolean
 }
