@@ -2009,7 +2009,6 @@
     },
     "xpack.info": {
       "request": [
-        "Request: missing json spec query parameter 'accept_enterprise'",
         "Request: should not have a body"
       ],
       "response": []
