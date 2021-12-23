@@ -52,6 +52,9 @@ export interface Request extends RequestBase {
     /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
     _meta?: Metadata
   }
+  query_parameters: {
+    create?: boolean
+  }
 }
 
 export class IndexTemplateMapping {
