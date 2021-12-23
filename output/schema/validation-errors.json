@@ -1671,6 +1671,7 @@
       "request": [
         "Request: query parameter 'application' does not exist in the json spec",
         "Request: query parameter 'priviledge' does not exist in the json spec",
+        "Request: query parameter 'username' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []

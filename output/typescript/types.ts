@@ -14118,13 +14118,13 @@ export interface SearchableSnapshotsStatsResponse {
 }
 
 export interface SecurityApiKey {
-  creation: long
+  creation?: long
   expiration?: long
   id: Id
-  invalidated: boolean
+  invalidated?: boolean
   name: Name
-  realm: string
-  username: Username
+  realm?: string
+  username?: Username
   metadata?: Metadata
 }
 
@@ -14165,13 +14165,13 @@ export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
-export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
+export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'indices:admin/settings/update' | 'indices:admin/mapping/put' | 'indices:admin/rollover' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: string | string[]
+  query?: QueryDslQueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -14204,8 +14204,8 @@ export interface SecurityRoleMappingRule {
 }
 
 export interface SecurityUser {
-  email?: string
-  full_name?: Name
+  email?: string | null
+  full_name?: Name | null
   metadata: Metadata
   roles: string[]
   username: Username
@@ -14440,7 +14440,7 @@ export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<st
 }
 
 export interface SecurityGetRoleRequest extends RequestBase {
-  name?: Name
+  name?: Names
 }
 
 export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, SecurityGetRoleRole> {
@@ -14454,6 +14454,7 @@ export interface SecurityGetRoleRole {
   transient_metadata: SecurityGetRoleTransientMetadata
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityGetRoleRoleTemplate[]
+  global?: Record<string, Record<string, Record<string, string[]>>>
 }
 
 export interface SecurityGetRoleRoleTemplate {
@@ -14468,7 +14469,7 @@ export interface SecurityGetRoleTransientMetadata {
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
-  name?: Name
+  name?: Names
 }
 
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityRoleMapping> {
@@ -14567,6 +14568,7 @@ export interface SecurityGetUserResponse extends DictionaryResponseBase<string, 
 export interface SecurityGetUserPrivilegesRequest extends RequestBase {
   application?: Name
   priviledge?: Name
+  username?: Name | null
 }
 
 export interface SecurityGetUserPrivilegesResponse {
@@ -14613,12 +14615,13 @@ export type SecurityHasPrivilegesApplicationsPrivileges = Record<Name, SecurityH
 export interface SecurityHasPrivilegesIndexPrivilegesCheck {
   names: Indices
   privileges: SecurityIndexPrivilege[]
+  allow_restricted_indices?: boolean
 }
 
 export type SecurityHasPrivilegesPrivileges = Record<string, boolean>
 
 export interface SecurityHasPrivilegesRequest extends RequestBase {
-  user?: Name
+  user?: Name | null
   body?: {
     application?: SecurityHasPrivilegesApplicationPrivilegesCheck[]
     cluster?: SecurityClusterPrivilege[]

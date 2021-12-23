@@ -29,10 +29,13 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    user?: Name
+    user?: Name | null
   }
   body: {
     application?: ApplicationPrivilegesCheck[]
+    /**
+     * A list of the cluster privileges that you want to check.
+     */
     cluster?: ClusterPrivilege[]
     index?: IndexPrivilegesCheck[]
   }
