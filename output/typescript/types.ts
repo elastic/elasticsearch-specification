@@ -8137,7 +8137,8 @@ export interface ClusterRerouteRerouteParameters {
   to_node?: NodeName
 }
 
-export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
+export interface ClusterRerouteResponse {
+  acknowledged: boolean
   explanations?: ClusterRerouteRerouteExplanation[]
   state: any
 }

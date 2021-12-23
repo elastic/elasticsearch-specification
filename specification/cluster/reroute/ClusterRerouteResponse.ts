@@ -18,11 +18,11 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AcknowledgedResponseBase } from '@_types/Base'
 import { RerouteExplanation } from './types'
 
-export class Response extends AcknowledgedResponseBase {
+export class Response {
   body: {
+    acknowledged: boolean
     explanations?: RerouteExplanation[]
     /**
      * There aren't any guarantees on the output/structure of the raw cluster state.
