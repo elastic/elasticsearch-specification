@@ -19,7 +19,7 @@
 
 import { Id } from '@_types/common'
 
-export class     IndexRouting {
+export class IndexRouting {
   allocation?: IndexRoutingAllocation
   rebalance?: IndexRoutingRebalance
 }

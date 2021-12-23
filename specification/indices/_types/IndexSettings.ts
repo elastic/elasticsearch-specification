@@ -54,12 +54,12 @@ export class IndexSettings {
   /**
    * @aliases index.soft_deletes.enabled
    */
-   'soft_deletes.enabled'?: boolean
+  'soft_deletes.enabled'?: boolean
   /**
    * @aliases index.soft_deletes.retention_lease.period
    * @server_default 12h
    */
-   'soft_deletes.retention_lease.period'?: Time
+  'soft_deletes.retention_lease.period'?: Time
   /**
    * @aliases index.sort
    */
@@ -115,7 +115,7 @@ export class IndexSettings {
   /**
    * @aliases index.merge.scheduler.max_merge_count
    */
-   'merge.scheduler.max_merge_count'?: integer
+  'merge.scheduler.max_merge_count'?: integer
   /**
    * @aliases index.search.idle.after
    * @server_default 30s
