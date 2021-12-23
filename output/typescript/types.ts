@@ -8734,7 +8734,7 @@ export interface IlmPolicy {
 }
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
-  name: Name
+  policy: Name
   master_timeout?: Time
   timeout?: Time
 }
@@ -8795,7 +8795,7 @@ export interface IlmGetLifecycleLifecycle {
 }
 
 export interface IlmGetLifecycleRequest extends RequestBase {
-  name?: Name
+  policy?: Name
   master_timeout?: Time
   timeout?: Time
 }
@@ -8828,7 +8828,7 @@ export interface IlmMoveToStepStepKey {
 }
 
 export interface IlmPutLifecycleRequest extends RequestBase {
-  name: Name
+  policy: Name
   master_timeout?: Time
   timeout?: Time
   body?: {
@@ -14130,7 +14130,7 @@ export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
-export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
+export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'indices:admin/settings/update' | 'indices:admin/mapping/put' | 'indices:admin/rollover' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
@@ -15036,7 +15036,7 @@ export interface SnapshotCleanupRepositoryCleanupRepositoryResults {
 }
 
 export interface SnapshotCleanupRepositoryRequest extends RequestBase {
-  name: Name
+  repository: Name
   master_timeout?: Time
   timeout?: Time
 }
@@ -15080,7 +15080,7 @@ export interface SnapshotCreateResponse {
 }
 
 export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  name: Name
+  repository: Name
   master_timeout?: Time
   timeout?: Time
   verify?: boolean
@@ -15104,7 +15104,7 @@ export interface SnapshotDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface SnapshotDeleteRepositoryRequest extends RequestBase {
-  name: Names
+  repository: Names
   master_timeout?: Time
   timeout?: Time
 }
@@ -15137,7 +15137,7 @@ export interface SnapshotGetSnapshotResponseItem {
 }
 
 export interface SnapshotGetRepositoryRequest extends RequestBase {
-  name?: Names
+  repository?: Names
   local?: boolean
   master_timeout?: Time
 }
@@ -15189,7 +15189,7 @@ export interface SnapshotVerifyRepositoryCompactNodeInfo {
 }
 
 export interface SnapshotVerifyRepositoryRequest extends RequestBase {
-  name: Name
+  repository: Name
   master_timeout?: Time
   timeout?: Time
 }
