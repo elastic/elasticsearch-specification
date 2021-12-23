@@ -16,13 +16,14 @@ to install and configure Node.js in your development environment.
 You can install Node.js with [`nvm`](https://github.com/nvm-sh/nvm):
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
-Once the installation is completed, install Node.js v14:
+Once the installation is completed, install Node.js with `nvm`:
 
 ```sh
-nvm install 14
+# this command will install the version configured in .nvmrc
+nvm use
 ```
 
 ## How to generate the JSON representation
