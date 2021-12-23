@@ -251,9 +251,11 @@ export enum SuggestMode {
 }
 
 export enum ThreadType {
-  cpu = 0,
-  wait = 1,
-  block = 2
+  cpu,
+  wait,
+  block,
+  gpu,
+  mem
 }
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html */
