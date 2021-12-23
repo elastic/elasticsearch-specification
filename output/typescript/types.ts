@@ -8692,7 +8692,7 @@ export interface GraphExploreResponse {
 
 export type IlmActions = any
 
-export interface IlmConfiguration {
+export interface IlmConfigurations {
   rollover?: IndicesRolloverRolloverConditions
   forcemerge?: IlmForceMergeConfiguration
   shrink?: IlmShrinkConfiguration
@@ -8705,7 +8705,7 @@ export interface IlmForceMergeConfiguration {
 export interface IlmPhase {
   actions?: IlmActions
   min_age?: Time
-  configurations?: IlmConfiguration
+  configurations?: IlmConfigurations
 }
 
 export interface IlmPhases {
