@@ -26,7 +26,7 @@ export class Phase {
   actions?: Actions
   min_age?: Time
   /** @since 7.16.0 */
-  configurations?: Configuration
+  configurations?: Configurations
 }
 
 export class Phases {
