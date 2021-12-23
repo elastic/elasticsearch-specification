@@ -14057,13 +14057,13 @@ export interface SearchableSnapshotsStatsResponse {
 }
 
 export interface SecurityApiKey {
-  creation: long
+  creation?: long
   expiration?: long
   id: Id
-  invalidated: boolean
+  invalidated?: boolean
   name: Name
-  realm: string
-  username: Username
+  realm?: string
+  username?: Username
   metadata?: Metadata
 }
 
