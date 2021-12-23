@@ -8971,6 +8971,10 @@ export interface IndicesIndexSettings {
   'index.routing_path'?: string[]
   soft_deletes?: IndicesSoftDeletes
   'index.soft_deletes'?: IndicesSoftDeletes
+  'soft_deletes.enabled'?: boolean
+  'index.soft_deletes.enabled'?: boolean
+  'soft_deletes.retention_lease.period'?: Time
+  'index.soft_deletes.retention_lease.period'?: Time
   sort?: IndicesIndexSegmentSort
   'index.sort'?: IndicesIndexSegmentSort
   number_of_shards?: integer | string
@@ -8985,8 +8989,6 @@ export interface IndicesIndexSettings {
   'index.codec'?: string
   routing_partition_size?: integer
   'index.routing_partition_size'?: integer
-  'soft_deletes.retention_lease.period'?: Time
-  'index.soft_deletes.retention_lease.period'?: Time
   load_fixed_bitset_filters_eagerly?: boolean
   'index.load_fixed_bitset_filters_eagerly'?: boolean
   hidden?: boolean | string
@@ -8995,6 +8997,8 @@ export interface IndicesIndexSettings {
   'index.auto_expand_replicas'?: string
   'merge.scheduler.max_thread_count'?: integer
   'index.merge.scheduler.max_thread_count'?: integer
+  'merge.scheduler.max_merge_count'?: integer
+  'index.merge.scheduler.max_merge_count'?: integer
   'search.idle.after'?: Time
   'index.search.idle.after'?: Time
   refresh_interval?: Time
@@ -9113,6 +9117,7 @@ export type IndicesSegmentSortOrder = 'asc' | 'desc'
 
 export interface IndicesSoftDeletes {
   enabled: boolean
+  'retention_lease.period'?: Time
 }
 
 export interface IndicesStringFielddata {
