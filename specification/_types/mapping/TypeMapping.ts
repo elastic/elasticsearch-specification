@@ -51,7 +51,7 @@ export class TypeMapping {
   runtime?: Dictionary<string, RuntimeField>
   enabled?: boolean
   /** @since 7.16.0 */
-  _data_stream_timestamp?: TypeMappingDataStreamTimestamp
+  _data_stream_timestamp?: DataStreamTimestamp
 }
 
 export class DataStreamTimestamp {

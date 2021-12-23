@@ -4391,6 +4391,10 @@ export interface MappingCorePropertyBase extends MappingPropertyBase {
   store?: boolean
 }
 
+export interface MappingDataStreamTimestamp {
+  enabled: boolean
+}
+
 export interface MappingDateNanosProperty extends MappingDocValuesPropertyBase {
   boost?: double
   format?: string
@@ -4787,11 +4791,7 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
-  _data_stream_timestamp?: MappingTypeMappingDataStreamTimestamp
-}
-
-export interface MappingTypeMappingDataStreamTimestamp {
-  enabled: boolean
+  _data_stream_timestamp?: MappingDataStreamTimestamp
 }
 
 export interface MappingUnsignedLongNumberProperty extends MappingNumberPropertyBase {
