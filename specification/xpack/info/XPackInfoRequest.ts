@@ -27,5 +27,6 @@ import { RequestBase } from '@_types/Base'
 export interface Request extends RequestBase {
   query_parameters: {
     categories?: string[]
+    accept_enterprise?: boolean
   }
 }
