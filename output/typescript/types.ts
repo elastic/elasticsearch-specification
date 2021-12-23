@@ -13365,6 +13365,10 @@ export interface NodesHotThreadsResponse {
   hot_threads: NodesHotThreadsHotThread[]
 }
 
+export interface NodesInfoDeprecationIndexing {
+  enabled: boolean | string
+}
+
 export interface NodesInfoNodeInfo {
   attributes: Record<string, string>
   build_flavor: string
@@ -13526,6 +13530,7 @@ export interface NodesInfoNodeInfoSettingsCluster {
   routing?: IndicesIndexRouting
   election: NodesInfoNodeInfoSettingsClusterElection
   initial_master_nodes?: string
+  deprecation_indexing?: NodesInfoDeprecationIndexing
 }
 
 export interface NodesInfoNodeInfoSettingsClusterElection {
@@ -13627,7 +13632,7 @@ export interface NodesInfoNodeInfoXpackLicenseType {
 export interface NodesInfoNodeInfoXpackSecurity {
   http: NodesInfoNodeInfoXpackSecuritySsl
   enabled: string
-  transport: NodesInfoNodeInfoXpackSecuritySsl
+  transport?: NodesInfoNodeInfoXpackSecuritySsl
   authc?: NodesInfoNodeInfoXpackSecurityAuthc
 }
 
