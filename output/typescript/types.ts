@@ -10182,7 +10182,7 @@ export interface IndicesStatsShardRetentionLeases {
 export interface IndicesStatsShardRouting {
   node: string
   primary: boolean
-  relocating_node?: string
+  relocating_node?: string | null
   state: IndicesStatsShardRoutingState
 }
 
