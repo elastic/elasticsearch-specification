@@ -721,6 +721,13 @@
       ],
       "response": []
     },
+    "ilm.put_lifecycle": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "ilm.remove_policy": {
       "request": [
         "Request: should not have a body"
