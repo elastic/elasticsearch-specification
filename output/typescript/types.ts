@@ -7947,7 +7947,7 @@ export interface ClusterHealthRequest extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   wait_for_events?: WaitForEvents
-  wait_for_nodes?: string
+  wait_for_nodes?: string | integer
   wait_for_no_initializing_shards?: boolean
   wait_for_no_relocating_shards?: boolean
   wait_for_status?: HealthStatus
@@ -7957,7 +7957,7 @@ export interface ClusterHealthResponse {
   active_primary_shards: integer
   active_shards: integer
   active_shards_percent_as_number: Percentage
-  cluster_name: string
+  cluster_name: Name
   delayed_unassigned_shards: integer
   indices?: Record<IndexName, ClusterHealthIndexHealthStats>
   initializing_shards: integer
@@ -8138,6 +8138,7 @@ export interface ClusterRerouteRerouteParameters {
 }
 
 export interface ClusterRerouteResponse {
+  acknowledged: boolean
   explanations?: ClusterRerouteRerouteExplanation[]
   state: any
 }
@@ -8262,6 +8263,7 @@ export interface ClusterStatsClusterNodes {
   plugins: PluginStats[]
   process: ClusterStatsClusterProcess
   versions: VersionString[]
+  indexing_pressure: ClusterStatsIndexingPressure
 }
 
 export interface ClusterStatsClusterOperatingSystem {
@@ -8328,6 +8330,27 @@ export interface ClusterStatsFieldTypesMappings {
   runtime_field_types?: ClusterStatsRuntimeFieldTypes[]
 }
 
+export interface ClusterStatsIndexingPressure {
+  memory: ClusterStatsIndexingPressureMemory
+}
+
+export interface ClusterStatsIndexingPressureMemory {
+  limit_in_bytes: long
+  current: ClusterStatsIndexingPressureMemorySummary
+  total: ClusterStatsIndexingPressureMemorySummary
+}
+
+export interface ClusterStatsIndexingPressureMemorySummary {
+  all_in_bytes: long
+  combined_coordinating_and_primary_in_bytes: long
+  coordinating_in_bytes: long
+  coordinating_rejections?: long
+  primary_in_bytes: long
+  primary_rejections?: long
+  replica_in_bytes: long
+  replica_rejections?: long
+}
+
 export interface ClusterStatsIndicesVersions {
   index_count: integer
   primary_shard_count: integer
@@ -8347,6 +8370,7 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
   total_in_bytes: long
   used_in_bytes: long
   used_percent: integer
+  adjusted_total_in_bytes?: long
 }
 
 export interface ClusterStatsRequest extends RequestBase {
