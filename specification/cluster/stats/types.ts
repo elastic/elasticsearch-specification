@@ -216,7 +216,7 @@ export class ClusterNodes {
   /** Array of Elasticsearch versions used on selected nodes. */
   versions: VersionString[]
   /** @since 7.16.0 */
-  indexing_pressure: ClusterIndexingPressure
+  indexing_pressure: IndexingPressure
 }
 
 export class ClusterOperatingSystemArchitecture {
@@ -288,16 +288,16 @@ export class OperatingSystemMemoryInfo {
 }
 
 export class IndexingPressure {
-  memory: ClusterIndexingPressureMemory
+  memory: IndexingPressureMemory
 }
 
-export class ClusterIndexingPressureMemory {
+export class IndexingPressureMemory {
   limit_in_bytes: long
-  current: ClusterIndexingPressureMemorySummary
-  total: ClusterIndexingPressureMemorySummary
+  current: IndexingPressureMemorySummary
+  total: IndexingPressureMemorySummary
 }
 
-export class ClusterIndexingPressureMemorySummary {
+export class IndexingPressureMemorySummary {
   all_in_bytes: long
   combined_coordinating_and_primary_in_bytes: long
   coordinating_in_bytes: long

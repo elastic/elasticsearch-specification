@@ -8175,27 +8175,6 @@ export interface ClusterStatsClusterFileSystem {
   total_in_bytes: long
 }
 
-export interface ClusterStatsClusterIndexingPressure {
-  memory: ClusterStatsClusterIndexingPressureMemory
-}
-
-export interface ClusterStatsClusterIndexingPressureMemory {
-  limit_in_bytes: long
-  current: ClusterStatsClusterIndexingPressureMemorySummary
-  total: ClusterStatsClusterIndexingPressureMemorySummary
-}
-
-export interface ClusterStatsClusterIndexingPressureMemorySummary {
-  all_in_bytes: long
-  combined_coordinating_and_primary_in_bytes: long
-  coordinating_in_bytes: long
-  coordinating_rejections?: long
-  primary_in_bytes: long
-  primary_rejections?: long
-  replica_in_bytes: long
-  replica_rejections?: long
-}
-
 export interface ClusterStatsClusterIndices {
   completion: CompletionStats
   count: long
@@ -8284,7 +8263,7 @@ export interface ClusterStatsClusterNodes {
   plugins: PluginStats[]
   process: ClusterStatsClusterProcess
   versions: VersionString[]
-  indexing_pressure: ClusterStatsClusterIndexingPressure
+  indexing_pressure: ClusterStatsIndexingPressure
 }
 
 export interface ClusterStatsClusterOperatingSystem {
@@ -8349,6 +8328,27 @@ export interface ClusterStatsFieldTypes {
 export interface ClusterStatsFieldTypesMappings {
   field_types: ClusterStatsFieldTypes[]
   runtime_field_types?: ClusterStatsRuntimeFieldTypes[]
+}
+
+export interface ClusterStatsIndexingPressure {
+  memory: ClusterStatsIndexingPressureMemory
+}
+
+export interface ClusterStatsIndexingPressureMemory {
+  limit_in_bytes: long
+  current: ClusterStatsIndexingPressureMemorySummary
+  total: ClusterStatsIndexingPressureMemorySummary
+}
+
+export interface ClusterStatsIndexingPressureMemorySummary {
+  all_in_bytes: long
+  combined_coordinating_and_primary_in_bytes: long
+  coordinating_in_bytes: long
+  coordinating_rejections?: long
+  primary_in_bytes: long
+  primary_rejections?: long
+  replica_in_bytes: long
+  replica_rejections?: long
 }
 
 export interface ClusterStatsIndicesVersions {
