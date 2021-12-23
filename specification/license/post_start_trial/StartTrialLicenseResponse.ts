@@ -24,6 +24,6 @@ export class Response extends AcknowledgedResponseBase {
   body: {
     error_message?: string
     trial_was_started: boolean
-    type: LicenseType
+    type?: LicenseType
   }
 }
