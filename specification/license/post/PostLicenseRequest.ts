@@ -24,13 +24,21 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.post
  * @since 0.0.0
  * @stability stable
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * Specifies whether you acknowledge the license changes.
+     * @server_default false
+     */
     acknowledge?: boolean
   }
   body: {
     license?: License
-    licenses?: Array<License>
+    /**
+     * A sequence of one or more JSON documents containing the license information.
+     */
+    licenses: Array<License>
   }
 }
