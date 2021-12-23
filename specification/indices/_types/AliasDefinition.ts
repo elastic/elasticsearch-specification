@@ -25,4 +25,6 @@ export class AliasDefinition {
   is_write_index?: boolean
   routing?: string
   search_routing?: string
+  /** @since 7.16.0 */
+  is_hidden?: boolean
 }

@@ -4391,6 +4391,10 @@ export interface MappingCorePropertyBase extends MappingPropertyBase {
   store?: boolean
 }
 
+export interface MappingDataStreamTimestamp {
+  enabled: boolean
+}
+
 export interface MappingDateNanosProperty extends MappingDocValuesPropertyBase {
   boost?: double
   format?: string
@@ -4787,6 +4791,7 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
+  _data_stream_timestamp?: MappingDataStreamTimestamp
 }
 
 export interface MappingUnsignedLongNumberProperty extends MappingNumberPropertyBase {
@@ -8901,6 +8906,7 @@ export interface IndicesAliasDefinition {
   is_write_index?: boolean
   routing?: string
   search_routing?: string
+  is_hidden?: boolean
 }
 
 export interface IndicesDataStream {
@@ -9055,6 +9061,8 @@ export interface IndicesIndexSettings {
   'index.provided_name'?: Name
   creation_date?: DateString
   'index.creation_date'?: DateString
+  creation_date_string?: DateString
+  'index.creation_date_string'?: DateString
   uuid?: Uuid
   'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
@@ -9101,6 +9109,7 @@ export interface IndicesIndexState {
 
 export interface IndicesIndexVersioning {
   created: VersionString
+  created_string?: VersionString
 }
 
 export interface IndicesNumericFielddata {
@@ -9444,6 +9453,7 @@ export interface IndicesForcemergeRequest extends RequestBase {
   ignore_unavailable?: boolean
   max_num_segments?: long
   only_expunge_deletes?: boolean
+  wait_for_completion?: boolean
 }
 
 export interface IndicesForcemergeResponse extends ShardsOperationResponseBase {
@@ -9654,6 +9664,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
   name: Name
+  create?: boolean
   body?: {
     index_patterns?: Indices
     composed_of?: Name[]

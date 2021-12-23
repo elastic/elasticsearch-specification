@@ -50,4 +50,10 @@ export class TypeMapping {
   _source?: SourceField
   runtime?: Dictionary<string, RuntimeField>
   enabled?: boolean
+  /** @since 7.16.0 */
+  _data_stream_timestamp?: DataStreamTimestamp
+}
+
+export class DataStreamTimestamp {
+  enabled: boolean
 }
