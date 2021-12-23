@@ -8803,6 +8803,8 @@ export interface IlmMoveToStepStepKey {
 
 export interface IlmPutLifecycleRequest extends RequestBase {
   name: Name
+  master_timeout?: Time
+  timeout?: Time
   body?: {
     policy?: IlmPolicy
   }
