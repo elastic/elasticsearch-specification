@@ -58,11 +58,26 @@ export enum ActionType {
 }
 
 export enum ActionExecutionMode {
-  simulate = 0,
-  force_simulate = 1,
-  execute = 2,
-  force_execute = 3,
-  skip = 4
+  /**
+   * The action execution is simulated. Each action type defines its own simulation operation mode. For example, the [email action](https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html) creates the email that would have been sent but does not actually send it. In this mode, the action might be throttled if the current state of the watch indicates it should be.
+   */
+  simulate,
+  /**
+   * Similar to the `simulate` mode, except the action is not throttled even if the current state of the watch indicates it should be.
+   */
+  force_simulate,
+  /**
+   * Executes the action as it would have been executed if the watch had been triggered by its own trigger. The execution might be throttled if the current state of the watch indicates it should be.
+   */
+  execute,
+  /**
+   * Similar to the `execute` mode, except the action is not throttled even if the current state of the watch indicates it should be.
+   */
+  force_execute,
+  /**
+   * The action is skipped and is not executed or simulated. Effectively forces the action to be throttled.
+   */
+  skip
 }
 
 export class SimulatedActions {
@@ -92,6 +107,7 @@ export class AcknowledgeState {
 export class ExecutionState {
   successful: boolean
   timestamp: DateString
+  reason?: string
 }
 
 export class ThrottleState {
