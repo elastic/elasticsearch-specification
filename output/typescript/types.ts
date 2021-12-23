@@ -8749,7 +8749,7 @@ export interface IlmShrinkConfiguration {
 }
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
-  name: Name
+  policy: Name
   master_timeout?: Time
   timeout?: Time
 }
@@ -8810,7 +8810,7 @@ export interface IlmGetLifecycleLifecycle {
 }
 
 export interface IlmGetLifecycleRequest extends RequestBase {
-  name?: Name
+  policy?: Name
   master_timeout?: Time
   timeout?: Time
 }
@@ -8843,7 +8843,7 @@ export interface IlmMoveToStepStepKey {
 }
 
 export interface IlmPutLifecycleRequest extends RequestBase {
-  name: Name
+  policy: Name
   master_timeout?: Time
   timeout?: Time
   body?: {
@@ -14154,7 +14154,7 @@ export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: string | string[]
+  query?: QueryDslQueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -14598,12 +14598,13 @@ export type SecurityHasPrivilegesApplicationsPrivileges = Record<Name, SecurityH
 export interface SecurityHasPrivilegesIndexPrivilegesCheck {
   names: Indices
   privileges: SecurityIndexPrivilege[]
+  allow_restricted_indices?: boolean
 }
 
 export type SecurityHasPrivilegesPrivileges = Record<string, boolean>
 
 export interface SecurityHasPrivilegesRequest extends RequestBase {
-  user?: Name
+  user?: Name | null
   body?: {
     application?: SecurityHasPrivilegesApplicationPrivilegesCheck[]
     cluster?: SecurityClusterPrivilege[]
@@ -15055,7 +15056,7 @@ export interface SnapshotCleanupRepositoryCleanupRepositoryResults {
 }
 
 export interface SnapshotCleanupRepositoryRequest extends RequestBase {
-  name: Name
+  repository: Name
   master_timeout?: Time
   timeout?: Time
 }
@@ -15099,7 +15100,7 @@ export interface SnapshotCreateResponse {
 }
 
 export interface SnapshotCreateRepositoryRequest extends RequestBase {
-  name: Name
+  repository: Name
   master_timeout?: Time
   timeout?: Time
   verify?: boolean
@@ -15123,7 +15124,7 @@ export interface SnapshotDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface SnapshotDeleteRepositoryRequest extends RequestBase {
-  name: Names
+  repository: Names
   master_timeout?: Time
   timeout?: Time
 }
@@ -15156,7 +15157,7 @@ export interface SnapshotGetSnapshotResponseItem {
 }
 
 export interface SnapshotGetRepositoryRequest extends RequestBase {
-  name?: Names
+  repository?: Names
   local?: boolean
   master_timeout?: Time
 }
@@ -15208,7 +15209,7 @@ export interface SnapshotVerifyRepositoryCompactNodeInfo {
 }
 
 export interface SnapshotVerifyRepositoryRequest extends RequestBase {
-  name: Name
+  repository: Name
   master_timeout?: Time
   timeout?: Time
 }
