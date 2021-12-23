@@ -14379,7 +14379,7 @@ export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<st
 }
 
 export interface SecurityGetRoleRequest extends RequestBase {
-  name?: Name
+  name?: Names
 }
 
 export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, SecurityGetRoleRole> {
@@ -14393,6 +14393,7 @@ export interface SecurityGetRoleRole {
   transient_metadata: SecurityGetRoleTransientMetadata
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityGetRoleRoleTemplate[]
+  global?: Record<string, Record<string, Record<string, string[]>>>
 }
 
 export interface SecurityGetRoleRoleTemplate {
