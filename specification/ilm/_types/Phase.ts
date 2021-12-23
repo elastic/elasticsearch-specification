@@ -40,7 +40,7 @@ export class Phases {
 // See https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html#ilm-phase-actions
 export type Actions = UserDefinedValue
 
-export class Configuration {
+export class Configurations {
   rollover?: RolloverConditions
   forcemerge?: ForceMergeConfiguration
   shrink?: ShrinkConfiguration
