@@ -2387,7 +2387,7 @@ export type SuggestionName = string
 
 export type TaskId = string | integer
 
-export type ThreadType = 'cpu' | 'wait' | 'block'
+export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
 
 export type Time = string | integer
 
@@ -13454,6 +13454,7 @@ export interface NodesHotThreadsRequest extends RequestBase {
   threads?: long
   timeout?: Time
   type?: ThreadType
+  sort?: ThreadType
 }
 
 export interface NodesHotThreadsResponse {
