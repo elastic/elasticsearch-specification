@@ -1380,7 +1380,6 @@
     "nodes.hot_threads": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []
