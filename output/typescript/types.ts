@@ -14469,7 +14469,7 @@ export interface SecurityGetRoleTransientMetadata {
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
-  name?: Names | null
+  name?: Names
 }
 
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityRoleMapping> {
