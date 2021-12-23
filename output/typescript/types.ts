@@ -14408,7 +14408,7 @@ export interface SecurityGetRoleTransientMetadata {
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
-  name?: Name
+  name?: Names | null
 }
 
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityRoleMapping> {
