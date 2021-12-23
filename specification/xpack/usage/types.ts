@@ -22,7 +22,7 @@ import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
-import { integer, long, uint, ulong } from '@_types/Numeric'
+import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class Base {
@@ -177,6 +177,8 @@ export class MlDataFrameAnalyticsJobsCount {
 export class MlInference {
   ingest_processors: Dictionary<string, MlInferenceIngestProcessor>
   trained_models: MlInferenceTrainedModels
+  /** @since 8.0.0 */
+  deployments?: MlInferenceDeployments
 }
 
 export class MlInferenceIngestProcessor {
@@ -191,6 +193,19 @@ export class MlInferenceTrainedModels {
   estimated_heap_memory_usage_bytes?: JobStatistics
   count?: MlInferenceTrainedModelsCount
   _all: MlCounter
+  /** @since 8.0.0 */
+  model_size_bytes?: JobStatistics
+}
+
+export class MlInferenceDeployments {
+  count: integer
+  inference_counts: JobStatistics
+  model_sizes_bytes: JobStatistics
+  time_ms: MlInferenceDeploymentsTimeMs
+}
+
+export class MlInferenceDeploymentsTimeMs {
+  avg: double
 }
 
 export class MlInferenceIngestProcessorCount {
@@ -203,8 +218,8 @@ export class MlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
-  regression: long
-  classification: long
+  regression?: long
+  classification?: long
 }
 
 export class MlCounter {
