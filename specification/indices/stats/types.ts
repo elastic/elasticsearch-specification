@@ -140,7 +140,7 @@ export class ShardRetentionLeases {
 export class ShardRouting {
   node: string
   primary: boolean
-  relocating_node?: string
+  relocating_node?: string | null
   state: ShardRoutingState
 }
 

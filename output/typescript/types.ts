@@ -8971,6 +8971,10 @@ export interface IndicesIndexSettings {
   'index.routing_path'?: string[]
   soft_deletes?: IndicesSoftDeletes
   'index.soft_deletes'?: IndicesSoftDeletes
+  'soft_deletes.enabled'?: boolean
+  'index.soft_deletes.enabled'?: boolean
+  'soft_deletes.retention_lease.period'?: Time
+  'index.soft_deletes.retention_lease.period'?: Time
   sort?: IndicesIndexSegmentSort
   'index.sort'?: IndicesIndexSegmentSort
   number_of_shards?: integer | string
@@ -8985,8 +8989,6 @@ export interface IndicesIndexSettings {
   'index.codec'?: string
   routing_partition_size?: integer
   'index.routing_partition_size'?: integer
-  'soft_deletes.retention_lease.period'?: Time
-  'index.soft_deletes.retention_lease.period'?: Time
   load_fixed_bitset_filters_eagerly?: boolean
   'index.load_fixed_bitset_filters_eagerly'?: boolean
   hidden?: boolean | string
@@ -8995,6 +8997,8 @@ export interface IndicesIndexSettings {
   'index.auto_expand_replicas'?: string
   'merge.scheduler.max_thread_count'?: integer
   'index.merge.scheduler.max_thread_count'?: integer
+  'merge.scheduler.max_merge_count'?: integer
+  'index.merge.scheduler.max_merge_count'?: integer
   'search.idle.after'?: Time
   'index.search.idle.after'?: Time
   refresh_interval?: Time
@@ -9113,6 +9117,7 @@ export type IndicesSegmentSortOrder = 'asc' | 'desc'
 
 export interface IndicesSoftDeletes {
   enabled: boolean
+  'retention_lease.period'?: Time
 }
 
 export interface IndicesStringFielddata {
@@ -10177,7 +10182,7 @@ export interface IndicesStatsShardRetentionLeases {
 export interface IndicesStatsShardRouting {
   node: string
   primary: boolean
-  relocating_node?: string
+  relocating_node?: string | null
   state: IndicesStatsShardRoutingState
 }
 
@@ -10723,12 +10728,12 @@ export interface IngestSimulateResponse {
 export interface LicenseLicense {
   expiry_date_in_millis: EpochMillis
   issue_date_in_millis: EpochMillis
+  start_date_in_millis?: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes?: long
+  max_nodes?: long | null
   max_resource_units?: long
   signature: string
-  start_date_in_millis: EpochMillis
   type: LicenseLicenseType
   uid: string
 }
@@ -10744,14 +10749,14 @@ export interface LicenseDeleteResponse extends AcknowledgedResponseBase {
 }
 
 export interface LicenseGetLicenseInformation {
-  expiry_date: DateString
-  expiry_date_in_millis: EpochMillis
+  expiry_date?: DateString
+  expiry_date_in_millis?: EpochMillis
   issue_date: DateString
   issue_date_in_millis: EpochMillis
   issued_to: string
   issuer: string
-  max_nodes: long
-  max_resource_units?: integer
+  max_nodes: long | null
+  max_resource_units?: integer | null
   status: LicenseLicenseStatus
   type: LicenseLicenseType
   uid: Uuid
@@ -10790,7 +10795,7 @@ export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: LicenseLicense
-    licenses?: LicenseLicense[]
+    licenses: LicenseLicense[]
   }
 }
 
@@ -10805,9 +10810,10 @@ export interface LicensePostStartBasicRequest extends RequestBase {
 }
 
 export interface LicensePostStartBasicResponse extends AcknowledgedResponseBase {
-  acknowledge: Record<string, string | string[]>
   basic_was_started: boolean
-  error_message: string
+  error_message?: string
+  type?: LicenseLicenseType
+  acknowledge?: Record<string, string | string[]>
 }
 
 export interface LicensePostStartTrialRequest extends RequestBase {
@@ -10818,7 +10824,7 @@ export interface LicensePostStartTrialRequest extends RequestBase {
 export interface LicensePostStartTrialResponse extends AcknowledgedResponseBase {
   error_message?: string
   trial_was_started: boolean
-  type: LicenseLicenseType
+  type?: LicenseLicenseType
 }
 
 export interface LogstashPipeline {
