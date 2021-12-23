@@ -287,7 +287,7 @@ export class OperatingSystemMemoryInfo {
   adjusted_total_in_bytes?: long
 }
 
-export class ClusterIndexingPressure {
+export class IndexingPressure {
   memory: ClusterIndexingPressureMemory
 }
 
