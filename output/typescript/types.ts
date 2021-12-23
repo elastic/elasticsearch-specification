@@ -15741,9 +15741,29 @@ export interface WatcherDailySchedule {
 
 export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
+export interface WatcherEmail {
+  bcc?: string[]
+  body?: WatcherEmailBody
+  cc?: string[]
+  from?: string
+  id: Id
+  priority?: WatcherEmailPriority
+  reply_to?: string[]
+  sent_date: DateString
+  subject: string
+  to: string[]
+}
+
+export interface WatcherEmailBody {
+  html: string
+  text: string
+}
+
+export type WatcherEmailPriority = 'lowest' | 'low' | 'normal' | 'high' | 'highest'
+
 export interface WatcherEmailResult {
   account?: string
-  message: WatcherEmailResult
+  message: WatcherEmail
   reason?: string
 }
 
@@ -15768,6 +15788,7 @@ export interface WatcherExecutionResultAction {
   status: WatcherActionStatusOptions
   type: WatcherActionType
   webhook?: WatcherWebhookResult
+  error?: ErrorCause
 }
 
 export interface WatcherExecutionResultCondition {
@@ -15785,6 +15806,7 @@ export interface WatcherExecutionResultInput {
 export interface WatcherExecutionState {
   successful: boolean
   timestamp: DateString
+  reason?: string
 }
 
 export type WatcherExecutionStatus = 'awaits_execution' | 'checking' | 'execution_not_needed' | 'throttled' | 'executed' | 'failed' | 'deleted_while_queued' | 'not_executed_already_queued'
@@ -15894,16 +15916,9 @@ export interface WatcherNeverCondition {
   [key: string]: never
 }
 
-export interface WatcherPagerDutyActionEventResult {
-  event: WatcherPagerDutyEvent
-  reason: string
-  request: WatcherHttpInputRequestResult
-  response: WatcherHttpInputResponseResult
-}
-
 export interface WatcherPagerDutyContext {
-  href: string
-  src: string
+  href?: string
+  src?: string
   type: WatcherPagerDutyContextType
 }
 
@@ -15912,18 +15927,21 @@ export type WatcherPagerDutyContextType = 'link' | 'image'
 export interface WatcherPagerDutyEvent {
   account: string
   attach_payload: boolean
-  client: string
-  client_url: string
-  context: WatcherPagerDutyContext[]
-  description: string
-  event_type: WatcherPagerDutyEventType
+  client?: string
+  client_url?: string
+  contexts: WatcherPagerDutyContext[]
+  description?: string
+  event_type?: WatcherPagerDutyEventType
   incident_key: string
 }
 
 export type WatcherPagerDutyEventType = 'trigger' | 'resolve' | 'acknowledge'
 
 export interface WatcherPagerDutyResult {
-  sent_event: WatcherPagerDutyActionEventResult
+  event: WatcherPagerDutyEvent
+  reason?: string
+  request?: WatcherHttpInputRequestResult
+  response?: WatcherHttpInputResponseResult
 }
 
 export type WatcherQuantifier = 'some' | 'all'
@@ -16148,13 +16166,14 @@ export interface WatcherExecuteWatchWatchRecord {
   condition: WatcherConditionContainer
   input: WatcherInputContainer
   messages: string[]
-  metadata: Metadata
+  metadata?: Metadata
   node: string
   result: WatcherExecutionResult
   state: WatcherExecutionStatus
   trigger_event: WatcherTriggerEventResult
   user: Username
   watch_id: Id
+  status?: WatcherWatchStatus
 }
 
 export interface WatcherGetWatchRequest extends RequestBase {
