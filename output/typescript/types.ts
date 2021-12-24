@@ -15688,11 +15688,11 @@ export interface TransformUpdateTransformRequest extends RequestBase {
     dest?: TransformDestination
     description?: string
     frequency?: Time
+    _meta?: Metadata
     source?: TransformSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
-    _meta?: Metadata
   }
 }
 
@@ -15700,7 +15700,7 @@ export interface TransformUpdateTransformResponse {
   create_time: long
   description: string
   dest: ReindexDestination
-  frequency: Time
+  frequency?: Time
   id: Id
   latest?: TransformLatest
   pivot?: TransformPivot
@@ -15709,6 +15709,7 @@ export interface TransformUpdateTransformResponse {
   source: ReindexSource
   sync?: TransformSyncContainer
   version: VersionString
+  _meta?: Metadata
 }
 
 export interface TransformUpgradeTransformsRequest extends RequestBase {

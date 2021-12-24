@@ -81,6 +81,10 @@ export interface Request extends RequestBase {
      */
     frequency?: Time
     /**
+     * Defines optional transform metadata.
+     */
+    _meta?: Metadata
+    /**
      * The source of the data for the transform.
      */
     source?: Source
@@ -97,9 +101,5 @@ export interface Request extends RequestBase {
      * criteria is deleted from the destination index.
      */
     retention_policy?: RetentionPolicyContainer
-    /**
-     * Defines optional transform metadata.
-     */
-    _meta?: Metadata
   }
 }
