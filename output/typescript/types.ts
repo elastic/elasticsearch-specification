@@ -15470,6 +15470,11 @@ export interface TextStructureFindStructureTopHit {
   value: any
 }
 
+export interface TransformDestination {
+  index?: IndexName
+  pipeline?: string
+}
+
 export interface TransformLatest {
   sort: Field
   unique_key: Field[]
@@ -15502,6 +15507,12 @@ export interface TransformSettings {
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
+}
+
+export interface TransformSource {
+  index: Indices
+  query?: QueryDslQueryContainer
+  runtime_mappings?: MappingRuntimeFields
 }
 
 export interface TransformSyncContainer {
@@ -15603,11 +15614,11 @@ export interface TransformPreviewTransformRequest extends RequestBase {
   transform_id?: Id
   timeout?: Time
   body?: {
-    dest?: ReindexDestination
+    dest?: TransformDestination
     description?: string
     frequency?: Time
     pivot?: TransformPivot
-    source?: ReindexSource
+    source?: TransformSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
@@ -15625,15 +15636,15 @@ export interface TransformPutTransformRequest extends RequestBase {
   defer_validation?: boolean
   timeout?: Time
   body?: {
-    dest: ReindexDestination
+    dest: TransformDestination
     description?: string
     frequency?: Time
     latest?: TransformLatest
-    _meta?: Record<string, string>
+    _meta?: Metadata
     pivot?: TransformPivot
     retention_policy?: TransformRetentionPolicyContainer
     settings?: TransformSettings
-    source: ReindexSource
+    source: TransformSource
     sync?: TransformSyncContainer
   }
 }
@@ -15674,13 +15685,14 @@ export interface TransformUpdateTransformRequest extends RequestBase {
   defer_validation?: boolean
   timeout?: Time
   body?: {
-    dest?: ReindexDestination
+    dest?: TransformDestination
     description?: string
     frequency?: Time
-    source?: ReindexSource
+    source?: TransformSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
+    _meta?: Metadata
   }
 }
 
