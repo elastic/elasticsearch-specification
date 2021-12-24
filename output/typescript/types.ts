@@ -15550,17 +15550,18 @@ export interface TransformGetTransformStatsCheckpointStats {
   checkpoint: long
   checkpoint_progress?: TransformGetTransformStatsTransformProgress
   timestamp?: DateString
-  timestamp_millis: EpochMillis
+  timestamp_millis?: EpochMillis
   time_upper_bound?: DateString
   time_upper_bound_millis?: EpochMillis
 }
 
 export interface TransformGetTransformStatsCheckpointing {
-  changes_last_detected_at: long
+  changes_last_detected_at?: long
   changes_last_detected_at_date_time?: DateString
   last: TransformGetTransformStatsCheckpointStats
   next?: TransformGetTransformStatsCheckpointStats
   operations_behind?: long
+  last_search_time?: long
 }
 
 export interface TransformGetTransformStatsRequest extends RequestBase {
@@ -15576,7 +15577,9 @@ export interface TransformGetTransformStatsResponse {
 }
 
 export interface TransformGetTransformStatsTransformIndexerStats {
+  delete_time_in_ms?: EpochMillis
   documents_indexed: long
+  documents_deleted?: long
   documents_processed: long
   exponential_avg_checkpoint_duration_ms: double
   exponential_avg_documents_indexed: double
