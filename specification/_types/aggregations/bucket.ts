@@ -437,7 +437,7 @@ export class CategorizeTextAggregation extends Aggregation {
    * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
    * cannot be used at the same time as categorization_filters.
    */
-  categorization_analyzer?: CategorizeTextAnalyzer
+  categorization_analyzer?: string | CategorizeTextAnalyzer
   /**
    * The number of categorization buckets to return from each shard before merging all the results.
    */
