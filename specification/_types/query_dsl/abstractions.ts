@@ -83,6 +83,7 @@ import {
   ExistsQuery,
   FuzzyQuery,
   IdsQuery,
+  KnnQuery,
   PrefixQuery,
   RangeQuery,
   RegexpQuery,
@@ -118,6 +119,7 @@ export class QueryContainer {
   has_parent?: HasParentQuery
   ids?: IdsQuery
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  knn?: KnnQuery
   match?: SingleKeyDictionary<Field, MatchQuery>
   match_all?: MatchAllQuery
   match_bool_prefix?: SingleKeyDictionary<Field, MatchBoolPrefixQuery>

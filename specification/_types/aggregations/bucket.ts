@@ -390,7 +390,6 @@ export class VariableWidthHistogramAggregation {
   initial_buffer?: integer
 }
 
-
 /**
  * A multi-bucket aggregation that groups semi-structured text into buckets. Each text
  * field is re-analyzed using a custom analyzer. The resulting tokens are then categorized
@@ -414,23 +413,23 @@ export class CategorizeTextAggregation extends Aggregation {
    * values will use more memory and create narrower categories. Max allowed value is 100.
    * @server_default 5
    */
-   max_matched_tokens?: integer
+  max_matched_tokens?: integer
   /**
    * The minimum percentage of tokens that must match for text to be added to the category bucket. Must
    * be between 1 and 100. The larger the value the narrower the categories. Larger values will increase memory
    * usage and create narrower categories.
    * @server_default 50
    */
-   similarity_threshold?: integer
-   /**
-    * This property expects an array of regular expressions. The expressions are used to filter out matching
-    * sequences from the categorization field values. You can use this functionality to fine tune the categorization
-    * by excluding sequences from consideration when categories are defined. For example, you can exclude SQL
-    * statements that appear in your log files. This property cannot be used at the same time as categorization_analyzer.
-    * If you only want to define simple regular expression filters that are applied prior to tokenization, setting
-    * this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering,
-    * use the categorization_analyzer property instead and include the filters as pattern_replace character filters.
-    */
+  similarity_threshold?: integer
+  /**
+   * This property expects an array of regular expressions. The expressions are used to filter out matching
+   * sequences from the categorization field values. You can use this functionality to fine tune the categorization
+   * by excluding sequences from consideration when categories are defined. For example, you can exclude SQL
+   * statements that appear in your log files. This property cannot be used at the same time as categorization_analyzer.
+   * If you only want to define simple regular expression filters that are applied prior to tokenization, setting
+   * this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering,
+   * use the categorization_analyzer property instead and include the filters as pattern_replace character filters.
+   */
   categorization_filters?: string[]
   /**
    * The categorization analyzer specifies how the text is analyzed and tokenized before being categorized.

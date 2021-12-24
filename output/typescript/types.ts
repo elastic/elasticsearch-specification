@@ -1179,6 +1179,7 @@ export interface SearchFieldCollapse {
   field: Field
   inner_hits?: SearchInnerHits | SearchInnerHits[]
   max_concurrent_group_searches?: integer
+  collapse?: SearchFieldCollapse
 }
 
 export interface SearchFieldSuggester {
@@ -2717,7 +2718,7 @@ export interface AggregationsCategorizeTextAggregation extends AggregationsAggre
   max_matched_tokens?: integer
   similarity_threshold?: integer
   categorization_filters?: string[]
-  categorization_analyzer?: AggregationsCategorizeTextAnalyzer
+  categorization_analyzer?: string | AggregationsCategorizeTextAnalyzer
   shard_size?: integer
   size?: integer
   min_doc_count?: integer
@@ -5149,6 +5150,12 @@ export interface QueryDslIntervalsWildcard {
   use_field?: Field
 }
 
+export interface QueryDslKnnQuery extends QueryDslQueryBase {
+  field: Field
+  num_candidates: integer
+  query_vector: double[]
+}
+
 export type QueryDslLike = string | QueryDslLikeDocument
 
 export interface QueryDslLikeDocument {
@@ -5338,6 +5345,7 @@ export interface QueryDslQueryContainer {
   has_parent?: QueryDslHasParentQuery
   ids?: QueryDslIdsQuery
   intervals?: Partial<Record<Field, QueryDslIntervalsQuery>>
+  knn?: QueryDslKnnQuery
   match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
   match_all?: QueryDslMatchAllQuery
   match_bool_prefix?: Partial<Record<Field, QueryDslMatchBoolPrefixQuery | string>>

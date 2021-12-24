@@ -26,9 +26,9 @@ import { Aggregation } from './Aggregation'
 
 export class BucketPathAggregation extends Aggregation {
   /**
-  * Path to the buckets that contain one set of values to correlate. For syntax, see [buckets_path Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html#buckets-path-syntax).
-  */
- buckets_path?: BucketsPath
+   * Path to the buckets that contain one set of values to correlate. For syntax, see [buckets_path Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html#buckets-path-syntax).
+   */
+  buckets_path?: BucketsPath
 }
 
 export class PipelineAggregationBase extends BucketPathAggregation {
@@ -70,7 +70,7 @@ export class BucketSelectorAggregation extends PipelineAggregationBase {
  * terms aggregation, in which case one compares the overall distribution of metric to its restriction
  * to each term.
  */
- export class BucketKsAggregation extends BucketPathAggregation {
+export class BucketKsAggregation extends BucketPathAggregation {
   /**
    * A list of string values indicating which K-S test alternative to calculate. The valid values
    * are: "greater", "less", "two_sided". This parameter is key for determining the K-S statistic used
