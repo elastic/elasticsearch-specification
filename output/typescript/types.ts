@@ -1054,7 +1054,7 @@ export interface SearchAggregationProfile {
   description: string
   time_in_nanos: long
   type: string
-  debug?: SearchAggregationProfileDebug
+  debug?: SearchAggregationProfileDebug | SearchAggregationProfileDelegateDebug
   children?: SearchAggregationProfile[]
 }
 
@@ -1258,6 +1258,7 @@ export interface SearchHit<TDocument = unknown> {
   matched_queries?: string[]
   _nested?: SearchNestedIdentity
   _ignored?: string[]
+  ignored_field_values?: Record<string, string[]>
   _shard?: string
   _node?: string
   _routing?: string
@@ -2520,7 +2521,10 @@ export interface AggregationsAggregationContainer {
   bucket_script?: AggregationsBucketScriptAggregation
   bucket_selector?: AggregationsBucketSelectorAggregation
   bucket_sort?: AggregationsBucketSortAggregation
+  bucket_count_ks_test?: AggregationsBucketKsAggregation
+  bucket_correlation?: AggregationsBucketCorrelationAggregation
   cardinality?: AggregationsCardinalityAggregation
+  categorize_text?: AggregationsCategorizeTextAggregation
   children?: AggregationsChildrenAggregation
   composite?: AggregationsCompositeAggregation
   cumulative_cardinality?: AggregationsCumulativeCardinalityAggregation
@@ -2645,8 +2649,36 @@ export interface AggregationsBoxplotAggregation extends AggregationsMetricAggreg
 export interface AggregationsBucketAggregationBase extends AggregationsAggregation {
 }
 
+export interface AggregationsBucketCorrelationAggregation extends AggregationsBucketPathAggregation {
+  function: AggregationsBucketCorrelationFunction
+}
+
+export interface AggregationsBucketCorrelationFunction {
+  count_correlation: AggregationsBucketCorrelationFunctionCountCorrelation
+}
+
+export interface AggregationsBucketCorrelationFunctionCountCorrelation {
+  indicator: AggregationsBucketCorrelationFunctionCountCorrelationIndicator
+}
+
+export interface AggregationsBucketCorrelationFunctionCountCorrelationIndicator {
+  doc_count: integer
+  expectations: double[]
+  fractions?: double[]
+}
+
+export interface AggregationsBucketKsAggregation extends AggregationsBucketPathAggregation {
+  alternative?: string[]
+  fractions?: double[]
+  sampling_method?: string
+}
+
 export interface AggregationsBucketMetricValueAggregate extends AggregationsSingleMetricAggregateBase {
   keys: string[]
+}
+
+export interface AggregationsBucketPathAggregation extends AggregationsAggregation {
+  buckets_path?: AggregationsBucketsPath
 }
 
 export interface AggregationsBucketScriptAggregation extends AggregationsPipelineAggregationBase {
@@ -2677,6 +2709,25 @@ export interface AggregationsCardinalityAggregate extends AggregationsAggregateB
 export interface AggregationsCardinalityAggregation extends AggregationsMetricAggregationBase {
   precision_threshold?: integer
   rehash?: boolean
+}
+
+export interface AggregationsCategorizeTextAggregation extends AggregationsAggregation {
+  field: Field
+  max_unique_tokens?: integer
+  max_matched_tokens?: integer
+  similarity_threshold?: integer
+  categorization_filters?: string[]
+  categorization_analyzer?: AggregationsCategorizeTextAnalyzer
+  shard_size?: integer
+  size?: integer
+  min_doc_count?: integer
+  shard_min_doc_count?: integer
+}
+
+export interface AggregationsCategorizeTextAnalyzer {
+  char_filter?: string[]
+  tokenizer?: string
+  filter?: string[]
 }
 
 export interface AggregationsChiSquareHeuristic {
@@ -3293,8 +3344,7 @@ export interface AggregationsPercentilesBucketAggregation extends AggregationsPi
   percents?: double[]
 }
 
-export interface AggregationsPipelineAggregationBase extends AggregationsAggregation {
-  buckets_path?: AggregationsBucketsPath
+export interface AggregationsPipelineAggregationBase extends AggregationsBucketPathAggregation {
   format?: string
   gap_policy?: AggregationsGapPolicy
 }
