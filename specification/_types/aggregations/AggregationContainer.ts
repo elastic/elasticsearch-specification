@@ -24,6 +24,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import {
   AdjacencyMatrixAggregation,
   AutoDateHistogramAggregation,
+  CategorizeTextAggregation,
   ChildrenAggregation,
   CompositeAggregation,
   DateHistogramAggregation,
@@ -93,7 +94,9 @@ import {
   PercentilesBucketAggregation,
   SerialDifferencingAggregation,
   StatsBucketAggregation,
-  SumBucketAggregation
+  SumBucketAggregation,
+  BucketCorrelationAggregation,
+  BucketKsAggregation
 } from './pipeline'
 
 /**
@@ -120,7 +123,22 @@ export class AggregationContainer {
   bucket_script?: BucketScriptAggregation
   bucket_selector?: BucketSelectorAggregation
   bucket_sort?: BucketSortAggregation
+  /**
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-count-ks-test-aggregation.html
+   * @stability experimental
+   */
+  bucket_count_ks_test?: BucketKsAggregation
+  /**
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-correlation-aggregation.html
+   * @stability experimental
+   */
+  bucket_correlation?: BucketCorrelationAggregation
   cardinality?: CardinalityAggregation
+  /**
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-categorize-text-aggregation.html
+   * @stability experimental
+   */
+  categorize_text?: CategorizeTextAggregation
   children?: ChildrenAggregation
   composite?: CompositeAggregation
   cumulative_cardinality?: CumulativeCardinalityAggregation
