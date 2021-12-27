@@ -94,7 +94,7 @@ async function resolve (version, hash) {
     if (!response.ok) {
       throw new Error(`unexpected response ${response.statusText}`)
     }
-    const { versions } = await response.body()
+    const { versions } = await response.json()
     version = versions.pop()
   }
 
