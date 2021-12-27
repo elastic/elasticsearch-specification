@@ -1524,6 +1524,7 @@ export interface SearchMvtRequest extends RequestBase {
     runtime_mappings?: MappingRuntimeFields
     size?: integer
     sort?: Sort
+    track_total_hits?: SearchTrackHits
   }
 }
 
