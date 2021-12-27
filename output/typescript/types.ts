@@ -15470,6 +15470,11 @@ export interface TextStructureFindStructureTopHit {
   value: any
 }
 
+export interface TransformDestination {
+  index?: IndexName
+  pipeline?: string
+}
+
 export interface TransformLatest {
   sort: Field
   unique_key: Field[]
@@ -15502,6 +15507,12 @@ export interface TransformSettings {
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
+}
+
+export interface TransformSource {
+  index: Indices
+  query?: QueryDslQueryContainer
+  runtime_mappings?: MappingRuntimeFields
 }
 
 export interface TransformSyncContainer {
@@ -15539,17 +15550,18 @@ export interface TransformGetTransformStatsCheckpointStats {
   checkpoint: long
   checkpoint_progress?: TransformGetTransformStatsTransformProgress
   timestamp?: DateString
-  timestamp_millis: EpochMillis
+  timestamp_millis?: EpochMillis
   time_upper_bound?: DateString
   time_upper_bound_millis?: EpochMillis
 }
 
 export interface TransformGetTransformStatsCheckpointing {
-  changes_last_detected_at: long
+  changes_last_detected_at?: long
   changes_last_detected_at_date_time?: DateString
   last: TransformGetTransformStatsCheckpointStats
   next?: TransformGetTransformStatsCheckpointStats
   operations_behind?: long
+  last_search_time?: long
 }
 
 export interface TransformGetTransformStatsRequest extends RequestBase {
@@ -15565,7 +15577,9 @@ export interface TransformGetTransformStatsResponse {
 }
 
 export interface TransformGetTransformStatsTransformIndexerStats {
+  delete_time_in_ms?: EpochMillis
   documents_indexed: long
+  documents_deleted?: long
   documents_processed: long
   exponential_avg_checkpoint_duration_ms: double
   exponential_avg_documents_indexed: double
@@ -15603,11 +15617,11 @@ export interface TransformPreviewTransformRequest extends RequestBase {
   transform_id?: Id
   timeout?: Time
   body?: {
-    dest?: ReindexDestination
+    dest?: TransformDestination
     description?: string
     frequency?: Time
     pivot?: TransformPivot
-    source?: ReindexSource
+    source?: TransformSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
@@ -15625,15 +15639,15 @@ export interface TransformPutTransformRequest extends RequestBase {
   defer_validation?: boolean
   timeout?: Time
   body?: {
-    dest: ReindexDestination
+    dest: TransformDestination
     description?: string
     frequency?: Time
     latest?: TransformLatest
-    _meta?: Record<string, string>
+    _meta?: Metadata
     pivot?: TransformPivot
     retention_policy?: TransformRetentionPolicyContainer
     settings?: TransformSettings
-    source: ReindexSource
+    source: TransformSource
     sync?: TransformSyncContainer
   }
 }
@@ -15666,10 +15680,11 @@ export interface TransformUpdateTransformRequest extends RequestBase {
   defer_validation?: boolean
   timeout?: Time
   body?: {
-    dest?: ReindexDestination
+    dest?: TransformDestination
     description?: string
     frequency?: Time
-    source?: ReindexSource
+    _meta?: Metadata
+    source?: TransformSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
@@ -15680,13 +15695,14 @@ export interface TransformUpdateTransformResponse {
   create_time: long
   description: string
   dest: ReindexDestination
-  frequency: Time
+  frequency?: Time
   id: Id
   pivot: TransformPivot
   settings: TransformSettings
   source: ReindexSource
   sync?: TransformSyncContainer
   version: VersionString
+  _meta?: Metadata
 }
 
 export interface TransformUpgradeTransformsRequest extends RequestBase {

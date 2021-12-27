@@ -874,6 +874,7 @@
     },
     "indices.forcemerge": {
       "request": [
+        "Request: query parameter 'wait_for_completion' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
