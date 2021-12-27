@@ -50,7 +50,7 @@ export class Hit<TDocument> {
   matched_queries?: string[]
   _nested?: NestedIdentity
   _ignored?: string[]
-
+  ignored_field_values?: Dictionary<string, string[]>
   _shard?: string
   _node?: string
   _routing?: string
