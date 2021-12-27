@@ -28,6 +28,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { ZoomLevel } from './_types/ZoomLevel'
+import { TrackHits } from '@global/search/_types/hits'
 
 /**
  * @rest_spec_name search_mvt
@@ -152,5 +153,12 @@ export interface Request extends RequestBase {
      * from longest to shortest.
      */
     sort?: Sort
+    /**
+     * Number of hits matching the query to count accurately. If `true`, the exact number
+     * of hits is returned at the cost of some performance. If `false`, the response does
+     * not include the total number of hits matching the query.
+     * @server_default 10000
+     */
+    track_total_hits?: TrackHits
   }
 }
