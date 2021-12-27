@@ -46,7 +46,7 @@ async function downloadArtifacts (opts) {
 
   core.info('Checking out spec and test')
 
-  core.info('Resolving versions')
+  core.info('Resolving version')
   let resolved
   try {
     resolved = await resolve(opts.version || fromBranch(opts.branch), opts.hash)
@@ -89,6 +89,16 @@ async function downloadArtifacts (opts) {
 }
 
 async function resolve (version, hash) {
+  if (version === 'latest') {
+    const response = await fetch('https://artifacts-api.elastic.co/v1/versions')
+    if (!response.ok) {
+      throw new Error(`unexpected response ${response.statusText}`)
+    }
+    const { versions } = await response.body()
+    version = versions.pop()
+  }
+
+  core.info(`Resolving version ${version}`)
   const response = await fetch(`https://artifacts-api.elastic.co/v1/versions/${version}`)
   if (!response.ok) {
     throw new Error(`unexpected response ${response.statusText}`)
@@ -139,7 +149,7 @@ async function resolve (version, hash) {
 
 function fromBranch (branch) {
   if (branch === 'main') {
-    return '8.1.0-SNAPSHOT'
+    return 'latest'
   } else if (branch === '7.x') {
     return '7.x-SNAPSHOT'
   } else if (branch.startsWith('7.') && !isNaN(Number(branch.split('.')[1]))) {
