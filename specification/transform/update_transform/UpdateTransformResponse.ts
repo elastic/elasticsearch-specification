@@ -25,7 +25,7 @@ import {
   Settings,
   SyncContainer
 } from '@transform/_types/Transform'
-import { Id, VersionString } from '@_types/common'
+import { Id, Metadata, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
@@ -35,7 +35,7 @@ export class Response {
     //  create_time_date_time?: DateString
     description: string
     dest: Destination
-    frequency: Time
+    frequency?: Time
     id: Id
     latest?: Latest
     pivot?: Pivot
@@ -44,5 +44,6 @@ export class Response {
     source: Source
     sync?: SyncContainer
     version: VersionString
+    _meta?: Metadata
   }
 }
