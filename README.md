@@ -23,7 +23,7 @@ Once the installation is completed, install Node.js with `nvm`:
 
 ```sh
 # this command will install the version configured in .nvmrc
-nvm use
+nvm install
 ```
 
 ## How to generate the JSON representation
