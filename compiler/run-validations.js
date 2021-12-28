@@ -19,16 +19,19 @@
 
 /* global $ argv, path, cd, nothrow */
 
+let ora
+let closest
 try {
   require('zx/globals')
+  ora = require('ora')
+  const fl = require('fastest-levenshtein')
+  closest = fl.closest
 } catch (err) {
   console.log('It looks like you didn\'t install the project dependencies, please run \'make setup\'')
   process.exit(1)
 }
 
-const ora = require('ora')
 const { readFile, writeFile } = require('fs/promises')
-const { closest } = require('fastest-levenshtein')
 
 // enable subprocess colors
 process.env.COLOR = true
