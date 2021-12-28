@@ -188,8 +188,11 @@ git clone https://github.com/elastic/elasticsearch-specification.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
 cd elasticsearch-specification
-# this will validate the xpack.info request type agains the 8.1.0 stack version
+# this will validate the xpack.info request type against the 8.1.0 stack version
 make validate api=xpack.info type=request stack-version=8.1.0-SNAPSHOT
+
+# this will validate the xpack.info request and response types against the 8.1.0 stack version
+make validate api=xpack.info stack-version=8.1.0-SNAPSHOT
 ```
 
 The last command above will install all the dependencies and run, download
