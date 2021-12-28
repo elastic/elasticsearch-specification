@@ -274,9 +274,8 @@ export class IndexSettings {
    * @aliases index.priority
    */
   priority?: integer | string
-
   top_metrics_max_size?: integer
-
+  time_series?: IndexSettingsTimeSeries
   /**
    * @aliases index.analysis
    */
@@ -313,4 +312,9 @@ export class IndexSettingsAnalysis {
   filter?: Dictionary<string, TokenFilter>
   normalizer?: Dictionary<string, Normalizer>
   tokenizer?: Dictionary<string, Tokenizer>
+}
+
+export class IndexSettingsTimeSeries {
+  end_time: DateString
+  start_time: DateString
 }

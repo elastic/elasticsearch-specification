@@ -9141,6 +9141,7 @@ export interface IndicesIndexSettings {
   priority?: integer | string
   'index.priority'?: integer | string
   top_metrics_max_size?: integer
+  time_series?: IndicesIndexSettingsTimeSeries
   analysis?: IndicesIndexSettingsAnalysis
   'index.analysis'?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
@@ -9156,6 +9157,11 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
+}
+
+export interface IndicesIndexSettingsTimeSeries {
+  end_time: DateString
+  start_time: DateString
 }
 
 export interface IndicesIndexState {
