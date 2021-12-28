@@ -60,7 +60,7 @@ async function run () {
   const isStale = lastRun.getTime() + DAY < Date.now()
 
   if (typeof argv.api !== 'string') {
-    spinner.fail('You must specify the api, for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    spinner.fail('You must specify the api, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
     process.exit(1)
   }
 
@@ -69,13 +69,14 @@ async function run () {
     process.exit(1)
   }
 
-  if (argv.type !== 'request' && argv.type !== 'response') {
-    spinner.fail('You must specify the type (request or response), for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+  // if true it's because the make target wasn't configured with a type argument
+  if (argv.type !== true && argv.type !== 'request' && argv.type !== 'response') {
+    spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
     process.exit(1)
   }
 
   if (typeof argv['stack-version'] !== 'string') {
-    spinner.fail('You must specify the stack version, for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    spinner.fail('You must specify the stack version, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
     process.exit(1)
   }
 
@@ -167,7 +168,14 @@ async function run () {
   cd(tsValidationPath)
   spinner.text = 'Validating endpoints'
   // the ts validator will copy types.ts and schema.json autonomously
-  const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} --${argv.type} --verbose`
+  const flags = ['--verbose']
+  if (argv.type === true) {
+    flags.push('--request')
+    flags.push('--response')
+  } else {
+    flags.push(`--${argv.type}`)
+  }
+  const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} ${flags}`
 
   cd(path.join(compilerPath, '..'))
   if (output.exitCode === 0) {
