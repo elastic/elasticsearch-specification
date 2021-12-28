@@ -282,6 +282,10 @@ export class IndexSettings {
    */
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
+  /**
+   * @stability experimental
+   */
+  time_series?: IndexSettingsTimeSeries
 }
 
 export class IndexSettingBlocks {
@@ -313,4 +317,9 @@ export class IndexSettingsAnalysis {
   filter?: Dictionary<string, TokenFilter>
   normalizer?: Dictionary<string, Normalizer>
   tokenizer?: Dictionary<string, Tokenizer>
+}
+
+export class IndexSettingsTimeSeries {
+  end_time?: DateString
+  start_time?: DateString
 }
