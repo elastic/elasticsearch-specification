@@ -17,6 +17,8 @@
  * under the License.
  */
 
+/* eslint-disable no-empty */
+
 import { deepStrictEqual } from 'assert'
 import {
   ts,
@@ -228,7 +230,7 @@ export function modelType (node: Node): model.ValueOf {
       // The two most important fields of a TypeReference are `typeName` and `typeArguments`,
       // the first one is the name of the type (eg: `Foo`), while the second is the
       // possible generics (eg: Foo<T> => T will be in typeArguments).
-      assert(node, Node.isTypeReferenceNode(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      assert(node, Node.isTypeReference(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
 
       const identifier = node.getTypeName()
       assert(node, Node.isIdentifier(identifier), 'Should be an identifier')
@@ -813,7 +815,7 @@ export function getNameSpace (node: Node): string {
   // if the node we are checking is a TypeReferenceNode,
   // then we can get the codegen_name and find where
   // it has been defined and compute the namespace from that.
-  if (Node.isTypeReferenceNode(node)) {
+  if (Node.isTypeReference(node)) {
     const identifier = node.getTypeName()
     if (Node.isIdentifier(identifier)) {
       const name = identifier.compilerNode.escapedText as string
@@ -859,7 +861,7 @@ export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration):
     .map(t => t.getExpression())
 
   for (const extend of extended) {
-    assert(extend, Node.isReferenceFindableNode(extend), 'Should be a reference node')
+    assert(extend, Node.isReferenceFindable(extend), 'Should be a reference node')
     const declaration = extend.getType().getSymbol()?.getDeclarations()[0]
     assert(extend, declaration != null, `Cannot find declaration for ${extend.getText()}`)
     if (Node.isClassDeclaration(declaration) || Node.isInterfaceDeclaration(declaration)) {
