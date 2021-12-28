@@ -22,4 +22,3 @@ import { DataStream } from '@indices/_types/DataStream'
 export class Response {
   body: { data_streams: DataStream[] }
 }
-

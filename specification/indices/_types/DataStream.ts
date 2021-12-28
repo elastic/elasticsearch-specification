@@ -17,8 +17,16 @@
  * under the License.
  */
 
-import { DataStreamName, Field, HealthStatus, IndexName, Metadata, Name, Uuid } from "@_types/common"
-import { integer } from "@_types/Numeric"
+import {
+  DataStreamName,
+  Field,
+  HealthStatus,
+  IndexName,
+  Metadata,
+  Name,
+  Uuid
+} from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class DataStream {
   name: DataStreamName
