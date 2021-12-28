@@ -17,6 +17,35 @@
  * under the License.
  */
 
+import { DataStreamName, Field, HealthStatus, IndexName, Metadata, Name, Uuid } from "@_types/common"
+import { integer } from "@_types/Numeric"
+
 export class DataStream {
+  name: DataStreamName
+  timestamp_field: DataStreamTimestampField
+  indices: DataStreamIndex[]
+  generation: integer
+  template: Name
+  hidden: boolean
+  replicated?: boolean
+  /** @since 7.10.0 */
+  system?: boolean
+  status: HealthStatus
+  ilm_policy?: Name
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  _meta?: Metadata
+  allow_custom_routing?: boolean
+}
+
+export class DataStreamTimestampField {
+  name: Field
+}
+
+export class DataStreamIndex {
+  index_name: IndexName
+  index_uuid: Uuid
+}
+
+export class DataStreamVisibility {
   hidden?: boolean
 }
