@@ -28,6 +28,7 @@ try {
 
 const ora = require('ora')
 const { readFile, writeFile } = require('fs/promises')
+const { closest } = require('fastest-levenshtein')
 
 // enable subprocess colors
 process.env.COLOR = true
@@ -43,6 +44,10 @@ const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-re
 const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 const DAY = 1000 * 60 * 60 * 24
 
+const apis = require('../output/schema/schema.json')
+  .endpoints
+  .map(endpoint => endpoint.name)
+
 async function run () {
   spinner.text = 'Checking requirements'
 
@@ -53,6 +58,11 @@ async function run () {
 
   if (typeof argv.api !== 'string') {
     spinner.fail('You must specify the api, for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    process.exit(1)
+  }
+
+  if (!apis.includes(argv.api)) {
+    spinner.fail(`The api '${argv.api}' does not exists, did you mean '${closest(argv.api, apis)}'?`)
     process.exit(1)
   }
 

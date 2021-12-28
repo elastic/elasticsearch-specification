@@ -35,6 +35,7 @@ import {
   Node,
   Project
 } from 'ts-morph'
+import { closest } from 'fastest-levenshtein'
 import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
@@ -566,7 +567,7 @@ export function hoistRequestAnnotations (
     `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
   const endpoint = mappings[apiName]
-  assert(jsDocs, endpoint != null, `${apiName} is not represented in the spec as a json file`)
+  assert(jsDocs, endpoint != null, `The api '${apiName}' does not exists, did you mean '${closest(apiName, Object.keys(mappings))}'?`)
 
   endpoint.request = request.name
   endpoint.response = response
