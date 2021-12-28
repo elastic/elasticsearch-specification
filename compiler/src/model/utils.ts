@@ -17,6 +17,8 @@
  * under the License.
  */
 
+/* eslint-disable no-empty */
+
 import { deepStrictEqual } from 'assert'
 import {
   ts,
