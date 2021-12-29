@@ -2591,9 +2591,9 @@ export interface AggregationsAggregationContainer {
 }
 
 export interface AggregationsAggregationRange {
-  from?: double | string
+  from?: double | string | null
   key?: string
-  to?: double | string
+  to?: double | string | null
 }
 
 export interface AggregationsArrayPercentilesItem {
@@ -3137,9 +3137,9 @@ export interface AggregationsIpRangeAggregation extends AggregationsBucketAggreg
 }
 
 export interface AggregationsIpRangeAggregationRange {
-  from?: string
+  from?: string | null
   mask?: string
-  to?: string
+  to?: string | null
 }
 
 export interface AggregationsIpRangeBucketKeys extends AggregationsMultiBucketBase {
@@ -3360,6 +3360,7 @@ export interface AggregationsRangeAggregation extends AggregationsBucketAggregat
   ranges?: AggregationsAggregationRange[]
   script?: Script
   keyed?: boolean
+  format?: string
 }
 
 export interface AggregationsRangeBucketKeys extends AggregationsMultiBucketBase {
@@ -3637,6 +3638,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
+  format?: string
 }
 
 export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_first'
