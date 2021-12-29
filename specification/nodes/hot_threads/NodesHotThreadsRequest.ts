@@ -74,5 +74,6 @@ export interface Request extends RequestBase {
      * @server_default cpu
      */
     type?: ThreadType
+    sort?: ThreadType
   }
 }

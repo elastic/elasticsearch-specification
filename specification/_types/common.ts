@@ -251,12 +251,14 @@ export enum SuggestMode {
 }
 
 export enum ThreadType {
-  cpu = 0,
-  wait = 1,
-  block = 2
+  cpu,
+  wait,
+  block,
+  gpu,
+  mem
 }
 
-// TODO: @see WaitForActiveShards & https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html */
 export enum WaitForActiveShardOptions {
   'all' = 0
 }

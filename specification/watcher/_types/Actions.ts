@@ -33,40 +33,40 @@ import { HttpInputRequestDefinition } from './Input'
 export class PagerDutyEvent {
   account: string
   attach_payload: boolean
-  client: string
-  client_url: string
-  context: PagerDutyContext[]
-  description: string
-  event_type: PagerDutyEventType
+  client?: string
+  client_url?: string
+  contexts: PagerDutyContext[]
+  description?: string
+  event_type?: PagerDutyEventType
   incident_key: string
 }
 
 export class PagerDutyContext {
-  href: string
-  src: string
+  href?: string
+  src?: string
   type: PagerDutyContextType
 }
 
 export enum PagerDutyContextType {
-  link = 0,
-  image = 1
+  link,
+  image
 }
 
 export enum PagerDutyEventType {
-  trigger = 0,
-  resolve = 1,
-  acknowledge = 2
-}
-
-export class PagerDutyActionEventResult {
-  event: PagerDutyEvent
-  reason: string
-  request: HttpInputRequestResult
-  response: HttpInputResponseResult
+  trigger,
+  resolve,
+  acknowledge
 }
 
 export class PagerDutyResult {
-  sent_event: PagerDutyActionEventResult
+  event: PagerDutyEvent
+  reason?: string
+  request?: HttpInputRequestResult
+  response?: HttpInputResponseResult
+}
+
+export class PagerDutySentEvent {
+  sent_event: PagerDutyEvent
 }
 
 // Slack -------------------------------- //
@@ -142,7 +142,7 @@ export enum EmailPriority {
 
 export class EmailResult {
   account?: string
-  message: EmailResult
+  message: Email
   reason?: string
 }
 

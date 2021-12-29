@@ -721,6 +721,13 @@
       ],
       "response": []
     },
+    "ilm.put_lifecycle": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "ilm.remove_policy": {
       "request": [
         "Request: should not have a body"
@@ -867,7 +874,6 @@
     },
     "indices.forcemerge": {
       "request": [
-        "Request: missing json spec query parameter 'wait_for_completion'",
         "Request: should not have a body"
       ],
       "response": []
@@ -950,7 +956,6 @@
     },
     "indices.put_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
         "Request: missing json spec query parameter 'master_timeout'"
       ],
@@ -1368,7 +1373,6 @@
     "nodes.hot_threads": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1665,6 +1669,7 @@
       "request": [
         "Request: query parameter 'application' does not exist in the json spec",
         "Request: query parameter 'priviledge' does not exist in the json spec",
+        "Request: query parameter 'username' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -1878,6 +1883,9 @@
     },
     "tasks.list": {
       "request": [
+        "Request: query parameter 'node_id' does not exist in the json spec",
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: missing json spec query parameter 'nodes'",
         "Request: should not have a body"
       ],
       "response": []
@@ -2008,7 +2016,6 @@
     },
     "xpack.info": {
       "request": [
-        "Request: missing json spec query parameter 'accept_enterprise'",
         "Request: should not have a body"
       ],
       "response": []

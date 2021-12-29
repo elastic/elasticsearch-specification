@@ -24,8 +24,14 @@ import { integer, double, float } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 
-export class PipelineAggregationBase extends Aggregation {
+export class BucketPathAggregation extends Aggregation {
+  /**
+   * Path to the buckets that contain one set of values to correlate. For syntax, see [buckets_path Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html#buckets-path-syntax).
+   */
   buckets_path?: BucketsPath
+}
+
+export class PipelineAggregationBase extends BucketPathAggregation {
   format?: string
   gap_policy?: GapPolicy
 }
@@ -51,6 +57,81 @@ export class BucketScriptAggregation extends PipelineAggregationBase {
 
 export class BucketSelectorAggregation extends PipelineAggregationBase {
   script?: Script
+}
+
+/**
+ * A sibling pipeline aggregation which executes a two sample Kolmogorov–Smirnov test (referred
+ * to as a "K-S test" from now on) against a provided distribution, and the distribution implied
+ * by the documents counts in the configured sibling aggregation. Specifically, for some metric,
+ * assuming that the percentile intervals of the metric are known beforehand or have been computed
+ * by an aggregation, then one would use range aggregation for the sibling to compute the p-value
+ * of the distribution difference between the metric and the restriction of that metric to a subset
+ * of the documents. A natural use case is if the sibling aggregation range aggregation nested in a
+ * terms aggregation, in which case one compares the overall distribution of metric to its restriction
+ * to each term.
+ */
+export class BucketKsAggregation extends BucketPathAggregation {
+  /**
+   * A list of string values indicating which K-S test alternative to calculate. The valid values
+   * are: "greater", "less", "two_sided". This parameter is key for determining the K-S statistic used
+   * when calculating the K-S test. Default value is all possible alternative hypotheses.
+   */
+  alternative?: string[]
+  /**
+   * A list of doubles indicating the distribution of the samples with which to compare to the `buckets_path` results.
+   * In typical usage this is the overall proportion of documents in each bucket, which is compared with the actual
+   * document proportions in each bucket from the sibling aggregation counts. The default is to assume that overall
+   * documents are uniformly distributed on these buckets, which they would be if one used equal percentiles of a
+   * metric to define the bucket end points.
+   */
+  fractions?: double[]
+  /**
+   * Indicates the sampling methodology when calculating the K-S test. Note, this is sampling of the returned values.
+   * This determines the cumulative distribution function (CDF) points used comparing the two samples. Default is
+   * `upper_tail`, which emphasizes the upper end of the CDF points. Valid options are: `upper_tail`, `uniform`,
+   * and `lower_tail`.
+   */
+  sampling_method?: string
+}
+
+/**
+ * A sibling pipeline aggregation which executes a correlation function on the configured sibling multi-bucket aggregation.
+ */
+export class BucketCorrelationAggregation extends BucketPathAggregation {
+  /** The correlation function to execute. */
+  function: BucketCorrelationFunction
+}
+
+export class BucketCorrelationFunction {
+  /**
+   * The configuration to calculate a count correlation. This function is designed for determining the correlation of a term value and a given metric.
+   */
+  count_correlation: BucketCorrelationFunctionCountCorrelation
+}
+
+export class BucketCorrelationFunctionCountCorrelation {
+  /** The indicator with which to correlate the configured `bucket_path` values. */
+  indicator: BucketCorrelationFunctionCountCorrelationIndicator
+}
+
+export class BucketCorrelationFunctionCountCorrelationIndicator {
+  /**
+   * The total number of documents that initially created the expectations. It’s required to be greater
+   * than or equal to the sum of all values in the buckets_path as this is the originating superset of data
+   * to which the term values are correlated.
+   */
+  doc_count: integer
+  /**
+   * An array of numbers with which to correlate the configured `bucket_path` values.
+   * The length of this value must always equal the number of buckets returned by the `bucket_path`.
+   */
+  expectations: double[]
+  /**
+   * An array of fractions to use when averaging and calculating variance. This should be used if
+   * the pre-calculated data and the buckets_path have known gaps. The length of fractions, if provided,
+   * must equal expectations.
+   */
+  fractions?: double[]
 }
 
 export class BucketSortAggregation extends Aggregation {

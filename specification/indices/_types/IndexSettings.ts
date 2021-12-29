@@ -31,6 +31,7 @@ import { IndexSegmentSort } from './IndexSegmentSort'
 
 export class SoftDeletes {
   enabled: boolean
+  'retention_lease.period'?: Time
 }
 
 /**
@@ -50,6 +51,15 @@ export class IndexSettings {
    * @aliases index.soft_deletes
    */
   soft_deletes?: SoftDeletes
+  /**
+   * @aliases index.soft_deletes.enabled
+   */
+  'soft_deletes.enabled'?: boolean
+  /**
+   * @aliases index.soft_deletes.retention_lease.period
+   * @server_default 12h
+   */
+  'soft_deletes.retention_lease.period'?: Time
   /**
    * @aliases index.sort
    */
@@ -83,12 +93,6 @@ export class IndexSettings {
    * @aliases index.routing_partition_size
    */
   routing_partition_size?: integer
-
-  /**
-   * @aliases index.soft_deletes.retention_lease.period
-   * @server_default 12h
-   */
-  'soft_deletes.retention_lease.period'?: Time
   /**
    * @aliases index.load_fixed_bitset_filters_eagerly
    * @server_default true
@@ -108,6 +112,10 @@ export class IndexSettings {
    * @aliases index.merge.scheduler.max_thread_count
    */
   'merge.scheduler.max_thread_count'?: integer
+  /**
+   * @aliases index.merge.scheduler.max_merge_count
+   */
+  'merge.scheduler.max_merge_count'?: integer
   /**
    * @aliases index.search.idle.after
    * @server_default 30s
@@ -227,6 +235,10 @@ export class IndexSettings {
    */
   creation_date?: DateString
   /**
+   * @aliases index.creation_date_string
+   */
+  creation_date_string?: DateString
+  /**
    * @aliases index.uuid
    */
   uuid?: Uuid
@@ -270,6 +282,10 @@ export class IndexSettings {
    */
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
+  /**
+   * @stability experimental
+   */
+  time_series?: IndexSettingsTimeSeries
 }
 
 export class IndexSettingBlocks {
@@ -288,6 +304,7 @@ export enum IndexCheckOnStartup {
 
 export class IndexVersioning {
   created: VersionString
+  created_string?: VersionString
 }
 
 export class IndexSettingsLifecycle {
@@ -300,4 +317,9 @@ export class IndexSettingsAnalysis {
   filter?: Dictionary<string, TokenFilter>
   normalizer?: Dictionary<string, Normalizer>
   tokenizer?: Dictionary<string, Tokenizer>
+}
+
+export class IndexSettingsTimeSeries {
+  end_time?: DateString
+  start_time?: DateString
 }

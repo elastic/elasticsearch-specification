@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { Destination, Source } from '@global/reindex/types'
 import {
   RetentionPolicyContainer,
   Settings,
-  SyncContainer
+  SyncContainer,
+  Destination,
+  Source
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, Metadata } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -79,6 +80,10 @@ export interface Request extends RequestBase {
      * @server_default 1m
      */
     frequency?: Time
+    /**
+     * Defines optional transform metadata.
+     */
+    _meta?: Metadata
     /**
      * The source of the data for the transform.
      */
