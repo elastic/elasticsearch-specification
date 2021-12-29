@@ -11773,7 +11773,7 @@ export interface MlTrainedModelAllocationTaskParameters {
 
 export interface MlTrainedModelConfig {
   model_id: Id
-  model_type: MlTrainedModelType
+  model_type?: MlTrainedModelType
   tags: string[]
   version?: VersionString
   compressed_definition?: string
@@ -11787,6 +11787,8 @@ export interface MlTrainedModelConfig {
   input: MlTrainedModelConfigInput
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
+  model_size_bytes?: ByteSize
+  location?: MlTrainedModelLocation
 }
 
 export interface MlTrainedModelConfigInput {
@@ -11814,6 +11816,14 @@ export interface MlTrainedModelInferenceStats {
   cache_miss_count: long
   missing_all_fields_count: long
   timestamp: Time
+}
+
+export interface MlTrainedModelLocation {
+  index: MlTrainedModelLocationIndex
+}
+
+export interface MlTrainedModelLocationIndex {
+  name: IndexName
 }
 
 export interface MlTrainedModelStats {
