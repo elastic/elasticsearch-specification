@@ -8969,6 +8969,30 @@ export interface IndicesAliasDefinition {
 }
 
 export interface IndicesDataStream {
+  name: DataStreamName
+  timestamp_field: IndicesDataStreamTimestampField
+  indices: IndicesDataStreamIndex[]
+  generation: integer
+  template: Name
+  hidden: boolean
+  replicated?: boolean
+  system?: boolean
+  status: HealthStatus
+  ilm_policy?: Name
+  _meta?: Metadata
+  allow_custom_routing?: boolean
+}
+
+export interface IndicesDataStreamIndex {
+  index_name: IndexName
+  index_uuid: Uuid
+}
+
+export interface IndicesDataStreamTimestampField {
+  name: Field
+}
+
+export interface IndicesDataStreamVisibility {
   hidden?: boolean
 }
 
@@ -9160,8 +9184,8 @@ export interface IndicesIndexSettingsLifecycle {
 }
 
 export interface IndicesIndexSettingsTimeSeries {
-  end_time?: DateString
-  start_time?: DateString
+  end_time: DateString
+  start_time: DateString
 }
 
 export interface IndicesIndexState {
@@ -9554,35 +9578,13 @@ export interface IndicesGetAliasRequest extends RequestBase {
 export interface IndicesGetAliasResponse extends DictionaryResponseBase<IndexName, IndicesGetAliasIndexAliases> {
 }
 
-export interface IndicesGetDataStreamIndicesGetDataStreamItem {
-  name: DataStreamName
-  timestamp_field: IndicesGetDataStreamIndicesGetDataStreamItemTimestampField
-  indices: IndicesGetDataStreamIndicesGetDataStreamItemIndex[]
-  generation: integer
-  template: Name
-  hidden: boolean
-  system?: boolean
-  status: HealthStatus
-  ilm_policy?: Name
-  _meta?: Metadata
-}
-
-export interface IndicesGetDataStreamIndicesGetDataStreamItemIndex {
-  index_name: IndexName
-  index_uuid: Uuid
-}
-
-export interface IndicesGetDataStreamIndicesGetDataStreamItemTimestampField {
-  name: Field
-}
-
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
 }
 
 export interface IndicesGetDataStreamResponse {
-  data_streams: IndicesGetDataStreamIndicesGetDataStreamItem[]
+  data_streams: IndicesDataStream[]
 }
 
 export interface IndicesGetFieldMappingRequest extends RequestBase {
@@ -9734,7 +9736,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
-    data_stream?: IndicesDataStream
+    data_stream?: IndicesDataStreamVisibility
     priority?: integer
     version?: VersionNumber
     _meta?: Metadata
@@ -10111,7 +10113,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
-    data_stream?: IndicesDataStream
+    data_stream?: IndicesDataStreamVisibility
     priority?: integer
     version?: VersionNumber
     _meta?: Metadata

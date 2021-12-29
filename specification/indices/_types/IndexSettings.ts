@@ -274,9 +274,7 @@ export class IndexSettings {
    * @aliases index.priority
    */
   priority?: integer | string
-
   top_metrics_max_size?: integer
-
   /**
    * @aliases index.analysis
    */
@@ -320,6 +318,6 @@ export class IndexSettingsAnalysis {
 }
 
 export class IndexSettingsTimeSeries {
-  end_time?: DateString
-  start_time?: DateString
+  end_time: DateString
+  start_time: DateString
 }
