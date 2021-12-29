@@ -224,9 +224,9 @@ export class IpRangeAggregation extends BucketAggregationBase {
 }
 
 export class IpRangeAggregationRange {
-  from?: string
+  from?: string | null
   mask?: string
-  to?: string
+  to?: string | null
 }
 
 export class MissingAggregation extends BucketAggregationBase {
@@ -256,12 +256,13 @@ export class RangeAggregation extends BucketAggregationBase {
   ranges?: AggregationRange[]
   script?: Script
   keyed?: boolean
+  format?: string
 }
 
 export class AggregationRange {
-  from?: double | string
+  from?: double | string | null
   key?: string
-  to?: double | string
+  to?: double | string | null
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
@@ -354,6 +355,7 @@ export class TermsAggregation extends BucketAggregationBase {
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
+  format?: string
 }
 
 export type TermsAggregationOrder =
