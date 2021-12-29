@@ -688,6 +688,14 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     if (description.length > 0) property.description = description.trim()
   }
 
+  if (tags.doc_id != null) {
+    assert(
+      jsDocs,
+      tags.doc_url == null,
+      'You can\'t define @doc_id and @doc_url at the same time'
+    )
+  }
+
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'aliases') {
