@@ -12726,6 +12726,7 @@ export interface MlPutTrainedModelPreprocessor {
 
 export interface MlPutTrainedModelRequest extends RequestBase {
   model_id: Id
+  defer_definition_decompression?: boolean
   body?: {
     compressed_definition?: string
     definition?: MlPutTrainedModelDefinition

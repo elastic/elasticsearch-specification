@@ -21,7 +21,13 @@ import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, HttpHeaders, Id, Indices, IndicesOptions } from '@_types/common'
+import {
+  ExpandWildcards,
+  HttpHeaders,
+  Id,
+  Indices,
+  IndicesOptions
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
