@@ -21,7 +21,7 @@ import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
+import { ExpandWildcards, HttpHeaders, Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -112,7 +112,7 @@ export interface Request extends RequestBase {
      * learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
-    indices?: string[]
+    indices?: Indices
     /**
      * Specifies index expansion options that are used during search
      */
@@ -157,5 +157,9 @@ export interface Request extends RequestBase {
      * @server_default 1000
      */
     scroll_size?: integer
+    /**
+     * @since 8.0.0
+     */
+    headers?: HttpHeaders
   }
 }

@@ -24,7 +24,7 @@ import {
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { HttpHeaders, Id, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -126,5 +126,13 @@ export interface Request extends RequestBase {
      * The configuration of how to source the analysis data.
      */
     source: DataframeAnalyticsSource
+    /**
+     * @since 8.0.0
+     */
+    headers?: HttpHeaders
+    /**
+     * @since 7.16.0
+     */
+    version?: VersionString
   }
 }

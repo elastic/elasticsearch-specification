@@ -12564,6 +12564,8 @@ export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
     max_num_threads?: integer
     model_memory_limit?: string
     source: MlDataframeAnalyticsSource
+    headers?: HttpHeaders
+    version?: VersionString
   }
 }
 
@@ -12592,8 +12594,8 @@ export interface MlPutDatafeedRequest extends RequestBase {
     chunking_config?: MlChunkingConfig
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
-    indices?: string[]
-    indexes?: string[]
+    indices?: Indices
+    indexes?: Indices
     indices_options?: IndicesOptions
     job_id?: Id
     max_empty_searches?: integer
@@ -12602,6 +12604,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     runtime_mappings?: MappingRuntimeFields
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
+    headers?: HttpHeaders
   }
 }
 
