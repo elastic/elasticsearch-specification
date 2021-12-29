@@ -20,7 +20,14 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
-import { Field, Id, Name, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  Field,
+  Id,
+  IndexName,
+  Name,
+  VersionString
+} from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 import { DateString } from '@_types/Time'
@@ -59,7 +66,7 @@ export class TrainedModelConfig {
   /** Idetifier for the trained model. */
   model_id: Id
   /** The model type */
-  model_type: TrainedModelType
+  model_type?: TrainedModelType
   /** A comma delimited string of tags. A trained model can have many tags, or none. */
   tags: string[]
   /** The Elasticsearch version number in which the trained model was created. */
@@ -85,6 +92,8 @@ export class TrainedModelConfig {
   license_level?: string
   /** An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects. */
   metadata?: TrainedModelConfigMetadata
+  model_size_bytes?: ByteSize
+  location?: TrainedModelLocation
 }
 
 export class TrainedModelConfigInput {
@@ -249,3 +258,11 @@ export class TopClassEntry {
 }
 
 export type PredictedValue = string | double
+
+export class TrainedModelLocation {
+  index: TrainedModelLocationIndex
+}
+
+export class TrainedModelLocationIndex {
+  name: IndexName
+}

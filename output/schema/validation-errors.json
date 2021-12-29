@@ -1303,12 +1303,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'defer_definition_decompression'"
-      ],
-      "response": []
-    },
     "ml.put_trained_model_alias": {
       "request": [
         "Request: should not have a body"
