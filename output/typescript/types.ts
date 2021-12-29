@@ -9144,6 +9144,7 @@ export interface IndicesIndexSettings {
   analysis?: IndicesIndexSettingsAnalysis
   'index.analysis'?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
+  time_series?: IndicesIndexSettingsTimeSeries
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -9156,6 +9157,11 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
+}
+
+export interface IndicesIndexSettingsTimeSeries {
+  end_time?: DateString
+  start_time?: DateString
 }
 
 export interface IndicesIndexState {
