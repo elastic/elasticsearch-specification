@@ -9165,10 +9165,10 @@ export interface IndicesIndexSettings {
   priority?: integer | string
   'index.priority'?: integer | string
   top_metrics_max_size?: integer
-  time_series?: IndicesIndexSettingsTimeSeries
   analysis?: IndicesIndexSettingsAnalysis
   'index.analysis'?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
+  time_series?: IndicesIndexSettingsTimeSeries
 }
 
 export interface IndicesIndexSettingsAnalysis {

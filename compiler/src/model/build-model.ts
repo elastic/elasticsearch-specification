@@ -500,7 +500,7 @@ function visitRequestOrResponseProperty (member: PropertyDeclaration | PropertyS
   // declaration is a child of the top level properties, while TypeReference should
   // directly by "unwrapped" with `modelType` because if you navigate the children of a TypeReference
   // you will lose the context and crafting the types becomes really hard.
-  if (Node.isTypeReferenceNode(value)) {
+  if (Node.isTypeReference(value)) {
     valueOf = modelType(value)
   } else {
     value.forEachChild(child => {

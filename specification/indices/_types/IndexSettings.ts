@@ -275,12 +275,15 @@ export class IndexSettings {
    */
   priority?: integer | string
   top_metrics_max_size?: integer
-  time_series?: IndexSettingsTimeSeries
   /**
    * @aliases index.analysis
    */
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
+  /**
+   * @stability experimental
+   */
+  time_series?: IndexSettingsTimeSeries
 }
 
 export class IndexSettingBlocks {

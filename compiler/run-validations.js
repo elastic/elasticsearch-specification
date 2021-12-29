@@ -19,14 +19,18 @@
 
 /* global $ argv, path, cd, nothrow */
 
+let ora
+let closest
 try {
   require('zx/globals')
+  ora = require('ora')
+  const fl = require('fastest-levenshtein')
+  closest = fl.closest
 } catch (err) {
   console.log('It looks like you didn\'t install the project dependencies, please run \'make setup\'')
   process.exit(1)
 }
 
-const ora = require('ora')
 const { readFile, writeFile } = require('fs/promises')
 
 // enable subprocess colors
@@ -43,6 +47,10 @@ const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-re
 const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 const DAY = 1000 * 60 * 60 * 24
 
+const apis = require('../output/schema/schema.json')
+  .endpoints
+  .map(endpoint => endpoint.name)
+
 async function run () {
   spinner.text = 'Checking requirements'
 
@@ -52,17 +60,23 @@ async function run () {
   const isStale = lastRun.getTime() + DAY < Date.now()
 
   if (typeof argv.api !== 'string') {
-    spinner.fail('You must specify the api, for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    spinner.fail('You must specify the api, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
     process.exit(1)
   }
 
-  if (argv.type !== 'request' && argv.type !== 'response') {
-    spinner.fail('You must specify the type (request or response), for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+  if (!apis.includes(argv.api)) {
+    spinner.fail(`The api '${argv.api}' does not exists, did you mean '${closest(argv.api, apis)}'?`)
+    process.exit(1)
+  }
+
+  // if true it's because the make target wasn't configured with a type argument
+  if (argv.type !== true && argv.type !== 'request' && argv.type !== 'response') {
+    spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
     process.exit(1)
   }
 
   if (typeof argv['stack-version'] !== 'string') {
-    spinner.fail('You must specify the stack version, for example: \'make validate-request api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    spinner.fail('You must specify the stack version, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
     process.exit(1)
   }
 
@@ -154,7 +168,14 @@ async function run () {
   cd(tsValidationPath)
   spinner.text = 'Validating endpoints'
   // the ts validator will copy types.ts and schema.json autonomously
-  const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} --${argv.type} --verbose`
+  const flags = ['--verbose']
+  if (argv.type === true) {
+    flags.push('--request')
+    flags.push('--response')
+  } else {
+    flags.push(`--${argv.type}`)
+  }
+  const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} ${flags}`
 
   cd(path.join(compilerPath, '..'))
   if (output.exitCode === 0) {
