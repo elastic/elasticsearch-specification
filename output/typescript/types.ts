@@ -12538,7 +12538,7 @@ export interface MlPutCalendarRequest extends RequestBase {
 
 export interface MlPutCalendarResponse {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Ids
 }
 
