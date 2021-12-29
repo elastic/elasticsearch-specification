@@ -41,6 +41,11 @@ import chalk from 'chalk'
 import * as model from './metamodel'
 import { EOL } from 'os'
 import { dirname, join, sep } from 'path'
+import { readFileSync } from 'fs'
+
+const docIds: string[][] = readFileSync(join(__dirname, '..', '..', '..', 'output', 'doc-ids.csv'), 'utf8')
+  .split('\n')
+  .map(line => line.split(','))
 
 /**
  * Behaviors that the compiler recognized
@@ -619,6 +624,10 @@ export function hoistRequestAnnotations (
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_id is cannot be empty`)
       endpoint.docId = value
+      const docUrl = docIds.find(entry => entry[0] === value)
+      if (docUrl != null) {
+        endpoint.docUrl = docUrl[1]
+      }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
@@ -694,6 +703,10 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
       property.docId = value
+      const docUrl = docIds.find(entry => entry[0] === value)
+      if (docUrl != null) {
+        property.docUrl = docUrl[1]
+      }
     } else if (tag === 'stability') {
       assert(jsDocs, model.Stability[value] != null, `Property ${property.name}'s @stability can be either 'beta' or 'experimental'`)
       property.stability = model.Stability[value]
