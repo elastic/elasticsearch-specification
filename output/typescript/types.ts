@@ -11121,18 +11121,19 @@ export type MlCustomSettings = any
 
 export interface MlDataCounts {
   bucket_count: long
-  earliest_record_timestamp: long
+  earliest_record_timestamp?: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: Id
-  last_data_time: long
-  latest_empty_bucket_timestamp: long
-  latest_record_timestamp: long
-  latest_sparse_bucket_timestamp: long
-  latest_bucket_timestamp: long
+  last_data_time?: long
+  latest_empty_bucket_timestamp?: long
+  latest_record_timestamp?: long
+  latest_sparse_bucket_timestamp?: long
+  latest_bucket_timestamp?: long
+  log_time?: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -11619,12 +11620,12 @@ export interface MlJobStatistics {
 }
 
 export interface MlJobStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   data_counts: MlDataCounts
   forecasts_stats: MlJobForecastStatistics
   job_id: string
   model_size_stats: MlModelSizeStats
-  node: MlDiscoveryNode
+  node?: MlDiscoveryNode
   open_time?: DateString
   state: MlJobState
   timing_stats: MlJobTimingStats
@@ -11632,14 +11633,14 @@ export interface MlJobStats {
 }
 
 export interface MlJobTimingStats {
-  average_bucket_processing_time_ms: double
+  average_bucket_processing_time_ms?: double
   bucket_count: long
-  exponential_average_bucket_processing_time_ms: double
+  exponential_average_bucket_processing_time_ms?: double
   exponential_average_bucket_processing_time_per_hour_ms: double
   job_id: Id
   total_bucket_processing_time_ms: double
-  maximum_bucket_processing_time_ms: double
-  minimum_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
 }
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
