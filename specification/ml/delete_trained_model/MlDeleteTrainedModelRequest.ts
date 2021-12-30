@@ -35,4 +35,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  query_parameters: {
+    /** Forcefully deletes a trained model that is referenced by ingest pipelines or has a started deployment. **/
+    force?: boolean
+  }
 }
