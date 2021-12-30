@@ -9148,8 +9148,8 @@ export interface IndicesIndexSettings {
   'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
   'index.version'?: IndicesIndexVersioning
-  verified_before_close?: boolean | string
-  'index.verified_before_close'?: boolean | string
+  verified_before_close?: boolean
+  'index.verified_before_close'?: boolean
   format?: string | integer
   'index.format'?: string | integer
   max_slices_per_scroll?: integer
@@ -9158,8 +9158,8 @@ export interface IndicesIndexSettings {
   'index.translog.durability'?: string
   'translog.flush_threshold_size'?: string
   'index.translog.flush_threshold_size'?: string
-  'query_string.lenient'?: boolean | string
-  'index.query_string.lenient'?: boolean | string
+  'query_string.lenient'?: boolean
+  'index.query_string.lenient'?: boolean
   priority?: integer | string
   'index.priority'?: integer | string
   top_metrics_max_size?: integer

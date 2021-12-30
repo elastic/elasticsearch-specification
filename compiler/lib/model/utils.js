@@ -1,21 +1,3 @@
-/*
- * Licensed to Elasticsearch B.V. under one or more contributor
- * license agreements. See the NOTICE file distributed with
- * this work for additional information regarding copyright
- * ownership. Elasticsearch B.V. licenses this file to you under
- * the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -43,6 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sourceLocation = exports.deepEqual = exports.isValidUrl = exports.verifyUniqueness = exports.assert = exports.isDefinedButNeverUsed = exports.parseVariantNameTag = exports.parseVariantsTag = exports.parseJsDocTags = exports.getAllBehaviors = exports.getNameSpace = exports.isKnownBehavior = exports.hoistTypeAnnotations = exports.hoistRequestAnnotations = exports.modelProperty = exports.modelTypeAlias = exports.modelEnumDeclaration = exports.modelGenerics = exports.modelBehaviors = exports.modelImplements = exports.modelInherits = exports.isApi = exports.modelType = exports.customTypes = exports.knownBehaviors = void 0;
 const assert_1 = require("assert");
 const ts_morph_1 = require("ts-morph");
+const fastest_levenshtein_1 = require("fastest-levenshtein");
 const semver_1 = __importDefault(require("semver"));
 const chalk_1 = __importDefault(require("chalk"));
 const model = __importStar(require("./metamodel"));
@@ -197,7 +180,7 @@ function modelType(node) {
             return type;
         }
         case ts_morph_1.ts.SyntaxKind.TypeReference: {
-            assert(node, ts_morph_1.Node.isTypeReferenceNode(node), `The node is not of type ${ts_morph_1.ts.SyntaxKind[ts_morph_1.ts.SyntaxKind.TypeReference]} but ${ts_morph_1.ts.SyntaxKind[node.getKind()]} instead`);
+            assert(node, ts_morph_1.Node.isTypeReference(node), `The node is not of type ${ts_morph_1.ts.SyntaxKind[ts_morph_1.ts.SyntaxKind.TypeReference]} but ${ts_morph_1.ts.SyntaxKind[node.getKind()]} instead`);
             const identifier = node.getTypeName();
             assert(node, ts_morph_1.Node.isIdentifier(identifier), 'Should be an identifier');
             const name = identifier.compilerNode.escapedText;
@@ -439,7 +422,7 @@ function hoistRequestAnnotations(request, jsDocs, mappings, response) {
     const apiName = tags.rest_spec_name;
     assert(jsDocs, apiName !== '' && apiName !== null && apiName !== undefined, `Request ${request.name.name} does not declare the @rest_spec_name to link back to`);
     const endpoint = mappings[apiName];
-    assert(jsDocs, endpoint != null, `${apiName} is not represented in the spec as a json file`);
+    assert(jsDocs, endpoint != null, `The api '${apiName}' does not exists, did you mean '${(0, fastest_levenshtein_1.closest)(apiName, Object.keys(mappings))}'?`);
     endpoint.request = request.name;
     endpoint.response = response;
     setTags(jsDocs, request, tags, knownRequestAnnotations, (tags, tag, value) => {
@@ -689,7 +672,7 @@ function isKnownBehavior(node) {
 exports.isKnownBehavior = isKnownBehavior;
 function getNameSpace(node) {
     var _a;
-    if (ts_morph_1.Node.isTypeReferenceNode(node)) {
+    if (ts_morph_1.Node.isTypeReference(node)) {
         const identifier = node.getTypeName();
         if (ts_morph_1.Node.isIdentifier(identifier)) {
             const name = identifier.compilerNode.escapedText;
@@ -724,7 +707,7 @@ function getAllBehaviors(node) {
     const extended = getExtended(node.getHeritageClauses()).flatMap(clause => clause.getTypeNodes())
         .map(t => t.getExpression());
     for (const extend of extended) {
-        assert(extend, ts_morph_1.Node.isReferenceFindableNode(extend), 'Should be a reference node');
+        assert(extend, ts_morph_1.Node.isReferenceFindable(extend), 'Should be a reference node');
         const declaration = (_a = extend.getType().getSymbol()) === null || _a === void 0 ? void 0 : _a.getDeclarations()[0];
         assert(extend, declaration != null, `Cannot find declaration for ${extend.getText()}`);
         if (ts_morph_1.Node.isClassDeclaration(declaration) || ts_morph_1.Node.isInterfaceDeclaration(declaration)) {
