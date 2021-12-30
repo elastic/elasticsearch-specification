@@ -2412,10 +2412,6 @@ export interface TopRightBottomLeftGeoBounds {
   bottom_left: GeoLocation
 }
 
-export interface Transform {
-  [key: string]: never
-}
-
 export interface TransformContainer {
   chain?: ChainTransform
   script?: ScriptTransform
@@ -15632,7 +15628,22 @@ export interface TransformGetTransformRequest extends RequestBase {
 
 export interface TransformGetTransformResponse {
   count: long
-  transforms: Transform[]
+  transforms: TransformGetTransformTransformSummary[]
+}
+
+export interface TransformGetTransformTransformSummary {
+  dest: ReindexDestination
+  description?: string
+  frequency?: Time
+  id: Id
+  pivot?: TransformPivot
+  settings?: TransformSettings
+  source: TransformSource
+  sync?: TransformSyncContainer
+  create_time?: EpochMillis
+  version?: VersionString
+  latest?: TransformLatest
+  _meta?: Metadata
 }
 
 export interface TransformGetTransformStatsCheckpointStats {
