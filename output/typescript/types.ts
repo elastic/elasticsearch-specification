@@ -11956,6 +11956,7 @@ export interface MlDeleteModelSnapshotResponse extends AcknowledgedResponseBase 
 
 export interface MlDeleteTrainedModelRequest extends RequestBase {
   model_id: Id
+  force?: boolean
 }
 
 export interface MlDeleteTrainedModelResponse extends AcknowledgedResponseBase {
@@ -12098,13 +12099,13 @@ export interface MlFlushJobRequest extends RequestBase {
   advance_time?: DateString
   calc_interim?: boolean
   end?: DateString
-  skip_time?: string
+  skip_time?: EpochMillis
   start?: DateString
   body?: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString
-    skip_time?: string
+    skip_time?: EpochMillis
     start?: DateString
   }
 }
@@ -13088,6 +13089,7 @@ export interface MlValidateRequest extends RequestBase {
     data_description?: MlDataDescription
     description?: string
     model_plot?: MlModelPlotConfig
+    model_snapshot_id?: Id
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
   }

@@ -1195,7 +1195,6 @@
     "ml.delete_trained_model": {
       "request": [
         "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'force'",
         "Request: should not have a body"
       ],
       "response": []

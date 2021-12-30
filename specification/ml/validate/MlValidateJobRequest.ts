@@ -38,6 +38,7 @@ export interface Request extends RequestBase {
     data_description?: DataDescription
     description?: string
     model_plot?: ModelPlotConfig
+    model_snapshot_id?: Id
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
   }
