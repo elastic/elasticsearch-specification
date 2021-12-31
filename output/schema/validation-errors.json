@@ -1894,7 +1894,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
+      ]
     },
     "transform.get_transform_stats": {
       "request": [
@@ -1904,7 +1906,6 @@
     },
     "transform.preview_transform": {
       "request": [
-        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required",
         "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required"
       ],
       "response": [

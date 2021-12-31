@@ -345,7 +345,7 @@ function visitRequestOrResponseProperty(member) {
     const name = member.getName();
     const value = member.getTypeNode();
     (0, utils_1.assert)(member, value != null, `The property ${name} is not defined`);
-    if (ts_morph_1.Node.isTypeReferenceNode(value)) {
+    if (ts_morph_1.Node.isTypeReference(value)) {
         valueOf = (0, utils_1.modelType)(value);
     }
     else {

@@ -23,10 +23,11 @@ import { long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
 /**
+ * Runs multiple [templated searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#run-multiple-templated-searches) with a single request.
  * @rest_spec_name msearch_template
  * @since 5.0.0
- *
  * @stability stable
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
