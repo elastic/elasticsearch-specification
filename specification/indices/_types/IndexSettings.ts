@@ -249,7 +249,7 @@ export class IndexSettings {
   /**
    * @aliases index.verified_before_close
    */
-  verified_before_close?: boolean | string // TODO should be bool only
+  verified_before_close?: boolean
   /**
    * @aliases index.format
    */
@@ -269,7 +269,7 @@ export class IndexSettings {
   /**
    * @aliases index.query_string.lenient
    */
-  'query_string.lenient'?: boolean | string // TODO: should be bool only
+  'query_string.lenient'?: boolean
   /**
    * @aliases index.priority
    */
