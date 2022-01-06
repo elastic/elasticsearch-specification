@@ -101,6 +101,7 @@ export class IndicesPrivileges {
 }
 
 export enum IndexPrivilege {
+  none,
   all,
   auto_configure,
   create,
