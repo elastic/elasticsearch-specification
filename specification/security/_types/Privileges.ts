@@ -101,6 +101,7 @@ export class IndicesPrivileges {
 }
 
 export enum IndexPrivilege {
+  none,
   all,
   auto_configure,
   create,
@@ -109,9 +110,6 @@ export enum IndexPrivilege {
   delete,
   delete_index,
   index,
-  'indices:admin/settings/update',
-  'indices:admin/mapping/put',
-  'indices:admin/rollover',
   maintenance,
   manage,
   manage_follow_index,
