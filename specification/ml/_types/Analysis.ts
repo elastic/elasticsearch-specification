@@ -28,7 +28,8 @@ import { OverloadOf } from '@spec_utils/behaviors'
 
 export class AnalysisConfig {
   /**
-   *  The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.
+   *  The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. This value should be either a whole number of days or equate to a
+whole number of buckets in one day. If the anomaly detection job uses a datafeed with aggregations, this value must also be divisible by the interval of the date histogram aggregation.
    * * @server_default 5m
    */
   bucket_span: TimeSpan
