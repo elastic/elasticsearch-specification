@@ -414,7 +414,7 @@ export function modelGenerics (node: TypeParameterDeclaration): string {
  * which returns an array that only contains the member of the Enum.
  */
 export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum {
-  return {
+  const type: model.Enum = {
     specLocation: sourceLocation(declaration),
     name: {
       name: declaration.getName(),
@@ -433,6 +433,13 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
         return member
       })
   }
+
+  const tags = parseJsDocTags(declaration.getJsDocs())
+  if (typeof tags.open_enum === 'string') {
+    type.isOpen = true
+  }
+
+  return type
 }
 
 /**
