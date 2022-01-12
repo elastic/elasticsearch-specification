@@ -326,7 +326,7 @@ export class EnumMember {
 export class Enum extends BaseType {
   kind: 'enum'
   /**
-   * If the enum is open, it mens that other than the specified values it can accept an arbitrary value.
+   * If the enum is open, it means that other than the specified values it can accept an arbitrary value.
    * If this property is not present, it means that the enum is not open (in other words, is closed).
    */
   isOpen?: boolean
