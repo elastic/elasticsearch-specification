@@ -18,7 +18,7 @@
  */
 
 import { ByteSize, Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
@@ -37,5 +37,5 @@ export class DataStreamsStatsItem {
   data_stream: Name
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: integer
+  maximum_timestamp: long
 }
