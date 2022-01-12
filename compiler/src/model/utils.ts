@@ -43,7 +43,7 @@ import { EOL } from 'os'
 import { dirname, join, sep } from 'path'
 import { readFileSync } from 'fs'
 
-const docIds: string[][] = readFileSync(join(__dirname, '..', '..', '..', 'output', 'doc-ids.csv'), 'utf8')
+const docIds: string[][] = readFileSync(join(__dirname, '..', '..', '..', 'specification', '_doc_ids', 'table.csv'), 'utf8')
   .split('\n')
   .map(line => line.split(','))
 
