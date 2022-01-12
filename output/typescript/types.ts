@@ -2295,7 +2295,7 @@ export interface SegmentsStats {
   index_writer_memory?: ByteSize
   index_writer_max_memory_in_bytes?: integer
   index_writer_memory_in_bytes: integer
-  max_unsafe_auto_id_timestamp: integer
+  max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
   memory_in_bytes: integer
   norms_memory?: ByteSize
@@ -9389,7 +9389,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   data_stream: Name
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: integer
+  maximum_timestamp: long
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
@@ -11692,7 +11692,7 @@ export interface MlModelSnapshot {
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: Id
-  timestamp: integer
+  timestamp: long
 }
 
 export interface MlOutlierDetectionParameters {
@@ -12506,7 +12506,7 @@ export interface MlPostDataRequest<TData = unknown> extends RequestBase {
 
 export interface MlPostDataResponse {
   bucket_count: long
-  earliest_record_timestamp: integer
+  earliest_record_timestamp: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
@@ -12514,7 +12514,7 @@ export interface MlPostDataResponse {
   invalid_date_count: long
   job_id: Id
   last_data_time: integer
-  latest_record_timestamp: integer
+  latest_record_timestamp: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
