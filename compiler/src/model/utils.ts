@@ -623,11 +623,10 @@ export function hoistRequestAnnotations (
       endpoint.privileges.cluster = values
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_id is cannot be empty`)
-      endpoint.docId = value
-      const docUrl = docIds.find(entry => entry[0] === value)
-      if (docUrl != null) {
-        endpoint.docUrl = docUrl[1]
-      }
+      endpoint.docId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      endpoint.docUrl = docUrl[1]
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
