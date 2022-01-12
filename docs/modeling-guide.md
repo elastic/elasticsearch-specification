@@ -444,7 +444,8 @@ class Foo {
 
 #### `@doc_url`
 
-The documentation url for the parameter.
+The documentation url for the parameter or definition.
+If possible, use `@doc_id`.
 
 ```ts
 class Foo {
@@ -458,7 +459,7 @@ class Foo {
 #### `@doc_id`
 
 The documentation id that can be used for generating the doc url.
-See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) for context.
+You must add the id/url pair in `specification/_doc_ids/table.csv`.
 
 ```ts
 /**
@@ -468,6 +469,10 @@ See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) fo
 class Request {
   ...
 }
+```
+
+```csv
+foobar,/guide/en/example
 ```
 
 #### `@codegen_name`
