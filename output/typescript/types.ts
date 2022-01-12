@@ -1099,8 +1099,6 @@ export interface SearchAggregationProfileDelegateDebugFilter {
 
 export type SearchBoundaryScanner = 'chars' | 'sentence' | 'word'
 
-export type SearchBuiltinHighlighterType = 'plain' | 'fvh' | 'unified'
-
 export interface SearchCollector {
   name: string
   reason: string
@@ -1246,7 +1244,7 @@ export type SearchHighlighterOrder = 'score'
 
 export type SearchHighlighterTagsSchema = 'styled'
 
-export type SearchHighlighterType = SearchBuiltinHighlighterType | string
+export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
@@ -1791,8 +1789,6 @@ export interface AcknowledgedResponseBase {
 
 export type AggregateName = string
 
-export type BuiltinScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
-
 export interface BulkIndexByScrollFailure {
   cause: ErrorCause
   id: Id
@@ -2246,7 +2242,7 @@ export interface ScriptField {
   ignore_failure?: boolean
 }
 
-export type ScriptLanguage = BuiltinScriptLanguage | string
+export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'| string
 
 export interface ScriptSort {
   order?: SortOrder
