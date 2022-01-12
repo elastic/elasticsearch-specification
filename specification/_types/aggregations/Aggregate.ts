@@ -77,7 +77,10 @@ export type Aggregate =
   | ReverseNestedAggregate
   | GlobalAggregate
   | FilterAggregate
+  | ChildrenAggregate
+  | ParentAggregate
   | SamplerAggregate
+  | UnmappedSamplerAggregate
   // Geo grid
   | GeoHashGridAggregate
   | GeoTileGridAggregate
@@ -105,7 +108,6 @@ export type Aggregate =
   | RateAggregate
   | CumulativeCardinalityAggregate
   | MatrixStatsAggregate
-  | ChildrenAggregate
   | GeoLineAggregate
 
 // Aggregations are defined in the ES code base in two ways:
@@ -454,7 +456,13 @@ export class MultiTermsBucket extends MultiBucketBase {
 
 //----- Single bucket
 
-export class SingleBucketAggregateBase extends AggregateBase {
+/**
+ * Base type for single-bucket aggregation results that can hold sub-aggregations results.
+ */
+export class SingleBucketAggregateBase
+  extends AggregateBase
+  implements AdditionalProperties<AggregateName, Aggregate>
+{
   doc_count: long
 }
 
@@ -475,6 +483,9 @@ export class FilterAggregate extends SingleBucketAggregateBase {}
 
 /** @variant name=sampler */
 export class SamplerAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=unmapped_sampler */
+export class UnmappedSamplerAggregate extends SingleBucketAggregateBase {}
 
 //----- Geo grid
 
@@ -713,14 +724,10 @@ export class MatrixStatsFields {
 //----- Parent join plugin
 
 /** @variant name=children */
-export class ChildrenAggregate extends MultiBucketAggregateBase<ChildrenAggregateBucket> {}
-
-export class ChildrenAggregateBucket extends MultiBucketBase {}
+export class ChildrenAggregate extends SingleBucketAggregateBase {}
 
 /** @variant name=parent */
-export class ParentAggregate extends MultiBucketAggregateBase<ParentAggregateBucket> {}
-
-export class ParentAggregateBucket extends MultiBucketBase {}
+export class ParentAggregate extends SingleBucketAggregateBase {}
 
 //----- Spatial plugin
 
