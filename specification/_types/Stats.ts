@@ -208,7 +208,7 @@ export class SegmentsStats {
   index_writer_memory?: ByteSize
   index_writer_max_memory_in_bytes?: integer
   index_writer_memory_in_bytes: integer
-  max_unsafe_auto_id_timestamp: integer
+  max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
   memory_in_bytes: integer
   norms_memory?: ByteSize
