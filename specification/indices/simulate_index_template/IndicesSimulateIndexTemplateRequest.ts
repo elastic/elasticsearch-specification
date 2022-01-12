@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DataStream } from '@indices/_types/DataStream'
+import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
 import {
   IndexName,
@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndexTemplateMapping
-    data_stream?: DataStream
+    data_stream?: DataStreamVisibility
     priority?: integer
     version?: VersionNumber
     /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */

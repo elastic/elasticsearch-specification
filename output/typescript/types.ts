@@ -2412,10 +2412,6 @@ export interface TopRightBottomLeftGeoBounds {
   bottom_left: GeoLocation
 }
 
-export interface Transform {
-  [key: string]: never
-}
-
 export interface TransformContainer {
   chain?: ChainTransform
   script?: ScriptTransform
@@ -2591,9 +2587,9 @@ export interface AggregationsAggregationContainer {
 }
 
 export interface AggregationsAggregationRange {
-  from?: double | string
+  from?: double | string | null
   key?: string
-  to?: double | string
+  to?: double | string | null
 }
 
 export interface AggregationsArrayPercentilesItem {
@@ -3137,9 +3133,9 @@ export interface AggregationsIpRangeAggregation extends AggregationsBucketAggreg
 }
 
 export interface AggregationsIpRangeAggregationRange {
-  from?: string
+  from?: string | null
   mask?: string
-  to?: string
+  to?: string | null
 }
 
 export interface AggregationsIpRangeBucketKeys extends AggregationsMultiBucketBase {
@@ -3360,6 +3356,7 @@ export interface AggregationsRangeAggregation extends AggregationsBucketAggregat
   ranges?: AggregationsAggregationRange[]
   script?: Script
   keyed?: boolean
+  format?: string
 }
 
 export interface AggregationsRangeBucketKeys extends AggregationsMultiBucketBase {
@@ -3637,6 +3634,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
+  format?: string
 }
 
 export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_first'
@@ -8969,6 +8967,30 @@ export interface IndicesAliasDefinition {
 }
 
 export interface IndicesDataStream {
+  name: DataStreamName
+  timestamp_field: IndicesDataStreamTimestampField
+  indices: IndicesDataStreamIndex[]
+  generation: integer
+  template: Name
+  hidden: boolean
+  replicated?: boolean
+  system?: boolean
+  status: HealthStatus
+  ilm_policy?: Name
+  _meta?: Metadata
+  allow_custom_routing?: boolean
+}
+
+export interface IndicesDataStreamIndex {
+  index_name: IndexName
+  index_uuid: Uuid
+}
+
+export interface IndicesDataStreamTimestampField {
+  name: Field
+}
+
+export interface IndicesDataStreamVisibility {
   hidden?: boolean
 }
 
@@ -9126,8 +9148,8 @@ export interface IndicesIndexSettings {
   'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
   'index.version'?: IndicesIndexVersioning
-  verified_before_close?: boolean | string
-  'index.verified_before_close'?: boolean | string
+  verified_before_close?: boolean
+  'index.verified_before_close'?: boolean
   format?: string | integer
   'index.format'?: string | integer
   max_slices_per_scroll?: integer
@@ -9136,8 +9158,8 @@ export interface IndicesIndexSettings {
   'index.translog.durability'?: string
   'translog.flush_threshold_size'?: string
   'index.translog.flush_threshold_size'?: string
-  'query_string.lenient'?: boolean | string
-  'index.query_string.lenient'?: boolean | string
+  'query_string.lenient'?: boolean
+  'index.query_string.lenient'?: boolean
   priority?: integer | string
   'index.priority'?: integer | string
   top_metrics_max_size?: integer
@@ -9160,8 +9182,8 @@ export interface IndicesIndexSettingsLifecycle {
 }
 
 export interface IndicesIndexSettingsTimeSeries {
-  end_time?: DateString
-  start_time?: DateString
+  end_time: DateString
+  start_time: DateString
 }
 
 export interface IndicesIndexState {
@@ -9554,35 +9576,13 @@ export interface IndicesGetAliasRequest extends RequestBase {
 export interface IndicesGetAliasResponse extends DictionaryResponseBase<IndexName, IndicesGetAliasIndexAliases> {
 }
 
-export interface IndicesGetDataStreamIndicesGetDataStreamItem {
-  name: DataStreamName
-  timestamp_field: IndicesGetDataStreamIndicesGetDataStreamItemTimestampField
-  indices: IndicesGetDataStreamIndicesGetDataStreamItemIndex[]
-  generation: integer
-  template: Name
-  hidden: boolean
-  system?: boolean
-  status: HealthStatus
-  ilm_policy?: Name
-  _meta?: Metadata
-}
-
-export interface IndicesGetDataStreamIndicesGetDataStreamItemIndex {
-  index_name: IndexName
-  index_uuid: Uuid
-}
-
-export interface IndicesGetDataStreamIndicesGetDataStreamItemTimestampField {
-  name: Field
-}
-
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
 }
 
 export interface IndicesGetDataStreamResponse {
-  data_streams: IndicesGetDataStreamIndicesGetDataStreamItem[]
+  data_streams: IndicesDataStream[]
 }
 
 export interface IndicesGetFieldMappingRequest extends RequestBase {
@@ -9734,7 +9734,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
-    data_stream?: IndicesDataStream
+    data_stream?: IndicesDataStreamVisibility
     priority?: integer
     version?: VersionNumber
     _meta?: Metadata
@@ -10111,7 +10111,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
-    data_stream?: IndicesDataStream
+    data_stream?: IndicesDataStreamVisibility
     priority?: integer
     version?: VersionNumber
     _meta?: Metadata
@@ -11121,18 +11121,19 @@ export type MlCustomSettings = any
 
 export interface MlDataCounts {
   bucket_count: long
-  earliest_record_timestamp: long
+  earliest_record_timestamp?: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: Id
-  last_data_time: long
-  latest_empty_bucket_timestamp: long
-  latest_record_timestamp: long
-  latest_sparse_bucket_timestamp: long
-  latest_bucket_timestamp: long
+  last_data_time?: long
+  latest_empty_bucket_timestamp?: long
+  latest_record_timestamp?: long
+  latest_sparse_bucket_timestamp?: long
+  latest_bucket_timestamp?: long
+  log_time?: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -11185,14 +11186,20 @@ export interface MlDatafeedConfig {
   scroll_size?: integer
 }
 
+export interface MlDatafeedRunningState {
+  real_time_configured: boolean
+  real_time_running: boolean
+}
+
 export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 
 export interface MlDatafeedStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   datafeed_id: Id
-  node: MlDiscoveryNode
+  node?: MlDiscoveryNode
   state: MlDatafeedState
   timing_stats: MlDatafeedTimingStats
+  running_state?: MlDatafeedRunningState
 }
 
 export interface MlDatafeedTimingStats {
@@ -11201,7 +11208,7 @@ export interface MlDatafeedTimingStats {
   job_id: Id
   search_count: long
   total_search_time_ms: double
-  average_search_time_per_bucket_ms: number
+  average_search_time_per_bucket_ms?: number
 }
 
 export interface MlDataframeAnalysis {
@@ -11545,9 +11552,9 @@ export interface MlJob {
   allow_lazy_open: boolean
   analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
-  background_persist_interval: Time
+  background_persist_interval?: Time
   blocked?: MlJobBlocked
-  create_time: integer
+  create_time?: integer
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: MlDataDescription
@@ -11557,8 +11564,8 @@ export interface MlJob {
   finished_time?: integer
   groups?: string[]
   job_id: Id
-  job_type: string
-  job_version: VersionString
+  job_type?: string
+  job_version?: VersionString
   model_plot_config?: MlModelPlotConfig
   model_snapshot_id?: Id
   model_snapshot_retention_days: long
@@ -11613,12 +11620,12 @@ export interface MlJobStatistics {
 }
 
 export interface MlJobStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   data_counts: MlDataCounts
   forecasts_stats: MlJobForecastStatistics
   job_id: string
   model_size_stats: MlModelSizeStats
-  node: MlDiscoveryNode
+  node?: MlDiscoveryNode
   open_time?: DateString
   state: MlJobState
   timing_stats: MlJobTimingStats
@@ -11626,14 +11633,14 @@ export interface MlJobStats {
 }
 
 export interface MlJobTimingStats {
-  average_bucket_processing_time_ms: double
+  average_bucket_processing_time_ms?: double
   bucket_count: long
-  exponential_average_bucket_processing_time_ms: double
+  exponential_average_bucket_processing_time_ms?: double
   exponential_average_bucket_processing_time_per_hour_ms: double
   job_id: Id
   total_bucket_processing_time_ms: double
-  maximum_bucket_processing_time_ms: double
-  minimum_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
 }
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
@@ -11773,7 +11780,7 @@ export interface MlTrainedModelAllocationTaskParameters {
 
 export interface MlTrainedModelConfig {
   model_id: Id
-  model_type: MlTrainedModelType
+  model_type?: MlTrainedModelType
   tags: string[]
   version?: VersionString
   compressed_definition?: string
@@ -11787,6 +11794,8 @@ export interface MlTrainedModelConfig {
   input: MlTrainedModelConfigInput
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
+  model_size_bytes?: ByteSize
+  location?: MlTrainedModelLocation
 }
 
 export interface MlTrainedModelConfigInput {
@@ -11814,6 +11823,14 @@ export interface MlTrainedModelInferenceStats {
   cache_miss_count: long
   missing_all_fields_count: long
   timestamp: Time
+}
+
+export interface MlTrainedModelLocation {
+  index: MlTrainedModelLocationIndex
+}
+
+export interface MlTrainedModelLocationIndex {
+  name: IndexName
 }
 
 export interface MlTrainedModelStats {
@@ -11939,6 +11956,7 @@ export interface MlDeleteModelSnapshotResponse extends AcknowledgedResponseBase 
 
 export interface MlDeleteTrainedModelRequest extends RequestBase {
   model_id: Id
+  force?: boolean
 }
 
 export interface MlDeleteTrainedModelResponse extends AcknowledgedResponseBase {
@@ -12081,13 +12099,13 @@ export interface MlFlushJobRequest extends RequestBase {
   advance_time?: DateString
   calc_interim?: boolean
   end?: DateString
-  skip_time?: string
+  skip_time?: EpochMillis
   start?: DateString
   body?: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString
-    skip_time?: string
+    skip_time?: EpochMillis
     start?: DateString
   }
 }
@@ -12538,7 +12556,7 @@ export interface MlPutCalendarRequest extends RequestBase {
 
 export interface MlPutCalendarResponse {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Ids
 }
 
@@ -12564,6 +12582,8 @@ export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
     max_num_threads?: integer
     model_memory_limit?: string
     source: MlDataframeAnalyticsSource
+    headers?: HttpHeaders
+    version?: VersionString
   }
 }
 
@@ -12592,8 +12612,8 @@ export interface MlPutDatafeedRequest extends RequestBase {
     chunking_config?: MlChunkingConfig
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
-    indices?: string[]
-    indexes?: string[]
+    indices?: Indices
+    indexes?: Indices
     indices_options?: IndicesOptions
     job_id?: Id
     max_empty_searches?: integer
@@ -12602,6 +12622,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     runtime_mappings?: MappingRuntimeFields
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
+    headers?: HttpHeaders
   }
 }
 
@@ -12723,6 +12744,7 @@ export interface MlPutTrainedModelPreprocessor {
 
 export interface MlPutTrainedModelRequest extends RequestBase {
   model_id: Id
+  defer_definition_decompression?: boolean
   body?: {
     compressed_definition?: string
     definition?: MlPutTrainedModelDefinition
@@ -13067,6 +13089,7 @@ export interface MlValidateRequest extends RequestBase {
     data_description?: MlDataDescription
     description?: string
     model_plot?: MlModelPlotConfig
+    model_snapshot_id?: Id
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
   }
@@ -14238,7 +14261,7 @@ export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
-export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'indices:admin/settings/update' | 'indices:admin/mapping/put' | 'indices:admin/rollover' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
+export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
@@ -15608,7 +15631,22 @@ export interface TransformGetTransformRequest extends RequestBase {
 
 export interface TransformGetTransformResponse {
   count: long
-  transforms: Transform[]
+  transforms: TransformGetTransformTransformSummary[]
+}
+
+export interface TransformGetTransformTransformSummary {
+  dest: ReindexDestination
+  description?: string
+  frequency?: Time
+  id: Id
+  pivot?: TransformPivot
+  settings?: TransformSettings
+  source: TransformSource
+  sync?: TransformSyncContainer
+  create_time?: EpochMillis
+  version?: VersionString
+  latest?: TransformLatest
+  _meta?: Metadata
 }
 
 export interface TransformGetTransformStatsCheckpointStats {

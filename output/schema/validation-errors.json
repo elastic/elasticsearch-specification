@@ -1195,7 +1195,6 @@
     "ml.delete_trained_model": {
       "request": [
         "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'force'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1300,12 +1299,6 @@
         "Request: missing json spec query parameter 'allow_no_indices'",
         "Request: missing json spec query parameter 'ignore_throttled'",
         "Request: missing json spec query parameter 'expand_wildcards'"
-      ],
-      "response": []
-    },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'defer_definition_decompression'"
       ],
       "response": []
     },
@@ -1901,7 +1894,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
+      ]
     },
     "transform.get_transform_stats": {
       "request": [
@@ -1911,7 +1906,6 @@
     },
     "transform.preview_transform": {
       "request": [
-        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required",
         "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required"
       ],
       "response": [
