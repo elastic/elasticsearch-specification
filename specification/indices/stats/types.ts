@@ -18,7 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Uuid, Id, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Uuid,
+  Id,
+  SequenceNumber,
+  VersionNumber,
+  HealthStatus
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
   BulkStats,
@@ -85,6 +91,10 @@ export class IndicesStats {
   shards?: Dictionary<string, ShardStats[]>
   total?: IndexStats
   uuid?: Uuid
+  /** @since 8.1.0 */
+  health?: HealthStatus
+  /** @since 8.1.0 */
+  status?: string
 }
 
 export class ShardCommit {

@@ -10203,6 +10203,8 @@ export interface IndicesStatsIndicesStats {
   shards?: Record<string, IndicesStatsShardStats[]>
   total?: IndicesStatsIndexStats
   uuid?: Uuid
+  health?: HealthStatus
+  status?: string
 }
 
 export interface IndicesStatsRequest extends RequestBase {
