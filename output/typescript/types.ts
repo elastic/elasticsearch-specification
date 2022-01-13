@@ -10176,6 +10176,8 @@ export interface IndicesSplitResponse extends AcknowledgedResponseBase {
   index: IndexName
 }
 
+export type IndicesStatsIndexMetadataState = 'open' | 'close'
+
 export interface IndicesStatsIndexStats {
   completion?: CompletionStats
   docs?: DocStats
@@ -10204,7 +10206,7 @@ export interface IndicesStatsIndicesStats {
   total?: IndicesStatsIndexStats
   uuid?: Uuid
   health?: HealthStatus
-  status?: string
+  status?: IndicesStatsIndexMetadataState
 }
 
 export interface IndicesStatsRequest extends RequestBase {
