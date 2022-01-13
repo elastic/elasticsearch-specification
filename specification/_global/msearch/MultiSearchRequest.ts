@@ -20,12 +20,13 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, SearchType, Types } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { MultisearchBody, MultisearchHeader, RequestItem } from './types'
+import { RequestItem } from './types'
 
 /**
  * @rest_spec_name msearch
  * @since 1.3.0
  * @stability stable
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {

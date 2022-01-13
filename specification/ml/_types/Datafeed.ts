@@ -118,18 +118,19 @@ export class DelayedDataCheckConfig {
 
 // Identical to WatcherState, but kept separate as they're different enums in ES
 export enum DatafeedState {
-  started = 0,
-  stopped = 1,
-  starting = 2,
-  stopping = 3
+  started,
+  stopped,
+  starting,
+  stopping
 }
 
 export class DatafeedStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   datafeed_id: Id
-  node: DiscoveryNode
+  node?: DiscoveryNode
   state: DatafeedState
   timing_stats: DatafeedTimingStats
+  running_state?: DatafeedRunningState
 }
 
 export class DatafeedTimingStats {
@@ -138,13 +139,18 @@ export class DatafeedTimingStats {
   job_id: Id
   search_count: long
   total_search_time_ms: double
-  average_search_time_per_bucket_ms: number
+  average_search_time_per_bucket_ms?: number
+}
+
+export class DatafeedRunningState {
+  real_time_configured: boolean
+  real_time_running: boolean
 }
 
 export enum ChunkingMode {
-  auto = 0,
-  manual = 1,
-  off = 2
+  auto,
+  manual,
+  off
 }
 
 export class ChunkingConfig {
@@ -154,6 +160,7 @@ export class ChunkingConfig {
   mode: ChunkingMode
   /**
    * The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.
-   * @server_default 3h */
+   * @server_default 3h
+   */
   time_span?: Time
 }
