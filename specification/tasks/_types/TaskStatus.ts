@@ -21,7 +21,7 @@ import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import { Time } from '@_types/Time'
 
-export class Status {
+export class TaskStatus {
   batches: long
   canceled?: string
   created: long
