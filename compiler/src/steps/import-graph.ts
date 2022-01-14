@@ -19,7 +19,6 @@
 
 import { writeFile } from 'fs/promises'
 import { join } from 'path'
-import assert from 'assert'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 
