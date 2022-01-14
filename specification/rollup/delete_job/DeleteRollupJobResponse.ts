@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TaskFailure } from './types'
 import { AcknowledgedResponseBase } from '@_types/Base'
+import { TaskFailure } from '@_types/Errors'
 
 export class Response extends AcknowledgedResponseBase {
   body: {

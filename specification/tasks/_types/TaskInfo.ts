@@ -17,21 +17,23 @@
  * under the License.
  */
 
-import { Status } from '@tasks/_types/TaskStatus'
-import { HttpHeaders, Id } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { TaskStatus } from '@tasks/_types/TaskStatus'
+import { HttpHeaders, Id, NodeId, TaskId } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { ErrorCause } from '@_types/Errors'
+import { Dictionary } from '@spec_utils/Dictionary'
 
-export class Info {
+export class TaskInfo {
   action: string
   cancellable: boolean
-  children?: Info[]
   description?: string
-  headers: HttpHeaders
+  headers: Dictionary<string, string>
   id: long
-  node: string
+  node: NodeId
+  running_time?: string
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: Status
+  status?: TaskStatus
   type: string
-  parent_task_id?: Id
+  parent_task_id?: TaskId
 }
