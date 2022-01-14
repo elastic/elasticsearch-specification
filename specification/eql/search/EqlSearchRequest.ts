@@ -18,8 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, IndexName } from '@_types/common'
-import { float, uint } from '@_types/Numeric'
+import { ExpandWildcards, Field, IndexName, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
+import { uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 import { ResultPosition } from './types'
@@ -31,7 +32,7 @@ import { ResultPosition } from './types'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index: IndexName
+    index: Indices
   }
   query_parameters: {
     /**
@@ -103,10 +104,12 @@ export interface Request extends RequestBase {
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-    fields?: FieldAndFormat
+    fields?: FieldAndFormat | FieldAndFormat[]
     /**
      * @server_default tail
      */
     result_position?: ResultPosition
+    /** @since 8.0.0 */
+    runtime_mappings?: RuntimeFields
   }
 }
