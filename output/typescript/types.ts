@@ -1054,7 +1054,7 @@ export interface SearchAggregationProfile {
   description: string
   time_in_nanos: long
   type: string
-  debug?: SearchAggregationProfileDebug | SearchAggregationProfileDelegateDebug
+  debug?: SearchAggregationProfileDebug
   children?: SearchAggregationProfile[]
 }
 
@@ -1067,7 +1067,7 @@ export interface SearchAggregationProfileDebug {
   result_strategy?: string
   has_filter?: boolean
   delegate?: string
-  delegate_debug?: SearchAggregationProfileDelegateDebug
+  delegate_debug?: SearchAggregationProfileDebug
   chars_fetched?: integer
   extract_count?: integer
   extract_ns?: integer
@@ -1081,9 +1081,6 @@ export interface SearchAggregationProfileDebug {
   numeric_collectors_used?: integer
   empty_collectors_used?: integer
   deferred_aggregators?: string[]
-}
-
-export interface SearchAggregationProfileDelegateDebug {
   segments_with_doc_count_field?: integer
   segments_with_deleted_docs?: integer
   filters?: SearchAggregationProfileDelegateDebugFilter[]
@@ -2143,7 +2140,7 @@ export interface NodeShard {
   allocation_id?: Record<string, Id>
   recovery_source?: Record<string, Id>
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
-  relocating_node?: null
+  relocating_node?: NodeId | null
 }
 
 export interface NodeStatistics {
@@ -2718,18 +2715,14 @@ export interface AggregationsCategorizeTextAggregation extends AggregationsAggre
   max_matched_tokens?: integer
   similarity_threshold?: integer
   categorization_filters?: string[]
-  categorization_analyzer?: string | AggregationsCategorizeTextAnalyzer
+  categorization_analyzer?: AggregationsCategorizeTextAnalyzer
   shard_size?: integer
   size?: integer
   min_doc_count?: integer
   shard_min_doc_count?: integer
 }
 
-export interface AggregationsCategorizeTextAnalyzer {
-  char_filter?: string[]
-  tokenizer?: string
-  filter?: string[]
-}
+export type AggregationsCategorizeTextAnalyzer = string | AggregationsCustomCategorizeTextAnalyzer
 
 export interface AggregationsChiSquareHeuristic {
   background_is_superset: boolean
@@ -2785,6 +2778,12 @@ export interface AggregationsCumulativeCardinalityAggregation extends Aggregatio
 }
 
 export interface AggregationsCumulativeSumAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsCustomCategorizeTextAnalyzer {
+  char_filter?: string[]
+  tokenizer?: string
+  filter?: string[]
 }
 
 export interface AggregationsDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
