@@ -553,7 +553,11 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition tasks._types:NodeTasks / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
+        "type_alias definition tasks._types:TaskInfos / union_of / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
+        "interface definition tasks._types:ParentTaskInfo / Property 'children' / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "delete_script": {
       "request": [
@@ -583,7 +587,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition enrich.stats:ExecutingPolicy / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "eql.delete": {
       "request": [
@@ -1873,7 +1879,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition tasks.get:Response / body / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "tasks.list": {
       "request": [
@@ -1947,7 +1955,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition _global.update_by_query_rethrottle:UpdateByQueryRethrottleNode / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "watcher.ack_watch": {
       "request": [

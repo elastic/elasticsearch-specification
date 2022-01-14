@@ -1769,7 +1769,7 @@ export interface UpdateByQueryRethrottleResponse {
 }
 
 export interface UpdateByQueryRethrottleUpdateByQueryRethrottleNode extends SpecUtilsBaseNode {
-  tasks: Record<TaskId, TasksInfo>
+  tasks: Record<TaskId, TasksTaskInfo>
 }
 
 export interface SpecUtilsBaseNode {
@@ -2383,6 +2383,13 @@ export interface StoredScriptId extends ScriptBase {
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
 export type SuggestionName = string
+
+export interface TaskFailure {
+  task_id: long
+  node_id: NodeId
+  status: string
+  reason: ErrorCause
+}
 
 export type TaskId = string | integer
 
@@ -8593,7 +8600,7 @@ export interface EnrichStatsCoordinatorStats {
 
 export interface EnrichStatsExecutingPolicy {
   name: Name
-  task: TasksInfo
+  task: TasksTaskInfo
 }
 
 export interface EnrichStatsRequest extends RequestBase {
@@ -14016,19 +14023,7 @@ export interface RollupDeleteJobRequest extends RequestBase {
 }
 
 export interface RollupDeleteJobResponse extends AcknowledgedResponseBase {
-  task_failures?: RollupDeleteJobTaskFailure[]
-}
-
-export interface RollupDeleteJobTaskFailure {
-  task_id: TaskId
-  node_id: Id
-  status: string
-  reason: RollupDeleteJobTaskFailureReason
-}
-
-export interface RollupDeleteJobTaskFailureReason {
-  type: string
-  reason: string
+  task_failures?: TaskFailure[]
 }
 
 export type RollupGetJobsIndexingJobState = 'started' | 'indexing' | 'stopping' | 'stopped' | 'aborting'
@@ -15421,36 +15416,45 @@ export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 
-export interface TasksInfo {
-  action: string
-  cancellable: boolean
-  children?: TasksInfo[]
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TasksStatus
-  type: string
-  parent_task_id?: Id
+export interface TasksNodeTasks {
+  name?: NodeId
+  transport_address?: TransportAddress
+  host?: Host
+  ip?: Ip
+  roles?: string[]
+  attributes?: Record<string, string>
+  tasks: Record<TaskId, TasksTaskInfo>
 }
 
-export interface TasksState {
+export interface TasksParentTaskInfo extends TasksTaskInfo {
+  children?: TasksTaskInfo[]
+}
+
+export interface TasksTaskInfo {
   action: string
   cancellable: boolean
   description?: string
-  headers: HttpHeaders
+  headers: Record<string, string>
   id: long
-  node: string
+  node: NodeId
+  running_time?: string
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: TasksTaskStatus
+  type: string
   parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TasksStatus
-  type: string
 }
 
-export interface TasksStatus {
+export type TasksTaskInfos = TasksTaskInfo[] | Record<string, TasksParentTaskInfo>
+
+export interface TasksTaskListResponseBase {
+  node_failures?: ErrorCause[]
+  task_failures?: TaskFailure[]
+  nodes?: Record<string, TasksNodeTasks>
+  tasks?: TasksTaskInfos
+}
+
+export interface TasksTaskStatus {
   batches: long
   canceled?: string
   created: long
@@ -15470,10 +15474,6 @@ export interface TasksStatus {
   version_conflicts: long
 }
 
-export interface TasksTaskExecutingNode extends SpecUtilsBaseNode {
-  tasks: Record<TaskId, TasksState>
-}
-
 export interface TasksCancelRequest extends RequestBase {
   task_id?: TaskId
   actions?: string | string[]
@@ -15482,9 +15482,7 @@ export interface TasksCancelRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export interface TasksCancelResponse {
-  node_failures?: ErrorCause[]
-  nodes: Record<string, TasksTaskExecutingNode>
+export interface TasksCancelResponse extends TasksTaskListResponseBase {
 }
 
 export interface TasksGetRequest extends RequestBase {
@@ -15495,8 +15493,8 @@ export interface TasksGetRequest extends RequestBase {
 
 export interface TasksGetResponse {
   completed: boolean
-  task: TasksInfo
-  response?: TasksStatus
+  task: TasksTaskInfo
+  response?: TasksTaskStatus
   error?: ErrorCause
 }
 
@@ -15511,10 +15509,7 @@ export interface TasksListRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export interface TasksListResponse {
-  node_failures?: ErrorCause[]
-  nodes?: Record<string, TasksTaskExecutingNode>
-  tasks?: TasksInfo[] | Record<string, TasksInfo>
+export interface TasksListResponse extends TasksTaskListResponseBase {
 }
 
 export interface TextStructureFindStructureFieldStat {
