@@ -26,6 +26,7 @@ import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
 import addContentType from './steps/add-content-type'
 import readDefinitionValidation from './steps/read-definition-validation'
+import createImportGraph from './steps/import-graph'
 
 const nvmrc = readFileSync(join(__dirname, '..', '..', '.nvmrc'), 'utf8')
 const nodejsMajor = process.version.split('.').shift()?.slice(1) ?? ''
@@ -46,6 +47,7 @@ compiler
   .step(validateRestSpec)
   .step(addDescription)
   .step(validateModel)
+  .step(createImportGraph)
   .write()
   .then(() => {
     console.log('Done')
