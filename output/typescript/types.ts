@@ -8669,7 +8669,7 @@ export interface EqlGetStatusResponse {
 }
 
 export interface EqlSearchRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8688,8 +8688,9 @@ export interface EqlSearchRequest extends RequestBase {
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
     size?: uint
-    fields?: QueryDslFieldAndFormat | Field
+    fields?: QueryDslFieldAndFormat | Field | (QueryDslFieldAndFormat | Field)[]
     result_position?: EqlSearchResultPosition
+    runtime_mappings?: MappingRuntimeFields
   }
 }
 
