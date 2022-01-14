@@ -94,7 +94,13 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
   for (const [type, types] of importGraph.entries()) {
     typeGraph.push({
       type,
-      imported_by: types.map(type => type.name)
+      imported_by: types
+        .map(type => type.name)
+        .filter((type, index, arr) => {
+          return index === arr.findIndex(t => {
+            return type.name === t.name && type.namespace === t.namespace
+          })
+        })
     })
   }
 
@@ -133,7 +139,6 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
       case 'instance_of':
         return value.type.name === type.name.name && value.type.namespace === type.name.namespace
       case 'literal_value':
-        return false
       case 'user_defined_value':
         return false
     }
