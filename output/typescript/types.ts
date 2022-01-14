@@ -15450,7 +15450,7 @@ export type TasksTaskInfos = TasksTaskInfo[] | Record<string, TasksParentTaskInf
 export interface TasksTaskListResponseBase {
   node_failures?: ErrorCause[]
   task_failures?: TaskFailure[]
-  nodes?: Record<NodeId, TasksNodeTasks>
+  nodes?: Record<string, TasksNodeTasks>
   tasks?: TasksTaskInfos
 }
 
