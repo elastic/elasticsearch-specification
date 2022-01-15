@@ -33,7 +33,7 @@ interface ImportNamespaceGraph {
 }
 
 export default async function createImportGraph (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
-  const importGraph: Map<model.TypeName, model.TypeDefinition[]> = new Map()
+  const importGraph: Map<model.TypeName, model.TypeName[]> = new Map()
   for (const current of model.types) {
     if (current.kind === 'request' || current.kind === 'response') continue
     for (const type of model.types) {
@@ -42,50 +42,67 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
         case 'type_alias':
           if (contains(type.type, current)) {
             const list = importGraph.get(current.name) ?? []
-            importGraph.set(current.name, list.concat(type))
+            importGraph.set(current.name, list.concat(type.name))
           }
           break
+
         case 'interface':
           for (const property of type.properties) {
             if (contains(property.type, current)) {
               const list = importGraph.get(current.name) ?? []
-              importGraph.set(current.name, list.concat(type))
+              importGraph.set(current.name, list.concat(type.name))
             }
           }
+          if (type.inherits?.type.name === current.name.name &&
+              type.inherits?.type.namespace === current.name.namespace) {
+            const list = importGraph.get(current.name) ?? []
+            importGraph.set(current.name, list.concat(type.name))
+          }
           break
+
         case 'request':
           for (const property of type.path) {
             if (contains(property.type, current)) {
               const list = importGraph.get(current.name) ?? []
-              importGraph.set(current.name, list.concat(type))
+              importGraph.set(current.name, list.concat(type.name))
             }
           }
           for (const property of type.query) {
             if (contains(property.type, current)) {
               const list = importGraph.get(current.name) ?? []
-              importGraph.set(current.name, list.concat(type))
+              importGraph.set(current.name, list.concat(type.name))
             }
           }
           if (type.body.kind === 'properties') {
             for (const property of type.body.properties) {
               if (contains(property.type, current)) {
                 const list = importGraph.get(current.name) ?? []
-                importGraph.set(current.name, list.concat(type))
+                importGraph.set(current.name, list.concat(type.name))
               }
             }
           }
+          if (type.inherits?.type.name === current.name.name &&
+              type.inherits?.type.namespace === current.name.namespace) {
+            const list = importGraph.get(current.name) ?? []
+            importGraph.set(current.name, list.concat(type.name))
+          }
           break
+
         case 'response':
           if (type.body.kind === 'properties') {
             for (const property of type.body.properties) {
               if (contains(property.type, current)) {
                 const list = importGraph.get(current.name) ?? []
-                importGraph.set(current.name, list.concat(type))
+                importGraph.set(current.name, list.concat(type.name))
               }
             }
           }
+          if (type.inherits?.type.name === current.name.name &&
+              type.inherits?.type.namespace === current.name.namespace) {
+            const list = importGraph.get(current.name) ?? []
+            importGraph.set(current.name, list.concat(type.name))
+          }
           break
-        default:
       }
     }
   }
@@ -95,7 +112,6 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
     typeGraph.push({
       type,
       imported_by: types
-        .map(type => type.name)
         .filter((type, index, arr) => {
           return index === arr.findIndex(t => {
             return type.name === t.name && type.namespace === t.namespace
@@ -104,13 +120,25 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
     })
   }
 
-  const namespaceGraph: ImportNamespaceGraph[] = []
+  const namespaceMap: Map<string, string[]> = new Map()
   for (const [type, types] of importGraph.entries()) {
+    const list = namespaceMap.get(type.namespace) ?? []
+    namespaceMap.set(type.namespace, list.concat(types.map(t => t.namespace)))
+  }
+
+  const namespaceGraph: ImportNamespaceGraph[] = []
+  for (const [namespace, namespaces] of namespaceMap.entries()) {
     namespaceGraph.push({
-      namespace: type.namespace,
-      imported_by: [...new Set(types.map(type => type.name.namespace))]
+      namespace,
+      imported_by: [...new Set(namespaces)].sort()
     })
   }
+
+  namespaceGraph.sort((a, b) => {
+    if (a.namespace < b.namespace) return -1
+    if (a.namespace > b.namespace) return 1
+    return 0
+  })
 
   await writeFile(
     join(__dirname, '..', '..', '..', 'output', 'schema', 'import-type-graph.json'),
@@ -131,13 +159,16 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
       case 'dictionary_of':
       case 'array_of':
         return contains(value.value, type)
+
       case 'union_of':
         for (const item of value.items) {
           if (contains(item, type)) return true
         }
         return false
+
       case 'instance_of':
         return value.type.name === type.name.name && value.type.namespace === type.name.namespace
+
       case 'literal_value':
       case 'user_defined_value':
         return false
