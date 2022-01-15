@@ -1,0 +1,673 @@
+[
+  {
+    "namespace": "bulk",
+    "imported_by": [
+      "bulk"
+    ],
+    "imports": [
+      "bulk",
+      "search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "explain",
+    "imported_by": [
+      "explain",
+      "search"
+    ],
+    "imports": [
+      "explain",
+      "search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "field_caps",
+    "imported_by": [
+      "field_caps"
+    ],
+    "imports": [
+      "field_caps",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "get",
+    "imported_by": [
+      "mget"
+    ],
+    "imports": [
+      "search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "get_script_context",
+    "imported_by": [
+      "get_script_context"
+    ],
+    "imports": [
+      "get_script_context",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "get_script_languages",
+    "imported_by": [
+      "get_script_languages"
+    ],
+    "imports": [
+      "get_script_languages",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "knn_search",
+    "imported_by": [
+      "knn_search"
+    ],
+    "imports": [
+      "knn_search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "mget",
+    "imported_by": [
+      "mget"
+    ],
+    "imports": [
+      "get",
+      "mget",
+      "search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "msearch",
+    "imported_by": [
+      "msearch",
+      "msearch_template"
+    ],
+    "imports": [
+      "msearch",
+      "search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "msearch_template",
+    "imported_by": [
+      "msearch_template"
+    ],
+    "imports": [
+      "msearch",
+      "msearch_template",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "mtermvectors",
+    "imported_by": [
+      "mtermvectors"
+    ],
+    "imports": [
+      "mtermvectors",
+      "termvectors",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "rank_eval",
+    "imported_by": [
+      "rank_eval"
+    ],
+    "imports": [
+      "rank_eval",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "reindex",
+    "imported_by": [
+      "reindex",
+      "transform"
+    ],
+    "imports": [
+      "reindex",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "reindex_rethrottle",
+    "imported_by": [
+      "reindex_rethrottle"
+    ],
+    "imports": [
+      "reindex_rethrottle",
+      "_spec_utils",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "scripts_painless_execute",
+    "imported_by": [
+      "scripts_painless_execute"
+    ],
+    "imports": [
+      "scripts_painless_execute",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "search",
+    "imported_by": [
+      "bulk",
+      "exists",
+      "exists_source",
+      "explain",
+      "get",
+      "get_source",
+      "knn_search",
+      "mget",
+      "msearch",
+      "search",
+      "search_mvt",
+      "search_template",
+      "update",
+      "_types",
+      "async_search",
+      "eql",
+      "rollup",
+      "sql"
+    ],
+    "imports": [
+      "explain",
+      "search",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "search_mvt",
+    "imported_by": [
+      "search_mvt"
+    ],
+    "imports": [
+      "_types"
+    ]
+  },
+  {
+    "namespace": "search_shards",
+    "imported_by": [
+      "search_shards"
+    ],
+    "imports": [
+      "search_shards",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "termvectors",
+    "imported_by": [
+      "mtermvectors",
+      "termvectors"
+    ],
+    "imports": [
+      "termvectors",
+      "_types"
+    ]
+  },
+  {
+    "namespace": "update_by_query_rethrottle",
+    "imported_by": [
+      "update_by_query_rethrottle"
+    ],
+    "imports": [
+      "update_by_query_rethrottle",
+      "_spec_utils",
+      "_types",
+      "tasks"
+    ]
+  },
+  {
+    "namespace": "_spec_utils",
+    "imported_by": [
+      "reindex_rethrottle",
+      "update_by_query_rethrottle",
+      "tasks"
+    ],
+    "imports": [
+      "_types"
+    ]
+  },
+  {
+    "namespace": "_types",
+    "imported_by": [
+      "bulk",
+      "clear_scroll",
+      "close_point_in_time",
+      "count",
+      "create",
+      "delete",
+      "delete_by_query",
+      "delete_by_query_rethrottle",
+      "delete_script",
+      "exists",
+      "exists_source",
+      "explain",
+      "field_caps",
+      "get",
+      "get_script",
+      "get_script_context",
+      "get_script_languages",
+      "get_source",
+      "index",
+      "info",
+      "knn_search",
+      "mget",
+      "msearch",
+      "msearch_template",
+      "mtermvectors",
+      "open_point_in_time",
+      "ping",
+      "put_script",
+      "rank_eval",
+      "reindex",
+      "reindex_rethrottle",
+      "render_search_template",
+      "scripts_painless_execute",
+      "scroll",
+      "search",
+      "search_mvt",
+      "search_shards",
+      "search_template",
+      "terms_enum",
+      "termvectors",
+      "update",
+      "update_by_query",
+      "update_by_query_rethrottle",
+      "_spec_utils",
+      "_types",
+      "async_search",
+      "autoscaling",
+      "cat",
+      "ccr",
+      "cluster",
+      "dangling_indices",
+      "enrich",
+      "eql",
+      "features",
+      "fleet",
+      "graph",
+      "ilm",
+      "indices",
+      "ingest",
+      "license",
+      "logstash",
+      "migration",
+      "ml",
+      "monitoring",
+      "nodes",
+      "rollup",
+      "searchable_snapshots",
+      "security",
+      "shutdown",
+      "slm",
+      "snapshot",
+      "sql",
+      "ssl",
+      "tasks",
+      "text_structure",
+      "transform",
+      "watcher",
+      "xpack"
+    ],
+    "imports": [
+      "_types",
+      "cluster",
+      "indices",
+      "watcher",
+      "search"
+    ]
+  },
+  {
+    "namespace": "async_search",
+    "imported_by": [
+      "async_search"
+    ],
+    "imports": [
+      "search",
+      "_types",
+      "async_search"
+    ]
+  },
+  {
+    "namespace": "autoscaling",
+    "imported_by": [
+      "autoscaling"
+    ],
+    "imports": [
+      "_types",
+      "autoscaling"
+    ]
+  },
+  {
+    "namespace": "cat",
+    "imported_by": [
+      "cat"
+    ],
+    "imports": [
+      "_types"
+    ]
+  },
+  {
+    "namespace": "ccr",
+    "imported_by": [
+      "ccr"
+    ],
+    "imports": [
+      "_types",
+      "ccr"
+    ]
+  },
+  {
+    "namespace": "cluster",
+    "imported_by": [
+      "cluster",
+      "_types"
+    ],
+    "imports": [
+      "_types",
+      "cluster",
+      "indices",
+      "nodes"
+    ]
+  },
+  {
+    "namespace": "dangling_indices",
+    "imported_by": [
+      "dangling_indices"
+    ],
+    "imports": [
+      "_types",
+      "dangling_indices"
+    ]
+  },
+  {
+    "namespace": "enrich",
+    "imported_by": [
+      "enrich"
+    ],
+    "imports": [
+      "_types",
+      "enrich",
+      "tasks"
+    ]
+  },
+  {
+    "namespace": "eql",
+    "imported_by": [
+      "eql"
+    ],
+    "imports": [
+      "search",
+      "_types",
+      "eql"
+    ]
+  },
+  {
+    "namespace": "features",
+    "imported_by": [
+      "features"
+    ],
+    "imports": []
+  },
+  {
+    "namespace": "fleet",
+    "imported_by": [
+      "fleet"
+    ],
+    "imports": [
+      "_types"
+    ]
+  },
+  {
+    "namespace": "graph",
+    "imported_by": [
+      "graph"
+    ],
+    "imports": [
+      "_types",
+      "graph"
+    ]
+  },
+  {
+    "namespace": "ilm",
+    "imported_by": [
+      "ilm",
+      "xpack"
+    ],
+    "imports": [
+      "_types",
+      "ilm",
+      "indices"
+    ]
+  },
+  {
+    "namespace": "indices",
+    "imported_by": [
+      "_types",
+      "cluster",
+      "indices",
+      "nodes",
+      "transform",
+      "ilm"
+    ],
+    "imports": [
+      "_types",
+      "indices"
+    ]
+  },
+  {
+    "namespace": "ingest",
+    "imported_by": [
+      "ingest",
+      "text_structure"
+    ],
+    "imports": [
+      "_types",
+      "ingest",
+      "watcher"
+    ]
+  },
+  {
+    "namespace": "license",
+    "imported_by": [
+      "license",
+      "xpack"
+    ],
+    "imports": [
+      "_types",
+      "license"
+    ]
+  },
+  {
+    "namespace": "logstash",
+    "imported_by": [
+      "logstash"
+    ],
+    "imports": [
+      "_types",
+      "logstash"
+    ]
+  },
+  {
+    "namespace": "migration",
+    "imported_by": [
+      "migration"
+    ],
+    "imports": [
+      "_types",
+      "migration"
+    ]
+  },
+  {
+    "namespace": "ml",
+    "imported_by": [
+      "cat",
+      "ml",
+      "xpack"
+    ],
+    "imports": [
+      "_types",
+      "ml"
+    ]
+  },
+  {
+    "namespace": "nodes",
+    "imported_by": [
+      "cluster",
+      "nodes"
+    ],
+    "imports": [
+      "_types",
+      "indices",
+      "nodes"
+    ]
+  },
+  {
+    "namespace": "rollup",
+    "imported_by": [
+      "rollup"
+    ],
+    "imports": [
+      "_types",
+      "rollup"
+    ]
+  },
+  {
+    "namespace": "searchable_snapshots",
+    "imported_by": [
+      "searchable_snapshots"
+    ],
+    "imports": [
+      "_types",
+      "searchable_snapshots"
+    ]
+  },
+  {
+    "namespace": "security",
+    "imported_by": [
+      "security"
+    ],
+    "imports": [
+      "_types",
+      "security"
+    ]
+  },
+  {
+    "namespace": "shutdown",
+    "imported_by": [
+      "shutdown"
+    ],
+    "imports": [
+      "_types",
+      "shutdown"
+    ]
+  },
+  {
+    "namespace": "slm",
+    "imported_by": [
+      "slm",
+      "xpack"
+    ],
+    "imports": [
+      "_types",
+      "slm",
+      "watcher"
+    ]
+  },
+  {
+    "namespace": "snapshot",
+    "imported_by": [
+      "snapshot"
+    ],
+    "imports": [
+      "_types",
+      "snapshot"
+    ]
+  },
+  {
+    "namespace": "sql",
+    "imported_by": [
+      "sql"
+    ],
+    "imports": [
+      "_types",
+      "sql"
+    ]
+  },
+  {
+    "namespace": "tasks",
+    "imported_by": [
+      "update_by_query_rethrottle",
+      "enrich",
+      "tasks"
+    ],
+    "imports": [
+      "_spec_utils",
+      "_types",
+      "tasks"
+    ]
+  },
+  {
+    "namespace": "text_structure",
+    "imported_by": [
+      "text_structure"
+    ],
+    "imports": [
+      "_types",
+      "ingest",
+      "text_structure"
+    ]
+  },
+  {
+    "namespace": "transform",
+    "imported_by": [
+      "transform"
+    ],
+    "imports": [
+      "_types",
+      "transform",
+      "reindex"
+    ]
+  },
+  {
+    "namespace": "watcher",
+    "imported_by": [
+      "_types",
+      "ingest",
+      "slm",
+      "watcher"
+    ],
+    "imports": [
+      "_types",
+      "watcher"
+    ]
+  },
+  {
+    "namespace": "xpack",
+    "imported_by": [
+      "xpack"
+    ],
+    "imports": [
+      "_types",
+      "license",
+      "xpack",
+      "ilm",
+      "ml",
+      "slm"
+    ]
+  }
+]
