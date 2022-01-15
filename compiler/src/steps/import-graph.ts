@@ -22,14 +22,15 @@ import { join } from 'path'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 
-interface ImportTypesGraph {
+export interface ImportTypesGraph {
   type: model.TypeName
   imported_by: model.TypeName[]
 }
 
-interface ImportNamespaceGraph {
+export interface ImportNamespaceGraph {
   namespace: string
   imported_by: string[]
+  imports: string[]
 }
 
 export default async function createImportGraph (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
@@ -126,19 +127,45 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
     namespaceMap.set(type.namespace, list.concat(types.map(t => t.namespace)))
   }
 
-  const namespaceGraph: ImportNamespaceGraph[] = []
+  const namespaceGraphExpanded: ImportNamespaceGraph[] = []
   for (const [namespace, namespaces] of namespaceMap.entries()) {
-    namespaceGraph.push({
+    namespaceGraphExpanded.push({
       namespace,
-      imported_by: [...new Set(namespaces)].sort()
+      imported_by: [...new Set(namespaces)].sort(),
+      imports: []
     })
   }
 
-  namespaceGraph.sort((a, b) => {
+  for (const current of namespaceGraphExpanded) {
+    for (const entry of namespaceGraphExpanded) {
+      if (entry.imported_by.includes(current.namespace)) {
+        current.imports.push(entry.namespace)
+      }
+    }
+  }
+
+  namespaceGraphExpanded.sort((a, b) => {
     if (a.namespace < b.namespace) return -1
     if (a.namespace > b.namespace) return 1
     return 0
   })
+
+  const namespaceMapCompact: Map<string, { imported_by: string[], imports: string[] }> = new Map()
+  for (const entry of namespaceGraphExpanded) {
+    const store = namespaceMapCompact.get(compact(entry.namespace)) ?? { imported_by: [], imports: [] }
+    store.imports = [...new Set(store.imports.concat(entry.imports.map(compact)))]
+    store.imported_by = [...new Set(store.imported_by.concat(entry.imported_by.map(compact)))]
+    namespaceMapCompact.set(compact(entry.namespace), store)
+  }
+
+  const namespaceGraphCompact: ImportNamespaceGraph[] = []
+  for (const [namespace, data] of namespaceMapCompact.entries()) {
+    namespaceGraphCompact.push({
+      namespace,
+      imported_by: data.imported_by,
+      imports: data.imports
+    })
+  }
 
   await writeFile(
     join(__dirname, '..', '..', '..', 'output', 'schema', 'import-type-graph.json'),
@@ -147,8 +174,14 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
   )
 
   await writeFile(
-    join(__dirname, '..', '..', '..', 'output', 'schema', 'import-namespace-graph.json'),
-    JSON.stringify(namespaceGraph, null, 2),
+    join(__dirname, '..', '..', '..', 'output', 'schema', 'import-namespace-graph-expanded.json'),
+    JSON.stringify(namespaceGraphExpanded, null, 2),
+    'utf8'
+  )
+
+  await writeFile(
+    join(__dirname, '..', '..', '..', 'output', 'schema', 'import-namespace-graph-compact.json'),
+    JSON.stringify(namespaceGraphCompact, null, 2),
     'utf8'
   )
 
@@ -173,5 +206,15 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
       case 'user_defined_value':
         return false
     }
+  }
+
+  function compact (namespace: string): string {
+    if (namespace.startsWith('_global')) {
+      return namespace.split('.')[1]
+    }
+    if (namespace.startsWith('_types')) {
+      return '_types'
+    }
+    return namespace.split('.')[0]
   }
 }
