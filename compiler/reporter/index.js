@@ -30,6 +30,7 @@ async function run () {
   await $`${tsNode} ${path.join(compilerPath, 'reporter', 'create-import-graph.ts')}`
   await $`node ${path.join(compilerPath, 'reporter', 'generate-import-graph.js')} --compact`
   await $`node ${path.join(compilerPath, 'reporter', 'generate-import-graph.js')} --expanded`
+  await $`${tsNode} ${path.join(compilerPath, 'reporter', 'generate-type-report.ts')}`
 }
 
 run().catch(err => {
