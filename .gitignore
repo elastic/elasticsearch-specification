@@ -55,3 +55,4 @@ compiler/lib
 typescript-generator/lib
 
 report
+output/schema/import-*
