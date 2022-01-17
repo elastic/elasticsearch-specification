@@ -23,7 +23,7 @@ import { integer, long } from '@_types/Numeric'
 export class Response {
   body: {
     bucket_count: long
-    earliest_record_timestamp: integer
+    earliest_record_timestamp: long
     empty_bucket_count: long
     input_bytes: long
     input_field_count: long
@@ -31,7 +31,7 @@ export class Response {
     invalid_date_count: long
     job_id: Id
     last_data_time: integer
-    latest_record_timestamp: integer
+    latest_record_timestamp: long
     missing_field_count: long
     out_of_order_timestamp_count: long
     processed_field_count: long
