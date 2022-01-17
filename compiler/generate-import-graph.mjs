@@ -20,9 +20,10 @@
 // code adapted from https://observablehq.com/@d3/hierarchical-edge-bundling
 
 import d3 from 'd3'
-import { readFileSync, writeFileSync } from 'fs'
+import { join } from 'desm'
+import { readFileSync, writeFileSync, mkdirSync } from 'fs'
 
-const rawData = JSON.parse(readFileSync('../output/schema/import-namespace-graph-compact.json', 'utf8'))
+const rawData = JSON.parse(readFileSync(join(import.meta.url, '..', 'output', 'schema', 'import-namespace-graph-compact.json'), 'utf8'))
 const data = {
   name: 'root',
   children: rawData.map(d => {
@@ -140,8 +141,9 @@ ${d.incoming.length} incoming`))
   }
 }
 
+mkdirSync(join(import.meta.url, '..', 'report'), { recursive: true })
 writeFileSync(
-  './output.html',
+  join(import.meta.url, '..', 'report', 'namespace-dependencies.html'),
   html.trim(),
   'utf8'
 )
