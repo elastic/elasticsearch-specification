@@ -32,7 +32,7 @@ export interface ImportNamespaceGraph {
   imports: string[]
 }
 
-export default async function createImportGraph (): Promise<void> {
+async function createImportGraph (): Promise<void> {
   const model: model.Model = JSON.parse(await readFile(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
   const importGraph: Map<model.TypeName, model.TypeName[]> = new Map()
 
@@ -217,3 +217,8 @@ export default async function createImportGraph (): Promise<void> {
     return namespace.split('.')[0]
   }
 }
+
+createImportGraph().catch(err => {
+  console.error(err)
+  process.exit(1)
+})
