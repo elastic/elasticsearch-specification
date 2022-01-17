@@ -217,6 +217,10 @@ Finally open a pull request with your changes.
 
 ## FAQ
 
+### I want to see a report of how types and namespaces are being used.
+
+You can find a report of the `main` branch [here](https://elastic.github.io/elasticsearch-specification/report.html).
+
 ### A specific property is not always present, how do I define it?
 
 When you define a property the syntax is `propertyName: propertyType`.
