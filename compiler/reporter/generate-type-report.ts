@@ -32,7 +32,7 @@ async function createTypeReport (): Promise<void> {
   markdown += '# Type Specification Report\n\n'
 
   markdown += '- [Compact namespace import graph](https://elastic.github.io/elasticsearch-specification/namespace-dependencies-compact.html)\n'
-  markdown += '- [Expanded namespace import graph](https://elastic.github.io/elasticsearch-specification/namespace-dependencies-extended.html)\n'
+  markdown += '- [Expanded namespace import graph](https://elastic.github.io/elasticsearch-specification/namespace-dependencies-expanded.html)\n'
   markdown += '- [Most used namespaces](#most-used-namespaces)\n'
   markdown += '- [Most greedy namespaces](#most-greedy-namespaces)\n'
   markdown += '- [Top 50 used types](#top-50-used-types)\n'
