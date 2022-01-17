@@ -19,6 +19,8 @@
 
 /* global $ argv, path, cd, nothrow */
 
+'use strict'
+
 let ora
 let closest
 try {

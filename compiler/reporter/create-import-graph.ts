@@ -19,11 +19,12 @@
 
 import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
-import * as model from './model/metamodel'
+import * as model from '../src/model/metamodel'
 
 export interface ImportTypesGraph {
   type: model.TypeName
   imported_by: model.TypeName[]
+  imports: model.TypeName[]
 }
 
 export interface ImportNamespaceGraph {
@@ -118,8 +119,21 @@ async function createImportGraph (): Promise<void> {
           return index === arr.findIndex(t => {
             return type.name === t.name && type.namespace === t.namespace
           })
-        })
+        }),
+      imports: []
     })
+  }
+
+  for (const current of typeGraph) {
+    for (const entry of typeGraph) {
+      if (entry.imported_by.find(search)) {
+        current.imports.push(entry.type)
+      }
+    }
+
+    function search (element: model.TypeName): boolean {
+      return element.name === current.type.name && element.namespace === current.type.namespace
+    }
   }
 
   const namespaceMap: Map<string, string[]> = new Map()

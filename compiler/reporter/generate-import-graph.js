@@ -17,13 +17,33 @@
  * under the License.
  */
 
+'use strict'
+
 // code adapted from https://observablehq.com/@d3/hierarchical-edge-bundling
 
-import d3 from 'd3'
-import { join } from 'desm'
-import { readFileSync, writeFileSync, mkdirSync } from 'fs'
+const minimist = require('minimist')
+const { join } = require('path')
+const { readFileSync, writeFileSync, mkdirSync } = require('fs')
 
-const rawData = JSON.parse(readFileSync(join(import.meta.url, '..', 'output', 'schema', 'import-namespace-graph-compact.json'), 'utf8'))
+const options = minimist(process.argv.slice(2), {
+  boolean: ['expanded', 'compact'],
+  default: {
+    expanded: false,
+    compact: false
+  }
+})
+
+let file
+if (options.expanded) {
+  file = join(__dirname, '..', '..', 'output', 'schema', 'import-namespace-graph-expanded.json')
+} else if (options.compact) {
+  file = join(__dirname, '..', '..', 'output', 'schema', 'import-namespace-graph-compact.json')
+} else {
+  console.error('You must specify --compact or --expanded')
+  process.exit(1)
+}
+
+const rawData = JSON.parse(readFileSync(file, 'utf8'))
 const data = {
   name: 'root',
   children: rawData.map(d => {
@@ -141,9 +161,9 @@ ${d.incoming.length} incoming`))
   }
 }
 
-mkdirSync(join(import.meta.url, '..', 'report'), { recursive: true })
+mkdirSync(join(__dirname, '..', '..', 'report'), { recursive: true })
 writeFileSync(
-  join(import.meta.url, '..', 'report', 'namespace-dependencies.html'),
+  join(__dirname, '..', '..', 'report', `namespace-dependencies-${options.compact ? 'compact' : 'expanded'}.html`),
   html.trim(),
   'utf8'
 )
