@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+  <script src='https://d3js.org/d3.v7.min.js'></script>
+</head>
+<body>
+  <script>
+    const data = {"name":"root","children":[{"name":"bulk","imports":["bulk","search","_types"],"imported_by":["bulk"]},{"name":"explain","imports":["explain","search","_types"],"imported_by":["explain","search"]},{"name":"field_caps","imports":["field_caps","_types"],"imported_by":["field_caps"]},{"name":"get","imports":["search","_types"],"imported_by":["mget"]},{"name":"get_script_context","imports":["get_script_context","_types"],"imported_by":["get_script_context"]},{"name":"get_script_languages","imports":["get_script_languages","_types"],"imported_by":["get_script_languages"]},{"name":"knn_search","imports":["knn_search","_types"],"imported_by":["knn_search"]},{"name":"mget","imports":["get","mget","search","_types"],"imported_by":["mget"]},{"name":"msearch","imports":["msearch","search","_types"],"imported_by":["msearch","msearch_template"]},{"name":"msearch_template","imports":["msearch","msearch_template","_types"],"imported_by":["msearch_template"]},{"name":"mtermvectors","imports":["mtermvectors","termvectors","_types"],"imported_by":["mtermvectors"]},{"name":"rank_eval","imports":["rank_eval","_types"],"imported_by":["rank_eval"]},{"name":"reindex","imports":["reindex","_types"],"imported_by":["reindex","transform"]},{"name":"reindex_rethrottle","imports":["reindex_rethrottle","_spec_utils","_types"],"imported_by":["reindex_rethrottle"]},{"name":"scripts_painless_execute","imports":["scripts_painless_execute","_types"],"imported_by":["scripts_painless_execute"]},{"name":"search","imports":["explain","search","_types"],"imported_by":["bulk","exists","exists_source","explain","get","get_source","knn_search","mget","msearch","search","search_mvt","search_template","update","_types","async_search","eql","rollup","sql"]},{"name":"search_mvt","imports":["_types"],"imported_by":["search_mvt"]},{"name":"search_shards","imports":["search_shards","_types"],"imported_by":["search_shards"]},{"name":"termvectors","imports":["termvectors","_types"],"imported_by":["mtermvectors","termvectors"]},{"name":"update_by_query_rethrottle","imports":["update_by_query_rethrottle","_spec_utils","_types","tasks"],"imported_by":["update_by_query_rethrottle"]},{"name":"_spec_utils","imports":["_types"],"imported_by":["reindex_rethrottle","update_by_query_rethrottle"]},{"name":"_types","imports":["_types","cluster","indices","watcher","search"],"imported_by":["bulk","clear_scroll","close_point_in_time","count","create","delete","delete_by_query","delete_by_query_rethrottle","delete_script","exists","exists_source","explain","field_caps","get","get_script","get_script_context","get_script_languages","get_source","index","info","knn_search","mget","msearch","msearch_template","mtermvectors","open_point_in_time","ping","put_script","rank_eval","reindex","reindex_rethrottle","render_search_template","scripts_painless_execute","scroll","search","search_mvt","search_shards","search_template","terms_enum","termvectors","update","update_by_query","update_by_query_rethrottle","_spec_utils","_types","async_search","autoscaling","cat","ccr","cluster","dangling_indices","enrich","eql","features","fleet","graph","ilm","indices","ingest","license","logstash","migration","ml","monitoring","nodes","rollup","searchable_snapshots","security","shutdown","slm","snapshot","sql","ssl","tasks","text_structure","transform","watcher","xpack"]},{"name":"async_search","imports":["search","_types","async_search"],"imported_by":["async_search"]},{"name":"autoscaling","imports":["_types","autoscaling"],"imported_by":["autoscaling"]},{"name":"cat","imports":["_types"],"imported_by":["cat"]},{"name":"ccr","imports":["_types","ccr"],"imported_by":["ccr"]},{"name":"cluster","imports":["_types","cluster","indices","nodes"],"imported_by":["cluster","_types"]},{"name":"dangling_indices","imports":["_types","dangling_indices"],"imported_by":["dangling_indices"]},{"name":"enrich","imports":["_types","enrich","tasks"],"imported_by":["enrich"]},{"name":"eql","imports":["search","_types","eql"],"imported_by":["eql"]},{"name":"features","imports":[],"imported_by":["features"]},{"name":"fleet","imports":["_types"],"imported_by":["fleet"]},{"name":"graph","imports":["_types","graph"],"imported_by":["graph"]},{"name":"ilm","imports":["_types","ilm","indices"],"imported_by":["ilm","xpack"]},{"name":"indices","imports":["_types","indices"],"imported_by":["_types","cluster","indices","nodes","transform","ilm"]},{"name":"ingest","imports":["_types","ingest","watcher"],"imported_by":["ingest","text_structure"]},{"name":"license","imports":["_types","license"],"imported_by":["license","xpack"]},{"name":"logstash","imports":["_types","logstash"],"imported_by":["logstash"]},{"name":"migration","imports":["_types","migration"],"imported_by":["migration"]},{"name":"ml","imports":["_types","ml"],"imported_by":["cat","ml","xpack"]},{"name":"nodes","imports":["_types","indices","nodes"],"imported_by":["cluster","nodes"]},{"name":"rollup","imports":["_types","rollup"],"imported_by":["rollup"]},{"name":"searchable_snapshots","imports":["_types","searchable_snapshots"],"imported_by":["searchable_snapshots"]},{"name":"security","imports":["_types","security"],"imported_by":["security"]},{"name":"shutdown","imports":["_types","shutdown"],"imported_by":["shutdown"]},{"name":"slm","imports":["_types","slm","watcher"],"imported_by":["slm","xpack"]},{"name":"snapshot","imports":["_types","snapshot"],"imported_by":["snapshot"]},{"name":"sql","imports":["_types","sql"],"imported_by":["sql"]},{"name":"tasks","imports":["_types","tasks"],"imported_by":["update_by_query_rethrottle","enrich","tasks"]},{"name":"text_structure","imports":["_types","ingest","text_structure"],"imported_by":["text_structure"]},{"name":"transform","imports":["_types","transform","reindex"],"imported_by":["transform"]},{"name":"watcher","imports":["_types","watcher"],"imported_by":["_types","ingest","slm","watcher"]},{"name":"xpack","imports":["_types","license","xpack","ilm","ml","slm"],"imported_by":["xpack"]}]}
+    ;(function generate (window) {
+  const { d3, document } = window
+  const colorin = '#00f'
+  const colorout = '#f00'
+  const colornone = '#ccc'
+  const width = 500
+  const radius = width / 2
+
+  const tree = d3.cluster().size([2 * Math.PI, radius - 100])
+  const line = d3.lineRadial()
+    .curve(d3.curveBundle.beta(0.85))
+    .radius(d => d.y)
+    .angle(d => d.x)
+
+  const root = tree(bilink(d3.hierarchy(data).sort((a, b) => d3.ascending(a.height, b.height) || d3.ascending(a.data.name, b.data.name))))
+  const body = d3.select(document).select('body')
+
+  const svg = body
+    .append('svg')
+    .attr('viewBox', [-width / 2, -width / 2, width, width])
+
+  const node = svg.append('g')
+    .attr('font-family', 'sans-serif')
+    .attr('font-size', 5)
+    .selectAll('g')
+    .data(root.leaves())
+    .join('g')
+    .attr('transform', d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`)
+    .append('text')
+    .attr('dy', '0.2em')
+    .attr('x', d => d.x < Math.PI ? 6 : -6)
+    .attr('text-anchor', d => d.x < Math.PI ? 'start' : 'end')
+    .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
+    .text(d => d.data.name)
+    .each(function(d) { d.text = this; })
+    .on('mouseover', overed)
+    .on('mouseout', outed)
+    .call(text => text.append('title').text(d => `${id(d).slice(5)}
+${d.outgoing.length} outgoing
+${d.incoming.length} incoming`))
+
+  const link = svg.append('g')
+    .attr('stroke', colornone)
+    .attr('fill', 'none')
+    .selectAll('path')
+    .data(root.leaves().flatMap(leaf => leaf.outgoing))
+    .join('path')
+    .style('mix-blend-mode', 'multiply')
+    .attr('d', ([i, o]) => line(i.path(o)))
+    .each(function(d) { d.path = this; })
+
+
+  function bilink (root) {
+    const map = new Map(root.leaves().map(d => [id(d), d]))
+    for (const d of root.leaves()) {
+      d.incoming = []
+      d.outgoing = Array.isArray(d.data.imports)
+        ? d.data.imports.map(i => [d, map.get(`root.${i}`)])
+        : []
+    }
+
+    for (const d of root.leaves()) {
+      for (const o of d.outgoing) {
+        o[1].incoming.push(o)
+      }
+    }
+
+    return root
+  }
+
+  function id (node) {
+    return `${node.parent ? id(node.parent) + '.' : ''}${node.data.name}`
+  }
+
+  function overed (event, d) {
+    link.style('mix-blend-mode', null)
+    d3.select(this).attr('font-weight', 'bold')
+    d3.selectAll(d.incoming.map(d => d.path)).attr('stroke', colorin).raise()
+    d3.selectAll(d.incoming.map(([d]) => d.text)).attr('fill', colorin).attr('font-weight', 'bold')
+    d3.selectAll(d.outgoing.map(d => d.path)).attr('stroke', colorout).raise()
+    d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr('fill', colorout).attr('font-weight', 'bold')
+  }
+
+  function outed (event, d) {
+    link.style('mix-blend-mode', 'multiply')
+    d3.select(this).attr('font-weight', null)
+    d3.selectAll(d.incoming.map(d => d.path)).attr('stroke', null)
+    d3.selectAll(d.incoming.map(([d]) => d.text)).attr('fill', null).attr('font-weight', null)
+    d3.selectAll(d.outgoing.map(d => d.path)).attr('stroke', null)
+    d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr('fill', null).attr('font-weight', null)
+  }
+})(window)
+  </script>
+</body>
