@@ -24,11 +24,12 @@
 require('zx/globals')
 
 const compilerPath = path.join(__dirname, '..')
+const tsNode = path.join(compilerPath, 'node_modules', '.bin', 'ts-node')
 
 async function run () {
-  await $`npm run generate-import-graph --prefix ${compilerPath}`
-  await $`node ${path.join(compilerPath, 'report', 'generate-import-graph.js')} --compact`
-  await $`node ${path.join(compilerPath, 'report', 'generate-import-graph.js')} --expanded`
+  await $`${tsNode} ${path.join(compilerPath, 'reporter', 'create-import-graph.ts')}`
+  await $`node ${path.join(compilerPath, 'reporter', 'generate-import-graph.js')} --compact`
+  await $`node ${path.join(compilerPath, 'reporter', 'generate-import-graph.js')} --expanded`
 }
 
 run().catch(err => {
