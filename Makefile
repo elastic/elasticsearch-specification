@@ -28,9 +28,6 @@ spec-format-check:	## Check specification formatting rules
 spec-format-fix:	## Format/fix the specification according to the formatting rules
 	@npm run format:fix --prefix compiler
 
-spec-imports-fix:	## Fix the TypeScript imports
-	@npm run imports:fix --prefix compiler -- --rebuild
-
 spec-dangling-types:	## Generate the dangling types rreport
 	@npm run generate-dangling --prefix compiler
 
