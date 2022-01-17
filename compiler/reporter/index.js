@@ -22,15 +22,25 @@
 'use strict'
 
 require('zx/globals')
+const { writeFile } = require('fs/promises')
 
 const compilerPath = path.join(__dirname, '..')
 const tsNode = path.join(compilerPath, 'node_modules', '.bin', 'ts-node')
+
+const jekyllConfig = `
+markdown: GFM
+`
 
 async function run () {
   await $`${tsNode} ${path.join(compilerPath, 'reporter', 'create-import-graph.ts')}`
   await $`node ${path.join(compilerPath, 'reporter', 'generate-import-graph.js')} --compact`
   await $`node ${path.join(compilerPath, 'reporter', 'generate-import-graph.js')} --expanded`
   await $`${tsNode} ${path.join(compilerPath, 'reporter', 'generate-type-report.ts')}`
+  await writeFile(
+    path.join(__dirname, '..', '..', 'report', '_config.yml'),
+    jekyllConfig.trim(),
+    'utf8'
+  )
 }
 
 run().catch(err => {
