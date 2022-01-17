@@ -31,7 +31,7 @@ jobs:
 
     - name: Generate graph
       run: |
-        npm run generate-import-graph --prefix compiler
+        node compiler/reporter/index.js
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.2
