@@ -1,7 +1,7 @@
 # Type Specification Report
 
 - [Compact namespace import graph](https://elastic.github.io/elasticsearch-specification/namespace-dependencies-compact.html)
-- [Expanded namespace import graph](https://elastic.github.io/elasticsearch-specification/namespace-dependencies-extended.html)
+- [Expanded namespace import graph](https://elastic.github.io/elasticsearch-specification/namespace-dependencies-expanded.html)
 - [Most used namespaces](#most-used-namespaces)
 - [Most greedy namespaces](#most-greedy-namespaces)
 - [Top 50 used types](#top-50-used-types)
