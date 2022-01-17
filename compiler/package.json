@@ -10,6 +10,7 @@
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
     "imports:fix": "ts-node src/update-imports.ts",
     "generate-schema": "ts-node src/index.ts",
+    "generate-import-graph": "ts-node src/create-import-graph.ts && node generate-import-graph.mjs",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",
     "generate-dangling": "ts-node src dangling-types-report.ts"

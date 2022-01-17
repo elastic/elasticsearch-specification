@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { writeFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
-import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
+import * as model from './model/metamodel'
 
 export interface ImportTypesGraph {
   type: model.TypeName
@@ -33,8 +32,10 @@ export interface ImportNamespaceGraph {
   imports: string[]
 }
 
-export default async function createImportGraph (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+export default async function createImportGraph (): Promise<void> {
+  const model: model.Model = JSON.parse(await readFile(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
   const importGraph: Map<model.TypeName, model.TypeName[]> = new Map()
+
   for (const current of model.types) {
     if (current.kind === 'request' || current.kind === 'response') continue
     for (const type of model.types) {
@@ -168,24 +169,22 @@ export default async function createImportGraph (model: model.Model, jsonSpec: M
   }
 
   await writeFile(
-    join(__dirname, '..', '..', '..', 'output', 'schema', 'import-type-graph.json'),
+    join(__dirname, '..', '..', 'output', 'schema', 'import-type-graph.json'),
     JSON.stringify(typeGraph, null, 2),
     'utf8'
   )
 
   await writeFile(
-    join(__dirname, '..', '..', '..', 'output', 'schema', 'import-namespace-graph-expanded.json'),
+    join(__dirname, '..', '..', 'output', 'schema', 'import-namespace-graph-expanded.json'),
     JSON.stringify(namespaceGraphExpanded, null, 2),
     'utf8'
   )
 
   await writeFile(
-    join(__dirname, '..', '..', '..', 'output', 'schema', 'import-namespace-graph-compact.json'),
+    join(__dirname, '..', '..', 'output', 'schema', 'import-namespace-graph-compact.json'),
     JSON.stringify(namespaceGraphCompact, null, 2),
     'utf8'
   )
-
-  return model
 
   function contains (value: model.ValueOf, type: model.TypeDefinition): boolean {
     switch (value.kind) {
