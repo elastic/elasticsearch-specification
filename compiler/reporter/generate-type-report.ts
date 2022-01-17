@@ -45,7 +45,7 @@ async function createTypeReport (): Promise<void> {
   for (const namespace of mostUsedNamespaces) {
     markdown += `| ${tick}${namespace.namespace}${tick} | ${namespace.imported_by.length} |\n`
   }
-  markdown += `[Back to top](#type-specification-report)\n`
+  markdown += `\n[Back to top](#type-specification-report)\n`
 
   markdown += '\n\n## Most greedy namespaces\n'
   markdown += '| Namespace | Occurencies |\n'
@@ -54,7 +54,7 @@ async function createTypeReport (): Promise<void> {
   for (const namespace of mostGreedyNamespaces) {
     markdown += `| ${tick}${namespace.namespace}${tick} | ${namespace.imports.length} |\n`
   }
-  markdown += `[Back to top](#type-specification-report)\n`
+  markdown += `\n[Back to top](#type-specification-report)\n`
 
   markdown += '\n\n## Top 50 used types\n'
   markdown += '| Type | Occurencies | Location |\n'
@@ -64,7 +64,7 @@ async function createTypeReport (): Promise<void> {
     const type = mostUsedTypes[i]
     markdown += `| ${tick}${type.type.namespace}.${type.type.name}${tick} | ${type.imported_by.length} | ${findLocaton(type)} |\n`
   }
-  markdown += `[Back to top](#type-specification-report)\n`
+  markdown += `\n[Back to top](#type-specification-report)\n`
 
   markdown += '\n\n## Top 50 greedy types\n'
   markdown += '| Type | Occurencies | Location |\n'
@@ -74,7 +74,7 @@ async function createTypeReport (): Promise<void> {
     const type = mostGreedyTypes[i]
     markdown += `| ${tick}${type.type.namespace}.${type.type.name}${tick} | ${type.imports.length} | ${findLocaton(type)} |\n`
   }
-  markdown += `[Back to top](#type-specification-report)\n`
+  markdown += `\n[Back to top](#type-specification-report)\n`
 
   await writeFile(
     join(__dirname, '..', '..', 'report', 'report.md'),
