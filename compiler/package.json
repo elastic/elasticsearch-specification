@@ -10,6 +10,7 @@
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
     "imports:fix": "ts-node src/update-imports.ts",
     "generate-schema": "ts-node src/index.ts",
+    "generate-import-graph": "ts-node src/create-import-graph.ts && node generate-import-graph.mjs",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",
     "generate-dangling": "ts-node src dangling-types-report.ts"
@@ -26,6 +27,8 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
+    "d3": "^6.7.0",
+    "desm": "^1.2.0",
     "fastest-levenshtein": "^1.0.12",
     "ora": "^5.4.1",
     "safe-stable-stringify": "^2.3.1",

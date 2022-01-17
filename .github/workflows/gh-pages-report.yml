@@ -1,0 +1,40 @@
+name: Deploy GH pages report
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+    paths:
+      - 'specification/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.x
+
+    - name: Install
+      run: |
+        npm install --prefix compiler
+
+    - name: Generate output
+      run: |
+        npm run generate-schema --prefix compiler
+
+    - name: Generate graph
+      run: |
+        npm run generate-import-graph --prefix compiler
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.2.2
+      with:
+        branch: gh-pages
+        folder: report
