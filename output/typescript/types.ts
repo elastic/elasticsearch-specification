@@ -15607,6 +15607,7 @@ export interface TransformRetentionPolicyContainer {
 export interface TransformSettings {
   align_checkpoints?: boolean
   dates_as_epoch_millis?: boolean
+  deduce_mappings?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
 }
