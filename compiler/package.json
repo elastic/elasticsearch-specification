@@ -8,7 +8,6 @@
     "lint:fix": "ts-standard --fix src",
     "format:check": "prettier --config .prettierrc.json --check ../specification/",
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
-    "imports:fix": "ts-node src/update-imports.ts",
     "generate-schema": "ts-node src/index.ts",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",

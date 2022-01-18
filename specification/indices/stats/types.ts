@@ -18,7 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Uuid, Id, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Uuid,
+  Id,
+  SequenceNumber,
+  VersionNumber,
+  HealthStatus
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
   BulkStats,
@@ -85,6 +91,10 @@ export class IndicesStats {
   shards?: Dictionary<string, ShardStats[]>
   total?: IndexStats
   uuid?: Uuid
+  /** @since 8.1.0 */
+  health?: HealthStatus
+  /** @since 8.1.0 */
+  status?: IndexMetadataState
 }
 
 export class ShardCommit {
@@ -145,10 +155,10 @@ export class ShardRouting {
 }
 
 export enum ShardRoutingState {
-  UNASSIGNED = 0,
-  INITIALIZING = 1,
-  STARTED = 2,
-  RELOCATING = 3
+  UNASSIGNED,
+  INITIALIZING,
+  STARTED,
+  RELOCATING
 }
 
 export class ShardSequenceNumber {
@@ -188,4 +198,12 @@ export class ShardStats {
   shards?: ShardsTotalStats
   shard_stats?: ShardsTotalStats
   indices?: IndicesStats
+}
+
+/**
+ * @since 8.1.0
+ */
+export enum IndexMetadataState {
+  open,
+  close
 }

@@ -1054,7 +1054,7 @@ export interface SearchAggregationProfile {
   description: string
   time_in_nanos: long
   type: string
-  debug?: SearchAggregationProfileDebug | SearchAggregationProfileDelegateDebug
+  debug?: SearchAggregationProfileDebug
   children?: SearchAggregationProfile[]
 }
 
@@ -1067,7 +1067,7 @@ export interface SearchAggregationProfileDebug {
   result_strategy?: string
   has_filter?: boolean
   delegate?: string
-  delegate_debug?: SearchAggregationProfileDelegateDebug
+  delegate_debug?: SearchAggregationProfileDebug
   chars_fetched?: integer
   extract_count?: integer
   extract_ns?: integer
@@ -1081,9 +1081,6 @@ export interface SearchAggregationProfileDebug {
   numeric_collectors_used?: integer
   empty_collectors_used?: integer
   deferred_aggregators?: string[]
-}
-
-export interface SearchAggregationProfileDelegateDebug {
   segments_with_doc_count_field?: integer
   segments_with_deleted_docs?: integer
   filters?: SearchAggregationProfileDelegateDebugFilter[]
@@ -1098,8 +1095,6 @@ export interface SearchAggregationProfileDelegateDebugFilter {
 }
 
 export type SearchBoundaryScanner = 'chars' | 'sentence' | 'word'
-
-export type SearchBuiltinHighlighterType = 'plain' | 'fvh' | 'unified'
 
 export interface SearchCollector {
   name: string
@@ -1246,7 +1241,7 @@ export type SearchHighlighterOrder = 'score'
 
 export type SearchHighlighterTagsSchema = 'styled'
 
-export type SearchHighlighterType = SearchBuiltinHighlighterType | string
+export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
@@ -1771,7 +1766,7 @@ export interface UpdateByQueryRethrottleResponse {
 }
 
 export interface UpdateByQueryRethrottleUpdateByQueryRethrottleNode extends SpecUtilsBaseNode {
-  tasks: Record<TaskId, TasksInfo>
+  tasks: Record<TaskId, TasksTaskInfo>
 }
 
 export interface SpecUtilsBaseNode {
@@ -1790,8 +1785,6 @@ export interface AcknowledgedResponseBase {
 }
 
 export type AggregateName = string
-
-export type BuiltinScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
 
 export interface BulkIndexByScrollFailure {
   cause: ErrorCause
@@ -2147,7 +2140,7 @@ export interface NodeShard {
   allocation_id?: Record<string, Id>
   recovery_source?: Record<string, Id>
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
-  relocating_node?: null
+  relocating_node?: NodeId | null
 }
 
 export interface NodeStatistics {
@@ -2246,7 +2239,7 @@ export interface ScriptField {
   ignore_failure?: boolean
 }
 
-export type ScriptLanguage = BuiltinScriptLanguage | string
+export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'| string
 
 export interface ScriptSort {
   order?: SortOrder
@@ -2299,7 +2292,7 @@ export interface SegmentsStats {
   index_writer_memory?: ByteSize
   index_writer_max_memory_in_bytes?: integer
   index_writer_memory_in_bytes: integer
-  max_unsafe_auto_id_timestamp: integer
+  max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
   memory_in_bytes: integer
   norms_memory?: ByteSize
@@ -2387,6 +2380,13 @@ export interface StoredScriptId extends ScriptBase {
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
 export type SuggestionName = string
+
+export interface TaskFailure {
+  task_id: long
+  node_id: NodeId
+  status: string
+  reason: ErrorCause
+}
 
 export type TaskId = string | integer
 
@@ -2496,7 +2496,7 @@ export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMulti
 export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucketKeys
   & { [property: string]: AggregationsAggregate | long }
 
-export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsChildrenAggregate | AggregationsGeoLineAggregate
+export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
 
 export interface AggregationsAggregateBase {
   meta?: Record<string, any>
@@ -2715,31 +2715,24 @@ export interface AggregationsCategorizeTextAggregation extends AggregationsAggre
   max_matched_tokens?: integer
   similarity_threshold?: integer
   categorization_filters?: string[]
-  categorization_analyzer?: string | AggregationsCategorizeTextAnalyzer
+  categorization_analyzer?: AggregationsCategorizeTextAnalyzer
   shard_size?: integer
   size?: integer
   min_doc_count?: integer
   shard_min_doc_count?: integer
 }
 
-export interface AggregationsCategorizeTextAnalyzer {
-  char_filter?: string[]
-  tokenizer?: string
-  filter?: string[]
-}
+export type AggregationsCategorizeTextAnalyzer = string | AggregationsCustomCategorizeTextAnalyzer
 
 export interface AggregationsChiSquareHeuristic {
   background_is_superset: boolean
   include_negatives: boolean
 }
 
-export interface AggregationsChildrenAggregate extends AggregationsMultiBucketAggregateBase<AggregationsChildrenAggregateBucket> {
+export interface AggregationsChildrenAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
-
-export interface AggregationsChildrenAggregateBucketKeys extends AggregationsMultiBucketBase {
-}
-export type AggregationsChildrenAggregateBucket = AggregationsChildrenAggregateBucketKeys
-  & { [property: string]: AggregationsAggregate | long }
+export type AggregationsChildrenAggregate = AggregationsChildrenAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsChildrenAggregation extends AggregationsBucketAggregationBase {
   type?: RelationName
@@ -2785,6 +2778,12 @@ export interface AggregationsCumulativeCardinalityAggregation extends Aggregatio
 }
 
 export interface AggregationsCumulativeSumAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsCustomCategorizeTextAnalyzer {
+  char_filter?: string[]
+  tokenizer?: string
+  filter?: string[]
 }
 
 export interface AggregationsDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
@@ -2901,8 +2900,10 @@ export interface AggregationsExtendedStatsBucketAggregation extends Aggregations
 
 export type AggregationsFieldDateMath = DateMath | double
 
-export interface AggregationsFilterAggregate extends AggregationsSingleBucketAggregateBase {
+export interface AggregationsFilterAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
+export type AggregationsFilterAggregate = AggregationsFilterAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsFiltersAggregate extends AggregationsMultiBucketAggregateBase<AggregationsFiltersBucket> {
 }
@@ -3013,8 +3014,10 @@ export interface AggregationsGeoTileGridBucketKeys extends AggregationsMultiBuck
 export type AggregationsGeoTileGridBucket = AggregationsGeoTileGridBucketKeys
   & { [property: string]: AggregationsAggregate | GeoTile | long }
 
-export interface AggregationsGlobalAggregate extends AggregationsSingleBucketAggregateBase {
+export interface AggregationsGlobalAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
+export type AggregationsGlobalAggregate = AggregationsGlobalAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsGlobalAggregation extends AggregationsBucketAggregationBase {
 }
@@ -3232,8 +3235,10 @@ export type AggregationsMinimumInterval = 'second' | 'minute' | 'hour' | 'day' |
 
 export type AggregationsMissing = string | integer | double | boolean
 
-export interface AggregationsMissingAggregate extends AggregationsSingleBucketAggregateBase {
+export interface AggregationsMissingAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
+export type AggregationsMissingAggregate = AggregationsMissingAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsMissingAggregation extends AggregationsBucketAggregationBase {
   field?: Field
@@ -3294,8 +3299,10 @@ export interface AggregationsMutualInformationHeuristic {
   include_negatives?: boolean
 }
 
-export interface AggregationsNestedAggregate extends AggregationsSingleBucketAggregateBase {
+export interface AggregationsNestedAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
+export type AggregationsNestedAggregate = AggregationsNestedAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsNestedAggregation extends AggregationsBucketAggregationBase {
   path?: Field
@@ -3306,6 +3313,11 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 }
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
+
+export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
+}
+export type AggregationsParentAggregate = AggregationsParentAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsParentAggregation extends AggregationsBucketAggregationBase {
   type?: RelationName
@@ -3395,15 +3407,19 @@ export interface AggregationsRegressionInferenceOptions {
   num_top_feature_importance_values?: integer
 }
 
-export interface AggregationsReverseNestedAggregate extends AggregationsSingleBucketAggregateBase {
+export interface AggregationsReverseNestedAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
+export type AggregationsReverseNestedAggregate = AggregationsReverseNestedAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsReverseNestedAggregation extends AggregationsBucketAggregationBase {
   path?: Field
 }
 
-export interface AggregationsSamplerAggregate extends AggregationsSingleBucketAggregateBase {
+export interface AggregationsSamplerAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
+export type AggregationsSamplerAggregate = AggregationsSamplerAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsSamplerAggregation extends AggregationsBucketAggregationBase {
   shard_size?: integer
@@ -3562,7 +3578,7 @@ export interface AggregationsStringStatsAggregate extends AggregationsAggregateB
   max_length: integer | null
   avg_length: double | null
   entropy: double | null
-  distribution?: string | null
+  distribution?: Record<string, double> | null
   min_length_as_string?: string
   max_length_as_string?: string
   avg_length_as_string?: string
@@ -3707,6 +3723,11 @@ export interface AggregationsTopMetricsValue {
 
 export interface AggregationsUnmappedRareTermsAggregate extends AggregationsMultiBucketAggregateBase<SpecUtilsVoid> {
 }
+
+export interface AggregationsUnmappedSamplerAggregateKeys extends AggregationsSingleBucketAggregateBase {
+}
+export type AggregationsUnmappedSamplerAggregate = AggregationsUnmappedSamplerAggregateKeys
+  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
 
 export interface AggregationsUnmappedSignificantTermsAggregate extends AggregationsMultiBucketAggregateBase<SpecUtilsVoid> {
 }
@@ -8578,7 +8599,7 @@ export interface EnrichStatsCoordinatorStats {
 
 export interface EnrichStatsExecutingPolicy {
   name: Name
-  task: TasksInfo
+  task: TasksTaskInfo
 }
 
 export interface EnrichStatsRequest extends RequestBase {
@@ -8647,7 +8668,7 @@ export interface EqlGetStatusResponse {
 }
 
 export interface EqlSearchRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8666,8 +8687,9 @@ export interface EqlSearchRequest extends RequestBase {
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
     size?: uint
-    fields?: QueryDslFieldAndFormat | Field
+    fields?: QueryDslFieldAndFormat | Field | (QueryDslFieldAndFormat | Field)[]
     result_position?: EqlSearchResultPosition
+    runtime_mappings?: MappingRuntimeFields
   }
 }
 
@@ -9404,7 +9426,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   data_stream: Name
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: integer
+  maximum_timestamp: long
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
@@ -10161,6 +10183,8 @@ export interface IndicesSplitResponse extends AcknowledgedResponseBase {
   index: IndexName
 }
 
+export type IndicesStatsIndexMetadataState = 'open' | 'close'
+
 export interface IndicesStatsIndexStats {
   completion?: CompletionStats
   docs?: DocStats
@@ -10188,6 +10212,8 @@ export interface IndicesStatsIndicesStats {
   shards?: Record<string, IndicesStatsShardStats[]>
   total?: IndicesStatsIndexStats
   uuid?: Uuid
+  health?: HealthStatus
+  status?: IndicesStatsIndexMetadataState
 }
 
 export interface IndicesStatsRequest extends RequestBase {
@@ -11685,7 +11711,7 @@ export interface MlModelSnapshot {
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: Id
-  timestamp: integer
+  timestamp: long
 }
 
 export interface MlOutlierDetectionParameters {
@@ -12499,7 +12525,7 @@ export interface MlPostDataRequest<TData = unknown> extends RequestBase {
 
 export interface MlPostDataResponse {
   bucket_count: long
-  earliest_record_timestamp: integer
+  earliest_record_timestamp: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
@@ -12507,7 +12533,7 @@ export interface MlPostDataResponse {
   invalid_date_count: long
   job_id: Id
   last_data_time: integer
-  latest_record_timestamp: integer
+  latest_record_timestamp: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long
@@ -13997,19 +14023,7 @@ export interface RollupDeleteJobRequest extends RequestBase {
 }
 
 export interface RollupDeleteJobResponse extends AcknowledgedResponseBase {
-  task_failures?: RollupDeleteJobTaskFailure[]
-}
-
-export interface RollupDeleteJobTaskFailure {
-  task_id: TaskId
-  node_id: Id
-  status: string
-  reason: RollupDeleteJobTaskFailureReason
-}
-
-export interface RollupDeleteJobTaskFailureReason {
-  type: string
-  reason: string
+  task_failures?: TaskFailure[]
 }
 
 export type RollupGetJobsIndexingJobState = 'started' | 'indexing' | 'stopping' | 'stopped' | 'aborting'
@@ -15402,36 +15416,45 @@ export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 
-export interface TasksInfo {
-  action: string
-  cancellable: boolean
-  children?: TasksInfo[]
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TasksStatus
-  type: string
-  parent_task_id?: Id
+export interface TasksNodeTasks {
+  name?: NodeId
+  transport_address?: TransportAddress
+  host?: Host
+  ip?: Ip
+  roles?: string[]
+  attributes?: Record<string, string>
+  tasks: Record<TaskId, TasksTaskInfo>
 }
 
-export interface TasksState {
+export interface TasksParentTaskInfo extends TasksTaskInfo {
+  children?: TasksTaskInfo[]
+}
+
+export interface TasksTaskInfo {
   action: string
   cancellable: boolean
   description?: string
-  headers: HttpHeaders
+  headers: Record<string, string>
   id: long
-  node: string
+  node: NodeId
+  running_time?: string
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: TasksTaskStatus
+  type: string
   parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TasksStatus
-  type: string
 }
 
-export interface TasksStatus {
+export type TasksTaskInfos = TasksTaskInfo[] | Record<string, TasksParentTaskInfo>
+
+export interface TasksTaskListResponseBase {
+  node_failures?: ErrorCause[]
+  task_failures?: TaskFailure[]
+  nodes?: Record<string, TasksNodeTasks>
+  tasks?: TasksTaskInfos
+}
+
+export interface TasksTaskStatus {
   batches: long
   canceled?: string
   created: long
@@ -15451,10 +15474,6 @@ export interface TasksStatus {
   version_conflicts: long
 }
 
-export interface TasksTaskExecutingNode extends SpecUtilsBaseNode {
-  tasks: Record<TaskId, TasksState>
-}
-
 export interface TasksCancelRequest extends RequestBase {
   task_id?: TaskId
   actions?: string | string[]
@@ -15463,9 +15482,7 @@ export interface TasksCancelRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export interface TasksCancelResponse {
-  node_failures?: ErrorCause[]
-  nodes: Record<string, TasksTaskExecutingNode>
+export interface TasksCancelResponse extends TasksTaskListResponseBase {
 }
 
 export interface TasksGetRequest extends RequestBase {
@@ -15476,8 +15493,8 @@ export interface TasksGetRequest extends RequestBase {
 
 export interface TasksGetResponse {
   completed: boolean
-  task: TasksInfo
-  response?: TasksStatus
+  task: TasksTaskInfo
+  response?: TasksTaskStatus
   error?: ErrorCause
 }
 
@@ -15492,10 +15509,7 @@ export interface TasksListRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export interface TasksListResponse {
-  node_failures?: ErrorCause[]
-  nodes?: Record<string, TasksTaskExecutingNode>
-  tasks?: TasksInfo[] | Record<string, TasksInfo>
+export interface TasksListResponse extends TasksTaskListResponseBase {
 }
 
 export interface TextStructureFindStructureFieldStat {

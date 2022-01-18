@@ -438,7 +438,7 @@ export class CategorizeTextAggregation extends Aggregation {
    * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
    * cannot be used at the same time as categorization_filters.
    */
-  categorization_analyzer?: string | CategorizeTextAnalyzer
+  categorization_analyzer?: CategorizeTextAnalyzer
   /**
    * The number of categorization buckets to return from each shard before merging all the results.
    */
@@ -458,7 +458,12 @@ export class CategorizeTextAggregation extends Aggregation {
   shard_min_doc_count?: integer
 }
 
-export class CategorizeTextAnalyzer {
+/**
+ * @codegen_names builtin, custom
+ */
+export type CategorizeTextAnalyzer = string | CustomCategorizeTextAnalyzer
+
+export class CustomCategorizeTextAnalyzer {
   char_filter?: string[]
   tokenizer?: string
   filter?: string[]

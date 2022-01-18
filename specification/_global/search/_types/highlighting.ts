@@ -71,10 +71,8 @@ export enum HighlighterTagsSchema {
   styled = 0
 }
 
-/** @codegen_names builtin, custom */
-export type HighlighterType = BuiltinHighlighterType | string
-
-export enum BuiltinHighlighterType {
+/** @open_enum */
+export enum HighlighterType {
   plain = 0,
   /** @codegen_name fast_vector */
   fvh = 1,

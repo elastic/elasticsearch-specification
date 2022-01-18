@@ -420,8 +420,9 @@ function buildEnum (type: M.Enum): string {
 
   // Also allow plain boolean values if the enum contains 'true' and 'false'
   const boolean = (names.includes('true') && names.includes('false')) ? 'boolean | ' : ''
+  const string = type.isOpen === true ? '| string' : ''
 
-  return `export type ${createName(type.name)} = ${boolean}${names.map(m => `'${m}'`).join(' | ')}\n`
+  return `export type ${createName(type.name)} = ${boolean}${names.map(m => `'${m}'`).join(' | ')}${string}\n`
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {

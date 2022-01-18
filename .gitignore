@@ -53,3 +53,6 @@ artifacts
 .validation.json
 compiler/lib
 typescript-generator/lib
+
+report
+output/schema/import-*
