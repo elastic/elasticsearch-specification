@@ -347,7 +347,7 @@ modules-node,/guide/en/elasticsearch/reference/current/modules-node.html
 search-aggregations-bucket-count-ks-test-aggregation,/guide/en/elasticsearch/reference/current/search-aggregations-bucket-count-ks-test-aggregation.html
 search-aggregations-bucket-correlation-aggregation,/guide/en/elasticsearch/reference/current/search-aggregations-bucket-correlation-aggregation.html
 search-aggregations-bucket-categorize-text-aggregation,/guide/en/elasticsearch/reference/current/search-aggregations-bucket-categorize-text-aggregation.html
-,/guide/en/machine-learning/7.12/ml-feature-importance.html
+ml-feature-importance,/guide/en/machine-learning/7.12/ml-feature-importance.html
 analysis-normalizers,/guide/en/elasticsearch/reference/current/analysis-normalizers.html
 geo-shape,/guide/en/elasticsearch/reference/current/geo-shape.html
 shape,/guide/en/elasticsearch/reference/current/shape.html
