@@ -283,7 +283,6 @@ security-api-saml-invalidate,/guide/en/elasticsearch/reference/current/security-
 security-api-saml-logout,/guide/en/elasticsearch/reference/current/security-api-saml-logout.html
 security-api-saml-prepare-authentication,/guide/en/elasticsearch/reference/current/security-api-saml-prepare-authentication.html
 security-api-saml-sp-metadata,/guide/en/elasticsearch/reference/current/security-api-saml-sp-metadata.html
-,/guide/en/elasticsearch/reference/current
 slm-api-delete-policy,/guide/en/elasticsearch/reference/current/slm-api-delete-policy.html
 slm-api-execute-lifecycle,/guide/en/elasticsearch/reference/current/slm-api-execute-lifecycle.html
 slm-api-execute-retention,/guide/en/elasticsearch/reference/current/slm-api-execute-retention.html
