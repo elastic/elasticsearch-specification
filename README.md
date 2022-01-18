@@ -47,19 +47,19 @@ $ cat output/schema/schema.json
 ```
 Usage:
   make <target>
-  validate             Validate a given endpoint request or response
-  validate-no-cache    Validate a given endpoint request or response without local cache
-  generate             Generate the output spec
-  license-check        Add the license headers to the files
-  license-add          Add the license headers to the files
-  spec-format-check    Check specification formatting rules
-  spec-format-fix      Format/fix the specification according to the formatting rules
-  spec-compile         Compile the specification
+  validate         Validate a given endpoint request or response
+  validate-no-cache  Validate a given endpoint request or response without local cache
+  generate         Generate the output spec
+  compile          Compile the specification
+  license-check    Add the license headers to the files
+  license-add      Add the license headers to the files
+  spec-format-check  Check specification formatting rules
+  spec-format-fix  Format/fix the specification according to the formatting rules
   spec-dangling-types  Generate the dangling types rreport
-  setup-env            Install dependencies for contrib target
-  clean-dep            Clean npm dependencies
-  contrib              Pre contribution target
-  help                 Display help
+  setup            Install dependencies for contrib target
+  clean-dep        Clean npm dependencies
+  contrib          Pre contribution target
+  help             Display help
 ```
 
 ### Structure of the JSON representation
