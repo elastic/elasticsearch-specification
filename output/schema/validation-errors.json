@@ -553,7 +553,11 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition tasks._types:NodeTasks / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
+        "type_alias definition tasks._types:TaskInfos / union_of / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
+        "interface definition tasks._types:ParentTaskInfo / Property 'children' / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "delete_script": {
       "request": [
@@ -583,7 +587,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition enrich.stats:ExecutingPolicy / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "eql.delete": {
       "request": [
@@ -718,6 +724,13 @@
     "ilm.migrate_to_data_tiers": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "ilm.put_lifecycle": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -867,7 +880,6 @@
     },
     "indices.forcemerge": {
       "request": [
-        "Request: missing json spec query parameter 'wait_for_completion'",
         "Request: should not have a body"
       ],
       "response": []
@@ -950,7 +962,6 @@
     },
     "indices.put_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
         "Request: missing json spec query parameter 'master_timeout'"
       ],
@@ -1190,7 +1201,6 @@
     "ml.delete_trained_model": {
       "request": [
         "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'force'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1298,12 +1308,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'defer_definition_decompression'"
-      ],
-      "response": []
-    },
     "ml.put_trained_model_alias": {
       "request": [
         "Request: should not have a body"
@@ -1369,7 +1373,6 @@
     "nodes.hot_threads": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1666,6 +1669,7 @@
       "request": [
         "Request: query parameter 'application' does not exist in the json spec",
         "Request: query parameter 'priviledge' does not exist in the json spec",
+        "Request: query parameter 'username' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -1875,10 +1879,15 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition tasks.get:Response / body / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "tasks.list": {
       "request": [
+        "Request: query parameter 'node_id' does not exist in the json spec",
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: missing json spec query parameter 'nodes'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1893,7 +1902,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
+      ]
     },
     "transform.get_transform_stats": {
       "request": [
@@ -1903,7 +1914,6 @@
     },
     "transform.preview_transform": {
       "request": [
-        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required",
         "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required"
       ],
       "response": [
@@ -1945,7 +1955,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition _global.update_by_query_rethrottle:UpdateByQueryRethrottleNode / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "watcher.ack_watch": {
       "request": [
@@ -2009,7 +2021,6 @@
     },
     "xpack.info": {
       "request": [
-        "Request: missing json spec query parameter 'accept_enterprise'",
         "Request: should not have a body"
       ],
       "response": []

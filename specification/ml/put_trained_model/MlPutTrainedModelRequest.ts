@@ -39,6 +39,12 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  query_parameters: {
+    /**
+     * @since 8.0.0
+     */
+    defer_definition_decompression?: boolean
+  }
   body: {
     /**
      * The compressed (GZipped and Base64 encoded) inference definition of the

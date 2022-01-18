@@ -21,6 +21,7 @@ import {
   IndicesPrivileges,
   ApplicationPrivileges
 } from '@security/_types/Privileges'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
 import { Script } from '@_types/Scripting'
 
@@ -32,6 +33,8 @@ export class Role {
   transient_metadata: TransientMetadata
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]
+  /** @since 8.0.0 */
+  global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
 }
 
 export class TransientMetadata {

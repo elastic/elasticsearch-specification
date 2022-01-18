@@ -23,9 +23,12 @@ import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 /**
+ * This API yields a breakdown of the hot threads on each selected node in the cluster.
+ * The output is plain text with a breakdown of each node’s top hot threads.
  * @rest_spec_name nodes.hot_threads
  * @since 0.0.0
  * @stability stable
+ * @cluster_privileges monitor,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -74,5 +77,6 @@ export interface Request extends RequestBase {
      * @server_default cpu
      */
     type?: ThreadType
+    sort?: ThreadType
   }
 }

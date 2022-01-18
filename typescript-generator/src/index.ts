@@ -22,9 +22,9 @@
 import assert from 'assert'
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
-import * as M from '../compiler/model/metamodel'
+import * as M from './metamodel'
 
-const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', 'schema', 'schema.json'), 'utf8'))
+const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
 
 // We don't skip `CommonQueryParameters` and `CommonCatQueryParameters`
 // behaviors because we ue them for sharing common query parameters
@@ -59,7 +59,7 @@ for (const type of model.types) {
 }
 
 writeFileSync(
-  join(__dirname, '..', 'output', 'typescript', 'types.ts'),
+  join(__dirname, '..', '..', 'output', 'typescript', 'types.ts'),
   definitions,
   'utf8'
 )
@@ -348,15 +348,15 @@ function buildRequest (type: M.Request): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
   let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.path) {
-    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+    code += `  ${cleanPropertyName(property.codegenName ?? property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
 
   // It might happen that the same property is present in both
   // path and query parameters, we should keep only one
-  const pathPropertiesNames = type.path.map(property => property.name)
+  const pathPropertiesNames = type.path.map(property => property.codegenName ?? property.name)
   for (const property of type.query) {
     if (pathPropertiesNames.includes(property.name)) continue
-    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+    code += `  ${cleanPropertyName(property.codegenName ?? property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
   if (type.body.kind === 'properties' && type.body.properties.length > 0) {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
@@ -420,8 +420,9 @@ function buildEnum (type: M.Enum): string {
 
   // Also allow plain boolean values if the enum contains 'true' and 'false'
   const boolean = (names.includes('true') && names.includes('false')) ? 'boolean | ' : ''
+  const string = type.isOpen === true ? '| string' : ''
 
-  return `export type ${createName(type.name)} = ${boolean}${names.map(m => `'${m}'`).join(' | ')}\n`
+  return `export type ${createName(type.name)} = ${boolean}${names.map(m => `'${m}'`).join(' | ')}${string}\n`
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {

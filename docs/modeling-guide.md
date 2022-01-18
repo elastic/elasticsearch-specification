@@ -98,6 +98,19 @@ enum Orientation {
 }
 ```
 
+Some enumerations can accept arbitrary values other than the one defined. The `@open_enum` jsdoc tac can be used to describe this behavior.
+By default, an enum is to be considered closed.
+
+```ts
+/** @open_enum */
+export enum ScriptLanguage {
+  painless,
+  expression,
+  mustache,
+  java
+}
+```
+
 ### User defined value
 
 Represents a value that will be defined by the user and has no specific type.

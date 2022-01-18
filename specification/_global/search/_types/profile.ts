@@ -34,6 +34,7 @@ export class AggregationBreakdown {
   reduce_count: long
 }
 
+// This is a Map<String, Object> in ES. Below are the known fields.
 export class AggregationProfileDebug {
   segments_with_multi_valued_ords?: integer
   collection_strategy?: string
@@ -43,7 +44,7 @@ export class AggregationProfileDebug {
   result_strategy?: string
   has_filter?: boolean
   delegate?: string
-  delegate_debug?: AggregationProfileDelegateDebug
+  delegate_debug?: AggregationProfileDebug
   chars_fetched?: integer
   extract_count?: integer
   extract_ns?: integer
@@ -57,9 +58,6 @@ export class AggregationProfileDebug {
   numeric_collectors_used?: integer
   empty_collectors_used?: integer
   deferred_aggregators?: string[]
-}
-
-export class AggregationProfileDelegateDebug {
   segments_with_doc_count_field?: integer
   segments_with_deleted_docs?: integer
   filters?: AggregationProfileDelegateDebugFilter[]

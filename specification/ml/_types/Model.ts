@@ -41,7 +41,7 @@ export class ModelSnapshot {
   /** A numerical character string that uniquely identifies the model snapshot. */
   snapshot_id: Id
   /** The creation timestamp for the snapshot. */
-  timestamp: integer
+  timestamp: long
 }
 
 export class ModelSizeStats {

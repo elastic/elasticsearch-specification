@@ -17,20 +17,14 @@
  * under the License.
  */
 
-import { HttpHeaders, TaskId } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Status } from './TaskStatus'
+const { readFileSync } = require('fs')
+const { join } = require('path')
 
-export class State {
-  action: string
-  cancellable: boolean
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: Status
-  type: string
+const nvmrc = readFileSync(join(__dirname, '..', '.nvmrc'), 'utf8')
+const nodejsMajor = process.version.split('.').shift()?.slice(1)
+const nvmMajor = nvmrc.trim().split('.').shift()
+
+if (nodejsMajor !== nvmMajor) {
+  console.error(`Bad nodejs major version, you are using ${nodejsMajor}, while ${nvmMajor} should be used. Run 'nvm install' to fix this.`)
+  process.exit(1)
 }

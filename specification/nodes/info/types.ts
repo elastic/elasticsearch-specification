@@ -132,6 +132,12 @@ export class NodeInfoSettingsCluster {
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
   initial_master_nodes?: string
+  /** @since 7.16.0 */
+  deprecation_indexing?: DeprecationIndexing
+}
+
+export class DeprecationIndexing {
+  enabled: boolean | string
 }
 
 export class NodeInfoSettingsClusterElection {
@@ -227,7 +233,7 @@ export class NodeInfoXpack {
 export class NodeInfoXpackSecurity {
   http: NodeInfoXpackSecuritySsl
   enabled: string
-  transport: NodeInfoXpackSecuritySsl
+  transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
 }
 
