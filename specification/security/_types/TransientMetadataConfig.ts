@@ -17,24 +17,6 @@
  * under the License.
  */
 
-import {
-  IndicesPrivileges,
-  GlobalPrivilege,
-  ApplicationPrivileges
-} from '@security/_types/Privileges'
-import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
-import { Metadata } from '@_types/common'
-
-export class RoleDescriptorWrapper {
-  role_descriptor: RoleDescriptor
-}
-
-export class RoleDescriptor {
-  cluster: string[]
-  indices: IndicesPrivileges[]
-  global?: GlobalPrivilege[] | GlobalPrivilege
-  applications?: ApplicationPrivileges[]
-  metadata?: Metadata
-  run_as?: string[]
-  transient_metadata?: TransientMetadataConfig
+export class TransientMetadataConfig {
+  enabled: boolean
 }
