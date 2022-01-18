@@ -55,7 +55,6 @@ Usage:
   spec-format-check    Check specification formatting rules
   spec-format-fix      Format/fix the specification according to the formatting rules
   spec-compile         Compile the specification
-  spec-imports-fix     Fix the TypeScript imports
   spec-dangling-types  Generate the dangling types rreport
   setup-env            Install dependencies for contrib target
   clean-dep            Clean npm dependencies
