@@ -366,7 +366,7 @@ eql-syntax,/guide/en/elasticsearch/reference/current/eql-syntax.html
 eql,/guide/en/elasticsearch/reference/current/eql.html
 index-modules,/guide/en/elasticsearch/reference/7.8/index-modules.html
 ,/guide/en/machine-learning/current/dfa-classification.html
-,/guide/en/machine-learning/current/dfa-regression.html
+ml-regression,/guide/en/machine-learning/current/dfa-regression.html
 ml-job-resource,/guide/en/elasticsearch/reference/current/ml-job-resource.html
 ml-settings,/guide/en/elasticsearch/reference/current/ml-settings.html
 cluster-nodes-stats,/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html
