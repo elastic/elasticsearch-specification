@@ -209,7 +209,7 @@ ml-update-filter,/guide/en/elasticsearch/reference/current/ml-update-filter.html
 ml-update-job,/guide/en/elasticsearch/reference/current/ml-update-job.html
 ml-update-snapshot,/guide/en/elasticsearch/reference/current/ml-update-snapshot.html
 ml-upgrade-job-model-snapshot,/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html
-,/guide/en/machine-learning/current/ml-jobs.html
+ml-jobs,/guide/en/machine-learning/current/ml-jobs.html
 monitor-elasticsearch-cluster,/guide/en/elasticsearch/reference/master/monitor-elasticsearch-cluster.html
 search-multi-search,/guide/en/elasticsearch/reference/master/search-multi-search.html
 search-multi-search,/guide/en/elasticsearch/reference/current/search-multi-search.html
