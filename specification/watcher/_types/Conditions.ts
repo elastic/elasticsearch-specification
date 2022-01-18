@@ -75,7 +75,11 @@ export enum Quantifier {
 }
 
 export class ScriptCondition {
-  lang: string
+  /**
+   * @server_default painless
+   */
+  lang?: string
   params?: Dictionary<string, UserDefinedValue>
-  source: string
+  source?: string
+  id?: string
 }
