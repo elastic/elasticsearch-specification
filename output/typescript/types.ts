@@ -15683,7 +15683,7 @@ export interface TransformGetTransformStatsCheckpointing {
 }
 
 export interface TransformGetTransformStatsRequest extends RequestBase {
-  transform_id: Name
+  transform_id: Names
   allow_no_match?: boolean
   from?: long
   size?: long

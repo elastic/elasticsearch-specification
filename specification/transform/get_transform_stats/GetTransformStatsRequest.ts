@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Names } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
      * `_all`, by specifying `*` as the `<transform_id>`, or by omitting the
      * `<transform_id>`.
      */
-    transform_id: Name
+    transform_id: Names
   }
   query_parameters: {
     /**
