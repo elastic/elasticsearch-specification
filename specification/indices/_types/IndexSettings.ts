@@ -23,11 +23,23 @@ import { Analyzer } from '@_types/analysis/analyzers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
-import { ByteSize, Fields, Name, PipelineName, Uuid, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  Fields,
+  Name,
+  PipelineName,
+  Uuid,
+  VersionString
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, EpochMillis, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
-import { IndexSegmentSort, SegmentSortMissing, SegmentSortMode, SegmentSortOrder } from './IndexSegmentSort'
+import {
+  IndexSegmentSort,
+  SegmentSortMissing,
+  SegmentSortMode,
+  SegmentSortOrder
+} from './IndexSegmentSort'
 
 export class SoftDeletes {
   enabled: boolean
@@ -67,11 +79,11 @@ export class IndexSettings {
   /**
    * @aliases index.sort.field
    */
-   'sort.field'?: Fields
-   /**
-    * @aliases index.sort.order
-    */
-   'sort.order'?: SegmentSortOrder | SegmentSortOrder[]
+  'sort.field'?: Fields
+  /**
+   * @aliases index.sort.order
+   */
+  'sort.order'?: SegmentSortOrder | SegmentSortOrder[]
   /**
    * @aliases index.sort.mode
    */
