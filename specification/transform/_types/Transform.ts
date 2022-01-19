@@ -114,6 +114,11 @@ export class Settings {
    */
   dates_as_epoch_millis?: boolean
   /**
+   * Specifies whether the transform should deduce the destination index mappings from the transform configuration.
+   * @server_default true
+   */
+  deduce_mappings?: boolean
+  /**
    * Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a
    * wait time between search requests. The default value is null, which disables throttling.
    */

@@ -15640,6 +15640,7 @@ export interface TransformRetentionPolicyContainer {
 export interface TransformSettings {
   align_checkpoints?: boolean
   dates_as_epoch_millis?: boolean
+  deduce_mappings?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
 }
@@ -15715,7 +15716,7 @@ export interface TransformGetTransformStatsCheckpointing {
 }
 
 export interface TransformGetTransformStatsRequest extends RequestBase {
-  transform_id: Name
+  transform_id: Names
   allow_no_match?: boolean
   from?: long
   size?: long
