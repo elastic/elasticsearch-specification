@@ -249,7 +249,7 @@ export class IndexSettings {
   /**
    * @aliases index.verified_before_close
    */
-  verified_before_close?: boolean
+  verified_before_close?: boolean | string
   /**
    * @aliases index.format
    */

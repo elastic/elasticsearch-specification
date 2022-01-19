@@ -9170,8 +9170,8 @@ export interface IndicesIndexSettings {
   'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
   'index.version'?: IndicesIndexVersioning
-  verified_before_close?: boolean
-  'index.verified_before_close'?: boolean
+  verified_before_close?: boolean | string
+  'index.verified_before_close'?: boolean | string
   format?: string | integer
   'index.format'?: string | integer
   max_slices_per_scroll?: integer
