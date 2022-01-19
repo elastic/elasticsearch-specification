@@ -515,6 +515,8 @@ export class RangeBucket extends MultiBucketBase {
   to?: double
   from_as_string?: string
   to_as_string?: string
+  /** The bucket key. Present if the aggregation is _not_ keyed */
+  key?: string
 }
 
 /**
