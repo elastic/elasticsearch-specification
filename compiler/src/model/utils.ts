@@ -41,6 +41,11 @@ import chalk from 'chalk'
 import * as model from './metamodel'
 import { EOL } from 'os'
 import { dirname, join, sep } from 'path'
+import { readFileSync } from 'fs'
+
+const docIds: string[][] = readFileSync(join(__dirname, '..', '..', '..', 'specification', '_doc_ids', 'table.csv'), 'utf8')
+  .split('\n')
+  .map(line => line.split(','))
 
 /**
  * Behaviors that the compiler recognized
@@ -625,7 +630,10 @@ export function hoistRequestAnnotations (
       endpoint.privileges.cluster = values
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_id is cannot be empty`)
-      endpoint.docId = value
+      endpoint.docId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      endpoint.docUrl = docUrl[1]
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
@@ -686,6 +694,14 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     if (description.length > 0) property.description = description.trim()
   }
 
+  if (tags.doc_id != null) {
+    assert(
+      jsDocs,
+      tags.doc_url == null,
+      'You can\'t define @doc_id and @doc_url at the same time'
+    )
+  }
+
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'aliases') {
@@ -701,6 +717,10 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
       property.docId = value
+      const docUrl = docIds.find(entry => entry[0] === value)
+      if (docUrl != null) {
+        property.docUrl = docUrl[1]
+      }
     } else if (tag === 'stability') {
       assert(jsDocs, model.Stability[value] != null, `Property ${property.name}'s @stability can be either 'beta' or 'experimental'`)
       property.stability = model.Stability[value]

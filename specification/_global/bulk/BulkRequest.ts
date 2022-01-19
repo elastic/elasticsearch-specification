@@ -33,6 +33,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * @rest_spec_name bulk
  * @since 0.0.0
  * @stability stable
+ * @doc_id docs-bulk
  *
  */
 export interface Request<TSource> extends RequestBase {
