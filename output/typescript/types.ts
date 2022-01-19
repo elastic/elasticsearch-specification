@@ -3322,6 +3322,7 @@ export interface AggregationsRangeBucketKeys extends AggregationsMultiBucketBase
   to?: double
   from_as_string?: string
   to_as_string?: string
+  key?: string
 }
 export type AggregationsRangeBucket = AggregationsRangeBucketKeys
   & { [property: string]: AggregationsAggregate | double | string | long }
