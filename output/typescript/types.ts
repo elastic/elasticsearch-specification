@@ -2252,8 +2252,10 @@ export interface ScriptSort {
 export type ScriptSortType = 'string' | 'number'
 
 export interface ScriptTransform {
-  lang: string
-  params: Record<string, any>
+  lang?: string
+  params?: Record<string, any>
+  source?: string
+  id?: string
 }
 
 export type ScrollId = string
@@ -2413,7 +2415,7 @@ export interface TopRightBottomLeftGeoBounds {
 }
 
 export interface TransformContainer {
-  chain?: ChainTransform
+  chain?: ChainTransform | TransformContainer[]
   script?: ScriptTransform
   search?: SearchTransform
 }
@@ -15861,9 +15863,12 @@ export interface WatcherAction {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index?: WatcherIndex
-  logging?: WatcherLogging
-  webhook?: WatcherActionWebhook
+  index?: WatcherIndexAction
+  logging?: WatcherLoggingAction
+  email?: WatcherEmailAction
+  pagerduty?: WatcherPagerDutyAction
+  slack?: WatcherSlackAction
+  webhook?: WatcherWebhookAction
 }
 
 export type WatcherActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
@@ -15878,11 +15883,6 @@ export interface WatcherActionStatus {
 export type WatcherActionStatusOptions = 'success' | 'failure' | 'simulated' | 'throttled'
 
 export type WatcherActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
-
-export interface WatcherActionWebhook {
-  host: Host
-  port: integer
-}
 
 export type WatcherActions = Record<IndexName, WatcherActionStatus>
 
@@ -15947,6 +15947,12 @@ export interface WatcherDailySchedule {
   at: WatcherTimeOfDay[]
 }
 
+export type WatcherDataAttachmentFormat = 'json' | 'yaml'
+
+export interface WatcherDataEmailAttachment {
+  format?: WatcherDataAttachmentFormat
+}
+
 export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
 export interface WatcherEmail {
@@ -15954,17 +15960,26 @@ export interface WatcherEmail {
   body?: WatcherEmailBody
   cc?: string[]
   from?: string
-  id: Id
   priority?: WatcherEmailPriority
   reply_to?: string[]
-  sent_date: DateString
+  sent_date?: DateString
   subject: string
   to: string[]
+  attachments?: Record<string, WatcherEmailAttachmentContainer>
+}
+
+export interface WatcherEmailAction extends WatcherEmail {
+}
+
+export interface WatcherEmailAttachmentContainer {
+  http?: WatcherHttpEmailAttachment
+  reporting?: WatcherReportingEmailAttachment
+  data?: WatcherDataEmailAttachment
 }
 
 export interface WatcherEmailBody {
-  html: string
-  text: string
+  html?: string
+  text?: string
 }
 
 export type WatcherEmailPriority = 'lowest' | 'low' | 'normal' | 'high' | 'highest'
@@ -16033,6 +16048,12 @@ export interface WatcherHourlySchedule {
   minute: integer[]
 }
 
+export interface WatcherHttpEmailAttachment {
+  content_type?: string
+  inline?: boolean
+  request?: WatcherHttpInputRequestDefinition
+}
+
 export interface WatcherHttpInput {
   http?: WatcherHttpInput
   extract?: string[]
@@ -16081,10 +16102,13 @@ export interface WatcherHttpInputResponseResult {
   status: integer
 }
 
-export interface WatcherIndex {
+export interface WatcherIndexAction {
   index: IndexName
   doc_id?: Id
   refresh?: Refresh
+  op_type?: OpType
+  timeout?: Time
+  execution_time_field?: Field
 }
 
 export interface WatcherIndexResult {
@@ -16108,7 +16132,7 @@ export interface WatcherInputContainer {
 
 export type WatcherInputType = 'http' | 'search' | 'simple'
 
-export interface WatcherLogging {
+export interface WatcherLoggingAction {
   level?: string
   text: string
   category?: string
@@ -16124,6 +16148,9 @@ export interface WatcherNeverCondition {
   [key: string]: never
 }
 
+export interface WatcherPagerDutyAction extends WatcherPagerDutyEvent {
+}
+
 export interface WatcherPagerDutyContext {
   href?: string
   src?: string
@@ -16133,14 +16160,21 @@ export interface WatcherPagerDutyContext {
 export type WatcherPagerDutyContextType = 'link' | 'image'
 
 export interface WatcherPagerDutyEvent {
-  account: string
+  account?: string
   attach_payload: boolean
   client?: string
   client_url?: string
-  contexts: WatcherPagerDutyContext[]
-  description?: string
+  contexts?: WatcherPagerDutyContext[]
+  context?: WatcherPagerDutyContext[]
+  description: string
   event_type?: WatcherPagerDutyEventType
   incident_key: string
+  proxy?: WatcherPagerDutyEventProxy
+}
+
+export interface WatcherPagerDutyEventProxy {
+  host?: Host
+  port?: integer
 }
 
 export type WatcherPagerDutyEventType = 'trigger' | 'resolve' | 'acknowledge'
@@ -16162,6 +16196,14 @@ export interface WatcherQueryWatch {
   _seq_no?: SequenceNumber
 }
 
+export interface WatcherReportingEmailAttachment {
+  url: string
+  inline?: boolean
+  retries?: integer
+  interval?: Time
+  request?: WatcherHttpInputRequestDefinition
+}
+
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
 
 export interface WatcherScheduleContainer {
@@ -16169,9 +16211,9 @@ export interface WatcherScheduleContainer {
   daily?: WatcherDailySchedule
   hourly?: WatcherHourlySchedule
   interval?: Time
-  monthly?: WatcherTimeOfMonth[]
-  weekly?: WatcherTimeOfWeek[]
-  yearly?: WatcherTimeOfYear[]
+  monthly?: WatcherTimeOfMonth | WatcherTimeOfMonth[]
+  weekly?: WatcherTimeOfWeek | WatcherTimeOfWeek[]
+  yearly?: WatcherTimeOfYear | WatcherTimeOfYear[]
 }
 
 export interface WatcherScheduleTriggerEvent {
@@ -16180,9 +16222,10 @@ export interface WatcherScheduleTriggerEvent {
 }
 
 export interface WatcherScriptCondition {
-  lang: string
+  lang?: string
   params?: Record<string, any>
-  source: string
+  source?: string
+  id?: string
 }
 
 export interface WatcherSearchInput {
@@ -16208,6 +16251,11 @@ export interface WatcherSimulatedActions {
   actions: string[]
   all: WatcherSimulatedActions
   use_all: boolean
+}
+
+export interface WatcherSlackAction {
+  account?: string
+  message: WatcherSlackMessage
 }
 
 export interface WatcherSlackAttachment {
@@ -16309,6 +16357,9 @@ export interface WatcherWatchStatus {
   state: WatcherActivationState
   version: VersionNumber
   execution_state?: string
+}
+
+export interface WatcherWebhookAction extends WatcherHttpInputRequestDefinition {
 }
 
 export interface WatcherWebhookResult {

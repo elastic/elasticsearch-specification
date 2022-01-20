@@ -19,11 +19,17 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
-import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { DateString, EpochMillis, Time } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
-import { Index, Logging } from './Actions'
+import {
+  IndexAction,
+  LoggingAction,
+  WebhookAction,
+  EmailAction,
+  PagerDutyAction,
+  SlackAction
+} from './Actions'
 import { ConditionContainer } from './Conditions'
 
 export class Action {
@@ -35,15 +41,13 @@ export class Action {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index?: Index
-  logging?: Logging
+  index?: IndexAction
+  logging?: LoggingAction
+  email?: EmailAction
+  pagerduty?: PagerDutyAction
+  slack?: SlackAction
   /** @since 7.14.0 */
-  webhook?: ActionWebhook
-}
-
-export class ActionWebhook {
-  host: Host
-  port: integer
+  webhook?: WebhookAction
 }
 
 export type Actions = Dictionary<IndexName, ActionStatus>

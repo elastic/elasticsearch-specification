@@ -28,7 +28,7 @@ export class Transform {}
  * @variants container
  */
 export class TransformContainer {
-  chain?: ChainTransform
+  chain?: ChainTransform | TransformContainer[]
   script?: ScriptTransform
   search?: SearchTransform
 }
@@ -38,8 +38,13 @@ export class ChainTransform {
 }
 
 export class ScriptTransform {
-  lang: string
-  params: Dictionary<string, UserDefinedValue>
+  /**
+   * @server_default painless
+   */
+  lang?: string
+  params?: Dictionary<string, UserDefinedValue>
+  source?: string
+  id?: string
 }
 
 export class SearchTransform {
