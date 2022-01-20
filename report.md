@@ -131,7 +131,7 @@
 ## Top 50 used types
 | Type | Occurencies | Location |
 | --- | --- | --- |
-| `_types.RequestBase` | 348 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
+| `_types.RequestBase` | 349 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
 | `_types.integer` | 335 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
 | `_types.long` | 282 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
 | `_types.Id` | 234 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
@@ -141,7 +141,7 @@
 | `_types.Field` | 135 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L111-L112) |
 | `_types.IndexName` | 113 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L53-L53) |
 | `_types.AcknowledgedResponseBase` | 90 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L47-L50) |
-| `_types.Indices` | 76 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L54-L54) |
+| `_types.Indices` | 77 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L54-L54) |
 | `_types.query_dsl.QueryContainer` | 60 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L97-L163) |
 | `_types.query_dsl.QueryBase` | 55 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L176-L180) |
 | `_types.DateString` | 48 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L27-L27) |
