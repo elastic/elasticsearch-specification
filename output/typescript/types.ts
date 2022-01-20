@@ -9005,6 +9005,10 @@ export interface IndicesAliasDefinition {
   is_hidden?: boolean
 }
 
+export interface IndicesCacheQueries {
+  enabled: boolean
+}
+
 export interface IndicesDataStream {
   hidden?: boolean
 }
@@ -9051,8 +9055,8 @@ export interface IndicesIndexRoutingRebalance {
 export type IndicesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
 
 export interface IndicesIndexSegmentSort {
-  field: Fields
-  order: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
+  field?: Fields
+  order?: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
   mode?: IndicesSegmentSortMode | IndicesSegmentSortMode[]
   missing?: IndicesSegmentSortMissing | IndicesSegmentSortMissing[]
 }
@@ -9069,8 +9073,8 @@ export interface IndicesIndexSettings {
   index?: IndicesIndexSettings
   mode?: string
   'index.mode'?: string
-  routing_path?: string[]
-  'index.routing_path'?: string[]
+  routing_path?: string | string[]
+  'index.routing_path'?: string | string[]
   soft_deletes?: IndicesSoftDeletes
   'index.soft_deletes'?: IndicesSoftDeletes
   'soft_deletes.enabled'?: boolean
@@ -9079,6 +9083,14 @@ export interface IndicesIndexSettings {
   'index.soft_deletes.retention_lease.period'?: Time
   sort?: IndicesIndexSegmentSort
   'index.sort'?: IndicesIndexSegmentSort
+  'sort.field'?: Fields
+  'index.sort.field'?: Fields
+  'sort.order'?: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
+  'index.sort.order'?: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
+  'sort.mode'?: IndicesSegmentSortMode | IndicesSegmentSortMode[]
+  'index.sort.mode'?: IndicesSegmentSortMode | IndicesSegmentSortMode[]
+  'sort.missing'?: IndicesSegmentSortMissing | IndicesSegmentSortMissing[]
+  'index.sort.missing'?: IndicesSegmentSortMissing | IndicesSegmentSortMissing[]
   number_of_shards?: integer | string
   'index.number_of_shards'?: integer | string
   number_of_replicas?: integer | string
@@ -9097,10 +9109,7 @@ export interface IndicesIndexSettings {
   'index.hidden'?: boolean | string
   auto_expand_replicas?: string
   'index.auto_expand_replicas'?: string
-  'merge.scheduler.max_thread_count'?: integer
-  'index.merge.scheduler.max_thread_count'?: integer
-  'merge.scheduler.max_merge_count'?: integer
-  'index.merge.scheduler.max_merge_count'?: integer
+  merge?: IndicesMerge
   'search.idle.after'?: Time
   'index.search.idle.after'?: Time
   refresh_interval?: Time
@@ -9163,16 +9172,13 @@ export interface IndicesIndexSettings {
   'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
   'index.version'?: IndicesIndexVersioning
-  verified_before_close?: boolean
-  'index.verified_before_close'?: boolean
+  verified_before_close?: boolean | string
+  'index.verified_before_close'?: boolean | string
   format?: string | integer
   'index.format'?: string | integer
   max_slices_per_scroll?: integer
   'index.max_slices_per_scroll'?: integer
-  'translog.durability'?: string
-  'index.translog.durability'?: string
-  'translog.flush_threshold_size'?: string
-  'index.translog.flush_threshold_size'?: string
+  translog?: IndicesTranslog
   'query_string.lenient'?: boolean
   'index.query_string.lenient'?: boolean
   priority?: integer | string
@@ -9181,6 +9187,9 @@ export interface IndicesIndexSettings {
   analysis?: IndicesIndexSettingsAnalysis
   'index.analysis'?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
+  time_series?: IndicesIndexSettingsTimeSeries
+  shards?: integer
+  queries?: IndicesQueries
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -9193,6 +9202,11 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
+}
+
+export interface IndicesIndexSettingsTimeSeries {
+  end_time?: DateString | EpochMillis
+  start_time?: DateString | EpochMillis
 }
 
 export interface IndicesIndexState {
@@ -9208,17 +9222,30 @@ export interface IndicesIndexVersioning {
   created_string?: VersionString
 }
 
+export interface IndicesMerge {
+  scheduler?: IndicesMergeScheduler
+}
+
+export interface IndicesMergeScheduler {
+  max_thread_count?: integer
+  max_merge_count?: integer
+}
+
 export interface IndicesNumericFielddata {
   format: IndicesNumericFielddataFormat
 }
 
 export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 
+export interface IndicesQueries {
+  cache?: IndicesCacheQueries
+}
+
 export type IndicesSegmentSortMissing = '_last' | '_first'
 
-export type IndicesSegmentSortMode = 'min' | 'max'
+export type IndicesSegmentSortMode = 'min' | 'MIN' | 'max' | 'MAX'
 
-export type IndicesSegmentSortOrder = 'asc' | 'desc'
+export type IndicesSegmentSortOrder = 'asc' | 'ASC' | 'desc' | 'DESC'
 
 export interface IndicesSoftDeletes {
   enabled: boolean
@@ -9238,6 +9265,16 @@ export interface IndicesTemplateMapping {
   order: integer
   settings: Record<string, any>
   version?: VersionNumber
+}
+
+export interface IndicesTranslog {
+  durability?: string
+  flush_threshold_size?: string
+  retention?: IndicesTranslogRetention
+}
+
+export interface IndicesTranslogRetention {
+  size: ByteSize
 }
 
 export type IndicesAddBlockIndicesBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
@@ -9389,7 +9426,7 @@ export interface IndicesCreateRequest extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   body?: {
-    aliases?: Record<Name, IndicesAlias>
+    aliases?: Record<Name, IndicesAlias> | Record<Name, IndicesAlias>[]
     mappings?: MappingTypeMapping
     settings?: IndicesIndexSettings
   }
@@ -10364,6 +10401,7 @@ export interface IndicesUpdateAliasesAddAction {
   is_write_index?: boolean
   routing?: Routing
   search_routing?: Routing
+  must_exist?: boolean
 }
 
 export interface IndicesUpdateAliasesRemoveAction {
@@ -10377,6 +10415,7 @@ export interface IndicesUpdateAliasesRemoveAction {
 export interface IndicesUpdateAliasesRemoveIndexAction {
   index?: IndexName
   indices?: Indices
+  must_exist?: boolean
 }
 
 export interface IndicesUpdateAliasesRequest extends RequestBase {
