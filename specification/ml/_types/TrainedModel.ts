@@ -19,6 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { GeoTileGridBucket } from '@_types/aggregations/Aggregate'
 import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import {
   ByteSize,
@@ -31,39 +32,114 @@ import {
 import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 import { DateString } from '@_types/Time'
+import { DiscoveryNode } from './DiscoveryNode'
 
 export class TrainedModelStats {
-  /** The unique identifier of the trained model. */
-  model_id: Id
-  /** The number of ingest pipelines that currently refer to the model. */
-  pipeline_count: integer
+  /** A collection of deployment stats, which is present when the models are deployed. */
+  deployment_stats?: TrainedModelDeploymentStats
   /** A collection of inference stats fields. */
   inference_stats?: TrainedModelInferenceStats
   /**
-   * A collection of ingest stats for the model across all nodes. The values are summations of the individual node statistics. The format matches the ingest section in Nodes stats.
+   * A collection of ingest stats for the model across all nodes.
+   * The values are summations of the individual node statistics.
+   * The format matches the ingest section in the nodes stats API.
    * @doc_id cluster-nodes-stats
    */
   ingest?: Dictionary<string, UserDefinedValue> // TODO -- this is not complete
+  /** The unique identifier of the trained model. */
+  model_id: Id
+  /** A collection of model size stats. */
+  model_size_stats: TrainedModelSizeStats
+  /** The number of ingest pipelines that currently refer to the model. */
+  pipeline_count: integer
+}
+
+export class TrainedModelDeploymentStats {
+  /** The detailed allocation status for the deployment. */
+  allocation_status: TrainedModelDeploymentAllocationStatus
+  /** The number of threads used by the inference process. */
+  inference_threads: integer
+  /** The unique identifier for the trained model. */
+  model_id: Id
+  /** The number of threads used when sending inference requests to the model. */
+  model_threads: integer
+  /** The deployent stats for each node that currently has the model allocated. */
+  nodes: TrainedModelDeploymentNodesStats
+  /** The number of inference requests that can be queued before new requests are rejected. */
+  queue_capacity: integer
+  /** The epoch timestamp when the deployment started. */
+  start_time: long
+  /** The overall state of the deployment. */
+  state: DeploymentState
 }
 
 export class TrainedModelInferenceStats {
-  /** The number of failures when using the model for inference. */
-  failure_count: long
-  /** The total number of times the model has been called for inference. This is across all inference contexts, including all pipelines. */
-  inference_count: long
   /**
-   * The number of times the model was loaded for inference and was not retrieved from the cache. If this number is close to the inference_count, then the cache is not being appropriately used. This can be solved by increasing the cache size or its time-to-live (TTL). See General machine learning settings for the appropriate settings.
-   * @doc_id ml-settings
+  * The number of times the model was loaded for inference and was not retrieved from the cache.
+  * If this number is close to the `inference_count`, the cache is not being appropriately used.
+  * This can be solved by increasing the cache size or its time-to-live (TTL).
+  * Refer to general machine learning settings for the appropriate settings.
+  * @doc_id ml-settings
+  */
+  cache_miss_count: integer
+  /** The number of failures when using the model for inference. */
+  failure_count: integer
+  /**
+   * The total number of times the model has been called for inference.
+   * This is across all inference contexts, including all pipelines.
    */
-  cache_miss_count: long
+  inference_count: integer
   /** The number of inference calls where all the training features for the model were missing. */
-  missing_all_fields_count: long
+  missing_all_fields_count: integer
   /** The time when the statistics were last updated. */
   timestamp: Time
 }
 
+export class TrainedModelSizeStats {
+  /** The size of the model in bytes. */
+  model_size_bytes: ByteSize
+  /** The amount of memory required to load the model in bytes. */
+  required_native_memory_bytes: integer
+}
+
+export class TrainedModelDeploymentNodesStats {
+  /** The average time for each inference call to complete on this node. */
+  average_inference_time_ms: double
+  /** The number of errors when evaluating the trained model. */
+  error_count: integer
+  /** The total number of inference calls made against this node for this model. */
+  inference_count: integer
+  /**
+   * The number of threads used by the inference process. This value is limited
+   * by the number of hardware threads on the node; it might therefore differ
+   * from the `inference_threads` value in the start trained model deployment API.
+   */
+  inference_threads: integer
+  /** The epoch time stamp of the last inference call for the model on this node. */
+  last_access: long
+  /**
+   * The number of threads used when sending inference requests to the model.
+   * This value is limited by the number of hardware threads on the node; it
+   * might therefore differ from the `model_threads` value in the start trained
+   * model deployment API.
+   */
+  model_threads: integer
+  /** Information pertaining to the node. */
+  node: DiscoveryNode
+  /** The reason for the current state. Usually only populated when the `routing_state` is `failed`. */
+  reason: string
+  /** The number of inference requests that were not processed because the queue was full. */
+  rejection_execution_count: integer
+  /** The current routing state and reason for the current routing state for this allocation. */
+  routing_state: RoutingState
+  /** The epoch timestamp when the allocation started. */
+  start_time: long
+  /** The number of inference requests that timed out before being processed. */
+  timeout_count: integer
+}
+
 export class TrainedModelConfig {
-  /** Idetifier for the trained model. */
+  /** Identifier for the trained model. */
   model_id: Id
   /** The model type */
   model_type?: TrainedModelType
@@ -170,6 +246,21 @@ export enum TrainedModelType {
 
 export enum DeploymentState {
   /**
+   * The deployment is usable; at least one node has the model allocated.
+   */
+  started = 0,
+  /**
+   * The deployment has recently started but is not yet usable; the model is not allocated on any nodes.
+   */
+  starting = 1,
+  /**
+   * The deployment is preparing to stop and deallocate the model from the relevant nodes.
+   */
+  stopping = 2
+}
+
+export enum DeploymentAllocationState {
+  /**
    * The trained model is started on at least one node.
    */
   started = 0,
@@ -229,11 +320,31 @@ export class TrainedModelAllocationRoutingTable {
   routing_state: RoutingState
 }
 
+export class TrainedModelDeploymentAllocationStatus {
+  /** The current number of nodes where the model is allocated. */
+  allocation_count: integer
+  /** The sum of `error_count` for all nodes in the deployment. */
+  error_count: integer
+  /**
+   * The sum of `rejected_execution_count` for all nodes in the deployment.
+   * Individual nodes reject an inference request if the inference queue is full.
+   * The queue size is controlled by the `queue_capacity` setting in the start
+   * trained model deployment API.
+   */
+  rejected_execution_count: integer
+  /** The detailed allocation state related to the nodes. */
+  state: DeploymentAllocationState
+  /** The desired number of nodes for model allocation. */
+  target_allocation_count: integer
+  /** The sum of `timeout_count` for all nodes in the deployment. */
+  timeout_count: integer
+}
+
 export class TrainedModelAllocation {
   /**
    * The overall allocation state.
    */
-  allocation_state: DeploymentState
+  allocation_state: DeploymentAllocationState
   /**
    * The allocation state for each node.
    */
