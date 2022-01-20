@@ -25,6 +25,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name cat.thread_pool
  * @since 0.0.0
  * @stability stable
+ * @doc_id cat-thread-pool
  */
 export interface Request extends CatRequestBase {
   path_parts: {

@@ -24,8 +24,8 @@ cat-recovery,https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-
 cat-repositories,https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-repositories.html
 cat-segments,https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-segments.html
 cat-shards,https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-shards.html
-cat-snapshots,/guide/en/elasticsearch/reference/master/cat-snapshots.html
-tasks,/guide/en/elasticsearch/reference/master/tasks.html
+cat-snapshots,https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-snapshots.html
+tasks,https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html
 cat-templates,/guide/en/elasticsearch/reference/master/cat-templates.html
 cat-thread-pool,/guide/en/elasticsearch/reference/master/cat-thread-pool.html
 cat-transforms,/guide/en/elasticsearch/reference/current/cat-transforms.html

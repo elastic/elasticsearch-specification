@@ -25,6 +25,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name async_search.get
  * @since 7.7.0
  * @stability stable
+ * @doc_id async-search
  */
 export interface Request extends RequestBase {
   path_parts: {
