@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { OverloadOf } from '@spec_utils/behaviors'
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -26,7 +27,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
-import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
+import { DatafeedConfig, DatafeedConfigRead } from '@ml/_types/Datafeed'
 
 export enum JobState {
   closing = 0,
@@ -44,32 +45,6 @@ export class JobStatistics {
 }
 
 export class Job {
-  allow_lazy_open: boolean
-  analysis_config: AnalysisConfig
-  analysis_limits?: AnalysisLimits
-  background_persist_interval?: Time
-  blocked?: JobBlocked
-  create_time?: integer
-  custom_settings?: CustomSettings
-  daily_model_snapshot_retention_after_days?: long
-  data_description: DataDescription
-  datafeed_config?: Datafeed
-  deleting?: boolean
-  description?: string
-  finished_time?: integer
-  groups?: string[]
-  job_id: Id
-  job_type?: string
-  job_version?: VersionString
-  model_plot_config?: ModelPlotConfig
-  model_snapshot_id?: Id
-  model_snapshot_retention_days: long
-  renormalization_window_days?: long
-  results_index_name: IndexName
-  results_retention_days?: long
-}
-
-export class JobConfig {
   allow_lazy_open?: boolean
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
@@ -88,6 +63,32 @@ export class JobConfig {
   results_index_name?: IndexName
   results_retention_days?: long
 }
+export class JobRead implements OverloadOf<Job> {
+  allow_lazy_open: boolean
+  analysis_config: AnalysisConfig
+  analysis_limits?: AnalysisLimits
+  background_persist_interval?: Time
+  blocked?: JobBlocked
+  create_time?: integer
+  custom_settings?: CustomSettings
+  daily_model_snapshot_retention_after_days?: long
+  data_description: DataDescription
+  datafeed_config?: DatafeedConfig /** TODO: Make DatafeedConfigRead */
+  deleting?: boolean
+  description?: string
+  finished_time?: integer
+  groups?: string[]
+  job_id: Id
+  job_type?: string
+  job_version?: VersionString
+  model_plot_config?: ModelPlotConfig
+  model_snapshot_id?: Id
+  model_snapshot_retention_days: long
+  renormalization_window_days?: long
+  results_index_name: IndexName
+  results_retention_days?: long
+}
+
 export class JobStats {
   assignment_explanation?: string
   data_counts: DataCounts

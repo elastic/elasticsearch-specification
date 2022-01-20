@@ -42,6 +42,10 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  query_parameters: {
+    /** @deprecated 7.16.0 */
+    ignore_throttled?: boolean
+  }
   body: {
     /**
      * Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node. By default, if a machine learning node with capacity to run the job cannot immediately be found, the open anomaly detection jobs API returns an error. However, this is also subject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this option is set to true, the open anomaly detection jobs API does not return an error and the job waits in the opening state until sufficient machine learning node capacity is available.
@@ -59,7 +63,7 @@ export interface Request extends RequestBase {
     /**
      * Advanced configuration option. The time between each periodic persistence of the model. The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour. For very large models (several GB), persistence could take 10-20 minutes, so do not set the `background_persist_interval` value too low.
      */
-    background_persist_interval: Time
+    background_persist_interval?: Time
     /**
      *  Advanced configuration option. Contains custom meta data about the job.
      */
@@ -85,6 +89,10 @@ export interface Request extends RequestBase {
      * A list of job groups. A job can belong to no groups or many.
      */
     groups?: string[]
+    /**
+     * The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+     */
+    job_id?: Id
     /**
      * This advanced configuration option stores model information along with the results. It provides a more detailed view into anomaly detection. If you enable model plot it can add considerable overhead to the performance of the system; it is not feasible for jobs with many entities. Model plot provides a simplified and indicative view of the model and its bounds. It does not display complex features such as multivariate correlations or multimodal data. As such, anomalies may occasionally be reported which cannot be seen in the model plot. Model plot config can be configured when the job is created or updated later. It must be disabled if performance issues are experienced.
      */

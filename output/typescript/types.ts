@@ -11237,7 +11237,7 @@ export interface MigrationDeprecationsResponse {
 }
 
 export interface MlAnalysisConfig {
-  bucket_span: TimeSpan
+  bucket_span?: TimeSpan
   categorization_analyzer?: MlCategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
@@ -11266,7 +11266,7 @@ export interface MlAnalysisConfigRead {
 
 export interface MlAnalysisLimits {
   categorization_examples_limit?: long
-  model_memory_limit?: string
+  model_memory_limit?: ByteSize
 }
 
 export interface MlAnalysisMemoryLimit {
@@ -11418,25 +11418,6 @@ export interface MlDataDescription {
   field_delimiter?: string
 }
 
-export interface MlDatafeed {
-  aggregations?: Record<string, AggregationsAggregationContainer>
-  aggs?: Record<string, AggregationsAggregationContainer>
-  chunking_config?: MlChunkingConfig
-  datafeed_id: Id
-  frequency?: Timestamp
-  indices: string[]
-  indexes?: string[]
-  job_id: Id
-  max_empty_searches?: integer
-  query: QueryDslQueryContainer
-  query_delay?: Timestamp
-  script_fields?: Record<string, ScriptField>
-  scroll_size?: integer
-  delayed_data_check_config: MlDelayedDataCheckConfig
-  runtime_mappings?: MappingRuntimeFields
-  indices_options?: IndicesOptions
-}
-
 export interface MlDatafeedConfig {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
@@ -11444,10 +11425,29 @@ export interface MlDatafeedConfig {
   datafeed_id?: Id
   delayed_data_check_config?: MlDelayedDataCheckConfig
   frequency?: Timestamp
-  indexes?: string[]
-  indices: string[]
+  indexes?: Indices
+  indices?: Indices
   indices_options?: IndicesOptions
   job_id?: Id
+  max_empty_searches?: integer
+  query?: QueryDslQueryContainer
+  query_delay?: Timestamp
+  runtime_mappings?: MappingRuntimeFields
+  script_fields?: Record<string, ScriptField>
+  scroll_size?: integer
+}
+
+export interface MlDatafeedConfigRead {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  aggs?: Record<string, AggregationsAggregationContainer>
+  chunking_config?: MlChunkingConfig
+  datafeed_id: Id
+  delayed_data_check_config?: MlDelayedDataCheckConfig
+  frequency?: Timestamp
+  indexes?: Indices
+  indices: Indices
+  indices_options?: IndicesOptions
+  job_id: Id
   max_empty_searches?: integer
   query: QueryDslQueryContainer
   query_delay?: Timestamp
@@ -11741,21 +11741,23 @@ export interface MlDetectionRule {
 export interface MlDetector {
   by_field_name?: Field
   custom_rules?: MlDetectionRule[]
+  description?: string
   detector_description?: string
   detector_index?: integer
   exclude_frequent?: MlExcludeFrequent
   field_name?: Field
-  function: string
+  function?: string
   over_field_name?: Field
   partition_field_name?: Field
   use_null?: boolean
 }
 
 export interface MlDetectorRead {
-  by_field_name?: Field
-  custom_rules?: MlDetectionRule[]
-  detector_description?: string
-  detector_index?: integer
+  by_field_name: Field
+  custom_rules: MlDetectionRule[]
+  description?: string
+  detector_description: string
+  detector_index: integer
   exclude_frequent?: MlExcludeFrequent
   field_name?: Field
   function: string
@@ -11834,39 +11836,6 @@ export interface MlInfluencer {
 }
 
 export interface MlJob {
-  allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
-  analysis_limits?: MlAnalysisLimits
-  background_persist_interval?: Time
-  blocked?: MlJobBlocked
-  create_time?: integer
-  custom_settings?: MlCustomSettings
-  daily_model_snapshot_retention_after_days?: long
-  data_description: MlDataDescription
-  datafeed_config?: MlDatafeed
-  deleting?: boolean
-  description?: string
-  finished_time?: integer
-  groups?: string[]
-  job_id: Id
-  job_type?: string
-  job_version?: VersionString
-  model_plot_config?: MlModelPlotConfig
-  model_snapshot_id?: Id
-  model_snapshot_retention_days: long
-  renormalization_window_days?: long
-  results_index_name: IndexName
-  results_retention_days?: long
-}
-
-export interface MlJobBlocked {
-  reason: MlJobBlockedReason
-  task_id?: TaskId
-}
-
-export type MlJobBlockedReason = 'delete' | 'reset' | 'revert'
-
-export interface MlJobConfig {
   allow_lazy_open?: boolean
   analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
@@ -11886,6 +11855,13 @@ export interface MlJobConfig {
   results_retention_days?: long
 }
 
+export interface MlJobBlocked {
+  reason: MlJobBlockedReason
+  task_id?: TaskId
+}
+
+export type MlJobBlockedReason = 'delete' | 'reset' | 'revert'
+
 export interface MlJobForecastStatistics {
   memory_bytes?: MlJobStatistics
   processing_time_ms?: MlJobStatistics
@@ -11893,6 +11869,32 @@ export interface MlJobForecastStatistics {
   status?: Record<string, long>
   total: long
   forecasted_jobs: integer
+}
+
+export interface MlJobRead {
+  allow_lazy_open: boolean
+  analysis_config: MlAnalysisConfig
+  analysis_limits?: MlAnalysisLimits
+  background_persist_interval?: Time
+  blocked?: MlJobBlocked
+  create_time?: integer
+  custom_settings?: MlCustomSettings
+  daily_model_snapshot_retention_after_days?: long
+  data_description: MlDataDescription
+  datafeed_config?: MlDatafeedConfig
+  deleting?: boolean
+  description?: string
+  finished_time?: integer
+  groups?: string[]
+  job_id: Id
+  job_type?: string
+  job_version?: VersionString
+  model_plot_config?: MlModelPlotConfig
+  model_snapshot_id?: Id
+  model_snapshot_retention_days: long
+  renormalization_window_days?: long
+  results_index_name: IndexName
+  results_retention_days?: long
 }
 
 export type MlJobState = 'closing' | 'closed' | 'opened' | 'failed' | 'opening'
@@ -12583,7 +12585,7 @@ export interface MlGetDatafeedsRequest extends RequestBase {
 
 export interface MlGetDatafeedsResponse {
   count: long
-  datafeeds: MlDatafeed[]
+  datafeeds: MlDatafeedConfigRead[]
 }
 
 export interface MlGetFiltersRequest extends RequestBase {
@@ -12635,7 +12637,7 @@ export interface MlGetJobsRequest extends RequestBase {
 
 export interface MlGetJobsResponse {
   count: long
-  jobs: MlJob[]
+  jobs: MlJobRead[]
 }
 
 export interface MlGetModelSnapshotsRequest extends RequestBase {
@@ -12867,7 +12869,7 @@ export interface MlPreviewDatafeedRequest extends RequestBase {
   datafeed_id?: Id
   body?: {
     datafeed_config?: MlDatafeedConfig
-    job_config?: MlJobConfig
+    job_config?: MlJob
   }
 }
 
@@ -12938,6 +12940,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
   ignore_unavailable?: boolean
   body?: {
     aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
     chunking_config?: MlChunkingConfig
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
@@ -12955,22 +12958,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
   }
 }
 
-export interface MlPutDatafeedResponse {
-  aggregations: Record<string, AggregationsAggregationContainer>
-  chunking_config: MlChunkingConfig
-  delayed_data_check_config?: MlDelayedDataCheckConfig
-  datafeed_id: Id
-  frequency: Time
-  indices: string[]
-  job_id: Id
-  indices_options?: IndicesOptions
-  max_empty_searches: integer
-  query: QueryDslQueryContainer
-  query_delay: Time
-  runtime_mappings?: MappingRuntimeFields
-  script_fields?: Record<string, ScriptField>
-  scroll_size: integer
-}
+export type MlPutDatafeedResponse = MlDatafeedConfigRead
 
 export interface MlPutFilterRequest extends RequestBase {
   filter_id: Id
@@ -12988,17 +12976,19 @@ export interface MlPutFilterResponse {
 
 export interface MlPutJobRequest extends RequestBase {
   job_id: Id
+  ignore_throttled?: boolean
   body?: {
     allow_lazy_open?: boolean
     analysis_config: MlAnalysisConfig
     analysis_limits?: MlAnalysisLimits
-    background_persist_interval: Time
+    background_persist_interval?: Time
     custom_settings?: MlCustomSettings
     daily_model_snapshot_retention_after_days?: long
     data_description: MlDataDescription
     datafeed_config?: MlDatafeedConfig
     description?: string
     groups?: string[]
+    job_id?: Id
     model_plot_config?: MlModelPlotConfig
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
@@ -13012,11 +13002,11 @@ export interface MlPutJobResponse {
   analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
-  create_time: DateString
+  create_time: EpochMillis
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days: long
   data_description: MlDataDescription
-  datafeed_config?: MlDatafeed
+  datafeed_config?: MlDatafeedConfigRead
   description?: string
   groups?: string[]
   job_id: Id
@@ -13353,6 +13343,7 @@ export interface MlUpdateJobRequest extends RequestBase {
     model_plot_config?: MlModelPlotConfig
     daily_model_snapshot_retention_after_days?: long
     model_snapshot_retention_days?: long
+    model_prune_window?: Time
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: string[]
@@ -13371,7 +13362,7 @@ export interface MlUpdateJobResponse {
   custom_settings?: Record<string, string>
   daily_model_snapshot_retention_after_days: long
   data_description: MlDataDescription
-  datafeed_config?: MlDatafeed
+  datafeed_config?: MlDatafeedConfigRead
   description?: string
   groups?: string[]
   job_id: Id

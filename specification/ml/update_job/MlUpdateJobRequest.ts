@@ -108,6 +108,15 @@ export interface Request extends RequestBase {
      */
     model_snapshot_retention_days?: long
     /**
+     * Advanced configuration option. Affects the pruning of models that have
+     * not been updated for the given time duration. The value must be set to a
+     * multiple of the bucket_span. If set too low, important information may be
+     * removed from the model. Typically, set to 30d or longer. If not set, model
+     * pruning only occurs if the model memory status reaches the soft limit or
+     * the hard limit.
+     */
+    model_prune_window?: Time
+    /**
      * Advanced configuration option. The period over which adjustments to the
      * score are applied, as new data is seen.
      */

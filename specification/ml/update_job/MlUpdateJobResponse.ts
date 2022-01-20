@@ -18,7 +18,7 @@
  */
 
 import { AnalysisConfigRead, AnalysisLimits } from '@ml/_types/Analysis'
-import { Datafeed } from '@ml/_types/Datafeed'
+import { DatafeedConfigRead } from '@ml/_types/Datafeed'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -37,7 +37,7 @@ export class Response {
     custom_settings?: Dictionary<string, string>
     daily_model_snapshot_retention_after_days: long
     data_description: DataDescription
-    datafeed_config?: Datafeed
+    datafeed_config?: DatafeedConfigRead
     description?: string
     groups?: string[]
     job_id: Id

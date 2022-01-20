@@ -17,34 +17,16 @@
  * under the License.
  */
 
+import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
+import { Id, IndexName, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Time, Timestamp } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
-
-export class Datafeed {
-  /** @aliases aggs */
-  aggregations?: Dictionary<string, AggregationContainer>
-  chunking_config?: ChunkingConfig
-  datafeed_id: Id
-  frequency?: Timestamp
-  indices: string[]
-  indexes?: string[]
-  job_id: Id
-  max_empty_searches?: integer
-  query: QueryContainer
-  query_delay?: Timestamp
-  script_fields?: Dictionary<string, ScriptField>
-  scroll_size?: integer
-  delayed_data_check_config: DelayedDataCheckConfig
-  runtime_mappings?: RuntimeFields
-  indices_options?: IndicesOptions
-}
 
 export class DatafeedConfig {
   /**
@@ -68,15 +50,21 @@ export class DatafeedConfig {
    * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   frequency?: Timestamp
-  indexes?: string[]
+  /**
+   * Use `indices` instead.
+   */
+  indexes?: Indices
   /**
    * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
    */
-  indices: string[]
+  indices?: Indices
   /**
    * Specifies index expansion options that are used during search.
    */
   indices_options?: IndicesOptions
+  /**
+   * The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+   */
   job_id?: Id
   /**
    * If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.
@@ -85,7 +73,7 @@ export class DatafeedConfig {
   /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
    */
-  query: QueryContainer
+  query?: QueryContainer
   /**
    * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.
    */
@@ -102,6 +90,25 @@ export class DatafeedConfig {
    * The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default.
    * @server_default 1000
    */
+  scroll_size?: integer
+}
+
+export class DatafeedConfigRead implements OverloadOf<DatafeedConfig> {
+  /** @aliases aggs */
+  aggregations?: Dictionary<string, AggregationContainer>
+  chunking_config?: ChunkingConfig
+  datafeed_id: Id
+  delayed_data_check_config?: DelayedDataCheckConfig
+  frequency?: Timestamp
+  indexes?: Indices /** TODO: Remove but defined as alias above? */
+  indices: Indices /** TODO: Change to IndexName[] */
+  indices_options?: IndicesOptions
+  job_id: Id
+  max_empty_searches?: integer
+  query: QueryContainer
+  query_delay?: Timestamp
+  runtime_mappings?: RuntimeFields
+  script_fields?: Dictionary<string, ScriptField>
   scroll_size?: integer
 }
 

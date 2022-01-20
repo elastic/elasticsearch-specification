@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Datafeed } from '@ml/_types/Datafeed'
+import { DatafeedConfigRead } from '@ml/_types/Datafeed'
 import { long } from '@_types/Numeric'
 
 export class Response {
   body: {
     count: long
-    datafeeds: Datafeed[]
+    datafeeds: DatafeedConfigRead[]
   }
 }

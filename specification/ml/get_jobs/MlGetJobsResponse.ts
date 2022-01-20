@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Job } from '@ml/_types/Job'
+import { JobRead } from '@ml/_types/Job'
 import { long } from '@_types/Numeric'
 
 export class Response {
   body: {
     count: long
-    jobs: Job[]
+    jobs: JobRead[]
   }
 }

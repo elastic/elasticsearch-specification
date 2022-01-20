@@ -23,8 +23,8 @@ import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { CustomSettings } from '@ml/_types/Settings'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
-import { Datafeed } from '@ml/_types/Datafeed'
+import { EpochMillis, Time } from '@_types/Time'
+import { DatafeedConfigRead } from '@ml/_types/Datafeed'
 
 export class Response {
   body: {
@@ -32,11 +32,11 @@ export class Response {
     analysis_config: AnalysisConfigRead
     analysis_limits: AnalysisLimits
     background_persist_interval?: Time
-    create_time: DateString
+    create_time: EpochMillis
     custom_settings?: CustomSettings
     daily_model_snapshot_retention_after_days: long
     data_description: DataDescription
-    datafeed_config?: Datafeed
+    datafeed_config?: DatafeedConfigRead
     description?: string
     groups?: string[]
     job_id: Id

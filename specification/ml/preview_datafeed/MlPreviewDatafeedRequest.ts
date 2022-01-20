@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
-import { JobConfig } from '@ml/_types/Job'
+import { Job } from '@ml/_types/Job'
 
 /**
  * Previews a datafeed.
@@ -59,6 +59,6 @@ export interface Request extends RequestBase {
      * supply this `job_config` object. If you include both a `job_id` and a `job_config`, the latter information is
      * used. You cannot specify a `job_config` object unless you also supply a `datafeed_config` object.
      */
-    job_config?: JobConfig
+    job_config?: Job
   }
 }
