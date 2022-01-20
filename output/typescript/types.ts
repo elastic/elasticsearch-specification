@@ -1241,7 +1241,7 @@ export type SearchHighlighterOrder = 'score'
 
 export type SearchHighlighterTagsSchema = 'styled'
 
-export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
+export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
@@ -1812,10 +1812,6 @@ export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
-export interface ChainTransform {
-  transforms: TransformContainer[]
-}
-
 export interface ClusterStatistics {
   skipped: integer
   successful: integer
@@ -2239,7 +2235,7 @@ export interface ScriptField {
   ignore_failure?: boolean
 }
 
-export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'| string
+export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
 
 export interface ScriptSort {
   order?: SortOrder
@@ -2415,7 +2411,7 @@ export interface TopRightBottomLeftGeoBounds {
 }
 
 export interface TransformContainer {
-  chain?: ChainTransform | TransformContainer[]
+  chain?: TransformContainer[]
   script?: ScriptTransform
   search?: SearchTransform
 }
