@@ -17,7 +17,9 @@
         "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
         "type_alias definition _spec_utils:Void / instance_of - No type definition for 'internal:void'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
-        "type_alias definition _global.search._types:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'"
+        "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
+        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
+        "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
     "async_search.status": {

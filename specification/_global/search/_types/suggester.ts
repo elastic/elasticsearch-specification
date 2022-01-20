@@ -31,11 +31,65 @@ import { GeoHash, GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 
-export class Suggest<T> {
+/**
+ * @variants external
+ */
+export type Suggest<TDocument> =
+  | CompletionSuggest<TDocument>
+  | PhraseSuggest
+  | TermSuggest
+
+export class SuggestBase {
   length: integer
   offset: integer
-  options: SuggestOption<T>[]
   text: string
+}
+
+/**
+ * @variant name=completion
+ */
+export class CompletionSuggest<TDocument> extends SuggestBase {
+  options: CompletionSuggestOption<TDocument>[]
+}
+
+/**
+ * @variant name=phrase
+ */
+export class PhraseSuggest extends SuggestBase {
+  options: PhraseSuggestOption
+}
+
+/**
+ * @variant name=term
+ */
+export class TermSuggest extends SuggestBase {
+  options: TermSuggestOption
+}
+
+// In the ES code a nested Hit object is expanded inline. Not all Hit fields have been
+// added below as many do not make sense in the context of a suggestion.
+export class CompletionSuggestOption<TDocument> {
+  collate_match?: boolean
+  contexts?: Dictionary<string, Context[]>
+  fields?: Dictionary<string, UserDefinedValue>
+  _id: string
+  _index: IndexName
+  _routing?: Routing
+  _score?: double
+  _source?: TDocument
+  text: string
+}
+
+export class PhraseSuggestOption {
+  text: string
+  highlighted: string
+  score: double
+}
+
+export class TermSuggestOption {
+  text: string
+  freq: long
+  score: double
 }
 
 export class Suggester implements AdditionalProperties<string, FieldSuggester> {
@@ -59,36 +113,6 @@ export class SuggesterBase {
   field: Field
   analyzer?: string
   size?: integer
-}
-
-/** @codegen_names completion, phrase, term */
-export type SuggestOption<TDocument> =
-  | CompletionSuggestOption<TDocument>
-  | PhraseSuggestOption
-  | TermSuggestOption
-
-export class CompletionSuggestOption<TDocument> {
-  collate_match?: boolean
-  contexts?: Dictionary<string, Context[]>
-  fields?: Dictionary<string, UserDefinedValue>
-  _id: string
-  _index: IndexName
-  _routing?: Routing
-  _score: double
-  _source: TDocument
-  text: string
-}
-
-export class PhraseSuggestOption {
-  text: string
-  highlighted: string
-  score: double
-}
-
-export class TermSuggestOption {
-  text: string
-  freq?: long
-  score: double
 }
 
 // completion suggester
