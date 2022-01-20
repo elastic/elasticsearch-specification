@@ -14538,6 +14538,31 @@ export interface SecurityEnableUserRequest extends RequestBase {
 export interface SecurityEnableUserResponse {
 }
 
+export interface SecurityEnrollKibanaRequest extends RequestBase {
+}
+
+export interface SecurityEnrollKibanaResponse {
+  token: SecurityEnrollKibanaToken
+  http_ca: string
+}
+
+export interface SecurityEnrollKibanaToken {
+  name: string
+  value: string
+}
+
+export interface SecurityEnrollNodeRequest extends RequestBase {
+}
+
+export interface SecurityEnrollNodeResponse {
+  http_ca_key: string
+  http_ca_cert: string
+  transport_ca_cert: string
+  transport_key: string
+  transport_cert: string
+  nodes_addresses: string[]
+}
+
 export interface SecurityGetApiKeyRequest extends RequestBase {
   id?: Id
   name?: Name
@@ -14883,6 +14908,80 @@ export interface SecurityQueryApiKeysResponse {
   total: integer
   count: integer
   api_keys: SecurityApiKey[]
+}
+
+export interface SecuritySamlAuthenticateRequest extends RequestBase {
+  body?: {
+    content: string
+    ids: Ids
+    realm?: string
+  }
+}
+
+export interface SecuritySamlAuthenticateResponse {
+  access_token: string
+  username: string
+  expires_in: integer
+  refresh_token: string
+  realm: string
+}
+
+export interface SecuritySamlCompleteLogoutRequest extends RequestBase {
+  body?: {
+    realm: string
+    ids: Ids
+    query_string?: string
+    content?: string
+  }
+}
+
+export type SecuritySamlCompleteLogoutResponse = boolean
+
+export interface SecuritySamlInvalidateRequest extends RequestBase {
+  body?: {
+    acs?: string
+    query_string: string
+    realm?: string
+  }
+}
+
+export interface SecuritySamlInvalidateResponse {
+  invalidated: integer
+  realm: string
+  redirect: string
+}
+
+export interface SecuritySamlLogoutRequest extends RequestBase {
+  body?: {
+    token: string
+    refresh_token?: string
+  }
+}
+
+export interface SecuritySamlLogoutResponse {
+  redirect: string
+}
+
+export interface SecuritySamlPrepareAuthenticationRequest extends RequestBase {
+  body?: {
+    acs?: string
+    realm?: string
+    relay_state?: string
+  }
+}
+
+export interface SecuritySamlPrepareAuthenticationResponse {
+  id: Id
+  realm: string
+  redirect: string
+}
+
+export interface SecuritySamlServiceProviderMetadataRequest extends RequestBase {
+  realm_name: Name
+}
+
+export interface SecuritySamlServiceProviderMetadataResponse {
+  metadata: string
 }
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
