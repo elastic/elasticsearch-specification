@@ -39,6 +39,8 @@ export class AddAction {
   is_write_index?: boolean
   routing?: Routing
   search_routing?: Routing
+  /** @server_default false */
+  must_exist?: boolean
 }
 
 export class RemoveAction {
@@ -53,4 +55,6 @@ export class RemoveAction {
 export class RemoveIndexAction {
   index?: IndexName
   indices?: Indices
+  /** @server_default false */
+  must_exist?: boolean
 }

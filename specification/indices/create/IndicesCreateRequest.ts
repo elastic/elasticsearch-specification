@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /* Aliases for the index. */
-    aliases?: Dictionary<Name, Alias>
+    aliases?: Dictionary<Name, Alias> | Dictionary<Name, Alias>[]
     /**
      * Mapping for fields in the index. If specified, this mapping can include:
      * - Field names
