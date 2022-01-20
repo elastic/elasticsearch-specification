@@ -28,13 +28,9 @@ export class Transform {}
  * @variants container
  */
 export class TransformContainer {
-  chain?: ChainTransform | TransformContainer[]
+  chain?: TransformContainer[]
   script?: ScriptTransform
   search?: SearchTransform
-}
-
-export class ChainTransform {
-  transforms: TransformContainer[]
 }
 
 export class ScriptTransform {

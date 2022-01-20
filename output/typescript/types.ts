@@ -1812,10 +1812,6 @@ export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
-export interface ChainTransform {
-  transforms: TransformContainer[]
-}
-
 export interface ClusterStatistics {
   skipped: integer
   successful: integer
@@ -2415,7 +2411,7 @@ export interface TopRightBottomLeftGeoBounds {
 }
 
 export interface TransformContainer {
-  chain?: ChainTransform | TransformContainer[]
+  chain?: TransformContainer[]
   script?: ScriptTransform
   search?: SearchTransform
 }
