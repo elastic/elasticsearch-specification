@@ -90,9 +90,9 @@ export class ScheduleContainer {
   daily?: DailySchedule
   hourly?: HourlySchedule
   interval?: Time
-  monthly?: TimeOfMonth[]
-  weekly?: TimeOfWeek[]
-  yearly?: TimeOfYear[]
+  monthly?: TimeOfMonth | TimeOfMonth[]
+  weekly?: TimeOfWeek | TimeOfWeek[]
+  yearly?: TimeOfYear | TimeOfYear[]
 }
 
 export class ScheduleTriggerEvent {
