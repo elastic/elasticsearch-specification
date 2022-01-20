@@ -15386,6 +15386,13 @@ export interface SnapshotVerifyRepositoryResponse {
   nodes: Record<string, SnapshotVerifyRepositoryCompactNodeInfo>
 }
 
+export interface SqlColumn {
+  name: Name
+  type: string
+}
+
+export type SqlRow = any[]
+
 export interface SqlClearCursorRequest extends RequestBase {
   body?: {
     cursor: string
@@ -15396,9 +15403,41 @@ export interface SqlClearCursorResponse {
   succeeded: boolean
 }
 
-export interface SqlQueryColumn {
-  name: Name
-  type: string
+export interface SqlDeleteAsyncRequest extends RequestBase {
+  id: Id
+}
+
+export interface SqlDeleteAsyncResponse extends AcknowledgedResponseBase {
+}
+
+export interface SqlGetAsyncRequest extends RequestBase {
+  id: Id
+  delimiter?: string
+  format?: string
+  keep_alive?: Time
+  wait_for_completion_timeout?: Time
+}
+
+export interface SqlGetAsyncResponse {
+  id: Id
+  is_running: boolean
+  is_partial: boolean
+  columns?: SqlColumn[]
+  cursor?: string
+  rows: SqlRow[]
+}
+
+export interface SqlGetAsyncStatusRequest extends RequestBase {
+  id: Id
+}
+
+export interface SqlGetAsyncStatusResponse {
+  id: string
+  is_running: boolean
+  is_partial: boolean
+  start_time_in_millis: ulong
+  expiration_time_in_millis: ulong
+  completion_status?: uint
 }
 
 export interface SqlQueryRequest extends RequestBase {
@@ -15417,12 +15456,13 @@ export interface SqlQueryRequest extends RequestBase {
 }
 
 export interface SqlQueryResponse {
-  columns?: SqlQueryColumn[]
+  id?: Id
+  is_running?: boolean
+  is_partial?: boolean
+  columns?: SqlColumn[]
   cursor?: string
-  rows: SqlQueryRow[]
+  rows: SqlRow[]
 }
-
-export type SqlQueryRow = any[]
 
 export interface SqlTranslateRequest extends RequestBase {
   body?: {
