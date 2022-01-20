@@ -14199,6 +14199,30 @@ export interface RollupStopJobResponse {
 
 export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
 
+export interface SearchableSnapshotsCacheStatsNode {
+  shared_cache: SearchableSnapshotsCacheStatsShared
+}
+
+export interface SearchableSnapshotsCacheStatsRequest extends RequestBase {
+  node_id?: NodeIds
+  master_timeout?: Time
+}
+
+export interface SearchableSnapshotsCacheStatsResponse {
+  nodes: Record<string, SearchableSnapshotsCacheStatsNode>
+}
+
+export interface SearchableSnapshotsCacheStatsShared {
+  reads: long
+  bytes_read_in_bytes: ByteSize
+  writes: long
+  bytes_written_in_bytes: ByteSize
+  evictions: long
+  num_regions: integer
+  size_in_bytes: ByteSize
+  region_size_in_bytes: ByteSize
+}
+
 export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
   index?: Indices
   expand_wildcards?: ExpandWildcards
