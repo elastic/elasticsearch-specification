@@ -75,12 +75,12 @@ export class TrainedModelDeploymentStats {
 
 export class TrainedModelInferenceStats {
   /**
-  * The number of times the model was loaded for inference and was not retrieved from the cache.
-  * If this number is close to the `inference_count`, the cache is not being appropriately used.
-  * This can be solved by increasing the cache size or its time-to-live (TTL).
-  * Refer to general machine learning settings for the appropriate settings.
-  * @doc_id ml-settings
-  */
+   * The number of times the model was loaded for inference and was not retrieved from the cache.
+   * If this number is close to the `inference_count`, the cache is not being appropriately used.
+   * This can be solved by increasing the cache size or its time-to-live (TTL).
+   * Refer to general machine learning settings for the appropriate settings.
+   * @doc_id ml-settings
+   */
   cache_miss_count: integer
   /** The number of failures when using the model for inference. */
   failure_count: integer
