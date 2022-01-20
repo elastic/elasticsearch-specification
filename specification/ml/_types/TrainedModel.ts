@@ -19,7 +19,6 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { GeoTileGridBucket } from '@_types/aggregations/Aggregate'
 import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import {
   ByteSize,
