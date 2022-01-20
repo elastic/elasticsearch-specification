@@ -721,12 +721,6 @@
       ],
       "response": []
     },
-    "ilm.migrate_to_data_tiers": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ilm.put_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",

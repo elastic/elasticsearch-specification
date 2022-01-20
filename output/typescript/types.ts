@@ -8908,6 +8908,24 @@ export interface IlmGetStatusResponse {
   operation_mode: LifecycleOperationMode
 }
 
+export interface IlmMigrateToDataTiersRequest extends RequestBase {
+  dry_run?: boolean
+  body?: {
+    legacy_template_to_delete?: string
+    node_attribute?: string
+  }
+}
+
+export interface IlmMigrateToDataTiersResponse {
+  dry_run: boolean
+  removed_legacy_template: string
+  migrated_ilm_policies: string[]
+  migrated_indices: Indices
+  migrated_legacy_templates: string[]
+  migrated_composable_templates: string[]
+  migrated_component_templates: string[]
+}
+
 export interface IlmMoveToStepRequest extends RequestBase {
   index: IndexName
   body?: {
