@@ -1241,7 +1241,7 @@ export type SearchHighlighterOrder = 'score'
 
 export type SearchHighlighterTagsSchema = 'styled'
 
-export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'
+export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
@@ -2235,7 +2235,7 @@ export interface ScriptField {
   ignore_failure?: boolean
 }
 
-export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
+export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'| string
 
 export interface ScriptSort {
   order?: SortOrder
