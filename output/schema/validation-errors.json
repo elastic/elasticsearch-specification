@@ -1498,7 +1498,7 @@
     },
     "searchable_snapshots.cache_stats": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
