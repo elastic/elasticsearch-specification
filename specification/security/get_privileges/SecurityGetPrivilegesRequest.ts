@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Name, Names } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_privileges
@@ -28,6 +28,6 @@ import { Name } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     application?: Name
-    name?: Name
+    name?: Names
   }
 }

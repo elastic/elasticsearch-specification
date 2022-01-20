@@ -14584,7 +14584,7 @@ export interface SecurityGetBuiltinPrivilegesResponse {
 
 export interface SecurityGetPrivilegesRequest extends RequestBase {
   application?: Name
-  name?: Name
+  name?: Names
 }
 
 export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesActions>> {
