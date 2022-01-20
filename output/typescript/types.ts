@@ -4750,7 +4750,7 @@ export interface MappingRuntimeField {
 
 export type MappingRuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long'
 
-export type MappingRuntimeFields = Record<Field, MappingRuntimeField>
+export type MappingRuntimeFields = Record<Field, MappingRuntimeField | MappingRuntimeField[]>
 
 export interface MappingScaledFloatNumberProperty extends MappingNumberPropertyBase {
   type: 'scaled_float'
@@ -14114,7 +14114,7 @@ export interface RollupGetRollupIndexCapsIndexCapabilities {
 }
 
 export interface RollupGetRollupIndexCapsRequest extends RequestBase {
-  index: Id
+  index: Ids
 }
 
 export interface RollupGetRollupIndexCapsResponse extends DictionaryResponseBase<IndexName, RollupGetRollupIndexCapsIndexCapabilities> {
@@ -14584,7 +14584,7 @@ export interface SecurityGetBuiltinPrivilegesResponse {
 
 export interface SecurityGetPrivilegesRequest extends RequestBase {
   application?: Name
-  name?: Name
+  name?: Names
 }
 
 export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesActions>> {
@@ -16646,7 +16646,7 @@ export interface XpackInfoResponse {
 export interface XpackUsageAllJobs {
   count: integer
   detectors: Record<string, integer>
-  created_by: Record<string, string>
+  created_by: Record<string, string | integer>
   model_size: Record<string, integer>
   forecasts: Record<string, integer>
 }
@@ -16809,7 +16809,14 @@ export interface XpackUsageMlCounter {
 export interface XpackUsageMlDataFrameAnalyticsJobs {
   memory_usage?: XpackUsageMlDataFrameAnalyticsJobsMemory
   _all: XpackUsageMlDataFrameAnalyticsJobsCount
-  analysis_counts?: EmptyObject
+  analysis_counts?: XpackUsageMlDataFrameAnalyticsJobsAnalysis
+  stopped?: XpackUsageMlDataFrameAnalyticsJobsCount
+}
+
+export interface XpackUsageMlDataFrameAnalyticsJobsAnalysis {
+  classification?: integer
+  outlier_detection?: integer
+  regression?: integer
 }
 
 export interface XpackUsageMlDataFrameAnalyticsJobsCount {
@@ -16864,6 +16871,7 @@ export interface XpackUsageMlInferenceTrainedModelsCount {
   other: long
   regression?: long
   classification?: long
+  ner?: long
 }
 
 export interface XpackUsageMonitoring extends XpackUsageBase {
