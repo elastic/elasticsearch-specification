@@ -47,17 +47,13 @@ export default async function readDefinitionValidation (model: model.Model, json
           }
 
           const readProperty = type.properties.find(p => p.name === property.name) as model.Property
-          // in the future we might want to have a different type between read and write defintions
-          // but let's address it when it will happen
-          if (!deepEqual(readProperty.type, property.type)) {
-            console.log(chalk.red`The property '${property.name}' present in ${parent.name.namespace}.${parent.name.name} does not have the same type in ${type.name.namespace}.${type.name.name}`)
-            process.exit(1)
-          }
 
           // we have the same properties, so let's copy the metadata
           for (const key in property) {
             if (key === 'required') continue
-            readProperty[key] = property[key]
+            if (readProperty[key] == null) {
+              readProperty[key] = property[key]
+            }
           }
         }
       }
@@ -65,13 +61,4 @@ export default async function readDefinitionValidation (model: model.Model, json
   }
 
   return model
-}
-
-function deepEqual (a: any, b: any): boolean {
-  try {
-    assert.deepStrictEqual(a, b)
-    return true
-  } catch (err) {
-    return false
-  }
 }
