@@ -131,12 +131,12 @@
 ## Top 50 used types
 | Type | Occurencies | Location |
 | --- | --- | --- |
-| `_types.RequestBase` | 350 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
-| `_types.integer` | 337 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
+| `_types.RequestBase` | 358 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
+| `_types.integer` | 339 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
 | `_types.long` | 283 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
-| `_types.Id` | 233 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
+| `_types.Id` | 234 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
 | `_types.Time` | 182 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L62-L68) |
-| `_types.Name` | 172 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
+| `_types.Name` | 173 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
 | `_types.double` | 144 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
 | `_types.Field` | 135 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L111-L112) |
 | `_types.IndexName` | 113 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L53-L53) |
@@ -172,11 +172,11 @@
 | `xpack.usage.Base` | 18 | [`xpack/usage/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/xpack/usage/types.ts#L28-L31) |
 | `_types.SequenceNumber` | 17 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L102-L102) |
 | `_types.WaitForActiveShards` | 17 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L115-L116) |
+| `_types.Ids` | 16 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L49-L49) |
 | `_types.aggregations.MultiBucketBase` | 16 | [`_types/aggregations/Aggregate.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/Aggregate.ts#L317-L324) |
 | `_types.NodeId` | 15 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L50-L50) |
 | `_types.VersionType` | 15 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L91-L96) |
 | `_types.mapping.RuntimeFields` | 15 | [`_types/mapping/RuntimeFields.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/mapping/RuntimeFields.ts#L24-L24) |
-| `_types.Ids` | 14 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L49-L49) |
 | `_types.Uuid` | 14 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L99-L99) |
 | `_types.analysis.TokenizerBase` | 14 | [`_types/analysis/tokenizers.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/analysis/tokenizers.ts#L26-L28) |
 | `_types.query_dsl.Operator` | 13 | [`_types/query_dsl/Operator.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/Operator.ts#L22-L27) |
