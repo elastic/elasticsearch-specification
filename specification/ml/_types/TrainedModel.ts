@@ -41,7 +41,7 @@ export class TrainedModelStats {
   inference_stats?: TrainedModelInferenceStats
   /**
    * A collection of ingest stats for the model across all nodes. The values are summations of the individual node statistics. The format matches the ingest section in Nodes stats.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html
+   * @doc_id cluster-nodes-stats
    */
   ingest?: Dictionary<string, UserDefinedValue> // TODO -- this is not complete
 }
@@ -53,7 +53,7 @@ export class TrainedModelInferenceStats {
   inference_count: long
   /**
    * The number of times the model was loaded for inference and was not retrieved from the cache. If this number is close to the inference_count, then the cache is not being appropriately used. This can be solved by increasing the cache size or its time-to-live (TTL). See General machine learning settings for the appropriate settings.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#general-ml-settings
+   * @doc_id ml-settings
    */
   cache_miss_count: long
   /** The number of inference calls where all the training features for the model were missing. */
@@ -114,7 +114,7 @@ export class TrainedModelConfigMetadata {
 export class Hyperparameter {
   /**
    * A positive number showing how much the parameter influences the variation of the loss function. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/dfa-regression.html#dfa-regression-lossfunction
+   * @doc_id ml-regression-loss
    */
   absolute_importance?: double
   /** Name of the hyperparameter. */
