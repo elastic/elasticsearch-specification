@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name cat.ml_trained_models
  * @since 7.7.0
  * @stability stable
+ * @doc_id cat-trained-model
  */
 export interface Request extends CatRequestBase {
   path_parts: {

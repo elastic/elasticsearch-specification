@@ -23,5 +23,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name autoscaling.get_autoscaling_capacity
  * @since 7.11.0
  * @stability stable
+ * @doc_id autoscaling-get-autoscaling-capacity
  */
 export interface Request extends RequestBase {}
