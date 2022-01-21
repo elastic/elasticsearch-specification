@@ -167,7 +167,7 @@
 | `_types.aggregations.MultiBucketAggregateBase` | 19 | [`_types/aggregations/Aggregate.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/Aggregate.ts#L313-L315) |
 | `_types.Username` | 18 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L167-L167) |
 | `_types.aggregations.AggregateBase` | 18 | [`_types/aggregations/Aggregate.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/Aggregate.ts#L122-L124) |
-| `_types.aggregations.PipelineAggregationBase` | 18 | [`_types/aggregations/pipeline.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/pipeline.ts#L34-L37) |
+| `_types.aggregations.PipelineAggregationBase` | 18 | [`_types/aggregations/pipeline.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/pipeline.ts#L35-L38) |
 | `_types.mapping.DocValuesPropertyBase` | 18 | [`_types/mapping/core.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/mapping/core.ts#L67-L69) |
 | `xpack.usage.Base` | 18 | [`xpack/usage/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/xpack/usage/types.ts#L28-L31) |
 | `_types.SequenceNumber` | 17 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L102-L102) |
