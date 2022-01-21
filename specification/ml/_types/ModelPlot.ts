@@ -20,9 +20,6 @@
 import { OverloadOf } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 
-/**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
- */
 export class ModelPlotConfig {
   /**
    * If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.

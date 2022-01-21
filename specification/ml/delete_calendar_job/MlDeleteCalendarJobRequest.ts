@@ -26,6 +26,7 @@ import { Id } from '@_types/common'
  * @since 6.2.0
  * @stability stable
  * @cluster_privileges manage_ml
+ * @doc_id ml-delete-calendar-job
  */
 export interface Request extends RequestBase {
   path_parts: {

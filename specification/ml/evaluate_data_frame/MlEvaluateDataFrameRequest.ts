@@ -44,7 +44,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
     /**
-     * A query clause that retrieves a subset of data from the source index. See [QueryDSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html).
+     * A query clause that retrieves a subset of data from the source index.
+     * @doc_id query-dsl
      */
     query?: QueryContainer
   }

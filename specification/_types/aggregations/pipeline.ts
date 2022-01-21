@@ -26,7 +26,8 @@ import { Aggregation } from './Aggregation'
 
 export class BucketPathAggregation extends Aggregation {
   /**
-   * Path to the buckets that contain one set of values to correlate. For syntax, see [buckets_path Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html#buckets-path-syntax).
+   * Path to the buckets that contain one set of values to correlate.
+   * @doc_id search-aggregations-pipeline-bucket-path
    */
   buckets_path?: BucketsPath
 }
@@ -167,8 +168,9 @@ export class RegressionInferenceOptions {
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: Field
   /**
-   * Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html
+   * Specifies the maximum number of feature importance values per document.
+   * @doc_id ml-feature-importance
+   * @server_default 0
    */
   num_top_feature_importance_values?: integer
 }
@@ -177,8 +179,9 @@ export class ClassificationInferenceOptions {
   /** Specifies the number of top class predictions to return. Defaults to 0. */
   num_top_classes?: integer
   /**
-   * Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html
+   * Specifies the maximum number of feature importance values per document.
+   * @server_default 0
+   * @doc_id ml-feature-importance
    */
   num_top_feature_importance_values?: integer
   /** Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false. */
