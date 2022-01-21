@@ -150,4 +150,4 @@ export enum CatAnonalyDetectorColumn {
   /** @aliases s */
   state = 59
 }
-export type CatAnonalyDetectorColumns = CatAnonalyDetectorColumn | CatAnonalyDetectorColumns[]
+export type CatAnonalyDetectorColumns = CatAnonalyDetectorColumn | CatAnonalyDetectorColumn[]
