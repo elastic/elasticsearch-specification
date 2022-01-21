@@ -36,6 +36,7 @@ import { integer } from '@_types/Numeric'
  * @stability stable
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
+ * @doc_id put-dfanalytics
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -50,14 +51,14 @@ export interface Request extends RequestBase {
     /**
      * Specifies whether this job can start when there is insufficient machine
      * learning node capacity for it to be immediately assigned to a node. If
-     * set to false and a machine learning node with capacity to run the job
-     * cannot be immediately found, the API returns an error. If set to true,
+     * set to `false` and a machine learning node with capacity to run the job
+     * cannot be immediately found, the API returns an error. If set to `true`,
      * the API does not return an error; the job waits in the `starting` state
      * until sufficient machine learning node capacity is available. This
      * behavior is also affected by the cluster-wide
      * `xpack.ml.max_lazy_ml_nodes` setting.
      * @server_default false
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings
+     * @doc_id ml-settings
      */
     allow_lazy_start?: boolean
     /**
