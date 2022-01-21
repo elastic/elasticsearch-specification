@@ -72,7 +72,7 @@ export interface Request extends CatRequestBase {
      */
     help?: boolean
     /** Comma-separated list of column names or column aliases used to sort the response. */
-    s?: string
+    s?: CatAnonalyDetectorColumns
     /**
      * The unit used to display time values.
      */
