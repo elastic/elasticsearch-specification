@@ -24,6 +24,7 @@ import { Bytes, NodeIds } from '@_types/common'
  * @rest_spec_name cat.allocation
  * @since 0.0.0
  * @stability stable
+ * @doc_id cat-allocation
  */
 export interface Request extends CatRequestBase {
   path_parts: {

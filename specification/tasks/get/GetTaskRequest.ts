@@ -25,6 +25,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name tasks.get
  * @since 5.0.0
  * @stability experimental
+ * @doc_id tasks
  */
 export interface Request extends RequestBase {
   path_parts: {

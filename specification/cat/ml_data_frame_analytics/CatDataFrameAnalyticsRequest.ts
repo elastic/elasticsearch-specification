@@ -24,6 +24,7 @@ import { Bytes, Id } from '@_types/common'
  * @rest_spec_name cat.ml_data_frame_analytics
  * @since 7.7.0
  * @stability stable
+ * @doc_id cat-dfanalytics
  */
 export interface Request extends CatRequestBase {
   path_parts: {
