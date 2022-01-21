@@ -27,6 +27,7 @@ import { Time } from '@_types/Time'
  * @since 7.3.0
  * @stability stable
  * @cluster_privileges manage_ml
+ * @doc_id ml-delete-dfanalytics
  */
 export interface Request extends RequestBase {
   path_parts: {

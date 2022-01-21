@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
      * return an error and the job waits in the opening state until sufficient
      * machine learning node capacity is available.
      * @server_default false
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/ml-settings.html#advanced-ml-settings
+     * @doc_id ml-settings
      */
     allow_lazy_open?: boolean
     analysis_limits?: AnalysisMemoryLimit
@@ -95,7 +95,7 @@ export interface Request extends RequestBase {
      * before version 7.8.0, the default value matches
      * `model_snapshot_retention_days`.
      * @server_default 1
-     * @doc_url https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html#ml-ad-model-snapshots
+     * @doc_id ml-model-snapshots
      */
     daily_model_snapshot_retention_after_days?: long
     /**
@@ -104,7 +104,7 @@ export interface Request extends RequestBase {
      * days) that snapshots are retained. This period is relative to the
      * timestamp of the most recent snapshot for this job.
      * @server_default 10
-     * @doc_url https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html#ml-ad-model-snapshots
+     * @doc_id ml-model-snapshots
      */
     model_snapshot_retention_days?: long
     /**

@@ -31,6 +31,7 @@ import { Time } from '@_types/Time'
  * @since 5.4.0
  * @stability stable
  * @cluster_privileges manage_ml
+ * @doc_id ml-close-job
  */
 export interface Request extends RequestBase {
   path_parts: {
