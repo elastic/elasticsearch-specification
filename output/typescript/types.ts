@@ -5861,6 +5861,10 @@ export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
 export interface AutoscalingPutAutoscalingPolicyResponse extends AcknowledgedResponseBase {
 }
 
+export type CatCatAnonalyDetectorColumn = 'assignment_explanation' | 'ae' | 'buckets' | 'bc' | 'bucketsCount' | 'count' | 'buckets' | 'btea' | 'bucketsTimeExpAvg' | 'time' | 'exp_avg' | 'buckets' | 'bteah' | 'bucketsTimeExpAvgHour' | 'time' | 'exp_avg_hour' | 'buckets' | 'btmax' | 'bucketsTimeMax' | 'time' | 'max' | 'buckets' | 'btmin' | 'bucketsTimeMin' | 'time' | 'min' | 'buckets' | 'btt' | 'bucketsTimeTotal' | 'time' | 'total' | 'data' | 'db' | 'dataBuckets' | 'buckets' | 'data' | 'der' | 'dataEarliestRecord' | 'earliest_record' | 'data' | 'deb' | 'dataEmptyBuckets' | 'empty_buckets' | 'data' | 'dib' | 'dataInputBytes' | 'input_bytes' | 'data' | 'dif' | 'dataInputFields' | 'input_fields' | 'data' | 'dir' | 'dataInputRecords' | 'input_records' | 'data' | 'did' | 'dataInvalidDates' | 'invalid_dates' | 'data' | 'dl' | 'dataLast' | 'last' | 'data' | 'dleb' | 'dataLastEmptyBucket' | 'last_empty_bucket' | 'data' | 'dlsb' | 'dataLastSparseBucket' | 'last_sparse_bucket' | 'data' | 'dlr' | 'dataLatestRecord' | 'latest_record' | 'data' | 'dmf' | 'dataMissingFields' | 'missing_fields' | 'data' | 'doot' | 'dataOutOfOrderTimestamps' | 'out_of_order_timestamps' | 'data' | 'dpf' | 'dataProcessedFields' | 'processed_fields' | 'data' | 'dpr' | 'dataProcessedRecords' | 'processed_records' | 'data' | 'dsb' | 'dataSparseBuckets' | 'sparse_buckets' | 'forecasts' | 'fmavg' | 'forecastsMemoryAvg' | 'memory' | 'avg' | 'forecasts' | 'fmmax' | 'forecastsMemoryMax' | 'memory' | 'max' | 'forecasts' | 'fmmin' | 'forecastsMemoryMin' | 'memory' | 'min' | 'forecasts' | 'fmt' | 'forecastsMemoryTotal' | 'memory' | 'total' | 'forecasts' | 'fravg' | 'forecastsRecordsAvg' | 'records' | 'avg' | 'forecasts' | 'frmax' | 'forecastsRecordsMax' | 'records' | 'max' | 'forecasts' | 'frmin' | 'forecastsRecordsMin' | 'records' | 'min' | 'forecasts' | 'frt' | 'forecastsRecordsTotal' | 'records' | 'total' | 'forecasts' | 'ftavg' | 'forecastsTimeAvg' | 'time' | 'avg' | 'forecasts' | 'ftmax' | 'forecastsTimeMax' | 'time' | 'max' | 'forecasts' | 'ftmin' | 'forecastsTimeMin' | 'time' | 'min' | 'forecasts' | 'ftt' | 'forecastsTimeTotal' | 'time' | 'total' | 'forecasts' | 'ft' | 'forecastsTotal' | 'total' | 'id' | 'model' | 'mbaf' | 'modelBucketAllocationFailures' | 'bucket_allocation_failures' | 'model' | 'mbf' | 'modelByFields' | 'by_fields' | 'model' | 'mb' | 'modelBytes' | 'bytes' | 'model' | 'mbe' | 'modelBytesExceeded' | 'bytes_exceeded' | 'model' | 'mcs' | 'modelCategorizationStatus' | 'categorization_status' | 'model' | 'mcdc' | 'modelCategorizedDocCount' | 'categorized_doc_count' | 'model' | 'mdcc' | 'modelDeadCategoryCount' | 'dead_category_count' | 'model' | 'mdcc' | 'modelFailedCategoryCount' | 'failed_category_count' | 'model' | 'mfcc' | 'modelFrequentCategoryCount' | 'frequent_category_count' | 'model' | 'mlt' | 'modelLogTime' | 'log_time' | 'model' | 'mml' | 'modelMemoryLimit' | 'memory_limit' | 'model' | 'mms' | 'modelMemoryStatus' | 'memory_status' | 'model' | 'mof' | 'modelOverFields' | 'over_fields' | 'model' | 'mpf' | 'modelPartitionFields' | 'partition_fields' | 'model' | 'mrcc' | 'modelRareCategoryCount' | 'rare_category_count' | 'model' | 'mt' | 'modelTimestamp' | 'timestamp' | 'model' | 'mtcc' | 'modelTotalCategoryCount' | 'total_category_count' | 'node' | 'na' | 'nodeAddress' | 'address' | 'node' | 'ne' | 'nodeEphemeralId' | 'ephemeral_id' | 'node' | 'ni' | 'nodeId' | 'id' | 'node' | 'nn' | 'nodeName' | 'name' | 'opened_time' | 'ot' | 'state' | 's'
+
+export type CatCatAnonalyDetectorColumns = CatCatAnonalyDetectorColumn | CatCatAnonalyDetectorColumns[]
+
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
@@ -6617,7 +6621,12 @@ export interface CatMlJobsRequest extends CatCatRequestBase {
   job_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
+  format?: string
+  h?: CatCatAnonalyDetectorColumns
+  help?: boolean
+  s?: string
   time?: TimeUnit
+  v?: boolean
 }
 
 export type CatMlJobsResponse = CatMlJobsJobsRecord[]
