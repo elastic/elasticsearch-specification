@@ -24,6 +24,7 @@ import { Bytes, Fields } from '@_types/common'
  * @rest_spec_name cat.fielddata
  * @since 0.0.0
  * @stability stable
+ * @doc_id cat-fielddata
  */
 export interface Request extends CatRequestBase {
   path_parts: {

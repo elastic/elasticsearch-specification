@@ -30,6 +30,7 @@ import { TimeUnit } from '@_types/Time'
  * @since 7.7.0
  * @stability stable
  * @cluster_privileges monitor_ml
+ * @doc_id cat-anomaly-detectors
  */
 export interface Request extends CatRequestBase {
   path_parts: {

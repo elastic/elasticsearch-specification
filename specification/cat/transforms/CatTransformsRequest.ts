@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name cat.transforms
  * @since 7.7.0
  * @stability stable
+ * @doc_id cat-transforms
  */
 export interface Request extends CatRequestBase {
   path_parts: {
