@@ -402,3 +402,30 @@ export enum CatAnonalyDetectorColumn {
 export type CatAnonalyDetectorColumns =
   | CatAnonalyDetectorColumn
   | CatAnonalyDetectorColumn[]
+export enum CatDatafeedColumn {
+  /** @aliases assignment_explanation */
+  ae = 0,
+  /** @aliases buckets.count, bucketsCount */
+  bc = 1,
+  id = 2,
+  /** @aliases node.address, nodeAddress */
+  na = 3
+  /** @aliases node.ephemeral_id, nodeEphemeralId */
+  ne = 4
+  /** @aliases node.id, nodeId */
+  ni = 5
+  /** @aliases node.name, nodeName */
+  nn = 6
+  /** @aliases search.bucket_avg, searchBucketAvg */
+  sba = 7
+  /** @aliases search.count, searchCount */
+  sc = 8
+  /** @aliases search.exp_avg_hour, searchExpAvgHour */
+  seah = 9
+  /** @aliases search.time, searchTime */
+  st = 10
+  /** @aliases state */
+  s = 11
+}
+
+export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
