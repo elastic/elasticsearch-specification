@@ -26,8 +26,9 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { Time } from '@_types/Time'
-import { OperationContainer } from './types'
+import { OperationContainer, UpdateAction } from './types'
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name bulk
@@ -36,7 +37,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * @doc_id docs-bulk
  *
  */
-export interface Request<TSource> extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     index?: IndexName
   }
@@ -52,5 +53,15 @@ export interface Request<TSource> extends RequestBase {
     require_alias?: boolean
   }
   /** @codegen_name operations */
-  body?: Array<OperationContainer | TSource>
+  // This declaration captures action_and_meta_data (OperationContainer) and the two kinds of sources
+  // that can follow: an update action for update operations and anything for index or create operations.
+  // Document types are set to "UserDefinedValue" rather than being a generic parameter on Request since
+  // bulk operations can target any index and the document type of operations can be widely different.
+  //
+  // /!\ must be kept in sync with MonitoringBulkRequest
+  body?: Array<
+    | OperationContainer
+    | UpdateAction<UserDefinedValue, UserDefinedValue>
+    | UserDefinedValue
+  >
 }

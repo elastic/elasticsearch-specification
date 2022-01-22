@@ -19,7 +19,8 @@
 
 import { RequestBase } from '@_types/Base'
 import { TimeSpan } from '@_types/Time'
-import { OperationContainer } from '@global/bulk/types'
+import { OperationContainer, UpdateAction } from '@global/bulk/types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name monitoring.bulk
@@ -53,5 +54,10 @@ export interface Request<TSource> extends RequestBase {
 
   /** @codegen_name operations */
   // MonitoringBulkRequest accepts a body request that has the same format as the BulkRequest
-  body?: Array<OperationContainer | TSource>
+  // See BulkRequest for additional notes.
+  body?: Array<
+    | OperationContainer
+    | UpdateAction<UserDefinedValue, UserDefinedValue>
+    | UserDefinedValue
+  >
 }
