@@ -1105,6 +1105,10 @@ export interface SearchCompletionContext {
   prefix?: boolean
 }
 
+export interface SearchCompletionSuggest<TDocument = unknown> extends SearchSuggestBase {
+  options: SearchCompletionSuggestOption<TDocument>[]
+}
+
 export interface SearchCompletionSuggestOption<TDocument = unknown> {
   collate_match?: boolean
   contexts?: Record<string, SearchContext[]>
@@ -1113,8 +1117,8 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
   _index: IndexName
   _type?: Type
   _routing?: Routing
-  _score: double
-  _source: TDocument
+  _score?: double
+  _source?: TDocument
   text: string
 }
 
@@ -1304,6 +1308,10 @@ export interface SearchNestedIdentity {
   _nested?: SearchNestedIdentity
 }
 
+export interface SearchPhraseSuggest extends SearchSuggestBase {
+  options: SearchPhraseSuggestOption
+}
+
 export interface SearchPhraseSuggestCollate {
   params?: Record<string, any>
   prune?: boolean
@@ -1430,10 +1438,11 @@ export interface SearchStupidBackoffSmoothingModel {
   discount: double
 }
 
-export interface SearchSuggest<T = unknown> {
+export type SearchSuggest<TDocument = unknown> = SearchCompletionSuggest<TDocument> | SearchPhraseSuggest | SearchTermSuggest
+
+export interface SearchSuggestBase {
   length: integer
   offset: integer
-  options: SearchSuggestOption<T>[]
   text: string
 }
 
@@ -1444,8 +1453,6 @@ export interface SearchSuggestFuzziness {
   transpositions: boolean
   unicode_aware: boolean
 }
-
-export type SearchSuggestOption<TDocument = unknown> = SearchCompletionSuggestOption<TDocument> | SearchPhraseSuggestOption | SearchTermSuggestOption
 
 export type SearchSuggestSort = 'score' | 'frequency'
 
@@ -1461,9 +1468,13 @@ export interface SearchSuggesterBase {
   size?: integer
 }
 
+export interface SearchTermSuggest extends SearchSuggestBase {
+  options: SearchTermSuggestOption
+}
+
 export interface SearchTermSuggestOption {
   text: string
-  freq?: long
+  freq: long
   score: double
 }
 
