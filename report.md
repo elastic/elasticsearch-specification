@@ -154,8 +154,8 @@
 | `_types.Routing` | 36 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L59-L59) |
 | `_types.Metadata` | 33 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L84-L84) |
 | `ingest._types.ProcessorBase` | 33 | [`ingest/_types/Processors.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ingest/_types/Processors.ts#L68-L73) |
+| `_types.Script` | 30 | [`_types/Scripting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Scripting.ts#L56-L57) |
 | `_types.Names` | 29 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
-| `_types.Script` | 29 | [`_types/Scripting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Scripting.ts#L56-L57) |
 | `_types.ByteSize` | 28 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L81-L82) |
 | `_types.aggregations.BucketAggregationBase` | 25 | [`_types/aggregations/bucket.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/bucket.ts#L40-L45) |
 | `cat._types.CatRequestBase` | 25 | [`cat/_types/CatBase.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cat/_types/CatBase.ts#L28-L30) |
