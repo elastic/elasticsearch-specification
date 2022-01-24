@@ -20,14 +20,13 @@
 import { RequestBase } from '@_types/Base'
 import { TimeSpan } from '@_types/Time'
 import { OperationContainer, UpdateAction } from '@global/bulk/types'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name monitoring.bulk
  * @since 6.3.0
  * @stability stable
  */
-export interface Request<TSource> extends RequestBase {
+export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
     /**
      * @deprecated 7.0.0
@@ -53,11 +52,9 @@ export interface Request<TSource> extends RequestBase {
   }
 
   /** @codegen_name operations */
-  // MonitoringBulkRequest accepts a body request that has the same format as the BulkRequest
+  // BulkMonitoringRequest accepts a body request that has the same format as the BulkRequest
   // See BulkRequest for additional notes.
   body?: Array<
-    | OperationContainer
-    | UpdateAction<UserDefinedValue, UserDefinedValue>
-    | UserDefinedValue
+    OperationContainer | UpdateAction<TDocument, TPartialDocument> | TDocument
   >
 }
