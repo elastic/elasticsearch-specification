@@ -118,11 +118,11 @@
 | `security` | 2 |
 | `shutdown` | 2 |
 | `snapshot` | 2 |
-| `sql` | 2 |
 | `_spec_utils` | 1 |
 | `search_mvt` | 1 |
 | `cat` | 1 |
 | `fleet` | 1 |
+| `sql` | 1 |
 | `features` | 0 |
 
 [Back to top](#type-specification-report)
@@ -131,16 +131,16 @@
 ## Top 50 used types
 | Type | Occurencies | Location |
 | --- | --- | --- |
-| `_types.RequestBase` | 358 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
+| `_types.RequestBase` | 361 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
 | `_types.integer` | 340 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
 | `_types.long` | 283 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
-| `_types.Id` | 234 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
-| `_types.Time` | 182 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
+| `_types.Id` | 239 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
+| `_types.Time` | 183 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
 | `_types.Name` | 173 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
 | `_types.double` | 144 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
 | `_types.Field` | 135 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L111-L112) |
 | `_types.IndexName` | 113 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L53-L53) |
-| `_types.AcknowledgedResponseBase` | 90 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L47-L50) |
+| `_types.AcknowledgedResponseBase` | 91 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L47-L50) |
 | `_types.Indices` | 77 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L54-L54) |
 | `_types.query_dsl.QueryContainer` | 60 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L97-L163) |
 | `_types.query_dsl.QueryBase` | 55 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L176-L180) |
