@@ -1854,6 +1854,8 @@ export type DateMath = string
 
 export type DateMathTime = string
 
+export type DateOrEpochMillis = DateString | EpochMillis
+
 export type DateString = string
 
 export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
@@ -9240,8 +9242,8 @@ export interface IndicesIndexSettingsLifecycle {
 }
 
 export interface IndicesIndexSettingsTimeSeries {
-  end_time?: DateString | EpochMillis
-  start_time?: DateString | EpochMillis
+  end_time?: DateOrEpochMillis
+  start_time?: DateOrEpochMillis
 }
 
 export interface IndicesIndexState {

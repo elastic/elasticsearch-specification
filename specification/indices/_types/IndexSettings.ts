@@ -32,7 +32,7 @@ import {
   VersionString
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { DateOrEpochMillis, DateString, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   IndexSegmentSort,
@@ -334,8 +334,8 @@ export class IndexSettingsAnalysis {
 }
 
 export class IndexSettingsTimeSeries {
-  end_time?: DateString | EpochMillis
-  start_time?: DateString | EpochMillis
+  end_time?: DateOrEpochMillis
+  start_time?: DateOrEpochMillis
 }
 
 export class Merge {
