@@ -403,28 +403,70 @@ export type CatAnonalyDetectorColumns =
   | CatAnonalyDetectorColumn
   | CatAnonalyDetectorColumn[]
 export enum CatDatafeedColumn {
-  /** @aliases assignment_explanation */
+  /**
+   * For started datafeeds only, contains messages relating to the selection of
+   * a node.
+   * @aliases assignment_explanation
+   */
   ae = 0,
-  /** @aliases buckets.count, bucketsCount */
+  /**
+   * The number of buckets processed.
+   * @aliases buckets.count, bucketsCount
+   */
   bc = 1,
+  /** A numerical character string that uniquely identifies the datafeed. */
   id = 2,
-  /** @aliases node.address, nodeAddress */
-  na = 3
-  /** @aliases node.ephemeral_id, nodeEphemeralId */
-  ne = 4
-  /** @aliases node.id, nodeId */
-  ni = 5
-  /** @aliases node.name, nodeName */
-  nn = 6
-  /** @aliases search.bucket_avg, searchBucketAvg */
-  sba = 7
-  /** @aliases search.count, searchCount */
-  sc = 8
-  /** @aliases search.exp_avg_hour, searchExpAvgHour */
-  seah = 9
-  /** @aliases search.time, searchTime */
-  st = 10
-  /** @aliases state */
+  /**
+   * For started datafeeds only, the network address of the node where the
+   * datafeed is started.
+   * @aliases node.address, nodeAddress
+   */
+  na = 3,
+  /**
+   * For started datafeeds only, the ephemeral ID of the node where the
+   * datafeed is started.
+   * @aliases node.ephemeral_id, nodeEphemeralId
+   */
+  ne = 4,
+  /**
+   * For started datafeeds only, the unique identifier of the node where the
+   * datafeed is started.
+   * @aliases node.id, nodeId
+   */
+  ni = 5,
+  /**
+   * For started datafeeds only, the name of the node where the datafeed is
+   * started.
+   * @aliases node.name, nodeName
+   */
+  nn = 6,
+  /**
+   * The average search time per bucket, in milliseconds.
+   * @aliases search.bucket_avg, searchBucketAvg
+   */
+  sba = 7,
+  /**
+   * The number of searches run by the datafeed.
+   * @aliases search.count, searchCount */
+  sc = 8,
+  /**
+   * The exponential average search time per hour, in milliseconds.
+   * @aliases search.exp_avg_hour, searchExpAvgHour
+   */
+  seah = 9,
+  /**
+   * The total time the datafeed spent searching, in milliseconds.
+   * @aliases search.time, searchTime */
+  st = 10,
+  /**
+   * The status of the datafeed: `starting`, `started`, `stopping`, or `stopped`.
+   * If `starting`, the datafeed has been requested to start but has not yet
+   * started. If `started`, the datafeed is actively receiving data. If
+   * `stopping`, the datafeed has been requested to stop gracefully and is
+   * completing its final action. If `stopped`, the datafeed is stopped and will
+   * not receive data until it is re-started.
+   * @aliases state
+   */
   s = 11
 }
 
