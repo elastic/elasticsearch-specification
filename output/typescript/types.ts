@@ -9447,7 +9447,7 @@ export interface IndicesCreateRequest extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   body?: {
-    aliases?: Record<Name, IndicesAlias> | Record<Name, IndicesAlias>[]
+    aliases?: Record<Name, IndicesAlias>
     mappings?: MappingTypeMapping
     settings?: IndicesIndexSettings
   }
