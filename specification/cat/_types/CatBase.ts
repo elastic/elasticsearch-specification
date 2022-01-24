@@ -33,7 +33,7 @@ export enum CatAnonalyDetectorColumn {
   /** @aliases ae */
   assignment_explanation = 0,
   /** @aliases bc, bucketsCount */
-  buckets.count = 1,
+  'buckets.count' = 1,
   /** @aliases btea, bucketsTimeExpAvg */
   buckets.time.exp_avg = 2
   /** @aliases bteah, bucketsTimeExpAvgHour */
