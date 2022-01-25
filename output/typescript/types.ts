@@ -5791,6 +5791,10 @@ export type CatCatAnonalyDetectorColumn = 'assignment_explanation' | 'ae' | 'buc
 
 export type CatCatAnonalyDetectorColumns = CatCatAnonalyDetectorColumn | CatCatAnonalyDetectorColumn[]
 
+export type CatCatDatafeedColumn = 'ae' | 'assignment_explanation' | 'bc' | 'buckets.count' | 'bucketsCount' | 'id' | 'na' | 'node.address' | 'nodeAddress' | 'ne' | 'node.ephemeral_id' | 'nodeEphemeralId' | 'ni' | 'node.id' | 'nodeId' | 'nn' | 'node.name' | 'nodeName' | 'sba' | 'search.bucket_avg' | 'searchBucketAvg' | 'sc' | 'search.count' | 'searchCount' | 'seah' | 'search.exp_avg_hour' | 'searchExpAvgHour' | 'st' | 'search.time' | 'searchTime' | 's' | 'state'
+
+export type CatCatDatafeedColumns = CatCatDatafeedColumn | CatCatDatafeedColumn[]
+
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
@@ -6361,6 +6365,13 @@ export interface CatMlDatafeedsDatafeedsRecord {
 export interface CatMlDatafeedsRequest extends CatCatRequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
+  format?: string
+  h?: CatCatDatafeedColumns
+  help?: boolean
+  s?: CatCatDatafeedColumns
+  time?: TimeUnit
+  v?: boolean
 }
 
 export type CatMlDatafeedsResponse = CatMlDatafeedsDatafeedsRecord[]

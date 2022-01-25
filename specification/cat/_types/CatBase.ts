@@ -402,6 +402,7 @@ export enum CatAnonalyDetectorColumn {
 export type CatAnonalyDetectorColumns =
   | CatAnonalyDetectorColumn
   | CatAnonalyDetectorColumn[]
+
 export enum CatDatafeedColumn {
   /**
    * For started datafeeds only, contains messages relating to the selection of
