@@ -188,14 +188,12 @@
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
-        "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'h'",
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
-        "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
+        "request definition cat.ml_jobs:Request / query - Property 'format' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 'help' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 'v' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
