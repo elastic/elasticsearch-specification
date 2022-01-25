@@ -26,6 +26,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name ccr.follow
  * @since 6.5.0
  * @stability stable
+ * @doc_id ccr-put-follow
  */
 export interface Request extends RequestBase {
   path_parts: {
