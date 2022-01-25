@@ -537,7 +537,7 @@ export interface MgetResponse<TDocument = unknown> {
 export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
 
 export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponse<TDocument> {
-  status: integer
+  status?: integer
 }
 
 export interface MsearchMultiSearchResult<TDocument = unknown> {
