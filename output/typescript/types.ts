@@ -3724,7 +3724,8 @@ export interface AggregationsTopMetrics {
   metrics: Record<string, FieldValue | null>
 }
 
-export interface AggregationsTopMetricsAggregate extends AggregationsMultiBucketAggregateBase<AggregationsTopMetricsBucket> {
+export interface AggregationsTopMetricsAggregate extends AggregationsAggregateBase {
+  top: AggregationsTopMetrics[]
 }
 
 export interface AggregationsTopMetricsAggregation extends AggregationsMetricAggregationBase {
@@ -3732,12 +3733,6 @@ export interface AggregationsTopMetricsAggregation extends AggregationsMetricAgg
   size?: integer
   sort?: Sort
 }
-
-export interface AggregationsTopMetricsBucketKeys extends AggregationsMultiBucketBase {
-  top: AggregationsTopMetrics[]
-}
-export type AggregationsTopMetricsBucket = AggregationsTopMetricsBucketKeys
-  & { [property: string]: AggregationsAggregate | AggregationsTopMetrics[] | long }
 
 export interface AggregationsTopMetricsValue {
   field: Field
