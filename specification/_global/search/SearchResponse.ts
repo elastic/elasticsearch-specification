@@ -29,6 +29,7 @@ import { Suggest } from './_types/suggester'
 
 export class Response<TDocument> {
   body: {
+    // Has to be kept in sync with SearchTemplateResponse
     took: long
     timed_out: boolean
     _shards: ShardStatistics
