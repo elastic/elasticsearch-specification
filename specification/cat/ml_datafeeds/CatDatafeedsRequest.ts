@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatDatafeedColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
@@ -35,9 +35,7 @@ import { TimeUnit } from '@_types/Time'
 export interface Request extends CatRequestBase {
   path_parts: {
     /**
-     * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase
-     * alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric
-     * characters.
+     * A numerical character string that uniquely identifies the datafeed.
      */
     datafeed_id?: Id
   }
@@ -55,9 +53,27 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
+    /** Short version of the HTTP accept header. Valid values include JSON, YAML, for example. */
+    format?: string
+    /**
+     * Comma-separated list of column names to display.
+     * @server_default bc,id,sc,s
+     */
+    h?: CatDatafeedColumns
+    /** If `true`, the response includes help information.
+     * @server_default false
+     */
+    help?: boolean
+    /** Comma-separated list of column names or column aliases used to sort the response. */
+    s?: CatDatafeedColumns
     /**
      * The unit used to display time values.
      */
     time?: TimeUnit
+    /**
+     * If `true`, the response includes column headings.
+     * @server_default false
+     */
+    v?: boolean
   }
 }
