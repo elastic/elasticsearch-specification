@@ -12082,11 +12082,8 @@ export interface MlTrainedModelConfigMetadata {
 
 export interface MlTrainedModelDeploymentAllocationStatus {
   allocation_count: integer
-  error_count: integer
-  rejected_execution_count: integer
   state: MlDeploymentAllocationState
   target_allocation_count: integer
-  timeout_count: integer
 }
 
 export interface MlTrainedModelDeploymentNodesStats {

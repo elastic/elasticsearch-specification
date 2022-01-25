@@ -337,21 +337,10 @@ export class TrainedModelAllocationRoutingTable {
 export class TrainedModelDeploymentAllocationStatus {
   /** The current number of nodes where the model is allocated. */
   allocation_count: integer
-  /** The sum of `error_count` for all nodes in the deployment. */
-  error_count: integer
-  /**
-   * The sum of `rejected_execution_count` for all nodes in the deployment.
-   * Individual nodes reject an inference request if the inference queue is full.
-   * The queue size is controlled by the `queue_capacity` setting in the start
-   * trained model deployment API.
-   */
-  rejected_execution_count: integer
   /** The detailed allocation state related to the nodes. */
   state: DeploymentAllocationState
   /** The desired number of nodes for model allocation. */
   target_allocation_count: integer
-  /** The sum of `timeout_count` for all nodes in the deployment. */
-  timeout_count: integer
 }
 
 export class TrainedModelAllocation {
