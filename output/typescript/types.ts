@@ -1592,10 +1592,20 @@ export interface SearchTemplateRequest extends RequestBase {
 }
 
 export interface SearchTemplateResponse<TDocument = unknown> {
-  _shards: ShardStatistics
+  took: long
   timed_out: boolean
-  took: integer
+  _shards: ShardStatistics
   hits: SearchHitsMetadata<TDocument>
+  aggregations?: Record<AggregateName, AggregationsAggregate>
+  _clusters?: ClusterStatistics
+  fields?: Record<string, any>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: SearchProfile
+  pit_id?: Id
+  _scroll_id?: ScrollId
+  suggest?: Record<SuggestionName, SearchSuggest<TDocument>[]>
+  terminated_early?: boolean
 }
 
 export interface TermsEnumRequest extends RequestBase {
