@@ -23,5 +23,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name ccr.stats
  * @since 6.5.0
  * @stability stable
+ * @doc_id ccr-get-stats
  */
 export interface Request extends RequestBase {}
