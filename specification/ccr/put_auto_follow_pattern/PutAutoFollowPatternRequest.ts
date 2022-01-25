@@ -28,6 +28,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name ccr.put_auto_follow_pattern
  * @since 6.5.0
  * @stability stable
+ * @doc_id ccr-put-auto-follow-pattern
  */
 export interface Request extends RequestBase {
   path_parts: {
