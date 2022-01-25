@@ -108,6 +108,7 @@
 | `scripts_painless_execute` | 2 |
 | `search_shards` | 2 |
 | `autoscaling` | 2 |
+| `cat` | 2 |
 | `ccr` | 2 |
 | `dangling_indices` | 2 |
 | `graph` | 2 |
@@ -120,7 +121,6 @@
 | `snapshot` | 2 |
 | `_spec_utils` | 1 |
 | `search_mvt` | 1 |
-| `cat` | 1 |
 | `fleet` | 1 |
 | `sql` | 1 |
 | `features` | 0 |
