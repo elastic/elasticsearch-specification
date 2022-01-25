@@ -48,6 +48,17 @@ export default async function readDefinitionValidation (model: model.Model, json
 
           const readProperty = type.properties.find(p => p.name === property.name) as model.Property
 
+          if (property.type.kind === 'union_of' && property.type.items.some(contains(readProperty.type))) {
+            // this is allowed, as if the original property type is an union (of type and type[]),
+            // the overloaded property type should be either the same type or an element of the union
+          } else if (isOverloadOf(readProperty.type, property.type)) {
+            // this is allowed, as if the overloaded property has a different type,
+            // this type should be an overload of the original property type
+          } else if (!deepEqual(readProperty.type, property.type)) {
+            console.log(chalk.red`The property '${property.name}' present in ${parent.name.namespace}.${parent.name.name} does not have the same type in ${type.name.namespace}.${type.name.name}`)
+            process.exit(1)
+          }
+
           // we have the same properties, so let's copy the metadata
           for (const key in property) {
             if (key === 'required') continue
@@ -61,4 +72,52 @@ export default async function readDefinitionValidation (model: model.Model, json
   }
 
   return model
+
+  function isOverloadOf (readType: model.ValueOf, type: model.ValueOf): boolean {
+    const readTypeInstance = unwrap(readType)
+    const typeInstance = unwrap(type)
+    if (readTypeInstance == null || typeInstance == null) return false
+    if (readTypeInstance.type.namespace !== 'internal') {
+      const definition = model.types.find(t => t.name.namespace === readTypeInstance.type.namespace && t.name.name === readTypeInstance.type.name)
+      return definition?.kind === 'interface' && (definition.behaviors?.some(overloaded) ?? false)
+    }
+    return false
+
+    function overloaded (def: model.Inherits): boolean {
+      if (def.type.name !== 'OverloadOf') return false
+      assert(Array.isArray(def.generics))
+      return def.generics[0].kind === 'instance_of' &&
+             def.generics[0].type.namespace === typeInstance?.type.namespace &&
+             def.generics[0].type.name === typeInstance?.type.name
+    }
+
+    function unwrap (type: model.ValueOf): model.InstanceOf | null {
+      switch (type.kind) {
+        case 'instance_of':
+          return type
+        case 'array_of':
+          return unwrap(type.value)
+        default:
+          return null
+      }
+    }
+  }
+
+  function contains (readType: model.ValueOf) {
+    return function (type: model.ValueOf, index: number, arr: model.ValueOf[]): boolean {
+      if (type.kind === 'array_of') {
+        return deepEqual(type.value, readType)
+      }
+      return deepEqual(type, readType)
+    }
+  }
+
+  function deepEqual (a: any, b: any): boolean {
+    try {
+      assert.deepStrictEqual(a, b)
+      return true
+    } catch (err) {
+      return false
+    }
+  }
 }
