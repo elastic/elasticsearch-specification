@@ -11714,7 +11714,9 @@ export interface MlDelayedDataCheckConfig {
   enabled: boolean
 }
 
-export type MlDeploymentState = 'started' | 'starting' | 'fully_allocated'
+export type MlDeploymentAllocationState = 'started' | 'starting' | 'fully_allocated'
+
+export type MlDeploymentState = 'started' | 'starting' | 'stopping'
 
 export interface MlDetectionRule {
   actions?: MlRuleAction[]
@@ -12031,7 +12033,7 @@ export interface MlTotalFeatureImportanceStatistics {
 }
 
 export interface MlTrainedModelAllocation {
-  allocation_state: MlDeploymentState
+  allocation_state: MlDeploymentAllocationState
   routing_table: Record<string, MlTrainedModelAllocationRoutingTable>
   start_time: DateString
   task_parameters: MlTrainedModelAllocationTaskParameters
@@ -12078,6 +12080,45 @@ export interface MlTrainedModelConfigMetadata {
   total_feature_importance?: MlTotalFeatureImportance[]
 }
 
+export interface MlTrainedModelDeploymentAllocationStatus {
+  allocation_count: integer
+  error_count: integer
+  rejected_execution_count: integer
+  state: MlDeploymentAllocationState
+  target_allocation_count: integer
+  timeout_count: integer
+}
+
+export interface MlTrainedModelDeploymentNodesStats {
+  average_inference_time_ms: double
+  error_count: integer
+  inference_count: integer
+  inference_threads: integer
+  last_access: long
+  model_threads: integer
+  node: MlDiscoveryNode
+  rejection_execution_count: integer
+  routing_state: MlTrainedModelAllocationRoutingTable
+  start_time: long
+  timeout_count: integer
+}
+
+export interface MlTrainedModelDeploymentStats {
+  allocation_status: MlTrainedModelDeploymentAllocationStatus
+  error_count: integer
+  inference_count: integer
+  inference_threads: integer
+  model_id: Id
+  model_threads: integer
+  nodes: MlTrainedModelDeploymentNodesStats
+  queue_capacity: integer
+  rejected_execution_count: integer
+  reason: string
+  start_time: long
+  state: MlDeploymentState
+  timeout_count: integer
+}
+
 export interface MlTrainedModelEntities {
   class_name: string
   class_probability: double
@@ -12087,10 +12128,10 @@ export interface MlTrainedModelEntities {
 }
 
 export interface MlTrainedModelInferenceStats {
-  failure_count: long
-  inference_count: long
-  cache_miss_count: long
-  missing_all_fields_count: long
+  cache_miss_count: integer
+  failure_count: integer
+  inference_count: integer
+  missing_all_fields_count: integer
   timestamp: Time
 }
 
@@ -12102,11 +12143,18 @@ export interface MlTrainedModelLocationIndex {
   name: IndexName
 }
 
+export interface MlTrainedModelSizeStats {
+  model_size_bytes: ByteSize
+  required_native_memory_bytes: integer
+}
+
 export interface MlTrainedModelStats {
-  model_id: Id
-  pipeline_count: integer
+  deployment_stats?: MlTrainedModelDeploymentStats
   inference_stats?: MlTrainedModelInferenceStats
   ingest?: Record<string, any>
+  model_id: Id
+  model_size_stats: MlTrainedModelSizeStats
+  pipeline_count: integer
 }
 
 export type MlTrainedModelType = 'tree_ensemble' | 'lang_ident' | 'pytorch'
@@ -13158,7 +13206,7 @@ export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
   model_threads?: integer
   queue_capacity?: integer
   timeout?: Time
-  wait_for?: MlDeploymentState
+  wait_for?: MlDeploymentAllocationState
 }
 
 export interface MlStartTrainedModelDeploymentResponse {

@@ -81,7 +81,7 @@ export class TrainedModelDeploymentStats {
    * the model is not deployed to a node.
    */
   reason: string
-   /** The epoch timestamp when the deployment started. */
+  /** The epoch timestamp when the deployment started. */
   start_time: long
   /** The overall state of the deployment. */
   state: DeploymentState
