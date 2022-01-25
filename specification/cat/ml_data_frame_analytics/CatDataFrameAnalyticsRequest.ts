@@ -21,6 +21,12 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 
 /**
+ * Returns configuration and usage information about data frame analytics jobs.
+ *
+ * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * console or command line. They are not intended for use by applications. For
+ * application consumption, use the get data frame analytics jobs statistics API.
+ *
  * @rest_spec_name cat.ml_data_frame_analytics
  * @since 7.7.0
  * @stability stable
