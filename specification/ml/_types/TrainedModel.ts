@@ -56,6 +56,10 @@ export class TrainedModelStats {
 export class TrainedModelDeploymentStats {
   /** The detailed allocation status for the deployment. */
   allocation_status: TrainedModelDeploymentAllocationStatus
+  /** The sum of `error_count` for all nodes in the deployment. */
+  error_count: integer
+  /** The sum of `inference_count` for all nodes in the deployment. */
+  inference_count: integer
   /** The number of threads used by the inference process. */
   inference_threads: integer
   /** The unique identifier for the trained model. */
@@ -66,10 +70,23 @@ export class TrainedModelDeploymentStats {
   nodes: TrainedModelDeploymentNodesStats
   /** The number of inference requests that can be queued before new requests are rejected. */
   queue_capacity: integer
-  /** The epoch timestamp when the deployment started. */
+  /**
+   * The sum of `rejected_execution_count` for all nodes in the deployment.
+   * Individual nodes reject an inference request if the inference queue is full.
+   * The queue size is controlled by the `queue_capacity` setting in the start
+   * trained model deployment API.
+   */
+  rejected_execution_count: integer
+  /** The reason for the current deployment state. Usually only populated when
+   * the model is not deployed to a node.
+   */
+  reason: string
+   /** The epoch timestamp when the deployment started. */
   start_time: long
   /** The overall state of the deployment. */
   state: DeploymentState
+  /** The sum of `timeout_count` for all nodes in the deployment. */
+  timeout_count: integer
 }
 
 export class TrainedModelInferenceStats {
@@ -125,12 +142,10 @@ export class TrainedModelDeploymentNodesStats {
   model_threads: integer
   /** Information pertaining to the node. */
   node: DiscoveryNode
-  /** The reason for the current state. Usually only populated when the `routing_state` is `failed`. */
-  reason: string
   /** The number of inference requests that were not processed because the queue was full. */
   rejection_execution_count: integer
   /** The current routing state and reason for the current routing state for this allocation. */
-  routing_state: RoutingState
+  routing_state: TrainedModelAllocationRoutingTable
   /** The epoch timestamp when the allocation started. */
   start_time: long
   /** The number of inference requests that timed out before being processed. */
