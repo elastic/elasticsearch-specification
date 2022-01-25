@@ -15419,7 +15419,7 @@ export interface SnapshotCreateRequest extends RequestBase {
 
 export interface SnapshotCreateResponse {
   accepted?: boolean
-  snapshot: SnapshotSnapshotInfo
+  snapshot?: SnapshotSnapshotInfo
 }
 
 export interface SnapshotCreateRepositoryRequest extends RequestBase {
