@@ -64,55 +64,55 @@ export enum CatDfaColumn {
    * the data frame analytics job.
    * @aliases mml, modelMemoryLimit
    */
-  model_memory_limit = 5,
+  model_memory_limit = 6,
   /**
    * The network address of the node that the data frame analytics job is
    * assigned to.
    * @aliases na, nodeAddress
    */
-  'node.address' = 6,
+  'node.address' = 7,
   /**
    * The ephemeral ID of the node that the data frame analytics job is assigned
    * to.
    * @aliases ne, nodeEphemeralId
    */
-  'node.ephemeral_id' = 7,
+  'node.ephemeral_id' = 8,
   /**
    * The unique identifier of the node that the data frame analytics job is
    * assigned to.
    * @aliases ni, nodeId
    */
-  'node.id' = 8,
+  'node.id' = 9,
   /**
    * The name of the node that the data frame analytics job is assigned to.
    * @aliases nn, nodeName
    */
-  'node.name' = 9,
+  'node.name' = 10,
   /**
    * The progress report of the data frame analytics job by phase.
    * @aliases p
    */
-  progress = 10,
+  progress = 11,
   /**
    * Name of the source index.
    * @aliases si, sourceIndex
    */
-  source_index = 11,
+  source_index = 12,
   /**
    * Current state of the data frame analytics job.
    * @aliases s
    */
-  state = 12,
+  state = 13,
   /**
    * The type of analysis that the data frame analytics job performs.
    * @aliases t
    */
-  type = 13,
+  type = 14,
   /**
    * The Elasticsearch version number in which the data frame analytics job was
    * created.
    * @aliases v
    */
-  version = 14
+  version = 15
 }
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
