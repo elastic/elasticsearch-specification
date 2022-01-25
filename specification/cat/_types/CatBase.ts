@@ -29,7 +29,7 @@ export class CatRequestBase
   extends RequestBase
   implements CommonCatQueryParameters {}
 
-export enum CatAnonalyDetectorColumn {
+export enum CatAnomalyDetectorColumn {
   /**
    * For open anomaly detection jobs only, contains messages relating to the
    * selection of a node to run the job.
@@ -400,9 +400,8 @@ export enum CatAnonalyDetectorColumn {
   state = 59
 }
 export type CatAnonalyDetectorColumns =
-  | CatAnonalyDetectorColumn
-  | CatAnonalyDetectorColumn[]
-
+  | CatAnomalyDetectorColumn
+  | CatAnomalyDetectorColumn[]
 export enum CatDatafeedColumn {
   /**
    * For started datafeeds only, contains messages relating to the selection of
