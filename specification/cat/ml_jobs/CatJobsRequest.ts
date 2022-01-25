@@ -26,6 +26,11 @@ import { TimeUnit } from '@_types/Time'
  * This API returns a maximum of 10,000 jobs.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`,
  * `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.
+ *
+ * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * console or command line. They are not intended for use by applications. For
+ * application consumption, use the get anomaly detection job statistics API.
+ *
  * @rest_spec_name cat.ml_jobs
  * @since 7.7.0
  * @stability stable
