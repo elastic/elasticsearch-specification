@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatAnonalyDetectorColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
@@ -58,8 +58,29 @@ export interface Request extends CatRequestBase {
      */
     bytes?: Bytes
     /**
+     * Short version of the HTTP accept header. Valid values include JSON, YAML, for example.
+     */
+    format?: string
+    /**
+     * Comma-separated list of column names to display.
+     * @server_default buckets.count,data.processed_records,forecasts.total,id,model.bytes,model.memory_status,state
+     */
+    h?: CatAnonalyDetectorColumns
+    /**
+     * If true, the response includes help information.
+     * @server_default false
+     */
+    help?: boolean
+    /** Comma-separated list of column names or column aliases used to sort the response. */
+    s?: CatAnonalyDetectorColumns
+    /**
      * The unit used to display time values.
      */
     time?: TimeUnit
+    /**
+     * If `true`, the response includes column headings.
+     * @server_default false
+     */
+    v?: boolean
   }
 }
