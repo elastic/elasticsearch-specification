@@ -5861,6 +5861,10 @@ export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
 export interface AutoscalingPutAutoscalingPolicyResponse extends AcknowledgedResponseBase {
 }
 
+export type CatCatDfaColumn = 'assignment_explanation' | 'ae' | 'create_time' | 'ct' | 'createTime' | 'description' | 'd' | 'dest_index' | 'di' | 'destIndex' | 'failure_reason' | 'fr' | 'failureReason' | 'id' | 'model_memory_limit' | 'mml' | 'modelMemoryLimit' | 'node.address' | 'na' | 'nodeAddress' | 'node.ephemeral_id' | 'ne' | 'nodeEphemeralId' | 'node.id' | 'ni' | 'nodeId' | 'node.name' | 'nn' | 'nodeName' | 'progress' | 'p' | 'source_index' | 'si' | 'sourceIndex' | 'state' | 's' | 'type' | 't' | 'version' | 'v'
+
+export type CatCatDfaColumns = CatCatDfaColumn | CatCatDfaColumn[]
+
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
@@ -6389,6 +6393,12 @@ export interface CatMlDataFrameAnalyticsRequest extends CatCatRequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
+  format?: string
+  h?: CatCatDfaColumns
+  help?: boolean
+  s?: CatCatDfaColumns
+  time?: Time
+  v?: boolean
 }
 
 export type CatMlDataFrameAnalyticsResponse = CatMlDataFrameAnalyticsDataFrameAnalyticsRecord[]
