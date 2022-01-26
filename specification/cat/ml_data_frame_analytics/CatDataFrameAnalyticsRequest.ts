@@ -35,20 +35,10 @@ export interface Request extends CatRequestBase {
     allow_no_match?: boolean
     bytes?: Bytes
     /**
-     * Short version of the HTTP accept header. Valid values include JSON, YAML,
-     * etc.
-     */
-    format?: string
-    /**
      * Comma-separated list of column names to display.
      * @server_default create_time,id,state,type
      */
     h?: CatDfaColumns
-    /**
-     * If `true`, the response includes help information.
-     * @server_default false
-     */
-    help?: boolean
     /** Comma-separated list of column names or column aliases used to sort the
      * response.
      */
@@ -57,10 +47,5 @@ export interface Request extends CatRequestBase {
      * Unit used to display time values.
      */
     time?: Time
-    /**
-     * If `true`, the response includes column headings.
-     * @server_default false
-     */
-    v?: boolean
   }
 }

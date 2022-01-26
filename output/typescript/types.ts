@@ -6393,12 +6393,9 @@ export interface CatMlDataFrameAnalyticsRequest extends CatCatRequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
-  format?: string
   h?: CatCatDfaColumns
-  help?: boolean
   s?: CatCatDfaColumns
   time?: Time
-  v?: boolean
 }
 
 export type CatMlDataFrameAnalyticsResponse = CatMlDataFrameAnalyticsDataFrameAnalyticsRecord[]
