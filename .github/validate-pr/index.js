@@ -83,7 +83,7 @@ async function run () {
   cd(path.join(__dirname, '..', '..'))
 
   const tick = '`'
-  let comment = 'You have updated some API definitions, great work!\nFollowing you can find the validation results for the APIs you have changed.\n\n'
+  let comment = 'You have updated some API definitions, great work! :muscle:\nFollowing you can find the validation results for the APIs you have changed.\n\n'
   for (const log of logs) {
     comment += '<details>\n'
     comment += `<summary><code>${log.api}</code></summary>\n\n`

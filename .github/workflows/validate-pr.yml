@@ -2,8 +2,8 @@ name: Validate pull request
 
 on:
   pull_request:
-    # paths:
-    #   - 'specification/**'
+    paths:
+      - 'specification/**'
 
 jobs:
   validate-pr:
