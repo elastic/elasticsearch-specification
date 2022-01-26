@@ -48,6 +48,12 @@ jobs:
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
+      - uses: izhangzhihao/delete-comment@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_user_name: github-actions[bot]
+          issue_number: ${{ github.event.number }}  # remove comments from the current PR
+
       - name: Run validation
         working-directory: ./elasticsearch-specification
         run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }} --version 8.1.0-SNAPSHOT
