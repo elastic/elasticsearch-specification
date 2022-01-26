@@ -11099,7 +11099,7 @@ export interface MlAnalysisConfig {
   model_prune_window?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
-  summary_count_field_name?: Field | number
+  summary_count_field_name?: Field
 }
 
 export interface MlAnalysisConfigRead {
@@ -11113,7 +11113,7 @@ export interface MlAnalysisConfigRead {
   latency?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
-  summary_count_field_name?: number
+  summary_count_field_name?: Field
 }
 
 export interface MlAnalysisLimits {
