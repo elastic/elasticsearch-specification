@@ -27,5 +27,6 @@ import { Void } from '@spec_utils/VoidValue'
  * @rest_spec_name cluster.remote_info
  * @since 6.1.0
  * @stability stable
+ * @doc_id cluster-remote-info
  */
 export interface Request extends RequestBase {}

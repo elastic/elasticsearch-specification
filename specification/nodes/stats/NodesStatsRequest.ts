@@ -25,6 +25,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name nodes.stats
  * @since 0.0.0
  * @stability stable
+ * @doc_id cluster-nodes-stats
  */
 export interface Request extends RequestBase {
   path_parts: {
