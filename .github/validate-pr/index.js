@@ -80,8 +80,26 @@ async function run () {
     }
   }
 
-  console.log(JSON.stringify(logs, null, 2))
   cd(path.join(__dirname, '..', '..'))
+
+  const tick = '`'
+  let comment = 'You have updated some API definitions, great work!\nFollowing you can find the validation results for the APIs you have changed.\n\n'
+  for (const log of logs) {
+    comment += `${tick}${log.api}${tick}\n`
+    comment += '<summary>\n'
+    comment += `${tick}${tick}${tick}sh
+${log.log}
+${tick}${tick}${tick}\n`
+    comment += '</summary>\n\n'
+  }
+
+  await octokit.issues.createComment({
+    ...context.repo,
+    issue_number: context.payload.pull_request.number,
+    body: comment
+  })
+
+  core.info('Done!')
 }
 
 const privateNames = ['_global']
