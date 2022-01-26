@@ -31,6 +31,9 @@ jobs:
         working-directory: ./elasticsearch-specification
         run: |
           npm install --prefix .github/validate-pr
+          npm install --prefix clients-flight-recorder/scripts/clone-elasticsearch
+          npm install --prefix clients-flight-recorder/scripts/upload-recording
+          npm install --prefix clients-flight-recorder/scripts/types-validator
           make setup
 
       - name: Run validation
