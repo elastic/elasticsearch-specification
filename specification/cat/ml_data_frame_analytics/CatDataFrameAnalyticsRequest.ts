@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatDfaColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * Returns configuration and usage information about data frame analytics jobs.
@@ -39,5 +40,18 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     allow_no_match?: boolean
     bytes?: Bytes
+    /**
+     * Comma-separated list of column names to display.
+     * @server_default create_time,id,state,type
+     */
+    h?: CatDfaColumns
+    /** Comma-separated list of column names or column aliases used to sort the
+     * response.
+     */
+    s?: CatDfaColumns
+    /**
+     * Unit used to display time values.
+     */
+    time?: Time
   }
 }
