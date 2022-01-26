@@ -34,7 +34,6 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * @since 0.0.0
  * @stability stable
  * @doc_id docs-bulk
- *
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
