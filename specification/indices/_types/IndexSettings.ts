@@ -23,11 +23,23 @@ import { Analyzer } from '@_types/analysis/analyzers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
-import { Name, PipelineName, Uuid, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  Fields,
+  Name,
+  PipelineName,
+  Uuid,
+  VersionString
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { DateOrEpochMillis, DateString, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
-import { IndexSegmentSort } from './IndexSegmentSort'
+import {
+  IndexSegmentSort,
+  SegmentSortMissing,
+  SegmentSortMode,
+  SegmentSortOrder
+} from './IndexSegmentSort'
 
 export class SoftDeletes {
   enabled: boolean
@@ -46,7 +58,7 @@ export class IndexSettings {
   /**
    * @aliases index.routing_path
    */
-  routing_path?: string[]
+  routing_path?: string | string[]
   /**
    * @aliases index.soft_deletes
    */
@@ -64,6 +76,22 @@ export class IndexSettings {
    * @aliases index.sort
    */
   sort?: IndexSegmentSort
+  /**
+   * @aliases index.sort.field
+   */
+  'sort.field'?: Fields
+  /**
+   * @aliases index.sort.order
+   */
+  'sort.order'?: SegmentSortOrder | SegmentSortOrder[]
+  /**
+   * @aliases index.sort.mode
+   */
+  'sort.mode'?: SegmentSortMode | SegmentSortMode[]
+  /**
+   * @aliases index.sort.missing
+   */
+  'sort.missing'?: SegmentSortMissing | SegmentSortMissing[]
   /**
    * @server_default 1
    * @aliases index.number_of_shards
@@ -108,14 +136,7 @@ export class IndexSettings {
    * @server_default false
    */
   auto_expand_replicas?: string
-  /**
-   * @aliases index.merge.scheduler.max_thread_count
-   */
-  'merge.scheduler.max_thread_count'?: integer
-  /**
-   * @aliases index.merge.scheduler.max_merge_count
-   */
-  'merge.scheduler.max_merge_count'?: integer
+  merge?: Merge
   /**
    * @aliases index.search.idle.after
    * @server_default 30s
@@ -249,7 +270,7 @@ export class IndexSettings {
   /**
    * @aliases index.verified_before_close
    */
-  verified_before_close?: boolean
+  verified_before_close?: boolean | string
   /**
    * @aliases index.format
    */
@@ -258,14 +279,7 @@ export class IndexSettings {
    * @aliases index.max_slices_per_scroll
    */
   max_slices_per_scroll?: integer
-  /**
-   * @aliases index.translog.durability
-   */
-  'translog.durability'?: string
-  /**
-   * @aliases index.translog.flush_threshold_size
-   */
-  'translog.flush_threshold_size'?: string
+  translog?: Translog
   /**
    * @aliases index.query_string.lenient
    */
@@ -284,6 +298,8 @@ export class IndexSettings {
    * @stability experimental
    */
   time_series?: IndexSettingsTimeSeries
+  shards?: integer
+  queries?: Queries
 }
 
 export class IndexSettingBlocks {
@@ -318,6 +334,33 @@ export class IndexSettingsAnalysis {
 }
 
 export class IndexSettingsTimeSeries {
-  end_time: DateString
-  start_time: DateString
+  end_time?: DateOrEpochMillis
+  start_time?: DateOrEpochMillis
+}
+
+export class Merge {
+  scheduler?: MergeScheduler
+}
+
+export class MergeScheduler {
+  max_thread_count?: integer
+  max_merge_count?: integer
+}
+
+export class Translog {
+  durability?: string
+  flush_threshold_size?: string
+  retention?: TranslogRetention
+}
+
+export class TranslogRetention {
+  size: ByteSize
+}
+
+export class Queries {
+  cache?: CacheQueries
+}
+
+export class CacheQueries {
+  enabled: boolean
 }

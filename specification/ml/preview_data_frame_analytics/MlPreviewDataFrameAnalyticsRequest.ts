@@ -37,10 +37,10 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * A data frame analytics config as described in Create data frame analytics
-     * jobs. Note that id and dest don’t need to be provided in the context of
+     * A data frame analytics config as described in create data frame analytics
+     * jobs. Note that `id` and `dest` don’t need to be provided in the context of
      * this API.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html
+     * @doc_id put-dfanalytics
      */
     config?: DataframePreviewConfig
   }

@@ -17,7 +17,9 @@
         "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
         "type_alias definition _spec_utils:Void / instance_of - No type definition for 'internal:void'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
-        "type_alias definition _global.search._types:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'"
+        "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
+        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
+        "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
     "async_search.status": {
@@ -177,24 +179,24 @@
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'h'",
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
+        "request definition cat.ml_datafeeds:Request / query - Property 'format' is already defined in an ancestor class",
+        "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_datafeeds:Request / query - Property 'help' is already defined in an ancestor class",
+        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class",
+        "request definition cat.ml_datafeeds:Request / query - Property 'v' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'h'",
-        "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
+        "request definition cat.ml_jobs:Request / query - Property 'format' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 'help' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 'v' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -1599,13 +1601,13 @@
     },
     "security.enroll_kibana": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "security.enroll_node": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1674,39 +1676,9 @@
       ],
       "response": []
     },
-    "security.saml_authenticate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_complete_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_invalidate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_prepare_authentication": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.saml_service_provider_metadata": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1841,19 +1813,19 @@
     },
     "sql.delete_async": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "sql.get_async": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "sql.get_async_status": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },

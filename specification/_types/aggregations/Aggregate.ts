@@ -672,9 +672,7 @@ export class BoxPlotAggregate extends AggregateBase {
 }
 
 /** @variant name=top_metrics */
-export class TopMetricsAggregate extends MultiBucketAggregateBase<TopMetricsBucket> {}
-
-export class TopMetricsBucket extends MultiBucketBase {
+export class TopMetricsAggregate extends AggregateBase {
   top: TopMetrics[]
 }
 

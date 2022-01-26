@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 
 /**
  * @rest_spec_name rollup.get_rollup_index_caps
@@ -27,6 +27,6 @@ import { Id } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index: Id
+    index: Ids
   }
 }

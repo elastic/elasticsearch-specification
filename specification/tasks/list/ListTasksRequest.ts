@@ -28,6 +28,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * @since 2.3.0
  * @stability experimental
  * @cluster_privileges monitor, manage
+ * @doc_id tasks
  */
 export interface Request extends RequestBase {
   query_parameters: {

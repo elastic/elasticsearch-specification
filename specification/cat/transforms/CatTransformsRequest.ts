@@ -22,9 +22,16 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Returns configuration and usage information about transforms.
+ *
+ * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * console or command line. They are not intended for use by applications. For
+ * application consumption, use the get transform statistics API.
+ *
  * @rest_spec_name cat.transforms
  * @since 7.7.0
  * @stability stable
+ * @doc_id cat-transforms
  */
 export interface Request extends CatRequestBase {
   path_parts: {

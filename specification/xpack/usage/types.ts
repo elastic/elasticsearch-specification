@@ -163,7 +163,14 @@ export class MlJobForecasts {
 export class MlDataFrameAnalyticsJobs {
   memory_usage?: MlDataFrameAnalyticsJobsMemory
   _all: MlDataFrameAnalyticsJobsCount
-  analysis_counts?: EmptyObject
+  analysis_counts?: MlDataFrameAnalyticsJobsAnalysis
+  stopped?: MlDataFrameAnalyticsJobsCount
+}
+
+export class MlDataFrameAnalyticsJobsAnalysis {
+  classification?: integer
+  outlier_detection?: integer
+  regression?: integer
 }
 
 export class MlDataFrameAnalyticsJobsMemory {
@@ -220,6 +227,7 @@ export class MlInferenceTrainedModelsCount {
   other: long
   regression?: long
   classification?: long
+  ner?: long
 }
 
 export class MlCounter {
@@ -331,7 +339,7 @@ export class FrozenIndices extends Base {
 export class AllJobs {
   count: integer
   detectors: Dictionary<string, integer>
-  created_by: Dictionary<string, string>
+  created_by: Dictionary<string, string | integer>
   model_size: Dictionary<string, integer>
   forecasts: Dictionary<string, integer>
 }
