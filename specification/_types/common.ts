@@ -258,7 +258,7 @@ export enum ThreadType {
   mem
 }
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html */
+/** @doc_id cluster-health */
 export enum WaitForActiveShardOptions {
   'all' = 0
 }
