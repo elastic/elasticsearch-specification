@@ -27,13 +27,17 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Install deps
-        working-directory: ./elasticsearch-specification
+      - name: Install deps 1/2
+        working-directory: ./clients-flight-recorder
         run: |
-          npm install --prefix .github/validate-pr
           npm install --prefix clients-flight-recorder/scripts/clone-elasticsearch
           npm install --prefix clients-flight-recorder/scripts/upload-recording
           npm install --prefix clients-flight-recorder/scripts/types-validator
+
+      - name: Install deps 2/2
+        working-directory: ./elasticsearch-specification
+        run: |
+          npm install --prefix .github/validate-pr
           make setup
 
       - name: Run validation

@@ -26,7 +26,7 @@ const assert = require('assert')
 const core = require('@actions/core')
 const github = require('@actions/github')
 const octokit = github.getOctokit(argv.token)
-const validateApi = require('../../clients-flight-recorder/scripts/types-validator/validator')
+const validateApi = require('../../../clients-flight-recorder/scripts/types-validator/validator')
 
 console.log(validateApi.toString())
 
