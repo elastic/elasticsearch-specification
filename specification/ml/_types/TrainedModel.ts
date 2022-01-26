@@ -142,6 +142,8 @@ export class TrainedModelDeploymentNodesStats {
   model_threads: integer
   /** Information pertaining to the node. */
   node: DiscoveryNode
+  /** The number of inference requests queued to be processed. */
+  number_of_pending_requests: integer
   /** The number of inference requests that were not processed because the queue was full. */
   rejection_execution_count: integer
   /** The current routing state and reason for the current routing state for this allocation. */
