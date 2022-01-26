@@ -56,9 +56,6 @@ async function run () {
 
   cd(tsValidationPath)
 
-  await $`node ../upload-recording/download.js --branch master`
-  await $`node ../clone-elasticsearch/index.js --version 8.1.0-SNAPSHOT`
-
   for (const file of specFiles) {
     if (file.startsWith('specification/_types')) continue
     if (file.startsWith('specification/_spec_utils')) continue
@@ -69,14 +66,14 @@ async function run () {
         .filter(endpoint => endpoint.name.includes(getApi(file).split('.')[0]))
         .map(endpoint => endpoint.name)
       for (const api of apis) {
-        const Process = await $`STACK_VERSION=8.1.0-SNAPSHOT node index.js --api ${api} --request --response --verbose`
+        const Process = await $`STACK_VERSION=${argv.version} node index.js --api ${api} --request --response --verbose`
         logs.push({
           api,
           log: Process.toString()
         })
       }
     } else {
-      const Process = await $`STACK_VERSION=8.1.0-SNAPSHOT node index.js --api ${getApi(file)} --request --response --verbose`
+      const Process = await $`STACK_VERSION=${argv.version} node index.js --api ${getApi(file)} --request --response --verbose`
       logs.push({
         api: getApi(file),
         log: Process.toString()

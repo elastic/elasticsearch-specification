@@ -40,8 +40,14 @@ jobs:
           npm install --prefix .github/validate-pr
           make setup
 
-      - name: Run validation
-        working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
+      - name: Download artifacts
+        working-directory: ./clients-flight-recorder
+        run: |
+          node scripts/upload-recording/download.js --branch master
+          node scripts/clone-elasticsearch/index.js --version 8.1.0-SNAPSHOT
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
+
+      - name: Run validation
+        working-directory: ./elasticsearch-specification
+        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }} --version 8.1.0-SNAPSHOT
