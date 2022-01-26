@@ -5872,8 +5872,6 @@ export type CatCatAnonalyDetectorColumns = CatCatAnomalyDetectorColumn | CatCatA
 
 export type CatCatDatafeedColumn = 'ae' | 'assignment_explanation' | 'bc' | 'buckets.count' | 'bucketsCount' | 'id' | 'na' | 'node.address' | 'nodeAddress' | 'ne' | 'node.ephemeral_id' | 'nodeEphemeralId' | 'ni' | 'node.id' | 'nodeId' | 'nn' | 'node.name' | 'nodeName' | 'sba' | 'search.bucket_avg' | 'searchBucketAvg' | 'sc' | 'search.count' | 'searchCount' | 'seah' | 'search.exp_avg_hour' | 'searchExpAvgHour' | 'st' | 'search.time' | 'searchTime' | 's' | 'state'
 
-export type CatCatDatafeedColumns = CatCatDatafeedColumn | CatCatDatafeedColumn[]
-
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
@@ -6445,9 +6443,9 @@ export interface CatMlDatafeedsRequest extends CatCatRequestBase {
   datafeed_id?: Id
   allow_no_match?: boolean
   format?: string
-  h?: CatCatDatafeedColumns
+  h?: CatCatDatafeedColumn[]
   help?: boolean
-  s?: CatCatDatafeedColumns
+  s?: CatCatDatafeedColumn[]
   time?: TimeUnit
   v?: boolean
 }
@@ -6631,7 +6629,7 @@ export interface CatMlJobsJobsRecord {
   bucketsTimeExpAvgHour?: string
 }
 
-export interface CatMlJobsRequest extends CatCatRequestBase {
+export interface CatMlJobsRequest extends RequestBase {
   job_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes

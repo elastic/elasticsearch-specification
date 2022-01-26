@@ -136,6 +136,15 @@ async function run () {
     }
   }
 
+  {
+    spinner.text = 'Validating typescript view'
+    const Process = await nothrow($`npm run validate-ts-view --prefix ${compilerPath}`)
+    if (Process.exitCode !== 0) {
+      spinner.fail(removeHeader(Process.toString()))
+      process.exit(1)
+    }
+  }
+
   spinner.text = 'Running validations'
 
   const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : 'master'
