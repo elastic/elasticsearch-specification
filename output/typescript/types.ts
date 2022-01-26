@@ -6629,7 +6629,7 @@ export interface CatMlJobsJobsRecord {
   bucketsTimeExpAvgHour?: string
 }
 
-export interface CatMlJobsRequest extends CatCatRequestBase {
+export interface CatMlJobsRequest extends RequestBase {
   job_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase, CatAnonalyDetectorColumns } from '@cat/_types/CatBase'
+import { CatAnonalyDetectorColumns } from '@cat/_types/CatBase'
+import { RequestBase } from '@_types/Base'
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
@@ -37,7 +38,7 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_ml
  * @doc_id cat-anomaly-detectors
  */
-export interface Request extends CatRequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
      * Identifier for the anomaly detection job.
