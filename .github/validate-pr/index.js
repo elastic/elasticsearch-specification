@@ -85,12 +85,12 @@ async function run () {
   const tick = '`'
   let comment = 'You have updated some API definitions, great work!\nFollowing you can find the validation results for the APIs you have changed.\n\n'
   for (const log of logs) {
-    comment += `${tick}${log.api}${tick}\n`
-    comment += '<summary>\n'
+    comment += '<details>\n'
+    comment += `<summary>${tick}${log.api}${tick}</summary>\n\n`
     comment += `${tick}${tick}${tick}sh
 ${log.log}
 ${tick}${tick}${tick}\n`
-    comment += '</summary>\n\n'
+    comment += '</details>\n\n'
   }
 
   await octokit.rest.issues.createComment({
