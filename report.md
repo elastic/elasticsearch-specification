@@ -131,7 +131,7 @@
 ## Top 50 used types
 | Type | Occurencies | Location |
 | --- | --- | --- |
-| `_types.RequestBase` | 361 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
+| `_types.RequestBase` | 362 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
 | `_types.integer` | 340 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
 | `_types.long` | 284 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
 | `_types.Id` | 240 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
@@ -158,8 +158,8 @@
 | `_types.Names` | 29 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
 | `_types.ByteSize` | 28 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L81-L82) |
 | `_types.aggregations.BucketAggregationBase` | 25 | [`_types/aggregations/bucket.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/bucket.ts#L40-L45) |
-| `cat._types.CatRequestBase` | 25 | [`cat/_types/CatBase.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cat/_types/CatBase.ts#L28-L30) |
 | `_types.float` | 24 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L26-L26) |
+| `cat._types.CatRequestBase` | 24 | [`cat/_types/CatBase.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cat/_types/CatBase.ts#L28-L30) |
 | `_types.DictionaryResponseBase` | 21 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L52-L52) |
 | `_types.ShardStatistics` | 21 | [`_types/Stats.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Stats.ts#L32-L38) |
 | `_types.ErrorCause` | 19 | [`_types/Errors.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Errors.ts#L25-L48) |
