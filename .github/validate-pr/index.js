@@ -25,7 +25,7 @@ require('zx/globals')
 const assert = require('assert')
 const core = require('@actions/core')
 const github = require('@actions/github')
-const octokit = new github.GitHub(argv.token)
+const octokit = github.getOctokit(argv.token)
 
 async function run () {
   const context = github.context

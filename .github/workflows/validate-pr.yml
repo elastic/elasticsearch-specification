@@ -15,18 +15,12 @@ jobs:
         with:
           path: ./elasticsearch-specification
 
-      - name: ls
-        run: ls -al
-
       - uses: actions/checkout@v2
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
           token: ${{ secrets.PAT }}
           ref: dev
-
-      - name: ls
-        run: ls -al
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
