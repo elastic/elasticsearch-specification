@@ -42,8 +42,8 @@ ccr-resume-auto-follow-pattern,https://www.elastic.co/guide/en/elasticsearch/ref
 ccr-post-resume-follow,https://www.elastic.co/guide/en/elasticsearch/reference/master/ccr-post-resume-follow.html
 ccr-get-stats,https://www.elastic.co/guide/en/elasticsearch/reference/master/ccr-get-stats.html
 ccr-post-unfollow,https://www.elastic.co/guide/en/elasticsearch/reference/master/ccr-post-unfollow.html
-clear-scroll-api,/guide/en/elasticsearch/reference/current/clear-scroll-api.html
-point-in-time-api,/guide/en/elasticsearch/reference/master/point-in-time-api.html
+clear-scroll-api,https://www.elastic.co/guide/en/elasticsearch/reference/master/clear-scroll-api.html
+point-in-time-api,https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html
 cluster-allocation-explain,/guide/en/elasticsearch/reference/master/cluster-allocation-explain.html
 indices-component-template,/guide/en/elasticsearch/reference/master/indices-component-template.html
 voting-config-exclusions,/guide/en/elasticsearch/reference/master/voting-config-exclusions.html
