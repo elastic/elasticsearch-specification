@@ -32,7 +32,7 @@ async function run () {
   assert(context.payload.pull_request, 'We should be in a PR context')
   const response = await octokit.rest.pulls.listFiles({
     owner: 'elastic',
-    repo: 'elasitcsearch-specification',
+    repo: 'elasticsearch-specification',
     pull_number: context.payload.pull_request.number,
   })
   console.log(JSON.stringify(response, null, 2))
