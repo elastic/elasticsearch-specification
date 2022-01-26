@@ -191,13 +191,7 @@
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: should not have a body",
-        "request definition cat.ml_jobs:Request / query - Property 'format' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 'help' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / query - Property 'v' is already defined in an ancestor class",
-        "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
+        "Request: should not have a body"
       ],
       "response": []
     },

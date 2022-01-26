@@ -12,6 +12,7 @@
     "generate-schema": "ts-node src/index.ts",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",
+    "validate-ts-view": "tsc --noEmit ../output/typescript/types.ts",
     "generate-dangling": "ts-node src dangling-types-report.ts"
   },
   "author": "Elastic",
