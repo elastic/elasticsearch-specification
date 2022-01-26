@@ -34,85 +34,85 @@ export enum CatDfaColumn {
    * Contains messages relating to the selection of a node.
    * @aliases ae
    */
-  assignment_explanation = 0,
+  assignment_explanation,
   /**
    * The time when the data frame analytics job was created.
    * @aliases ct, createTime
    */
-  create_time = 1,
+  create_time,
   /**
    * A description of a job.
    * @aliases d
    */
-  description = 2,
+  description,
   /**
    * Name of the destination index.
    * @aliases di, destIndex
    */
-  dest_index = 3,
+  dest_index,
   /**
    * Contains messages about the reason why a data frame analytics job failed.
    * @aliases fr, failureReason
    */
-  failure_reason = 4,
+  failure_reason,
   /**
    * Identifier for the data frame analytics job.
    */
-  id = 5,
+  id,
   /**
    * The approximate maximum amount of memory resources that are permitted for
    * the data frame analytics job.
    * @aliases mml, modelMemoryLimit
    */
-  model_memory_limit = 6,
+  model_memory_limit,
   /**
    * The network address of the node that the data frame analytics job is
    * assigned to.
    * @aliases na, nodeAddress
    */
-  'node.address' = 7,
+  'node.address',
   /**
    * The ephemeral ID of the node that the data frame analytics job is assigned
    * to.
    * @aliases ne, nodeEphemeralId
    */
-  'node.ephemeral_id' = 8,
+  'node.ephemeral_id',
   /**
    * The unique identifier of the node that the data frame analytics job is
    * assigned to.
    * @aliases ni, nodeId
    */
-  'node.id' = 9,
+  'node.id',
   /**
    * The name of the node that the data frame analytics job is assigned to.
    * @aliases nn, nodeName
    */
-  'node.name' = 10,
+  'node.name',
   /**
    * The progress report of the data frame analytics job by phase.
    * @aliases p
    */
-  progress = 11,
+  progress,
   /**
    * Name of the source index.
    * @aliases si, sourceIndex
    */
-  source_index = 12,
+  source_index,
   /**
    * Current state of the data frame analytics job.
    * @aliases s
    */
-  state = 13,
+  state,
   /**
    * The type of analysis that the data frame analytics job performs.
    * @aliases t
    */
-  type = 14,
+  type,
   /**
    * The Elasticsearch version number in which the data frame analytics job was
    * created.
    * @aliases v
    */
-  version = 15
+  version
 }
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
