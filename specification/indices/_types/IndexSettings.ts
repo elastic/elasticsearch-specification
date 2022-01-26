@@ -25,25 +25,32 @@ import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
 import {
   ByteSize,
-  Fields,
   Name,
   PipelineName,
   Uuid,
   VersionString
 } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { DateOrEpochMillis, DateString, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
+import { IndexSegmentSort } from './IndexSegmentSort'
 import {
-  IndexSegmentSort,
-  SegmentSortMissing,
-  SegmentSortMode,
-  SegmentSortOrder
-} from './IndexSegmentSort'
+  DFIIndependenceMeasure,
+  DFRAfterEffect,
+  DFRBasicModel,
+  IBDistribution,
+  IBLambda,
+  Normalization
+} from '@_types/Similarity'
+import { Script } from '@_types/Scripting'
 
 export class SoftDeletes {
   enabled: boolean
-  'retention_lease.period'?: Time
+  retention_lease?: RetentionLease
+}
+
+export class RetentionLease {
+  period: Time
 }
 
 /**
@@ -51,254 +58,154 @@ export class SoftDeletes {
  */
 export class IndexSettings {
   index?: IndexSettings
-  /**
-   * @aliases index.mode
-   */
   mode?: string
-  /**
-   * @aliases index.routing_path
-   */
   routing_path?: string | string[]
-  /**
-   * @aliases index.soft_deletes
-   */
   soft_deletes?: SoftDeletes
-  /**
-   * @aliases index.soft_deletes.enabled
-   */
-  'soft_deletes.enabled'?: boolean
-  /**
-   * @aliases index.soft_deletes.retention_lease.period
-   * @server_default 12h
-   */
-  'soft_deletes.retention_lease.period'?: Time
-  /**
-   * @aliases index.sort
-   */
   sort?: IndexSegmentSort
-  /**
-   * @aliases index.sort.field
-   */
-  'sort.field'?: Fields
-  /**
-   * @aliases index.sort.order
-   */
-  'sort.order'?: SegmentSortOrder | SegmentSortOrder[]
-  /**
-   * @aliases index.sort.mode
-   */
-  'sort.mode'?: SegmentSortMode | SegmentSortMode[]
-  /**
-   * @aliases index.sort.missing
-   */
-  'sort.missing'?: SegmentSortMissing | SegmentSortMissing[]
-  /**
-   * @server_default 1
-   * @aliases index.number_of_shards
-   */
+  /** @server_default 1 */
   number_of_shards?: integer | string // TODO: should be only int
-  /**
-   * @server_default 0
-   * @aliases index.number_of_replicas
-   */
+  /** @server_default 0 */
   number_of_replicas?: integer | string // TODO: should be only int
-  /**
-   * @aliases index.number_of_routing_shards
-   */
   number_of_routing_shards?: integer
-  /**
-   * @aliases index.check_on_startup
-   * @server_default false
-   */
+  /** @server_default false */
   check_on_startup?: IndexCheckOnStartup
-  /**
-   * @aliases index.codec
-   * @server_default LZ4
-   */
+  /** @server_default LZ4 */
   codec?: string
-  /**
-   * @server_default 1
-   * @aliases index.routing_partition_size
-   */
+  /** @server_default 1 */
   routing_partition_size?: integer
-  /**
-   * @aliases index.load_fixed_bitset_filters_eagerly
-   * @server_default true
-   */
+  /** @server_default true */
   load_fixed_bitset_filters_eagerly?: boolean
-  /**
-   * @server_default false
-   * @aliases index.hidden
-   */
+  /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
-  /**
-   * @aliases index.auto_expand_replicas
-   * @server_default false
-   */
+  /** @server_default false */
   auto_expand_replicas?: string
   merge?: Merge
-  /**
-   * @aliases index.search.idle.after
-   * @server_default 30s
-   */
-  'search.idle.after'?: Time
-  /**
-   * @aliases index.refresh_interval
-   * @server_default 1s
-   */
+  search?: SettingsSearch
+  /** @server_default 1s */
   refresh_interval?: Time
-  /**
-   * @aliases index.max_result_window
-   * @server_default 10000
-   */
+  /** @server_default 10000 */
   max_result_window?: integer
-  /**
-   * @aliases index.max_inner_result_window
-   * @server_default 100
-   */
+  /** @server_default 100 */
   max_inner_result_window?: integer
-  /**
-   * @aliases index.max_rescore_window
-   * @server_default 10000
-   */
+  /** @server_default 10000 */
   max_rescore_window?: integer
-  /**
-   * @aliases index.max_docvalue_fields_search
-   * @server_default 100
-   */
+  /** @server_default 100 */
   max_docvalue_fields_search?: integer
-  /**
-   * @aliases index.max_script_fields
-   * @server_default 32
-   */
+  /** @server_default 32 */
   max_script_fields?: integer
-  /**
-   * @aliases index.max_ngram_diff
-   * @server_default 1
-   */
+  /** @server_default 1 */
   max_ngram_diff?: integer
-  /**
-   * @aliases index.max_shingle_diff
-   * @server_default 3
-   */
+  /** @server_default 3 */
   max_shingle_diff?: integer
-  /**
-   * @aliases index.blocks
-   */
   blocks?: IndexSettingBlocks
-  /** @aliases index.blocks.read_only */
-  'blocks.read_only'?: boolean
-  /** @aliases index.blocks.read_only_allow_delete */
-  'blocks.read_only_allow_delete'?: boolean
-  /** @aliases index.blocks.read */
-  'blocks.read'?: boolean
-  /** @aliases index.blocks.write */
-  'blocks.write'?: boolean | string // TODO: should be bool only
-  /** @aliases index.blocks.metadata */
-  'blocks.metadata'?: boolean
-  /**
-   * @aliases index.max_refresh_listeners
-   */
   max_refresh_listeners?: integer
-  /**
-   * @aliases index.analyze.max_token_count
-   * @server_default 10000
-   */
-  'analyze.max_token_count'?: integer
-  /**
-   * @aliases index.highlight.max_analyzed_offset
-   * @server_default 1000000
-   */
-  'highlight.max_analyzed_offset'?: integer
-  /**
-   * @aliases index.max_terms_count
-   * @server_default 65536
-   */
+  analyze?: SettingsAnalyze
+  highlight?: SettingsHighlight
+  /** @server_default 65536 */
   max_terms_count?: integer
-  /**
-   * @aliases index.max_regex_length
-   * @server_default 1000
-   */
+  /** @server_default 1000 */
   max_regex_length?: integer
-  /**
-   * @aliases index.routing
-   */
   routing?: IndexRouting
-  /**
-   * @aliases index.gc_deletes
-   * @server_default 60s
-   */
+  /** @server_default 60s */
   gc_deletes?: Time
-  /**
-   * @aliases index.default_pipeline
-   * @server_default _none
-   */
+  /** @server_default _none */
   default_pipeline?: PipelineName
-  /**
-   * @aliases index.final_pipeline
-   * @server_default _none
-   */
+  /** @server_default _none */
   final_pipeline?: PipelineName
-  /**
-   * @aliases index.lifecycle
-   */
   lifecycle?: IndexSettingsLifecycle
-  /**
-   * @aliases index.lifecycle.name
-   */
-  'lifecycle.name'?: string
-  /**
-   * @aliases index.provided_name
-   */
   provided_name?: Name
-  /**
-   * @aliases index.creation_date
-   */
   creation_date?: DateString
-  /**
-   * @aliases index.creation_date_string
-   */
   creation_date_string?: DateString
-  /**
-   * @aliases index.uuid
-   */
   uuid?: Uuid
-  /**
-   * @aliases index.version
-   */
   version?: IndexVersioning
-  /**
-   * @aliases index.verified_before_close
-   */
   verified_before_close?: boolean | string
-  /**
-   * @aliases index.format
-   */
   format?: string | integer
-  /**
-   * @aliases index.max_slices_per_scroll
-   */
   max_slices_per_scroll?: integer
   translog?: Translog
-  /**
-   * @aliases index.query_string.lenient
-   */
-  'query_string.lenient'?: boolean
-  /**
-   * @aliases index.priority
-   */
+  query_string?: SettingsQueryString
   priority?: integer | string
 
   top_metrics_max_size?: integer
-
-  /**
-   * @aliases index.analysis
-   */
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
   time_series?: IndexSettingsTimeSeries
   shards?: integer
   queries?: Queries
+  similarity?: SettingsSimilarity
+}
+
+export class SettingsSimilarity {
+  bm25?: SettingsSimilarityBm25
+  dfi?: SettingsSimilarityDfi
+  dfr?: SettingsSimilarityDfr
+  ib?: SettingsSimilarityIb
+  lmd?: SettingsSimilarityLmd
+  lmj?: SettingsSimilarityLmj
+  scripted_tfidf?: SettingsSimilarityScriptedTfidf
+}
+
+export class SettingsSimilarityBm25 {
+  b: integer
+  discount_overlaps: boolean
+  k1: double
+  type: 'BM25'
+}
+
+export class SettingsSimilarityDfi {
+  independence_measure: DFIIndependenceMeasure
+  type: 'DFI'
+}
+
+export class SettingsSimilarityDfr {
+  after_effect: DFRAfterEffect
+  basic_model: DFRBasicModel
+  normalization: Normalization
+  type: 'DFR'
+}
+
+export class SettingsSimilarityIb {
+  distribution: IBDistribution
+  lambda: IBLambda
+  normalization: Normalization
+  type: 'IB'
+}
+
+export class SettingsSimilarityLmd {
+  mu: integer
+  type: 'LMDirichlet'
+}
+
+export class SettingsSimilarityLmj {
+  lambda: double
+  type: 'LMJelinekMercer'
+}
+
+export class SettingsSimilarityScriptedTfidf {
+  script: Script
+  type: 'scripted'
+}
+
+export class SettingsHighlight {
+  /** @server_default 1000000 */
+  max_analyzed_offset?: integer
+}
+
+export class SettingsAnalyze {
+  /** @server_default 10000 */
+  max_token_count?: integer
+}
+
+export class SettingsSearch {
+  idle: SearchIdle
+}
+
+export class SearchIdle {
+  /** @server_default 30s */
+  after?: Time
+}
+
+export class SettingsQueryString {
+  lenient: boolean
 }
 
 export class IndexSettingBlocks {
