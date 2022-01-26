@@ -1864,6 +1864,12 @@ export interface CoordsGeoBounds {
   right: double
 }
 
+export type DFIIndependenceMeasure = 'standardized' | 'saturated' | 'chisquared'
+
+export type DFRAfterEffect = 'no' | 'b' | 'l'
+
+export type DFRBasicModel = 'be' | 'd' | 'g' | 'if' | 'in' | 'ine' | 'p'
+
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
@@ -2029,6 +2035,10 @@ export type Host = string
 
 export type HttpHeaders = Record<string, string | string[]>
 
+export type IBDistribution = 'll' | 'spl'
+
+export type IBLambda = 'df' | 'ttf'
+
 export type Id = string | number
 
 export type Ids = Id | Id[]
@@ -2178,6 +2188,8 @@ export interface NodeStatistics {
   successful: integer
   failed: integer
 }
+
+export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
 
 export type OpType = 'index' | 'create'
 
@@ -9140,124 +9152,57 @@ export interface IndicesIndexSettingBlocks {
 export interface IndicesIndexSettings {
   index?: IndicesIndexSettings
   mode?: string
-  'index.mode'?: string
   routing_path?: string | string[]
-  'index.routing_path'?: string | string[]
   soft_deletes?: IndicesSoftDeletes
-  'index.soft_deletes'?: IndicesSoftDeletes
-  'soft_deletes.enabled'?: boolean
-  'index.soft_deletes.enabled'?: boolean
-  'soft_deletes.retention_lease.period'?: Time
-  'index.soft_deletes.retention_lease.period'?: Time
   sort?: IndicesIndexSegmentSort
-  'index.sort'?: IndicesIndexSegmentSort
-  'sort.field'?: Fields
-  'index.sort.field'?: Fields
-  'sort.order'?: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
-  'index.sort.order'?: IndicesSegmentSortOrder | IndicesSegmentSortOrder[]
-  'sort.mode'?: IndicesSegmentSortMode | IndicesSegmentSortMode[]
-  'index.sort.mode'?: IndicesSegmentSortMode | IndicesSegmentSortMode[]
-  'sort.missing'?: IndicesSegmentSortMissing | IndicesSegmentSortMissing[]
-  'index.sort.missing'?: IndicesSegmentSortMissing | IndicesSegmentSortMissing[]
   number_of_shards?: integer | string
-  'index.number_of_shards'?: integer | string
   number_of_replicas?: integer | string
-  'index.number_of_replicas'?: integer | string
   number_of_routing_shards?: integer
-  'index.number_of_routing_shards'?: integer
   check_on_startup?: IndicesIndexCheckOnStartup
-  'index.check_on_startup'?: IndicesIndexCheckOnStartup
   codec?: string
-  'index.codec'?: string
   routing_partition_size?: integer
-  'index.routing_partition_size'?: integer
   load_fixed_bitset_filters_eagerly?: boolean
-  'index.load_fixed_bitset_filters_eagerly'?: boolean
   hidden?: boolean | string
-  'index.hidden'?: boolean | string
   auto_expand_replicas?: string
-  'index.auto_expand_replicas'?: string
   merge?: IndicesMerge
-  'search.idle.after'?: Time
-  'index.search.idle.after'?: Time
+  search?: IndicesSettingsSearch
   refresh_interval?: Time
-  'index.refresh_interval'?: Time
   max_result_window?: integer
-  'index.max_result_window'?: integer
   max_inner_result_window?: integer
-  'index.max_inner_result_window'?: integer
   max_rescore_window?: integer
-  'index.max_rescore_window'?: integer
   max_docvalue_fields_search?: integer
-  'index.max_docvalue_fields_search'?: integer
   max_script_fields?: integer
-  'index.max_script_fields'?: integer
   max_ngram_diff?: integer
-  'index.max_ngram_diff'?: integer
   max_shingle_diff?: integer
-  'index.max_shingle_diff'?: integer
   blocks?: IndicesIndexSettingBlocks
-  'index.blocks'?: IndicesIndexSettingBlocks
-  'blocks.read_only'?: boolean
-  'index.blocks.read_only'?: boolean
-  'blocks.read_only_allow_delete'?: boolean
-  'index.blocks.read_only_allow_delete'?: boolean
-  'blocks.read'?: boolean
-  'index.blocks.read'?: boolean
-  'blocks.write'?: boolean | string
-  'index.blocks.write'?: boolean | string
-  'blocks.metadata'?: boolean
-  'index.blocks.metadata'?: boolean
   max_refresh_listeners?: integer
-  'index.max_refresh_listeners'?: integer
-  'analyze.max_token_count'?: integer
-  'index.analyze.max_token_count'?: integer
-  'highlight.max_analyzed_offset'?: integer
-  'index.highlight.max_analyzed_offset'?: integer
+  analyze?: IndicesSettingsAnalyze
+  highlight?: IndicesSettingsHighlight
   max_terms_count?: integer
-  'index.max_terms_count'?: integer
   max_regex_length?: integer
-  'index.max_regex_length'?: integer
   routing?: IndicesIndexRouting
-  'index.routing'?: IndicesIndexRouting
   gc_deletes?: Time
-  'index.gc_deletes'?: Time
   default_pipeline?: PipelineName
-  'index.default_pipeline'?: PipelineName
   final_pipeline?: PipelineName
-  'index.final_pipeline'?: PipelineName
   lifecycle?: IndicesIndexSettingsLifecycle
-  'index.lifecycle'?: IndicesIndexSettingsLifecycle
-  'lifecycle.name'?: string
-  'index.lifecycle.name'?: string
   provided_name?: Name
-  'index.provided_name'?: Name
   creation_date?: DateString
-  'index.creation_date'?: DateString
   creation_date_string?: DateString
-  'index.creation_date_string'?: DateString
   uuid?: Uuid
-  'index.uuid'?: Uuid
   version?: IndicesIndexVersioning
-  'index.version'?: IndicesIndexVersioning
   verified_before_close?: boolean | string
-  'index.verified_before_close'?: boolean | string
   format?: string | integer
-  'index.format'?: string | integer
   max_slices_per_scroll?: integer
-  'index.max_slices_per_scroll'?: integer
   translog?: IndicesTranslog
-  'query_string.lenient'?: boolean
-  'index.query_string.lenient'?: boolean
+  query_string?: IndicesSettingsQueryString
   priority?: integer | string
-  'index.priority'?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndicesIndexSettingsAnalysis
-  'index.analysis'?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
   time_series?: IndicesIndexSettingsTimeSeries
   shards?: integer
   queries?: IndicesQueries
+  similarity?: IndicesSettingsSimilarity
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -9309,15 +9254,90 @@ export interface IndicesQueries {
   cache?: IndicesCacheQueries
 }
 
+export interface IndicesRetentionLease {
+  period: Time
+}
+
+export interface IndicesSearchIdle {
+  after?: Time
+}
+
 export type IndicesSegmentSortMissing = '_last' | '_first'
 
 export type IndicesSegmentSortMode = 'min' | 'MIN' | 'max' | 'MAX'
 
 export type IndicesSegmentSortOrder = 'asc' | 'ASC' | 'desc' | 'DESC'
 
+export interface IndicesSettingsAnalyze {
+  max_token_count?: integer
+}
+
+export interface IndicesSettingsHighlight {
+  max_analyzed_offset?: integer
+}
+
+export interface IndicesSettingsQueryString {
+  lenient: boolean
+}
+
+export interface IndicesSettingsSearch {
+  idle: IndicesSearchIdle
+}
+
+export interface IndicesSettingsSimilarity {
+  bm25?: IndicesSettingsSimilarityBm25
+  dfi?: IndicesSettingsSimilarityDfi
+  dfr?: IndicesSettingsSimilarityDfr
+  ib?: IndicesSettingsSimilarityIb
+  lmd?: IndicesSettingsSimilarityLmd
+  lmj?: IndicesSettingsSimilarityLmj
+  scripted_tfidf?: IndicesSettingsSimilarityScriptedTfidf
+}
+
+export interface IndicesSettingsSimilarityBm25 {
+  b: integer
+  discount_overlaps: boolean
+  k1: double
+  type: 'BM25'
+}
+
+export interface IndicesSettingsSimilarityDfi {
+  independence_measure: DFIIndependenceMeasure
+  type: 'DFI'
+}
+
+export interface IndicesSettingsSimilarityDfr {
+  after_effect: DFRAfterEffect
+  basic_model: DFRBasicModel
+  normalization: Normalization
+  type: 'DFR'
+}
+
+export interface IndicesSettingsSimilarityIb {
+  distribution: IBDistribution
+  lambda: IBLambda
+  normalization: Normalization
+  type: 'IB'
+}
+
+export interface IndicesSettingsSimilarityLmd {
+  mu: integer
+  type: 'LMDirichlet'
+}
+
+export interface IndicesSettingsSimilarityLmj {
+  lambda: double
+  type: 'LMJelinekMercer'
+}
+
+export interface IndicesSettingsSimilarityScriptedTfidf {
+  script: Script
+  type: 'scripted'
+}
+
 export interface IndicesSoftDeletes {
   enabled: boolean
-  'retention_lease.period'?: Time
+  retention_lease?: IndicesRetentionLease
 }
 
 export interface IndicesStringFielddata {
