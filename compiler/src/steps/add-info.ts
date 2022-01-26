@@ -31,7 +31,7 @@ import { join } from 'path'
  */
 export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   const branch = execSync('git branch --show-current').toString().trim()
-  const isBaseBranch = branch === 'main' || branch.startsWith('7.')
+  const isBaseBranch = branch === 'main' || branch.startsWith('8.') || branch.startsWith('7.')
 
   if (isBaseBranch && process.env.SKIP_VERSION_UPDATE !== 'true') {
     model._info = {
