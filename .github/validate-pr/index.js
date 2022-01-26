@@ -30,8 +30,7 @@ const github = require('@actions/github')
 async function run () {
   const context = github.context
   assert(context.payload.pull_request, 'We should be in a PR context')
-  console.log(context.payload.pull_request)
-  console.log((await $`ls ..`).toString())
+  console.log(JSON.stringify(context.payload.pull_request, null, 2))
 }
 
 run().catch(err => {
