@@ -86,7 +86,7 @@ async function run () {
   let comment = 'You have updated some API definitions, great work!\nFollowing you can find the validation results for the APIs you have changed.\n\n'
   for (const log of logs) {
     comment += '<details>\n'
-    comment += `<summary>${tick}${log.api}${tick}</summary>\n\n`
+    comment += `<summary><code>${log.api}</code></summary>\n\n`
     comment += `${tick}${tick}${tick}sh
 ${log.log}
 ${tick}${tick}${tick}\n`
