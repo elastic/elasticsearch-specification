@@ -88,7 +88,7 @@ async function run () {
   let comment = 'Following you can find the validation results for the APIs you have changed.\n\n'
   for (const log of logs) {
     comment += '<details>\n'
-    comment += `<summary>${log.hasErrors ? ':red_circle:' : ':green_circle:'} <code>${log.api}</code</summary>\n\n`
+    comment += `<summary>${log.hasErrors ? ':red_circle:' : ':green_circle:'} <code>${log.api}</code></summary>\n\n`
     comment += `${tick}${tick}${tick}sh
 ${log.log}
 ${tick}${tick}${tick}\n`
