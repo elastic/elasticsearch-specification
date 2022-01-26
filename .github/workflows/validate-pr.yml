@@ -48,11 +48,14 @@ jobs:
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
-      - uses: izhangzhihao/delete-comment@master
+      - name: Remove previous comment
+        uses: maheshrayas/action-pr-comment-delete@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          delete_user_name: github-actions[bot]
-          issue_number: ${{ github.event.number }}  # remove comments from the current PR
+          org: elastic
+          repo: elasticsearch-specification
+          user: github-actions[bot]
+          issue: ${{ github.event.number }}
 
       - name: Run validation
         working-directory: ./elasticsearch-specification
