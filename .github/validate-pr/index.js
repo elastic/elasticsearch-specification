@@ -25,12 +25,17 @@ require('zx/globals')
 const assert = require('assert')
 const core = require('@actions/core')
 const github = require('@actions/github')
-// const octokit = new github.GitHub(argv.token)
+const octokit = new github.GitHub(argv.token)
 
 async function run () {
   const context = github.context
   assert(context.payload.pull_request, 'We should be in a PR context')
-  console.log(JSON.stringify(context.payload.pull_request, null, 2))
+  const response = await octokit.rest.pulls.listFiles({
+    owner: 'elastic',
+    repo: 'elasitcsearch-specification',
+    pull_number: context.payload.pull_request.number,
+  })
+  console.log(JSON.stringify(response, null, 2))
 }
 
 run().catch(err => {
