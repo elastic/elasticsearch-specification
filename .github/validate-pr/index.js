@@ -30,12 +30,25 @@ const octokit = github.getOctokit(argv.token)
 async function run () {
   const context = github.context
   assert(context.payload.pull_request, 'We should be in a PR context')
-  const response = await octokit.rest.pulls.listFiles({
-    owner: 'elastic',
-    repo: 'elasticsearch-specification',
-    pull_number: context.payload.pull_request.number,
-  })
-  console.log(JSON.stringify(response, null, 2))
+  const files = []
+  let page = 1
+  while (true) {
+    const { data } = await octokit.rest.pulls.listFiles({
+      owner: 'elastic',
+      repo: 'elasticsearch-specification',
+      pull_number: context.payload.pull_request.number,
+      page,
+      per_page: 100
+    })
+    if (data.length > 0) {
+      files.push(...data.map(entry => entry.filename))
+      page += 1
+    } else {
+      break
+    }
+  }
+
+  console.log(files)
 }
 
 run().catch(err => {
