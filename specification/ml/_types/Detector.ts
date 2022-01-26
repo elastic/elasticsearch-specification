@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { OverloadOf } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DetectionRule } from './Rule'
@@ -62,6 +63,19 @@ export class Detector {
    * Defines whether a new series is used as the null series when there is no value for the by or partition fields.
    * @server_default false
    */
+  use_null?: boolean
+}
+
+export class DetectorRead implements OverloadOf<Detector> {
+  by_field_name?: Field
+  custom_rules?: DetectionRule[]
+  detector_description?: string
+  detector_index?: integer
+  exclude_frequent?: ExcludeFrequent
+  field_name?: Field
+  function: string
+  over_field_name?: Field
+  partition_field_name?: Field
   use_null?: boolean
 }
 

@@ -11101,7 +11101,7 @@ export interface MlAnalysisConfigRead {
   categorization_analyzer?: MlCategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
-  detectors: MlDetector[]
+  detectors: MlDetectorRead[]
   influencers: Field[]
   model_prune_window?: Time
   latency?: Time
@@ -11583,6 +11583,19 @@ export interface MlDetectionRule {
 }
 
 export interface MlDetector {
+  by_field_name?: Field
+  custom_rules?: MlDetectionRule[]
+  detector_description?: string
+  detector_index?: integer
+  exclude_frequent?: MlExcludeFrequent
+  field_name?: Field
+  function: string
+  over_field_name?: Field
+  partition_field_name?: Field
+  use_null?: boolean
+}
+
+export interface MlDetectorRead {
   by_field_name?: Field
   custom_rules?: MlDetectionRule[]
   detector_description?: string

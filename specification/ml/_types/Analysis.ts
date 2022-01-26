@@ -20,7 +20,7 @@
 import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time, TimeSpan } from '@_types/Time'
-import { Detector } from './Detector'
+import { Detector, DetectorRead } from './Detector'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Tokenizer, TokenizerDefinition } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
@@ -80,7 +80,7 @@ export class AnalysisConfigRead implements OverloadOf<AnalysisConfig> {
   categorization_analyzer?: CategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
-  detectors: Detector[]
+  detectors: DetectorRead[]
   influencers: Field[]
   model_prune_window?: Time
   latency?: Time
