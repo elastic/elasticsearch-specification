@@ -48,9 +48,25 @@ async function run () {
     }
   }
 
+  const logs = []
   const specFiles = files.filter(file => file.includes('specification'))
-  console.log(specFiles)
-  await $`make validate api=bulk type=request stack-version=8.1.0-SNAPSHOT`
+
+  for (const file of specFiles) {
+    // TODO: if a  namespace/_types is changed, we should test the entire namespace
+    const Process = await $`make validate api=${getApi(file)} stack-version=8.1.0-SNAPSHOT`
+    logs.push({
+      api: getApi(file),
+      log: Process.toString()
+    })
+  }
+
+  console.log(JSON.stringify(logs, null, 2))
+}
+
+const privateNames = ['_global']
+
+function getApi (file) {
+  return file.split('/').slice(1, 3).filter(s => !privateNames.includes(s)).filter(Boolean).join('.')
 }
 
 run().catch(err => {
