@@ -25,6 +25,7 @@ import { Field, Id, IndexName } from '@_types/common'
 export class EqlHits<TEvent> {
   /**
    * Metadata about the number of matching events or sequences.
+   *
    */
   total?: TotalHits
   /**
