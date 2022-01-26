@@ -29,6 +29,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability stable
  * @cluster_privileges monitor,manage
+ * @doc_id cluster-nodes-hot-threads
  */
 export interface Request extends RequestBase {
   path_parts: {

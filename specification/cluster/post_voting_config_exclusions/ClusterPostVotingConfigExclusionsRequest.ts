@@ -25,6 +25,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name cluster.post_voting_config_exclusions
  * @since 7.0.0
  * @stability stable
+ * @doc_id voting-config-exclusions
  */
 export interface Request extends RequestBase {
   query_parameters: {
