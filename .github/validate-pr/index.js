@@ -48,7 +48,9 @@ async function run () {
     }
   }
 
-  console.log(files)
+  const specFiles = files.filter(file => file.includes('specification'))
+  console.log(specFiles)
+  await $`make validate api=bulk type=request stack-version=8.1.0-SNAPSHOT`
 }
 
 run().catch(err => {
