@@ -23,6 +23,7 @@ jobs:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
           token: ${{ secrets.PAT }}
+          ref: dev
 
       - name: ls
         run: ls -al
