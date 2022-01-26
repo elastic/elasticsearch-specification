@@ -93,8 +93,9 @@ ${tick}${tick}${tick}\n`
     comment += '</summary>\n\n'
   }
 
-  await octokit.issues.createComment({
-    ...context.repo,
+  await octokit.rest.issues.createComment({
+    owner: 'elastic',
+    repo: 'elasticsearch-specification',
     issue_number: context.payload.pull_request.number,
     body: comment
   })
