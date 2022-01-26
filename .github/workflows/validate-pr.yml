@@ -2,8 +2,8 @@ name: Validate pull request
 
 on:
   pull_request:
-    paths:
-      - 'specification/**'
+    # paths:
+    #   - 'specification/**'
 
 jobs:
   validate-pr:
@@ -12,6 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: ./elasticsearch-specification
+
+      - uses: actions/checkout@v2
+        with:
+          repository: elastic/clients-flight-recorder
+          path: ./clients-flight-recorder
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
@@ -19,7 +26,11 @@ jobs:
           node-version: 16.x
 
       - name: Install deps
+        working-directory: ./elasticsearch-specification
         run: |
           npm install --prefix .github/validate-pr
-          npm install --prefix compiler
-          npm install --prefix typescript-generator
+          make setup
+
+      - name: Run validation
+        working-directory: ./elasticsearch-specification
+        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
