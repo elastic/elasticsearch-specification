@@ -55,6 +55,10 @@ async function run () {
   const specFiles = files.filter(file => file.includes('specification'))
 
   cd(tsValidationPath)
+
+  await $`node ../upload-recording/download.js --branch master`
+  await $`node ../clone-elasticsearch/index.js --version 8.1.0-SNAPSHOT`
+
   for (const file of specFiles) {
     if (file.startsWith('specification/_types')) continue
     if (file.startsWith('specification/_spec_utils')) continue
@@ -83,7 +87,7 @@ async function run () {
   cd(path.join(__dirname, '..', '..'))
 
   const tick = '`'
-  let comment = 'You have updated some API definitions, great work! :muscle:\nFollowing you can find the validation results for the APIs you have changed.\n\n'
+  let comment = 'Following you can find the validation results for the APIs you have changed.\n\n'
   for (const log of logs) {
     comment += '<details>\n'
     comment += `<summary><code>${log.api}</code></summary>\n\n`
