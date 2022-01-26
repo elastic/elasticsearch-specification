@@ -26,9 +26,9 @@ const assert = require('assert')
 const core = require('@actions/core')
 const github = require('@actions/github')
 const octokit = github.getOctokit(argv.token)
-const validateApi = require('../../../clients-flight-recorder/scripts/types-validator/validator')
+const specification = require('../../output/schema/schema.json')
 
-console.log(validateApi.toString())
+const tsValidationPath = path.join(__dirname, '..', '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 
 async function run () {
   const context = github.context
@@ -59,12 +59,24 @@ async function run () {
     if (file.startsWith('specification/_spec_utils')) continue
     if (file.startsWith('specification/_doc_ids')) continue
     if (file.startsWith('specification/_json_spec')) continue
-    // TODO: if a  namespace/_types is changed, we should test the entire namespace
-    // const Process = await $`STACK_VERSION=8.1.0-SNAPSHOT node ${path.join(tsValidationPath, 'index.js')} --api ${getApi(file)} --request --response`
-    // logs.push({
-    //   api: getApi(file),
-    //   log: Process.toString()
-    // })
+    if (getApi(file).endsWith('_types')) {
+      const apis = specification.endpoints
+        .filter(endpoint => endpoint.name.includes(getApi(file).split('.')[0]))
+        .map(endpoint => endpoint.name)
+      for (const api of apis) {
+        const Process = await $`STACK_VERSION=8.1.0-SNAPSHOT node ${path.join(tsValidationPath, 'index.js')} --api ${api} --request --response --verbose`
+        logs.push({
+          api,
+          log: Process.toString()
+        })
+      }
+    } else {
+      const Process = await $`STACK_VERSION=8.1.0-SNAPSHOT node ${path.join(tsValidationPath, 'index.js')} --api ${getApi(file)} --request --response --verbose`
+      logs.push({
+        api: getApi(file),
+        log: Process.toString()
+      })
+    }
   }
 
   console.log(JSON.stringify(logs, null, 2))
@@ -76,7 +88,7 @@ function getApi (file) {
   return file.split('/').slice(1, 3).filter(s => !privateNames.includes(s)).filter(Boolean).join('.')
 }
 
-/* run().catch(err => {
+run().catch(err => {
   core.error(err)
   process.exit(1)
-}) */
+})
