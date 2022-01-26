@@ -30,9 +30,9 @@ jobs:
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
         run: |
-          npm install --prefix clients-flight-recorder/scripts/clone-elasticsearch
-          npm install --prefix clients-flight-recorder/scripts/upload-recording
-          npm install --prefix clients-flight-recorder/scripts/types-validator
+          npm install --prefix scripts/clone-elasticsearch
+          npm install --prefix scripts/upload-recording
+          npm install --prefix scripts/types-validator
 
       - name: Install deps 2/2
         working-directory: ./elasticsearch-specification
