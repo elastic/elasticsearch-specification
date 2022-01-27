@@ -58,7 +58,7 @@ export class SnapshotInfo {
   feature_states?: InfoFeatureState[]
 }
 
-export enum Sort {
+export enum SnapshotSort {
   start_time,
   duration,
   name,

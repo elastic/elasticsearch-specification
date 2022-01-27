@@ -20,9 +20,9 @@
 import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
 import { Time } from '@_types/Time'
-import { Sort } from '@snapshot/_types/SnapshotInfo'
+import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
 import { integer } from '@_types/Numeric'
-import { SortOrder } from '@global/search/_types/sort'
+import { SortOrder } from '@_types/sort'
 
 /**
  * @rest_spec_name snapshot.get
@@ -71,7 +71,7 @@ export interface Request extends RequestBase {
      * @since 7.14.0
      * @server_default start_time
      */
-    sort?: Sort
+    sort?: SnapshotSort
     /**
      * Maximum number of snapshots to return. Defaults to 0 which means return all that match the request without limit.
      * @since 7.14.0

@@ -15405,14 +15405,14 @@ export interface SnapshotSnapshotShardsStatus {
   stats: SnapshotShardsStatsSummary
 }
 
+export type SnapshotSnapshotSort = 'start_time' | 'duration' | 'name' | 'index_count' | 'repository' | 'shard_count' | 'failed_shard_count'
+
 export interface SnapshotSnapshotStats {
   incremental: SnapshotFileCountSnapshotStats
   start_time_in_millis: long
   time_in_millis: long
   total: SnapshotFileCountSnapshotStats
 }
-
-export type SnapshotSort = 'start_time' | 'duration' | 'name' | 'index_count' | 'repository' | 'shard_count' | 'failed_shard_count'
 
 export interface SnapshotStatus {
   include_global_state: boolean
@@ -15516,9 +15516,9 @@ export interface SnapshotGetRequest extends RequestBase {
   index_details?: boolean
   human?: boolean
   include_repository?: boolean
-  sort?: SnapshotSort
+  sort?: SnapshotSnapshotSort
   size?: integer
-  order?: SearchSortOrder
+  order?: SortOrder
   after?: string
   offset?: integer
   from_sort_value?: string
