@@ -18,8 +18,11 @@ class Window:
         self.off_y = 0
         self.off_x = 0
 
-    def clear(self, height, width):
+    def resize(self, height, width):
         self.pad.resize(height, width)
+        self.y = 0
+
+    def clear(self):
         self.pad.clear()
         self.y = 0
 
@@ -41,7 +44,7 @@ class ListWindow(Window):
         self.current_index = 0
 
     def refresh(self, min_y, min_x, max_y, max_x):
-        self.clear(len(self.items), self.max_item_width + 1)
+        self.resize(len(self.items), self.max_item_width + 1)
 
         if self.current_index < self.off_y:
             self.off_y = self.current_index
@@ -78,7 +81,7 @@ class EndpointWindow(Window):
 
     def refresh(self, min_y, min_x, max_y, max_x):
         view_width = max_x - min_x + 1
-        self.clear(200, view_width)
+        self.resize(200, view_width)
         self.print(f"{self.endpoint['name']} [{self.endpoint['visibility']}] [{self.endpoint['stability']}]", A_BOLD)
         since = self.endpoint.get('since', '0.0.0')
         if since != '0.0.0':
@@ -107,7 +110,7 @@ class Viewer:
 
     def _refresh_title(self, min_y, min_x, max_y, max_x):
         title = self.spec["_info"]["title"]
-        self.title_window.clear(2, len(title) + 1)
+        self.title_window.resize(2, len(title) + 1)
         self.title_window.print(title)
         self.title_window.print("=" * len(title))
         self.title_window.refresh(min_y, min_x, max_y, max_x)
@@ -120,7 +123,6 @@ class Viewer:
         self.endpoint_window.refresh(min_y, min_x, max_y, max_x)
 
     def refresh(self, screen):
-        screen.clear()
         screen.refresh()
         height, width = screen.getmaxyx()
         aside_width = int(min(self.endpoint_list_window.max_item_width - 1, width / 4))
@@ -133,27 +135,31 @@ class Viewer:
         curs_set(0)
         height, width = self.refresh(screen)
         while True:
-            dirty = False
             try:
                 key = screen.getch()
             except KeyboardInterrupt:
                 break
             else:
+                moved = 0
                 if key == ord("q"):
                     break
                 elif key == KEY_UP:
-                    dirty = self.endpoint_list_window.move_by(-1)
+                    moved = self.endpoint_list_window.move_by(-1)
                 elif key == KEY_DOWN:
-                    dirty = self.endpoint_list_window.move_by(+1)
+                    moved = self.endpoint_list_window.move_by(+1)
                 elif key == KEY_PPAGE:
-                    dirty = self.endpoint_list_window.move_by(-(height - 3))
+                    moved = self.endpoint_list_window.move_by(-(height - 3))
                 elif key == KEY_NPAGE:
-                    dirty = self.endpoint_list_window.move_by(+(height - 3))
+                    moved = self.endpoint_list_window.move_by(+(height - 3))
                 elif key == KEY_HOME:
-                    dirty = self.endpoint_list_window.move_to(0)
+                    moved = self.endpoint_list_window.move_to(0)
                 elif key == KEY_END:
-                    dirty = self.endpoint_list_window.move_to(self.endpoint_list_window.n_items - 1)
-                if is_term_resized(height, width) or dirty:
+                    moved = self.endpoint_list_window.move_to(self.endpoint_list_window.n_items - 1)
+                if moved:
+                    self.endpoint_window.clear()
+                    height, width = self.refresh(screen)
+                elif is_term_resized(height, width):
+                    screen.clear()
                     height, width = self.refresh(screen)
 
 
