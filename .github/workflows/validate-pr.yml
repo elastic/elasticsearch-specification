@@ -1,13 +1,15 @@
-name: Validate pull request
+name: Validate APIs
 
 on:
   pull_request:
     paths:
       - 'specification/**'
+    branches:
+      - main
 
 jobs:
   validate-pr:
-    name: Updated pull request
+    name: build
     runs-on: ubuntu-latest
 
     steps:
