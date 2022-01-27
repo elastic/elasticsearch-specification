@@ -18,12 +18,13 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, ExpandWildcards, Health, Indices } from '@_types/common'
+import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name cat.indices
  * @since 0.0.0
  * @stability stable
+ * @doc_id cat-indices
  */
 export interface Request extends CatRequestBase {
   path_parts: {
@@ -32,7 +33,7 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     bytes?: Bytes
     expand_wildcards?: ExpandWildcards
-    health?: Health
+    health?: HealthStatus
     include_unloaded_segments?: boolean
     pri?: boolean
   }

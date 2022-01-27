@@ -34,7 +34,7 @@ import { RuntimeField } from './RuntimeFields'
 export class TypeMapping {
   all_field?: AllField
   date_detection?: boolean
-  dynamic?: boolean | DynamicMapping
+  dynamic?: DynamicMapping
   dynamic_date_formats?: string[]
   dynamic_templates?:
     | Dictionary<string, DynamicTemplate>
@@ -50,4 +50,10 @@ export class TypeMapping {
   _source?: SourceField
   runtime?: Dictionary<string, RuntimeField>
   enabled?: boolean
+  /** @since 7.16.0 */
+  _data_stream_timestamp?: DataStreamTimestamp
+}
+
+export class DataStreamTimestamp {
+  enabled: boolean
 }

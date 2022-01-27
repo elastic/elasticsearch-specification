@@ -21,7 +21,9 @@ import {
   IndicesPrivileges,
   ApplicationPrivileges
 } from '@security/_types/Privileges'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
+import { Script } from '@_types/Scripting'
 
 export class Role {
   cluster: string[]
@@ -31,6 +33,8 @@ export class Role {
   transient_metadata: TransientMetadata
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]
+  /** @since 8.0.0 */
+  global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
 }
 
 export class TransientMetadata {
@@ -42,30 +46,8 @@ export enum TemplateFormat {
   json = 1
 }
 
-export class InlineRoleTemplate {
-  template: InlineRoleTemplateSource
+// ES: TemplateRoleName
+export class RoleTemplate {
   format?: TemplateFormat
+  template: Script
 }
-
-export class InlineRoleTemplateSource {
-  source: string
-}
-
-export class StoredRoleTemplate {
-  template: StoredRoleTemplateId
-  format?: TemplateFormat
-}
-
-export class StoredRoleTemplateId {
-  id: string
-}
-
-export class InvalidRoleTemplate {
-  template: string
-  format?: TemplateFormat
-}
-
-export type RoleTemplate =
-  | InlineRoleTemplate
-  | StoredRoleTemplate
-  | InvalidRoleTemplate

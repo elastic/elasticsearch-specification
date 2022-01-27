@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name async_search.delete
  * @since 7.7.0
  * @stability stable
+ * @doc_id async-search
  */
 export interface Request extends RequestBase {
   path_parts: {

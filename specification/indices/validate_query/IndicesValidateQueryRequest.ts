@@ -18,13 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  DefaultOperator,
-  ExpandWildcards,
-  Indices,
-  Types
-} from '@_types/common'
+import { ExpandWildcards, Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * @rest_spec_name indices.validate_query
@@ -34,14 +30,13 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
-    type?: Types
   }
   query_parameters: {
     allow_no_indices?: boolean
     all_shards?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
-    default_operator?: DefaultOperator
+    default_operator?: Operator
     df?: string
     expand_wildcards?: ExpandWildcards
     explain?: boolean

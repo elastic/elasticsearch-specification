@@ -20,9 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import {
   Conflicts,
-  DefaultOperator,
   ExpandWildcards,
-  Fields,
   Indices,
   Routing,
   SearchType,
@@ -32,6 +30,7 @@ import { long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
+import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * @rest_spec_name delete_by_query
@@ -47,7 +46,7 @@ export interface Request extends RequestBase {
     analyzer?: string
     analyze_wildcard?: boolean
     conflicts?: Conflicts
-    default_operator?: DefaultOperator
+    default_operator?: Operator
     df?: string
     expand_wildcards?: ExpandWildcards
     from?: long
@@ -64,12 +63,8 @@ export interface Request extends RequestBase {
     scroll_size?: long
     search_timeout?: Time
     search_type?: SearchType
-    size?: long
     slices?: long
     sort?: string[]
-    _source?: boolean | Fields
-    _source_excludes?: Fields
-    _source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time

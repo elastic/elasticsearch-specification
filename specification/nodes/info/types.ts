@@ -132,6 +132,12 @@ export class NodeInfoSettingsCluster {
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
   initial_master_nodes?: string
+  /** @since 7.16.0 */
+  deprecation_indexing?: DeprecationIndexing
+}
+
+export class DeprecationIndexing {
+  enabled: boolean | string
 }
 
 export class NodeInfoSettingsClusterElection {
@@ -172,12 +178,13 @@ export class NodeInfoClient {
 }
 
 export class NodeInfoSettingsHttp {
-  type: string | NodeInfoSettingsHttpType
+  type: NodeInfoSettingsHttpType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsHttpType
   compression?: boolean | string
   port?: integer | string
 }
 
+/** @shortcut_property default */
 export class NodeInfoSettingsHttpType {
   default: string
 }
@@ -187,11 +194,12 @@ export class NodeInfoBootstrap {
 }
 
 export class NodeInfoSettingsTransport {
-  type: string | NodeInfoSettingsTransportType
+  type: NodeInfoSettingsTransportType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsTransportType
   features?: NodeInfoSettingsTransportFeatures
 }
 
+/** @shortcut_property default */
 export class NodeInfoSettingsTransportType {
   default: string
 }
@@ -225,7 +233,7 @@ export class NodeInfoXpack {
 export class NodeInfoXpackSecurity {
   http: NodeInfoXpackSecuritySsl
   enabled: string
-  transport: NodeInfoXpackSecuritySsl
+  transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
 }
 

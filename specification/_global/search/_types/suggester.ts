@@ -25,24 +25,82 @@ import {
   Id,
   IndexName,
   Routing,
-  SuggestMode,
-  Type
+  SuggestMode
 } from '@_types/common'
-import { Distance } from '@_types/Geo'
+import { GeoHash, GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
-import { GeoLocation } from '@_types/query_dsl/geo'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
-export class Suggest<T> {
+/**
+ * @variants external
+ */
+export type Suggest<TDocument> =
+  | CompletionSuggest<TDocument>
+  | PhraseSuggest
+  | TermSuggest
+
+export class SuggestBase {
   length: integer
   offset: integer
-  options: SuggestOption<T>[]
   text: string
+}
+
+/**
+ * @variant name=completion
+ */
+export class CompletionSuggest<TDocument> extends SuggestBase {
+  options: CompletionSuggestOption<TDocument>[]
+}
+
+/**
+ * @variant name=phrase
+ */
+export class PhraseSuggest extends SuggestBase {
+  options: PhraseSuggestOption
+}
+
+/**
+ * @variant name=term
+ */
+export class TermSuggest extends SuggestBase {
+  options: TermSuggestOption
+}
+
+// In the ES code a nested Hit object is expanded inline. Not all Hit fields have been
+// added below as many do not make sense in the context of a suggestion.
+export class CompletionSuggestOption<TDocument> {
+  collate_match?: boolean
+  contexts?: Dictionary<string, Context[]>
+  fields?: Dictionary<string, UserDefinedValue>
+  _id: string
+  _index: IndexName
+  _routing?: Routing
+  _score?: double
+  _source?: TDocument
+  text: string
+}
+
+export class PhraseSuggestOption {
+  text: string
+  highlighted: string
+  score: double
+}
+
+export class TermSuggestOption {
+  text: string
+  freq: long
+  score: double
+}
+
+export class Suggester implements AdditionalProperties<string, FieldSuggester> {
+  /** Global suggest text, to avoid repetition when the same text is used in several suggesters */
+  text?: string
 }
 
 /**
  * @variants container
  */
-export class SuggestContainer {
+export class FieldSuggester {
   completion?: CompletionSuggester
   phrase?: PhraseSuggester
   prefix?: string
@@ -57,43 +115,10 @@ export class SuggesterBase {
   size?: integer
 }
 
-export type SuggestOption<TDocument> =
-  | CompletionSuggestOption<TDocument>
-  | PhraseSuggestOption
-  | TermSuggestOption
-
-export class CompletionSuggestOption<TDocument> {
-  collate_match?: boolean
-  contexts?: Dictionary<string, Context[]>
-  fields?: Dictionary<string, UserDefinedValue>
-  _id: string
-  _index: IndexName
-  _type?: Type
-  _routing?: Routing
-  _score: double
-  _source: TDocument
-  text: string
-}
-
-export class PhraseSuggestOption {
-  text: string
-  highlighted: string
-  score: double
-}
-
-export class TermSuggestOption {
-  text: string
-  freq?: long
-  score: double
-}
-
 // completion suggester
 
 export class CompletionSuggester extends SuggesterBase {
-  contexts?: Dictionary<
-    string,
-    string | string[] | GeoLocation | SuggestContextQuery[]
-  >
+  contexts?: Dictionary<Field, CompletionContext | CompletionContext[]>
   fuzzy?: SuggestFuzziness
   prefix?: string
   regex?: string
@@ -111,17 +136,19 @@ export class SuggestFuzziness {
 // context suggester
 
 /**
- * Text that we want similar documents for or a lookup to a document's field for the text.
+ * Text or location that we want similar documents for or a lookup to a document's field for the text.
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters
  *
+ * @codegen_names category, location
  */
 export type Context = string | GeoLocation
 
-export class SuggestContextQuery {
+/** @shortcut_property context */
+export class CompletionContext {
   boost?: double
   context: Context
-  neighbours?: Distance[] | integer[]
-  precision?: Distance | integer
+  neighbours?: GeoHashPrecision[]
+  precision?: GeoHashPrecision
   prefix?: boolean
 }
 

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { DateString, EpochMillis } from '@_types/Time'
 
 /**
  * Forces any buffered data to be processed by the job.
@@ -45,13 +45,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Specifies to skip to a particular time value. Results are not generated
-     * and the model is not updated for data from the specified time interval.
-     */
-    skip_time?: string
-  }
-  body: {
-    /**
      * Specifies to advance to a particular time value. Results are generated
      * and the model is updated for data from the specified time interval.
      */
@@ -62,13 +55,40 @@ export interface Request extends RequestBase {
      */
     calc_interim?: boolean
     /**
-     * When used in conjunction with `calc_interim`, specifies the range of
-     * buckets on which to calculate interim results.
+     * When used in conjunction with `calc_interim` and `start`, specifies the
+     * range of buckets on which to calculate interim results.
      */
     end?: DateString
     /**
-     * When used in conjunction with calc_interim, specifies the range of
+     * Specifies to skip to a particular time value. Results are not generated
+     * and the model is not updated for data from the specified time interval.
+     */
+    skip_time?: EpochMillis
+    /**
+     * When used in conjunction with `calc_interim`, specifies the range of
      * buckets on which to calculate interim results.
+     */
+    start?: DateString
+  }
+  body: {
+    /**
+     * Refer to the description for the `advance_time` query parameter.
+     */
+    advance_time?: DateString
+    /**
+     * Refer to the description for the `calc_interim` query parameter.
+     */
+    calc_interim?: boolean
+    /**
+     * Refer to the description for the `end` query parameter.
+     */
+    end?: DateString
+    /**
+     * Refer to the description for the `skip_time` query parameter.
+     */
+    skip_time?: EpochMillis
+    /**
+     * Refer to the description for the `start` query parameter.
      */
     start?: DateString
   }

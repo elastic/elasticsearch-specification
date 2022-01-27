@@ -27,23 +27,20 @@ import {
   IndexName,
   Name,
   SequenceNumber,
-  Type,
   VersionNumber
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
-import { Sort, SortResults } from './sort'
-import { SourceFilter } from './SourceFilter'
+import { SourceConfig } from './SourceFilter'
+import { FieldAndFormat } from '@_types/query_dsl/abstractions'
+import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName
   _id: Id
-
-  _score?: double
-  _type?: Type
-
+  _score?: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
@@ -51,7 +48,7 @@ export class Hit<TDocument> {
   matched_queries?: string[]
   _nested?: NestedIdentity
   _ignored?: string[]
-
+  ignored_field_values?: Dictionary<string, string[]>
   _shard?: string
   _node?: string
   _routing?: string
@@ -63,10 +60,11 @@ export class Hit<TDocument> {
 }
 
 export class HitsMetadata<T> {
-  total: TotalHits | long
+  /** Total hit count information, present only if `track_total_hits` wasn't `false` in the search request. */
+  total?: TotalHits | long
   hits: Hit<T>[]
 
-  max_score?: double
+  max_score?: double | null
 }
 
 export class HitMetadata<TDocument> {
@@ -76,19 +74,11 @@ export class HitMetadata<TDocument> {
   _routing: string
   _seq_no: SequenceNumber
   _source: TDocument
-  _type: Type
   _version: VersionNumber
 }
 
-export class InnerHitsMetadata {
-  total: TotalHits | long
-  hits: Hit<Dictionary<string, UserDefinedValue>>[]
-
-  max_score?: double
-}
-
 export class InnerHitsResult {
-  hits: InnerHitsMetadata
+  hits: HitsMetadata<UserDefinedValue>
 }
 
 export class NestedIdentity {
@@ -122,16 +112,19 @@ export class InnerHits {
   seq_no_primary_term?: boolean
   fields?: Fields
   sort?: Sort
-  _source?: boolean | SourceFilter
+  _source?: SourceConfig
   stored_field?: Fields
   /** @server_default false */
   track_scores?: boolean
   version?: boolean
 }
 
-/** @shortcut_property field */
-export class FieldAndFormat {
-  field: Field
-  format?: string
-  include_unmapped?: boolean
-}
+/**
+ * Number of hits matching the query to count accurately. If true, the exact
+ * number of hits is returned at the cost of some performance. If false, the
+ * response does not include the total number of hits matching the query.
+ * Defaults to 10,000 hits.
+ *
+ * @codegen_names enabled, count
+ */
+export type TrackHits = boolean | integer

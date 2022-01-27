@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, Id, Name, Type, VersionString } from '@_types/common'
+import { ByteSize, Id, Name, VersionString } from '@_types/common'
 import { Percentage } from '@_types/Numeric'
 
 export class NodesRecord {
@@ -61,7 +61,7 @@ export class NodesRecord {
    * es distribution type
    * @aliases t
    */
-  'type'?: Type
+  'type'?: string
   /**
    * es build hash
    * @aliases b

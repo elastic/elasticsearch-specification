@@ -43,11 +43,6 @@ export interface Request extends RequestBase {
      */
     flat_settings?: boolean
     /**
-     * If true, a mapping type is expected in the body of mappings.
-     * @server_default false
-     */
-    include_type_name?: boolean
-    /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */

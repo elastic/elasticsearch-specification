@@ -18,18 +18,25 @@
  */
 
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { SuggestContainer } from '@global/search/_types/suggester'
+import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ExpandWildcards, Indices, SearchType } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Response as SearchResponse } from '@global/search/SearchResponse'
+import { TrackHits } from '@global/search/_types/hits'
+import { ErrorResponseBase } from '@_types/Base'
+
+/**
+ * @codegen_names header, body
+ */
+export type RequestItem = MultisearchHeader | MultisearchBody
 
 /**
  * Contains parameters used to limit or change the subsequent search body request.
  */
-export class Header {
+export class MultisearchHeader {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -40,17 +47,28 @@ export class Header {
   search_type?: SearchType
 }
 
-export class Body {
+export class MultisearchBody {
+  /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   query?: QueryContainer
   from?: integer
   size?: integer
   pit?: PointInTimeReference
-  track_total_hits?: boolean | integer
-  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
+  track_total_hits?: TrackHits
+  suggest?: Suggester
 }
 
-export class SearchResult<TDocument> extends SearchResponse<TDocument> {
-  status: integer
+export class MultiSearchResult<TDocument> {
+  took: long
+  responses: Array<ResponseItem<TDocument>>
+}
+
+/** @codegen_names result, failure */
+export type ResponseItem<TDocument> =
+  | MultiSearchItem<TDocument>
+  | ErrorResponseBase
+
+export class MultiSearchItem<TDocument> extends SearchResponse<TDocument> {
+  // Not returned in MultiSearchTemplateResponse
+  status?: integer
 }

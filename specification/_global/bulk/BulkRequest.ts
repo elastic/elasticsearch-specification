@@ -23,35 +23,40 @@ import {
   IndexName,
   Refresh,
   Routing,
-  Type,
   WaitForActiveShards
 } from '@_types/common'
 import { Time } from '@_types/Time'
-import { OperationContainer } from './types'
+import { OperationContainer, UpdateAction } from './types'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name bulk
  * @since 0.0.0
  * @stability stable
+ * @doc_id docs-bulk
  *
  */
-export interface Request<TSource> extends RequestBase {
+export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
     index?: IndexName
-    type?: Type
   }
   query_parameters: {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
-    _source?: boolean | Fields
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     timeout?: Time
-    type?: Type
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
-  /** @identifier operations */
-  body?: Array<OperationContainer | TSource>
+  /** @codegen_name operations */
+  // This declaration captures action_and_meta_data (OperationContainer) and the two kinds of sources
+  // that can follow: an update action for update operations and anything for index or create operations.
+  //
+  // /!\ must be kept in sync with BulkMonitoringRequest
+  body?: Array<
+    OperationContainer | UpdateAction<TDocument, TPartialDocument> | TDocument
+  >
 }

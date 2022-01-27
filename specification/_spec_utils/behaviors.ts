@@ -55,11 +55,32 @@ export interface AdditionalProperty<TKey, TValue> {}
  * @behavior Defines a common set of query parameters all API's support that alter the overall response.
  */
 export interface CommonQueryParameters {
+  /**
+   * When set to `true` Elasticsearch will include the full stack trace of errors
+   * when they occur.
+   * @server_default false
+   */
   error_trace?: boolean
+  /**
+   * Comma-separated list of filters in dot notation which reduce the response
+   * returned by Elasticsearch.
+   */
   filter_path?: string | string[]
+  /**
+   * When set to `true` will return statistics in a format suitable for humans.
+   * For example `"exists_time": "1h"` for humans and
+   * `"eixsts_time_in_millis": 3600000` for computers. When disabled the human
+   * readable values will be omitted. This makes sense for responses being consumed
+   * only by machines.
+   * @server_default false
+   */
   human?: boolean
+  /**
+   * If set to `true` the returned JSON will be "pretty-formatted". Only use
+   * this option for debugging only.
+   * @server_default false
+   */
   pretty?: boolean
-  source_query_string?: string
 }
 
 /**
@@ -68,12 +89,45 @@ export interface CommonQueryParameters {
  * @behavior Defines a common set of query parameters all Cat API's support that alter the overall response.
  */
 export interface CommonCatQueryParameters {
+  /**
+   * Specifies the format to return the columnar data in, can be set to
+   * `text`, `json`, `cbor`, `yaml`, or `smile`.
+   * @server_default text
+   */
   format?: string
+  /**
+   * List of columns to appear in the response. Supports simple wildcards.
+   */
   h?: Names
+  /**
+   * When set to `true` will output available columns. This option
+   * can't be combined with any other query string option.
+   * @server_default false
+   */
   help?: boolean
+  /**
+   * If `true`, the request computes the list of selected nodes from the
+   * local cluster state. If `false` the list of selected nodes are computed
+   * from the cluster state of the master node. In both cases the coordinating
+   * node will send requests for further information to each selected node.
+   * @server_default false
+   */
   local?: boolean
+  /**
+   * Period to wait for a connection to the master node.
+   * @server_default 30s
+   */
   master_timeout?: Time
-  s?: string[]
+  /**
+   * List of columns that determine how the table should be sorted.
+   * Sorting defaults to ascending and can be changed by setting `:asc`
+   * or `:desc` as a suffix to the column name.
+   */
+  s?: Names
+  /**
+   * When set to `true` will enable verbose output.
+   * @server_default false
+   */
   v?: boolean
 }
 

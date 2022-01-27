@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName, Name, Type, VersionString } from '@_types/common'
+import { Id, IndexName, Name, VersionString } from '@_types/common'
 
 export class DataFrameAnalyticsRecord {
   /**
@@ -28,7 +28,7 @@ export class DataFrameAnalyticsRecord {
    * analysis type
    * @aliases t
    */
-  'type'?: Type
+  'type'?: string
   /**
    * job creation time
    * @aliases ct, createTime

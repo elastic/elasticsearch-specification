@@ -24,6 +24,7 @@ import { Indices } from '@_types/common'
  * @rest_spec_name cat.count
  * @since 0.0.0
  * @stability stable
+ * @doc_id cat-count
  */
 export interface Request extends CatRequestBase {
   path_parts: {

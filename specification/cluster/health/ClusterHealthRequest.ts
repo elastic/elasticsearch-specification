@@ -20,28 +20,31 @@
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
+  HealthStatus,
   Indices,
   Level,
   WaitForActiveShards,
-  WaitForEvents,
-  WaitForStatus
+  WaitForEvents
 } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 /**
+ * The cluster health API returns a simple status on the health of the cluster. You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices.
+ * The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster, yellow means that the primary shard is allocated but replicas are not, and green means that all shards are allocated. The index level status is controlled by the worst shard status. The cluster status is controlled by the worst index status.
  * @rest_spec_name cluster.health
  * @since 1.3.0
  * @stability stable
+ * @cluster_privileges monitor, manage
+ * @doc_id cluster-health
  */
 export interface Request extends RequestBase {
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-path-params */
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.
      */
     index?: Indices
   }
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-query-params */
   query_parameters: {
     expand_wildcards?: ExpandWildcards
     /**
@@ -76,7 +79,7 @@ export interface Request extends RequestBase {
     /**
      * The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.
      */
-    wait_for_nodes?: string
+    wait_for_nodes?: string | integer
     /**
      * A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.
      * @server_default false
@@ -90,6 +93,6 @@ export interface Request extends RequestBase {
     /**
      * One of green, yellow or red. Will wait (until the timeout provided) until the status of the cluster changes to the one provided or better, i.e. green > yellow > red. By default, will not wait for any status.
      */
-    wait_for_status?: WaitForStatus
+    wait_for_status?: HealthStatus
   }
 }

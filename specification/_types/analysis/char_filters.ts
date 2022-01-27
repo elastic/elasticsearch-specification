@@ -18,17 +18,24 @@
  */
 
 import { VersionString } from '@_types/common'
-import { PatternReplaceTokenFilter } from './token_filters'
+import { IcuNormalizationCharFilter } from './icu-plugin'
+import { KuromojiIterationMarkCharFilter } from './kuromoji-plugin'
 
 export class CharFilterBase {
   version?: VersionString
 }
 
+/** @codegen_names name, definition */
+// ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
+export type CharFilter = string | CharFilterDefinition
+
 /** @variants internal tag='type' */
-export type CharFilter =
+export type CharFilterDefinition =
   | HtmlStripCharFilter
   | MappingCharFilter
-  | PatternReplaceTokenFilter
+  | PatternReplaceCharFilter
+  | IcuNormalizationCharFilter
+  | KuromojiIterationMarkCharFilter
 
 export class HtmlStripCharFilter extends CharFilterBase {
   type: 'html_strip'

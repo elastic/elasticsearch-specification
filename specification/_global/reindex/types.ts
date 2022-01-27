@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/_types/sort'
+import { Sort } from '@_types/sort'
 import {
   Fields,
   IndexName,
@@ -50,7 +50,7 @@ export class Source {
   size?: integer
   slice?: SlicedScroll
   sort?: Sort
-  /** @identifier source_fields */
+  /** @codegen_name source_fields */
   _source?: Fields
   runtime_mappings?: RuntimeFields
 }

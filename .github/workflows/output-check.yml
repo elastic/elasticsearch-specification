@@ -10,10 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node.js 14.x
+    - name: Use Node.js 16.x
       uses: actions/setup-node@v1
       with:
-        node-version: 14.x
+        node-version: 16.x
 
     - name: Install
       run: |
@@ -24,6 +24,10 @@ jobs:
       run: |
         npm run generate-schema --prefix compiler
         npm run start --prefix typescript-generator
+
+    - name: Validate TS output
+      run: |
+        npm run validate-ts-view --prefix compiler
 
     - name: Check freshness
       run: |

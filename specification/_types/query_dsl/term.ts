@@ -24,7 +24,8 @@ import {
   Ids,
   IndexName,
   MultiTermQueryRewrite,
-  Routing
+  Routing,
+  FieldValue
 } from '@_types/common'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
@@ -34,6 +35,15 @@ import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class ExistsQuery extends QueryBase {
   field: Field
+}
+
+/**
+ * A k-nearest neighbor (kNN) search finds the k nearest vectors to a query vector, as measured by a similarity metric.
+ */
+export class KnnQuery extends QueryBase {
+  field: Field
+  num_candidates: integer
+  query_vector: double[]
 }
 
 /** @shortcut_property value */
@@ -73,8 +83,8 @@ export class DateRangeQuery extends RangeQueryBase {
   gte?: DateMath
   lt?: DateMath
   lte?: DateMath
-  from?: DateMath
-  to?: DateMath
+  from?: DateMath | null
+  to?: DateMath | null
   format?: DateFormat
   time_zone?: TimeZone
 }
@@ -84,10 +94,12 @@ export class NumberRangeQuery extends RangeQueryBase {
   gte?: double
   lt?: double
   lte?: double
-  from?: double
-  to?: double
+  from?: double | null
+  to?: double | null
 }
 
+/** @codegen_names date, number */
+// Note: deserialization depends on value types
 export type RangeQuery = DateRangeQuery | NumberRangeQuery
 
 export enum RangeRelation {
@@ -112,14 +124,19 @@ export class RegexpQuery extends QueryBase {
 
 /** @shortcut_property value */
 export class TermQuery extends QueryBase {
-  value: string | float | boolean
+  value: FieldValue
   /** @since 7.10.0 */
   case_insensitive?: boolean
 }
 
 export class TermsQuery
   extends QueryBase
-  implements AdditionalProperty<Field, string[] | long[] | TermsLookup> {}
+  implements AdditionalProperty<Field, TermsQueryField> {}
+
+/**
+ * @codegen_names value, lookup
+ */
+export type TermsQueryField = FieldValue[] | TermsLookup
 
 export class TermsLookup {
   index: IndexName
@@ -140,8 +157,15 @@ export class TypeQuery extends QueryBase {
 
 /** @shortcut_property value */
 export class WildcardQuery extends QueryBase {
-  /** @since 7.10.0 */
+  /**
+   * Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.
+   * @since 7.10.0
+   */
   case_insensitive?: boolean
+  /** Method used to rewrite the query */
   rewrite?: MultiTermQueryRewrite
-  value: string
+  /** Wildcard pattern for terms you wish to find in the provided field. Required, when wildcard is not set. */
+  value?: string
+  /** Wildcard pattern for terms you wish to find in the provided field. Required, when value is not set. */
+  wildcard?: string
 }

@@ -65,8 +65,8 @@ export class PhoneticTokenFilter extends TokenFilterBase {
   type: 'phonetic'
   encoder: PhoneticEncoder
   languageset: PhoneticLanguage[]
-  max_code_len: integer
+  max_code_len?: integer
   name_type: PhoneticNameType
-  replace: boolean
+  replace?: boolean
   rule_type: PhoneticRuleType
 }

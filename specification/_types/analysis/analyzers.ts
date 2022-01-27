@@ -36,73 +36,78 @@ export class CustomAnalyzer {
 
 export class FingerprintAnalyzer {
   type: 'fingerprint'
-  version: VersionString
+  version?: VersionString
   max_output_size: integer
   preserve_original: boolean
   separator: string
-  stopwords: StopWords
-  stopwords_path: string
+  stopwords?: StopWords
+  stopwords_path?: string
 }
 
 export class KeywordAnalyzer {
   type: 'keyword'
-  version: VersionString
+  version?: VersionString
 }
 
 export class LanguageAnalyzer {
   type: 'language'
-  version: VersionString
+  version?: VersionString
   language: Language
   stem_exclusion: string[]
-  stopwords: StopWords
-  stopwords_path: string
+  stopwords?: StopWords
+  stopwords_path?: string
+}
+
+export class DutchAnalyzer {
+  type: 'dutch'
+  stopwords?: StopWords
 }
 
 export class NoriAnalyzer {
   type: 'nori'
-  version: VersionString
-  decompound_mode: NoriDecompoundMode
-  stoptags: string[]
-  user_dictionary: string
+  version?: VersionString
+  decompound_mode?: NoriDecompoundMode
+  stoptags?: string[]
+  user_dictionary?: string
 }
 
 export class PatternAnalyzer {
   type: 'pattern'
-  version: VersionString
-  flags: string
-  lowercase: boolean
+  version?: VersionString
+  flags?: string
+  lowercase?: boolean
   pattern: string
-  stopwords: StopWords
+  stopwords?: StopWords
 }
 
 export class SimpleAnalyzer {
   type: 'simple'
-  version: VersionString
+  version?: VersionString
 }
 
 export class SnowballAnalyzer {
   type: 'snowball'
-  version: VersionString
+  version?: VersionString
   language: SnowballLanguage
-  stopwords: StopWords
+  stopwords?: StopWords
 }
 
 export class StandardAnalyzer {
   type: 'standard'
-  max_token_length: integer
-  stopwords: StopWords
+  max_token_length?: integer
+  stopwords?: StopWords
 }
 
 export class StopAnalyzer {
   type: 'stop'
-  version: VersionString
-  stopwords: StopWords
-  stopwords_path: string
+  version?: VersionString
+  stopwords?: StopWords
+  stopwords_path?: string
 }
 
 export class WhitespaceAnalyzer {
   type: 'whitespace'
-  version: VersionString
+  version?: VersionString
 }
 
 /** @variants internal tag='type' */
@@ -119,3 +124,5 @@ export type Analyzer =
   | WhitespaceAnalyzer
   | IcuAnalyzer
   | KuromojiAnalyzer
+  | SnowballAnalyzer
+  | DutchAnalyzer

@@ -16,61 +16,82 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// PageDuty ----------------------------- //
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
+  Field,
   HttpHeaders,
   Id,
   IndexName,
+  OpType,
   Refresh,
-  Type,
   VersionNumber
 } from '@_types/common'
+import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
-import { DateString } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 import { HttpInputRequestDefinition } from './Input'
 
+// PagerDuty ----------------------------- //
+
 export class PagerDutyEvent {
-  account: string
+  account?: string
   attach_payload: boolean
-  client: string
-  client_url: string
-  context: PagerDutyContext[]
+  client?: string
+  client_url?: string
+  /** @aliases context */
+  contexts?: PagerDutyContext[]
   description: string
-  event_type: PagerDutyEventType
+  /** @server_default trigger */
+  event_type?: PagerDutyEventType
   incident_key: string
+  proxy?: PagerDutyEventProxy
+}
+
+export class PagerDutyAction extends PagerDutyEvent {}
+
+export class PagerDutyEventProxy {
+  host?: Host
+  port?: integer
 }
 
 export class PagerDutyContext {
-  href: string
-  src: string
+  href?: string
+  src?: string
   type: PagerDutyContextType
 }
 
 export enum PagerDutyContextType {
-  link = 0,
-  image = 1
+  link,
+  image
 }
 
 export enum PagerDutyEventType {
-  trigger = 0,
-  resolve = 1,
-  acknowledge = 2
-}
-
-export class PagerDutyActionEventResult {
-  event: PagerDutyEvent
-  reason: string
-  request: HttpInputRequestResult
-  response: HttpInputResponseResult
+  trigger,
+  resolve,
+  acknowledge
 }
 
 export class PagerDutyResult {
-  sent_event: PagerDutyActionEventResult
+  event: PagerDutyEvent
+  reason?: string
+  request?: HttpInputRequestResult
+  response?: HttpInputResponseResult
+}
+
+export class PagerDutySentEvent {
+  sent_event: PagerDutyEvent
 }
 
 // Slack -------------------------------- //
+
+export class SlackAction {
+  account?: string
+  message: SlackMessage
+}
 
 export class SlackResult {
   account?: string
@@ -121,30 +142,97 @@ export class SlackActionMessageResult {
   response?: HttpInputResponseResult
 }
 
+// Jira --------------------------------- //
+
+export class JiraAction {
+  account?: string
+  fields?: JiraIssueFields
+}
+
+export class JiraIssueFields
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  project: JiraIssueProject
+  issuetype: JiraIssueType
+  summary: string
+  description?: string
+  labels?: string[]
+  priority?: JiraIssuePriority
+  assignee?: JiraIssueAssignee
+  reporter?: JiraIssueReporter
+}
+
+export class JiraIssueProject {
+  key: string
+}
+
+export class JiraIssueType {
+  name: string
+}
+
+export class JiraIssuePriority {
+  name: string
+}
+
+export class JiraIssueAssignee {
+  name: string
+}
+
+export class JiraIssueReporter {
+  name: string
+}
+
 // Email -------------------------------- //
 
 export enum DataAttachmentFormat {
-  json = 0,
-  yaml = 1
+  json,
+  yaml
 }
 
 export class EmailBody {
-  html: string
-  text: string
+  html?: string
+  text?: string
 }
 
 export enum EmailPriority {
-  lowest = 0,
-  low = 1,
-  normal = 2,
-  high = 3,
-  highest = 4
+  lowest,
+  low,
+  normal,
+  high,
+  highest
 }
 
 export class EmailResult {
   account?: string
-  message: EmailResult
+  message: Email
   reason?: string
+}
+
+/** @variants container */
+export class EmailAttachmentContainer {
+  http?: HttpEmailAttachment
+  reporting?: ReportingEmailAttachment
+  data?: DataEmailAttachment
+}
+
+export class HttpEmailAttachment {
+  content_type?: string
+  inline?: boolean
+  request?: HttpInputRequestDefinition
+}
+
+export class ReportingEmailAttachment {
+  url: string
+  inline?: boolean
+  /** @server_default 40 */
+  retries?: integer
+  /** @server_default 15s */
+  interval?: Time
+  request?: HttpInputRequestDefinition
+}
+
+export class DataEmailAttachment {
+  format?: DataAttachmentFormat
 }
 
 export class Email {
@@ -152,20 +240,27 @@ export class Email {
   body?: EmailBody
   cc?: string[]
   from?: string
-  id: Id
   priority?: EmailPriority
   reply_to?: string[]
-  sent_date: DateString
+  sent_date?: DateString
   subject: string
   to: string[]
+  attachments?: Dictionary<string, EmailAttachmentContainer>
 }
+
+export class EmailAction extends Email {}
 
 // Index -------------------------------- //
 
-export class Index {
+export class IndexAction {
   index: IndexName
   doc_id?: Id
   refresh?: Refresh
+  /** @server_default index */
+  op_type?: OpType
+  /** @server_default 60s */
+  timeout?: Time
+  execution_time_field?: Field
 }
 
 export class IndexResult {
@@ -178,12 +273,11 @@ export class IndexResultSummary {
   index: IndexName
   result: Result
   version: VersionNumber
-  type?: Type
 }
 
 // Logging ------------------------------ //
 
-export class Logging {
+export class LoggingAction {
   level?: string
   text: string
   category?: string
@@ -194,6 +288,8 @@ export class LoggingResult {
 }
 
 // Webhook ------------------------------ //
+
+export class WebhookAction extends HttpInputRequestDefinition {}
 
 export class WebhookResult {
   request: HttpInputRequestResult

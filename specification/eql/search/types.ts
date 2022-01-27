@@ -17,19 +17,6 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
-
-export class SearchFieldFormatted {
-  /**
-   * Wildcard pattern. The request returns values for field names matching this pattern.
-   */
-  field: Field
-  /**
-   * Format in which the values are returned.
-   */
-  format?: string
-}
-
 /**
  * Set of matching events or sequences to return.
  */

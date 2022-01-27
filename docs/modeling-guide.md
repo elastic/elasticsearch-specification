@@ -2,7 +2,7 @@
 
 The goal of the specification is to be used by different languages, from dynamically typed to statically typed.
 To achieve this goal the specification contains a series of custom types that do not have a meaning
-for the target language, but they should be translated to the most approriate construct.
+for the target language, but they should be translated to the most appropriate construct.
 
 The specification is written in [TypeScript](https://www.typescriptlang.org/), you can find all
 the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.html),
@@ -98,6 +98,19 @@ enum Orientation {
 }
 ```
 
+Some enumerations can accept arbitrary values other than the one defined. The `@open_enum` jsdoc tac can be used to describe this behavior.
+By default, an enum is to be considered closed.
+
+```ts
+/** @open_enum */
+export enum ScriptLanguage {
+  painless,
+  expression,
+  mustache,
+  java
+}
+```
+
 ### User defined value
 
 Represents a value that will be defined by the user and has no specific type.
@@ -108,8 +121,8 @@ property: UserDefinedValue
 
 ### Numbers
 
-The numeric type in TypeScript is `number`, but given that this specification target mutliple languages,
-it offers a bunch of alias that represents the type that should be used if the language supports it:
+The numeric type in TypeScript is `number`, but given that this specification targets mutliple languages,
+it offers a bunch of aliases that represent the type that should be used if the language supports it:
 
 ```ts
 type short = number
@@ -122,8 +135,8 @@ type double = number
 
 ### Strings
 
-The string type in TypeScript is `string`. It's ok to use it in the spec, but to offer a more developer
-friendly specification, we do offer a set of aliases based on which string we do expect, for example:
+The string type in TypeScript is `string`. It's okay to use it in the spec, but to offer a more developer
+friendly specification, we do offer a set of aliases based on which string we expect, for example:
 
 ```ts
 type ScrollId = string
@@ -235,7 +248,7 @@ class Foo {
 ```
 
 If the variant type is internal you should configure the parent type with
-the `@variants` js doc tag. teh syntax is:
+the `@variants` js doc tag. The syntax is:
 
 ```ts
 /** @variants internal tag='<field-name>' */
@@ -315,8 +328,8 @@ or:
 
 #### Container
 
-The container variant is used for all the types that contains all the
-variants inside the defintion. An example is `QueryContainer`.
+The container variant is used for all the types that contain all the
+variants inside the definition. An example is `QueryContainer`.
 
 The syntax is:
 
@@ -335,7 +348,7 @@ class FooContainer {
 }
 
 ```
-Some containers have properties associated to the container that are not part of the list of variants,
+Some containers have properties associated with the container that are not part of the list of variants,
 for example `AggregationContainer` and its `aggs` and `meta` properties.
 
 An annotation allows distinguishing these properties from container variants:
@@ -367,7 +380,7 @@ class AggregationContainer {
 
 In many places Elasticsearch accepts a property value to be either a complete data structure or a single value, that value being a shortcut for a property in the data structure.
 
-A typical example can be found in queries such as term query: `{"term": {"some_field": {"value": "some_text"}}}` can also be written as `{"term": {"some_field": "some_text"}}`.
+A typical example can be found in queries such as term query. `{"term": {"some_field": {"value": "some_text"}}}` can also be written as `{"term": {"some_field": "some_text"}}`.
 
 This could be modelled as a union of `SomeClass | string`, but this notation doesn't capture the relation between the string variant and the corresponding field (`value` in the above example).
 
@@ -388,7 +401,7 @@ Following you can find a list of the supported tags:
 
 #### `@since`
 
-Every API already has a `@since` tag, which describes when an API has been added.
+Every API already has a `@since` tag, which describes when an API was added.
 You can specify an additional `@since` tag for every property that has been added afterwards.
 If the tag is not defined, it's assumed that the property has been added with the API the first time
 
@@ -431,9 +444,21 @@ class Foo {
 }
 ```
 
+If you need to specify a server default value for an array, you must use the JavaScript array syntax:
+
+```ts
+class Foo {
+  bar: string
+  /** @server_default ['hello'] */
+  baz?: string[]
+  faz: string
+}
+```
+
 #### `@doc_url`
 
-The documentation url for the parameter.
+The documentation url for the parameter or definition.
+If possible, use `@doc_id`.
 
 ```ts
 class Foo {
@@ -447,7 +472,7 @@ class Foo {
 #### `@doc_id`
 
 The documentation id that can be used for generating the doc url.
-See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) for context.
+You must add the id/url pair in `specification/_doc_ids/table.csv`.
 
 ```ts
 /**
@@ -459,31 +484,35 @@ class Request {
 }
 ```
 
-#### `@identifier`
+```csv
+foobar,/guide/en/example
+```
 
-A custom name that can be used to display the property. Useful in Enums an
+#### `@codegen_name`
+
+A custom name that can be used to display the property. Useful in Enums and
 for request bodies where the document is the entire body.
 
 ```ts
 export class ConfusionMatrixThreshold {
   /**
    * True Positive
-   * @identifier true_positive
+   * @codegen_name true_positive
    */
   tp: integer
   /**
    * False Positive
-   * @identifier false_positive
+   * @codegen_name false_positive
    */
   fp: integer
   /**
    * True Negative
-   * @identifier true_negative
+   * @codegen_name true_negative
    */
   tn: integer
   /**
    * False Negative
-   * @identifier false_negative
+   * @codegen_name false_negative
    */
   fn: integer
 }
@@ -491,7 +520,7 @@ export class ConfusionMatrixThreshold {
 export interface Request<TDocument> extends RequestBase {
   path_parts: {}
   query_parameters: {}
-  /** @identifier document */
+  /** @codegen_name document */
   body?: TDocument
 }
 ```
@@ -530,7 +559,7 @@ export interface Request extends RequestBase {
 
 #### `@deprecated`
 
-Use if an endpoint or property is deprecated, you should add the version as well.
+Use if an endpoint or property is deprecated; you should add the version as well.
 
 ```ts
 class Foo {
@@ -549,5 +578,33 @@ class Foo {
   /** @deprecated 7.0.0 'baz' has been deprecated, use 'bar' instead */
   baz?: string
   faz: string
+}
+```
+
+#### `@stability`
+
+You can mark a class or property of a type as stable/beta/experimental with this tag (the default is stable).
+
+```ts
+class Foo {
+  bar: string
+  /** @stability experimental */
+  baz?: string
+  faz: string
+}
+```
+
+#### `@visibility`
+
+You can mark a request as `public`/`feature_flag`/`private` with this tag (the default is `public`).
+
+```ts
+/**
+ * @rest_spec_name namespace.api
+ * @since 7.5.0
+ * @visibility private
+ */
+export interface Request extends RequestBase {
+ ...
 }
 ```

@@ -22,7 +22,6 @@ import {
   Id,
   IndexName,
   Name,
-  Type,
   Uuid,
   VersionString
 } from '@_types/common'
@@ -123,6 +122,6 @@ export class ShardRecovery {
   total_time?: DateString
   total_time_in_millis: EpochMillis
   translog: TranslogStatus
-  type: Type
+  type: string
   verify_index: VerifyIndex
 }

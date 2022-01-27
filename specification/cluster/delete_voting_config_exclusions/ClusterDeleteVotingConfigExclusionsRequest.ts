@@ -23,6 +23,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name cluster.delete_voting_config_exclusions
  * @since 7.0.0
  * @stability stable
+ * @doc_id voting-config-exclusions
  */
 export interface Request extends RequestBase {
   query_parameters: {

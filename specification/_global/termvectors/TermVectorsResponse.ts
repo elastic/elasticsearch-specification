@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Field, Id, IndexName, Type, VersionNumber } from '@_types/common'
+import { Field, Id, IndexName, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { TermVector } from './types'
 
@@ -29,7 +29,6 @@ export class Response {
     _index: IndexName
     term_vectors?: Dictionary<Field, TermVector>
     took: long
-    _type?: Type
     _version: VersionNumber
   }
 }

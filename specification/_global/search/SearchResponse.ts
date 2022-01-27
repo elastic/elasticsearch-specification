@@ -29,14 +29,13 @@ import { Suggest } from './_types/suggester'
 
 export class Response<TDocument> {
   body: {
+    // Has to be kept in sync with SearchTemplateResponse
     took: long
     timed_out: boolean
     _shards: ShardStatistics
     hits: HitsMetadata<TDocument>
-
     aggregations?: Dictionary<AggregateName, Aggregate>
     _clusters?: ClusterStatistics
-    documents?: TDocument[]
     fields?: Dictionary<string, UserDefinedValue>
     max_score?: double
     num_reduce_phases?: long

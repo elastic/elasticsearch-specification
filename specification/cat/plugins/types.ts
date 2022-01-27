@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Name, NodeId, Type, VersionString } from '@_types/common'
+import { Name, NodeId, VersionString } from '@_types/common'
 
 export class PluginsRecord {
   /**
@@ -48,5 +48,5 @@ export class PluginsRecord {
    * plugin type
    * @aliases t
    */
-  'type'?: Type
+  'type'?: string
 }

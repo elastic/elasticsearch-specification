@@ -26,6 +26,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name exists
@@ -42,7 +43,7 @@ export interface Request extends RequestBase {
     realtime?: boolean
     refresh?: boolean
     routing?: Routing
-    _source?: boolean | Fields
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     stored_fields?: Fields

@@ -17,19 +17,11 @@
  * under the License.
  */
 
-import { Field } from './common'
 import { integer, long } from './Numeric'
 
 export class DateMathTimeParsed {
   factor: integer
   interval: DateMathTimeUnit
-}
-
-/** A reference to a date field with formatting instructions on how to return the date */
-export class DateField {
-  field: Field
-  format?: string
-  include_unmapped?: boolean
 }
 
 export type DateString = string
@@ -39,6 +31,9 @@ export type EpochMillis = string | long
 export type DateMath = string
 export type DateMathExpression = string
 export type DateMathTime = string
+
+/** @codegen_names date, millis */
+export type DateOrEpochMillis = DateString | EpochMillis
 
 export type TimeZone = string
 
@@ -51,43 +46,43 @@ export enum DateMathOperation {
 }
 
 export enum DateMathTimeUnit {
-  /** @identifier seconds */
+  /** @codegen_name seconds */
   s = 0,
-  /** @identifier minutes */
+  /** @codegen_name minutes */
   m = 1,
-  /** @identifier hours */
+  /** @codegen_name hours */
   h = 2,
-  /** @identifier days */
+  /** @codegen_name days */
   d = 3,
-  /** @identifier weeks */
+  /** @codegen_name weeks */
   w = 4,
-  /** @identifier months */
+  /** @codegen_name months */
   M = 5,
-  /** @identifier years */
+  /** @codegen_name years */
   y = 6
 }
 
 /**
  * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
- * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java
- * https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java
- * Only support 0 and -1 but we have no way to encode these as constants at the moment
+ * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+ * @codegen_names time, offset
  */
+//FIXME: need to distinguish durations (has to be a string), offsets (can be a string or number)
 export type Time = string | integer
 
 export enum TimeUnit {
-  /** @identifier nano_seconds */
+  /** @codegen_name nanoseconds */
   nanos,
-  /** @identifier micro_seconds */
+  /** @codegen_name microseconds */
   micros,
-  /** @identifier milli_seconds */
+  /** @codegen_name milliseconds */
   ms,
-  /** @identifier seconds */
+  /** @codegen_name seconds */
   s,
-  /** @identifier minutes */
+  /** @codegen_name minutes */
   m,
-  /** @identifier hours */
+  /** @codegen_name hours */
   h,
-  /** @identifier days */
+  /** @codegen_name days */
   d
 }

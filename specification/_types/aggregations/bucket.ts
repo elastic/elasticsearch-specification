@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SortOrder } from '@global/search/_types/sort'
+import { SortOrder } from '@_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, RelationName, Fields } from '@_types/common'
@@ -25,24 +25,24 @@ import {
   GeoDistanceType,
   DistanceUnit,
   GeoHashPrecision,
-  GeoTilePrecision
+  GeoTilePrecision,
+  GeoLocation,
+  GeoBounds
 } from '@_types/Geo'
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { GeoLocation, BoundingBox } from '@_types/query_dsl/geo'
 import { Script } from '@_types/Scripting'
 import { DateString, Time, DateMath } from '@_types/Time'
-import { GeoBounds } from './Aggregate'
+import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
-import {
-  AggregationContainer,
-  Missing,
-  MissingOrder
-} from './AggregationContainer'
+import { Missing, MissingOrder } from './AggregationContainer'
 
-export class BucketAggregationBase extends Aggregation {
-  aggregations?: Dictionary<string, AggregationContainer>
-}
+/**
+ * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
+ */
+// Note: since sub-aggregations exist only for bucket aggregations, this empty base class is a placeholder for client
+// code generators that would want to lift the 'AggregationContainer.aggregations' container property here.
+export class BucketAggregationBase extends Aggregation {}
 
 export class AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Dictionary<string, QueryContainer>
@@ -80,11 +80,6 @@ export class CompositeAggregation extends BucketAggregationBase {
 }
 
 export class CompositeAggregationSource {
-  // field: Field;
-  // missing_bucket: boolean;
-  // name: string;
-  // order: SortOrder;
-  // source_type: string;
   terms?: TermsAggregation
   histogram?: HistogramAggregation
   date_histogram?: DateHistogramAggregation
@@ -92,13 +87,13 @@ export class CompositeAggregationSource {
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
-  calendar_interval?: DateInterval | Time
-  extended_bounds?: ExtendedBounds<DateMath | long>
-  hard_bounds?: ExtendedBounds<DateMath | long>
+  calendar_interval?: CalendarInterval // CalendarInterval is too restrictive here
+  extended_bounds?: ExtendedBounds<FieldDateMath>
+  hard_bounds?: ExtendedBounds<FieldDateMath>
   field?: Field
-  fixed_interval?: DateInterval | Time
+  fixed_interval?: Time // CalendarInterval is too restrictive here
   format?: string
-  interval?: DateInterval | Time
+  interval?: Time
   min_doc_count?: integer
   missing?: DateString
   offset?: Time
@@ -109,15 +104,23 @@ export class DateHistogramAggregation extends BucketAggregationBase {
   keyed?: boolean
 }
 
-export enum DateInterval {
-  second = 0,
-  minute = 1,
-  hour = 2,
-  day = 3,
-  week = 4,
-  month = 5,
-  quarter = 6,
-  year = 7
+export enum CalendarInterval {
+  /** @aliases 1s */
+  second,
+  /** @aliases 1m */
+  minute,
+  /** @aliases 1h */
+  hour,
+  /** @aliases 1d */
+  day,
+  /** @aliases 1w */
+  week,
+  /** @aliases 1M */
+  month,
+  /** @aliases 1q */
+  quarter,
+  /** @aliases 1Y */
+  year
 }
 
 export class DateRangeAggregation extends BucketAggregationBase {
@@ -129,13 +132,19 @@ export class DateRangeAggregation extends BucketAggregationBase {
   keyed?: boolean
 }
 
+/**
+ * A date range limit, represented either as a DateMath expression or a number expressed
+ * according to the target field's precision.
+ *
+ * @codegen_names expr, value
+ */
+// ES: DateRangeAggregationBuilder.innerBuild()
+export type FieldDateMath = DateMath | double
+
 export class DateRangeExpression {
-  from?: DateMath | float
-  from_as_string?: string
-  to_as_string?: string
+  from?: FieldDateMath
   key?: string
-  to?: DateMath | float
-  doc_count?: long
+  to?: FieldDateMath
 }
 
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
@@ -153,7 +162,7 @@ export enum SamplerAggregationExecutionHint {
 }
 
 export class FiltersAggregation extends BucketAggregationBase {
-  filters?: Dictionary<string, QueryContainer> | QueryContainer[]
+  filters?: Buckets<QueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
   keyed?: boolean
@@ -162,13 +171,13 @@ export class FiltersAggregation extends BucketAggregationBase {
 export class GeoDistanceAggregation extends BucketAggregationBase {
   distance_type?: GeoDistanceType
   field?: Field
-  origin?: GeoLocation | string
+  origin?: GeoLocation
   ranges?: AggregationRange[]
   unit?: DistanceUnit
 }
 
 export class GeoHashGridAggregation extends BucketAggregationBase {
-  bounds?: BoundingBox
+  bounds?: GeoBounds
   field?: Field
   precision?: GeoHashPrecision
   shard_size?: integer
@@ -215,9 +224,9 @@ export class IpRangeAggregation extends BucketAggregationBase {
 }
 
 export class IpRangeAggregationRange {
-  from?: string
+  from?: string | null
   mask?: string
-  to?: string
+  to?: string | null
 }
 
 export class MissingAggregation extends BucketAggregationBase {
@@ -247,18 +256,19 @@ export class RangeAggregation extends BucketAggregationBase {
   ranges?: AggregationRange[]
   script?: Script
   keyed?: boolean
+  format?: string
 }
 
 export class AggregationRange {
-  from?: double | string
+  from?: double | string | null
   key?: string
-  to?: double | string
+  to?: double | string | null
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
-  exclude?: string | string[]
+  exclude?: TermsExclude
   field?: Field
-  include?: string | string[] | TermsInclude
+  include?: TermsInclude
   max_doc_count?: long
   missing?: Missing
   precision?: double
@@ -296,7 +306,7 @@ export class ScriptedHeuristic {
 export class SignificantTermsAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
-  exclude?: string | string[]
+  exclude?: TermsExclude
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
   gnd?: GoogleNormalizedDistanceHeuristic
@@ -313,7 +323,7 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
 export class SignificantTextAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
-  exclude?: string | string[]
+  exclude?: TermsExclude
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
   filter_duplicate_text?: boolean
@@ -331,10 +341,10 @@ export class SignificantTextAggregation extends BucketAggregationBase {
 
 export class TermsAggregation extends BucketAggregationBase {
   collect_mode?: TermsAggregationCollectMode
-  exclude?: string | string[]
+  exclude?: TermsExclude
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
-  include?: string | string[] | TermsInclude
+  include?: TermsInclude
   min_doc_count?: integer
   missing?: Missing
   missing_order?: MissingOrder
@@ -345,12 +355,12 @@ export class TermsAggregation extends BucketAggregationBase {
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
+  format?: string
 }
 
 export type TermsAggregationOrder =
-  | SortOrder
-  | Dictionary<string, SortOrder>
-  | Dictionary<string, SortOrder>[]
+  | Dictionary<Field, SortOrder>
+  | Dictionary<Field, SortOrder>[]
 
 export enum TermsAggregationCollectMode {
   depth_first = 0,
@@ -364,7 +374,13 @@ export enum TermsAggregationExecutionHint {
   global_ordinals_low_cardinality = 3
 }
 
-export class TermsInclude {
+/** @codegen_names regexp, terms, partition */
+export type TermsInclude = string | string[] | TermsPartition
+
+/** @codegen_names regexp, terms */
+export type TermsExclude = string | string[]
+
+export class TermsPartition {
   num_partitions: long
   partition: long
 }
@@ -374,4 +390,81 @@ export class VariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
+}
+
+/**
+ * A multi-bucket aggregation that groups semi-structured text into buckets. Each text
+ * field is re-analyzed using a custom analyzer. The resulting tokens are then categorized
+ * creating buckets of similarly formatted text values. This aggregation works best with machine
+ * generated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.
+ */
+export class CategorizeTextAggregation extends Aggregation {
+  /**
+   * The semi-structured text field to categorize.
+   */
+  field: Field
+  /**
+   * The maximum number of unique tokens at any position up to max_matched_tokens. Must be larger than 1.
+   * Smaller values use less memory and create fewer categories. Larger values will use more memory and
+   * create narrower categories. Max allowed value is 100.
+   * @server_default 50
+   */
+  max_unique_tokens?: integer
+  /**
+   * The maximum number of token positions to match on before attempting to merge categories. Larger
+   * values will use more memory and create narrower categories. Max allowed value is 100.
+   * @server_default 5
+   */
+  max_matched_tokens?: integer
+  /**
+   * The minimum percentage of tokens that must match for text to be added to the category bucket. Must
+   * be between 1 and 100. The larger the value the narrower the categories. Larger values will increase memory
+   * usage and create narrower categories.
+   * @server_default 50
+   */
+  similarity_threshold?: integer
+  /**
+   * This property expects an array of regular expressions. The expressions are used to filter out matching
+   * sequences from the categorization field values. You can use this functionality to fine tune the categorization
+   * by excluding sequences from consideration when categories are defined. For example, you can exclude SQL
+   * statements that appear in your log files. This property cannot be used at the same time as categorization_analyzer.
+   * If you only want to define simple regular expression filters that are applied prior to tokenization, setting
+   * this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering,
+   * use the categorization_analyzer property instead and include the filters as pattern_replace character filters.
+   */
+  categorization_filters?: string[]
+  /**
+   * The categorization analyzer specifies how the text is analyzed and tokenized before being categorized.
+   * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
+   * cannot be used at the same time as categorization_filters.
+   */
+  categorization_analyzer?: CategorizeTextAnalyzer
+  /**
+   * The number of categorization buckets to return from each shard before merging all the results.
+   */
+  shard_size?: integer
+  /**
+   * The number of buckets to return.
+   * @server_default 10
+   */
+  size?: integer
+  /**
+   * The minimum number of documents for a bucket to be returned to the results.
+   */
+  min_doc_count?: integer
+  /**
+   * The minimum number of documents for a bucket to be returned from the shard before merging.
+   */
+  shard_min_doc_count?: integer
+}
+
+/**
+ * @codegen_names builtin, custom
+ */
+export type CategorizeTextAnalyzer = string | CustomCategorizeTextAnalyzer
+
+export class CustomCategorizeTextAnalyzer {
+  char_filter?: string[]
+  tokenizer?: string
+  filter?: string[]
 }

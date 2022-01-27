@@ -36,12 +36,12 @@ export interface Request extends RequestBase {
   body: {
     analyzer?: string
     attributes?: string[]
-    char_filter?: Array<string | CharFilter>
+    char_filter?: Array<CharFilter>
     explain?: boolean
     field?: Field
-    filter?: Array<string | TokenFilter>
+    filter?: Array<TokenFilter>
     normalizer?: string
     text?: TextToAnalyze
-    tokenizer?: string | Tokenizer
+    tokenizer?: Tokenizer
   }
 }

@@ -40,6 +40,6 @@ export interface Request extends RequestBase {
     preserve_existing?: boolean
     timeout?: Time
   }
-  /** @identifier settings */
+  /** @codegen_name settings */
   body: IndexSettings
 }

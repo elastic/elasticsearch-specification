@@ -23,10 +23,10 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name ml.validate_detector
  * @since 5.4.0
- *
+ * @visibility private
  * @stability stable
  */
 export interface Request extends RequestBase {
-  /** @identifier detector */
+  /** @codegen_name detector */
   body?: Detector
 }

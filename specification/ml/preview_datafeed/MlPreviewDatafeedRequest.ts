@@ -23,16 +23,42 @@ import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
 
 /**
+ * Previews a datafeed.
+ * This API returns the first "page" of search results from a datafeed.
+ * You can preview an existing datafeed or provide configuration details for a datafeed
+ * and anomaly detection job in the API. The preview shows the structure of the data
+ * that will be passed to the anomaly detection engine.
+ * IMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that
+ * called the API. However, when the datafeed starts it uses the roles of the last user that created or updated the
+ * datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.
+ * You can also use secondary authorization headers to supply the credentials.
  * @rest_spec_name ml.preview_datafeed
  * @since 5.4.0
  * @stability stable
+ * @index_privileges read
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase
+     * alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric
+     * characters. NOTE: If you use this path parameter, you cannot provide datafeed or anomaly detection job
+     * configuration details in the request body.
+     */
     datafeed_id?: Id
   }
   body: {
-    job_config?: JobConfig
+    /**
+     * The datafeed definition to preview.
+     */
     datafeed_config?: DatafeedConfig
+    /**
+     * The configuration details for the anomaly detection job that is associated with the datafeed. If the
+     * `datafeed_config` object does not include a `job_id` that references an existing anomaly detection job, you must
+     * supply this `job_config` object. If you include both a `job_id` and a `job_config`, the latter information is
+     * used. You cannot specify a `job_config` object unless you also supply a `datafeed_config` object.
+     */
+    job_config?: JobConfig
   }
 }

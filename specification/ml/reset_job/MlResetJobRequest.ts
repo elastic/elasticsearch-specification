@@ -21,18 +21,27 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Resets an anomaly detection job.
+ * All model state and results are deleted. The job is ready to start over as if
+ * it had just been created.
+ * It is not currently possible to reset multiple jobs using wildcards or a
+ * comma separated list.
  * @rest_spec_name ml.reset_job
  * @since 7.14.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** The ID of the job to reset. */
+    /**
+     * The ID of the job to reset.
+     */
     job_id: Id
   }
   query_parameters: {
     /**
-     * Should this request wait until the operation has completed before returning.
+     * Should this request wait until the operation has completed before
+     * returning.
      * @server_default true
      */
     wait_for_completion?: boolean

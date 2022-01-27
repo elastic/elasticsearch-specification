@@ -23,10 +23,10 @@ import {
   Id,
   IndexName,
   Routing,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name exists_source
@@ -37,14 +37,13 @@ export interface Request extends RequestBase {
   path_parts: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters: {
     preference?: string
     realtime?: boolean
     refresh?: boolean
     routing?: Routing
-    _source?: boolean | Fields
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     version?: VersionNumber

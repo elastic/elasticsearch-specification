@@ -31,6 +31,7 @@ import { Time } from '@_types/Time'
  * @since 5.4.0
  * @stability stable
  * @cluster_privileges manage_ml
+ * @doc_id ml-close-job
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -47,10 +48,6 @@ export interface Request extends RequestBase {
      */
     allow_no_match?: boolean
     /**
-     * @deprecated 7.10.0 Use `allow_no_match` instead.
-     */
-    allow_no_jobs?: boolean
-    /**
      * Use to close a failed job, or to forcefully close a job which has not responded to its initial close request; the request returns without performing the associated actions such as flushing buffers and persisting the model snapshots.
      * If you want the job to be in a consistent state after the close job API returns, do not set to `true`. This parameter should be used only in situations where the job has already failed or where you are not interested in results the job might have recently produced or might produce in the future.
      * @server_default false
@@ -58,6 +55,22 @@ export interface Request extends RequestBase {
     force?: boolean
     /**
      * Controls the time to wait until a job has closed.
+     * @server_default 30m */
+    timeout?: Time
+  }
+  body: {
+    /**
+     * Refer to the description for the `allow_no_match` query parameter.
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * Refer to the descriptiion for the `force` query parameter.
+     * @server_default false
+     */
+    force?: boolean
+    /**
+     * Refer to the description for the `timeout` query parameter.
      * @server_default 30m */
     timeout?: Time
   }

@@ -38,7 +38,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     dry_run?: boolean
-    include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
@@ -46,7 +45,7 @@ export interface Request extends RequestBase {
   body: {
     aliases?: Dictionary<IndexName, Alias>
     conditions?: RolloverConditions
-    mappings?: Dictionary<string, TypeMapping> | TypeMapping
+    mappings?: TypeMapping
     settings?: Dictionary<string, UserDefinedValue>
   }
 }

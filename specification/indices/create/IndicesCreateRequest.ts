@@ -18,10 +18,10 @@
  */
 
 import { Alias } from '@indices/_types/Alias'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { IndexName, WaitForActiveShards } from '@_types/common'
+import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Time } from '@_types/Time'
 
@@ -36,22 +36,21 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   query_parameters: {
-    include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {
     /* Aliases for the index. */
-    aliases?: Dictionary<IndexName, Alias>
+    aliases?: Dictionary<Name, Alias>
     /**
      * Mapping for fields in the index. If specified, this mapping can include:
      * - Field names
      * - Field data types
      * - Mapping parameters
      */
-    mappings?: Dictionary<string, TypeMapping> | TypeMapping
+    mappings?: TypeMapping
     /* Configuration options for the index. */
-    settings?: Dictionary<string, UserDefinedValue>
+    settings?: IndexSettings
   }
 }

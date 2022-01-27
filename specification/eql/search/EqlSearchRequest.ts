@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, IndexName } from '@_types/common'
-import { float, uint } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { ExpandWildcards, Field, IndexName, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
+import { uint } from '@_types/Numeric'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
-import { ResultPosition, SearchFieldFormatted } from './types'
+import { ResultPosition } from './types'
 
 /**
  * @rest_spec_name eql.search
@@ -31,7 +32,7 @@ import { ResultPosition, SearchFieldFormatted } from './types'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index: IndexName
+    index: Indices
   }
   query_parameters: {
     /**
@@ -99,14 +100,16 @@ export interface Request extends RequestBase {
      * For basic queries, the maximum number of matching events to return. Defaults to 10
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax
      */
-    size?: uint | float
+    size?: uint // doc says "integer of float" but it's really an int
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-    fields?: Array<Field | SearchFieldFormatted>
+    fields?: FieldAndFormat | FieldAndFormat[]
     /**
      * @server_default tail
      */
     result_position?: ResultPosition
+    /** @since 8.0.0 */
+    runtime_mappings?: RuntimeFields
   }
 }

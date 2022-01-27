@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 
+// Identical to DatafeedState, but kept separate as they're different enums in ES
 export enum WatcherState {
   stopped = 0,
   starting = 1,
@@ -39,6 +40,7 @@ export class WatcherNodeStats {
 }
 
 export enum WatcherMetric {
+  /** @aliases all */
   '_all' = 0,
   'queued_watches' = 1,
   'current_watches' = 2,

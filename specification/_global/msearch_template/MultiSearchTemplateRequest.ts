@@ -20,13 +20,14 @@
 import { RequestBase } from '@_types/Base'
 import { Indices, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TemplateItem } from './types'
+import { RequestItem } from './types'
 
 /**
+ * Runs multiple [templated searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#run-multiple-templated-searches) with a single request.
  * @rest_spec_name msearch_template
  * @since 5.0.0
- *
  * @stability stable
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -39,6 +40,6 @@ export interface Request extends RequestBase {
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }
-  /** @identifier search_templates */
-  body: Array<TemplateItem>
+  /** @codegen_name search_templates */
+  body: Array<RequestItem>
 }

@@ -22,9 +22,12 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Deletes a data frame analytics job.
  * @rest_spec_name ml.delete_data_frame_analytics
  * @since 7.3.0
  * @stability stable
+ * @cluster_privileges manage_ml
+ * @doc_id ml-delete-dfanalytics
  */
 export interface Request extends RequestBase {
   path_parts: {

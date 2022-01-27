@@ -23,20 +23,61 @@ import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 /**
+ * This API yields a breakdown of the hot threads on each selected node in the cluster.
+ * The output is plain text with a breakdown of each node’s top hot threads.
  * @rest_spec_name nodes.hot_threads
  * @since 0.0.0
  * @stability stable
+ * @cluster_privileges monitor,manage
+ * @doc_id cluster-nodes-hot-threads
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * List of node IDs or names used to limit returned information.
+     */
     node_id?: NodeIds
   }
   query_parameters: {
+    /**
+     * If true, known idle threads (e.g. waiting in a socket select, or to get
+     * a task from an empty queue) are filtered out.
+     * @server_default true
+     */
     ignore_idle_threads?: boolean
+    /**
+     * The interval to do the second sampling of threads.
+     * @server_default 500ms
+     */
     interval?: Time
+    /**
+     * Number of samples of thread stacktrace.
+     * @server_default 10
+     */
     snapshots?: long
+    /**
+     * Period to wait for a connection to the master node. If no response
+     * is received before the timeout expires, the request fails and
+     * returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Specifies the number of hot threads to provide information for.
+     * @server_default 3
+     */
     threads?: long
-    thread_type?: ThreadType
+    /**
+     * Period to wait for a response. If no response is received
+     * before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Time
+    /**
+     * The type to sample.
+     * @server_default cpu
+     */
+    type?: ThreadType
+    sort?: ThreadType
   }
 }

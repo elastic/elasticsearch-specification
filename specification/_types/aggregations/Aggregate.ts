@@ -18,257 +18,721 @@
  */
 
 import { HitsMetadata } from '@global/search/_types/hits'
-import { AdditionalProperties } from '@spec_utils/behaviors'
+import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AggregateName } from '@_types/common'
-import { LatLon } from '@_types/Geo'
+import { AggregateName, Field, FieldValue } from '@_types/common'
+import { GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { GeoCoordinate, GeoLocation } from '@_types/query_dsl/geo'
-import { DateMathTime } from '@_types/Time'
+import { DateMathTime, EpochMillis } from '@_types/Time'
+import { Void } from '@spec_utils/VoidValue'
 
-export type Bucket =
-  | CompositeBucket
-  | DateHistogramBucket
-  | FiltersBucketItem
-  | IpRangeBucket
-  | RangeBucket
-  | RareTermsBucket<UserDefinedValue>
-  | SignificantTermsBucket<UserDefinedValue>
-  | KeyedBucket<UserDefinedValue>
-
-export class CompositeBucket
-  implements AdditionalProperties<AggregateName, Aggregate> {}
-export class DateHistogramBucket
-  implements AdditionalProperties<AggregateName, Aggregate> {}
-export class FiltersBucketItem
-  implements AdditionalProperties<AggregateName, Aggregate> {
-  doc_count: long
-}
-export class IpRangeBucket
-  implements AdditionalProperties<AggregateName, Aggregate> {}
-export class RangeBucket
-  implements AdditionalProperties<AggregateName, Aggregate> {}
-export class RareTermsBucket<TKey>
-  implements AdditionalProperties<AggregateName, Aggregate> {}
-export class SignificantTermsBucket<TKey>
-  implements AdditionalProperties<AggregateName, Aggregate> {}
-
-export class KeyedBucket<TKey>
-  implements AdditionalProperties<AggregateName, Aggregate> {
-  doc_count: long
-  key: TKey
-  key_as_string: string
-}
-
+/**
+ * @variants external
+ */
 export type Aggregate =
-  | SingleBucketAggregate
-  | AutoDateHistogramAggregate
-  | FiltersAggregate
-  | SignificantTermsAggregate<UserDefinedValue>
-  | TermsAggregate<UserDefinedValue>
-  | BucketAggregate
-  | CompositeBucketAggregate
-  | MultiBucketAggregate<Bucket>
-  | MatrixStatsAggregate
-  | KeyedValueAggregate
-  | MetricAggregate
-
-export type MetricAggregate =
-  | ValueAggregate
-  | BoxPlotAggregate
+  | CardinalityAggregate
+  // Digests
+  | HdrPercentilesAggregate
+  | HdrPercentileRanksAggregate
+  | TDigestPercentilesAggregate
+  | TDigestPercentileRanksAggregate
+  | PercentilesBucketAggregate
+  // Single value
+  | MedianAbsoluteDeviationAggregate
+  | MinAggregate
+  | MaxAggregate
+  | SumAggregate
+  | AvgAggregate
+  | WeightedAvgAggregate
+  | ValueCountAggregate
+  | SimpleValueAggregate
+  | DerivativeAggregate
+  | BucketMetricValueAggregate
+  // Multi value
+  | StatsAggregate
+  | StatsBucketAggregate
+  | ExtendedStatsAggregate
+  | ExtendedStatsBucketAggregate
+  // Geo
   | GeoBoundsAggregate
   | GeoCentroidAggregate
-  | GeoLineAggregate
-  | PercentilesAggregate
+  // Histograms
+  | HistogramAggregate
+  | DateHistogramAggregate
+  | AutoDateHistogramAggregate
+  | VariableWidthHistogramAggregate
+  // Terms
+  | StringTermsAggregate
+  | LongTermsAggregate
+  | DoubleTermsAggregate
+  | UnmappedTermsAggregate
+  | LongRareTermsAggregate
+  | StringRareTermsAggregate
+  | UnmappedRareTermsAggregate
+  | MultiTermsAggregate
+  // Single bucket
+  | MissingAggregate
+  | NestedAggregate
+  | ReverseNestedAggregate
+  | GlobalAggregate
+  | FilterAggregate
+  | ChildrenAggregate
+  | ParentAggregate
+  | SamplerAggregate
+  | UnmappedSamplerAggregate
+  // Geo grid
+  | GeoHashGridAggregate
+  | GeoTileGridAggregate
+  // Range
+  | RangeAggregate
+  | DateRangeAggregate
+  | GeoDistanceAggregate
+  | IpRangeAggregate
+  // Other multi-bucket
+  | FiltersAggregate
+  | AdjacencyMatrixAggregate
+  | SignificantLongTermsAggregate
+  | SignificantStringTermsAggregate
+  | UnmappedSignificantTermsAggregate
+  | CompositeAggregate
+  //
   | ScriptedMetricAggregate
-  | StatsAggregate
-  | StringStatsAggregate
   | TopHitsAggregate
+  | InferenceAggregate
+  // Analytics
+  | StringStatsAggregate
+  | BoxPlotAggregate
   | TopMetricsAggregate
-  | ExtendedStatsAggregate
-  | TDigestPercentilesAggregate
-  | HdrPercentilesAggregate
+  | TTestAggregate
+  | RateAggregate
+  | CumulativeCardinalityAggregate
+  | MatrixStatsAggregate
+  | GeoLineAggregate
+
+// Aggregations are defined in the ES code base in two ways:
+// - in SearchModule.registerAggregations()
+// - in implementations of SearchPlugin, through the getAggregations() and getPipelineAggregations() methods
+//
+// For an aggregate FooAggregate, the reference code in ES lives in two places:
+// - ES aggregations: InternalFoo, the actual aggregate implementation, with the `doXContentBody` methods
+// - HLRC classes: ParsedFoo, that have a parser and `toXContent` implementations
+// Exceptions to this scheme exist and are indicated in the relevant aggregates
 
 export class AggregateBase {
   meta?: Dictionary<string, UserDefinedValue>
 }
 
-export class MultiBucketAggregate<TBucket> extends AggregateBase {
-  buckets: TBucket[]
+/** @variant name=cardinality */
+export class CardinalityAggregate extends AggregateBase {
+  value: long
 }
 
-export class ValueAggregate extends AggregateBase {
-  value: double
+//----- Percentiles
+
+// ES: AbstractInternalHDRPercentiles, AbstractInternalTDigestPercentiles, InternalPercentilesBucket
+export class PercentilesAggregateBase extends AggregateBase {
+  values: Percentiles
+}
+
+/** @codegen_names keyed, array */
+type Percentiles = KeyedPercentiles | Array<ArrayPercentilesItem>
+
+// In keyed form, percentiles are represented as an object with 1 or 2 properties for each key:
+// <key_name>: double | null - always present (null means there were no values for this percentile)
+// <key_name>_as_string? string - present if a format was provided
+//
+// Note: defined as type alias and not inline, as some clients may want to implement it in a more usable way.
+type KeyedPercentiles = Dictionary<string, string | long | null>
+
+export class ArrayPercentilesItem {
+  key: string
+  value: double | null
   value_as_string?: string
 }
 
-export class SingleBucketAggregate
-  extends AggregateBase
-  implements AdditionalProperties<AggregateName, Aggregate> {
-  doc_count: double
+/** @variant name=hdr_percentiles */
+export class HdrPercentilesAggregate extends PercentilesAggregateBase {}
+
+/** @variant name=hdr_percentile_ranks */
+export class HdrPercentileRanksAggregate extends PercentilesAggregateBase {}
+
+/** @variant name=tdigest_percentiles */
+export class TDigestPercentilesAggregate extends PercentilesAggregateBase {}
+
+/** @variant name=tdigest_percentile_ranks */
+export class TDigestPercentileRanksAggregate extends PercentilesAggregateBase {}
+
+/** @variant name=percentiles_bucket */
+export class PercentilesBucketAggregate extends PercentilesAggregateBase {}
+
+//----- Single value
+
+export class SingleMetricAggregateBase extends AggregateBase {
+  // HLRC: ParsedSingleValueNumericMetricsAggregation
+  // ES: InternalNumericMetricsAggregation.SingleValue
+  /**
+   * The metric value. A missing value generally means that there was no data to aggregate,
+   * unless specified otherwise.
+   */
+  value: double | null
+  value_as_string?: string
 }
-export class KeyedValueAggregate extends ValueAggregate {
+
+/** @variant name=median_absolute_deviation */
+export class MedianAbsoluteDeviationAggregate extends SingleMetricAggregateBase {}
+
+/** @variant name=min */
+export class MinAggregate extends SingleMetricAggregateBase {}
+
+/** @variant name=max */
+export class MaxAggregate extends SingleMetricAggregateBase {}
+
+/**
+ * Sum aggregation result. `value` is always present and is zero if there were no values to process.
+ * @variant name=sum
+ */
+export class SumAggregate extends SingleMetricAggregateBase {}
+
+/** @variant name=avg */
+export class AvgAggregate extends SingleMetricAggregateBase {}
+
+/**
+ * Weighted average aggregation result. `value` is missing if the weight was set to zero.
+ * @variant name=weighted_avg
+ */
+export class WeightedAvgAggregate extends SingleMetricAggregateBase {}
+
+/**
+ * Value count aggregation result. `value` is always present.
+ * @variant name=value_count
+ */
+export class ValueCountAggregate extends SingleMetricAggregateBase {}
+
+/** @variant name=simple_value */
+export class SimpleValueAggregate extends SingleMetricAggregateBase {}
+
+/** @variant name=derivative */
+export class DerivativeAggregate extends SingleMetricAggregateBase {
+  normalized_value?: double
+  normalized_value_as_string?: string
+}
+
+/** @variant name=bucket_metric_value */
+export class BucketMetricValueAggregate extends SingleMetricAggregateBase {
   keys: string[]
 }
 
-export class AutoDateHistogramAggregate extends MultiBucketAggregate<
-  KeyedBucket<long>
-> {
-  interval: DateMathTime
+//----- Multi value
+
+/**
+ * Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process
+ * (`count` is zero).
+ * @variant name=stats
+ */
+export class StatsAggregate extends AggregateBase {
+  count: long
+  min: double | null
+  max: double | null
+  avg: double | null
+  sum: double
+  min_as_string?: string
+  max_as_string?: string
+  avg_as_string?: string
+  sum_as_string?: string
 }
 
-export class FiltersAggregate extends AggregateBase {
-  buckets: FiltersBucketItem[] | Dictionary<string, FiltersBucketItem>
+/** @variant name=stats_bucket */
+export class StatsBucketAggregate extends StatsAggregate {}
+
+export class StandardDeviationBounds {
+  upper: double | null
+  lower: double | null
+  upper_population: double | null
+  lower_population: double | null
+  upper_sampling: double | null
+  lower_sampling: double | null
 }
 
-export class SignificantTermsAggregate<
-  TKey
-> extends MultiBucketAggregate<TKey> {
-  bg_count: long
+export class StandardDeviationBoundsAsString {
+  upper: string
+  lower: string
+  upper_population: string
+  lower_population: string
+  upper_sampling: string
+  lower_sampling: string
+}
+
+/** @variant name=extended_stats */
+export class ExtendedStatsAggregate extends StatsAggregate {
+  sum_of_squares: double | null
+  variance: double | null
+  variance_population: double | null
+  variance_sampling: double | null
+  std_deviation: double | null
+  // Always sent (see InternalExtendedStats), but semantically it's useless if std_deviation is null
+  std_deviation_bounds?: StandardDeviationBounds
+
+  sum_of_squares_as_string?: string
+  variance_as_string?: string
+  variance_population_as_string?: string
+  variance_sampling_as_string?: string
+  std_deviation_as_string?: string
+  std_deviation_bounds_as_string?: StandardDeviationBoundsAsString
+}
+
+/** @variant name=extended_stats_bucket */
+export class ExtendedStatsBucketAggregate extends ExtendedStatsAggregate {}
+
+//----- Geo
+
+/** @variant name=geo_bounds */
+export class GeoBoundsAggregate extends AggregateBase {
+  bounds: GeoBounds
+}
+
+/** @variant name=geo_centroid */
+export class GeoCentroidAggregate extends AggregateBase {
+  count: long
+  location?: GeoLocation
+}
+
+//----- Histograms
+
+/**
+ * Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for
+ * the different buckets, the result is a dictionary.
+ *
+ * @codegen_names keyed, array
+ */
+// Note: not all aggregations support keys in their configuration, meaning they will never return the dictionary
+// variant. However we use this union for all aggregates to future-proof the spec if some key-less aggregations finally
+// add support for keys.
+export type Buckets<TBucket> = Dictionary<string, TBucket> | Array<TBucket>
+
+export class MultiBucketAggregateBase<TBucket> extends AggregateBase {
+  buckets: Buckets<TBucket>
+}
+
+/**
+ * Base type for multi-bucket aggregation results that can hold sub-aggregations results.
+ */
+export class MultiBucketBase
+  implements AdditionalProperties<AggregateName, Aggregate>
+{
   doc_count: long
 }
 
-export class TermsAggregate<TKey> extends MultiBucketAggregate<TKey> {
-  doc_count_error_upper_bound: long
-  sum_other_doc_count: long
+/** @variant name=histogram */
+export class HistogramAggregate extends MultiBucketAggregateBase<HistogramBucket> {}
+
+export class HistogramBucket extends MultiBucketBase {
+  key_as_string?: string
+  key: double
 }
 
-// TODO this is an intermediate type in NEST
-export class BucketAggregate extends AggregateBase {
-  after_key: Dictionary<string, UserDefinedValue>
-  bg_count: long
-  doc_count: long
-  doc_count_error_upper_bound: long
-  sum_other_doc_count: long
+/** @variant name=date_histogram */
+export class DateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {}
+
+export class DateHistogramBucket extends MultiBucketBase {
+  key_as_string?: string
+  key: EpochMillis
+}
+
+/** @variant name=auto_date_histogram */
+// Note: no keyed variant in `InternalAutoDateHistogram`
+export class AutoDateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {
   interval: DateMathTime
-  items: Bucket
 }
 
-export class CompositeBucketAggregate extends MultiBucketAggregate<
-  Dictionary<string, UserDefinedValue>
-> {
-  after_key: Dictionary<string, UserDefinedValue>
+/** @variant name=variable_width_histogram */
+// Note: no keyed variant in `InternalVariableWidthHistogram`
+export class VariableWidthHistogramAggregate extends MultiBucketAggregateBase<VariableWidthHistogramBucket> {}
+
+export class VariableWidthHistogramBucket extends MultiBucketBase {
+  min: double
+  key: double
+  max: double
+  min_as_string?: string
+  key_as_string?: string
+  max_as_string?: string
 }
 
-export class MatrixStatsAggregate extends AggregateBase {
-  correlation: Dictionary<string, double>
-  covariance: Dictionary<string, double>
-  count: integer
-  kurtosis: double
-  mean: double
-  skewness: double
-  variance: double
-  name: string
+//----- Terms
+
+export class TermsAggregateBase<
+  TBucket
+> extends MultiBucketAggregateBase<TBucket> {
+  doc_count_error_upper_bound?: long
+  sum_other_doc_count: long
 }
 
+/**
+ * Result of a `terms` aggregation when the field is a string.
+ * @variant name=sterms
+ */
+// ES: StringTerms
+export class StringTermsAggregate extends TermsAggregateBase<StringTermsBucket> {}
+
+export class TermsBucketBase extends MultiBucketBase {
+  doc_count_error?: long
+}
+
+export class StringTermsBucket extends TermsBucketBase {
+  key: string
+}
+
+/**
+ * Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.
+ * @variant name=lterms
+ */
+// ES: LongTerms
+export class LongTermsAggregate extends TermsAggregateBase<LongTermsBucket> {}
+
+export class LongTermsBucket extends TermsBucketBase {
+  key: long
+  key_as_string?: string
+}
+
+/**
+ * Result of a `terms` aggregation when the field is some kind of decimal number like a float, double, or distance.
+ * @variant name=dterms
+ */
+// ES: DoubleTerms
+export class DoubleTermsAggregate extends TermsAggregateBase<DoubleTermsBucket> {}
+
+export class DoubleTermsBucket extends TermsBucketBase {
+  key: double
+  key_as_string?: string
+}
+
+/**
+ * Result of a `terms` aggregation when the field is unmapped. `buckets` is always empty.
+ * @variant name=umterms
+ */
+// ES: UnmappedTerms
+// Since the buckets array is present but always empty, we use `Void` as the bucket type.
+export class UnmappedTermsAggregate extends TermsAggregateBase<Void> {}
+
+/**
+ * Result of the `rare_terms` aggregation when the field is some kind of whole number like a integer, long, or a date.
+ * @variant name=lrareterms
+ */
+// ES: LongRareTerms
+export class LongRareTermsAggregate extends MultiBucketAggregateBase<LongRareTermsBucket> {}
+
+export class LongRareTermsBucket extends MultiBucketBase {
+  key: long
+  key_as_string?: string
+}
+
+/**
+ * Result of the `rare_terms` aggregation when the field is a string.
+ * @variant name=srareterms
+ */
+export class StringRareTermsAggregate extends MultiBucketAggregateBase<StringRareTermsBucket> {}
+
+export class StringRareTermsBucket extends MultiBucketBase {
+  key: string
+}
+
+/**
+ * Result of a `rare_terms` aggregation when the field is unmapped. `buckets` is always empty.
+ * @variant name=umrareterms
+ */
+// ES: UnmappedRareTerms
+// Since the buckets array is present but always empty, we use `Void` as the bucket type.
+export class UnmappedRareTermsAggregate extends MultiBucketAggregateBase<Void> {}
+
+/** @variant name=multi_terms */
+// Note: no keyed variant
+export class MultiTermsAggregate extends TermsAggregateBase<MultiTermsBucket> {}
+
+export class MultiTermsBucket extends MultiBucketBase {
+  key: Array<long | double | string>
+  key_as_string?: string
+  doc_count_error_upper_bound?: long
+}
+
+//----- Single bucket
+
+/**
+ * Base type for single-bucket aggregation results that can hold sub-aggregations results.
+ */
+export class SingleBucketAggregateBase
+  extends AggregateBase
+  implements AdditionalProperties<AggregateName, Aggregate>
+{
+  doc_count: long
+}
+
+/** @variant name=missing */
+export class MissingAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=nested */
+export class NestedAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=reverse_nested */
+export class ReverseNestedAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=global */
+export class GlobalAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=filter */
+export class FilterAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=sampler */
+export class SamplerAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=unmapped_sampler */
+export class UnmappedSamplerAggregate extends SingleBucketAggregateBase {}
+
+//----- Geo grid
+
+/** @variant name=geohash_grid */
+// Note: no keyed variant in the `InternalGeoGrid` parent class
+export class GeoHashGridAggregate extends MultiBucketAggregateBase<GeoHashGridBucket> {}
+
+export class GeoHashGridBucket extends MultiBucketBase {
+  key: GeoHash
+}
+
+/** @variant name=geotile_grid */
+// Note: no keyed variant in the `InternalGeoGrid` parent class
+export class GeoTileGridAggregate extends MultiBucketAggregateBase<GeoTileGridBucket> {}
+
+export class GeoTileGridBucket extends MultiBucketBase {
+  key: GeoTile
+}
+
+//----- Ranges
+
+/** @variant name=range */
+export class RangeAggregate extends MultiBucketAggregateBase<RangeBucket> {}
+
+export class RangeBucket extends MultiBucketBase {
+  from?: double
+  to?: double
+  from_as_string?: string
+  to_as_string?: string
+  /** The bucket key. Present if the aggregation is _not_ keyed */
+  key?: string
+}
+
+/**
+ * Result of a `date_range` aggregation. Same format as a for a `range` aggregation: `from` and `to`
+ * in `buckets` are milliseconds since the Epoch, represented as a floating point number.
+ * @variant name=date_range
+ */
+export class DateRangeAggregate extends RangeAggregate {}
+
+/**
+ * Result of a `geo_distance` aggregation. The unit for `from` and `to` is meters by default.
+ * @variant name=geo_distance
+ */
+export class GeoDistanceAggregate extends RangeAggregate {}
+
+/** @variant name=ip_range */
+// ES: InternalBinaryRange
+export class IpRangeAggregate extends MultiBucketAggregateBase<IpRangeBucket> {}
+
+export class IpRangeBucket extends MultiBucketBase {
+  from?: string
+  to?: string
+}
+
+//----- Other multi-bucket
+
+/** @variant name=filters */
+export class FiltersAggregate extends MultiBucketAggregateBase<FiltersBucket> {}
+
+export class FiltersBucket extends MultiBucketBase {}
+
+/** @variant name=adjacency_matrix */
+// Note: no keyed variant in the `InternalAdjacencyMatrix`
+export class AdjacencyMatrixAggregate extends MultiBucketAggregateBase<AdjacencyMatrixBucket> {}
+
+export class AdjacencyMatrixBucket extends MultiBucketBase {}
+
+/** @variant name=siglterms */
+// ES: SignificantLongTerms & InternalSignificantTerms
+export class SignificantLongTermsAggregate extends MultiBucketAggregateBase<SignificantLongTermsBucket> {}
+
+export class SignificantTermsBucketBase extends MultiBucketBase {
+  score: double
+  bg_count: long
+}
+
+export class SignificantLongTermsBucket extends SignificantTermsBucketBase {
+  key: long
+  key_as_string?: string
+}
+
+/** @variant name=sigsterms */
+// ES: SignificantStringTerms & InternalSignificantTerms
+export class SignificantStringTermsAggregate extends MultiBucketAggregateBase<SignificantStringTermsBucket> {}
+
+export class SignificantStringTermsBucket extends SignificantTermsBucketBase {
+  key: string
+}
+
+/**
+ * Result of the `significant_terms` aggregation on an unmapped field. `buckets` is always empty.
+ * @variant name=umsigterms
+ */
+// ES: UnmappedSignificantTerms
+// See note in UnmappedTermsAggregate
+export class UnmappedSignificantTermsAggregate extends MultiBucketAggregateBase<Void> {}
+
+/** @variant name=composite */
+// Note: no keyed variant
+export class CompositeAggregate extends MultiBucketAggregateBase<CompositeBucket> {
+  after_key?: Dictionary<string, UserDefinedValue>
+}
+
+export class CompositeBucket extends MultiBucketBase {
+  key: Dictionary<string, UserDefinedValue>
+}
+
+//----- Misc
+
+/** @variant name=scripted_metric */
+export class ScriptedMetricAggregate extends AggregateBase {
+  value: UserDefinedValue
+}
+
+/** @variant name=top_hits */
+export class TopHitsAggregate extends AggregateBase {
+  hits: HitsMetadata<UserDefinedValue>
+}
+
+/** @variant name=inference */
+// This is a union with widely different fields, many of them being runtime-defined. We mimic below the few fields
+// present in `ParsedInference` with an additional properties spillover to not loose any data.
+export class InferenceAggregate
+  extends AggregateBase
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  value?: FieldValue
+  feature_importance?: InferenceFeatureImportance[]
+  top_classes?: InferenceTopClassEntry[]
+  warning?: string
+}
+
+export class InferenceTopClassEntry {
+  class_name: FieldValue
+  class_probability: double
+  class_score: double
+}
+
+export class InferenceFeatureImportance {
+  feature_name: string
+  importance?: double
+  classes?: InferenceClassImportance[]
+}
+
+export class InferenceClassImportance {
+  class_name: string
+  importance: double
+}
+
+//------ Plugin aggregations
+
+// Analytics
+
+/** @variant name=string_stats */
+export class StringStatsAggregate extends AggregateBase {
+  count: long
+  min_length: integer | null
+  max_length: integer | null
+  avg_length: double | null
+  entropy: double | null
+  distribution?: Dictionary<string, double> | null
+  min_length_as_string?: string
+  max_length_as_string?: string
+  avg_length_as_string?: string
+}
+
+/** @variant name=box_plot */
 export class BoxPlotAggregate extends AggregateBase {
   min: double
   max: double
   q1: double
   q2: double
   q3: double
+  lower: double
+  upper: double
+  min_as_string?: string
+  max_as_string?: string
+  q1_as_string?: string
+  q2_as_string?: string
+  q3_as_string?: string
+  lower_as_string?: string
+  upper_as_string?: string
 }
 
-export class StatsAggregate extends AggregateBase {
-  count: double
-  sum: double
-
-  // not returned if count is 0
-  avg?: double
-  max?: double
-  min?: double
-}
-
-// extended stats can return a completely empty object hence all optional "std_deviation_bounds": {},
-export class StandardDeviationBounds {
-  lower?: double
-  upper?: double
-  lower_population?: double
-  upper_population?: double
-  lower_sampling?: double
-  upper_sampling?: double
-}
-
-export class ExtendedStatsAggregate extends StatsAggregate {
-  // if count is 0 this is an empty object
-  std_deviation_bounds: StandardDeviationBounds
-
-  sum_of_squares?: double
-  variance?: double
-  variance_population?: double
-  variance_sampling?: double
-  std_deviation?: double
-  std_deviation_population?: double
-  std_deviation_sampling?: double
-}
-export class GeoBounds {
-  bottom_right: LatLon
-  top_left: LatLon
-}
-export class GeoBoundsAggregate extends AggregateBase {
-  bounds: GeoBounds
-}
-
-export class GeoCentroidAggregate extends AggregateBase {
-  count: long
-  location: GeoLocation
-}
-export class GeoLineAggregate extends AggregateBase {
-  type: string
-  geometry: LineStringGeoShape
-  properties: GeoLineProperties
-}
-export class GeoLineProperties {
-  complete: boolean
-  sort_values: double[]
-}
-export class LineStringGeoShape {
-  coordinates: GeoCoordinate[]
-}
-
-export class PercentileItem {
-  percentile: double
-  value: double
-}
-
-export class PercentilesAggregate extends AggregateBase {
-  items: PercentileItem[]
-}
-export class TDigestPercentilesAggregate extends AggregateBase {
-  values: Dictionary<string, double>
-}
-export class HdrPercentileItem {
-  key: double
-  value: double
-}
-export class HdrPercentilesAggregate extends AggregateBase {
-  values: HdrPercentileItem[]
-}
-
-export class ScriptedMetricAggregate extends AggregateBase {
-  value: UserDefinedValue
-}
-
-export class StringStatsAggregate extends AggregateBase {
-  count: long
-  min_length: integer
-  max_length: integer
-  avg_length: double
-  entropy: double
-  distribution?: Dictionary<string, double>
-}
-
-//hard
-export class TopHitsAggregate extends AggregateBase {
-  hits: HitsMetadata<Dictionary<string, UserDefinedValue>>
-}
-
+/** @variant name=top_metrics */
 export class TopMetricsAggregate extends AggregateBase {
   top: TopMetrics[]
 }
 
 export class TopMetrics {
-  sort: Array<long | double | string>
-  metrics: Dictionary<string, long | double | string>
+  // Always contains a single element since `top_metrics` only accepts a single sort field
+  sort: Array<FieldValue | null>
+  metrics: Dictionary<string, FieldValue | null>
+}
+
+/** @variant name=t_test */
+export class TTestAggregate extends AggregateBase {
+  value: double | null
+  value_as_string?: string
+}
+
+/** @variant name=rate */
+export class RateAggregate extends AggregateBase {
+  value: double
+  value_as_string?: string
+}
+
+/**
+ * Result of the `cumulative_cardinality` aggregation
+ * @variant name=simple_long_value
+ */
+// ES: InternalSimpleLongValue
+export class CumulativeCardinalityAggregate extends AggregateBase {
+  value: long
+  value_as_string?: string
+}
+
+/** @variant name=matrix_stats */
+export class MatrixStatsAggregate extends AggregateBase {
+  doc_count: long
+  fields: MatrixStatsFields[]
+}
+
+export class MatrixStatsFields {
+  name: Field
+  count: long
+  mean: double
+  variance: double
+  skewness: double
+  kurtosis: double
+  covariance: Dictionary<Field, double>
+  correlation: Dictionary<Field, double>
+}
+
+//----- Parent join plugin
+
+/** @variant name=children */
+export class ChildrenAggregate extends SingleBucketAggregateBase {}
+
+/** @variant name=parent */
+export class ParentAggregate extends SingleBucketAggregateBase {}
+
+//----- Spatial plugin
+
+/** @variant name=geo_line */
+export class GeoLineAggregate extends AggregateBase {
+  type: string // should be "Feature"
+  geometry: GeoLine
 }

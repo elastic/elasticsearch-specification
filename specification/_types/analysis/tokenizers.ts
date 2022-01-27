@@ -19,7 +19,9 @@
 
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
+import { TokenFilterDefinition } from '@_types/analysis/token_filters'
 
 export class TokenizerBase {
   version?: VersionString
@@ -27,7 +29,7 @@ export class TokenizerBase {
 
 export class EdgeNGramTokenizer extends TokenizerBase {
   type: 'edge_ngram'
-  custom_token_chars: string
+  custom_token_chars?: string
   max_gram: integer
   min_gram: integer
   token_chars: TokenChar[]
@@ -35,7 +37,7 @@ export class EdgeNGramTokenizer extends TokenizerBase {
 
 export class NGramTokenizer extends TokenizerBase {
   type: 'ngram'
-  custom_token_chars: string
+  custom_token_chars?: string
   max_gram: integer
   min_gram: integer
   token_chars: TokenChar[]
@@ -53,6 +55,7 @@ export enum TokenChar {
 export class CharGroupTokenizer extends TokenizerBase {
   type: 'char_group'
   tokenize_on_chars: string[]
+  max_token_length?: integer
 }
 
 export class KeywordTokenizer extends TokenizerBase {
@@ -76,10 +79,10 @@ export enum NoriDecompoundMode {
 
 export class NoriTokenizer extends TokenizerBase {
   type: 'nori_tokenizer'
-  decompound_mode: NoriDecompoundMode
-  discard_punctuation: boolean
-  user_dictionary: string
-  user_dictionary_rules: string[]
+  decompound_mode?: NoriDecompoundMode
+  discard_punctuation?: boolean
+  user_dictionary?: string
+  user_dictionary_rules?: string[]
 }
 
 export class PathHierarchyTokenizer extends TokenizerBase {
@@ -100,21 +103,25 @@ export class PatternTokenizer extends TokenizerBase {
 
 export class StandardTokenizer extends TokenizerBase {
   type: 'standard'
-  max_token_length: integer
+  max_token_length?: integer
 }
 
 export class UaxEmailUrlTokenizer extends TokenizerBase {
   type: 'uax_url_email'
-  max_token_length: integer
+  max_token_length?: integer
 }
 
 export class WhitespaceTokenizer extends TokenizerBase {
   type: 'whitespace'
-  max_token_length: integer
+  max_token_length?: integer
 }
 
+/** @codegen_names name, definition */
+// ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
+export type Tokenizer = string | TokenizerDefinition
+
 /** @variants internal tag='type' */
-export type Tokenizer =
+export type TokenizerDefinition =
   | CharGroupTokenizer
   | EdgeNGramTokenizer
   | KeywordTokenizer
@@ -127,3 +134,5 @@ export type Tokenizer =
   | UaxEmailUrlTokenizer
   | WhitespaceTokenizer
   | KuromojiTokenizer
+  | PatternTokenizer
+  | IcuTokenizer

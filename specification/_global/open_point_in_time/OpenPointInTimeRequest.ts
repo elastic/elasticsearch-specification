@@ -25,12 +25,13 @@ import { Time } from '@_types/Time'
  * @rest_spec_name open_point_in_time
  * @since 7.10.0
  * @stability stable
+ * @doc_id point-in-time-api
  */
 export interface Request extends RequestBase {
   path_parts: {
     index: Indices
   }
   query_parameters: {
-    keep_alive?: Time
+    keep_alive: Time
   }
 }

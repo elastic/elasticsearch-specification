@@ -22,7 +22,8 @@ import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
-import { integer, long, uint, ulong } from '@_types/Numeric'
+import { double, integer, long, uint, ulong } from '@_types/Numeric'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class Base {
   available: boolean
@@ -37,17 +38,6 @@ export class Counter {
 export class FeatureToggle {
   enabled: boolean
 }
-
-export class BaseUrlConfig {
-  url_name: string
-  url_value: string
-}
-
-export class KibanaUrlConfig extends BaseUrlConfig {
-  time_range?: string
-}
-
-export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
 export class AlertingExecution {
   actions: Dictionary<string, ExecutionAction>
@@ -173,7 +163,14 @@ export class MlJobForecasts {
 export class MlDataFrameAnalyticsJobs {
   memory_usage?: MlDataFrameAnalyticsJobsMemory
   _all: MlDataFrameAnalyticsJobsCount
-  analysis_counts?: EmptyObject
+  analysis_counts?: MlDataFrameAnalyticsJobsAnalysis
+  stopped?: MlDataFrameAnalyticsJobsCount
+}
+
+export class MlDataFrameAnalyticsJobsAnalysis {
+  classification?: integer
+  outlier_detection?: integer
+  regression?: integer
 }
 
 export class MlDataFrameAnalyticsJobsMemory {
@@ -187,6 +184,8 @@ export class MlDataFrameAnalyticsJobsCount {
 export class MlInference {
   ingest_processors: Dictionary<string, MlInferenceIngestProcessor>
   trained_models: MlInferenceTrainedModels
+  /** @since 8.0.0 */
+  deployments?: MlInferenceDeployments
 }
 
 export class MlInferenceIngestProcessor {
@@ -201,6 +200,19 @@ export class MlInferenceTrainedModels {
   estimated_heap_memory_usage_bytes?: JobStatistics
   count?: MlInferenceTrainedModelsCount
   _all: MlCounter
+  /** @since 8.0.0 */
+  model_size_bytes?: JobStatistics
+}
+
+export class MlInferenceDeployments {
+  count: integer
+  inference_counts: JobStatistics
+  model_sizes_bytes: JobStatistics
+  time_ms: MlInferenceDeploymentsTimeMs
+}
+
+export class MlInferenceDeploymentsTimeMs {
+  avg: double
 }
 
 export class MlInferenceIngestProcessorCount {
@@ -213,8 +225,9 @@ export class MlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
-  regression: long
-  classification: long
+  regression?: long
+  classification?: long
+  ner?: long
 }
 
 export class MlCounter {
@@ -326,21 +339,24 @@ export class FrozenIndices extends Base {
 export class AllJobs {
   count: integer
   detectors: Dictionary<string, integer>
-  created_by: Dictionary<string, string>
+  created_by: Dictionary<string, string | integer>
   model_size: Dictionary<string, integer>
   forecasts: Dictionary<string, integer>
+}
+
+// The 'jobs' entry in MachineLearning can either contain a dictionary of
+// individual jobs or a single summary entry under the key '_all'.
+// The layout of the summary varies from that of the individual job,
+// and is specified in the 'AllJobs' class (defined above).
+export class Jobs implements AdditionalProperties<string, Job> {
+  _all?: AllJobs
 }
 
 export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
   // TODO: xPack marks the entire Job definition as optional
   //       while the MlJob has many required properties.
-
-  // Assumption: the 'jobs' entry can either contain a dictionary of
-  // individual jobs or a single summary entry under the key '_all'.
-  // The layout of the summary varies from that of the individual job,
-  // and is specified in the 'AllJobs' class (defined above).
-  jobs: Dictionary<string, Job> | SingleKeyDictionary<string, AllJobs>
+  jobs: Jobs
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
   inference: MlInference

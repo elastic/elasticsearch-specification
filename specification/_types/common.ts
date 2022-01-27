@@ -19,8 +19,15 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { integer, long } from './Numeric'
+import { double, integer, long } from './Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+
+/**
+ * A field value.
+ * @codegen_names long, double, string, boolean
+ */
+// FIXME: representation of geopoints and ip addresses?
+export type FieldValue = long | double | string | boolean
 
 export class UrlParameter {}
 
@@ -48,9 +55,6 @@ export type Indices = IndexName | IndexName[]
 export type IndexAlias = string
 export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
-
-export type Type = string
-export type Types = Type | Type[]
 
 export type Routing = string
 export type LongId = string
@@ -108,6 +112,7 @@ export type MultiTermQueryRewrite = string
 export type Field = string
 export type Fields = Field | Field[]
 
+/** @codegen_names count, option */
 export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 /**
@@ -134,29 +139,23 @@ export class EmptyObject {}
  */
 export type MinimumShouldMatch = integer | string
 
-export enum ShapeRelation {
-  intersects = 0,
-  disjoint = 1,
-  within = 2
-}
-
 /**
  * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
  *
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
  */
 export enum Bytes {
-  /** @identifier bytes */
+  /** @codegen_name bytes */
   b,
-  /** @identifier kilo_bytes */
+  /** @codegen_name kilo_bytes */
   kb,
-  /** @identifier mega_bytes */
+  /** @codegen_name mega_bytes */
   mb,
-  /** @identifier giga_bytes */
+  /** @codegen_name giga_bytes */
   gb,
-  /** @identifier tera_bytes */
+  /** @codegen_name tera_bytes */
   tb,
-  /** @identifier peta_bytes */
+  /** @codegen_name peta_bytes */
   pb
 }
 
@@ -168,11 +167,6 @@ export enum Conflicts {
 export type Username = string
 export type Password = string
 
-export enum DefaultOperator {
-  AND = 0,
-  OR = 1
-}
-
 export class ElasticsearchResponseBase {}
 
 export class ElasticsearchUrlFormatter {}
@@ -180,7 +174,7 @@ export class ElasticsearchUrlFormatter {}
 /**
  * Type of index that wildcard expressions can match.
  */
-export enum ExpandWildcardOptions {
+export enum ExpandWildcard {
   /** Match any data stream or index, including hidden ones. */
   all = 0,
   /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
@@ -193,26 +187,27 @@ export enum ExpandWildcardOptions {
   none = 4
 }
 
-export type ExpandWildcards =
-  | ExpandWildcardOptions
-  | Array<ExpandWildcardOptions>
-  | string
-
-export enum GroupBy {
-  nodes = 0,
-  parents = 1,
-  none = 2
-}
+export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
 
 /**
  * Health status of the cluster, based on the state of its primary and replica shards.
  */
-export enum Health {
-  /** All shards are assigned. */
+export enum HealthStatus {
+  // ES will send this enum as upper or lowercase depending on the APIs
+  /**
+   * All shards are assigned.
+   * @aliases GREEN
+   */
   green = 0,
-  /** All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired. */
+  /**
+   * All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.
+   * @aliases YELLOW
+   */
   yellow = 1,
-  /** One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned. */
+  /**
+   * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
+   * @aliases RED
+   */
   red = 2
 }
 
@@ -235,9 +230,11 @@ export enum OpType {
   create = 1
 }
 
-export type Refresh = boolean | RefreshOptions
-export enum RefreshOptions {
-  wait_for = 1
+// Note: ES also accepts plain booleans for true and false. The TS generator implements this leniency rule.
+export enum Refresh {
+  true,
+  false,
+  wait_for
 }
 
 export enum SearchType {
@@ -247,15 +244,6 @@ export enum SearchType {
   dfs_query_then_fetch = 1
 }
 
-export enum Size {
-  Raw = 0,
-  k = 1,
-  m = 2,
-  g = 3,
-  t = 4,
-  p = 5
-}
-
 export enum SuggestMode {
   missing = 0,
   popular = 1,
@@ -263,12 +251,14 @@ export enum SuggestMode {
 }
 
 export enum ThreadType {
-  cpu = 0,
-  wait = 1,
-  block = 2
+  cpu,
+  wait,
+  block,
+  gpu,
+  mem
 }
 
-// TODO: @see WaitForActiveShards & https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
+/** @doc_id cluster-health */
 export enum WaitForActiveShardOptions {
   'all' = 0
 }
@@ -282,19 +272,43 @@ export enum WaitForEvents {
   languid = 5
 }
 
-export enum WaitForStatus {
-  green = 0,
-  yellow = 1,
-  red = 2
-}
-
 // Additional properties are the meta fields
 export class InlineGet<TDocument>
-  implements AdditionalProperties<string, UserDefinedValue> {
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   fields?: Dictionary<string, UserDefinedValue>
   found: boolean
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
   _source: TDocument
+}
+
+/**
+ * Controls how to deal with unavailable concrete indices (closed or missing), how wildcard expressions are expanded
+ * to actual indices (all, closed or open indices) and how to deal with wildcard expressions that resolve to no indices.
+ */
+export class IndicesOptions {
+  /**
+   * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only
+   * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
+   * a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+   */
+  allow_no_indices?: boolean
+  /**
+   * Type of index that wildcard patterns can match. If the request can target data streams, this argument
+   * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+   * such as `open,hidden`.
+   */
+  expand_wildcards?: ExpandWildcards
+  /**
+   * If true, missing or closed indices are not included in the response.
+   * @server_default false
+   */
+  ignore_unavailable?: boolean
+  /**
+   * If true, concrete, expanded or aliased indices are ignored when frozen.
+   * @server_default true
+   */
+  ignore_throttled?: boolean
 }

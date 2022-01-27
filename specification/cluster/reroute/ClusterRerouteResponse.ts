@@ -22,6 +22,7 @@ import { RerouteExplanation } from './types'
 
 export class Response {
   body: {
+    acknowledged: boolean
     explanations?: RerouteExplanation[]
     /**
      * There aren't any guarantees on the output/structure of the raw cluster state.

@@ -11,10 +11,15 @@
         "Request: should not have a body"
       ],
       "response": [
-        "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",
-        "type_alias definition _types.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ValueAggregate'",
-        "type_alias definition _types.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
-        "type_alias definition _global.search._types:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'"
+        "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
+        "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
+        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations:TBucket'",
+        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
+        "type_alias definition _spec_utils:Void / instance_of - No type definition for 'internal:void'",
+        "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
+        "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
+        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
+        "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
     "async_search.status": {
@@ -48,6 +53,12 @@
     "autoscaling.get_autoscaling_policy": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "bulk": {
+      "request": [
+        "Request: missing json spec query parameter 'type'"
       ],
       "response": []
     },
@@ -105,7 +116,6 @@
     },
     "cat.health": {
       "request": [
-        "Request: query parameter 'include_timestamp' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -169,28 +179,24 @@
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
+        "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
+        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -368,9 +374,7 @@
     },
     "cat.thread_pool": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'local'",
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'h'",
@@ -482,7 +486,6 @@
     },
     "cluster.health": {
       "request": [
-        "Request: missing json spec query parameter 'return_200_for_cluster_health_timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -548,17 +551,15 @@
       ],
       "response": []
     },
-    "delete_by_query": {
-      "request": [
-        "Request: query parameter 'size' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "delete_by_query_rethrottle": {
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition tasks._types:NodeTasks / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
+        "type_alias definition tasks._types:TaskInfos / union_of / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
+        "interface definition tasks._types:ParentTaskInfo / Property 'children' / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "delete_script": {
       "request": [
@@ -588,7 +589,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition enrich.stats:ExecutingPolicy / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "eql.delete": {
       "request": [
@@ -643,7 +646,7 @@
     },
     "fleet.global_checkpoints": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -692,18 +695,24 @@
     },
     "ilm.delete_lifecycle": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ilm.explain_lifecycle": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ilm.get_lifecycle": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -714,9 +723,10 @@
       ],
       "response": []
     },
-    "ilm.migrate_to_data_tiers": {
+    "ilm.put_lifecycle": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -770,12 +780,6 @@
     "indices.close": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "indices.create": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
       ],
       "response": []
     },
@@ -858,12 +862,6 @@
       ],
       "response": []
     },
-    "indices.exists_type": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
     "indices.field_usage_stats": {
       "request": [
         "Missing request & response"
@@ -882,15 +880,8 @@
       ],
       "response": []
     },
-    "indices.freeze": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
     "indices.get": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": [
@@ -911,21 +902,18 @@
     },
     "indices.get_field_mapping": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get_index_template": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "indices.get_mapping": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -940,7 +928,6 @@
     },
     "indices.get_template": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -971,22 +958,14 @@
     },
     "indices.put_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
         "Request: missing json spec query parameter 'master_timeout'"
-      ],
-      "response": []
-    },
-    "indices.put_mapping": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
       ],
       "response": []
     },
     "indices.put_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -1015,12 +994,6 @@
       ],
       "response": []
     },
-    "indices.rollover": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "indices.segments": {
       "request": [
         "Request: should not have a body"
@@ -1035,9 +1008,7 @@
     },
     "indices.simulate_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'create'",
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -1095,12 +1066,6 @@
       ],
       "response": []
     },
-    "knn_search": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "license.delete": {
       "request": [
         "Request: should not have a body"
@@ -1137,9 +1102,7 @@
         "Request: missing json spec query parameter 'type'",
         "Request: should not have a body"
       ],
-      "response": [
-        "response definition license.post_start_trial:Response / body - Property 'acknowledged' is already defined in an ancestor class"
-      ]
+      "response": []
     },
     "logstash.delete_pipeline": {
       "request": [
@@ -1152,6 +1115,12 @@
         "Request: should not have a body"
       ],
       "response": []
+    },
+    "mget": {
+      "request": [],
+      "response": [
+        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget:TDocument'"
+      ]
     },
     "migration.deprecations": {
       "request": [
@@ -1227,6 +1196,7 @@
     },
     "ml.delete_trained_model": {
       "request": [
+        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1245,31 +1215,6 @@
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'msle' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'",
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'r_squared' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'"
       ]
-    },
-    "ml.flush_job": {
-      "request": [
-        "Request: missing json spec query parameter 'calc_interim'",
-        "Request: missing json spec query parameter 'start'",
-        "Request: missing json spec query parameter 'end'",
-        "Request: missing json spec query parameter 'advance_time'"
-      ],
-      "response": []
-    },
-    "ml.forecast": {
-      "request": [
-        "Request: missing json spec query parameter 'duration'",
-        "Request: missing json spec query parameter 'expires_in'",
-        "Request: missing json spec query parameter 'max_model_memory'",
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "ml.get_buckets": {
-      "request": [
-        "Request: missing json spec query parameter 'expand'",
-        "Request: missing json spec query parameter 'anomaly_score'"
-      ],
-      "response": []
     },
     "ml.get_calendar_events": {
       "request": [
@@ -1291,14 +1236,12 @@
     },
     "ml.get_datafeed_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1311,7 +1254,6 @@
     },
     "ml.get_job_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1320,25 +1262,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": [
-        "type_alias definition xpack.usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:BaseUrlConfig'"
-      ]
-    },
-    "ml.get_overall_buckets": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_jobs'"
-      ],
       "response": []
     },
-    "ml.get_records": {
-      "request": [
-        "Request: missing json spec query parameter 'record_score'",
-        "Request: missing json spec query parameter 'sort'",
-        "Request: missing json spec query parameter 'desc'"
-      ],
-      "response": []
-    },
-    "ml.get_trained_model_deployment_stats": {
+    "ml.get_model_snapshot_upgrade_stats": {
       "request": [
         "Missing request & response"
       ],
@@ -1357,19 +1283,7 @@
       ],
       "response": []
     },
-    "ml.infer_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.info": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "ml.open_job": {
       "request": [
         "Request: should not have a body"
       ],
@@ -1390,27 +1304,9 @@
       ],
       "response": []
     },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'defer_definition_decompression'"
-      ],
-      "response": []
-    },
     "ml.put_trained_model_alias": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "ml.put_trained_model_definition_part": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "ml.put_trained_model_vocabulary": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1420,47 +1316,24 @@
       ],
       "response": []
     },
-    "ml.revert_model_snapshot": {
-      "request": [
-        "Request: missing json spec query parameter 'delete_intervening_results'"
-      ],
-      "response": []
-    },
     "ml.set_upgrade_mode": {
       "request": [
         "Request: should not have a body"
       ],
       "response": []
     },
-    "ml.start_datafeed": {
-      "request": [
-        "Request: missing json spec query parameter 'end'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "ml.start_trained_model_deployment": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'inference_threads' does not exist in the json spec",
+        "Request: query parameter 'model_threads' does not exist in the json spec",
+        "Request: query parameter 'queue_capacity' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
     "ml.stop_datafeed": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "ml.stop_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "ml.update_datafeed": {
-      "request": [
-        "Missing request & response"
+        "Request: missing json spec query parameter 'allow_no_datafeeds'"
       ],
       "response": []
     },
@@ -1477,12 +1350,8 @@
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
-      "response": []
-    },
-    "msearch_template": {
-      "request": [],
       "response": [
-        "response definition _global.msearch_template:Response / body / Property 'responses' / array_of / union_of / instance_of - Non-leaf type cannot be used here: '_global.search:Response'"
+        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
       ]
     },
     "nodes.clear_repositories_metering_archive": {
@@ -1499,8 +1368,7 @@
     },
     "nodes.hot_threads": {
       "request": [
-        "Request: query parameter 'thread_type' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'",
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -1515,9 +1383,8 @@
     "nodes.reload_secure_settings": {
       "request": [],
       "response": [
-        "interface definition nodes._types:Process / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
-        "interface definition nodes._types:Jvm / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
-        "interface definition nodes._types:OperatingSystem / Property 'swap' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'"
+        "interface definition nodes._types:OperatingSystem / Property 'swap' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
+        "interface definition nodes._types:Process / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'"
       ]
     },
     "nodes.stats": {
@@ -1626,7 +1493,7 @@
     },
     "searchable_snapshots.cache_stats": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1734,13 +1601,13 @@
     },
     "security.enroll_kibana": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "security.enroll_node": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1798,6 +1665,7 @@
       "request": [
         "Request: query parameter 'application' does not exist in the json spec",
         "Request: query parameter 'priviledge' does not exist in the json spec",
+        "Request: query parameter 'username' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -1808,45 +1676,9 @@
       ],
       "response": []
     },
-    "security.query_api_keys": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_authenticate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_complete_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_invalidate": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_logout": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "security.saml_prepare_authentication": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.saml_service_provider_metadata": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1988,19 +1820,19 @@
     },
     "sql.delete_async": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "sql.get_async": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "sql.get_async_status": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -2020,10 +1852,15 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition tasks.get:Response / body / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "tasks.list": {
       "request": [
+        "Request: query parameter 'node_id' does not exist in the json spec",
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: missing json spec query parameter 'nodes'",
         "Request: should not have a body"
       ],
       "response": []
@@ -2038,7 +1875,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
+      ]
     },
     "transform.get_transform_stats": {
       "request": [
@@ -2047,10 +1886,19 @@
       "response": []
     },
     "transform.preview_transform": {
-      "request": [],
+      "request": [
+        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required"
+      ],
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
+    },
+    "transform.reset_transform": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'",
+        "Request: should not have a body"
+      ],
+      "response": []
     },
     "transform.start_transform": {
       "request": [
@@ -2066,15 +1914,13 @@
     },
     "transform.upgrade_transforms": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "update_by_query": {
       "request": [
-        "Request: query parameter 'size' does not exist in the json spec",
-        "Request: missing json spec query parameter 'q'",
-        "Request: missing json spec query parameter 'max_docs'"
+        "Request: missing json spec query parameter 'q'"
       ],
       "response": []
     },
@@ -2082,7 +1928,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition _global.update_by_query_rethrottle:UpdateByQueryRethrottleNode / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
+      ]
     },
     "watcher.ack_watch": {
       "request": [
@@ -2111,20 +1959,20 @@
     "watcher.execute_watch": {
       "request": [
         "interface definition watcher._types:SearchInputRequestDefinition / Property 'template' / instance_of - '_global.search_template:Request' is a request and must only be used in endpoints",
-        "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'"
+        "interface definition watcher._types:HttpEmailAttachment / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
+        "interface definition watcher._types:ReportingEmailAttachment / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
+        "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
+        "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
       ],
-      "response": []
+      "response": [
+        "interface definition watcher._types:EmailResult / Property 'message' / instance_of - Non-leaf type cannot be used here: 'watcher._types:Email'",
+        "interface definition watcher._types:PagerDutyResult / Property 'event' / instance_of - Non-leaf type cannot be used here: 'watcher._types:PagerDutyEvent'",
+        "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
+      ]
     },
     "watcher.get_watch": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "watcher.put_watch": {
-      "request": [
-        "Request: query parameter 'if_sequence_number' does not exist in the json spec",
-        "Request: missing json spec query parameter 'if_seq_no'"
       ],
       "response": []
     },
@@ -2150,7 +1998,6 @@
     },
     "xpack.info": {
       "request": [
-        "Request: missing json spec query parameter 'accept_enterprise'",
         "Request: should not have a body"
       ],
       "response": []

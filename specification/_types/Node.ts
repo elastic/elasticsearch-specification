@@ -22,7 +22,7 @@ import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
-import { Id, IndexName, Name, NodeName } from './common'
+import { Id, IndexName, Name, NodeId, NodeName } from './common'
 import { TransportAddress } from './Networking'
 
 export class NodeStatistics {
@@ -58,6 +58,7 @@ export class NodeShard {
   allocation_id?: Dictionary<string, Id>
   recovery_source?: Dictionary<string, Id>
   unassigned_info?: UnassignedInformation
+  relocating_node?: NodeId | null
 }
 
 /**

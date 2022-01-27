@@ -17,45 +17,50 @@
  * under the License.
  */
 
-import { SourceFilter } from '@global/search/_types/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 import {
   Fields,
   Id,
   IndexName,
   Routing,
-  SequenceNumber,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { integer, long } from '@_types/Numeric'
+import { GetResult } from '@global/get/types'
 
 export class Operation {
-  _id: MultiGetId
+  /**
+   * The unique document ID.
+   */
+  _id: Id
+  /**
+   * The index that contains the document.
+   */
   _index?: IndexName
+  /**
+   * The key for the primary shard the document resides on. Required if routing is used during indexing.
+   */
   routing?: Routing
-  _source?: boolean | Fields | SourceFilter
+  /**
+   * If `false`, excludes all _source fields.
+   */
+  _source?: SourceConfig
+  /**
+   * The stored fields you want to retrieve.
+   */
   stored_fields?: Fields
-  _type?: Type
   version?: VersionNumber
   version_type?: VersionType
 }
 
-export type MultiGetId = string | integer
+/**
+ * @codegen_names result, failure
+ */
+export type ResponseItem<TDocument> = GetResult<TDocument> | MultiGetError
 
-export class Hit<TDocument> {
-  error?: ErrorCause
-  fields?: Dictionary<string, UserDefinedValue>
-  found?: boolean
+export class MultiGetError {
+  error: ErrorCause
   _id: Id
   _index: IndexName
-  _primary_term?: long
-  _routing?: Routing
-  _seq_no?: SequenceNumber
-  _source?: TDocument
-  _type?: Type
-  _version?: VersionNumber
 }

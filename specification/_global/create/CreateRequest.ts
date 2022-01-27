@@ -23,7 +23,6 @@ import {
   IndexName,
   Refresh,
   Routing,
-  Type,
   VersionNumber,
   VersionType,
   WaitForActiveShards
@@ -40,7 +39,6 @@ export interface Request<TDocument> extends RequestBase {
   path_parts: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters: {
     pipeline?: string
@@ -51,6 +49,6 @@ export interface Request<TDocument> extends RequestBase {
     version_type?: VersionType
     wait_for_active_shards?: WaitForActiveShards
   }
-  /** @identifier document */
+  /** @codegen_name document */
   body?: TDocument
 }

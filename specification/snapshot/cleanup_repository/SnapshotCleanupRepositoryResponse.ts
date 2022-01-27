@@ -20,10 +20,15 @@
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { results: CleanupRepositoryResults }
+  body: {
+    /** Statistics for cleanup operations. */
+    results: CleanupRepositoryResults
+  }
 }
 
 export class CleanupRepositoryResults {
+  /** Number of binary large objects (blobs) removed during cleanup. */
   deleted_blobs: long
+  /** Number of bytes freed by cleanup operations. */
   deleted_bytes: long
 }

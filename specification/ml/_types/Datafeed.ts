@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ExpandWildcards, Id, Indices } from '@_types/common'
+import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -28,8 +28,8 @@ import { Time, Timestamp } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 
 export class Datafeed {
+  /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   chunking_config?: ChunkingConfig
   datafeed_id: Id
   frequency?: Timestamp
@@ -43,19 +43,21 @@ export class Datafeed {
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
   runtime_mappings?: RuntimeFields
-  indices_options?: DatafeedIndicesOptions
+  indices_options?: IndicesOptions
 }
+
 export class DatafeedConfig {
   /**
    * If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.
+   *
+   * @aliases aggs
    */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   /**
    * Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.
    */
   chunking_config?: ChunkingConfig
-  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
    */
   datafeed_id?: Id
   /**
@@ -63,18 +65,18 @@ export class DatafeedConfig {
    */
   delayed_data_check_config?: DelayedDataCheckConfig
   /**
-   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When frequency is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
+   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   frequency?: Timestamp
   indexes?: string[]
   /**
-   * An array of index names. Wildcards are supported.
+   * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
    */
   indices: string[]
   /**
    * Specifies index expansion options that are used during search.
    */
-  indices_options?: DatafeedIndicesOptions
+  indices_options?: IndicesOptions
   job_id?: Id
   /**
    * If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.
@@ -105,28 +107,32 @@ export class DatafeedConfig {
 
 export class DelayedDataCheckConfig {
   /**
-   * The window of time that is searched for late data. This window of time ends with the latest finalized bucket. It defaults to null, which causes an appropriate check_window to be calculated when the real-time datafeed runs. In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
+   * The window of time that is searched for late data. This window of time ends with the latest finalized bucket.
+   * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
+   * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
   check_window?: Time // default: null
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */
-  enabled: boolean // default: true
+  enabled: boolean
 }
 
+// Identical to WatcherState, but kept separate as they're different enums in ES
 export enum DatafeedState {
-  started = 0,
-  stopped = 1,
-  starting = 2,
-  stopping = 3
+  started,
+  stopped,
+  starting,
+  stopping
 }
 
 export class DatafeedStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   datafeed_id: Id
-  node: DiscoveryNode
+  node?: DiscoveryNode
   state: DatafeedState
   timing_stats: DatafeedTimingStats
+  running_state?: DatafeedRunningState
 }
 
 export class DatafeedTimingStats {
@@ -135,29 +141,31 @@ export class DatafeedTimingStats {
   job_id: Id
   search_count: long
   total_search_time_ms: double
-  average_search_time_per_bucket_ms: number
+  average_search_time_per_bucket_ms?: number
+}
+
+export class DatafeedRunningState {
+  real_time_configured: boolean
+  real_time_running: boolean
 }
 
 export enum ChunkingMode {
-  auto = 0,
-  manual = 1,
-  off = 2
+  auto,
+  manual,
+  off
 }
 
 export class ChunkingConfig {
   /**
-   * If the mode is `auto`, the chunk size is dynamically calculated; this is the recommended value when the datafeed does not use aggregations. If the mode is `manual`, chunking is applied according to the specified `time_span`; use this mode when the datafeed uses aggregations. If the mode is `off`, no chunking is applied.
+   * If the mode is `auto`, the chunk size is dynamically calculated;
+   * this is the recommended value when the datafeed does not use aggregations.
+   * If the mode is `manual`, chunking is applied according to the specified `time_span`;
+   * use this mode when the datafeed uses aggregations. If the mode is `off`, no chunking is applied.
    */
   mode: ChunkingMode
   /**
-   * The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.
-   * @server_default 3h */
+   * The time span that each search will be querying. This setting is applicable only when the `mode` is set to `manual`.
+   * @server_default 3h
+   */
   time_span?: Time
-}
-
-export class DatafeedIndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
 }

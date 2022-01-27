@@ -52,7 +52,7 @@ export class ShardStoreWrapper {
   stores: ShardStore[]
 }
 
-export enum ShardStatus {
+export enum ShardStoreStatus {
   /** The primary shard and all replica shards are assigned. */
   green = 0,
   /** One or more replica shards are unassigned. */

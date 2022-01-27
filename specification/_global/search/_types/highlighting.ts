@@ -71,8 +71,10 @@ export enum HighlighterTagsSchema {
   styled = 0
 }
 
+/** @open_enum */
 export enum HighlighterType {
   plain = 0,
+  /** @codegen_name fast_vector */
   fvh = 1,
   unified = 2
 }
@@ -99,5 +101,5 @@ export class HighlightField {
   pre_tags?: string[]
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
-  type?: HighlighterType | string
+  type?: HighlighterType
 }

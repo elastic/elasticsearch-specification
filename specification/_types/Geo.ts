@@ -28,23 +28,23 @@ export class DistanceParsed {
 export type Distance = string
 
 export enum DistanceUnit {
-  /** @identifier inches */
+  /** @codegen_name inches */
   in = 0,
-  /** @identifier feet */
+  /** @codegen_name feet */
   ft = 1,
-  /** @identifier yards */
+  /** @codegen_name yards */
   yd = 2,
-  /** @identifier miles */
+  /** @codegen_name miles */
   mi = 3,
-  /** @identifier nautic_miles */
+  /** @codegen_name nautic_miles */
   nmi = 4,
-  /** @identifier kilometers */
+  /** @codegen_name kilometers */
   km = 5,
-  /** @identifier meters */
+  /** @codegen_name meters */
   m = 6,
-  /** @identifier centimeters */
+  /** @codegen_name centimeters */
   cm = 7,
-  /** @identifier millimeters */
+  /** @codegen_name millimeters */
   mm = 8
 }
 
@@ -56,6 +56,14 @@ export enum GeoDistanceType {
 /** A GeoJson shape, that can also use Elasticsearch's `envelope` extension. */
 export type GeoShape = UserDefinedValue
 
+/** A GeoJson GeoLine. */
+export class GeoLine {
+  /** Always `"LineString"` */
+  type: string
+  /** Array of `[lon, lat]` coordinates */
+  coordinates: Array<Array<double>>
+}
+
 export enum GeoShapeRelation {
   intersects = 0,
   disjoint = 1,
@@ -64,9 +72,79 @@ export enum GeoShapeRelation {
 }
 
 export type GeoTilePrecision = number
-export type GeoHashPrecision = number
+
+/**
+ * A precision that can be expressed as a geohash length between 1 and 12, or a distance measure like "1km", "10m".
+ * @codegen_names geohash_length, distance
+ */
+export type GeoHashPrecision = number | string
+export type GeoHash = string
+
+/** A map tile reference, represented as `{zoom}/{x}/{y}` */
+export type GeoTile = string
 
 export class LatLon {
   lat: double
   lon: double
+}
+
+/**
+ * A latitude/longitude as a 2 dimensional point. It can be represented in various ways:
+ * - as a `{lat, long}` object
+ * - as a geo hash value
+ * - as a `[lon, lat]` array
+ * - as a string in `"<lat>, <lon>"` or WKT point formats
+ *
+ * @codegen_names latlon, geohash, coords, text
+ */
+// ES: GeoUtils.parseGeoPoint()
+export type GeoLocation =
+  | LatLonGeoLocation
+  | GeoHashLocation
+  | double[]
+  | string
+
+export class LatLonGeoLocation {
+  lat: double
+  lon: double
+}
+
+export class GeoHashLocation {
+  geohash: GeoHash
+}
+
+/**
+ * A geo bounding box. It can be represented in various ways:
+ * - as 4 top/bottom/left/right coordinates
+ * - as 2 top_left / bottom_right points
+ * - as 2 top_right / bottom_left points
+ * - as a WKT bounding box
+ *
+ * @codegen_names coords, tlbr, trbl, wkt
+ */
+export type GeoBounds =
+  | CoordsGeoBounds
+  | TopLeftBottomRightGeoBounds
+  | TopRightBottomLeftGeoBounds
+  | WktGeoBounds
+
+export class WktGeoBounds {
+  wkt: string
+}
+
+export class CoordsGeoBounds {
+  top: double
+  bottom: double
+  left: double
+  right: double
+}
+
+export class TopLeftBottomRightGeoBounds {
+  top_left: GeoLocation
+  bottom_right: GeoLocation
+}
+
+export class TopRightBottomLeftGeoBounds {
+  top_right: GeoLocation
+  bottom_left: GeoLocation
 }

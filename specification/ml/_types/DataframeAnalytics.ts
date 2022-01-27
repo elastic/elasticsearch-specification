@@ -40,7 +40,7 @@ export class DataframeAnalyticsSource {
   index: Indices
   /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default, this property has the following value: {"match_all": {}}.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+   * @doc_id query-dsl
    */
   query?: QueryContainer
   /**
@@ -84,17 +84,17 @@ export class DataframeAnalyticsDestination {
 export class DataframeAnalysisContainer {
   /**
    * The configuration information necessary to perform classification.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   * @doc_id ml-classification
    */
   classification?: DataframeAnalysisClassification
   /**
    * The configuration information necessary to perform outlier detection. NOTE: Advanced parameters are for fine-tuning classification analysis. They are set automatically by hyperparameter optimization to give the minimum validation error. It is highly recommended to use the default values unless you fully understand the function of these parameters.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   * @doc_id ml-classification
    */
   outlier_detection?: DataframeAnalysisOutlierDetection
   /**
    * The configuration information necessary to perform regression. NOTE: Advanced parameters are for fine-tuning regression analysis. They are set automatically by hyperparameter optimization to give the minimum validation error. It is highly recommended to use the default values unless you fully understand the function of these parameters.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-regression.html
+   * @doc_id ml-regression
    */
   regression?: DataframeAnalysisRegression
 }
@@ -234,10 +234,8 @@ export class DataframeAnalysisClassification extends DataframeAnalysis {
   num_top_classes?: integer
 }
 
-export type DataframeAnalysisAnalyzedFields =
-  | string[]
-  | DataframeAnalysisAnalyzedFieldsIncludeExclude
-export class DataframeAnalysisAnalyzedFieldsIncludeExclude {
+/** @shortcut_property includes */
+export class DataframeAnalysisAnalyzedFields {
   /** An array of strings that defines the fields that will be excluded from the analysis. You do not need to add fields with unsupported data types to excludes, these fields are excluded from the analysis automatically. */
   includes: string[]
   /** An array of strings that defines the fields that will be included in the analysis. */

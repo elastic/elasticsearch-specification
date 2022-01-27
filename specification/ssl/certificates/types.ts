@@ -20,7 +20,7 @@
 import { DateString } from '@_types/Time'
 
 export class CertificateInformation {
-  alias?: string
+  alias: string | null
   expiry: DateString
   format: string
   has_private_key: boolean

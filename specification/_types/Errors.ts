@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName } from './common'
+import { Id, IndexName, NodeId } from './common'
 import { integer, long } from './Numeric'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AdditionalProperties } from '@spec_utils/behaviors'
@@ -27,11 +27,12 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
  * Additional details are also provided, that depend on the error type.
  */
 export class ErrorCause
-  implements AdditionalProperties<string, UserDefinedValue> {
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   /**
    * The type of error
    */
-  type?: string
+  type: string
   /**
    * A human-readable explanation of the error, in english
    */
@@ -60,4 +61,11 @@ export class BulkIndexByScrollFailure {
   index: IndexName
   status: integer
   type: string
+}
+
+export class TaskFailure {
+  task_id: long
+  node_id: NodeId
+  status: string
+  reason: ErrorCause
 }

@@ -25,7 +25,7 @@ import {
   MinimumShouldMatch,
   Routing
 } from '@_types/common'
-import { float, long } from '@_types/Numeric'
+import { float } from '@_types/Numeric'
 import {
   BoolQuery,
   BoostingQuery,
@@ -83,6 +83,7 @@ import {
   ExistsQuery,
   FuzzyQuery,
   IdsQuery,
+  KnnQuery,
   PrefixQuery,
   RangeQuery,
   RegexpQuery,
@@ -95,6 +96,7 @@ import {
 
 /**
  * @variants container
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
  */
 export class QueryContainer {
   bool?: BoolQuery
@@ -117,6 +119,7 @@ export class QueryContainer {
   has_parent?: HasParentQuery
   ids?: IdsQuery
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  knn?: KnnQuery
   match?: SingleKeyDictionary<Field, MatchQuery>
   match_all?: MatchAllQuery
   match_bool_prefix?: SingleKeyDictionary<Field, MatchBoolPrefixQuery>
@@ -151,6 +154,7 @@ export class QueryContainer {
   terms?: TermsQuery
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
+  wrapper?: WrapperQuery
 
   /**
    * @deprecated 7.0.0 https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
@@ -171,7 +175,7 @@ export class FieldNameQuery {
 
 export class QueryBase {
   boost?: float
-  /** @identifier query_name */
+  /** @codegen_name query_name */
   _name?: string
 }
 
@@ -185,10 +189,15 @@ export class CombinedFieldsQuery extends QueryBase {
   /** @server_default or */
   operator?: CombinedFieldsOperator
 
-  mimimum_should_match?: MinimumShouldMatch
+  minimum_should_match?: MinimumShouldMatch
 
   /** @server_default none */
   zero_terms_query?: CombinedFieldsZeroTerms
+}
+
+export class WrapperQuery extends QueryBase {
+  /** A base64 encoded query. The binary data format can be any of JSON, YAML, CBOR or SMILE encodings */
+  query: string
 }
 
 export enum CombinedFieldsOperator {
@@ -199,4 +208,20 @@ export enum CombinedFieldsOperator {
 export enum CombinedFieldsZeroTerms {
   none,
   all
+}
+
+/**
+ * A reference to a field with formatting instructions on how to return the value
+ * @shortcut_property field
+ */
+export class FieldAndFormat {
+  /**
+   * Wildcard pattern. The request returns values for field names matching this pattern.
+   */
+  field: Field
+  /**
+   * Format in which the values are returned.
+   */
+  format?: string
+  include_unmapped?: boolean
 }

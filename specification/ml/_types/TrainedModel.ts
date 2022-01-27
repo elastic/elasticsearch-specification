@@ -20,9 +20,17 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
-import { Field, Id, Name, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  Field,
+  Id,
+  IndexName,
+  Name,
+  VersionString
+} from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { DateString } from '@_types/Time'
 
 export class TrainedModelStats {
   /** The unique identifier of the trained model. */
@@ -33,7 +41,7 @@ export class TrainedModelStats {
   inference_stats?: TrainedModelInferenceStats
   /**
    * A collection of ingest stats for the model across all nodes. The values are summations of the individual node statistics. The format matches the ingest section in Nodes stats.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html
+   * @doc_id cluster-nodes-stats
    */
   ingest?: Dictionary<string, UserDefinedValue> // TODO -- this is not complete
 }
@@ -45,7 +53,7 @@ export class TrainedModelInferenceStats {
   inference_count: long
   /**
    * The number of times the model was loaded for inference and was not retrieved from the cache. If this number is close to the inference_count, then the cache is not being appropriately used. This can be solved by increasing the cache size or its time-to-live (TTL). See General machine learning settings for the appropriate settings.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#general-ml-settings
+   * @doc_id ml-settings
    */
   cache_miss_count: long
   /** The number of inference calls where all the training features for the model were missing. */
@@ -57,6 +65,8 @@ export class TrainedModelInferenceStats {
 export class TrainedModelConfig {
   /** Idetifier for the trained model. */
   model_id: Id
+  /** The model type */
+  model_type?: TrainedModelType
   /** A comma delimited string of tags. A trained model can have many tags, or none. */
   tags: string[]
   /** The Elasticsearch version number in which the trained model was created. */
@@ -82,6 +92,8 @@ export class TrainedModelConfig {
   license_level?: string
   /** An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects. */
   metadata?: TrainedModelConfigMetadata
+  model_size_bytes?: ByteSize
+  location?: TrainedModelLocation
 }
 
 export class TrainedModelConfigInput {
@@ -102,7 +114,7 @@ export class TrainedModelConfigMetadata {
 export class Hyperparameter {
   /**
    * A positive number showing how much the parameter influences the variation of the loss function. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/dfa-regression.html#dfa-regression-lossfunction
+   * @doc_id ml-regression-loss
    */
   absolute_importance?: double
   /** Name of the hyperparameter. */
@@ -138,4 +150,119 @@ export class TotalFeatureImportanceStatistics {
   max: integer
   /** The minimum importance value across all the training data for this feature. */
   min: integer
+}
+
+export enum TrainedModelType {
+  /**
+   * The model definition is an ensemble model of decision trees.
+   */
+  tree_ensemble,
+  /**
+   * A special type reserved for language identification models.
+   */
+  lang_ident,
+  /**
+   * The stored definition is a PyTorch (specifically a TorchScript) model.
+   * Currently only NLP models are supported.
+   */
+  pytorch
+}
+
+export enum DeploymentState {
+  /**
+   * The trained model is started on at least one node.
+   */
+  started = 0,
+  /**
+   * Trained model deployment is starting but it is not yet deployed on any nodes.
+   */
+  starting = 1,
+  /**
+   * Trained model deployment has started on all valid nodes.
+   */
+  fully_allocated = 3
+}
+
+export class TrainedModelAllocationTaskParameters {
+  /**
+   * The size of the trained model in bytes.
+   */
+  model_bytes: integer
+  /**
+   * The unique identifier for the trained model.
+   */
+  model_id: Id
+}
+
+export enum RoutingState {
+  /**
+   * The allocation attempt failed.
+   */
+  failed = 0,
+  /**
+   * The trained model is allocated and ready to accept inference requests.
+   */
+  started = 1,
+  /**
+   * The trained model is attempting to allocate on this node; inference requests are not yet accepted.
+   */
+  starting = 2,
+  /**
+   * The trained model is fully deallocated from this node.
+   */
+  stopped = 3,
+  /**
+   * The trained model is being deallocated from this node.
+   */
+  stopping = 4
+}
+
+export class TrainedModelAllocationRoutingTable {
+  /**
+   * The reason for the current state. It is usually populated only when the
+   * `routing_state` is `failed`.
+   */
+  reason: string
+  /**
+   * The current routing state.
+   */
+  routing_state: RoutingState
+}
+
+export class TrainedModelAllocation {
+  /**
+   * The overall allocation state.
+   */
+  allocation_state: DeploymentState
+  /**
+   * The allocation state for each node.
+   */
+  routing_table: Dictionary<string, TrainedModelAllocationRoutingTable>
+  /**
+   * The timestamp when the deployment started.
+   */
+  start_time: DateString
+  task_parameters: TrainedModelAllocationTaskParameters
+}
+export class TrainedModelEntities {
+  class_name: string
+  class_probability: double
+  entity: string
+  start_pos: integer
+  end_pos: integer
+}
+export class TopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
+}
+
+export type PredictedValue = string | double
+
+export class TrainedModelLocation {
+  index: TrainedModelLocationIndex
+}
+
+export class TrainedModelLocationIndex {
+  name: IndexName
 }

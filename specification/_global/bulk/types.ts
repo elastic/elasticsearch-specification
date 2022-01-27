@@ -31,18 +31,18 @@ import {
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
+import { Script } from '@_types/Scripting'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 
 export class ResponseItem {
   _id?: string | null
   _index: string
   status: integer
-
   error?: ErrorCause
   _primary_term?: long
   result?: string
   _seq_no?: SequenceNumber
   _shards?: ShardStatistics
-  _type?: string
   _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
@@ -88,4 +88,42 @@ export class OperationContainer {
   create?: CreateOperation
   update?: UpdateOperation
   delete?: DeleteOperation
+}
+
+export class UpdateAction<TDocument, TPartialDocument> {
+  /**
+   * Set to false to disable setting 'result' in the response
+   * to 'noop' if no change to the document occurred.
+   * @server_default true
+   */
+  detect_noop?: boolean
+  /**
+   * A partial update to an existing document.
+   */
+  doc?: TPartialDocument
+  /**
+   * Set to true to use the contents of 'doc' as the value of 'upsert'
+   * @server_default false
+   */
+  doc_as_upsert?: boolean
+  /**
+   * Script to execute to update the document.
+   */
+  script?: Script
+  /**
+   * Set to true to execute the script whether or not the document exists.
+   * @server_default false
+   */
+  scripted_upsert?: boolean
+  /**
+   * Set to false to disable source retrieval. You can also specify a comma-separated
+   * list of the fields you want to retrieve.
+   * @server_default true
+   */
+  _source?: SourceConfig
+  /**
+   * If the document does not already exist, the contents of 'upsert' are inserted as a
+   * new document. If the document exists, the 'script' is executed.
+   */
+  upsert?: TDocument
 }

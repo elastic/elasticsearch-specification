@@ -17,40 +17,22 @@
  * under the License.
  */
 
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import {
   Distance,
+  GeoBounds,
   GeoDistanceType,
+  GeoLocation,
   GeoShape,
-  GeoShapeRelation,
-  LatLon
+  GeoShapeRelation
 } from '@_types/Geo'
-import { double } from '@_types/Numeric'
 import { FieldLookup, QueryBase } from './abstractions'
 import { Field } from '@_types/common'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-
-/**
- * A geo bounding box. The various coordinates can be mixed. When set, `wkt` takes precedence over all other fields.
- */
-export class BoundingBox {
-  bottom_right?: GeoLocation
-  top_left?: GeoLocation
-
-  top_right?: GeoLocation
-  bottom_left?: GeoLocation
-
-  top?: double
-  left?: double
-  right?: double
-  bottom?: double
-
-  wkt?: string
-}
 
 export class GeoBoundingBoxQuery
   extends QueryBase
-  implements AdditionalProperty<Field, BoundingBox> {
+  implements AdditionalProperty<Field, GeoBounds>
+{
   /** @deprecated 7.14.0 */
   type?: GeoExecution
   /** @server_default 'strict' */
@@ -65,7 +47,8 @@ export enum GeoExecution {
 
 export class GeoDistanceQuery
   extends QueryBase
-  implements AdditionalProperty<Field, GeoLocation> {
+  implements AdditionalProperty<Field, GeoLocation>
+{
   distance?: Distance
   /** @server_default 'arc' */
   distance_type?: GeoDistanceType
@@ -80,7 +63,8 @@ export class GeoPolygonPoints {
 /** @deprecated 7.12.0 Use geo-shape instead. */
 export class GeoPolygonQuery
   extends QueryBase
-  implements AdditionalProperty<Field, GeoPolygonPoints> {
+  implements AdditionalProperty<Field, GeoPolygonPoints>
+{
   /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
   ignore_unmapped?: boolean
@@ -101,7 +85,8 @@ export class GeoShapeFieldQuery {
 // holding also the query base fields (boost and _name)
 export class GeoShapeQuery
   extends QueryBase
-  implements AdditionalProperty<Field, GeoShapeFieldQuery> {
+  implements AdditionalProperty<Field, GeoShapeFieldQuery>
+{
   ignore_unmapped?: boolean
 }
 
@@ -118,28 +103,6 @@ export enum TokenType {
   RParen = 3,
   Comma = 4
 }
-
-// TODO -- is duplicate with LatLon
-export class TwoDimensionalPoint {
-  lat: double
-  lon: double
-}
-
-export class ThreeDimensionalPoint {
-  lat: double
-  lon: double
-  z?: double
-}
-
-/**
- * Represents a Latitude/Longitude as a 2 dimensional point
- */
-export type GeoLocation = string | double[] | TwoDimensionalPoint
-
-/**
- * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
- */
-export type GeoCoordinate = string | double[] | ThreeDimensionalPoint
 
 export enum GeoValidationMethod {
   coerce = 0,

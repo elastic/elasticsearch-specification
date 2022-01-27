@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SortOrder } from '@global/search/_types/sort'
+import { SortOrder } from '@_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, Id, Name } from '@_types/common'
@@ -160,26 +160,14 @@ export class CsvProcessor extends ProcessorBase {
   trim: boolean
 }
 
-export enum DateRounding {
-  /** @identifier Second */
-  s = 0,
-  /** @identifier Minute */
-  m = 1,
-  /** @identifier Hour */
-  h = 2,
-  /** @identifier Day */
-  d = 3,
-  /** @identifier Week */
-  w = 4,
-  /** @identifier Month */
-  M = 5,
-  /** @identifier Year */
-  y = 6
-}
-
 export class DateIndexNameProcessor extends ProcessorBase {
   date_formats: string[]
-  date_rounding: string | DateRounding
+  /**
+   * How to round the date when formatting the date into the index name. Valid values are:
+   * `y` (year), `M` (month), `w` (week), `d` (day), `h` (hour), `m` (minute) and `s` (second).
+   * Supports template snippets.
+   */
+  date_rounding: string
   field: Field
   index_name_format: string
   index_name_prefix: string

@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { SourceFilter } from '@global/search/_types/SourceFilter'
+import {
+  SourceConfigParam,
+  SourceConfig
+} from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -26,7 +29,6 @@ import {
   Refresh,
   Routing,
   SequenceNumber,
-  Type,
   WaitForActiveShards
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
@@ -42,7 +44,6 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters: {
     /**
@@ -98,7 +99,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * list of the fields you want to retrieve.
      * @server_default true
      */
-    _source?: boolean | Fields
+    _source?: SourceConfigParam
     /**
      * Specify the source fields you want to exclude.
      */
@@ -139,7 +140,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * list of the fields you want to retrieve.
      * @server_default true
      */
-    _source?: boolean | SourceFilter
+    _source?: SourceConfig
     /**
      * If the document does not already exist, the contents of 'upsert' are inserted as a
      * new document. If the document exists, the 'script' is executed.

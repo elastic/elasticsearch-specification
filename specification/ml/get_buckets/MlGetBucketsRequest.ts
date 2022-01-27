@@ -24,37 +24,110 @@ import { double, integer } from '@_types/Numeric'
 import { DateString, Timestamp } from '@_types/Time'
 
 /**
+ * Retrieves anomaly detection job results for one or more buckets.
+ * The API presents a chronological view of the records, grouped by bucket.
  * @rest_spec_name ml.get_buckets
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
+    /**
+     * The timestamp of a single bucket result. If you do not specify this
+     * parameter, the API returns information about all buckets.
+     */
     timestamp?: Timestamp
   }
   query_parameters: {
-    from?: integer
-    size?: integer
-    /** @server_default false */
-    exclude_interim?: boolean
-    sort?: Field
-    /** @server_default false */
+    /**
+     * Returns buckets with anomaly scores greater or equal than this value.
+     * @server_default 0.0
+     */
+    anomaly_score?: double
+    /**
+     * If `true`, the buckets are sorted in descending order.
+     * @server_default false
+     */
     desc?: boolean
-    start?: DateString
+    /**
+     * Returns buckets with timestamps earlier than this time. `-1` means it is
+     * unset and results are not limited to specific timestamps.
+     * @server_default -1
+     */
     end?: DateString
+    /**
+     *  If `true`, the output excludes interim results.
+     * @server_default false
+     */
+    exclude_interim?: boolean
+    /**
+     * If true, the output includes anomaly records.
+     * @server_default false
+     */
+    expand?: boolean
+    /**
+     * Skips the specified number of buckets.
+     * @server_default 0
+     */
+    from?: integer
+    /**
+     * Specifies the maximum number of buckets to obtain.
+     * @server_default 100
+     */
+    size?: integer
+    /**
+     * Specifies the sort field for the requested buckets.
+     * @server_default timestamp
+     */
+    sort?: Field
+    /**
+     * Returns buckets with timestamps after this time. `-1` means it is unset
+     * and results are not limited to specific timestamps.
+     * @server_default -1
+     */
+    start?: DateString
   }
   body: {
+    /**
+     * Refer to the description for the `anomaly_score` query parameter.
+     * @server_default 0.0
+     */
     anomaly_score?: double
-    /** @server_default false */
+    /**
+     * Refer to the description for the `desc` query parameter.
+     * @server_default false
+     */
     desc?: boolean
-    /** @server_default false */
+    /**
+     * Refer to the description for the `end` query parameter.
+     * @server_default -1
+     */
+    end?: DateString
+    /**
+     * Refer to the description for the `exclude_interim` query parameter.
+     * @server_default false
+     */
     exclude_interim?: boolean
-    /** @server_default false */
+    /**
+     * Refer to the description for the `expand` query parameter.
+     * @server_default false
+     */
     expand?: boolean
     page?: Page
+    /**
+     * Refer to the desription for the `sort` query parameter.
+     * @server_default timestamp
+     */
     sort?: Field
+    /**
+     * Refer to the description for the `start` query parameter.
+     * @server_default -1
+     */
     start?: DateString
-    end?: DateString
   }
 }

@@ -42,10 +42,18 @@ dist/
 flight-recorder-generator/output
 *.d.ts
 java-generator/*.js
-package-lock.json
 specification/**/*.js
 specification/lib
 
 .DS_Store
 
 artifacts
+.github/download-artifacts/package-lock.json
+
+.validation.json
+compiler/lib
+typescript-generator/lib
+
+report
+output/schema/import-*
+.github/**/package-lock.json

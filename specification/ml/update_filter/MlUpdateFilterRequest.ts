@@ -21,17 +21,31 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Updates the description of a filter, adds items, or removes items from the list.
  * @rest_spec_name ml.update_filter
  * @since 6.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A string that uniquely identifies a filter.
+     */
     filter_id: Id
   }
   body: {
+    /**
+     * The items to add to the filter.
+     */
     add_items?: string[]
+    /**
+     * A description for the filter.
+     */
     description?: string
+    /**
+     * The items to remove from the filter.
+     */
     remove_items?: string[]
   }
 }
