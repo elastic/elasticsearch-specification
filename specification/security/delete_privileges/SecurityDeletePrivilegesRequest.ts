@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Refresh } from '@_types/common'
+import { Name, Names, Refresh } from '@_types/common'
 
 /**
  * @rest_spec_name security.delete_privileges
@@ -28,7 +28,7 @@ import { Name, Refresh } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     application: Name
-    name: Name
+    name: Names
   }
   query_parameters: {
     refresh?: Refresh
