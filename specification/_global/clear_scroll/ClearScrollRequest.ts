@@ -24,6 +24,7 @@ import { Ids } from '@_types/common'
  * @rest_spec_name clear_scroll
  * @since 0.0.0
  * @stability stable
+ * @doc_id clear-scroll-api
  */
 export interface Request extends RequestBase {
   path_parts: {

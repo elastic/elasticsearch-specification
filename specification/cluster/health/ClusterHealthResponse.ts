@@ -24,7 +24,7 @@ import { EpochMillis } from '@_types/Time'
 import { IndexHealthStats } from './types'
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body
+ * @doc_id cluster-health
  */
 export class Response {
   body: {
