@@ -27,6 +27,9 @@ import { HitsMetadata } from './_types/hits'
 import { Profile } from './_types/profile'
 import { Suggest } from './_types/suggester'
 
+// Keep changes in sync with:
+// - search
+// - fleet.search
 export class Response<TDocument> {
   body: {
     // Has to be kept in sync with SearchTemplateResponse
