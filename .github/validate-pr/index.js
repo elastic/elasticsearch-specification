@@ -77,7 +77,8 @@ async function run () {
       logs.push({
         api: getApi(file),
         log: Process.toString(),
-        hasErrors: /has\ssome\serrors/gm.test(Process.toString())
+        hasErrors: /has\ssome\serrors/gm.test(Process.toString()),
+        noTest: /0\sout\sof\s0/gm.test(Process.toString())
       })
     }
   }
@@ -87,8 +88,11 @@ async function run () {
   const tick = '`'
   let comment = 'Following you can find the validation results for the APIs you have changed.\n\n'
   for (const log of logs) {
+    const circle = log.noTest
+      ? ':white_circle:'
+      : log.hasErrors ? ':red_circle:' : ':green_circle'
     comment += '<details>\n'
-    comment += `<summary>${log.hasErrors ? ':red_circle:' : ':green_circle:'} <code>${log.api}</code></summary>\n\n`
+    comment += `<summary>${circle} <code>${log.api}</code></summary>\n\n`
     comment += `${tick}${tick}${tick}sh
 ${log.log}
 ${tick}${tick}${tick}\n`
