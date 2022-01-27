@@ -21,6 +21,7 @@ import {
   IndicesPrivileges,
   ApplicationPrivileges
 } from '@security/_types/Privileges'
+import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
 import { Script } from '@_types/Scripting'
@@ -30,15 +31,11 @@ export class Role {
   indices: IndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: TransientMetadata
+  transient_metadata: TransientMetadataConfig
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]
   /** @since 8.0.0 */
   global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
-}
-
-export class TransientMetadata {
-  enabled: boolean
 }
 
 export enum TemplateFormat {
