@@ -99,6 +99,12 @@ async function run () {
 
   cd(path.join(__dirname, '..', '..'))
 
+  table.sort((a, b) => {
+    if (a < b) return -1
+    if (a > b) return 1
+    return 0
+  })
+
   let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
   comment += '| API | Status | Request | Response |\n'
   comment += '| --- | --- | --- | --- |\n'
