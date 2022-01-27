@@ -17,20 +17,27 @@
  * under the License.
  */
 
-/* global $ argv, path, cd, nothrow */
+/* global argv, path, cd */
 
 'use strict'
 
 require('zx/globals')
 const assert = require('assert')
 const core = require('@actions/core')
+const { copyFile } = require('fs/promises')
 const github = require('@actions/github')
 const octokit = github.getOctokit(argv.token)
 const specification = require('../../output/schema/schema.json')
+const getReport = require('../../../clients-flight-recorder/scripts/types-validator')
+const { getNamespace, getName } = require('../../../clients-flight-recorder/scripts/types-validator/utils')
 
 const tsValidationPath = path.join(__dirname, '..', '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 
 async function run () {
+  await copyFile(
+    path.join(__dirname, '..', '..', 'output', 'typescript', 'types.ts'),
+    path.join(tsValidationPath, 'types.ts')
+  )
   const context = github.context
   assert(context.payload.pull_request, 'We should be in a PR context')
   const files = []
@@ -51,8 +58,8 @@ async function run () {
     }
   }
 
-  const logs = []
   const specFiles = files.filter(file => file.includes('specification'))
+  const table = []
 
   cd(tsValidationPath)
 
@@ -66,37 +73,36 @@ async function run () {
         .filter(endpoint => endpoint.name.includes(getApi(file).split('.')[0]))
         .map(endpoint => endpoint.name)
       for (const api of apis) {
-        const Process = await $`STACK_VERSION=${argv.version} node index.js --api ${api} --request --response --verbose`
-        logs.push({
+        const report = getReport({
           api,
-          log: Process.toString()
+          'generate-report': false,
+          request: true,
+          response: true,
+          ci: false,
+          verbose: false
         })
+        table.push(buildTableLine(api, report))
       }
     } else {
-      const Process = await $`STACK_VERSION=${argv.version} node index.js --api ${getApi(file)} --request --response --verbose`
-      logs.push({
+      const report = getReport({
         api: getApi(file),
-        log: Process.toString(),
-        hasErrors: /has\ssome\serrors/gm.test(Process.toString()),
-        noTest: /0\sout\sof\s0/gm.test(Process.toString())
+        'generate-report': false,
+        request: true,
+        response: true,
+        ci: false,
+        verbose: false
       })
+      table.push(buildTableLine(getApi(file), report))
     }
   }
 
   cd(path.join(__dirname, '..', '..'))
 
-  const tick = '`'
   let comment = 'Following you can find the validation results for the APIs you have changed.\n\n'
-  for (const log of logs) {
-    const circle = log.noTest
-      ? ':white_circle:'
-      : log.hasErrors ? ':red_circle:' : ':green_circle:'
-    comment += '<details>\n'
-    comment += `<summary>${circle} <code>${log.api}</code></summary>\n\n`
-    comment += `${tick}${tick}${tick}sh
-${log.log}
-${tick}${tick}${tick}\n`
-    comment += '</details>\n\n'
+  comment += '| API | Status | Request | Response |\n'
+  comment += '| --- | --- | --- | --- |\n'
+  for (const line of table) {
+    comment += line
   }
 
   await octokit.rest.issues.createComment({
@@ -113,6 +119,39 @@ const privateNames = ['_global']
 
 function getApi (file) {
   return file.split('/').slice(1, 3).filter(s => !privateNames.includes(s)).filter(Boolean).join('.')
+}
+
+function buildTableLine (api, report) {
+  const apiReport = report.get(getNamespace(api)).find(r => r.api === getName(api))
+  const tick = '`'
+  return `| ${tick}${api}${tick} | ${generateStatus(apiReport)} | ${generateRequest(apiReport)} | ${generateResponse(apiReport)} |\n`
+}
+
+function generateStatus (report) {
+  if (!report.diagnostics.hasRequestType || !report.diagnostics.hasResponseType) {
+    return ':orange_circle:'
+  }
+  if (report.totalRequest <= 0 || report.totalResponse <= 0) {
+    return ':white_circle:'
+  }
+  if (report.diagnostics.request.length === 0 && report.diagnostics.response.length === 0) {
+    return ':green_circle:'
+  }
+  return ':red_circle:'
+}
+
+function generateRequest (r) {
+  if (r.totalRequest === -1) return 'Missing recording'
+  if (!r.diagnostics.hasRequestType) return 'Missing type'
+  if (r.totalRequest === 0) return 'Missing test'
+  return `${r.passingRequest}/${r.totalRequest}`
+}
+
+function generateResponse (r) {
+  if (r.totalResponse === -1) return 'Missing recording'
+  if (!r.diagnostics.hasResponseType) return 'Missing type'
+  if (r.totalResponse === 0) return 'Missing test'
+  return `${r.passingResponse}/${r.totalResponse}`
 }
 
 run().catch(err => {
