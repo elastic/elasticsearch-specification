@@ -2542,18 +2542,18 @@ export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucke
 export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
 
 export interface AggregationsAggregateBase {
-  meta?: Record<string, any>
+  meta?: Metadata
 }
 
 export interface AggregationsAggregation {
-  meta?: Record<string, any>
+  meta?: Metadata
   name?: string
 }
 
 export interface AggregationsAggregationContainer {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  meta?: Record<string, any>
+  meta?: Metadata
   adjacency_matrix?: AggregationsAdjacencyMatrixAggregation
   auto_date_histogram?: AggregationsAutoDateHistogramAggregation
   avg?: AggregationsAverageAggregation
@@ -2775,7 +2775,7 @@ export interface AggregationsChiSquareHeuristic {
 export interface AggregationsChildrenAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsChildrenAggregate = AggregationsChildrenAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsChildrenAggregation extends AggregationsBucketAggregationBase {
   type?: RelationName
@@ -2946,7 +2946,7 @@ export type AggregationsFieldDateMath = DateMath | double
 export interface AggregationsFilterAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsFilterAggregate = AggregationsFilterAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsFiltersAggregate extends AggregationsMultiBucketAggregateBase<AggregationsFiltersBucket> {
 }
@@ -3060,7 +3060,7 @@ export type AggregationsGeoTileGridBucket = AggregationsGeoTileGridBucketKeys
 export interface AggregationsGlobalAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsGlobalAggregate = AggregationsGlobalAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsGlobalAggregation extends AggregationsBucketAggregationBase {
 }
@@ -3281,7 +3281,7 @@ export type AggregationsMissing = string | integer | double | boolean
 export interface AggregationsMissingAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsMissingAggregate = AggregationsMissingAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsMissingAggregation extends AggregationsBucketAggregationBase {
   field?: Field
@@ -3345,7 +3345,7 @@ export interface AggregationsMutualInformationHeuristic {
 export interface AggregationsNestedAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsNestedAggregate = AggregationsNestedAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsNestedAggregation extends AggregationsBucketAggregationBase {
   path?: Field
@@ -3360,7 +3360,7 @@ export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'per
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsParentAggregation extends AggregationsBucketAggregationBase {
   type?: RelationName
@@ -3454,7 +3454,7 @@ export interface AggregationsRegressionInferenceOptions {
 export interface AggregationsReverseNestedAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsReverseNestedAggregate = AggregationsReverseNestedAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsReverseNestedAggregation extends AggregationsBucketAggregationBase {
   path?: Field
@@ -3463,7 +3463,7 @@ export interface AggregationsReverseNestedAggregation extends AggregationsBucket
 export interface AggregationsSamplerAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsSamplerAggregate = AggregationsSamplerAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsSamplerAggregation extends AggregationsBucketAggregationBase {
   shard_size?: integer
@@ -3766,7 +3766,7 @@ export interface AggregationsUnmappedRareTermsAggregate extends AggregationsMult
 export interface AggregationsUnmappedSamplerAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsUnmappedSamplerAggregate = AggregationsUnmappedSamplerAggregateKeys
-  & { [property: string]: AggregationsAggregate | long | Record<string, any> }
+  & { [property: string]: AggregationsAggregate | long | Metadata }
 
 export interface AggregationsUnmappedSignificantTermsAggregate extends AggregationsMultiBucketAggregateBase<SpecUtilsVoid> {
 }
@@ -9886,7 +9886,7 @@ export interface IndicesPutMappingRequest extends RequestBase {
     dynamic_date_formats?: string[]
     dynamic_templates?: Record<string, MappingDynamicTemplate> | Record<string, MappingDynamicTemplate>[]
     _field_names?: MappingFieldNamesField
-    _meta?: Record<string, any>
+    _meta?: Metadata
     numeric_detection?: boolean
     properties?: Record<PropertyName, MappingProperty>
     _routing?: MappingRoutingField
@@ -14454,6 +14454,10 @@ export interface SecurityRoleMappingRule {
   except?: SecurityRoleMappingRule
 }
 
+export interface SecurityTransientMetadataConfig {
+  enabled: boolean
+}
+
 export interface SecurityUser {
   email?: string | null
   full_name?: Name | null
@@ -14727,7 +14731,7 @@ export interface SecurityGetRoleRole {
   indices: SecurityIndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: SecurityGetRoleTransientMetadata
+  transient_metadata: SecurityTransientMetadataConfig
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityGetRoleRoleTemplate[]
   global?: Record<string, Record<string, Record<string, string[]>>>
@@ -14739,10 +14743,6 @@ export interface SecurityGetRoleRoleTemplate {
 }
 
 export type SecurityGetRoleTemplateFormat = 'string' | 'json'
-
-export interface SecurityGetRoleTransientMetadata {
-  enabled: boolean
-}
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Names
@@ -14766,7 +14766,7 @@ export interface SecurityGetServiceAccountsRoleDescriptor {
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
-  transient_metadata?: Record<string, any>
+  transient_metadata?: SecurityTransientMetadataConfig
 }
 
 export interface SecurityGetServiceAccountsRoleDescriptorWrapper {
@@ -14974,7 +14974,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     indices?: SecurityIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
-    transient_metadata?: SecurityGetRoleTransientMetadata
+    transient_metadata?: SecurityTransientMetadataConfig
   }
 }
 
