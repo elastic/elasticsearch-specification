@@ -108,7 +108,7 @@ async function run () {
   let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
   comment += '| API | Status | Request | Response |\n'
   comment += '| --- | --- | --- | --- |\n'
-  for (const line of table) {
+  for (const line of [...new Set(table)]) {
     comment += line
   }
   comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
