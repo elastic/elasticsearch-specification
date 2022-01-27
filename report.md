@@ -150,9 +150,9 @@
 | `_types.VersionString` | 46 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L89-L89) |
 | `_types.analysis.TokenFilterBase` | 46 | [`_types/analysis/token_filters.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/analysis/token_filters.ts#L39-L41) |
 | `_types.Fields` | 39 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L113-L113) |
+| `_types.Metadata` | 37 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L84-L84) |
 | `_types.EpochMillis` | 36 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L30-L30) |
 | `_types.Routing` | 36 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L59-L59) |
-| `_types.Metadata` | 33 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L84-L84) |
 | `ingest._types.ProcessorBase` | 33 | [`ingest/_types/Processors.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ingest/_types/Processors.ts#L68-L73) |
 | `_types.Script` | 31 | [`_types/Scripting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Scripting.ts#L56-L57) |
 | `_types.Names` | 30 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
@@ -188,7 +188,7 @@
 ## Top 50 greedy types
 | Type | Occurencies | Location |
 | --- | --- | --- |
-| `_types.aggregations.AggregationContainer` | 72 | [`_types/aggregations/AggregationContainer.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/AggregationContainer.ts#L102-L203) |
+| `_types.aggregations.AggregationContainer` | 73 | [`_types/aggregations/AggregationContainer.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/AggregationContainer.ts#L103-L204) |
 | `_types.aggregations.Aggregate` | 66 | [`_types/aggregations/Aggregate.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/Aggregate.ts#L30-L111) |
 | `_types.query_dsl.QueryContainer` | 55 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L97-L163) |
 | `_types.analysis.TokenFilterDefinition` | 48 | [`_types/analysis/token_filters.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/analysis/token_filters.ts#L344-L394) |
@@ -209,7 +209,7 @@
 | `snapshot._types.SnapshotInfo` | 12 | [`snapshot/_types/SnapshotInfo.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/snapshot/_types/SnapshotInfo.ts#L35-L59) |
 | `_types.aggregations.SignificantTermsAggregation` | 12 | [`_types/aggregations/bucket.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/bucket.ts#L306-L321) |
 | `cluster.stats.ClusterNodes` | 12 | [`cluster/stats/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cluster/stats/types.ts#L193-L220) |
-| `_types.mapping.Property` | 11 | [`_types/mapping/Property.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/mapping/Property.ts#L52-L64) |
+| `_types.mapping.Property` | 11 | [`_types/mapping/Property.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/mapping/Property.ts#L53-L65) |
 | `_types.aggregations.TermsAggregation` | 11 | [`_types/aggregations/bucket.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/bucket.ts#L342-L359) |
 | `cluster.stats.ClusterIndices` | 11 | [`cluster/stats/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cluster/stats/types.ts#L62-L93) |
 | `transform.get_transform.TransformSummary` | 11 | [`transform/get_transform/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/transform/get_transform/types.ts#L31-L50) |
