@@ -19,6 +19,9 @@
 
 import { MultiSearchResult } from '@global/msearch/types'
 
+// Keep changes in sync with:
+// - msearch
+// - fleet.msearch
 export class Response<TDocument> {
   body: MultiSearchResult<TDocument>
 }
