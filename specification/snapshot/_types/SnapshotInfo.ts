@@ -57,3 +57,16 @@ export class SnapshotInfo {
   version_id?: VersionNumber
   feature_states?: InfoFeatureState[]
 }
+
+export enum SnapshotSort {
+  start_time,
+  duration,
+  name,
+  index_count,
+  /** @since 7.16.0 */
+  repository,
+  /** @since 7.16.0 */
+  shard_count,
+  /** @since 7.16.0 */
+  failed_shard_count
+}

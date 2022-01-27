@@ -469,7 +469,6 @@ export enum CatDatafeedColumn {
    */
   s
 }
-
 export enum CatDfaColumn {
   /**
    * Contains messages relating to the selection of a node.
@@ -557,3 +556,4 @@ export enum CatDfaColumn {
   version
 }
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
+export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]

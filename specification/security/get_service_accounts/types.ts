@@ -22,8 +22,7 @@ import {
   GlobalPrivilege,
   ApplicationPrivileges
 } from '@security/_types/Privileges'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
 import { Metadata } from '@_types/common'
 
 export class RoleDescriptorWrapper {
@@ -37,5 +36,5 @@ export class RoleDescriptor {
   applications?: ApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
-  transient_metadata?: Dictionary<string, UserDefinedValue>
+  transient_metadata?: TransientMetadataConfig
 }

@@ -178,19 +178,25 @@
     },
     "cat.ml_datafeeds": {
       "request": [
+        "Request: missing json spec query parameter 'format'",
+        "Request: missing json spec query parameter 'help'",
+        "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
-        "request definition cat.ml_datafeeds:Request / query - Property 'format' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / query - Property 'h' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / query - Property 'help' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / query - Property 's' is already defined in an ancestor class",
-        "request definition cat.ml_datafeeds:Request / query - Property 'v' is already defined in an ancestor class",
         "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: should not have a body"
+        "Request: missing json spec query parameter 'format'",
+        "Request: missing json spec query parameter 'help'",
+        "Request: missing json spec query parameter 'v'",
+        "Request: should not have a body",
+        "request definition cat.ml_jobs:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / query - Property 's' is already defined in an ancestor class",
+        "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
@@ -1769,6 +1775,13 @@
     "snapshot.get": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",
+        "Request: query parameter 'sort' does not exist in the json spec",
+        "Request: query parameter 'size' does not exist in the json spec",
+        "Request: query parameter 'order' does not exist in the json spec",
+        "Request: query parameter 'after' does not exist in the json spec",
+        "Request: query parameter 'offset' does not exist in the json spec",
+        "Request: query parameter 'from_sort_value' does not exist in the json spec",
+        "Request: query parameter 'slm_policy_filter' does not exist in the json spec",
         "Request: should not have a body",
         "request definition snapshot.get:Request / query - Property 'human' is already defined in an ancestor class"
       ],
