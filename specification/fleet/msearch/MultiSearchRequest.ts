@@ -19,7 +19,12 @@
 
 import { RequestItem } from '@global/msearch/types'
 import { RequestBase } from '@_types/Base'
-import { IndexName, IndexAlias, ExpandWildcards, SearchType } from '@_types/common'
+import {
+  IndexName,
+  IndexAlias,
+  ExpandWildcards,
+  SearchType
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
@@ -78,7 +83,7 @@ export interface Request extends RequestBase {
      * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.
      */
     pre_filter_shard_size?: long
-     /**
+    /**
      * Indicates whether global term and document frequencies should be used when scoring returned documents.
      */
     search_type?: SearchType
