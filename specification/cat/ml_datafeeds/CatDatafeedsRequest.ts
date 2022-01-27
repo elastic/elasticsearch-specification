@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase, CatDatafeedColumn } from '@cat/_types/CatBase'
+import { CatRequestBase, CatDatafeedColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
@@ -58,27 +58,16 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
-    /** Short version of the HTTP accept header. Valid values include JSON, YAML, for example. */
-    format?: string
     /**
      * Comma-separated list of column names to display.
      * @server_default ['bc', 'id', 'sc', 's']
      */
-    h?: CatDatafeedColumn[]
-    /** If `true`, the response includes help information.
-     * @server_default false
-     */
-    help?: boolean
+    h?: CatDatafeedColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
-    s?: CatDatafeedColumn[]
+    s?: CatDatafeedColumns
     /**
      * The unit used to display time values.
      */
     time?: TimeUnit
-    /**
-     * If `true`, the response includes column headings.
-     * @server_default false
-     */
-    v?: boolean
   }
 }
