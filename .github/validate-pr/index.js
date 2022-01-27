@@ -31,6 +31,7 @@ const specification = require('../../output/schema/schema.json')
 const getReport = require('../../../clients-flight-recorder/scripts/types-validator')
 const { getNamespace, getName } = require('../../../clients-flight-recorder/scripts/types-validator/utils')
 
+const tick = '`'
 const tsValidationPath = path.join(__dirname, '..', '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 
 async function run () {
@@ -98,12 +99,13 @@ async function run () {
 
   cd(path.join(__dirname, '..', '..'))
 
-  let comment = 'Following you can find the validation results for the APIs you have changed.\n\n'
+  let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
   comment += '| API | Status | Request | Response |\n'
   comment += '| --- | --- | --- | --- |\n'
   for (const line of table) {
     comment += line
   }
+  comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
   await octokit.rest.issues.createComment({
     owner: 'elastic',
@@ -123,7 +125,6 @@ function getApi (file) {
 
 function buildTableLine (api, report) {
   const apiReport = report.get(getNamespace(api)).find(r => r.api === getName(api))
-  const tick = '`'
   return `| ${tick}${api}${tick} | ${generateStatus(apiReport)} | ${generateRequest(apiReport)} | ${generateResponse(apiReport)} |\n`
 }
 
