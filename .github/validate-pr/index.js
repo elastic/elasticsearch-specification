@@ -73,7 +73,7 @@ async function run () {
         .filter(endpoint => endpoint.name.includes(getApi(file).split('.')[0]))
         .map(endpoint => endpoint.name)
       for (const api of apis) {
-        const report = getReport({
+        const report = await getReport({
           api,
           'generate-report': false,
           request: true,
@@ -84,7 +84,7 @@ async function run () {
         table.push(buildTableLine(api, report))
       }
     } else {
-      const report = getReport({
+      const report = await getReport({
         api: getApi(file),
         'generate-report': false,
         request: true,
