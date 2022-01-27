@@ -15405,6 +15405,8 @@ export interface SnapshotSnapshotShardsStatus {
   stats: SnapshotShardsStatsSummary
 }
 
+export type SnapshotSnapshotSort = 'start_time' | 'duration' | 'name' | 'index_count' | 'repository' | 'shard_count' | 'failed_shard_count'
+
 export interface SnapshotSnapshotStats {
   incremental: SnapshotFileCountSnapshotStats
   start_time_in_millis: long
@@ -15514,6 +15516,13 @@ export interface SnapshotGetRequest extends RequestBase {
   index_details?: boolean
   human?: boolean
   include_repository?: boolean
+  sort?: SnapshotSnapshotSort
+  size?: integer
+  order?: SortOrder
+  after?: string
+  offset?: integer
+  from_sort_value?: string
+  slm_policy_filter?: Name
 }
 
 export interface SnapshotGetResponse {
