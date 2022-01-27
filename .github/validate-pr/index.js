@@ -90,7 +90,7 @@ async function run () {
   for (const log of logs) {
     const circle = log.noTest
       ? ':white_circle:'
-      : log.hasErrors ? ':red_circle:' : ':green_circle'
+      : log.hasErrors ? ':red_circle:' : ':green_circle:'
     comment += '<details>\n'
     comment += `<summary>${circle} <code>${log.api}</code></summary>\n\n`
     comment += `${tick}${tick}${tick}sh
