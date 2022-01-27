@@ -123,7 +123,7 @@ export interface CommonCatQueryParameters {
    * Sorting defaults to ascending and can be changed by setting `:asc`
    * or `:desc` as a suffix to the column name.
    */
-  s?: string[]
+  s?: Names
   /**
    * When set to `true` will enable verbose output.
    * @server_default false

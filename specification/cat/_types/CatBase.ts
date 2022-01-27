@@ -469,3 +469,5 @@ export enum CatDatafeedColumn {
    */
   s = 11
 }
+
+export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
