@@ -12094,6 +12094,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   last_access: long
   model_threads: integer
   node: MlDiscoveryNode
+  number_of_pending_requests: integer
   rejection_execution_count: integer
   routing_state: MlTrainedModelAllocationRoutingTable
   start_time: long
