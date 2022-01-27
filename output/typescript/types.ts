@@ -8783,6 +8783,38 @@ export interface FleetGlobalCheckpointsResponse {
   timed_out: boolean
 }
 
+export interface FleetMsearchRequest extends RequestBase {
+  index: IndexName | IndexAlias
+  allow_no_indices?: boolean
+  ccs_minimize_roundtrips?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  max_concurrent_searches?: long
+  max_concurrent_shard_requests?: long
+  pre_filter_shard_size?: long
+  search_type?: SearchType
+  rest_total_hits_as_int?: boolean
+  typed_keys?: boolean
+  wait_for_checkpoints?: FleetCheckpoint[]
+  allow_partial_search_results?: boolean
+  body?: MsearchRequestItem[]
+}
+
+export interface FleetMsearchResponse<TDocument = unknown> {
+  docs: MsearchResponseItem<TDocument>[]
+}
+
+export interface FleetSearchRequest extends RequestBase {
+  index: IndexName | IndexAlias
+  wait_for_checkpoints?: FleetCheckpoint[]
+  allow_partial_search_results?: boolean
+}
+
+export interface FleetSearchResponse<TDocument = unknown> {
+  docs: MsearchResponseItem<TDocument>[]
+}
+
 export interface GraphConnection {
   doc_count: long
   source: long

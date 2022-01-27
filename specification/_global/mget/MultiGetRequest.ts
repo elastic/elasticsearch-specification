@@ -24,9 +24,9 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name mget
- * @since 0.0.0
+ * @since 1.3.0
  * @stability stable
- *
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
