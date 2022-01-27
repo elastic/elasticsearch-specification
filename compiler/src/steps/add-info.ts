@@ -20,7 +20,7 @@
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 import { execSync } from 'child_process'
-import { readFileSync } from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 
 /**
@@ -43,13 +43,16 @@ export default async function addInfo (model: model.Model, jsonSpec: Map<string,
         url: 'https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE'
       }
     }
-  } else {
-    const current: model.Model = JSON.parse(
-      readFileSync(join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json'), 'utf8')
+    writeFileSync(
+      join(__dirname, '..', '..', '..', 'output', 'schema', 'hash.txt'),
+      `${execSync('git rev-parse --short HEAD').toString().trim()}\n${branch}`,
+      'utf8'
     )
+  } else {
+    const [hash, branch] = readFileSync(join(__dirname, '..', '..', '..', 'output', 'schema', 'hash.txt'), 'utf8').split('\n').filter(Boolean)
     model._info = {
-      version: current._info!.version, // eslint-disable-line
-      hash: current._info!.hash, // eslint-disable-line
+      version: branch,
+      hash,
       title: 'Elasticsearch Request & Response Specification',
       license: {
         name: 'Apache 2.0',
