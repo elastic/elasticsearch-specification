@@ -14426,7 +14426,7 @@ export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: QueryDslQueryContainer
+  query?: string[] | QueryDslQueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -14605,7 +14605,7 @@ export interface SecurityDeletePrivilegesFoundStatus {
 
 export interface SecurityDeletePrivilegesRequest extends RequestBase {
   application: Name
-  name: Name
+  name: Names
   refresh?: Refresh
 }
 
