@@ -471,3 +471,210 @@ export enum CatDatafeedColumn {
 }
 
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
+
+export enum CatTransformColumn {
+  /**
+   * The timestamp when changes were last detected in the source indices.
+   * @aliases cldt
+   */
+  changes_last_detection_time,
+  /**
+   * The sequence number for the checkpoint.
+   * @aliases cp
+   */
+  checkpoint,
+  /**
+   * Exponential moving average of the duration of the checkpoint, in
+   * milliseconds.
+   * @aliases cdtea, checkpointTimeExpAvg
+   */
+  checkpoint_duration_time_exp_avg,
+  /**
+   * The progress of the next checkpoint that is currently in progress.
+   * @aliases c, checkpointProgress
+   */
+  checkpoint_progress,
+  /**
+   * The time the transform was created.
+   * @aliases ct, createTime
+   */
+  create_time,
+  /**
+   * The amount of time spent deleting, in milliseconds.
+   * @aliases dtime
+   */
+  delete_time,
+  /**
+   * The description of the transform.
+   * @aliases d
+   */
+  description,
+  /**
+   * The destination index for the transform. The mappings of the destination
+   * index are deduced based on the source fields when possible. If alternate
+   * mappings are required, use the Create index API prior to starting the
+   * transform.
+   * @aliases di, destIndex
+   */
+  dest_index,
+  /**
+   * The number of documents that have been deleted from the destination index
+   * due to the retention policy for this transform.
+   * @aliases docd
+   */
+  documents_deleted,
+  /**
+   * The number of documents that have been indexed into the destination index
+   * for the transform.
+   * @aliases doci
+   */
+  documents_indexed,
+  /**
+   * Specifies a limit on the number of input documents per second. This setting
+   * throttles the transform by adding a wait time between search requests. The
+   * default value is `null`, which disables throttling.
+   * @aliases dps
+   */
+  docs_per_second,
+  /**
+   * The number of documents that have been processed from the source index of
+   * the transform.
+   * @aliases docp
+   */
+  documents_processed,
+  /**
+   * The interval between checks for changes in the source indices when the
+   * transform is running continuously. Also determines the retry interval in
+   * the event of transient failures while the transform is searching or
+   * indexing. The minimum value is `1s` and the maximum is `1h`. The default
+   * value is `1m`.
+   * @aliases f
+   */
+  frequency,
+  /**
+   * Identifier for the transform.
+   */
+  id,
+  /**
+   * The number of indexing failures.
+   * @aliases if
+   */
+  index_failure,
+  /**
+   * The amount of time spent indexing, in milliseconds.
+   * @aliases itime
+   */
+  index_time,
+  /**
+   * The number of index operations.
+   * @aliases it
+   */
+  index_total,
+  /**
+   * Exponential moving average of the number of new documents that have been
+   * indexed.
+   * @aliases idea
+   */
+  indexed_documents_exp_avg,
+  /**
+   * The timestamp of the last search in the source indices. This field is only
+   * shown if the transform is running.
+   * @aliases lst, lastSearchTime
+   */
+  last_search_time,
+  /**
+   * Defines the initial page size to use for the composite aggregation for each
+   * checkpoint. If circuit breaker exceptions occur, the page size is
+   * dynamically adjusted to a lower value. The minimum value is `10` and the
+   * maximum is `65,536`. The default value is `500`.
+   * @aliases mpsz
+   */
+  max_page_search_size,
+  /**
+   * The number of search or bulk index operations processed. Documents are
+   * processed in batches instead of individually.
+   * @aliases pp
+   */
+  pages_processed,
+  /**
+   * The unique identifier for an ingest pipeline.
+   * @aliases p
+   */
+  pipeline,
+  /**
+   * Exponential moving average of the number of documents that have been
+   * processed.
+   * @aliases pdea
+   */
+  processed_documents_exp_avg,
+  /**
+   * The amount of time spent processing results, in milliseconds.
+   * @aliases pt
+   */
+  processing_time,
+  /**
+   * If a transform has a `failed` state, this property provides details about
+   * the reason for the failure.
+   * @aliases r
+   */
+  reason,
+  /**
+   * The number of search failures.
+   * @aliases sf
+   */
+  search_failure,
+  /**
+   * The amount of time spent searching, in milliseconds.
+   * @aliases stime
+   */
+  search_time,
+  /**
+   * The number of search operations on the source index for the transform.
+   * @aliases st
+   */
+  search_total,
+  /**
+   * The source indices for the transform. It can be a single index, an index
+   * pattern (for example, `"my-index-*"`), an array of indices (for example,
+   * `["my-index-000001", "my-index-000002"]`), or an array of index patterns
+   * (for example, `["my-index-*", "my-other-index-*"]`. For remote indices use
+   * the syntax `"remote_name:index_name"`. If any indices are in remote
+   * clusters then the master node and at least one transform node must have the
+   * `remote_cluster_client` node role.
+   * @aliases si, sourceIndex
+   */
+  source_index,
+  /**
+   * The status of the transform, which can be one of the following values:
+   *
+   * * `aborting`: The transform is aborting.
+   * * `failed`: The transform failed. For more information about the failure,
+   * check the reason field.
+   * * `indexing`: The transform is actively processing data and creating new
+   * documents.
+   * * `started`: The transform is running but not actively indexing data.
+   * * `stopped`: The transform is stopped.
+   * * `stopping`: The transform is stopping.
+   * @aliases s
+   */
+  state,
+  /**
+   * Indicates the type of transform: `batch` or `continuous`.
+   * @aliases tt
+   */
+  transform_type,
+  /**
+   * The number of times the transform has been triggered by the scheduler. For
+   * example, the scheduler triggers the transform indexer to check for updates
+   * or ingest new data at an interval specified in the `frequency` property.
+   * @aliases tc
+   */
+  trigger_count,
+  /**
+   * The version of Elasticsearch that existed on the node when the transform
+   * was created.
+   * @aliases v
+   */
+  version
+}
+export type CatTransformColumns = CatTransformColumn | CatTransformColumn[]
