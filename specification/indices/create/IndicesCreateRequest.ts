@@ -30,6 +30,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability stable
  * @index_privileges create_index, manage
+ *
  */
 export interface Request extends RequestBase {
   path_parts: {
