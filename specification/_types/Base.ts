@@ -33,6 +33,8 @@ import { DateString } from './Time'
 
 export class RequestBase implements CommonQueryParameters {}
 
+// test
+
 export class WriteResponseBase {
   _id: Id
   _index: IndexName
