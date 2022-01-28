@@ -45,10 +45,10 @@ export interface Request extends CatRequestBase {
      * Comma-separated list of column names to display.
      * @server_default create_time,id,state,type
      */
-     h?: CatTransformColumns
+    h?: CatTransformColumns
     /** Comma-separated list of column names or column aliases used to sort the
-    * response.
-    */
+     * response.
+     */
     s?: CatTransformColumns
     /**
      * Unit used to display time values.
