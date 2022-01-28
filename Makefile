@@ -31,6 +31,9 @@ spec-format-fix:	## Format/fix the specification according to the formatting rul
 spec-dangling-types:	## Generate the dangling types rreport
 	@npm run generate-dangling --prefix compiler
 
+spec-inspect:  ## Run the command line schema browser tool
+	@python3 output/viewer.py output/schema/schema.json
+
 setup:	## Install dependencies for contrib target
 	@node compiler/check-node.js
 	@make clean-dep
