@@ -99,11 +99,6 @@ async function run () {
 
   cd(path.join(__dirname, '..', '..'))
 
-  if (table.length === 0) {
-    core.warning('The validation can\'t be executed as it\'s not possible to determine which APIs need to be tested.')
-    return
-  }
-
   table.sort((a, b) => {
     if (a < b) return -1
     if (a > b) return 1
