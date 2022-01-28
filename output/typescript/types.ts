@@ -5886,6 +5886,10 @@ export type CatCatDatafeedColumn = 'ae' | 'assignment_explanation' | 'bc' | 'buc
 
 export type CatCatDatafeedColumns = CatCatDatafeedColumn | CatCatDatafeedColumn[]
 
+export type CatCatDfaColumn = 'assignment_explanation' | 'ae' | 'create_time' | 'ct' | 'createTime' | 'description' | 'd' | 'dest_index' | 'di' | 'destIndex' | 'failure_reason' | 'fr' | 'failureReason' | 'id' | 'model_memory_limit' | 'mml' | 'modelMemoryLimit' | 'node.address' | 'na' | 'nodeAddress' | 'node.ephemeral_id' | 'ne' | 'nodeEphemeralId' | 'node.id' | 'ni' | 'nodeId' | 'node.name' | 'nn' | 'nodeName' | 'progress' | 'p' | 'source_index' | 'si' | 'sourceIndex' | 'state' | 's' | 'type' | 't' | 'version' | 'v'
+
+export type CatCatDfaColumns = CatCatDfaColumn | CatCatDfaColumn[]
+
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
@@ -6418,6 +6422,9 @@ export interface CatMlDataFrameAnalyticsRequest extends CatCatRequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
+  h?: CatCatDfaColumns
+  s?: CatCatDfaColumns
+  time?: Time
 }
 
 export type CatMlDataFrameAnalyticsResponse = CatMlDataFrameAnalyticsDataFrameAnalyticsRecord[]
@@ -8788,6 +8795,126 @@ export interface FleetGlobalCheckpointsRequest extends RequestBase {
 export interface FleetGlobalCheckpointsResponse {
   global_checkpoints: FleetCheckpoint[]
   timed_out: boolean
+}
+
+export interface FleetMsearchRequest extends RequestBase {
+  index: IndexName | IndexAlias
+  allow_no_indices?: boolean
+  ccs_minimize_roundtrips?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  max_concurrent_searches?: long
+  max_concurrent_shard_requests?: long
+  pre_filter_shard_size?: long
+  search_type?: SearchType
+  rest_total_hits_as_int?: boolean
+  typed_keys?: boolean
+  wait_for_checkpoints?: FleetCheckpoint[]
+  allow_partial_search_results?: boolean
+  body?: MsearchRequestItem[]
+}
+
+export interface FleetMsearchResponse<TDocument = unknown> {
+  docs: MsearchResponseItem<TDocument>[]
+}
+
+export interface FleetSearchRequest extends RequestBase {
+  index: IndexName | IndexAlias
+  allow_no_indices?: boolean
+  analyzer?: string
+  analyze_wildcard?: boolean
+  batched_reduce_size?: long
+  ccs_minimize_roundtrips?: boolean
+  default_operator?: QueryDslOperator
+  df?: string
+  docvalue_fields?: Fields
+  expand_wildcards?: ExpandWildcards
+  explain?: boolean
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  lenient?: boolean
+  max_concurrent_shard_requests?: long
+  min_compatible_shard_node?: VersionString
+  preference?: string
+  pre_filter_shard_size?: long
+  request_cache?: boolean
+  routing?: Routing
+  scroll?: Time
+  search_type?: SearchType
+  stats?: string[]
+  stored_fields?: Fields
+  suggest_field?: Field
+  suggest_mode?: SuggestMode
+  suggest_size?: long
+  suggest_text?: string
+  terminate_after?: long
+  timeout?: Time
+  track_total_hits?: SearchTrackHits
+  track_scores?: boolean
+  typed_keys?: boolean
+  rest_total_hits_as_int?: boolean
+  version?: boolean
+  _source?: SearchSourceConfigParam
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  seq_no_primary_term?: boolean
+  q?: string
+  size?: integer
+  from?: integer
+  sort?: string | string[]
+  wait_for_checkpoints?: FleetCheckpoint[]
+  allow_partial_search_results?: boolean
+  body?: {
+    aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
+    collapse?: SearchFieldCollapse
+    explain?: boolean
+    from?: integer
+    highlight?: SearchHighlight
+    track_total_hits?: SearchTrackHits
+    indices_boost?: Record<IndexName, double>[]
+    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+    min_score?: double
+    post_filter?: QueryDslQueryContainer
+    profile?: boolean
+    query?: QueryDslQueryContainer
+    rescore?: SearchRescore | SearchRescore[]
+    script_fields?: Record<string, ScriptField>
+    search_after?: SortResults
+    size?: integer
+    slice?: SlicedScroll
+    sort?: Sort
+    _source?: SearchSourceConfig
+    fields?: (QueryDslFieldAndFormat | Field)[]
+    suggest?: SearchSuggester
+    terminate_after?: long
+    timeout?: string
+    track_scores?: boolean
+    version?: boolean
+    seq_no_primary_term?: boolean
+    stored_fields?: Fields
+    pit?: SearchPointInTimeReference
+    runtime_mappings?: MappingRuntimeFields
+    stats?: string[]
+  }
+}
+
+export interface FleetSearchResponse<TDocument = unknown> {
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: SearchHitsMetadata<TDocument>
+  aggregations?: Record<AggregateName, AggregationsAggregate>
+  _clusters?: ClusterStatistics
+  fields?: Record<string, any>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: SearchProfile
+  pit_id?: Id
+  _scroll_id?: ScrollId
+  suggest?: Record<SuggestionName, SearchSuggest<TDocument>[]>
+  terminated_early?: boolean
 }
 
 export interface GraphConnection {
