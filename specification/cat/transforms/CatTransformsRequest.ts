@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * Returns configuration and usage information about transforms.
@@ -40,6 +41,19 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     allow_no_match?: boolean
     from?: integer
+    /**
+     * Comma-separated list of column names to display.
+     * @server_default create_time,id,state,type
+     */
+    h?: CatTransformColumns
+    /** Comma-separated list of column names or column aliases used to sort the
+     * response.
+     */
+    s?: CatTransformColumns
+    /**
+     * Unit used to display time values.
+     */
+    time?: Time
     size?: integer
   }
 }
