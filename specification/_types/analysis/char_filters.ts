@@ -49,7 +49,7 @@ export class MappingCharFilter extends CharFilterBase {
 
 export class PatternReplaceCharFilter extends CharFilterBase {
   type: 'pattern_replace'
-  flags: string
+  flags?: string
   pattern: string
-  replacement: string
+  replacement?: string
 }

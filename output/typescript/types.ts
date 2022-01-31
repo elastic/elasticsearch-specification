@@ -4209,9 +4209,9 @@ export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBa
 
 export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase {
   type: 'pattern_replace'
-  flags: string
+  flags?: string
   pattern: string
-  replacement: string
+  replacement?: string
 }
 
 export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
