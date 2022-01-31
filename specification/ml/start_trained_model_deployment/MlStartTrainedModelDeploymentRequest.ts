@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { DeploymentState } from '../_types/TrainedModel'
+import { DeploymentAllocationState } from '../_types/TrainedModel'
 
 /**
  * Starts a trained model deployment, which allocates the model to every machine learning node.
@@ -66,6 +66,6 @@ export interface Request extends RequestBase {
      * Specifies the allocation status to wait for before returning.
      * @server_default started
      */
-    wait_for?: DeploymentState
+    wait_for?: DeploymentAllocationState
   }
 }
