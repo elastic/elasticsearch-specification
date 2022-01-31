@@ -132,12 +132,12 @@
 | Type | Occurencies | Location |
 | --- | --- | --- |
 | `_types.RequestBase` | 363 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
-| `_types.integer` | 346 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
-| `_types.long` | 287 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
-| `_types.Id` | 241 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
+| `_types.integer` | 351 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
+| `_types.long` | 288 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
+| `_types.Id` | 242 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
 | `_types.Time` | 187 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
 | `_types.Name` | 173 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
-| `_types.double` | 149 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
+| `_types.double` | 150 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
 | `_types.Field` | 137 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L111-L112) |
 | `_types.IndexName` | 115 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L53-L53) |
 | `_types.AcknowledgedResponseBase` | 91 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L47-L50) |
@@ -156,7 +156,7 @@
 | `ingest._types.ProcessorBase` | 33 | [`ingest/_types/Processors.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ingest/_types/Processors.ts#L68-L73) |
 | `_types.Script` | 31 | [`_types/Scripting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Scripting.ts#L56-L57) |
 | `_types.Names` | 30 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
-| `_types.ByteSize` | 28 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L81-L82) |
+| `_types.ByteSize` | 29 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L81-L82) |
 | `_types.aggregations.BucketAggregationBase` | 25 | [`_types/aggregations/bucket.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/bucket.ts#L40-L45) |
 | `cat._types.CatRequestBase` | 25 | [`cat/_types/CatBase.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cat/_types/CatBase.ts#L28-L30) |
 | `_types.float` | 24 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L26-L26) |
@@ -221,7 +221,7 @@
 | `_types.query_dsl.MultiMatchQuery` | 10 | [`_types/query_dsl/fulltext.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/fulltext.ts#L191-L217) |
 | `_types.query_dsl.QueryStringQuery` | 10 | [`_types/query_dsl/fulltext.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/fulltext.ts#L233-L269) |
 | `ml._types.JobConfig` | 10 | [`ml/_types/Job.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ml/_types/Job.ts#L72-L90) |
-| `ml._types.TrainedModelConfig` | 10 | [`ml/_types/TrainedModel.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ml/_types/TrainedModel.ts#L65-L97) |
+| `ml._types.TrainedModelConfig` | 10 | [`ml/_types/TrainedModel.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ml/_types/TrainedModel.ts#L157-L189) |
 | `watcher._types.ExecutionResultAction` | 10 | [`watcher/_types/Execution.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/watcher/_types/Execution.ts#L74-L86) |
 | `_global.search._types.Highlight` | 9 | [`_global/search/_types/highlighting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/search/_types/highlighting.ts#L31-L54) |
 | `_global.search._types.InnerHits` | 9 | [`_global/search/_types/hits.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/search/_types/hits.ts#L102-L120) |
