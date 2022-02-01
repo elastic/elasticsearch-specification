@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Query } from '@xpack/usage/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldSecurity } from './FieldSecurity'
+import { ScriptLanguage, ScriptBase, StoredScriptId } from '@_types/Scripting'
 
 export class ApplicationPrivileges {
   /**
@@ -92,13 +93,36 @@ export class IndicesPrivileges {
   /**
    * A search query that defines the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */
-  query?: string[] | QueryContainer
+  query?: string[] | QueryContainer | RoleTemplateQueryContainer
   /**
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    * @server_default false
    */
   allow_restricted_indices?: boolean
 }
+
+/** @variants container */
+export class RoleTemplateQueryContainer {
+  /**
+   * When you create a role, you can specify a query that defines the document level security permissions. You can optionally
+   * use Mustache templates in the role query to insert the username of the current authenticated user into the role.
+   * Like other places in Elasticsearch that support templating or scripting, you can specify inline, stored, or file-based
+   * templates and define custom parameters. You access the details for the current authenticated user through the _user parameter.
+   *
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html#templating-role-query
+   */
+  template?: RoleTemplateScript
+}
+
+/** @shortcut_property source */
+export class RoleTemplateInlineScript extends ScriptBase {
+  lang?: ScriptLanguage
+  options?: Dictionary<string, string>
+  source: string | QueryContainer
+}
+
+/** @codegen_names inline, stored */
+export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
 
 export enum IndexPrivilege {
   none,
