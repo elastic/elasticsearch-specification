@@ -31,6 +31,7 @@ const specification = require('../../output/schema/schema.json')
 const getReport = require('../../../clients-flight-recorder/scripts/types-validator')
 const { getNamespace, getName } = require('../../../clients-flight-recorder/scripts/types-validator/utils')
 
+const privateNames = ['_global']
 const tick = '`'
 const tsValidationPath = path.join(__dirname, '..', '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 
@@ -71,7 +72,7 @@ async function run () {
     if (file.startsWith('specification/_json_spec')) continue
     if (getApi(file).endsWith('_types')) {
       const apis = specification.endpoints
-        .filter(endpoint => endpoint.name.includes(getApi(file).split('.')[0]))
+        .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])
         .map(endpoint => endpoint.name)
       for (const api of apis) {
         const report = await getReport({
@@ -122,8 +123,6 @@ async function run () {
 
   core.info('Done!')
 }
-
-const privateNames = ['_global']
 
 function getApi (file) {
   return file.split('/').slice(1, 3).filter(s => !privateNames.includes(s)).filter(Boolean).join('.')
