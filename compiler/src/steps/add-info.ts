@@ -28,7 +28,7 @@ export default async function addInfo (model: model.Model, jsonSpec: Map<string,
     title: 'Elasticsearch Request & Response Specification',
     license: {
       name: 'Apache 2.0',
-      url: 'https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE'
+      url: 'https://github.com/elastic/elasticsearch-specification/blob/main/LICENSE'
     }
   }
 
