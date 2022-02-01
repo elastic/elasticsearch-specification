@@ -11459,6 +11459,7 @@ export interface MlDatafeedConfig {
 export interface MlDatafeedRunningState {
   real_time_configured: boolean
   real_time_running: boolean
+  search_interval?: MlRunningStateSearchInterval
 }
 
 export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
@@ -12016,6 +12017,11 @@ export interface MlRuleCondition {
   applies_to: MlAppliesTo
   operator: MlConditionOperator
   value: double
+}
+
+export interface MlRunningStateSearchInterval {
+  end_ms: long
+  start_ms: long
 }
 
 export interface MlTimingStats {
