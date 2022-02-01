@@ -26,6 +26,8 @@ import { Tokenizer, TokenizerDefinition } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { OverloadOf } from '@spec_utils/behaviors'
 
+// test
+
 export class AnalysisConfig {
   /**
    *  The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. This value should be either a whole number of days or equate to a
