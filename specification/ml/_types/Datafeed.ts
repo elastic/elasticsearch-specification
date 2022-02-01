@@ -147,6 +147,12 @@ export class DatafeedTimingStats {
 export class DatafeedRunningState {
   real_time_configured: boolean
   real_time_running: boolean
+  search_interval?: RunningStateSearchInterval
+}
+
+export class RunningStateSearchInterval {
+  end_ms: long
+  start_ms: long
 }
 
 export enum ChunkingMode {
