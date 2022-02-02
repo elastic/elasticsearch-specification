@@ -1686,7 +1686,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition security._types:RoleTemplateQueryContainer - Property template is a single-variant and must be required"
+      ]
     },
     "security.get_role_mapping": {
       "request": [

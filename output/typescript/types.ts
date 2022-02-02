@@ -14614,7 +14614,7 @@ export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: string[] | QueryDslQueryContainer
+  query?: string[] | QueryDslQueryContainer | SecurityRoleTemplateQueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -14645,6 +14645,18 @@ export interface SecurityRoleMappingRule {
   field?: SecurityFieldRule
   except?: SecurityRoleMappingRule
 }
+
+export interface SecurityRoleTemplateInlineScript extends ScriptBase {
+  lang?: ScriptLanguage
+  options?: Record<string, string>
+  source: string | QueryDslQueryContainer
+}
+
+export interface SecurityRoleTemplateQueryContainer {
+  template?: SecurityRoleTemplateScript
+}
+
+export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | string | QueryDslQueryContainer | StoredScriptId
 
 export interface SecurityTransientMetadataConfig {
   enabled: boolean
