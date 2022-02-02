@@ -1414,7 +1414,7 @@
     },
     "nodes.get_repositories_metering_info": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },

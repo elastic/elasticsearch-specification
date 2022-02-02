@@ -13788,6 +13788,38 @@ export interface NodesRecording {
   cumulative_execution_time_millis?: long
 }
 
+export interface NodesRepositoryLocation {
+  base_path: string
+  container?: string
+  bucket?: string
+}
+
+export interface NodesRepositoryMeteringInformation {
+  repository_name: Name
+  repository_type: string
+  repository_location: NodesRepositoryLocation
+  repository_ephemeral_id: Id
+  repository_started_at: EpochMillis
+  repository_stopped_at?: EpochMillis
+  archived: boolean
+  cluster_version?: VersionNumber
+  request_counts: NodesRequestCounts
+}
+
+export interface NodesRequestCounts {
+  GetBlobProperties?: long
+  GetBlob?: long
+  ListBlobs?: long
+  PutBlob?: long
+  PutBlock?: long
+  PutBlockList?: long
+  GetObject?: long
+  ListObjects?: long
+  InsertObject?: long
+  PutObject?: long
+  PutMultipartObject?: long
+}
+
 export interface NodesScriptCache {
   cache_evictions?: long
   compilation_limit_triggered?: long
@@ -13868,47 +13900,25 @@ export interface NodesTransportHistogram {
   ge_millis?: long
 }
 
-export interface NodesClearRepositoriesMeteringArchiveRepositoryLocation {
-  base_path: string
-  container?: string
-  bucket?: string
-}
-
-export interface NodesClearRepositoriesMeteringArchiveRepositoryMeteringInformation {
-  repository_name: Name
-  repository_type: string
-  repository_location: NodesClearRepositoriesMeteringArchiveRepositoryLocation
-  repository_ephemeral_id: Id
-  repository_started_at: EpochMillis
-  repository_stopped_at?: EpochMillis
-  archived: boolean
-  cluster_version?: VersionNumber
-  request_counts: NodesClearRepositoriesMeteringArchiveRequestCounts
-}
-
 export interface NodesClearRepositoriesMeteringArchiveRequest extends RequestBase {
   node_id: NodeIds
   max_archive_version: long
 }
 
-export interface NodesClearRepositoriesMeteringArchiveRequestCounts {
-  GetBlobProperties?: long
-  GetBlob?: long
-  ListBlobs?: long
-  PutBlob?: long
-  PutBlock?: long
-  PutBlockList?: long
-  GetObject?: long
-  ListObjects?: long
-  InsertObject?: long
-  PutObject?: long
-  PutMultipartObject?: long
-}
-
 export interface NodesClearRepositoriesMeteringArchiveResponse extends NodesNodesResponseBase {
   _nodes: NodeStatistics
   cluster_name: Name
-  nodes: Record<string, NodesClearRepositoriesMeteringArchiveRepositoryMeteringInformation>
+  nodes: Record<string, NodesRepositoryMeteringInformation>
+}
+
+export interface NodesGetRepositoriesMeteringInfoRequest extends RequestBase {
+  node_id: NodeIds
+}
+
+export interface NodesGetRepositoriesMeteringInfoResponse extends NodesNodesResponseBase {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, NodesRepositoryMeteringInformation>
 }
 
 export interface NodesHotThreadsHotThread {
