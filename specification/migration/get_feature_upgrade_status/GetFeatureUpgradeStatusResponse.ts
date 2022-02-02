@@ -26,6 +26,13 @@ export class Response {
   }
 }
 
+export enum MigrationStatus {
+  NO_MIGRATION_NEEDED,
+  MIGRATION_NEEDED,
+  IN_PROGRESS,
+  ERROR
+}
+
 export class MigrationFeature {
   feature_name: string
   minimum_index_version: VersionString
