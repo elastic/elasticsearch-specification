@@ -11236,6 +11236,33 @@ export interface MigrationDeprecationsResponse {
   ml_settings: MigrationDeprecationsDeprecation[]
 }
 
+export interface MigrationGetFeatureUpgradeStatusMigrationFeature {
+  feature_name: string
+  minimum_index_version: VersionString
+  migration_status: string
+  indices: Indices
+}
+
+export interface MigrationGetFeatureUpgradeStatusRequest extends RequestBase {
+}
+
+export interface MigrationGetFeatureUpgradeStatusResponse {
+  features: MigrationGetFeatureUpgradeStatusMigrationFeature[]
+  migration_status: string
+}
+
+export interface MigrationPostFeatureUpgradeMigrationFeature {
+  feature_name: string
+}
+
+export interface MigrationPostFeatureUpgradeRequest extends RequestBase {
+}
+
+export interface MigrationPostFeatureUpgradeResponse {
+  accepted: boolean
+  features: MigrationPostFeatureUpgradeMigrationFeature[]
+}
+
 export interface MlAnalysisConfig {
   bucket_span: TimeSpan
   categorization_analyzer?: MlCategorizationAnalyzer
