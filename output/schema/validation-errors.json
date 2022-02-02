@@ -1408,7 +1408,7 @@
     },
     "nodes.clear_repositories_metering_archive": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
