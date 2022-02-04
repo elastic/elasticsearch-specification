@@ -24,6 +24,6 @@ import { ShardStatistics } from '@_types/Stats'
 export class Response extends AsyncSearchResponseBase {
   body: {
     _shards: ShardStatistics
-    completion_status: integer
+    completion_status?: integer
   }
 }

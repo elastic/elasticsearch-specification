@@ -5729,7 +5729,7 @@ export interface AsyncSearchStatusRequest extends RequestBase {
 
 export interface AsyncSearchStatusResponse extends AsyncSearchAsyncSearchResponseBase {
   _shards: ShardStatistics
-  completion_status: integer
+  completion_status?: integer
 }
 
 export interface AsyncSearchSubmitRequest extends RequestBase {
