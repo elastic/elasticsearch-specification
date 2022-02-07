@@ -1214,13 +1214,13 @@
     },
     "migration.get_feature_upgrade_status": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "migration.post_feature_upgrade": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },

@@ -11011,6 +11011,41 @@ export interface MigrationDeprecationsResponse {
   ml_settings: MigrationDeprecationsDeprecation[]
 }
 
+export interface MigrationGetFeatureUpgradeStatusMigrationFeature {
+  feature_name: string
+  minimum_index_version: VersionString
+  migration_status: MigrationGetFeatureUpgradeStatusMigrationStatus
+  indices: MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo[]
+}
+
+export interface MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo {
+  index: IndexName
+  version: VersionString
+  failure_cause?: ErrorCause
+}
+
+export type MigrationGetFeatureUpgradeStatusMigrationStatus = 'NO_MIGRATION_NEEDED' | 'MIGRATION_NEEDED' | 'IN_PROGRESS' | 'ERROR'
+
+export interface MigrationGetFeatureUpgradeStatusRequest extends RequestBase {
+}
+
+export interface MigrationGetFeatureUpgradeStatusResponse {
+  features: MigrationGetFeatureUpgradeStatusMigrationFeature[]
+  migration_status: MigrationGetFeatureUpgradeStatusMigrationStatus
+}
+
+export interface MigrationPostFeatureUpgradeMigrationFeature {
+  feature_name: string
+}
+
+export interface MigrationPostFeatureUpgradeRequest extends RequestBase {
+}
+
+export interface MigrationPostFeatureUpgradeResponse {
+  accepted: boolean
+  features: MigrationPostFeatureUpgradeMigrationFeature[]
+}
+
 export interface MlAnalysisConfig {
   bucket_span: TimeSpan
   categorization_analyzer?: MlCategorizationAnalyzer
