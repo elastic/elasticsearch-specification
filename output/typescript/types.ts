@@ -11240,7 +11240,13 @@ export interface MigrationGetFeatureUpgradeStatusMigrationFeature {
   feature_name: string
   minimum_index_version: VersionString
   migration_status: string
-  indices: Indices
+  indices: MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo[]
+}
+
+export interface MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo {
+  index: IndexName
+  version: VersionString
+  failure_cause?: ErrorCause
 }
 
 export interface MigrationGetFeatureUpgradeStatusRequest extends RequestBase {

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Indices, VersionString } from '@_types/common'
+import { IndexName, Indices, VersionString } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 
 export class Response {
   body: {
@@ -37,5 +38,11 @@ export class MigrationFeature {
   feature_name: string
   minimum_index_version: VersionString
   migration_status: string
-  indices: Indices
+  indices: MigrationFeatureIndexInfo[]
+}
+
+export class MigrationFeatureIndexInfo {
+  index: IndexName
+  version: VersionString
+  failure_cause?: ErrorCause
 }
