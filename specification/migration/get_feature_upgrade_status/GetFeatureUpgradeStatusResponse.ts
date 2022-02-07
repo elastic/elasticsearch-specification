@@ -23,7 +23,7 @@ import { ErrorCause } from '@_types/Errors'
 export class Response {
   body: {
     features: MigrationFeature[]
-    migration_status: string
+    migration_status: MigrationStatus
   }
 }
 
@@ -37,7 +37,7 @@ export enum MigrationStatus {
 export class MigrationFeature {
   feature_name: string
   minimum_index_version: VersionString
-  migration_status: string
+  migration_status: MigrationStatus
   indices: MigrationFeatureIndexInfo[]
 }
 

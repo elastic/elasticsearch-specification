@@ -11239,7 +11239,7 @@ export interface MigrationDeprecationsResponse {
 export interface MigrationGetFeatureUpgradeStatusMigrationFeature {
   feature_name: string
   minimum_index_version: VersionString
-  migration_status: string
+  migration_status: MigrationGetFeatureUpgradeStatusMigrationStatus
   indices: MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo[]
 }
 
@@ -11249,12 +11249,14 @@ export interface MigrationGetFeatureUpgradeStatusMigrationFeatureIndexInfo {
   failure_cause?: ErrorCause
 }
 
+export type MigrationGetFeatureUpgradeStatusMigrationStatus = 'NO_MIGRATION_NEEDED' | 'MIGRATION_NEEDED' | 'IN_PROGRESS' | 'ERROR'
+
 export interface MigrationGetFeatureUpgradeStatusRequest extends RequestBase {
 }
 
 export interface MigrationGetFeatureUpgradeStatusResponse {
   features: MigrationGetFeatureUpgradeStatusMigrationFeature[]
-  migration_status: string
+  migration_status: MigrationGetFeatureUpgradeStatusMigrationStatus
 }
 
 export interface MigrationPostFeatureUpgradeMigrationFeature {
