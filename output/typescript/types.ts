@@ -13723,6 +13723,13 @@ export interface NodesNodeBufferPool {
   used_in_bytes?: long
 }
 
+export interface NodesNodeReloadError {
+  name: Name
+  reload_exception?: ErrorCause
+}
+
+export type NodesNodeReloadResult = NodesStats | NodesNodeReloadError
+
 export interface NodesNodesResponseBase {
   _nodes?: NodeStatistics
 }
@@ -13779,6 +13786,38 @@ export interface NodesRecording {
   cumulative_execution_count?: long
   cumulative_execution_time?: string
   cumulative_execution_time_millis?: long
+}
+
+export interface NodesRepositoryLocation {
+  base_path: string
+  container?: string
+  bucket?: string
+}
+
+export interface NodesRepositoryMeteringInformation {
+  repository_name: Name
+  repository_type: string
+  repository_location: NodesRepositoryLocation
+  repository_ephemeral_id: Id
+  repository_started_at: EpochMillis
+  repository_stopped_at?: EpochMillis
+  archived: boolean
+  cluster_version?: VersionNumber
+  request_counts: NodesRequestCounts
+}
+
+export interface NodesRequestCounts {
+  GetBlobProperties?: long
+  GetBlob?: long
+  ListBlobs?: long
+  PutBlob?: long
+  PutBlock?: long
+  PutBlockList?: long
+  GetObject?: long
+  ListObjects?: long
+  InsertObject?: long
+  PutObject?: long
+  PutMultipartObject?: long
 }
 
 export interface NodesScriptCache {
@@ -13859,6 +13898,27 @@ export interface NodesTransportHistogram {
   count?: long
   lt_millis?: long
   ge_millis?: long
+}
+
+export interface NodesClearRepositoriesMeteringArchiveRequest extends RequestBase {
+  node_id: NodeIds
+  max_archive_version: long
+}
+
+export interface NodesClearRepositoriesMeteringArchiveResponse extends NodesNodesResponseBase {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, NodesRepositoryMeteringInformation>
+}
+
+export interface NodesGetRepositoriesMeteringInfoRequest extends RequestBase {
+  node_id: NodeIds
+}
+
+export interface NodesGetRepositoriesMeteringInfoResponse extends NodesNodesResponseBase {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, NodesRepositoryMeteringInformation>
 }
 
 export interface NodesHotThreadsHotThread {
@@ -14236,13 +14296,6 @@ export interface NodesInfoResponse extends NodesNodesResponseBase {
   nodes: Record<string, NodesInfoNodeInfo>
 }
 
-export interface NodesReloadSecureSettingsNodeReloadError {
-  name: Name
-  reload_exception?: ErrorCause
-}
-
-export type NodesReloadSecureSettingsNodeReloadResult = NodesStats | NodesReloadSecureSettingsNodeReloadError
-
 export interface NodesReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
@@ -14253,7 +14306,7 @@ export interface NodesReloadSecureSettingsRequest extends RequestBase {
 
 export interface NodesReloadSecureSettingsResponse extends NodesNodesResponseBase {
   cluster_name: Name
-  nodes: Record<string, NodesReloadSecureSettingsNodeReloadResult>
+  nodes: Record<string, NodesNodeReloadResult>
 }
 
 export interface NodesStatsRequest extends RequestBase {
