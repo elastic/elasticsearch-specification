@@ -131,12 +131,12 @@
 ## Top 50 used types
 | Type | Occurencies | Location |
 | --- | --- | --- |
-| `_types.RequestBase` | 365 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
+| `_types.RequestBase` | 367 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
 | `_types.integer` | 351 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
-| `_types.long` | 289 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
-| `_types.Id` | 242 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
+| `_types.long` | 291 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
+| `_types.Id` | 243 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
 | `_types.Time` | 187 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
-| `_types.Name` | 173 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
+| `_types.Name` | 176 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
 | `_types.double` | 150 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
 | `_types.Field` | 137 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L111-L112) |
 | `_types.IndexName` | 116 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L53-L53) |
@@ -145,14 +145,14 @@
 | `_types.query_dsl.QueryContainer` | 62 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L97-L163) |
 | `_types.query_dsl.QueryBase` | 55 | [`_types/query_dsl/abstractions.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/query_dsl/abstractions.ts#L176-L180) |
 | `_types.ExpandWildcards` | 50 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L190-L190) |
+| `_types.VersionNumber` | 49 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L87-L87) |
 | `_types.VersionString` | 49 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L89-L89) |
 | `_types.DateString` | 48 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L27-L27) |
-| `_types.VersionNumber` | 48 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L87-L87) |
 | `_types.analysis.TokenFilterBase` | 46 | [`_types/analysis/token_filters.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/analysis/token_filters.ts#L39-L41) |
 | `_types.Fields` | 40 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L113-L113) |
+| `_types.EpochMillis` | 37 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L30-L30) |
 | `_types.Metadata` | 37 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L84-L84) |
 | `_types.Routing` | 37 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L59-L59) |
-| `_types.EpochMillis` | 36 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L30-L30) |
 | `ingest._types.ProcessorBase` | 33 | [`ingest/_types/Processors.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ingest/_types/Processors.ts#L68-L73) |
 | `_types.Script` | 31 | [`_types/Scripting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Scripting.ts#L56-L57) |
 | `_types.Names` | 30 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
