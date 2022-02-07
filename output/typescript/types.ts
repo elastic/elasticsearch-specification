@@ -9784,6 +9784,62 @@ export interface IndicesExistsTemplateRequest extends RequestBase {
 
 export type IndicesExistsTemplateResponse = boolean
 
+export interface IndicesFieldUsageStatsFieldSummary {
+  any: uint
+  stored_fields: uint
+  doc_values: uint
+  points: uint
+  norms: uint
+  term_vectors: uint
+  knn_vectors: uint
+  inverted_index: IndicesFieldUsageStatsInvertedIndex
+}
+
+export interface IndicesFieldUsageStatsFieldsUsageBodyKeys {
+  _shards: ShardStatistics
+}
+export type IndicesFieldUsageStatsFieldsUsageBody = IndicesFieldUsageStatsFieldsUsageBodyKeys
+  & { [property: string]: IndicesFieldUsageStatsUsageStatsIndex | ShardStatistics }
+
+export interface IndicesFieldUsageStatsInvertedIndex {
+  terms: uint
+  postings: uint
+  proximity: uint
+  positions: uint
+  term_frequencies: uint
+  offsets: uint
+  payloads: uint
+}
+
+export interface IndicesFieldUsageStatsRequest extends RequestBase {
+  index?: Indices
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  fields?: Fields
+  master_timeout?: Time
+  timeout?: Time
+  wait_for_active_shards?: WaitForActiveShards
+}
+
+export type IndicesFieldUsageStatsResponse = IndicesFieldUsageStatsFieldsUsageBody
+
+export interface IndicesFieldUsageStatsShardsStats {
+  all_fields: IndicesFieldUsageStatsFieldSummary
+  fields: Record<Field, IndicesFieldUsageStatsFieldSummary>
+}
+
+export interface IndicesFieldUsageStatsUsageStatsIndex {
+  shards: IndicesFieldUsageStatsUsageStatsShards[]
+}
+
+export interface IndicesFieldUsageStatsUsageStatsShards {
+  routing: IndicesStatsShardRouting
+  stats: IndicesFieldUsageStatsShardsStats
+  tracking_id: string
+  tracking_started_at_millis: EpochMillis
+}
+
 export interface IndicesFlushRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
