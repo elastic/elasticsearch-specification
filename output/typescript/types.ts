@@ -5727,9 +5727,9 @@ export interface AsyncSearchStatusRequest extends RequestBase {
   id: Id
 }
 
-export interface AsyncSearchStatusResponse<TDocument = unknown> extends AsyncSearchAsyncSearchResponseBase {
+export interface AsyncSearchStatusResponse extends AsyncSearchAsyncSearchResponseBase {
   _shards: ShardStatistics
-  completion_status: integer
+  completion_status?: integer
 }
 
 export interface AsyncSearchSubmitRequest extends RequestBase {
