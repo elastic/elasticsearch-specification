@@ -565,6 +565,24 @@
       ],
       "response": []
     },
+    "desired_nodes.delete_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "desired_nodes.get_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "desired_nodes.update_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "enrich.delete_policy": {
       "request": [
         "Request: should not have a body"
@@ -744,6 +762,12 @@
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec",
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "health": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1570,6 +1594,12 @@
       ],
       "response": []
     },
+    "security.activate_user_profile": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.authenticate": {
       "request": [
         "Request: should not have a body"
@@ -1728,6 +1758,12 @@
       ],
       "response": []
     },
+    "security.get_user_profile": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
@@ -1737,6 +1773,12 @@
     "security.saml_service_provider_metadata": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "security.update_user_profile_data": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
