@@ -1,5 +1,29 @@
 {
   "endpointErrors": {
+    "_internal.delete_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.get_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.health": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.update_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "async_search.delete": {
       "request": [
         "Request: should not have a body"
@@ -565,24 +589,6 @@
       ],
       "response": []
     },
-    "desired_nodes.delete_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "desired_nodes.get_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "desired_nodes.update_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "enrich.delete_policy": {
       "request": [
         "Request: should not have a body"
@@ -762,12 +768,6 @@
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec",
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "health": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
