@@ -39,7 +39,7 @@ Nit: if you do the latter, name the branch like this: `{username}/{feature_name}
 
 ## Boolean in specific enum shouldn't be sent as string
 
-[DynamicMapping](./specification/_types/mapping/dynamic-template.ts#L37-L42) enum if not populated as a boolean in Elasticsearch breaks Kibana which expects a true json boolean.
+[DynamicMapping](../specification/_types/mapping/dynamic-template.ts#L37-L42) enum if not populated as a boolean in Elasticsearch breaks Kibana which expects a true json boolean.
 
 [elasticsearch-java #139](https://github.com/elastic/elasticsearch-java/issues/139)
 
