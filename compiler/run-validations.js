@@ -152,7 +152,7 @@ async function run () {
 
   spinner.text = 'Running validations'
 
-  const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : 'master'
+  const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : argv['stack-version'].slice(0, 3)
 
   if (noCache || isStale || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
