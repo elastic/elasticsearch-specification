@@ -558,6 +558,85 @@ export enum CatDfaColumn {
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
 
+export enum CatTrainedModelsColumn {
+  /**
+   * The time when the trained model was created.
+   * @aliases ct
+   */
+  create_time,
+  /**
+   * Information on the creator of the trained model.
+   * @aliases c, createdBy
+   */
+  created_by,
+  /**
+   * Identifier for the data frame analytics job that created the model. Only
+   * displayed if it is still available.
+   * @aliases df, dataFrameAnalytics
+   */
+  data_frame_analytics_id,
+  /**
+   * The description of the trained model.
+   * @aliases d
+   */
+  description,
+  /**
+   * The estimated heap size to keep the trained model in memory.
+   * @aliases hs, modelHeapSize
+   */
+  heap_size,
+  /**
+   * Idetifier for the trained model.
+   */
+  id,
+  /**
+   * The total number of documents that are processed by the model.
+   * @aliases ic, ingestCount
+   */
+  'ingest.count',
+  /**
+   * The total number of document that are currently being handled by the
+   * trained model.
+   * @aliases icurr, ingestCurrent
+   */
+  'ingest.current',
+  /**
+   * The total number of failed ingest attempts with the trained model.
+   * @aliases if, ingestFailed
+   */
+  'ingest.failed',
+  /**
+   * The total number of ingest pipelines that are referencing the trained
+   * model.
+   * @aliases ip, ingestPipelines
+   */
+  'ingest.pipelines',
+  /**
+   * The total time that is spent processing documents with the trained model.
+   * @aliases it, ingestTime
+   */
+  'ingest.time',
+  /**
+   * The license level of the trained model.
+   * @aliases l
+   */
+  license,
+  /**
+   * The estimated number of operations to use the trained model. This number
+   * helps measuring the computational complexity of the model.
+   * @aliases o, modelOperations
+   */
+  operations,
+  /**
+   * The Elasticsearch version number in which the trained model was created.
+   * @aliases v
+   */
+  version
+}
+export type CatTrainedModelsColumns =
+  | CatTrainedModelsColumn
+  | CatTrainedModelsColumn[]
+
 export enum CatTransformColumn {
   /**
    * The timestamp when changes were last detected in the source indices.
