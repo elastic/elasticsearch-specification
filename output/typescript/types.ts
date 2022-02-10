@@ -15375,6 +15375,7 @@ export interface SqlQueryColumn {
 export interface SqlQueryRequest extends RequestBase {
   format?: string
   body?: {
+    catalog?: string
     columnar?: boolean
     cursor?: string
     fetch_size?: integer
@@ -15384,6 +15385,12 @@ export interface SqlQueryRequest extends RequestBase {
     page_timeout?: Time
     time_zone?: string
     field_multi_value_leniency?: boolean
+    runtime_mappings?: MappingRuntimeFields
+    wait_for_completion_timeout?: Time
+    params?: Record<string, any>
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    index_using_frozen?: boolean
   }
 }
 
