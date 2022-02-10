@@ -96,10 +96,10 @@ export interface Request extends RequestBase {
      * Retention period for an async or saved synchronous search.
      * @server_default 5d
      */
-     keep_alive?: Time
-    /** 
+    keep_alive?: Time
+    /**
      * If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.
-     * @server_default false 
+     * @server_default false
      */
     keep_on_completion?: boolean
     /**
