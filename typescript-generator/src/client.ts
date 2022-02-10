@@ -399,7 +399,7 @@ export {
   }
 
   function createName (type: M.TypeName): string {
-    if (type.namespace === 'internal') return type.name
+    if (type.namespace === '_builtins') return type.name
     const namespace = strip(type.namespace).replace(/_([a-z])/g, k => k[1].toUpperCase())
     return `${namespace.split('.').map(TitleCase).join('')}${type.name}`
 

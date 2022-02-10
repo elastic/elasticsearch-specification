@@ -33,7 +33,7 @@
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
         "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations:TBucket'",
         "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
-        "type_alias definition _spec_utils:Void / instance_of - No type definition for 'internal:void'",
+        "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
         "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
         "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
@@ -1556,7 +1556,7 @@
         "Request: missing json spec query parameter 'track_total_hits'"
       ],
       "response": [
-        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for 'internal:binary'"
+        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
       ]
     },
     "search_shards": {
