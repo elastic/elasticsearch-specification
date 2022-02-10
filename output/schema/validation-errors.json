@@ -1,5 +1,23 @@
 {
   "endpointErrors": {
+    "_internal.delete_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.get_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.update_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "async_search.delete": {
       "request": [
         "Request: should not have a body"
