@@ -1254,6 +1254,7 @@
     },
     "ml.delete_trained_model": {
       "request": [
+        "Request: query parameter 'force' does not exist in the json spec",
         "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
@@ -1273,12 +1274,6 @@
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'msle' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'",
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'r_squared' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'"
       ]
-    },
-    "ml.forecast": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
     },
     "ml.get_calendar_events": {
       "request": [
@@ -1328,6 +1323,12 @@
       ],
       "response": []
     },
+    "ml.get_model_snapshot_upgrade_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_trained_models": {
       "request": [
         "Request: missing json spec query parameter 'include_model_definition'",
@@ -1342,12 +1343,6 @@
       "response": []
     },
     "ml.info": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "ml.open_job": {
       "request": [
         "Request: should not have a body"
       ],
@@ -1956,12 +1951,6 @@
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
-    },
-    "transform.reset_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
     },
     "transform.start_transform": {
       "request": [
