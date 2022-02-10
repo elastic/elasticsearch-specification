@@ -142,7 +142,7 @@ function fromBranch (branch) {
     return '8.1.0-SNAPSHOT'
   } else if (branch === '7.x') {
     return '7.x-SNAPSHOT'
-  } else if (branch.startsWith('7.') && !isNaN(Number(branch.split('.')[1]))) {
+  } else if ((branch.startsWith('7.') || branch.startsWith('8.')) && !isNaN(Number(branch.split('.')[1]))) {
     return `${branch}-SNAPSHOT`
   } else {
     throw new Error(`Cannot derive version from branch '${branch}'`)
