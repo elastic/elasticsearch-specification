@@ -82,7 +82,7 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'boolean',
-          namespace: '_primitive'
+          namespace: '_builtins'
         }
       }
       return type
@@ -93,7 +93,7 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'string',
-          namespace: '_primitive'
+          namespace: '_builtins'
         }
       }
       return type
@@ -104,7 +104,7 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'number',
-          namespace: '_primitive'
+          namespace: '_builtins'
         }
       }
       return type
@@ -115,7 +115,7 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'null',
-          namespace: '_primitive'
+          namespace: '_builtins'
         }
       }
       return type
@@ -126,7 +126,7 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'void',
-          namespace: '_primitive'
+          namespace: '_builtins'
         }
       }
       return type
@@ -139,7 +139,7 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'object',
-          namespace: '_primitive'
+          namespace: '_builtins'
         }
       }
       return type
@@ -258,7 +258,7 @@ export function modelType (node: Node): model.ValueOf {
             kind: 'instance_of',
             type: {
               name: 'binary',
-              namespace: '_primitive'
+              namespace: '_builtins'
             }
           }
           return type
@@ -837,7 +837,7 @@ export function isKnownBehavior (node: HeritageClause | ExpressionWithTypeArgume
 
 /**
  * Given a Node, it returns its namespace computed from the symbol declarations.
- * If it can't compute it, defaults to `_primitive`.
+ * If it can't compute it, defaults to `_builtins`.
  */
 export function getNameSpace (node: Node): string {
   // if the node we are checking is a TypeReferenceNode,
@@ -848,7 +848,7 @@ export function getNameSpace (node: Node): string {
     if (Node.isIdentifier(identifier)) {
       const name = identifier.compilerNode.escapedText as string
       // the Array object is defined by TypeScript
-      if (name === 'Array') return '_primitive'
+      if (name === 'Array') return '_builtins'
       const definition = identifier.getDefinitions()[0]
       assert(identifier, definition != null, 'Cannot find codegen_name')
       return cleanPath(definition.getSourceFile().getFilePath())
@@ -864,7 +864,7 @@ export function getNameSpace (node: Node): string {
 
   const declaration = node.getType().getSymbol()?.getDeclarations()[0]
   if (declaration == null) {
-    return '_primitive'
+    return '_builtins'
   }
 
   return cleanPath(declaration.getSourceFile().getFilePath())
@@ -873,7 +873,7 @@ export function getNameSpace (node: Node): string {
     path = dirname(path)
       .replace(/.*[/\\]specification[/\\]?/, '')
       .replace(/[/\\]/g, '.')
-    if (path === '') path = '_primitive'
+    if (path === '') path = '_builtins'
     return path
   }
 }
