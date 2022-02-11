@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, Ids } from '@_types/common'
 
 /**
  * Deletes anomaly detection jobs from a calendar.
@@ -30,9 +30,14 @@ import { Id } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** A string that uniquely identifies a calendar. */
+    /**
+     * A string that uniquely identifies a calendar.
+     */
     calendar_id: Id
-    /** An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a comma-separated list of jobs or groups. */
-    job_id: Id
+    /**
+     * An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a
+     * comma-separated list of jobs or groups.
+     */
+    job_id: Ids
   }
 }

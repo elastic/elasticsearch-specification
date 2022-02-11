@@ -12306,7 +12306,7 @@ export interface MlDeleteCalendarEventResponse extends AcknowledgedResponseBase 
 
 export interface MlDeleteCalendarJobRequest extends RequestBase {
   calendar_id: Id
-  job_id: Id
+  job_id: Ids
 }
 
 export interface MlDeleteCalendarJobResponse {
