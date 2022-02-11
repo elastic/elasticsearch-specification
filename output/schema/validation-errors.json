@@ -852,8 +852,6 @@
     },
     "indices.delete_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: should not have a body"
       ],
       "response": []
