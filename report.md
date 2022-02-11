@@ -135,8 +135,8 @@
 | `_types.integer` | 351 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
 | `_types.long` | 291 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
 | `_types.Id` | 243 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
-| `_types.Time` | 188 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
-| `_types.Name` | 176 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
+| `_types.Time` | 189 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
+| `_types.Name` | 175 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
 | `_types.double` | 150 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
 | `_types.Field` | 137 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L111-L112) |
 | `_types.IndexName` | 116 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L53-L53) |
@@ -154,8 +154,8 @@
 | `_types.Metadata` | 37 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L84-L84) |
 | `_types.Routing` | 37 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L59-L59) |
 | `ingest._types.ProcessorBase` | 33 | [`ingest/_types/Processors.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/ingest/_types/Processors.ts#L68-L73) |
+| `_types.Names` | 31 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
 | `_types.Script` | 31 | [`_types/Scripting.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Scripting.ts#L56-L57) |
-| `_types.Names` | 30 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L66-L66) |
 | `_types.ByteSize` | 29 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L81-L82) |
 | `_types.aggregations.BucketAggregationBase` | 25 | [`_types/aggregations/bucket.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/bucket.ts#L40-L45) |
 | `cat._types.CatRequestBase` | 25 | [`cat/_types/CatBase.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/cat/_types/CatBase.ts#L28-L30) |
