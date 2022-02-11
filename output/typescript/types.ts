@@ -2483,7 +2483,7 @@ export type VersionString = string
 
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 
-export type WaitForActiveShardOptions = 'all'
+export type WaitForActiveShardOptions = 'all' | 'index-setting'
 
 export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
