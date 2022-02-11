@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list or wildcard expression of index names used to limit the request.
      */
-    index?: Indices
+    index: Indices
   }
   query_parameters: {
     /**
