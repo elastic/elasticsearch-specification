@@ -260,7 +260,8 @@ export enum ThreadType {
 
 /** @doc_id cluster-health */
 export enum WaitForActiveShardOptions {
-  'all' = 0
+  'all',
+  'index-setting'
 }
 
 export enum WaitForEvents {
