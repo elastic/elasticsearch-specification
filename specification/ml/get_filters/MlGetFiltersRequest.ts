@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
     /**
      * A string that uniquely identifies a filter.
      */
-    filter_id?: Id
+    filter_id?: Ids
   }
   query_parameters: {
     /**
