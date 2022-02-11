@@ -22,9 +22,11 @@ import { Name } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Returns information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @since 7.9.0
  * @stability stable
+ * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
