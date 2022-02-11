@@ -9716,7 +9716,9 @@ export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBas
 }
 
 export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
-  name: Name
+  name: Names
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {
