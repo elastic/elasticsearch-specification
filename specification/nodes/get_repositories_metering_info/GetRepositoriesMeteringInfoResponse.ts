@@ -26,10 +26,6 @@ import { NodeStatistics } from '@_types/Node'
 export class Response extends NodesResponseBase {
   body: {
     /**
-     * Contains statistics about the number of nodes selected by the request.
-     */
-    _nodes: NodeStatistics
-    /**
      * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
      */
     cluster_name: Name
