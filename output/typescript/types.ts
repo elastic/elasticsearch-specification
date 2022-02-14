@@ -13537,7 +13537,6 @@ export interface NodesClearRepositoriesMeteringArchiveRequest extends RequestBas
 }
 
 export interface NodesClearRepositoriesMeteringArchiveResponse extends NodesNodesResponseBase {
-  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, NodesRepositoryMeteringInformation>
 }
@@ -13547,7 +13546,6 @@ export interface NodesGetRepositoriesMeteringInfoRequest extends RequestBase {
 }
 
 export interface NodesGetRepositoriesMeteringInfoResponse extends NodesNodesResponseBase {
-  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, NodesRepositoryMeteringInformation>
 }
