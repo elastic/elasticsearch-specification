@@ -3156,6 +3156,7 @@ export interface AggregationsInferenceClassImportance {
 export interface AggregationsInferenceConfigContainer {
   regression?: AggregationsRegressionInferenceOptions
   classification?: AggregationsClassificationInferenceOptions
+  ner?: AggregationsNerInferenceOptions
 }
 
 export interface AggregationsInferenceFeatureImportance {
@@ -3340,6 +3341,26 @@ export type AggregationsMultiTermsBucket = AggregationsMultiTermsBucketKeys
 export interface AggregationsMutualInformationHeuristic {
   background_is_superset?: boolean
   include_negatives?: boolean
+}
+
+export interface AggregationsNerInferenceOptions {
+  tokenization: AggregationsNerInferenceTokenization
+  vocabulary: AggregationsNerInferenceVocabulary
+}
+
+export interface AggregationsNerInferenceTokenization {
+  bert: AggregationsNerInferenceTokenizationBert
+}
+
+export interface AggregationsNerInferenceTokenizationBert {
+  do_lower_case: boolean
+  max_sequence_length: integer
+  truncate: string
+  with_special_tokens: boolean
+}
+
+export interface AggregationsNerInferenceVocabulary {
+  index: IndexName
 }
 
 export interface AggregationsNestedAggregateKeys extends AggregationsSingleBucketAggregateBase {
@@ -12817,14 +12838,15 @@ export interface MlGetRecordsResponse {
 }
 
 export interface MlGetTrainedModelsRequest extends RequestBase {
-  model_id?: Id
+  model_id?: Ids
   allow_no_match?: boolean
   decompress_definition?: boolean
   exclude_generated?: boolean
   from?: integer
   include?: MlInclude
   size?: integer
-  tags?: string
+  tags?: string | string[]
+  include_model_definition?: boolean
 }
 
 export interface MlGetTrainedModelsResponse {

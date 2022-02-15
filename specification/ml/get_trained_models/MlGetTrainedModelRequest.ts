@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Include } from '@ml/_types/Include'
 
@@ -32,9 +32,9 @@ import { Include } from '@ml/_types/Include'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier of the trained model.
+     * The unique identifier(s) of the trained model.
      */
-    model_id?: Id
+    model_id?: Ids
   }
   query_parameters: {
     /**
@@ -82,6 +82,10 @@ export interface Request extends RequestBase {
      * none. When supplied, only trained models that contain all the supplied
      * tags are returned.
      */
-    tags?: string
+    tags?: string | string[]
+    /**
+     * @since 7.17.0
+     */
+    include_model_definition?: boolean
   }
 }

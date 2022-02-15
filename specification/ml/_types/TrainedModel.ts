@@ -302,26 +302,16 @@ export class TrainedModelAllocationTaskParameters {
 }
 
 export enum RoutingState {
-  /**
-   * The allocation attempt failed.
-   */
-  failed = 0,
-  /**
-   * The trained model is allocated and ready to accept inference requests.
-   */
-  started = 1,
-  /**
-   * The trained model is attempting to allocate on this node; inference requests are not yet accepted.
-   */
-  starting = 2,
-  /**
-   * The trained model is fully deallocated from this node.
-   */
-  stopped = 3,
-  /**
-   * The trained model is being deallocated from this node.
-   */
-  stopping = 4
+  /** The allocation attempt failed. */
+  failed,
+  /** The trained model is allocated and ready to accept inference requests. */
+  started,
+  /** The trained model is attempting to allocate on this node; inference requests are not yet accepted. */
+  starting,
+  /** The trained model is fully deallocated from this node. */
+  stopped,
+  /** The trained model is being deallocated from this node. */
+  stopping
 }
 
 export class TrainedModelAllocationRoutingTable {

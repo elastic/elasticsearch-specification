@@ -19,7 +19,7 @@
 
 import { Sort } from '@_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, Field, EmptyObject } from '@_types/common'
+import { Name, Field, EmptyObject, IndexName } from '@_types/common'
 import { integer, double, float } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
@@ -162,6 +162,7 @@ export class InferenceConfigContainer {
   regression?: RegressionInferenceOptions
   /** Classification configuration for inference. */
   classification?: ClassificationInferenceOptions
+  ner?: NerInferenceOptions
 }
 
 export class RegressionInferenceOptions {
@@ -190,6 +191,25 @@ export class ClassificationInferenceOptions {
   results_field?: string
   /** Specifies the field to which the top classes are written. Defaults to top_classes. */
   top_classes_results_field?: string
+}
+
+export class NerInferenceOptions {
+  tokenization: NerInferenceTokenization
+  vocabulary: NerInferenceVocabulary
+}
+
+export class NerInferenceTokenization {
+  bert: NerInferenceTokenizationBert
+}
+export class NerInferenceTokenizationBert {
+  do_lower_case: boolean
+  max_sequence_length: integer
+  truncate: string
+  with_special_tokens: boolean
+}
+
+export class NerInferenceVocabulary {
+  index: IndexName
 }
 
 export class MaxBucketAggregation extends PipelineAggregationBase {}
