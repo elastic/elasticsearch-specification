@@ -536,7 +536,7 @@ export interface MgetResponse<TDocument = unknown> {
 
 export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
 
-export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponseBody<TDocument> {
   status?: integer
 }
 
@@ -931,7 +931,7 @@ export interface ScrollRequest extends RequestBase {
   }
 }
 
-export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface ScrollResponse<TDocument = unknown> extends SearchResponseBody<TDocument> {
 }
 
 export interface SearchRequest extends RequestBase {
@@ -1015,14 +1015,15 @@ export interface SearchRequest extends RequestBase {
   }
 }
 
-export interface SearchResponse<TDocument = unknown> {
+export type SearchResponse<TDocument = unknown> = SearchResponseBody<TDocument>
+
+export interface SearchResponseBody<TDocument = unknown> {
   took: long
   timed_out: boolean
   _shards: ShardStatistics
   hits: SearchHitsMetadata<TDocument>
   aggregations?: Record<AggregateName, AggregationsAggregate>
   _clusters?: ClusterStatistics
-  documents?: TDocument[]
   fields?: Record<string, any>
   max_score?: double
   num_reduce_phases?: long

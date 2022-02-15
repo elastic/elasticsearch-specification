@@ -28,23 +28,23 @@ import { Profile } from './_types/profile'
 import { Suggest } from './_types/suggester'
 
 export class Response<TDocument> {
-  body: {
-    // Has to be kept in sync with SearchTemplateResponse
-    took: long
-    timed_out: boolean
-    _shards: ShardStatistics
-    hits: HitsMetadata<TDocument>
+  body: ResponseBody<TDocument>
+}
 
-    aggregations?: Dictionary<AggregateName, Aggregate>
-    _clusters?: ClusterStatistics
-    documents?: TDocument[]
-    fields?: Dictionary<string, UserDefinedValue>
-    max_score?: double
-    num_reduce_phases?: long
-    profile?: Profile
-    pit_id?: Id
-    _scroll_id?: ScrollId
-    suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-    terminated_early?: boolean
-  }
+export class ResponseBody<TDocument> {
+  // Has to be kept in sync with SearchTemplateResponse
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: HitsMetadata<TDocument>
+  aggregations?: Dictionary<AggregateName, Aggregate>
+  _clusters?: ClusterStatistics
+  fields?: Dictionary<string, UserDefinedValue>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: Profile
+  pit_id?: Id
+  _scroll_id?: ScrollId
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+  terminated_early?: boolean
 }
