@@ -12828,7 +12828,7 @@ export interface MlGetTrainedModelsResponse {
 }
 
 export interface MlGetTrainedModelsStatsRequest extends RequestBase {
-  model_id?: Id
+  model_id?: Ids
   allow_no_match?: boolean
   from?: integer
   size?: integer
