@@ -134,7 +134,7 @@
 | `_types.RequestBase` | 368 | [`_types/Base.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L34-L34) |
 | `_types.integer` | 351 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L22-L22) |
 | `_types.long` | 291 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L24-L24) |
-| `_types.Id` | 243 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
+| `_types.Id` | 242 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L48-L48) |
 | `_types.Time` | 189 | [`_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts#L65-L71) |
 | `_types.Name` | 175 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L65-L65) |
 | `_types.double` | 150 | [`_types/Numeric.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Numeric.ts#L27-L27) |
@@ -171,9 +171,9 @@
 | `_types.aggregations.PipelineAggregationBase` | 18 | [`_types/aggregations/pipeline.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/pipeline.ts#L35-L38) |
 | `_types.mapping.DocValuesPropertyBase` | 18 | [`_types/mapping/core.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/mapping/core.ts#L67-L69) |
 | `xpack.usage.Base` | 18 | [`xpack/usage/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/xpack/usage/types.ts#L28-L31) |
+| `_types.Ids` | 17 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L49-L49) |
 | `_types.SequenceNumber` | 17 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L102-L102) |
 | `_types.mapping.RuntimeFields` | 17 | [`_types/mapping/RuntimeFields.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/mapping/RuntimeFields.ts#L24-L24) |
-| `_types.Ids` | 16 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L49-L49) |
 | `_types.NodeId` | 15 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L50-L50) |
 | `_types.VersionType` | 15 | [`_types/common.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts#L91-L96) |
 | `_types.aggregations.MultiBucketBase` | 15 | [`_types/aggregations/Aggregate.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/aggregations/Aggregate.ts#L317-L324) |
