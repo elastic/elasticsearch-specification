@@ -24,7 +24,7 @@ import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ExpandWildcards, Indices, SearchType } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Response as SearchResponse } from '@global/search/SearchResponse'
+import { ResponseBody as SearchResponse } from '@global/search/SearchResponse'
 import { TrackHits } from '@global/search/_types/hits'
 import { ErrorResponseBase } from '@_types/Base'
 
