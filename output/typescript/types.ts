@@ -15649,7 +15649,7 @@ export interface TransformDeleteTransformResponse extends AcknowledgedResponseBa
 }
 
 export interface TransformGetTransformRequest extends RequestBase {
-  transform_id?: Name
+  transform_id?: Names
   allow_no_match?: boolean
   from?: integer
   size?: integer
