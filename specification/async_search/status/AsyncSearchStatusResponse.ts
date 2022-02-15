@@ -21,9 +21,9 @@ import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchRespons
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response<TDocument> extends AsyncSearchResponseBase {
+export class Response extends AsyncSearchResponseBase {
   body: {
     _shards: ShardStatistics
-    completion_status: integer
+    completion_status?: integer
   }
 }
