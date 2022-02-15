@@ -27,26 +27,28 @@ import { DateString, Time } from '@_types/Time'
 import { Datafeed } from '@ml/_types/Datafeed'
 
 export class Response {
-  body: {
-    allow_lazy_open: boolean
-    analysis_config: AnalysisConfigRead
-    analysis_limits: AnalysisLimits
-    background_persist_interval?: Time
-    create_time: DateString
-    custom_settings?: CustomSettings
-    daily_model_snapshot_retention_after_days: long
-    data_description: DataDescription
-    datafeed_config?: Datafeed
-    description?: string
-    groups?: string[]
-    job_id: Id
-    job_type: string
-    job_version: string
-    model_plot_config?: ModelPlotConfig
-    model_snapshot_id?: Id
-    model_snapshot_retention_days: long
-    renormalization_window_days?: long
-    results_index_name: string
-    results_retention_days?: long
+  '200': {
+    body: {
+      allow_lazy_open: boolean
+      analysis_config: AnalysisConfigRead
+      analysis_limits: AnalysisLimits
+      background_persist_interval?: Time
+      create_time: DateString
+      custom_settings?: CustomSettings
+      daily_model_snapshot_retention_after_days: long
+      data_description: DataDescription
+      datafeed_config?: Datafeed
+      description?: string
+      groups?: string[]
+      job_id: Id
+      job_type: string
+      job_version: string
+      model_plot_config?: ModelPlotConfig
+      model_snapshot_id?: Id
+      model_snapshot_retention_days: long
+      renormalization_window_days?: long
+      results_index_name: string
+      results_retention_days?: long
+    }
   }
 }

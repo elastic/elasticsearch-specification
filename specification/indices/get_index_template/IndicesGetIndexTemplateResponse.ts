@@ -25,8 +25,10 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    index_templates: IndexTemplateItem[]
+  '200': {
+    body: {
+      index_templates: IndexTemplateItem[]
+    }
   }
 }
 

@@ -20,5 +20,7 @@
 import { Id, VersionNumber } from '@_types/common'
 
 export class Response {
-  body: { found: boolean; _id: Id; _version: VersionNumber }
+  '200': {
+    body: { found: boolean; _id: Id; _version: VersionNumber }
+  }
 }

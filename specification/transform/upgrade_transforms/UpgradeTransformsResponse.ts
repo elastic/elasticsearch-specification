@@ -23,12 +23,14 @@ import { long } from '@_types/Numeric'
 import { Transform } from '@_types/Transform'
 */
 export class Response {
-  body: {
-    /** The number of transforms that need to be upgraded. */
-    needs_update: integer
-    /** The number of transforms that don’t require upgrading. */
-    no_action: integer
-    /** The number of transforms that have been upgraded. */
-    updated: integer
+  '200': {
+    body: {
+      /** The number of transforms that need to be upgraded. */
+      needs_update: integer
+      /** The number of transforms that don’t require upgrading. */
+      no_action: integer
+      /** The number of transforms that have been upgraded. */
+      updated: integer
+    }
   }
 }

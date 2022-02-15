@@ -21,9 +21,11 @@ import { LicenseType } from '@license/_types/License'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    error_message?: string
-    trial_was_started: boolean
-    type?: LicenseType
+  '200': {
+    body: {
+      error_message?: string
+      trial_was_started: boolean
+      type?: LicenseType
+    }
   }
 }

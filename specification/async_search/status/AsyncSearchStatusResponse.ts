@@ -22,8 +22,10 @@ import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response extends AsyncSearchResponseBase {
-  body: {
-    _shards: ShardStatistics
-    completion_status?: integer
+  '200': {
+    body: {
+      _shards: ShardStatistics
+      completion_status?: integer
+    }
   }
 }

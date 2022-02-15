@@ -24,22 +24,24 @@ import { Retries } from '@_types/Retries'
 import { EpochMillis, Time } from '@_types/Time'
 
 export class Response {
-  body: {
-    batches?: long
-    created?: long
-    deleted?: long
-    failures?: BulkIndexByScrollFailure[]
-    noops?: long
-    retries?: Retries
-    requests_per_second?: long
-    slice_id?: integer
-    task?: TaskId
-    throttled_millis?: EpochMillis
-    throttled_until_millis?: EpochMillis
-    timed_out?: boolean
-    took?: Time
-    total?: long
-    updated?: long
-    version_conflicts?: long
+  '200': {
+    body: {
+      batches?: long
+      created?: long
+      deleted?: long
+      failures?: BulkIndexByScrollFailure[]
+      noops?: long
+      retries?: Retries
+      requests_per_second?: long
+      slice_id?: integer
+      task?: TaskId
+      throttled_millis?: EpochMillis
+      throttled_until_millis?: EpochMillis
+      timed_out?: boolean
+      took?: Time
+      total?: long
+      updated?: long
+      version_conflicts?: long
+    }
   }
 }

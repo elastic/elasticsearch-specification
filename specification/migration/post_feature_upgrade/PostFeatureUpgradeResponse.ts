@@ -18,9 +18,11 @@
  */
 
 export class Response {
-  body: {
-    accepted: boolean
-    features: MigrationFeature[]
+  '200': {
+    body: {
+      accepted: boolean
+      features: MigrationFeature[]
+    }
   }
 }
 

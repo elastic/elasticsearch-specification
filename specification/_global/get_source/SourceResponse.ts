@@ -18,5 +18,7 @@
  */
 
 export class Response<TDocument> {
-  body: TDocument
+  '200': {
+    body: TDocument
+  }
 }

@@ -20,7 +20,9 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    shards_acknowledged: boolean
+  '200': {
+    body: {
+      shards_acknowledged: boolean
+    }
   }
 }

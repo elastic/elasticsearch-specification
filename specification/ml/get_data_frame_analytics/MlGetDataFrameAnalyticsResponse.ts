@@ -21,9 +21,11 @@ import { DataframeAnalyticsSummary } from '@ml/_types/DataframeAnalytics'
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    count: integer
-    /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
-    data_frame_analytics: DataframeAnalyticsSummary[]
+  '200': {
+    body: {
+      count: integer
+      /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
+      data_frame_analytics: DataframeAnalyticsSummary[]
+    }
   }
 }

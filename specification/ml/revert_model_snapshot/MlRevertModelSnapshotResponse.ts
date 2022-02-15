@@ -20,5 +20,7 @@
 import { ModelSnapshot } from '@ml/_types/Model'
 
 export class Response {
-  body: { model: ModelSnapshot }
+  '200': {
+    body: { model: ModelSnapshot }
+  }
 }

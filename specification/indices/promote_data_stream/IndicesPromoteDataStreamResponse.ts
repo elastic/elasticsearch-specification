@@ -20,5 +20,7 @@
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  body: UserDefinedValue
+  '200': {
+    body: UserDefinedValue
+  }
 }

@@ -21,8 +21,10 @@ import { Category } from '@ml/_types/Category'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    categories: Category[]
-    count: long
+  '200': {
+    body: {
+      categories: Category[]
+      count: long
+    }
   }
 }

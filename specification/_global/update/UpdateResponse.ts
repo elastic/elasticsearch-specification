@@ -21,7 +21,9 @@ import { InlineGet } from '@_types/common'
 import { WriteResponseBase } from '@_types/Base'
 
 export class Response<TDocument> extends WriteResponseBase {
-  body: {
-    get?: InlineGet<TDocument>
+  '200': {
+    body: {
+      get?: InlineGet<TDocument>
+    }
   }
 }

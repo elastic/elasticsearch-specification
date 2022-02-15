@@ -21,12 +21,14 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    conditions: Dictionary<string, boolean>
-    dry_run: boolean
-    new_index: string
-    old_index: string
-    rolled_over: boolean
-    shards_acknowledged: boolean
+  '200': {
+    body: {
+      conditions: Dictionary<string, boolean>
+      dry_run: boolean
+      new_index: string
+      old_index: string
+      rolled_over: boolean
+      shards_acknowledged: boolean
+    }
   }
 }

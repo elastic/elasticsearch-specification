@@ -18,7 +18,9 @@
  */
 
 export class Response {
-  body: {
-    metadata: string
+  '200': {
+    body: {
+      metadata: string
+    }
   }
 }

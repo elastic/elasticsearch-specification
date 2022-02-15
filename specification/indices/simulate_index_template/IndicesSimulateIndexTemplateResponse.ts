@@ -18,5 +18,7 @@
  */
 
 export class Response {
-  body: {}
+  '200': {
+    body: {}
+  }
 }

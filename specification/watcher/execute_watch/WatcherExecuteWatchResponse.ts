@@ -21,5 +21,7 @@ import { Id } from '@_types/common'
 import { WatchRecord } from './types'
 
 export class Response {
-  body: { _id: Id; watch_record: WatchRecord }
+  '200': {
+    body: { _id: Id; watch_record: WatchRecord }
+  }
 }

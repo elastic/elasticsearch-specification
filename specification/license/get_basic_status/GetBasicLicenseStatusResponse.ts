@@ -18,5 +18,7 @@
  */
 
 export class Response {
-  body: { eligible_to_start_basic: boolean }
+  '200': {
+    body: { eligible_to_start_basic: boolean }
+  }
 }

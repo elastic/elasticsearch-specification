@@ -20,5 +20,7 @@
 import { HelpRecord } from './types'
 
 export class Response {
-  body: Array<HelpRecord>
+  '200': {
+    body: Array<HelpRecord>
+  }
 }

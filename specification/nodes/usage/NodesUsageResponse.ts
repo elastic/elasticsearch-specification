@@ -23,8 +23,10 @@ import { Name } from '@_types/common'
 import { NodeUsage } from './types'
 
 export class Response extends NodesResponseBase {
-  body: {
-    cluster_name: Name
-    nodes: Dictionary<string, NodeUsage>
+  '200': {
+    body: {
+      cluster_name: Name
+      nodes: Dictionary<string, NodeUsage>
+    }
   }
 }

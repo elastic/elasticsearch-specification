@@ -23,9 +23,11 @@ import { IndexName } from '@_types/common'
 import { ShardFailure } from '@_types/Errors'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    indices: Dictionary<IndexName, CloseIndexResult>
-    shards_acknowledged: boolean
+  '200': {
+    body: {
+      indices: Dictionary<IndexName, CloseIndexResult>
+      shards_acknowledged: boolean
+    }
   }
 }
 

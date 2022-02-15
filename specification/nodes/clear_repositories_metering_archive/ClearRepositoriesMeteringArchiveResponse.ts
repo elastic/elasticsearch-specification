@@ -24,14 +24,16 @@ import { Name } from '@_types/common'
 import { NodeStatistics } from '@_types/Node'
 
 export class Response extends NodesResponseBase {
-  body: {
-    /**
-     * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
-     */
-    cluster_name: Name
-    /**
-     * Contains repositories metering information for the nodes selected by the request.
-     */
-    nodes: Dictionary<string, RepositoryMeteringInformation>
+  '200': {
+    body: {
+      /**
+       * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
+       */
+      cluster_name: Name
+      /**
+       * Contains repositories metering information for the nodes selected by the request.
+       */
+      nodes: Dictionary<string, RepositoryMeteringInformation>
+    }
   }
 }

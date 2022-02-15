@@ -22,10 +22,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    basic_was_started: boolean
-    error_message?: string
-    type?: LicenseType
-    acknowledge?: Dictionary<string, string | string[]>
+  '200': {
+    body: {
+      basic_was_started: boolean
+      error_message?: string
+      type?: LicenseType
+      acknowledge?: Dictionary<string, string | string[]>
+    }
   }
 }

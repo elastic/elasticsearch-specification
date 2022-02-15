@@ -21,8 +21,10 @@ import { AcknowledgedResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    shards_acknowledged: boolean
-    index: IndexName
+  '200': {
+    body: {
+      shards_acknowledged: boolean
+      index: IndexName
+    }
   }
 }

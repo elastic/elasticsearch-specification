@@ -21,7 +21,9 @@ import { AcknowledgedResponseBase } from '@_types/Base'
 import { TaskFailure } from '@_types/Errors'
 
 export class Response extends AcknowledgedResponseBase {
-  body: {
-    task_failures?: TaskFailure[]
+  '200': {
+    body: {
+      task_failures?: TaskFailure[]
+    }
   }
 }

@@ -21,9 +21,11 @@ import { Influencer } from '@ml/_types/Influencer'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    count: long
-    /** Array of influencer objects */
-    influencers: Influencer[]
+  '200': {
+    body: {
+      count: long
+      /** Array of influencer objects */
+      influencers: Influencer[]
+    }
   }
 }

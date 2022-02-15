@@ -20,8 +20,10 @@
 import { AutoFollowStats, FollowStats } from './types.ts'
 
 export class Response {
-  body: {
-    auto_follow_stats: AutoFollowStats
-    follow_stats: FollowStats
+  '200': {
+    body: {
+      auto_follow_stats: AutoFollowStats
+      follow_stats: FollowStats
+    }
   }
 }
