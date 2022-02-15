@@ -12651,7 +12651,7 @@ export interface MlGetDatafeedsResponse {
 }
 
 export interface MlGetFiltersRequest extends RequestBase {
-  filter_id?: Id
+  filter_id?: Ids
   from?: integer
   size?: integer
 }
