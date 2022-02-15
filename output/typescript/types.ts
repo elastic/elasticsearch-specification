@@ -16562,6 +16562,7 @@ export interface WatcherDataEmailAttachment {
 export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
 export interface WatcherEmail {
+  id?: Id
   bcc?: string[]
   body?: WatcherEmailBody
   cc?: string[]
