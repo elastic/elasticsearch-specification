@@ -17,19 +17,24 @@
  * under the License.
  */
 
-import { IndexTemplate } from '@indices/get_index_template/IndicesGetIndexTemplateResponse'
+import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Returns the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
  * @since 0.0.0
  * @stability stable
+ * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit this parameter and specify the template configuration in the request body. */
+    /**
+     * Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit
+     * this parameter and specify the template configuration in the request body.
+     */
     name?: Name
   }
   query_parameters: {
