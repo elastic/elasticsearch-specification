@@ -9360,6 +9360,28 @@ export interface IndicesIndexState {
   data_stream?: DataStreamName
 }
 
+export interface IndicesIndexTemplate {
+  index_patterns: Names
+  composed_of: Name[]
+  template?: IndicesIndexTemplateSummary
+  version?: VersionNumber
+  priority?: long
+  _meta?: Metadata
+  allow_auto_create?: boolean
+  data_stream?: IndicesIndexTemplateDataStreamConfiguration
+}
+
+export interface IndicesIndexTemplateDataStreamConfiguration {
+  hidden?: boolean
+  allow_custom_routing?: boolean
+}
+
+export interface IndicesIndexTemplateSummary {
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndicesIndexSettings
+}
+
 export interface IndicesIndexVersioning {
   created: VersionString
   created_string?: VersionString
@@ -9924,26 +9946,9 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
   mappings: Partial<Record<Field, MappingFieldMapping>>
 }
 
-export interface IndicesGetIndexTemplateIndexTemplate {
-  index_patterns: Name[]
-  composed_of: Name[]
-  template?: IndicesGetIndexTemplateIndexTemplateSummary
-  version?: VersionNumber
-  priority?: long
-  _meta?: Metadata
-  allow_auto_create?: boolean
-  data_stream?: Record<string, any>
-}
-
 export interface IndicesGetIndexTemplateIndexTemplateItem {
   name: Name
-  index_template: IndicesGetIndexTemplateIndexTemplate
-}
-
-export interface IndicesGetIndexTemplateIndexTemplateSummary {
-  aliases?: Record<IndexName, IndicesAlias>
-  mappings?: MappingTypeMapping
-  settings?: Record<string, any>
+  index_template: IndicesIndexTemplate
 }
 
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
@@ -10452,18 +10457,18 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
   master_timeout?: Time
-  body?: IndicesGetIndexTemplateIndexTemplate
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateTemplateResponse {
+  overlapping?: IndicesSimulateTemplateOverlapping[]
   template: IndicesSimulateTemplateTemplate
 }
 
 export interface IndicesSimulateTemplateTemplate {
   aliases: Record<IndexName, IndicesAlias>
   mappings: MappingTypeMapping
-  settings: Record<string, any>
-  overlapping: IndicesSimulateTemplateOverlapping[]
+  settings: IndicesIndexSettings
 }
 
 export interface IndicesSplitRequest extends RequestBase {
