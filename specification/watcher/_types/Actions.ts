@@ -236,6 +236,7 @@ export class DataEmailAttachment {
 }
 
 export class Email {
+  id?: Id
   bcc?: string[]
   body?: EmailBody
   cc?: string[]

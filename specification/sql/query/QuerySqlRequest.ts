@@ -17,7 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
@@ -35,6 +38,10 @@ export interface Request extends RequestBase {
     format?: string
   }
   body: {
+    /**
+     * Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.
+     */
+    catalog?: string
     columnar?: boolean
     cursor?: string
     /**
@@ -72,5 +79,33 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     field_multi_value_leniency?: boolean
+    /**
+     * Defines one or more runtime fields in the search request. These fields take
+     * precedence over mapped fields with the same name.
+     */
+    runtime_mappings?: RuntimeFields
+    /**
+     * Period to wait for complete results. Defaults to no timeout, meaning the request waits for complete search results. If the search doesn’t finish within this period, the search becomes async.
+     */
+    wait_for_completion_timeout?: Time
+    /**
+     * Values for parameters in the query.
+     */
+    params?: Dictionary<string, UserDefinedValue>
+    /**
+     * Retention period for an async or saved synchronous search.
+     * @server_default 5d
+     */
+    keep_alive?: Time
+    /**
+     * If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.
+     * @server_default false
+     */
+    keep_on_completion?: boolean
+    /**
+     * If true, the search can run on frozen indices. Defaults to false.
+     * @server_default false
+     */
+    index_using_frozen?: boolean
   }
 }

@@ -158,7 +158,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     'string', 'boolean', 'number', 'null'
   ]) {
     const typeName = {
-      namespace: 'internal',
+      namespace: '_builtins',
       name: name
     }
     typeDefByName.set(fqn(typeName), {
@@ -739,7 +739,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
       switch (fqName) {
         // Base type also used as property, no polymorphic usage
-        case 'internal:ErrorCause':
+        case '_builtins:ErrorCause':
         case 'x_pack.enrich:EnrichPolicy':
         case 'x_pack.info.x_pack_usage:XPackUsage':
         case 'x_pack.info.x_pack_usage:SecurityFeatureToggle':
@@ -825,7 +825,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function typeDefJsonEvents (events: Set<JsonEvent>, typeDef: model.TypeDefinition): void {
-    if (typeDef.name.namespace === 'internal') {
+    if (typeDef.name.namespace === '_builtins') {
       switch (typeDef.name.name) {
         case 'string':
           validateEvent(events, JsonEvent.string)

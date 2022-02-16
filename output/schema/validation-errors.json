@@ -1,5 +1,29 @@
 {
   "endpointErrors": {
+    "_internal.delete_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.get_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.health": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.update_desired_nodes": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "async_search.delete": {
       "request": [
         "Request: should not have a body"
@@ -15,7 +39,7 @@
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
         "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations:TBucket'",
         "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
-        "type_alias definition _spec_utils:Void / instance_of - No type definition for 'internal:void'",
+        "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
         "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
         "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
@@ -565,24 +589,6 @@
       ],
       "response": []
     },
-    "desired_nodes.delete_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "desired_nodes.get_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "desired_nodes.update_desired_nodes": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "enrich.delete_policy": {
       "request": [
         "Request: should not have a body"
@@ -657,6 +663,13 @@
     "features.reset_features": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "field_caps": {
+      "request": [
+        "Request: missing json spec query parameter 'filters'",
+        "Request: missing json spec query parameter 'types'"
       ],
       "response": []
     },
@@ -762,12 +775,6 @@
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec",
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "health": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -893,8 +900,6 @@
     },
     "indices.delete_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
-        "Request: missing json spec query parameter 'master_timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1554,7 +1559,7 @@
     "search": {
       "request": [],
       "response": [
-        "Non-leaf type cannot be used here: '_global.search:Response'"
+        "response definition _global.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
       ]
     },
     "search_mvt": {
@@ -1562,7 +1567,7 @@
         "Request: missing json spec query parameter 'track_total_hits'"
       ],
       "response": [
-        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for 'internal:binary'"
+        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
       ]
     },
     "search_shards": {

@@ -77,7 +77,7 @@ export default async function readDefinitionValidation (model: model.Model, json
     const readTypeInstance = unwrap(readType)
     const typeInstance = unwrap(type)
     if (readTypeInstance == null || typeInstance == null) return false
-    if (readTypeInstance.type.namespace !== 'internal') {
+    if (readTypeInstance.type.namespace !== '_builtins') {
       const definition = model.types.find(t => t.name.namespace === readTypeInstance.type.namespace && t.name.name === readTypeInstance.type.name)
       return definition?.kind === 'interface' && (definition.behaviors?.some(overloaded) ?? false)
     }

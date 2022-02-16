@@ -20,8 +20,11 @@
 import { Id } from '@_types/common'
 
 export class Filter {
+  /** A description of the filter. */
   description?: string
+  /** A string that uniquely identifies a filter. */
   filter_id: Id
+  /** An array of strings which is the filter item list. */
   items: string[]
 }
 
@@ -38,6 +41,6 @@ export class FilterRef {
 }
 
 export enum FilterType {
-  include = 0,
-  exclude = 1
+  include,
+  exclude
 }

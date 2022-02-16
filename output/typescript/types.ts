@@ -552,7 +552,7 @@ export interface MgetResponse<TDocument = unknown> {
 
 export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
 
-export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponseBody<TDocument> {
   status?: integer
 }
 
@@ -944,7 +944,7 @@ export interface ScrollRequest extends RequestBase {
   }
 }
 
-export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface ScrollResponse<TDocument = unknown> extends SearchResponseBody<TDocument> {
 }
 
 export interface SearchRequest extends RequestBase {
@@ -1027,7 +1027,9 @@ export interface SearchRequest extends RequestBase {
   }
 }
 
-export interface SearchResponse<TDocument = unknown> {
+export type SearchResponse<TDocument = unknown> = SearchResponseBody<TDocument>
+
+export interface SearchResponseBody<TDocument = unknown> {
   took: long
   timed_out: boolean
   _shards: ShardStatistics
@@ -2483,7 +2485,7 @@ export type VersionString = string
 
 export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
 
-export type WaitForActiveShardOptions = 'all'
+export type WaitForActiveShardOptions = 'all' | 'index-setting'
 
 export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
@@ -9368,6 +9370,28 @@ export interface IndicesIndexState {
   data_stream?: DataStreamName
 }
 
+export interface IndicesIndexTemplate {
+  index_patterns: Names
+  composed_of: Name[]
+  template?: IndicesIndexTemplateSummary
+  version?: VersionNumber
+  priority?: long
+  _meta?: Metadata
+  allow_auto_create?: boolean
+  data_stream?: IndicesIndexTemplateDataStreamConfiguration
+}
+
+export interface IndicesIndexTemplateDataStreamConfiguration {
+  hidden?: boolean
+  allow_custom_routing?: boolean
+}
+
+export interface IndicesIndexTemplateSummary {
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndicesIndexSettings
+}
+
 export interface IndicesIndexVersioning {
   created: VersionString
   created_string?: VersionString
@@ -9724,7 +9748,9 @@ export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBas
 }
 
 export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
-  name: Name
+  name: Names
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {
@@ -9820,7 +9846,7 @@ export interface IndicesFieldUsageStatsInvertedIndex {
 }
 
 export interface IndicesFieldUsageStatsRequest extends RequestBase {
-  index?: Indices
+  index: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -9930,26 +9956,9 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
   mappings: Partial<Record<Field, MappingFieldMapping>>
 }
 
-export interface IndicesGetIndexTemplateIndexTemplate {
-  index_patterns: Name[]
-  composed_of: Name[]
-  template?: IndicesGetIndexTemplateIndexTemplateSummary
-  version?: VersionNumber
-  priority?: long
-  _meta?: Metadata
-  allow_auto_create?: boolean
-  data_stream?: Record<string, any>
-}
-
 export interface IndicesGetIndexTemplateIndexTemplateItem {
   name: Name
-  index_template: IndicesGetIndexTemplateIndexTemplate
-}
-
-export interface IndicesGetIndexTemplateIndexTemplateSummary {
-  aliases?: Record<IndexName, IndicesAlias>
-  mappings?: MappingTypeMapping
-  settings?: Record<string, any>
+  index_template: IndicesIndexTemplate
 }
 
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
@@ -10458,18 +10467,18 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
   master_timeout?: Time
-  body?: IndicesGetIndexTemplateIndexTemplate
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateTemplateResponse {
+  overlapping?: IndicesSimulateTemplateOverlapping[]
   template: IndicesSimulateTemplateTemplate
 }
 
 export interface IndicesSimulateTemplateTemplate {
   aliases: Record<IndexName, IndicesAlias>
   mappings: MappingTypeMapping
-  settings: Record<string, any>
-  overlapping: IndicesSimulateTemplateOverlapping[]
+  settings: IndicesIndexSettings
 }
 
 export interface IndicesSplitRequest extends RequestBase {
@@ -12063,10 +12072,10 @@ export interface MlModelSizeStats {
 export interface MlModelSnapshot {
   description?: string
   job_id: Id
-  latest_record_time_stamp: integer
-  latest_result_time_stamp: integer
+  latest_record_time_stamp?: integer
+  latest_result_time_stamp?: integer
   min_version: VersionString
-  model_size_stats: MlModelSizeStats
+  model_size_stats?: MlModelSizeStats
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: Id
@@ -12314,7 +12323,7 @@ export interface MlDeleteCalendarEventResponse extends AcknowledgedResponseBase 
 
 export interface MlDeleteCalendarJobRequest extends RequestBase {
   calendar_id: Id
-  job_id: Id
+  job_id: Ids
 }
 
 export interface MlDeleteCalendarJobResponse {
@@ -12692,7 +12701,7 @@ export interface MlGetDatafeedsResponse {
 }
 
 export interface MlGetFiltersRequest extends RequestBase {
-  filter_id?: Id
+  filter_id?: Ids
   from?: integer
   size?: integer
 }
@@ -12834,7 +12843,7 @@ export interface MlGetTrainedModelsResponse {
 }
 
 export interface MlGetTrainedModelsStatsRequest extends RequestBase {
-  model_id?: Id
+  model_id?: Ids
   allow_no_match?: boolean
   from?: integer
   size?: integer
@@ -14005,7 +14014,6 @@ export interface NodesClearRepositoriesMeteringArchiveRequest extends RequestBas
 }
 
 export interface NodesClearRepositoriesMeteringArchiveResponse extends NodesNodesResponseBase {
-  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, NodesRepositoryMeteringInformation>
 }
@@ -14015,7 +14023,6 @@ export interface NodesGetRepositoriesMeteringInfoRequest extends RequestBase {
 }
 
 export interface NodesGetRepositoriesMeteringInfoResponse extends NodesNodesResponseBase {
-  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, NodesRepositoryMeteringInformation>
 }
@@ -16007,6 +16014,7 @@ export interface SqlGetAsyncStatusResponse {
 export interface SqlQueryRequest extends RequestBase {
   format?: string
   body?: {
+    catalog?: string
     columnar?: boolean
     cursor?: string
     fetch_size?: integer
@@ -16016,6 +16024,12 @@ export interface SqlQueryRequest extends RequestBase {
     page_timeout?: Time
     time_zone?: string
     field_multi_value_leniency?: boolean
+    runtime_mappings?: MappingRuntimeFields
+    wait_for_completion_timeout?: Time
+    params?: Record<string, any>
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    index_using_frozen?: boolean
   }
 }
 
@@ -16282,7 +16296,7 @@ export interface TransformDeleteTransformResponse extends AcknowledgedResponseBa
 }
 
 export interface TransformGetTransformRequest extends RequestBase {
-  transform_id?: Name
+  transform_id?: Names
   allow_no_match?: boolean
   from?: integer
   size?: integer
@@ -16598,6 +16612,7 @@ export interface WatcherDataEmailAttachment {
 export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
 export interface WatcherEmail {
+  id?: Id
   bcc?: string[]
   body?: WatcherEmailBody
   cc?: string[]
