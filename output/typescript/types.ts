@@ -547,7 +547,7 @@ export interface MgetResponse<TDocument = unknown> {
 
 export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
 
-export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface MsearchMultiSearchItem<TDocument = unknown> extends SearchResponseBody<TDocument> {
   status?: integer
 }
 
@@ -938,7 +938,7 @@ export interface ScrollRequest extends RequestBase {
   }
 }
 
-export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+export interface ScrollResponse<TDocument = unknown> extends SearchResponseBody<TDocument> {
 }
 
 export interface SearchRequest extends RequestBase {
@@ -1021,7 +1021,9 @@ export interface SearchRequest extends RequestBase {
   }
 }
 
-export interface SearchResponse<TDocument = unknown> {
+export type SearchResponse<TDocument = unknown> = SearchResponseBody<TDocument>
+
+export interface SearchResponseBody<TDocument = unknown> {
   took: long
   timed_out: boolean
   _shards: ShardStatistics
@@ -9336,6 +9338,28 @@ export interface IndicesIndexState {
   data_stream?: DataStreamName
 }
 
+export interface IndicesIndexTemplate {
+  index_patterns: Names
+  composed_of: Name[]
+  template?: IndicesIndexTemplateSummary
+  version?: VersionNumber
+  priority?: long
+  _meta?: Metadata
+  allow_auto_create?: boolean
+  data_stream?: IndicesIndexTemplateDataStreamConfiguration
+}
+
+export interface IndicesIndexTemplateDataStreamConfiguration {
+  hidden?: boolean
+  allow_custom_routing?: boolean
+}
+
+export interface IndicesIndexTemplateSummary {
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndicesIndexSettings
+}
+
 export interface IndicesIndexVersioning {
   created: VersionString
   created_string?: VersionString
@@ -9892,26 +9916,9 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
   mappings: Partial<Record<Field, MappingFieldMapping>>
 }
 
-export interface IndicesGetIndexTemplateIndexTemplate {
-  index_patterns: Name[]
-  composed_of: Name[]
-  template?: IndicesGetIndexTemplateIndexTemplateSummary
-  version?: VersionNumber
-  priority?: long
-  _meta?: Metadata
-  allow_auto_create?: boolean
-  data_stream?: Record<string, any>
-}
-
 export interface IndicesGetIndexTemplateIndexTemplateItem {
   name: Name
-  index_template: IndicesGetIndexTemplateIndexTemplate
-}
-
-export interface IndicesGetIndexTemplateIndexTemplateSummary {
-  aliases?: Record<IndexName, IndicesAlias>
-  mappings?: MappingTypeMapping
-  settings?: Record<string, any>
+  index_template: IndicesIndexTemplate
 }
 
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
@@ -10412,18 +10419,18 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
   master_timeout?: Time
-  body?: IndicesGetIndexTemplateIndexTemplate
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateTemplateResponse {
+  overlapping?: IndicesSimulateTemplateOverlapping[]
   template: IndicesSimulateTemplateTemplate
 }
 
 export interface IndicesSimulateTemplateTemplate {
   aliases: Record<IndexName, IndicesAlias>
   mappings: MappingTypeMapping
-  settings: Record<string, any>
-  overlapping: IndicesSimulateTemplateOverlapping[]
+  settings: IndicesIndexSettings
 }
 
 export interface IndicesSplitRequest extends RequestBase {
@@ -12265,7 +12272,7 @@ export type MlDeleteCalendarEventResponse = AcknowledgedResponseBase
 
 export interface MlDeleteCalendarJobRequest extends RequestBase {
   calendar_id: Id
-  job_id: Id
+  job_id: Ids
 }
 
 export interface MlDeleteCalendarJobResponse {
@@ -16524,6 +16531,7 @@ export interface WatcherDataEmailAttachment {
 export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
 export interface WatcherEmail {
+  id?: Id
   bcc?: string[]
   body?: WatcherEmailBody
   cc?: string[]

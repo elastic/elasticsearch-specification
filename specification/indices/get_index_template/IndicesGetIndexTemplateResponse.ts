@@ -17,12 +17,8 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { long } from '@_types/Numeric'
+import { IndexTemplate } from '@indices/_types/IndexTemplate'
+import { Name } from '@_types/common'
 
 export class Response {
   '200': {
@@ -35,22 +31,4 @@ export class Response {
 export class IndexTemplateItem {
   name: Name
   index_template: IndexTemplate
-}
-
-export class IndexTemplate {
-  index_patterns: Name[]
-  composed_of: Name[]
-  template?: IndexTemplateSummary
-  version?: VersionNumber
-  priority?: long
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
-  _meta?: Metadata
-  allow_auto_create?: boolean
-  data_stream?: Dictionary<string, UserDefinedValue>
-}
-
-export class IndexTemplateSummary {
-  aliases?: Dictionary<IndexName, Alias>
-  mappings?: TypeMapping
-  settings?: Dictionary<string, UserDefinedValue>
 }
