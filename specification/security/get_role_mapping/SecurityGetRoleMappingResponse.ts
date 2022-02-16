@@ -20,4 +20,8 @@
 import { RoleMapping } from '@security/_types/RoleMapping'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class Response extends DictionaryResponseBase<string, RoleMapping> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<string, RoleMapping>
+  }
+}

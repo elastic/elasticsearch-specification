@@ -21,10 +21,11 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  ClusterRemoteInfo
-> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<string, ClusterRemoteInfo>
+  }
+}
 
 /** @variants internal tag='mode' */
 export type ClusterRemoteInfo = ClusterRemoteSniffInfo | ClusterRemoteProxyInfo

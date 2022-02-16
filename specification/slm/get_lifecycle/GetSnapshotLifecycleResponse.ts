@@ -21,4 +21,8 @@ import { SnapshotLifecycle } from '@slm/_types/SnapshotLifecycle'
 import { DictionaryResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<Id, SnapshotLifecycle> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<Id, SnapshotLifecycle>
+  }
+}

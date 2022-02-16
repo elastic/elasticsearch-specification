@@ -20,7 +20,8 @@
 import { DictionaryResponseBase } from '@_types/Base'
 import { RoleDescriptorWrapper } from './types'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  RoleDescriptorWrapper
-> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<string, RoleDescriptorWrapper>
+  }
+}

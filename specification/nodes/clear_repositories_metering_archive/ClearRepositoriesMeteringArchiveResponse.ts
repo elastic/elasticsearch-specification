@@ -21,19 +21,20 @@ import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { RepositoryMeteringInformation } from '@nodes/_types/RepositoryMeteringInformation'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
-import { NodeStatistics } from '@_types/Node'
 
-export class Response extends NodesResponseBase {
+export class ResponseBase extends NodesResponseBase {
+  /**
+   * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
+   */
+  cluster_name: Name
+  /**
+   * Contains repositories metering information for the nodes selected by the request.
+   */
+  nodes: Dictionary<string, RepositoryMeteringInformation>
+}
+
+export class Response {
   '200': {
-    body: {
-      /**
-       * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
-       */
-      cluster_name: Name
-      /**
-       * Contains repositories metering information for the nodes selected by the request.
-       */
-      nodes: Dictionary<string, RepositoryMeteringInformation>
-    }
+    body: ResponseBase
   }
 }

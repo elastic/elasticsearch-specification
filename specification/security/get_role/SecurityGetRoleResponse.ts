@@ -20,4 +20,8 @@
 import { DictionaryResponseBase } from '@_types/Base'
 import { Role } from './types'
 
-export class Response extends DictionaryResponseBase<string, Role> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<string, Role>
+  }
+}

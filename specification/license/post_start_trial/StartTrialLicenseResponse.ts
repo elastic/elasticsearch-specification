@@ -18,11 +18,11 @@
  */
 
 import { LicenseType } from '@license/_types/License'
-import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response extends AcknowledgedResponseBase {
+export class Response {
   '200': {
     body: {
+      acknowledged: boolean
       error_message?: string
       trial_was_started: boolean
       type?: LicenseType

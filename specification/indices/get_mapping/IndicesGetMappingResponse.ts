@@ -21,10 +21,11 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
-export class Response extends DictionaryResponseBase<
-  IndexName,
-  IndexMappingRecord
-> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<IndexName, IndexMappingRecord>
+  }
+}
 
 export class IndexMappingRecord {
   item?: TypeMapping

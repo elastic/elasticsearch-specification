@@ -21,7 +21,8 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { RecoveryStatus } from './types'
 
-export class Response extends DictionaryResponseBase<
-  IndexName,
-  RecoveryStatus
-> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<IndexName, RecoveryStatus>
+  }
+}

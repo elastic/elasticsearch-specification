@@ -21,7 +21,8 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { RollupCapabilities } from './types'
 
-export class Response extends DictionaryResponseBase<
-  IndexName,
-  RollupCapabilities
-> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<IndexName, RollupCapabilities>
+  }
+}
