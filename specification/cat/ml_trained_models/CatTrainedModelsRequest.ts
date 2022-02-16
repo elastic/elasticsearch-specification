@@ -40,30 +40,11 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     allow_no_match?: boolean
     bytes?: Bytes
-    /**
-     * Short version of the HTTP accept header. Valid values include JSON, YAML,
-     * etc.
-     */
     format?: string
-    /**
-     * Comma-separated list of column names to display. If you do not specify
-     * which columns to include, the API returns the default columns. If you
-     * explicitly specify one or more columns, it returns only the specified
-     * columns.
-     * @server_default heap_size, id, ingest.pipelines, operations
-     */
     h?: CatTrainedModelsColumns
-    /**
-     * Comma-separated list of column names or column aliases used to sort the
-     * response.
-     */
     s?: CatTrainedModelsColumns
     from?: integer
     size?: integer
-    /**
-     * If `true`, the response includes column headings.
-     * @server_default false
-     */
     v?: boolean
   }
 }
