@@ -32,7 +32,7 @@ import { Include } from '@ml/_types/Include'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier(s) of the trained model.
+     * The unique identifiers of the trained model.
      */
     model_id?: Ids
   }
