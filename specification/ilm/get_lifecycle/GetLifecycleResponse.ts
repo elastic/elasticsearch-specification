@@ -20,4 +20,8 @@
 import { DictionaryResponseBase } from '@_types/Base'
 import { Lifecycle } from './types'
 
-export class Response extends DictionaryResponseBase<string, Lifecycle> {}
+export class Response {
+  '200': {
+    body: DictionaryResponseBase<string, Lifecycle>
+  }
+}

@@ -9067,8 +9067,7 @@ export interface IlmGetLifecycleRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecycle> {
-}
+export type IlmGetLifecycleResponse = DictionaryResponseBase<string, IlmGetLifecycleLifecycle>
 
 export interface IlmGetStatusRequest extends RequestBase {
 }
@@ -9847,8 +9846,7 @@ export interface IndicesFlushRequest extends RequestBase {
   wait_if_ongoing?: boolean
 }
 
-export interface IndicesFlushResponse extends ShardsOperationResponseBase {
-}
+export type IndicesFlushResponse = ShardsOperationResponseBase
 
 export interface IndicesForcemergeRequest extends RequestBase {
   index?: Indices
