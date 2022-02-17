@@ -6672,12 +6672,10 @@ export interface CatMlTrainedModelsRequest extends CatCatRequestBase {
   model_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
-  format?: string
   h?: CatCatTrainedModelsColumns
   s?: CatCatTrainedModelsColumns
   from?: integer
   size?: integer
-  v?: boolean
 }
 
 export type CatMlTrainedModelsResponse = CatMlTrainedModelsTrainedModelsRecord[]
