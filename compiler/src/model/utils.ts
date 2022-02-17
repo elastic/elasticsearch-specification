@@ -1212,11 +1212,7 @@ export function deepEqual (a: any, b: any): boolean {
 
 const basePath = join(__dirname, '..', '..', '..', 'specification') + '/'
 
-export function sourceLocation (node: Node): model.SourceLocation {
+export function sourceLocation (node: Node): string {
   const sourceFile = node.getSourceFile()
-  return {
-    path: sourceFile.getFilePath().replace(basePath, ''),
-    startLine: node.getStartLineNumber(true),
-    endLine: node.getEndLineNumber()
-  }
+  return `${sourceFile.getFilePath().replace(basePath, '')}#L${node.getStartLineNumber(true)}-L${node.getEndLineNumber()}`
 }
