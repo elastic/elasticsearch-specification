@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatTrainedModelsColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
@@ -40,6 +40,8 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     allow_no_match?: boolean
     bytes?: Bytes
+    h?: CatTrainedModelsColumns
+    s?: CatTrainedModelsColumns
     from?: integer
     size?: integer
   }
