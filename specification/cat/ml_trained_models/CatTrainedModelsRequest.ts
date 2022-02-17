@@ -40,11 +40,9 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     allow_no_match?: boolean
     bytes?: Bytes
-    format?: string
     h?: CatTrainedModelsColumns
     s?: CatTrainedModelsColumns
     from?: integer
     size?: integer
-    v?: boolean
   }
 }
