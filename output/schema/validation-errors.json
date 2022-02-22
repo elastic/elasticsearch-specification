@@ -1750,6 +1750,24 @@
       ],
       "response": []
     },
+    "security.oidc_authenticate": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.oidc_logout": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.oidc_prepare_authentication": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.saml_service_provider_metadata": {
       "request": [
         "Request: should not have a body"
