@@ -17233,6 +17233,7 @@ export interface XpackInfoFeatures {
   vectors?: XpackInfoFeature
   voting_only: XpackInfoFeature
   watcher: XpackInfoFeature
+  archive: XpackInfoFeature
 }
 
 export interface XpackInfoMinimalLicenseInformation {
@@ -17282,6 +17283,10 @@ export interface XpackUsageAnalyticsStatistics {
   normalize_usage: long
   rate_usage: long
   multi_terms_usage?: long
+}
+
+export interface XpackUsageArchive extends XpackUsageBase {
+  indices_count: long
 }
 
 export interface XpackUsageAudit extends XpackUsageFeatureToggle {
@@ -17525,6 +17530,7 @@ export interface XpackUsageRequest extends RequestBase {
 export interface XpackUsageResponse {
   aggregate_metric: XpackUsageBase
   analytics: XpackUsageAnalytics
+  archive: XpackUsageArchive
   watcher: XpackUsageWatcher
   ccr: XpackUsageCcr
   data_frame?: XpackUsageBase
