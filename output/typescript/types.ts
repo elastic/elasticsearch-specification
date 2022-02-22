@@ -17252,6 +17252,7 @@ export interface XpackInfoNativeCodeInformation {
 export interface XpackInfoRequest extends RequestBase {
   categories?: string[]
   accept_enterprise?: boolean
+  human?: boolean
 }
 
 export interface XpackInfoResponse {

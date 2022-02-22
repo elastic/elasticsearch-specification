@@ -2127,7 +2127,9 @@
     },
     "xpack.info": {
       "request": [
-        "Request: should not have a body"
+        "Request: query parameter 'human' does not exist in the json spec",
+        "Request: should not have a body",
+        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     },
