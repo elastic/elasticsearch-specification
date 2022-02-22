@@ -85,7 +85,7 @@ export interface Request extends RequestBase {
     tags?: string | string[]
     /**
      * @since 7.13.0
-     * @deprecated 7.13.0
+     * @deprecated 7.10.0
      */
     include_model_definition?: boolean
   }
