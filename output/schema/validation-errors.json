@@ -1351,6 +1351,12 @@
       ],
       "response": []
     },
+    "ml.get_memory_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_model_snapshot_upgrade_stats": {
       "request": [
         "Missing request & response"
@@ -1772,6 +1778,24 @@
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
+      ],
+      "response": []
+    },
+    "security.oidc_authenticate": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.oidc_logout": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.oidc_prepare_authentication": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
