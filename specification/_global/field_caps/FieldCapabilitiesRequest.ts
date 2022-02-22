@@ -23,6 +23,9 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
+ * The field capabilities API returns the information about the capabilities of fields among multiple indices.
+ * The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type
+ * of keyword is returned as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
  * @since 5.4.0
  * @stability stable
@@ -62,6 +65,14 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_unmapped?: boolean
+    /**
+     * @since 8.2.0
+     */
+    filters?: string
+    /**
+     * @since 8.2.0
+     */
+    types?: string[]
   }
   body: {
     /**

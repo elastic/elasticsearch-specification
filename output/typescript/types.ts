@@ -349,6 +349,8 @@ export interface FieldCapsRequest extends RequestBase {
   fields?: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
+  filters?: string
+  types?: string[]
   body?: {
     index_filter?: QueryDslQueryContainer
     runtime_mappings?: MappingRuntimeFields
