@@ -944,8 +944,7 @@ export interface ScrollRequest extends RequestBase {
   }
 }
 
-export interface ScrollResponse<TDocument = unknown> extends SearchResponseBody<TDocument> {
-}
+export type ScrollResponse<TDocument = unknown> = SearchResponseBody<TDocument>
 
 export interface SearchRequest extends RequestBase {
   index?: Indices

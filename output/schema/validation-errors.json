@@ -1543,6 +1543,12 @@
       ],
       "response": []
     },
+    "scroll": {
+      "request": [],
+      "response": [
+        "response definition _global.scroll:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
+      ]
+    },
     "search": {
       "request": [],
       "response": [

@@ -17,6 +17,8 @@
  * under the License.
  */
 
-import { ResponseBody as SearchResponse } from '@global/search/SearchResponse'
+import { ResponseBody } from '@global/search/SearchResponse'
 
-export class Response<TDocument> extends SearchResponse<TDocument> {}
+export class Response<TDocument> {
+  body: ResponseBody<TDocument>
+}
