@@ -27,6 +27,10 @@ import { HitsMetadata } from './_types/hits'
 import { Profile } from './_types/profile'
 import { Suggest } from './_types/suggester'
 
+// Keep changes in sync with:
+// - search
+// - fleet.search
+// - scroll
 export class Response<TDocument> {
   body: ResponseBody<TDocument>
 }
