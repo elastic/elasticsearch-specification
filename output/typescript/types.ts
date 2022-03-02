@@ -9340,6 +9340,7 @@ export interface IndicesIndexSettings {
   shards?: integer
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
+  mappings?: IndicesMappingLimitSettings
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -9392,6 +9393,15 @@ export interface IndicesIndexTemplateSummary {
 export interface IndicesIndexVersioning {
   created: VersionString
   created_string?: VersionString
+}
+
+export interface IndicesMappingLimitSettings {
+  'total_fields.limit'?: integer
+  'depth.limit'?: integer
+  'nested_fields.limit'?: integer
+  'nested_objects.limit'?: integer
+  'field_name_length.limit'?: long
+  'dimension_fields.limit'?: integer
 }
 
 export interface IndicesMerge {

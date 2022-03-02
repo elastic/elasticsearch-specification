@@ -30,7 +30,7 @@ import {
   Uuid,
   VersionString
 } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { DateOrEpochMillis, DateString, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
@@ -54,7 +54,7 @@ export class RetentionLease {
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
  */
 export class IndexSettings {
   index?: IndexSettings
@@ -131,6 +131,10 @@ export class IndexSettings {
   shards?: integer
   queries?: Queries
   similarity?: SettingsSimilarity
+  /**
+   * Enable or disable dynamic mapping for an index.
+   */
+  mappings?: MappingLimitSettings
 }
 
 export class SettingsSimilarity {
@@ -268,4 +272,48 @@ export class Queries {
 
 export class CacheQueries {
   enabled: boolean
+}
+
+/**
+ * Mapping Limit Settings
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html
+ */
+export class MappingLimitSettings {
+  /**
+   * The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.
+   * The limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance
+   * degradations and memory issues, especially in clusters with a high load or few resources.
+   * @server_default 1000
+   */
+  'total_fields.limit'?: integer
+  /**
+   * The maximum depth for a field, which is measured as the number of inner objects. For instance, if all fields are defined
+   * at the root object level, then the depth is 1. If there is one object mapping, then the depth is 2, etc.
+   * @server_default 20
+   */
+  'depth.limit'?: integer
+  /**
+   * The maximum number of distinct nested mappings in an index. The nested type should only be used in special cases, when
+   * arrays of objects need to be queried independently of each other. To safeguard against poorly designed mappings, this
+   * setting limits the number of unique nested types per index.
+   * @server_default 50
+   */
+  'nested_fields.limit'?: integer
+  /**
+   * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps
+   * to prevent out of memory errors when a document contains too many nested objects.
+   * @server_default 10000
+   */
+  'nested_objects.limit'?: integer
+  /**
+   * Setting for the maximum length of a field name. This setting isn’t really something that addresses mappings explosion but
+   * might still be useful if you want to limit the field length. It usually shouldn’t be necessary to set this setting. The
+   * default is okay unless a user starts to add a huge number of fields with really long names. Default is `Long.MAX_VALUE` (no limit).
+   */
+  'field_name_length.limit'?: long
+  /**
+   * [preview] This functionality is in technical preview and may be changed or removed in a future release. Elastic will
+   * apply best effort to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+   */
+  'dimension_fields.limit'?: integer
 }
