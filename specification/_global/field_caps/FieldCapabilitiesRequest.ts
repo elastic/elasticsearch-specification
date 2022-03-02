@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If false, the request returns an error if any wildcard expression, [index alias](https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html),
+     * If false, the request returns an error if any wildcard expression, index alias,
      * or `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request
      * targeting `foo*,bar*` returns an error if an index starts with foo but no index starts with bar.
      * @server_default true
@@ -69,10 +69,10 @@ export interface Request extends RequestBase {
      */
     index_filter?: QueryContainer
     /**
-     * Defines ad-hoc [runtime fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-search-request.html) in the request similar
-     * to the way it is done in [search requests](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-api-body-runtime).
+     * Defines ad-hoc runtime fields in the request similar to the way it is done in search requests.
      * These fields exist only as part of the query and take precedence over fields defined with the same name in the index mappings.
      * @since 7.12.0
+     * @doc_id runtime-search-request
      */
     runtime_mappings?: RuntimeFields
   }
