@@ -45,7 +45,17 @@ import {
 import { Script } from '@_types/Scripting'
 
 export class SoftDeletes {
-  enabled: boolean
+  /**
+   * Indicates whether soft deletes are enabled on the index.
+   * @server_default true
+   */
+  enabled?: boolean
+  /**
+   * The maximum period to retain a shard history retention lease before it is considered expired.
+   * Shard history retention leases ensure that soft deletes are retained during merges on the Lucene
+   * index. If a soft delete is merged away before it can be replicated to a follower the following
+   * process will fail due to incomplete history on the leader.
+   */
   retention_lease?: RetentionLease
 }
 
@@ -99,6 +109,9 @@ export class IndexSettings {
   max_shingle_diff?: integer
   blocks?: IndexSettingBlocks
   max_refresh_listeners?: integer
+  /**
+   * Settings to define analyzers, tokenizers, token filters and character filters.
+   */
   analyze?: SettingsAnalyze
   highlight?: SettingsHighlight
   /** @server_default 65536 */
@@ -130,11 +143,23 @@ export class IndexSettings {
   time_series?: IndexSettingsTimeSeries
   shards?: integer
   queries?: Queries
+  /**
+   * Configure custom similarity settings to customize how search results are scored.
+   */
   similarity?: SettingsSimilarity
   /**
    * Enable or disable dynamic mapping for an index.
    */
   mappings?: MappingLimitSettings
+  'indexing.slowlog'?: SlowlogSettings
+  /**
+   * Configure indexing back pressure limits.
+   */
+  indexing_pressure?: IndexingPressure
+  /**
+   * The store module allows you to control how index data is stored and accessed on disk.
+   */
+  store?: Storage
 }
 
 export class SettingsSimilarity {
@@ -199,7 +224,8 @@ export class SettingsAnalyze {
 }
 
 export class SettingsSearch {
-  idle: SearchIdle
+  idle?: SearchIdle
+  slowlog?: SlowlogSettings
 }
 
 export class SearchIdle {
@@ -231,7 +257,43 @@ export class IndexVersioning {
 }
 
 export class IndexSettingsLifecycle {
+  /**
+   * The name of the policy to use to manage the index. For information about how Elasticsearch applies policy changes, see Policy updates.
+   */
   name: Name
+  /**
+   * Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.
+   * You can explicitly set it to skip rollover.
+   * @server_default false
+   */
+  indexing_complete?: boolean
+  /**
+   * If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting
+   * if you create a new index that contains old data and want to use the original creation date to calculate the index
+   * age. Specified as a Unix epoch value in milliseconds.
+   * @server_default
+   */
+  origination_date?: long
+  /**
+   * Set to true to parse the origination date from the index name. This origination date is used to calculate the index age
+   * for its phase transitions. The index name must match the pattern ^.*-{date_format}-\\d+, where the date_format is
+   * yyyy.MM.dd and the trailing digits are optional. An index that was rolled over would normally match the full format,
+   * for example logs-2016.10.31-000002). If the index name doesn’t match the pattern, index creation fails.
+   */
+  parse_origination_date?: boolean
+  /**
+   * Time to wait for the cluster to resolve allocation issues during an ILM shrink action. Must be greater than 1h (1 hour).
+   * See Shard allocation for shrink.
+   * @server_default 12h
+   */
+  'step.wait_time_threshold'?: Time
+  /**
+   * The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.
+   * When the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more
+   * information about rolling indices, see Rollover.
+   * @server_default
+   */
+  rollover_alias?: string
 }
 
 export class IndexSettingsAnalysis {
@@ -257,13 +319,61 @@ export class MergeScheduler {
 }
 
 export class Translog {
-  durability?: string
-  flush_threshold_size?: string
+  /**
+   * How often the translog is fsynced to disk and committed, regardless of write operations.
+   * Values less than 100ms are not allowed.
+   * @server_default 5s
+   */
+  sync_interval?: Time
+  /**
+   * Whether or not to `fsync` and commit the translog after every index, delete, update, or bulk request.
+   * @server_default string
+   */
+  durability?: TranslogDurability
+  /**
+   * The translog stores all operations that are not yet safely persisted in Lucene (i.e., are not
+   * part of a Lucene commit point). Although these operations are available for reads, they will need
+   * to be replayed if the shard was stopped and had to be recovered. This setting controls the
+   * maximum total size of these operations, to prevent recoveries from taking too long. Once the
+   * maximum size has been reached a flush will happen, generating a new Lucene commit point.
+   * @server_default 512mb
+   */
+  flush_threshold_size?: ByteSize
   retention?: TranslogRetention
 }
 
+export enum TranslogDurability {
+  /**
+   * (default) fsync and commit after every request. In the event of hardware failure, all acknowledged writes
+   * will already have been committed to disk.
+   */
+  request,
+  /**
+   * fsync and commit in the background every sync_interval. In the event of a failure, all acknowledged writes
+   * since the last automatic commit will be discarded.
+   */
+  async
+}
+
 export class TranslogRetention {
-  size: ByteSize
+  /**
+   * This controls the total size of translog files to keep for each shard. Keeping more translog files increases
+   * the chance of performing an operation based sync when recovering a replica. If the translog files are not
+   * sufficient, replica recovery will fall back to a file based sync. This setting is ignored, and should not be
+   * set, if soft deletes are enabled. Soft deletes are enabled by default in indices created in Elasticsearch
+   * versions 7.0.0 and later.
+   * @server_default 512mb
+   */
+  size?: ByteSize
+  /**
+   * This controls the maximum duration for which translog files are kept by each shard. Keeping more
+   * translog files increases the chance of performing an operation based sync when recovering replicas. If
+   * the translog files are not sufficient, replica recovery will fall back to a file based sync. This setting
+   * is ignored, and should not be set, if soft deletes are enabled. Soft deletes are enabled by default in
+   * indices created in Elasticsearch versions 7.0.0 and later.
+   * @server_default 12h
+   */
+  age?: Time
 }
 
 export class Queries {
@@ -316,4 +426,76 @@ export class MappingLimitSettings {
    * apply best effort to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
   'dimension_fields.limit'?: integer
+}
+
+export class SlowlogSettings {
+  level?: string
+  source?: integer
+  reformat?: boolean
+  threshold?: SlowlogTresholds
+}
+
+export class SlowlogTresholds {
+  query?: SlowlogTresholdLevels
+  fetch?: SlowlogTresholdLevels
+  /**
+   * The indexing slow log, similar in functionality to the search slow log. The log file name ends with `_index_indexing_slowlog.json`.
+   * Log and the thresholds are configured in the same way as the search slowlog.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html#index-slow-log
+   */
+  index?: SlowlogTresholdLevels
+}
+
+export class SlowlogTresholdLevels {
+  warn?: Time
+  info?: Time
+  debug?: Time
+  trace?: Time
+}
+
+export class Storage {
+  type: StorageType
+  /**
+   * You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.
+   * This is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This
+   * setting is useful, for example, if you are in an environment where you can not control the ability to create a lot
+   * of memory maps so you need disable the ability to use memory-mapping.
+   */
+  allow_mmap?: boolean
+}
+
+export enum StorageType {
+  /**
+   * Default file system implementation. This will pick the best implementation depending on the operating environment, which
+   * is currently hybridfs on all supported systems but is subject to change.
+   */
+  fs,
+  /**
+   * The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSDirectory) using NIO. It allows multiple
+   * threads to read from the same file concurrently. It is not recommended on Windows because of a bug in the SUN Java
+   * implementation and disables some optimizations for heap memory usage.
+   */
+  niofs,
+  /**
+   * The MMap FS type stores the shard index on the file system (maps to Lucene MMapDirectory) by mapping a file into
+   * memory (mmap). Memory mapping uses up a portion of the virtual memory address space in your process equal to the size
+   * of the file being mapped. Before using this class, be sure you have allowed plenty of virtual address space.
+   */
+  mmapfs,
+  /**
+   * The hybridfs type is a hybrid of niofs and mmapfs, which chooses the best file system type for each type of file
+   * based on the read access pattern. Currently only the Lucene term dictionary, norms and doc values files are memory
+   * mapped. All other files are opened using Lucene NIOFSDirectory. Similarly to mmapfs be sure you have allowed
+   * plenty of virtual address space.
+   */
+  hybridfs
+}
+
+export class IndexingPressure {
+  /**
+   * Number of outstanding bytes that may be consumed by indexing requests. When this limit is reached or exceeded,
+   * the node will reject new coordinating and primary operations. When replica operations consume 1.5x this limit,
+   * the node will reject new replica operations. Defaults to 10% of the heap.
+   */
+  'memory.limit'?: integer
 }
