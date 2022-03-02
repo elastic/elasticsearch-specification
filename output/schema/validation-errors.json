@@ -113,6 +113,12 @@
       ],
       "response": []
     },
+    "cat.component_templates": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "cat.count": {
       "request": [
         "Request: missing json spec query parameter 'format'",
