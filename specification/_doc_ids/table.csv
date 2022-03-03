@@ -363,7 +363,7 @@ important-settings,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/i
 cluster,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/cluster.html
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/eql.html
-index-modules,https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html
+index-modules,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/index-modules.html
 ml-classification,https://www.elastic.co/guide/en/machine-learning/8.0/ml-dfa-classification.html
 ml-regression,https://www.elastic.co/guide/en/machine-learning/8.0/ml-dfa-regression.html
 ml-regression-loss,https://www.elastic.co/guide/en/machine-learning/8.0/dfa-regression-lossfunction.html
@@ -374,4 +374,4 @@ field-and-document-access-control,https://www.elastic.co/guide/en/elasticsearch/
 run-as-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/run-as-privilege.html
 sql-rest-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/sql-rest-filtering.html
 sql-rest-format,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/sql-rest-format.html
-cron-expressions,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/cron-expressions.html
+cron-expressions,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/api-conventions.html#api-cron-expressions
