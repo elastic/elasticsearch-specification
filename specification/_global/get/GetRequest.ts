@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     /**
      *  Boolean) If true, the request is real-time as opposed to near-real-time.
      * @server_default true
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
+     * @doc_id realtime
      */
     realtime?: boolean
     /**
@@ -58,7 +58,7 @@ export interface Request extends RequestBase {
     refresh?: boolean
     /**
      * Target the specified primary shard.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing
+     * @doc_id routing
      */
     routing?: Routing
     /**

@@ -47,7 +47,8 @@ export class FieldCapability {
   searchable: boolean
   type: string
   /**
-   * Whether this field is registered as a [metadata field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html).
+   * Whether this field is registered as a metadata field.
+   * @doc_id mapping-metadata
    */
   metadata_field?: boolean
   /**
