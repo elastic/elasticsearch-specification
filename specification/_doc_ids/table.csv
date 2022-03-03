@@ -340,7 +340,6 @@ query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/query-dsl.
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/common-options.html
 indices-create-data-stream,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-create-data-stream.html
 mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/mapping-date-format.html
-////
 query-dsl-minimum-should-match,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/query-dsl-minimum-should-match.html
 query-dsl-multi-term-rewrite,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/query-dsl-multi-term-rewrite.html
 modules-node,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/modules-node.html
