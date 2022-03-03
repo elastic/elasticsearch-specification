@@ -938,8 +938,7 @@ export interface ScrollRequest extends RequestBase {
   }
 }
 
-export interface ScrollResponse<TDocument = unknown> extends SearchResponseBody<TDocument> {
-}
+export type ScrollResponse<TDocument = unknown> = SearchResponseBody<TDocument>
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
@@ -5890,6 +5889,10 @@ export type CatCatDfaColumns = CatCatDfaColumn | CatCatDfaColumn[]
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
+export type CatCatTrainedModelsColumn = 'create_time' | 'ct' | 'created_by' | 'c' | 'createdBy' | 'data_frame_analytics_id' | 'df' | 'dataFrameAnalytics' | 'description' | 'd' | 'heap_size' | 'hs' | 'modelHeapSize' | 'id' | 'ingest.count' | 'ic' | 'ingestCount' | 'ingest.current' | 'icurr' | 'ingestCurrent' | 'ingest.failed' | 'if' | 'ingestFailed' | 'ingest.pipelines' | 'ip' | 'ingestPipelines' | 'ingest.time' | 'it' | 'ingestTime' | 'license' | 'l' | 'operations' | 'o' | 'modelOperations' | 'version' | 'v'
+
+export type CatCatTrainedModelsColumns = CatCatTrainedModelsColumn | CatCatTrainedModelsColumn[]
+
 export type CatCatTransformColumn = 'changes_last_detection_time' | 'cldt' | 'checkpoint' | 'cp' | 'checkpoint_duration_time_exp_avg' | 'cdtea' | 'checkpointTimeExpAvg' | 'checkpoint_progress' | 'c' | 'checkpointProgress' | 'create_time' | 'ct' | 'createTime' | 'delete_time' | 'dtime' | 'description' | 'd' | 'dest_index' | 'di' | 'destIndex' | 'documents_deleted' | 'docd' | 'documents_indexed' | 'doci' | 'docs_per_second' | 'dps' | 'documents_processed' | 'docp' | 'frequency' | 'f' | 'id' | 'index_failure' | 'if' | 'index_time' | 'itime' | 'index_total' | 'it' | 'indexed_documents_exp_avg' | 'idea' | 'last_search_time' | 'lst' | 'lastSearchTime' | 'max_page_search_size' | 'mpsz' | 'pages_processed' | 'pp' | 'pipeline' | 'p' | 'processed_documents_exp_avg' | 'pdea' | 'processing_time' | 'pt' | 'reason' | 'r' | 'search_failure' | 'sf' | 'search_time' | 'stime' | 'search_total' | 'st' | 'source_index' | 'si' | 'sourceIndex' | 'state' | 's' | 'transform_type' | 'tt' | 'trigger_count' | 'tc' | 'version' | 'v'
 
 export type CatCatTransformColumns = CatCatTransformColumn | CatCatTransformColumn[]
@@ -6663,6 +6666,8 @@ export interface CatMlTrainedModelsRequest extends CatCatRequestBase {
   model_id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
+  h?: CatCatTrainedModelsColumns
+  s?: CatCatTrainedModelsColumns
   from?: integer
   size?: integer
 }
@@ -12021,10 +12026,10 @@ export interface MlModelSizeStats {
 export interface MlModelSnapshot {
   description?: string
   job_id: Id
-  latest_record_time_stamp: integer
-  latest_result_time_stamp: integer
+  latest_record_time_stamp?: integer
+  latest_result_time_stamp?: integer
   min_version: VersionString
-  model_size_stats: MlModelSizeStats
+  model_size_stats?: MlModelSizeStats
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: Id

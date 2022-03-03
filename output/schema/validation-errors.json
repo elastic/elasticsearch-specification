@@ -237,12 +237,12 @@
     "cat.ml_trained_models": {
       "request": [
         "Request: missing json spec query parameter 'format'",
-        "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
-        "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
+        "request definition cat.ml_trained_models:Request / query - Property 'h' is already defined in an ancestor class",
+        "request definition cat.ml_trained_models:Request / query - Property 's' is already defined in an ancestor class",
         "request definition cat.ml_trained_models:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -1493,6 +1493,12 @@
       ],
       "response": []
     },
+    "ml.get_memory_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_model_snapshot_upgrade_stats": {
       "request": [
         "Missing request & response"
@@ -1736,6 +1742,12 @@
       ],
       "response": []
     },
+    "scroll": {
+      "request": [],
+      "response": [
+        "response definition _global.scroll:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
+      ]
+    },
     "search": {
       "request": [],
       "response": [
@@ -1952,6 +1964,24 @@
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
+      ],
+      "response": []
+    },
+    "security.oidc_authenticate": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.oidc_logout": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.oidc_prepare_authentication": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
