@@ -49,7 +49,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * Determines how to handle the watch actions as part of the watch execution. See [Action execution modes](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-execute-watch.html#watcher-api-execute-watch-action-mode) for more information.
+     * Determines how to handle the watch actions as part of the watch execution.
      */
     action_modes?: Dictionary<string, ActionExecutionMode>
     /**
@@ -72,7 +72,7 @@ export interface Request extends RequestBase {
      */
     trigger_data?: ScheduleTriggerEvent
     /**
-     * When present, this [watch](https://www.elastic.co/guide/en/elasticsearch/reference/current/how-watcher-works.html#watch-definition) is used instead of the one specified in the request. This watch is not persisted to the index and record_execution cannot be set.
+     * When present, this watch is used instead of the one specified in the request. This watch is not persisted to the index and record_execution cannot be set.
      * @server_default null
      */
     watch?: Watch
