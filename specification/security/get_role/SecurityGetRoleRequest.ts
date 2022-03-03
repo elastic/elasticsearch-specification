@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
- * The role management APIs are generally the preferred way to manage roles, rather than using [file-based role management](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html#roles-management-file).
+ * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
  * The get roles API cannot retrieve roles that are defined in roles files.
  * @rest_spec_name security.get_role
  * @since 0.0.0
