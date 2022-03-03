@@ -53,7 +53,7 @@ export interface Request extends RequestBase {
     case_insensitive?: boolean
     /**
      * Allows to filter an index shard if the provided query rewrites to match_none.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+     * @doc_id query-dsl
      */
     index_filter?: QueryContainer
     /**

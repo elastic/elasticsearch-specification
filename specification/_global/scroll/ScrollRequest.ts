@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Period to retain the search context for scrolling.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+     * @doc_id scroll-search-results
      * @server_default 1d
      */
     scroll?: Time
@@ -49,7 +49,7 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Period to retain the search context for scrolling.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+     * @doc_id scroll-search-results
      * @server_default 1d
      */
     scroll?: Time
