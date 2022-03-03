@@ -18,10 +18,10 @@
  */
 
 import { RoleMapping } from '@security/_types/RoleMapping'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, RoleMapping>
+    body: Dictionary<string, RoleMapping>
   }
 }

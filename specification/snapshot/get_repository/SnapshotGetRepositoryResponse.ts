@@ -18,10 +18,10 @@
  */
 
 import { Repository } from '@snapshot/_types/SnapshotRepository'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, Repository>
+    body: Dictionary<string, Repository>
   }
 }

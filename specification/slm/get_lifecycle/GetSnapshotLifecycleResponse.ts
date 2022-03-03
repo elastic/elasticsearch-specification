@@ -18,11 +18,11 @@
  */
 
 import { SnapshotLifecycle } from '@slm/_types/SnapshotLifecycle'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Id } from '@_types/common'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<Id, SnapshotLifecycle>
+    body: Dictionary<Id, SnapshotLifecycle>
   }
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, ClusterRemoteInfo>
+    body: Dictionary<string, ClusterRemoteInfo>
   }
 }
 

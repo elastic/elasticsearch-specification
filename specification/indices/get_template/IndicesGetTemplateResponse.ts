@@ -18,10 +18,10 @@
  */
 
 import { TemplateMapping } from '@indices/_types/TemplateMapping'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, TemplateMapping>
+    body: Dictionary<string, TemplateMapping>
   }
 }

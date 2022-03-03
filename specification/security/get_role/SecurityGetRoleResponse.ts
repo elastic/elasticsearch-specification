@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Role } from './types'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, Role>
+    body: Dictionary<string, Role>
   }
 }

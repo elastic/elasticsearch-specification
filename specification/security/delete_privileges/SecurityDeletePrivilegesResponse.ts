@@ -18,11 +18,10 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
 import { FoundStatus } from './types'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, Dictionary<string, FoundStatus>>
+    body: Dictionary<string, Dictionary<string, FoundStatus>>
   }
 }

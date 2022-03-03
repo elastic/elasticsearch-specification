@@ -1064,7 +1064,7 @@
         "Request: should not have a body"
       ],
       "response": [
-        "response definition indices.get:Response / body / instance_of / Generics / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+        "response definition indices.get:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
     },
     "indices.get_alias": {
@@ -1102,7 +1102,7 @@
         "Request: should not have a body"
       ],
       "response": [
-        "response definition indices.get_settings:Response / body / instance_of / Generics / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+        "response definition indices.get_settings:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
     },
     "indices.get_template": {
@@ -1943,7 +1943,7 @@
         "Request: should not have a body"
       ],
       "response": [
-        "response definition security.get_user:Response / body / instance_of / Generics / instance_of - Non-leaf type cannot be used here: 'security._types:User'"
+        "response definition security.get_user:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'security._types:User'"
       ]
     },
     "security.get_user_privileges": {

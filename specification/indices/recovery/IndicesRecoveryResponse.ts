@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { RecoveryStatus } from './types'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<IndexName, RecoveryStatus>
+    body: Dictionary<IndexName, RecoveryStatus>
   }
 }

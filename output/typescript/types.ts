@@ -1881,10 +1881,6 @@ export type DateOrEpochMillis = DateString | EpochMillis
 
 export type DateString = string
 
-export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
-  [key: string]: TValue
-}
-
 export type Distance = string
 
 export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm' | 'mm'
@@ -8207,7 +8203,7 @@ export interface ClusterRemoteInfoClusterRemoteSniffInfo {
 export interface ClusterRemoteInfoRequest extends RequestBase {
 }
 
-export type ClusterRemoteInfoResponse = DictionaryResponseBase<string, ClusterRemoteInfoClusterRemoteInfo>
+export type ClusterRemoteInfoResponse = Record<string, ClusterRemoteInfoClusterRemoteInfo>
 
 export interface ClusterRerouteCommand {
   cancel?: ClusterRerouteCommandCancelAction
@@ -9072,7 +9068,7 @@ export interface IlmGetLifecycleRequest extends RequestBase {
   timeout?: Time
 }
 
-export type IlmGetLifecycleResponse = DictionaryResponseBase<string, IlmGetLifecycleLifecycle>
+export type IlmGetLifecycleResponse = Record<string, IlmGetLifecycleLifecycle>
 
 export interface IlmGetStatusRequest extends RequestBase {
 }
@@ -9877,7 +9873,7 @@ export interface IndicesGetRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export type IndicesGetResponse = DictionaryResponseBase<IndexName, IndicesIndexState>
+export type IndicesGetResponse = Record<IndexName, IndicesIndexState>
 
 export interface IndicesGetAliasIndexAliases {
   aliases: Record<string, IndicesAliasDefinition>
@@ -9892,7 +9888,7 @@ export interface IndicesGetAliasRequest extends RequestBase {
   local?: boolean
 }
 
-export type IndicesGetAliasResponse = DictionaryResponseBase<IndexName, IndicesGetAliasIndexAliases>
+export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
 
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
@@ -9913,7 +9909,7 @@ export interface IndicesGetFieldMappingRequest extends RequestBase {
   local?: boolean
 }
 
-export type IndicesGetFieldMappingResponse = DictionaryResponseBase<IndexName, IndicesGetFieldMappingTypeFieldMappings>
+export type IndicesGetFieldMappingResponse = Record<IndexName, IndicesGetFieldMappingTypeFieldMappings>
 
 export interface IndicesGetFieldMappingTypeFieldMappings {
   mappings: Partial<Record<Field, MappingFieldMapping>>
@@ -9949,7 +9945,7 @@ export interface IndicesGetMappingRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export type IndicesGetMappingResponse = DictionaryResponseBase<IndexName, IndicesGetMappingIndexMappingRecord>
+export type IndicesGetMappingResponse = Record<IndexName, IndicesGetMappingIndexMappingRecord>
 
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
@@ -9963,7 +9959,7 @@ export interface IndicesGetSettingsRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export type IndicesGetSettingsResponse = DictionaryResponseBase<IndexName, IndicesIndexState>
+export type IndicesGetSettingsResponse = Record<IndexName, IndicesIndexState>
 
 export interface IndicesGetTemplateRequest extends RequestBase {
   name?: Names
@@ -9972,7 +9968,7 @@ export interface IndicesGetTemplateRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export type IndicesGetTemplateResponse = DictionaryResponseBase<string, IndicesTemplateMapping>
+export type IndicesGetTemplateResponse = Record<string, IndicesTemplateMapping>
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
@@ -10165,7 +10161,7 @@ export interface IndicesRecoveryRequest extends RequestBase {
   detailed?: boolean
 }
 
-export type IndicesRecoveryResponse = DictionaryResponseBase<IndexName, IndicesRecoveryRecoveryStatus>
+export type IndicesRecoveryResponse = Record<IndexName, IndicesRecoveryRecoveryStatus>
 
 export interface IndicesRecoveryShardRecovery {
   id: long
@@ -11032,7 +11028,7 @@ export interface IngestGetPipelineRequest extends RequestBase {
   summary?: boolean
 }
 
-export type IngestGetPipelineResponse = DictionaryResponseBase<string, IngestPipeline>
+export type IngestGetPipelineResponse = Record<string, IngestPipeline>
 
 export interface IngestProcessorGrokRequest extends RequestBase {
 }
@@ -14499,7 +14495,7 @@ export interface RollupGetRollupCapsRequest extends RequestBase {
   id?: Id
 }
 
-export type RollupGetRollupCapsResponse = DictionaryResponseBase<IndexName, RollupGetRollupCapsRollupCapabilities>
+export type RollupGetRollupCapsResponse = Record<IndexName, RollupGetRollupCapsRollupCapabilities>
 
 export interface RollupGetRollupCapsRollupCapabilities {
   rollup_jobs: RollupGetRollupCapsRollupCapabilitySummary[]
@@ -14520,7 +14516,7 @@ export interface RollupGetRollupIndexCapsRequest extends RequestBase {
   index: Ids
 }
 
-export type RollupGetRollupIndexCapsResponse = DictionaryResponseBase<IndexName, RollupGetRollupIndexCapsIndexCapabilities>
+export type RollupGetRollupIndexCapsResponse = Record<IndexName, RollupGetRollupIndexCapsIndexCapabilities>
 
 export interface RollupGetRollupIndexCapsRollupJobSummary {
   fields: Record<Field, RollupGetRollupIndexCapsRollupJobSummaryField[]>
@@ -14922,7 +14918,7 @@ export interface SecurityDeletePrivilegesRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export type SecurityDeletePrivilegesResponse = DictionaryResponseBase<string, Record<string, SecurityDeletePrivilegesFoundStatus>>
+export type SecurityDeletePrivilegesResponse = Record<string, Record<string, SecurityDeletePrivilegesFoundStatus>>
 
 export interface SecurityDeleteRoleRequest extends RequestBase {
   name: Name
@@ -15028,13 +15024,13 @@ export interface SecurityGetPrivilegesRequest extends RequestBase {
   name?: Names
 }
 
-export type SecurityGetPrivilegesResponse = DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesActions>>
+export type SecurityGetPrivilegesResponse = Record<string, Record<string, SecurityPutPrivilegesActions>>
 
 export interface SecurityGetRoleRequest extends RequestBase {
   name?: Names
 }
 
-export type SecurityGetRoleResponse = DictionaryResponseBase<string, SecurityGetRoleRole>
+export type SecurityGetRoleResponse = Record<string, SecurityGetRoleRole>
 
 export interface SecurityGetRoleRole {
   cluster: string[]
@@ -15058,14 +15054,14 @@ export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Names
 }
 
-export type SecurityGetRoleMappingResponse = DictionaryResponseBase<string, SecurityRoleMapping>
+export type SecurityGetRoleMappingResponse = Record<string, SecurityRoleMapping>
 
 export interface SecurityGetServiceAccountsRequest extends RequestBase {
   namespace?: Namespace
   service?: Service
 }
 
-export type SecurityGetServiceAccountsResponse = DictionaryResponseBase<string, SecurityGetServiceAccountsRoleDescriptorWrapper>
+export type SecurityGetServiceAccountsResponse = Record<string, SecurityGetServiceAccountsRoleDescriptorWrapper>
 
 export interface SecurityGetServiceAccountsRoleDescriptor {
   cluster: string[]
@@ -15146,7 +15142,7 @@ export interface SecurityGetUserRequest extends RequestBase {
   username?: Username | Username[]
 }
 
-export type SecurityGetUserResponse = DictionaryResponseBase<string, SecurityUser>
+export type SecurityGetUserResponse = Record<string, SecurityUser>
 
 export interface SecurityGetUserPrivilegesRequest extends RequestBase {
   application?: Name
@@ -15268,7 +15264,7 @@ export interface SecurityPutPrivilegesRequest extends RequestBase {
   body?: Record<string, Record<string, SecurityPutPrivilegesActions>>
 }
 
-export type SecurityPutPrivilegesResponse = DictionaryResponseBase<string, Record<string, SecurityCreatedStatus>>
+export type SecurityPutPrivilegesResponse = Record<string, Record<string, SecurityCreatedStatus>>
 
 export interface SecurityPutRoleRequest extends RequestBase {
   name: Name
@@ -15549,7 +15545,7 @@ export interface SlmGetLifecycleRequest extends RequestBase {
   policy_id?: Names
 }
 
-export type SlmGetLifecycleResponse = DictionaryResponseBase<Id, SlmSnapshotLifecycle>
+export type SlmGetLifecycleResponse = Record<Id, SlmSnapshotLifecycle>
 
 export interface SlmGetStatsRequest extends RequestBase {
 }
@@ -15832,7 +15828,7 @@ export interface SnapshotGetRepositoryRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export type SnapshotGetRepositoryResponse = DictionaryResponseBase<string, SnapshotRepository>
+export type SnapshotGetRepositoryResponse = Record<string, SnapshotRepository>
 
 export interface SnapshotRestoreRequest extends RequestBase {
   repository: Name

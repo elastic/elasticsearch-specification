@@ -18,10 +18,10 @@
  */
 
 import { User } from '@security/_types/User'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, User>
+    body: Dictionary<string, User>
   }
 }

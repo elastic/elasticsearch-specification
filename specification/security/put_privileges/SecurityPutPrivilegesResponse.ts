@@ -19,10 +19,9 @@
 
 import { CreatedStatus } from '@security/_types/CreatedStatus'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
 
 export class Response {
   '200': {
-    body: DictionaryResponseBase<string, Dictionary<string, CreatedStatus>>
+    body: Dictionary<string, Dictionary<string, CreatedStatus>>
   }
 }
