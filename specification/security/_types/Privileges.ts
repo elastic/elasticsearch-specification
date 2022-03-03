@@ -79,7 +79,7 @@ export enum ClusterPrivilege {
 export class IndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html
+   * @doc_id field-and-document-access-control
    */
   field_security?: FieldSecurity | FieldSecurity[]
   /**
