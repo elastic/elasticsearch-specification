@@ -374,4 +374,4 @@ field-and-document-access-control,https://www.elastic.co/guide/en/elasticsearch/
 run-as-privilege,https://www.elastic.co/guide/en/elasticsearch/reference/master/run-as-privilege.html
 sql-rest-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/master/sql-rest-filtering.html
 sql-rest-format,https://www.elastic.co/guide/en/elasticsearch/reference/master/sql-rest-format.html
-cron-expressions,https://www.elastic.co/guide/en/elasticsearch/reference/master/cron-expressions.html
+cron-expressions,https://www.elastic.co/guide/en/elasticsearch/reference/master/api-conventions.html#api-cron-expressions
