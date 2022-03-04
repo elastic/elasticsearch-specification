@@ -672,13 +672,6 @@
       ],
       "response": []
     },
-    "field_caps": {
-      "request": [
-        "Request: missing json spec query parameter 'filters'",
-        "Request: missing json spec query parameter 'types'"
-      ],
-      "response": []
-    },
     "fleet.global_checkpoints": {
       "request": [
         "Request: should not have a body"
