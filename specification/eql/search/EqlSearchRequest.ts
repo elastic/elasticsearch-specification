@@ -77,7 +77,7 @@ export interface Request extends RequestBase {
     event_category_field?: Field
     /**
      * Field used to sort hits with the same timestamp in ascending order
-     * @doc_id sort-tiebreaker 
+     * @doc_id sort-tiebreaker
      */
     tiebreaker_field?: Field
     /**
