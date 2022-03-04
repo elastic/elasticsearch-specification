@@ -39,6 +39,10 @@ export class FeatureToggle {
   enabled: boolean
 }
 
+export class Archive extends Base {
+  indices_count: long
+}
+
 export class AlertingExecution {
   actions: Dictionary<string, ExecutionAction>
 }

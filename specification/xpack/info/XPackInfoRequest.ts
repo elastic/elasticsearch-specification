@@ -20,13 +20,23 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Provides general information about the installed X-Pack features.
  * @rest_spec_name xpack.info
  * @since 0.0.0
  * @stability stable
+ * @cluster_privileges monitor,manage
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * A comma-separated list of the information categories to include in the response. For example, `build,license,features`.
+     */
     categories?: string[]
     accept_enterprise?: boolean
+    /**
+     * Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.
+     * @server_default true
+     */
+    human?: boolean
   }
 }

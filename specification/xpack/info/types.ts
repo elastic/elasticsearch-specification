@@ -67,6 +67,8 @@ export class Features {
   vectors?: Feature
   voting_only: Feature
   watcher: Feature
+  /** @since 8.2.0 */
+  archive: Feature
 }
 
 export class Feature {
