@@ -53,7 +53,7 @@ export interface Request extends RequestBase {
     /**
      * If true, network roundtrips between the coordinating node and remote clusters are minimized for cross-cluster search requests.
      * @server_default true
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#ccs-network-delays
+     * @doc_id ccs-network-delays
      */
     ccs_minimize_roundtrips?: boolean
     /**

@@ -176,7 +176,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
     slice?: SlicedScroll
-    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html */
+    /** @doc_id sort-search-results */
     sort?: Sort
     /**
      * Indicates which source fields are returned for matching documents. These
