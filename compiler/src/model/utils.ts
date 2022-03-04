@@ -632,7 +632,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['class_serializer', 'doc_url', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names']
+  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -653,6 +653,12 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       type.docUrl = value
+    } else if (tag === 'doc_id') {
+      assert(jsDocs, value.trim() !== '', `Type ${type.name.namespace}.${type.name.name}'s @doc_id cannot be empty`)
+      type.docId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      type.docUrl = docUrl[1]
     } else if (tag === 'codegen_names') {
       type.codegenNames = value.split(',').map(v => v.trim())
       assert(jsDocs,
