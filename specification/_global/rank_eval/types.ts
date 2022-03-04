@@ -78,7 +78,7 @@ export class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
 
 /**
  * Expected Reciprocal Rank (ERR)
- * @doc_id expected-reciprocal 
+ * @doc_id expected-reciprocal
  */
 export class RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
   /**
