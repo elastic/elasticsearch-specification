@@ -656,9 +656,6 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Type ${type.name.namespace}.${type.name.name}'s @doc_id cannot be empty`)
       type.docId = value.trim()
-      const docUrl = docIds.find(entry => entry[0] === value.trim())
-      assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
-      type.docUrl = docUrl[1]
     } else if (tag === 'codegen_names') {
       type.codegenNames = value.split(',').map(v => v.trim())
       assert(jsDocs,
