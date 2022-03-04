@@ -827,11 +827,11 @@ export interface ReindexRequest extends RequestBase {
   require_alias?: boolean
   body?: {
     conflicts?: Conflicts
-    dest?: ReindexDestination
+    dest: ReindexDestination
     max_docs?: long
     script?: Script
     size?: long
-    source?: ReindexSource
+    source: ReindexSource
   }
 }
 
