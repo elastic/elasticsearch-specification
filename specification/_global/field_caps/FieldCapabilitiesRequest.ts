@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
      */
-    fields?: Fields
+    fields: Fields
     /**
      * If `true`, missing or closed indices are not included in the response.
      * @server_default false
