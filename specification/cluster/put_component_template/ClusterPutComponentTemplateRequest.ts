@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     mappings?: TypeMapping
     settings?: IndexSettings
     version?: VersionNumber
-    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+    /** @doc_id mapping-meta-field */
     _meta?: Metadata
   }
 }
