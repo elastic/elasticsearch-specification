@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Names } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -26,10 +26,14 @@ import { Time } from '@_types/Time'
  * @since 7.8.0
  * @stability stable
  * @doc_id indices-component-template
+ * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
-    name: Name
+    /**
+     * Comma-separated list or wildcard expression of component template names used to limit the request.
+     */
+    name: Names
   }
   query_parameters: {
     /** @server_default 30s */
