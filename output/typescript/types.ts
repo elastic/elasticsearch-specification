@@ -353,7 +353,7 @@ export interface FieldCapsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
-  fields?: Fields
+  fields: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
   body?: {

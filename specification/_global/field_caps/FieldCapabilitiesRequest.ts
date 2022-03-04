@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
-    fields?: Fields
+    fields: Fields
     ignore_unavailable?: boolean
     include_unmapped?: boolean
   }
