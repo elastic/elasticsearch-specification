@@ -26,7 +26,7 @@ export class Response extends NodesResponseBase {
   body: {
     /**
      * Name of the cluster, based on the Cluster name setting setting.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name
+     * @doc_id cluster-name
      */
     cluster_name: Name
     /**
@@ -39,7 +39,7 @@ export class Response extends NodesResponseBase {
     indices: ClusterIndices
     /**
      * Contains statistics about nodes selected by the request’s node filters.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
+     * @doc_id cluster-nodes
      */
     nodes: ClusterNodes
     /**
