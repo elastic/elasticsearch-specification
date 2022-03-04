@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
   body: {
     /**
      * EQL query you wish to run.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html
+     * @doc_id eql-syntax
      */
     query: string
     case_sensitive?: boolean
@@ -77,7 +77,7 @@ export interface Request extends RequestBase {
     event_category_field?: Field
     /**
      * Field used to sort hits with the same timestamp in ascending order
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html#eql-search-specify-a-sort-tiebreaker
+     * @doc_id sort-tiebreaker
      */
     tiebreaker_field?: Field
     /**
@@ -98,7 +98,7 @@ export interface Request extends RequestBase {
     wait_for_completion_timeout?: Time
     /**
      * For basic queries, the maximum number of matching events to return. Defaults to 10
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax
+     * @doc_id eql-basic-syntax
      */
     size?: uint // doc says "integer of float" but it's really an int
     /**
