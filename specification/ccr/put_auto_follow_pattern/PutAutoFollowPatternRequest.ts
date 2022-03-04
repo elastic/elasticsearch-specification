@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The remote cluster containing the leader indices to match against.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-remote-clusters.html
+     * @doc_id modules-remote-clusters
      */
     remote_cluster: string
     /**
