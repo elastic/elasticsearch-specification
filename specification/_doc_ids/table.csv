@@ -390,3 +390,7 @@ document-input-parameters,https://www.elastic.co/guide/en/elasticsearch/referenc
 data-stream-path-param,https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-create-data-stream.html#indices-create-data-stream-api-path-params
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/master/api-conventions.html#byte-units
 node-roles,https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-node.html#node-roles
+cluster-name,https://www.elastic.co/guide/en/elasticsearch/reference/master/important-settings.html#cluster-name
+cluster-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster.html#cluster-nodes
+sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/master/eql.html#eql-search-specify-a-sort-tiebreaker
+eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/master/eql-syntax.html#eql-basic-syntax
