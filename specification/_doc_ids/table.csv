@@ -340,7 +340,6 @@ query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/query-dsl.
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/common-options.html
 indices-create-data-stream,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/indices-create-data-stream.html
 mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html
-////
 query-dsl-minimum-should-match,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/query-dsl-minimum-should-match.html
 query-dsl-multi-term-rewrite,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/query-dsl-multi-term-rewrite.html
 modules-node,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/modules-node.html
@@ -395,3 +394,8 @@ cluster-name,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/importa
 cluster-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/cluster.html#cluster-nodes
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/eql.html#eql-search-specify-a-sort-tiebreaker
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/eql-syntax.html#eql-basic-syntax
+time-value,https://github.com/elastic/elasticsearch/blob/8.1/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/query-dsl-simple-query-string-query.html#supported-flags
+eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/eql-syntax.html#eql-sequences
+index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/index-modules.html#index-modules-settings
+templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/field-and-document-access-control.html#templating-role-query

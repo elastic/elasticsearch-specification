@@ -41,7 +41,7 @@ import {
 
 export class PropertyBase {
   local_metadata?: Metadata
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   meta?: Dictionary<string, string>
   name?: PropertyName
   properties?: Dictionary<PropertyName, Property>

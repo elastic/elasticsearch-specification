@@ -67,7 +67,7 @@ export class CommandMoveAction {
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html
+ * @doc_id modules-cluster
  */
 export class CommandAllocateReplicaAction {
   index: IndexName
