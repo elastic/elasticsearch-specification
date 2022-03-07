@@ -19,4 +19,8 @@
 
 import { EqlSearchResponseBase } from '@eql/_types/EqlSearchResponseBase'
 
-export class Response<TEvent> extends EqlSearchResponseBase<TEvent> {}
+export class Response<TEvent> {
+  '200': {
+    body: EqlSearchResponseBase<TEvent>
+  }
+}

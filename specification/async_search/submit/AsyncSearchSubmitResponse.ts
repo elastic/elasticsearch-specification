@@ -19,6 +19,8 @@
 
 import { AsyncSearchDocumentResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 
-export class Response<
-  TDocument
-> extends AsyncSearchDocumentResponseBase<TDocument> {}
+export class Response<TDocument> {
+  '200': {
+    body: AsyncSearchDocumentResponseBase<TDocument>
+  }
+}
