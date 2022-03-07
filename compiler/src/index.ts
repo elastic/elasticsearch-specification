@@ -26,6 +26,7 @@ import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
 import addContentType from './steps/add-content-type'
 import readDefinitionValidation from './steps/read-definition-validation'
+import buildSchemaV1 from './steps/schema-v1'
 
 const nvmrc = readFileSync(join(__dirname, '..', '..', '.nvmrc'), 'utf8')
 const nodejsMajor = process.version.split('.').shift()?.slice(1) ?? ''
@@ -46,6 +47,7 @@ compiler
   .step(validateRestSpec)
   .step(addDescription)
   .step(validateModel)
+  .step(buildSchemaV1)
   .write()
   .then(() => {
     console.log('Done')

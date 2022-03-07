@@ -59,7 +59,7 @@ export default class Compiler {
     }
 
     await writeFile(
-      join(__dirname, '..', '..', 'output', 'schema', 'schema.json'),
+      join(__dirname, '..', '..', 'output', 'schema', 'schema-v2.json'),
       stringify(this.model, null, 2),
       'utf8'
     )

@@ -432,25 +432,27 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     // Client generators will have to take care of this.
 
     context.push('body')
-    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
-      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
-        modelError('A response with inherited properties must have a PropertyBody')
+    for (const responseItem of typeDef.responses) {
+      if (typeDef.inherits != null && responseItem.body.kind !== 'properties') {
+        if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
+          modelError('A response with inherited properties must have a PropertyBody')
+        }
       }
-    }
-    switch (typeDef.body.kind) {
-      case 'properties':
-        validateProperties(typeDef.body.properties, openGenerics, inheritedProperties(typeDef))
-        break
-      case 'value':
-        validateValueOf(typeDef.body.value, openGenerics)
-        break
-      case 'no_body':
-        // Nothing to validate
-        break
-      default:
-        // @ts-expect-error
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        throw new Error(`Unknown kind: ${typeDef.body.kind}`)
+      switch (responseItem.body.kind) {
+        case 'properties':
+          validateProperties(responseItem.body.properties, openGenerics, inheritedProperties(typeDef))
+          break
+        case 'value':
+          validateValueOf(responseItem.body.value, openGenerics)
+          break
+        case 'no_body':
+          // Nothing to validate
+          break
+        default:
+          // @ts-expect-error
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          throw new Error(`Unknown kind: ${responseItem.body.kind}`)
+      }
     }
     context.pop()
   }
@@ -486,8 +488,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
         case 'response':
           inheritedProperties(typeDef, result)
-          if (typeDef.body.kind === 'properties') {
-            addProperties(typeDef.body.properties)
+          for (const responseItem of typeDef.responses) {
+            if (responseItem.body.kind === 'properties') {
+              addProperties(responseItem.body.properties)
+            }
           }
           break
 

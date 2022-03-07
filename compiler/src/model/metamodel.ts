@@ -270,9 +270,14 @@ export class Response extends BaseType {
   generics?: TypeName[]
   inherits?: Inherits
   implements?: Inherits[]
-  body: Body
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
+  responses: ResponseItem[]
+}
+
+export class ResponseItem {
+  statusCodes: string[]
+  body: Body
 }
 
 export type Body = ValueBody | PropertiesBody | NoBody
@@ -403,6 +408,7 @@ export class UrlTemplate {
 export class Model {
   _info?: {
     title: string
+    schemaVersion: number
     license: {
       name: string
       url: string

@@ -19,6 +19,7 @@
 
 import { writeFileSync } from 'fs'
 import { join } from 'path'
+import { STATUS_CODES } from 'http'
 import {
   ClassDeclaration,
   EnumDeclaration,
@@ -310,7 +311,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         specLocation: sourceLocation(declaration),
         kind: 'response',
         name: { name, namespace: getNameSpace(declaration) },
-        body: { kind: 'no_body' }
+        responses: []
       }
 
       for (const status of declaration.getMembers()) {
@@ -319,6 +320,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           Node.isPropertyDeclaration(status) || Node.isPropertySignature(status),
           'Class and interfaces can only have property declarations or signatures'
         )
+        const statusCodes = status.getName().slice(1, -1).split(',').map(s => s.trim())
+        for (const statusCode of statusCodes) {
+          assert(status, STATUS_CODES[statusCode] != null, `${statusCode} is not a valid status code`)
+        }
+        const responseItem: model.ResponseItem = { statusCodes, body: { kind: 'no_body' } }
         status.getTypeNode()?.forEachChild(child => {
           assert(
             child,
@@ -330,17 +336,18 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             // the body can either by a value (eg Array<string> or an object with properties)
             if (property.valueOf != null) {
               if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
-                type.body = { kind: 'no_body' }
+                responseItem.body = { kind: 'no_body' }
               } else {
-                type.body = { kind: 'value', value: property.valueOf }
+                responseItem.body = { kind: 'value', value: property.valueOf }
               }
             } else {
-              type.body = { kind: 'properties', properties: property.properties }
+              responseItem.body = { kind: 'properties', properties: property.properties }
             }
           } else {
             assert(child, false, 'Response.body is the only Response property supported')
           }
         })
+        type.responses.push(responseItem)
       }
     }
 
@@ -377,7 +384,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     // If the body wasn't set and we have a parent class, then it's a property body with no additional properties
-    if (type.body.kind === 'no_body' && type.inherits != null) {
+    if (type.kind === 'request' && type.body.kind === 'no_body' && type.inherits != null) {
       const parent = type.inherits.type
       // RequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
       if (parent.name === 'RequestBase' && parent.namespace === '_types') {
