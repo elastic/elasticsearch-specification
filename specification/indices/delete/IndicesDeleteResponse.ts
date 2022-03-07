@@ -19,4 +19,8 @@
 
 import { IndicesResponseBase } from '@_types/Base'
 
-export class Response extends IndicesResponseBase {}
+export class Response {
+  '200': {
+    body: IndicesResponseBase
+  }
+}

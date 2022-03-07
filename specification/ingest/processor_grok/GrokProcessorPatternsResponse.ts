@@ -20,5 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  body: { patterns: Dictionary<string, string> }
+  '200': {
+    body: { patterns: Dictionary<string, string> }
+  }
 }

@@ -20,5 +20,7 @@
 import { MasterRecord } from './types'
 
 export class Response {
-  body: Array<MasterRecord>
+  '200': {
+    body: Array<MasterRecord>
+  }
 }

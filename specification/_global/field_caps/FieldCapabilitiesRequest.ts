@@ -23,6 +23,9 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
+ * The field capabilities API returns the information about the capabilities of fields among multiple indices.
+ * The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type
+ * of keyword is returned as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
  * @since 5.4.0
  * @stability stable
@@ -37,7 +40,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If false, the request returns an error if any wildcard expression, [index alias](https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html),
+     * If false, the request returns an error if any wildcard expression, index alias,
      * or `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request
      * targeting `foo*,bar*` returns an error if an index starts with foo but no index starts with bar.
      * @server_default true
@@ -51,7 +54,7 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
      */
-    fields?: Fields
+    fields: Fields
     /**
      * If `true`, missing or closed indices are not included in the response.
      * @server_default false
@@ -62,6 +65,14 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_unmapped?: boolean
+    /**
+     * @since 8.2.0
+     */
+    filters?: string
+    /**
+     * @since 8.2.0
+     */
+    types?: string[]
   }
   body: {
     /**
@@ -69,10 +80,10 @@ export interface Request extends RequestBase {
      */
     index_filter?: QueryContainer
     /**
-     * Defines ad-hoc [runtime fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-search-request.html) in the request similar
-     * to the way it is done in [search requests](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-api-body-runtime).
+     * Defines ad-hoc runtime fields in the request similar to the way it is done in search requests.
      * These fields exist only as part of the query and take precedence over fields defined with the same name in the index mappings.
      * @since 7.12.0
+     * @doc_id runtime-search-request
      */
     runtime_mappings?: RuntimeFields
   }

@@ -20,5 +20,7 @@
 import { Summary } from '@enrich/_types/Policy'
 
 export class Response {
-  body: { policies: Summary[] }
+  '200': {
+    body: { policies: Summary[] }
+  }
 }

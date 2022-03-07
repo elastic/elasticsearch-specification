@@ -20,5 +20,7 @@
 import { AllocationRecord } from './types'
 
 export class Response {
-  body: Array<AllocationRecord>
+  '200': {
+    body: Array<AllocationRecord>
+  }
 }

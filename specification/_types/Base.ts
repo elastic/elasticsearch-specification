@@ -49,8 +49,6 @@ export class AcknowledgedResponseBase {
   acknowledged: boolean
 }
 
-export class DictionaryResponseBase<TKey, TValue> {}
-
 export class DynamicResponseBase {}
 
 export class ElasticsearchVersionInfo {

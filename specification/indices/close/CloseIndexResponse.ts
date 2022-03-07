@@ -18,14 +18,16 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { AcknowledgedResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { ShardFailure } from '@_types/Errors'
 
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    indices: Dictionary<IndexName, CloseIndexResult>
-    shards_acknowledged: boolean
+export class Response {
+  '200': {
+    body: {
+      acknowledged: boolean
+      indices: Dictionary<IndexName, CloseIndexResult>
+      shards_acknowledged: boolean
+    }
   }
 }
 

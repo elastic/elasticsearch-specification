@@ -20,7 +20,9 @@
 import { TrainedModelAllocation } from '../_types/TrainedModel'
 
 export class Response {
-  body: {
-    allocation: TrainedModelAllocation
+  '200': {
+    body: {
+      allocation: TrainedModelAllocation
+    }
   }
 }

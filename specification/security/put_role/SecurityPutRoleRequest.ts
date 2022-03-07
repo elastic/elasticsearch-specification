@@ -29,7 +29,7 @@ import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
- * The role management APIs are generally the preferred way to manage roles, rather than using [file-based role management](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html#roles-management-file).
+ * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
  * The create or update roles API cannot update roles that are defined in roles files.
  * @rest_spec_name security.put_role
  * @since 0.0.0
@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
     metadata?: Metadata
     /**
      * A list of users that the owners of this role can impersonate.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
+     * @doc_id run-as-privilege
      */
     run_as?: string[]
     /**

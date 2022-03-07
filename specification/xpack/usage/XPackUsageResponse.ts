@@ -19,6 +19,7 @@
 
 import {
   Analytics,
+  Archive,
   Base,
   Ccr,
   DataStreams,
@@ -39,33 +40,37 @@ import {
 } from './types'
 
 export class Response {
-  body: {
-    aggregate_metric: Base
-    analytics: Analytics
-    watcher: Watcher
-    ccr: Ccr
-    data_frame?: Base
-    data_science?: Base
-    data_streams?: DataStreams
-    data_tiers: DataTiers
-    enrich?: Base
-    eql: Eql
-    flattened?: Flattened
-    frozen_indices: FrozenIndices
-    graph: Base
-    ilm: Ilm
-    logstash: Base
-    ml: MachineLearning
-    monitoring: Monitoring
-    rollup: Base
-    runtime_fields?: RuntimeFieldTypes
-    spatial: Base
-    searchable_snapshots: SearchableSnapshots
-    security: Security
-    slm: Slm
-    sql: Sql
-    transform: Base
-    vectors?: Vector
-    voting_only: Base
+  '200': {
+    body: {
+      aggregate_metric: Base
+      analytics: Analytics
+      /** @since 8.2.0 */
+      archive: Archive
+      watcher: Watcher
+      ccr: Ccr
+      data_frame?: Base
+      data_science?: Base
+      data_streams?: DataStreams
+      data_tiers: DataTiers
+      enrich?: Base
+      eql: Eql
+      flattened?: Flattened
+      frozen_indices: FrozenIndices
+      graph: Base
+      ilm: Ilm
+      logstash: Base
+      ml: MachineLearning
+      monitoring: Monitoring
+      rollup: Base
+      runtime_fields?: RuntimeFieldTypes
+      spatial: Base
+      searchable_snapshots: SearchableSnapshots
+      security: Security
+      slm: Slm
+      sql: Sql
+      transform: Base
+      vectors?: Vector
+      voting_only: Base
+    }
   }
 }

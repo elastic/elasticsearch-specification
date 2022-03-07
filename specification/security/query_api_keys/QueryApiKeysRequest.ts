@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
      * @server_default 0
      */
     from?: integer
-    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html */
+    /** @doc_id sort-search-results */
     sort?: Sort
     /**
      * The number of hits to return. By default, you cannot page through more

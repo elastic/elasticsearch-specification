@@ -21,9 +21,11 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  body: {
-    acknowledged: boolean
-    persistent: Dictionary<string, UserDefinedValue>
-    transient: Dictionary<string, UserDefinedValue>
+  '200': {
+    body: {
+      acknowledged: boolean
+      persistent: Dictionary<string, UserDefinedValue>
+      transient: Dictionary<string, UserDefinedValue>
+    }
   }
 }

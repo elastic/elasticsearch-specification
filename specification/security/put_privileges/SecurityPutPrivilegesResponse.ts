@@ -19,9 +19,9 @@
 
 import { CreatedStatus } from '@security/_types/CreatedStatus'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  Dictionary<string, CreatedStatus>
-> {}
+export class Response {
+  '200': {
+    body: Dictionary<string, Dictionary<string, CreatedStatus>>
+  }
+}

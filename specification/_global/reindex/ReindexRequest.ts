@@ -42,10 +42,10 @@ export interface Request extends RequestBase {
   }
   body: {
     conflicts?: Conflicts
-    dest?: Destination
+    dest: Destination
     max_docs?: long
     script?: Script
     size?: long
-    source?: Source
+    source: Source
   }
 }

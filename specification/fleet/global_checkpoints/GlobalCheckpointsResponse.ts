@@ -20,8 +20,10 @@
 import { Checkpoint } from '../_types/Checkpoints'
 
 export class Response {
-  body: {
-    global_checkpoints: Checkpoint[]
-    timed_out: boolean
+  '200': {
+    body: {
+      global_checkpoints: Checkpoint[]
+      timed_out: boolean
+    }
   }
 }

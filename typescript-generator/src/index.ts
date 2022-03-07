@@ -231,7 +231,7 @@ function implementsBehavior (type: M.Interface): boolean {
     }
     return type.attachedBehaviors.length > 0
   }
-  return type.name.name === 'DictionaryResponseBase'
+  return false
 }
 
 function buildBehaviorInterface (type: M.Interface): string {
@@ -242,10 +242,6 @@ function buildBehaviorInterface (type: M.Interface): string {
   }
 
   switch (type.name.name) {
-    case 'DictionaryResponseBase':
-      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
-  [key: string]: TValue
-}\n`
     default:
       throw new Error(`Unknown interface ${type.name.name}`)
   }

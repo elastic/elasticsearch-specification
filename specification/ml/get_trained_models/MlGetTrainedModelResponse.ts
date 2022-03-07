@@ -26,9 +26,11 @@ import { integer } from '@_types/Numeric'
  * 404 (Missing resources) - If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.
  */
 export class Response {
-  body: {
-    count: integer
-    /** An array of trained model resources, which are sorted by the model_id value in ascending order. */
-    trained_model_configs: TrainedModelConfig[]
+  '200': {
+    body: {
+      count: integer
+      /** An array of trained model resources, which are sorted by the model_id value in ascending order. */
+      trained_model_configs: TrainedModelConfig[]
+    }
   }
 }

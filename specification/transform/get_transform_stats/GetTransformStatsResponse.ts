@@ -21,5 +21,7 @@ import { long } from '@_types/Numeric'
 import { TransformStats } from './types'
 
 export class Response {
-  body: { count: long; transforms: TransformStats[] }
+  '200': {
+    body: { count: long; transforms: TransformStats[] }
+  }
 }

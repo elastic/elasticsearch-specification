@@ -21,8 +21,10 @@ import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { Name } from '@_types/common'
 
 export class Response {
-  body: {
-    index_templates: IndexTemplateItem[]
+  '200': {
+    body: {
+      index_templates: IndexTemplateItem[]
+    }
   }
 }
 

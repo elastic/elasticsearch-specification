@@ -20,5 +20,7 @@
 import { HealthRecord } from './types'
 
 export class Response {
-  body: Array<HealthRecord>
+  '200': {
+    body: Array<HealthRecord>
+  }
 }

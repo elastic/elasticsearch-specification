@@ -20,5 +20,7 @@
 import { TrainedModelConfig } from '@ml/_types/TrainedModel'
 
 export class Response {
-  body: TrainedModelConfig
+  '200': {
+    body: TrainedModelConfig
+  }
 }

@@ -20,5 +20,7 @@
 import { JobsRecord } from './types'
 
 export class Response {
-  body: Array<JobsRecord>
+  '200': {
+    body: Array<JobsRecord>
+  }
 }

@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
+     * @doc_id realtime
      */
     realtime?: boolean
     /**
@@ -62,14 +62,14 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of source fields to exclude from the response.
      * You can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
+     * @doc_id mapping-source-field
      */
     _source_excludes?: Fields
     /**
      * A comma-separated list of source fields to include in the response.
      * If this parameter is specified, only these source fields are returned. You can exclude fields from this subset using the `_source_excludes` query parameter.
      * If the `_source` parameter is `false`, this parameter is ignored.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
+     * @doc_id mapping-source-field
      */
     _source_includes?: Fields
     /**

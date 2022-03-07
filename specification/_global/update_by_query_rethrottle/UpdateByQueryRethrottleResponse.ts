@@ -21,5 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UpdateByQueryRethrottleNode } from './UpdateByQueryRethrottleNode'
 
 export class Response {
-  body: { nodes: Dictionary<string, UpdateByQueryRethrottleNode> }
+  '200': {
+    body: { nodes: Dictionary<string, UpdateByQueryRethrottleNode> }
+  }
 }

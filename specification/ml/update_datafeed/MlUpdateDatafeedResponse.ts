@@ -28,20 +28,22 @@ import { ScriptField } from '@_types/Scripting'
 import { Time } from '@_types/Time'
 
 export class Response {
-  body: {
-    aggregations: Dictionary<string, AggregationContainer>
-    chunking_config: ChunkingConfig
-    delayed_data_check_config?: DelayedDataCheckConfig
-    datafeed_id: Id
-    frequency: Time
-    indices: string[]
-    job_id: Id
-    indices_options?: IndicesOptions
-    max_empty_searches: integer
-    query: QueryContainer
-    query_delay: Time
-    runtime_mappings?: RuntimeFields
-    script_fields?: Dictionary<string, ScriptField>
-    scroll_size: integer
+  '200': {
+    body: {
+      aggregations: Dictionary<string, AggregationContainer>
+      chunking_config: ChunkingConfig
+      delayed_data_check_config?: DelayedDataCheckConfig
+      datafeed_id: Id
+      frequency: Time
+      indices: string[]
+      job_id: Id
+      indices_options?: IndicesOptions
+      max_empty_searches: integer
+      query: QueryContainer
+      query_delay: Time
+      runtime_mappings?: RuntimeFields
+      script_fields?: Dictionary<string, ScriptField>
+      scroll_size: integer
+    }
   }
 }

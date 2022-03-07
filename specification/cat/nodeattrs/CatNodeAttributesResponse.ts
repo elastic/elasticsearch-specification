@@ -20,5 +20,7 @@
 import { NodeAttributesRecord } from './types'
 
 export class Response {
-  body: Array<NodeAttributesRecord>
+  '200': {
+    body: Array<NodeAttributesRecord>
+  }
 }
