@@ -1,5 +1,6 @@
 output/dangling-types/dangling.csv linguist-generated=true
 output/schema/schema.json linguist-generated=true
+output/schema/schema-v2.json linguist-generated=true
 output/schema/import-type-graph.json linguist-generated=true
 output/schema/import-namespace-graph-compact.json linguist-generated=true
 output/schema/import-namespace-graph-expanded.json linguist-generated=true
