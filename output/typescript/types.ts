@@ -342,9 +342,11 @@ export interface FieldCapsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
-  fields?: Fields
+  fields: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
+  filters?: string
+  types?: string[]
   body?: {
     index_filter?: QueryDslQueryContainer
     runtime_mappings?: MappingRuntimeFields
@@ -819,11 +821,11 @@ export interface ReindexRequest extends RequestBase {
   require_alias?: boolean
   body?: {
     conflicts?: Conflicts
-    dest?: ReindexDestination
+    dest: ReindexDestination
     max_docs?: long
     script?: Script
     size?: long
-    source?: ReindexSource
+    source: ReindexSource
   }
 }
 
@@ -8019,7 +8021,7 @@ export interface ClusterAllocationExplainUnassignedInformation {
 export type ClusterAllocationExplainUnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
 
 export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
-  name: Name
+  name: Names
   master_timeout?: Time
   timeout?: Time
 }
@@ -17151,6 +17153,7 @@ export interface XpackInfoFeatures {
   vectors?: XpackInfoFeature
   voting_only: XpackInfoFeature
   watcher: XpackInfoFeature
+  archive: XpackInfoFeature
 }
 
 export interface XpackInfoMinimalLicenseInformation {
@@ -17169,6 +17172,7 @@ export interface XpackInfoNativeCodeInformation {
 export interface XpackInfoRequest extends RequestBase {
   categories?: string[]
   accept_enterprise?: boolean
+  human?: boolean
 }
 
 export interface XpackInfoResponse {
@@ -17200,6 +17204,10 @@ export interface XpackUsageAnalyticsStatistics {
   normalize_usage: long
   rate_usage: long
   multi_terms_usage?: long
+}
+
+export interface XpackUsageArchive extends XpackUsageBase {
+  indices_count: long
 }
 
 export interface XpackUsageAudit extends XpackUsageFeatureToggle {
@@ -17443,6 +17451,7 @@ export interface XpackUsageRequest extends RequestBase {
 export interface XpackUsageResponse {
   aggregate_metric: XpackUsageBase
   analytics: XpackUsageAnalytics
+  archive: XpackUsageArchive
   watcher: XpackUsageWatcher
   ccr: XpackUsageCcr
   data_frame?: XpackUsageBase

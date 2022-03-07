@@ -63,7 +63,7 @@ export enum ActionType {
 
 export enum ActionExecutionMode {
   /**
-   * The action execution is simulated. Each action type defines its own simulation operation mode. For example, the [email action](https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html) creates the email that would have been sent but does not actually send it. In this mode, the action might be throttled if the current state of the watch indicates it should be.
+   * The action execution is simulated. Each action type defines its own simulation operation mode. For example, the email action creates the email that would have been sent but does not actually send it. In this mode, the action might be throttled if the current state of the watch indicates it should be.
    */
   simulate,
   /**

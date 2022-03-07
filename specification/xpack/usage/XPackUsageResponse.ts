@@ -19,6 +19,7 @@
 
 import {
   Analytics,
+  Archive,
   Base,
   Ccr,
   DataStreams,
@@ -43,6 +44,8 @@ export class Response {
     body: {
       aggregate_metric: Base
       analytics: Analytics
+      /** @since 8.2.0 */
+      archive: Archive
       watcher: Watcher
       ccr: Ccr
       data_frame?: Base

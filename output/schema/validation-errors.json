@@ -123,6 +123,12 @@
       ],
       "response": []
     },
+    "cat.component_templates": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "cat.count": {
       "request": [
         "Request: missing json spec query parameter 'format'",
@@ -723,13 +729,6 @@
     "features.reset_features": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "field_caps": {
-      "request": [
-        "Request: missing json spec query parameter 'filters'",
-        "Request: missing json spec query parameter 'types'"
       ],
       "response": []
     },
@@ -2363,7 +2362,9 @@
     },
     "xpack.info": {
       "request": [
-        "Request: should not have a body"
+        "Request: query parameter 'human' does not exist in the json spec",
+        "Request: should not have a body",
+        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     },

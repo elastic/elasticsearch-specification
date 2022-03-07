@@ -156,6 +156,7 @@ export abstract class BaseType {
   description?: string
   /** Link to public documentation */
   docUrl?: string
+  docId?: string
   deprecation?: Deprecation
   kind: string
   /** Variant name for externally tagged variants */

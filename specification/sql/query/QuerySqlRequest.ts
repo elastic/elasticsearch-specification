@@ -33,7 +33,7 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   query_parameters: {
     /**
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html#sql-rest-format
+     * @doc_id sql-rest-format
      */
     format?: string
   }
@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
     fetch_size?: integer
     /**
      * Optional Elasticsearch query DSL for additional filtering.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-filtering.html
+     * @doc_id sql-rest-filtering
      * @server_default none
      */
     filter?: QueryContainer

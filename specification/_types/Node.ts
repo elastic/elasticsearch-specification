@@ -62,7 +62,7 @@ export class NodeShard {
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+ * @doc_id node-roles
  */
 export enum NodeRole {
   master = 0,
@@ -82,6 +82,6 @@ export enum NodeRole {
 }
 
 /**
- * * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+ * * @doc_id node-roles
  */
 export type NodeRoles = NodeRole[]
