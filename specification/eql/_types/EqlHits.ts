@@ -33,7 +33,7 @@ export class EqlHits<TEvent> {
   events?: HitsEvent<TEvent>[]
   /**
    * Contains event sequences matching the query. Each object represents a matching sequence. This parameter is only returned for EQL queries containing a sequence.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
+   * @doc_id eql-sequences
    */
   sequences?: HitsSequence<TEvent>[]
 }
@@ -53,7 +53,7 @@ export class HitsSequence<TEvent> {
   events: HitsEvent<TEvent>[]
   /**
    * Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
+   * @doc_id eql-sequences
    */
   join_keys: UserDefinedValue[]
 }

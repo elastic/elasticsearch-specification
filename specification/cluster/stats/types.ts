@@ -68,7 +68,7 @@ export class ClusterIndices {
   docs: DocStats
   /**
    * Contains statistics about the field data cache of selected nodes.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-fielddata.html
+   * @doc_id modules-fielddata
    */
   fielddata: FielddataStats
   /** Contains statistics about the query cache of selected nodes. */
@@ -81,12 +81,12 @@ export class ClusterIndices {
   store: StoreStats
   /**
    * Contains statistics about field mappings in selected nodes.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
+   * @doc_id mapping
    */
   mappings: FieldTypesMappings
   /**
    * Contains statistics about analyzers and analyzer components used in selected nodes.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html
+   * @doc_id analyzer-anatomy
    */
   analysis: CharFilterTypes
   versions?: IndicesVersions[]
@@ -195,7 +195,7 @@ export class ClusterNodes {
   count: ClusterNodeCount
   /**
    * Contains statistics about the discovery types used by selected nodes.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html
+   * @doc_id modules-discovery-hosts-providers
    */
   discovery_types: Dictionary<string, integer>
   /** Contains statistics about file stores by selected nodes. */

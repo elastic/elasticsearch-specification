@@ -25,7 +25,7 @@ import { DateString, Time } from '@_types/Time'
 // export class ScheduleBase {}
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cron-expressions.html
+ * @doc_id cron-expressions
  */
 export type CronExpression = string
 //export class CronExpression extends ScheduleBase {}

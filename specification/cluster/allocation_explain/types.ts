@@ -125,7 +125,7 @@ export class UnassignedInformation {
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html#cat-shards-query-params
+ * @doc_id cat-shards
  */
 export enum UnassignedInformationReason {
   INDEX_CREATED = 0,
