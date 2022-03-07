@@ -31,12 +31,12 @@ export class ComponentTemplate {
 export class ComponentTemplateNode {
   template: ComponentTemplateSummary
   version?: VersionNumber
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
 }
 
 export class ComponentTemplateSummary {
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
   version?: VersionNumber
   settings: Dictionary<IndexName, IndexSettings>

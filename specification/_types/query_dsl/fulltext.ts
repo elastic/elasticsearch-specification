@@ -270,7 +270,7 @@ export class QueryStringQuery extends QueryBase {
 
 /**
  * Query flags can be either a single flag or a combination of flags, e.g. `OR|AND|PREFIX`
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.15/query-dsl-simple-query-string-query.html#supported-flags
+ * @doc_id supported-flags
  * @codegen_names single, multiple
  */
 export type SimpleQueryStringFlags = SimpleQueryStringFlag | string
