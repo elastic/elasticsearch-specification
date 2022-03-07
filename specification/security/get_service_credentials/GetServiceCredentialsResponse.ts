@@ -23,11 +23,13 @@ import { integer } from '@_types/Numeric'
 import { NodesCredentials } from './types'
 
 export class Response {
-  body: {
-    service_account: string
-    count: integer
-    tokens: Dictionary<string, Metadata>
-    /** Contains service account credentials collected from all nodes of the cluster */
-    nodes_credentials: NodesCredentials
+  '200': {
+    body: {
+      service_account: string
+      count: integer
+      tokens: Dictionary<string, Metadata>
+      /** Contains service account credentials collected from all nodes of the cluster */
+      nodes_credentials: NodesCredentials
+    }
   }
 }

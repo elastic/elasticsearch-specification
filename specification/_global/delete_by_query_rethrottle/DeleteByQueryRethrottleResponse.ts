@@ -19,4 +19,8 @@
 
 import { Response as ListTasksResponse } from '@tasks/list/ListTasksResponse'
 
-export class Response extends ListTasksResponse {}
+export class Response {
+  '200': {
+    body: ListTasksResponse
+  }
+}

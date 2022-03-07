@@ -20,7 +20,9 @@
 import { Feature } from '../_types/Feature'
 
 export class Response {
-  body: {
-    features: Feature[]
+  '200': {
+    body: {
+      features: Feature[]
+    }
   }
 }

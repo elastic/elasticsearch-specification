@@ -21,8 +21,10 @@ import { QueryWatch } from '../_types/Watch'
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    count: integer
-    watches: QueryWatch[]
+  '200': {
+    body: {
+      count: integer
+      watches: QueryWatch[]
+    }
   }
 }

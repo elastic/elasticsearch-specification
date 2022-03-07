@@ -20,10 +20,12 @@
 import { DataStreamName, Field, Indices, Name } from '@_types/common'
 
 export class Response {
-  body: {
-    indices: ResolveIndexItem[]
-    aliases: ResolveIndexAliasItem[]
-    data_streams: ResolveIndexDataStreamsItem[]
+  '200': {
+    body: {
+      indices: ResolveIndexItem[]
+      aliases: ResolveIndexAliasItem[]
+      data_streams: ResolveIndexDataStreamsItem[]
+    }
   }
 }
 

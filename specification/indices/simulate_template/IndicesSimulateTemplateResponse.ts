@@ -24,9 +24,11 @@ import { IndexName, Name } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class Response {
-  body: {
-    overlapping?: Overlapping[]
-    template: Template
+  '200': {
+    body: {
+      overlapping?: Overlapping[]
+      template: Template
+    }
   }
 }
 

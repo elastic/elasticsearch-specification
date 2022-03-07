@@ -20,5 +20,7 @@
 import { PluginsRecord } from './types'
 
 export class Response {
-  body: Array<PluginsRecord>
+  '200': {
+    body: Array<PluginsRecord>
+  }
 }

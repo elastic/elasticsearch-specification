@@ -23,10 +23,12 @@ import { NodeAttributes, NodeShard } from '@_types/Node'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class Response {
-  body: {
-    nodes: Dictionary<string, NodeAttributes>
-    shards: NodeShard[][]
-    indices: Dictionary<IndexName, ShardStoreIndex>
+  '200': {
+    body: {
+      nodes: Dictionary<string, NodeAttributes>
+      shards: NodeShard[][]
+      indices: Dictionary<IndexName, ShardStoreIndex>
+    }
   }
 }
 

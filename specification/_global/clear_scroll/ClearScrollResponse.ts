@@ -20,8 +20,10 @@
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    succeeded: boolean
-    num_freed: integer
+  '200': {
+    body: {
+      succeeded: boolean
+      num_freed: integer
+    }
   }
 }

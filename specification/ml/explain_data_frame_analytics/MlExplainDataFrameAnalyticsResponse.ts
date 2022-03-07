@@ -23,10 +23,12 @@ import {
 } from '@ml/_types/DataframeAnalytics'
 
 export class Response {
-  body: {
-    /** An array of objects that explain selection for each field, sorted by the field names. */
-    field_selection: DataframeAnalyticsFieldSelection[]
-    /** An array of objects that explain selection for each field, sorted by the field names. */
-    memory_estimation: DataframeAnalyticsMemoryEstimation
+  '200': {
+    body: {
+      /** An array of objects that explain selection for each field, sorted by the field names. */
+      field_selection: DataframeAnalyticsFieldSelection[]
+      /** An array of objects that explain selection for each field, sorted by the field names. */
+      memory_estimation: DataframeAnalyticsMemoryEstimation
+    }
   }
 }

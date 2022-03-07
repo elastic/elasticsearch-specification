@@ -20,5 +20,7 @@
 import { IndicesRecord } from './types'
 
 export class Response {
-  body: Array<IndicesRecord>
+  '200': {
+    body: Array<IndicesRecord>
+  }
 }

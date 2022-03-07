@@ -21,8 +21,10 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 
 export class Response {
-  body: {
-    /** An array of objects that contain feature name and value pairs. The features have been processed and indicate what will be sent to the model for training. */
-    feature_values: Dictionary<Field, string>[]
+  '200': {
+    body: {
+      /** An array of objects that contain feature name and value pairs. The features have been processed and indicate what will be sent to the model for training. */
+      feature_values: Dictionary<Field, string>[]
+    }
   }
 }

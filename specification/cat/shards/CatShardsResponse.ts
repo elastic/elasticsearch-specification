@@ -20,5 +20,7 @@
 import { ShardsRecord } from './types'
 
 export class Response {
-  body: Array<ShardsRecord>
+  '200': {
+    body: Array<ShardsRecord>
+  }
 }

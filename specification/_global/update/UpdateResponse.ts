@@ -20,8 +20,12 @@
 import { InlineGet } from '@_types/common'
 import { WriteResponseBase } from '@_types/Base'
 
-export class Response<TDocument> extends WriteResponseBase {
-  body: {
-    get?: InlineGet<TDocument>
+export class UpdateWriteResponseBase<TDocument> extends WriteResponseBase {
+  get?: InlineGet<TDocument>
+}
+
+export class Response<TDocument> {
+  '200': {
+    body: UpdateWriteResponseBase<TDocument>
   }
 }

@@ -22,8 +22,10 @@ import { ShardStatistics } from '@_types/Stats'
 import { IndexSegment } from './types'
 
 export class Response {
-  body: {
-    indices: Dictionary<string, IndexSegment>
-    _shards: ShardStatistics
+  '200': {
+    body: {
+      indices: Dictionary<string, IndexSegment>
+      _shards: ShardStatistics
+    }
   }
 }

@@ -24,11 +24,13 @@ import {
 } from '@security/_types/Privileges'
 
 export class Response {
-  body: {
-    applications: ApplicationPrivileges[]
-    cluster: string[]
-    global: GlobalPrivilege[]
-    indices: IndicesPrivileges[]
-    run_as: string[]
+  '200': {
+    body: {
+      applications: ApplicationPrivileges[]
+      cluster: string[]
+      global: GlobalPrivilege[]
+      indices: IndicesPrivileges[]
+      run_as: string[]
+    }
   }
 }

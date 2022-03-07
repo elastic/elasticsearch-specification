@@ -21,8 +21,10 @@ import { TaskId } from '@_types/common'
 import { ExecuteEnrichPolicyStatus } from './types'
 
 export class Response {
-  body: {
-    status: ExecuteEnrichPolicyStatus
-    task_id?: TaskId
+  '200': {
+    body: {
+      status: ExecuteEnrichPolicyStatus
+      task_id?: TaskId
+    }
   }
 }

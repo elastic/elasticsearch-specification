@@ -20,5 +20,7 @@
 import { SegmentsRecord } from './types'
 
 export class Response {
-  body: Array<SegmentsRecord>
+  '200': {
+    body: Array<SegmentsRecord>
+  }
 }

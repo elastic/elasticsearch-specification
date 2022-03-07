@@ -25,5 +25,7 @@ import { Void } from '@spec_utils/VoidValue'
  * 404: Indicates one or more specified index templates do not exist.
  */
 export class Response {
-  body: Void
+  '200': {
+    body: Void
+  }
 }

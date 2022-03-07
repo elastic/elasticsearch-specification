@@ -20,10 +20,12 @@
 import { Defaults, Limits, NativeCode } from './types'
 
 export class Response {
-  body: {
-    defaults: Defaults
-    limits: Limits
-    upgrade_mode: boolean
-    native_code: NativeCode
+  '200': {
+    body: {
+      defaults: Defaults
+      limits: Limits
+      upgrade_mode: boolean
+      native_code: NativeCode
+    }
   }
 }

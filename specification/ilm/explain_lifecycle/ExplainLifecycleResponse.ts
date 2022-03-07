@@ -22,7 +22,9 @@ import { IndexName } from '@_types/common'
 import { LifecycleExplain } from './types'
 
 export class Response {
-  body: {
-    indices: Dictionary<IndexName, LifecycleExplain>
+  '200': {
+    body: {
+      indices: Dictionary<IndexName, LifecycleExplain>
+    }
   }
 }

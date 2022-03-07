@@ -22,9 +22,13 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 import { NodeUsage } from './types'
 
-export class Response extends NodesResponseBase {
-  body: {
-    cluster_name: Name
-    nodes: Dictionary<string, NodeUsage>
+export class ResponseBase extends NodesResponseBase {
+  cluster_name: Name
+  nodes: Dictionary<string, NodeUsage>
+}
+
+export class Response {
+  '200': {
+    body: ResponseBase
   }
 }
