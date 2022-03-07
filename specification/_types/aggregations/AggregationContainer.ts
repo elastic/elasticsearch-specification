@@ -125,18 +125,18 @@ export class AggregationContainer {
   bucket_selector?: BucketSelectorAggregation
   bucket_sort?: BucketSortAggregation
   /**
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-count-ks-test-aggregation.html
+   * @doc_id search-aggregations-bucket-count-ks-test-aggregation
    * @stability experimental
    */
   bucket_count_ks_test?: BucketKsAggregation
   /**
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-correlation-aggregation.html
+   * @doc_id search-aggregations-bucket-correlation-aggregation
    * @stability experimental
    */
   bucket_correlation?: BucketCorrelationAggregation
   cardinality?: CardinalityAggregation
   /**
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-categorize-text-aggregation.html
+   * @doc_id search-aggregations-bucket-categorize-text-aggregation
    * @stability experimental
    */
   categorize_text?: CategorizeTextAggregation

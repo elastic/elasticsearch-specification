@@ -394,3 +394,8 @@ cluster-name,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/importa
 cluster-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/cluster.html#cluster-nodes
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/eql.html#eql-search-specify-a-sort-tiebreaker
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/eql-syntax.html#eql-basic-syntax
+time-value,https://github.com/elastic/elasticsearch/blob/8.0/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/query-dsl-simple-query-string-query.html#supported-flags
+eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/eql-syntax.html#eql-sequences
+index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/index-modules.html#index-modules-settings
+templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/8.0/field-and-document-access-control.html#templating-role-query
