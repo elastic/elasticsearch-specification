@@ -20,11 +20,12 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 
 import assert from 'assert'
+import { STATUS_CODES } from 'http'
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
 import * as M from './metamodel'
 
-const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
+const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema-v2.json'), 'utf8'))
 
 // We don't skip `CommonQueryParameters` and `CommonCatQueryParameters`
 // behaviors because we ue them for sharing common query parameters
@@ -384,23 +385,28 @@ function buildRequest (type: M.Request): string {
 function buildResponse (type: M.Response): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
 
-  if (type.body.kind === 'properties') {
-    let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
-    for (const property of type.body.properties) {
-      code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
-      if (Array.isArray(property.aliases)) {
-        for (const alias of property.aliases) {
-          code += `    ${cleanPropertyName(alias)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+  let code = ''
+  for (const responseItem of type.responses) {
+    const successResponse = responseItem.statusCodes.some(s => s.startsWith('2'))
+    const suffix = successResponse ? '' : responseItem.statusCodes.map(s => STATUS_CODES[s]).map(s => (s as string).replace(/\s/g, ''))
+    if (responseItem.body.kind === 'properties') {
+      code += `export interface ${createName(type.name)}${suffix}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
+      for (const property of responseItem.body.properties) {
+        code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+        if (Array.isArray(property.aliases)) {
+          for (const alias of property.aliases) {
+            code += `    ${cleanPropertyName(alias)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+          }
         }
       }
+      code += '}\n'
+    } else if (responseItem.body.kind === 'no_body') {
+      code += `export type ${createName(type.name)}${suffix}${buildGenerics(type.generics, openGenerics)} = boolean\n`
+    } else {
+      code += `export type ${createName(type.name)}${suffix}${buildGenerics(type.generics, openGenerics)} = ${buildValue(responseItem.body.value, openGenerics)}\n`
     }
-    code += '}\n'
-    return code
-  } else if (type.body.kind === 'no_body') {
-    return `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = boolean\n`
-  } else {
-    return `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = ${buildValue(type.body.value, openGenerics)}\n`
   }
+  return code
 }
 
 function buildEnum (type: M.Enum): string {

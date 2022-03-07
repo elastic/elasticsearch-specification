@@ -22,7 +22,7 @@ import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
 import * as M from './metamodel'
 
-const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8'))
+const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema-v2.json'), 'utf8'))
 
 const clientDefinitions = `/*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -367,14 +367,6 @@ export {
   function getType (name: M.TypeName): M.Request | M.Response | null {
     for (const type of model.types) {
       if (type.name.name === name.name && type.name.namespace === name.namespace) {
-        if (type.kind === 'request' && type.path.some(p => p.name.startsWith('stub'))) {
-          return null
-        }
-        if (type.kind === 'response' && type.body != null &&
-            type.body.kind === 'properties' &&
-            type.body.properties.some(p => p.name.startsWith('stub'))) {
-          return null
-        }
         assert(type.kind !== 'enum')
         assert(type.kind !== 'type_alias')
         assert(type.kind !== 'interface')
