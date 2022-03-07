@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
 import { NodeId } from '@_types/common'
 
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    /** The ID of the node that the job was started on. If the job is allowed to open lazily and has not yet been assigned to a node, this value is an empty string. */
-    node: NodeId
+export class Response {
+  '200': {
+    body: {
+      acknowledged: boolean
+      /** The ID of the node that the job was started on. If the job is allowed to open lazily and has not yet been assigned to a node, this value is an empty string. */
+      node: NodeId
+    }
   }
 }

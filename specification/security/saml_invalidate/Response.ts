@@ -20,9 +20,11 @@
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    invalidated: integer
-    realm: string
-    redirect: string
+  '200': {
+    body: {
+      invalidated: integer
+      realm: string
+      redirect: string
+    }
   }
 }

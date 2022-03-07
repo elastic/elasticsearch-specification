@@ -21,9 +21,11 @@ import { OverallBucket } from '@ml/_types/Bucket'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    count: long
-    /** Array of overall bucket objects */
-    overall_buckets: OverallBucket[]
+  '200': {
+    body: {
+      count: long
+      /** Array of overall bucket objects */
+      overall_buckets: OverallBucket[]
+    }
   }
 }

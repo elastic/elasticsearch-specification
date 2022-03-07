@@ -22,11 +22,13 @@ import { Name } from '@_types/common'
 import { WatcherNodeStats } from './types'
 
 export class Response {
-  body: {
-    /** @codegen_name node_stats */
-    _nodes: NodeStatistics
-    cluster_name: Name
-    manually_stopped: boolean
-    stats: WatcherNodeStats[]
+  '200': {
+    body: {
+      /** @codegen_name node_stats */
+      _nodes: NodeStatistics
+      cluster_name: Name
+      manually_stopped: boolean
+      stats: WatcherNodeStats[]
+    }
   }
 }

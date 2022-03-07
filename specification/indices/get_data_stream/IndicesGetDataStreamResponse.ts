@@ -29,7 +29,9 @@ import {
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: { data_streams: IndicesGetDataStreamItem[] }
+  '200': {
+    body: { data_streams: IndicesGetDataStreamItem[] }
+  }
 }
 
 export class IndicesGetDataStreamItem {

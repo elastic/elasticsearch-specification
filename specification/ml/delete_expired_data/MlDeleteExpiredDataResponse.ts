@@ -18,5 +18,7 @@
  */
 
 export class Response {
-  body: { deleted: boolean }
+  '200': {
+    body: { deleted: boolean }
+  }
 }

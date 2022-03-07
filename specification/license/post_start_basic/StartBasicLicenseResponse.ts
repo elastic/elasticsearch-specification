@@ -19,13 +19,15 @@
 
 import { LicenseType } from '@license/_types/License'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    basic_was_started: boolean
-    error_message?: string
-    type?: LicenseType
-    acknowledge?: Dictionary<string, string | string[]>
+export class Response {
+  '200': {
+    body: {
+      acknowledged: boolean
+      basic_was_started: boolean
+      error_message?: string
+      type?: LicenseType
+      acknowledge?: Dictionary<string, string | string[]>
+    }
   }
 }

@@ -20,5 +20,7 @@
 import { CreatedStatus } from '@security/_types/CreatedStatus'
 
 export class Response {
-  body: { created?: boolean; role_mapping: CreatedStatus }
+  '200': {
+    body: { created?: boolean; role_mapping: CreatedStatus }
+  }
 }

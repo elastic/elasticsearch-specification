@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { TypeFieldMappings } from './types'
 
-export class Response extends DictionaryResponseBase<
-  IndexName,
-  TypeFieldMappings
-> {}
+export class Response {
+  '200': {
+    body: Dictionary<IndexName, TypeFieldMappings>
+  }
+}

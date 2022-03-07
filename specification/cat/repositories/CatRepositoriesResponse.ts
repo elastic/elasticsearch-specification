@@ -20,5 +20,7 @@
 import { RepositoriesRecord } from './types'
 
 export class Response {
-  body: Array<RepositoriesRecord>
+  '200': {
+    body: Array<RepositoriesRecord>
+  }
 }

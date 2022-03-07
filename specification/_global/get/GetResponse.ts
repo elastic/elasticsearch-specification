@@ -20,5 +20,7 @@
 import { GetResult } from '@global/get/types'
 
 export class Response<TDocument> {
-  body: GetResult<TDocument>
+  '200': {
+    body: GetResult<TDocument>
+  }
 }

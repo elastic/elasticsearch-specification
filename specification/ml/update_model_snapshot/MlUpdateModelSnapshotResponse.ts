@@ -18,10 +18,12 @@
  */
 
 import { ModelSnapshot } from '@ml/_types/Model'
-import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    model: ModelSnapshot
+export class Response {
+  '200': {
+    body: {
+      acknowledged: boolean
+      model: ModelSnapshot
+    }
   }
 }

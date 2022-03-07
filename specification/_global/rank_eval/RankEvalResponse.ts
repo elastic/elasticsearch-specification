@@ -24,11 +24,13 @@ import { double } from '@_types/Numeric'
 import { RankEvalMetricDetail } from './types'
 
 export class Response {
-  body: {
-    /** The overall evaluation quality calculated by the defined metric */
-    metric_score: double
-    /** The details section contains one entry for every query in the original requests section, keyed by the search request id */
-    details: Dictionary<Id, RankEvalMetricDetail>
-    failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
+  '200': {
+    body: {
+      /** The overall evaluation quality calculated by the defined metric */
+      metric_score: double
+      /** The details section contains one entry for every query in the original requests section, keyed by the search request id */
+      details: Dictionary<Id, RankEvalMetricDetail>
+      failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
+    }
   }
 }

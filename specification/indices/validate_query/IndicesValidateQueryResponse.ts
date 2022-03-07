@@ -21,11 +21,13 @@ import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  body: {
-    explanations?: IndicesValidationExplanation[]
-    _shards?: ShardStatistics
-    valid: boolean
-    error?: string
+  '200': {
+    body: {
+      explanations?: IndicesValidationExplanation[]
+      _shards?: ShardStatistics
+      valid: boolean
+      error?: string
+    }
   }
 }
 

@@ -24,10 +24,12 @@ import { integer } from '@_types/Numeric'
  * 404 (Missing resources) If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.
  */
 export class Response {
-  body: {
-    /** The total number of trained model statistics that matched the requested ID patterns. Could be higher than the number of items in the trained_model_stats array as the size of the array is restricted by the supplied size parameter. */
-    count: integer
-    /** An array of trained model statistics, which are sorted by the model_id value in ascending order. */
-    trained_model_stats: TrainedModelStats[]
+  '200': {
+    body: {
+      /** The total number of trained model statistics that matched the requested ID patterns. Could be higher than the number of items in the trained_model_stats array as the size of the array is restricted by the supplied size parameter. */
+      count: integer
+      /** An array of trained model statistics, which are sorted by the model_id value in ascending order. */
+      trained_model_stats: TrainedModelStats[]
+    }
   }
 }

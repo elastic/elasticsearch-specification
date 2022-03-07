@@ -21,5 +21,7 @@ import { long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  body: { count: long; _shards: ShardStatistics }
+  '200': {
+    body: { count: long; _shards: ShardStatistics }
+  }
 }

@@ -20,7 +20,9 @@
 import { ResponseItem } from './types'
 
 export class Response<TDocument> {
-  body: {
-    docs: ResponseItem<TDocument>[]
+  '200': {
+    body: {
+      docs: ResponseItem<TDocument>[]
+    }
   }
 }

@@ -20,11 +20,13 @@
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    access_token: string
-    username: string
-    expires_in: integer
-    refresh_token: string
-    realm: string
+  '200': {
+    body: {
+      access_token: string
+      username: string
+      expires_in: integer
+      refresh_token: string
+      realm: string
+    }
   }
 }

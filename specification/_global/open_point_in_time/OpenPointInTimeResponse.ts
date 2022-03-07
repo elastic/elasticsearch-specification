@@ -20,5 +20,7 @@
 import { Id } from '@_types/common'
 
 export class Response {
-  body: { id: Id }
+  '200': {
+    body: { id: Id }
+  }
 }

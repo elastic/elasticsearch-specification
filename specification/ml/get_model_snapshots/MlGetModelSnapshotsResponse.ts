@@ -21,8 +21,10 @@ import { ModelSnapshot } from '@ml/_types/Model'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    count: long
-    model_snapshots: ModelSnapshot[]
+  '200': {
+    body: {
+      count: long
+      model_snapshots: ModelSnapshot[]
+    }
   }
 }

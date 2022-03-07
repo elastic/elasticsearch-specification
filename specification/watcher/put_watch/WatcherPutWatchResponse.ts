@@ -21,11 +21,13 @@ import { Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    created: boolean
-    _id: Id
-    _primary_term: long
-    _seq_no: SequenceNumber
-    _version: VersionNumber
+  '200': {
+    body: {
+      created: boolean
+      _id: Id
+      _primary_term: long
+      _seq_no: SequenceNumber
+      _version: VersionNumber
+    }
   }
 }

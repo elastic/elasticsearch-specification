@@ -20,15 +20,17 @@
 import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 
 export class Response {
-  body: {
-    /**
-     * Equals `true` if the snapshot was accepted. Present when the request had `wait_for_completion` set to `false`
-     * @since 7.15.0
-     */
-    accepted?: boolean
-    /**
-     * Snapshot information. Present when the request had `wait_for_completion` set to `true`
-     */
-    snapshot?: SnapshotInfo
+  '200': {
+    body: {
+      /**
+       * Equals `true` if the snapshot was accepted. Present when the request had `wait_for_completion` set to `false`
+       * @since 7.15.0
+       */
+      accepted?: boolean
+      /**
+       * Snapshot information. Present when the request had `wait_for_completion` set to `true`
+       */
+      snapshot?: SnapshotInfo
+    }
   }
 }
