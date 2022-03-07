@@ -339,7 +339,7 @@ query-dsl-mlt-query,https://www.elastic.co/guide/en/elasticsearch/reference/mast
 query-dsl,https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
 common-options,https://www.elastic.co/guide/en/elasticsearch/reference/master/common-options.html
 indices-create-data-stream,https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-create-data-stream.html
-mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html
+mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/master/mapping-date-format.html
 query-dsl-minimum-should-match,https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-minimum-should-match.html
 query-dsl-multi-term-rewrite,https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-multi-term-rewrite.html
 modules-node,https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-node.html
@@ -394,3 +394,8 @@ cluster-name,https://www.elastic.co/guide/en/elasticsearch/reference/master/impo
 cluster-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster.html#cluster-nodes
 sort-tiebreaker,https://www.elastic.co/guide/en/elasticsearch/reference/master/eql.html#eql-search-specify-a-sort-tiebreaker
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/master/eql-syntax.html#eql-basic-syntax
+time-value,https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-simple-query-string-query.html#supported-flags
+eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/master/eql-syntax.html#eql-sequences
+index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules.html#index-modules-settings
+templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query

@@ -37,7 +37,7 @@ export type DateOrEpochMillis = DateString | EpochMillis
 
 export type TimeZone = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html */
+/** @doc_id mapping-date-format */
 export type DateFormat = string
 
 export enum DateMathOperation {
@@ -64,7 +64,7 @@ export enum DateMathTimeUnit {
 
 /**
  * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
- * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+ * @doc_id time-value
  * @codegen_names time, offset
  */
 //FIXME: need to distinguish durations (has to be a string), offsets (can be a string or number)

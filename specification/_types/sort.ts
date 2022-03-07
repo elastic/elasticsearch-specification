@@ -78,7 +78,7 @@ export enum ScriptSortType {
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html
+ * @doc_id sort-search-results
  * @variants container
  */
 export class SortOptions implements AdditionalProperty<Field, FieldSort> {

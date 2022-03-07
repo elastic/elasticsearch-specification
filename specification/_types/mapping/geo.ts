@@ -38,7 +38,7 @@ export enum GeoOrientation {
  * The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles
  * and polygons.
  *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html
+ * @doc_id geo-shape
  */
 export class GeoShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean
@@ -70,7 +70,7 @@ export class PointProperty extends DocValuesPropertyBase {
  * The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as
  * rectangles and polygons.
  *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/shape.html
+ * @doc_id shape
  */
 export class ShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean
