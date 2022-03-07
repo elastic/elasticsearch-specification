@@ -20,9 +20,11 @@
 import { Id } from '@_types/common'
 
 export class Response {
-  body: {
-    id: Id
-    realm: string
-    redirect: string
+  '200': {
+    body: {
+      id: Id
+      realm: string
+      redirect: string
+    }
   }
 }

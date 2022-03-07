@@ -23,18 +23,20 @@ import { Metadata, Name, Username } from '@_types/common'
 import { Token } from './types'
 
 export class Response {
-  body: {
-    api_key?: ApiKey
-    authentication_realm: RealmInfo
-    email?: string | null
-    full_name?: Name | null
-    lookup_realm: RealmInfo
-    metadata: Metadata
-    roles: string[]
-    username: Username
-    enabled: boolean
-    authentication_type: string
-    /** @since 7.14.0 */
-    token?: Token
+  '200': {
+    body: {
+      api_key?: ApiKey
+      authentication_realm: RealmInfo
+      email?: string | null
+      full_name?: Name | null
+      lookup_realm: RealmInfo
+      metadata: Metadata
+      roles: string[]
+      username: Username
+      enabled: boolean
+      authentication_type: string
+      /** @since 7.14.0 */
+      token?: Token
+    }
   }
 }

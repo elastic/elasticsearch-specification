@@ -18,5 +18,7 @@
  */
 
 export class Response {
-  body: { created: boolean }
+  '200': {
+    body: { created: boolean }
+  }
 }

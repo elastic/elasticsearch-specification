@@ -18,6 +18,10 @@
  */
 
 import { Pipeline } from '@ingest/_types/Pipeline'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
-export class Response extends DictionaryResponseBase<string, Pipeline> {}
+export class Response {
+  '200': {
+    body: Dictionary<string, Pipeline>
+  }
+}

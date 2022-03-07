@@ -21,7 +21,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 
 export class Response {
-  body: { nodes: Dictionary<string, CompactNodeInfo> }
+  '200': {
+    body: { nodes: Dictionary<string, CompactNodeInfo> }
+  }
 }
 
 export class CompactNodeInfo {

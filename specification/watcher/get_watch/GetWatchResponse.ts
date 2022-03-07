@@ -22,13 +22,15 @@ import { Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    found: boolean
-    _id: Id
-    status?: WatchStatus
-    watch?: Watch
-    _primary_term?: integer
-    _seq_no?: SequenceNumber
-    _version?: VersionNumber
+  '200': {
+    body: {
+      found: boolean
+      _id: Id
+      status?: WatchStatus
+      watch?: Watch
+      _primary_term?: integer
+      _seq_no?: SequenceNumber
+      _version?: VersionNumber
+    }
   }
 }

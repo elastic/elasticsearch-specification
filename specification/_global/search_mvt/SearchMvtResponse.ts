@@ -20,5 +20,7 @@
 import { MapboxVectorTiles } from '@_types/Binary'
 
 export class Response {
-  body: MapboxVectorTiles
+  '200': {
+    body: MapboxVectorTiles
+  }
 }

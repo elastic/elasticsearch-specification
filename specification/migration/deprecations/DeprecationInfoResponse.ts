@@ -21,10 +21,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Deprecation } from './types'
 
 export class Response {
-  body: {
-    cluster_settings: Deprecation[]
-    index_settings: Dictionary<string, Deprecation[]>
-    node_settings: Deprecation[]
-    ml_settings: Deprecation[]
+  '200': {
+    body: {
+      cluster_settings: Deprecation[]
+      index_settings: Dictionary<string, Deprecation[]>
+      node_settings: Deprecation[]
+      ml_settings: Deprecation[]
+    }
   }
 }

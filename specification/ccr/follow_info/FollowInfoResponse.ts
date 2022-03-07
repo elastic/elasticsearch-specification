@@ -20,5 +20,7 @@
 import { FollowerIndex } from './types'
 
 export class Response {
-  body: { follower_indices: FollowerIndex[] }
+  '200': {
+    body: { follower_indices: FollowerIndex[] }
+  }
 }

@@ -20,5 +20,7 @@
 import { SnapshotsRecord } from './types'
 
 export class Response {
-  body: Array<SnapshotsRecord>
+  '200': {
+    body: Array<SnapshotsRecord>
+  }
 }

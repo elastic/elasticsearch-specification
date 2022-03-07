@@ -20,12 +20,14 @@
 import { Id, Ids } from '@_types/common'
 
 export class Response {
-  body: {
-    /** A string that uniquely identifies a calendar. */
-    calendar_id: Id
-    /** A description of the calendar. */
-    description?: string
-    /** A list of anomaly detection job identifiers or group names. */
-    job_ids: Ids
+  '200': {
+    body: {
+      /** A string that uniquely identifies a calendar. */
+      calendar_id: Id
+      /** A description of the calendar. */
+      description?: string
+      /** A list of anomaly detection job identifiers or group names. */
+      job_ids: Ids
+    }
   }
 }

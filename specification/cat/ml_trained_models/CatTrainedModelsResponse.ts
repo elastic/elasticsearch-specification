@@ -20,5 +20,7 @@
 import { TrainedModelsRecord } from './types'
 
 export class Response {
-  body: Array<TrainedModelsRecord>
+  '200': {
+    body: Array<TrainedModelsRecord>
+  }
 }

@@ -20,5 +20,7 @@
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 
 export class Response {
-  body: { operation_mode: LifecycleOperationMode }
+  '200': {
+    body: { operation_mode: LifecycleOperationMode }
+  }
 }

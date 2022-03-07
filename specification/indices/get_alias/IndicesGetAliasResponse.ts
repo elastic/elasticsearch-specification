@@ -19,10 +19,13 @@
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<IndexName, IndexAliases> {}
+export class Response {
+  '200': {
+    body: Dictionary<IndexName, IndexAliases>
+  }
+}
 
 export class IndexAliases {
   aliases: Dictionary<string, AliasDefinition>

@@ -21,9 +21,11 @@ import { ApiKey } from '@security/_types/ApiKey'
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    total: integer
-    count: integer
-    api_keys: ApiKey[]
+  '200': {
+    body: {
+      total: integer
+      count: integer
+      api_keys: ApiKey[]
+    }
   }
 }

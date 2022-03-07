@@ -21,10 +21,12 @@ import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: {
-    error_count: integer
-    error_details?: ErrorCause[]
-    invalidated_api_keys: string[]
-    previously_invalidated_api_keys: string[]
+  '200': {
+    body: {
+      error_count: integer
+      error_details?: ErrorCause[]
+      invalidated_api_keys: string[]
+      previously_invalidated_api_keys: string[]
+    }
   }
 }

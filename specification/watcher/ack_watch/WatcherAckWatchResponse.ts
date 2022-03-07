@@ -20,5 +20,7 @@
 import { WatchStatus } from '@watcher/_types/Watch'
 
 export class Response {
-  body: { status: WatchStatus }
+  '200': {
+    body: { status: WatchStatus }
+  }
 }

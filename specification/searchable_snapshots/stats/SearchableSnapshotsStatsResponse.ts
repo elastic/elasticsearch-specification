@@ -20,8 +20,10 @@
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  body: {
-    stats: UserDefinedValue // TODO: complete this definition
-    total: UserDefinedValue // TODO: complete this definition
+  '200': {
+    body: {
+      stats: UserDefinedValue // TODO: complete this definition
+      total: UserDefinedValue // TODO: complete this definition
+    }
   }
 }

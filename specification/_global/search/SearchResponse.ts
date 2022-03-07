@@ -32,7 +32,9 @@ import { Suggest } from './_types/suggester'
 // - fleet.search
 // - scroll
 export class Response<TDocument> {
-  body: ResponseBody<TDocument>
+  '200': {
+    body: ResponseBody<TDocument>
+  }
 }
 
 export class ResponseBody<TDocument> {

@@ -20,8 +20,10 @@
 import { IndexState } from '@indices/_types/IndexState'
 
 export class Response<TTransform> {
-  body: {
-    generated_dest_index: IndexState
-    preview: TTransform[]
+  '200': {
+    body: {
+      generated_dest_index: IndexState
+      preview: TTransform[]
+    }
   }
 }
