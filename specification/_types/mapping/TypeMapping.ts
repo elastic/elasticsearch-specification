@@ -41,7 +41,7 @@ export class TypeMapping {
     | Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
   numeric_detection?: boolean
   properties?: Dictionary<PropertyName, Property>

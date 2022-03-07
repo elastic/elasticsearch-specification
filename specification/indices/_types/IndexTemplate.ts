@@ -30,7 +30,7 @@ export class IndexTemplate {
   template?: IndexTemplateSummary
   version?: VersionNumber
   priority?: long
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
   allow_auto_create?: boolean
   data_stream?: IndexTemplateDataStreamConfiguration

@@ -40,7 +40,7 @@ export class DataStream {
   system?: boolean
   status: HealthStatus
   ilm_policy?: Name
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
   allow_custom_routing?: boolean
 }

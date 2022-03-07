@@ -49,7 +49,7 @@ export class NodeInfo {
   thread_pool?: Dictionary<string, NodeThreadPoolInfo>
   /**
    * Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html
+   * @doc_id indexing-buffer
    */
   total_indexing_buffer?: long
   /** Same as total_indexing_buffer, but expressed in bytes. */
