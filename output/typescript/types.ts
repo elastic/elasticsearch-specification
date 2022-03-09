@@ -9118,10 +9118,7 @@ export interface IndicesIndexSettings {
   'index.format'?: string | integer
   max_slices_per_scroll?: integer
   'index.max_slices_per_scroll'?: integer
-  'translog.durability'?: string
-  'index.translog.durability'?: string
-  'translog.flush_threshold_size'?: string
-  'index.translog.flush_threshold_size'?: string
+  translog?: IndicesTranslog
   'query_string.lenient'?: boolean
   'index.query_string.lenient'?: boolean
   priority?: integer | string
@@ -9130,6 +9127,10 @@ export interface IndicesIndexSettings {
   analysis?: IndicesIndexSettingsAnalysis
   'index.analysis'?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
+  mappings?: IndicesMappingLimitSettings
+  'indexing.slowlog'?: IndicesSlowlogSettings
+  indexing_pressure?: IndicesIndexingPressure
+  store?: IndicesStorage
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -9142,6 +9143,15 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
+  indexing_complete?: boolean
+  origination_date?: long
+  parse_origination_date?: boolean
+  step?: IndicesIndexSettingsLifecycleStep
+  rollover_alias?: string
+}
+
+export interface IndicesIndexSettingsLifecycleStep {
+  wait_time_threshold?: Time
 }
 
 export interface IndicesIndexState {
@@ -9156,6 +9166,47 @@ export interface IndicesIndexVersioning {
   created: VersionString
 }
 
+export interface IndicesIndexingPressure {
+  memory: IndicesIndexingPressureMemory
+}
+
+export interface IndicesIndexingPressureMemory {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettings {
+  total_fields?: IndicesMappingLimitSettingsTotalFields
+  depth?: IndicesMappingLimitSettingsDepth
+  nested_fields?: IndicesMappingLimitSettingsNestedFields
+  nested_objects?: IndicesMappingLimitSettingsNestedObjects
+  field_name_length?: IndicesMappingLimitSettingsFieldNameLength
+  dimension_fields?: IndicesMappingLimitSettingsDimensionFields
+}
+
+export interface IndicesMappingLimitSettingsDepth {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsDimensionFields {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsFieldNameLength {
+  limit?: long
+}
+
+export interface IndicesMappingLimitSettingsNestedFields {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsNestedObjects {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsTotalFields {
+  limit?: integer
+}
+
 export interface IndicesNumericFielddata {
   format: IndicesNumericFielddataFormat
 }
@@ -9167,15 +9218,47 @@ export interface IndicesOverlappingIndexTemplate {
   index_patterns?: IndexName[]
 }
 
+export interface IndicesRetentionLease {
+  period: Time
+}
+
 export type IndicesSegmentSortMissing = '_last' | '_first'
 
 export type IndicesSegmentSortMode = 'min' | 'max'
 
 export type IndicesSegmentSortOrder = 'asc' | 'desc'
 
-export interface IndicesSoftDeletes {
-  enabled: boolean
+export interface IndicesSlowlogSettings {
+  level?: string
+  source?: integer
+  reformat?: boolean
+  threshold?: IndicesSlowlogTresholds
 }
+
+export interface IndicesSlowlogTresholdLevels {
+  warn?: Time
+  info?: Time
+  debug?: Time
+  trace?: Time
+}
+
+export interface IndicesSlowlogTresholds {
+  query?: IndicesSlowlogTresholdLevels
+  fetch?: IndicesSlowlogTresholdLevels
+  index?: IndicesSlowlogTresholdLevels
+}
+
+export interface IndicesSoftDeletes {
+  enabled?: boolean
+  retention_lease?: IndicesRetentionLease
+}
+
+export interface IndicesStorage {
+  type: IndicesStorageType
+  allow_mmap?: boolean
+}
+
+export type IndicesStorageType = 'fs' | 'niofs' | 'mmapfs' | 'hybridfs'
 
 export interface IndicesStringFielddata {
   format: IndicesStringFielddataFormat
@@ -9190,6 +9273,20 @@ export interface IndicesTemplateMapping {
   order: integer
   settings: Record<string, any>
   version?: VersionNumber
+}
+
+export interface IndicesTranslog {
+  sync_interval?: Time
+  durability?: IndicesTranslogDurability
+  flush_threshold_size?: ByteSize
+  retention?: IndicesTranslogRetention
+}
+
+export type IndicesTranslogDurability = 'request' | 'async'
+
+export interface IndicesTranslogRetention {
+  size?: ByteSize
+  age?: Time
 }
 
 export type IndicesAddBlockIndicesBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
