@@ -64,7 +64,11 @@ export class RetentionLease {
 }
 
 /**
+<<<<<<< HEAD
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
+=======
+ * @doc_id index-modules-settings
+>>>>>>> main
  */
 export class IndexSettings {
   index?: IndexSettings
