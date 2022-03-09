@@ -394,7 +394,7 @@ export class CacheQueries {
 
 /**
  * Mapping Limit Settings
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html
+ * @doc_url mapping-settings-limit
  */
 export class MappingLimitSettings {
   /**
