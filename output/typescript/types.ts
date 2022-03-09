@@ -9332,8 +9332,12 @@ export interface IndicesIndexSettingsLifecycle {
   indexing_complete?: boolean
   origination_date?: long
   parse_origination_date?: boolean
-  'step.wait_time_threshold'?: Time
+  step?: IndicesIndexSettingsLifecycleStep
   rollover_alias?: string
+}
+
+export interface IndicesIndexSettingsLifecycleStep {
+  wait_time_threshold?: Time
 }
 
 export interface IndicesIndexSettingsTimeSeries {
@@ -9377,16 +9381,44 @@ export interface IndicesIndexVersioning {
 }
 
 export interface IndicesIndexingPressure {
-  'memory.limit'?: integer
+  memory: IndicesIndexingPressureMemory
+}
+
+export interface IndicesIndexingPressureMemory {
+  limit?: integer
 }
 
 export interface IndicesMappingLimitSettings {
-  'total_fields.limit'?: integer
-  'depth.limit'?: integer
-  'nested_fields.limit'?: integer
-  'nested_objects.limit'?: integer
-  'field_name_length.limit'?: long
-  'dimension_fields.limit'?: integer
+  total_fields?: IndicesMappingLimitSettingsTotalFields
+  depth?: IndicesMappingLimitSettingsDepth
+  nested_fields?: IndicesMappingLimitSettingsNestedFields
+  nested_objects?: IndicesMappingLimitSettingsNestedObjects
+  field_name_length?: IndicesMappingLimitSettingsFieldNameLength
+  dimension_fields?: IndicesMappingLimitSettingsDimensionFields
+}
+
+export interface IndicesMappingLimitSettingsDepth {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsDimensionFields {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsFieldNameLength {
+  limit?: long
+}
+
+export interface IndicesMappingLimitSettingsNestedFields {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsNestedObjects {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsTotalFields {
+  limit?: integer
 }
 
 export interface IndicesMerge {

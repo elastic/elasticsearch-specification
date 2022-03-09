@@ -64,15 +64,7 @@ export class RetentionLease {
 }
 
 /**
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings
-=======
  * @doc_id index-modules-settings
->>>>>>> main
-=======
- * @doc_id index-modules-settings
->>>>>>> f8e743921e6d54ff2caf33480f84757edda8d273
  */
 export class IndexSettings {
   index?: IndexSettings
@@ -254,9 +246,9 @@ export class IndexSettingBlocks {
 }
 
 export enum IndexCheckOnStartup {
-  false = 0,
-  checksum = 1,
-  true = 2
+  false,
+  checksum,
+  true
 }
 
 export class IndexVersioning {
@@ -289,12 +281,7 @@ export class IndexSettingsLifecycle {
    * for example logs-2016.10.31-000002). If the index name doesn’t match the pattern, index creation fails.
    */
   parse_origination_date?: boolean
-  /**
-   * Time to wait for the cluster to resolve allocation issues during an ILM shrink action. Must be greater than 1h (1 hour).
-   * See Shard allocation for shrink.
-   * @server_default 12h
-   */
-  'step.wait_time_threshold'?: Time
+  step?: IndexSettingsLifecycleStep
   /**
    * The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.
    * When the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more
@@ -302,6 +289,14 @@ export class IndexSettingsLifecycle {
    * @server_default
    */
   rollover_alias?: string
+}
+
+export class IndexSettingsLifecycleStep {
+  /**
+   * Time to wait for the cluster to resolve allocation issues during an ILM shrink action. Must be greater than 1h (1 hour).
+   * See Shard allocation for shrink.
+   */
+  wait_time_threshold?: Time
 }
 
 export class IndexSettingsAnalysis {
@@ -394,46 +389,70 @@ export class CacheQueries {
 
 /**
  * Mapping Limit Settings
- * @doc_url mapping-settings-limit
+ * @doc_id mapping-settings-limit
  */
 export class MappingLimitSettings {
+  total_fields?: MappingLimitSettingsTotalFields
+  depth?: MappingLimitSettingsDepth
+  nested_fields?: MappingLimitSettingsNestedFields
+  nested_objects?: MappingLimitSettingsNestedObjects
+  field_name_length?: MappingLimitSettingsFieldNameLength
+  dimension_fields?: MappingLimitSettingsDimensionFields
+}
+
+export class MappingLimitSettingsTotalFields {
   /**
    * The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.
    * The limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
-  'total_fields.limit'?: integer
+  limit?: integer
+}
+
+export class MappingLimitSettingsDepth {
   /**
    * The maximum depth for a field, which is measured as the number of inner objects. For instance, if all fields are defined
    * at the root object level, then the depth is 1. If there is one object mapping, then the depth is 2, etc.
    * @server_default 20
    */
-  'depth.limit'?: integer
+  limit?: integer
+}
+
+export class MappingLimitSettingsNestedFields {
   /**
    * The maximum number of distinct nested mappings in an index. The nested type should only be used in special cases, when
    * arrays of objects need to be queried independently of each other. To safeguard against poorly designed mappings, this
    * setting limits the number of unique nested types per index.
    * @server_default 50
    */
-  'nested_fields.limit'?: integer
+  limit?: integer
+}
+
+export class MappingLimitSettingsNestedObjects {
   /**
    * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps
    * to prevent out of memory errors when a document contains too many nested objects.
    * @server_default 10000
    */
-  'nested_objects.limit'?: integer
+  limit?: integer
+}
+
+export class MappingLimitSettingsFieldNameLength {
   /**
    * Setting for the maximum length of a field name. This setting isn’t really something that addresses mappings explosion but
    * might still be useful if you want to limit the field length. It usually shouldn’t be necessary to set this setting. The
    * default is okay unless a user starts to add a huge number of fields with really long names. Default is `Long.MAX_VALUE` (no limit).
    */
-  'field_name_length.limit'?: long
+  limit?: long
+}
+
+export class MappingLimitSettingsDimensionFields {
   /**
    * [preview] This functionality is in technical preview and may be changed or removed in a future release. Elastic will
    * apply best effort to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
-  'dimension_fields.limit'?: integer
+  limit?: integer
 }
 
 export class SlowlogSettings {
@@ -449,7 +468,7 @@ export class SlowlogTresholds {
   /**
    * The indexing slow log, similar in functionality to the search slow log. The log file name ends with `_index_indexing_slowlog.json`.
    * Log and the thresholds are configured in the same way as the search slowlog.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html#index-slow-log
+   * @doc_id index-modules-slowlog-slowlog
    */
   index?: SlowlogTresholdLevels
 }
@@ -500,10 +519,14 @@ export enum StorageType {
 }
 
 export class IndexingPressure {
+  memory: IndexingPressureMemory
+}
+
+export class IndexingPressureMemory {
   /**
    * Number of outstanding bytes that may be consumed by indexing requests. When this limit is reached or exceeded,
    * the node will reject new coordinating and primary operations. When replica operations consume 1.5x this limit,
    * the node will reject new replica operations. Defaults to 10% of the heap.
    */
-  'memory.limit'?: integer
+  limit?: integer
 }
