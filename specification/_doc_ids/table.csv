@@ -399,3 +399,5 @@ supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/master/q
 eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/master/eql-syntax.html#eql-sequences
 index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules.html#index-modules-settings
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
+mapping-settings-limit,https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html
+index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html#index-slow-log

@@ -9313,6 +9313,10 @@ export interface IndicesIndexSettings {
   shards?: integer
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
+  mappings?: IndicesMappingLimitSettings
+  'indexing.slowlog'?: IndicesSlowlogSettings
+  indexing_pressure?: IndicesIndexingPressure
+  store?: IndicesStorage
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -9325,6 +9329,15 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
+  indexing_complete?: boolean
+  origination_date?: long
+  parse_origination_date?: boolean
+  step?: IndicesIndexSettingsLifecycleStep
+  rollover_alias?: string
+}
+
+export interface IndicesIndexSettingsLifecycleStep {
+  wait_time_threshold?: Time
 }
 
 export interface IndicesIndexSettingsTimeSeries {
@@ -9365,6 +9378,47 @@ export interface IndicesIndexTemplateSummary {
 export interface IndicesIndexVersioning {
   created: VersionString
   created_string?: VersionString
+}
+
+export interface IndicesIndexingPressure {
+  memory: IndicesIndexingPressureMemory
+}
+
+export interface IndicesIndexingPressureMemory {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettings {
+  total_fields?: IndicesMappingLimitSettingsTotalFields
+  depth?: IndicesMappingLimitSettingsDepth
+  nested_fields?: IndicesMappingLimitSettingsNestedFields
+  nested_objects?: IndicesMappingLimitSettingsNestedObjects
+  field_name_length?: IndicesMappingLimitSettingsFieldNameLength
+  dimension_fields?: IndicesMappingLimitSettingsDimensionFields
+}
+
+export interface IndicesMappingLimitSettingsDepth {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsDimensionFields {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsFieldNameLength {
+  limit?: long
+}
+
+export interface IndicesMappingLimitSettingsNestedFields {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsNestedObjects {
+  limit?: integer
+}
+
+export interface IndicesMappingLimitSettingsTotalFields {
+  limit?: integer
 }
 
 export interface IndicesMerge {
@@ -9413,7 +9467,8 @@ export interface IndicesSettingsQueryString {
 }
 
 export interface IndicesSettingsSearch {
-  idle: IndicesSearchIdle
+  idle?: IndicesSearchIdle
+  slowlog?: IndicesSlowlogSettings
 }
 
 export interface IndicesSettingsSimilarity {
@@ -9467,10 +9522,37 @@ export interface IndicesSettingsSimilarityScriptedTfidf {
   type: 'scripted'
 }
 
+export interface IndicesSlowlogSettings {
+  level?: string
+  source?: integer
+  reformat?: boolean
+  threshold?: IndicesSlowlogTresholds
+}
+
+export interface IndicesSlowlogTresholdLevels {
+  warn?: Time
+  info?: Time
+  debug?: Time
+  trace?: Time
+}
+
+export interface IndicesSlowlogTresholds {
+  query?: IndicesSlowlogTresholdLevels
+  fetch?: IndicesSlowlogTresholdLevels
+  index?: IndicesSlowlogTresholdLevels
+}
+
 export interface IndicesSoftDeletes {
-  enabled: boolean
+  enabled?: boolean
   retention_lease?: IndicesRetentionLease
 }
+
+export interface IndicesStorage {
+  type: IndicesStorageType
+  allow_mmap?: boolean
+}
+
+export type IndicesStorageType = 'fs' | 'niofs' | 'mmapfs' | 'hybridfs'
 
 export interface IndicesStringFielddata {
   format: IndicesStringFielddataFormat
@@ -9488,13 +9570,17 @@ export interface IndicesTemplateMapping {
 }
 
 export interface IndicesTranslog {
-  durability?: string
-  flush_threshold_size?: string
+  sync_interval?: Time
+  durability?: IndicesTranslogDurability
+  flush_threshold_size?: ByteSize
   retention?: IndicesTranslogRetention
 }
 
+export type IndicesTranslogDurability = 'request' | 'async'
+
 export interface IndicesTranslogRetention {
-  size: ByteSize
+  size?: ByteSize
+  age?: Time
 }
 
 export type IndicesAddBlockIndicesBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
