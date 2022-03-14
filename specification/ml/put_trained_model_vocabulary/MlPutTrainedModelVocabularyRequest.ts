@@ -41,5 +41,10 @@ export interface Request extends RequestBase {
      * The model vocabulary, which must not be empty.
      */
     vocabulary: string[]
+
+    /**
+     * The optional model merges if required by the tokenizer.
+     */
+    merges?: string[]
   }
 }
