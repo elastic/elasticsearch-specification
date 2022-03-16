@@ -489,6 +489,7 @@ export interface KnnSearchRequest extends RequestBase {
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     stored_fields?: Fields
     fields?: Fields
+    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
     knn: KnnSearchQuery
   }
 }
