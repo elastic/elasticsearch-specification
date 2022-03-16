@@ -12254,6 +12254,7 @@ export interface MlTrainedModelDeploymentAllocationStatus {
 
 export interface MlTrainedModelDeploymentNodesStats {
   average_inference_time_ms: double
+  average_inference_time_ms_last_minute: double
   error_count: integer
   inference_count: integer
   inference_threads: integer
@@ -12261,10 +12262,12 @@ export interface MlTrainedModelDeploymentNodesStats {
   model_threads: integer
   node: MlDiscoveryNode
   number_of_pending_requests: integer
+  peak_throughput_per_minute: integer
   rejection_execution_count: integer
   routing_state: MlTrainedModelAllocationRoutingTable
   start_time: long
   timeout_count: integer
+  throughput_last_minute: integer
 }
 
 export interface MlTrainedModelDeploymentStats {
@@ -12275,6 +12278,7 @@ export interface MlTrainedModelDeploymentStats {
   model_id: Id
   model_threads: integer
   nodes: MlTrainedModelDeploymentNodesStats
+  peak_throughput_per_minute: integer
   queue_capacity: integer
   rejected_execution_count: integer
   reason: string
