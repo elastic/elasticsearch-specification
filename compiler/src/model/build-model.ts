@@ -334,7 +334,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             type.body = { kind: 'properties', properties: property.properties }
           }
         } else if (member.getName() === 'failures') {
-          const failures: model.Failure[] = []
+          const failures: model.ResponseFailure[] = []
           const property = member.getTypeNode()
           assert(
             property,
@@ -342,7 +342,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             'Failures should be an array.'
           )
           for (const element of property.getElements()) {
-            const failure: model.Failure = {
+            const failure: model.ResponseFailure = {
               statusCodes: [],
               body: { kind: 'no_body' }
             }
