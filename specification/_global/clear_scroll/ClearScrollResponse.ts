@@ -24,4 +24,13 @@ export class Response {
     succeeded: boolean
     num_freed: integer
   }
+  failures: [
+    {
+      statusCodes: [404]
+      body: {
+        succeeded: boolean
+        num_freed: integer
+      }
+    }
+  ]
 }
