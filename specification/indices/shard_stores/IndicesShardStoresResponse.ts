@@ -22,7 +22,5 @@ import { IndexName } from '@_types/common'
 import { IndicesShardStores } from './types'
 
 export class Response {
-  '200': {
-    body: { indices: Dictionary<IndexName, IndicesShardStores> }
-  }
+  body: { indices: Dictionary<IndexName, IndicesShardStores> }
 }

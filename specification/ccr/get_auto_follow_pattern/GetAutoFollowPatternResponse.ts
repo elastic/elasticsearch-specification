@@ -20,7 +20,5 @@
 import { AutoFollowPattern } from './types'
 
 export class Response {
-  '200': {
-    body: { patterns: AutoFollowPattern[] }
-  }
+  body: { patterns: AutoFollowPattern[] }
 }

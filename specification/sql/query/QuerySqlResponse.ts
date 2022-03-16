@@ -21,42 +21,40 @@ import { Id } from '@_types/common'
 import { Column, Row } from '../types'
 
 export class Response {
-  '200': {
-    body: {
-      /**
-       * Identifier for the search. This value is only returned for async and saved
-       * synchronous searches. For CSV, TSV, and TXT responses, this value is returned
-       * in the `Async-ID` HTTP header.
-       */
-      id?: Id
-      /**
-       * If `true`, the search is still running. If false, the search has finished.
-       * This value is only returned for async and saved synchronous searches. For
-       * CSV, TSV, and TXT responses, this value is returned in the `Async-partial`
-       * HTTP header.
-       */
-      is_running?: boolean
-      /**
-       * If `true`, the response does not contain complete search results. If `is_partial`
-       * is `true` and `is_running` is `true`, the search is still running. If `is_partial`
-       * is `true` but `is_running` is `false`, the results are partial due to a failure or
-       * timeout. This value is only returned for async and saved synchronous searches.
-       * For CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.
-       */
-      is_partial?: boolean
-      /**
-       * Column headings for the search results. Each object is a column.
-       */
-      columns?: Column[]
-      /**
-       * Cursor for the next set of paginated results. For CSV, TSV, and
-       * TXT responses, this value is returned in the `Cursor` HTTP header.
-       */
-      cursor?: string
-      /**
-       * Values for the search results.
-       */
-      rows: Row[]
-    }
+  body: {
+    /**
+     * Identifier for the search. This value is only returned for async and saved
+     * synchronous searches. For CSV, TSV, and TXT responses, this value is returned
+     * in the `Async-ID` HTTP header.
+     */
+    id?: Id
+    /**
+     * If `true`, the search is still running. If false, the search has finished.
+     * This value is only returned for async and saved synchronous searches. For
+     * CSV, TSV, and TXT responses, this value is returned in the `Async-partial`
+     * HTTP header.
+     */
+    is_running?: boolean
+    /**
+     * If `true`, the response does not contain complete search results. If `is_partial`
+     * is `true` and `is_running` is `true`, the search is still running. If `is_partial`
+     * is `true` but `is_running` is `false`, the results are partial due to a failure or
+     * timeout. This value is only returned for async and saved synchronous searches.
+     * For CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.
+     */
+    is_partial?: boolean
+    /**
+     * Column headings for the search results. Each object is a column.
+     */
+    columns?: Column[]
+    /**
+     * Cursor for the next set of paginated results. For CSV, TSV, and
+     * TXT responses, this value is returned in the `Cursor` HTTP header.
+     */
+    cursor?: string
+    /**
+     * Values for the search results.
+     */
+    rows: Row[]
   }
 }

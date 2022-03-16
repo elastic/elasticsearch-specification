@@ -18,9 +18,7 @@
  */
 
 export class Response<TResult> {
-  '200': {
-    body: {
-      result: TResult
-    }
+  body: {
+    result: TResult
   }
 }

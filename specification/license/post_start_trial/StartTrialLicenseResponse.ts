@@ -20,12 +20,10 @@
 import { LicenseType } from '@license/_types/License'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      error_message?: string
-      trial_was_started: boolean
-      type?: LicenseType
-    }
+  body: {
+    acknowledged: boolean
+    error_message?: string
+    trial_was_started: boolean
+    type?: LicenseType
   }
 }

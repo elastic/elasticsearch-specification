@@ -20,7 +20,5 @@
 import { ResponseBody } from '@global/search/SearchResponse'
 
 export class Response<TDocument> {
-  '200': {
-    body: ResponseBody<TDocument>
-  }
+  body: ResponseBody<TDocument>
 }

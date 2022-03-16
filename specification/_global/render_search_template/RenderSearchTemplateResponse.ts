@@ -21,7 +21,5 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  '200': {
-    body: { template_output: Dictionary<string, UserDefinedValue> }
-  }
+  body: { template_output: Dictionary<string, UserDefinedValue> }
 }

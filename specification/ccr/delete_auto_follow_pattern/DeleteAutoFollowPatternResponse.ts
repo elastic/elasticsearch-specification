@@ -20,7 +20,5 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response {
-  '200': {
-    body: AcknowledgedResponseBase
-  }
+  body: AcknowledgedResponseBase
 }

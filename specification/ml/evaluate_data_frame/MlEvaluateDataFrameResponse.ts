@@ -25,11 +25,9 @@ import {
 
 /** @variants container */
 export class Response {
-  '200': {
-    body: {
-      classification?: DataframeClassificationSummary
-      outlier_detection?: DataframeOutlierDetectionSummary
-      regression?: DataframeRegressionSummary
-    }
+  body: {
+    classification?: DataframeClassificationSummary
+    outlier_detection?: DataframeOutlierDetectionSummary
+    regression?: DataframeRegressionSummary
   }
 }

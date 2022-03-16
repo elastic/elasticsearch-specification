@@ -20,10 +20,8 @@
 import { IndexName } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      failed_indexes: IndexName[]
-      has_failures: boolean
-    }
+  body: {
+    failed_indexes: IndexName[]
+    has_failures: boolean
   }
 }

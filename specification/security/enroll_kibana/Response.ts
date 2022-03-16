@@ -18,11 +18,9 @@
  */
 
 export class Response {
-  '200': {
-    body: {
-      token: Token
-      http_ca: string
-    }
+  body: {
+    token: Token
+    http_ca: string
   }
 }
 

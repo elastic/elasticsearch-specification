@@ -23,12 +23,10 @@ import { Name } from '@_types/common'
 import { NodeStatistics } from '@_types/Node'
 
 export class Response {
-  '200': {
-    body: {
-      /** @codegen_name node_stats */
-      _nodes: NodeStatistics
-      cluster_name: Name
-      nodes: Dictionary<string, ClusterNode>
-    }
+  body: {
+    /** @codegen_name node_stats */
+    _nodes: NodeStatistics
+    cluster_name: Name
+    nodes: Dictionary<string, ClusterNode>
   }
 }

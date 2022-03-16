@@ -22,7 +22,5 @@ import { IndexName } from '@_types/common'
 import { IndexCapabilities } from './types'
 
 export class Response {
-  '200': {
-    body: Dictionary<IndexName, IndexCapabilities>
-  }
+  body: Dictionary<IndexName, IndexCapabilities>
 }

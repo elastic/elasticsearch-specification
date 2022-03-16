@@ -22,11 +22,9 @@ import { DataframeState } from '@ml/_types/Dataframe'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      count: long
-      /** An array of objects that contain usage information for data frame analytics jobs, which are sorted by the id value in ascending order. */
-      data_frame_analytics: DataframeAnalytics[]
-    }
+  body: {
+    count: long
+    /** An array of objects that contain usage information for data frame analytics jobs, which are sorted by the id value in ascending order. */
+    data_frame_analytics: DataframeAnalytics[]
   }
 }

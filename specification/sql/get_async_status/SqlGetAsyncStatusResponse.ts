@@ -20,37 +20,35 @@
 import { uint, ulong } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      /**
-       * Identifier for the search.
-       */
-      id: string
-      /**
-       * If `true`, the search is still running. If `false`, the search has finished.
-       */
-      is_running: boolean
-      /**
-       * If `true`, the response does not contain complete search results. If `is_partial`
-       * is `true` and `is_running` is `true`, the search is still running. If `is_partial`
-       * is `true` but `is_running` is `false`, the results are partial due to a failure or
-       * timeout.
-       */
-      is_partial: boolean
-      /**
-       * Timestamp, in milliseconds since the Unix epoch, when the search started.
-       * The API only returns this property for running searches.
-       */
-      start_time_in_millis: ulong
-      /**
-       * Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete
-       * the search and its results, even if the search is still running.
-       */
-      expiration_time_in_millis: ulong
-      /**
-       * HTTP status code for the search. The API only returns this property for completed searches.
-       */
-      completion_status?: uint
-    }
+  body: {
+    /**
+     * Identifier for the search.
+     */
+    id: string
+    /**
+     * If `true`, the search is still running. If `false`, the search has finished.
+     */
+    is_running: boolean
+    /**
+     * If `true`, the response does not contain complete search results. If `is_partial`
+     * is `true` and `is_running` is `true`, the search is still running. If `is_partial`
+     * is `true` but `is_running` is `false`, the results are partial due to a failure or
+     * timeout.
+     */
+    is_partial: boolean
+    /**
+     * Timestamp, in milliseconds since the Unix epoch, when the search started.
+     * The API only returns this property for running searches.
+     */
+    start_time_in_millis: ulong
+    /**
+     * Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete
+     * the search and its results, even if the search is still running.
+     */
+    expiration_time_in_millis: ulong
+    /**
+     * HTTP status code for the search. The API only returns this property for completed searches.
+     */
+    completion_status?: uint
   }
 }

@@ -20,10 +20,8 @@
 import { AnalyzeDetail, AnalyzeToken } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      detail?: AnalyzeDetail
-      tokens?: AnalyzeToken[]
-    }
+  body: {
+    detail?: AnalyzeDetail
+    tokens?: AnalyzeToken[]
   }
 }

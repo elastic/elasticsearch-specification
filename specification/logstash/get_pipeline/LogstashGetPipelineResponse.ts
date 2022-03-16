@@ -22,7 +22,5 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Id } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: Dictionary<Id, Pipeline>
-  }
+  body: Dictionary<Id, Pipeline>
 }

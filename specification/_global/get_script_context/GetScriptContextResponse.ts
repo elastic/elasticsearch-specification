@@ -20,9 +20,7 @@
 import { Context } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      contexts: Context[]
-    }
+  body: {
+    contexts: Context[]
   }
 }

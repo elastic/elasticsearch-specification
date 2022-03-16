@@ -18,14 +18,12 @@
  */
 
 export class Response {
-  '200': {
-    body: {
-      http_ca_key: string
-      http_ca_cert: string
-      transport_ca_cert: string
-      transport_key: string
-      transport_cert: string
-      nodes_addresses: string[]
-    }
+  body: {
+    http_ca_key: string
+    http_ca_cert: string
+    transport_ca_cert: string
+    transport_key: string
+    transport_cert: string
+    nodes_addresses: string[]
   }
 }

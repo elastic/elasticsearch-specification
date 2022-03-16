@@ -25,7 +25,5 @@ export class Response {
    * Here you will find the internal representation of the cluster, which can
    * differ from the external representation.
    */
-  '200': {
-    body: UserDefinedValue
-  }
+  body: UserDefinedValue
 }

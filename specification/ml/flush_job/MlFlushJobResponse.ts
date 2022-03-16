@@ -20,14 +20,12 @@
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      flushed: boolean
-      /**
-       * Provides the timestamp (in milliseconds since the epoch) of the end of
-       * the last bucket that was processed.
-       */
-      last_finalized_bucket_end?: integer
-    }
+  body: {
+    flushed: boolean
+    /**
+     * Provides the timestamp (in milliseconds since the epoch) of the end of
+     * the last bucket that was processed.
+     */
+    last_finalized_bucket_end?: integer
   }
 }

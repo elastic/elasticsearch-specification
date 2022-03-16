@@ -20,10 +20,8 @@
 import { Token } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      created: boolean
-      token: Token
-    }
+  body: {
+    created: boolean
+    token: Token
   }
 }

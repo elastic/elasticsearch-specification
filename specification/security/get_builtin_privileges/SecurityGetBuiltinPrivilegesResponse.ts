@@ -20,7 +20,5 @@
 import { Indices } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: { cluster: string[]; index: Indices }
-  }
+  body: { cluster: string[]; index: Indices }
 }

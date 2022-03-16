@@ -21,10 +21,8 @@ import { Ids } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: {
-      dangling_indices: DanglingIndex[]
-    }
+  body: {
+    dangling_indices: DanglingIndex[]
   }
 }
 

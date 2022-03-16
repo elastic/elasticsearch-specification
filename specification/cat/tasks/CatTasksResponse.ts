@@ -20,7 +20,5 @@
 import { TasksRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<TasksRecord>
-  }
+  body: Array<TasksRecord>
 }

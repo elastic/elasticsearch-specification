@@ -20,7 +20,5 @@
 import { DatafeedsRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<DatafeedsRecord>
-  }
+  body: Array<DatafeedsRecord>
 }

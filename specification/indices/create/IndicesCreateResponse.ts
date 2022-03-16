@@ -20,11 +20,9 @@
 import { IndexName } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      index: IndexName
-      shards_acknowledged: boolean
-      acknowledged?: boolean
-    }
+  body: {
+    index: IndexName
+    shards_acknowledged: boolean
+    acknowledged?: boolean
   }
 }

@@ -21,16 +21,14 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RerouteExplanation } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      explanations?: RerouteExplanation[]
-      /**
-       * There aren't any guarantees on the output/structure of the raw cluster state.
-       * Here you will find the internal representation of the cluster, which can
-       * differ from the external representation.
-       */
-      state: UserDefinedValue
-    }
+  body: {
+    acknowledged: boolean
+    explanations?: RerouteExplanation[]
+    /**
+     * There aren't any guarantees on the output/structure of the raw cluster state.
+     * Here you will find the internal representation of the cluster, which can
+     * differ from the external representation.
+     */
+    state: UserDefinedValue
   }
 }

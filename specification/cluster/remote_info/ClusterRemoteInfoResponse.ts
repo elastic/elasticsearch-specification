@@ -22,9 +22,7 @@ import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, ClusterRemoteInfo>
-  }
+  body: Dictionary<string, ClusterRemoteInfo>
 }
 
 /** @variants internal tag='mode' */

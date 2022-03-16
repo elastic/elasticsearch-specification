@@ -20,7 +20,5 @@
 import { Void } from '@spec_utils/VoidValue'
 
 export class Response {
-  '200': {
-    body: Void
-  }
+  body: Void
 }

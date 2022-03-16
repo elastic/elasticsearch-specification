@@ -21,10 +21,8 @@ import { Anomaly } from '@ml/_types/Anomaly'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      count: long
-      records: Anomaly[]
-    }
+  body: {
+    count: long
+    records: Anomaly[]
   }
 }

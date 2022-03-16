@@ -53,7 +53,5 @@ export class StatsResponseBase extends NodesResponseBase {
 }
 
 export class Response {
-  '200': {
-    body: StatsResponseBase
-  }
+  body: StatsResponseBase
 }

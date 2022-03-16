@@ -18,7 +18,5 @@
  */
 
 export class Response {
-  '200': {
-    body: { eligible_to_start_trial: boolean }
-  }
+  body: { eligible_to_start_trial: boolean }
 }

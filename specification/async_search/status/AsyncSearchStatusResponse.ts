@@ -26,7 +26,5 @@ export class StatusResponseBase extends AsyncSearchResponseBase {
   completion_status?: integer
 }
 export class Response {
-  '200': {
-    body: StatusResponseBase
-  }
+  body: StatusResponseBase
 }

@@ -21,7 +21,5 @@ import { Repository } from '@snapshot/_types/SnapshotRepository'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, Repository>
-  }
+  body: Dictionary<string, Repository>
 }
