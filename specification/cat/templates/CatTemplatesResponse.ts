@@ -20,7 +20,5 @@
 import { TemplatesRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<TemplatesRecord>
-  }
+  body: Array<TemplatesRecord>
 }

@@ -22,15 +22,13 @@ import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  '200': {
-    body: {
-      _shards: ShardStatistics
-      backing_indices: integer
-      data_stream_count: integer
-      total_store_sizes?: ByteSize
-      total_store_size_bytes: integer
-      data_streams: DataStreamsStatsItem[]
-    }
+  body: {
+    _shards: ShardStatistics
+    backing_indices: integer
+    data_stream_count: integer
+    total_store_sizes?: ByteSize
+    total_store_size_bytes: integer
+    data_streams: DataStreamsStatsItem[]
   }
 }
 

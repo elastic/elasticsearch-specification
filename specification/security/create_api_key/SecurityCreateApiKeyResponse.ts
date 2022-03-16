@@ -21,31 +21,29 @@ import { Id, Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      /**
-       * Generated API key.
-       */
-      api_key: string
-      /**
-       * Expiration in milliseconds for the API key.
-       */
-      expiration?: long
-      /**
-       * Unique ID for this API key.
-       */
-      id: Id
-      /**
-       * Specifies the name for this API key.
-       */
-      name: Name
-      /**
-       * API key credentials which is the base64-encoding of
-       * the UTF-8 representation of `id` and `api_key` joined
-       * by a colon (`:`).
-       * @since 7.16.0
-       */
-      encoded: string
-    }
+  body: {
+    /**
+     * Generated API key.
+     */
+    api_key: string
+    /**
+     * Expiration in milliseconds for the API key.
+     */
+    expiration?: long
+    /**
+     * Unique ID for this API key.
+     */
+    id: Id
+    /**
+     * Specifies the name for this API key.
+     */
+    name: Name
+    /**
+     * API key credentials which is the base64-encoding of
+     * the UTF-8 representation of `id` and `api_key` joined
+     * by a colon (`:`).
+     * @since 7.16.0
+     */
+    encoded: string
   }
 }

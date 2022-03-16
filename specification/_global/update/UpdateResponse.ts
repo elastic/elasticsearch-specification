@@ -25,7 +25,5 @@ export class UpdateWriteResponseBase<TDocument> extends WriteResponseBase {
 }
 
 export class Response<TDocument> {
-  '200': {
-    body: UpdateWriteResponseBase<TDocument>
-  }
+  body: UpdateWriteResponseBase<TDocument>
 }

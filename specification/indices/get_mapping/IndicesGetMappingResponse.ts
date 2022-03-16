@@ -22,9 +22,7 @@ import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class Response {
-  '200': {
-    body: Dictionary<IndexName, IndexMappingRecord>
-  }
+  body: Dictionary<IndexName, IndexMappingRecord>
 }
 
 export class IndexMappingRecord {

@@ -31,22 +31,20 @@ import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 // - search
 // - fleet.search
 export class Response<TDocument> {
-  '200': {
-    body: {
-      took: long
-      timed_out: boolean
-      _shards: ShardStatistics
-      hits: HitsMetadata<TDocument>
-      aggregations?: Dictionary<AggregateName, Aggregate>
-      _clusters?: ClusterStatistics
-      fields?: Dictionary<string, UserDefinedValue>
-      max_score?: double
-      num_reduce_phases?: long
-      profile?: Profile
-      pit_id?: Id
-      _scroll_id?: ScrollId
-      suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-      terminated_early?: boolean
-    }
+  body: {
+    took: long
+    timed_out: boolean
+    _shards: ShardStatistics
+    hits: HitsMetadata<TDocument>
+    aggregations?: Dictionary<AggregateName, Aggregate>
+    _clusters?: ClusterStatistics
+    fields?: Dictionary<string, UserDefinedValue>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    pit_id?: Id
+    _scroll_id?: ScrollId
+    suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+    terminated_early?: boolean
   }
 }

@@ -20,7 +20,5 @@
 import { PipelineSimulation } from './types'
 
 export class Response {
-  '200': {
-    body: { docs: PipelineSimulation[] }
-  }
+  body: { docs: PipelineSimulation[] }
 }

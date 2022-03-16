@@ -27,19 +27,17 @@ import { Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      id: Id
-      create_time: long
-      version: VersionString
-      source: DataframeAnalyticsSource
-      description?: string
-      dest: DataframeAnalyticsDestination
-      model_memory_limit: string
-      allow_lazy_start: boolean
-      max_num_threads: integer
-      analysis: DataframeAnalysisContainer
-      analyzed_fields?: DataframeAnalysisAnalyzedFields
-    }
+  body: {
+    id: Id
+    create_time: long
+    version: VersionString
+    source: DataframeAnalyticsSource
+    description?: string
+    dest: DataframeAnalyticsDestination
+    model_memory_limit: string
+    allow_lazy_start: boolean
+    max_num_threads: integer
+    analysis: DataframeAnalysisContainer
+    analyzed_fields?: DataframeAnalysisAnalyzedFields
   }
 }

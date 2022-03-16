@@ -20,7 +20,5 @@
 import { CountRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<CountRecord>
-  }
+  body: Array<CountRecord>
 }

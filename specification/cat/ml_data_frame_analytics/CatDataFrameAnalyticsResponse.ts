@@ -20,7 +20,5 @@
 import { DataFrameAnalyticsRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<DataFrameAnalyticsRecord>
-  }
+  body: Array<DataFrameAnalyticsRecord>
 }

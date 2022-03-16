@@ -22,7 +22,5 @@ import { IndexName } from '@_types/common'
 import { TypeFieldMappings } from './types'
 
 export class Response {
-  '200': {
-    body: Dictionary<IndexName, TypeFieldMappings>
-  }
+  body: Dictionary<IndexName, TypeFieldMappings>
 }

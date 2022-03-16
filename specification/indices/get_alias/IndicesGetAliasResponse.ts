@@ -22,9 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: Dictionary<IndexName, IndexAliases>
-  }
+  body: Dictionary<IndexName, IndexAliases>
 }
 
 export class IndexAliases {

@@ -20,7 +20,5 @@
 import { Status } from '@snapshot/_types/SnapshotStatus'
 
 export class Response {
-  '200': {
-    body: { snapshots: Status[] }
-  }
+  body: { snapshots: Status[] }
 }

@@ -20,7 +20,5 @@
 import { CreatedStatus } from '@security/_types/CreatedStatus'
 
 export class Response {
-  '200': {
-    body: { role: CreatedStatus }
-  }
+  body: { role: CreatedStatus }
 }

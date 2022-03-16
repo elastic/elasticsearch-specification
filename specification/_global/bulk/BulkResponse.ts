@@ -22,12 +22,10 @@ import { OperationType, ResponseItem } from './types'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: {
-      errors: boolean
-      items: SingleKeyDictionary<OperationType, ResponseItem>[]
-      took: long
-      ingest_took?: long
-    }
+  body: {
+    errors: boolean
+    items: SingleKeyDictionary<OperationType, ResponseItem>[]
+    took: long
+    ingest_took?: long
   }
 }

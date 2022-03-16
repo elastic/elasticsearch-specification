@@ -21,13 +21,11 @@ import { ElasticsearchVersionInfo } from '@_types/Base'
 import { Name, Uuid } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      cluster_name: Name
-      cluster_uuid: Uuid
-      name: Name
-      tagline: string
-      version: ElasticsearchVersionInfo
-    }
+  body: {
+    cluster_name: Name
+    cluster_uuid: Uuid
+    name: Name
+    tagline: string
+    version: ElasticsearchVersionInfo
   }
 }

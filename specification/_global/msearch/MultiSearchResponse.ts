@@ -23,7 +23,5 @@ import { MultiSearchResult } from '@global/msearch/types'
 // - msearch
 // - fleet.msearch
 export class Response<TDocument> {
-  '200': {
-    body: MultiSearchResult<TDocument>
-  }
+  body: MultiSearchResult<TDocument>
 }

@@ -34,7 +34,5 @@ export class ResponseBase extends NodesResponseBase {
 }
 
 export class Response {
-  '200': {
-    body: ResponseBase
-  }
+  body: ResponseBase
 }

@@ -20,7 +20,5 @@
 import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 
 export class Response {
-  '200': {
-    body: AutoscalingPolicy
-  }
+  body: AutoscalingPolicy
 }

@@ -23,10 +23,8 @@ import { NodeName } from '@_types/common'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  '200': {
-    body: {
-      policies: Dictionary<string, AutoscalingDeciders>
-    }
+  body: {
+    policies: Dictionary<string, AutoscalingDeciders>
   }
 }
 

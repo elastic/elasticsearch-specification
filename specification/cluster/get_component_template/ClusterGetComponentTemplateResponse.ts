@@ -20,7 +20,5 @@
 import { ComponentTemplate } from '@cluster/_types/ComponentTemplate'
 
 export class Response {
-  '200': {
-    body: { component_templates: ComponentTemplate[] }
-  }
+  body: { component_templates: ComponentTemplate[] }
 }

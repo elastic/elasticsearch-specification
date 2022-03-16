@@ -21,11 +21,9 @@ import { IndexName, Indices, VersionString } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 
 export class Response {
-  '200': {
-    body: {
-      features: MigrationFeature[]
-      migration_status: MigrationStatus
-    }
+  body: {
+    features: MigrationFeature[]
+    migration_status: MigrationStatus
   }
 }
 

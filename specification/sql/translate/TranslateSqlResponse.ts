@@ -24,12 +24,10 @@ import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      size: long
-      _source: SourceConfig
-      fields: Array<Dictionary<Field, string>>
-      sort: Sort
-    }
+  body: {
+    size: long
+    _source: SourceConfig
+    fields: Array<Dictionary<Field, string>>
+    sort: Sort
   }
 }
