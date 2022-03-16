@@ -36,15 +36,6 @@ export class TypeName {
   name: string
 }
 
-/**
- * Location of an item. The path is relative to the "specification" directory, e.g "_types/common.ts"
- */
-export class SourceLocation {
-  path: string
-  startLine: number
-  endLine: number
-}
-
 // ------------------------------------------------------------------------------------------------
 // Value types
 
@@ -165,6 +156,7 @@ export abstract class BaseType {
   description?: string
   /** Link to public documentation */
   docUrl?: string
+  docId?: string
   deprecation?: Deprecation
   kind: string
   /** Variant name for externally tagged variants */
@@ -177,8 +169,10 @@ export abstract class BaseType {
    *   additional property
    */
   codegenNames?: string[]
-  /** Location in the API spec where this type is defined */
-  specLocation: SourceLocation
+  /**
+   * Location of an item. The path is relative to the "specification" directory, e.g "_types/common.ts#L1-L2"
+   */
+  specLocation: string
 }
 
 export type Variants = ExternalTag | InternalTag | Container
@@ -279,6 +273,13 @@ export class Response extends BaseType {
   body: Body
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
+  failures?: Failure[]
+}
+
+export class Failure {
+  description?: string
+  body: Body
+  statusCodes: number[]
 }
 
 export type Body = ValueBody | PropertiesBody | NoBody
@@ -408,8 +409,6 @@ export class UrlTemplate {
 
 export class Model {
   _info?: {
-    version: string
-    hash: string
     title: string
     license: {
       name: string

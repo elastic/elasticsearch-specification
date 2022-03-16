@@ -273,6 +273,13 @@ export class Response extends BaseType {
   body: Body
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
+  failures?: Failure[]
+}
+
+export class Failure {
+  description?: string
+  body: Body
+  statusCodes: number[]
 }
 
 export type Body = ValueBody | PropertiesBody | NoBody
