@@ -313,34 +313,28 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         body: { kind: 'no_body' }
       }
 
-      for (const status of declaration.getMembers()) {
+      for (const member of declaration.getMembers()) {
+        // we are visiting `path_parts, `query_parameters` or `body`
         assert(
-          status,
-          Node.isPropertyDeclaration(status) || Node.isPropertySignature(status),
+          member,
+          Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
           'Class and interfaces can only have property declarations or signatures'
         )
-        status.getTypeNode()?.forEachChild(child => {
-          assert(
-            child,
-            Node.isPropertySignature(child) || Node.isPropertyDeclaration(child),
-            `Children should be ${ts.SyntaxKind[ts.SyntaxKind.PropertySignature]} or ${ts.SyntaxKind[ts.SyntaxKind.PropertyDeclaration]} but is ${ts.SyntaxKind[child.getKind()]} instead`
-          )
-          const property = visitRequestOrResponseProperty(child)
-          if (property.name === 'body') {
-            // the body can either by a value (eg Array<string> or an object with properties)
-            if (property.valueOf != null) {
-              if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
-                type.body = { kind: 'no_body' }
-              } else {
-                type.body = { kind: 'value', value: property.valueOf }
-              }
+        const property = visitRequestOrResponseProperty(member)
+        if (property.name === 'body') {
+          // the body can either by a value (eg Array<string> or an object with properties)
+          if (property.valueOf != null) {
+            if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
+              type.body = { kind: 'no_body' }
             } else {
-              type.body = { kind: 'properties', properties: property.properties }
+              type.body = { kind: 'value', value: property.valueOf }
             }
           } else {
-            assert(child, false, 'Response.body is the only Response property supported')
+            type.body = { kind: 'properties', properties: property.properties }
           }
-        })
+        } else {
+          assert(member, false, 'Response.body is the only Response property supported')
+        }
       }
     }
 

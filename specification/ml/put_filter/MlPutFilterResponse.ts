@@ -20,11 +20,9 @@
 import { Id } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      description: string
-      filter_id: Id
-      items: string[]
-    }
+  body: {
+    description: string
+    filter_id: Id
+    items: string[]
   }
 }

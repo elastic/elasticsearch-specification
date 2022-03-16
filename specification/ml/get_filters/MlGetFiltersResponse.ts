@@ -21,10 +21,8 @@ import { Filter } from '@ml/_types/Filter'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      count: long
-      filters: Filter[]
-    }
+  body: {
+    count: long
+    filters: Filter[]
   }
 }

@@ -20,7 +20,5 @@
 import { LicenseInformation } from './types'
 
 export class Response {
-  '200': {
-    body: { license: LicenseInformation }
-  }
+  body: { license: LicenseInformation }
 }

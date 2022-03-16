@@ -30,20 +30,18 @@ import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: {
-      create_time: long
-      //  create_time_date_time?: DateString
-      description: string
-      dest: Destination
-      frequency?: Time
-      id: Id
-      pivot: Pivot
-      settings: Settings
-      source: Source
-      sync?: SyncContainer
-      version: VersionString
-      _meta?: Metadata
-    }
+  body: {
+    create_time: long
+    //  create_time_date_time?: DateString
+    description: string
+    dest: Destination
+    frequency?: Time
+    id: Id
+    pivot: Pivot
+    settings: Settings
+    source: Source
+    sync?: SyncContainer
+    version: VersionString
+    _meta?: Metadata
   }
 }

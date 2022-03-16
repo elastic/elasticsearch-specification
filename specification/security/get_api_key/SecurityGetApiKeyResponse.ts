@@ -20,7 +20,5 @@
 import { ApiKey } from '@security/_types/ApiKey'
 
 export class Response {
-  '200': {
-    body: { api_keys: ApiKey[] }
-  }
+  body: { api_keys: ApiKey[] }
 }

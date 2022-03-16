@@ -21,13 +21,11 @@ import { Id, IndexName, InlineGet } from '@_types/common'
 import { ExplanationDetail } from './types'
 
 export class Response<TDocument> {
-  '200': {
-    body: {
-      _index: IndexName
-      _id: Id
-      matched: boolean
-      explanation?: ExplanationDetail
-      get?: InlineGet<TDocument>
-    }
+  body: {
+    _index: IndexName
+    _id: Id
+    matched: boolean
+    explanation?: ExplanationDetail
+    get?: InlineGet<TDocument>
   }
 }

@@ -20,7 +20,5 @@
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  '200': {
-    body: { _shards: ShardStatistics }
-  }
+  body: { _shards: ShardStatistics }
 }

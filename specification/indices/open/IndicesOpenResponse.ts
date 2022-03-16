@@ -18,10 +18,8 @@
  */
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      shards_acknowledged: boolean
-    }
+  body: {
+    acknowledged: boolean
+    shards_acknowledged: boolean
   }
 }

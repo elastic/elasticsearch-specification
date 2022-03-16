@@ -22,13 +22,11 @@ import { IndexName, Username } from '@_types/common'
 import { ApplicationsPrivileges, Privileges } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      application: ApplicationsPrivileges
-      cluster: Dictionary<string, boolean>
-      has_all_requested: boolean
-      index: Dictionary<IndexName, Privileges>
-      username: Username
-    }
+  body: {
+    application: ApplicationsPrivileges
+    cluster: Dictionary<string, boolean>
+    has_all_requested: boolean
+    index: Dictionary<IndexName, Privileges>
+    username: Username
   }
 }

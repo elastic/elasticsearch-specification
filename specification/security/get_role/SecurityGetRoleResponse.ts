@@ -21,7 +21,5 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Role } from './types'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, Role>
-  }
+  body: Dictionary<string, Role>
 }

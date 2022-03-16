@@ -22,10 +22,8 @@ import { long, integer } from '@_types/Numeric'
 import { ByteSize } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      nodes: Dictionary<string, Node>
-    }
+  body: {
+    nodes: Dictionary<string, Node>
   }
 }
 

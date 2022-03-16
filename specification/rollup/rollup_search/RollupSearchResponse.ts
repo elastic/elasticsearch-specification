@@ -25,14 +25,12 @@ import { long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response<TDocument> {
-  '200': {
-    body: {
-      took: long
-      timed_out: boolean
-      terminated_early?: boolean
-      _shards: ShardStatistics
-      hits: HitsMetadata<TDocument>
-      aggregations?: Dictionary<AggregateName, Aggregate>
-    }
+  body: {
+    took: long
+    timed_out: boolean
+    terminated_early?: boolean
+    _shards: ShardStatistics
+    hits: HitsMetadata<TDocument>
+    aggregations?: Dictionary<AggregateName, Aggregate>
   }
 }

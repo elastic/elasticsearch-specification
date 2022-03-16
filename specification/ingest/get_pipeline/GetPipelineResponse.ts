@@ -21,7 +21,5 @@ import { Pipeline } from '@ingest/_types/Pipeline'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, Pipeline>
-  }
+  body: Dictionary<string, Pipeline>
 }

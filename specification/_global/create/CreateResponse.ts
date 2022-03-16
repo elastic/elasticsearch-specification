@@ -20,7 +20,5 @@
 import { WriteResponseBase } from '@_types/Base'
 
 export class Response {
-  '200': {
-    body: WriteResponseBase
-  }
+  body: WriteResponseBase
 }

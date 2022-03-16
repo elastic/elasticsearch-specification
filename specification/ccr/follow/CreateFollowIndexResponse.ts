@@ -18,11 +18,9 @@
  */
 
 export class Response {
-  '200': {
-    body: {
-      follow_index_created: boolean
-      follow_index_shards_acked: boolean
-      index_following_started: boolean
-    }
+  body: {
+    follow_index_created: boolean
+    follow_index_shards_acked: boolean
+    index_following_started: boolean
   }
 }

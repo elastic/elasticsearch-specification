@@ -23,22 +23,20 @@ import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 
 export class Response {
-  '200': {
-    body: {
-      batches?: long
-      deleted?: long
-      failures?: BulkIndexByScrollFailure[]
-      noops?: long
-      requests_per_second?: float
-      retries?: Retries
-      slice_id?: integer
-      task?: TaskId
-      throttled_millis?: long
-      throttled_until_millis?: long
-      timed_out?: boolean
-      took?: long
-      total?: long
-      version_conflicts?: long
-    }
+  body: {
+    batches?: long
+    deleted?: long
+    failures?: BulkIndexByScrollFailure[]
+    noops?: long
+    requests_per_second?: float
+    retries?: Retries
+    slice_id?: integer
+    task?: TaskId
+    throttled_millis?: long
+    throttled_until_millis?: long
+    timed_out?: boolean
+    took?: long
+    total?: long
+    version_conflicts?: long
   }
 }

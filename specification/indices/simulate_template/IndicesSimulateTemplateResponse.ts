@@ -24,10 +24,8 @@ import { IndexName, Name } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class Response {
-  '200': {
-    body: {
-      template: Template
-    }
+  body: {
+    template: Template
   }
 }
 

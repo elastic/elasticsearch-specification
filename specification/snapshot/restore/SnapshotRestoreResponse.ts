@@ -21,9 +21,7 @@ import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  '200': {
-    body: { snapshot: SnapshotRestore }
-  }
+  body: { snapshot: SnapshotRestore }
 }
 
 export class SnapshotRestore {

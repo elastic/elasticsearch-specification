@@ -20,7 +20,5 @@
 import { FielddataRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<FielddataRecord>
-  }
+  body: Array<FielddataRecord>
 }

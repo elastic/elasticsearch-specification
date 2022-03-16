@@ -24,33 +24,31 @@ import { ShardStatistics } from '@_types/Stats'
 import { HitsMetadata } from '@global/search/_types/hits'
 
 export class Response<TDocument> {
-  '200': {
-    body: {
-      /** Milliseconds it took Elasticsearch to execute the request. */
-      took: long
-      /**
-       * If true, the request timed out before completion;
-       * returned results may be partial or empty.
-       */
-      timed_out: boolean
-      /**
-       * Contains a count of shards used for the request.
-       */
-      _shards: ShardStatistics
-      /**
-       * Contains returned documents and metadata.
-       */
-      hits: HitsMetadata<TDocument>
-      /**
-       * Contains field values for the documents. These fields
-       * must be specified in the request using the `fields` parameter.
-       */
-      fields?: Dictionary<string, UserDefinedValue>
-      /**
-       * Highest returned document score. This value is null for requests
-       * that do not sort by score.
-       */
-      max_score?: double
-    }
+  body: {
+    /** Milliseconds it took Elasticsearch to execute the request. */
+    took: long
+    /**
+     * If true, the request timed out before completion;
+     * returned results may be partial or empty.
+     */
+    timed_out: boolean
+    /**
+     * Contains a count of shards used for the request.
+     */
+    _shards: ShardStatistics
+    /**
+     * Contains returned documents and metadata.
+     */
+    hits: HitsMetadata<TDocument>
+    /**
+     * Contains field values for the documents. These fields
+     * must be specified in the request using the `fields` parameter.
+     */
+    fields?: Dictionary<string, UserDefinedValue>
+    /**
+     * Highest returned document score. This value is null for requests
+     * that do not sort by score.
+     */
+    max_score?: double
   }
 }

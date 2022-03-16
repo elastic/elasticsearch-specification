@@ -28,10 +28,8 @@ import { FieldCapability } from './types'
  * For example, `keyword`, `constant_keyword` and `wildcard` field types are all described as the `keyword` type family.
  */
 export class Response {
-  '200': {
-    body: {
-      indices: Indices
-      fields: Dictionary<Field, Dictionary<string, FieldCapability>>
-    }
+  body: {
+    indices: Indices
+    fields: Dictionary<Field, Dictionary<string, FieldCapability>>
   }
 }

@@ -20,10 +20,8 @@
 import { LanguageContext } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      language_contexts: LanguageContext[]
-      types_allowed: string[]
-    }
+  body: {
+    language_contexts: LanguageContext[]
+    types_allowed: string[]
   }
 }
