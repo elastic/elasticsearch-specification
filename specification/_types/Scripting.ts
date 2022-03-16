@@ -22,7 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from './common'
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html
+ * @doc_id modules-scripting
  * @open_enum
  */
 export enum ScriptLanguage {

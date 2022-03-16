@@ -41,7 +41,7 @@ export class RankEvalMetricRatingTreshold extends RankEvalMetricBase {
 
 /**
  * Precision at K (P@k)
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-precision
+ * @doc_id k-precision
  */
 export class RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
   /**
@@ -53,19 +53,19 @@ export class RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
 
 /**
  * Recall at K (R@k)
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-recall
+ * @doc_id k-recall
  */
 export class RankEvalMetricRecall extends RankEvalMetricRatingTreshold {}
 
 /**
  * Mean Reciprocal Rank
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_mean_reciprocal_rank
+ * @doc_id mean-reciprocal
  */
 export class RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {}
 
 /**
  * Discounted cumulative gain (DCG)
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_discounted_cumulative_gain_dcg
+ * @doc_id dcg
  */
 export class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
   /**
@@ -78,7 +78,7 @@ export class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
 
 /**
  * Expected Reciprocal Rank (ERR)
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_expected_reciprocal_rank_err
+ * @doc_id expected-reciprocal
  */
 export class RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
   /**

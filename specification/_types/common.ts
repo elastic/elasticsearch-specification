@@ -70,15 +70,15 @@ export type Service = string
 
 export type PipelineName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */
+/** @doc_id modules-node */
 export type NodeName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
+/** @doc_id data-stream-path-param  */
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
+/** @doc_id byte-units */
 export type ByteSize = long | string
 
 export type Metadata = Dictionary<string, UserDefinedValue>
@@ -105,7 +105,7 @@ export type PropertyName = string
 export type RelationName = string
 export type TaskId = string | integer
 export type Fuzziness = string | integer
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-term-rewrite.html */
+/** @doc_id query-dsl-multi-term-rewrite */
 export type MultiTermQueryRewrite = string
 
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
@@ -135,14 +135,14 @@ export class EmptyObject {}
 
 /**
  * The minimum number of terms that should match as integer, percentage or range
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html
+ * @doc_id query-dsl-minimum-should-match
  */
 export type MinimumShouldMatch = integer | string
 
 /**
  * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
  *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
+ * @doc_id byte-units
  */
 export enum Bytes {
   /** @codegen_name bytes */
