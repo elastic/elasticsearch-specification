@@ -26,9 +26,7 @@ import { ShardStatistics } from '@_types/Stats'
 import { EpochMillis } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: FieldsUsageBody
-  }
+  body: FieldsUsageBody
 }
 
 export class FieldsUsageBody

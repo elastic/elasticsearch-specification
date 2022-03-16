@@ -20,7 +20,5 @@
 import { CertificateInformation } from './types'
 
 export class Response {
-  '200': {
-    body: Array<CertificateInformation>
-  }
+  body: Array<CertificateInformation>
 }

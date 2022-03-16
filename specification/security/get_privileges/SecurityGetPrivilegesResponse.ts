@@ -21,7 +21,5 @@ import { Actions } from '@security/put_privileges/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, Dictionary<string, Actions>>
-  }
+  body: Dictionary<string, Dictionary<string, Actions>>
 }

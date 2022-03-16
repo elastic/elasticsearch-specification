@@ -22,7 +22,5 @@ import { IndexName } from '@_types/common'
 import { RollupCapabilities } from './types'
 
 export class Response {
-  '200': {
-    body: Dictionary<IndexName, RollupCapabilities>
-  }
+  body: Dictionary<IndexName, RollupCapabilities>
 }

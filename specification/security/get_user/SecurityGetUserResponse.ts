@@ -21,7 +21,5 @@ import { User } from '@security/_types/User'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, User>
-  }
+  body: Dictionary<string, User>
 }

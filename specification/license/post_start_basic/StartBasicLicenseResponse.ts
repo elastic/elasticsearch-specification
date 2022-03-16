@@ -21,13 +21,11 @@ import { LicenseType } from '@license/_types/License'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      basic_was_started: boolean
-      error_message?: string
-      type?: LicenseType
-      acknowledge?: Dictionary<string, string | string[]>
-    }
+  body: {
+    acknowledged: boolean
+    basic_was_started: boolean
+    error_message?: string
+    type?: LicenseType
+    acknowledge?: Dictionary<string, string | string[]>
   }
 }

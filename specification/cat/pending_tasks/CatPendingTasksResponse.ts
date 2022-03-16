@@ -20,7 +20,5 @@
 import { PendingTasksRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<PendingTasksRecord>
-  }
+  body: Array<PendingTasksRecord>
 }

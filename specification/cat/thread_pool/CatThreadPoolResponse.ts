@@ -20,7 +20,5 @@
 import { ThreadPoolRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<ThreadPoolRecord>
-  }
+  body: Array<ThreadPoolRecord>
 }

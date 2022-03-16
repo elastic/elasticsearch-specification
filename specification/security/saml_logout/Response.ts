@@ -18,9 +18,7 @@
  */
 
 export class Response {
-  '200': {
-    body: {
-      redirect: string
-    }
+  body: {
+    redirect: string
   }
 }

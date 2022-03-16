@@ -20,12 +20,10 @@
 import { BuildInformation, Features, MinimalLicenseInformation } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      build: BuildInformation
-      features: Features
-      license: MinimalLicenseInformation
-      tagline: string
-    }
+  body: {
+    build: BuildInformation
+    features: Features
+    license: MinimalLicenseInformation
+    tagline: string
   }
 }

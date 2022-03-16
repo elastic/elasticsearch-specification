@@ -20,7 +20,5 @@
 import { CalendarEvent } from '../_types/CalendarEvent'
 
 export class Response {
-  '200': {
-    body: { events: CalendarEvent[] }
-  }
+  body: { events: CalendarEvent[] }
 }

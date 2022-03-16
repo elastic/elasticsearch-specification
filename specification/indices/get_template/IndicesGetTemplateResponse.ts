@@ -21,7 +21,5 @@ import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, TemplateMapping>
-  }
+  body: Dictionary<string, TemplateMapping>
 }

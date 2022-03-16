@@ -21,7 +21,5 @@ import { CreatedStatus } from '@security/_types/CreatedStatus'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, Dictionary<string, CreatedStatus>>
-  }
+  body: Dictionary<string, Dictionary<string, CreatedStatus>>
 }

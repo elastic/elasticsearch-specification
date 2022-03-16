@@ -21,10 +21,8 @@ import { BucketSummary } from '@ml/_types/Bucket'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      buckets: BucketSummary[]
-      count: long
-    }
+  body: {
+    buckets: BucketSummary[]
+    count: long
   }
 }

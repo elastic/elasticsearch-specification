@@ -27,29 +27,27 @@ import { long } from '@_types/Numeric'
 import { Time, EpochMillis } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: {
-      allow_lazy_open: boolean
-      analysis_config: AnalysisConfigRead
-      analysis_limits: AnalysisLimits
-      background_persist_interval?: Time
-      create_time: EpochMillis
-      finished_time?: EpochMillis
-      custom_settings?: Dictionary<string, string>
-      daily_model_snapshot_retention_after_days: long
-      data_description: DataDescription
-      datafeed_config?: Datafeed
-      description?: string
-      groups?: string[]
-      job_id: Id
-      job_type: string
-      job_version: VersionString
-      model_plot_config?: ModelPlotConfig
-      model_snapshot_id?: Id
-      model_snapshot_retention_days: long
-      renormalization_window_days?: long
-      results_index_name: IndexName
-      results_retention_days?: long
-    }
+  body: {
+    allow_lazy_open: boolean
+    analysis_config: AnalysisConfigRead
+    analysis_limits: AnalysisLimits
+    background_persist_interval?: Time
+    create_time: EpochMillis
+    finished_time?: EpochMillis
+    custom_settings?: Dictionary<string, string>
+    daily_model_snapshot_retention_after_days: long
+    data_description: DataDescription
+    datafeed_config?: Datafeed
+    description?: string
+    groups?: string[]
+    job_id: Id
+    job_type: string
+    job_version: VersionString
+    model_plot_config?: ModelPlotConfig
+    model_snapshot_id?: Id
+    model_snapshot_retention_days: long
+    renormalization_window_days?: long
+    results_index_name: IndexName
+    results_retention_days?: long
   }
 }

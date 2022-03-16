@@ -20,9 +20,7 @@
 import { MountedSnapshot } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      snapshot: MountedSnapshot
-    }
+  body: {
+    snapshot: MountedSnapshot
   }
 }

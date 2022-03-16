@@ -20,17 +20,15 @@
 import { NodeIds } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      /**
-       * The ID of the node that the datafeed was started on. If the datafeed is allowed to open lazily and has not yet
-       * been assigned to a node, this value is an empty string.
-       */
-      node: NodeIds
-      /**
-       * For a successful response, this value is always `true`. On failure, an exception is returned instead.
-       */
-      started: boolean
-    }
+  body: {
+    /**
+     * The ID of the node that the datafeed was started on. If the datafeed is allowed to open lazily and has not yet
+     * been assigned to a node, this value is an empty string.
+     */
+    node: NodeIds
+    /**
+     * For a successful response, this value is always `true`. On failure, an exception is returned instead.
+     */
+    started: boolean
   }
 }

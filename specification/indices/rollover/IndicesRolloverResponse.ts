@@ -20,15 +20,13 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      conditions: Dictionary<string, boolean>
-      dry_run: boolean
-      new_index: string
-      old_index: string
-      rolled_over: boolean
-      shards_acknowledged: boolean
-    }
+  body: {
+    acknowledged: boolean
+    conditions: Dictionary<string, boolean>
+    dry_run: boolean
+    new_index: string
+    old_index: string
+    rolled_over: boolean
+    shards_acknowledged: boolean
   }
 }

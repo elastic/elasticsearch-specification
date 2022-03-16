@@ -20,7 +20,5 @@
 import { ActivationStatus } from '@watcher/_types/Activation'
 
 export class Response {
-  '200': {
-    body: { status: ActivationStatus }
-  }
+  body: { status: ActivationStatus }
 }

@@ -20,11 +20,9 @@
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      /** Statistics for cleanup operations. */
-      results: CleanupRepositoryResults
-    }
+  body: {
+    /** Statistics for cleanup operations. */
+    results: CleanupRepositoryResults
   }
 }
 

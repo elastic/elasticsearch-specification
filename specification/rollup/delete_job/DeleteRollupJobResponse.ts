@@ -20,10 +20,8 @@
 import { TaskFailure } from '@_types/Errors'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      task_failures?: TaskFailure[]
-    }
+  body: {
+    acknowledged: boolean
+    task_failures?: TaskFailure[]
   }
 }

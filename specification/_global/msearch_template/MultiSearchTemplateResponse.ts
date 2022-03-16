@@ -20,7 +20,5 @@
 import { MultiSearchResult } from '@global/msearch/types'
 
 export class Response<TDocument> {
-  '200': {
-    body: MultiSearchResult<TDocument>
-  }
+  body: MultiSearchResult<TDocument>
 }

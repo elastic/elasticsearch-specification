@@ -20,7 +20,5 @@
 import { RollupJob } from './types'
 
 export class Response {
-  '200': {
-    body: { jobs: RollupJob[] }
-  }
+  body: { jobs: RollupJob[] }
 }

@@ -20,7 +20,5 @@
 import { AliasesRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<AliasesRecord>
-  }
+  body: Array<AliasesRecord>
 }

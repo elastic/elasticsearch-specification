@@ -20,7 +20,5 @@
 import { HotThread } from './types'
 
 export class Response {
-  '200': {
-    body: { hot_threads: HotThread[] }
-  }
+  body: { hot_threads: HotThread[] }
 }
