@@ -5714,8 +5714,7 @@ export interface AsyncSearchGetRequest extends RequestBase {
   wait_for_completion_timeout?: Time
 }
 
-export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {
-}
+export type AsyncSearchGetResponse<TDocument = unknown> = AsyncSearchAsyncSearchDocumentResponseBase<TDocument>
 
 export interface AsyncSearchStatusRequest extends RequestBase {
   id: Id
@@ -5811,8 +5810,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   }
 }
 
-export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {
-}
+export type AsyncSearchSubmitResponse<TDocument = unknown> = AsyncSearchAsyncSearchDocumentResponseBase<TDocument>
 
 export interface AutoscalingAutoscalingPolicy {
   roles: string[]
@@ -8703,8 +8701,7 @@ export interface EqlGetRequest extends RequestBase {
   wait_for_completion_timeout?: Time
 }
 
-export interface EqlGetResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {
-}
+export type EqlGetResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEvent>
 
 export interface EqlGetStatusRequest extends RequestBase {
   id: Id
@@ -8745,8 +8742,7 @@ export interface EqlSearchRequest extends RequestBase {
   }
 }
 
-export interface EqlSearchResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {
-}
+export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEvent>
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
