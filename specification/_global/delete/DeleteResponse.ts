@@ -21,7 +21,7 @@ import { ErrorResponseBase, WriteResponseBase } from '@_types/Base'
 
 export class Response {
   body: WriteResponseBase
-  failures: [
+  exceptions: [
     {
       /**
        * If the index does exist, but the document does not,

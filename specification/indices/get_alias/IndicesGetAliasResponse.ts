@@ -25,7 +25,7 @@ import { IndexName } from '@_types/common'
 
 export class Response {
   body: Dictionary<IndexName, IndexAliases>
-  failures: [
+  exceptions: [
     {
       statusCodes: [404]
       body: NotFoundAliases | ErrorResponseBase

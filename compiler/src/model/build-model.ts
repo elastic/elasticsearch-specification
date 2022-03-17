@@ -333,8 +333,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           } else {
             type.body = { kind: 'properties', properties: property.properties }
           }
-        } else if (member.getName() === 'failures') {
-          const failures: model.ResponseFailure[] = []
+        } else if (member.getName() === 'exceptions') {
+          const exceptions: model.ResponseException[] = []
           const property = member.getTypeNode()
           assert(
             property,
@@ -342,7 +342,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             'Failures should be an array.'
           )
           for (const element of property.getElements()) {
-            const failure: model.ResponseFailure = {
+            const exception: model.ResponseException = {
               statusCodes: [],
               body: { kind: 'no_body' }
             }
@@ -354,7 +354,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               )
               const jsDocs = child.getJsDocs()
               if (jsDocs.length > 0) {
-                failure.description = jsDocs[0].getDescription()
+                exception.description = jsDocs[0].getDescription()
               }
               if (child.getName() === 'statusCodes') {
                 const value = child.getTypeNode()
@@ -362,27 +362,27 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
                 for (const code of value.getElements()) {
                   assert(code, Node.isLiteralTypeNode(code) && Number.isInteger(Number(code.getText())), 'Status code values should a valid integer')
                   assert(code, STATUS_CODES[code.getText()] != null, `${code.getText()} is not a valid status code`)
-                  failure.statusCodes.push(Number(code.getText()))
+                  exception.statusCodes.push(Number(code.getText()))
                 }
               } else if (child.getName() === 'body') {
                 const property = visitRequestOrResponseProperty(child)
                 // the body can either by a value (eg Array<string> or an object with properties)
                 if (property.valueOf != null) {
                   if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
-                    failure.body = { kind: 'no_body' }
+                    exception.body = { kind: 'no_body' }
                   } else {
-                    failure.body = { kind: 'value', value: property.valueOf }
+                    exception.body = { kind: 'value', value: property.valueOf }
                   }
                 } else {
-                  failure.body = { kind: 'properties', properties: property.properties }
+                  exception.body = { kind: 'properties', properties: property.properties }
                 }
               } else {
                 assert(child, false, 'Failure.body and Failure.statusCode are the only Failure properties supported')
               }
             })
-            failures.push(failure)
+            exceptions.push(exception)
           }
-          type.failures = failures
+          type.exceptions = exceptions
         } else {
           assert(member, false, 'Response.body and Response.failures are the only Response properties supported')
         }
