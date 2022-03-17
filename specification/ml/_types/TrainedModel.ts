@@ -55,40 +55,44 @@ export class TrainedModelStats {
 
 export class TrainedModelDeploymentStats {
   /** The detailed allocation status for the deployment. */
-  allocation_status: TrainedModelDeploymentAllocationStatus
+  allocation_status?: TrainedModelDeploymentAllocationStatus
   /** The sum of `error_count` for all nodes in the deployment. */
-  error_count: integer
+  error_count?: integer
   /** The sum of `inference_count` for all nodes in the deployment. */
-  inference_count: integer
+  inference_count?: long
   /** The number of threads used by the inference process. */
-  inference_threads: integer
+  inference_threads?: integer
   /** The unique identifier for the trained model. */
   model_id: Id
   /** The number of threads used when sending inference requests to the model. */
-  model_threads: integer
+  model_threads?: integer
   /** The deployent stats for each node that currently has the model allocated. */
   nodes: TrainedModelDeploymentNodesStats
-  /** The sum of `peak_throughput_per_minute` for all nodes in the deployment. @since 8.2.0 */
-  peak_throughput_per_minute: integer
+  /**
+   * The sum of `peak_throughput_per_minute` for all nodes in the deployment.
+   * @since 8.2.0
+   *
+   */
+  peak_throughput_per_minute: long
   /** The number of inference requests that can be queued before new requests are rejected. */
-  queue_capacity: integer
+  queue_capacity?: integer
   /**
    * The sum of `rejected_execution_count` for all nodes in the deployment.
    * Individual nodes reject an inference request if the inference queue is full.
    * The queue size is controlled by the `queue_capacity` setting in the start
    * trained model deployment API.
    */
-  rejected_execution_count: integer
+  rejected_execution_count?: integer
   /** The reason for the current deployment state. Usually only populated when
    * the model is not deployed to a node.
    */
-  reason: string
+  reason?: string
   /** The epoch timestamp when the deployment started. */
   start_time: long
   /** The overall state of the deployment. */
-  state: DeploymentState
+  state?: DeploymentState
   /** The sum of `timeout_count` for all nodes in the deployment. */
-  timeout_count: integer
+  timeout_count?: integer
 }
 
 export class TrainedModelInferenceStats {
@@ -122,47 +126,53 @@ export class TrainedModelSizeStats {
 
 export class TrainedModelDeploymentNodesStats {
   /** The average time for each inference call to complete on this node. */
-  average_inference_time_ms: double
+  average_inference_time_ms?: double
   /**
-   * The average time for each inference call to complete on this node
-   * in the last minute. @Since 8.2.0
+   * The average time for each inference call to complete on this node in the last minute.
+   * @since 8.2.0
    */
-  average_inference_time_ms_last_minute: double
+  average_inference_time_ms_last_minute?: double
   /** The number of errors when evaluating the trained model. */
-  error_count: integer
+  error_count?: integer
   /** The total number of inference calls made against this node for this model. */
-  inference_count: integer
+  inference_count?: long
   /**
    * The number of threads used by the inference process. This value is limited
    * by the number of hardware threads on the node; it might therefore differ
    * from the `inference_threads` value in the start trained model deployment API.
    */
-  inference_threads: integer
+  inference_threads?: integer
   /** The epoch time stamp of the last inference call for the model on this node. */
-  last_access: long
+  last_access?: long
   /**
    * The number of threads used when sending inference requests to the model.
    * This value is limited by the number of hardware threads on the node; it
    * might therefore differ from the `model_threads` value in the start trained
    * model deployment API.
    */
-  model_threads: integer
+  model_threads?: integer
   /** Information pertaining to the node. */
-  node: DiscoveryNode
+  node?: DiscoveryNode
   /** The number of inference requests queued to be processed. */
-  number_of_pending_requests: integer
-  /** The peak number of requests processed in a 1 minute period. @Since 8.2.0 */
-  peak_throughput_per_minute: integer
+  number_of_pending_requests?: integer
+  /**
+   * The peak number of requests processed in a 1 minute period.
+   * @since 8.2.0
+   */
+  peak_throughput_per_minute: long
   /** The number of inference requests that were not processed because the queue was full. */
-  rejection_execution_count: integer
+  rejection_execution_count?: integer
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAllocationRoutingTable
   /** The epoch timestamp when the allocation started. */
-  start_time: long
+  start_time?: long
   /** The number of inference requests that timed out before being processed. */
-  timeout_count: integer
-  /** The number of requests processed in the last 1 minute. @Since 8.2.0 */
-  throughput_last_minute: integer
+  timeout_count?: integer
+  /**
+   * The number of requests processed in the last 1 minute.
+   * @since 8.2.0
+   */
+  throughput_last_minute: long
 }
 
 export class TrainedModelConfig {
