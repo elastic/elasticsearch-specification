@@ -56,8 +56,6 @@ import {
   sourceLocation
 } from './utils'
 
-const specsFolder = join(__dirname, '..', '..', '..', 'specification')
-const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
 const jsonSpec = buildJsonSpec()
 
 export function compileEndpoints (): Record<string, model.Endpoint> {
@@ -86,7 +84,8 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
   return map
 }
 
-export function compileSpecification (endpointMappings: Record<string, model.Endpoint>): model.Model {
+export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string): model.Model {
+  const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
 
   verifyUniqueness(project)
