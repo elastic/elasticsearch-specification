@@ -305,6 +305,45 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       } else if (bodyProperties.length > 0) {
         type.body = { kind: 'properties', properties: bodyProperties }
       }
+
+      // The  interface is extended, an extended interface could accept generics as well,
+      // Implements will be caught here as well, they can be differentiated by looking as `node.token`
+      // which can either be `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
+      // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
+      // if it's a normal implements or a behavior, in such case, the behaviors
+      // need to be collected and added to the type.
+      if (declaration.getHeritageClauses().length > 0) {
+        // check if the current node or one of the ancestor
+        // has one or more behaviors attached
+        const attachedBehaviors = getAllBehaviors(declaration)
+        if (attachedBehaviors.length > 0) {
+          type.attachedBehaviors = Array.from(
+            new Set((type.attachedBehaviors ?? []).concat(attachedBehaviors))
+          )
+        }
+      }
+
+      for (const inherit of declaration.getHeritageClauses()) {
+        const extended = inherit.getTypeNodes()
+          .map(t => t.getExpression())
+          .map(t => t.getType().getSymbol()?.getDeclarations()[0])[0]
+        assert(inherit, Node.isClassDeclaration(extended) || Node.isInterfaceDeclaration(extended), 'Should extend from a class or interface')
+        type.inherits = modelInherits(extended, inherit)
+      }
+
+      // If the body wasn't set and we have a parent class, then it's a property body with no additional properties
+      if (type.body.kind === 'no_body' && type.inherits != null) {
+        const parent = type.inherits.type
+        // RequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
+        if (parent.name === 'RequestBase' && parent.namespace === '_types') {
+          // nothing to do
+        // CatRequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
+        } else if (parent.name === 'CatRequestBase' && parent.namespace === 'cat._types') {
+          // nothing to do
+        } else {
+          type.body = { kind: 'properties', properties: new Array<model.Property>() }
+        }
+      }
     } else {
       type = {
         specLocation: sourceLocation(declaration),
@@ -336,31 +375,12 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           assert(member, false, 'Response.body is the only Response property supported')
         }
       }
-    }
 
-    // The  interface is extended, an extended interface could accept generics as well,
-    // Implements will be caught here as well, they can be differentiated by looking as `node.token`
-    // which can either be `ts.SyntaxKind.ExtendsKeyword` or `ts.SyntaxKind.ImplementsKeyword`
-    // In case of `ts.SyntaxKind.ImplementsKeyword`, we need to check
-    // if it's a normal implements or a behavior, in such case, the behaviors
-    // need to be collected and added to the type.
-    if (declaration.getHeritageClauses().length > 0) {
-      // check if the current node or one of the ancestor
-      // has one or more behaviors attached
-      const attachedBehaviors = getAllBehaviors(declaration)
-      if (attachedBehaviors.length > 0) {
-        type.attachedBehaviors = Array.from(
-          new Set((type.attachedBehaviors ?? []).concat(attachedBehaviors))
-        )
-      }
-    }
-
-    for (const inherit of declaration.getHeritageClauses()) {
-      const extended = inherit.getTypeNodes()
-        .map(t => t.getExpression())
-        .map(t => t.getType().getSymbol()?.getDeclarations()[0])[0]
-      assert(inherit, Node.isClassDeclaration(extended) || Node.isInterfaceDeclaration(extended), 'Should extend from a class or interface')
-      type.inherits = modelInherits(extended, inherit)
+      assert(
+        declaration,
+        declaration.getHeritageClauses().length === 0,
+        'Responses cannot be extended'
+      )
     }
 
     for (const typeParameter of declaration.getTypeParameters()) {
@@ -368,20 +388,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         name: modelGenerics(typeParameter),
         namespace: type.name.namespace
       })
-    }
-
-    // If the body wasn't set and we have a parent class, then it's a property body with no additional properties
-    if (type.body.kind === 'no_body' && type.inherits != null) {
-      const parent = type.inherits.type
-      // RequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
-      if (parent.name === 'RequestBase' && parent.namespace === '_types') {
-        // nothing to do
-      // CatRequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
-      } else if (parent.name === 'CatRequestBase' && parent.namespace === 'cat._types') {
-        // nothing to do
-      } else {
-        type.body = { kind: 'properties', properties: new Array<model.Property>() }
-      }
     }
 
     return type

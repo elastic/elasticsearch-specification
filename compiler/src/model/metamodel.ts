@@ -268,11 +268,7 @@ export class Request extends BaseType {
 export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
-  inherits?: Inherits
-  implements?: Inherits[]
   body: Body
-  behaviors?: Inherits[]
-  attachedBehaviors?: string[]
 }
 
 export type Body = ValueBody | PropertiesBody | NoBody
