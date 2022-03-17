@@ -46,36 +46,3 @@ For example: [`/specification/_global/search`](../specification/_global/search).
 
 The specification has a set of custom types used to define complex structures
 or behaviors. Those types must be placed in [`/specification/_spec_utils`](../specification/_spec_utils).
-
-### Import alias
-
-It can happen that you need to import a type from a different namespace that already exist in the current file.
-To solve this problem, you should use import aliases.
-
-```ts
-// _global/get/GetRequest.ts
-
-import { RequestBase } from '@_types/Base'
-
-/**
- * @rest_spec_name get
- * @since 0.0.0
- * @stability stable | beta | experimental
- */
-export interface Request extends RequestBase {
-  path_parts: {}
-  query_parameters: {}
-}
-```
-```ts
-// _global/get_source/SourceRequest.ts
-
-import { Request as GetRequest } from '_global/get/GetRequest'
-
-/**
- * @rest_spec_name get_source
- * @since 0.0.0
- * @stability stable | beta | experimental
- */
-export interface Request extends GetRequest {}
-```

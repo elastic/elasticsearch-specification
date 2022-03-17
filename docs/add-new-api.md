@@ -67,13 +67,13 @@ Following you can find a template valid for any request definition.
 interface Request extends RequestBase {
   path_parts: {
 
-  };
+  }
   query_parameters: {
 
-  };
+  }
   body: {
 
-  };
+  }
 }
 ```
 
@@ -87,13 +87,13 @@ In some cases, the request could take one or more generics, in such case the def
 interface Request<Generic> extends RequestBase {
   path_parts: {
 
-  };
+  }
   query_parameters: {
 
-  };
+  }
   body: {
 
-  };
+  }
 }
 ```
 And the generic will be used somewhere inside the definition.
@@ -118,12 +118,37 @@ class Response {
 As you can see, for responses there are no custom top level keys, as the
 response definition represents the body of a succesful response.
 
+#### Generics
+
 In some cases, the response could take one or more generics, in such case the definition will be:
+
 ```ts
 class Response<Generic> {
   body: {
-
+    key: Generic
   }
 }
 ```
+
 And the generic will be used somewhere inside the definition.
+
+#### Exceptions
+
+Normally, every API returns the exact same structure in case of error, which is defined
+in [`ErrorResponseBase`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L66-L75).
+In some edge cases, the response structure may change. To document this situations, you should use the `exceptions` key.
+
+```ts
+class Response {
+  body: SuccessResponseBodyType
+  exceptions: [
+    {
+      /**
+       * A brief description of the exception.
+       */
+      statusCodes: [404]
+      body: NotFoundException
+    }
+  ]
+}
+```
