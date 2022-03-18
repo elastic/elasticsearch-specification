@@ -4488,7 +4488,7 @@ export interface MappingConstantKeywordProperty extends MappingPropertyBase {
   type: 'constant_keyword'
 }
 
-export type MappingCoreProperty = MappingObjectProperty | MappingNestedProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingDocValuesProperty
+export type MappingCoreProperty = MappingObjectProperty | MappingNestedProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingDocValuesProperty | MappingMatchOnlyTextProperty
 
 export interface MappingCorePropertyBase extends MappingPropertyBase {
   copy_to?: Fields
@@ -4703,6 +4703,12 @@ export interface MappingLongNumberProperty extends MappingStandardNumberProperty
 
 export interface MappingLongRangeProperty extends MappingRangePropertyBase {
   type: 'long_range'
+}
+
+export interface MappingMatchOnlyTextProperty {
+  type: 'match_only_text'
+  fields?: Record<PropertyName, MappingProperty>
+  meta?: Record<string, string>
 }
 
 export type MappingMatchType = 'simple' | 'regex'

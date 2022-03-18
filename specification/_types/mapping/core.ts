@@ -20,7 +20,7 @@
 import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
 import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Fields, RelationName } from '@_types/common'
+import { Fields, PropertyName, RelationName } from '@_types/common'
 import {
   byte,
   double,
@@ -38,7 +38,7 @@ import {
   PointProperty,
   ShapeProperty
 } from './geo'
-import { PropertyBase } from './Property'
+import { Property, PropertyBase } from './Property'
 import { RangeProperty } from './range'
 import {
   CompletionProperty,
@@ -63,6 +63,7 @@ export type CoreProperty =
   | SearchAsYouTypeProperty
   | TextProperty
   | DocValuesProperty
+  | MatchOnlyTextProperty
 
 export class DocValuesPropertyBase extends CorePropertyBase {
   doc_values?: boolean
@@ -239,6 +240,28 @@ export class SearchAsYouTypeProperty extends CorePropertyBase {
   search_quote_analyzer?: string
   term_vector?: TermVectorOption
   type: 'search_as_you_type'
+}
+
+/**
+ * A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field
+ * effectively stores data the same way as a text field that only indexes documents (index_options: docs) and
+ * disables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries
+ * that need positions such as the match_phrase query perform slower as they need to look at the _source document
+ * to verify whether a phrase matches. All queries return constant scores that are equal to 1.0.
+ */
+export class MatchOnlyTextProperty {
+  type: 'match_only_text'
+  /**
+   * Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one
+   * field for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
+   */
+  fields?: Dictionary<PropertyName, Property>
+  /**
+   * Metadata about the field.
+   * @doc_id mapping-meta-field
+   */
+  meta?: Dictionary<string, string>
 }
 
 export enum IndexOptions {
