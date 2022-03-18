@@ -267,6 +267,7 @@ export class MatchOnlyTextProperty {
    * field, which can then be queried as a single field.
    */
   copy_to?: Fields
+  copy_to?: Fields
 }
 
 export enum IndexOptions {
