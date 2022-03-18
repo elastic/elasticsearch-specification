@@ -254,7 +254,7 @@ export class MatchOnlyTextProperty {
   /**
    * Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one
    * field for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
+   * @doc_id multi-fields
    */
   fields?: Dictionary<PropertyName, Property>
   /**
@@ -266,7 +266,6 @@ export class MatchOnlyTextProperty {
    * Allows you to copy the values of multiple fields into a group
    * field, which can then be queried as a single field.
    */
-  copy_to?: Fields
   copy_to?: Fields
 }
 

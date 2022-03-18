@@ -105,7 +105,8 @@ export enum FieldType {
   histogram,
   constant_keyword,
   aggregate_metric_double,
-  dense_vector
+  dense_vector,
+  match_only_text
 }
 
 export class PropertyWithClrOrigin {}
