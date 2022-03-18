@@ -262,6 +262,11 @@ export class MatchOnlyTextProperty {
    * @doc_id mapping-meta-field
    */
   meta?: Dictionary<string, string>
+  /**
+   * Allows you to copy the values of multiple fields into a group
+   * field, which can then be queried as a single field.
+   */
+  copy_to?: Fields
 }
 
 export enum IndexOptions {
