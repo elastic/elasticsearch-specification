@@ -399,3 +399,4 @@ supported-flags,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/quer
 eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/eql-syntax.html#eql-sequences
 index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/index-modules.html#index-modules-settings
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/8.1/field-and-document-access-control.html#templating-role-query
+multi-fields,https://www.elastic.co/guide/en/elasticsearch/8.1/current/multi-fields.html
