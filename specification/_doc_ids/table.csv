@@ -401,3 +401,4 @@ index-modules-settings,https://www.elastic.co/guide/en/elasticsearch/reference/m
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
 mapping-settings-limit,https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html
 index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html#index-slow-log
+ multi-fields,https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html

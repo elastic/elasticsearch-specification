@@ -4489,7 +4489,7 @@ export interface MappingConstantKeywordProperty extends MappingPropertyBase {
   type: 'constant_keyword'
 }
 
-export type MappingCoreProperty = MappingObjectProperty | MappingNestedProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingDocValuesProperty
+export type MappingCoreProperty = MappingObjectProperty | MappingNestedProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingDocValuesProperty | MappingMatchOnlyTextProperty
 
 export interface MappingCorePropertyBase extends MappingPropertyBase {
   copy_to?: Fields
@@ -4583,7 +4583,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'match_only_text'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -4704,6 +4704,13 @@ export interface MappingLongNumberProperty extends MappingStandardNumberProperty
 
 export interface MappingLongRangeProperty extends MappingRangePropertyBase {
   type: 'long_range'
+}
+
+export interface MappingMatchOnlyTextProperty {
+  type: 'match_only_text'
+  fields?: Record<PropertyName, MappingProperty>
+  meta?: Record<string, string>
+  copy_to?: Fields
 }
 
 export type MappingMatchType = 'simple' | 'regex'
