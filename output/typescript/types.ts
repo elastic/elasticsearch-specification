@@ -675,6 +675,7 @@ export interface MtermvectorsTermVectorsResult {
 export interface OpenPointInTimeRequest extends RequestBase {
   index: Indices
   keep_alive: Time
+  ignore_unavailable?: boolean
 }
 
 export interface OpenPointInTimeResponse {
