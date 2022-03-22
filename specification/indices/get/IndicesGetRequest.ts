@@ -79,7 +79,7 @@ export interface Request extends RequestBase {
     master_timeout?: Time
     /**
      * Return only information on specified index features
-     * @server_default [aliases, mappings, settings]
+     * @server_default ['aliases', 'mappings', 'settings']
      * @since 8.1.0
      */
     features?: Features
