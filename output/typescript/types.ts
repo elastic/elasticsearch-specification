@@ -12790,6 +12790,58 @@ export interface MlGetJobsResponse {
   jobs: MlJob[]
 }
 
+export interface MlGetMemoryStatsJvmStats {
+  heap_max: ByteSize
+  heap_max_in_bytes: integer
+  java_inference: ByteSize
+  java_inference_in_bytes: integer
+  java_inference_max: ByteSize
+  java_inference_max_in_bytes: integer
+}
+
+export interface MlGetMemoryStatsMemMlStats {
+  anomaly_detectors: ByteSize
+  anomaly_detectors_in_bytes: integer
+  data_frame_analytics: ByteSize
+  data_frame_analytics_in_bytes: integer
+  max: ByteSize
+  max_in_bytes: integer
+  native_code_overhead: ByteSize
+  native_code_overhead_in_bytes: integer
+  native_inference: ByteSize
+  native_inference_in_bytes: integer
+}
+
+export interface MlGetMemoryStatsMemStats {
+  adjusted_total: ByteSize
+  adjusted_total_in_bytes: integer
+  total: ByteSize
+  total_in_bytes: integer
+  ml: MlGetMemoryStatsMemMlStats
+}
+
+export interface MlGetMemoryStatsMemory {
+  attributes: string[]
+  jvm: MlGetMemoryStatsJvmStats
+  mem: MlGetMemoryStatsMemStats
+  name: Name
+  roles: string[]
+  transport_address: TransportAddress
+}
+
+export interface MlGetMemoryStatsRequest extends RequestBase {
+  node_id?: Id
+  human?: boolean
+  master_timeout?: Time
+  timeout?: Time
+}
+
+export interface MlGetMemoryStatsResponse {
+  _nodes: NodeStatistics
+  cluser_name: Name
+  nodes: Record<Id, MlGetMemoryStatsMemory>
+}
+
 export interface MlGetModelSnapshotsRequest extends RequestBase {
   job_id: Id
   snapshot_id?: Id
