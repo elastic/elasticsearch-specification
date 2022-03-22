@@ -22,10 +22,17 @@ import { Indices } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * A search request by default executes against the most recent visible data of the target indices,
+ * which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the
+ * state of the data as it existed when initiated. In some cases, it’s preferred to perform multiple
+ * search requests using the same point in time. For example, if refreshes happen between
+ * `search_after` requests, then the results of those requests might not be consistent as changes happening
+ * between searches are only visible to the more recent point in time.
  * @rest_spec_name open_point_in_time
  * @since 7.10.0
  * @stability stable
  * @doc_id point-in-time-api
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -33,5 +40,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     keep_alive: Time
+    ignore_unavailable?: boolean
   }
 }
