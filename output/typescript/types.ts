@@ -9959,6 +9959,10 @@ export interface IndicesForcemergeRequest extends RequestBase {
 
 export type IndicesForcemergeResponse = ShardsOperationResponseBase
 
+export type IndicesGetFeature = 'aliases' | 'mappings' | 'settings'
+
+export type IndicesGetFeatures = IndicesGetFeature | IndicesGetFeature[]
+
 export interface IndicesGetRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -9968,6 +9972,7 @@ export interface IndicesGetRequest extends RequestBase {
   include_defaults?: boolean
   local?: boolean
   master_timeout?: Time
+  features?: IndicesGetFeatures
 }
 
 export type IndicesGetResponse = Record<IndexName, IndicesIndexState>

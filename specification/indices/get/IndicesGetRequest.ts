@@ -22,20 +22,33 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Returns information about one or more indices. For data streams, the API returns information about the
+ * stream’s backing indices.
  * @rest_spec_name indices.get
  * @since 0.0.0
  * @stability stable
+ * @index_privileges view_index_metadata, manage
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. */
+    /**
+     * Comma-separated list of data streams, indices, and index aliases used to limit the request.
+     * Wildcard expressions (*) are supported.
+     */
     index: Indices
   }
   query_parameters: {
-    /** @server_default true */
+    /**
+     * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only
+     * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
+     * a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.
+     * @server_default true
+     */
     allow_no_indices?: boolean
     /**
-     * Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.
+     * Type of index that wildcard expressions can match. If the request can target data streams, this argument
+     * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+     * such as open,hidden.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -64,5 +77,19 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Time
+    /**
+     * Return only information on specified index features
+     * @server_default [aliases, mappings, settings]
+     * @since 8.1.0
+     */
+    features?: Features
   }
 }
+
+export enum Feature {
+  'aliases',
+  'mappings',
+  'settings'
+}
+export type Features = Feature | Feature[]
+
