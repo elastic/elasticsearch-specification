@@ -92,4 +92,3 @@ export enum Feature {
   'settings'
 }
 export type Features = Feature | Feature[]
-
