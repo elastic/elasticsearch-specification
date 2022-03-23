@@ -1047,7 +1047,6 @@
     },
     "indices.get": {
       "request": [
-        "Request: missing json spec query parameter 'features'",
         "Request: should not have a body"
       ],
       "response": [
