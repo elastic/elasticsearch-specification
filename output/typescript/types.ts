@@ -3514,7 +3514,7 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   execution_hint?: AggregationsTermsAggregationExecutionHint
   field?: Field
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: AggregationsTermsInclude
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
