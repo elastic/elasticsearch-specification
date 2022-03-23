@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { ByteSize, Name } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ByteSize, Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 
 export class Memory {
-  attributes: string[]
+  attributes: Dictionary<string, string>
   /**
    * Contains Java Virtual Machine (JVM) statistics for the node.
    */
@@ -43,19 +44,20 @@ export class Memory {
    * The host and port where transport HTTP connections are accepted.
    */
   transport_address: TransportAddress
+  ephemeral_id: Id
 }
 
 export class JvmStats {
   /** Maximum amount of memory available for use by the heap. */
-  heap_max: ByteSize
+  heap_max?: ByteSize
   /** Maximum amount of memory, in bytes, available for use by the heap. */
   heap_max_in_bytes: integer
   /** Amount of Java heap currently being used for caching inference models. */
-  java_inference: ByteSize
+  java_inference?: ByteSize
   /** Amount of Java heap, in bytes, currently being used for caching inference models. */
   java_inference_in_bytes: integer
   /** Maximum amount of Java heap to be used for caching inference models. */
-  java_inference_max: ByteSize
+  java_inference_max?: ByteSize
   /** Maximum amount of Java heap, in bytes, to be used for caching inference models. */
   java_inference_max_in_bytes: integer
 }
@@ -65,7 +67,7 @@ export class MemStats {
    * If the amount of physical memory has been overridden using the es.total_memory_bytes system property
    * then this reports the overridden value. Otherwise it reports the same value as total.
    */
-  adjusted_total: ByteSize
+  adjusted_total?: ByteSize
   /**
    * If the amount of physical memory has been overridden using the `es.total_memory_bytes` system property
    * then this reports the overridden value in bytes. Otherwise it reports the same value as `total_in_bytes`.
@@ -74,7 +76,7 @@ export class MemStats {
   /**
    * Total amount of physical memory.
    */
-  total: ByteSize
+  total?: ByteSize
   /**
    * Total amount of physical memory in bytes.
    */
@@ -87,23 +89,23 @@ export class MemStats {
 
 export class MemMlStats {
   /** Amount of native memory set aside for anomaly detection jobs. */
-  anomaly_detectors: ByteSize
+  anomaly_detectors?: ByteSize
   /** Amount of native memory, in bytes, set aside for anomaly detection jobs. */
   anomaly_detectors_in_bytes: integer
   /** Amount of native memory set aside for data frame analytics jobs. */
-  data_frame_analytics: ByteSize
+  data_frame_analytics?: ByteSize
   /** Amount of native memory, in bytes, set aside for data frame analytics jobs. */
   data_frame_analytics_in_bytes: integer
   /** Maximum amount of native memory (separate to the JVM heap) that may be used by machine learning native processes. */
-  max: ByteSize
+  max?: ByteSize
   /** Maximum amount of native memory (separate to the JVM heap), in bytes, that may be used by machine learning native processes. */
   max_in_bytes: integer
   /** Amount of native memory set aside for loading machine learning native code shared libraries. */
-  native_code_overhead: ByteSize
+  native_code_overhead?: ByteSize
   /** Amount of native memory, in bytes, set aside for loading machine learning native code shared libraries. */
   native_code_overhead_in_bytes: integer
   /** Amount of native memory set aside for trained models that have a PyTorch model_type. */
-  native_inference: ByteSize
+  native_inference?: ByteSize
   /** Amount of native memory, in bytes, set aside for trained models that have a PyTorch model_type. */
   native_inference_in_bytes: integer
 }

@@ -25,7 +25,7 @@ import { Memory } from './types'
 export class Response {
   body: {
     _nodes: NodeStatistics
-    cluser_name: Name
+    cluster_name: Name
     nodes: Dictionary<Id, Memory>
   }
 }
