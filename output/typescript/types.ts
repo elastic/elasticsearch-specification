@@ -16973,8 +16973,16 @@ export interface WatcherSearchInputRequestDefinition {
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
-  template?: SearchTemplateRequest
+  template?: WatcherSearchTemplateRequestBody
   rest_total_hits_as_int?: boolean
+}
+
+export interface WatcherSearchTemplateRequestBody {
+  explain?: boolean
+  id?: Id
+  params?: Record<string, any>
+  profile?: boolean
+  source?: string
 }
 
 export interface WatcherSimulatedActions {
