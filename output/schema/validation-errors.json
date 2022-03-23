@@ -1493,7 +1493,9 @@
     },
     "ml.get_memory_stats": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'human' does not exist in the json spec",
+        "Request: should not have a body",
+        "request definition ml.get_memory_stats:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     },
