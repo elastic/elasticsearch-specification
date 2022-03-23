@@ -32,7 +32,6 @@ export interface JsonSpec {
   }
   stability: model.Stability
   visibility: model.Visibility
-  feature_flag?: string
   headers: {
     accept?: string[]
     content_type?: string[]

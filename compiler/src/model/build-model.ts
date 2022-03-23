@@ -82,9 +82,6 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
         }
       })
     }
-    if (typeof spec.feature_flag === 'string') {
-      map[api].featureFlag = spec.feature_flag
-    }
   }
   return map
 }

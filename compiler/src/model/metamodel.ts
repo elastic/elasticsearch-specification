@@ -386,7 +386,6 @@ export class Endpoint {
   since?: string
   stability?: Stability
   visibility?: Visibility
-  featureFlag?: string
   accept?: string[]
   contentType?: string[]
   privileges?: {
