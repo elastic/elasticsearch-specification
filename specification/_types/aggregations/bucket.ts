@@ -309,7 +309,7 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
   gnd?: GoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: TermsInclude
   min_doc_count?: long
   mutual_information?: MutualInformationHeuristic
   percentage?: PercentageScoreHeuristic
