@@ -20,7 +20,8 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
-  ExpandWildcards, Id,
+  ExpandWildcards,
+  Id,
   IndexName,
   IndicesOptions,
   Password,
@@ -144,7 +145,6 @@ export class SearchTemplateRequestBody {
    */
   source?: string
 }
-
 
 export class SearchInputRequestBody {
   query: QueryContainer

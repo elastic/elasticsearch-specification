@@ -1596,14 +1596,6 @@ export interface SearchTemplateRequest extends RequestBase {
   }
 }
 
-export interface SearchTemplateRequestBody {
-  explain?: boolean
-  id?: Id
-  params?: Record<string, any>
-  profile?: boolean
-  source?: string
-}
-
 export interface SearchTemplateResponse<TDocument = unknown> {
   took: long
   timed_out: boolean
@@ -16981,8 +16973,16 @@ export interface WatcherSearchInputRequestDefinition {
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
-  template?: SearchTemplateRequestBody
+  template?: WatcherSearchTemplateRequestBody
   rest_total_hits_as_int?: boolean
+}
+
+export interface WatcherSearchTemplateRequestBody {
+  explain?: boolean
+  id?: Id
+  params?: Record<string, any>
+  profile?: boolean
+  source?: string
 }
 
 export interface WatcherSimulatedActions {
