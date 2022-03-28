@@ -3512,6 +3512,7 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   field?: Field
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
   include?: AggregationsTermsInclude
+  jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
@@ -3535,6 +3536,7 @@ export interface AggregationsSignificantTextAggregation extends AggregationsBuck
   filter_duplicate_text?: boolean
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
   include?: string | string[]
+  jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
