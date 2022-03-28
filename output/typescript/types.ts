@@ -10089,6 +10089,24 @@ export interface IndicesMigrateToDataStreamRequest extends RequestBase {
 
 export type IndicesMigrateToDataStreamResponse = AcknowledgedResponseBase
 
+export interface IndicesModifyDataStreamAction {
+  add_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
+  remove_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
+}
+
+export interface IndicesModifyDataStreamIndexAndDataStreamAction {
+  index: IndexName
+  data_stream: DataStreamName
+}
+
+export interface IndicesModifyDataStreamRequest extends RequestBase {
+  body?: {
+    actions: IndicesModifyDataStreamAction[]
+  }
+}
+
+export type IndicesModifyDataStreamResponse = AcknowledgedResponseBase
+
 export interface IndicesOpenRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
