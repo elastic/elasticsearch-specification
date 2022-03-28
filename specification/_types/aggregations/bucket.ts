@@ -193,6 +193,34 @@ export class GeoTileGridAggregation extends BucketAggregationBase {
   bounds?: GeoBounds
 }
 
+export class GeohexGridAggregation extends BucketAggregationBase {
+  /**
+   * Field containing indexed geo-point values. Must be explicitly
+   * mapped as a `geo_point` field. If the field contains an array
+   * `geohex_grid` aggregates all array values.
+   */
+  field: Field
+  /**
+   * Integer zoom of the key used to defined cells or buckets
+   * in the results. Value should be between 0-15.
+   * @server_default 6
+   */
+  precision?: integer
+  /**
+   * Bounding box used to filter the geo-points in each bucket.
+   */
+  bounds?: GeoBounds
+  /**
+   * Maximum number of buckets to return.
+   * @server_default 10000
+   */
+  size?: integer
+  /**
+   * Number of buckets returned from each shard.
+   */
+  shard_size?: integer
+}
+
 export class GlobalAggregation extends BucketAggregationBase {}
 
 export class ExtendedBounds<T> {
