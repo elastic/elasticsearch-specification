@@ -35,6 +35,7 @@ import {
   GeoDistanceAggregation,
   GeoHashGridAggregation,
   GeoTileGridAggregation,
+  GeohexGridAggregation,
   GlobalAggregation,
   HistogramAggregation,
   IpRangeAggregation,
@@ -158,6 +159,7 @@ export class AggregationContainer {
   geohash_grid?: GeoHashGridAggregation
   geo_line?: GeoLineAggregation
   geotile_grid?: GeoTileGridAggregation
+  geohex_grid?: GeohexGridAggregation
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation

@@ -2578,6 +2578,7 @@ export interface AggregationsAggregationContainer {
   geohash_grid?: AggregationsGeoHashGridAggregation
   geo_line?: AggregationsGeoLineAggregation
   geotile_grid?: AggregationsGeoTileGridAggregation
+  geohex_grid?: AggregationsGeohexGridAggregation
   global?: AggregationsGlobalAggregation
   histogram?: AggregationsHistogramAggregation
   ip_range?: AggregationsIpRangeAggregation
@@ -3050,6 +3051,14 @@ export interface AggregationsGeoTileGridBucketKeys extends AggregationsMultiBuck
 }
 export type AggregationsGeoTileGridBucket = AggregationsGeoTileGridBucketKeys
   & { [property: string]: AggregationsAggregate | GeoTile | long }
+
+export interface AggregationsGeohexGridAggregation extends AggregationsBucketAggregationBase {
+  field: Field
+  precision?: integer
+  bounds?: GeoBounds
+  size?: integer
+  shard_size?: integer
+}
 
 export interface AggregationsGlobalAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
