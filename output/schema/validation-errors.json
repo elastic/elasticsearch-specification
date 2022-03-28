@@ -1106,10 +1106,10 @@
       ]
     },
     "indices.modify_data_stream": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition indices.modify_data_stream:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "indices.open": {
       "request": [
