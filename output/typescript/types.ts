@@ -10096,8 +10096,7 @@ export interface IndicesModifyDataStreamRequest extends RequestBase {
   }
 }
 
-export interface IndicesModifyDataStreamResponse extends AcknowledgedResponseBase {
-}
+export type IndicesModifyDataStreamResponse = AcknowledgedResponseBase
 
 export interface IndicesOpenRequest extends RequestBase {
   index: Indices
