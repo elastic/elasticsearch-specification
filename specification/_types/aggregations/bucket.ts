@@ -20,6 +20,7 @@
 import { SortOrder } from '@_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { EmptyObject } from '@_types/common'
 import { Field, RelationName, Fields } from '@_types/common'
 import {
   GeoDistanceType,
@@ -311,6 +312,7 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
   field?: Field
   gnd?: GoogleNormalizedDistanceHeuristic
   include?: TermsInclude
+  jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: MutualInformationHeuristic
   percentage?: PercentageScoreHeuristic
@@ -329,6 +331,7 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   filter_duplicate_text?: boolean
   gnd?: GoogleNormalizedDistanceHeuristic
   include?: string | string[]
+  jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: MutualInformationHeuristic
   percentage?: PercentageScoreHeuristic
