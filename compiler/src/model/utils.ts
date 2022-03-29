@@ -924,7 +924,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return undefined
   }
 
-  const [type, value] = tags.variants.split(' ')
+  const [type, ...values] = tags.variants.split(' ')
   if (type === 'external') {
     return { kind: 'external_tag' }
   }
@@ -934,14 +934,14 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   }
 
   assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-  assert(jsDoc, typeof value === 'string', 'Internal variant requires a tag definition')
-  const [tag, property] = value.split('=')
-  assert(jsDoc, tag === 'tag', 'The tag name should be "tag"')
-  assert(jsDoc, typeof property === 'string', 'The tag property is not defined')
+
+  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+  assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
 
   return {
     kind: 'internal_tag',
-    tag: property.replace(/'/g, '')
+    tag: pairs.tag,
+    defaultTag: pairs.default
   }
 }
 
@@ -968,6 +968,21 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
  */
 export function parseCommaSeparated (value: string): string[] {
   return value.split(',').map(v => v.trim().replace(/["']/g, ''))
+}
+
+/**
+ * Parses an array of "key=value" pairs and validate key names. Values can optionally be enclosed with single
+ * or double quotes.
+ */
+export function parseKeyValues (node: Node | Node[], pairs: string[], ...validKeys: string[]): Record<string, string> {
+  const result = {}
+  pairs.forEach(item => {
+    const kv = item.split('=')
+    assert(node, kv.length === 2, 'Malformed key/value list')
+    assert(node, validKeys.includes(kv[0]), `Unknown key '${kv[0]}'`)
+    result[kv[0]] = kv[1].replace(/["']/g, '')
+  })
+  return result
 }
 
 /**
