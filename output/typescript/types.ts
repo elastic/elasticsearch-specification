@@ -10948,10 +10948,20 @@ export interface IngestGsubProcessor extends IngestProcessorBase {
 
 export interface IngestInferenceConfig {
   regression?: IngestInferenceConfigRegression
+  classification?: IngestInferenceConfigClassification
+}
+
+export interface IngestInferenceConfigClassification {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  results_field?: Field
+  top_classes_results_field?: Field
+  prediction_field_type?: string
 }
 
 export interface IngestInferenceConfigRegression {
-  results_field: string
+  results_field?: Field
+  num_top_feature_importance_values?: integer
 }
 
 export interface IngestInferenceProcessor extends IngestProcessorBase {
