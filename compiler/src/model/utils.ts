@@ -996,8 +996,8 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
  * Parses a list of comma-separated values as an array. Values can optionally be enclosed with single
  * or double quotes.
  */
-export function parseCommaSeparated(value: string): string[] {
-  return value.split(',').map(v => v.trim().replace(/["']/g, ''));
+export function parseCommaSeparated (value: string): string[] {
+  return value.split(',').map(v => v.trim().replace(/["']/g, ''))
 }
 
 /**
