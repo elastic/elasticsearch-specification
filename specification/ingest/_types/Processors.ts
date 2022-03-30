@@ -240,12 +240,25 @@ export class InferenceProcessor extends ProcessorBase {
   inference_config?: InferenceConfig
 }
 
+/**
+ * @variants container
+ */
 export class InferenceConfig {
   regression?: InferenceConfigRegression
+  classification?: InferenceConfigClassification
 }
 
 export class InferenceConfigRegression {
-  results_field: string
+  results_field?: Field
+  num_top_feature_importance_values?: integer
+}
+
+export class InferenceConfigClassification {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  results_field?: Field
+  top_classes_results_field?: Field
+  prediction_field_type?: string
 }
 
 export class JoinProcessor extends ProcessorBase {

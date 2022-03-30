@@ -1059,7 +1059,6 @@
     },
     "indices.get": {
       "request": [
-        "Request: missing json spec query parameter 'features'",
         "Request: should not have a body"
       ],
       "response": [
@@ -1119,10 +1118,10 @@
       ]
     },
     "indices.modify_data_stream": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition indices.modify_data_stream:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "indices.open": {
       "request": [
@@ -1494,7 +1493,9 @@
     },
     "ml.get_memory_stats": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'human' does not exist in the json spec",
+        "Request: should not have a body",
+        "request definition ml.get_memory_stats:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     },
@@ -1666,7 +1667,6 @@
       "request": [
         "Request: missing json spec query parameter 'preference'",
         "Request: missing json spec query parameter 'routing'",
-        "Request: missing json spec query parameter 'ignore_unavailable'",
         "Request: missing json spec query parameter 'expand_wildcards'",
         "Request: should not have a body"
       ],
@@ -2336,7 +2336,6 @@
     },
     "watcher.execute_watch": {
       "request": [
-        "interface definition watcher._types:SearchInputRequestDefinition / Property 'template' / instance_of - '_global.search_template:Request' is a request and must only be used in endpoints",
         "interface definition watcher._types:HttpEmailAttachment / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
         "interface definition watcher._types:ReportingEmailAttachment / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
         "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
