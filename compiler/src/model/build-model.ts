@@ -341,7 +341,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           assert(
             property,
             Node.isTupleTypeNode(property),
-            'Failures should be an array.'
+            'Exceptionlures should be an array.'
           )
           for (const element of property.getElements()) {
             const exception: model.ResponseException = {
@@ -379,14 +379,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
                   exception.body = { kind: 'properties', properties: property.properties }
                 }
               } else {
-                assert(child, false, 'Failure.body and Failure.statusCode are the only Failure properties supported')
+                assert(child, false, 'Exception.body and Exception.statusCode are the only Exception properties supported')
               }
             })
             exceptions.push(exception)
           }
           type.exceptions = exceptions
         } else {
-          assert(member, false, 'Response.body and Response.failures are the only Response properties supported')
+          assert(member, false, 'Response.body and Response.exceptions are the only Response properties supported')
         }
       }
     }
