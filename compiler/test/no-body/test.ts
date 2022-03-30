@@ -19,7 +19,7 @@
 
 import { join } from 'path'
 import test from 'ava'
-import Compiler from '../../src/Compiler'
+import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
