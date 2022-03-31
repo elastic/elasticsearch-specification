@@ -4554,7 +4554,7 @@ export interface MappingDenseVectorProperty extends MappingPropertyBase {
   index_options?: MappingDenseVectorIndexOptions
 }
 
-export type MappingDocValuesProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDateProperty | MappingDateNanosProperty | MappingKeywordProperty | MappingNumberProperty | MappingRangeProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingCompletionProperty | MappingGenericProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingShapeProperty | MappingTokenCountProperty | MappingVersionProperty | MappingWildcardProperty | MappingPointProperty
+export type MappingDocValuesProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDateProperty | MappingDateNanosProperty | MappingKeywordProperty | MappingNumberProperty | MappingRangeProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingCompletionProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingShapeProperty | MappingTokenCountProperty | MappingVersionProperty | MappingWildcardProperty | MappingPointProperty
 
 export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
@@ -4617,21 +4617,6 @@ export interface MappingFloatNumberProperty extends MappingStandardNumberPropert
 
 export interface MappingFloatRangeProperty extends MappingRangePropertyBase {
   type: 'float_range'
-}
-
-export interface MappingGenericProperty extends MappingDocValuesPropertyBase {
-  analyzer: string
-  boost: double
-  fielddata: IndicesStringFielddata
-  ignore_malformed: boolean
-  index: boolean
-  index_options: MappingIndexOptions
-  norms: boolean
-  null_value: string
-  position_increment_gap: integer
-  search_analyzer: string
-  term_vector: MappingTermVectorOption
-  type: string
 }
 
 export type MappingGeoOrientation = 'right' | 'RIGHT' | 'counterclockwise' | 'ccw' | 'left' | 'LEFT' | 'clockwise' | 'cw'
@@ -9573,12 +9558,6 @@ export interface IndicesStorage {
 }
 
 export type IndicesStorageType = 'fs' | 'niofs' | 'mmapfs' | 'hybridfs'
-
-export interface IndicesStringFielddata {
-  format: IndicesStringFielddataFormat
-}
-
-export type IndicesStringFielddataFormat = 'paged_bytes' | 'disabled'
 
 export interface IndicesTemplateMapping {
   aliases: Record<IndexName, IndicesAlias>
