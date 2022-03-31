@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { StringFielddata } from '@indices/_types/StringFielddata'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DocValuesPropertyBase, IndexOptions } from './core'
 import { PropertyBase } from './Property'
-import { TermVectorOption } from './TermVectorOption'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -50,21 +48,6 @@ export class ConstantKeywordProperty extends PropertyBase {
 export class FieldAliasProperty extends PropertyBase {
   path?: Field
   type: 'alias'
-}
-
-export class GenericProperty extends DocValuesPropertyBase {
-  analyzer: string
-  boost: double
-  fielddata: StringFielddata
-  ignore_malformed: boolean
-  index: boolean
-  index_options: IndexOptions
-  norms: boolean
-  null_value: string
-  position_increment_gap: integer
-  search_analyzer: string
-  term_vector: TermVectorOption
-  type: string
 }
 
 export class HistogramProperty extends PropertyBase {
