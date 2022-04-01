@@ -18,12 +18,12 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Definition, Input } from './types'
 import { TrainedModelType } from '../_types/TrainedModel'
+import { InferenceConfigContainer } from '@ml/_types/inference'
 
 /**
  * Enables you to supply a trained model that is not created by data frame analytics.
