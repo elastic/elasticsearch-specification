@@ -19,7 +19,6 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import {
   ByteSize,
   Field,
@@ -32,6 +31,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 import { DateString } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
+import { InferenceConfigContainer } from './inference'
 
 export class TrainedModelStats {
   /** A collection of deployment stats, which is present when the models are deployed. */
@@ -176,7 +176,7 @@ export class TrainedModelConfig {
   estimated_heap_memory_usage_bytes?: integer
   /** The estimated number of operations to use the trained model. */
   estimated_operations?: integer
-  /** The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type. */
+  /** The default configuration for inference. This can be either a regression, classification, or one of the many NLP focused configurations. It must match the underlying definition.trained_model's target_type. */
   inference_config: InferenceConfigContainer
   /** The input field names for the model definition. */
   input: TrainedModelConfigInput

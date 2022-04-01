@@ -1,6 +1,223 @@
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
+/** Inference configuration provided when storing the model config*/
+export class InferenceConfigContainer {
+  /** Regression configuration for inference. */
+  regression?: RegressionInferenceOptions
+  /** Classification configuration for inference. */
+  classification?: ClassificationInferenceOptions
+  /**
+   * Text classification configuration for inference.
+   * @since 8.0.0
+   *  */
+
+  text_classification?: TextClassificationInferenceOptions
+  /**
+   * Zeroshot classification configuration for inference.
+   * @since 8.0.0
+   */
+  zero_shot_classification?: ZeroShotClassificationInferenceOptions
+  /**
+   * Fill mask configuration for inference.
+   * @since 8.0.0
+   */
+  fill_mask?: FillMaskInferenceOptions
+  /**
+   * Named entity recognition configuration for inference.
+   * @since 8.0.0
+   * */
+  ner?: NerInferenceOptions
+  /**
+   * Pass through configuration for inference.
+   * @since 8.0.0
+   */
+  pass_through?: PassThroughInferenceOptions
+  /**
+   * Text embedding configuration for inference.
+   * @since 8.0.0
+   * */
+  text_embedding?: TextEmbeddingInferenceOptions
+}
+
+export class RegressionInferenceOptions {
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: Field
+  /**
+   * Specifies the maximum number of feature importance values per document.
+   * @doc_id ml-feature-importance
+   * @server_default 0
+   */
+  num_top_feature_importance_values?: integer
+}
+
+export class ClassificationInferenceOptions {
+  /** Specifies the number of top class predictions to return. Defaults to 0. */
+  num_top_classes?: integer
+  /**
+   * Specifies the maximum number of feature importance values per document.
+   * @server_default 0
+   * @doc_id ml-feature-importance
+   */
+  num_top_feature_importance_values?: integer
+  /** Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false. */
+  prediction_field_type?: string
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /** Specifies the field to which the top classes are written. Defaults to top_classes. */
+  top_classes_results_field?: string
+}
+
+/** Tokenization options stored in inference configuration */
+export class TokenizationConfigContainer {
+  /** Indicates BERT tokenization and its options */
+  bert?: NlpBertTokenizationConfig
+  /**
+   * Indicates MPNET tokenization and its options
+   * @since 8.1.0
+   * */
+  mpnet?: NlpBertTokenizationConfig
+  /**
+   * Indicates RoBERTa tokenization and its options
+   * @since 8.2.0
+   * */
+  roberta?: NlpRobertaTokenizationConfig
+}
+
+/** BERT and MPNet tokenization configuration options */
+export class NlpBertTokenizationConfig {
+  /**
+   * Should the tokenizer lower case the text
+   * @server_default false
+   */
+  do_lower_case?: boolean
+  /**
+   * Is tokenization completed with special tokens
+   * @server_default true
+   */
+  with_special_tokens?: boolean
+  /**
+   * Maximum input sequence length for the model
+   * @server_default 512
+   */
+  max_sequence_length?: integer
+  /**
+   * Should tokenization input be automatically truncated before sending to the model for inference
+   * @server_default first
+   */
+  truncate?: TokenizationTruncate
+  /**
+   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
+   * @server_default -1
+   */
+  span?: integer
+}
+
+/** RoBERTa tokenization configuration options */
+export class NlpRobertaTokenizationConfig {
+  /**
+   * Should the tokenizer prefix input with a space character
+   * @server_default false
+   */
+  add_prefix_space?: boolean
+  /**
+   * Is tokenization completed with special tokens
+   * @server_default true
+   */
+  with_special_tokens?: boolean
+  /**
+   * Maximum input sequence length for the model
+   * @server_default 512
+   */
+  max_sequence_length?: integer
+  /**
+   * Should tokenization input be automatically truncated before sending to the model for inference
+   * @server_default first
+   */
+  truncate?: TokenizationTruncate
+  /**
+   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
+   * @server_default -1
+   */
+  span?: integer
+}
+
+/** Text classification configuration options */
+export class TextClassificationInferenceOptions {
+  /** Specifies the number of top class predictions to return. Defaults to 0. */
+  num_top_classes?: integer
+  /** The tokenization options */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /** Classification labels to apply other than the stored labels. Must have the same deminsions as the default configured labels */
+  classification_labels?: string[]
+}
+
+/** Zero shot classification configuration options */
+export class ZeroShotClassificationInferenceOptions {
+  /** The tokenization options to update when inferring */
+  tokenization?: TokenizationConfigContainer
+  /** Hypothesis template used when tokenizing labels for prediction
+   * @server_default "This example is {}."
+   */
+  hypothesis_template?: string
+  /**
+   * The zero shot classification labels indicating entailment, neutral, and contradiction
+   * Must contain exactly and only entailment, neutral, and contradiction
+   */
+  classification_labels: string[]
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /** Indicates if more than one true label exists.
+   * @server_default false.
+   **/
+  multi_label?: boolean
+  /** The labels to predict. */
+  labels?: string[]
+}
+
+/** Pass through configuration options */
+export class PassThroughInferenceOptions {
+  /** The tokenization options */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+/** Text embedding inference options */
+export class TextEmbeddingInferenceOptions {
+  /** The tokenization options */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+/** Named entity recognition options */
+export class NerInferenceOptions {
+  /** The tokenization options */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /**
+   * The token classification labels. Must be IOB formatted tags
+   * @server_default: ["O", "B_MISC", "I_MISC", "B_PER", "I_PER", "B_ORG", "I_ORG", "B_LOC", "I_LOC"]
+   */
+  classification_labels?: string[]
+}
+
+/** Fill mask inference options */
+export class FillMaskInferenceOptions {
+  /** Specifies the number of top class predictions to return. Defaults to 0. */
+  num_top_classes?: integer
+  /** The tokenization options to update when inferring */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+// Update containers that may only allow a subset of the options
+
 export class NlpInferenceConfigUpdateContainer {
   /** Text classification configuration for inference. */
   text_classification?: TextClassificationInferenceUpdateOptions
