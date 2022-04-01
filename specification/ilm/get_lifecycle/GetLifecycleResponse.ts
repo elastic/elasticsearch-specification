@@ -21,7 +21,5 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Lifecycle } from './types'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, Lifecycle>
-  }
+  body: Dictionary<string, Lifecycle>
 }

@@ -23,14 +23,12 @@ import { long } from '@_types/Numeric'
 import { TermVector } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      found: boolean
-      _id: Id
-      _index: IndexName
-      term_vectors?: Dictionary<Field, TermVector>
-      took: long
-      _version: VersionNumber
-    }
+  body: {
+    found: boolean
+    _id: Id
+    _index: IndexName
+    term_vectors?: Dictionary<Field, TermVector>
+    took: long
+    _version: VersionNumber
   }
 }

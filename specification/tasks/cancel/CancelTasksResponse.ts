@@ -20,7 +20,5 @@
 import { TaskListResponseBase } from '@tasks/_types/TaskListResponseBase'
 
 export class Response {
-  '200': {
-    body: TaskListResponseBase
-  }
+  body: TaskListResponseBase
 }

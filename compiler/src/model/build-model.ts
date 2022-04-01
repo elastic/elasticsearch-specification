@@ -19,6 +19,7 @@
 
 import { writeFileSync } from 'fs'
 import { join } from 'path'
+import { STATUS_CODES } from 'http'
 import {
   ClassDeclaration,
   EnumDeclaration,
@@ -81,6 +82,9 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
           ...(path.deprecated != null && { deprecation: path.deprecated })
         }
       })
+    }
+    if (typeof spec.feature_flag === 'string') {
+      map[api].featureFlag = spec.feature_flag
     }
   }
   return map
@@ -313,34 +317,78 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         body: { kind: 'no_body' }
       }
 
-      for (const status of declaration.getMembers()) {
+      for (const member of declaration.getMembers()) {
+        // we are visiting `path_parts, `query_parameters` or `body`
         assert(
-          status,
-          Node.isPropertyDeclaration(status) || Node.isPropertySignature(status),
+          member,
+          Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
           'Class and interfaces can only have property declarations or signatures'
         )
-        status.getTypeNode()?.forEachChild(child => {
-          assert(
-            child,
-            Node.isPropertySignature(child) || Node.isPropertyDeclaration(child),
-            `Children should be ${ts.SyntaxKind[ts.SyntaxKind.PropertySignature]} or ${ts.SyntaxKind[ts.SyntaxKind.PropertyDeclaration]} but is ${ts.SyntaxKind[child.getKind()]} instead`
-          )
-          const property = visitRequestOrResponseProperty(child)
-          if (property.name === 'body') {
-            // the body can either by a value (eg Array<string> or an object with properties)
-            if (property.valueOf != null) {
-              if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
-                type.body = { kind: 'no_body' }
-              } else {
-                type.body = { kind: 'value', value: property.valueOf }
-              }
+        if (member.getName() === 'body') {
+          const property = visitRequestOrResponseProperty(member)
+          // the body can either by a value (eg Array<string> or an object with properties)
+          if (property.valueOf != null) {
+            if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
+              type.body = { kind: 'no_body' }
             } else {
-              type.body = { kind: 'properties', properties: property.properties }
+              type.body = { kind: 'value', value: property.valueOf }
             }
           } else {
-            assert(child, false, 'Response.body is the only Response property supported')
+            type.body = { kind: 'properties', properties: property.properties }
           }
-        })
+        } else if (member.getName() === 'exceptions') {
+          const exceptions: model.ResponseException[] = []
+          const property = member.getTypeNode()
+          assert(
+            property,
+            Node.isTupleTypeNode(property),
+            'Failures should be an array.'
+          )
+          for (const element of property.getElements()) {
+            const exception: model.ResponseException = {
+              statusCodes: [],
+              body: { kind: 'no_body' }
+            }
+            element.forEachChild(child => {
+              assert(
+                child,
+                Node.isPropertySignature(child) || Node.isPropertyDeclaration(child),
+                `Children should be ${ts.SyntaxKind[ts.SyntaxKind.PropertySignature]} or ${ts.SyntaxKind[ts.SyntaxKind.PropertyDeclaration]} but is ${ts.SyntaxKind[child.getKind()]} instead`
+              )
+              const jsDocs = child.getJsDocs()
+              if (jsDocs.length > 0) {
+                exception.description = jsDocs[0].getDescription()
+              }
+              if (child.getName() === 'statusCodes') {
+                const value = child.getTypeNode()
+                assert(value, Node.isTupleTypeNode(value), 'statusCodes should be an array.')
+                for (const code of value.getElements()) {
+                  assert(code, Node.isLiteralTypeNode(code) && Number.isInteger(Number(code.getText())), 'Status code values should a valid integer')
+                  assert(code, STATUS_CODES[code.getText()] != null, `${code.getText()} is not a valid status code`)
+                  exception.statusCodes.push(Number(code.getText()))
+                }
+              } else if (child.getName() === 'body') {
+                const property = visitRequestOrResponseProperty(child)
+                // the body can either by a value (eg Array<string> or an object with properties)
+                if (property.valueOf != null) {
+                  if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
+                    exception.body = { kind: 'no_body' }
+                  } else {
+                    exception.body = { kind: 'value', value: property.valueOf }
+                  }
+                } else {
+                  exception.body = { kind: 'properties', properties: property.properties }
+                }
+              } else {
+                assert(child, false, 'Failure.body and Failure.statusCode are the only Failure properties supported')
+              }
+            })
+            exceptions.push(exception)
+          }
+          type.exceptions = exceptions
+        } else {
+          assert(member, false, 'Response.body and Response.failures are the only Response properties supported')
+        }
       }
     }
 
@@ -506,7 +554,7 @@ function visitRequestOrResponseProperty (member: PropertyDeclaration | PropertyS
   // declaration is a child of the top level properties, while TypeReference should
   // directly by "unwrapped" with `modelType` because if you navigate the children of a TypeReference
   // you will lose the context and crafting the types becomes really hard.
-  if (Node.isTypeReference(value)) {
+  if (Node.isTypeReference(value) || Node.isUnionTypeNode(value)) {
     valueOf = modelType(value)
   } else {
     value.forEachChild(child => {

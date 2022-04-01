@@ -607,7 +607,7 @@ export function hoistRequestAnnotations (
         'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'monitor',
         'read', 'read_cross_cluster', 'view_index_metadata', 'write'
       ]
-      const values = value.split(',').map(v => v.trim())
+      const values = parseCommaSeparated(value)
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The index privilege '${v}' does not exists.`)
       }
@@ -622,7 +622,7 @@ export function hoistRequestAnnotations (
         'manage_watcher', 'monitor', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
         'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_slm', 'transport_client'
       ]
-      const values = value.split(',').map(v => v.trim())
+      const values = parseCommaSeparated(value)
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The cluster privilege '${v}' does not exists.`)
       }
@@ -675,7 +675,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       type.docUrl = docUrl[1]
     } else if (tag === 'codegen_names') {
-      type.codegenNames = value.split(',').map(v => v.trim())
+      type.codegenNames = parseCommaSeparated(value)
       assert(jsDocs,
         type.kind === 'type_alias' && type.type.kind === 'union_of' && type.type.items.length === type.codegenNames.length,
         '@codegen_names must have the number of items as the union definition'
@@ -711,7 +711,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'aliases') {
-      property.aliases = value.split(',').map(v => v.trim())
+      property.aliases = parseCommaSeparated(value)
     } else if (tag === 'codegen_name') {
       property.codegenName = value
     } else if (tag === 'doc_url') {
@@ -808,7 +808,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
     if (tag === 'codegen_name') {
       member.codegenName = value
     } else if (tag === 'aliases') {
-      member.aliases = value.split(',').map(v => v.trim())
+      member.aliases = parseCommaSeparated(value)
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `${member.name}'s @since is not valid semver: ${value}`)
       member.since = value
@@ -954,7 +954,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return undefined
   }
 
-  const [type, value] = tags.variants.split(' ')
+  const [type, ...values] = tags.variants.split(' ')
   if (type === 'external') {
     return { kind: 'external_tag' }
   }
@@ -964,14 +964,14 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   }
 
   assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-  assert(jsDoc, typeof value === 'string', 'Internal variant requires a tag definition')
-  const [tag, property] = value.split('=')
-  assert(jsDoc, tag === 'tag', 'The tag name should be "tag"')
-  assert(jsDoc, typeof property === 'string', 'The tag property is not defined')
+
+  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+  assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
 
   return {
     kind: 'internal_tag',
-    tag: property.replace(/'/g, '')
+    tag: pairs.tag,
+    defaultTag: pairs.default
   }
 }
 
@@ -990,6 +990,29 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
   assert(jsDoc, typeof name === 'string', 'The @variant key should be "name"')
 
   return name.replace(/'/g, '')
+}
+
+/**
+ * Parses a list of comma-separated values as an array. Values can optionally be enclosed with single
+ * or double quotes.
+ */
+export function parseCommaSeparated (value: string): string[] {
+  return value.split(',').map(v => v.trim().replace(/["']/g, ''))
+}
+
+/**
+ * Parses an array of "key=value" pairs and validate key names. Values can optionally be enclosed with single
+ * or double quotes.
+ */
+export function parseKeyValues (node: Node | Node[], pairs: string[], ...validKeys: string[]): Record<string, string> {
+  const result = {}
+  pairs.forEach(item => {
+    const kv = item.split('=')
+    assert(node, kv.length === 2, 'Malformed key/value list')
+    assert(node, validKeys.includes(kv[0]), `Unknown key '${kv[0]}'`)
+    result[kv[0]] = kv[1].replace(/["']/g, '')
+  })
+  return result
 }
 
 /**

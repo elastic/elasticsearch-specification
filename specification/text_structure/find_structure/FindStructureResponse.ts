@@ -25,30 +25,28 @@ import { integer } from '@_types/Numeric'
 import { FieldStat } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      charset: string
-      has_header_row?: boolean
-      has_byte_order_marker: boolean
-      format: string
-      field_stats: Dictionary<Field, FieldStat>
-      sample_start: string
-      num_messages_analyzed: integer
-      mappings: TypeMapping
-      quote?: string
-      delimiter?: string
-      need_client_timezone: boolean
-      num_lines_analyzed: integer
-      column_names?: string[]
-      explanation?: string[]
-      grok_pattern?: string
-      multiline_start_pattern?: string
-      exclude_lines_pattern?: string
-      java_timestamp_formats?: string[]
-      joda_timestamp_formats?: string[]
-      timestamp_field?: Field
-      should_trim_fields?: boolean
-      ingest_pipeline: PipelineConfig
-    }
+  body: {
+    charset: string
+    has_header_row?: boolean
+    has_byte_order_marker: boolean
+    format: string
+    field_stats: Dictionary<Field, FieldStat>
+    sample_start: string
+    num_messages_analyzed: integer
+    mappings: TypeMapping
+    quote?: string
+    delimiter?: string
+    need_client_timezone: boolean
+    num_lines_analyzed: integer
+    column_names?: string[]
+    explanation?: string[]
+    grok_pattern?: string
+    multiline_start_pattern?: string
+    exclude_lines_pattern?: string
+    java_timestamp_formats?: string[]
+    joda_timestamp_formats?: string[]
+    timestamp_field?: Field
+    should_trim_fields?: boolean
+    ingest_pipeline: PipelineConfig
   }
 }

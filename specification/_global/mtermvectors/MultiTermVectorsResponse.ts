@@ -20,7 +20,5 @@
 import { TermVectorsResult } from './types'
 
 export class Response {
-  '200': {
-    body: { docs: TermVectorsResult[] }
-  }
+  body: { docs: TermVectorsResult[] }
 }

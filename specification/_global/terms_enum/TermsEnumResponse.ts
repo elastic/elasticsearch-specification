@@ -20,11 +20,9 @@
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  '200': {
-    body: {
-      _shards: ShardStatistics
-      terms: string[]
-      complete: boolean
-    }
+  body: {
+    _shards: ShardStatistics
+    terms: string[]
+    complete: boolean
   }
 }

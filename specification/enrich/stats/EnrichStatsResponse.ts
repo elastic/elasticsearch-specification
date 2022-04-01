@@ -20,12 +20,10 @@
 import { ExecutingPolicy, CoordinatorStats, CacheStats } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      coordinator_stats: CoordinatorStats[]
-      executing_policies: ExecutingPolicy[]
-      /** @since 7.16.0 */
-      cache_stats?: CacheStats[]
-    }
+  body: {
+    coordinator_stats: CoordinatorStats[]
+    executing_policies: ExecutingPolicy[]
+    /** @since 7.16.0 */
+    cache_stats?: CacheStats[]
   }
 }

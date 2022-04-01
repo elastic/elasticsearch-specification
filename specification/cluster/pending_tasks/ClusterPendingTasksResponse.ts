@@ -20,7 +20,5 @@
 import { PendingTask } from './types'
 
 export class Response {
-  '200': {
-    body: { tasks: PendingTask[] }
-  }
+  body: { tasks: PendingTask[] }
 }

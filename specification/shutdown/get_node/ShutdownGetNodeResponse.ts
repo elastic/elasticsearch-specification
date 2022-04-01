@@ -21,10 +21,8 @@ import { NodeId } from '@_types/common'
 import { EpochMillis, Timestamp } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: {
-      nodes: NodeShutdownStatus[]
-    }
+  body: {
+    nodes: NodeShutdownStatus[]
   }
 }
 

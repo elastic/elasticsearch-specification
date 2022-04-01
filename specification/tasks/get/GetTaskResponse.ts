@@ -22,12 +22,10 @@ import { ErrorCause } from '@_types/Errors'
 import { TaskInfo } from '../_types/TaskInfo'
 
 export class Response {
-  '200': {
-    body: {
-      completed: boolean
-      task: TaskInfo
-      response?: TaskStatus
-      error?: ErrorCause
-    }
+  body: {
+    completed: boolean
+    task: TaskInfo
+    response?: TaskStatus
+    error?: ErrorCause
   }
 }

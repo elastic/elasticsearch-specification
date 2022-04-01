@@ -21,7 +21,5 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ReindexNode } from './types'
 
 export class Response {
-  '200': {
-    body: { nodes: Dictionary<string, ReindexNode> }
-  }
+  body: { nodes: Dictionary<string, ReindexNode> }
 }

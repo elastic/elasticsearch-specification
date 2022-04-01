@@ -21,7 +21,5 @@ import { long } from '@_types/Numeric'
 import { Calendar } from './types'
 
 export class Response {
-  '200': {
-    body: { calendars: Calendar[]; count: long }
-  }
+  body: { calendars: Calendar[]; count: long }
 }

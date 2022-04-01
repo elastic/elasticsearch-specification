@@ -22,9 +22,12 @@ import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
-import { Id, IndexName, Name, NodeId, NodeName } from './common'
+import { Id, IndexName, NodeId, NodeName } from './common'
 import { TransportAddress } from './Networking'
 
+/**
+ * Contains statistics about the number of nodes selected by the request.
+ */
 export class NodeStatistics {
   failures?: ErrorCause[]
   /** Total number of nodes selected by the request. */

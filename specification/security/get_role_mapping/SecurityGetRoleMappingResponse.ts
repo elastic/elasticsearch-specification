@@ -21,7 +21,5 @@ import { RoleMapping } from '@security/_types/RoleMapping'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  '200': {
-    body: Dictionary<string, RoleMapping>
-  }
+  body: Dictionary<string, RoleMapping>
 }

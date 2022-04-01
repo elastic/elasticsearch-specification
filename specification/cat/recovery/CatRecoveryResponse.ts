@@ -20,7 +20,5 @@
 import { RecoveryRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<RecoveryRecord>
-  }
+  body: Array<RecoveryRecord>
 }

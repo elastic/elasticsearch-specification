@@ -20,7 +20,5 @@
 import { Name } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: { snapshot_name: Name }
-  }
+  body: { snapshot_name: Name }
 }

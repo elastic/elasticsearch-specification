@@ -18,9 +18,7 @@
  */
 
 export class Response {
-  '200': {
-    body: {
-      model_memory_estimate: string
-    }
+  body: {
+    model_memory_estimate: string
   }
 }

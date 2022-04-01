@@ -22,32 +22,30 @@ import { integer } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
 
 export class Response {
-  '200': {
-    body: {
-      /**
-       * Identifier for the search.
-       */
-      id: Id
-      /**
-       * If true, the search request is still executing. If false, the search is completed.
-       */
-      is_partial: boolean
-      /**
-       * If true, the response does not contain complete search results. This could be because either the search is still running (is_running status is false), or because it is already completed (is_running status is true) and results are partial due to failures or timeouts.
-       */
-      is_running: boolean
-      /**
-       * For a running search shows a timestamp when the eql search started, in milliseconds since the Unix epoch.
-       */
-      start_time_in_millis?: EpochMillis
-      /**
-       * Shows a timestamp when the eql search will be expired, in milliseconds since the Unix epoch. When this time is reached, the search and its results are deleted, even if the search is still ongoing.
-       */
-      expiration_time_in_millis?: EpochMillis
-      /**
-       * For a completed search shows the http status code of the completed search.
-       */
-      completion_status?: integer
-    }
+  body: {
+    /**
+     * Identifier for the search.
+     */
+    id: Id
+    /**
+     * If true, the search request is still executing. If false, the search is completed.
+     */
+    is_partial: boolean
+    /**
+     * If true, the response does not contain complete search results. This could be because either the search is still running (is_running status is false), or because it is already completed (is_running status is true) and results are partial due to failures or timeouts.
+     */
+    is_running: boolean
+    /**
+     * For a running search shows a timestamp when the eql search started, in milliseconds since the Unix epoch.
+     */
+    start_time_in_millis?: EpochMillis
+    /**
+     * Shows a timestamp when the eql search will be expired, in milliseconds since the Unix epoch. When this time is reached, the search and its results are deleted, even if the search is still ongoing.
+     */
+    expiration_time_in_millis?: EpochMillis
+    /**
+     * For a completed search shows the http status code of the completed search.
+     */
+    completion_status?: integer
   }
 }

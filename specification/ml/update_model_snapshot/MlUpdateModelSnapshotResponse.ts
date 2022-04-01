@@ -20,10 +20,8 @@
 import { ModelSnapshot } from '@ml/_types/Model'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledged: boolean
-      model: ModelSnapshot
-    }
+  body: {
+    acknowledged: boolean
+    model: ModelSnapshot
   }
 }

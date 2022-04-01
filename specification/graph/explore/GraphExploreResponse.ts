@@ -23,13 +23,11 @@ import { long } from '@_types/Numeric'
 import { Connection } from '../_types/Connection'
 
 export class Response {
-  '200': {
-    body: {
-      connections: Connection[]
-      failures: ShardFailure[]
-      timed_out: boolean
-      took: long
-      vertices: Vertex[]
-    }
+  body: {
+    connections: Connection[]
+    failures: ShardFailure[]
+    timed_out: boolean
+    took: long
+    vertices: Vertex[]
   }
 }

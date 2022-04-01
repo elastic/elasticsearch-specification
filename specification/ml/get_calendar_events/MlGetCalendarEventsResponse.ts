@@ -21,10 +21,8 @@ import { CalendarEvent } from '@ml/_types/CalendarEvent'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      count: long
-      events: CalendarEvent[]
-    }
+  body: {
+    count: long
+    events: CalendarEvent[]
   }
 }

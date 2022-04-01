@@ -22,12 +22,10 @@ import { Id } from '@_types/common'
 import { GeoIpDownloadStatistics, GeoIpNodeDatabases } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      /** Download statistics for all GeoIP2 databases. */
-      stats: GeoIpDownloadStatistics
-      /** Downloaded GeoIP2 databases for each node. */
-      nodes: Dictionary<Id, GeoIpNodeDatabases>
-    }
+  body: {
+    /** Download statistics for all GeoIP2 databases. */
+    stats: GeoIpDownloadStatistics
+    /** Downloaded GeoIP2 databases for each node. */
+    nodes: Dictionary<Id, GeoIpNodeDatabases>
   }
 }

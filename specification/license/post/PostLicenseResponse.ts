@@ -21,11 +21,9 @@ import { LicenseStatus } from '@license/_types/License'
 import { Acknowledgement } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      acknowledge?: Acknowledgement
-      acknowledged: boolean
-      license_status: LicenseStatus
-    }
+  body: {
+    acknowledge?: Acknowledgement
+    acknowledged: boolean
+    license_status: LicenseStatus
   }
 }

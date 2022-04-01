@@ -20,7 +20,5 @@
 import { TransformsRecord } from './types'
 
 export class Response {
-  '200': {
-    body: Array<TransformsRecord>
-  }
+  body: Array<TransformsRecord>
 }

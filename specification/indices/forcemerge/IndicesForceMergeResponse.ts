@@ -20,7 +20,5 @@
 import { ShardsOperationResponseBase } from '@_types/Base'
 
 export class Response {
-  '200': {
-    body: ShardsOperationResponseBase
-  }
+  body: ShardsOperationResponseBase
 }

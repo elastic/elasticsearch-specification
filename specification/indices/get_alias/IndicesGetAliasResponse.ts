@@ -18,15 +18,26 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ErrorResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: Dictionary<IndexName, IndexAliases>
-  }
+  body: Dictionary<IndexName, IndexAliases>
+  exceptions: [
+    {
+      statusCodes: [404]
+      body: NotFoundAliases | ErrorResponseBase
+    }
+  ]
 }
 
 export class IndexAliases {
   aliases: Dictionary<string, AliasDefinition>
+}
+
+class NotFoundAliases implements AdditionalProperties<string, IndexAliases> {
+  error: string
+  status: number
 }

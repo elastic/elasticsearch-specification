@@ -21,15 +21,13 @@ import { long } from '@_types/Numeric'
 import { AuthenticatedUser } from './types'
 
 export class Response {
-  '200': {
-    body: {
-      access_token: string
-      expires_in: long
-      scope?: string
-      type: string
-      refresh_token: string
-      kerberos_authentication_response_token?: string
-      authentication: AuthenticatedUser
-    }
+  body: {
+    access_token: string
+    expires_in: long
+    scope?: string
+    type: string
+    refresh_token: string
+    kerberos_authentication_response_token?: string
+    authentication: AuthenticatedUser
   }
 }

@@ -20,15 +20,13 @@
 import { Indices } from '@_types/common'
 
 export class Response {
-  '200': {
-    body: {
-      dry_run: boolean
-      removed_legacy_template: string
-      migrated_ilm_policies: string[]
-      migrated_indices: Indices
-      migrated_legacy_templates: string[]
-      migrated_composable_templates: string[]
-      migrated_component_templates: string[]
-    }
+  body: {
+    dry_run: boolean
+    removed_legacy_template: string
+    migrated_ilm_policies: string[]
+    migrated_indices: Indices
+    migrated_legacy_templates: string[]
+    migrated_composable_templates: string[]
+    migrated_component_templates: string[]
   }
 }

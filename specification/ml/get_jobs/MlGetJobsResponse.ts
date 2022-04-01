@@ -21,10 +21,8 @@ import { Job } from '@ml/_types/Job'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  '200': {
-    body: {
-      count: long
-      jobs: Job[]
-    }
+  body: {
+    count: long
+    jobs: Job[]
   }
 }

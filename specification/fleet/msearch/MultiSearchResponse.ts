@@ -23,9 +23,7 @@ import { ResponseItem } from '_global/msearch/types'
 // - msearch
 // - fleet.msearch
 export class Response<TDocument> {
-  '200': {
-    body: {
-      docs: ResponseItem<TDocument>[]
-    }
+  body: {
+    docs: ResponseItem<TDocument>[]
   }
 }
