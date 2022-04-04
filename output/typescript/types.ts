@@ -14887,6 +14887,8 @@ export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
+export type SecurityGrantType = 'password' | 'access_token'
+
 export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
@@ -14949,6 +14951,35 @@ export interface SecurityUser {
   username: Username
   enabled: boolean
 }
+
+export interface SecurityUserProfile {
+  uid: string
+  user: SecurityUser
+  data?: Record<string, any>
+  access?: Record<string, any>
+  enabled?: boolean
+}
+
+export interface SecurityUserProfileHitMetadata {
+  _primary_term: long
+  _seq_no: SequenceNumber
+}
+
+export interface SecurityUserProfileWithMetadata extends SecurityUserProfile {
+  last_synchronized: long
+  _doc?: SecurityUserProfileHitMetadata
+}
+
+export interface SecurityActivateUserProfileRequest extends RequestBase {
+  body?: {
+    access_token?: string
+    grant_type: SecurityGrantType
+    password?: string
+    username?: string
+  }
+}
+
+export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadata
 
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
@@ -15140,6 +15171,13 @@ export interface SecurityDisableUserRequest extends RequestBase {
 export interface SecurityDisableUserResponse {
 }
 
+export interface SecurityDisableUserProfileRequest extends RequestBase {
+  uid: string
+  refresh?: Refresh
+}
+
+export type SecurityDisableUserProfileResponse = AcknowledgedResponseBase
+
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
@@ -15147,6 +15185,13 @@ export interface SecurityEnableUserRequest extends RequestBase {
 
 export interface SecurityEnableUserResponse {
 }
+
+export interface SecurityEnableUserProfileRequest extends RequestBase {
+  uid: string
+  refresh?: Refresh
+}
+
+export type SecurityEnableUserProfileResponse = AcknowledgedResponseBase
 
 export interface SecurityEnrollKibanaRequest extends RequestBase {
 }
@@ -15331,6 +15376,13 @@ export interface SecurityGetUserPrivilegesResponse {
   indices: SecurityIndicesPrivileges[]
   run_as: string[]
 }
+
+export interface SecurityGetUserProfileRequest extends RequestBase {
+  uid: string
+  data?: string | string[]
+}
+
+export type SecurityGetUserProfileResponse = Record<string, SecurityUserProfileWithMetadata>
 
 export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
 
@@ -15583,6 +15635,38 @@ export interface SecuritySamlServiceProviderMetadataRequest extends RequestBase 
 export interface SecuritySamlServiceProviderMetadataResponse {
   metadata: string
 }
+
+export interface SecuritySuggestUserProfilesRequest extends RequestBase {
+  data?: string | string[]
+  body?: {
+    name?: string
+    size?: long
+  }
+}
+
+export interface SecuritySuggestUserProfilesResponse {
+  total: SecuritySuggestUserProfilesTotalUserProfiles
+  took: long
+  profiles: SecurityUserProfile[]
+}
+
+export interface SecuritySuggestUserProfilesTotalUserProfiles {
+  value: long
+  relation: RelationName
+}
+
+export interface SecurityUpdateUserProfileDataRequest extends RequestBase {
+  uid: string
+  if_seq_no?: SequenceNumber
+  if_primary_term?: long
+  refresh?: Refresh
+  body?: {
+    access?: Record<string, any>
+    data?: Record<string, any>
+  }
+}
+
+export type SecurityUpdateUserProfileDataResponse = AcknowledgedResponseBase
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
