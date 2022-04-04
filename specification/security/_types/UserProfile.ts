@@ -1,0 +1,42 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { User } from './User'
+import { long } from '@_types/Numeric'
+import { SequenceNumber } from '@_types/common'
+
+export class UserProfileHitMetadata {
+  _primary_term: long
+  _seq_no: SequenceNumber
+}
+
+export class UserProfile {
+  uid: string
+  user: User
+  data?: Dictionary<string, UserDefinedValue>
+  access?: Dictionary<string, UserDefinedValue>
+  enabled?: boolean
+}
+
+export class UserProfileWithMetadata extends UserProfile {
+  last_synchronized: long
+  _doc?: UserProfileHitMetadata
+}
