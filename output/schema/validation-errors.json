@@ -2002,7 +2002,7 @@
       ],
       "response": []
     },
-    "security.search_user_profiles": {
+    "security.suggest_user_profiles": {
       "request": [
         "Missing request & response"
       ],
