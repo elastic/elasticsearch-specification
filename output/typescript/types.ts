@@ -16376,7 +16376,7 @@ export interface TransformUpdateTransformRequest extends RequestBase {
     source?: TransformSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
-    retention_policy?: TransformRetentionPolicyContainer
+    retention_policy?: TransformRetentionPolicyContainer | null
   }
 }
 
