@@ -72,12 +72,13 @@ export class CompletionSuggestOption<TDocument> {
   collate_match?: boolean
   contexts?: Dictionary<string, Context[]>
   fields?: Dictionary<string, UserDefinedValue>
-  _id: string
-  _index: IndexName
+  _id?: string
+  _index?: IndexName
   _routing?: Routing
   _score?: double
   _source?: TDocument
   text: string
+  score?: double
 }
 
 export class PhraseSuggestOption {
