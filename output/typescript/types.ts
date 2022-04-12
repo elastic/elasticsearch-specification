@@ -9401,6 +9401,7 @@ export interface IndicesMappingLimitSettings {
   nested_objects?: IndicesMappingLimitSettingsNestedObjects
   field_name_length?: IndicesMappingLimitSettingsFieldNameLength
   dimension_fields?: IndicesMappingLimitSettingsDimensionFields
+  ignore_malformed?: boolean
 }
 
 export interface IndicesMappingLimitSettingsDepth {
