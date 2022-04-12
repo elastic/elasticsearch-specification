@@ -1125,12 +1125,13 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
   collate_match?: boolean
   contexts?: Record<string, SearchContext[]>
   fields?: Record<string, any>
-  _id: string
-  _index: IndexName
+  _id?: string
+  _index?: IndexName
   _routing?: Routing
   _score?: double
   _source?: TDocument
   text: string
+  score?: double
 }
 
 export interface SearchCompletionSuggester extends SearchSuggesterBase {
