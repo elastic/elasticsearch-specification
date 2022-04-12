@@ -437,6 +437,7 @@ export class MappingLimitSettings {
   nested_objects?: MappingLimitSettingsNestedObjects
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
+  ignore_malformed?: boolean
 }
 
 export class MappingLimitSettingsTotalFields {
