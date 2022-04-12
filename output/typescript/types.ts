@@ -9559,7 +9559,7 @@ export interface IndicesStorage {
   allow_mmap?: boolean
 }
 
-export type IndicesStorageType = 'fs' | 'niofs' | 'mmapfs' | 'hybridfs'
+export type IndicesStorageType = 'fs' | '' | 'niofs' | 'mmapfs' | 'hybridfs'
 
 export interface IndicesTemplateMapping {
   aliases: Record<IndexName, IndicesAlias>
@@ -9577,7 +9577,7 @@ export interface IndicesTranslog {
   retention?: IndicesTranslogRetention
 }
 
-export type IndicesTranslogDurability = 'request' | 'async'
+export type IndicesTranslogDurability = 'request' | 'REQUEST' | 'async' | 'ASYNC'
 
 export interface IndicesTranslogRetention {
   size?: ByteSize
@@ -9744,7 +9744,7 @@ export interface IndicesCreateRequest extends RequestBase {
 export interface IndicesCreateResponse {
   index: IndexName
   shards_acknowledged: boolean
-  acknowledged?: boolean
+  acknowledged: boolean
 }
 
 export interface IndicesCreateDataStreamRequest extends RequestBase {

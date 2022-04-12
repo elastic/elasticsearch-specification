@@ -349,11 +349,15 @@ export enum TranslogDurability {
   /**
    * (default) fsync and commit after every request. In the event of hardware failure, all acknowledged writes
    * will already have been committed to disk.
+   *
+   * @aliases REQUEST
    */
   request,
   /**
    * fsync and commit in the background every sync_interval. In the event of a failure, all acknowledged writes
    * since the last automatic commit will be discarded.
+   *
+   * @aliases ASYNC
    */
   async
 }
@@ -496,6 +500,8 @@ export enum StorageType {
   /**
    * Default file system implementation. This will pick the best implementation depending on the operating environment, which
    * is currently hybridfs on all supported systems but is subject to change.
+   *
+   * @aliases ''
    */
   fs,
   /**
