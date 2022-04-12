@@ -69,7 +69,10 @@ export interface Request extends RequestBase {
     settings?: Settings
     /**  Defines the properties transforms require to run continuously. */
     sync?: SyncContainer
-    /** Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index. */
-    retention_policy?: RetentionPolicyContainer
+    /**
+     * Defines a retention policy for the transform. Data that meets the defined
+     * criteria is deleted from the destination index.
+     */
+    retention_policy?: RetentionPolicyContainer | null
   }
 }
