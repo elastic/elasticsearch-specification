@@ -395,8 +395,8 @@ export class Endpoint {
   stability?: Stability
   visibility?: Visibility
   featureFlag?: string
-  accept?: string[]
-  contentType?: string[]
+  requestMediaType?: string[]
+  responseMediaType?: string[]
   privileges?: {
     index?: string[]
     cluster?: string[]
