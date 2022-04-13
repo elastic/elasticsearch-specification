@@ -40,16 +40,18 @@ export default class Compiler {
   model: Model
   jsonSpec: Map<string, JsonSpec>
   errors: ValidationErrors
+  specsFolder: string
 
-  constructor () {
+  constructor (specsFolder: string) {
     this.queue = []
     this.errors = new ValidationErrors()
+    this.specsFolder = specsFolder
   }
 
   generateModel (): this {
     this.jsonSpec = buildJsonSpec()
     const endpoints = compileEndpoints()
-    this.model = compileSpecification(endpoints)
+    this.model = compileSpecification(endpoints, this.specsFolder)
     return this
   }
 

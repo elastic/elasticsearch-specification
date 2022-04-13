@@ -36,7 +36,7 @@ if (nodejsMajor !== nvmMajor) {
   process.exit(1)
 }
 
-const compiler = new Compiler()
+const compiler = new Compiler(join(__dirname, '..', '..', 'specification'))
 
 compiler
   .generateModel()
