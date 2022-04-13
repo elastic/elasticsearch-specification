@@ -1,0 +1,27 @@
+name: Compiler test
+
+on:
+  pull_request:
+    paths:
+      - 'compiler/**'
+
+jobs:
+  compiler-test:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install deps
+        run: |
+          make setup
+
+      - name: Test
+        working-directory: ./compiler
+        run: npm test

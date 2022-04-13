@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import Compiler from './compiler'
 import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
@@ -25,7 +27,16 @@ import validateModel from './steps/validate-model'
 import addContentType from './steps/add-content-type'
 import readDefinitionValidation from './steps/read-definition-validation'
 
-const compiler = new Compiler()
+const nvmrc = readFileSync(join(__dirname, '..', '..', '.nvmrc'), 'utf8')
+const nodejsMajor = process.version.split('.').shift()?.slice(1) ?? ''
+const nvmMajor = nvmrc.trim().split('.').shift() ?? ''
+
+if (nodejsMajor !== nvmMajor) {
+  console.error(`Bad nodejs major version, you are using ${nodejsMajor}, while ${nvmMajor} should be used. Run 'nvm install' to fix this.`)
+  process.exit(1)
+}
+
+const compiler = new Compiler(join(__dirname, '..', '..', 'specification'))
 
 compiler
   .generateModel()

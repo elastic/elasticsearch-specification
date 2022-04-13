@@ -1049,6 +1049,13 @@ export function assert (node: Node | Node[] | undefined, condition: boolean, mes
       }
     }
 
+    // needed to be able to run assertions during testing
+    // the test framework expects the compiler to throw
+    // an exception insteasd of directly exiting with 1
+    if (process.env.TEST_COMPILER === 'true') {
+      throw new Error(message)
+    }
+
     console.log('Error:', message)
     if (file.length > 0) console.log('At:', file)
     if (code.length > 0) console.log(`\`\`\`\n${code.join('\n```\n')}\n\`\`\``)
