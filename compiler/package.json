@@ -12,12 +12,16 @@
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",
     "validate-ts-view": "tsc --noEmit ../output/typescript/types.ts",
-    "generate-dangling": "ts-node src dangling-types-report.ts"
+    "generate-dangling": "ts-node src dangling-types-report.ts",
+    "test": "TEST_COMPILER=true ava test/**/*test.ts",
+    "test:coverage": "TEST_COMPILER=true c8 --reporter html ava test/**/*test.ts"
   },
   "author": "Elastic",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^17.0.12",
+    "ava": "^4.1.0",
+    "c8": "^7.11.0",
     "minimist": "^1.2.6",
     "prettier": "2.5.1",
     "ts-node": "^10.4.0",
@@ -35,6 +39,14 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
   },
   "keywords": []
 }
