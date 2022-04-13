@@ -183,7 +183,10 @@ export class ExternalTag {
 
 export class InternalTag {
   kind: 'internal_tag'
-  tag: string // Name of the property that holds the variant tag
+  /* Name of the property that holds the variant tag */
+  tag: string
+  /* Default value for the variant tag if it's missing */
+  defaultTag?: string
 }
 
 export class Container {
@@ -269,6 +272,15 @@ export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
   body: Body
+  behaviors?: Inherits[]
+  attachedBehaviors?: string[]
+  exceptions?: ResponseException[]
+}
+
+export class ResponseException {
+  description?: string
+  body: Body
+  statusCodes: number[]
 }
 
 export type Body = ValueBody | PropertiesBody | NoBody
@@ -382,6 +394,7 @@ export class Endpoint {
   since?: string
   stability?: Stability
   visibility?: Visibility
+  featureFlag?: string
   accept?: string[]
   contentType?: string[]
   privileges?: {
