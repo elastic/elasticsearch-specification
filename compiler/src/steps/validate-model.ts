@@ -423,20 +423,12 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function validateResponse (typeDef: model.Response): void {
     const openGenerics = openGenericSet(typeDef)
 
-    validateInherits(typeDef.inherits, openGenerics)
-    validateImplements(typeDef.implements, openGenerics)
-    validateBehaviors(typeDef, openGenerics)
-
     // Note: we validate codegen_name/name uniqueness independently in the path, query and body as there are some
     // valid overlaps, with some parameters that can also be represented as body properties.
     // Client generators will have to take care of this.
 
     context.push('body')
-    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
-      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
-        modelError('A response with inherited properties must have a PropertyBody')
-      }
-    }
+
     switch (typeDef.body.kind) {
       case 'properties':
         validateProperties(typeDef.body.properties, openGenerics, inheritedProperties(typeDef))
@@ -498,11 +490,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
     }
 
-    if (typeDef.inherits != null) {
-      addInherits(typeDef.inherits)
+    if (typeDef.kind !== 'response') {
+      if (typeDef.inherits != null) {
+        addInherits(typeDef.inherits)
+      }
+      typeDef.implements?.forEach(addInherits)
+      typeDef.behaviors?.forEach(addInherits)
     }
-    typeDef.implements?.forEach(addInherits)
-    typeDef.behaviors?.forEach(addInherits)
 
     return result
   }
@@ -644,7 +638,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function validateBehaviors (typeDef: model.Request | model.Response | model.Interface, openGenerics: Set<string>): void {
-    if (typeDef.behaviors != null && typeDef.behaviors.length > 0) {
+    if (typeDef.kind !== 'response' && typeDef.behaviors != null && typeDef.behaviors.length > 0) {
       context.push('Behaviors')
       for (const parent of typeDef.behaviors) {
         validateTypeRef(parent.type, parent.generics, openGenerics)
@@ -653,7 +647,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
 
     // Each attached behavior must be in the behaviors attached to this class or an ancestor
-    if (typeDef.attachedBehaviors != null) {
+    if (typeDef.kind !== 'response' && typeDef.attachedBehaviors != null) {
       for (const abh of typeDef.attachedBehaviors) {
         const bhName = behaviorByShortName.get(abh)
         if (bhName == null) {
@@ -669,7 +663,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   /** Recursively looks up a behavior in a type definition or its ancestors */
-  function behaviorExists (type: (model.Request | model.Response | model.Interface), behavior: model.TypeName): boolean {
+  function behaviorExists (type: (model.Request | model.Interface), behavior: model.TypeName): boolean {
     // Does the type have this behavior?
     for (const b of (type.behaviors ?? [])) {
       if (sameTypeName(b.type, behavior)) {
