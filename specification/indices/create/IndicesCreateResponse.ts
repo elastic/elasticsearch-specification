@@ -23,6 +23,6 @@ export class Response {
   body: {
     index: IndexName
     shards_acknowledged: boolean
-    acknowledged?: boolean
+    acknowledged: boolean
   }
 }
