@@ -3512,6 +3512,7 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   field?: Field
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
   include?: AggregationsTermsInclude
+  jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
@@ -3535,6 +3536,7 @@ export interface AggregationsSignificantTextAggregation extends AggregationsBuck
   filter_duplicate_text?: boolean
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
   include?: string | string[]
+  jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
@@ -4540,7 +4542,7 @@ export interface MappingDenseVectorProperty extends MappingPropertyBase {
   index_options?: MappingDenseVectorIndexOptions
 }
 
-export type MappingDocValuesProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDateProperty | MappingDateNanosProperty | MappingKeywordProperty | MappingNumberProperty | MappingRangeProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingCompletionProperty | MappingGenericProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingShapeProperty | MappingTokenCountProperty | MappingVersionProperty | MappingWildcardProperty | MappingPointProperty
+export type MappingDocValuesProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDateProperty | MappingDateNanosProperty | MappingKeywordProperty | MappingNumberProperty | MappingRangeProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingCompletionProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingShapeProperty | MappingTokenCountProperty | MappingVersionProperty | MappingWildcardProperty | MappingPointProperty
 
 export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
@@ -4603,21 +4605,6 @@ export interface MappingFloatNumberProperty extends MappingStandardNumberPropert
 
 export interface MappingFloatRangeProperty extends MappingRangePropertyBase {
   type: 'float_range'
-}
-
-export interface MappingGenericProperty extends MappingDocValuesPropertyBase {
-  analyzer: string
-  boost: double
-  fielddata: IndicesStringFielddata
-  ignore_malformed: boolean
-  index: boolean
-  index_options: MappingIndexOptions
-  norms: boolean
-  null_value: string
-  position_increment_gap: integer
-  search_analyzer: string
-  term_vector: MappingTermVectorOption
-  type: string
 }
 
 export type MappingGeoOrientation = 'right' | 'RIGHT' | 'counterclockwise' | 'ccw' | 'left' | 'LEFT' | 'clockwise' | 'cw'
@@ -9432,12 +9419,6 @@ export interface IndicesSoftDeletes {
   retention_lease?: IndicesRetentionLease
 }
 
-export interface IndicesStringFielddata {
-  format: IndicesStringFielddataFormat
-}
-
-export type IndicesStringFielddataFormat = 'paged_bytes' | 'disabled'
-
 export interface IndicesTemplateMapping {
   aliases: Record<IndexName, IndicesAlias>
   index_patterns: Name[]
@@ -9976,6 +9957,24 @@ export interface IndicesMigrateToDataStreamRequest extends RequestBase {
 }
 
 export type IndicesMigrateToDataStreamResponse = AcknowledgedResponseBase
+
+export interface IndicesModifyDataStreamAction {
+  add_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
+  remove_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
+}
+
+export interface IndicesModifyDataStreamIndexAndDataStreamAction {
+  index: IndexName
+  data_stream: DataStreamName
+}
+
+export interface IndicesModifyDataStreamRequest extends RequestBase {
+  body?: {
+    actions: IndicesModifyDataStreamAction[]
+  }
+}
+
+export type IndicesModifyDataStreamResponse = AcknowledgedResponseBase
 
 export interface IndicesOpenRequest extends RequestBase {
   index: Indices
