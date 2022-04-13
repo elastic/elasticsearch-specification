@@ -158,7 +158,7 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
   }
 }
 
-function buildInherits (type: M.Interface | M.Request | M.Response, openGenerics?: string[]): string {
+function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
   const inherits = (type.inherits != null ? [type.inherits] : []).filter(type => !skipBehaviors.includes(type.type.name))
   const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
@@ -385,7 +385,7 @@ function buildResponse (type: M.Response): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
 
   if (type.body.kind === 'properties') {
-    let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
+    let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} {\n`
     for (const property of type.body.properties) {
       code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
       if (Array.isArray(property.aliases)) {
