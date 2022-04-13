@@ -189,7 +189,10 @@ export class ExternalTag {
 
 export class InternalTag {
   kind: 'internal_tag'
-  tag: string // Name of the property that holds the variant tag
+  /* Name of the property that holds the variant tag */
+  tag: string
+  /* Default value for the variant tag if it's missing */
+  defaultTag?: string
 }
 
 export class Container {
@@ -387,8 +390,9 @@ export class Endpoint {
   since?: string
   stability?: Stability
   visibility?: Visibility
-  accept?: string[]
-  contentType?: string[]
+  featureFlag?: string
+  requestMediaType?: string[]
+  responseMediaType?: string[]
   privileges?: {
     index?: string[]
     cluster?: string[]

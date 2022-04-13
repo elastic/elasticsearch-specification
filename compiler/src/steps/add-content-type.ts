@@ -22,8 +22,9 @@ import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 
 /**
- * Adds the `accept` and `contentType` fields to every endpoint
- * from the rest-api-spec if present.
+ * Adds the `responseMediaType` (accept in the rest-api-spec)
+ * and `responseMediaType` (content_type in the rest api spec)
+ * fields to every endpoint from the rest-api-spec if present.
  */
 export default async function addContentType (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
@@ -31,11 +32,11 @@ export default async function addContentType (model: model.Model, jsonSpec: Map<
     assert(spec, `Can't find the json spec for ${endpoint.name}`)
 
     if (Array.isArray(spec.headers.accept)) {
-      endpoint.accept = spec.headers.accept
+      endpoint.responseMediaType = spec.headers.accept
     }
 
     if (Array.isArray(spec.headers.content_type)) {
-      endpoint.contentType = spec.headers.content_type
+      endpoint.requestMediaType = spec.headers.content_type
     }
   }
 
