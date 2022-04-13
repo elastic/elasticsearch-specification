@@ -42,7 +42,6 @@ import { Property, PropertyBase } from './Property'
 import { RangeProperty } from './range'
 import {
   CompletionProperty,
-  GenericProperty,
   IpProperty,
   Murmur3HashProperty,
   TokenCountProperty
@@ -80,7 +79,6 @@ export type DocValuesProperty =
   | GeoPointProperty
   | GeoShapeProperty
   | CompletionProperty
-  | GenericProperty
   | IpProperty
   | Murmur3HashProperty
   | ShapeProperty

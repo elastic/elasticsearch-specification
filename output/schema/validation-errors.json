@@ -1791,10 +1791,10 @@
       "response": []
     },
     "security.activate_user_profile": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "interface definition security._types:UserProfile / Property 'user' / instance_of - Non-leaf type cannot be used here: 'security._types:User'"
+      ]
     },
     "security.authenticate": {
       "request": [
@@ -1877,9 +1877,11 @@
     },
     "security.disable_user_profile": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition security.disable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "security.enable_user": {
       "request": [
@@ -1889,9 +1891,11 @@
     },
     "security.enable_user_profile": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "security.enroll_kibana": {
       "request": [
@@ -1968,7 +1972,7 @@
     },
     "security.get_user_profile": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -2002,17 +2006,17 @@
       ],
       "response": []
     },
-    "security.search_user_profiles": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+    "security.suggest_user_profiles": {
+      "request": [],
+      "response": [
+        "response definition security.suggest_user_profiles:Response / body / Property 'profiles' / array_of / instance_of - Non-leaf type cannot be used here: 'security._types:UserProfile'"
+      ]
     },
     "security.update_user_profile_data": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition security.update_user_profile_data:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "shutdown.delete_node": {
       "request": [

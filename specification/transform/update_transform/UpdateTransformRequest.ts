@@ -100,6 +100,6 @@ export interface Request extends RequestBase {
      * Defines a retention policy for the transform. Data that meets the defined
      * criteria is deleted from the destination index.
      */
-    retention_policy?: RetentionPolicyContainer
+    retention_policy?: RetentionPolicyContainer | null
   }
 }

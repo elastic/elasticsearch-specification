@@ -271,8 +271,6 @@ export class Request extends BaseType {
 export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
-  inherits?: Inherits
-  implements?: Inherits[]
   body: Body
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
@@ -397,8 +395,8 @@ export class Endpoint {
   stability?: Stability
   visibility?: Visibility
   featureFlag?: string
-  accept?: string[]
-  contentType?: string[]
+  requestMediaType?: string[]
+  responseMediaType?: string[]
   privileges?: {
     index?: string[]
     cluster?: string[]
