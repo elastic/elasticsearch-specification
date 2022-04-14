@@ -34,7 +34,7 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * @rest_spec_name security.put_role
  * @since 0.0.0
  * @stability stable
- * @cluster_privileges manage_security
+ * @cluster_privileges manage_enrich, manage_security
  */
 export interface Request extends RequestBase {
   path_parts: {
