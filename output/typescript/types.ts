@@ -1190,9 +1190,9 @@ export interface SearchFieldCollapse {
 export interface SearchFieldSuggester {
   completion?: SearchCompletionSuggester
   phrase?: SearchPhraseSuggester
+  term?: SearchTermSuggester
   prefix?: string
   regex?: string
-  term?: SearchTermSuggester
   text?: string
 }
 
