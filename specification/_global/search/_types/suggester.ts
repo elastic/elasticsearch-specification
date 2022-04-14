@@ -104,9 +104,12 @@ export class Suggester implements AdditionalProperties<string, FieldSuggester> {
 export class FieldSuggester {
   completion?: CompletionSuggester
   phrase?: PhraseSuggester
-  prefix?: string
-  regex?: string
   term?: TermSuggester
+  /** @variant container_property */
+  prefix?: string
+  /** @variant container_property */
+  regex?: string
+  /** @variant container_property */
   text?: string
 }
 
