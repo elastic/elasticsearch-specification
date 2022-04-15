@@ -1790,12 +1790,6 @@
       ],
       "response": []
     },
-    "security.activate_user_profile": {
-      "request": [],
-      "response": [
-        "interface definition security._types:UserProfile / Property 'user' / instance_of - Non-leaf type cannot be used here: 'security._types:User'"
-      ]
-    },
     "security.authenticate": {
       "request": [
         "Request: should not have a body"
