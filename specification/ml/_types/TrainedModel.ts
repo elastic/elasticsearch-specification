@@ -31,7 +31,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 import { DateString } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
-import { InferenceConfigContainer } from './inference'
+import { InferenceConfigCreateContainer } from './inference'
 
 export class TrainedModelStats {
   /** A collection of deployment stats, which is present when the models are deployed. */
@@ -177,7 +177,7 @@ export class TrainedModelConfig {
   /** The estimated number of operations to use the trained model. */
   estimated_operations?: integer
   /** The default configuration for inference. This can be either a regression, classification, or one of the many NLP focused configurations. It must match the underlying definition.trained_model's target_type. */
-  inference_config: InferenceConfigContainer
+  inference_config: InferenceConfigCreateContainer
   /** The input field names for the model definition. */
   input: TrainedModelConfigInput
   /** The license level of the trained model. */

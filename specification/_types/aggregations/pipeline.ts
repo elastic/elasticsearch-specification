@@ -23,7 +23,10 @@ import { Name, Field, EmptyObject } from '@_types/common'
 import { integer, double, float } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
-import { PipelineAggInferenceConfigUpdateContainer } from '@ml/_types/inference'
+import {
+  RegressionInferenceOptions,
+  ClassificationInferenceOptions
+} from '@ml/_types/inference'
 
 export class BucketPathAggregation extends Aggregation {
   /**
@@ -155,7 +158,15 @@ export class ExtendedStatsBucketAggregation extends PipelineAggregationBase {
 
 export class InferenceAggregation extends PipelineAggregationBase {
   model_id: Name
-  inference_config?: PipelineAggInferenceConfigUpdateContainer
+  inference_config?: InferenceConfigContainer
+}
+
+/** @variants container */
+class InferenceConfigContainer {
+  /** Regression configuration for inference. */
+  regression?: RegressionInferenceOptions
+  /** Classification configuration for inference. */
+  classification?: ClassificationInferenceOptions
 }
 
 export class MaxBucketAggregation extends PipelineAggregationBase {}

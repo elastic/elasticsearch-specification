@@ -3143,12 +3143,17 @@ export type AggregationsInferenceAggregate = AggregationsInferenceAggregateKeys
 
 export interface AggregationsInferenceAggregation extends AggregationsPipelineAggregationBase {
   model_id: Name
-  inference_config?: MlPipelineAggInferenceConfigUpdateContainer
+  inference_config?: AggregationsInferenceConfigContainer
 }
 
 export interface AggregationsInferenceClassImportance {
   class_name: string
   importance: double
+}
+
+export interface AggregationsInferenceConfigContainer {
+  regression?: MlRegressionInferenceOptions
+  classification?: MlClassificationInferenceOptions
 }
 
 export interface AggregationsInferenceFeatureImportance {
@@ -11995,7 +12000,7 @@ export interface MlHyperparameters {
 
 export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance'
 
-export interface MlInferenceConfigContainer {
+export interface MlInferenceConfigCreateContainer {
   regression?: MlRegressionInferenceOptions
   classification?: MlClassificationInferenceOptions
   text_classification?: MlTextClassificationInferenceOptions
@@ -12249,11 +12254,6 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export interface MlPipelineAggInferenceConfigUpdateContainer {
-  regression?: MlRegressionInferenceOptions
-  classification?: MlClassificationInferenceOptions
-}
-
 export type MlPredictedValue = string | double
 
 export interface MlRegressionInferenceOptions {
@@ -12365,7 +12365,7 @@ export interface MlTrainedModelConfig {
   description?: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
-  inference_config: MlInferenceConfigContainer
+  inference_config: MlInferenceConfigCreateContainer
   input: MlTrainedModelConfigInput
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
@@ -13429,7 +13429,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     compressed_definition?: string
     definition?: MlPutTrainedModelDefinition
     description?: string
-    inference_config: MlInferenceConfigContainer
+    inference_config: MlInferenceConfigCreateContainer
     input: MlPutTrainedModelInput
     metadata?: any
     model_type?: MlTrainedModelType

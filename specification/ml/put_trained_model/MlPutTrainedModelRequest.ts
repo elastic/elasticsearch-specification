@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Definition, Input } from './types'
 import { TrainedModelType } from '../_types/TrainedModel'
-import { InferenceConfigContainer } from '@ml/_types/inference'
+import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 
 /**
  * Enables you to supply a trained model that is not created by data frame analytics.
@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
      * or classification configuration. It must match the underlying
      * definition.trained_model's target_type.
      */
-    inference_config: InferenceConfigContainer
+    inference_config: InferenceConfigCreateContainer
     /**
      * The input field names for the model definition.
      */

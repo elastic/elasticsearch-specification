@@ -24,7 +24,7 @@ import { integer } from '@_types/Numeric'
  * Inference configuration provided when storing the model config
  * @variants container
  */
-export class InferenceConfigContainer {
+export class InferenceConfigCreateContainer {
   /** Regression configuration for inference. */
   regression?: RegressionInferenceOptions
   /** Classification configuration for inference. */
@@ -253,14 +253,6 @@ export class NlpInferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
-}
-
-/** @variants container */
-export class PipelineAggInferenceConfigUpdateContainer {
-  /** Regression configuration for inference. */
-  regression?: RegressionInferenceOptions
-  /** Classification configuration for inference. */
-  classification?: ClassificationInferenceOptions
 }
 
 /** @variants container */
