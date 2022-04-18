@@ -11553,14 +11553,6 @@ export interface MlClassificationInferenceOptions {
   top_classes_results_field?: string
 }
 
-export interface MlClassificationInferenceUpdateOptions {
-  num_top_classes?: integer
-  num_top_feature_importance_values?: integer
-  prediction_field_type?: string
-  results_field?: string
-  top_classes_results_field?: string
-}
-
 export type MlConditionOperator = 'gt' | 'gte' | 'lt' | 'lte'
 
 export type MlCustomSettings = any
@@ -12258,18 +12250,13 @@ export interface MlPerPartitionCategorization {
 }
 
 export interface MlPipelineAggInferenceConfigUpdateContainer {
-  regression?: MlRegressionInferenceUpdateOptions
-  classification?: MlClassificationInferenceUpdateOptions
+  regression?: MlRegressionInferenceOptions
+  classification?: MlClassificationInferenceOptions
 }
 
 export type MlPredictedValue = string | double
 
 export interface MlRegressionInferenceOptions {
-  results_field?: Field
-  num_top_feature_importance_values?: integer
-}
-
-export interface MlRegressionInferenceUpdateOptions {
   results_field?: Field
   num_top_feature_importance_values?: integer
 }

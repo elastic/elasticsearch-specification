@@ -20,7 +20,10 @@
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-/** Inference configuration provided when storing the model config*/
+/**
+ * Inference configuration provided when storing the model config
+ * @variants container
+ */
 export class InferenceConfigContainer {
   /** Regression configuration for inference. */
   regression?: RegressionInferenceOptions
@@ -86,7 +89,10 @@ export class ClassificationInferenceOptions {
   top_classes_results_field?: string
 }
 
-/** Tokenization options stored in inference configuration */
+/**
+ * Tokenization options stored in inference configuration
+ * @variants container
+ **/
 export class TokenizationConfigContainer {
   /** Indicates BERT tokenization and its options */
   bert?: NlpBertTokenizationConfig
@@ -233,6 +239,7 @@ export class FillMaskInferenceOptions {
 
 // Update containers that may only allow a subset of the options
 
+/** @variants container */
 export class NlpInferenceConfigUpdateContainer {
   /** Text classification configuration for inference. */
   text_classification?: TextClassificationInferenceUpdateOptions
@@ -248,41 +255,15 @@ export class NlpInferenceConfigUpdateContainer {
   text_embedding?: TextEmbeddingInferenceUpdateOptions
 }
 
+/** @variants container */
 export class PipelineAggInferenceConfigUpdateContainer {
   /** Regression configuration for inference. */
-  regression?: RegressionInferenceUpdateOptions
+  regression?: RegressionInferenceOptions
   /** Classification configuration for inference. */
-  classification?: ClassificationInferenceUpdateOptions
+  classification?: ClassificationInferenceOptions
 }
 
-export class RegressionInferenceUpdateOptions {
-  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
-  results_field?: Field
-  /**
-   * Specifies the maximum number of feature importance values per document.
-   * @doc_id ml-feature-importance
-   * @server_default 0
-   */
-  num_top_feature_importance_values?: integer
-}
-
-export class ClassificationInferenceUpdateOptions {
-  /** Specifies the number of top class predictions to return. Defaults to 0. */
-  num_top_classes?: integer
-  /**
-   * Specifies the maximum number of feature importance values per document.
-   * @server_default 0
-   * @doc_id ml-feature-importance
-   */
-  num_top_feature_importance_values?: integer
-  /** Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false. */
-  prediction_field_type?: string
-  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
-  results_field?: string
-  /** Specifies the field to which the top classes are written. Defaults to top_classes. */
-  top_classes_results_field?: string
-}
-
+/** @variants container */
 export class NlpTokenizationUpdateContainer {
   /** Update the configured BERT tokenizer options */
   bert?: NlpTokenizationUpdateOptions
