@@ -278,13 +278,6 @@ export class NlpTokenizationUpdateOptions {
   span?: integer
 }
 
-export class NlpRobertaTokenizationUpdateOptions {
-  /** The tokenization options to update when inferring */
-  tokenization?: NlpTokenizationUpdateOptions
-  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
-  results_field?: string
-}
-
 export class TextClassificationInferenceUpdateOptions {
   /** Specifies the number of top class predictions to return. Defaults to 0. */
   num_top_classes?: integer
