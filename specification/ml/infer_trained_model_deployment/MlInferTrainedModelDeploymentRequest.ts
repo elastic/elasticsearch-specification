@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { NlpInferenceConfigUpdateContainer } from '@ml/_types/inference'
 
 /**
  * Evaluates a trained model.
@@ -48,5 +49,9 @@ export interface Request extends RequestBase {
      * configured trained model input. Typically, the field name is `text_field`. Currently, only a single value is allowed.
      */
     docs: Dictionary<string, string>[]
+    /**
+     * The inference configuration updates to apply on the API call
+     */
+    inference_config?: NlpInferenceConfigUpdateContainer
   }
 }
