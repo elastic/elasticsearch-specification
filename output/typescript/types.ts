@@ -14952,15 +14952,23 @@ export interface SecurityUser {
 
 export interface SecurityUserProfile {
   uid: string
-  user: SecurityUser
+  user: SecurityUserProfileUser
   data?: Record<string, any>
-  access?: Record<string, any>
+  labels?: Record<string, any>
   enabled?: boolean
 }
 
 export interface SecurityUserProfileHitMetadata {
   _primary_term: long
   _seq_no: SequenceNumber
+}
+
+export interface SecurityUserProfileUser {
+  email?: string | null
+  full_name?: Name | null
+  metadata: Metadata
+  roles: string[]
+  username: Username
 }
 
 export interface SecurityUserProfileWithMetadata extends SecurityUserProfile {
