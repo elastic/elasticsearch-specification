@@ -19,7 +19,8 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { User } from './User'
+import { Username, Name } from '@_types/common'
+import { Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { SequenceNumber } from '@_types/common'
 
@@ -28,11 +29,19 @@ export class UserProfileHitMetadata {
   _seq_no: SequenceNumber
 }
 
+export class UserProfileUser {
+  email?: string | null
+  full_name?: Name | null
+  metadata: Metadata
+  roles: string[]
+  username: Username
+}
+
 export class UserProfile {
   uid: string
-  user: User
+  user: UserProfileUser
   data?: Dictionary<string, UserDefinedValue>
-  access?: Dictionary<string, UserDefinedValue>
+  labels?: Dictionary<string, UserDefinedValue>
   enabled?: boolean
 }
 
