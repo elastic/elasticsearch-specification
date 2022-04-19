@@ -2780,14 +2780,6 @@ export interface AggregationsChildrenAggregation extends AggregationsBucketAggre
   type?: RelationName
 }
 
-export interface AggregationsClassificationInferenceOptions {
-  num_top_classes?: integer
-  num_top_feature_importance_values?: integer
-  prediction_field_type?: string
-  results_field?: string
-  top_classes_results_field?: string
-}
-
 export interface AggregationsCompositeAggregate extends AggregationsMultiBucketAggregateBase<AggregationsCompositeBucket> {
   after_key?: Record<string, any>
 }
@@ -3161,8 +3153,8 @@ export interface AggregationsInferenceClassImportance {
 }
 
 export interface AggregationsInferenceConfigContainer {
-  regression?: AggregationsRegressionInferenceOptions
-  classification?: AggregationsClassificationInferenceOptions
+  regression?: MlRegressionInferenceOptions
+  classification?: MlClassificationInferenceOptions
 }
 
 export interface AggregationsInferenceFeatureImportance {
@@ -3452,11 +3444,6 @@ export interface AggregationsRateAggregation extends AggregationsFormatMetricAgg
 }
 
 export type AggregationsRateMode = 'sum' | 'value_count'
-
-export interface AggregationsRegressionInferenceOptions {
-  results_field?: Field
-  num_top_feature_importance_values?: integer
-}
 
 export interface AggregationsReverseNestedAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
@@ -11561,6 +11548,14 @@ export interface MlChunkingConfig {
 
 export type MlChunkingMode = 'auto' | 'manual' | 'off'
 
+export interface MlClassificationInferenceOptions {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_type?: string
+  results_field?: string
+  top_classes_results_field?: string
+}
+
 export type MlConditionOperator = 'gt' | 'gte' | 'lt' | 'lte'
 
 export type MlCustomSettings = any
@@ -11951,6 +11946,18 @@ export interface MlDiscoveryNode {
 
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
+export interface MlFillMaskInferenceOptions {
+  num_top_classes?: integer
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+}
+
+export interface MlFillMaskInferenceUpdateOptions {
+  num_top_classes?: integer
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+}
+
 export interface MlFilter {
   description?: string
   filter_id: Id
@@ -11990,6 +11997,17 @@ export interface MlHyperparameters {
 }
 
 export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance'
+
+export interface MlInferenceConfigCreateContainer {
+  regression?: MlRegressionInferenceOptions
+  classification?: MlClassificationInferenceOptions
+  text_classification?: MlTextClassificationInferenceOptions
+  zero_shot_classification?: MlZeroShotClassificationInferenceOptions
+  fill_mask?: MlFillMaskInferenceOptions
+  ner?: MlNerInferenceOptions
+  pass_through?: MlPassThroughInferenceOptions
+  text_embedding?: MlTextEmbeddingInferenceOptions
+}
 
 export interface MlInfluence {
   influencer_field_name: string
@@ -12150,6 +12168,47 @@ export interface MlModelSnapshot {
   timestamp: long
 }
 
+export interface MlNerInferenceOptions {
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+  classification_labels?: string[]
+}
+
+export interface MlNerInferenceUpdateOptions {
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+}
+
+export interface MlNlpBertTokenizationConfig {
+  do_lower_case?: boolean
+  with_special_tokens?: boolean
+  max_sequence_length?: integer
+  truncate?: MlTokenizationTruncate
+  span?: integer
+}
+
+export interface MlNlpInferenceConfigUpdateContainer {
+  text_classification?: MlTextClassificationInferenceUpdateOptions
+  zero_shot_classification?: MlZeroShotClassificationInferenceUpdateOptions
+  fill_mask?: MlFillMaskInferenceUpdateOptions
+  ner?: MlNerInferenceUpdateOptions
+  pass_through?: MlPassThroughInferenceUpdateOptions
+  text_embedding?: MlTextEmbeddingInferenceUpdateOptions
+}
+
+export interface MlNlpRobertaTokenizationConfig {
+  add_prefix_space?: boolean
+  with_special_tokens?: boolean
+  max_sequence_length?: integer
+  truncate?: MlTokenizationTruncate
+  span?: integer
+}
+
+export interface MlNlpTokenizationUpdateOptions {
+  truncate?: MlTokenizationTruncate
+  span?: integer
+}
+
 export interface MlOutlierDetectionParameters {
   compute_feature_influence?: boolean
   feature_influence_threshold?: double
@@ -12178,12 +12237,27 @@ export interface MlPage {
   size?: integer
 }
 
+export interface MlPassThroughInferenceOptions {
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+}
+
+export interface MlPassThroughInferenceUpdateOptions {
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+}
+
 export interface MlPerPartitionCategorization {
   enabled?: boolean
   stop_on_warn?: boolean
 }
 
 export type MlPredictedValue = string | double
+
+export interface MlRegressionInferenceOptions {
+  results_field?: Field
+  num_top_feature_importance_values?: integer
+}
 
 export type MlRoutingState = 'failed' | 'started' | 'starting' | 'stopped' | 'stopping'
 
@@ -12200,10 +12274,42 @@ export interface MlRunningStateSearchInterval {
   start_ms: long
 }
 
+export interface MlTextClassificationInferenceOptions {
+  num_top_classes?: integer
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+  classification_labels?: string[]
+}
+
+export interface MlTextClassificationInferenceUpdateOptions {
+  num_top_classes?: integer
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+  classification_labels?: string[]
+}
+
+export interface MlTextEmbeddingInferenceOptions {
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+}
+
+export interface MlTextEmbeddingInferenceUpdateOptions {
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+}
+
 export interface MlTimingStats {
   elapsed_time: integer
   iteration_time?: integer
 }
+
+export interface MlTokenizationConfigContainer {
+  bert?: MlNlpBertTokenizationConfig
+  mpnet?: MlNlpBertTokenizationConfig
+  roberta?: MlNlpRobertaTokenizationConfig
+}
+
+export type MlTokenizationTruncate = 'first' | 'second' | 'none'
 
 export interface MlTopClassEntry {
   class_name: string
@@ -12257,7 +12363,7 @@ export interface MlTrainedModelConfig {
   description?: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
-  inference_config: AggregationsInferenceConfigContainer
+  inference_config: MlInferenceConfigCreateContainer
   input: MlTrainedModelConfigInput
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
@@ -12356,6 +12462,22 @@ export type MlTrainedModelType = 'tree_ensemble' | 'lang_ident' | 'pytorch'
 export interface MlValidationLoss {
   fold_values: string[]
   loss_type: string
+}
+
+export interface MlZeroShotClassificationInferenceOptions {
+  tokenization?: MlTokenizationConfigContainer
+  hypothesis_template?: string
+  classification_labels: string[]
+  results_field?: string
+  multi_label?: boolean
+  labels?: string[]
+}
+
+export interface MlZeroShotClassificationInferenceUpdateOptions {
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+  multi_label?: boolean
+  labels: string[]
 }
 
 export interface MlCloseJobRequest extends RequestBase {
@@ -12971,6 +13093,7 @@ export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
   timeout?: Time
   body?: {
     docs: Record<string, string>[]
+    inference_config?: MlNlpInferenceConfigUpdateContainer
   }
 }
 
@@ -13304,7 +13427,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     compressed_definition?: string
     definition?: MlPutTrainedModelDefinition
     description?: string
-    inference_config: AggregationsInferenceConfigContainer
+    inference_config: MlInferenceConfigCreateContainer
     input: MlPutTrainedModelInput
     metadata?: any
     model_type?: MlTrainedModelType
