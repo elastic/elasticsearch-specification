@@ -26,7 +26,7 @@ The schema is structured as follows:
   },
   "endpoints": [...],
   "types": [...]
-  }
+}
 ```
 
 The `endpoints` array contains the list of every endpoint supported by Elasticsearch,
