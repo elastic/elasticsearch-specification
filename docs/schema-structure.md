@@ -86,7 +86,7 @@ what type you are dealing with, for example:
 ## The `_builtins` namespace
 
 In the `schema.json` you will find a namespace that is not present in the `specification` folder named `_builtins`.
-This namespace hauses all the primitive types that you might need.
+This namespace houses all the primitive types that you might need.
 
 - `string`
 - `boolean`
