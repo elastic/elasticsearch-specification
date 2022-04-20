@@ -210,6 +210,7 @@ Finally open a pull request with your changes.
 - [Documenting the API specification](./docs/doc-comments-guide.md)
 - [Known issues](./docs/known-issues.md)
 - [Modeling Guide](./docs/modeling-guide.md)
+- [Schema structure](./docs/schema-structure.md)
 - [Specification structure](./docs/specification-structure.md)
 - [Style Guide](./docs/style-guide.md)
 - [Fixing a defintion, a complete story](./docs/validation-example.md)
