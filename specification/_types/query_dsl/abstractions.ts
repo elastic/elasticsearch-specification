@@ -95,7 +95,7 @@ import {
 } from './term'
 
 /**
- * @variants container open=true
+ * @variants container open
  * @doc_id query-dsl
  */
 export class QueryContainer {

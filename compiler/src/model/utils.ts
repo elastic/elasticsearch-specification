@@ -1019,13 +1019,16 @@ export function parseCommaSeparated (value: string): string[] {
 
 /**
  * Parses an array of "key=value" pairs and validate key names. Values can optionally be enclosed with single
- * or double quotes.
+ * or double quotes. If there is only a key with no value (no '=') the value is set to 'true'
  */
 export function parseKeyValues (node: Node | Node[], pairs: string[], ...validKeys: string[]): Record<string, string> {
   const result = {}
   pairs.forEach(item => {
     const kv = item.split('=')
-    assert(node, kv.length === 2, 'Malformed key/value list')
+    assert(node, kv.length <= 2, 'Malformed key/value list')
+    if (kv.length === 1) {
+      kv.push('true')
+    }
     assert(node, validKeys.includes(kv[0]), `Unknown key '${kv[0]}'`)
     result[kv[0]] = kv[1].replace(/["']/g, '')
   })

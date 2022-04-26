@@ -102,7 +102,7 @@ import {
 } from './pipeline'
 
 /**
- * @variants container open=true
+ * @variants container open
  */
 export class AggregationContainer {
   /**

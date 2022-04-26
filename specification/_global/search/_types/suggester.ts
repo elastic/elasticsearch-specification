@@ -99,7 +99,7 @@ export class Suggester implements AdditionalProperties<string, FieldSuggester> {
 }
 
 /**
- * @variants container open=true
+ * @variants container open
  */
 export class FieldSuggester {
   completion?: CompletionSuggester
