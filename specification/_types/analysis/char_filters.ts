@@ -29,7 +29,7 @@ export class CharFilterBase {
 // ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
 export type CharFilter = string | CharFilterDefinition
 
-/** @variants internal tag='type' */
+/** @variants internal tag='type' open=true */
 export type CharFilterDefinition =
   | HtmlStripCharFilter
   | MappingCharFilter

@@ -954,22 +954,39 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return undefined
   }
 
+  function parseOpen (open: string|undefined): boolean|undefined {
+    if (open != null) {
+      return open === 'true'
+    } else {
+      return undefined
+    }
+  }
+
   const [type, ...values] = tags.variants.split(' ')
   if (type === 'external') {
-    return { kind: 'external_tag' }
+    const pairs = parseKeyValues(jsDoc, values, 'open')
+    return {
+      kind: 'external_tag',
+      isOpen: parseOpen(pairs.open)
+    }
   }
 
   if (type === 'container') {
-    return { kind: 'container' }
+    const pairs = parseKeyValues(jsDoc, values, 'open')
+    return {
+      kind: 'container',
+      isOpen: parseOpen(pairs.open)
+    }
   }
 
   assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
 
-  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default', 'open')
   assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
 
   return {
     kind: 'internal_tag',
+    isOpen: parseOpen(pairs.open),
     tag: pairs.tag,
     defaultTag: pairs.default
   }

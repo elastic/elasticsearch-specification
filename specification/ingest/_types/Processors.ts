@@ -26,7 +26,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 
 /**
- * @variants container
+ * @variants container open=true
  */
 export class ProcessorContainer {
   attachment?: AttachmentProcessor
