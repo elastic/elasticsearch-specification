@@ -440,7 +440,7 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
   }
 
   const tags = parseJsDocTags(declaration.getJsDocs())
-  if (typeof tags.open_enum === 'string') {
+  if (typeof tags.non_exhaustive === 'string') {
     type.isOpen = true
   }
 
@@ -647,7 +647,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names']
+  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names', 'non_exhaustive']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -665,6 +665,8 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       }
     } else if (tag === 'variants') {
     } else if (tag === 'variant') {
+    } else if (tag === 'non_exhaustive') {
+      assert(jsDocs, typeof tags.variants === 'string', '@non_exhaustive only applies to enums and @variants')
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       type.docUrl = value
@@ -954,39 +956,31 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return undefined
   }
 
-  function parseOpen (open: string|undefined): boolean|undefined {
-    if (open != null) {
-      return open === 'true'
-    } else {
-      return undefined
-    }
-  }
+  const nonExhaustive = (typeof tags.non_exhaustive === 'string') ? true : undefined
 
   const [type, ...values] = tags.variants.split(' ')
   if (type === 'external') {
-    const pairs = parseKeyValues(jsDoc, values, 'open')
     return {
       kind: 'external_tag',
-      isOpen: parseOpen(pairs.open)
+      nonExhaustive: nonExhaustive
     }
   }
 
   if (type === 'container') {
-    const pairs = parseKeyValues(jsDoc, values, 'open')
     return {
       kind: 'container',
-      isOpen: parseOpen(pairs.open)
+      nonExhaustive: nonExhaustive
     }
   }
 
   assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
 
-  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default', 'open')
+  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
   assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
 
   return {
     kind: 'internal_tag',
-    isOpen: parseOpen(pairs.open),
+    nonExhaustive: nonExhaustive,
     tag: pairs.tag,
     defaultTag: pairs.default
   }

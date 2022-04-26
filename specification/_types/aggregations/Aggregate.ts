@@ -28,7 +28,8 @@ import { DateMathTime, EpochMillis } from '@_types/Time'
 import { Void } from '@spec_utils/VoidValue'
 
 /**
- * @variants external open
+ * @variants external
+ * @non_exhaustive
  */
 export type Aggregate =
   | CardinalityAggregate

@@ -110,7 +110,10 @@ export class WhitespaceAnalyzer {
   version?: VersionString
 }
 
-/** @variants internal tag='type' default='custom' open */
+/**
+ * @variants internal tag='type' default='custom'
+ * @non_exhaustive
+ */
 export type Analyzer =
   | CustomAnalyzer
   | FingerprintAnalyzer

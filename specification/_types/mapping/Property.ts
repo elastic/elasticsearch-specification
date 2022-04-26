@@ -50,7 +50,10 @@ export class PropertyBase {
   fields?: Dictionary<PropertyName, Property>
 }
 
-/** @variants internal tag='type' default='object' open */
+/**
+ * @variants internal tag='type' default='object'
+ * @non_exhaustive
+ */
 export type Property =
   | FlattenedProperty
   | JoinProperty

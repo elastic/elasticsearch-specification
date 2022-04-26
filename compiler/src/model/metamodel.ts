@@ -183,7 +183,7 @@ export class VariantBase {
    * be extended with plugins. If true, target clients should allow for additional variants
    * with a variant tag outside the ones defined in the spec and arbitrary data as the value.
    */
-  isOpen?: boolean
+  nonExhaustive?: boolean
 }
 
 export class ExternalTag extends VariantBase {
