@@ -103,6 +103,7 @@ import {
 
 /**
  * @variants container
+ * @non_exhaustive
  */
 export class AggregationContainer {
   /**

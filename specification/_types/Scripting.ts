@@ -23,7 +23,7 @@ import { Id } from './common'
 
 /**
  * @doc_id modules-scripting
- * @open_enum
+ * @non_exhaustive
  */
 export enum ScriptLanguage {
   painless = 0,
