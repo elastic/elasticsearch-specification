@@ -29,6 +29,7 @@ import { Void } from '@spec_utils/VoidValue'
 
 /**
  * @variants external
+ * @non_exhaustive
  */
 export type Aggregate =
   | CardinalityAggregate
