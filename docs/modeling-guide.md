@@ -98,11 +98,11 @@ enum Orientation {
 }
 ```
 
-Some enumerations can accept arbitrary values other than the one defined. The `@open_enum` jsdoc tac can be used to describe this behavior.
-By default, an enum is to be considered closed.
+Some enumerations can accept arbitrary values other than the ones defined. The `@non_exhaustive` jsdoc tag can be used to describe this behavior.
+By default, an enum is to be considered exhaustive.
 
 ```ts
-/** @open_enum */
+/** @non_exhaustive */
 export enum ScriptLanguage {
   painless,
   expression,
@@ -234,6 +234,11 @@ class Response {
 
 Variants is a special syntax that can be used by language generators to understand
 which type they will need to build based on the variant configuration.
+
+If the list of variants is not exhaustive (e.g. for types where new variants can be added by
+Elasticsearch plugins), you can add the `@non_exhaustive` js doc tag to indicate that additional
+variants can exist and should be accepted.
+
 There are three type of variants:
 
 #### Internal

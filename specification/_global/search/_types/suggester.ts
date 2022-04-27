@@ -100,6 +100,7 @@ export class Suggester implements AdditionalProperties<string, FieldSuggester> {
 
 /**
  * @variants container
+ * @non_exhaustive
  */
 export class FieldSuggester {
   completion?: CompletionSuggester

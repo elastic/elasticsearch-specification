@@ -71,7 +71,7 @@ export enum HighlighterTagsSchema {
   styled = 0
 }
 
-/** @open_enum */
+/** @non_exhaustive */
 export enum HighlighterType {
   plain = 0,
   /** @codegen_name fast_vector */

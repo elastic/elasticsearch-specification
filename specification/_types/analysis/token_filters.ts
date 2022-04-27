@@ -341,7 +341,10 @@ export class UppercaseTokenFilter extends TokenFilterBase {
 // ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
 export type TokenFilter = string | TokenFilterDefinition
 
-/** @variants internal tag='type' */
+/**
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
 export type TokenFilterDefinition =
   | AsciiFoldingTokenFilter
   | CommonGramsTokenFilter
