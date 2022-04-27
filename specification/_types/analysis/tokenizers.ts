@@ -120,7 +120,10 @@ export class WhitespaceTokenizer extends TokenizerBase {
 // ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
 export type Tokenizer = string | TokenizerDefinition
 
-/** @variants internal tag='type' */
+/**
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
 export type TokenizerDefinition =
   | CharGroupTokenizer
   | EdgeNGramTokenizer

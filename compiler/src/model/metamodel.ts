@@ -177,11 +177,20 @@ export abstract class BaseType {
 
 export type Variants = ExternalTag | InternalTag | Container
 
-export class ExternalTag {
+export class VariantBase {
+  /**
+   * Is this variant type open to extensions? Default to false. Used for variants that can
+   * be extended with plugins. If true, target clients should allow for additional variants
+   * with a variant tag outside the ones defined in the spec and arbitrary data as the value.
+   */
+  nonExhaustive?: boolean
+}
+
+export class ExternalTag extends VariantBase {
   kind: 'external_tag'
 }
 
-export class InternalTag {
+export class InternalTag extends VariantBase {
   kind: 'internal_tag'
   /* Name of the property that holds the variant tag */
   tag: string
@@ -189,7 +198,7 @@ export class InternalTag {
   defaultTag?: string
 }
 
-export class Container {
+export class Container extends VariantBase {
   kind: 'container'
 }
 
@@ -322,6 +331,11 @@ export class EnumMember {
  */
 export class Enum extends BaseType {
   kind: 'enum'
+  /**
+   * If the enum is open, it means that other than the specified values it can accept an arbitrary value.
+   * If this property is not present, it means that the enum is not open (in other words, is closed).
+   */
+  isOpen?: boolean
   members: EnumMember[]
 }
 

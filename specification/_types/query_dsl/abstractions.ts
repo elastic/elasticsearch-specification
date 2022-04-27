@@ -95,6 +95,7 @@ import {
 
 /**
  * @variants container
+ * @non_exhaustive
  */
 export class QueryContainer {
   bool?: BoolQuery

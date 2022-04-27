@@ -27,6 +27,7 @@ import { Script } from '@_types/Scripting'
 
 /**
  * @variants container
+ * @non_exhaustive
  */
 export class ProcessorContainer {
   attachment?: AttachmentProcessor
