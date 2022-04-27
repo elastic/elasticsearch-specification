@@ -414,7 +414,7 @@ export function modelGenerics (node: TypeParameterDeclaration): string {
  * which returns an array that only contains the member of the Enum.
  */
 export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum {
-  return {
+  const type: model.Enum = {
     specLocation: sourceLocation(declaration),
     name: {
       name: declaration.getName(),
@@ -433,6 +433,13 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
         return member
       })
   }
+
+  const tags = parseJsDocTags(declaration.getJsDocs())
+  if (typeof tags.non_exhaustive === 'string') {
+    type.isOpen = true
+  }
+
+  return type
 }
 
 /**
@@ -632,7 +639,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names']
+  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names', 'non_exhaustive']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -650,6 +657,8 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       }
     } else if (tag === 'variants') {
     } else if (tag === 'variant') {
+    } else if (tag === 'non_exhaustive') {
+      assert(jsDocs, typeof tags.variants === 'string', '@non_exhaustive only applies to enums and @variants')
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       type.docUrl = value
@@ -924,13 +933,21 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return undefined
   }
 
+  const nonExhaustive = (typeof tags.non_exhaustive === 'string') ? true : undefined
+
   const [type, ...values] = tags.variants.split(' ')
   if (type === 'external') {
-    return { kind: 'external_tag' }
+    return {
+      kind: 'external_tag',
+      nonExhaustive: nonExhaustive
+    }
   }
 
   if (type === 'container') {
-    return { kind: 'container' }
+    return {
+      kind: 'container',
+      nonExhaustive: nonExhaustive
+    }
   }
 
   assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
@@ -940,6 +957,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
 
   return {
     kind: 'internal_tag',
+    nonExhaustive: nonExhaustive,
     tag: pairs.tag,
     defaultTag: pairs.default
   }
@@ -972,13 +990,16 @@ export function parseCommaSeparated (value: string): string[] {
 
 /**
  * Parses an array of "key=value" pairs and validate key names. Values can optionally be enclosed with single
- * or double quotes.
+ * or double quotes. If there is only a key with no value (no '=') the value is set to 'true'
  */
 export function parseKeyValues (node: Node | Node[], pairs: string[], ...validKeys: string[]): Record<string, string> {
   const result = {}
   pairs.forEach(item => {
     const kv = item.split('=')
-    assert(node, kv.length === 2, 'Malformed key/value list')
+    assert(node, kv.length <= 2, 'Malformed key/value list')
+    if (kv.length === 1) {
+      kv.push('true')
+    }
     assert(node, validKeys.includes(kv[0]), `Unknown key '${kv[0]}'`)
     result[kv[0]] = kv[1].replace(/["']/g, '')
   })
