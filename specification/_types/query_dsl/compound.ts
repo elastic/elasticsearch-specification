@@ -58,23 +58,16 @@ export class FunctionScoreQuery extends QueryBase {
   score_mode?: FunctionScoreMode
 }
 
-export class ScoreFunctionBase {
-  filter?: QueryContainer
-  weight?: double
-}
-
-export class WeightScoreFunction extends ScoreFunctionBase {}
-
-export class ScriptScoreFunction extends ScoreFunctionBase {
+export class ScriptScoreFunction {
   script: Script
 }
 
-export class RandomScoreFunction extends ScoreFunctionBase {
+export class RandomScoreFunction {
   field?: Field
   seed?: long | string
 }
 
-export class FieldValueFactorScoreFunction extends ScoreFunctionBase {
+export class FieldValueFactorScoreFunction {
   field: Field
   factor?: double
   missing?: double
@@ -88,7 +81,7 @@ export class DecayPlacement<TOrigin, TScale> {
   origin?: TOrigin
 }
 
-export class DecayFunctionBase extends ScoreFunctionBase {
+export class DecayFunctionBase {
   multi_value_mode?: MultiValueMode
 }
 
@@ -113,7 +106,8 @@ export type DecayFunction =
 
 /** @variants container */
 // This container is valid without a variant. Also, despite being documented as a function, 'weight' is actually a
-// container property that can be combined with a function. From SearchModule#registerScoreFunctions in ES:
+// container property that can be combined with a function.
+// From SearchModule#registerScoreFunctions in ES:
 // Weight doesn't have its own parser, so every function supports it out of the box. Can be a single function too when
 // not associated to any other function, which is why it needs to be registered manually here.
 export class FunctionScoreContainer {
