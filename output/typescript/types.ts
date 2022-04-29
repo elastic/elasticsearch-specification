@@ -4877,7 +4877,7 @@ export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
 export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {
 }
 export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<DateMath, Time> | QueryDslMultiValueMode | QueryDslQueryContainer | double }
+  & { [property: string]: QueryDslDecayPlacement<DateMath, Time> | QueryDslMultiValueMode }
 
 export interface QueryDslDateDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<DateMath, Time> {
 }
@@ -4895,7 +4895,7 @@ export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase {
 
 export type QueryDslDecayFunction = QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
 
-export interface QueryDslDecayFunctionBase extends QueryDslScoreFunctionBase {
+export interface QueryDslDecayFunctionBase {
   multi_value_mode?: QueryDslMultiValueMode
 }
 
@@ -4938,7 +4938,7 @@ export interface QueryDslFieldLookup {
 
 export type QueryDslFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
 
-export interface QueryDslFieldValueFactorScoreFunction extends QueryDslScoreFunctionBase {
+export interface QueryDslFieldValueFactorScoreFunction {
   field: Field
   factor?: double
   missing?: double
@@ -4989,7 +4989,7 @@ export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys
 export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase {
 }
 export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<GeoLocation, Distance> | QueryDslMultiValueMode | QueryDslQueryContainer | double }
+  & { [property: string]: QueryDslDecayPlacement<GeoLocation, Distance> | QueryDslMultiValueMode }
 
 export interface QueryDslGeoDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<GeoLocation, Distance> {
 }
@@ -5250,7 +5250,7 @@ export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
 export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
 }
 export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode | QueryDslQueryContainer | double }
+  & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode }
 
 export type QueryDslOperator = 'and' | 'AND' | 'or' | 'OR'
 
@@ -5379,7 +5379,7 @@ export interface QueryDslQueryStringQuery extends QueryDslQueryBase {
   type?: QueryDslTextQueryType
 }
 
-export interface QueryDslRandomScoreFunction extends QueryDslScoreFunctionBase {
+export interface QueryDslRandomScoreFunction {
   field?: Field
   seed?: long | string
 }
@@ -5429,16 +5429,11 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
   value: string
 }
 
-export interface QueryDslScoreFunctionBase {
-  filter?: QueryDslQueryContainer
-  weight?: double
-}
-
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
   script: Script
 }
 
-export interface QueryDslScriptScoreFunction extends QueryDslScoreFunctionBase {
+export interface QueryDslScriptScoreFunction {
   script: Script
 }
 
