@@ -2160,12 +2160,6 @@
       ],
       "response": []
     },
-    "snapshot.restore": {
-      "request": [
-        "request definition snapshot.restore:Request / body / Property 'index_settings' / instance_of - 'indices.put_settings:Request' is a request and must only be used in endpoints"
-      ],
-      "response": []
-    },
     "snapshot.status": {
       "request": [
         "Request: should not have a body"
