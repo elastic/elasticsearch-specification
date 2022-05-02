@@ -33,5 +33,6 @@ export interface Request extends RequestBase {
   body: {
     geo_match?: Policy
     match?: Policy
+    range?: Policy
   }
 }

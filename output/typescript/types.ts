@@ -8566,6 +8566,7 @@ export interface DanglingIndicesListDanglingIndicesResponse {
 export interface EnrichConfiguration {
   geo_match?: EnrichPolicy
   match: EnrichPolicy
+  range: EnrichPolicy
 }
 
 export interface EnrichPolicy {
@@ -8615,6 +8616,7 @@ export interface EnrichPutPolicyRequest extends RequestBase {
   body?: {
     geo_match?: EnrichPolicy
     match?: EnrichPolicy
+    range?: EnrichPolicy
   }
 }
 
