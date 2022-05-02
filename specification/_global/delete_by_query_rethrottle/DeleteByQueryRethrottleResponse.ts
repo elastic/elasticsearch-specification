@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Response as ListTasksResponse } from '@tasks/list/ListTasksResponse'
+import { TaskListResponseBase } from '@tasks/_types/TaskListResponseBase'
 
 export class Response {
-  body: ListTasksResponse
+  body: TaskListResponseBase
 }
