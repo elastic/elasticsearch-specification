@@ -240,7 +240,7 @@ export interface DeleteByQueryRethrottleRequest extends RequestBase {
   requests_per_second?: long
 }
 
-export type DeleteByQueryRethrottleResponse = TasksListResponse
+export type DeleteByQueryRethrottleResponse = TasksTaskListResponseBase
 
 export interface DeleteScriptRequest extends RequestBase {
   id: Id
@@ -16224,7 +16224,7 @@ export interface SnapshotRestoreRequest extends RequestBase {
     ignore_unavailable?: boolean
     include_aliases?: boolean
     include_global_state?: boolean
-    index_settings?: IndicesPutSettingsRequest
+    index_settings?: IndicesIndexSettings
     indices?: Indices
     partial?: boolean
     rename_pattern?: string
