@@ -2143,6 +2143,7 @@
         "Request: query parameter 'offset' does not exist in the json spec",
         "Request: query parameter 'from_sort_value' does not exist in the json spec",
         "Request: query parameter 'slm_policy_filter' does not exist in the json spec",
+        "Request: missing json spec query parameter 'index_names'",
         "Request: should not have a body",
         "request definition snapshot.get:Request / query - Property 'human' is already defined in an ancestor class"
       ],
