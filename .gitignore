@@ -57,3 +57,6 @@ typescript-generator/lib
 report
 output/schema/import-*
 .github/**/package-lock.json
+
+# Editor lockfiles
+.*.swp

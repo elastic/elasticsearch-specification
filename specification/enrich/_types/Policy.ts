@@ -26,6 +26,7 @@ export class Summary {
 export class Configuration {
   geo_match?: Policy
   match: Policy
+  range: Policy
 }
 
 export class Policy {
