@@ -139,6 +139,8 @@ export class Property {
   aliases?: string[]
   /** If the enclosing class is a variants container, is this a property of the container and not a variant? */
   containerProperty?: boolean
+  /** If this property has a quirk that needs special attention, give a short explanation about it */
+  esQuirk?: string
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -158,6 +160,8 @@ export abstract class BaseType {
   docUrl?: string
   docId?: string
   deprecation?: Deprecation
+  /** If this endpoint has a quirk that needs special attention, give a short explanation about it */
+  esQuirk?: string
   kind: string
   /** Variant name for externally tagged variants */
   variantName?: string
