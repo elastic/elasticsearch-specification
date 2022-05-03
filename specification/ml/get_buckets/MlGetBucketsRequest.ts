@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { DateString, Timestamp } from '@_types/Time'
+import { DateString } from '@_types/Time'
 
 /**
  * Retrieves anomaly detection job results for one or more buckets.
@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
      * The timestamp of a single bucket result. If you do not specify this
      * parameter, the API returns information about all buckets.
      */
-    timestamp?: Timestamp
+    timestamp?: DateString
   }
   query_parameters: {
     /**

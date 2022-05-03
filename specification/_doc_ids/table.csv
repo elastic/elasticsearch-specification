@@ -402,3 +402,4 @@ templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{b
 mapping-settings-limit,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-settings-limit.html
 index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-slowlog.html#index-slow-log
 multi-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/multi-fields.html
+date-math,https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math

@@ -20,7 +20,7 @@
 import { Id } from '@_types/common'
 import { NodeAttributes } from '@_types/Node'
 import { double, long } from '@_types/Numeric'
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 
 export class TransformStats {
   checkpointing: Checkpointing
@@ -40,7 +40,7 @@ export class TransformProgress {
 }
 
 export class TransformIndexerStats {
-  delete_time_in_ms?: EpochMillis
+  delete_time_in_ms?: Time
   documents_indexed: long
   documents_deleted?: long
   documents_processed: long
@@ -63,9 +63,9 @@ export class CheckpointStats {
   checkpoint: long
   checkpoint_progress?: TransformProgress
   timestamp?: DateString
-  timestamp_millis?: EpochMillis
+  timestamp_millis?: Time
   time_upper_bound?: DateString
-  time_upper_bound_millis?: EpochMillis
+  time_upper_bound_millis?: Time
 }
 
 export class Checkpointing {

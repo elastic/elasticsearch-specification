@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 
 export class SnapshotsRecord {
   /**
@@ -39,7 +39,7 @@ export class SnapshotsRecord {
    * start time in seconds since 1970-01-01 00:00:00
    * @aliases ste,startEpoch
    */
-  'start_epoch'?: EpochMillis
+  'start_epoch'?: Time
   /**
    * start time in HH:MM:SS
    * @aliases sti,startTime
@@ -49,7 +49,7 @@ export class SnapshotsRecord {
    * end time in seconds since 1970-01-01 00:00:00
    * @aliases ete,endEpoch
    */
-  'end_epoch'?: EpochMillis
+  'end_epoch'?: Time
   /**
    * end time in HH:MM:SS
    * @aliases eti,endTime

@@ -37,12 +37,12 @@ export class Response {
      */
     is_partial: boolean
     /**
-     * Timestamp, in milliseconds since the Unix epoch, when the search started.
+     * DateString, in milliseconds since the Unix epoch, when the search started.
      * The API only returns this property for running searches.
      */
     start_time_in_millis: ulong
     /**
-     * Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete
+     * DateString, in milliseconds since the Unix epoch, when Elasticsearch will delete
      * the search and its results, even if the search is still running.
      */
     expiration_time_in_millis: ulong

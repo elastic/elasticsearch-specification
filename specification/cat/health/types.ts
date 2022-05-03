@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 
 export class HealthRecord {
   /**
    * seconds since 1969-01-01 00:00:00
    * @aliases time
    */
-  'epoch'?: EpochMillis
+  'epoch'?: Time
   /**
    * time in HH:MM:SS
    * @aliases ts,hms,hhmmss

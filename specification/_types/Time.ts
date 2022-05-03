@@ -24,16 +24,22 @@ export class DateMathTimeParsed {
   interval: DateMathTimeUnit
 }
 
+/**
+ * A timestamp, for example "2015-01-01T12:10:30Z" or "2015-01-01"
+ */
 export type DateString = string
-export type Timestamp = string
+/**
+ * A duration, for example "5m" or "1M"
+ */
 export type TimeSpan = string
-export type EpochMillis = string | long
+/**
+ * Operations related to a date, for example "now-1h" or "2001.02.01\|\|+1M/d"
+ * @doc_id date-math
+ */
 export type DateMath = string
-export type DateMathExpression = string
-export type DateMathTime = string
 
 /** @codegen_names date, millis */
-export type DateOrEpochMillis = DateString | EpochMillis
+export type DateOrEpochMillis = DateString | Time
 
 export type TimeZone = string
 
@@ -68,7 +74,7 @@ export enum DateMathTimeUnit {
  * @codegen_names time, offset
  */
 //FIXME: need to distinguish durations (has to be a string), offsets (can be a string or number)
-export type Time = string | integer
+export type Time = string | long
 
 export enum TimeUnit {
   /** @codegen_name nanoseconds */

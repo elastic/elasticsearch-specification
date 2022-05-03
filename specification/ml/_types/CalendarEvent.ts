@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@_types/common'
-import { EpochMillis } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class CalendarEvent {
   /** A string that uniquely identifies a calendar. */
@@ -27,7 +27,7 @@ export class CalendarEvent {
   /** A description of the scheduled event. */
   description: string
   /** The timestamp for the end of the scheduled event in milliseconds since the epoch or ISO 8601 format. */
-  end_time: EpochMillis
+  end_time: Time
   /** The timestamp for the beginning of the scheduled event in milliseconds since the epoch or ISO 8601 format. */
-  start_time: EpochMillis
+  start_time: Time
 }

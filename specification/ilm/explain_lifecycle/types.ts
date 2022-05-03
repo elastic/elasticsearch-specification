@@ -21,25 +21,25 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName, Name, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { EpochMillis, Time } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class LifecycleExplainManaged {
   action: Name
-  action_time_millis: EpochMillis
+  action_time_millis: Time
   age: Time
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
-  index_creation_date_millis?: EpochMillis
+  index_creation_date_millis?: Time
   is_auto_retryable_error?: boolean
-  lifecycle_date_millis: EpochMillis
+  lifecycle_date_millis: Time
   managed: true
   phase: Name
-  phase_time_millis: EpochMillis
+  phase_time_millis: Time
   policy: Name
   step: Name
   step_info?: Dictionary<string, UserDefinedValue>
-  step_time_millis: EpochMillis
+  step_time_millis: Time
   phase_execution: LifecycleExplainPhaseExecution
   time_since_index_creation?: Time
 }
@@ -57,5 +57,5 @@ export type LifecycleExplain =
 export class LifecycleExplainPhaseExecution {
   policy: Name
   version: VersionNumber
-  modified_date_in_millis: EpochMillis
+  modified_date_in_millis: Time
 }

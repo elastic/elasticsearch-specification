@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 import {
   IndexAction,
@@ -39,7 +39,7 @@ export class Action {
   max_iterations?: integer
   name?: Name
   throttle_period?: Time
-  throttle_period_in_millis?: EpochMillis
+  throttle_period_in_millis?: Time
   transform?: TransformContainer
   index?: IndexAction
   logging?: LoggingAction

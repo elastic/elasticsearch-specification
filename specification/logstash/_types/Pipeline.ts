@@ -18,7 +18,7 @@
  */
 
 import { integer } from '@_types/Numeric'
-import { Timestamp } from '@_types/Time'
+import { DateString } from '@_types/Time'
 
 export class PipelineMetadata {
   type: string
@@ -36,7 +36,7 @@ export class PipelineSettings {
 }
 export class Pipeline {
   description: string
-  last_modified: Timestamp
+  last_modified: DateString
   pipeline_metadata: PipelineMetadata
   username: string
   pipeline: string

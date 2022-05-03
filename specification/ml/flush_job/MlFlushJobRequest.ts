@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 
 /**
  * Forces any buffered data to be processed by the job.
@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
      * Specifies to skip to a particular time value. Results are not generated
      * and the model is not updated for data from the specified time interval.
      */
-    skip_time?: EpochMillis
+    skip_time?: Time
     /**
      * When used in conjunction with `calc_interim`, specifies the range of
      * buckets on which to calculate interim results.
@@ -86,7 +86,7 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `skip_time` query parameter.
      */
-    skip_time?: EpochMillis
+    skip_time?: Time
     /**
      * Refer to the description for the `start` query parameter.
      */

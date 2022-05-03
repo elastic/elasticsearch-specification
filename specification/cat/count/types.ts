@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
 
 export class CountRecord {
   /**
    * seconds since 1969-01-01 00:00:00
    * @aliases t,time
    */
-  'epoch'?: EpochMillis
+  'epoch'?: Time
   /**
    * time in HH:MM:SS
    * @aliases ts,hms,hhmmss

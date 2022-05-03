@@ -18,7 +18,7 @@
  */
 
 import { long } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export enum LicenseType {
   missing = 0,
@@ -40,9 +40,9 @@ export enum LicenseStatus {
 }
 
 export class License {
-  expiry_date_in_millis: EpochMillis
-  issue_date_in_millis: EpochMillis
-  start_date_in_millis?: EpochMillis
+  expiry_date_in_millis: Time
+  issue_date_in_millis: Time
+  start_date_in_millis?: Time
   issued_to: string
   issuer: string
   max_nodes?: long | null

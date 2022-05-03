@@ -23,7 +23,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, IndexName } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
-import { EpochMillis } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class Response {
   body: FieldsUsageBody
@@ -43,7 +43,7 @@ export class UsageStatsShards {
   routing: ShardRouting
   stats: ShardsStats
   tracking_id: string
-  tracking_started_at_millis: EpochMillis
+  tracking_started_at_millis: Time
 }
 
 export class ShardsStats {

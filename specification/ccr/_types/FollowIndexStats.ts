@@ -25,7 +25,7 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class FollowIndexStats {
   index: IndexName
@@ -56,10 +56,10 @@ export class ShardStats {
   shard_id: integer
   successful_read_requests: long
   successful_write_requests: long
-  time_since_last_read_millis: EpochMillis
-  total_read_remote_exec_time_millis: EpochMillis
-  total_read_time_millis: EpochMillis
-  total_write_time_millis: EpochMillis
+  time_since_last_read_millis: Time
+  total_read_remote_exec_time_millis: Time
+  total_read_time_millis: Time
+  total_write_time_millis: Time
   write_buffer_operation_count: long
   write_buffer_size_in_bytes: ByteSize
 }

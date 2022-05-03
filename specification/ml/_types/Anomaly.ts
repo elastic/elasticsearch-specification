@@ -19,7 +19,7 @@
 
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { EpochMillis, Time } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class Anomaly {
   actual?: double[]
@@ -42,7 +42,7 @@ export class Anomaly {
   probability: double
   record_score: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: Time
   typical?: double[]
 }
 

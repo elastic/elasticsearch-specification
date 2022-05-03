@@ -19,7 +19,7 @@
 
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class Response {
   body: {
@@ -38,11 +38,11 @@ export class Response {
     /**
      * For a running search shows a timestamp when the eql search started, in milliseconds since the Unix epoch.
      */
-    start_time_in_millis?: EpochMillis
+    start_time_in_millis?: Time
     /**
      * Shows a timestamp when the eql search will be expired, in milliseconds since the Unix epoch. When this time is reached, the search and its results are deleted, even if the search is still ongoing.
      */
-    expiration_time_in_millis?: EpochMillis
+    expiration_time_in_millis?: Time
     /**
      * For a completed search shows the http status code of the completed search.
      */

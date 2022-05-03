@@ -24,7 +24,7 @@ import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, IndexName, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time, EpochMillis } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class Response {
   body: {
@@ -32,8 +32,8 @@ export class Response {
     analysis_config: AnalysisConfigRead
     analysis_limits: AnalysisLimits
     background_persist_interval?: Time
-    create_time: EpochMillis
-    finished_time?: EpochMillis
+    create_time: Time
+    finished_time?: Time
     custom_settings?: Dictionary<string, string>
     daily_model_snapshot_retention_after_days: long
     data_description: DataDescription
