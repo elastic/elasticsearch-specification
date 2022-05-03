@@ -841,8 +841,8 @@ export interface ReindexResponse {
   requests_per_second?: long
   slice_id?: integer
   task?: TaskId
-  throttled_millis?: EpochMillis
-  throttled_until_millis?: EpochMillis
+  throttled_millis?: Time
+  throttled_until_millis?: Time
   timed_out?: boolean
   took?: Time
   total?: long
@@ -1880,9 +1880,7 @@ export type DateFormat = string
 
 export type DateMath = string
 
-export type DateMathTime = string
-
-export type DateOrEpochMillis = DateString | EpochMillis
+export type DateOrEpochMillis = DateString | Time
 
 export type DateString = string
 
@@ -1910,8 +1908,6 @@ export interface ElasticsearchVersionInfo {
 export interface EmptyObject {
   [key: string]: never
 }
-
-export type EpochMillis = string | long
 
 export interface ErrorCauseKeys {
   type: string
@@ -2433,15 +2429,13 @@ export type TaskId = string | integer
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
 
-export type Time = string | integer
+export type Time = string | long
 
 export type TimeSpan = string
 
 export type TimeUnit = 'nanos' | 'micros' | 'ms' | 's' | 'm' | 'h' | 'd'
 
 export type TimeZone = string
-
-export type Timestamp = string
 
 export interface TopLeftBottomRightGeoBounds {
   top_left: GeoLocation
@@ -2641,7 +2635,7 @@ export interface AggregationsArrayPercentilesItem {
 }
 
 export interface AggregationsAutoDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
-  interval: DateMathTime
+  interval: DateMath
 }
 
 export interface AggregationsAutoDateHistogramAggregation extends AggregationsBucketAggregationBase {
@@ -2843,10 +2837,10 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
 
 export interface AggregationsDateHistogramBucketKeys extends AggregationsMultiBucketBase {
   key_as_string?: string
-  key: EpochMillis
+  key: Time
 }
 export type AggregationsDateHistogramBucket = AggregationsDateHistogramBucketKeys
-  & { [property: string]: AggregationsAggregate | string | EpochMillis | long }
+  & { [property: string]: AggregationsAggregate | string | Time | long }
 
 export interface AggregationsDateRangeAggregate extends AggregationsRangeAggregate {
 }
@@ -5685,8 +5679,8 @@ export interface AsyncSearchAsyncSearchResponseBase {
   id?: Id
   is_partial: boolean
   is_running: boolean
-  expiration_time_in_millis: EpochMillis
-  start_time_in_millis: EpochMillis
+  expiration_time_in_millis: Time
+  start_time_in_millis: Time
 }
 
 export interface AsyncSearchDeleteRequest extends RequestBase {
@@ -5941,9 +5935,9 @@ export interface CatAllocationRequest extends CatCatRequestBase {
 export type CatAllocationResponse = CatAllocationAllocationRecord[]
 
 export interface CatCountCountRecord {
-  epoch?: EpochMillis
-  t?: EpochMillis
-  time?: EpochMillis
+  epoch?: Time
+  t?: Time
+  time?: Time
   timestamp?: DateString
   ts?: DateString
   hms?: DateString
@@ -5980,8 +5974,8 @@ export interface CatFielddataRequest extends CatCatRequestBase {
 export type CatFielddataResponse = CatFielddataFielddataRecord[]
 
 export interface CatHealthHealthRecord {
-  epoch?: EpochMillis
-  time?: EpochMillis
+  epoch?: Time
+  time?: Time
   timestamp?: DateString
   ts?: DateString
   hms?: DateString
@@ -7401,15 +7395,15 @@ export interface CatSnapshotsSnapshotsRecord {
   repo?: string
   status?: string
   s?: string
-  start_epoch?: EpochMillis
-  ste?: EpochMillis
-  startEpoch?: EpochMillis
+  start_epoch?: Time
+  ste?: Time
+  startEpoch?: Time
   start_time?: DateString
   sti?: DateString
   startTime?: DateString
-  end_epoch?: EpochMillis
-  ete?: EpochMillis
-  endEpoch?: EpochMillis
+  end_epoch?: Time
+  ete?: Time
+  endEpoch?: Time
   end_time?: DateString
   eti?: DateString
   endTime?: DateString
@@ -7663,10 +7657,10 @@ export interface CcrShardStats {
   shard_id: integer
   successful_read_requests: long
   successful_write_requests: long
-  time_since_last_read_millis: EpochMillis
-  total_read_remote_exec_time_millis: EpochMillis
-  total_read_time_millis: EpochMillis
-  total_write_time_millis: EpochMillis
+  time_since_last_read_millis: Time
+  total_read_remote_exec_time_millis: Time
+  total_read_time_millis: Time
+  total_write_time_millis: Time
   write_buffer_operation_count: long
   write_buffer_size_in_bytes: ByteSize
 }
@@ -8093,7 +8087,7 @@ export interface ClusterHealthResponse {
   number_of_pending_tasks: integer
   relocating_shards: integer
   status: HealthStatus
-  task_max_waiting_in_queue_millis: EpochMillis
+  task_max_waiting_in_queue_millis: Time
   timed_out: boolean
   unassigned_shards: integer
 }
@@ -8552,7 +8546,7 @@ export type DanglingIndicesImportDanglingIndexResponse = AcknowledgedResponseBas
 export interface DanglingIndicesListDanglingIndicesDanglingIndex {
   index_name: string
   index_uuid: string
-  creation_date_millis: EpochMillis
+  creation_date_millis: Time
   node_ids: Ids
 }
 
@@ -8701,8 +8695,8 @@ export interface EqlGetStatusResponse {
   id: Id
   is_partial: boolean
   is_running: boolean
-  start_time_in_millis?: EpochMillis
-  expiration_time_in_millis?: EpochMillis
+  start_time_in_millis?: Time
+  expiration_time_in_millis?: Time
   completion_status?: integer
 }
 
@@ -9002,21 +8996,21 @@ export type IlmExplainLifecycleLifecycleExplain = IlmExplainLifecycleLifecycleEx
 
 export interface IlmExplainLifecycleLifecycleExplainManaged {
   action: Name
-  action_time_millis: EpochMillis
+  action_time_millis: Time
   age: Time
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
-  index_creation_date_millis?: EpochMillis
+  index_creation_date_millis?: Time
   is_auto_retryable_error?: boolean
-  lifecycle_date_millis: EpochMillis
+  lifecycle_date_millis: Time
   managed: true
   phase: Name
-  phase_time_millis: EpochMillis
+  phase_time_millis: Time
   policy: Name
   step: Name
   step_info?: Record<string, any>
-  step_time_millis: EpochMillis
+  step_time_millis: Time
   phase_execution: IlmExplainLifecycleLifecycleExplainPhaseExecution
   time_since_index_creation?: Time
 }
@@ -9024,7 +9018,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
   policy: Name
   version: VersionNumber
-  modified_date_in_millis: EpochMillis
+  modified_date_in_millis: Time
 }
 
 export interface IlmExplainLifecycleLifecycleExplainUnmanaged {
@@ -9904,7 +9898,7 @@ export interface IndicesFieldUsageStatsUsageStatsShards {
   routing: IndicesStatsShardRouting
   stats: IndicesFieldUsageStatsShardsStats
   tracking_id: string
-  tracking_started_at_millis: EpochMillis
+  tracking_started_at_millis: Time
 }
 
 export interface IndicesFlushRequest extends RequestBase {
@@ -10216,10 +10210,10 @@ export interface IndicesRecoveryRecoveryIndexStatus {
   files: IndicesRecoveryRecoveryFiles
   size: IndicesRecoveryRecoveryBytes
   source_throttle_time?: Time
-  source_throttle_time_in_millis: EpochMillis
+  source_throttle_time_in_millis: Time
   target_throttle_time?: Time
-  target_throttle_time_in_millis: EpochMillis
-  total_time_in_millis: EpochMillis
+  target_throttle_time_in_millis: Time
+  total_time_in_millis: Time
   total_time?: Time
 }
 
@@ -10263,12 +10257,12 @@ export interface IndicesRecoveryShardRecovery {
   stage: string
   start?: IndicesRecoveryRecoveryStartStatus
   start_time?: DateString
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: Time
   stop_time?: DateString
-  stop_time_in_millis: EpochMillis
+  stop_time_in_millis: Time
   target: IndicesRecoveryRecoveryOrigin
   total_time?: DateString
-  total_time_in_millis: EpochMillis
+  total_time_in_millis: Time
   translog: IndicesRecoveryTranslogStatus
   type: string
   verify_index: IndicesRecoveryVerifyIndex
@@ -10280,14 +10274,14 @@ export interface IndicesRecoveryTranslogStatus {
   total: long
   total_on_start: long
   total_time?: string
-  total_time_in_millis: EpochMillis
+  total_time_in_millis: Time
 }
 
 export interface IndicesRecoveryVerifyIndex {
   check_index_time?: Time
-  check_index_time_in_millis: EpochMillis
+  check_index_time_in_millis: Time
   total_time?: Time
-  total_time_in_millis: EpochMillis
+  total_time_in_millis: Time
 }
 
 export interface IndicesRefreshRequest extends RequestBase {
@@ -10378,7 +10372,7 @@ export interface IndicesRolloverRolloverConditions {
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
   max_primary_shard_size_bytes?: ByteSize
-  max_age_millis?: EpochMillis
+  max_age_millis?: Time
 }
 
 export interface IndicesSegmentsIndexSegment {
@@ -11196,9 +11190,9 @@ export interface IngestSimulateResponse {
 }
 
 export interface LicenseLicense {
-  expiry_date_in_millis: EpochMillis
-  issue_date_in_millis: EpochMillis
-  start_date_in_millis?: EpochMillis
+  expiry_date_in_millis: Time
+  issue_date_in_millis: Time
+  start_date_in_millis?: Time
   issued_to: string
   issuer: string
   max_nodes?: long | null
@@ -11219,9 +11213,9 @@ export type LicenseDeleteResponse = AcknowledgedResponseBase
 
 export interface LicenseGetLicenseInformation {
   expiry_date?: DateString
-  expiry_date_in_millis?: EpochMillis
+  expiry_date_in_millis?: Time
   issue_date: DateString
-  issue_date_in_millis: EpochMillis
+  issue_date_in_millis: Time
   issued_to: string
   issuer: string
   max_nodes: long | null
@@ -11229,7 +11223,7 @@ export interface LicenseGetLicenseInformation {
   status: LicenseLicenseStatus
   type: LicenseLicenseType
   uid: Uuid
-  start_date_in_millis: EpochMillis
+  start_date_in_millis: Time
 }
 
 export interface LicenseGetRequest extends RequestBase {
@@ -11300,7 +11294,7 @@ export interface LicensePostStartTrialResponse {
 
 export interface LogstashPipeline {
   description: string
-  last_modified: Timestamp
+  last_modified: DateString
   pipeline_metadata: LogstashPipelineMetadata
   username: string
   pipeline: string
@@ -11454,7 +11448,7 @@ export interface MlAnomaly {
   probability: double
   record_score: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: Time
   typical?: double[]
 }
 
@@ -11507,8 +11501,8 @@ export interface MlCalendarEvent {
   calendar_id?: Id
   event_id?: Id
   description: string
-  end_time: EpochMillis
-  start_time: EpochMillis
+  end_time: Time
+  start_time: Time
 }
 
 export type MlCategorizationAnalyzer = string | MlCategorizationAnalyzerDefinition
@@ -11591,13 +11585,13 @@ export interface MlDatafeed {
   aggs?: Record<string, AggregationsAggregationContainer>
   chunking_config?: MlChunkingConfig
   datafeed_id: Id
-  frequency?: Timestamp
+  frequency?: DateString
   indices: string[]
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
   query: QueryDslQueryContainer
-  query_delay?: Timestamp
+  query_delay?: DateString
   script_fields?: Record<string, ScriptField>
   scroll_size?: integer
   delayed_data_check_config: MlDelayedDataCheckConfig
@@ -11611,14 +11605,14 @@ export interface MlDatafeedConfig {
   chunking_config?: MlChunkingConfig
   datafeed_id?: Id
   delayed_data_check_config?: MlDelayedDataCheckConfig
-  frequency?: Timestamp
+  frequency?: DateString
   indexes?: string[]
   indices: string[]
   indices_options?: IndicesOptions
   job_id?: Id
   max_empty_searches?: integer
   query: QueryDslQueryContainer
-  query_delay?: Timestamp
+  query_delay?: DateString
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
   scroll_size?: integer
@@ -12719,13 +12713,13 @@ export interface MlFlushJobRequest extends RequestBase {
   advance_time?: DateString
   calc_interim?: boolean
   end?: DateString
-  skip_time?: EpochMillis
+  skip_time?: Time
   start?: DateString
   body?: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString
-    skip_time?: EpochMillis
+    skip_time?: Time
     start?: DateString
   }
 }
@@ -12754,7 +12748,7 @@ export interface MlForecastResponse {
 
 export interface MlGetBucketsRequest extends RequestBase {
   job_id: Id
-  timestamp?: Timestamp
+  timestamp?: DateString
   anomaly_score?: double
   desc?: boolean
   end?: DateString
@@ -13709,8 +13703,8 @@ export interface MlUpdateJobResponse {
   analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
-  create_time: EpochMillis
-  finished_time?: EpochMillis
+  create_time: Time
+  finished_time?: Time
   custom_settings?: Record<string, string>
   daily_model_snapshot_retention_after_days: long
   data_description: MlDataDescription
@@ -14135,8 +14129,8 @@ export interface NodesRepositoryMeteringInformation {
   repository_type: string
   repository_location: NodesRepositoryLocation
   repository_ephemeral_id: Id
-  repository_started_at: EpochMillis
-  repository_stopped_at?: EpochMillis
+  repository_started_at: Time
+  repository_stopped_at?: Time
   archived: boolean
   cluster_version?: VersionNumber
   request_counts: NodesRequestCounts
@@ -14676,8 +14670,8 @@ export interface NodesStatsResponseBase extends NodesNodesResponseBase {
 
 export interface NodesUsageNodeUsage {
   rest_actions: Record<string, integer>
-  since: EpochMillis
-  timestamp: EpochMillis
+  since: Time
+  timestamp: Time
   aggregations: Record<string, any>
 }
 
@@ -15532,7 +15526,7 @@ export interface SecurityGrantApiKeyResponse {
   api_key: string
   id: Id
   name: Name
-  expiration?: EpochMillis
+  expiration?: Time
 }
 
 export interface SecurityHasPrivilegesApplicationPrivilegesCheck {
@@ -15804,7 +15798,7 @@ export interface ShutdownGetNodeNodeShutdownStatus {
   node_id: NodeId
   type: ShutdownGetNodeShutdownType
   reason: string
-  shutdown_startedmillis: EpochMillis
+  shutdown_startedmillis: Time
   status: ShutdownGetNodeShutdownStatus
   shard_migration: ShutdownGetNodeShardMigrationStatus
   persistent_tasks: ShutdownGetNodePersistentTaskStatus
@@ -15881,9 +15875,9 @@ export interface SlmSnapshotLifecycle {
   last_failure?: SlmInvocation
   last_success?: SlmInvocation
   modified_date?: DateString
-  modified_date_millis: EpochMillis
+  modified_date_millis: Time
   next_execution?: DateString
-  next_execution_millis: EpochMillis
+  next_execution_millis: Time
   policy: SlmPolicy
   version: VersionNumber
   stats: SlmStatistics
@@ -15891,7 +15885,7 @@ export interface SlmSnapshotLifecycle {
 
 export interface SlmStatistics {
   retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
+  retention_deletion_time_millis?: Time
   retention_failed?: long
   retention_runs?: long
   retention_timed_out?: long
@@ -15936,7 +15930,7 @@ export interface SlmGetStatsRequest extends RequestBase {
 
 export interface SlmGetStatsResponse {
   retention_deletion_time: string
-  retention_deletion_time_millis: EpochMillis
+  retention_deletion_time_millis: Time
   retention_failed: long
   retention_runs: long
   retention_timed_out: long
@@ -16043,9 +16037,9 @@ export interface SnapshotSnapshotIndexStats {
 export interface SnapshotSnapshotInfo {
   data_streams: string[]
   duration?: Time
-  duration_in_millis?: EpochMillis
+  duration_in_millis?: Time
   end_time?: Time
-  end_time_in_millis?: EpochMillis
+  end_time_in_millis?: Time
   failures?: SnapshotSnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
@@ -16056,7 +16050,7 @@ export interface SnapshotSnapshotInfo {
   snapshot: Name
   shards?: ShardStatistics
   start_time?: Time
-  start_time_in_millis?: EpochMillis
+  start_time_in_millis?: Time
   state?: string
   uuid: Uuid
   version?: VersionString
@@ -16623,7 +16617,7 @@ export interface TransformGetTransformTransformSummary {
   settings?: TransformSettings
   source: TransformSource
   sync?: TransformSyncContainer
-  create_time?: EpochMillis
+  create_time?: Time
   version?: VersionString
   latest?: TransformLatest
   _meta?: Metadata
@@ -16633,9 +16627,9 @@ export interface TransformGetTransformStatsCheckpointStats {
   checkpoint: long
   checkpoint_progress?: TransformGetTransformStatsTransformProgress
   timestamp?: DateString
-  timestamp_millis?: EpochMillis
+  timestamp_millis?: Time
   time_upper_bound?: DateString
-  time_upper_bound_millis?: EpochMillis
+  time_upper_bound_millis?: Time
 }
 
 export interface TransformGetTransformStatsCheckpointing {
@@ -16660,7 +16654,7 @@ export interface TransformGetTransformStatsResponse {
 }
 
 export interface TransformGetTransformStatsTransformIndexerStats {
-  delete_time_in_ms?: EpochMillis
+  delete_time_in_ms?: Time
   documents_indexed: long
   documents_deleted?: long
   documents_processed: long
@@ -16819,7 +16813,7 @@ export interface WatcherAction {
   max_iterations?: integer
   name?: Name
   throttle_period?: Time
-  throttle_period_in_millis?: EpochMillis
+  throttle_period_in_millis?: Time
   transform?: TransformContainer
   index?: WatcherIndexAction
   logging?: WatcherLoggingAction
@@ -16846,7 +16840,7 @@ export type WatcherActions = Record<IndexName, WatcherActionStatus>
 
 export interface WatcherActivationState {
   active: boolean
-  timestamp: Timestamp
+  timestamp: DateString
 }
 
 export interface WatcherActivationStatus {
@@ -17547,7 +17541,7 @@ export interface XpackInfoFeatures {
 }
 
 export interface XpackInfoMinimalLicenseInformation {
-  expiry_date_in_millis: EpochMillis
+  expiry_date_in_millis: Time
   mode: LicenseLicenseType
   status: LicenseLicenseStatus
   type: LicenseLicenseType
