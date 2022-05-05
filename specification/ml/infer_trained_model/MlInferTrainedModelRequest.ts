@@ -21,12 +21,12 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { NlpInferenceConfigUpdateContainer } from '@ml/_types/inference'
+import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
 
 /**
  * Evaluates a trained model.
- * @rest_spec_name ml.infer_trained_model_deployment
- * @since 8.0.0
+ * @rest_spec_name ml.infer_trained_model
+ * @since 8.3.0
  * @stability experimental
  */
 export interface Request extends RequestBase {
@@ -45,13 +45,14 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * An array of objects to pass to the model for inference. The objects should contain a field matching your
-     * configured trained model input. Typically, the field name is `text_field`. Currently, only a single value is allowed.
+     * An array of objects to pass to the model for inference. The objects should contain a fields matching your
+     * configured trained model input. Typically, for NLP models, the field name is `text_field`. 
+     * Currently, for NLP models, only a single value is allowed.
      */
-    docs: Dictionary<string, string>[]
+    docs: Dictionary<string, any>[]
     /**
      * The inference configuration updates to apply on the API call
      */
-    inference_config?: NlpInferenceConfigUpdateContainer
+    inference_config?: InferenceConfigUpdateContainer
   }
 }
