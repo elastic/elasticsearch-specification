@@ -397,6 +397,20 @@ export class TermQuery extends QueryBase {
 }
 ```
 
+### Tracking Elasticsearch quirks
+
+There are a few places where Elasticsearch has an uncommon behavior that does not deserve a specific feature in the API specification metamodel. These quirks still have to be captured so that code generators can act on them. The `eq_quirk` jsdoc tag is meant for that, and can be used on type definitions and properties.
+
+```ts
+/**
+ * @es_quirk This enum is a boolean that evolved into a tri-state enum. True and False have
+ *   to be (de)serialized as JSON booleans.
+ */
+enum Foo { true, false, bar }
+```
+
+Code generators should track the `es_quirk` they implement and fail if a new unhandled quirk is present on a type or a property. This behavior allows code generators to be updated whenever a new quirk is identified in the API specification.
+
 ### Additional information
 
 If needed, you can specify additional information on each type with the approariate JSDoc tag.
