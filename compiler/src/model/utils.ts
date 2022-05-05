@@ -439,6 +439,10 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
     type.isOpen = true
   }
 
+  if (typeof tags.es_quirk === 'string') {
+    type.esQuirk = tags.es_quirk
+  }
+
   return type
 }
 
@@ -639,7 +643,8 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property', 'codegen_names', 'non_exhaustive']
+  const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property',
+    'codegen_names', 'non_exhaustive', 'es_quirk']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -671,6 +676,8 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
         type.kind === 'type_alias' && type.type.kind === 'union_of' && type.type.items.length === type.codegenNames.length,
         '@codegen_names must have the number of items as the union definition'
       )
+    } else if (tag === 'es_quirk') {
+      type.esQuirk = value
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
     }
@@ -684,7 +691,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'since', 'server_default', 'variant', 'doc_id']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'since', 'server_default',
+    'variant', 'doc_id', 'es_quirk']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -764,6 +772,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'variant') {
       assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
       property.containerProperty = true
+    } else if (tag === 'es_quirk') {
+      property.esQuirk = value
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
     }
