@@ -245,10 +245,13 @@ export class IndexSettingBlocks {
   metadata?: boolean
 }
 
+/**
+ * @es_quirk This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.
+ */
 export enum IndexCheckOnStartup {
+  true,
   false,
-  checksum,
-  true
+  checksum
 }
 
 export class IndexVersioning {
