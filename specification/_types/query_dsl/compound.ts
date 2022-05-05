@@ -104,12 +104,14 @@ export type DecayFunction =
   | NumericDecayFunction
   | GeoDecayFunction
 
-/** @variants container */
-// This container is valid without a variant. Also, despite being documented as a function, 'weight' is actually a
-// container property that can be combined with a function.
-// From SearchModule#registerScoreFunctions in ES:
-// Weight doesn't have its own parser, so every function supports it out of the box. Can be a single function too when
-// not associated to any other function, which is why it needs to be registered manually here.
+/**
+ * @variants container
+ * @es_quirk this container is valid without a variant. Despite being documented as a function, 'weight'
+ *   is actually a container property that can be combined with a function. Comment in the ES code
+ *   (SearchModule#registerScoreFunctions) says: Weight doesn't have its own parser, so every function
+ *   supports it out of the box. Can be a single function too when not associated to any other function,
+ *   which is why it needs to be registered manually here.
+ */
 export class FunctionScoreContainer {
   exp?: DecayFunction
   gauss?: DecayFunction
