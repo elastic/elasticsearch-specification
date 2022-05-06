@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { InferenceResponseContainer } from '@ml/_types/inference'
+import { InferenceResponseResult } from '@ml/_types/inference'
 
 export class Response {
   body: {
-    inference_results: InferenceResponseContainer[]
+    inference_results: InferenceResponseResult[]
   }
 }

@@ -375,8 +375,7 @@ export class TrainedModelInferenceFeatureImportance {
 
 export type PredictedValue = string | double | boolean | integer
 
-/** @variants container */
-export class InferenceResponseContainer {
+export class InferenceResponseResult {
   /**
    * If the model is trained for named entity recognition (NER) tasks, the response contains the recognized entities.
    */

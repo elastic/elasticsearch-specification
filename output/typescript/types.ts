@@ -12017,7 +12017,7 @@ export interface MlInferenceConfigUpdateContainer {
   text_embedding?: MlTextEmbeddingInferenceUpdateOptions
 }
 
-export interface MlInferenceResponseContainer {
+export interface MlInferenceResponseResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
   predicted_value?: MlPredictedValue[]
@@ -13114,13 +13114,13 @@ export interface MlInferTrainedModelRequest extends RequestBase {
   model_id: Id
   timeout?: Time
   body?: {
-    docs: Record<string, object>[]
+    docs: Record<string, any>[]
     inference_config?: MlInferenceConfigUpdateContainer
   }
 }
 
 export interface MlInferTrainedModelResponse {
-  inference_results: MlInferenceResponseContainer[]
+  inference_results: MlInferenceResponseResult[]
 }
 
 export interface MlInfoAnomalyDetectors {
