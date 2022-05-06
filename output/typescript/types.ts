@@ -13085,7 +13085,7 @@ export interface MlGetTrainedModelsStatsResponse {
   trained_model_stats: MlTrainedModelStats[]
 }
 
-export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
+export interface MlInferTrainedModelRequest extends RequestBase {
   model_id: Id
   timeout?: Time
   body?: {
@@ -13094,7 +13094,11 @@ export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
   }
 }
 
-export interface MlInferTrainedModelDeploymentResponse {
+export interface MlInferTrainedModelResponse {
+  inference_results: MlInferTrainedModelTrainedModelInferenceResult[]
+}
+
+export interface MlInferTrainedModelTrainedModelInferenceResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
   predicted_value?: MlPredictedValue[]
