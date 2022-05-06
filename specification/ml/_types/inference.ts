@@ -259,7 +259,6 @@ export class InferenceConfigUpdateContainer {
   text_embedding?: TextEmbeddingInferenceUpdateOptions
 }
 
-
 /** @variants container */
 export class NlpInferenceConfigUpdateContainer {
   /** Text classification configuration for inference. */
@@ -379,8 +378,8 @@ export type PredictedValue = string | double | boolean | integer
 /** @variants container */
 export class InferenceResponseContainer {
   /**
- * If the model is trained for named entity recognition (NER) tasks, the response contains the recognized entities.
- */
+   * If the model is trained for named entity recognition (NER) tasks, the response contains the recognized entities.
+   */
   entities?: TrainedModelEntities[]
   /**
    * Indicates whether the input text was truncated to meet the model's maximum sequence length limit. This property
@@ -408,8 +407,8 @@ export class InferenceResponseContainer {
    */
   prediction_probability?: double
   /**
-  * Specifies a confidence score for the predicted value.
-  */
+   * Specifies a confidence score for the predicted value.
+   */
   prediction_score?: double
   /**
    * For fill mask, text classification, and zero shot classification tasks, the response contains a list of top

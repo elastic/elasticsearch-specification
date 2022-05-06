@@ -1518,6 +1518,12 @@
       ],
       "response": []
     },
+    "ml.infer_trained_model": {
+      "request": [
+        "request definition ml.infer_trained_model:Request / body / Property 'docs' / array_of / dictionary_of / instance_of - No type definition for '_builtins:object'"
+      ],
+      "response": []
+    },
     "ml.info": {
       "request": [
         "Request: should not have a body"
