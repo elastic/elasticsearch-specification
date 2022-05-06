@@ -548,12 +548,35 @@ export interface MsearchMultiSearchResult<TDocument = unknown> {
 export interface MsearchMultisearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  query?: QueryDslQueryContainer
+  collapse?: SearchFieldCollapse
+  explain?: boolean
   from?: integer
-  size?: integer
-  pit?: SearchPointInTimeReference
+  highlight?: SearchHighlight
   track_total_hits?: SearchTrackHits
+  indices_boost?: Record<IndexName, double>[]
+  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+  min_score?: double
+  post_filter?: QueryDslQueryContainer
+  profile?: boolean
+  query?: QueryDslQueryContainer
+  rescore?: SearchRescore | SearchRescore[]
+  script_fields?: Record<string, ScriptField>
+  search_after?: SortResults
+  size?: integer
+  slice?: SlicedScroll
+  sort?: Sort
+  _source?: SearchSourceConfig
+  fields?: (QueryDslFieldAndFormat | Field)[]
   suggest?: SearchSuggester
+  terminate_after?: long
+  timeout?: string
+  track_scores?: boolean
+  version?: boolean
+  seq_no_primary_term?: boolean
+  stored_fields?: Fields
+  pit?: SearchPointInTimeReference
+  runtime_mappings?: MappingRuntimeFields
+  stats?: string[]
 }
 
 export interface MsearchMultisearchHeader {
