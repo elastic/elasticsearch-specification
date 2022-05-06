@@ -12027,6 +12027,7 @@ export interface MlInferenceConfigCreateContainer {
   ner?: MlNerInferenceOptions
   pass_through?: MlPassThroughInferenceOptions
   text_embedding?: MlTextEmbeddingInferenceOptions
+  question_answering?: MlQuestionAnsweringInferenceOptions
 }
 
 export interface MlInferenceConfigUpdateContainer {
@@ -12038,6 +12039,7 @@ export interface MlInferenceConfigUpdateContainer {
   ner?: MlNerInferenceUpdateOptions
   pass_through?: MlPassThroughInferenceUpdateOptions
   text_embedding?: MlTextEmbeddingInferenceUpdateOptions
+  question_answering?: MlQuestionAnsweringInferenceUpdateOptions
 }
 
 export interface MlInferenceResponseResult {
@@ -12287,6 +12289,21 @@ export interface MlPerPartitionCategorization {
 }
 
 export type MlPredictedValue = string | double | boolean | integer
+
+export interface MlQuestionAnsweringInferenceOptions {
+  num_top_classes?: integer
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+  max_answer_length?: integer
+}
+
+export interface MlQuestionAnsweringInferenceUpdateOptions {
+  question: string
+  num_top_classes?: integer
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+  max_answer_length?: integer
+}
 
 export interface MlRegressionInferenceOptions {
   results_field?: Field

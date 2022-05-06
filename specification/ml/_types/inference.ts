@@ -59,6 +59,11 @@ export class InferenceConfigCreateContainer {
    * @since 8.0.0
    * */
   text_embedding?: TextEmbeddingInferenceOptions
+  /**
+   * Question answering configuration for inference.
+   * @since 8.3.0
+   */
+  question_answering?: QuestionAnsweringInferenceOptions
 }
 
 export class RegressionInferenceOptions {
@@ -237,6 +242,18 @@ export class FillMaskInferenceOptions {
   results_field?: string
 }
 
+/** Question answering inference options */
+export class QuestionAnsweringInferenceOptions {
+  /** Specifies the number of top class predictions to return. Defaults to 0. */
+  num_top_classes?: integer
+  /** The tokenization options to update when inferring */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /** The maximum answer length to consider */
+  max_answer_length?: integer
+}
+
 // Update containers that may only allow a subset of the options
 
 /** @variants container */
@@ -257,6 +274,8 @@ export class InferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Question answering configuration for inference */
+  question_answering?: QuestionAnsweringInferenceUpdateOptions
 }
 
 /** @variants container */
@@ -273,6 +292,8 @@ export class NlpInferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Question answering configuration for inference */
+  question_answering?: QuestionAnsweringInferenceUpdateOptions
 }
 
 /** @variants container */
@@ -347,6 +368,19 @@ export class FillMaskInferenceUpdateOptions {
   tokenization?: NlpTokenizationUpdateOptions
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+}
+
+export class QuestionAnsweringInferenceUpdateOptions {
+  /** The question to answer given the inference context */
+  question: string
+  /** Specifies the number of top class predictions to return. Defaults to 0. */
+  num_top_classes?: integer
+  /** The tokenization options to update when inferring */
+  tokenization?: NlpTokenizationUpdateOptions
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /** The maximum answer length to consider for extraction */
+  max_answer_length?: integer
 }
 
 export class TrainedModelEntities {
