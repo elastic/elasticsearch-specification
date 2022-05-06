@@ -12029,6 +12029,29 @@ export interface MlInferenceConfigCreateContainer {
   text_embedding?: MlTextEmbeddingInferenceOptions
 }
 
+export interface MlInferenceConfigUpdateContainer {
+  regression?: MlRegressionInferenceOptions
+  classification?: MlClassificationInferenceOptions
+  text_classification?: MlTextClassificationInferenceUpdateOptions
+  zero_shot_classification?: MlZeroShotClassificationInferenceUpdateOptions
+  fill_mask?: MlFillMaskInferenceUpdateOptions
+  ner?: MlNerInferenceUpdateOptions
+  pass_through?: MlPassThroughInferenceUpdateOptions
+  text_embedding?: MlTextEmbeddingInferenceUpdateOptions
+}
+
+export interface MlInferenceResponseResult {
+  entities?: MlTrainedModelEntities[]
+  is_truncated?: boolean
+  predicted_value?: MlPredictedValue[]
+  predicted_value_sequence?: string
+  prediction_probability?: double
+  prediction_score?: double
+  top_classes?: MlTopClassEntry[]
+  warning?: string
+  feature_importance?: MlTrainedModelInferenceFeatureImportance[]
+}
+
 export interface MlInfluence {
   influencer_field_name: string
   influencer_field_values: string[]
@@ -12207,15 +12230,6 @@ export interface MlNlpBertTokenizationConfig {
   span?: integer
 }
 
-export interface MlNlpInferenceConfigUpdateContainer {
-  text_classification?: MlTextClassificationInferenceUpdateOptions
-  zero_shot_classification?: MlZeroShotClassificationInferenceUpdateOptions
-  fill_mask?: MlFillMaskInferenceUpdateOptions
-  ner?: MlNerInferenceUpdateOptions
-  pass_through?: MlPassThroughInferenceUpdateOptions
-  text_embedding?: MlTextEmbeddingInferenceUpdateOptions
-}
-
 export interface MlNlpRobertaTokenizationConfig {
   add_prefix_space?: boolean
   with_special_tokens?: boolean
@@ -12272,7 +12286,7 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export type MlPredictedValue = string | double
+export type MlPredictedValue = string | double | boolean | integer
 
 export interface MlRegressionInferenceOptions {
   results_field?: Field
@@ -12445,6 +12459,17 @@ export interface MlTrainedModelEntities {
   entity: string
   start_pos: integer
   end_pos: integer
+}
+
+export interface MlTrainedModelInferenceClassImportance {
+  class_name: string
+  importance: double
+}
+
+export interface MlTrainedModelInferenceFeatureImportance {
+  feature_name: string
+  importance?: double
+  classes?: MlTrainedModelInferenceClassImportance[]
 }
 
 export interface MlTrainedModelInferenceStats {
@@ -13108,23 +13133,17 @@ export interface MlGetTrainedModelsStatsResponse {
   trained_model_stats: MlTrainedModelStats[]
 }
 
-export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
+export interface MlInferTrainedModelRequest extends RequestBase {
   model_id: Id
   timeout?: Time
   body?: {
-    docs: Record<string, string>[]
-    inference_config?: MlNlpInferenceConfigUpdateContainer
+    docs: Record<string, any>[]
+    inference_config?: MlInferenceConfigUpdateContainer
   }
 }
 
-export interface MlInferTrainedModelDeploymentResponse {
-  entities?: MlTrainedModelEntities[]
-  is_truncated?: boolean
-  predicted_value?: MlPredictedValue[]
-  predicted_value_sequence?: string
-  prediction_probability?: double
-  top_classes: MlTopClassEntry[]
-  warning?: string
+export interface MlInferTrainedModelResponse {
+  inference_results: MlInferenceResponseResult[]
 }
 
 export interface MlInfoAnomalyDetectors {
