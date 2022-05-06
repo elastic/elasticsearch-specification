@@ -17,30 +17,10 @@
  * under the License.
  */
 
-import { Property } from './Property'
+import { InferenceResponseResult } from '@ml/_types/inference'
 
-export class DynamicTemplate {
-  mapping?: Property
-  match?: string
-  match_mapping_type?: string
-  match_pattern?: MatchType
-  path_match?: string
-  path_unmatch?: string
-  unmatch?: string
-}
-
-export enum MatchType {
-  simple = 0,
-  regex = 1
-}
-
-/**
- * @es_quirk This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and
- *   true and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)
- */
-export enum DynamicMapping {
-  strict,
-  runtime,
-  true,
-  false
+export class Response {
+  body: {
+    inference_results: InferenceResponseResult[]
+  }
 }

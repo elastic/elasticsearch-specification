@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 
 /**
  * Inference configuration provided when storing the model config
@@ -257,6 +257,28 @@ export class QuestionAnsweringInferenceOptions {
 // Update containers that may only allow a subset of the options
 
 /** @variants container */
+export class InferenceConfigUpdateContainer {
+  /** Regression configuration for inference. */
+  regression?: RegressionInferenceOptions
+  /** Classification configuration for inference. */
+  classification?: ClassificationInferenceOptions
+  /** Text classification configuration for inference. */
+  text_classification?: TextClassificationInferenceUpdateOptions
+  /** Zeroshot classification configuration for inference. */
+  zero_shot_classification?: ZeroShotClassificationInferenceUpdateOptions
+  /** Fill mask configuration for inference. */
+  fill_mask?: FillMaskInferenceUpdateOptions
+  /** Named entity recognition configuration for inference. */
+  ner?: NerInferenceUpdateOptions
+  /** Pass through configuration for inference. */
+  pass_through?: PassThroughInferenceUpdateOptions
+  /** Text embedding configuration for inference. */
+  text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Question answering configuration for inference */
+  question_answering?: QuestionAnsweringInferenceUpdateOptions
+}
+
+/** @variants container */
 export class NlpInferenceConfigUpdateContainer {
   /** Text classification configuration for inference. */
   text_classification?: TextClassificationInferenceUpdateOptions
@@ -359,4 +381,79 @@ export class QuestionAnsweringInferenceUpdateOptions {
   results_field?: string
   /** The maximum answer length to consider for extraction */
   max_answer_length?: integer
+}
+
+export class TrainedModelEntities {
+  class_name: string
+  class_probability: double
+  entity: string
+  start_pos: integer
+  end_pos: integer
+}
+export class TopClassEntry {
+  class_name: string
+  class_probability: double
+  class_score: double
+}
+
+export class TrainedModelInferenceClassImportance {
+  class_name: string
+  importance: double
+}
+
+export class TrainedModelInferenceFeatureImportance {
+  feature_name: string
+  importance?: double
+  classes?: TrainedModelInferenceClassImportance[]
+}
+
+export type PredictedValue = string | double | boolean | integer
+
+export class InferenceResponseResult {
+  /**
+   * If the model is trained for named entity recognition (NER) tasks, the response contains the recognized entities.
+   */
+  entities?: TrainedModelEntities[]
+  /**
+   * Indicates whether the input text was truncated to meet the model's maximum sequence length limit. This property
+   * is present only when it is true.
+   */
+  is_truncated?: boolean
+  /**
+   * If the model is trained for a text classification or zero shot classification task, the response is the
+   * predicted class.
+   * For named entity recognition (NER) tasks, it contains the annotated text output.
+   * For fill mask tasks, it contains the top prediction for replacing the mask token.
+   * For text embedding tasks, it contains the raw numerical text embedding values.
+   * For regression models, its a numerical value
+   * For classification models, it may be an integer, double, boolean or string depending on prediction type
+   */
+  predicted_value?: PredictedValue[]
+  /**
+   * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
+   * value.
+   * Additionally
+   */
+  predicted_value_sequence?: string
+  /**
+   * Specifies a probability for the predicted value.
+   */
+  prediction_probability?: double
+  /**
+   * Specifies a confidence score for the predicted value.
+   */
+  prediction_score?: double
+  /**
+   * For fill mask, text classification, and zero shot classification tasks, the response contains a list of top
+   * class entries.
+   */
+  top_classes?: TopClassEntry[]
+  /**
+   * If the request failed, the response contains the reason for the failure.
+   */
+  warning?: string
+  /**
+   * The feature importance for the inference results. Relevant only for classification or regression models
+   */
+  feature_importance?: TrainedModelInferenceFeatureImportance[]
 }

@@ -360,20 +360,6 @@ export class TrainedModelAllocation {
   start_time: DateString
   task_parameters: TrainedModelAllocationTaskParameters
 }
-export class TrainedModelEntities {
-  class_name: string
-  class_probability: double
-  entity: string
-  start_pos: integer
-  end_pos: integer
-}
-export class TopClassEntry {
-  class_name: string
-  class_probability: double
-  class_score: double
-}
-
-export type PredictedValue = string | double
 
 export class TrainedModelLocation {
   index: TrainedModelLocationIndex

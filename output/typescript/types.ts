@@ -562,12 +562,35 @@ export interface MsearchMultiSearchResult<TDocument = unknown> {
 export interface MsearchMultisearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  query?: QueryDslQueryContainer
+  collapse?: SearchFieldCollapse
+  explain?: boolean
   from?: integer
-  size?: integer
-  pit?: SearchPointInTimeReference
+  highlight?: SearchHighlight
   track_total_hits?: SearchTrackHits
+  indices_boost?: Record<IndexName, double>[]
+  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+  min_score?: double
+  post_filter?: QueryDslQueryContainer
+  profile?: boolean
+  query?: QueryDslQueryContainer
+  rescore?: SearchRescore | SearchRescore[]
+  script_fields?: Record<string, ScriptField>
+  search_after?: SortResults
+  size?: integer
+  slice?: SlicedScroll
+  sort?: Sort
+  _source?: SearchSourceConfig
+  fields?: (QueryDslFieldAndFormat | Field)[]
   suggest?: SearchSuggester
+  terminate_after?: long
+  timeout?: string
+  track_scores?: boolean
+  version?: boolean
+  seq_no_primary_term?: boolean
+  stored_fields?: Fields
+  pit?: SearchPointInTimeReference
+  runtime_mappings?: MappingRuntimeFields
+  stats?: string[]
 }
 
 export interface MsearchMultisearchHeader {
@@ -9195,7 +9218,7 @@ export interface IndicesFielddataFrequencyFilter {
   min_segment_size: integer
 }
 
-export type IndicesIndexCheckOnStartup = boolean | 'false' | 'checksum' | 'true'
+export type IndicesIndexCheckOnStartup = boolean | 'true' | 'false' | 'checksum'
 
 export interface IndicesIndexRouting {
   allocation?: IndicesIndexRoutingAllocation
@@ -12007,6 +12030,30 @@ export interface MlInferenceConfigCreateContainer {
   question_answering?: MlQuestionAnsweringInferenceOptions
 }
 
+export interface MlInferenceConfigUpdateContainer {
+  regression?: MlRegressionInferenceOptions
+  classification?: MlClassificationInferenceOptions
+  text_classification?: MlTextClassificationInferenceUpdateOptions
+  zero_shot_classification?: MlZeroShotClassificationInferenceUpdateOptions
+  fill_mask?: MlFillMaskInferenceUpdateOptions
+  ner?: MlNerInferenceUpdateOptions
+  pass_through?: MlPassThroughInferenceUpdateOptions
+  text_embedding?: MlTextEmbeddingInferenceUpdateOptions
+  question_answering?: MlQuestionAnsweringInferenceUpdateOptions
+}
+
+export interface MlInferenceResponseResult {
+  entities?: MlTrainedModelEntities[]
+  is_truncated?: boolean
+  predicted_value?: MlPredictedValue[]
+  predicted_value_sequence?: string
+  prediction_probability?: double
+  prediction_score?: double
+  top_classes?: MlTopClassEntry[]
+  warning?: string
+  feature_importance?: MlTrainedModelInferenceFeatureImportance[]
+}
+
 export interface MlInfluence {
   influencer_field_name: string
   influencer_field_values: string[]
@@ -12185,16 +12232,6 @@ export interface MlNlpBertTokenizationConfig {
   span?: integer
 }
 
-export interface MlNlpInferenceConfigUpdateContainer {
-  text_classification?: MlTextClassificationInferenceUpdateOptions
-  zero_shot_classification?: MlZeroShotClassificationInferenceUpdateOptions
-  fill_mask?: MlFillMaskInferenceUpdateOptions
-  ner?: MlNerInferenceUpdateOptions
-  pass_through?: MlPassThroughInferenceUpdateOptions
-  text_embedding?: MlTextEmbeddingInferenceUpdateOptions
-  question_answering?: MlQuestionAnsweringInferenceUpdateOptions
-}
-
 export interface MlNlpRobertaTokenizationConfig {
   add_prefix_space?: boolean
   with_special_tokens?: boolean
@@ -12251,7 +12288,7 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export type MlPredictedValue = string | double
+export type MlPredictedValue = string | double | boolean | integer
 
 export interface MlQuestionAnsweringInferenceOptions {
   num_top_classes?: integer
@@ -12439,6 +12476,17 @@ export interface MlTrainedModelEntities {
   entity: string
   start_pos: integer
   end_pos: integer
+}
+
+export interface MlTrainedModelInferenceClassImportance {
+  class_name: string
+  importance: double
+}
+
+export interface MlTrainedModelInferenceFeatureImportance {
+  feature_name: string
+  importance?: double
+  classes?: MlTrainedModelInferenceClassImportance[]
 }
 
 export interface MlTrainedModelInferenceStats {
@@ -13102,23 +13150,17 @@ export interface MlGetTrainedModelsStatsResponse {
   trained_model_stats: MlTrainedModelStats[]
 }
 
-export interface MlInferTrainedModelDeploymentRequest extends RequestBase {
+export interface MlInferTrainedModelRequest extends RequestBase {
   model_id: Id
   timeout?: Time
   body?: {
-    docs: Record<string, string>[]
-    inference_config?: MlNlpInferenceConfigUpdateContainer
+    docs: Record<string, any>[]
+    inference_config?: MlInferenceConfigUpdateContainer
   }
 }
 
-export interface MlInferTrainedModelDeploymentResponse {
-  entities?: MlTrainedModelEntities[]
-  is_truncated?: boolean
-  predicted_value?: MlPredictedValue[]
-  predicted_value_sequence?: string
-  prediction_probability?: double
-  top_classes: MlTopClassEntry[]
-  warning?: string
+export interface MlInferTrainedModelResponse {
+  inference_results: MlInferenceResponseResult[]
 }
 
 export interface MlInfoAnomalyDetectors {

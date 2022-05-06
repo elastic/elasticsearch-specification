@@ -230,7 +230,9 @@ export enum OpType {
   create = 1
 }
 
-// Note: ES also accepts plain booleans for true and false. The TS generator implements this leniency rule.
+/**
+ * @es_quirk This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.
+ */
 export enum Refresh {
   true,
   false,
