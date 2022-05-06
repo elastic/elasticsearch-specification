@@ -34,6 +34,10 @@ export enum MatchType {
   regex = 1
 }
 
+/**
+ * @es_quirk This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and
+ *   true and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)
+ */
 export enum DynamicMapping {
   strict,
   runtime,
