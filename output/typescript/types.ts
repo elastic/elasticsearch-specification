@@ -15285,7 +15285,8 @@ export interface SecurityCreateApiKeyRoleDescriptor {
 export interface SecurityCreateServiceTokenRequest extends RequestBase {
   namespace: Namespace
   service: Service
-  name: Name
+  name?: Name
+  refresh?: Refresh
 }
 
 export interface SecurityCreateServiceTokenResponse {
