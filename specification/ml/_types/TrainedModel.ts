@@ -60,14 +60,12 @@ export class TrainedModelDeploymentStats {
   error_count: integer
   /** The sum of `inference_count` for all nodes in the deployment. */
   inference_count: integer
-  /** The number of threads used by the inference process. */
-  inference_threads: integer
   /** The unique identifier for the trained model. */
   model_id: Id
-  /** The number of threads used when sending inference requests to the model. */
-  model_threads: integer
   /** The deployent stats for each node that currently has the model allocated. */
   nodes: TrainedModelDeploymentNodesStats
+  /** The number of allocations requested. */
+  number_of_allocations: integer
   /** The number of inference requests that can be queued before new requests are rejected. */
   queue_capacity: integer
   /**
@@ -85,6 +83,8 @@ export class TrainedModelDeploymentStats {
   start_time: long
   /** The overall state of the deployment. */
   state: DeploymentState
+  /** The number of threads used be each allocation during inference. */
+  threads_per_allocation: integer
   /** The sum of `timeout_count` for all nodes in the deployment. */
   timeout_count: integer
 }
@@ -125,23 +125,14 @@ export class TrainedModelDeploymentNodesStats {
   error_count: integer
   /** The total number of inference calls made against this node for this model. */
   inference_count: integer
-  /**
-   * The number of threads used by the inference process. This value is limited
-   * by the number of hardware threads on the node; it might therefore differ
-   * from the `inference_threads` value in the start trained model deployment API.
-   */
-  inference_threads: integer
   /** The epoch time stamp of the last inference call for the model on this node. */
   last_access: long
-  /**
-   * The number of threads used when sending inference requests to the model.
-   * This value is limited by the number of hardware threads on the node; it
-   * might therefore differ from the `model_threads` value in the start trained
-   * model deployment API.
-   */
-  model_threads: integer
   /** Information pertaining to the node. */
   node: DiscoveryNode
+  /**
+   * The number of allocations assigned to this node.
+   */
+  number_of_allocations: integer
   /** The number of inference requests queued to be processed. */
   number_of_pending_requests: integer
   /** The number of inference requests that were not processed because the queue was full. */
@@ -150,6 +141,8 @@ export class TrainedModelDeploymentNodesStats {
   routing_state: TrainedModelAllocationRoutingTable
   /** The epoch timestamp when the allocation started. */
   start_time: long
+  /** The number of threads used by each allocation during inference. */
+  threads_per_allocation: integer
   /** The number of inference requests that timed out before being processed. */
   timeout_count: integer
 }

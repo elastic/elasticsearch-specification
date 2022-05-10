@@ -39,24 +39,30 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Specifies the number of threads that are used by the inference process. If you increase this value, inference
-     * speed generally increases. However, the actual number of threads is limited by the number of available CPU
-     * cores.
+     * The number of model allocations on each node where the model is deployed.
+     * All allocations on a node share the same copy of the model in memory but use
+     * a separate set of threads to evaluate the model.
+     * Increasing this value generally increases the throughput.
+     * If this setting is greater than the number of hardware threads
+     * it will automatically be changed to a value less than the number of hardware threads.
      * @server_default 1
      */
-    inference_threads?: integer
-    /**
-     * Specifies the number of threads that are used when sending inference requests to the model. If you increase this value,
-     * throughput generally increases.
-     * @server_default 1
-     */
-    model_threads?: integer
+    number_of_allocations?: integer
     /**
      * Specifies the number of inference requests that are allowed in the queue. After the number of requests exceeds
      * this value, new requests are rejected with a 429 error.
      * @server_default 1024
      */
     queue_capacity?: integer
+    /**
+     * Sets the number of threads used by each model allocation during inference. This generally increases
+     * the inference speed. The inference process is a compute-bound process; any number
+     * greater than the number of available hardware threads on the machine does not increase the
+     * inference speed. If this setting is greater than the number of hardware threads
+     * it will automatically be changed to a value less than the number of hardware threads.
+     * @server_default 1
+     */
+    threads_per_allocation?: integer
     /**
      * Specifies the amount of time to wait for the model to deploy.
      * @server_default 20s
