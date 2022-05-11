@@ -29,7 +29,7 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    user?: Name | null
+    user?: Name
   }
   body: {
     application?: ApplicationPrivilegesCheck[]
