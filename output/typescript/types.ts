@@ -15573,7 +15573,7 @@ export interface SecurityHasPrivilegesIndexPrivilegesCheck {
 export type SecurityHasPrivilegesPrivileges = Record<string, boolean>
 
 export interface SecurityHasPrivilegesRequest extends RequestBase {
-  user?: Name | null
+  user?: Name
   body?: {
     application?: SecurityHasPrivilegesApplicationPrivilegesCheck[]
     cluster?: SecurityClusterPrivilege[]
