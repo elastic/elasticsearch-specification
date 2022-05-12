@@ -523,6 +523,7 @@
     },
     "cluster.delete_voting_config_exclusions": {
       "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -560,6 +561,7 @@
     },
     "cluster.post_voting_config_exclusions": {
       "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
         "Request: should not have a body"
       ],
       "response": []
