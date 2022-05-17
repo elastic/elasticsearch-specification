@@ -27,15 +27,15 @@ import {
 } from '@transform/_types/Transform'
 import { Id, Metadata, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 export class Response {
   body: {
     create_time: long
-    //  create_time_date_time?: DateString
+    //  create_time_date_time?: DateTime
     description: string
     dest: Destination
-    frequency?: Time
+    frequency?: TimeSpan
     id: Id
     latest?: Latest
     pivot?: Pivot

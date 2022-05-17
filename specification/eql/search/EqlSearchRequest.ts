@@ -22,7 +22,7 @@ import { ExpandWildcards, Field, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { ResultPosition } from './types'
 
 /**
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      * Period for which the search and its results are stored on the cluster.
      * @server_default 5d
      */
-    keep_alive?: Time
+    keep_alive?: TimeSpan
     /**
      * If true, the search and its results are stored on the cluster.
      * @server_default false
@@ -61,7 +61,7 @@ export interface Request extends RequestBase {
     /**
      * Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.
      */
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: TimeSpan
   }
   body: {
     /**
@@ -93,9 +93,9 @@ export interface Request extends RequestBase {
      * Query, written in Query DSL, used to filter the events on which the EQL query runs.
      */
     filter?: QueryContainer | QueryContainer[]
-    keep_alive?: Time
+    keep_alive?: TimeSpan
     keep_on_completion?: boolean
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: TimeSpan
     /**
      * For basic queries, the maximum number of matching events to return. Defaults to 10
      * @doc_id eql-basic-syntax

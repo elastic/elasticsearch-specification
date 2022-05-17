@@ -27,15 +27,15 @@ import {
   VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { EpochMillis, TimeSpan, TimeSpanMillis, DateTime } from '@_types/Time'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress
   last_failure?: Invocation
   last_success?: Invocation
-  modified_date?: DateString
+  modified_date?: DateTime
   modified_date_millis: EpochMillis
-  next_execution?: DateString
+  next_execution?: DateTime
   next_execution_millis: EpochMillis
   policy: Policy
   version: VersionNumber
@@ -43,8 +43,8 @@ export class SnapshotLifecycle {
 }
 
 export class Statistics {
-  retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
+  retention_deletion_time?: TimeSpan
+  retention_deletion_time_millis?: TimeSpanMillis
   retention_failed?: long
   retention_runs?: long
   retention_timed_out?: long
@@ -79,7 +79,7 @@ export class Retention {
   /**
    * Time period after which a snapshot is considered expired and eligible for deletion. SLM deletes expired snapshots based on the slm.retention_schedule.
    */
-  expire_after: Time
+  expire_after: TimeSpan
   /**
    * Maximum number of snapshots to retain, even if the snapshots have not yet expired. If the number of snapshots in the repository exceeds this limit, the policy retains the most recent snapshots and deletes older snapshots.
    */
@@ -124,12 +124,12 @@ export class Configuration {
 
 export class InProgress {
   name: Name
-  start_time_millis: DateString
+  start_time_millis: EpochMillis
   state: string
   uuid: Uuid
 }
 
 export class Invocation {
   snapshot_name: Name
-  time: DateString
+  time: DateTime
 }

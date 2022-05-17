@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Indices, Name, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_alias
@@ -33,8 +33,8 @@ export interface Request extends RequestBase {
     name: Name
   }
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: TimeSpan
+    timeout?: TimeSpan
   }
   body: {
     filter?: QueryContainer

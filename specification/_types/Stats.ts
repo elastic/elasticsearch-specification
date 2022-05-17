@@ -22,6 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name, VersionString } from './common'
 import { ErrorCause, ShardFailure } from './Errors'
 import { integer, long, uint } from './Numeric'
+import { TimeSpan, TimeSpanMillis } from '@_types/Time'
 
 export class ClusterStatistics {
   skipped: integer
@@ -39,12 +40,12 @@ export class ShardStatistics {
 
 export class BulkStats {
   total_operations: long
-  total_time?: string
-  total_time_in_millis: long
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
   total_size?: ByteSize
   total_size_in_bytes: long
-  avg_time?: string
-  avg_time_in_millis: long
+  avg_time?: TimeSpan
+  avg_time_in_millis: TimeSpanMillis
   avg_size?: ByteSize
   avg_size_in_bytes: long
 }
@@ -80,35 +81,35 @@ export class FieldMemoryUsage {
 export class FlushStats {
   periodic: long
   total: long
-  total_time?: string
-  total_time_in_millis: long
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
 }
 
 export class GetStats {
   current: long
-  exists_time?: string
-  exists_time_in_millis: long
+  exists_time?: TimeSpan
+  exists_time_in_millis: TimeSpanMillis
   exists_total: long
-  missing_time?: string
-  missing_time_in_millis: long
+  missing_time?: TimeSpan
+  missing_time_in_millis: TimeSpanMillis
   missing_total: long
-  time?: string
-  time_in_millis: long
+  time?: TimeSpan
+  time_in_millis: TimeSpanMillis
   total: long
 }
 
 export class IndexingStats {
   index_current: long
   delete_current: long
-  delete_time?: string
-  delete_time_in_millis: long
+  delete_time?: TimeSpan
+  delete_time_in_millis: TimeSpanMillis
   delete_total: long
   is_throttled: boolean
   noop_update_total: long
-  throttle_time?: string
-  throttle_time_in_millis: long
-  index_time?: string
-  index_time_in_millis: long
+  throttle_time?: TimeSpan
+  throttle_time_in_millis: TimeSpanMillis
+  index_time?: TimeSpan
+  index_time_in_millis: TimeSpanMillis
   index_total: long
   index_failed: long
   types?: Dictionary<string, IndexingStats>
@@ -125,12 +126,12 @@ export class MergesStats {
   total_docs: long
   total_size?: string
   total_size_in_bytes: long
-  total_stopped_time?: string
-  total_stopped_time_in_millis: long
-  total_throttled_time?: string
-  total_throttled_time_in_millis: long
-  total_time?: string
-  total_time_in_millis: long
+  total_stopped_time?: TimeSpan
+  total_stopped_time_in_millis: TimeSpanMillis
+  total_throttled_time?: TimeSpan
+  total_throttled_time_in_millis: TimeSpanMillis
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
 }
 
 export class PluginStats {
@@ -160,17 +161,17 @@ export class QueryCacheStats {
 export class RecoveryStats {
   current_as_source: long
   current_as_target: long
-  throttle_time?: string
-  throttle_time_in_millis: long
+  throttle_time?: TimeSpan
+  throttle_time_in_millis: TimeSpanMillis
 }
 
 export class RefreshStats {
   external_total: long
-  external_total_time_in_millis: long
+  external_total_time_in_millis: TimeSpanMillis
   listeners: long
   total: long
-  total_time?: string
-  total_time_in_millis: long
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
 }
 
 export class RequestCacheStats {
@@ -183,17 +184,21 @@ export class RequestCacheStats {
 
 export class SearchStats {
   fetch_current: long
-  fetch_time_in_millis: long
+  fetch_time?: TimeSpan
+  fetch_time_in_millis: TimeSpanMillis
   fetch_total: long
   open_contexts?: long
   query_current: long
-  query_time_in_millis: long
+  query_time?: TimeSpan
+  query_time_in_millis: TimeSpanMillis
   query_total: long
   scroll_current: long
-  scroll_time_in_millis: long
+  scroll_time?: TimeSpan
+  scroll_time_in_millis: TimeSpanMillis
   scroll_total: long
   suggest_current: long
-  suggest_time_in_millis: long
+  suggest_time?: TimeSpan
+  suggest_time_in_millis: TimeSpanMillis
   suggest_total: long
   groups?: Dictionary<string, SearchStats>
 }
@@ -247,6 +252,6 @@ export class TranslogStats {
 export class WarmerStats {
   current: long
   total: long
-  total_time?: string
-  total_time_in_millis: long
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
 }

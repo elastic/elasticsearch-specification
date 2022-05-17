@@ -27,11 +27,12 @@ import {
   NodeAllocationExplanation,
   UnassignedInformation
 } from './types'
+import { TimeSpan } from '@_types/Time'
 
 export class Response {
   body: {
     allocate_explanation?: string
-    allocation_delay?: string
+    allocation_delay?: TimeSpan
     allocation_delay_in_millis?: long
     can_allocate?: Decision
     can_move_to_other_node?: Decision
@@ -41,7 +42,7 @@ export class Response {
     can_remain_decisions?: AllocationDecision[]
     can_remain_on_current_node?: Decision
     cluster_info?: ClusterInfo
-    configured_delay?: string
+    configured_delay?: TimeSpan
     configured_delay_in_millis?: long
     current_node?: CurrentNode
     current_state: string
@@ -50,7 +51,7 @@ export class Response {
     node_allocation_decisions?: NodeAllocationExplanation[]
     primary: boolean
     rebalance_explanation?: string
-    remaining_delay?: string
+    remaining_delay?: TimeSpan
     remaining_delay_in_millis?: long
     shard: integer
     unassigned_info?: UnassignedInformation

@@ -25,6 +25,7 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
+import { EpochMillis, TimeSpan } from '@_types/Time'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -284,7 +285,7 @@ export class NodeInfoSearchRemote {
 
 export class NodeThreadPoolInfo {
   core?: integer
-  keep_alive?: string
+  keep_alive?: TimeSpan
   max?: integer
   queue_size: integer
   size?: integer
@@ -349,7 +350,7 @@ export class NodeJvmInfo {
   mem: NodeInfoJvmMemory
   memory_pools: string[]
   pid: integer
-  start_time_in_millis: long
+  start_time_in_millis: EpochMillis
   version: VersionString
   vm_name: Name
   vm_vendor: string
@@ -371,7 +372,7 @@ export class NodeOperatingSystemInfo {
   name: Name
   pretty_name: Name
   /** Refresh interval for the OS statistics */
-  refresh_interval_in_millis: integer
+  refresh_interval_in_millis: long
   /** Version of the operating system */
   version: VersionString
   cpu?: NodeInfoOSCPU

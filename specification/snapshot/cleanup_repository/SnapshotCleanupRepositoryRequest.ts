@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots.
@@ -39,11 +39,11 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: TimeSpan
     /**
      * Period to wait for a response.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: TimeSpan
   }
 }

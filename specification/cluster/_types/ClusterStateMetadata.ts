@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, Name, Uuid } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime, EpochMillis } from '@_types/Time'
 import { ClusterStateBlockIndex } from './ClusterStateBlocksIndex'
 import { ClusterStateIndexLifecycle } from './ClusterStateIndexLifecycle'
 import { ClusterStateIngest } from './ClusterStateIngest'
@@ -47,8 +47,8 @@ export class ClusterStateMetadataIndexGraveyard {
 
 export class Tombstone {
   index: TombstoneIndex
-  delete_date?: DateString
-  delete_date_in_millis: long
+  delete_date?: DateTime
+  delete_date_in_millis: EpochMillis
 }
 
 export class TombstoneIndex {

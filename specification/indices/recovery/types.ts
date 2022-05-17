@@ -27,7 +27,7 @@ import {
 } from '@_types/common'
 import { Host, TransportAddress, Ip } from '@_types/Networking'
 import { long, Percentage } from '@_types/Numeric'
-import { Time, EpochMillis, DateString } from '@_types/Time'
+import { TimeSpan, EpochMillis, DateTime, TimeSpanMillis } from '@_types/Time'
 
 export class RecoveryBytes {
   percent: Percentage
@@ -59,12 +59,12 @@ export class RecoveryIndexStatus {
   bytes?: RecoveryBytes
   files: RecoveryFiles
   size: RecoveryBytes
-  source_throttle_time?: Time
-  source_throttle_time_in_millis: EpochMillis
-  target_throttle_time?: Time
-  target_throttle_time_in_millis: EpochMillis
-  total_time_in_millis: EpochMillis
-  total_time?: Time
+  source_throttle_time?: TimeSpan
+  source_throttle_time_in_millis: TimeSpanMillis
+  target_throttle_time?: TimeSpan
+  target_throttle_time_in_millis: TimeSpanMillis
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
 }
 
 export class RecoveryOrigin {
@@ -83,8 +83,10 @@ export class RecoveryOrigin {
 }
 
 export class RecoveryStartStatus {
-  check_index_time: long
-  total_time_in_millis: string
+  check_index_time?: TimeSpan
+  check_index_time_in_millis: TimeSpanMillis
+  total_time?: TimeSpan
+  total_time_in_millis: TimeSpanMillis
 }
 
 export class RecoveryStatus {
@@ -96,15 +98,15 @@ export class TranslogStatus {
   recovered: long
   total: long
   total_on_start: long
-  total_time?: string
+  total_time?: TimeSpan
   total_time_in_millis: EpochMillis
 }
 
 export class VerifyIndex {
-  check_index_time?: Time
-  check_index_time_in_millis: EpochMillis
-  total_time?: Time
-  total_time_in_millis: EpochMillis
+  check_index_time?: TimeSpan
+  check_index_time_in_millis: long
+  total_time?: TimeSpan
+  total_time_in_millis: long
 }
 
 export class ShardRecovery {
@@ -114,13 +116,13 @@ export class ShardRecovery {
   source: RecoveryOrigin
   stage: string
   start?: RecoveryStartStatus
-  start_time?: DateString
+  start_time?: DateTime
   start_time_in_millis: EpochMillis
-  stop_time?: DateString
+  stop_time?: DateTime
   stop_time_in_millis: EpochMillis
   target: RecoveryOrigin
-  total_time?: DateString
-  total_time_in_millis: EpochMillis
+  total_time?: TimeSpan
+  total_time_in_millis: long
   translog: TranslogStatus
   type: string
   verify_index: VerifyIndex

@@ -21,8 +21,7 @@ import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { Phases } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, IndexName, VersionNumber } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime, EpochMillis } from '@_types/Time'
 
 export class ClusterStateIndexLifecycle {
   policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>
@@ -33,8 +32,8 @@ export class ClusterStateIndexLifecycleSummary {
   policy: ClusterStateIndexLifecyclePolicy
   headers: HttpHeaders
   version: VersionNumber
-  modified_date: long
-  modified_date_string: DateString
+  modified_date: EpochMillis
+  modified_date_string?: DateTime
 }
 
 export class ClusterStateIndexLifecyclePolicy {

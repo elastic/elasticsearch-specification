@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * Returns information about one or more indices. For data streams, the API returns information about the
@@ -76,7 +76,7 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: TimeSpan
     /**
      * Return only information on specified index features
      * @server_default ['aliases', 'mappings', 'settings']

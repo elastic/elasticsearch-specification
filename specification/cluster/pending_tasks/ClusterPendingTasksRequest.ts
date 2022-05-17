@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.pending_tasks
@@ -30,6 +30,6 @@ export interface Request extends RequestBase {
   query_parameters: {
     local?: boolean
     /** @server_default 30s */
-    master_timeout?: Time
+    master_timeout?: TimeSpan
   }
 }

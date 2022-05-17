@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.delete_template
@@ -31,7 +31,7 @@ export interface Request extends RequestBase {
     name: Name
   }
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: TimeSpan
+    timeout?: TimeSpan
   }
 }

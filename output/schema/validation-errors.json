@@ -147,7 +147,9 @@
         "Request: should not have a body",
         "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
       ],
-      "response": []
+      "response": [
+        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils:T'"
+      ]
     },
     "cat.fielddata": {
       "request": [
@@ -1014,9 +1016,6 @@
     },
     "indices.disk_usage": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: query parameter 'wait_for_active_shards' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []

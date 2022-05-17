@@ -36,7 +36,7 @@ export class Response {
     total?: long
     updated?: long
     version_conflicts?: long
-    throttled_millis?: ulong
-    throttled_until_millis?: ulong
+    throttled_millis?: long
+    throttled_until_millis?: long
   }
 }

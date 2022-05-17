@@ -32,7 +32,7 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { DateString } from '@_types/Time'
+import { EpochMillis, TimeSpan, TimeSpanMillis } from '@_types/Time'
 import { DataframeState } from './Dataframe'
 
 export class DataframeAnalyticsSource {
@@ -312,7 +312,7 @@ export class DataframeAnalyticsSummary {
   max_num_threads?: integer
   analyzed_fields?: DataframeAnalysisAnalyzedFields
   allow_lazy_start?: boolean
-  create_time?: long
+  create_time?: EpochMillis
   version?: VersionString
 }
 
@@ -350,7 +350,7 @@ export class DataframeAnalyticsStatsMemoryUsage {
   /** The memory usage status. */
   status: string
   /** The timestamp when memory usage was calculated. */
-  timestamp?: DateString
+  timestamp?: EpochMillis
 }
 
 export class DataframeAnalyticsStatsDataCounts {
@@ -376,14 +376,14 @@ export class DataframeAnalyticsStatsHyperparameters {
   hyperparameters: Hyperparameters
   /** The number of iterations on the analysis. */
   iteration: integer
-  timestamp: DateString
+  timestamp: EpochMillis
   timing_stats: TimingStats
   validation_loss: ValidationLoss
 }
 
 export class DataframeAnalyticsStatsOutlierDetection {
   parameters: OutlierDetectionParameters
-  timestamp: DateString
+  timestamp: EpochMillis
   timing_stats: TimingStats
 }
 
@@ -415,9 +415,9 @@ export class OutlierDetectionParameters {
 
 export class TimingStats {
   /** Runtime of the analysis in milliseconds. */
-  elapsed_time: integer
+  elapsed_time: TimeSpanMillis
   /** Runtime of the latest iteration of the analysis in milliseconds. */
-  iteration_time?: integer
+  iteration_time?: TimeSpanMillis
 }
 
 export class ValidationLoss {

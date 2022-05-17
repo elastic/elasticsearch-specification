@@ -26,7 +26,7 @@ import {
   SearchType
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**

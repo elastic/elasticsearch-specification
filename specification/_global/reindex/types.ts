@@ -33,7 +33,7 @@ import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
@@ -57,10 +57,10 @@ export class Source {
 }
 
 export class RemoteSource {
-  connect_timeout?: Time
+  connect_timeout?: TimeSpan
   headers?: Dictionary<string, string>
   host: Host
   username?: Username
   password?: Password
-  socket_timeout?: Time
+  socket_timeout?: TimeSpan
 }

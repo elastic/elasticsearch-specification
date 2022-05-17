@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name ingest.get_pipeline
@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /** @server_default 30s */
-    master_timeout?: Time
+    master_timeout?: TimeSpan
     /** @server_default false */
     summary?: boolean
   }

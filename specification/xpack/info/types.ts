@@ -19,10 +19,10 @@
 
 import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { VersionString } from '@_types/common'
-import { DateString, EpochMillis } from '@_types/Time'
+import { EpochMillis, DateTime } from '@_types/Time'
 
 export class BuildInformation {
-  date: DateString
+  date: DateTime
   hash: string
 }
 

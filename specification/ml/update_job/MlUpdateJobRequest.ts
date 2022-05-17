@@ -28,7 +28,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * Updates certain properties of an anomaly detection job.
@@ -72,7 +72,7 @@ export interface Request extends RequestBase {
      * close the job, then reopen the job and restart the datafeed for the
      * changes to take effect.
      */
-    background_persist_interval?: Time
+    background_persist_interval?: TimeSpan
     /**
      * Advanced configuration option. Contains custom meta data about the job.
      * For example, it can contain custom URL information as shown in Adding

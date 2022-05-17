@@ -36,7 +36,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { FieldCollapse } from './_types/FieldCollapse'
 import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'
@@ -77,7 +77,7 @@ export interface Request extends RequestBase {
     pre_filter_shard_size?: long
     request_cache?: boolean
     routing?: Routing
-    scroll?: Time
+    scroll?: TimeSpan
     search_type?: SearchType
     stats?: string[]
     stored_fields?: Fields
@@ -92,7 +92,7 @@ export interface Request extends RequestBase {
      */
     suggest_text?: string
     terminate_after?: long
-    timeout?: Time
+    timeout?: TimeSpan
     track_total_hits?: TrackHits
     track_scores?: boolean
     typed_keys?: boolean

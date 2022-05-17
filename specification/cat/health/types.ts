@@ -17,19 +17,20 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateTime, EpochMillis, EpochSeconds, TimeOfDay } from '@_types/Time'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class HealthRecord {
   /**
-   * seconds since 1969-01-01 00:00:00
+   * seconds since 1970-01-01 00:00:00
    * @aliases time
    */
-  'epoch'?: EpochMillis
+  'epoch'?: Stringified<EpochSeconds>
   /**
    * time in HH:MM:SS
    * @aliases ts,hms,hhmmss
    */
-  'timestamp'?: DateString
+  'timestamp'?: TimeOfDay
   /**
    * cluster name
    * @aliases cl

@@ -19,7 +19,13 @@
 
 import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import {
+  DateTime,
+  EpochMillis,
+  TimeSpan,
+  TimeSpanMillis,
+  TimeSpanSeconds
+} from '@_types/Time'
 
 export class BucketSummary {
   /**
@@ -32,7 +38,7 @@ export class BucketSummary {
   /**
    * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
    */
-  bucket_span: Time
+  bucket_span: TimeSpanSeconds
   /**
    * The number of input data records processed in this bucket.
    */
@@ -53,7 +59,7 @@ export class BucketSummary {
   /**
    * The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.
    */
-  processing_time_ms: double
+  processing_time_ms: TimeSpanMillis
   /**
    * Internal. This value is always set to bucket.
    */
@@ -62,7 +68,12 @@ export class BucketSummary {
    * The start time of the bucket. This timestamp uniquely identifies the bucket. Events that occur exactly at the
    * timestamp of the bucket are included in the results for the bucket.
    */
-  timestamp: Time
+  timestamp: EpochMillis
+  /**
+   * The start time of the bucket. This timestamp uniquely identifies the bucket. Events that occur exactly at the
+   * timestamp of the bucket are included in the results for the bucket.
+   */
+  timestamp_string?: DateTime
 }
 
 export class BucketInfluencer {
@@ -74,7 +85,7 @@ export class BucketInfluencer {
   /**
    * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
    */
-  bucket_span: long
+  bucket_span: TimeSpanSeconds
   /**
    * The field name of the influencer.
    */
@@ -108,12 +119,16 @@ export class BucketInfluencer {
   /**
    * The start time of the bucket for which these results were calculated.
    */
-  timestamp: Time
+  timestamp: EpochMillis
+  /**
+   * The start time of the bucket for which these results were calculated.
+   */
+  timestamp_string?: DateTime
 }
 
 export class OverallBucket {
   /** The length of the bucket in seconds. Matches the job with the longest bucket_span value. */
-  bucket_span: long
+  bucket_span: TimeSpanSeconds
   /** If true, this is an interim result. In other words, the results are calculated based on partial input data. */
   is_interim: boolean
   /** An array of objects that contain the max_anomaly_score per job_id. */
@@ -123,7 +138,9 @@ export class OverallBucket {
   /** Internal. This is always set to overall_bucket. */
   result_type: string
   /** The start time of the bucket for which these results were calculated. */
-  timestamp: Time
+  timestamp: EpochMillis
+  /** The start time of the bucket for which these results were calculated. */
+  timestamp_string: DateTime
 }
 export class OverallBucketJob {
   job_id: Id

@@ -20,6 +20,7 @@
 import { ByteSize, Name } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
+import { EpochMillis } from '@_types/Time'
 
 export class Response {
   body: {
@@ -37,5 +38,5 @@ export class DataStreamsStatsItem {
   data_stream: Name
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: long
+  maximum_timestamp: EpochMillis
 }

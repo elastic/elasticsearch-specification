@@ -17,7 +17,9 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { EpochSeconds, TimeOfDay, TimeSpan } from '@_types/Time'
+import { ScheduleTimeOfDay } from '@watcher/_types/Schedule'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class SnapshotsRecord {
   /**
@@ -39,27 +41,27 @@ export class SnapshotsRecord {
    * start time in seconds since 1970-01-01 00:00:00
    * @aliases ste,startEpoch
    */
-  'start_epoch'?: EpochMillis
+  'start_epoch'?: Stringified<EpochSeconds>
   /**
    * start time in HH:MM:SS
    * @aliases sti,startTime
    */
-  'start_time'?: DateString
+  'start_time'?: ScheduleTimeOfDay
   /**
    * end time in seconds since 1970-01-01 00:00:00
    * @aliases ete,endEpoch
    */
-  'end_epoch'?: EpochMillis
+  'end_epoch'?: Stringified<EpochSeconds>
   /**
    * end time in HH:MM:SS
    * @aliases eti,endTime
    */
-  'end_time'?: DateString
+  'end_time'?: TimeOfDay
   /**
    * duration
    * @aliases dur
    */
-  'duration'?: Time
+  'duration'?: TimeSpan
   /**
    * number of indices
    * @aliases i

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * Deletes a data frame analytics job.
@@ -46,6 +46,6 @@ export interface Request extends RequestBase {
      * The time to wait for the job to be deleted.
      * @server_default 1m
      */
-    timeout?: Time
+    timeout?: TimeSpan
   }
 }

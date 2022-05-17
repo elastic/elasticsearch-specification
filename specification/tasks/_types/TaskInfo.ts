@@ -22,6 +22,12 @@ import { HttpHeaders, Id, NodeId, TaskId } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { ErrorCause } from '@_types/Errors'
 import { Dictionary } from '@spec_utils/Dictionary'
+import {
+  EpochMillis,
+  TimeSpan,
+  TimeSpanMillis,
+  TimeSpanNanos
+} from '@_types/Time'
 
 export class TaskInfo {
   action: string
@@ -30,9 +36,9 @@ export class TaskInfo {
   headers: Dictionary<string, string>
   id: long
   node: NodeId
-  running_time?: string
-  running_time_in_nanos: long
-  start_time_in_millis: long
+  running_time?: TimeSpan
+  running_time_in_nanos: TimeSpanNanos
+  start_time_in_millis: EpochMillis
   status?: TaskStatus
   type: string
   parent_task_id?: TaskId

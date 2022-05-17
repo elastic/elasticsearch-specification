@@ -33,7 +33,7 @@ import {
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name update
@@ -86,7 +86,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * The actual wait time could be longer, particularly when multiple waits occur.
      * @server_default 1m
      */
-    timeout?: Time
+    timeout?: TimeSpan
     /**
      * The number of shard copies that must be active before proceeding with the operations.
      * Set to 'all' or any positive integer up to the total number of shards in the index

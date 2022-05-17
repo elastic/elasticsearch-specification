@@ -19,7 +19,7 @@
 
 import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time, TimeSpan } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { Detector, DetectorRead } from './Detector'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Tokenizer, TokenizerDefinition } from '@_types/analysis/tokenizers'
@@ -57,11 +57,11 @@ whole number of buckets in one day. If the anomaly detection job uses a datafeed
    * The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is applicable only when you send data by using the post data API.
    * @server_default 0
    */
-  latency?: Time
+  latency?: TimeSpan
   /**
    * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. For jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`.
    */
-  model_prune_window?: Time
+  model_prune_window?: TimeSpan
   /**
    * This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.
    */
@@ -83,8 +83,8 @@ export class AnalysisConfigRead implements OverloadOf<AnalysisConfig> {
   categorization_filters?: string[]
   detectors: DetectorRead[]
   influencers: Field[]
-  model_prune_window?: Time
-  latency?: Time
+  model_prune_window?: TimeSpan
+  latency?: TimeSpan
   multivariate_by_fields?: boolean
   per_partition_categorization?: PerPartitionCategorization
   summary_count_field_name?: Field

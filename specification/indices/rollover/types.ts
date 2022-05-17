@@ -19,10 +19,10 @@
 
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { EpochMillis, Time } from '@_types/Time'
+import { EpochMillis, TimeSpan } from '@_types/Time'
 
 export class RolloverConditions {
-  max_age?: Time
+  max_age?: TimeSpan
   max_docs?: long
   max_size?: string
   max_size_bytes?: ByteSize

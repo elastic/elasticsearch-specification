@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Id, IndexName } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan, TimeZone } from '@_types/Time'
 
 export class IndexCapabilities {
   rollup_jobs: RollupJobSummary[]
@@ -34,6 +34,6 @@ export class RollupJobSummary {
 
 export class RollupJobSummaryField {
   agg: string
-  time_zone?: string
-  calendar_interval?: Time
+  time_zone?: TimeZone
+  calendar_interval?: TimeSpan
 }

@@ -24,7 +24,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
 import { GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { DateMathTime, EpochMillis } from '@_types/Time'
+import { LongTimeSpan, EpochMillis } from '@_types/Time'
 import { Void } from '@spec_utils/VoidValue'
 
 /**
@@ -343,7 +343,7 @@ export class DateHistogramBucket extends MultiBucketBase {
 /** @variant name=auto_date_histogram */
 // Note: no keyed variant in `InternalAutoDateHistogram`
 export class AutoDateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {
-  interval: DateMathTime
+  interval: LongTimeSpan
 }
 
 /** @variant name=variable_width_histogram */

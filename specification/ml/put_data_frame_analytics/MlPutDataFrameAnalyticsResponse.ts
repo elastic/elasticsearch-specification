@@ -25,11 +25,12 @@ import {
 } from '@ml/_types/DataframeAnalytics'
 import { Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 
 export class Response {
   body: {
     id: Id
-    create_time: long
+    create_time: EpochMillis
     version: VersionString
     source: DataframeAnalyticsSource
     description?: string

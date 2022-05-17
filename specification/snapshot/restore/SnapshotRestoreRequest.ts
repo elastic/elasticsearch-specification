@@ -20,7 +20,7 @@
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { Indices, Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.restore
@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
     snapshot: Name
   }
   query_parameters: {
-    master_timeout?: Time
+    master_timeout?: TimeSpan
     wait_for_completion?: boolean
   }
   body: {

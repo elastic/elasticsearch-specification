@@ -18,8 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName, Indices } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name indices.disk_usage
@@ -31,7 +30,7 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request. It’s recommended to execute this API with a single index (or the latest backing index of a data stream) as the API consumes resources significantly.
      */
-    index: IndexName
+    index: Indices
   }
   query_parameters?: {
     /**
@@ -55,23 +54,9 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    master_timeout?: TimeUnit
-    /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: TimeUnit
-    /**
      * Analyzing field disk usage is resource-intensive. To use the API, this parameter must be set to true.
      * @server_default false
      */
     run_expensive_tasks?: boolean
-    /**
-     * The number of shard copies that must be active before proceeding with the operation. Set to all or any positive integer up to the total number of shards in the index (number_of_replicas+1). Default: 1, the primary shard.
-     */
-    wait_for_active_shards?: string
   }
 }

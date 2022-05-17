@@ -19,7 +19,7 @@
 
 import { CatRequestBase, CatDfaColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * Returns configuration and usage information about data frame analytics jobs.
@@ -52,6 +52,6 @@ export interface Request extends CatRequestBase {
     /**
      * Unit used to display time values.
      */
-    time?: Time
+    time?: TimeSpan
   }
 }

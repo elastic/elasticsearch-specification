@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Retrieves anomaly detection job results for one or more influencers.
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      * specific timestamps.
      * @server_default -1
      */
-    end?: DateString
+    end?: DateTime
     /**
      * If true, the output excludes interim results. By default, interim results
      * are included.
@@ -85,7 +85,7 @@ export interface Request extends RequestBase {
      * means it is unset and results are not limited to specific timestamps.
      * @server_default -1
      */
-    start?: DateString
+    start?: DateTime
   }
   body: {
     page?: Page

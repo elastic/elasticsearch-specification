@@ -27,7 +27,7 @@ import {
   VersionType,
   WaitForActiveShards
 } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name create
@@ -44,7 +44,7 @@ export interface Request<TDocument> extends RequestBase {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
-    timeout?: Time
+    timeout?: TimeSpan
     version?: VersionNumber
     version_type?: VersionType
     wait_for_active_shards?: WaitForActiveShards

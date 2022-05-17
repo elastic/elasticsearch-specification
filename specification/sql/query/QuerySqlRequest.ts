@@ -23,7 +23,7 @@ import { RequestBase } from '@_types/Base'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Time } from '@_types/Time'
+import { TimeSpan, TimeZone } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.query
@@ -63,17 +63,17 @@ export interface Request extends RequestBase {
      * The timeout before the request fails.
      * @server_default 90s
      */
-    request_timeout?: Time
+    request_timeout?: TimeSpan
     /**
      * The timeout before a pagination request fails.
      * @server_default 45s
      */
-    page_timeout?: Time
+    page_timeout?: TimeSpan
     /**
      * Time-zone in ISO 8601 used for executing the query on the server. More information available here.
      * @doc_url https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
      */
-    time_zone?: string
+    time_zone?: TimeZone
     /**
      * Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).
      * @server_default false
@@ -87,7 +87,7 @@ export interface Request extends RequestBase {
     /**
      * Period to wait for complete results. Defaults to no timeout, meaning the request waits for complete search results. If the search doesn’t finish within this period, the search becomes async.
      */
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: TimeSpan
     /**
      * Values for parameters in the query.
      */
@@ -96,7 +96,7 @@ export interface Request extends RequestBase {
      * Retention period for an async or saved synchronous search.
      * @server_default 5d
      */
-    keep_alive?: Time
+    keep_alive?: TimeSpan
     /**
      * If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.
      * @server_default false

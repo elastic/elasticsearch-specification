@@ -25,7 +25,7 @@ import {
   Routing,
   WaitForActiveShards
 } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { OperationContainer, UpdateAction } from './types'
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
@@ -47,7 +47,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
-    timeout?: Time
+    timeout?: TimeSpan
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }

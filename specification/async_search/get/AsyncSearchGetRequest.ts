@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name async_search.get
@@ -32,8 +32,8 @@ export interface Request extends RequestBase {
     id: Id
   }
   query_parameters: {
-    keep_alive?: Time
+    keep_alive?: TimeSpan
     typed_keys?: boolean
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: TimeSpan
   }
 }

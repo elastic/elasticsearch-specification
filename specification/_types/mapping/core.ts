@@ -30,7 +30,7 @@ import {
   short,
   ulong
 } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
 import { Script } from '@_types/Scripting'
@@ -64,7 +64,7 @@ export class DateProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
-  null_value?: DateString
+  null_value?: DateTime
   precision_step?: integer
   locale?: string
   type: 'date'
@@ -75,7 +75,7 @@ export class DateNanosProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
-  null_value?: DateString
+  null_value?: DateTime
   precision_step?: integer
   type: 'date_nanos'
 }

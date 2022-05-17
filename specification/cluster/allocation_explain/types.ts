@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Name, Id } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { long, double, integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class AllocationDecision {
   decider: string
@@ -115,7 +115,7 @@ export enum StoreCopy {
 }
 
 export class UnassignedInformation {
-  at: DateString
+  at: DateTime
   last_allocation_status?: string
   reason: UnassignedInformationReason
   details?: string

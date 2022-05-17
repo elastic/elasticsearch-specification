@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds, Password } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name nodes.reload_secure_settings
@@ -31,7 +31,7 @@ export interface Request extends RequestBase {
     node_id?: NodeIds
   }
   query_parameters: {
-    timeout?: Time
+    timeout?: TimeSpan
   }
   body: {
     secure_settings_password?: Password

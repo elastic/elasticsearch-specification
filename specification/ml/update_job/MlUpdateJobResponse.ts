@@ -24,14 +24,14 @@ import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, IndexName, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time, EpochMillis } from '@_types/Time'
+import { TimeSpan, EpochMillis } from '@_types/Time'
 
 export class Response {
   body: {
     allow_lazy_open: boolean
     analysis_config: AnalysisConfigRead
     analysis_limits: AnalysisLimits
-    background_persist_interval?: Time
+    background_persist_interval?: TimeSpan
     create_time: EpochMillis
     finished_time?: EpochMillis
     custom_settings?: Dictionary<string, string>

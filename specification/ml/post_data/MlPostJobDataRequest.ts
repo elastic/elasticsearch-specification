@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Sends data to an anomaly detection job for analysis.
@@ -43,11 +43,11 @@ export interface Request<TData> extends RequestBase {
     /**
      * Specifies the end of the bucket resetting range.
      */
-    reset_end?: DateString
+    reset_end?: DateTime
     /**
      * Specifies the start of the bucket resetting range.
      */
-    reset_start?: DateString
+    reset_start?: DateTime
   }
   /**
    * A sequence of one or more JSON documents containing the data to be analyzed.

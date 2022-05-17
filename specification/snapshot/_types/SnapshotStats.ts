@@ -19,10 +19,12 @@
 
 import { long } from '@_types/Numeric'
 import { FileCountSnapshotStats } from './FileCountSnapshotStats'
+import { EpochMillis, TimeSpan, TimeSpanMillis } from '@_types/Time'
 
 export class SnapshotStats {
   incremental: FileCountSnapshotStats
-  start_time_in_millis: long
-  time_in_millis: long
+  start_time_in_millis: EpochMillis
+  time?: TimeSpan
+  time_in_millis: TimeSpanMillis
   total: FileCountSnapshotStats
 }

@@ -32,7 +32,7 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * Instantiates a datafeed.
@@ -112,7 +112,7 @@ export interface Request extends RequestBase {
      * (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses
      * aggregations, this value must be divisible by the interval of the date histogram aggregation.
      */
-    frequency?: Time
+    frequency?: TimeSpan
     /**
      * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
      * learning nodes must have the `remote_cluster_client` role.
@@ -147,7 +147,7 @@ export interface Request extends RequestBase {
      * value is randomly selected between `60s` and `120s`. This randomness improves the query performance
      * when there are multiple jobs running on the same node.
      */
-    query_delay?: Time
+    query_delay?: TimeSpan
     /**
      * Specifies runtime fields for the datafeed search.
      */

@@ -31,7 +31,7 @@ import {
   VersionString
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { DateOrEpochMillis, DateString, Time } from '@_types/Time'
+import { DateTime, EpochMillis, TimeSpan } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
 import {
@@ -43,6 +43,7 @@ import {
   Normalization
 } from '@_types/Similarity'
 import { Script } from '@_types/Scripting'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class SoftDeletes {
   /**
@@ -60,7 +61,7 @@ export class SoftDeletes {
 }
 
 export class RetentionLease {
-  period: Time
+  period: TimeSpan
 }
 
 /**
@@ -92,7 +93,7 @@ export class IndexSettings {
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
-  refresh_interval?: Time
+  refresh_interval?: TimeSpan
   /** @server_default 10000 */
   max_result_window?: integer
   /** @server_default 100 */
@@ -120,15 +121,15 @@ export class IndexSettings {
   max_regex_length?: integer
   routing?: IndexRouting
   /** @server_default 60s */
-  gc_deletes?: Time
+  gc_deletes?: TimeSpan
   /** @server_default _none */
   default_pipeline?: PipelineName
   /** @server_default _none */
   final_pipeline?: PipelineName
   lifecycle?: IndexSettingsLifecycle
   provided_name?: Name
-  creation_date?: DateString
-  creation_date_string?: DateString
+  creation_date?: Stringified<EpochMillis>
+  creation_date_string?: DateTime
   uuid?: Uuid
   version?: IndexVersioning
   verified_before_close?: boolean | string
@@ -230,7 +231,7 @@ export class SettingsSearch {
 
 export class SearchIdle {
   /** @server_default 30s */
-  after?: Time
+  after?: TimeSpan
 }
 
 export class SettingsQueryString {
@@ -299,7 +300,7 @@ export class IndexSettingsLifecycleStep {
    * Time to wait for the cluster to resolve allocation issues during an ILM shrink action. Must be greater than 1h (1 hour).
    * See Shard allocation for shrink.
    */
-  wait_time_threshold?: Time
+  wait_time_threshold?: TimeSpan
 }
 
 export class IndexSettingsAnalysis {
@@ -311,8 +312,8 @@ export class IndexSettingsAnalysis {
 }
 
 export class IndexSettingsTimeSeries {
-  end_time?: DateOrEpochMillis
-  start_time?: DateOrEpochMillis
+  end_time?: DateTime
+  start_time?: DateTime
 }
 
 export class Merge {
@@ -330,7 +331,7 @@ export class Translog {
    * Values less than 100ms are not allowed.
    * @server_default 5s
    */
-  sync_interval?: Time
+  sync_interval?: TimeSpan
   /**
    * Whether or not to `fsync` and commit the translog after every index, delete, update, or bulk request.
    * @server_default string
@@ -383,7 +384,7 @@ export class TranslogRetention {
    * indices created in Elasticsearch versions 7.0.0 and later.
    * @server_default 12h
    */
-  age?: Time
+  age?: TimeSpan
 }
 
 export class Queries {
@@ -482,10 +483,10 @@ export class SlowlogTresholds {
 }
 
 export class SlowlogTresholdLevels {
-  warn?: Time
-  info?: Time
-  debug?: Time
-  trace?: Time
+  warn?: TimeSpan
+  info?: TimeSpan
+  debug?: TimeSpan
+  trace?: TimeSpan
 }
 
 export class Storage {

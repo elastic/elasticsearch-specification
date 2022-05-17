@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
 import { IndexName, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_template
@@ -47,8 +47,8 @@ export interface Request extends RequestBase {
      * received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: TimeSpan
+    timeout?: TimeSpan
     /**
      * Order in which Elasticsearch applies this template if index
      * matches multiple templates.

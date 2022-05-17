@@ -156,14 +156,16 @@ feel free to add more if it feels appropriate!
 
 ### Dates
 
-The `Date` type in TypeScript refers to the JavaScript `Date` object,
-since Elasticsearch needs a string or a numeric value, there are aliases also for date types:
+Elasticsearch uses a lot of dates, times and durations. There are various types available to capture the variety of types and representations in the specification:
 
-```ts
-type DateTime = string
-type TimeSpan = string
-type DateTime = string
-```
+* for date and time: `DateTime` for formatted dates, `EpochMillis`, `EpochSeconds`, etc. for number values
+* for intervals: `TimeSpan` for formatted values, `TimeSpanMillis`, `TimeSpanSeconds`, etc. for number values
+* for time of day: `TimeOfDay
+
+See [`specification/_types/Time.ts`](../specification/_types/Time.ts) for additional details.
+
+Since code generators may choose to use a platform builtin type to represent time-related data, make sure to choose the appropriate representation and **never** use a primitive value such as `string` or `long`.
+
 
 ### Binary
 

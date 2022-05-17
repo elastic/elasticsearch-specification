@@ -26,7 +26,7 @@ import {
   Name,
   VersionNumber
 } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { integer } from '@_types/Numeric'
 import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTemplateRequest'
 
@@ -55,7 +55,7 @@ export interface Request extends RequestBase {
      * before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: TimeSpan
   }
   body: {
     allow_auto_create?: boolean

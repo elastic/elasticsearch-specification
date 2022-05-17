@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { float, long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name update_by_query_rethrottle
@@ -31,6 +31,6 @@ export interface Request extends RequestBase {
     task_id: Id
   }
   query_parameters: {
-    requests_per_second?: long
+    requests_per_second?: float
   }
 }

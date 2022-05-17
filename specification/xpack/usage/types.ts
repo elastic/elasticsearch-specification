@@ -24,6 +24,7 @@ import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { TimeSpanMillis } from '@_types/Time'
 
 export class Base {
   available: boolean
@@ -132,7 +133,7 @@ export class EqlFeaturesSequences {
 
 export class ExecutionAction {
   total: long
-  total_in_ms: long
+  total_in_ms: TimeSpanMillis
 }
 
 export class ForecastStatistics {
@@ -399,7 +400,7 @@ export class WatcherWatchTrigger {
 
 export class WatcherActionTotals {
   total: long
-  total_time_in_ms: long
+  total_time_in_ms: TimeSpanMillis
 }
 
 export class Realm extends Base {

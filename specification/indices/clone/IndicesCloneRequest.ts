@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { IndexName, Name, WaitForActiveShards } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.clone
@@ -35,8 +35,8 @@ export interface Request extends RequestBase {
     target: Name
   }
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: TimeSpan
+    timeout?: TimeSpan
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {

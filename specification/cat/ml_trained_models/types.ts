@@ -18,7 +18,7 @@
  */
 
 import { ByteSize, Id, VersionString } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class TrainedModelsRecord {
   /**
@@ -49,7 +49,7 @@ export class TrainedModelsRecord {
    * The time the model was created
    * @aliases ct
    */
-  'create_time'?: DateString
+  'create_time'?: DateTime
   /**
    * The version of Elasticsearch when the model was created
    * @aliases v

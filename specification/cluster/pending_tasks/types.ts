@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
+import { DateTime, EpochMillis, TimeSpan, TimeSpanMillis } from '@_types/Time'
 
 export class PendingTask {
   executing: boolean
   insert_order: integer
   priority: string
   source: string
-  time_in_queue: string
-  time_in_queue_millis: integer
+  time_in_queue?: TimeSpan
+  time_in_queue_millis: TimeSpanMillis
 }

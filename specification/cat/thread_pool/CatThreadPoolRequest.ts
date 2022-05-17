@@ -19,7 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * @rest_spec_name cat.thread_pool
@@ -38,6 +38,6 @@ export interface Request extends CatRequestBase {
     /**
      * Unit used to display time values.
      */
-    time?: Time
+    time?: TimeUnit
   }
 }

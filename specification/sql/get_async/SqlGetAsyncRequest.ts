@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
@@ -45,11 +45,11 @@ export interface Request extends RequestBase {
      * Retention period for the search and its results. Defaults
      * to the `keep_alive` period for the original SQL search.
      */
-    keep_alive?: Time
+    keep_alive?: TimeSpan
     /**
      * Period to wait for complete results. Defaults to no timeout,
      * meaning the request waits for complete search results.
      */
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: TimeSpan
   }
 }

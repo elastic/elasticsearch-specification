@@ -40,7 +40,7 @@ export type Uri = string
 // TODO clean up Id and Name variants and make sure all API's use one purposefully
 // Id includes numeric support, Name does not
 export type ScrollId = string
-export type ScrollIds = string // TODO: array of ScrollIds
+export type ScrollIds = ScrollId | ScrollId[]
 
 export type CategoryId = string
 export type ActionIds = string // TODO: check if this should be an array of ActionId

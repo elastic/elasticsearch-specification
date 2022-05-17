@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeSpan } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.delete
@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: TimeSpan
+    timeout?: TimeSpan
   }
 }

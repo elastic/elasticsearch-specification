@@ -26,7 +26,7 @@ import {
   VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime, TimeSpan } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 import { Action, Actions } from './Action'
 import { ActivationState } from './Activation'
@@ -40,16 +40,16 @@ export class Watch {
   input: InputContainer
   metadata?: Metadata
   status?: WatchStatus
-  throttle_period?: string
+  throttle_period?: TimeSpan
+  throttle_period_in_millis?: long
   transform?: TransformContainer
   trigger: TriggerContainer
-  throttle_period_in_millis?: long
 }
 
 export class WatchStatus {
   actions: Actions
-  last_checked?: DateString
-  last_met_condition?: DateString
+  last_checked?: DateTime
+  last_met_condition?: DateTime
   state: ActivationState
   version: VersionNumber
   execution_state?: string // TODO find execution states in export enum  in server codebase
