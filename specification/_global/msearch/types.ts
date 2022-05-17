@@ -59,17 +59,35 @@ export class MultisearchHeader {
   request_cache?: boolean
   routing?: string
   search_type?: SearchType
+  ccs_minimize_roundtrips?: boolean
+  allow_partial_search_results?: boolean
+  ignore_throttled?: boolean
 }
-
+// We should keep this in sync with the normal search request body.
 export class MultisearchBody {
   /** @aliases aggs */ // ES uses "aggregations" in serialization
   aggregations?: Dictionary<string, AggregationContainer>
-  collapse?: FieldCollapse
+  /**
+   * Defines the search definition using the Query DSL.
+   */
+  query?: QueryContainer
   /**
    * If true, returns detailed information about score computation as part of a hit.
    * @server_default false
    */
   explain?: boolean
+  /**
+   * List of stored fields to return as part of a hit. If no fields are specified,
+   * no stored fields are included in the response. If this field is specified, the _source
+   * parameter defaults to false. You can pass _source: true to return both source fields
+   * and stored fields in the search response.
+   */
+  stored_fields?: Fields
+  /**
+   * Array of wildcard (*) patterns. The request returns doc values for field
+   * names matching these patterns in the hits.fields property of the response.
+   */
+  docvalue_fields?: FieldAndFormat[]
   /**
    * Starting document offset. By default, you cannot page through more than 10,000
    * hits using the from and size parameters. To page through more hits, use the
@@ -77,40 +95,6 @@ export class MultisearchBody {
    * @server_default 0
    */
   from?: integer
-  highlight?: Highlight
-  /**
-   * Number of hits matching the query to count accurately. If true, the exact
-   * number of hits is returned at the cost of some performance. If false, the
-   * response does not include the total number of hits matching the query.
-   * Defaults to 10,000 hits.
-   */
-  track_total_hits?: TrackHits
-  /**
-   * Boosts the _score of documents from specified indices.
-   */
-  indices_boost?: Array<Dictionary<IndexName, double>>
-  /**
-   * Array of wildcard (*) patterns. The request returns doc values for field
-   * names matching these patterns in the hits.fields property of the response.
-   */
-  docvalue_fields?: FieldAndFormat[]
-  /**
-   * Minimum _score for matching documents. Documents with a lower _score are
-   * not included in the search results.
-   */
-  min_score?: double
-  post_filter?: QueryContainer
-  profile?: boolean
-  /**
-   * Defines the search definition using the Query DSL.
-   */
-  query?: QueryContainer
-  rescore?: Rescore | Rescore[]
-  /**
-   * Retrieve a script evaluation (based on different fields) for each hit.
-   */
-  script_fields?: Dictionary<string, ScriptField>
-  search_after?: SortResults
   /**
    * The number of hits to return. By default, you cannot page through more
    * than 10,000 hits using the from and size parameters. To page through more
@@ -118,7 +102,6 @@ export class MultisearchBody {
    * @server_default 10
    */
   size?: integer
-  slice?: SlicedScroll
   /** @doc_id sort-search-results */
   sort?: Sort
   /**
@@ -127,18 +110,18 @@ export class MultisearchBody {
    */
   _source?: SourceConfig
   /**
-   * Array of wildcard (*) patterns. The request returns values for field names
-   * matching these patterns in the hits.fields property of the response.
-   */
-  fields?: Array<FieldAndFormat>
-  suggest?: Suggester
-  /**
    * Maximum number of documents to collect for each shard. If a query reaches this
    * limit, Elasticsearch terminates the query early. Elasticsearch collects documents
    * before sorting. Defaults to 0, which does not terminate query execution early.
    * @server_default 0
    */
   terminate_after?: long
+  /**
+   * Stats groups to associate with the search. Each group maintains a statistics
+   * aggregation for its associated searches. You can retrieve these stats using
+   * the indices stats API.
+   */
+  stats?: string[]
   /**
    * Specifies the period of time to wait for a response from each shard. If no response
    * is received before the timeout expires, the request fails and returns an error.
@@ -151,6 +134,13 @@ export class MultisearchBody {
    */
   track_scores?: boolean
   /**
+   * Number of hits matching the query to count accurately. If true, the exact
+   * number of hits is returned at the cost of some performance. If false, the
+   * response does not include the total number of hits matching the query.
+   * Defaults to 10,000 hits.
+   */
+  track_total_hits?: TrackHits
+  /**
    * If true, returns document version as part of a hit.
    * @server_default false
    */
@@ -161,28 +151,11 @@ export class MultisearchBody {
    */
   seq_no_primary_term?: boolean
   /**
-   * List of stored fields to return as part of a hit. If no fields are specified,
-   * no stored fields are included in the response. If this field is specified, the _source
-   * parameter defaults to false. You can pass _source: true to return both source fields
-   * and stored fields in the search response.
-   */
-  stored_fields?: Fields
-  /**
    * Limits the search to a point in time (PIT). If you provide a PIT, you
    * cannot specify an <index> in the request path.
    */
   pit?: PointInTimeReference
-  /**
-   * Defines one or more runtime fields in the search request. These fields take
-   * precedence over mapped fields with the same name.
-   */
-  runtime_mappings?: RuntimeFields
-  /**
-   * Stats groups to associate with the search. Each group maintains a statistics
-   * aggregation for its associated searches. You can retrieve these stats using
-   * the indices stats API.
-   */
-  stats?: string[]
+  suggest?: Suggester
 }
 
 export class MultiSearchResult<TDocument> {
