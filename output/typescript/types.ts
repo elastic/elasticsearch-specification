@@ -4756,7 +4756,6 @@ export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | M
 export interface MappingPropertyBase {
   local_metadata?: Metadata
   meta?: Record<string, string>
-  name?: PropertyName
   properties?: Record<PropertyName, MappingProperty>
   ignore_above?: integer
   dynamic?: MappingDynamicMapping
