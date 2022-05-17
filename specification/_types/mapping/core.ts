@@ -236,6 +236,12 @@ export class SearchAsYouTypeProperty extends CorePropertyBase {
   type: 'search_as_you_type'
 }
 
+// MatchOnlyTextProperty is an example of a property which does not derive from PropertyBase.
+// We have checked and this property does not support all properties of the base type.
+// In a future iteration we may remodel properties and identify truely common properties that should form
+// a base type that can be considered a common ancestor for all properties. Some clients will generate
+// a synthetic version of this today.
+
 /**
  * A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field
  * effectively stores data the same way as a text field that only indexes documents (index_options: docs) and

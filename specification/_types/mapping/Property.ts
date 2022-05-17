@@ -42,7 +42,6 @@ import {
 export class PropertyBase {
   local_metadata?: Metadata
   meta?: Dictionary<string, string>
-  name?: PropertyName
   properties?: Dictionary<PropertyName, Property>
   ignore_above?: integer
   dynamic?: DynamicMapping
