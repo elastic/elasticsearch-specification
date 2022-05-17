@@ -2121,8 +2121,6 @@ export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
-export type LongTimeSpan = string
-
 export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
@@ -2465,6 +2463,8 @@ export type TimeSpan = string | -1 | 0
 
 export type TimeSpanFloatMillis = double
 
+export type TimeSpanLarge = string
+
 export type TimeSpanMillis = long
 
 export type TimeSpanNanos = long
@@ -2673,7 +2673,7 @@ export interface AggregationsArrayPercentilesItem {
 }
 
 export interface AggregationsAutoDateHistogramAggregate extends AggregationsMultiBucketAggregateBase<AggregationsDateHistogramBucket> {
-  interval: LongTimeSpan
+  interval: TimeSpanLarge
 }
 
 export interface AggregationsAutoDateHistogramAggregation extends AggregationsBucketAggregationBase {

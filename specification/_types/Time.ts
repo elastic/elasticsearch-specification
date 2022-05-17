@@ -55,8 +55,7 @@ export type TimeSpan = string | -1 | 0
  * `y` (year)
  */
 // Used to be DateMathTime, see ES DateHistogramInterval
-export type LongTimeSpan = string
-// Rename to TimeSpanLarge
+export type TimeSpanLarge = string
 
 /** A time span expressed in seconds */
 export type TimeSpanSeconds = long
