@@ -562,35 +562,23 @@ export interface MsearchMultiSearchResult<TDocument = unknown> {
 export interface MsearchMultisearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  collapse?: SearchFieldCollapse
-  explain?: boolean
-  from?: integer
-  highlight?: SearchHighlight
-  track_total_hits?: SearchTrackHits
-  indices_boost?: Record<IndexName, double>[]
-  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-  min_score?: double
-  post_filter?: QueryDslQueryContainer
-  profile?: boolean
   query?: QueryDslQueryContainer
-  rescore?: SearchRescore | SearchRescore[]
-  script_fields?: Record<string, ScriptField>
-  search_after?: SortResults
+  explain?: boolean
+  stored_fields?: Fields
+  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+  from?: integer
   size?: integer
-  slice?: SlicedScroll
   sort?: Sort
   _source?: SearchSourceConfig
-  fields?: (QueryDslFieldAndFormat | Field)[]
-  suggest?: SearchSuggester
   terminate_after?: long
+  stats?: string[]
   timeout?: string
   track_scores?: boolean
+  track_total_hits?: SearchTrackHits
   version?: boolean
   seq_no_primary_term?: boolean
-  stored_fields?: Fields
   pit?: SearchPointInTimeReference
-  runtime_mappings?: MappingRuntimeFields
-  stats?: string[]
+  suggest?: SearchSuggester
 }
 
 export interface MsearchMultisearchHeader {
@@ -602,6 +590,9 @@ export interface MsearchMultisearchHeader {
   request_cache?: boolean
   routing?: string
   search_type?: SearchType
+  ccs_minimize_roundtrips?: boolean
+  allow_partial_search_results?: boolean
+  ignore_throttled?: boolean
 }
 
 export interface MsearchRequest extends RequestBase {
