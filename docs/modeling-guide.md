@@ -160,9 +160,9 @@ The `Date` type in TypeScript refers to the JavaScript `Date` object,
 since Elasticsearch needs a string or a numeric value, there are aliases also for date types:
 
 ```ts
-type Timestamp = string
+type DateTime = string
 type TimeSpan = string
-type DateString = string
+type DateTime = string
 ```
 
 ### Binary
@@ -227,6 +227,31 @@ The absence of any type. This is commonly used in APIs that returns an empty bod
 ```ts
 class Response {
   body: Void
+}
+```
+
+### Stringified values
+
+Elasticsearch sometimes uses string-only representations in the JSON it outputs, even for numbers and booleans. This is notably seen in `cat` request and index and cluster settings.
+
+To keep the semantic soundness of the specification and avoid adding ` | string` to handle these cases, the `Stringified` behaviour should be used for these cases. Also, this problem only affects output: data should be sent in its original format (i.e. number, boolean, etc).
+
+Instead of:
+```ts
+export class IndexSettings {
+  // DO NOT DO THAT
+  number_of_shards?: integer | string
+  number_of_replicas?: integer | string
+  hidden?: boolean | string
+}
+```
+
+Use the `Stringified` behavior:
+```
+export class IndexSettings {
+  number_of_shards?: Stringified<integer>
+  number_of_replicas?: Stringified<integer>
+  hidden?: Stringified<boolean>
 }
 ```
 
