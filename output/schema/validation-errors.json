@@ -1754,7 +1754,8 @@
     },
     "search_mvt": {
       "request": [
-        "Request: missing json spec query parameter 'track_total_hits'"
+        "Request: missing json spec query parameter 'track_total_hits'",
+        "Request: missing json spec query parameter 'with_labels'"
       ],
       "response": [
         "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
