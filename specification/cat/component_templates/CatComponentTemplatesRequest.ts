@@ -21,7 +21,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * @rest_spec_name cat.component_templates
- * @since 0.0.0
+ * @since 5.1.0
  * @stability stable
  */
 export interface Request extends CatRequestBase {
