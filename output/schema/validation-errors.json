@@ -125,7 +125,15 @@
     },
     "cat.component_templates": {
       "request": [
-        "Missing request & response"
+        "Request: missing json spec query parameter 'format'",
+        "Request: missing json spec query parameter 'local'",
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'h'",
+        "Request: missing json spec query parameter 'help'",
+        "Request: missing json spec query parameter 's'",
+        "Request: missing json spec query parameter 'v'",
+        "Request: should not have a body",
+        "request definition cat.component_templates:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
     },
