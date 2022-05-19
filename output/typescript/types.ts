@@ -5953,6 +5953,22 @@ export interface CatAllocationRequest extends CatCatRequestBase {
 
 export type CatAllocationResponse = CatAllocationAllocationRecord[]
 
+export interface CatComponentTemplatesComponentTemplate {
+  name: string
+  version: string
+  alias_count: string
+  mapping_count: string
+  settings_count: string
+  metadata_count: string
+  included_in: string
+}
+
+export interface CatComponentTemplatesRequest extends CatCatRequestBase {
+  name?: string
+}
+
+export type CatComponentTemplatesResponse = CatComponentTemplatesComponentTemplate[]
+
 export interface CatCountCountRecord {
   epoch?: EpochMillis
   t?: EpochMillis
