@@ -1,0 +1,23 @@
+name: Check metamodel sync
+
+on:
+  pull_request:
+    paths:
+      - 'compiler/**'
+      - 'typescript-generator/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Copy compiler's metamodel to typescript-generator
+      run: |
+        cp compiler/src/model/metamodel.ts typescript-generator/src/metamodel.ts
+
+    - name: Check file sync
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then echo Error: compiler's metamodel and ts generator metamodel are not in sync; git diff; git status; exit 1; fi
