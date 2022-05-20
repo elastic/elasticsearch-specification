@@ -15859,8 +15859,12 @@ export interface SecurityUpdateUserProfileDataRequest extends RequestBase {
 
 export type SecurityUpdateUserProfileDataResponse = AcknowledgedResponseBase
 
+export type ShutdownType = 'restart' | 'remove' | 'replace'
+
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export type ShutdownDeleteNodeResponse = AcknowledgedResponseBase
@@ -15886,6 +15890,8 @@ export interface ShutdownGetNodePluginsStatus {
 
 export interface ShutdownGetNodeRequest extends RequestBase {
   node_id?: NodeIds
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
 }
 
 export interface ShutdownGetNodeResponse {
@@ -15902,6 +15908,14 @@ export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
 
 export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
+  body?: {
+    type: ShutdownType
+    reason: string
+    allocation_delay?: string
+    target_node_name?: string
+  }
 }
 
 export type ShutdownPutNodeResponse = AcknowledgedResponseBase

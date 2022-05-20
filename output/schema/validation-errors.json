@@ -2022,6 +2022,8 @@
     },
     "shutdown.delete_node": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": [
@@ -2030,12 +2032,17 @@
     },
     "shutdown.get_node": {
       "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []
     },
     "shutdown.put_node": {
-      "request": [],
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
       "response": [
         "response definition shutdown.put_node:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
