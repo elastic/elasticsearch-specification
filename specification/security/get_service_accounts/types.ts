@@ -31,6 +31,7 @@ export class RoleDescriptorWrapper {
 
 export class RoleDescriptor {
   cluster: string[]
+  /** @aliases index */
   indices: IndicesPrivileges[]
   global?: GlobalPrivilege[] | GlobalPrivilege
   applications?: ApplicationPrivileges[]

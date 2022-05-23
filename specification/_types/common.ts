@@ -315,3 +315,15 @@ export class IndicesOptions {
    */
   ignore_throttled?: boolean
 }
+
+/**
+ * Uses sliced scroll to parallelize process. Using `auto` chooses a reasonable number for most data streams
+ * and indices.
+ *
+ * @codegen_names value, auto
+ */
+export type Slices = integer | SlicesEnum
+
+export enum SlicesEnum {
+  auto
+}
