@@ -17,28 +17,6 @@
  * under the License.
  */
 
-import {
-  IndexPrivilege,
-  ApplicationPrivileges,
-  IndicesPrivileges,
-  GlobalPrivilege
-} from '@security/_types/Privileges'
-import { Indices, Metadata } from '@_types/common'
-import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
-
-// FIXME: should be merged with get_service_accounts/RoleDescriptor
-export class RoleDescriptor {
-  cluster: string[]
-  /** @aliases index */
-  indices: IndicesPrivileges[]
-  global?: GlobalPrivilege[] | GlobalPrivilege
-  applications?: ApplicationPrivileges[]
-  metadata?: Metadata
-  run_as?: string[]
-  transient_metadata?: TransientMetadataConfig
-}
-
-export class IndexPrivileges {
-  names: Indices
-  privileges: IndexPrivilege[]
+export class TransientMetadataConfig {
+  enabled: boolean
 }

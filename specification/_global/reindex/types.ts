@@ -34,6 +34,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
 import { Sort } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
   /** The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform. */
@@ -58,11 +59,12 @@ export class Source {
 }
 
 export class RemoteSource {
-  connect_timeout: Time
+  connect_timeout?: Time
+  headers?: Dictionary<string, string>
   host: Host
-  username: Username
-  password: Password
-  socket_timeout: Time
+  username?: Username
+  password?: Password
+  socket_timeout?: Time
 }
 
 export class SourceRuntimeMapping {

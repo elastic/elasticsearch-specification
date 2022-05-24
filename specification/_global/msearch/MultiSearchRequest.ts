@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, SearchType, Types } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  Routing,
+  SearchType,
+  Types
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
@@ -75,14 +81,18 @@ export interface Request extends RequestBase {
      */
     pre_filter_shard_size?: long
     /**
-     * Indicates whether global term and document frequencies should be used when scoring returned documents.
-     */
-    search_type?: SearchType
-    /**
      * If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.
      * @server_default false
      */
     rest_total_hits_as_int?: boolean
+    /**
+     * Custom routing value used to route search operations to a specific shard.
+     */
+    routing?: Routing
+    /**
+     * Indicates whether global term and document frequencies should be used when scoring returned documents.
+     */
+    search_type?: SearchType
     /**
      * Specifies whether aggregation and suggester names should be prefixed by their respective types in the response.
      */

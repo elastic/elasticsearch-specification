@@ -296,6 +296,7 @@ export function modelType (node: Node): model.ValueOf {
           const generics = node.getTypeArguments().map(node => modelType(node))
           const identifier = node.getTypeName()
           assert(node, Node.isIdentifier(identifier), 'Not an identifier')
+          assert(node, identifier.getDefinitions().length > 0, 'Unknown definition (missing import?)')
 
           const declaration = identifier.getDefinitions()[0].getDeclarationNode()
           // We are looking at a generic parameter

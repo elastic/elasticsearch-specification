@@ -1469,7 +1469,8 @@
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'routing' does not exist in the json spec"
       ],
       "response": [
         "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"

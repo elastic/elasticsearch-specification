@@ -316,3 +316,20 @@ export class IndicesOptions {
    */
   ignore_throttled?: boolean
 }
+
+/**
+ * Slices configuration used to parallelize a process.
+ *
+ * @codegen_names value, computed
+ */
+export type Slices = integer | SlicesCalculation
+
+/**
+ * Named computations to calculate the number of slices
+ */
+export enum SlicesCalculation {
+  /**
+   * Let Elasticsearch choose a reasonable number for most data streams and indices.
+   */
+  auto
+}

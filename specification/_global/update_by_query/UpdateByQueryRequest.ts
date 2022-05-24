@@ -25,6 +25,7 @@ import {
   Routing,
   SearchType,
   Types,
+  Slices,
   WaitForActiveShards
 } from '@_types/common'
 import { long } from '@_types/Numeric'
@@ -66,7 +67,7 @@ export interface Request extends RequestBase {
     search_timeout?: Time
     search_type?: SearchType
     size?: long
-    slices?: long
+    slices?: Slices
     sort?: string[]
     stats?: string[]
     terminate_after?: long
