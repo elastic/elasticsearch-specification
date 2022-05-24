@@ -18,6 +18,8 @@
  */
 
 import { long } from '@_types/Numeric'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class AnalyzeDetail {
   analyzer?: AnalyzerDetail
@@ -46,7 +48,10 @@ export class CharFilterDetail {
   name: string
 }
 
-export class ExplainAnalyzeToken {
+// Additional properties are attributes that can be set by plugin-defined tokenizers
+export class ExplainAnalyzeToken
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   bytes: string
   end_offset: long
   keyword?: boolean

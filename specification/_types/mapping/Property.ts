@@ -27,6 +27,7 @@ import {
 } from './complex'
 import {
   CoreProperty,
+  DynamicProperty,
   JoinProperty,
   PercolatorProperty,
   RankFeatureProperty,
@@ -64,6 +65,7 @@ export type Property =
   | DenseVectorProperty
   | AggregateMetricDoubleProperty
   | CoreProperty
+  | DynamicProperty
 
 export enum FieldType {
   none,
