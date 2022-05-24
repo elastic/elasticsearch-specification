@@ -26,6 +26,7 @@ import {
   Fields,
   IndexName,
   Indices,
+  Routing,
   SearchType
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
@@ -57,16 +58,18 @@ export class MultisearchHeader {
   index?: Indices
   preference?: string
   request_cache?: boolean
-  routing?: string
+  routing?: Routing
   search_type?: SearchType
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
   ignore_throttled?: boolean
 }
+
 // We should keep this in sync with the normal search request body.
 export class MultisearchBody {
   /** @aliases aggs */ // ES uses "aggregations" in serialization
   aggregations?: Dictionary<string, AggregationContainer>
+  collapse?: FieldCollapse
   /**
    * Defines the search definition using the Query DSL.
    */
@@ -95,6 +98,24 @@ export class MultisearchBody {
    * @server_default 0
    */
   from?: integer
+  highlight?: Highlight
+  /**
+   * Boosts the _score of documents from specified indices.
+   */
+  indices_boost?: Array<Dictionary<IndexName, double>>
+  /**
+   * Minimum _score for matching documents. Documents with a lower _score are
+   * not included in the search results.
+   */
+  min_score?: double
+  post_filter?: QueryContainer
+  profile?: boolean
+  rescore?: Rescore | Rescore[]
+  /**
+   * Retrieve a script evaluation (based on different fields) for each hit.
+   */
+  script_fields?: Dictionary<string, ScriptField>
+  search_after?: SortResults
   /**
    * The number of hits to return. By default, you cannot page through more
    * than 10,000 hits using the from and size parameters. To page through more
@@ -109,6 +130,11 @@ export class MultisearchBody {
    * fields are returned in the hits._source property of the search response.
    */
   _source?: SourceConfig
+  /**
+   * Array of wildcard (*) patterns. The request returns values for field names
+   * matching these patterns in the hits.fields property of the response.
+   */
+  fields?: Array<FieldAndFormat>
   /**
    * Maximum number of documents to collect for each shard. If a query reaches this
    * limit, Elasticsearch terminates the query early. Elasticsearch collects documents
@@ -145,6 +171,11 @@ export class MultisearchBody {
    * @server_default false
    */
   version?: boolean
+  /**
+   * Defines one or more runtime fields in the search request. These fields take
+   * precedence over mapped fields with the same name.
+   */
+  runtime_mappings?: RuntimeFields
   /**
    * If true, returns sequence number and primary term of the last modification
    * of each hit. See Optimistic concurrency control.

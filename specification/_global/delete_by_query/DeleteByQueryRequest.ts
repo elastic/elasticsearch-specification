@@ -24,6 +24,7 @@ import {
   Indices,
   Routing,
   SearchType,
+  Slices,
   WaitForActiveShards
 } from '@_types/common'
 import { long } from '@_types/Numeric'
@@ -63,7 +64,7 @@ export interface Request extends RequestBase {
     scroll_size?: long
     search_timeout?: Time
     search_type?: SearchType
-    slices?: long
+    slices?: Slices
     sort?: string[]
     stats?: string[]
     terminate_after?: long

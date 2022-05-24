@@ -203,7 +203,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   scroll_size?: long
   search_timeout?: Time
   search_type?: SearchType
-  slices?: long
+  slices?: Slices
   sort?: string[]
   stats?: string[]
   terminate_after?: long
@@ -562,20 +562,31 @@ export interface MsearchMultiSearchResult<TDocument = unknown> {
 export interface MsearchMultisearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
+  collapse?: SearchFieldCollapse
   query?: QueryDslQueryContainer
   explain?: boolean
   stored_fields?: Fields
   docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
   from?: integer
+  highlight?: SearchHighlight
+  indices_boost?: Record<IndexName, double>[]
+  min_score?: double
+  post_filter?: QueryDslQueryContainer
+  profile?: boolean
+  rescore?: SearchRescore | SearchRescore[]
+  script_fields?: Record<string, ScriptField>
+  search_after?: SortResults
   size?: integer
   sort?: Sort
   _source?: SearchSourceConfig
+  fields?: (QueryDslFieldAndFormat | Field)[]
   terminate_after?: long
   stats?: string[]
   timeout?: string
   track_scores?: boolean
   track_total_hits?: SearchTrackHits
   version?: boolean
+  runtime_mappings?: MappingRuntimeFields
   seq_no_primary_term?: boolean
   pit?: SearchPointInTimeReference
   suggest?: SearchSuggester
@@ -588,7 +599,7 @@ export interface MsearchMultisearchHeader {
   index?: Indices
   preference?: string
   request_cache?: boolean
-  routing?: string
+  routing?: Routing
   search_type?: SearchType
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
@@ -605,8 +616,9 @@ export interface MsearchRequest extends RequestBase {
   max_concurrent_searches?: long
   max_concurrent_shard_requests?: long
   pre_filter_shard_size?: long
-  search_type?: SearchType
   rest_total_hits_as_int?: boolean
+  routing?: Routing
+  search_type?: SearchType
   typed_keys?: boolean
   body?: MsearchRequestItem[]
 }
@@ -819,18 +831,19 @@ export interface ReindexDestination {
 }
 
 export interface ReindexRemoteSource {
-  connect_timeout: Time
+  connect_timeout?: Time
+  headers?: Record<string, string>
   host: Host
-  username: Username
-  password: Password
-  socket_timeout: Time
+  username?: Username
+  password?: Password
+  socket_timeout?: Time
 }
 
 export interface ReindexRequest extends RequestBase {
   refresh?: boolean
   requests_per_second?: long
   scroll?: Time
-  slices?: long
+  slices?: Slices
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   wait_for_completion?: boolean
@@ -1214,51 +1227,38 @@ export interface SearchFieldSuggester {
   text?: string
 }
 
-export interface SearchHighlight {
+export interface SearchHighlight extends SearchHighlightBase {
+  encoder?: SearchHighlighterEncoder
   fields: Record<Field, SearchHighlightField>
+}
+
+export interface SearchHighlightBase {
   type?: SearchHighlighterType
   boundary_chars?: string
   boundary_max_scan?: integer
   boundary_scanner?: SearchBoundaryScanner
   boundary_scanner_locale?: string
-  encoder?: SearchHighlighterEncoder
-  fragmenter?: SearchHighlighterFragmenter
-  fragment_offset?: integer
-  fragment_size?: integer
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: SearchHighlighterOrder
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: SearchHighlighterTagsSchema
-  highlight_query?: QueryDslQueryContainer
-  max_analyzed_offset?: string | integer
-}
-
-export interface SearchHighlightField {
-  boundary_chars?: string
-  boundary_max_scan?: integer
-  boundary_scanner?: SearchBoundaryScanner
-  boundary_scanner_locale?: string
-  field?: Field
   force_source?: boolean
   fragmenter?: SearchHighlighterFragmenter
-  fragment_offset?: integer
   fragment_size?: integer
+  highlight_filter?: boolean
   highlight_query?: QueryDslQueryContainer
-  matched_fields?: Fields
   max_fragment_length?: integer
+  max_analyzed_offset?: integer
   no_match_size?: integer
   number_of_fragments?: integer
+  options?: Record<string, any>
   order?: SearchHighlighterOrder
   phrase_limit?: integer
   post_tags?: string[]
   pre_tags?: string[]
   require_field_match?: boolean
   tags_schema?: SearchHighlighterTagsSchema
-  type?: SearchHighlighterType
+}
+
+export interface SearchHighlightField extends SearchHighlightBase {
+  fragment_offset?: integer
+  matched_fields?: Fields
 }
 
 export type SearchHighlighterEncoder = 'default' | 'html'
@@ -1477,11 +1477,11 @@ export interface SearchSuggestBase {
 }
 
 export interface SearchSuggestFuzziness {
-  fuzziness: Fuzziness
-  min_length: integer
-  prefix_length: integer
-  transpositions: boolean
-  unicode_aware: boolean
+  fuzziness?: Fuzziness
+  min_length?: integer
+  prefix_length?: integer
+  transpositions?: boolean
+  unicode_aware?: boolean
 }
 
 export type SearchSuggestSort = 'score' | 'frequency'
@@ -1697,7 +1697,7 @@ export interface TermvectorsTerm {
   doc_freq?: integer
   score?: double
   term_freq: integer
-  tokens: TermvectorsToken[]
+  tokens?: TermvectorsToken[]
   ttf?: integer
 }
 
@@ -1768,7 +1768,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   scroll_size?: long
   search_timeout?: Time
   search_type?: SearchType
-  slices?: long
+  slices?: Slices
   sort?: string[]
   stats?: string[]
   terminate_after?: long
@@ -2393,6 +2393,10 @@ export interface SlicedScroll {
   id: integer
   max: integer
 }
+
+export type Slices = integer | SlicesCalculation
+
+export type SlicesCalculation = 'auto'
 
 export type Sort = SortCombinations | SortCombinations[]
 
@@ -4573,6 +4577,32 @@ export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
 
 export type MappingDynamicMapping = boolean | 'strict' | 'runtime' | 'true' | 'false'
 
+export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
+  type: '{dynamic_property}'
+  enabled?: boolean
+  null_value?: FieldValue
+  boost?: double
+  coerce?: boolean
+  script?: Script
+  on_script_error?: MappingOnScriptError
+  ignore_malformed?: boolean
+  time_series_metric?: MappingTimeSeriesMetricType
+  analyzer?: string
+  eager_global_ordinals?: boolean
+  index?: boolean
+  index_options?: MappingIndexOptions
+  index_phrases?: boolean
+  index_prefixes?: MappingTextIndexPrefixes
+  norms?: boolean
+  position_increment_gap?: integer
+  search_analyzer?: string
+  search_quote_analyzer?: string
+  term_vector?: MappingTermVectorOption
+  format?: string
+  precision_step?: integer
+  locale?: string
+}
+
 export interface MappingDynamicTemplate {
   mapping?: MappingProperty
   match?: string
@@ -4751,7 +4781,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingDenseVectorProperty | MappingAggregateMetricDoubleProperty | MappingCoreProperty
+export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingDenseVectorProperty | MappingAggregateMetricDoubleProperty | MappingCoreProperty | MappingDynamicProperty
 
 export interface MappingPropertyBase {
   local_metadata?: Metadata
@@ -9012,7 +9042,7 @@ export interface IlmPhases {
 
 export interface IlmPolicy {
   phases: IlmPhases
-  name?: Name
+  _meta?: Metadata
 }
 
 export interface IlmShrinkConfiguration {
@@ -9643,7 +9673,7 @@ export interface IndicesAnalyzeCharFilterDetail {
   name: string
 }
 
-export interface IndicesAnalyzeExplainAnalyzeToken {
+export interface IndicesAnalyzeExplainAnalyzeTokenKeys {
   bytes: string
   end_offset: long
   keyword?: boolean
@@ -9654,6 +9684,8 @@ export interface IndicesAnalyzeExplainAnalyzeToken {
   token: string
   type: string
 }
+export type IndicesAnalyzeExplainAnalyzeToken = IndicesAnalyzeExplainAnalyzeTokenKeys
+  & { [property: string]: any }
 
 export interface IndicesAnalyzeRequest extends RequestBase {
   index?: IndexName
@@ -15259,11 +15291,6 @@ export interface SecurityClearCachedServiceTokensResponse {
   nodes: Record<string, SecurityClusterNode>
 }
 
-export interface SecurityCreateApiKeyIndexPrivileges {
-  names: Indices
-  privileges: SecurityIndexPrivilege[]
-}
-
 export interface SecurityCreateApiKeyRequest extends RequestBase {
   refresh?: Refresh
   body?: {
@@ -15284,8 +15311,13 @@ export interface SecurityCreateApiKeyResponse {
 
 export interface SecurityCreateApiKeyRoleDescriptor {
   cluster: string[]
-  index: SecurityCreateApiKeyIndexPrivileges[]
+  indices: SecurityIndicesPrivileges[]
+  index: SecurityIndicesPrivileges[]
+  global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
+  metadata?: Metadata
+  run_as?: string[]
+  transient_metadata?: SecurityTransientMetadataConfig
 }
 
 export interface SecurityCreateServiceTokenRequest extends RequestBase {
@@ -15476,6 +15508,7 @@ export type SecurityGetServiceAccountsResponse = Record<string, SecurityGetServi
 export interface SecurityGetServiceAccountsRoleDescriptor {
   cluster: string[]
   indices: SecurityIndicesPrivileges[]
+  index: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Conflicts, WaitForActiveShards } from '@_types/common'
+import { Conflicts, Slices, WaitForActiveShards } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Time } from '@_types/Time'
@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
     refresh?: boolean
     requests_per_second?: long
     scroll?: Time
-    slices?: long
+    slices?: Slices
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean
