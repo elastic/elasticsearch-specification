@@ -317,19 +317,18 @@ export class IndicesOptions {
 }
 
 /**
- * Uses sliced scroll to parallelize process. Using `auto` chooses a reasonable number for most data streams
- * and indices.
+ * Slices configuration used to parallelize a process.
  *
  * @codegen_names value, computed
  */
 export type Slices = integer | SlicesCalculation
 
 /**
- * Builtin named computations to calculate the number of slices
+ * Named computations to calculate the number of slices
  */
 export enum SlicesCalculation {
   /**
-   * Let Elasticsearch choose the number of slices to use
+   * Let Elasticsearch choose a reasonable number for most data streams and indices.
    */
   auto
 }
