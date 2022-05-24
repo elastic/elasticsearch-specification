@@ -20,7 +20,7 @@
 import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
 import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Fields, PropertyName, RelationName } from '@_types/common'
+import { Fields, FieldValue, PropertyName, RelationName } from '@_types/common'
 import {
   byte,
   double,
@@ -311,4 +311,37 @@ export class WildcardProperty extends DocValuesPropertyBase {
   type: 'wildcard'
   /** @since 7.15.0  */
   null_value?: string
+}
+
+export class DynamicProperty extends DocValuesPropertyBase {
+  type: '{dynamic_property}'
+
+  enabled?: boolean
+  null_value?: FieldValue
+  boost?: double
+
+  // NumberPropertyBase & long, double
+  coerce?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  ignore_malformed?: boolean
+  time_series_metric?: TimeSeriesMetricType
+
+  // string
+  analyzer?: string
+  eager_global_ordinals?: boolean
+  index?: boolean
+  index_options?: IndexOptions
+  index_phrases?: boolean
+  index_prefixes?: TextIndexPrefixes
+  norms?: boolean
+  position_increment_gap?: integer
+  search_analyzer?: string
+  search_quote_analyzer?: string
+  term_vector?: TermVectorOption
+
+  // date
+  format?: string
+  precision_step?: integer
+  locale?: string
 }

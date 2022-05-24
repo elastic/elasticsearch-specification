@@ -107,6 +107,7 @@ export interface Request extends RequestBase {
     from?: integer
     sort?: string | string[]
   }
+  // We should keep this in sync with the multi search request body.
   body: {
     /** @aliases aggs */ // ES uses "aggregations" in serialization
     aggregations?: Dictionary<string, AggregationContainer>
