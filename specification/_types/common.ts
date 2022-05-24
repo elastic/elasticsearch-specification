@@ -320,10 +320,16 @@ export class IndicesOptions {
  * Uses sliced scroll to parallelize process. Using `auto` chooses a reasonable number for most data streams
  * and indices.
  *
- * @codegen_names value, auto
+ * @codegen_names value, computed
  */
-export type Slices = integer | SlicesEnum
+export type Slices = integer | SlicesCalculation
 
-export enum SlicesEnum {
+/**
+ * Builtin named computations to calculate the number of slices
+ */
+export enum SlicesCalculation {
+  /**
+   * Let Elasticsearch choose the number of slices to use
+   */
   auto
 }

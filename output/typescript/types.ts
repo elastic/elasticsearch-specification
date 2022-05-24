@@ -2394,9 +2394,9 @@ export interface SlicedScroll {
   max: integer
 }
 
-export type Slices = integer | SlicesEnum
+export type Slices = integer | SlicesCalculation
 
-export type SlicesEnum = 'auto'
+export type SlicesCalculation = 'auto'
 
 export type Sort = SortCombinations | SortCombinations[]
 
