@@ -1621,7 +1621,8 @@
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'routing' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1834,6 +1835,12 @@
       ],
       "response": []
     },
+    "security.create_api_key": {
+      "request": [
+        "interface definition security._types:RoleTemplateQueryContainer - Property template is a single-variant and must be required"
+      ],
+      "response": []
+    },
     "security.create_service_token": {
       "request": [
         "Request: missing json spec query parameter 'refresh'",
@@ -1933,9 +1940,7 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": [
-        "interface definition security._types:RoleTemplateQueryContainer - Property template is a single-variant and must be required"
-      ]
+      "response": []
     },
     "security.get_role_mapping": {
       "request": [
