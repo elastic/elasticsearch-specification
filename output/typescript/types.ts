@@ -11202,6 +11202,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Time
   timeout?: Time
+  if_version?: VersionNumber
   body?: {
     _meta?: Metadata
     description?: string
