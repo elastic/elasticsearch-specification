@@ -1848,7 +1848,6 @@
     },
     "security.create_service_token": {
       "request": [
-        "Request: missing json spec query parameter 'refresh'",
         "Request: should not have a body"
       ],
       "response": []
