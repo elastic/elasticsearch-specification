@@ -48,7 +48,7 @@ export class ModelSnapshot {
 export class ModelSnapshotUpgrade {
   job_id: Id
   snapshot_id: Id
-  state: string
+  state: SnapshotStatus
   node: DiscoveryNode
   assignment_explanation: string
 }
@@ -86,4 +86,11 @@ export enum MemoryStatus {
   ok,
   soft_limit,
   hard_limit
+}
+
+export enum SnapshotStatus {
+  loading_old_state,
+  saving_new_state,
+  stopped,
+  failed
 }

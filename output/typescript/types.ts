@@ -12255,7 +12255,7 @@ export interface MlModelSnapshot {
 export interface MlModelSnapshotUpgrade {
   job_id: Id
   snapshot_id: Id
-  state: string
+  state: MlSnapshotStatus
   node: MlDiscoveryNode
   assignment_explanation: string
 }
@@ -12371,6 +12371,8 @@ export interface MlRunningStateSearchInterval {
   end_ms: long
   start_ms: long
 }
+
+export type MlSnapshotStatus = 'loading_old_state' | 'saving_new_state' | 'stopped' | 'failed'
 
 export interface MlTextClassificationInferenceOptions {
   num_top_classes?: integer
