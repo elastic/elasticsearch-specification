@@ -1509,7 +1509,7 @@
     },
     "ml.get_model_snapshot_upgrade_stats": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },

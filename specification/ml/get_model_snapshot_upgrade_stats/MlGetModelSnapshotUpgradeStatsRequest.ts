@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import {RequestBase} from "@_types/Base";
-import {Id} from "@_types/common";
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 /**
  * Retrieves usage information for anomaly detection job model snapshot upgrades.
