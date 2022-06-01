@@ -12251,6 +12251,14 @@ export interface MlModelSnapshot {
   timestamp: long
 }
 
+export interface MlModelSnapshotUpgrade {
+  job_id: Id
+  snapshot_id: Id
+  state: MlSnapshotUpgradeState
+  node: MlDiscoveryNode
+  assignment_explanation: string
+}
+
 export interface MlNerInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
@@ -12362,6 +12370,8 @@ export interface MlRunningStateSearchInterval {
   end_ms: long
   start_ms: long
 }
+
+export type MlSnapshotUpgradeState = 'loading_old_state' | 'saving_new_state' | 'stopped' | 'failed'
 
 export interface MlTextClassificationInferenceOptions {
   num_top_classes?: integer
@@ -13084,6 +13094,17 @@ export interface MlGetMemoryStatsResponse {
   _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<Id, MlGetMemoryStatsMemory>
+}
+
+export interface MlGetModelSnapshotUpgradeStatsRequest extends RequestBase {
+  job_id: Id
+  snapshot_id?: Id
+  allow_no_match?: boolean
+}
+
+export interface MlGetModelSnapshotUpgradeStatsResponse {
+  count: long
+  model_snapshot_upgrades: MlModelSnapshotUpgrade[]
 }
 
 export interface MlGetModelSnapshotsRequest extends RequestBase {
