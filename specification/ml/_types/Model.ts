@@ -20,6 +20,7 @@
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import {DiscoveryNode} from "@ml/_types/DiscoveryNode";
 
 export class ModelSnapshot {
   /** An optional description of the job. */
@@ -42,6 +43,14 @@ export class ModelSnapshot {
   snapshot_id: Id
   /** The creation timestamp for the snapshot. */
   timestamp: long
+}
+
+export class ModelSnapshotUpgrade {
+  job_id: Id
+  snapshot_id: Id
+  state: string
+  node: DiscoveryNode
+  assignment_explanation: string
 }
 
 export class ModelSizeStats {
