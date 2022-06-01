@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Upgrades all transforms.
@@ -44,6 +44,6 @@ export interface Request extends RequestBase {
      * returns an error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

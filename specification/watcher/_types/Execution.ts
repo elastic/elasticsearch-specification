@@ -22,7 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
-import { DateTime, TimeSpanMillis } from '@_types/Time'
+import { DateTime, DurationMillis } from '@_types/Time'
 import { ActionStatusOptions, ActionType } from './Action'
 import {
   EmailResult,
@@ -60,7 +60,7 @@ export enum ExecutionPhase {
 export class ExecutionResult {
   actions: ExecutionResultAction[]
   condition: ExecutionResultCondition
-  execution_duration: TimeSpanMillis
+  execution_duration: DurationMillis
   execution_time: DateTime
   input: ExecutionResultInput
 }

@@ -22,7 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, IndexPattern, IndexPatterns, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name ccr.put_auto_follow_pattern
@@ -73,7 +73,7 @@ export interface Request extends RequestBase {
      * The maximum time to wait for new operations on the remote cluster when the follower index is synchronized with the leader index. When the timeout has elapsed, the poll for operations will return to the follower so that it can update some statistics. Then the follower will immediately attempt to read from the leader again.
      * @server_default 1m
      */
-    read_poll_timeout?: TimeSpan
+    read_poll_timeout?: Duration
     /**
      * The maximum number of operations to pull per read from the remote cluster.
      * @server_default 5120
@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
      * The maximum time to wait before retrying an operation that failed exceptionally. An exponential backoff strategy is employed when retrying.
      * @server_default 500ms
      */
-    max_retry_delay?: TimeSpan
+    max_retry_delay?: Duration
     /**
      * The maximum number of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be deferred until the number of queued operations goes below the limit.
      * @server_default 2147483647

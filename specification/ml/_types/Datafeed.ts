@@ -25,10 +25,10 @@ import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import {
-  TimeSpan,
-  TimeSpanMillis,
+  Duration,
+  DurationMillis,
   DateTime,
-  TimeSpanFloatMillis
+  DurationFloatMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 
@@ -116,7 +116,7 @@ export class DelayedDataCheckConfig {
    * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
    * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
-  check_window?: TimeSpan // default: null
+  check_window?: Duration // default: null
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */
@@ -145,8 +145,8 @@ export class DatafeedTimingStats {
   exponential_average_search_time_per_hour_ms: double
   job_id: Id
   search_count: long
-  total_search_time_ms: TimeSpanFloatMillis
-  average_search_time_per_bucket_ms?: TimeSpanFloatMillis
+  total_search_time_ms: DurationFloatMillis
+  average_search_time_per_bucket_ms?: DurationFloatMillis
 }
 
 export class DatafeedRunningState {
@@ -156,10 +156,10 @@ export class DatafeedRunningState {
 }
 
 export class RunningStateSearchInterval {
-  end?: TimeSpan
-  end_ms: TimeSpanMillis
-  start?: TimeSpan
-  start_ms: TimeSpanMillis
+  end?: Duration
+  end_ms: DurationMillis
+  start?: Duration
+  start_ms: DurationMillis
 }
 
 export enum ChunkingMode {
@@ -180,5 +180,5 @@ export class ChunkingConfig {
    * The time span that each search will be querying. This setting is applicable only when the `mode` is set to `manual`.
    * @server_default 3h
    */
-  time_span?: TimeSpan
+  time_span?: Duration
 }

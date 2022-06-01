@@ -19,11 +19,11 @@
 
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { EpochMillis, TimeSpan, TimeSpanSeconds } from '@_types/Time'
+import { EpochMillis, Duration, DurationSeconds } from '@_types/Time'
 
 export class Anomaly {
   actual?: double[]
-  bucket_span: TimeSpanSeconds
+  bucket_span: DurationSeconds
   by_field_name?: string
   by_field_value?: string
   causes?: AnomalyCause[]

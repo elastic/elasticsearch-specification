@@ -23,7 +23,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { RolloverConditions } from './types'
 
 /**
@@ -38,8 +38,8 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     dry_run?: boolean
-    master_timeout?: TimeSpan
-    timeout?: TimeSpan
+    master_timeout?: Duration
+    timeout?: Duration
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {

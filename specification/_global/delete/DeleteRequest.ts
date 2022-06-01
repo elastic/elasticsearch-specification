@@ -29,7 +29,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name delete
@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
     if_seq_no?: SequenceNumber
     refresh?: Refresh
     routing?: Routing
-    timeout?: TimeSpan
+    timeout?: Duration
     version?: VersionNumber
     version_type?: VersionType
     wait_for_active_shards?: WaitForActiveShards

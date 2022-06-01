@@ -19,7 +19,7 @@
 
 import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TimeSpan, TimeZone } from '@_types/Time'
+import { Duration, TimeZone } from '@_types/Time'
 
 export class Groupings {
   date_histogram?: DateHistogramGrouping
@@ -28,12 +28,12 @@ export class Groupings {
 }
 
 export class DateHistogramGrouping {
-  delay?: TimeSpan
+  delay?: Duration
   field: Field
   format?: string
-  interval?: TimeSpan
-  calendar_interval?: TimeSpan
-  fixed_interval?: TimeSpan
+  interval?: Duration
+  calendar_interval?: Duration
+  fixed_interval?: Duration
   time_zone?: TimeZone
 }
 

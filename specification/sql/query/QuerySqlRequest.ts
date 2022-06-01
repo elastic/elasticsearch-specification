@@ -23,7 +23,7 @@ import { RequestBase } from '@_types/Base'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { TimeSpan, TimeZone } from '@_types/Time'
+import { Duration, TimeZone } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.query
@@ -63,12 +63,12 @@ export interface Request extends RequestBase {
      * The timeout before the request fails.
      * @server_default 90s
      */
-    request_timeout?: TimeSpan
+    request_timeout?: Duration
     /**
      * The timeout before a pagination request fails.
      * @server_default 45s
      */
-    page_timeout?: TimeSpan
+    page_timeout?: Duration
     /**
      * Time-zone in ISO 8601 used for executing the query on the server. More information available here.
      * @doc_url https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
@@ -87,7 +87,7 @@ export interface Request extends RequestBase {
     /**
      * Period to wait for complete results. Defaults to no timeout, meaning the request waits for complete search results. If the search doesn’t finish within this period, the search becomes async.
      */
-    wait_for_completion_timeout?: TimeSpan
+    wait_for_completion_timeout?: Duration
     /**
      * Values for parameters in the query.
      */
@@ -96,7 +96,7 @@ export interface Request extends RequestBase {
      * Retention period for an async or saved synchronous search.
      * @server_default 5d
      */
-    keep_alive?: TimeSpan
+    keep_alive?: Duration
     /**
      * If true, Elasticsearch stores synchronous searches if you also specify the wait_for_completion_timeout parameter. If false, Elasticsearch only stores async searches that don’t finish before the wait_for_completion_timeout.
      * @server_default false

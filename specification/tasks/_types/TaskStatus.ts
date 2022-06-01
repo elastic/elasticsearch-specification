@@ -19,7 +19,7 @@
 
 import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class TaskStatus {
   batches: long
@@ -30,9 +30,9 @@ export class TaskStatus {
   failures?: string[]
   requests_per_second: float
   retries: Retries
-  throttled?: TimeSpan
+  throttled?: Duration
   throttled_millis: long
-  throttled_until?: TimeSpan
+  throttled_until?: Duration
   throttled_until_millis: long
   timed_out?: boolean
   took?: long

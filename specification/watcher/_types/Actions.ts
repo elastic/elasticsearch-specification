@@ -32,7 +32,7 @@ import {
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
-import { EpochSeconds, TimeSpan, DateTime } from '@_types/Time'
+import { EpochSeconds, Duration, DateTime } from '@_types/Time'
 import { HttpInputRequestDefinition } from './Input'
 
 // PagerDuty ----------------------------- //
@@ -227,7 +227,7 @@ export class ReportingEmailAttachment {
   /** @server_default 40 */
   retries?: integer
   /** @server_default 15s */
-  interval?: TimeSpan
+  interval?: Duration
   request?: HttpInputRequestDefinition
 }
 
@@ -260,7 +260,7 @@ export class IndexAction {
   /** @server_default index */
   op_type?: OpType
   /** @server_default 60s */
-  timeout?: TimeSpan
+  timeout?: Duration
   execution_time_field?: Field
 }
 

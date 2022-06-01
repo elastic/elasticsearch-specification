@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Stops one or more data frame analytics jobs.
@@ -65,6 +65,6 @@ export interface Request extends RequestBase {
      * stops. Defaults to 20 seconds.
      * @server_default 20s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

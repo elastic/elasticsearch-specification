@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
 /**
@@ -48,7 +48,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     /**
      * Collection interval (e.g., '10s' or '10000ms') of the payload
      */
-    interval: TimeSpan
+    interval: Duration
   }
 
   /** @codegen_name operations */

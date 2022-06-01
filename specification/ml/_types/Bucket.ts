@@ -22,9 +22,9 @@ import { double, long } from '@_types/Numeric'
 import {
   DateTime,
   EpochMillis,
-  TimeSpan,
-  TimeSpanMillis,
-  TimeSpanSeconds
+  Duration,
+  DurationMillis,
+  DurationSeconds
 } from '@_types/Time'
 
 export class BucketSummary {
@@ -38,7 +38,7 @@ export class BucketSummary {
   /**
    * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
    */
-  bucket_span: TimeSpanSeconds
+  bucket_span: DurationSeconds
   /**
    * The number of input data records processed in this bucket.
    */
@@ -59,7 +59,7 @@ export class BucketSummary {
   /**
    * The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.
    */
-  processing_time_ms: TimeSpanMillis
+  processing_time_ms: DurationMillis
   /**
    * Internal. This value is always set to bucket.
    */
@@ -85,7 +85,7 @@ export class BucketInfluencer {
   /**
    * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
    */
-  bucket_span: TimeSpanSeconds
+  bucket_span: DurationSeconds
   /**
    * The field name of the influencer.
    */
@@ -128,7 +128,7 @@ export class BucketInfluencer {
 
 export class OverallBucket {
   /** The length of the bucket in seconds. Matches the job with the longest bucket_span value. */
-  bucket_span: TimeSpanSeconds
+  bucket_span: DurationSeconds
   /** If true, this is an interim result. In other words, the results are calculated based on partial input data. */
   is_interim: boolean
   /** An array of objects that contain the max_anomaly_score per job_id. */

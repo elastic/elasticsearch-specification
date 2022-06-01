@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { TimeSpan, DateTime } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 
 /**
  * Retrieves overall bucket results that summarize the bucket results of
@@ -81,7 +81,7 @@ export interface Request extends RequestBase {
      * of the specified anomaly detection jobs. To override that behavior, use
      * the optional `bucket_span` parameter.
      */
-    bucket_span?: TimeSpan
+    bucket_span?: Duration
     /**
      * Returns overall buckets with timestamps earlier than this time.
      */
@@ -116,7 +116,7 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `bucket_span` query parameter.
      */
-    bucket_span?: TimeSpan
+    bucket_span?: Duration
     /**
      * Refer to the description for the `end` query parameter.
      */

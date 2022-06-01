@@ -23,7 +23,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.create
@@ -36,8 +36,8 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   query_parameters: {
-    master_timeout?: TimeSpan
-    timeout?: TimeSpan
+    master_timeout?: Duration
+    timeout?: Duration
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {

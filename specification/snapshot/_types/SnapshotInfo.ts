@@ -27,15 +27,15 @@ import {
   VersionString
 } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
-import { EpochMillis, TimeSpan, TimeSpanMillis, DateTime } from '@_types/Time'
+import { EpochMillis, Duration, DurationMillis, DateTime } from '@_types/Time'
 import { IndexDetails } from './SnapshotIndexDetails'
 import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
   data_streams: Array<string>
-  duration?: TimeSpan
-  duration_in_millis?: TimeSpanMillis
+  duration?: Duration
+  duration_in_millis?: DurationMillis
   end_time?: DateTime
   end_time_in_millis?: EpochMillis
   failures?: SnapshotShardFailure[]

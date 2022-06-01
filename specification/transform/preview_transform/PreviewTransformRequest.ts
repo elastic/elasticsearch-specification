@@ -28,7 +28,7 @@ import {
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Previews a transform.
@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
      * timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   body: {
     /**
@@ -74,7 +74,7 @@ export interface Request extends RequestBase {
      * indexing. The minimum value is 1s and the maximum is 1h.
      * @server_default 1m
      */
-    frequency?: TimeSpan
+    frequency?: Duration
     /**
      * The pivot method transforms the data by aggregating and grouping it.
      * These objects define the group by fields and the aggregation to reduce

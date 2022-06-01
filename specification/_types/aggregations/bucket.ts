@@ -33,7 +33,7 @@ import {
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
-import { DateTime, TimeSpan, DateMath, TimeZone } from '@_types/Time'
+import { DateTime, Duration, DateMath, TimeZone } from '@_types/Time'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
@@ -92,13 +92,13 @@ export class DateHistogramAggregation extends BucketAggregationBase {
   extended_bounds?: ExtendedBounds<FieldDateMath>
   hard_bounds?: ExtendedBounds<FieldDateMath>
   field?: Field
-  fixed_interval?: TimeSpan
+  fixed_interval?: Duration
   format?: string
   /** @deprecated 7.2.0 use `fixed_interval` or `calendar_interval` */
-  interval?: TimeSpan
+  interval?: Duration
   min_doc_count?: integer
   missing?: DateTime
-  offset?: TimeSpan
+  offset?: Duration
   order?: HistogramOrder
   params?: Dictionary<string, UserDefinedValue>
   script?: Script

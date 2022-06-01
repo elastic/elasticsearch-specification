@@ -23,7 +23,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { CustomSettings } from '@ml/_types/Settings'
 import { Field, Id, TaskId, IndexName, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { TimeSpan, DateTime, TimeSpanFloatMillis } from '@_types/Time'
+import { Duration, DateTime, DurationFloatMillis } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
 import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
@@ -47,7 +47,7 @@ export class Job {
   allow_lazy_open: boolean
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval?: TimeSpan
+  background_persist_interval?: Duration
   blocked?: JobBlocked
   create_time?: DateTime
   custom_settings?: CustomSettings
@@ -73,7 +73,7 @@ export class JobConfig {
   allow_lazy_open?: boolean
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval?: TimeSpan
+  background_persist_interval?: Duration
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: DataDescription
@@ -102,14 +102,14 @@ export class JobStats {
 }
 
 export class JobTimingStats {
-  average_bucket_processing_time_ms?: TimeSpanFloatMillis
+  average_bucket_processing_time_ms?: DurationFloatMillis
   bucket_count: long
-  exponential_average_bucket_processing_time_ms?: TimeSpanFloatMillis
-  exponential_average_bucket_processing_time_per_hour_ms: TimeSpanFloatMillis
+  exponential_average_bucket_processing_time_ms?: DurationFloatMillis
+  exponential_average_bucket_processing_time_per_hour_ms: DurationFloatMillis
   job_id: Id
-  total_bucket_processing_time_ms: TimeSpanFloatMillis
-  maximum_bucket_processing_time_ms?: TimeSpanFloatMillis
-  minimum_bucket_processing_time_ms?: TimeSpanFloatMillis
+  total_bucket_processing_time_ms: DurationFloatMillis
+  maximum_bucket_processing_time_ms?: DurationFloatMillis
+  minimum_bucket_processing_time_ms?: DurationFloatMillis
 }
 
 export class JobForecastStatistics {

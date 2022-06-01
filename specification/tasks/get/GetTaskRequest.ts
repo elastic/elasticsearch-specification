@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name tasks.get
@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
     task_id: Id
   }
   query_parameters: {
-    timeout?: TimeSpan
+    timeout?: Duration
     wait_for_completion?: boolean
   }
 }

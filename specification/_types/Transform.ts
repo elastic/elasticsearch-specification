@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SearchInputRequestDefinition } from '@watcher/_types/Input'
-import { TimeSpan } from './Time'
+import { Duration } from './Time'
 
 export class Transform {}
 
@@ -45,5 +45,5 @@ export class ScriptTransform {
 
 export class SearchTransform {
   request: SearchInputRequestDefinition
-  timeout: TimeSpan
+  timeout: Duration
 }

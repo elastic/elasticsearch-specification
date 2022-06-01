@@ -19,13 +19,13 @@
 
 import { double, integer, long } from '@_types/Numeric'
 import { Field, Id } from '@_types/common'
-import { EpochMillis, TimeSpan, DateTime, TimeSpanSeconds } from '@_types/Time'
+import { EpochMillis, Duration, DateTime, DurationSeconds } from '@_types/Time'
 
 export class Influencer {
   /**
    * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
    */
-  bucket_span: TimeSpanSeconds
+  bucket_span: DurationSeconds
   /**
    * A normalized score between 0-100, which is based on the probability of the influencer in this bucket aggregated
    * across detectors. Unlike `initial_influencer_score`, this value is updated by a re-normalization process as new

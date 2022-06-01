@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name get_script
@@ -32,6 +32,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /** Specify timeout for connection to master */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
   }
 }

@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { IndexName, Name } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name searchable_snapshots.mount
@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /** @server_default 30s */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
     /** @server_default false */
     wait_for_completion?: boolean
     /** @server_default full_copy */

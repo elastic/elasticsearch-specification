@@ -27,7 +27,7 @@ import {
   VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { EpochMillis, TimeSpan, TimeSpanMillis, DateTime } from '@_types/Time'
+import { EpochMillis, Duration, DurationMillis, DateTime } from '@_types/Time'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress
@@ -43,8 +43,8 @@ export class SnapshotLifecycle {
 }
 
 export class Statistics {
-  retention_deletion_time?: TimeSpan
-  retention_deletion_time_millis?: TimeSpanMillis
+  retention_deletion_time?: Duration
+  retention_deletion_time_millis?: DurationMillis
   retention_failed?: long
   retention_runs?: long
   retention_timed_out?: long
@@ -79,7 +79,7 @@ export class Retention {
   /**
    * Time period after which a snapshot is considered expired and eligible for deletion. SLM deletes expired snapshots based on the slm.retention_schedule.
    */
-  expire_after: TimeSpan
+  expire_after: Duration
   /**
    * Maximum number of snapshots to retain, even if the snapshots have not yet expired. If the number of snapshots in the repository exceeds this limit, the policy retains the most recent snapshots and deletes older snapshots.
    */

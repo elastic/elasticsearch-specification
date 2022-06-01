@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class FielddataSettings {
-  cache_expire: TimeSpan
+  cache_expire: Duration
   cache_size: string
 }

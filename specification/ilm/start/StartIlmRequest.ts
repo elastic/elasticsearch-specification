@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name ilm.start
@@ -27,7 +27,7 @@ import { TimeSpan } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   query_parameters: {
-    master_timeout?: TimeSpan
-    timeout?: TimeSpan
+    master_timeout?: Duration
+    timeout?: Duration
   }
 }

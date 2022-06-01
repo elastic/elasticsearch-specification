@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.exists_component_template
@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
      * error.
      * @server_default 30s
      */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
     /**
      * If true, the request retrieves information from the local node only.
      * Defaults to false, which means information is retrieved from the master node.

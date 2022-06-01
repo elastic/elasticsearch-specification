@@ -24,7 +24,7 @@ import { CustomSettings } from '@ml/_types/Settings'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 
 /**
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
     /**
      * Advanced configuration option. The time between each periodic persistence of the model. The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour. For very large models (several GB), persistence could take 10-20 minutes, so do not set the `background_persist_interval` value too low.
      */
-    background_persist_interval?: TimeSpan
+    background_persist_interval?: Duration
     /**
      *  Advanced configuration option. Contains custom meta data about the job.
      */

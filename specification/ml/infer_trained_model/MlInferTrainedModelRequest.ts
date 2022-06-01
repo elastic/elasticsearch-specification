@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
      * Controls the amount of time to wait for inference results.
      * @server_default 10s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   body: {
     /**

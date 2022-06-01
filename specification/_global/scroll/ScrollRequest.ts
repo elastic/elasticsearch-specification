@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ScrollId } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name scroll
@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
      * @doc_id scroll-search-results
      * @server_default 1d
      */
-    scroll?: TimeSpan
+    scroll?: Duration
     /** @deprecated 7.0.0 */
     scroll_id?: ScrollId
     /**
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      * @doc_id scroll-search-results
      * @server_default 1d
      */
-    scroll?: TimeSpan
+    scroll?: Duration
     /** Scroll ID of the search. */
     scroll_id: ScrollId
   }

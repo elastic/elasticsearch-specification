@@ -18,9 +18,9 @@
  */
 
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class PointInTimeReference {
   id: Id
-  keep_alive?: TimeSpan
+  keep_alive?: Duration
 }

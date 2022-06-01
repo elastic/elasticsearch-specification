@@ -28,7 +28,7 @@ import {
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Creates a transform.
@@ -80,7 +80,7 @@ export interface Request extends RequestBase {
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   body: {
     /** The destination for the transform. */
@@ -93,7 +93,7 @@ export interface Request extends RequestBase {
      * The minimum value is `1s` and the maximum is `1h`.
      * @server_default 1m
      */
-    frequency?: TimeSpan
+    frequency?: Duration
     /**
      * The latest method transforms the data by finding the latest document for each unique key.
      */

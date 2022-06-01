@@ -19,12 +19,12 @@
 
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class ExploreControls {
   sample_diversity?: SampleDiversity
   sample_size?: integer
-  timeout?: TimeSpan
+  timeout?: Duration
   use_significance: boolean
 }
 

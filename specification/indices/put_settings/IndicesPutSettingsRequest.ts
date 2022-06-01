@@ -20,7 +20,7 @@
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_settings
@@ -36,9 +36,9 @@ export interface Request extends RequestBase {
     expand_wildcards?: ExpandWildcards
     flat_settings?: boolean
     ignore_unavailable?: boolean
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
     preserve_existing?: boolean
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   /** @codegen_name settings */
   body: IndexSettings

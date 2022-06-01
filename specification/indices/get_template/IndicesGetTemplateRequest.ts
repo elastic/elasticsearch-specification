@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.get_template
@@ -33,6 +33,6 @@ export interface Request extends RequestBase {
   query_parameters: {
     flat_settings?: boolean
     local?: boolean
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
   }
 }

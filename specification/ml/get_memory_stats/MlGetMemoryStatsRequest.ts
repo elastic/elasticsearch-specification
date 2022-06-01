@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Get information about how machine learning jobs and trained models are using memory,
@@ -48,12 +48,12 @@ export interface Request extends RequestBase {
      * expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request
      * fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

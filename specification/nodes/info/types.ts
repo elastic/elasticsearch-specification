@@ -25,7 +25,7 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
-import { EpochMillis, TimeSpan } from '@_types/Time'
+import { EpochMillis, Duration } from '@_types/Time'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -285,7 +285,7 @@ export class NodeInfoSearchRemote {
 
 export class NodeThreadPoolInfo {
   core?: integer
-  keep_alive?: TimeSpan
+  keep_alive?: Duration
   max?: integer
   queue_size: integer
   size?: integer

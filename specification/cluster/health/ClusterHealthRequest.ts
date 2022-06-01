@@ -27,7 +27,7 @@ import {
   WaitForEvents
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * The cluster health API returns a simple status on the health of the cluster. You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices.
@@ -61,12 +61,12 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
     /**
      * A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.
      * @server_default 0

@@ -27,7 +27,7 @@ import {
   Routing,
   SearchType
 } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name search_template
@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
      * Specifies how long a consistent view of the index
      * should be maintained for scrolled search.
      */
-    scroll?: TimeSpan
+    scroll?: Duration
     /** The type of the search operation. */
     search_type?: SearchType
     /**

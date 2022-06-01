@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { IndexName, WaitForActiveShards } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name ccr.follow
@@ -41,12 +41,12 @@ export interface Request extends RequestBase {
     max_outstanding_write_requests?: long
     max_read_request_operation_count?: long
     max_read_request_size?: string
-    max_retry_delay?: TimeSpan
+    max_retry_delay?: Duration
     max_write_buffer_count?: long
     max_write_buffer_size?: string
     max_write_request_operation_count?: long
     max_write_request_size?: string
-    read_poll_timeout?: TimeSpan
+    read_poll_timeout?: Duration
     remote_cluster?: string
   }
 }

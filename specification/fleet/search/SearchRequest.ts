@@ -48,7 +48,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
@@ -86,7 +86,7 @@ export interface Request extends RequestBase {
     pre_filter_shard_size?: long
     request_cache?: boolean
     routing?: Routing
-    scroll?: TimeSpan
+    scroll?: Duration
     search_type?: SearchType
     stats?: string[]
     stored_fields?: Fields
@@ -101,7 +101,7 @@ export interface Request extends RequestBase {
      */
     suggest_text?: string
     terminate_after?: long
-    timeout?: TimeSpan
+    timeout?: Duration
     track_total_hits?: TrackHits
     track_scores?: boolean
     typed_keys?: boolean

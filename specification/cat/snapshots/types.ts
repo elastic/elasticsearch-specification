@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EpochSeconds, TimeOfDay, TimeSpan } from '@_types/Time'
+import { EpochSeconds, TimeOfDay, Duration } from '@_types/Time'
 import { ScheduleTimeOfDay } from '@watcher/_types/Schedule'
 import { Stringified } from '@spec_utils/Stringified'
 
@@ -61,7 +61,7 @@ export class SnapshotsRecord {
    * duration
    * @aliases dur
    */
-  'duration'?: TimeSpan
+  'duration'?: Duration
   /**
    * number of indices
    * @aliases i

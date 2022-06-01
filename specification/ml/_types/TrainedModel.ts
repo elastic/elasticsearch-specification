@@ -30,9 +30,9 @@ import {
 import { double, integer, long } from '@_types/Numeric'
 import {
   EpochMillis,
-  TimeSpan,
+  Duration,
   DateTime,
-  TimeSpanFloatMillis
+  DurationFloatMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
@@ -124,7 +124,7 @@ export class TrainedModelSizeStats {
 
 export class TrainedModelDeploymentNodesStats {
   /** The average time for each inference call to complete on this node. */
-  average_inference_time_ms: TimeSpanFloatMillis
+  average_inference_time_ms: DurationFloatMillis
   /** The number of errors when evaluating the trained model. */
   error_count: integer
   /** The total number of inference calls made against this node for this model. */

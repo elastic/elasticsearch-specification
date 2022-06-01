@@ -21,14 +21,14 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName, Name, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateTime, EpochMillis, TimeSpan } from '@_types/Time'
+import { DateTime, EpochMillis, Duration } from '@_types/Time'
 
 export class LifecycleExplainManaged {
   action?: Name
   action_time?: DateTime
   action_time_millis?: EpochMillis
   /* `lifecycle_date` as a duration */
-  age?: TimeSpan
+  age?: Duration
   failed_step?: Name
   failed_step_retry_count?: integer
   index?: IndexName
@@ -48,7 +48,7 @@ export class LifecycleExplainManaged {
   step_time_millis?: EpochMillis
   phase_execution?: LifecycleExplainPhaseExecution
   /* `index_creation_date` as a duration */
-  time_since_index_creation?: TimeSpan
+  time_since_index_creation?: Duration
 }
 
 export class LifecycleExplainUnmanaged {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RolloverConditions } from '@indices/rollover/types'
 import { integer, long } from '@_types/Numeric'
@@ -25,9 +25,9 @@ import { integer, long } from '@_types/Numeric'
 export class Phase {
   actions?: Actions
   /**
-   * @es_quirk output as a millis number in XPack usage stats, which cannot roundtrip with a TimeSpan as it requires a unit.
+   * @es_quirk output as a millis number in XPack usage stats, which cannot roundtrip with a Duration as it requires a unit.
    */
-  min_age?: TimeSpan | long
+  min_age?: Duration | long
   /** @since 7.16.0 */
   configurations?: Configurations
 }

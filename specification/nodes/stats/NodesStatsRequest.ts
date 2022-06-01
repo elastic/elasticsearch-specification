@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Fields, Level, Metrics, NodeIds } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name nodes.stats
@@ -56,12 +56,12 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
     /** A comma-separated list of document types for the indexing index metric. */
     types?: string[]
     include_unloaded_segments?: boolean

@@ -22,7 +22,7 @@ import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -106,7 +106,7 @@ export interface Request extends RequestBase {
      * written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value
      * must be divisible by the interval of the date histogram aggregation.
      */
-    frequency?: TimeSpan
+    frequency?: Duration
     /**
      * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
      * learning nodes must have the `remote_cluster_client` role.
@@ -141,7 +141,7 @@ export interface Request extends RequestBase {
      * value is randomly selected between `60s` and `120s`. This randomness improves the query performance
      * when there are multiple jobs running on the same node.
      */
-    query_delay?: TimeSpan
+    query_delay?: Duration
     /**
      * Specifies runtime fields for the datafeed search.
      */

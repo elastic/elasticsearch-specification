@@ -42,32 +42,31 @@ export type TimeZone = string
 export type DateFormat = string
 
 /**
- * A time span. Used for delays, durations, time intervals, etc. Units can be `nanos`, `micros`, `ms` (milliseconds),
- * `s` (seconds), `m` (minutes), `h` (hours) and `d` (days). Also accepts "0" without a unit and "-1" to indicate an
- * unspecified value.
+ * A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and
+ * `d` (days). Also accepts "0" without a unit and "-1" to indicate an unspecified value.
  * @doc_id time-value
  */
 // Used to be Time, see ES TimeValue
-export type TimeSpan = string | -1 | 0
+export type Duration = string | -1 | 0
 
 /**
- * A date histogram interval. Similar to `TimeSpan` with additional units: `w` (week), `M` (month), `q` (quarter) and
+ * A date histogram interval. Similar to `Duration` with additional units: `w` (week), `M` (month), `q` (quarter) and
  * `y` (year)
  */
 // Used to be DateMathTime, see ES DateHistogramInterval
-export type TimeSpanLarge = string
+export type DurationLarge = string
 
-/** A time span expressed in seconds */
-export type TimeSpanSeconds = long
+/** A duration expressed in seconds */
+export type DurationSeconds = long
 
-/** A time span expressed in milliseconds */
-export type TimeSpanMillis = long
+/** A duration expressed in milliseconds */
+export type DurationMillis = long
 
-/** A time span expressed in fractional milliseconds */
-export type TimeSpanFloatMillis = double
+/** A duration expressed in fractional milliseconds */
+export type DurationFloatMillis = double
 
-/** A time span expressed in nanoseconds */
-export type TimeSpanNanos = long
+/** A duration expressed in nanoseconds */
+export type DurationNanos = long
 
 export enum TimeUnit {
   /** @codegen_name nanoseconds */

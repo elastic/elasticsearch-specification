@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Deletes forecasts from a machine learning job.
@@ -60,6 +60,6 @@ export interface Request extends RequestBase {
      * error.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

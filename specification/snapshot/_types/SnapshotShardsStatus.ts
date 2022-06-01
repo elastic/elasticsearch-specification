@@ -19,7 +19,7 @@
 
 import { long } from '@_types/Numeric'
 import { ShardsStatsStage } from './SnapshotShardsStatsStage'
-import { EpochMillis, TimeSpan, TimeSpanMillis } from '@_types/Time'
+import { EpochMillis, Duration, DurationMillis } from '@_types/Time'
 
 export class SnapshotShardsStatus {
   stage: ShardsStatsStage
@@ -30,8 +30,8 @@ export class ShardsStatsSummary {
   incremental: ShardsStatsSummaryItem
   total: ShardsStatsSummaryItem
   start_time_in_millis: EpochMillis
-  time?: TimeSpan
-  time_in_millis: TimeSpanMillis
+  time?: Duration
+  time_in_millis: DurationMillis
 }
 
 export class ShardsStatsSummaryItem {

@@ -29,7 +29,7 @@ import {
   StoreStats,
   PluginStats
 } from '@_types/Stats'
-import { TimeSpan, TimeSpanMillis } from '@_types/Time'
+import { Duration, DurationMillis } from '@_types/Time'
 
 export class ClusterFileSystem {
   available_in_bytes: long
@@ -263,8 +263,8 @@ export class ClusterProcessor {
   count: long
   current: long
   failed: long
-  time?: TimeSpan
-  time_in_millis: TimeSpanMillis
+  time?: Duration
+  time_in_millis: DurationMillis
 }
 
 export class ClusterShardMetrics {

@@ -23,9 +23,9 @@ import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import {
   EpochMillis,
-  TimeSpan,
-  TimeSpanMillis,
-  TimeSpanSeconds
+  Duration,
+  DurationMillis,
+  DurationSeconds
 } from '@_types/Time'
 
 export class Response {

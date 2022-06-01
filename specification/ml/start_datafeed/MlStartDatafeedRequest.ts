@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TimeSpan, DateTime } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 
 /**
  * Starts one or more datafeeds.
@@ -76,7 +76,7 @@ export interface Request extends RequestBase {
     /**
      * Specifies the amount of time to wait until a datafeed starts.
      * @server_default 20s */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   body: {
     /** Refer to the description for the `end` query parameter. */
@@ -86,6 +86,6 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 20s */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

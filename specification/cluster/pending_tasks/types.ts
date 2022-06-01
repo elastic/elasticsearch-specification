@@ -18,13 +18,13 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { DateTime, EpochMillis, TimeSpan, TimeSpanMillis } from '@_types/Time'
+import { DateTime, EpochMillis, Duration, DurationMillis } from '@_types/Time'
 
 export class PendingTask {
   executing: boolean
   insert_order: integer
   priority: string
   source: string
-  time_in_queue?: TimeSpan
-  time_in_queue_millis: TimeSpanMillis
+  time_in_queue?: Duration
+  time_in_queue_millis: DurationMillis
 }

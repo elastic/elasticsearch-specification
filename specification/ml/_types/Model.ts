@@ -19,7 +19,7 @@
 
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { TimeSpan, DateTime } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
 
 export class ModelSnapshot {

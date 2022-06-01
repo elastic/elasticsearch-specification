@@ -29,7 +29,7 @@ import { Field, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class Destination {
   /**
@@ -92,7 +92,7 @@ export class RetentionPolicy {
    * Specifies the maximum age of a document in the destination index. Documents that are older than the configured
    * value are removed from the destination index.
    */
-  max_age: TimeSpan
+  max_age: Duration
 }
 
 /**
@@ -167,7 +167,7 @@ export class TimeSync {
    * The time delay between the current time and the latest input data time.
    * @server_default 60s
    */
-  delay?: TimeSpan
+  delay?: Duration
   /**
    * The date field that is used to identify new documents in the source. In general, it’s a good idea to use a field
    * that contains the ingest timestamp. If you use a different field, you might need to set the delay such that it

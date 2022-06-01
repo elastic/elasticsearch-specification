@@ -24,7 +24,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.put_component_template
@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
     /** @server_default false */
     create?: boolean
     /** @server_default 30s */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
   }
   body: {
     template: IndexState

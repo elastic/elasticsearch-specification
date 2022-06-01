@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.get_component_template
@@ -37,6 +37,6 @@ export interface Request extends RequestBase {
     /** @server_default false */
     local?: boolean
     /** @server_default 30s */
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
   }
 }

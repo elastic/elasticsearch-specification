@@ -31,7 +31,7 @@ import {
 import { Host } from '@_types/Networking'
 import { uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class ChainInput {
   inputs: InputContainer[]
@@ -74,7 +74,7 @@ export class HttpInputProxy {
 export class HttpInputRequestDefinition {
   auth?: HttpInputAuthentication
   body?: string
-  connection_timeout?: TimeSpan
+  connection_timeout?: Duration
   headers?: Dictionary<string, string>
   host?: Host
   method?: HttpInputMethod
@@ -82,7 +82,7 @@ export class HttpInputRequestDefinition {
   path?: string
   port?: uint
   proxy?: HttpInputProxy
-  read_timeout?: TimeSpan
+  read_timeout?: Duration
   scheme?: ConnectionScheme
   url?: string
 }
@@ -114,7 +114,7 @@ export enum ResponseContentType {
 export class SearchInput {
   extract?: string[]
   request: SearchInputRequestDefinition
-  timeout?: TimeSpan
+  timeout?: Duration
 }
 
 export class SearchInputRequestDefinition {

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.get_settings
@@ -38,6 +38,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     include_defaults?: boolean
     local?: boolean
-    master_timeout?: TimeSpan
+    master_timeout?: Duration
   }
 }

@@ -23,8 +23,8 @@ import { double, long } from '@_types/Numeric'
 import {
   EpochMillis,
   DateTime,
-  TimeSpanFloatMillis,
-  TimeSpanMillis
+  DurationFloatMillis,
+  DurationMillis
 } from '@_types/Time'
 
 export class TransformStats {
@@ -49,17 +49,17 @@ export class TransformIndexerStats {
   documents_indexed: long
   documents_deleted?: long
   documents_processed: long
-  exponential_avg_checkpoint_duration_ms: TimeSpanFloatMillis
+  exponential_avg_checkpoint_duration_ms: DurationFloatMillis
   exponential_avg_documents_indexed: double
   exponential_avg_documents_processed: double
   index_failures: long
-  index_time_in_ms: TimeSpanMillis
+  index_time_in_ms: DurationMillis
   index_total: long
   pages_processed: long
-  processing_time_in_ms: TimeSpanMillis
+  processing_time_in_ms: DurationMillis
   processing_total: long
   search_failures: long
-  search_time_in_ms: TimeSpanMillis
+  search_time_in_ms: DurationMillis
   search_total: long
   trigger_count: long
 }

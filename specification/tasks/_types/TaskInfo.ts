@@ -24,9 +24,9 @@ import { ErrorCause } from '@_types/Errors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import {
   EpochMillis,
-  TimeSpan,
-  TimeSpanMillis,
-  TimeSpanNanos
+  Duration,
+  DurationMillis,
+  DurationNanos
 } from '@_types/Time'
 
 export class TaskInfo {
@@ -36,8 +36,8 @@ export class TaskInfo {
   headers: Dictionary<string, string>
   id: long
   node: NodeId
-  running_time?: TimeSpan
-  running_time_in_nanos: TimeSpanNanos
+  running_time?: Duration
+  running_time_in_nanos: DurationNanos
   start_time_in_millis: EpochMillis
   status?: TaskStatus
   type: string

@@ -27,7 +27,7 @@ import {
 } from '@_types/common'
 import { Host, TransportAddress, Ip } from '@_types/Networking'
 import { long, Percentage } from '@_types/Numeric'
-import { TimeSpan, EpochMillis, DateTime, TimeSpanMillis } from '@_types/Time'
+import { Duration, EpochMillis, DateTime, DurationMillis } from '@_types/Time'
 
 export class RecoveryBytes {
   percent: Percentage
@@ -59,12 +59,12 @@ export class RecoveryIndexStatus {
   bytes?: RecoveryBytes
   files: RecoveryFiles
   size: RecoveryBytes
-  source_throttle_time?: TimeSpan
-  source_throttle_time_in_millis: TimeSpanMillis
-  target_throttle_time?: TimeSpan
-  target_throttle_time_in_millis: TimeSpanMillis
-  total_time?: TimeSpan
-  total_time_in_millis: TimeSpanMillis
+  source_throttle_time?: Duration
+  source_throttle_time_in_millis: DurationMillis
+  target_throttle_time?: Duration
+  target_throttle_time_in_millis: DurationMillis
+  total_time?: Duration
+  total_time_in_millis: DurationMillis
 }
 
 export class RecoveryOrigin {
@@ -83,10 +83,10 @@ export class RecoveryOrigin {
 }
 
 export class RecoveryStartStatus {
-  check_index_time?: TimeSpan
-  check_index_time_in_millis: TimeSpanMillis
-  total_time?: TimeSpan
-  total_time_in_millis: TimeSpanMillis
+  check_index_time?: Duration
+  check_index_time_in_millis: DurationMillis
+  total_time?: Duration
+  total_time_in_millis: DurationMillis
 }
 
 export class RecoveryStatus {
@@ -98,14 +98,14 @@ export class TranslogStatus {
   recovered: long
   total: long
   total_on_start: long
-  total_time?: TimeSpan
+  total_time?: Duration
   total_time_in_millis: EpochMillis
 }
 
 export class VerifyIndex {
-  check_index_time?: TimeSpan
+  check_index_time?: Duration
   check_index_time_in_millis: long
-  total_time?: TimeSpan
+  total_time?: Duration
   total_time_in_millis: long
 }
 
@@ -121,7 +121,7 @@ export class ShardRecovery {
   stop_time?: DateTime
   stop_time_in_millis: EpochMillis
   target: RecoveryOrigin
-  total_time?: TimeSpan
+  total_time?: Duration
   total_time_in_millis: long
   translog: TranslogStatus
   type: string

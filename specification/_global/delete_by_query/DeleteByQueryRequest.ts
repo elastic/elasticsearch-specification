@@ -30,7 +30,7 @@ import {
 import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
@@ -60,15 +60,15 @@ export interface Request extends RequestBase {
     requests_per_second?: float
     routing?: Routing
     q?: string
-    scroll?: TimeSpan
+    scroll?: Duration
     scroll_size?: long
-    search_timeout?: TimeSpan
+    search_timeout?: Duration
     search_type?: SearchType
     slices?: Slices
     sort?: string[]
     stats?: string[]
     terminate_after?: long
-    timeout?: TimeSpan
+    timeout?: Duration
     version?: boolean
     wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean

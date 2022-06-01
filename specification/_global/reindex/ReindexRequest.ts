@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Conflicts, Slices, WaitForActiveShards } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Destination, Source } from './types'
 
 /**
@@ -33,9 +33,9 @@ export interface Request extends RequestBase {
   query_parameters: {
     refresh?: boolean
     requests_per_second?: float
-    scroll?: TimeSpan
+    scroll?: Duration
     slices?: Slices
-    timeout?: TimeSpan
+    timeout?: Duration
     wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean
     require_alias?: boolean

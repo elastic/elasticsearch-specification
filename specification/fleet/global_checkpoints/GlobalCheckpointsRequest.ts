@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { IndexName, IndexAlias } from '@_types/common'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
@@ -58,6 +58,6 @@ export interface Request extends RequestBase {
      * Period to wait for a global checkpoints to advance past `checkpoints`.
      * @server_default 30s
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

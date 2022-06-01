@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Indices, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { ExploreControls } from '../_types/ExploreControls'
 import { Hop } from '../_types/Hop'
 import { VertexDefinition } from '@graph/_types/Vertex'
@@ -36,7 +36,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     routing?: Routing
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   body: {
     connections?: Hop

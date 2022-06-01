@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 

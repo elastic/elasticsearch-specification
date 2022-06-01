@@ -31,7 +31,7 @@ import {
   VersionString
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { DateTime, EpochMillis, TimeSpan } from '@_types/Time'
+import { DateTime, EpochMillis, Duration } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
 import {
@@ -61,7 +61,7 @@ export class SoftDeletes {
 }
 
 export class RetentionLease {
-  period: TimeSpan
+  period: Duration
 }
 
 /**
@@ -93,7 +93,7 @@ export class IndexSettings {
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
-  refresh_interval?: TimeSpan
+  refresh_interval?: Duration
   /** @server_default 10000 */
   max_result_window?: integer
   /** @server_default 100 */
@@ -121,7 +121,7 @@ export class IndexSettings {
   max_regex_length?: integer
   routing?: IndexRouting
   /** @server_default 60s */
-  gc_deletes?: TimeSpan
+  gc_deletes?: Duration
   /** @server_default _none */
   default_pipeline?: PipelineName
   /** @server_default _none */
@@ -231,7 +231,7 @@ export class SettingsSearch {
 
 export class SearchIdle {
   /** @server_default 30s */
-  after?: TimeSpan
+  after?: Duration
 }
 
 export class SettingsQueryString {
@@ -300,7 +300,7 @@ export class IndexSettingsLifecycleStep {
    * Time to wait for the cluster to resolve allocation issues during an ILM shrink action. Must be greater than 1h (1 hour).
    * See Shard allocation for shrink.
    */
-  wait_time_threshold?: TimeSpan
+  wait_time_threshold?: Duration
 }
 
 export class IndexSettingsAnalysis {
@@ -331,7 +331,7 @@ export class Translog {
    * Values less than 100ms are not allowed.
    * @server_default 5s
    */
-  sync_interval?: TimeSpan
+  sync_interval?: Duration
   /**
    * Whether or not to `fsync` and commit the translog after every index, delete, update, or bulk request.
    * @server_default string
@@ -384,7 +384,7 @@ export class TranslogRetention {
    * indices created in Elasticsearch versions 7.0.0 and later.
    * @server_default 12h
    */
-  age?: TimeSpan
+  age?: Duration
 }
 
 export class Queries {
@@ -483,10 +483,10 @@ export class SlowlogTresholds {
 }
 
 export class SlowlogTresholdLevels {
-  warn?: TimeSpan
-  info?: TimeSpan
-  debug?: TimeSpan
-  trace?: TimeSpan
+  warn?: Duration
+  info?: Duration
+  debug?: Duration
+  trace?: Duration
 }
 
 export class Storage {

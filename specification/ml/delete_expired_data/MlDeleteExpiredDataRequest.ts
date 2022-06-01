@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { float } from '@_types/Numeric'
-import { TimeSpan } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Deletes expired and unused machine learning data.
@@ -55,7 +55,7 @@ export interface Request extends RequestBase {
      * How long can the underlying delete processes run until they are canceled.
      * @server_default 8h
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
   body: {
     /**
@@ -67,6 +67,6 @@ export interface Request extends RequestBase {
      * How long can the underlying delete processes run until they are canceled.
      * @server_default 8h
      */
-    timeout?: TimeSpan
+    timeout?: Duration
   }
 }

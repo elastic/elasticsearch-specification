@@ -18,7 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { DateTime, TimeSpan } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 // TODO remove
 // export class Schedule {}
@@ -89,7 +89,7 @@ export class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: TimeSpan
+  interval?: Duration
   monthly?: TimeOfMonth | TimeOfMonth[]
   weekly?: TimeOfWeek | TimeOfWeek[]
   yearly?: TimeOfYear | TimeOfYear[]

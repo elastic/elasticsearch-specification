@@ -19,7 +19,7 @@
 
 import { IndexName } from '@_types/common'
 import { long, Percentage } from '@_types/Numeric'
-import { DateTime, EpochMillis, TimeSpan } from '@_types/Time'
+import { DateTime, EpochMillis, Duration } from '@_types/Time'
 
 export class RecoveryRecord {
   /**
@@ -56,7 +56,7 @@ export class RecoveryRecord {
    * recovery time
    * @aliases t,ti
    */
-  'time'?: TimeSpan
+  'time'?: Duration
   /**
    * recovery type
    * @aliases ty

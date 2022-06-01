@@ -22,12 +22,12 @@ import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
 import { Name, VersionNumber } from '@_types/common'
-import { DateTime, EpochMillis, TimeSpanMillis } from '@_types/Time'
+import { DateTime, EpochMillis, DurationMillis } from '@_types/Time'
 
 export class AutoFollowedCluster {
   cluster_name: Name
   last_seen_metadata_version: VersionNumber
-  time_since_last_check_millis: TimeSpanMillis
+  time_since_last_check_millis: DurationMillis
 }
 
 export class AutoFollowStats {

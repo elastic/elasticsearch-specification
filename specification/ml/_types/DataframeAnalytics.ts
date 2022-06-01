@@ -32,7 +32,7 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { EpochMillis, TimeSpan, TimeSpanMillis } from '@_types/Time'
+import { EpochMillis, Duration, DurationMillis } from '@_types/Time'
 import { DataframeState } from './Dataframe'
 
 export class DataframeAnalyticsSource {
@@ -415,9 +415,9 @@ export class OutlierDetectionParameters {
 
 export class TimingStats {
   /** Runtime of the analysis in milliseconds. */
-  elapsed_time: TimeSpanMillis
+  elapsed_time: DurationMillis
   /** Runtime of the latest iteration of the analysis in milliseconds. */
-  iteration_time?: TimeSpanMillis
+  iteration_time?: DurationMillis
 }
 
 export class ValidationLoss {
