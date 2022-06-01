@@ -11912,6 +11912,14 @@ export interface MlModelSnapshot {
   timestamp: long
 }
 
+export interface MlModelSnapshotUpgrade {
+  job_id: Id
+  snapshot_id: Id
+  state: MlSnapshotUpgradeState
+  node: MlDiscoveryNode
+  assignment_explanation: string
+}
+
 export interface MlOutlierDetectionParameters {
   compute_feature_influence?: boolean
   feature_influence_threshold?: double
@@ -11952,6 +11960,8 @@ export interface MlRuleCondition {
   operator: MlConditionOperator
   value: double
 }
+
+export type MlSnapshotUpgradeState = 'loading_old_state' | 'saving_new_state' | 'stopped' | 'failed'
 
 export interface MlTimingStats {
   elapsed_time: integer
@@ -12478,6 +12488,17 @@ export interface MlGetJobsRequest extends RequestBase {
 export interface MlGetJobsResponse {
   count: long
   jobs: MlJob[]
+}
+
+export interface MlGetModelSnapshotUpgradeStatsRequest extends RequestBase {
+  job_id: Id
+  snapshot_id?: Id
+  allow_no_match?: boolean
+}
+
+export interface MlGetModelSnapshotUpgradeStatsResponse {
+  count: long
+  model_snapshot_upgrades: MlModelSnapshotUpgrade[]
 }
 
 export interface MlGetModelSnapshotsRequest extends RequestBase {
