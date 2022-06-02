@@ -27,16 +27,22 @@ import {
   VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { EpochMillis, Duration, DurationMillis, DateTime } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  UnitMillis,
+  EpochTime,
+  DurationValue
+} from '@_types/Time'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress
   last_failure?: Invocation
   last_success?: Invocation
   modified_date?: DateTime
-  modified_date_millis: EpochMillis
+  modified_date_millis: EpochTime<UnitMillis>
   next_execution?: DateTime
-  next_execution_millis: EpochMillis
+  next_execution_millis: EpochTime<UnitMillis>
   policy: Policy
   version: VersionNumber
   stats: Statistics
@@ -44,7 +50,7 @@ export class SnapshotLifecycle {
 
 export class Statistics {
   retention_deletion_time?: Duration
-  retention_deletion_time_millis?: DurationMillis
+  retention_deletion_time_millis?: DurationValue<UnitMillis>
   retention_failed?: long
   retention_runs?: long
   retention_timed_out?: long
@@ -124,7 +130,7 @@ export class Configuration {
 
 export class InProgress {
   name: Name
-  start_time_millis: EpochMillis
+  start_time_millis: EpochTime<UnitMillis>
   state: string
   uuid: Uuid
 }

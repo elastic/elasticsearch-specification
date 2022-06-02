@@ -26,7 +26,7 @@ import {
   SyncContainer
 } from '@transform/_types/Transform'
 import { Id, Metadata, VersionString } from '@_types/common'
-import { EpochMillis, Duration } from '@_types/Time'
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class TransformSummary {
   /** The destination for the transform. */
@@ -43,7 +43,7 @@ export class TransformSummary {
   source: Source
   /**  Defines the properties transforms require to run continuously. */
   sync?: SyncContainer
-  create_time?: EpochMillis
+  create_time?: EpochTime<UnitMillis>
   version?: VersionString
   latest?: Latest
   _meta?: Metadata

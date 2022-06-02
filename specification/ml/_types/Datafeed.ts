@@ -26,9 +26,10 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import {
   Duration,
-  DurationMillis,
   DateTime,
-  DurationFloatMillis
+  DurationValue,
+  UnitMillis,
+  UnitFloatMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 
@@ -145,8 +146,8 @@ export class DatafeedTimingStats {
   exponential_average_search_time_per_hour_ms: double
   job_id: Id
   search_count: long
-  total_search_time_ms: DurationFloatMillis
-  average_search_time_per_bucket_ms?: DurationFloatMillis
+  total_search_time_ms: DurationValue<UnitFloatMillis>
+  average_search_time_per_bucket_ms?: DurationValue<UnitFloatMillis>
 }
 
 export class DatafeedRunningState {
@@ -157,9 +158,9 @@ export class DatafeedRunningState {
 
 export class RunningStateSearchInterval {
   end?: Duration
-  end_ms: DurationMillis
+  end_ms: DurationValue<UnitMillis>
   start?: Duration
-  start_ms: DurationMillis
+  start_ms: DurationValue<UnitMillis>
 }
 
 export enum ChunkingMode {

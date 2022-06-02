@@ -37,6 +37,7 @@
         "Request: should not have a body"
       ],
       "response": [
+        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types:Unit'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
         "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations:TBucket'",
@@ -465,7 +466,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types:Unit'"
+      ]
     },
     "ccr.get_auto_follow_pattern": {
       "request": [

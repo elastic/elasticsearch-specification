@@ -19,7 +19,7 @@
 
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { EpochMillis, Duration } from '@_types/Time'
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RolloverConditions {
   max_age?: Duration
@@ -28,5 +28,5 @@ export class RolloverConditions {
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
   max_primary_shard_size_bytes?: ByteSize
-  max_age_millis?: EpochMillis
+  max_age_millis?: EpochTime<UnitMillis>
 }

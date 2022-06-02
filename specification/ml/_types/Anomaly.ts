@@ -19,11 +19,11 @@
 
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { EpochMillis, Duration, DurationSeconds } from '@_types/Time'
+import { DurationValue, EpochTime, UnitMillis, UnitSeconds } from '@_types/Time'
 
 export class Anomaly {
   actual?: double[]
-  bucket_span: DurationSeconds
+  bucket_span: DurationValue<UnitSeconds>
   by_field_name?: string
   by_field_value?: string
   causes?: AnomalyCause[]
@@ -42,7 +42,7 @@ export class Anomaly {
   probability: double
   record_score: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   typical?: double[]
 }
 

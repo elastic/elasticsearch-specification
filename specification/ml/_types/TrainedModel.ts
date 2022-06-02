@@ -29,10 +29,12 @@ import {
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
-  EpochMillis,
   Duration,
   DateTime,
-  DurationFloatMillis
+  DurationValue,
+  UnitFloatMillis,
+  UnitMillis,
+  EpochTime
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
@@ -84,7 +86,7 @@ export class TrainedModelDeploymentStats {
    */
   reason: string
   /** The epoch timestamp when the deployment started. */
-  start_time: EpochMillis
+  start_time: EpochTime<UnitMillis>
   /** The overall state of the deployment. */
   state: DeploymentState
   /** The number of threads used be each allocation during inference. */
@@ -124,7 +126,7 @@ export class TrainedModelSizeStats {
 
 export class TrainedModelDeploymentNodesStats {
   /** The average time for each inference call to complete on this node. */
-  average_inference_time_ms: DurationFloatMillis
+  average_inference_time_ms: DurationValue<UnitFloatMillis>
   /** The number of errors when evaluating the trained model. */
   error_count: integer
   /** The total number of inference calls made against this node for this model. */
@@ -144,7 +146,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAllocationRoutingTable
   /** The epoch timestamp when the allocation started. */
-  start_time: EpochMillis
+  start_time: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
   threads_per_allocation: integer
   /** The number of inference requests that timed out before being processed. */

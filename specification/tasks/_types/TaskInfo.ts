@@ -23,10 +23,11 @@ import { integer, long } from '@_types/Numeric'
 import { ErrorCause } from '@_types/Errors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import {
-  EpochMillis,
   Duration,
-  DurationMillis,
-  DurationNanos
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
 } from '@_types/Time'
 
 export class TaskInfo {
@@ -37,8 +38,8 @@ export class TaskInfo {
   id: long
   node: NodeId
   running_time?: Duration
-  running_time_in_nanos: DurationNanos
-  start_time_in_millis: EpochMillis
+  running_time_in_nanos: DurationValue<UnitNanos>
+  start_time_in_millis: EpochTime<UnitMillis>
   status?: TaskStatus
   type: string
   parent_task_id?: TaskId

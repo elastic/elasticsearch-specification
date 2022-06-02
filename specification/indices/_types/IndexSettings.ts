@@ -31,7 +31,7 @@ import {
   VersionString
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { DateTime, EpochMillis, Duration } from '@_types/Time'
+import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
 import {
@@ -128,7 +128,7 @@ export class IndexSettings {
   final_pipeline?: PipelineName
   lifecycle?: IndexSettingsLifecycle
   provided_name?: Name
-  creation_date?: Stringified<EpochMillis>
+  creation_date?: Stringified<EpochTime<UnitMillis>>
   creation_date_string?: DateTime
   uuid?: Uuid
   version?: IndexVersioning

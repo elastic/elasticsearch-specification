@@ -19,7 +19,7 @@
 
 import { Policy } from '@ilm/_types/Policy'
 import { VersionNumber } from '@_types/common'
-import { DateTime, EpochMillis } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class Lifecycle {
   modified_date: DateTime

@@ -25,11 +25,16 @@ import { double, long } from './Numeric'
  */
 export type DateTime = string | long
 
-/** Milliseconds since the Epoch */
-export type EpochMillis = long
+/** Time unit for seconds */
+export type UnitSeconds = long
+/** Time unit for milliseconds */
+export type UnitMillis = long
+/** Time unit for nanoseconds */
+export type UnitNanos = long
+/** Time unit for fractional milliseconds */
+export type UnitFloatMillis = double
 
-/** Seconds since the Epoch */
-export type EpochSeconds = long
+export type EpochTime<Unit> = Unit
 
 export type DateMath = string
 
@@ -56,17 +61,7 @@ export type Duration = string | -1 | 0
 // Used to be DateMathTime, see ES DateHistogramInterval
 export type DurationLarge = string
 
-/** A duration expressed in seconds */
-export type DurationSeconds = long
-
-/** A duration expressed in milliseconds */
-export type DurationMillis = long
-
-/** A duration expressed in fractional milliseconds */
-export type DurationFloatMillis = double
-
-/** A duration expressed in nanoseconds */
-export type DurationNanos = long
+export type DurationValue<Unit> = Unit
 
 export enum TimeUnit {
   /** @codegen_name nanoseconds */

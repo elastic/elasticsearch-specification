@@ -19,7 +19,7 @@
 
 import { Id, Name, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class RepositoryMeteringInformation {
   /**
@@ -41,11 +41,11 @@ export class RepositoryMeteringInformation {
   /**
    * Time the repository was created or updated. Recorded in milliseconds since the Unix Epoch.
    */
-  repository_started_at: EpochMillis
+  repository_started_at: EpochTime<UnitMillis>
   /**
    * Time the repository was deleted or updated. Recorded in milliseconds since the Unix Epoch.
    */
-  repository_stopped_at?: EpochMillis
+  repository_stopped_at?: EpochTime<UnitMillis>
   /**
    * A flag that tells whether or not this object has been archived. When a repository is closed or updated the
    * repository metering information is archived and kept for a certain period of time. This allows retrieving the

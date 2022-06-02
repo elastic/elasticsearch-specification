@@ -29,7 +29,7 @@ import {
   StoreStats,
   PluginStats
 } from '@_types/Stats'
-import { Duration, DurationMillis } from '@_types/Time'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class ClusterFileSystem {
   available_in_bytes: long
@@ -264,7 +264,7 @@ export class ClusterProcessor {
   current: long
   failed: long
   time?: Duration
-  time_in_millis: DurationMillis
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export class ClusterShardMetrics {

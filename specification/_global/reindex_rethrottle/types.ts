@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Name, TaskId } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
-import { EpochMillis, DurationNanos } from '@_types/Time'
+import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
 
 export class ReindexNode extends BaseNode {
   tasks: Dictionary<TaskId, ReindexTask>
@@ -48,8 +48,8 @@ export class ReindexTask {
   description: string
   id: long
   node: Name
-  running_time_in_nanos: DurationNanos
-  start_time_in_millis: EpochMillis
+  running_time_in_nanos: DurationValue<UnitNanos>
+  start_time_in_millis: EpochTime<UnitMillis>
   status: ReindexStatus
   type: string
   headers: HttpHeaders

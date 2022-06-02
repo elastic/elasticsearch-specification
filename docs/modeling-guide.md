@@ -158,8 +158,8 @@ feel free to add more if it feels appropriate!
 
 Elasticsearch uses a lot of dates, times and durations. There are various types available to capture the variety of types and representations in the specification:
 
-* for date and time: `DateTime` for formatted dates, `EpochMillis`, `EpochSeconds`, etc. for number values
-* for intervals: `Duration` for formatted values, `DurationMillis`, `DurationSeconds`, etc. for number values
+* for date and time: `DateTime` for formatted dates, `EpochTime<UnitMillis>`, `EpochTime<UnitSeconds>`, etc. for number values
+* for intervals: `Duration` for formatted values, `DurationValue<UnitMillis>`, `DurationValue<UnitSeconds>`, etc. for number values
 * for time of day: `TimeOfDay
 
 See [`specification/_types/Time.ts`](../specification/_types/Time.ts) for additional details.

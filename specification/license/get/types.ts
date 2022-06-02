@@ -20,13 +20,13 @@
 import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { Uuid } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateTime, EpochMillis } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 
 export class LicenseInformation {
   expiry_date?: DateTime
-  expiry_date_in_millis?: EpochMillis
+  expiry_date_in_millis?: EpochTime<UnitMillis>
   issue_date: DateTime
-  issue_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochTime<UnitMillis>
   issued_to: string
   issuer: string
   max_nodes: long | null
@@ -34,5 +34,5 @@ export class LicenseInformation {
   status: LicenseStatus
   type: LicenseType
   uid: Uuid
-  start_date_in_millis: EpochMillis
+  start_date_in_millis: EpochTime<UnitMillis>
 }

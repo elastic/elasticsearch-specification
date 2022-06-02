@@ -21,10 +21,11 @@ import { Id } from '@_types/common'
 import { NodeAttributes } from '@_types/Node'
 import { double, long } from '@_types/Numeric'
 import {
-  EpochMillis,
   DateTime,
-  DurationFloatMillis,
-  DurationMillis
+  UnitMillis,
+  DurationValue,
+  UnitFloatMillis,
+  EpochTime
 } from '@_types/Time'
 
 export class TransformStats {
@@ -45,21 +46,21 @@ export class TransformProgress {
 }
 
 export class TransformIndexerStats {
-  delete_time_in_ms?: EpochMillis
+  delete_time_in_ms?: EpochTime<UnitMillis>
   documents_indexed: long
   documents_deleted?: long
   documents_processed: long
-  exponential_avg_checkpoint_duration_ms: DurationFloatMillis
+  exponential_avg_checkpoint_duration_ms: DurationValue<UnitFloatMillis>
   exponential_avg_documents_indexed: double
   exponential_avg_documents_processed: double
   index_failures: long
-  index_time_in_ms: DurationMillis
+  index_time_in_ms: DurationValue<UnitMillis>
   index_total: long
   pages_processed: long
-  processing_time_in_ms: DurationMillis
+  processing_time_in_ms: DurationValue<UnitMillis>
   processing_total: long
   search_failures: long
-  search_time_in_ms: DurationMillis
+  search_time_in_ms: DurationValue<UnitMillis>
   search_total: long
   trigger_count: long
 }
@@ -68,9 +69,9 @@ export class CheckpointStats {
   checkpoint: long
   checkpoint_progress?: TransformProgress
   timestamp?: DateTime
-  timestamp_millis?: EpochMillis
+  timestamp_millis?: EpochTime<UnitMillis>
   time_upper_bound?: DateTime
-  time_upper_bound_millis?: EpochMillis
+  time_upper_bound_millis?: EpochTime<UnitMillis>
 }
 
 export class Checkpointing {

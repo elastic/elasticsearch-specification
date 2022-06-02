@@ -21,12 +21,7 @@ import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
-import {
-  EpochMillis,
-  Duration,
-  DurationMillis,
-  DurationSeconds
-} from '@_types/Time'
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
@@ -39,8 +34,8 @@ export class Response {
     requests_per_second?: float
     slice_id?: integer
     task?: TaskId
-    throttled_millis?: EpochMillis
-    throttled_until_millis?: EpochMillis
+    throttled_millis?: EpochTime<UnitMillis>
+    throttled_until_millis?: EpochTime<UnitMillis>
     timed_out?: boolean
     took?: long
     total?: long

@@ -868,8 +868,8 @@ export interface ReindexResponse {
   requests_per_second?: float
   slice_id?: integer
   task?: TaskId
-  throttled_millis?: EpochMillis
-  throttled_until_millis?: EpochMillis
+  throttled_millis?: EpochTime<UnitMillis>
+  throttled_until_millis?: EpochTime<UnitMillis>
   timed_out?: boolean
   took?: long
   total?: long
@@ -912,8 +912,8 @@ export interface ReindexRethrottleReindexTask {
   description: string
   id: long
   node: Name
-  running_time_in_nanos: DurationNanos
-  start_time_in_millis: EpochMillis
+  running_time_in_nanos: DurationValue<UnitNanos>
+  start_time_in_millis: EpochTime<UnitMillis>
   status: ReindexRethrottleReindexStatus
   type: string
   headers: HttpHeaders
@@ -1846,11 +1846,11 @@ export interface BulkIndexByScrollFailure {
 export interface BulkStats {
   total_operations: long
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
   total_size?: ByteSize
   total_size_in_bytes: long
   avg_time?: Duration
-  avg_time_in_millis: DurationMillis
+  avg_time_in_millis: DurationValue<UnitMillis>
   avg_size?: ByteSize
   avg_size_in_bytes: long
 }
@@ -1909,15 +1909,9 @@ export interface DocStats {
 
 export type Duration = string | -1 | 0
 
-export type DurationFloatMillis = double
-
 export type DurationLarge = string
 
-export type DurationMillis = long
-
-export type DurationNanos = long
-
-export type DurationSeconds = long
+export type DurationValue<Unit = unknown> = Unit
 
 export interface ElasticsearchVersionInfo {
   build_date: DateTime
@@ -1935,9 +1929,7 @@ export interface EmptyObject {
   [key: string]: never
 }
 
-export type EpochMillis = long
-
-export type EpochSeconds = long
+export type EpochTime<Unit = unknown> = Unit
 
 export interface ErrorCauseKeys {
   type: string
@@ -1998,7 +1990,7 @@ export interface FlushStats {
   periodic: long
   total: long
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export type Fuzziness = string | integer
@@ -2043,13 +2035,13 @@ export type GeoTilePrecision = number
 export interface GetStats {
   current: long
   exists_time?: Duration
-  exists_time_in_millis: DurationMillis
+  exists_time_in_millis: DurationValue<UnitMillis>
   exists_total: long
   missing_time?: Duration
-  missing_time_in_millis: DurationMillis
+  missing_time_in_millis: DurationValue<UnitMillis>
   missing_total: long
   time?: Duration
-  time_in_millis: DurationMillis
+  time_in_millis: DurationValue<UnitMillis>
   total: long
 }
 
@@ -2079,14 +2071,14 @@ export interface IndexingStats {
   index_current: long
   delete_current: long
   delete_time?: Duration
-  delete_time_in_millis: DurationMillis
+  delete_time_in_millis: DurationValue<UnitMillis>
   delete_total: long
   is_throttled: boolean
   noop_update_total: long
   throttle_time?: Duration
-  throttle_time_in_millis: DurationMillis
+  throttle_time_in_millis: DurationValue<UnitMillis>
   index_time?: Duration
-  index_time_in_millis: DurationMillis
+  index_time_in_millis: DurationValue<UnitMillis>
   index_total: long
   index_failed: long
   types?: Record<string, IndexingStats>
@@ -2147,11 +2139,11 @@ export interface MergesStats {
   total_size?: string
   total_size_in_bytes: long
   total_stopped_time?: Duration
-  total_stopped_time_in_millis: DurationMillis
+  total_stopped_time_in_millis: DurationValue<UnitMillis>
   total_throttled_time?: Duration
-  total_throttled_time_in_millis: DurationMillis
+  total_throttled_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export type Metadata = Record<string, any>
@@ -2253,18 +2245,18 @@ export interface RecoveryStats {
   current_as_source: long
   current_as_target: long
   throttle_time?: Duration
-  throttle_time_in_millis: DurationMillis
+  throttle_time_in_millis: DurationValue<UnitMillis>
 }
 
 export type Refresh = boolean | 'true' | 'false' | 'wait_for'
 
 export interface RefreshStats {
   external_total: long
-  external_total_time_in_millis: DurationMillis
+  external_total_time_in_millis: DurationValue<UnitMillis>
   listeners: long
   total: long
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export type RelationName = string
@@ -2330,20 +2322,20 @@ export type ScrollIds = ScrollId | ScrollId[]
 export interface SearchStats {
   fetch_current: long
   fetch_time?: Duration
-  fetch_time_in_millis: DurationMillis
+  fetch_time_in_millis: DurationValue<UnitMillis>
   fetch_total: long
   open_contexts?: long
   query_current: long
   query_time?: Duration
-  query_time_in_millis: DurationMillis
+  query_time_in_millis: DurationValue<UnitMillis>
   query_total: long
   scroll_current: long
   scroll_time?: Duration
-  scroll_time_in_millis: DurationMillis
+  scroll_time_in_millis: DurationValue<UnitMillis>
   scroll_total: long
   suggest_current: long
   suggest_time?: Duration
-  suggest_time_in_millis: DurationMillis
+  suggest_time_in_millis: DurationValue<UnitMillis>
   suggest_total: long
   groups?: Record<string, SearchStats>
 }
@@ -2503,6 +2495,14 @@ export interface TranslogStats {
 
 export type TransportAddress = string
 
+export type UnitFloatMillis = double
+
+export type UnitMillis = long
+
+export type UnitNanos = long
+
+export type UnitSeconds = long
+
 export type Username = string
 
 export type Uuid = string
@@ -2523,7 +2523,7 @@ export interface WarmerStats {
   current: long
   total: long
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface WktGeoBounds {
@@ -2875,10 +2875,10 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
 
 export interface AggregationsDateHistogramBucketKeys extends AggregationsMultiBucketBase {
   key_as_string?: string
-  key: EpochMillis
+  key: EpochTime<UnitMillis>
 }
 export type AggregationsDateHistogramBucket = AggregationsDateHistogramBucketKeys
-  & { [property: string]: AggregationsAggregate | string | EpochMillis | long }
+  & { [property: string]: AggregationsAggregate | string | EpochTime<UnitMillis> | long }
 
 export interface AggregationsDateRangeAggregate extends AggregationsRangeAggregate {
 }
@@ -5735,9 +5735,9 @@ export interface AsyncSearchAsyncSearchResponseBase {
   is_partial: boolean
   is_running: boolean
   expiration_time?: DateTime
-  expiration_time_in_millis: EpochMillis
+  expiration_time_in_millis: EpochTime<UnitMillis>
   start_time?: DateTime
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
 }
 
 export interface AsyncSearchDeleteRequest extends RequestBase {
@@ -6008,9 +6008,9 @@ export interface CatComponentTemplatesRequest extends CatCatRequestBase {
 export type CatComponentTemplatesResponse = CatComponentTemplatesComponentTemplate[]
 
 export interface CatCountCountRecord {
-  epoch?: SpecUtilsStringified<EpochSeconds>
-  t?: SpecUtilsStringified<EpochSeconds>
-  time?: SpecUtilsStringified<EpochSeconds>
+  epoch?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  t?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  time?: SpecUtilsStringified<EpochTime<UnitSeconds>>
   timestamp?: TimeOfDay
   ts?: TimeOfDay
   hms?: TimeOfDay
@@ -6047,8 +6047,8 @@ export interface CatFielddataRequest extends CatCatRequestBase {
 export type CatFielddataResponse = CatFielddataFielddataRecord[]
 
 export interface CatHealthHealthRecord {
-  epoch?: SpecUtilsStringified<EpochSeconds>
-  time?: SpecUtilsStringified<EpochSeconds>
+  epoch?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  time?: SpecUtilsStringified<EpochTime<UnitSeconds>>
   timestamp?: TimeOfDay
   ts?: TimeOfDay
   hms?: TimeOfDay
@@ -7113,12 +7113,12 @@ export interface CatRecoveryRecoveryRecord {
   sh?: string
   start_time?: DateTime
   start?: DateTime
-  start_time_millis?: EpochMillis
-  start_millis?: EpochMillis
+  start_time_millis?: EpochTime<UnitMillis>
+  start_millis?: EpochTime<UnitMillis>
   stop_time?: DateTime
   stop?: DateTime
-  stop_time_millis?: EpochMillis
-  stop_millis?: EpochMillis
+  stop_time_millis?: EpochTime<UnitMillis>
+  stop_millis?: EpochTime<UnitMillis>
   time?: Duration
   t?: Duration
   ti?: Duration
@@ -7468,15 +7468,15 @@ export interface CatSnapshotsSnapshotsRecord {
   repo?: string
   status?: string
   s?: string
-  start_epoch?: SpecUtilsStringified<EpochSeconds>
-  ste?: SpecUtilsStringified<EpochSeconds>
-  startEpoch?: SpecUtilsStringified<EpochSeconds>
+  start_epoch?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  ste?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  startEpoch?: SpecUtilsStringified<EpochTime<UnitSeconds>>
   start_time?: WatcherScheduleTimeOfDay
   sti?: WatcherScheduleTimeOfDay
   startTime?: WatcherScheduleTimeOfDay
-  end_epoch?: SpecUtilsStringified<EpochSeconds>
-  ete?: SpecUtilsStringified<EpochSeconds>
-  endEpoch?: SpecUtilsStringified<EpochSeconds>
+  end_epoch?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  ete?: SpecUtilsStringified<EpochTime<UnitSeconds>>
+  endEpoch?: SpecUtilsStringified<EpochTime<UnitSeconds>>
   end_time?: TimeOfDay
   eti?: TimeOfDay
   endTime?: TimeOfDay
@@ -7731,13 +7731,13 @@ export interface CcrShardStats {
   successful_read_requests: long
   successful_write_requests: long
   time_since_last_read?: Duration
-  time_since_last_read_millis: DurationMillis
+  time_since_last_read_millis: DurationValue<UnitMillis>
   total_read_remote_exec_time?: Duration
-  total_read_remote_exec_time_millis: DurationMillis
+  total_read_remote_exec_time_millis: DurationValue<UnitMillis>
   total_read_time?: Duration
-  total_read_time_millis: DurationMillis
+  total_read_time_millis: DurationValue<UnitMillis>
   total_write_time?: Duration
-  total_write_time_millis: DurationMillis
+  total_write_time_millis: DurationValue<UnitMillis>
   write_buffer_operation_count: long
   write_buffer_size_in_bytes: ByteSize
 }
@@ -7918,7 +7918,7 @@ export interface CcrStatsAutoFollowStats {
 export interface CcrStatsAutoFollowedCluster {
   cluster_name: Name
   last_seen_metadata_version: VersionNumber
-  time_since_last_check_millis: DurationMillis
+  time_since_last_check_millis: DurationValue<UnitMillis>
 }
 
 export interface CcrStatsFollowStats {
@@ -8165,7 +8165,7 @@ export interface ClusterHealthResponse {
   relocating_shards: integer
   status: HealthStatus
   task_max_waiting_in_queue?: Duration
-  task_max_waiting_in_queue_millis: DurationMillis
+  task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
   timed_out: boolean
   unassigned_shards: integer
 }
@@ -8185,7 +8185,7 @@ export interface ClusterPendingTasksPendingTask {
   priority: string
   source: string
   time_in_queue?: Duration
-  time_in_queue_millis: DurationMillis
+  time_in_queue_millis: DurationValue<UnitMillis>
 }
 
 export interface ClusterPendingTasksRequest extends RequestBase {
@@ -8506,7 +8506,7 @@ export interface ClusterStatsClusterProcessor {
   current: long
   failed: long
   time?: Duration
-  time_in_millis: DurationMillis
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface ClusterStatsClusterShardMetrics {
@@ -8625,7 +8625,7 @@ export type DanglingIndicesImportDanglingIndexResponse = AcknowledgedResponseBas
 export interface DanglingIndicesListDanglingIndicesDanglingIndex {
   index_name: string
   index_uuid: string
-  creation_date_millis: EpochMillis
+  creation_date_millis: EpochTime<UnitMillis>
   node_ids: Ids
 }
 
@@ -8774,8 +8774,8 @@ export interface EqlGetStatusResponse {
   id: Id
   is_partial: boolean
   is_running: boolean
-  start_time_in_millis?: EpochMillis
-  expiration_time_in_millis?: EpochMillis
+  start_time_in_millis?: EpochTime<UnitMillis>
+  expiration_time_in_millis?: EpochTime<UnitMillis>
   completion_status?: integer
 }
 
@@ -9076,25 +9076,25 @@ export type IlmExplainLifecycleLifecycleExplain = IlmExplainLifecycleLifecycleEx
 export interface IlmExplainLifecycleLifecycleExplainManaged {
   action?: Name
   action_time?: DateTime
-  action_time_millis?: EpochMillis
+  action_time_millis?: EpochTime<UnitMillis>
   age?: Duration
   failed_step?: Name
   failed_step_retry_count?: integer
   index?: IndexName
   index_creation_date?: DateTime
-  index_creation_date_millis?: EpochMillis
+  index_creation_date_millis?: EpochTime<UnitMillis>
   is_auto_retryable_error?: boolean
   lifecycle_date?: DateTime
-  lifecycle_date_millis?: EpochMillis
+  lifecycle_date_millis?: EpochTime<UnitMillis>
   managed: true
   phase: Name
   phase_time?: DateTime
-  phase_time_millis?: EpochMillis
+  phase_time_millis?: EpochTime<UnitMillis>
   policy: Name
   step?: Name
   step_info?: Record<string, any>
   step_time?: DateTime
-  step_time_millis?: EpochMillis
+  step_time_millis?: EpochTime<UnitMillis>
   phase_execution?: IlmExplainLifecycleLifecycleExplainPhaseExecution
   time_since_index_creation?: Duration
 }
@@ -9102,7 +9102,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
   policy: Name
   version: VersionNumber
-  modified_date_in_millis: EpochMillis
+  modified_date_in_millis: EpochTime<UnitMillis>
 }
 
 export interface IlmExplainLifecycleLifecycleExplainUnmanaged {
@@ -9360,7 +9360,7 @@ export interface IndicesIndexSettings {
   final_pipeline?: PipelineName
   lifecycle?: IndicesIndexSettingsLifecycle
   provided_name?: Name
-  creation_date?: SpecUtilsStringified<EpochMillis>
+  creation_date?: SpecUtilsStringified<EpochTime<UnitMillis>>
   creation_date_string?: DateTime
   uuid?: Uuid
   version?: IndicesIndexVersioning
@@ -9818,7 +9818,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   data_stream: Name
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: EpochMillis
+  maximum_timestamp: EpochTime<UnitMillis>
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
@@ -9981,7 +9981,7 @@ export interface IndicesFieldUsageStatsUsageStatsShards {
   routing: IndicesStatsShardRouting
   stats: IndicesFieldUsageStatsShardsStats
   tracking_id: string
-  tracking_started_at_millis: EpochMillis
+  tracking_started_at_millis: EpochTime<UnitMillis>
 }
 
 export interface IndicesFlushRequest extends RequestBase {
@@ -10293,11 +10293,11 @@ export interface IndicesRecoveryRecoveryIndexStatus {
   files: IndicesRecoveryRecoveryFiles
   size: IndicesRecoveryRecoveryBytes
   source_throttle_time?: Duration
-  source_throttle_time_in_millis: DurationMillis
+  source_throttle_time_in_millis: DurationValue<UnitMillis>
   target_throttle_time?: Duration
-  target_throttle_time_in_millis: DurationMillis
+  target_throttle_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface IndicesRecoveryRecoveryOrigin {
@@ -10317,9 +10317,9 @@ export interface IndicesRecoveryRecoveryOrigin {
 
 export interface IndicesRecoveryRecoveryStartStatus {
   check_index_time?: Duration
-  check_index_time_in_millis: DurationMillis
+  check_index_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface IndicesRecoveryRecoveryStatus {
@@ -10342,9 +10342,9 @@ export interface IndicesRecoveryShardRecovery {
   stage: string
   start?: IndicesRecoveryRecoveryStartStatus
   start_time?: DateTime
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
   stop_time?: DateTime
-  stop_time_in_millis: EpochMillis
+  stop_time_in_millis: EpochTime<UnitMillis>
   target: IndicesRecoveryRecoveryOrigin
   total_time?: Duration
   total_time_in_millis: long
@@ -10359,7 +10359,7 @@ export interface IndicesRecoveryTranslogStatus {
   total: long
   total_on_start: long
   total_time?: Duration
-  total_time_in_millis: EpochMillis
+  total_time_in_millis: EpochTime<UnitMillis>
 }
 
 export interface IndicesRecoveryVerifyIndex {
@@ -10457,7 +10457,7 @@ export interface IndicesRolloverRolloverConditions {
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
   max_primary_shard_size_bytes?: ByteSize
-  max_age_millis?: EpochMillis
+  max_age_millis?: EpochTime<UnitMillis>
 }
 
 export interface IndicesSegmentsIndexSegment {
@@ -11181,7 +11181,7 @@ export type IngestDeletePipelineResponse = AcknowledgedResponseBase
 export interface IngestGeoIpStatsGeoIpDownloadStatistics {
   successful_downloads: integer
   failed_downloads: integer
-  total_download_time: DurationMillis
+  total_download_time: DurationValue<UnitMillis>
   database_count: integer
   skipped_updates: integer
 }
@@ -11276,9 +11276,9 @@ export interface IngestSimulateResponse {
 }
 
 export interface LicenseLicense {
-  expiry_date_in_millis: EpochMillis
-  issue_date_in_millis: EpochMillis
-  start_date_in_millis?: EpochMillis
+  expiry_date_in_millis: EpochTime<UnitMillis>
+  issue_date_in_millis: EpochTime<UnitMillis>
+  start_date_in_millis?: EpochTime<UnitMillis>
   issued_to: string
   issuer: string
   max_nodes?: long | null
@@ -11299,9 +11299,9 @@ export type LicenseDeleteResponse = AcknowledgedResponseBase
 
 export interface LicenseGetLicenseInformation {
   expiry_date?: DateTime
-  expiry_date_in_millis?: EpochMillis
+  expiry_date_in_millis?: EpochTime<UnitMillis>
   issue_date: DateTime
-  issue_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochTime<UnitMillis>
   issued_to: string
   issuer: string
   max_nodes: long | null
@@ -11309,7 +11309,7 @@ export interface LicenseGetLicenseInformation {
   status: LicenseLicenseStatus
   type: LicenseLicenseType
   uid: Uuid
-  start_date_in_millis: EpochMillis
+  start_date_in_millis: EpochTime<UnitMillis>
 }
 
 export interface LicenseGetRequest extends RequestBase {
@@ -11515,7 +11515,7 @@ export interface MlAnalysisMemoryLimit {
 
 export interface MlAnomaly {
   actual?: double[]
-  bucket_span: DurationSeconds
+  bucket_span: DurationValue<UnitSeconds>
   by_field_name?: string
   by_field_value?: string
   causes?: MlAnomalyCause[]
@@ -11534,7 +11534,7 @@ export interface MlAnomaly {
   probability: double
   record_score: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   typical?: double[]
 }
 
@@ -11559,7 +11559,7 @@ export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface MlBucketInfluencer {
   anomaly_score: double
-  bucket_span: DurationSeconds
+  bucket_span: DurationValue<UnitSeconds>
   influencer_field_name: Field
   initial_anomaly_score: double
   is_interim: boolean
@@ -11567,21 +11567,21 @@ export interface MlBucketInfluencer {
   probability: double
   raw_anomaly_score: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   timestamp_string?: DateTime
 }
 
 export interface MlBucketSummary {
   anomaly_score: double
   bucket_influencers: MlBucketInfluencer[]
-  bucket_span: DurationSeconds
+  bucket_span: DurationValue<UnitSeconds>
   event_count: long
   initial_anomaly_score: double
   is_interim: boolean
   job_id: Id
-  processing_time_ms: DurationMillis
+  processing_time_ms: DurationValue<UnitMillis>
   result_type: string
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   timestamp_string?: DateTime
 }
 
@@ -11728,8 +11728,8 @@ export interface MlDatafeedTimingStats {
   exponential_average_search_time_per_hour_ms: double
   job_id: Id
   search_count: long
-  total_search_time_ms: DurationFloatMillis
-  average_search_time_per_bucket_ms?: DurationFloatMillis
+  total_search_time_ms: DurationValue<UnitFloatMillis>
+  average_search_time_per_bucket_ms?: DurationValue<UnitFloatMillis>
 }
 
 export interface MlDataframeAnalysis {
@@ -11875,7 +11875,7 @@ export interface MlDataframeAnalyticsStatsDataCounts {
 export interface MlDataframeAnalyticsStatsHyperparameters {
   hyperparameters: MlHyperparameters
   iteration: integer
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   timing_stats: MlTimingStats
   validation_loss: MlValidationLoss
 }
@@ -11884,12 +11884,12 @@ export interface MlDataframeAnalyticsStatsMemoryUsage {
   memory_reestimate_bytes?: long
   peak_usage_bytes: long
   status: string
-  timestamp?: EpochMillis
+  timestamp?: EpochTime<UnitMillis>
 }
 
 export interface MlDataframeAnalyticsStatsOutlierDetection {
   parameters: MlOutlierDetectionParameters
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   timing_stats: MlTimingStats
 }
 
@@ -11908,7 +11908,7 @@ export interface MlDataframeAnalyticsSummary {
   max_num_threads?: integer
   analyzed_fields?: MlDataframeAnalysisAnalyzedFields | string[]
   allow_lazy_start?: boolean
-  create_time?: EpochMillis
+  create_time?: EpochTime<UnitMillis>
   version?: VersionString
 }
 
@@ -12119,7 +12119,7 @@ export interface MlInfluence {
 }
 
 export interface MlInfluencer {
-  bucket_span: DurationSeconds
+  bucket_span: DurationValue<UnitSeconds>
   influencer_score: double
   influencer_field_name: Field
   influencer_field_value: string
@@ -12128,7 +12128,7 @@ export interface MlInfluencer {
   job_id: Id
   probability: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   foo?: string
 }
 
@@ -12217,14 +12217,14 @@ export interface MlJobStats {
 }
 
 export interface MlJobTimingStats {
-  average_bucket_processing_time_ms?: DurationFloatMillis
+  average_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
   bucket_count: long
-  exponential_average_bucket_processing_time_ms?: DurationFloatMillis
-  exponential_average_bucket_processing_time_per_hour_ms: DurationFloatMillis
+  exponential_average_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
+  exponential_average_bucket_processing_time_per_hour_ms: DurationValue<UnitFloatMillis>
   job_id: Id
-  total_bucket_processing_time_ms: DurationFloatMillis
-  maximum_bucket_processing_time_ms?: DurationFloatMillis
-  minimum_bucket_processing_time_ms?: DurationFloatMillis
+  total_bucket_processing_time_ms: DurationValue<UnitFloatMillis>
+  maximum_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
+  minimum_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
 }
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
@@ -12322,12 +12322,12 @@ export interface MlOutlierDetectionParameters {
 }
 
 export interface MlOverallBucket {
-  bucket_span: DurationSeconds
+  bucket_span: DurationValue<UnitSeconds>
   is_interim: boolean
   jobs: MlOverallBucketJob[]
   overall_score: double
   result_type: string
-  timestamp: EpochMillis
+  timestamp: EpochTime<UnitMillis>
   timestamp_string: DateTime
 }
 
@@ -12390,9 +12390,9 @@ export interface MlRuleCondition {
 
 export interface MlRunningStateSearchInterval {
   end?: Duration
-  end_ms: DurationMillis
+  end_ms: DurationValue<UnitMillis>
   start?: Duration
-  start_ms: DurationMillis
+  start_ms: DurationValue<UnitMillis>
 }
 
 export type MlSnapshotUpgradeState = 'loading_old_state' | 'saving_new_state' | 'stopped' | 'failed'
@@ -12422,8 +12422,8 @@ export interface MlTextEmbeddingInferenceUpdateOptions {
 }
 
 export interface MlTimingStats {
-  elapsed_time: DurationMillis
-  iteration_time?: DurationMillis
+  elapsed_time: DurationValue<UnitMillis>
+  iteration_time?: DurationValue<UnitMillis>
 }
 
 export interface MlTokenizationConfigContainer {
@@ -12512,7 +12512,7 @@ export interface MlTrainedModelDeploymentAllocationStatus {
 }
 
 export interface MlTrainedModelDeploymentNodesStats {
-  average_inference_time_ms: DurationFloatMillis
+  average_inference_time_ms: DurationValue<UnitFloatMillis>
   error_count: integer
   inference_count: integer
   last_access: long
@@ -12521,7 +12521,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   number_of_pending_requests: integer
   rejection_execution_count: integer
   routing_state: MlTrainedModelAllocationRoutingTable
-  start_time: EpochMillis
+  start_time: EpochTime<UnitMillis>
   threads_per_allocation: integer
   timeout_count: integer
 }
@@ -12536,7 +12536,7 @@ export interface MlTrainedModelDeploymentStats {
   queue_capacity: integer
   rejected_execution_count: integer
   reason: string
-  start_time: EpochMillis
+  start_time: EpochTime<UnitMillis>
   state: MlDeploymentState
   threads_per_allocation: integer
   timeout_count: integer
@@ -13406,7 +13406,7 @@ export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
 
 export interface MlPutDataFrameAnalyticsResponse {
   id: Id
-  create_time: EpochMillis
+  create_time: EpochTime<UnitMillis>
   version: VersionString
   source: MlDataframeAnalyticsSource
   description?: string
@@ -13851,8 +13851,8 @@ export interface MlUpdateJobResponse {
   analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Duration
-  create_time: EpochMillis
-  finished_time?: EpochMillis
+  create_time: EpochTime<UnitMillis>
+  finished_time?: EpochTime<UnitMillis>
   custom_settings?: Record<string, string>
   daily_model_snapshot_retention_after_days: long
   data_description: MlDataDescription
@@ -14277,8 +14277,8 @@ export interface NodesRepositoryMeteringInformation {
   repository_type: string
   repository_location: NodesRepositoryLocation
   repository_ephemeral_id: Id
-  repository_started_at: EpochMillis
-  repository_stopped_at?: EpochMillis
+  repository_started_at: EpochTime<UnitMillis>
+  repository_stopped_at?: EpochTime<UnitMillis>
   archived: boolean
   cluster_version?: VersionNumber
   request_counts: NodesRequestCounts
@@ -14724,7 +14724,7 @@ export interface NodesInfoNodeJvmInfo {
   mem: NodesInfoNodeInfoJvmMemory
   memory_pools: string[]
   pid: integer
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
   version: VersionString
   vm_name: Name
   vm_vendor: string
@@ -14818,8 +14818,8 @@ export interface NodesStatsResponseBase extends NodesNodesResponseBase {
 
 export interface NodesUsageNodeUsage {
   rest_actions: Record<string, integer>
-  since: EpochMillis
-  timestamp: EpochMillis
+  since: EpochTime<UnitMillis>
+  timestamp: EpochTime<UnitMillis>
   aggregations: Record<string, any>
 }
 
@@ -14907,15 +14907,15 @@ export interface RollupGetJobsRollupJobConfiguration {
 export interface RollupGetJobsRollupJobStats {
   documents_processed: long
   index_failures: long
-  index_time_in_ms: DurationMillis
+  index_time_in_ms: DurationValue<UnitMillis>
   index_total: long
   pages_processed: long
   rollups_indexed: long
   search_failures: long
-  search_time_in_ms: DurationMillis
+  search_time_in_ms: DurationValue<UnitMillis>
   search_total: long
   trigger_count: long
-  processing_time_in_ms: DurationMillis
+  processing_time_in_ms: DurationValue<UnitMillis>
   processing_total: long
 }
 
@@ -15679,7 +15679,7 @@ export interface SecurityGrantApiKeyResponse {
   api_key: string
   id: Id
   name: Name
-  expiration?: EpochMillis
+  expiration?: EpochTime<UnitMillis>
 }
 
 export interface SecurityHasPrivilegesApplicationPrivilegesCheck {
@@ -15955,7 +15955,7 @@ export interface ShutdownGetNodeNodeShutdownStatus {
   node_id: NodeId
   type: ShutdownGetNodeShutdownType
   reason: string
-  shutdown_startedmillis: EpochMillis
+  shutdown_startedmillis: EpochTime<UnitMillis>
   status: ShutdownGetNodeShutdownStatus
   shard_migration: ShutdownGetNodeShardMigrationStatus
   persistent_tasks: ShutdownGetNodePersistentTaskStatus
@@ -16013,7 +16013,7 @@ export interface SlmConfiguration {
 
 export interface SlmInProgress {
   name: Name
-  start_time_millis: EpochMillis
+  start_time_millis: EpochTime<UnitMillis>
   state: string
   uuid: Uuid
 }
@@ -16042,9 +16042,9 @@ export interface SlmSnapshotLifecycle {
   last_failure?: SlmInvocation
   last_success?: SlmInvocation
   modified_date?: DateTime
-  modified_date_millis: EpochMillis
+  modified_date_millis: EpochTime<UnitMillis>
   next_execution?: DateTime
-  next_execution_millis: EpochMillis
+  next_execution_millis: EpochTime<UnitMillis>
   policy: SlmPolicy
   version: VersionNumber
   stats: SlmStatistics
@@ -16052,7 +16052,7 @@ export interface SlmSnapshotLifecycle {
 
 export interface SlmStatistics {
   retention_deletion_time?: Duration
-  retention_deletion_time_millis?: DurationMillis
+  retention_deletion_time_millis?: DurationValue<UnitMillis>
   retention_failed?: long
   retention_runs?: long
   retention_timed_out?: long
@@ -16097,7 +16097,7 @@ export interface SlmGetStatsRequest extends RequestBase {
 
 export interface SlmGetStatsResponse {
   retention_deletion_time: Duration
-  retention_deletion_time_millis: DurationMillis
+  retention_deletion_time_millis: DurationValue<UnitMillis>
   retention_failed: long
   retention_runs: long
   retention_timed_out: long
@@ -16186,9 +16186,9 @@ export type SnapshotShardsStatsStage = 'DONE' | 'FAILURE' | 'FINALIZE' | 'INIT' 
 export interface SnapshotShardsStatsSummary {
   incremental: SnapshotShardsStatsSummaryItem
   total: SnapshotShardsStatsSummaryItem
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
   time?: Duration
-  time_in_millis: DurationMillis
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface SnapshotShardsStatsSummaryItem {
@@ -16205,9 +16205,9 @@ export interface SnapshotSnapshotIndexStats {
 export interface SnapshotSnapshotInfo {
   data_streams: string[]
   duration?: Duration
-  duration_in_millis?: DurationMillis
+  duration_in_millis?: DurationValue<UnitMillis>
   end_time?: DateTime
-  end_time_in_millis?: EpochMillis
+  end_time_in_millis?: EpochTime<UnitMillis>
   failures?: SnapshotSnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
@@ -16218,7 +16218,7 @@ export interface SnapshotSnapshotInfo {
   snapshot: Name
   shards?: ShardStatistics
   start_time?: DateTime
-  start_time_in_millis?: EpochMillis
+  start_time_in_millis?: EpochTime<UnitMillis>
   state?: string
   uuid: Uuid
   version?: VersionString
@@ -16243,9 +16243,9 @@ export type SnapshotSnapshotSort = 'start_time' | 'duration' | 'name' | 'index_c
 
 export interface SnapshotSnapshotStats {
   incremental: SnapshotFileCountSnapshotStats
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
   time?: Duration
-  time_in_millis: DurationMillis
+  time_in_millis: DurationValue<UnitMillis>
   total: SnapshotFileCountSnapshotStats
 }
 
@@ -16478,8 +16478,8 @@ export interface SqlGetAsyncStatusResponse {
   id: string
   is_running: boolean
   is_partial: boolean
-  start_time_in_millis: EpochMillis
-  expiration_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
+  expiration_time_in_millis: EpochTime<UnitMillis>
   completion_status?: uint
 }
 
@@ -16569,8 +16569,8 @@ export interface TasksTaskInfo {
   id: long
   node: NodeId
   running_time?: Duration
-  running_time_in_nanos: DurationNanos
-  start_time_in_millis: EpochMillis
+  running_time_in_nanos: DurationValue<UnitNanos>
+  start_time_in_millis: EpochTime<UnitMillis>
   status?: TasksTaskStatus
   type: string
   parent_task_id?: TaskId
@@ -16786,7 +16786,7 @@ export interface TransformGetTransformTransformSummary {
   settings?: TransformSettings
   source: TransformSource
   sync?: TransformSyncContainer
-  create_time?: EpochMillis
+  create_time?: EpochTime<UnitMillis>
   version?: VersionString
   latest?: TransformLatest
   _meta?: Metadata
@@ -16796,9 +16796,9 @@ export interface TransformGetTransformStatsCheckpointStats {
   checkpoint: long
   checkpoint_progress?: TransformGetTransformStatsTransformProgress
   timestamp?: DateTime
-  timestamp_millis?: EpochMillis
+  timestamp_millis?: EpochTime<UnitMillis>
   time_upper_bound?: DateTime
-  time_upper_bound_millis?: EpochMillis
+  time_upper_bound_millis?: EpochTime<UnitMillis>
 }
 
 export interface TransformGetTransformStatsCheckpointing {
@@ -16823,21 +16823,21 @@ export interface TransformGetTransformStatsResponse {
 }
 
 export interface TransformGetTransformStatsTransformIndexerStats {
-  delete_time_in_ms?: EpochMillis
+  delete_time_in_ms?: EpochTime<UnitMillis>
   documents_indexed: long
   documents_deleted?: long
   documents_processed: long
-  exponential_avg_checkpoint_duration_ms: DurationFloatMillis
+  exponential_avg_checkpoint_duration_ms: DurationValue<UnitFloatMillis>
   exponential_avg_documents_indexed: double
   exponential_avg_documents_processed: double
   index_failures: long
-  index_time_in_ms: DurationMillis
+  index_time_in_ms: DurationValue<UnitMillis>
   index_total: long
   pages_processed: long
-  processing_time_in_ms: DurationMillis
+  processing_time_in_ms: DurationValue<UnitMillis>
   processing_total: long
   search_failures: long
-  search_time_in_ms: DurationMillis
+  search_time_in_ms: DurationValue<UnitMillis>
   search_total: long
   trigger_count: long
 }
@@ -16982,7 +16982,7 @@ export interface WatcherAction {
   max_iterations?: integer
   name?: Name
   throttle_period?: Duration
-  throttle_period_in_millis?: EpochMillis
+  throttle_period_in_millis?: EpochTime<UnitMillis>
   transform?: TransformContainer
   index?: WatcherIndexAction
   logging?: WatcherLoggingAction
@@ -17117,7 +17117,7 @@ export type WatcherExecutionPhase = 'awaits_execution' | 'started' | 'input' | '
 export interface WatcherExecutionResult {
   actions: WatcherExecutionResultAction[]
   condition: WatcherExecutionResultCondition
-  execution_duration: DurationMillis
+  execution_duration: DurationValue<UnitMillis>
   execution_time: DateTime
   input: WatcherExecutionResultInput
 }
@@ -17405,7 +17405,7 @@ export interface WatcherSlackAttachment {
   thumb_url?: string
   title: string
   title_link?: string
-  ts?: EpochSeconds
+  ts?: EpochTime<UnitSeconds>
 }
 
 export interface WatcherSlackAttachmentField {
@@ -17710,7 +17710,7 @@ export interface XpackInfoFeatures {
 }
 
 export interface XpackInfoMinimalLicenseInformation {
-  expiry_date_in_millis: EpochMillis
+  expiry_date_in_millis: EpochTime<UnitMillis>
   mode: LicenseLicenseType
   status: LicenseLicenseStatus
   type: LicenseLicenseType
@@ -18136,7 +18136,7 @@ export interface XpackUsageWatcher extends XpackUsageBase {
 
 export interface XpackUsageWatcherActionTotals {
   total: long
-  total_time_in_ms: DurationMillis
+  total_time_in_ms: DurationValue<UnitMillis>
 }
 
 export interface XpackUsageWatcherActions {

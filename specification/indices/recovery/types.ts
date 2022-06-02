@@ -27,7 +27,13 @@ import {
 } from '@_types/common'
 import { Host, TransportAddress, Ip } from '@_types/Networking'
 import { long, Percentage } from '@_types/Numeric'
-import { Duration, EpochMillis, DateTime, DurationMillis } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  DurationValue,
+  UnitMillis,
+  EpochTime
+} from '@_types/Time'
 
 export class RecoveryBytes {
   percent: Percentage
@@ -60,11 +66,11 @@ export class RecoveryIndexStatus {
   files: RecoveryFiles
   size: RecoveryBytes
   source_throttle_time?: Duration
-  source_throttle_time_in_millis: DurationMillis
+  source_throttle_time_in_millis: DurationValue<UnitMillis>
   target_throttle_time?: Duration
-  target_throttle_time_in_millis: DurationMillis
+  target_throttle_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class RecoveryOrigin {
@@ -84,9 +90,9 @@ export class RecoveryOrigin {
 
 export class RecoveryStartStatus {
   check_index_time?: Duration
-  check_index_time_in_millis: DurationMillis
+  check_index_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: DurationMillis
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class RecoveryStatus {
@@ -99,7 +105,7 @@ export class TranslogStatus {
   total: long
   total_on_start: long
   total_time?: Duration
-  total_time_in_millis: EpochMillis
+  total_time_in_millis: EpochTime<UnitMillis>
 }
 
 export class VerifyIndex {
@@ -117,9 +123,9 @@ export class ShardRecovery {
   stage: string
   start?: RecoveryStartStatus
   start_time?: DateTime
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
   stop_time?: DateTime
-  stop_time_in_millis: EpochMillis
+  stop_time_in_millis: EpochTime<UnitMillis>
   target: RecoveryOrigin
   total_time?: Duration
   total_time_in_millis: long

@@ -25,7 +25,7 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
-import { EpochMillis, Duration, DurationMillis } from '@_types/Time'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class FollowIndexStats {
   index: IndexName
@@ -57,13 +57,13 @@ export class ShardStats {
   successful_read_requests: long
   successful_write_requests: long
   time_since_last_read?: Duration
-  time_since_last_read_millis: DurationMillis
+  time_since_last_read_millis: DurationValue<UnitMillis>
   total_read_remote_exec_time?: Duration
-  total_read_remote_exec_time_millis: DurationMillis
+  total_read_remote_exec_time_millis: DurationValue<UnitMillis>
   total_read_time?: Duration
-  total_read_time_millis: DurationMillis
+  total_read_time_millis: DurationValue<UnitMillis>
   total_write_time?: Duration
-  total_write_time_millis: DurationMillis
+  total_write_time_millis: DurationValue<UnitMillis>
   write_buffer_operation_count: long
   write_buffer_size_in_bytes: ByteSize
 }

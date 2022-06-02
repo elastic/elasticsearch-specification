@@ -32,7 +32,7 @@ import {
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
-import { EpochSeconds, Duration, DateTime } from '@_types/Time'
+import { Duration, DateTime, EpochTime, UnitSeconds } from '@_types/Time'
 import { HttpInputRequestDefinition } from './Input'
 
 // PagerDuty ----------------------------- //
@@ -113,7 +113,7 @@ export class SlackAttachment {
   thumb_url?: string
   title: string
   title_link?: string
-  ts?: EpochSeconds
+  ts?: EpochTime<UnitSeconds>
 }
 
 export class SlackAttachmentField {

@@ -19,7 +19,7 @@
 
 import { IndexName } from '@_types/common'
 import { long, Percentage } from '@_types/Numeric'
-import { DateTime, EpochMillis, Duration } from '@_types/Time'
+import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RecoveryRecord {
   /**
@@ -41,7 +41,7 @@ export class RecoveryRecord {
    * recovery start time in epoch milliseconds
    * @aliases start_millis
    */
-  'start_time_millis'?: EpochMillis
+  'start_time_millis'?: EpochTime<UnitMillis>
   /**
    * recovery stop time
    * @aliases stop
@@ -51,7 +51,7 @@ export class RecoveryRecord {
    * recovery stop time in epoch milliseconds
    * @aliases stop_millis
    */
-  'stop_time_millis'?: EpochMillis
+  'stop_time_millis'?: EpochTime<UnitMillis>
   /**
    * recovery time
    * @aliases t,ti

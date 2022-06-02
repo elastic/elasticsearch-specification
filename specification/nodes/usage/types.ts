@@ -20,11 +20,11 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class NodeUsage {
   rest_actions: Dictionary<string, integer>
-  since: EpochMillis
-  timestamp: EpochMillis
+  since: EpochTime<UnitMillis>
+  timestamp: EpochTime<UnitMillis>
   aggregations: Dictionary<string, UserDefinedValue>
 }

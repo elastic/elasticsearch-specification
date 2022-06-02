@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateTime, EpochMillis, EpochSeconds, TimeOfDay } from '@_types/Time'
+import { EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
 import { Stringified } from '@spec_utils/Stringified'
 
 export class HealthRecord {
@@ -25,7 +25,7 @@ export class HealthRecord {
    * seconds since 1970-01-01 00:00:00
    * @aliases time
    */
-  'epoch'?: Stringified<EpochSeconds>
+  'epoch'?: Stringified<EpochTime<UnitSeconds>>
   /**
    * time in HH:MM:SS
    * @aliases ts,hms,hhmmss

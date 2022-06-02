@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@_types/common'
-import { DateTime, EpochMillis } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class CalendarEvent {
   /** A string that uniquely identifies a calendar. */

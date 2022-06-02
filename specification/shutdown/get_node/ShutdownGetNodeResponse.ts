@@ -18,7 +18,7 @@
  */
 
 import { NodeId } from '@_types/common'
-import { EpochMillis, DateTime } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
@@ -30,7 +30,7 @@ export class NodeShutdownStatus {
   node_id: NodeId
   type: ShutdownType
   reason: string
-  shutdown_startedmillis: EpochMillis
+  shutdown_startedmillis: EpochTime<UnitMillis>
   status: ShutdownStatus
   shard_migration: ShardMigrationStatus
   persistent_tasks: PersistentTaskStatus

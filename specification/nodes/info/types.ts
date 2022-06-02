@@ -25,7 +25,7 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
-import { EpochMillis, Duration } from '@_types/Time'
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -350,7 +350,7 @@ export class NodeJvmInfo {
   mem: NodeInfoJvmMemory
   memory_pools: string[]
   pid: integer
-  start_time_in_millis: EpochMillis
+  start_time_in_millis: EpochTime<UnitMillis>
   version: VersionString
   vm_name: Name
   vm_vendor: string

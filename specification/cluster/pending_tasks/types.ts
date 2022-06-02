@@ -18,7 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { DateTime, EpochMillis, Duration, DurationMillis } from '@_types/Time'
+import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class PendingTask {
   executing: boolean
@@ -26,5 +26,5 @@ export class PendingTask {
   priority: string
   source: string
   time_in_queue?: Duration
-  time_in_queue_millis: DurationMillis
+  time_in_queue_millis: DurationValue<UnitMillis>
 }
