@@ -621,7 +621,7 @@ export function hoistRequestAnnotations (
     } else if (tag === 'cluster_privileges') {
       const privileges = [
         'all', 'cancel_task', 'create_snapshot', 'grant_api_key', 'manage', 'manage_api_key', 'manage_ccr',
-        'manage_ilm', 'manage_index_templates', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
+        'manage_enrich', 'manage_ilm', 'manage_index_templates', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
         'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_rollup', 'manage_saml',
         'manage_security', 'manage_service_account', 'manage_slm', 'manage_token', 'manage_transform',
         'manage_watcher', 'monitor', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
