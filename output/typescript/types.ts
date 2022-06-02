@@ -15132,9 +15132,11 @@ export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: string[] | QueryDslQueryContainer | SecurityRoleTemplateQueryContainer
+  query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
 }
+
+export type SecurityIndicesPrivilegesQuery = string[] | QueryDslQueryContainer | SecurityRoleTemplateQueryContainer
 
 export interface SecurityManageUserPrivileges {
   applications: string[]
