@@ -46,6 +46,7 @@ export enum ClusterPrivilege {
   manage,
   manage_api_key,
   manage_ccr,
+  manage_enrich,
   manage_ilm,
   manage_index_templates,
   manage_ingest_pipelines,
