@@ -1274,9 +1274,7 @@
       "response": []
     },
     "ingest.put_pipeline": {
-      "request": [
-        "Request: missing json spec query parameter 'if_version'"
-      ],
+      "request": [],
       "response": [
         "response definition ingest.put_pipeline:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -1511,7 +1509,7 @@
     },
     "ml.get_model_snapshot_upgrade_stats": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1850,7 +1848,6 @@
     },
     "security.create_service_token": {
       "request": [
-        "Request: missing json spec query parameter 'refresh'",
         "Request: should not have a body"
       ],
       "response": []
