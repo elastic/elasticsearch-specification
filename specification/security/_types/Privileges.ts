@@ -110,13 +110,9 @@ export class IndicesPrivileges {
  *
  * @codegen_names json_text, query, template
  */
-export type IndicesPrivilegesQuery =
-  | string
-  | QueryContainer
-  | RoleTemplateQueryContainer
+export type IndicesPrivilegesQuery = string | QueryContainer | RoleTemplateQuery
 
-/** @variants container */
-export class RoleTemplateQueryContainer {
+export class RoleTemplateQuery {
   /**
    * When you create a role, you can specify a query that defines the document level security permissions. You can optionally
    * use Mustache templates in the role query to insert the username of the current authenticated user into the role.
