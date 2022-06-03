@@ -15192,8 +15192,8 @@ export interface SecurityUser {
 export interface SecurityUserProfile {
   uid: string
   user: SecurityUserProfileUser
-  data?: Record<string, any>
-  labels?: Record<string, any>
+  data: Record<string, any>
+  labels: Record<string, any>
   enabled?: boolean
 }
 
@@ -15205,14 +15205,15 @@ export interface SecurityUserProfileHitMetadata {
 export interface SecurityUserProfileUser {
   email?: string | null
   full_name?: Name | null
-  metadata: Metadata
+  realm_name: Name
+  realm_domain?: Name
   roles: string[]
   username: Username
 }
 
 export interface SecurityUserProfileWithMetadata extends SecurityUserProfile {
   last_synchronized: long
-  _doc?: SecurityUserProfileHitMetadata
+  _doc: SecurityUserProfileHitMetadata
 }
 
 export interface SecurityActivateUserProfileRequest extends RequestBase {
@@ -15908,7 +15909,7 @@ export interface SecurityUpdateUserProfileDataRequest extends RequestBase {
   if_primary_term?: long
   refresh?: Refresh
   body?: {
-    access?: Record<string, any>
+    labels?: Record<string, any>
     data?: Record<string, any>
   }
 }

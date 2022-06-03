@@ -32,7 +32,8 @@ export class UserProfileHitMetadata {
 export class UserProfileUser {
   email?: string | null
   full_name?: Name | null
-  metadata: Metadata
+  realm_name: Name
+  realm_domain?: Name
   roles: string[]
   username: Username
 }
@@ -40,12 +41,12 @@ export class UserProfileUser {
 export class UserProfile {
   uid: string
   user: UserProfileUser
-  data?: Dictionary<string, UserDefinedValue>
-  labels?: Dictionary<string, UserDefinedValue>
+  data: Dictionary<string, UserDefinedValue>
+  labels: Dictionary<string, UserDefinedValue>
   enabled?: boolean
 }
 
 export class UserProfileWithMetadata extends UserProfile {
   last_synchronized: long
-  _doc?: UserProfileHitMetadata
+  _doc: UserProfileHitMetadata
 }
