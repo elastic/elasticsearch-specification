@@ -18,7 +18,7 @@
  */
 
 import { NodeId } from '@_types/common'
-import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {

@@ -20,6 +20,7 @@
 import { Id } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { EqlHits } from './EqlHits'
+import { DurationValue, UnitMillis } from '@_types/Time'
 
 export class EqlSearchResponseBase<TEvent> {
   /**
@@ -37,7 +38,7 @@ export class EqlSearchResponseBase<TEvent> {
   /**
    * Milliseconds it took Elasticsearch to execute the request.
    */
-  took?: long
+  took?: DurationValue<UnitMillis>
   /**
    * If true, the request timed out before completion.
    */

@@ -147,7 +147,7 @@ export class ClusterIngest {
 }
 
 export class ClusterJvm {
-  max_uptime_in_millis: long
+  max_uptime_in_millis: DurationValue<UnitMillis>
   mem: ClusterJvmMemory
   threads: long
   versions: ClusterJvmVersion[]

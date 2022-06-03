@@ -25,7 +25,7 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
-import { Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -372,7 +372,7 @@ export class NodeOperatingSystemInfo {
   name: Name
   pretty_name: Name
   /** Refresh interval for the OS statistics */
-  refresh_interval_in_millis: long
+  refresh_interval_in_millis: DurationValue<UnitMillis>
   /** Version of the operating system */
   version: VersionString
   cpu?: NodeInfoOSCPU
@@ -386,5 +386,5 @@ export class NodeProcessInfo {
   /** Indicates if the process address space has been successfully locked in memory */
   mlockall: boolean
   /** Refresh interval for the process statistics */
-  refresh_interval_in_millis: long
+  refresh_interval_in_millis: DurationValue<UnitMillis>
 }

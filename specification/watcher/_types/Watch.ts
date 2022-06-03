@@ -26,7 +26,7 @@ import {
   VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateTime, Duration } from '@_types/Time'
+import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 import { Action, Actions } from './Action'
 import { ActivationState } from './Activation'
@@ -41,7 +41,7 @@ export class Watch {
   metadata?: Metadata
   status?: WatchStatus
   throttle_period?: Duration
-  throttle_period_in_millis?: long
+  throttle_period_in_millis?: DurationValue<UnitMillis>
   transform?: TransformContainer
   trigger: TriggerContainer
 }

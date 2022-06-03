@@ -23,6 +23,7 @@ import { Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
+import { Duration, DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
 
 // The node stats response can be filtered both by `metric` and `filter_path`,
 // every property needs to be optional to be compliant with the API behavior.
@@ -87,8 +88,8 @@ export class ClusterAppliedStats {
 export class Recording {
   name?: string
   cumulative_execution_count?: long
-  cumulative_execution_time?: string
-  cumulative_execution_time_millis?: long
+  cumulative_execution_time?: Duration
+  cumulative_execution_time_millis?: DurationValue<UnitMillis>
 }
 
 export class SerializedClusterState {
@@ -117,21 +118,21 @@ export class PublishedClusterStates {
 }
 
 export class ClusterStateUpdate {
-  count?: long
-  computation_time?: string
-  computation_time_millis?: long
-  publication_time?: string
-  publication_time_millis?: long
-  context_construction_time?: string
-  context_construction_time_millis?: long
-  commit_time?: string
-  commit_time_millis?: long
-  completion_time?: string
-  completion_time_millis?: long
-  master_apply_time?: string
-  master_apply_time_millis?: long
-  notification_time?: string
-  notification_time_millis?: long
+  count: long
+  computation_time?: Duration
+  computation_time_millis?: DurationValue<UnitMillis>
+  publication_time?: Duration
+  publication_time_millis?: DurationValue<UnitMillis>
+  context_construction_time?: Duration
+  context_construction_time_millis?: DurationValue<UnitMillis>
+  commit_time?: Duration
+  commit_time_millis?: DurationValue<UnitMillis>
+  completion_time?: Duration
+  completion_time_millis?: DurationValue<UnitMillis>
+  master_apply_time?: Duration
+  master_apply_time_millis?: DurationValue<UnitMillis>
+  notification_time?: Duration
+  notification_time_millis?: DurationValue<UnitMillis>
 }
 
 export class Ingest {
@@ -144,7 +145,7 @@ export class IngestTotal {
   current?: long
   failed?: long
   processors?: Dictionary<string, KeyedProcessor>[]
-  time_in_millis?: long
+  time_in_millis?: DurationValue<UnitMillis>
 }
 
 export class KeyedProcessor {
@@ -156,7 +157,7 @@ export class Processor {
   count?: long
   current?: long
   failed?: long
-  time_in_millis?: long
+  time_in_millis?: DurationValue<UnitMillis>
 }
 
 export class AdaptiveSelection {
@@ -186,7 +187,7 @@ export class Cgroup {
 
 export class CpuAcct {
   control_group?: string
-  usage_nanos?: long
+  usage_nanos?: DurationValue<UnitNanos>
 }
 
 export class CgroupCpu {
@@ -199,7 +200,7 @@ export class CgroupCpu {
 export class CgroupCpuStat {
   number_of_elapsed_periods?: long
   number_of_times_throttled?: long
-  time_throttled_nanos?: long
+  time_throttled_nanos?: DurationValue<UnitNanos>
 }
 
 export class CgroupMemory {
@@ -210,12 +211,12 @@ export class CgroupMemory {
 
 export class Cpu {
   percent?: integer
-  sys?: string
-  sys_in_millis?: long
-  total?: string
-  total_in_millis?: long
-  user?: string
-  user_in_millis?: long
+  sys?: Duration
+  sys_in_millis?: DurationValue<UnitMillis>
+  total?: Duration
+  total_in_millis?: DurationValue<UnitMillis>
+  user?: Duration
+  user_in_millis?: DurationValue<UnitMillis>
   load_average?: Dictionary<string, double>
 }
 

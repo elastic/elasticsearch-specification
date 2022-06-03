@@ -21,12 +21,15 @@ import { double, long } from './Numeric'
 
 /**
  * A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a
- * number of milliseconds since the Epoch.
+ * number of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string
+ * representation.
  */
-export type DateTime = string | long
+export type DateTime = string | EpochTime<UnitMillis>
 
 /** Time unit for seconds */
 export type UnitSeconds = long
+/** Time unit for fractional seconds */
+export type UnitFloatSeconds = double
 /** Time unit for milliseconds */
 export type UnitMillis = long
 /** Time unit for nanoseconds */

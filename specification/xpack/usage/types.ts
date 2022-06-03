@@ -24,7 +24,7 @@ import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
-import { DurationValue, UnitMillis } from '@_types/Time'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class Base {
   available: boolean
@@ -132,7 +132,7 @@ export class EqlFeaturesSequences {
 }
 
 export class ExecutionAction {
-  total: long
+  total: Duration
   total_in_ms: DurationValue<UnitMillis>
 }
 
@@ -399,7 +399,7 @@ export class WatcherWatchTrigger {
 }
 
 export class WatcherActionTotals {
-  total: long
+  total: Duration
   total_time_in_ms: DurationValue<UnitMillis>
 }
 

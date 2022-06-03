@@ -31,7 +31,7 @@ export class Response {
     /** The number of active primary shards. */
     active_primary_shards: integer
     /** The total number of active primary and replica shards. */
-    active_shards: double
+    active_shards: integer
     /** The ratio of active shards in the cluster expressed as a percentage. */
     active_shards_percent_as_number: Percentage
     /** The name of the cluster. */

@@ -38,13 +38,13 @@ export class Datafeed {
   aggregations?: Dictionary<string, AggregationContainer>
   chunking_config?: ChunkingConfig
   datafeed_id: Id
-  frequency?: DateTime
+  frequency?: Duration
   indices: string[]
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
   query: QueryContainer
-  query_delay?: DateTime
+  query_delay?: Duration
   script_fields?: Dictionary<string, ScriptField>
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
@@ -73,7 +73,7 @@ export class DatafeedConfig {
   /**
    * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
-  frequency?: DateTime
+  frequency?: Duration
   indexes?: string[]
   /**
    * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
@@ -95,7 +95,7 @@ export class DatafeedConfig {
   /**
    * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.
    */
-  query_delay?: DateTime
+  query_delay?: Duration
   /**
    * Specifies runtime fields for the datafeed search.
    */
@@ -143,7 +143,7 @@ export class DatafeedStats {
 
 export class DatafeedTimingStats {
   bucket_count: long
-  exponential_average_search_time_per_hour_ms: double
+  exponential_average_search_time_per_hour_ms: DurationValue<UnitFloatMillis>
   job_id: Id
   search_count: long
   total_search_time_ms: DurationValue<UnitFloatMillis>

@@ -227,10 +227,12 @@ export interface DeleteByQueryResponse {
   retries?: Retries
   slice_id?: integer
   task?: TaskId
-  throttled_millis?: long
-  throttled_until_millis?: long
+  throttled?: Duration
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis: DurationValue<UnitMillis>
   timed_out?: boolean
-  took?: long
+  took?: DurationValue<UnitMillis>
   total?: long
   version_conflicts?: long
 }
@@ -871,7 +873,7 @@ export interface ReindexResponse {
   throttled_millis?: EpochTime<UnitMillis>
   throttled_until_millis?: EpochTime<UnitMillis>
   timed_out?: boolean
-  took?: long
+  took?: DurationValue<UnitMillis>
   total?: long
   updated?: long
   version_conflicts?: long
@@ -899,8 +901,10 @@ export interface ReindexRethrottleReindexStatus {
   noops: long
   requests_per_second: float
   retries: Retries
-  throttled_millis: long
-  throttled_until_millis: long
+  throttled?: Duration
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis: DurationValue<UnitMillis>
   total: long
   updated: long
   version_conflicts: long
@@ -1088,7 +1092,7 @@ export interface SearchAggregationBreakdown {
 export interface SearchAggregationProfile {
   breakdown: SearchAggregationBreakdown
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   type: string
   debug?: SearchAggregationProfileDebug
   children?: SearchAggregationProfile[]
@@ -1135,7 +1139,7 @@ export type SearchBoundaryScanner = 'chars' | 'sentence' | 'word'
 export interface SearchCollector {
   name: string
   reason: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   children?: SearchCollector[]
 }
 
@@ -1191,7 +1195,7 @@ export interface SearchDirectGenerator {
 export interface SearchFetchProfile {
   type: string
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   breakdown: SearchFetchProfileBreakdown
   debug?: SearchFetchProfileDebug
   children?: SearchFetchProfile[]
@@ -1413,7 +1417,7 @@ export interface SearchQueryBreakdown {
 export interface SearchQueryProfile {
   breakdown: SearchQueryBreakdown
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   type: string
   children?: SearchQueryProfile[]
 }
@@ -1795,12 +1799,14 @@ export interface UpdateByQueryResponse {
   retries?: Retries
   task?: TaskId
   timed_out?: boolean
-  took?: long
+  took?: DurationValue<UnitMillis>
   total?: long
   updated?: long
   version_conflicts?: long
-  throttled_millis?: long
-  throttled_until_millis?: long
+  throttled?: Duration
+  throttled_millis?: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis?: DurationValue<UnitMillis>
 }
 
 export interface UpdateByQueryRethrottleRequest extends RequestBase {
@@ -1896,7 +1902,7 @@ export type DateFormat = string
 
 export type DateMath = string
 
-export type DateTime = string | long
+export type DateTime = string | EpochTime<UnitMillis>
 
 export type Distance = string
 
@@ -8040,7 +8046,7 @@ export interface ClusterAllocationExplainReservedSize {
 export interface ClusterAllocationExplainResponse {
   allocate_explanation?: string
   allocation_delay?: Duration
-  allocation_delay_in_millis?: long
+  allocation_delay_in_millis?: DurationValue<UnitMillis>
   can_allocate?: ClusterAllocationExplainDecision
   can_move_to_other_node?: ClusterAllocationExplainDecision
   can_rebalance_cluster?: ClusterAllocationExplainDecision
@@ -8050,7 +8056,7 @@ export interface ClusterAllocationExplainResponse {
   can_remain_on_current_node?: ClusterAllocationExplainDecision
   cluster_info?: ClusterAllocationExplainClusterInfo
   configured_delay?: Duration
-  configured_delay_in_millis?: long
+  configured_delay_in_millis?: DurationValue<UnitMillis>
   current_node?: ClusterAllocationExplainCurrentNode
   current_state: string
   index: IndexName
@@ -8059,7 +8065,7 @@ export interface ClusterAllocationExplainResponse {
   primary: boolean
   rebalance_explanation?: string
   remaining_delay?: Duration
-  remaining_delay_in_millis?: long
+  remaining_delay_in_millis?: DurationValue<UnitMillis>
   shard: integer
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
   note?: string
@@ -8152,7 +8158,7 @@ export interface ClusterHealthRequest extends RequestBase {
 
 export interface ClusterHealthResponse {
   active_primary_shards: integer
-  active_shards: double
+  active_shards: integer
   active_shards_percent_as_number: Percentage
   cluster_name: Name
   delayed_unassigned_shards: integer
@@ -8404,7 +8410,7 @@ export interface ClusterStatsClusterIngest {
 }
 
 export interface ClusterStatsClusterJvm {
-  max_uptime_in_millis: long
+  max_uptime_in_millis: DurationValue<UnitMillis>
   mem: ClusterStatsClusterJvmMemory
   threads: long
   versions: ClusterStatsClusterJvmVersion[]
@@ -8735,7 +8741,7 @@ export interface EqlEqlSearchResponseBase<TEvent = unknown> {
   id?: Id
   is_partial?: boolean
   is_running?: boolean
-  took?: long
+  took?: DurationValue<UnitMillis>
   timed_out?: boolean
   hits: EqlEqlHits<TEvent>
 }
@@ -10347,7 +10353,7 @@ export interface IndicesRecoveryShardRecovery {
   stop_time_in_millis: EpochTime<UnitMillis>
   target: IndicesRecoveryRecoveryOrigin
   total_time?: Duration
-  total_time_in_millis: long
+  total_time_in_millis: DurationValue<UnitMillis>
   translog: IndicesRecoveryTranslogStatus
   type: string
   verify_index: IndicesRecoveryVerifyIndex
@@ -10359,14 +10365,14 @@ export interface IndicesRecoveryTranslogStatus {
   total: long
   total_on_start: long
   total_time?: Duration
-  total_time_in_millis: EpochTime<UnitMillis>
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface IndicesRecoveryVerifyIndex {
   check_index_time?: Duration
-  check_index_time_in_millis: long
+  check_index_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: long
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface IndicesRefreshRequest extends RequestBase {
@@ -10452,12 +10458,12 @@ export interface IndicesRolloverResponse {
 
 export interface IndicesRolloverRolloverConditions {
   max_age?: Duration
+  max_age_millis?: DurationValue<UnitMillis>
   max_docs?: long
   max_size?: string
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
   max_primary_shard_size_bytes?: ByteSize
-  max_age_millis?: EpochTime<UnitMillis>
 }
 
 export interface IndicesSegmentsIndexSegment {
@@ -11673,13 +11679,13 @@ export interface MlDatafeed {
   aggs?: Record<string, AggregationsAggregationContainer>
   chunking_config?: MlChunkingConfig
   datafeed_id: Id
-  frequency?: DateTime
+  frequency?: Duration
   indices: string[]
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
   query: QueryDslQueryContainer
-  query_delay?: DateTime
+  query_delay?: Duration
   script_fields?: Record<string, ScriptField>
   scroll_size?: integer
   delayed_data_check_config: MlDelayedDataCheckConfig
@@ -11693,14 +11699,14 @@ export interface MlDatafeedConfig {
   chunking_config?: MlChunkingConfig
   datafeed_id?: Id
   delayed_data_check_config?: MlDelayedDataCheckConfig
-  frequency?: DateTime
+  frequency?: Duration
   indexes?: string[]
   indices: string[]
   indices_options?: IndicesOptions
   job_id?: Id
   max_empty_searches?: integer
   query: QueryDslQueryContainer
-  query_delay?: DateTime
+  query_delay?: Duration
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
   scroll_size?: integer
@@ -11725,7 +11731,7 @@ export interface MlDatafeedStats {
 
 export interface MlDatafeedTimingStats {
   bucket_count: long
-  exponential_average_search_time_per_hour_ms: double
+  exponential_average_search_time_per_hour_ms: DurationValue<UnitFloatMillis>
   job_id: Id
   search_count: long
   total_search_time_ms: DurationValue<UnitFloatMillis>
@@ -13968,7 +13974,7 @@ export interface NodesCgroupCpu {
 export interface NodesCgroupCpuStat {
   number_of_elapsed_periods?: long
   number_of_times_throttled?: long
-  time_throttled_nanos?: long
+  time_throttled_nanos?: DurationValue<UnitNanos>
 }
 
 export interface NodesCgroupMemory {
@@ -14002,21 +14008,21 @@ export interface NodesClusterStateQueue {
 }
 
 export interface NodesClusterStateUpdate {
-  count?: long
-  computation_time?: string
-  computation_time_millis?: long
-  publication_time?: string
-  publication_time_millis?: long
-  context_construction_time?: string
-  context_construction_time_millis?: long
-  commit_time?: string
-  commit_time_millis?: long
-  completion_time?: string
-  completion_time_millis?: long
-  master_apply_time?: string
-  master_apply_time_millis?: long
-  notification_time?: string
-  notification_time_millis?: long
+  count: long
+  computation_time?: Duration
+  computation_time_millis?: DurationValue<UnitMillis>
+  publication_time?: Duration
+  publication_time_millis?: DurationValue<UnitMillis>
+  context_construction_time?: Duration
+  context_construction_time_millis?: DurationValue<UnitMillis>
+  commit_time?: Duration
+  commit_time_millis?: DurationValue<UnitMillis>
+  completion_time?: Duration
+  completion_time_millis?: DurationValue<UnitMillis>
+  master_apply_time?: Duration
+  master_apply_time_millis?: DurationValue<UnitMillis>
+  notification_time?: Duration
+  notification_time_millis?: DurationValue<UnitMillis>
 }
 
 export interface NodesContext {
@@ -14028,18 +14034,18 @@ export interface NodesContext {
 
 export interface NodesCpu {
   percent?: integer
-  sys?: string
-  sys_in_millis?: long
-  total?: string
-  total_in_millis?: long
-  user?: string
-  user_in_millis?: long
+  sys?: Duration
+  sys_in_millis?: DurationValue<UnitMillis>
+  total?: Duration
+  total_in_millis?: DurationValue<UnitMillis>
+  user?: Duration
+  user_in_millis?: DurationValue<UnitMillis>
   load_average?: Record<string, double>
 }
 
 export interface NodesCpuAcct {
   control_group?: string
-  usage_nanos?: long
+  usage_nanos?: DurationValue<UnitNanos>
 }
 
 export interface NodesDataPathStats {
@@ -14126,7 +14132,7 @@ export interface NodesIngestTotal {
   current?: long
   failed?: long
   processors?: Record<string, NodesKeyedProcessor>[]
-  time_in_millis?: long
+  time_in_millis?: DurationValue<UnitMillis>
 }
 
 export interface NodesIoStatDevice {
@@ -14250,7 +14256,7 @@ export interface NodesProcessor {
   count?: long
   current?: long
   failed?: long
-  time_in_millis?: long
+  time_in_millis?: DurationValue<UnitMillis>
 }
 
 export interface NodesPublishedClusterStates {
@@ -14262,8 +14268,8 @@ export interface NodesPublishedClusterStates {
 export interface NodesRecording {
   name?: string
   cumulative_execution_count?: long
-  cumulative_execution_time?: string
-  cumulative_execution_time_millis?: long
+  cumulative_execution_time?: Duration
+  cumulative_execution_time_millis?: DurationValue<UnitMillis>
 }
 
 export interface NodesRepositoryLocation {
@@ -14741,7 +14747,7 @@ export interface NodesInfoNodeOperatingSystemInfo {
   allocated_processors?: integer
   name: Name
   pretty_name: Name
-  refresh_interval_in_millis: long
+  refresh_interval_in_millis: DurationValue<UnitMillis>
   version: VersionString
   cpu?: NodesInfoNodeInfoOSCPU
   mem?: NodesInfoNodeInfoMemory
@@ -14751,7 +14757,7 @@ export interface NodesInfoNodeOperatingSystemInfo {
 export interface NodesInfoNodeProcessInfo {
   id: long
   mlockall: boolean
-  refresh_interval_in_millis: long
+  refresh_interval_in_millis: DurationValue<UnitMillis>
 }
 
 export interface NodesInfoNodeThreadPoolInfo {
@@ -16595,11 +16601,11 @@ export interface TasksTaskStatus {
   requests_per_second: float
   retries: Retries
   throttled?: Duration
-  throttled_millis: long
+  throttled_millis: DurationValue<UnitMillis>
   throttled_until?: Duration
-  throttled_until_millis: long
+  throttled_until_millis: DurationValue<UnitMillis>
   timed_out?: boolean
-  took?: long
+  took?: DurationValue<UnitMillis>
   total: long
   updated: long
   version_conflicts: long
@@ -16982,7 +16988,7 @@ export interface WatcherAction {
   max_iterations?: integer
   name?: Name
   throttle_period?: Duration
-  throttle_period_in_millis?: EpochTime<UnitMillis>
+  throttle_period_in_millis?: DurationValue<UnitMillis>
   transform?: TransformContainer
   index?: WatcherIndexAction
   logging?: WatcherLoggingAction
@@ -17475,7 +17481,7 @@ export interface WatcherWatch {
   metadata?: Metadata
   status?: WatcherWatchStatus
   throttle_period?: Duration
-  throttle_period_in_millis?: long
+  throttle_period_in_millis?: DurationValue<UnitMillis>
   transform?: TransformContainer
   trigger: WatcherTriggerContainer
 }
@@ -18135,7 +18141,7 @@ export interface XpackUsageWatcher extends XpackUsageBase {
 }
 
 export interface XpackUsageWatcherActionTotals {
-  total: long
+  total: Duration
   total_time_in_ms: DurationValue<UnitMillis>
 }
 

@@ -105,14 +105,14 @@ export class TranslogStatus {
   total: long
   total_on_start: long
   total_time?: Duration
-  total_time_in_millis: EpochTime<UnitMillis>
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class VerifyIndex {
   check_index_time?: Duration
-  check_index_time_in_millis: long
+  check_index_time_in_millis: DurationValue<UnitMillis>
   total_time?: Duration
-  total_time_in_millis: long
+  total_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class ShardRecovery {
@@ -128,7 +128,7 @@ export class ShardRecovery {
   stop_time_in_millis: EpochTime<UnitMillis>
   target: RecoveryOrigin
   total_time?: Duration
-  total_time_in_millis: long
+  total_time_in_millis: DurationValue<UnitMillis>
   translog: TranslogStatus
   type: string
   verify_index: VerifyIndex

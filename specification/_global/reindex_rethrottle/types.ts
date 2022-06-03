@@ -22,7 +22,13 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Name, TaskId } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
-import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from '@_types/Time'
 
 export class ReindexNode extends BaseNode {
   tasks: Dictionary<TaskId, ReindexTask>
@@ -35,8 +41,10 @@ export class ReindexStatus {
   noops: long
   requests_per_second: float
   retries: Retries
-  throttled_millis: long
-  throttled_until_millis: long
+  throttled?: Duration
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis: DurationValue<UnitMillis>
   total: long
   updated: long
   version_conflicts: long

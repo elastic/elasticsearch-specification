@@ -21,6 +21,7 @@ import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, long, ulong } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
@@ -32,11 +33,13 @@ export class Response {
     retries?: Retries
     task?: TaskId
     timed_out?: boolean
-    took?: long
+    took?: DurationValue<UnitMillis>
     total?: long
     updated?: long
     version_conflicts?: long
-    throttled_millis?: long
-    throttled_until_millis?: long
+    throttled?: Duration
+    throttled_millis?: DurationValue<UnitMillis>
+    throttled_until?: Duration
+    throttled_until_millis?: DurationValue<UnitMillis>
   }
 }
