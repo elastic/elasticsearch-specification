@@ -28,6 +28,9 @@ export class Response {
     applications: ApplicationPrivileges[]
     cluster: string[]
     global: GlobalPrivilege[]
+    /**
+     * In this context `IndicesPrivileges.query` property can only be a string, see `IndicesPrivileges` documentation for detail.
+     */
     indices: IndicesPrivileges[]
     run_as: string[]
   }

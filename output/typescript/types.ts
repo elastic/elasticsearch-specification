@@ -14418,7 +14418,7 @@ export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -14441,15 +14441,17 @@ export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
-export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
+export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
-  field_security?: SecurityFieldSecurity
+  field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: string | string[]
+  query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
 }
+
+export type SecurityIndicesPrivilegesQuery = string | QueryDslQueryContainer | SecurityRoleTemplateQuery
 
 export interface SecurityManageUserPrivileges {
   applications: string[]
@@ -14478,6 +14480,18 @@ export interface SecurityRoleMappingRule {
   field?: SecurityFieldRule
   except?: SecurityRoleMappingRule
 }
+
+export interface SecurityRoleTemplateInlineScript extends ScriptBase {
+  lang?: ScriptLanguage
+  options?: Record<string, string>
+  source: string | QueryDslQueryContainer
+}
+
+export interface SecurityRoleTemplateQuery {
+  template?: SecurityRoleTemplateScript
+}
+
+export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | string | QueryDslQueryContainer | StoredScriptId
 
 export interface SecurityTransientMetadataConfig {
   enabled: boolean
