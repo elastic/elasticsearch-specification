@@ -94,7 +94,7 @@ export class IndicesPrivileges {
   /**
    * A search query that defines the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */
-  query?: string[] | QueryContainer | RoleTemplateQueryContainer
+  query?: IndicesPrivilegesQuery
   /**
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    * @server_default false
@@ -102,8 +102,17 @@ export class IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
-/** @variants container */
-export class RoleTemplateQueryContainer {
+/**
+ * While creating or updating a role you can provide either a JSON structure or a string to the API.
+ * However, the response provided by Elasticsearch will only be string with a json-as-text content.
+ *
+ * Since this is embedded in `IndicesPrivileges`, the same structure is used for clarity in both contexts.
+ *
+ * @codegen_names json_text, query, template
+ */
+export type IndicesPrivilegesQuery = string | QueryContainer | RoleTemplateQuery
+
+export class RoleTemplateQuery {
   /**
    * When you create a role, you can specify a query that defines the document level security permissions. You can optionally
    * use Mustache templates in the role query to insert the username of the current authenticated user into the role.
