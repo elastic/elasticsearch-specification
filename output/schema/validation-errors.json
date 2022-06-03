@@ -1835,12 +1835,6 @@
       ],
       "response": []
     },
-    "security.create_api_key": {
-      "request": [
-        "interface definition security._types:RoleTemplateQueryContainer - Property template is a single-variant and must be required"
-      ],
-      "response": []
-    },
     "security.create_service_token": {
       "request": [
         "Request: missing json spec query parameter 'refresh'",
