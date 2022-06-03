@@ -102,8 +102,16 @@ export class IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+/**
+ * While creating or updating a role you can provide either a JSON structure or a string to the API.
+ * However, the response provided by Elasticsearch will only be string with a json-as-text content.
+ *
+ * Since this is embedded in IndicesPrivileges, the same structure is used for clarity in both contexts.
+ *
+ * @codegen_names text, query, template
+ */
 export type IndicesPrivilegesQuery =
-  | string[]
+  | string
   | QueryContainer
   | RoleTemplateQueryContainer
 

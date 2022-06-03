@@ -15136,7 +15136,7 @@ export interface SecurityIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
-export type SecurityIndicesPrivilegesQuery = string[] | QueryDslQueryContainer | SecurityRoleTemplateQueryContainer
+export type SecurityIndicesPrivilegesQuery = string | QueryDslQueryContainer | SecurityRoleTemplateQueryContainer
 
 export interface SecurityManageUserPrivileges {
   applications: string[]
