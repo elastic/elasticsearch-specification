@@ -5,8 +5,6 @@ in this repository, or we do have an endpoint definition in [`/specification/_js
 but we don't have a type definition for it.
 In this document you will see how to add a new endpopint and how to add a new endpoint definition.
 
-**NOTE:** Currenlty we are following the work on the `7.x` release line.
-
 ## How to add a new endpoint
 
 Add a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec defintion
