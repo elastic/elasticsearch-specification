@@ -58,7 +58,7 @@ export interface Request extends RequestBase {
      * Searchable data that you want to associate with the user profile. This
      * field supports a nested data structure.
      */
-    access?: Dictionary<string, UserDefinedValue>
+    labels?: Dictionary<string, UserDefinedValue>
     /**
      * Non-searchable data that you want to associate with the user profile.
      * This field supports a nested data structure.
