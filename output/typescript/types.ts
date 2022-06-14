@@ -4507,8 +4507,6 @@ export interface MappingConstantKeywordProperty extends MappingPropertyBase {
   type: 'constant_keyword'
 }
 
-export type MappingCoreProperty = MappingObjectProperty | MappingNestedProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingDocValuesProperty | MappingMatchOnlyTextProperty
-
 export interface MappingCorePropertyBase extends MappingPropertyBase {
   copy_to?: Fields
   similarity?: string
@@ -4559,8 +4557,6 @@ export interface MappingDenseVectorProperty extends MappingPropertyBase {
   index?: boolean
   index_options?: MappingDenseVectorIndexOptions
 }
-
-export type MappingDocValuesProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDateProperty | MappingDateNanosProperty | MappingKeywordProperty | MappingNumberProperty | MappingRangeProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingCompletionProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingShapeProperty | MappingTokenCountProperty | MappingVersionProperty | MappingWildcardProperty | MappingPointProperty
 
 export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
@@ -4755,8 +4751,6 @@ export interface MappingNestedProperty extends MappingCorePropertyBase {
   type: 'nested'
 }
 
-export type MappingNumberProperty = MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingDoubleNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingShortNumberProperty | MappingByteNumberProperty | MappingUnsignedLongNumberProperty | MappingScaledFloatNumberProperty
-
 export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase {
   index?: boolean
   ignore_malformed?: boolean
@@ -4781,7 +4775,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingDenseVectorProperty | MappingAggregateMetricDoubleProperty | MappingCoreProperty | MappingDynamicProperty
+export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingDenseVectorProperty | MappingAggregateMetricDoubleProperty | MappingObjectProperty | MappingNestedProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingBinaryProperty | MappingBooleanProperty | MappingDateProperty | MappingDateNanosProperty | MappingKeywordProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingCompletionProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingShapeProperty | MappingTokenCountProperty | MappingVersionProperty | MappingWildcardProperty | MappingPointProperty | MappingMatchOnlyTextProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingDoubleNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingShortNumberProperty | MappingByteNumberProperty | MappingUnsignedLongNumberProperty | MappingScaledFloatNumberProperty | MappingLongRangeProperty | MappingIpRangeProperty | MappingIntegerRangeProperty | MappingFloatRangeProperty | MappingDoubleRangeProperty | MappingDateRangeProperty | MappingDynamicProperty
 
 export interface MappingPropertyBase {
   local_metadata?: Metadata
@@ -4791,8 +4785,6 @@ export interface MappingPropertyBase {
   dynamic?: MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
 }
-
-export type MappingRangeProperty = MappingLongRangeProperty | MappingIpRangeProperty | MappingIntegerRangeProperty | MappingFloatRangeProperty | MappingDoubleRangeProperty | MappingDateRangeProperty
 
 export interface MappingRangePropertyBase extends MappingDocValuesPropertyBase {
   boost?: double

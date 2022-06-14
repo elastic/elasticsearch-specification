@@ -31,21 +31,7 @@ import {
   ulong
 } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
-import { NestedProperty, ObjectProperty } from './complex'
-import {
-  GeoPointProperty,
-  GeoShapeProperty,
-  PointProperty,
-  ShapeProperty
-} from './geo'
 import { Property, PropertyBase } from './Property'
-import { RangeProperty } from './range'
-import {
-  CompletionProperty,
-  IpProperty,
-  Murmur3HashProperty,
-  TokenCountProperty
-} from './specialized'
 import { TermVectorOption } from './TermVectorOption'
 import { Script } from '@_types/Scripting'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
@@ -56,36 +42,10 @@ export class CorePropertyBase extends PropertyBase {
   store?: boolean
 }
 
-export type CoreProperty =
-  | ObjectProperty
-  | NestedProperty
-  | SearchAsYouTypeProperty
-  | TextProperty
-  | DocValuesProperty
-  | MatchOnlyTextProperty
 
 export class DocValuesPropertyBase extends CorePropertyBase {
   doc_values?: boolean
 }
-
-export type DocValuesProperty =
-  | BinaryProperty
-  | BooleanProperty
-  | DateProperty
-  | DateNanosProperty
-  | KeywordProperty
-  | NumberProperty
-  | RangeProperty
-  | GeoPointProperty
-  | GeoShapeProperty
-  | CompletionProperty
-  | IpProperty
-  | Murmur3HashProperty
-  | ShapeProperty
-  | TokenCountProperty
-  | VersionProperty
-  | WildcardProperty
-  | PointProperty
 
 export class BinaryProperty extends DocValuesPropertyBase {
   type: 'binary'
@@ -203,17 +163,6 @@ export class ScaledFloatNumberProperty extends NumberPropertyBase {
   null_value?: double
   scaling_factor?: double
 }
-
-export type NumberProperty =
-  | FloatNumberProperty
-  | HalfFloatNumberProperty
-  | DoubleNumberProperty
-  | IntegerNumberProperty
-  | LongNumberProperty
-  | ShortNumberProperty
-  | ByteNumberProperty
-  | UnsignedLongNumberProperty
-  | ScaledFloatNumberProperty
 
 export class PercolatorProperty extends PropertyBase {
   type: 'percolator'

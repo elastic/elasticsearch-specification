@@ -23,22 +23,49 @@ import { integer } from '@_types/Numeric'
 import {
   AggregateMetricDoubleProperty,
   DenseVectorProperty,
-  FlattenedProperty
+  FlattenedProperty, NestedProperty, ObjectProperty
 } from './complex'
 import {
-  CoreProperty,
+  BinaryProperty,
+  BooleanProperty,
+  ByteNumberProperty,
+  DateNanosProperty,
+  DateProperty,
+  DoubleNumberProperty,
   DynamicProperty,
+  FloatNumberProperty,
+  HalfFloatNumberProperty,
+  IntegerNumberProperty,
   JoinProperty,
+  KeywordProperty,
+  LongNumberProperty,
+  MatchOnlyTextProperty,
   PercolatorProperty,
   RankFeatureProperty,
-  RankFeaturesProperty
+  RankFeaturesProperty, ScaledFloatNumberProperty,
+  SearchAsYouTypeProperty,
+  ShortNumberProperty,
+  TextProperty,
+  UnsignedLongNumberProperty,
+  VersionProperty,
+  WildcardProperty
 } from './core'
 import { DynamicMapping } from './dynamic-template'
 import {
+  CompletionProperty,
   ConstantKeywordProperty,
   FieldAliasProperty,
-  HistogramProperty
+  HistogramProperty, IpProperty, Murmur3HashProperty, TokenCountProperty
 } from './specialized'
+import {
+  DateRangeProperty,
+  DoubleRangeProperty,
+  FloatRangeProperty,
+  IntegerRangeProperty,
+  IpRangeProperty,
+  LongRangeProperty,
+} from "@_types/mapping/range";
+import {GeoPointProperty, GeoShapeProperty, PointProperty, ShapeProperty} from "@_types/mapping/geo";
 
 export class PropertyBase {
   local_metadata?: Metadata
@@ -65,7 +92,50 @@ export type Property =
   | HistogramProperty
   | DenseVectorProperty
   | AggregateMetricDoubleProperty
-  | CoreProperty
+
+  // CoreProperty
+  | ObjectProperty
+  | NestedProperty
+  | SearchAsYouTypeProperty
+  | TextProperty
+
+  // DocValuesProperty
+  | BinaryProperty
+  | BooleanProperty
+  | DateProperty
+  | DateNanosProperty
+  | KeywordProperty
+  | GeoPointProperty
+  | GeoShapeProperty
+  | CompletionProperty
+  | IpProperty
+  | Murmur3HashProperty
+  | ShapeProperty
+  | TokenCountProperty
+  | VersionProperty
+  | WildcardProperty
+  | PointProperty
+  | MatchOnlyTextProperty
+
+  // NumberProperty
+  | FloatNumberProperty
+  | HalfFloatNumberProperty
+  | DoubleNumberProperty
+  | IntegerNumberProperty
+  | LongNumberProperty
+  | ShortNumberProperty
+  | ByteNumberProperty
+  | UnsignedLongNumberProperty
+  | ScaledFloatNumberProperty
+
+  // RangeProperty
+  | LongRangeProperty
+  | IpRangeProperty
+  | IntegerRangeProperty
+  | FloatRangeProperty
+  | DoubleRangeProperty
+  | DateRangeProperty
+
   | DynamicProperty
 
 export enum FieldType {
