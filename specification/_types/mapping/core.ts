@@ -42,7 +42,6 @@ export class CorePropertyBase extends PropertyBase {
   store?: boolean
 }
 
-
 export class DocValuesPropertyBase extends CorePropertyBase {
   doc_values?: boolean
 }

@@ -23,7 +23,9 @@ import { integer } from '@_types/Numeric'
 import {
   AggregateMetricDoubleProperty,
   DenseVectorProperty,
-  FlattenedProperty, NestedProperty, ObjectProperty
+  FlattenedProperty,
+  NestedProperty,
+  ObjectProperty
 } from './complex'
 import {
   BinaryProperty,
@@ -42,7 +44,8 @@ import {
   MatchOnlyTextProperty,
   PercolatorProperty,
   RankFeatureProperty,
-  RankFeaturesProperty, ScaledFloatNumberProperty,
+  RankFeaturesProperty,
+  ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
   ShortNumberProperty,
   TextProperty,
@@ -55,7 +58,10 @@ import {
   CompletionProperty,
   ConstantKeywordProperty,
   FieldAliasProperty,
-  HistogramProperty, IpProperty, Murmur3HashProperty, TokenCountProperty
+  HistogramProperty,
+  IpProperty,
+  Murmur3HashProperty,
+  TokenCountProperty
 } from './specialized'
 import {
   DateRangeProperty,
@@ -63,9 +69,14 @@ import {
   FloatRangeProperty,
   IntegerRangeProperty,
   IpRangeProperty,
-  LongRangeProperty,
-} from "@_types/mapping/range";
-import {GeoPointProperty, GeoShapeProperty, PointProperty, ShapeProperty} from "@_types/mapping/geo";
+  LongRangeProperty
+} from '@_types/mapping/range'
+import {
+  GeoPointProperty,
+  GeoShapeProperty,
+  PointProperty,
+  ShapeProperty
+} from '@_types/mapping/geo'
 
 export class PropertyBase {
   local_metadata?: Metadata
@@ -82,61 +93,65 @@ export class PropertyBase {
  * @non_exhaustive
  */
 export type Property =
-  | FlattenedProperty
+  // common
+  | BinaryProperty
+  | BooleanProperty
+  | DynamicProperty
   | JoinProperty
+  | KeywordProperty
+  | MatchOnlyTextProperty
   | PercolatorProperty
   | RankFeatureProperty
   | RankFeaturesProperty
+  | SearchAsYouTypeProperty
+  | TextProperty
+  | VersionProperty
+  | WildcardProperty
+
+  // dates
+  | DateNanosProperty
+  | DateProperty
+
+  // complex
+  | AggregateMetricDoubleProperty
+  | DenseVectorProperty
+  | FlattenedProperty
+  | NestedProperty
+  | ObjectProperty
+
+  // structured
+  | CompletionProperty
   | ConstantKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
-  | DenseVectorProperty
-  | AggregateMetricDoubleProperty
-
-  // CoreProperty
-  | ObjectProperty
-  | NestedProperty
-  | SearchAsYouTypeProperty
-  | TextProperty
-
-  // DocValuesProperty
-  | BinaryProperty
-  | BooleanProperty
-  | DateProperty
-  | DateNanosProperty
-  | KeywordProperty
-  | GeoPointProperty
-  | GeoShapeProperty
-  | CompletionProperty
   | IpProperty
   | Murmur3HashProperty
-  | ShapeProperty
   | TokenCountProperty
-  | VersionProperty
-  | WildcardProperty
-  | PointProperty
-  | MatchOnlyTextProperty
 
-  // NumberProperty
+  // spatial
+  | GeoPointProperty
+  | GeoShapeProperty
+  | PointProperty
+  | ShapeProperty
+
+  // numbers
+  | ByteNumberProperty
+  | DoubleNumberProperty
   | FloatNumberProperty
   | HalfFloatNumberProperty
-  | DoubleNumberProperty
   | IntegerNumberProperty
   | LongNumberProperty
-  | ShortNumberProperty
-  | ByteNumberProperty
-  | UnsignedLongNumberProperty
   | ScaledFloatNumberProperty
+  | ShortNumberProperty
+  | UnsignedLongNumberProperty
 
   // RangeProperty
-  | LongRangeProperty
-  | IpRangeProperty
-  | IntegerRangeProperty
-  | FloatRangeProperty
-  | DoubleRangeProperty
   | DateRangeProperty
-
-  | DynamicProperty
+  | DoubleRangeProperty
+  | FloatRangeProperty
+  | IntegerRangeProperty
+  | IpRangeProperty
+  | LongRangeProperty
 
 export enum FieldType {
   none,
