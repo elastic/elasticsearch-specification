@@ -54,7 +54,7 @@ import {
   verifyUniqueness,
   parseJsDocTags,
   deepEqual,
-  sourceLocation
+  sourceLocation, sortTypeDefinitions
 } from './utils'
 
 const jsonSpec = buildJsonSpec()
@@ -150,17 +150,7 @@ export function compileSpecification (endpointMappings: Record<string, model.End
   }
 
   // Sort the types in alphabetical order
-  model.types.sort((a, b) => {
-    if (a.name.namespace === b.name.namespace) {
-      if (a.name.name > b.name.name) return 1
-      if (a.name.name < b.name.name) return -1
-      return 0
-    }
-
-    if (a.name.namespace > b.name.namespace) return 1
-    if (a.name.namespace < b.name.namespace) return -1
-    return 0
-  })
+  sortTypeDefinitions(model.types)
 
   return model
 }
