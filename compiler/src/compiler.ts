@@ -24,7 +24,6 @@ import { Model } from './model/metamodel'
 import { compileEndpoints, compileSpecification } from './model/build-model'
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
 import { ValidationErrors } from './validation-errors'
-import { expandGenerics } from './transform/expand-generics'
 
 type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors) => Promise<Model>
 
