@@ -26,14 +26,6 @@ export class RangePropertyBase extends DocValuesPropertyBase {
   index?: boolean
 }
 
-export type RangeProperty =
-  | LongRangeProperty
-  | IpRangeProperty
-  | IntegerRangeProperty
-  | FloatRangeProperty
-  | DoubleRangeProperty
-  | DateRangeProperty
-
 export class DateRangeProperty extends RangePropertyBase {
   format?: string
   type: 'date_range'
