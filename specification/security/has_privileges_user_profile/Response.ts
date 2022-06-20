@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { GrantType } from '@security/_types/GrantType'
+import { UserProfileId } from '@security/_types/UserProfile'
 
-/**
- * Creates or updates a user profile on behalf of another user.
- * @rest_spec_name security.activate_user_profile
- * @since 8.2.0
- * @stability experimental
- * @cluster_privileges manage_user_profile
- */
-export interface Request extends RequestBase {
+export class Response {
   body: {
-    access_token?: string
-    grant_type: GrantType
-    password?: string
-    username?: string
+    /**
+     * The subset of the requested profile IDs of the users that
+     * have all the requested privileges.
+     */
+    has_privilege_uids: UserProfileId[]
+    /**
+     * The subset of the requested profile IDs for which an error
+     * was encountered. It does not include the missing profile IDs
+     * or the profile IDs of the users that do not have all the
+     * requested privileges. This field is absent if empty.
+     */
+    error_uids?: UserProfileId[]
   }
 }

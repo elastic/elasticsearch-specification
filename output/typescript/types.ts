@@ -15130,7 +15130,7 @@ export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -15221,7 +15221,7 @@ export interface SecurityUser {
 }
 
 export interface SecurityUserProfile {
-  uid: string
+  uid: SecurityUserProfileId
   user: SecurityUserProfileUser
   data: Record<string, any>
   labels: Record<string, any>
@@ -15232,6 +15232,8 @@ export interface SecurityUserProfileHitMetadata {
   _primary_term: long
   _seq_no: SequenceNumber
 }
+
+export type SecurityUserProfileId = string
 
 export interface SecurityUserProfileUser {
   email?: string | null
@@ -15450,7 +15452,7 @@ export interface SecurityDisableUserResponse {
 }
 
 export interface SecurityDisableUserProfileRequest extends RequestBase {
-  uid: string
+  uid: SecurityUserProfileId
   refresh?: Refresh
 }
 
@@ -15465,7 +15467,7 @@ export interface SecurityEnableUserResponse {
 }
 
 export interface SecurityEnableUserProfileRequest extends RequestBase {
-  uid: string
+  uid: SecurityUserProfileId
   refresh?: Refresh
 }
 
@@ -15657,7 +15659,7 @@ export interface SecurityGetUserPrivilegesResponse {
 }
 
 export interface SecurityGetUserProfileRequest extends RequestBase {
-  uid: string
+  uid: SecurityUserProfileId
   data?: string | string[]
 }
 
@@ -15721,6 +15723,24 @@ export interface SecurityHasPrivilegesResponse {
   has_all_requested: boolean
   index: Record<IndexName, SecurityHasPrivilegesPrivileges>
   username: Username
+}
+
+export interface SecurityHasPrivilegesUserProfilePrivilegesCheck {
+  application?: SecurityHasPrivilegesApplicationPrivilegesCheck[]
+  cluster?: SecurityClusterPrivilege[]
+  index?: SecurityHasPrivilegesIndexPrivilegesCheck[]
+}
+
+export interface SecurityHasPrivilegesUserProfileRequest extends RequestBase {
+  body?: {
+    uids: SecurityUserProfileId[]
+    privileges: SecurityHasPrivilegesUserProfilePrivilegesCheck
+  }
+}
+
+export interface SecurityHasPrivilegesUserProfileResponse {
+  has_privilege_uids: SecurityUserProfileId[]
+  error_uids?: SecurityUserProfileId[]
 }
 
 export interface SecurityInvalidateApiKeyRequest extends RequestBase {
@@ -15935,7 +15955,7 @@ export interface SecuritySuggestUserProfilesTotalUserProfiles {
 }
 
 export interface SecurityUpdateUserProfileDataRequest extends RequestBase {
-  uid: string
+  uid: SecurityUserProfileId
   if_seq_no?: SequenceNumber
   if_primary_term?: long
   refresh?: Refresh

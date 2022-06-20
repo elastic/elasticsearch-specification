@@ -17,21 +17,17 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { GrantType } from '@security/_types/GrantType'
+import { ClusterPrivilege } from '@security/_types/Privileges'
+import {
+  ApplicationPrivilegesCheck,
+  IndexPrivilegesCheck
+} from './../has_privileges/types'
 
-/**
- * Creates or updates a user profile on behalf of another user.
- * @rest_spec_name security.activate_user_profile
- * @since 8.2.0
- * @stability experimental
- * @cluster_privileges manage_user_profile
- */
-export interface Request extends RequestBase {
-  body: {
-    access_token?: string
-    grant_type: GrantType
-    password?: string
-    username?: string
-  }
+export class PrivilegesCheck {
+  application?: ApplicationPrivilegesCheck[]
+  /**
+   * A list of the cluster privileges that you want to check.
+   */
+  cluster?: ClusterPrivilege[]
+  index?: IndexPrivilegesCheck[]
 }
