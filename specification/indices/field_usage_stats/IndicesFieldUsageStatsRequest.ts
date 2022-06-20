@@ -24,7 +24,7 @@ import {
   Indices,
   WaitForActiveShards
 } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.field_usage_stats
@@ -67,13 +67,13 @@ export interface Request extends RequestBase {
      * the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails
      * and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
     /**
      * The number of shard copies that must be active before proceeding with the operation. Set to all or any
      * positive integer up to the total number of shards in the index (`number_of_replicas+1`).

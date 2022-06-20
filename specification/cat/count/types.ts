@@ -17,19 +17,20 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateTime, EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class CountRecord {
   /**
-   * seconds since 1969-01-01 00:00:00
+   * seconds since 1970-01-01 00:00:00
    * @aliases t,time
    */
-  'epoch'?: EpochMillis
+  'epoch'?: Stringified<EpochTime<UnitSeconds>>
   /**
    * time in HH:MM:SS
    * @aliases ts,hms,hhmmss
    */
-  'timestamp'?: DateString
+  'timestamp'?: TimeOfDay
   /**
    * the document count
    * @aliases dc,docs.count,docsCount

@@ -20,11 +20,11 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class GrantApiKey {
   name: Name
-  expiration?: Time
+  expiration?: Duration
   role_descriptors?: Dictionary<string, UserDefinedValue>[]
 }
 

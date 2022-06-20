@@ -23,7 +23,7 @@ import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { CustomSettings } from '@ml/_types/Settings'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 import { Datafeed } from '@ml/_types/Datafeed'
 
 export class Response {
@@ -31,8 +31,8 @@ export class Response {
     allow_lazy_open: boolean
     analysis_config: AnalysisConfigRead
     analysis_limits: AnalysisLimits
-    background_persist_interval?: Time
-    create_time: DateString
+    background_persist_interval?: Duration
+    create_time: DateTime
     custom_settings?: CustomSettings
     daily_model_snapshot_retention_after_days: long
     data_description: DataDescription

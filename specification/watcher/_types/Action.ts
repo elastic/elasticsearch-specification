@@ -20,7 +20,13 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import {
+  DateTime,
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis
+} from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 import {
   IndexAction,
@@ -38,8 +44,8 @@ export class Action {
   foreach?: string
   max_iterations?: integer
   name?: Name
-  throttle_period?: Time
-  throttle_period_in_millis?: EpochMillis
+  throttle_period?: Duration
+  throttle_period_in_millis?: DurationValue<UnitMillis>
   transform?: TransformContainer
   index?: IndexAction
   logging?: LoggingAction
@@ -105,18 +111,18 @@ export enum AcknowledgementOptions {
 
 export class AcknowledgeState {
   state: AcknowledgementOptions
-  timestamp: DateString
+  timestamp: DateTime
 }
 
 export class ExecutionState {
   successful: boolean
-  timestamp: DateString
+  timestamp: DateTime
   reason?: string
 }
 
 export class ThrottleState {
   reason: string
-  timestamp: DateString
+  timestamp: DateTime
 }
 
 export class ActionStatus {

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.delete_repository
@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
     repository: Names
   }
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
   }
 }

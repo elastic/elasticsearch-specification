@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.delete_component_template
@@ -37,8 +37,8 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /** @server_default 30s */
-    master_timeout?: Time
+    master_timeout?: Duration
     /** @server_default 30s */
-    timeout?: Time
+    timeout?: Duration
   }
 }

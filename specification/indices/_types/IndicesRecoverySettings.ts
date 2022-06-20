@@ -18,13 +18,14 @@
  */
 
 import { integer } from '@_types/Numeric'
+import { ByteSize } from '@_types/common'
 
 export class IndicesRecoverySettings {
   compress: boolean
   concurrent_small_file_streams: integer
   concurrent_streams: integer
   file_chunk_size: string
-  max_bytes_per_second: string
+  max_bytes_per_second: ByteSize
   translog_operations: integer
   translog_size: string
 }

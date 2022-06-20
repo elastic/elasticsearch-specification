@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { integer, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class Response {
   body: Dictionary<string, ClusterRemoteInfo>
@@ -33,7 +33,7 @@ export class ClusterRemoteSniffInfo {
   connected: boolean
   max_connections_per_cluster: integer
   num_nodes_connected: long
-  initial_connect_timeout: Time
+  initial_connect_timeout: Duration
   skip_unavailable: boolean
   seeds: string[]
 }
@@ -41,7 +41,7 @@ export class ClusterRemoteSniffInfo {
 export class ClusterRemoteProxyInfo {
   mode: 'proxy'
   connected: boolean
-  initial_connect_timeout: Time
+  initial_connect_timeout: Duration
   skip_unavailable: boolean
   proxy_address: string
   server_name: string

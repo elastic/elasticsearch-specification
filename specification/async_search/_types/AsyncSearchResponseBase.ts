@@ -18,15 +18,17 @@
  */
 
 import { Id } from '@_types/common'
-import { EpochMillis } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { AsyncSearch } from './AsyncSearch'
 
 export class AsyncSearchResponseBase {
   id?: Id
   is_partial: boolean
   is_running: boolean
-  expiration_time_in_millis: EpochMillis
-  start_time_in_millis: EpochMillis
+  expiration_time?: DateTime
+  expiration_time_in_millis: EpochTime<UnitMillis>
+  start_time?: DateTime
+  start_time_in_millis: EpochTime<UnitMillis>
 }
 export class AsyncSearchDocumentResponseBase<
   TDocument

@@ -20,7 +20,7 @@
 import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration, TimeUnit } from '@_types/Time'
 
 /**
  * Returns configuration and usage information about transforms.
@@ -53,7 +53,7 @@ export interface Request extends CatRequestBase {
     /**
      * Unit used to display time values.
      */
-    time?: Time
+    time?: TimeUnit
     size?: integer
   }
 }

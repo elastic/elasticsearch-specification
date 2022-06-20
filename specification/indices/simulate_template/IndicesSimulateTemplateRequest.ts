@@ -20,7 +20,7 @@
 import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Returns the index configuration that would be applied by a particular index template.
@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
   }
   /** @codegen_name template */
   body?: IndexTemplate

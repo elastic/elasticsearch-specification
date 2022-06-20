@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { StoredScript } from '@_types/Scripting'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name put_script
@@ -33,8 +33,8 @@ export interface Request extends RequestBase {
     context?: Name
   }
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
   }
   body: {
     script: StoredScript

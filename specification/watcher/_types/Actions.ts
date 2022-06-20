@@ -32,7 +32,7 @@ import {
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
-import { DateString, Time } from '@_types/Time'
+import { Duration, DateTime, EpochTime, UnitSeconds } from '@_types/Time'
 import { HttpInputRequestDefinition } from './Input'
 
 // PagerDuty ----------------------------- //
@@ -113,7 +113,7 @@ export class SlackAttachment {
   thumb_url?: string
   title: string
   title_link?: string
-  ts?: DateString
+  ts?: EpochTime<UnitSeconds>
 }
 
 export class SlackAttachmentField {
@@ -227,7 +227,7 @@ export class ReportingEmailAttachment {
   /** @server_default 40 */
   retries?: integer
   /** @server_default 15s */
-  interval?: Time
+  interval?: Duration
   request?: HttpInputRequestDefinition
 }
 
@@ -243,7 +243,7 @@ export class Email {
   from?: string
   priority?: EmailPriority
   reply_to?: string[]
-  sent_date?: DateString
+  sent_date?: DateTime
   subject: string
   to: string[]
   attachments?: Dictionary<string, EmailAttachmentContainer>
@@ -260,7 +260,7 @@ export class IndexAction {
   /** @server_default index */
   op_type?: OpType
   /** @server_default 60s */
-  timeout?: Time
+  timeout?: Duration
   execution_time_field?: Field
 }
 

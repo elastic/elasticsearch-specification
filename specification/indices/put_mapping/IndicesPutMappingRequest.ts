@@ -37,7 +37,7 @@ import {
 } from '@_types/mapping/meta-fields'
 import { Property } from '@_types/mapping/Property'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_mapping
@@ -52,8 +52,8 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
     write_index_only?: boolean
   }
   body: {

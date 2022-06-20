@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { DeploymentAllocationState } from '../_types/TrainedModel'
 
 /**
@@ -67,7 +67,7 @@ export interface Request extends RequestBase {
      * Specifies the amount of time to wait for the model to deploy.
      * @server_default 20s
      */
-    timeout?: Time
+    timeout?: Duration
     /**
      * Specifies the allocation status to wait for before returning.
      * @server_default started

@@ -33,7 +33,7 @@ import {
 import { Distance, GeoLocation, GeoShape, GeoShapeRelation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { DateMath, Time } from '@_types/Time'
+import { DateMath, Duration } from '@_types/Time'
 import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
 
@@ -50,7 +50,7 @@ export class GeoDistanceFeatureQuery extends DistanceFeatureQueryBase<
 
 export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
   DateMath,
-  Time
+  Duration
 > {}
 
 /** @codegen_names geo, date */

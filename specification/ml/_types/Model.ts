@@ -19,7 +19,7 @@
 
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
 
 export class ModelSnapshot {
@@ -56,7 +56,7 @@ export class ModelSnapshotUpgrade {
 export class ModelSizeStats {
   bucket_allocation_failures_count: long
   job_id: Id
-  log_time: Time
+  log_time: DateTime
   memory_status: MemoryStatus
   model_bytes: ByteSize
   model_bytes_exceeded?: ByteSize

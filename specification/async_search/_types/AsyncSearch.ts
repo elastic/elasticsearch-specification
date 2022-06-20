@@ -23,7 +23,7 @@ import { Suggest } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { AggregateName, Id, SuggestionName } from '@_types/common'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
@@ -36,7 +36,7 @@ export class AsyncSearch<TDocument> {
   num_reduce_phases?: long
   profile?: Profile
   pit_id?: Id
-  _scroll_id?: Id
+  _scroll_id?: ScrollId
   _shards: ShardStatistics
   suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean

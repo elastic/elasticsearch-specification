@@ -18,12 +18,12 @@
  */
 
 import { VersionNumber } from '@_types/common'
-import { Timestamp } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 import { Actions } from './Action'
 
 export class ActivationState {
   active: boolean
-  timestamp: Timestamp
+  timestamp: DateTime
 }
 
 export class ActivationStatus {

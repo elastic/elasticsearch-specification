@@ -22,7 +22,7 @@ import { FieldMetric } from '@rollup/_types/Metric'
 import { RequestBase } from '@_types/Base'
 import { HttpHeaders, Id, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name rollup.put_job
@@ -83,7 +83,7 @@ export interface Request extends RequestBase {
      * Time to wait for the request to complete.
      * @server_default 20s
      */
-    timeout?: Time
+    timeout?: Duration
     headers?: HttpHeaders
   }
 }

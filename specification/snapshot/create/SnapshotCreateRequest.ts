@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices, Metadata, Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.create
@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      *  If `true`, the request returns a response when the snapshot is complete. If `false`, the request returns a response when the snapshot initializes.
      * @server_default false

@@ -19,7 +19,7 @@
 
 import { Field } from '@_types/common'
 import { uint } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name text_structure.find_structure
@@ -63,7 +63,7 @@ export interface Request<TJsonDocument> {
      * Sets the maximum amount of time that the structure analysis make take. If the analysis is still running when the timeout expires then it will be aborted.
      * @server_default 25s
      */
-    timeout?: Time
+    timeout?: Duration
     timestamp_field?: Field
     /** The Java time format of the timestamp field in the text. */
     timestamp_format?: string

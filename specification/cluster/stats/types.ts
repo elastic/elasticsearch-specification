@@ -29,6 +29,7 @@ import {
   StoreStats,
   PluginStats
 } from '@_types/Stats'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class ClusterFileSystem {
   available_in_bytes: long
@@ -146,7 +147,7 @@ export class ClusterIngest {
 }
 
 export class ClusterJvm {
-  max_uptime_in_millis: long
+  max_uptime_in_millis: DurationValue<UnitMillis>
   mem: ClusterJvmMemory
   threads: long
   versions: ClusterJvmVersion[]
@@ -262,7 +263,8 @@ export class ClusterProcessor {
   count: long
   current: long
   failed: long
-  time_in_millis: long
+  time?: Duration
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export class ClusterShardMetrics {

@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 
 /**
  * Retrieves information about model snapshots.
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
     /**
      * Returns snapshots with timestamps earlier than this time.
      */
-    end?: Time
+    end?: DateTime
     /**
      * Skips the specified number of snapshots.
      * @server_default 0
@@ -71,7 +71,7 @@ export interface Request extends RequestBase {
     /**
      * Returns snapshots with timestamps after this time.
      */
-    start?: Time
+    start?: DateTime
   }
   body: {
     /**
@@ -82,7 +82,7 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `end` query parameter.
      */
-    end?: Time
+    end?: DateTime
     page?: Page
     /**
      * Refer to the description for the `sort` query parameter.
@@ -91,6 +91,6 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `start` query parameter.
      */
-    start?: Time
+    start?: DateTime
   }
 }

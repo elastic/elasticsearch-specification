@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Starts a data frame analytics job.
@@ -55,6 +55,6 @@ export interface Request extends RequestBase {
      * starts.
      * @server_default 20s
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

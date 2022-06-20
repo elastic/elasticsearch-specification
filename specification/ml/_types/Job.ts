@@ -23,7 +23,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { CustomSettings } from '@ml/_types/Settings'
 import { Field, Id, TaskId, IndexName, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  DurationValue,
+  UnitFloatMillis
+} from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
 import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
@@ -47,16 +52,16 @@ export class Job {
   allow_lazy_open: boolean
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval?: Time
+  background_persist_interval?: Duration
   blocked?: JobBlocked
-  create_time?: integer
+  create_time?: DateTime
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: DataDescription
   datafeed_config?: Datafeed
   deleting?: boolean
   description?: string
-  finished_time?: integer
+  finished_time?: DateTime
   groups?: string[]
   job_id: Id
   job_type?: string
@@ -73,7 +78,7 @@ export class JobConfig {
   allow_lazy_open?: boolean
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval?: Time
+  background_persist_interval?: Duration
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: DataDescription
@@ -95,21 +100,21 @@ export class JobStats {
   job_id: string
   model_size_stats: ModelSizeStats
   node?: DiscoveryNode
-  open_time?: DateString
+  open_time?: DateTime
   state: JobState
   timing_stats: JobTimingStats
   deleting?: boolean
 }
 
 export class JobTimingStats {
-  average_bucket_processing_time_ms?: double
+  average_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
   bucket_count: long
-  exponential_average_bucket_processing_time_ms?: double
-  exponential_average_bucket_processing_time_per_hour_ms: double
+  exponential_average_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
+  exponential_average_bucket_processing_time_per_hour_ms: DurationValue<UnitFloatMillis>
   job_id: Id
-  total_bucket_processing_time_ms: double
-  maximum_bucket_processing_time_ms?: double
-  minimum_bucket_processing_time_ms?: double
+  total_bucket_processing_time_ms: DurationValue<UnitFloatMillis>
+  maximum_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
+  minimum_bucket_processing_time_ms?: DurationValue<UnitFloatMillis>
 }
 
 export class JobForecastStatistics {

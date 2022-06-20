@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Action } from './types'
 
 /**
@@ -28,8 +28,8 @@ import { Action } from './types'
  */
 export interface Request extends RequestBase {
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
   }
   body: {
     actions?: Action[]

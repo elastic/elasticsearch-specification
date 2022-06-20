@@ -17,58 +17,54 @@
  * under the License.
  */
 
-import { integer, long } from './Numeric'
+import { double, long } from './Numeric'
 
-export class DateMathTimeParsed {
-  factor: integer
-  interval: DateMathTimeUnit
-}
+/**
+ * A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a
+ * number of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string
+ * representation.
+ */
+export type DateTime = string | EpochTime<UnitMillis>
 
-export type DateString = string
-export type Timestamp = string
-export type TimeSpan = string
-export type EpochMillis = string | long
+/** Time unit for seconds */
+export type UnitSeconds = long
+/** Time unit for fractional seconds */
+export type UnitFloatSeconds = double
+/** Time unit for milliseconds */
+export type UnitMillis = long
+/** Time unit for nanoseconds */
+export type UnitNanos = long
+/** Time unit for fractional milliseconds */
+export type UnitFloatMillis = double
+
+export type EpochTime<Unit> = Unit
+
 export type DateMath = string
-export type DateMathExpression = string
-export type DateMathTime = string
 
-/** @codegen_names date, millis */
-export type DateOrEpochMillis = DateString | EpochMillis
+/** Time of day, expressed as HH:MM:SS */
+export type TimeOfDay = string
 
 export type TimeZone = string
 
 /** @doc_id mapping-date-format */
 export type DateFormat = string
 
-export enum DateMathOperation {
-  '+' = 0,
-  '-' = 1
-}
-
-export enum DateMathTimeUnit {
-  /** @codegen_name seconds */
-  s = 0,
-  /** @codegen_name minutes */
-  m = 1,
-  /** @codegen_name hours */
-  h = 2,
-  /** @codegen_name days */
-  d = 3,
-  /** @codegen_name weeks */
-  w = 4,
-  /** @codegen_name months */
-  M = 5,
-  /** @codegen_name years */
-  y = 6
-}
+/**
+ * A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and
+ * `d` (days). Also accepts "0" without a unit and "-1" to indicate an unspecified value.
+ * @doc_id time-value
+ */
+// Used to be Time, see ES TimeValue
+export type Duration = string | -1 | 0
 
 /**
- * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
- * @doc_id time-value
- * @codegen_names time, offset
+ * A date histogram interval. Similar to `Duration` with additional units: `w` (week), `M` (month), `q` (quarter) and
+ * `y` (year)
  */
-//FIXME: need to distinguish durations (has to be a string), offsets (can be a string or number)
-export type Time = string | integer
+// Used to be DateMathTime, see ES DateHistogramInterval
+export type DurationLarge = string
+
+export type DurationValue<Unit> = Unit
 
 export enum TimeUnit {
   /** @codegen_name nanoseconds */

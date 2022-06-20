@@ -24,7 +24,7 @@
  */
 
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties
@@ -117,7 +117,7 @@ export interface CommonCatQueryParameters {
    * Period to wait for a connection to the master node.
    * @server_default 30s
    */
-  master_timeout?: Time
+  master_timeout?: Duration
   /**
    * List of columns that determine how the table should be sorted.
    * Sorting defaults to ascending and can be changed by setting `:asc`

@@ -18,7 +18,7 @@
  */
 
 import { Ids } from '@_types/common'
-import { EpochMillis } from '@_types/Time'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
@@ -29,6 +29,6 @@ export class Response {
 export class DanglingIndex {
   index_name: string
   index_uuid: string
-  creation_date_millis: EpochMillis
+  creation_date_millis: EpochTime<UnitMillis>
   node_ids: Ids
 }

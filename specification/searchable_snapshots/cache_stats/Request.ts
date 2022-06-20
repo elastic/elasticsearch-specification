@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name searchable_snapshots.cache_stats
@@ -31,6 +31,6 @@ export interface Request extends RequestBase {
     node_id?: NodeIds
   }
   query_parameters: {
-    master_timeout?: Time
+    master_timeout?: Duration
   }
 }

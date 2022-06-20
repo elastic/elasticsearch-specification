@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class CertificateInformation {
   alias: string | null
-  expiry: DateString
+  expiry: DateTime
   format: string
   has_private_key: boolean
   path: string

@@ -156,14 +156,16 @@ feel free to add more if it feels appropriate!
 
 ### Dates
 
-The `Date` type in TypeScript refers to the JavaScript `Date` object,
-since Elasticsearch needs a string or a numeric value, there are aliases also for date types:
+Elasticsearch uses a lot of dates, times and durations. There are various types available to capture the variety of types and representations in the specification:
 
-```ts
-type Timestamp = string
-type TimeSpan = string
-type DateString = string
-```
+* for date and time: `DateTime` for formatted dates, `EpochTime<UnitMillis>`, `EpochTime<UnitSeconds>`, etc. for number values
+* for intervals: `Duration` for formatted values, `DurationValue<UnitMillis>`, `DurationValue<UnitSeconds>`, etc. for number values
+* for time of day: `TimeOfDay
+
+See [`specification/_types/Time.ts`](../specification/_types/Time.ts) for additional details.
+
+Since code generators may choose to use a platform builtin type to represent time-related data, make sure to choose the appropriate representation and **never** use a primitive value such as `string` or `long`.
+
 
 ### Binary
 
@@ -227,6 +229,31 @@ The absence of any type. This is commonly used in APIs that returns an empty bod
 ```ts
 class Response {
   body: Void
+}
+```
+
+### Stringified values
+
+Elasticsearch sometimes uses string-only representations in the JSON it outputs, even for numbers and booleans. This is notably seen in `cat` request and index and cluster settings.
+
+To keep the semantic soundness of the specification and avoid adding ` | string` to handle these cases, the `Stringified` behaviour should be used for these cases. Also, this problem only affects output: data should be sent in its original format (i.e. number, boolean, etc).
+
+Instead of:
+```ts
+export class IndexSettings {
+  // DO NOT DO THAT
+  number_of_shards?: integer | string
+  number_of_replicas?: integer | string
+  hidden?: boolean | string
+}
+```
+
+Use the `Stringified` behavior:
+```
+export class IndexSettings {
+  number_of_shards?: Stringified<integer>
+  number_of_replicas?: Stringified<integer>
+  hidden?: Stringified<boolean>
 }
 ```
 

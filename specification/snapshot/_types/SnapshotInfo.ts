@@ -27,17 +27,23 @@ import {
   VersionString
 } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
-import { EpochMillis, Time } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  DurationValue,
+  UnitMillis,
+  EpochTime
+} from '@_types/Time'
 import { IndexDetails } from './SnapshotIndexDetails'
 import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
   data_streams: Array<string>
-  duration?: Time
-  duration_in_millis?: EpochMillis
-  end_time?: Time
-  end_time_in_millis?: EpochMillis
+  duration?: Duration
+  duration_in_millis?: DurationValue<UnitMillis>
+  end_time?: DateTime
+  end_time_in_millis?: EpochTime<UnitMillis>
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
@@ -49,8 +55,8 @@ export class SnapshotInfo {
   repository?: Name
   snapshot: Name
   shards?: ShardStatistics
-  start_time?: Time
-  start_time_in_millis?: EpochMillis
+  start_time?: DateTime
+  start_time_in_millis?: EpochTime<UnitMillis>
   state?: string
   uuid: Uuid
   version?: VersionString

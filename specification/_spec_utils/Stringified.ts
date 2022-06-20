@@ -17,22 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Metrics, NodeIds } from '@_types/common'
-import { Duration } from '@_types/Time'
-
 /**
- * @rest_spec_name nodes.usage
- * @since 6.0.0
- * @stability stable
- * @doc_id cluster-nodes-usage
+ * Some APIs will return values such as numbers also as a string (notably epoch timestamps). This behavior
+ * is used to capture this behavior while keeping the semantics of the field type.
+ *
+ * Depending on the target language, code generators can keep the union or remove it and leniently parse
+ * strings to the target type.
  */
-export interface Request extends RequestBase {
-  path_parts: {
-    node_id?: NodeIds
-    metric?: Metrics
-  }
-  query_parameters: {
-    timeout?: Duration
-  }
-}
+export type Stringified<T> = T | string

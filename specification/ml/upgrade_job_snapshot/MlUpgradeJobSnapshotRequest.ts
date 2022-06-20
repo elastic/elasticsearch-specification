@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Upgrades an anomaly detection model snapshot to the latest major version.
@@ -58,6 +58,6 @@ export interface Request extends RequestBase {
      * Controls the time to wait for the request to complete.
      * @server_default 30m
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

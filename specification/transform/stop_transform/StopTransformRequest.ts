@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Stops one or more transforms.
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
      * timeout expires, the request returns a timeout exception. However, the request continues processing and
      * eventually moves the transform to a STOPPED state.
      * @server_default 30s */
-    timeout?: Time
+    timeout?: Duration
     /**
      * If it is true, the transform does not completely stop until the current checkpoint is completed. If it is false,
      * the transform stops as soon as possible.

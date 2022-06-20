@@ -18,6 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
+import { DurationValue, UnitNanos } from '@_types/Time'
 
 export class AggregationBreakdown {
   build_aggregation: long
@@ -74,7 +75,7 @@ export class AggregationProfileDelegateDebugFilter {
 export class AggregationProfile {
   breakdown: AggregationBreakdown
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   type: string
   debug?: AggregationProfileDebug
   children?: AggregationProfile[]
@@ -83,7 +84,7 @@ export class AggregationProfile {
 export class Collector {
   name: string
   reason: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   children?: Collector[]
 }
 
@@ -115,7 +116,7 @@ export class QueryBreakdown {
 export class QueryProfile {
   breakdown: QueryBreakdown
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   type: string
   children?: QueryProfile[]
 }
@@ -136,7 +137,7 @@ export class ShardProfile {
 export class FetchProfile {
   type: string
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   breakdown: FetchProfileBreakdown
   debug?: FetchProfileDebug
   children?: FetchProfile[]

@@ -18,7 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 // TODO remove
 // export class Schedule {}
@@ -31,7 +31,7 @@ export type CronExpression = string
 //export class CronExpression extends ScheduleBase {}
 
 export class DailySchedule {
-  at: TimeOfDay[]
+  at: ScheduleTimeOfDay[]
 }
 
 export enum Day {
@@ -89,19 +89,23 @@ export class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Time
+  interval?: Duration
   monthly?: TimeOfMonth | TimeOfMonth[]
   weekly?: TimeOfWeek | TimeOfWeek[]
   yearly?: TimeOfYear | TimeOfYear[]
 }
 
 export class ScheduleTriggerEvent {
-  scheduled_time: DateString
-  triggered_time?: DateString
+  scheduled_time: DateTime
+  triggered_time?: DateTime
 }
 
-/** @codegen_names text, hour_minute */
-export type TimeOfDay = string | HourAndMinute
+/**
+ * A time of day, expressed either as `hh:mm`, `noon`, `midnight`, or an hour/minutes structure.
+ * @codegen_names text, hour_minute
+ */
+// See ES DayTimes
+export type ScheduleTimeOfDay = string | HourAndMinute
 
 export class HourAndMinute {
   hour: integer[]

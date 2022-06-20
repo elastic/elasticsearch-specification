@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
 import { integer } from '@_types/Numeric'
 import { SortOrder } from '@_types/sort'
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      * If true, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.
      * @server_default true

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * A search request by default executes against the most recent visible data of the target indices,
@@ -39,7 +39,7 @@ export interface Request extends RequestBase {
     index: Indices
   }
   query_parameters: {
-    keep_alive: Time
+    keep_alive: Duration
     ignore_unavailable?: boolean
   }
 }

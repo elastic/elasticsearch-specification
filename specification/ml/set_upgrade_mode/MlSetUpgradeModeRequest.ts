@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Sets a cluster wide upgrade_mode setting that prepares machine learning
@@ -51,6 +51,6 @@ export interface Request extends RequestBase {
      * The time to wait for the request to be completed.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

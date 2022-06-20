@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { RoleDescriptor } from './types'
 
 /**
@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /** Expiration time for the API key. By default, API keys never expire. */
-    expiration?: Time
+    expiration?: Duration
     /** Specifies the name for this API key. */
     name?: Name
     /**

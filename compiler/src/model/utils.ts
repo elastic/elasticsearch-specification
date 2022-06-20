@@ -215,6 +215,15 @@ export function modelType (node: Node): model.ValueOf {
       return type
     }
 
+    case ts.SyntaxKind.PrefixUnaryExpression: {
+      // Negative number
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: Number(node.getText())
+      }
+      return type
+    }
+
     case ts.SyntaxKind.TypeParameter: {
       assert(node, Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
       const name = node.compilerNode.getText()

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { uint, ulong } from '@_types/Numeric'
+import { uint } from '@_types/Numeric'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
@@ -40,12 +41,12 @@ export class Response {
      * Timestamp, in milliseconds since the Unix epoch, when the search started.
      * The API only returns this property for running searches.
      */
-    start_time_in_millis: ulong
+    start_time_in_millis: EpochTime<UnitMillis>
     /**
      * Timestamp, in milliseconds since the Unix epoch, when Elasticsearch will delete
      * the search and its results, even if the search is still running.
      */
-    expiration_time_in_millis: ulong
+    expiration_time_in_millis: EpochTime<UnitMillis>
     /**
      * HTTP status code for the search. The API only returns this property for completed searches.
      */

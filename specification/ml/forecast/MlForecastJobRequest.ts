@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Predicts the future behavior of a time series by using its historical
@@ -49,14 +49,14 @@ export interface Request extends RequestBase {
      * record that was processed.
      * @server_default 1d
      */
-    duration?: Time
+    duration?: Duration
     /**
      * The period of time that forecast results are retained. After a forecast
      * expires, the results are deleted. If set to a value of 0, the forecast is
      * never automatically deleted.
      * @server_default 14d
      */
-    expires_in?: Time
+    expires_in?: Duration
     /**
      * The maximum memory the forecast can use. If the forecast needs to use
      * more than the provided amount, it will spool to disk. Default is 20mb,
@@ -72,12 +72,12 @@ export interface Request extends RequestBase {
      * Refer to the description for the `duration` query parameter.
      * @server_default 1d
      */
-    duration?: Time
+    duration?: Duration
     /**
      * Refer to the description for the `expires_in` query parameter.
      * @server_default 14d
      */
-    expires_in?: Time
+    expires_in?: Duration
     /**
      * Refer to the description for the `max_model_memory` query parameter.
      * @server_default 20mb

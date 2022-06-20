@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, ScrollIds } from '@_types/common'
 
 /**
  * @rest_spec_name clear_scroll
@@ -28,9 +28,9 @@ import { Ids } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    scroll_id?: Ids
+    scroll_id?: ScrollIds
   }
   body: {
-    scroll_id?: Ids
+    scroll_id?: ScrollIds
   }
 }

@@ -30,7 +30,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name index
@@ -49,7 +49,7 @@ export interface Request<TDocument> extends RequestBase {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
-    timeout?: Time
+    timeout?: Duration
     version?: VersionNumber
     version_type?: VersionType
     wait_for_active_shards?: WaitForActiveShards

@@ -69,7 +69,7 @@ open it with your favourite editor and perform the fix
      pipeline?: string;
      refresh?: Refresh;
      routing?: Routing;
-     timeout?: Time;
+     timeout?: Duration;
      version?: long;
      version_type?: VersionType;
      wait_for_active_shards?: string;

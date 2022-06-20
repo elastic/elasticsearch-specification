@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Retrieves information about the scheduled events in calendars.
@@ -36,7 +36,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /** Specifies to get events with timestamps earlier than this time. */
-    end?: DateString
+    end?: DateTime
     /** Skips the specified number of events.
      * @server_default 0
      */
@@ -48,6 +48,6 @@ export interface Request extends RequestBase {
      */
     size?: integer
     /** Specifies to get events with timestamps after this time. */
-    start?: string
+    start?: DateTime
   }
 }

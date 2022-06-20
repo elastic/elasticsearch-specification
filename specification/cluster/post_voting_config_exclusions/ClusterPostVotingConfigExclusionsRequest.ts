@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Ids, Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.post_voting_config_exclusions
@@ -46,6 +46,6 @@ export interface Request extends RequestBase {
      * is satisfied, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

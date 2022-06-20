@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.put_settings
@@ -32,9 +32,9 @@ export interface Request extends RequestBase {
   query_parameters: {
     flat_settings?: boolean
     /** @server_default 30s */
-    master_timeout?: Time
+    master_timeout?: Duration
     /** @server_default 30s */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     persistent?: Dictionary<string, UserDefinedValue>

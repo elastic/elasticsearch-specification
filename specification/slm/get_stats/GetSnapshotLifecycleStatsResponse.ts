@@ -18,12 +18,12 @@
  */
 
 import { long } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
-    retention_deletion_time: string
-    retention_deletion_time_millis: EpochMillis
+    retention_deletion_time: Duration
+    retention_deletion_time_millis: DurationValue<UnitMillis>
     retention_failed: long
     retention_runs: long
     retention_timed_out: long

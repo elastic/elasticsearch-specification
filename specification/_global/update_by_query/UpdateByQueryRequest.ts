@@ -27,11 +27,11 @@ import {
   Slices,
   WaitForActiveShards
 } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
@@ -59,17 +59,17 @@ export interface Request extends RequestBase {
     preference?: string
     refresh?: boolean
     request_cache?: boolean
-    requests_per_second?: long
+    requests_per_second?: float
     routing?: Routing
-    scroll?: Time
+    scroll?: Duration
     scroll_size?: long
-    search_timeout?: Time
+    search_timeout?: Duration
     search_type?: SearchType
     slices?: Slices
     sort?: string[]
     stats?: string[]
     terminate_after?: long
-    timeout?: Time
+    timeout?: Duration
     version?: boolean
     version_type?: boolean
     wait_for_active_shards?: WaitForActiveShards

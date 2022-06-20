@@ -36,7 +36,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
@@ -63,11 +63,11 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /** @server_default 1s */
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: Duration
     /** @server_default false */
     keep_on_completion?: boolean
     /** @server_default 5d */
-    keep_alive?: Time
+    keep_alive?: Duration
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
     pre_filter_shard_size?: long
     request_cache?: boolean
     routing?: Routing
-    scroll?: Time
+    scroll?: Duration
     search_type?: SearchType
     stats?: string[]
     stored_fields?: Fields
@@ -103,7 +103,7 @@ export interface Request extends RequestBase {
      */
     suggest_text?: string
     terminate_after?: long
-    timeout?: Time
+    timeout?: Duration
     track_total_hits?: TrackHits
     track_scores?: boolean
     typed_keys?: boolean

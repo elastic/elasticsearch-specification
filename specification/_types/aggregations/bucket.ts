@@ -33,7 +33,7 @@ import {
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
-import { DateString, Time, DateMath } from '@_types/Time'
+import { DateTime, Duration, DateMath, TimeZone } from '@_types/Time'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
@@ -54,11 +54,11 @@ export class AutoDateHistogramAggregation extends BucketAggregationBase {
   field?: Field
   format?: string
   minimum_interval?: MinimumInterval
-  missing?: DateString
+  missing?: DateTime
   offset?: string
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
-  time_zone?: string
+  time_zone?: TimeZone
 }
 
 export enum MinimumInterval {
@@ -88,20 +88,21 @@ export class CompositeAggregationSource {
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
-  calendar_interval?: CalendarInterval // CalendarInterval is too restrictive here
+  calendar_interval?: CalendarInterval
   extended_bounds?: ExtendedBounds<FieldDateMath>
   hard_bounds?: ExtendedBounds<FieldDateMath>
   field?: Field
-  fixed_interval?: Time // CalendarInterval is too restrictive here
+  fixed_interval?: Duration
   format?: string
-  interval?: Time
+  /** @deprecated 7.2.0 use `fixed_interval` or `calendar_interval` */
+  interval?: Duration
   min_doc_count?: integer
-  missing?: DateString
-  offset?: Time
+  missing?: DateTime
+  offset?: Duration
   order?: HistogramOrder
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
-  time_zone?: string
+  time_zone?: TimeZone
   keyed?: boolean
 }
 
@@ -129,7 +130,7 @@ export class DateRangeAggregation extends BucketAggregationBase {
   format?: string
   missing?: Missing
   ranges?: DateRangeExpression[]
-  time_zone?: string
+  time_zone?: TimeZone
   keyed?: boolean
 }
 

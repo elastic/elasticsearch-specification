@@ -26,14 +26,14 @@ import {
   SyncContainer
 } from '@transform/_types/Transform'
 import { Id, Metadata, VersionString } from '@_types/common'
-import { EpochMillis, Time } from '@_types/Time'
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class TransformSummary {
   /** The destination for the transform. */
   dest: Destination
   /** Free text description of the transform. */
   description?: string
-  frequency?: Time
+  frequency?: Duration
   id: Id
   /** The pivot method transforms the data by aggregating and grouping it. */
   pivot?: Pivot
@@ -43,7 +43,7 @@ export class TransformSummary {
   source: Source
   /**  Defines the properties transforms require to run continuously. */
   sync?: SyncContainer
-  create_time?: EpochMillis
+  create_time?: EpochTime<UnitMillis>
   version?: VersionString
   latest?: Latest
   _meta?: Metadata

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Opens one or more anomaly detection jobs.
@@ -47,13 +47,13 @@ export interface Request extends RequestBase {
      * Controls the time to wait until a job has opened.
      * @server_default 30m
      */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 30m
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

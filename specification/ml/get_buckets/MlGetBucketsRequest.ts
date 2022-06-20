@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { DateString, Timestamp } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Retrieves anomaly detection job results for one or more buckets.
@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
      * The timestamp of a single bucket result. If you do not specify this
      * parameter, the API returns information about all buckets.
      */
-    timestamp?: Timestamp
+    timestamp?: DateTime
   }
   query_parameters: {
     /**
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
      * unset and results are not limited to specific timestamps.
      * @server_default -1
      */
-    end?: DateString
+    end?: DateTime
     /**
      *  If `true`, the output excludes interim results.
      * @server_default false
@@ -90,7 +90,7 @@ export interface Request extends RequestBase {
      * and results are not limited to specific timestamps.
      * @server_default -1
      */
-    start?: DateString
+    start?: DateTime
   }
   body: {
     /**
@@ -107,7 +107,7 @@ export interface Request extends RequestBase {
      * Refer to the description for the `end` query parameter.
      * @server_default -1
      */
-    end?: DateString
+    end?: DateTime
     /**
      * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
@@ -128,6 +128,6 @@ export interface Request extends RequestBase {
      * Refer to the description for the `start` query parameter.
      * @server_default -1
      */
-    start?: DateString
+    start?: DateTime
   }
 }

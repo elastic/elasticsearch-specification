@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { TimeZone } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.translate
@@ -31,6 +32,6 @@ export interface Request extends RequestBase {
     fetch_size?: integer
     filter?: QueryContainer
     query: string
-    time_zone?: string
+    time_zone?: TimeZone
   }
 }

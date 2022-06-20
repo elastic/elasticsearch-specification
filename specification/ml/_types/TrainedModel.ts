@@ -28,8 +28,14 @@ import {
   VersionString
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
-import { DateString } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  DurationValue,
+  UnitFloatMillis,
+  UnitMillis,
+  EpochTime
+} from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
 
@@ -80,7 +86,7 @@ export class TrainedModelDeploymentStats {
    */
   reason: string
   /** The epoch timestamp when the deployment started. */
-  start_time: long
+  start_time: EpochTime<UnitMillis>
   /** The overall state of the deployment. */
   state: DeploymentState
   /** The number of threads used be each allocation during inference. */
@@ -108,7 +114,7 @@ export class TrainedModelInferenceStats {
   /** The number of inference calls where all the training features for the model were missing. */
   missing_all_fields_count: integer
   /** The time when the statistics were last updated. */
-  timestamp: Time
+  timestamp: DateTime
 }
 
 export class TrainedModelSizeStats {
@@ -120,7 +126,7 @@ export class TrainedModelSizeStats {
 
 export class TrainedModelDeploymentNodesStats {
   /** The average time for each inference call to complete on this node. */
-  average_inference_time_ms: double
+  average_inference_time_ms: DurationValue<UnitFloatMillis>
   /** The number of errors when evaluating the trained model. */
   error_count: integer
   /** The total number of inference calls made against this node for this model. */
@@ -140,7 +146,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The current routing state and reason for the current routing state for this allocation. */
   routing_state: TrainedModelAllocationRoutingTable
   /** The epoch timestamp when the allocation started. */
-  start_time: long
+  start_time: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
   threads_per_allocation: integer
   /** The number of inference requests that timed out before being processed. */
@@ -160,7 +166,7 @@ export class TrainedModelConfig {
   /** Information on the creator of the trained model. */
   created_by?: string
   /** The time when the trained model was created. */
-  create_time?: Time
+  create_time?: DateTime
   /** Any field map described in the inference configuration takes precedence. */
   default_field_map?: Dictionary<string, string>
   /** The free-text description of the trained model. */
@@ -350,7 +356,7 @@ export class TrainedModelAllocation {
   /**
    * The timestamp when the deployment started.
    */
-  start_time: DateString
+  start_time: DateTime
   task_parameters: TrainedModelAllocationTaskParameters
 }
 

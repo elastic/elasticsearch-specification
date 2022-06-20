@@ -150,7 +150,7 @@ export class MatchQuery extends QueryBase {
   operator?: Operator
   /** @server_default 0 */
   prefix_length?: integer
-  // FIXME: docs states "date" as a possible format. Add DateMath, or DateMathTime?
+  // FIXME: docs states "date" as a possible format. Add DateMath, or DurationLarge?
   //        Should also be consisitent with MultiMatchQuery.query
   query: string | float | boolean
   /** @server_default 'none' */

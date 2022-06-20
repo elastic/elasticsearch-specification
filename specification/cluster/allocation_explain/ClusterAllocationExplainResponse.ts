@@ -27,12 +27,13 @@ import {
   NodeAllocationExplanation,
   UnassignedInformation
 } from './types'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
     allocate_explanation?: string
-    allocation_delay?: string
-    allocation_delay_in_millis?: long
+    allocation_delay?: Duration
+    allocation_delay_in_millis?: DurationValue<UnitMillis>
     can_allocate?: Decision
     can_move_to_other_node?: Decision
     can_rebalance_cluster?: Decision
@@ -41,8 +42,8 @@ export class Response {
     can_remain_decisions?: AllocationDecision[]
     can_remain_on_current_node?: Decision
     cluster_info?: ClusterInfo
-    configured_delay?: string
-    configured_delay_in_millis?: long
+    configured_delay?: Duration
+    configured_delay_in_millis?: DurationValue<UnitMillis>
     current_node?: CurrentNode
     current_state: string
     index: IndexName
@@ -50,8 +51,8 @@ export class Response {
     node_allocation_decisions?: NodeAllocationExplanation[]
     primary: boolean
     rebalance_explanation?: string
-    remaining_delay?: string
-    remaining_delay_in_millis?: long
+    remaining_delay?: Duration
+    remaining_delay_in_millis?: DurationValue<UnitMillis>
     shard: integer
     unassigned_info?: UnassignedInformation
     /** @since 7.14.0 */

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 
 /**
  * Starts one or more datafeeds.
@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
      * The end time value is exclusive. If you do not specify an end time, the datafeed
      * runs continuously.
      */
-    end?: Time // default ""
+    end?: DateTime // default ""
     /**
      * The time that the datafeed should begin, which can be specified by using the same formats as the `end` parameter.
      * This value is inclusive.
@@ -72,20 +72,20 @@ export interface Request extends RequestBase {
      * If you restart a stopped datafeed and specify a start value that is earlier than the timestamp of the latest
      * processed record, the datafeed continues from 1 millisecond after the timestamp of the latest processed record.
      */
-    start?: Time // default ""
+    start?: DateTime // default ""
     /**
      * Specifies the amount of time to wait until a datafeed starts.
      * @server_default 20s */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /** Refer to the description for the `end` query parameter. */
-    end?: Time // default ""
+    end?: DateTime // default ""
     /** Refer to the description for the `start` query parameter.  */
-    start?: Time // default ""
+    start?: DateTime // default ""
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 20s */
-    timeout?: Time
+    timeout?: Duration
   }
 }

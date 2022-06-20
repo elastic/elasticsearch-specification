@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Uuid } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name dangling_indices.import_dangling_index
@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     accept_data_loss: boolean
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
   }
 }

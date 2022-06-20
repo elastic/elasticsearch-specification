@@ -22,7 +22,7 @@ import { Field, MinimumShouldMatch } from '@_types/common'
 import { Distance, GeoLocation } from '@_types/Geo'
 import { double, float, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { DateMath, Time } from '@_types/Time'
+import { DateMath, Duration } from '@_types/Time'
 import { QueryBase, QueryContainer } from './abstractions'
 
 export class BoolQuery extends QueryBase {
@@ -91,7 +91,7 @@ export class NumericDecayFunction
 
 export class DateDecayFunction
   extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<DateMath, Time>> {}
+  implements AdditionalProperty<Field, DecayPlacement<DateMath, Duration>> {}
 
 export class GeoDecayFunction
   extends DecayFunctionBase

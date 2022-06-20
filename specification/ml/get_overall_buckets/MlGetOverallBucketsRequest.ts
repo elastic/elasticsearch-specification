@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
 
 /**
  * Retrieves overall bucket results that summarize the bucket results of
@@ -81,11 +81,11 @@ export interface Request extends RequestBase {
      * of the specified anomaly detection jobs. To override that behavior, use
      * the optional `bucket_span` parameter.
      */
-    bucket_span?: Time
+    bucket_span?: Duration
     /**
      * Returns overall buckets with timestamps earlier than this time.
      */
-    end?: Time
+    end?: DateTime
     /**
      * If `true`, the output excludes interim results.
      * @server_default false
@@ -99,7 +99,7 @@ export interface Request extends RequestBase {
     /**
      * Returns overall buckets with timestamps after this time.
      */
-    start?: Time
+    start?: DateTime
     /**
      * The number of top anomaly detection job bucket scores to be used in the
      * `overall_score` calculation.
@@ -116,11 +116,11 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `bucket_span` query parameter.
      */
-    bucket_span?: Time
+    bucket_span?: Duration
     /**
      * Refer to the description for the `end` query parameter.
      */
-    end?: Time
+    end?: DateTime
     /**
      * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
@@ -133,7 +133,7 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `start` query parameter.
      */
-    start?: Time
+    start?: DateTime
     /**
      * Refer to the description for the `top_n` query parameter.
      * @server_default 1

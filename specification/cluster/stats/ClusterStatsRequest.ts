@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.stats
@@ -35,6 +35,6 @@ export interface Request extends RequestBase {
   query_parameters: {
     flat_settings?: boolean
     /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response’s _nodes.failed property. Defaults to no timeout. */
-    timeout?: Time
+    timeout?: Duration
   }
 }

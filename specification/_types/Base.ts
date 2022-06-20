@@ -29,7 +29,7 @@ import { ErrorCause } from './Errors'
 import { integer, long } from './Numeric'
 import { Result } from './Result'
 import { ShardStatistics } from './Stats'
-import { DateString } from './Time'
+import { DateTime } from './Time'
 
 export class RequestBase implements CommonQueryParameters {}
 
@@ -52,7 +52,7 @@ export class AcknowledgedResponseBase {
 export class DynamicResponseBase {}
 
 export class ElasticsearchVersionInfo {
-  build_date: DateString
+  build_date: DateTime
   build_flavor: string
   build_hash: string
   build_snapshot: boolean
