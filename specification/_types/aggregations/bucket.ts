@@ -18,7 +18,7 @@
  */
 
 import { SortOrder } from '@_types/sort'
-import {Dictionary, SingleKeyDictionary} from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EmptyObject } from '@_types/common'
 import { Field, RelationName, Fields } from '@_types/common'

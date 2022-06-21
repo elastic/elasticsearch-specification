@@ -2581,6 +2581,8 @@ export interface AggregationsAggregateBase {
   meta?: Metadata
 }
 
+export type AggregationsAggregateOrder = Partial<Record<Field, SortOrder>> | Partial<Record<Field, SortOrder>>[]
+
 export interface AggregationsAggregation {
   meta?: Metadata
   name?: string
@@ -2872,7 +2874,7 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
   min_doc_count?: integer
   missing?: DateTime
   offset?: Duration
-  order?: AggregationsHistogramOrder
+  order?: AggregationsAggregateOrder
   params?: Record<string, any>
   script?: Script
   time_zone?: TimeZone
@@ -3127,7 +3129,7 @@ export interface AggregationsHistogramAggregation extends AggregationsBucketAggr
   min_doc_count?: integer
   missing?: double
   offset?: double
-  order?: AggregationsHistogramOrder
+  order?: AggregationsAggregateOrder
   script?: Script
   format?: string
   keyed?: boolean
@@ -3139,11 +3141,6 @@ export interface AggregationsHistogramBucketKeys extends AggregationsMultiBucket
 }
 export type AggregationsHistogramBucket = AggregationsHistogramBucketKeys
   & { [property: string]: AggregationsAggregate | string | double | long }
-
-export interface AggregationsHistogramOrder {
-  _count?: SortOrder
-  _key?: SortOrder
-}
 
 export interface AggregationsHoltLinearModelSettings {
   alpha?: float
@@ -3363,6 +3360,13 @@ export interface AggregationsMultiTermsAggregate extends AggregationsTermsAggreg
 }
 
 export interface AggregationsMultiTermsAggregation extends AggregationsBucketAggregationBase {
+  collect_mode?: AggregationsTermsAggregationCollectMode
+  order?: AggregationsAggregateOrder
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  shard_size?: integer
+  show_term_doc_count_error?: boolean
+  size?: integer
   terms: AggregationsMultiTermLookup[]
 }
 
@@ -3723,7 +3727,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   missing_order?: AggregationsMissingOrder
   missing_bucket?: boolean
   value_type?: string
-  order?: AggregationsTermsAggregationOrder
+  order?: AggregationsAggregateOrder
   script?: Script
   shard_size?: integer
   show_term_doc_count_error?: boolean
@@ -3734,8 +3738,6 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
 export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_first'
 
 export type AggregationsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
-
-export type AggregationsTermsAggregationOrder = Record<Field, SortOrder> | Record<Field, SortOrder>[]
 
 export interface AggregationsTermsBucketBase extends AggregationsMultiBucketBase {
   doc_count_error?: long
@@ -10069,7 +10071,7 @@ export interface IndicesGetFieldMappingRequest extends RequestBase {
 export type IndicesGetFieldMappingResponse = Record<IndexName, IndicesGetFieldMappingTypeFieldMappings>
 
 export interface IndicesGetFieldMappingTypeFieldMappings {
-  mappings: Partial<Record<Field, MappingFieldMapping>>
+  mappings: Record<Field, MappingFieldMapping>
 }
 
 export interface IndicesGetIndexTemplateIndexTemplateItem {
