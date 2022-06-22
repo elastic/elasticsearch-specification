@@ -66,8 +66,8 @@ export enum DelimitedPayloadEncoding {
 
 export class DelimitedPayloadTokenFilter extends TokenFilterBase {
   type: 'delimited_payload'
-  delimiter: string
-  encoding: DelimitedPayloadEncoding
+  delimiter?: string
+  encoding?: DelimitedPayloadEncoding
 }
 
 export enum EdgeNGramSide {
@@ -77,8 +77,8 @@ export enum EdgeNGramSide {
 
 export class EdgeNGramTokenFilter extends TokenFilterBase {
   type: 'edge_ngram'
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   side?: EdgeNGramSide
   preserve_original?: boolean
 }
@@ -97,7 +97,7 @@ export class StopTokenFilter extends TokenFilterBase {
   type: 'stop'
   ignore_case?: boolean
   remove_trailing?: boolean
-  stopwords: StopWords
+  stopwords?: StopWords
   stopwords_path?: string
 }
 
@@ -166,7 +166,7 @@ export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
   type: 'asciifolding'
-  preserve_original: boolean
+  preserve_original?: boolean
 }
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
@@ -185,27 +185,28 @@ export class ConditionTokenFilter extends TokenFilterBase {
 
 export class ElisionTokenFilter extends TokenFilterBase {
   type: 'elision'
-  articles: string[]
-  articles_case: boolean
+  articles?: string[]
+  articles_path?: string
+  articles_case?: boolean
 }
 
 export class FingerprintTokenFilter extends TokenFilterBase {
   type: 'fingerprint'
-  max_output_size: integer
-  separator: string
+  max_output_size?: integer
+  separator?: string
 }
 
 export class HunspellTokenFilter extends TokenFilterBase {
   type: 'hunspell'
-  dedup: boolean
-  dictionary: string
+  dedup?: boolean
+  dictionary?: string
   locale: string
-  longest_only: boolean
+  longest_only?: boolean
 }
 
 export class JaStopTokenFilter extends TokenFilterBase {
   type: 'ja_stop'
-  stopwords: StopWords
+  stopwords?: StopWords
 }
 
 export enum KeepTypesMode {
@@ -240,14 +241,14 @@ export class KStemTokenFilter extends TokenFilterBase {
 
 export class LengthTokenFilter extends TokenFilterBase {
   type: 'length'
-  max: integer
-  min: integer
+  max?: integer
+  min?: integer
 }
 
 export class LimitTokenCountTokenFilter extends TokenFilterBase {
   type: 'limit'
-  consume_all_tokens: boolean
-  max_token_count: integer
+  consume_all_tokens?: boolean
+  max_token_count?: integer
 }
 
 export class LowercaseTokenFilter extends TokenFilterBase {
@@ -258,7 +259,7 @@ export class LowercaseTokenFilter extends TokenFilterBase {
 export class MultiplexerTokenFilter extends TokenFilterBase {
   type: 'multiplexer'
   filters: string[]
-  preserve_original: boolean
+  preserve_original?: boolean
 }
 
 export class NGramTokenFilter extends TokenFilterBase {
@@ -270,20 +271,21 @@ export class NGramTokenFilter extends TokenFilterBase {
 
 export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
   type: 'nori_part_of_speech'
-  stoptags: string[]
+  stoptags?: string[]
 }
 
 export class PatternCaptureTokenFilter extends TokenFilterBase {
   type: 'pattern_capture'
   patterns: string[]
-  preserve_original: boolean
+  preserve_original?: boolean
 }
 
 export class PatternReplaceTokenFilter extends TokenFilterBase {
   type: 'pattern_replace'
-  flags: string
+  all?: boolean
+  flags?: string
   pattern: string
-  replacement: string
+  replacement?: string
 }
 
 export class PorterStemTokenFilter extends TokenFilterBase {
@@ -325,7 +327,7 @@ export class TrimTokenFilter extends TokenFilterBase {
 
 export class TruncateTokenFilter extends TokenFilterBase {
   type: 'truncate'
-  length: integer
+  length?: integer
 }
 
 export class UniqueTokenFilter extends TokenFilterBase {
