@@ -51,8 +51,8 @@ jobs:
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
-          node scripts/upload-recording/download.js --branch master
-          node scripts/clone-elasticsearch/index.js --version 8.2.0-SNAPSHOT
+          node scripts/upload-recording/download.js --branch latest
+          node scripts/clone-elasticsearch/index.js --version 8.4-SNAPSHOT
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
@@ -67,4 +67,4 @@ jobs:
 
       - name: Run validation
         working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }} --version 8.2.0-SNAPSHOT
+        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }} --version 8.4-SNAPSHOT
