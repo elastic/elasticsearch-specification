@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
+import { Hint } from './types'
 
 /**
  * Get suggestions for user profiles that match specified search criteria.
@@ -47,5 +48,19 @@ export interface Request extends RequestBase {
      * @server_default 10
      */
     size?: long
+    /**
+     * List of filters for the `data` field of the profile document.
+     * To return all content use `data=*`. To return a subset of content
+     * use `data=<key>` to retrieve content nested under the specified `<key>`.
+     * By default returns no `data` content.
+     */
+    data?: string | string[]
+    /**
+     * Extra search criteria to improve relevance of the suggestion result.
+     * Profiles matching the spcified hint are ranked higher in the response.
+     * Profiles not matching the hint don't exclude the profile from the response
+     * as long as the profile matches the `name` field query.
+     */
+    hint?: Hint
   }
 }

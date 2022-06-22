@@ -15935,11 +15935,20 @@ export interface SecuritySamlServiceProviderMetadataResponse {
   metadata: string
 }
 
+export interface SecuritySuggestUserProfilesHint {
+  uids?: SecurityUserProfileId[]
+  labels?: Partial<Record<string, SecuritySuggestUserProfilesHintLabelValue>>
+}
+
+export type SecuritySuggestUserProfilesHintLabelValue = string | string[]
+
 export interface SecuritySuggestUserProfilesRequest extends RequestBase {
   data?: string | string[]
   body?: {
     name?: string
     size?: long
+    data?: string | string[]
+    hint?: SecuritySuggestUserProfilesHint
   }
 }
 
