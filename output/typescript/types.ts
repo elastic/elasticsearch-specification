@@ -16559,10 +16559,12 @@ export interface SqlTranslateRequest extends RequestBase {
 }
 
 export interface SqlTranslateResponse {
-  size: long
-  _source: SearchSourceConfig
-  fields: Record<Field, string>[]
-  sort: Sort
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  size?: long
+  _source?: SearchSourceConfig
+  fields?: (QueryDslFieldAndFormat | Field)[]
+  query?: QueryDslQueryContainer
+  sort?: Sort
 }
 
 export interface SslCertificatesCertificateInformation {
