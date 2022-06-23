@@ -18,7 +18,7 @@
  */
 
 import { UserProfileId } from '@security/_types/UserProfile'
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Hint {
   /**
@@ -30,7 +30,5 @@ export class Hint {
    * of a profile. A profile is considered matching if it matches
    * at least one of the strings.
    */
-  labels?: SingleKeyDictionary<string, HintLabelValue>
+  labels?: Dictionary<string, string | string[]>
 }
-
-export type HintLabelValue = string | string[]
