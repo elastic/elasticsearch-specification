@@ -3982,8 +3982,6 @@ export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
   dedup?: boolean
   dictionary?: string
   locale: string
-  lang: string
-  language: string
   longest_only?: boolean
 }
 
@@ -4256,6 +4254,7 @@ export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase
 export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_replace'
   all?: boolean
+  flags?: string
   pattern: string
   replacement?: string
 }
@@ -9334,7 +9333,7 @@ export interface IndicesIndexSettingBlocks {
   metadata?: boolean
 }
 
-export interface IndicesIndexSettings {
+export interface IndicesIndexSettingsKeys {
   index?: IndicesIndexSettings
   mode?: string
   routing_path?: string | string[]
@@ -9388,11 +9387,13 @@ export interface IndicesIndexSettings {
   shards?: integer
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
-  mappings?: IndicesMappingLimitSettings
+  mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesSlowlogSettings
   indexing_pressure?: IndicesIndexingPressure
   store?: IndicesStorage
 }
+export type IndicesIndexSettings = IndicesIndexSettingsKeys
+  & { [property: string]: any }
 
 export interface IndicesIndexSettingsAnalysis {
   analyzer?: Record<string, AnalysisAnalyzer>
