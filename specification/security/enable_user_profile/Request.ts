@@ -19,19 +19,21 @@
 
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
+import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
  * Enables a user profile so it's visible in user profile searches.
  * @rest_spec_name security.enable_user_profile
  * @since 8.2.0
  * @stability experimental
+ * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
      * Unique identifier for the user profile.
      */
-    uid: string
+    uid: UserProfileId
   }
   query_parameters: {
     /**

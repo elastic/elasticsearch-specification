@@ -25,6 +25,7 @@ import { GrantType } from '@security/_types/GrantType'
  * @rest_spec_name security.activate_user_profile
  * @since 8.2.0
  * @stability experimental
+ * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {
   body: {
