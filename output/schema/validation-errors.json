@@ -1990,12 +1990,6 @@
       ],
       "response": []
     },
-    "security.has_privileges_user_profile": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.oidc_authenticate": {
       "request": [
         "Missing request & response"

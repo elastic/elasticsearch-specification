@@ -22,19 +22,21 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Refresh, SequenceNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
  * Updates specific data for the user profile that's associated with the specified unique ID.
  * @rest_spec_name security.update_user_profile_data
  * @since 8.2.0
  * @stability experimental
+ * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
      * A unique identifier for the user profile.
      */
-    uid: string
+    uid: UserProfileId
   }
   query_parameters: {
     /**

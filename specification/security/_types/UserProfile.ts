@@ -24,6 +24,8 @@ import { Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { SequenceNumber } from '@_types/common'
 
+export type UserProfileId = string
+
 export class UserProfileHitMetadata {
   _primary_term: long
   _seq_no: SequenceNumber
@@ -39,7 +41,7 @@ export class UserProfileUser {
 }
 
 export class UserProfile {
-  uid: string
+  uid: UserProfileId
   user: UserProfileUser
   data: Dictionary<string, UserDefinedValue>
   labels: Dictionary<string, UserDefinedValue>
