@@ -44,6 +44,9 @@ clean-dep:	## Clean npm dependencies
 	@rm -rf compiler/node_modules
 	@rm -rf typescript-generator/node_modules
 
+transform-expand-generics: ## Create a new schema with all generics expanded
+	@npm run transform-expand-generics --prefix compiler
+
 contrib: | generate license-check spec-format-fix 	## Pre contribution target
 
 help:  ## Display help

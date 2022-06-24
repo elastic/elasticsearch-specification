@@ -1287,3 +1287,20 @@ export function sourceLocation (node: Node): string {
   const sourceFile = node.getSourceFile()
   return `${sourceFile.getFilePath().replace(basePath, '')}#L${node.getStartLineNumber(true)}-L${node.getEndLineNumber()}`
 }
+
+/**
+ * Sort an array of type definitions by type name
+ */
+export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
+  types.sort((a, b) => {
+    if (a.name.namespace === b.name.namespace) {
+      if (a.name.name > b.name.name) return 1
+      if (a.name.name < b.name.name) return -1
+      return 0
+    }
+
+    if (a.name.namespace > b.name.namespace) return 1
+    if (a.name.namespace < b.name.namespace) return -1
+    return 0
+  })
+}
