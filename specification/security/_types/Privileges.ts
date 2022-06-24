@@ -62,6 +62,7 @@ export enum ClusterPrivilege {
   manage_slm,
   manage_token,
   manage_transform,
+  manage_user_profile,
   manage_watcher,
   monitor,
   monitor_ml,

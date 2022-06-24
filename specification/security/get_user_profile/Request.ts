@@ -18,19 +18,21 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
  * Retrieves a user's profile using the unique profile ID.
  * @rest_spec_name security.get_user_profile
  * @since 8.2.0
  * @stability experimental
+ * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
      * A unique identifier for the user profile.
      */
-    uid: string
+    uid: UserProfileId
   }
   query_parameters: {
     /**
