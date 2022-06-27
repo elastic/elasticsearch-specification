@@ -10356,7 +10356,7 @@ export interface IndicesRecoveryShardRecovery {
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
   stop_time?: DateTime
-  stop_time_in_millis: EpochTime<UnitMillis>
+  stop_time_in_millis?: EpochTime<UnitMillis>
   target: IndicesRecoveryRecoveryOrigin
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
