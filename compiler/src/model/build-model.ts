@@ -286,7 +286,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           )
           assert(
             (bodyMember as PropertySignature).getJsDocs(),
-            !type.path.map(p => p.name).concat(type.query.map(p => p.name)).includes(tags.codegen_name),
+            !type.path.map(p => p.codegenName ?? p.name).concat(type.query.map(p => p.codegenName ?? p.name))
+              .includes(tags.codegen_name),
             `The codegen_name '${tags.codegen_name}' already exists as a property in the path or query.`
           )
           type.body = {
