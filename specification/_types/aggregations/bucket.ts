@@ -18,7 +18,7 @@
  */
 
 import { SortOrder } from '@_types/sort'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, RelationName, Fields } from '@_types/common'
 import {
@@ -97,7 +97,7 @@ export class DateHistogramAggregation extends BucketAggregationBase {
   min_doc_count?: integer
   missing?: DateString
   offset?: Time
-  order?: HistogramOrder
+  order?: AggregateOrder
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
   time_zone?: string
@@ -207,15 +207,10 @@ export class HistogramAggregation extends BucketAggregationBase {
   min_doc_count?: integer
   missing?: double
   offset?: double
-  order?: HistogramOrder
+  order?: AggregateOrder
   script?: Script
   format?: string
   keyed?: boolean
-}
-
-export class HistogramOrder {
-  _count?: SortOrder
-  _key?: SortOrder
 }
 
 export class IpRangeAggregation extends BucketAggregationBase {
@@ -235,6 +230,13 @@ export class MissingAggregation extends BucketAggregationBase {
 }
 
 export class MultiTermsAggregation extends BucketAggregationBase {
+  collect_mode?: TermsAggregationCollectMode
+  order?: AggregateOrder
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  shard_size?: integer
+  show_term_doc_count_error?: boolean
+  size?: integer
   terms: MultiTermLookup[]
 }
 
@@ -349,16 +351,16 @@ export class TermsAggregation extends BucketAggregationBase {
   missing_order?: MissingOrder
   missing_bucket?: boolean
   value_type?: string
-  order?: TermsAggregationOrder
+  order?: AggregateOrder
   script?: Script
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
 }
 
-export type TermsAggregationOrder =
-  | Dictionary<Field, SortOrder>
-  | Dictionary<Field, SortOrder>[]
+export type AggregateOrder =
+  | SingleKeyDictionary<Field, SortOrder>
+  | SingleKeyDictionary<Field, SortOrder>[]
 
 export enum TermsAggregationCollectMode {
   depth_first = 0,

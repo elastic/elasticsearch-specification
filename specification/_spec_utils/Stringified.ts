@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Field } from '@_types/common'
-import { FieldMapping } from '@_types/mapping/meta-fields'
-
-export class TypeFieldMappings {
-  mappings: Dictionary<Field, FieldMapping>
-}
+/**
+ * Some APIs will return values such as numbers also as a string (notably epoch timestamps). This behavior
+ * is used to capture this behavior while keeping the semantics of the field type.
+ *
+ * Depending on the target language, code generators can keep the union or remove it and leniently parse
+ * strings to the target type.
+ */
+export type Stringified<T> = T | string
