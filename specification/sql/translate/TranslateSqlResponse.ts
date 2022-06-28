@@ -22,12 +22,17 @@ import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 
 export class Response {
+  // This is a subset of SearchRequest's body (same data structure in the ES code)
   body: {
-    size: long
-    _source: SourceConfig
-    fields: Array<Dictionary<Field, string>>
-    sort: Sort
+    aggregations?: Dictionary<string, AggregationContainer>
+    size?: long
+    _source?: SourceConfig
+    fields?: Array<FieldAndFormat>
+    query?: QueryContainer
+    sort?: Sort
   }
 }

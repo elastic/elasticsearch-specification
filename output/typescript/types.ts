@@ -2581,6 +2581,8 @@ export interface AggregationsAggregateBase {
   meta?: Metadata
 }
 
+export type AggregationsAggregateOrder = Partial<Record<Field, SortOrder>> | Partial<Record<Field, SortOrder>>[]
+
 export interface AggregationsAggregation {
   meta?: Metadata
   name?: string
@@ -2872,7 +2874,7 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
   min_doc_count?: integer
   missing?: DateTime
   offset?: Duration
-  order?: AggregationsHistogramOrder
+  order?: AggregationsAggregateOrder
   params?: Record<string, any>
   script?: Script
   time_zone?: TimeZone
@@ -3127,7 +3129,7 @@ export interface AggregationsHistogramAggregation extends AggregationsBucketAggr
   min_doc_count?: integer
   missing?: double
   offset?: double
-  order?: AggregationsHistogramOrder
+  order?: AggregationsAggregateOrder
   script?: Script
   format?: string
   keyed?: boolean
@@ -3139,11 +3141,6 @@ export interface AggregationsHistogramBucketKeys extends AggregationsMultiBucket
 }
 export type AggregationsHistogramBucket = AggregationsHistogramBucketKeys
   & { [property: string]: AggregationsAggregate | string | double | long }
-
-export interface AggregationsHistogramOrder {
-  _count?: SortOrder
-  _key?: SortOrder
-}
 
 export interface AggregationsHoltLinearModelSettings {
   alpha?: float
@@ -3363,6 +3360,13 @@ export interface AggregationsMultiTermsAggregate extends AggregationsTermsAggreg
 }
 
 export interface AggregationsMultiTermsAggregation extends AggregationsBucketAggregationBase {
+  collect_mode?: AggregationsTermsAggregationCollectMode
+  order?: AggregationsAggregateOrder
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  shard_size?: integer
+  show_term_doc_count_error?: boolean
+  size?: integer
   terms: AggregationsMultiTermLookup[]
 }
 
@@ -3723,7 +3727,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   missing_order?: AggregationsMissingOrder
   missing_bucket?: boolean
   value_type?: string
-  order?: AggregationsTermsAggregationOrder
+  order?: AggregationsAggregateOrder
   script?: Script
   shard_size?: integer
   show_term_doc_count_error?: boolean
@@ -3734,8 +3738,6 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
 export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_first'
 
 export type AggregationsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
-
-export type AggregationsTermsAggregationOrder = Record<Field, SortOrder> | Record<Field, SortOrder>[]
 
 export interface AggregationsTermsBucketBase extends AggregationsMultiBucketBase {
   doc_count_error?: long
@@ -3857,7 +3859,7 @@ export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnaly
 
 export interface AnalysisAsciiFoldingTokenFilter extends AnalysisTokenFilterBase {
   type: 'asciifolding'
-  preserve_original: boolean
+  preserve_original?: boolean
 }
 
 export type AnalysisCharFilter = string | AnalysisCharFilterDefinition
@@ -3917,8 +3919,8 @@ export type AnalysisDelimitedPayloadEncoding = 'int' | 'float' | 'identity'
 
 export interface AnalysisDelimitedPayloadTokenFilter extends AnalysisTokenFilterBase {
   type: 'delimited_payload'
-  delimiter: string
-  encoding: AnalysisDelimitedPayloadEncoding
+  delimiter?: string
+  encoding?: AnalysisDelimitedPayloadEncoding
 }
 
 export interface AnalysisDictionaryDecompounderTokenFilter extends AnalysisCompoundWordTokenFilterBase {
@@ -3934,8 +3936,8 @@ export type AnalysisEdgeNGramSide = 'front' | 'back'
 
 export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
   type: 'edge_ngram'
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
   side?: AnalysisEdgeNGramSide
   preserve_original?: boolean
 }
@@ -3950,8 +3952,9 @@ export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisElisionTokenFilter extends AnalysisTokenFilterBase {
   type: 'elision'
-  articles: string[]
-  articles_case: boolean
+  articles?: string[]
+  articles_path?: string
+  articles_case?: boolean
 }
 
 export interface AnalysisFingerprintAnalyzer {
@@ -3966,8 +3969,8 @@ export interface AnalysisFingerprintAnalyzer {
 
 export interface AnalysisFingerprintTokenFilter extends AnalysisTokenFilterBase {
   type: 'fingerprint'
-  max_output_size: integer
-  separator: string
+  max_output_size?: integer
+  separator?: string
 }
 
 export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
@@ -3976,10 +3979,10 @@ export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
 
 export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
   type: 'hunspell'
-  dedup: boolean
-  dictionary: string
+  dedup?: boolean
+  dictionary?: string
   locale: string
-  longest_only: boolean
+  longest_only?: boolean
 }
 
 export interface AnalysisHyphenationDecompounderTokenFilter extends AnalysisCompoundWordTokenFilterBase {
@@ -4138,8 +4141,8 @@ export interface AnalysisLanguageAnalyzer {
 
 export interface AnalysisLengthTokenFilter extends AnalysisTokenFilterBase {
   type: 'length'
-  max: integer
-  min: integer
+  max?: integer
+  min?: integer
 }
 
 export interface AnalysisLetterTokenizer extends AnalysisTokenizerBase {
@@ -4148,8 +4151,8 @@ export interface AnalysisLetterTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisLimitTokenCountTokenFilter extends AnalysisTokenFilterBase {
   type: 'limit'
-  consume_all_tokens: boolean
-  max_token_count: integer
+  consume_all_tokens?: boolean
+  max_token_count?: integer
 }
 
 export interface AnalysisLowercaseNormalizer {
@@ -4174,7 +4177,7 @@ export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
 export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
   type: 'multiplexer'
   filters: string[]
-  preserve_original: boolean
+  preserve_original?: boolean
 }
 
 export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
@@ -4204,7 +4207,7 @@ export type AnalysisNoriDecompoundMode = 'discard' | 'none' | 'mixed'
 
 export interface AnalysisNoriPartOfSpeechTokenFilter extends AnalysisTokenFilterBase {
   type: 'nori_part_of_speech'
-  stoptags: string[]
+  stoptags?: string[]
 }
 
 export interface AnalysisNoriTokenizer extends AnalysisTokenizerBase {
@@ -4238,7 +4241,7 @@ export interface AnalysisPatternAnalyzer {
 export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_capture'
   patterns: string[]
-  preserve_original: boolean
+  preserve_original?: boolean
 }
 
 export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase {
@@ -4250,9 +4253,10 @@ export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase
 
 export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_replace'
-  flags: string
+  all?: boolean
+  flags?: string
   pattern: string
-  replacement: string
+  replacement?: string
 }
 
 export interface AnalysisPatternTokenizer extends AnalysisTokenizerBase {
@@ -4359,7 +4363,7 @@ export interface AnalysisStopTokenFilter extends AnalysisTokenFilterBase {
   type: 'stop'
   ignore_case?: boolean
   remove_trailing?: boolean
-  stopwords: AnalysisStopWords
+  stopwords?: AnalysisStopWords
   stopwords_path?: string
 }
 
@@ -4413,7 +4417,7 @@ export interface AnalysisTrimTokenFilter extends AnalysisTokenFilterBase {
 
 export interface AnalysisTruncateTokenFilter extends AnalysisTokenFilterBase {
   type: 'truncate'
-  length: integer
+  length?: integer
 }
 
 export interface AnalysisUaxEmailUrlTokenizer extends AnalysisTokenizerBase {
@@ -9329,7 +9333,7 @@ export interface IndicesIndexSettingBlocks {
   metadata?: boolean
 }
 
-export interface IndicesIndexSettings {
+export interface IndicesIndexSettingsKeys {
   index?: IndicesIndexSettings
   mode?: string
   routing_path?: string | string[]
@@ -9383,11 +9387,13 @@ export interface IndicesIndexSettings {
   shards?: integer
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
-  mappings?: IndicesMappingLimitSettings
+  mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesSlowlogSettings
   indexing_pressure?: IndicesIndexingPressure
   store?: IndicesStorage
 }
+export type IndicesIndexSettings = IndicesIndexSettingsKeys
+  & { [property: string]: any }
 
 export interface IndicesIndexSettingsAnalysis {
   analyzer?: Record<string, AnalysisAnalyzer>
@@ -10069,7 +10075,7 @@ export interface IndicesGetFieldMappingRequest extends RequestBase {
 export type IndicesGetFieldMappingResponse = Record<IndexName, IndicesGetFieldMappingTypeFieldMappings>
 
 export interface IndicesGetFieldMappingTypeFieldMappings {
-  mappings: Partial<Record<Field, MappingFieldMapping>>
+  mappings: Record<Field, MappingFieldMapping>
 }
 
 export interface IndicesGetIndexTemplateIndexTemplateItem {
@@ -10350,7 +10356,7 @@ export interface IndicesRecoveryShardRecovery {
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
   stop_time?: DateTime
-  stop_time_in_millis: EpochTime<UnitMillis>
+  stop_time_in_millis?: EpochTime<UnitMillis>
   target: IndicesRecoveryRecoveryOrigin
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
@@ -16557,10 +16563,12 @@ export interface SqlTranslateRequest extends RequestBase {
 }
 
 export interface SqlTranslateResponse {
-  size: long
-  _source: SearchSourceConfig
-  fields: Record<Field, string>[]
-  sort: Sort
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  size?: long
+  _source?: SearchSourceConfig
+  fields?: (QueryDslFieldAndFormat | Field)[]
+  query?: QueryDslQueryContainer
+  sort?: Sort
 }
 
 export interface SslCertificatesCertificateInformation {

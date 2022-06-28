@@ -125,7 +125,7 @@ export class ShardRecovery {
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
   stop_time?: DateTime
-  stop_time_in_millis: EpochTime<UnitMillis>
+  stop_time_in_millis?: EpochTime<UnitMillis>
   target: RecoveryOrigin
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
