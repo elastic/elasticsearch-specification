@@ -53,3 +53,11 @@ artifacts
 .validation.json
 compiler/lib
 typescript-generator/lib
+
+report
+output/schema/import-*
+output/schema/schema-no-generics.json
+.github/**/package-lock.json
+
+# Editor lockfiles
+.*.swp

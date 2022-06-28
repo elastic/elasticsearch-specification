@@ -34,6 +34,18 @@ import { integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
+import {
+  DFIIndependenceMeasure,
+  DFRAfterEffect,
+  DFRBasicModel,
+  IBDistribution,
+  IBLambda,
+  Normalization
+} from '@_types/Similarity'
+import { Script } from '@_types/Scripting'
+import { Stringified } from '@spec_utils/Stringified'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class SoftDeletes {
   /**
@@ -57,7 +69,9 @@ export class RetentionLease {
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.17/index-modules.html#index-modules-settings
  */
-export class IndexSettings {
+export class IndexSettings
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   index?: IndexSettings
   /**
    * @aliases index.mode
@@ -287,7 +301,7 @@ export class IndexSettings {
   /**
    * Enable or disable dynamic mapping for an index.
    */
-  mappings?: MappingLimitSettings
+  mapping?: MappingLimitSettings
   'indexing.slowlog'?: SlowlogSettings
   /**
    * Configure indexing back pressure limits.
