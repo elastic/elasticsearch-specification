@@ -392,6 +392,10 @@ export class TermsAggregation extends BucketAggregationBase {
   format?: string
 }
 
+// Note: ES is very lazy when parsing this data type: it accepts any number of properties in the objects below,
+// but will only keep the *last* property in JSON document order and ignore others.
+// This means that something like `"order": { "downloads": "desc", "_key": "asc" }` will actually be interpreted
+// as `"order": [ { "_key": "asc" } ]`
 export type AggregateOrder =
   | SingleKeyDictionary<Field, SortOrder>
   | SingleKeyDictionary<Field, SortOrder>[]
