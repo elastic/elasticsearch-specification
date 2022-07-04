@@ -32,10 +32,14 @@ import {
   UnitFloatMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
 
 export class Datafeed {
   /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * The security privileges that the datafeed uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the datafeed, this property is omitted.
+   */
   authorization?: DatafeedAuthorization
   chunking_config?: ChunkingConfig
   datafeed_id: Id
@@ -183,28 +187,4 @@ export class ChunkingConfig {
    * @server_default 3h
    */
   time_span?: Duration
-}
-
-export class ApiKeyAuthorization {
-  /**
-   * The identifier for the API key.
-   */
-  id: string
-  /**
-   * The name of the API key.
-   */
-  name: string
-}
-export class DatafeedAuthorization {
-  /**
-   *  If an API key was used for the most recent update to the datafeed, its name and identifier are listed in the response.
-   */
-  api_key?: ApiKeyAuthorization
-  /**
-   *  If a user ID was used for the most recent update to the datafeed, its roles at the time of the update are listed in the response. */
-  roles?: string[]
-  /**
-   * If a service account was used for the most recent update to the datafeed, the account name is listed in the response.
-   */
-  service_account?: string
 }
