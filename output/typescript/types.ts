@@ -11858,6 +11858,12 @@ export interface MlDataframeAnalytics {
   state: MlDataframeState
 }
 
+export interface MlDataframeAnalyticsAuthorization {
+  api_key?: MlApiKeyAuthorization
+  roles?: string[]
+  service_account?: string
+}
+
 export interface MlDataframeAnalyticsDestination {
   index: IndexName
   results_field?: Field
@@ -11923,16 +11929,17 @@ export interface MlDataframeAnalyticsStatsProgress {
 }
 
 export interface MlDataframeAnalyticsSummary {
-  id: Id
-  source: MlDataframeAnalyticsSource
-  dest: MlDataframeAnalyticsDestination
-  analysis: MlDataframeAnalysisContainer
-  description?: string
-  model_memory_limit?: string
-  max_num_threads?: integer
-  analyzed_fields?: MlDataframeAnalysisAnalyzedFields | string[]
   allow_lazy_start?: boolean
+  analysis: MlDataframeAnalysisContainer
+  analyzed_fields?: MlDataframeAnalysisAnalyzedFields | string[]
+  authorization?: MlDataframeAnalyticsAuthorization
   create_time?: EpochTime<UnitMillis>
+  description?: string
+  dest: MlDataframeAnalyticsDestination
+  id: Id
+  max_num_threads?: integer
+  model_memory_limit?: string
+  source: MlDataframeAnalyticsSource
   version?: VersionString
 }
 
