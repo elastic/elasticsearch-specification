@@ -12624,6 +12624,12 @@ export interface MlTrainedModelStats {
 
 export type MlTrainedModelType = 'tree_ensemble' | 'lang_ident' | 'pytorch'
 
+export interface MlTransformAuthorization {
+  api_key?: MlApiKeyAuthorization
+  roles?: string[]
+  service_account?: string
+}
+
 export interface MlValidationLoss {
   fold_values: string[]
   loss_type: string
@@ -13436,17 +13442,18 @@ export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
 }
 
 export interface MlPutDataFrameAnalyticsResponse {
-  id: Id
-  create_time: EpochTime<UnitMillis>
-  version: VersionString
-  source: MlDataframeAnalyticsSource
-  description?: string
-  dest: MlDataframeAnalyticsDestination
-  model_memory_limit: string
+  authorization?: MlDataframeAnalyticsAuthorization
   allow_lazy_start: boolean
-  max_num_threads: integer
   analysis: MlDataframeAnalysisContainer
   analyzed_fields?: MlDataframeAnalysisAnalyzedFields | string[]
+  create_time: EpochTime<UnitMillis>
+  description?: string
+  dest: MlDataframeAnalyticsDestination
+  id: Id
+  max_num_threads: integer
+  model_memory_limit: string
+  source: MlDataframeAnalyticsSource
+  version: VersionString
 }
 
 export interface MlPutDatafeedRequest extends RequestBase {
@@ -13476,6 +13483,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
 
 export interface MlPutDatafeedResponse {
   aggregations: Record<string, AggregationsAggregationContainer>
+  authorization?: MlDatafeedAuthorization
   chunking_config: MlChunkingConfig
   delayed_data_check_config?: MlDelayedDataCheckConfig
   datafeed_id: Id
@@ -13789,17 +13797,18 @@ export interface MlUpdateDataFrameAnalyticsRequest extends RequestBase {
 }
 
 export interface MlUpdateDataFrameAnalyticsResponse {
-  id: Id
-  create_time: long
-  version: VersionString
-  source: MlDataframeAnalyticsSource
-  description?: string
-  dest: MlDataframeAnalyticsDestination
-  model_memory_limit: string
+  authorization?: MlDataframeAnalyticsAuthorization
   allow_lazy_start: boolean
-  max_num_threads: integer
   analysis: MlDataframeAnalysisContainer
   analyzed_fields?: MlDataframeAnalysisAnalyzedFields | string[]
+  create_time: long
+  description?: string
+  dest: MlDataframeAnalyticsDestination
+  id: Id
+  max_num_threads: integer
+  model_memory_limit: string
+  source: MlDataframeAnalyticsSource
+  version: VersionString
 }
 
 export interface MlUpdateDatafeedRequest extends RequestBase {
@@ -13826,14 +13835,15 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
 }
 
 export interface MlUpdateDatafeedResponse {
+  authorization?: MlDatafeedAuthorization
   aggregations: Record<string, AggregationsAggregationContainer>
   chunking_config: MlChunkingConfig
   delayed_data_check_config?: MlDelayedDataCheckConfig
   datafeed_id: Id
   frequency: Duration
   indices: string[]
-  job_id: Id
   indices_options?: IndicesOptions
+  job_id: Id
   max_empty_searches: integer
   query: QueryDslQueryContainer
   query_delay: Duration
@@ -16838,17 +16848,19 @@ export interface TransformGetTransformResponse {
 }
 
 export interface TransformGetTransformTransformSummary {
-  dest: ReindexDestination
+  authorization?: MlTransformAuthorization
+  create_time?: EpochTime<UnitMillis>
   description?: string
+  dest: ReindexDestination
   frequency?: Duration
   id: Id
+  latest?: TransformLatest
   pivot?: TransformPivot
+  retention_policy?: TransformRetentionPolicyContainer
   settings?: TransformSettings
   source: TransformSource
   sync?: TransformSyncContainer
-  create_time?: EpochTime<UnitMillis>
   version?: VersionString
-  latest?: TransformLatest
   _meta?: Metadata
 }
 
@@ -17002,6 +17014,7 @@ export interface TransformUpdateTransformRequest extends RequestBase {
 }
 
 export interface TransformUpdateTransformResponse {
+  authorization?: MlTransformAuthorization
   create_time: long
   description: string
   dest: ReindexDestination

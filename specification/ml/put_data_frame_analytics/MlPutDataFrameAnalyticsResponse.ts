@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
@@ -29,16 +30,17 @@ import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
-    id: Id
-    create_time: EpochTime<UnitMillis>
-    version: VersionString
-    source: DataframeAnalyticsSource
-    description?: string
-    dest: DataframeAnalyticsDestination
-    model_memory_limit: string
+    authorization?: DataframeAnalyticsAuthorization
     allow_lazy_start: boolean
-    max_num_threads: integer
     analysis: DataframeAnalysisContainer
     analyzed_fields?: DataframeAnalysisAnalyzedFields
+    create_time: EpochTime<UnitMillis>
+    description?: string
+    dest: DataframeAnalyticsDestination
+    id: Id
+    max_num_threads: integer
+    model_memory_limit: string
+    source: DataframeAnalyticsSource
+    version: VersionString
   }
 }

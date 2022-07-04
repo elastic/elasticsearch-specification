@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
@@ -28,16 +29,17 @@ import { integer, long } from '@_types/Numeric'
 
 export class Response {
   body: {
-    id: Id
-    create_time: long
-    version: VersionString
-    source: DataframeAnalyticsSource
-    description?: string
-    dest: DataframeAnalyticsDestination
-    model_memory_limit: string
+    authorization?: DataframeAnalyticsAuthorization
     allow_lazy_start: boolean
-    max_num_threads: integer
     analysis: DataframeAnalysisContainer
     analyzed_fields?: DataframeAnalysisAnalyzedFields
+    create_time: long
+    description?: string
+    dest: DataframeAnalyticsDestination
+    id: Id
+    max_num_threads: integer
+    model_memory_limit: string
+    source: DataframeAnalyticsSource
+    version: VersionString
   }
 }
