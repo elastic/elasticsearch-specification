@@ -11567,6 +11567,11 @@ export interface MlAnomalyCause {
   typical: double[]
 }
 
+export interface MlApiKeyAuthorization {
+  id: string
+  name: string
+}
+
 export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface MlBucketInfluencer {
@@ -11683,6 +11688,7 @@ export interface MlDataDescription {
 export interface MlDatafeed {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
+  authorization?: MlDatafeedAuthorization
   chunking_config?: MlChunkingConfig
   datafeed_id: Id
   frequency?: Duration
@@ -11697,6 +11703,12 @@ export interface MlDatafeed {
   delayed_data_check_config: MlDelayedDataCheckConfig
   runtime_mappings?: MappingRuntimeFields
   indices_options?: IndicesOptions
+}
+
+export interface MlDatafeedAuthorization {
+  api_key?: MlApiKeyAuthorization
+  roles?: string[]
+  service_account?: string
 }
 
 export interface MlDatafeedConfig {
