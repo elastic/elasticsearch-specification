@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
 import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
@@ -30,6 +31,7 @@ import { Duration } from '@_types/Time'
 export class Response {
   body: {
     aggregations: Dictionary<string, AggregationContainer>
+    authorization?: DatafeedAuthorization
     chunking_config: ChunkingConfig
     delayed_data_check_config?: DelayedDataCheckConfig
     datafeed_id: Id

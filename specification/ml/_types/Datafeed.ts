@@ -32,10 +32,15 @@ import {
   UnitFloatMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
 
 export class Datafeed {
   /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * The security privileges that the datafeed uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the datafeed, this property is omitted.
+   */
+  authorization?: DatafeedAuthorization
   chunking_config?: ChunkingConfig
   datafeed_id: Id
   frequency?: Duration

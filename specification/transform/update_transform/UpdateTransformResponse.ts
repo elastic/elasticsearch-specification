@@ -18,6 +18,7 @@
  */
 
 import { Destination, Source } from '@global/reindex/types'
+import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
   Latest,
   Pivot,
@@ -31,6 +32,7 @@ import { Duration } from '@_types/Time'
 
 export class Response {
   body: {
+    authorization?: TransformAuthorization
     create_time: long
     //  create_time_date_time?: DateTime
     description: string

@@ -34,6 +34,7 @@ import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { UnitMillis, DurationValue, EpochTime } from '@_types/Time'
 import { DataframeState } from './Dataframe'
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 
 export class DataframeAnalyticsSource {
   /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. NOTE: If your source indices contain documents with the same IDs, only the document that is indexed last appears in the destination index.*/
@@ -303,16 +304,20 @@ export class DataframeAnalysisFeatureProcessorTargetMeanEncoding {
 }
 
 export class DataframeAnalyticsSummary {
-  id: Id
-  source: DataframeAnalyticsSource
-  dest: DataframeAnalyticsDestination
-  analysis: DataframeAnalysisContainer
-  description?: string
-  model_memory_limit?: string
-  max_num_threads?: integer
-  analyzed_fields?: DataframeAnalysisAnalyzedFields
   allow_lazy_start?: boolean
+  analysis: DataframeAnalysisContainer
+  analyzed_fields?: DataframeAnalysisAnalyzedFields
+  /**
+   * The security privileges that the job uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the job, this property is omitted.
+   */
+  authorization?: DataframeAnalyticsAuthorization
   create_time?: EpochTime<UnitMillis>
+  description?: string
+  dest: DataframeAnalyticsDestination
+  id: Id
+  max_num_threads?: integer
+  model_memory_limit?: string
+  source: DataframeAnalyticsSource
   version?: VersionString
 }
 

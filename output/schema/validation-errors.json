@@ -2259,6 +2259,7 @@
         "Request: should not have a body"
       ],
       "response": [
+        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required",
         "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
       ]
     },
@@ -2269,9 +2270,7 @@
       "response": []
     },
     "transform.preview_transform": {
-      "request": [
-        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required"
-      ],
+      "request": [],
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]

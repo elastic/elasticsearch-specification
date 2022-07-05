@@ -21,30 +21,41 @@ import { Destination } from '@global/reindex/types'
 import {
   Latest,
   Pivot,
+  RetentionPolicyContainer,
   Settings,
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
+import { TransformAuthorization } from '@ml/_types/Authorization'
 import { Id, Metadata, VersionString } from '@_types/common'
 import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class TransformSummary {
-  /** The destination for the transform. */
-  dest: Destination
+  /**
+   * The security privileges that the transform uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the transform, this property is omitted.
+   */
+  authorization?: TransformAuthorization
+  /** The time the transform was created. */
+  create_time?: EpochTime<UnitMillis>
   /** Free text description of the transform. */
   description?: string
+  /** The destination for the transform. */
+  dest: Destination
   frequency?: Duration
   id: Id
+  latest?: Latest
   /** The pivot method transforms the data by aggregating and grouping it. */
   pivot?: Pivot
+  retention_policy?: RetentionPolicyContainer
   /** Defines optional transform settings. */
   settings?: Settings
   /** The source of the data for the transform. */
   source: Source
   /**  Defines the properties transforms require to run continuously. */
   sync?: SyncContainer
-  create_time?: EpochTime<UnitMillis>
+  /**
+   * The version of Elasticsearch that existed on the node when the transform was created.
+   */
   version?: VersionString
-  latest?: Latest
   _meta?: Metadata
 }
