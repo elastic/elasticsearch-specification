@@ -1152,7 +1152,7 @@ export interface SearchCompletionContext {
 }
 
 export interface SearchCompletionSuggest<TDocument = unknown> extends SearchSuggestBase {
-  options: SearchCompletionSuggestOption<TDocument>[]
+  options: SearchCompletionSuggestOption<TDocument> | SearchCompletionSuggestOption<TDocument>[]
 }
 
 export interface SearchCompletionSuggestOption<TDocument = unknown> {
@@ -1343,7 +1343,7 @@ export interface SearchNestedIdentity {
 }
 
 export interface SearchPhraseSuggest extends SearchSuggestBase {
-  options: SearchPhraseSuggestOption
+  options: SearchPhraseSuggestOption | SearchPhraseSuggestOption[]
 }
 
 export interface SearchPhraseSuggestCollate {
@@ -1503,7 +1503,7 @@ export interface SearchSuggesterBase {
 }
 
 export interface SearchTermSuggest extends SearchSuggestBase {
-  options: SearchTermSuggestOption
+  options: SearchTermSuggestOption | SearchTermSuggestOption[]
 }
 
 export interface SearchTermSuggestOption {
@@ -4170,7 +4170,7 @@ export interface AnalysisLowercaseTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
   type: 'mapping'
-  mappings: string[]
+  mappings?: string[]
   mappings_path?: string
 }
 
