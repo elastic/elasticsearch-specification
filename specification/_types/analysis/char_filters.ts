@@ -46,7 +46,7 @@ export class HtmlStripCharFilter extends CharFilterBase {
 
 export class MappingCharFilter extends CharFilterBase {
   type: 'mapping'
-  mappings: string[]
+  mappings?: string[]
   mappings_path?: string
 }
 

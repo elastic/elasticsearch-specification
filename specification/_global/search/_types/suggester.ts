@@ -50,21 +50,23 @@ export class SuggestBase {
  * @variant name=completion
  */
 export class CompletionSuggest<TDocument> extends SuggestBase {
-  options: CompletionSuggestOption<TDocument>[]
+  options:
+    | CompletionSuggestOption<TDocument>
+    | CompletionSuggestOption<TDocument>[]
 }
 
 /**
  * @variant name=phrase
  */
 export class PhraseSuggest extends SuggestBase {
-  options: PhraseSuggestOption
+  options: PhraseSuggestOption | PhraseSuggestOption[]
 }
 
 /**
  * @variant name=term
  */
 export class TermSuggest extends SuggestBase {
-  options: TermSuggestOption
+  options: TermSuggestOption | TermSuggestOption[]
 }
 
 // In the ES code a nested Hit object is expanded inline. Not all Hit fields have been
