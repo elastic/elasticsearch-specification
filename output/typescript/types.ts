@@ -1822,6 +1822,126 @@ export interface UpdateByQueryRethrottleUpdateByQueryRethrottleNode extends Spec
   tasks: Record<TaskId, TasksTaskInfo>
 }
 
+export interface InternalHealthClusterCoordinationComponent extends InternalHealthComponent {
+  indicators: InternalHealthClusterCoordinationIndicators
+}
+
+export interface InternalHealthClusterCoordinationIndicators {
+  master_is_stable?: InternalHealthClusterCoordinationMasterIsStableIndicator
+}
+
+export interface InternalHealthClusterCoordinationMasterIsStableIndicator extends InternalHealthIndicator {
+  details: InternalHealthClusterCoordinationMasterIsStableIndicatorDetails
+}
+
+export interface InternalHealthClusterCoordinationMasterIsStableIndicatorDetails {
+  current_master: InternalHealthClusterCoordinationMasterIsStableIndicatorDetailsMaster
+  recent_masters?: InternalHealthClusterCoordinationMasterIsStableIndicatorDetailsMaster[]
+}
+
+export interface InternalHealthClusterCoordinationMasterIsStableIndicatorDetailsMaster {
+  name: NodeName
+  node_id: NodeId
+}
+
+export interface InternalHealthComponent {
+  status?: HealthStatus
+}
+
+export interface InternalHealthComponents {
+  cluster_coordination?: InternalHealthClusterCoordinationComponent
+  data?: InternalHealthDataComponent
+  snapshot?: InternalHealthSnapshotComponent
+}
+
+export interface InternalHealthDataComponent extends InternalHealthComponent {
+  indicators: InternalHealthDataIndicators
+}
+
+export interface InternalHealthDataIlmIndicator extends InternalHealthIndicator {
+  details: InternalHealthDataIlmIndicatorDetails
+}
+
+export interface InternalHealthDataIlmIndicatorDetails {
+  ilm_status: LifecycleOperationMode
+  policies: integer
+}
+
+export interface InternalHealthDataIndicators {
+  ilm?: InternalHealthDataIlmIndicator
+  shards_availability?: InternalHealthDataShardsAvailabilityIndicator
+}
+
+export interface InternalHealthDataShardsAvailabilityIndicator extends InternalHealthIndicator {
+  details: InternalHealthDataShardsAvailabilityIndicatorDetails
+}
+
+export interface InternalHealthDataShardsAvailabilityIndicatorDetails {
+  creating_primaries: long
+  initializing_primaries: long
+  initializing_replicas: long
+  restarting_primaries: long
+  restarting_replicas: long
+  started_primaries: long
+  started_replicas: long
+  unassigned_primaries: long
+  unassigned_replicas: long
+}
+
+export interface InternalHealthIndicator {
+  status: HealthStatus
+  summary: string
+  help_url?: string
+  impacts?: InternalHealthIndicatorImpact[]
+  user_actions?: InternalHealthIndicatorUserAction[]
+}
+
+export interface InternalHealthIndicatorImpact {
+  description: string
+  impact_areas: string[]
+  severity: integer
+}
+
+export interface InternalHealthIndicatorUserAction {
+  affected_resources: string[]
+  help_url: string
+  message: string
+}
+
+export interface InternalHealthRequest extends RequestBase {
+  component?: string
+  feature?: string
+  timeout?: Duration
+  explain?: boolean
+}
+
+export interface InternalHealthResponse {
+  cluster_name: string
+  status?: HealthStatus
+  components: InternalHealthComponents
+}
+
+export interface InternalHealthSnapshotComponent extends InternalHealthComponent {
+  indicators: InternalHealthSnapshotIndicators
+}
+
+export interface InternalHealthSnapshotIndicators {
+  repository_integrity?: InternalHealthSnapshotRepositoryIntegrityIndiciator
+  slm?: InternalHealthSnapshotSlmIndicator
+}
+
+export interface InternalHealthSnapshotRepositoryIntegrityIndiciator extends InternalHealthIndicator {
+}
+
+export interface InternalHealthSnapshotSlmIndicator extends InternalHealthIndicator {
+  details: InternalHealthSnapshotSlmIndicatorDetails
+}
+
+export interface InternalHealthSnapshotSlmIndicatorDetails {
+  policies: long
+  slm_status: LifecycleOperationMode
+}
+
 export interface SpecUtilsBaseNode {
   attributes: Record<string, string>
   host: Host

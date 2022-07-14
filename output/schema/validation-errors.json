@@ -14,7 +14,7 @@
     },
     "_internal.health": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
