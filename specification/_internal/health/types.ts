@@ -63,7 +63,7 @@ export class ClusterCoordinationIndicators {
 }
 
 export class ClusterCoordinationMasterIsStableIndicator extends Indicator {
-  details: ClusterCoordinationMasterIsStableIndicatorDetails
+  details?: ClusterCoordinationMasterIsStableIndicatorDetails
 }
 
 export class ClusterCoordinationMasterIsStableIndicatorDetails {
@@ -88,7 +88,7 @@ export class DataIndicators {
 }
 
 export class DataIlmIndicator extends Indicator {
-  details: DataIlmIndicatorDetails
+  details?: DataIlmIndicatorDetails
 }
 
 export class DataIlmIndicatorDetails {
@@ -97,7 +97,7 @@ export class DataIlmIndicatorDetails {
 }
 
 export class DataShardsAvailabilityIndicator extends Indicator {
-  details: DataShardsAvailabilityIndicatorDetails
+  details?: DataShardsAvailabilityIndicatorDetails
 }
 
 export class DataShardsAvailabilityIndicatorDetails {
@@ -126,7 +126,7 @@ export class SnapshotIndicators {
 export class SnapshotRepositoryIntegrityIndiciator extends Indicator {}
 
 export class SnapshotSlmIndicator extends Indicator {
-  details: SnapshotSlmIndicatorDetails
+  details?: SnapshotSlmIndicatorDetails
 }
 
 export class SnapshotSlmIndicatorDetails {

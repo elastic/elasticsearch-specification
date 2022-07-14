@@ -1831,7 +1831,7 @@ export interface InternalHealthClusterCoordinationIndicators {
 }
 
 export interface InternalHealthClusterCoordinationMasterIsStableIndicator extends InternalHealthIndicator {
-  details: InternalHealthClusterCoordinationMasterIsStableIndicatorDetails
+  details?: InternalHealthClusterCoordinationMasterIsStableIndicatorDetails
 }
 
 export interface InternalHealthClusterCoordinationMasterIsStableIndicatorDetails {
@@ -1859,7 +1859,7 @@ export interface InternalHealthDataComponent extends InternalHealthComponent {
 }
 
 export interface InternalHealthDataIlmIndicator extends InternalHealthIndicator {
-  details: InternalHealthDataIlmIndicatorDetails
+  details?: InternalHealthDataIlmIndicatorDetails
 }
 
 export interface InternalHealthDataIlmIndicatorDetails {
@@ -1873,7 +1873,7 @@ export interface InternalHealthDataIndicators {
 }
 
 export interface InternalHealthDataShardsAvailabilityIndicator extends InternalHealthIndicator {
-  details: InternalHealthDataShardsAvailabilityIndicatorDetails
+  details?: InternalHealthDataShardsAvailabilityIndicatorDetails
 }
 
 export interface InternalHealthDataShardsAvailabilityIndicatorDetails {
@@ -1934,7 +1934,7 @@ export interface InternalHealthSnapshotRepositoryIntegrityIndiciator extends Int
 }
 
 export interface InternalHealthSnapshotSlmIndicator extends InternalHealthIndicator {
-  details: InternalHealthSnapshotSlmIndicatorDetails
+  details?: InternalHealthSnapshotSlmIndicatorDetails
 }
 
 export interface InternalHealthSnapshotSlmIndicatorDetails {
