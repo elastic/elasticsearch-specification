@@ -2024,12 +2024,6 @@
         "response definition security.suggest_user_profiles:Response / body / Property 'profiles' / array_of / instance_of - Non-leaf type cannot be used here: 'security._types:UserProfile'"
       ]
     },
-    "security.update_api_key": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.update_user_profile_data": {
       "request": [],
       "response": [
