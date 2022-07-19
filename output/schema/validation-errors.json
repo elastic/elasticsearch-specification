@@ -1596,6 +1596,7 @@
     },
     "ml.start_trained_model_deployment": {
       "request": [
+        "Request: missing json spec query parameter 'cache_size'",
         "Request: should not have a body"
       ],
       "response": []
