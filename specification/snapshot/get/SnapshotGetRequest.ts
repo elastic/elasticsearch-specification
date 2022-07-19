@@ -64,7 +64,16 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     index_details?: boolean
-    human?: boolean
+    /**
+     * If true, returns the name of each index in each snapshot.
+     * @since 7.13.0
+     * @server_default true
+     */
+    index_names?: boolean
+    /**
+     * If true, returns the repository name in each snapshot.
+     * @server_default true
+     */
     include_repository?: boolean
     /**
      * Allows setting a sort order for the result. Defaults to start_time, i.e. sorting by snapshot start time stamp.
