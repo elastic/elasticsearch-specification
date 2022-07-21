@@ -51,9 +51,18 @@ export class BoxplotAggregation extends MetricAggregationBase {
   compression?: double
 }
 
+export enum CardinalityExecutionMode {
+  global_ordinals,
+  segment_ordinals,
+  direct,
+  save_memory_heuristic,
+  save_time_heuristic
+}
+
 export class CardinalityAggregation extends MetricAggregationBase {
   precision_threshold?: integer
   rehash?: boolean
+  execution_hint?: CardinalityExecutionMode
 }
 
 export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
