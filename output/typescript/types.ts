@@ -2789,7 +2789,10 @@ export interface AggregationsCardinalityAggregate extends AggregationsAggregateB
 export interface AggregationsCardinalityAggregation extends AggregationsMetricAggregationBase {
   precision_threshold?: integer
   rehash?: boolean
+  execution_hint?: AggregationsCardinalityExecutionMode
 }
+
+export type AggregationsCardinalityExecutionMode = 'global_ordinals' | 'segment_ordinals' | 'direct' | 'save_memory_heuristic' | 'save_time_heuristic'
 
 export interface AggregationsCategorizeTextAggregation extends AggregationsAggregation {
   field: Field
