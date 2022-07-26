@@ -5842,6 +5842,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+    knn?: KnnQuery
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
