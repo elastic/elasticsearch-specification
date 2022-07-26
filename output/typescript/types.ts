@@ -1030,6 +1030,7 @@ export interface SearchRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+    knn?: KnnQuery
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
@@ -2121,6 +2122,17 @@ export interface InlineScript extends ScriptBase {
 }
 
 export type Ip = string
+
+export interface KnnQuery {
+  field: Field
+  query_vector: KnnQueryVector
+  k: long
+  num_candidates: long
+  boost?: float
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+}
+
+export type KnnQueryVector = double[]
 
 export interface LatLonGeoLocation {
   lat: double
@@ -5259,12 +5271,6 @@ export interface QueryDslIntervalsWildcard {
   use_field?: Field
 }
 
-export interface QueryDslKnnQuery extends QueryDslQueryBase {
-  field: Field
-  num_candidates: integer
-  query_vector: double[]
-}
-
 export type QueryDslLike = string | QueryDslLikeDocument
 
 export interface QueryDslLikeDocument {
@@ -5454,7 +5460,6 @@ export interface QueryDslQueryContainer {
   has_parent?: QueryDslHasParentQuery
   ids?: QueryDslIdsQuery
   intervals?: Partial<Record<Field, QueryDslIntervalsQuery>>
-  knn?: QueryDslKnnQuery
   match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
   match_all?: QueryDslMatchAllQuery
   match_bool_prefix?: Partial<Record<Field, QueryDslMatchBoolPrefixQuery | string>>
