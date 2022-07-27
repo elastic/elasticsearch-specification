@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
     index_details?: boolean
     /**
      * If true, returns the name of each index in each snapshot.
-     * @since 7.13.0
+     * @since 8.3.0
      * @server_default true
      */
     index_names?: boolean
