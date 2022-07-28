@@ -16281,7 +16281,7 @@ export interface SnapshotSnapshotInfo {
   end_time_in_millis?: EpochTime<UnitMillis>
   failures?: SnapshotSnapshotShardFailure[]
   include_global_state?: boolean
-  indices: IndexName[]
+  indices?: IndexName[]
   index_details?: Record<IndexName, SnapshotIndexDetails>
   metadata?: Metadata
   reason?: string
@@ -16416,7 +16416,7 @@ export interface SnapshotGetRequest extends RequestBase {
   master_timeout?: Duration
   verbose?: boolean
   index_details?: boolean
-  human?: boolean
+  index_names?: boolean
   include_repository?: boolean
   sort?: SnapshotSnapshotSort
   size?: integer
