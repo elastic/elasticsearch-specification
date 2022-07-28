@@ -2166,10 +2166,7 @@
     },
     "snapshot.get": {
       "request": [
-        "Request: query parameter 'human' does not exist in the json spec",
-        "Request: missing json spec query parameter 'index_names'",
-        "Request: should not have a body",
-        "request definition snapshot.get:Request / query - Property 'human' is already defined in an ancestor class"
+        "Request: should not have a body"
       ],
       "response": []
     },

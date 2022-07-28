@@ -46,7 +46,7 @@ export class SnapshotInfo {
   end_time_in_millis?: EpochTime<UnitMillis>
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
-  indices: IndexName[]
+  indices?: IndexName[]
   /** @since 7.13.0 */
   index_details?: Dictionary<IndexName, IndexDetails>
   metadata?: Metadata
