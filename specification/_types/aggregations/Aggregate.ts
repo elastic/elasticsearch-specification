@@ -90,6 +90,7 @@ export type Aggregate =
   | DateRangeAggregate
   | GeoDistanceAggregate
   | IpRangeAggregate
+  | IpPrefixAggregate
   // Other multi-bucket
   | FiltersAggregate
   | AdjacencyMatrixAggregate
@@ -593,6 +594,14 @@ export class CompositeAggregate extends MultiBucketAggregateBase<CompositeBucket
 
 export class CompositeBucket extends MultiBucketBase {
   key: Dictionary<string, UserDefinedValue>
+}
+
+export class IpPrefixAggregate extends MultiBucketAggregateBase<IpPrefixBucket> {}
+
+export class IpPrefixBucket extends MultiBucketBase {
+  is_ipv6: boolean
+  key: string
+  prefix_length: integer
 }
 
 //----- Misc
