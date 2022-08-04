@@ -12020,6 +12020,8 @@ export interface MlDelayedDataCheckConfig {
 
 export type MlDeploymentAllocationState = 'started' | 'starting' | 'fully_allocated'
 
+export type MlDeploymentAssignmentState = 'starting' | 'started' | 'stopping' | 'failed'
+
 export type MlDeploymentState = 'started' | 'starting' | 'stopping'
 
 export interface MlDetectionRule {
@@ -12496,21 +12498,27 @@ export interface MlTotalFeatureImportanceStatistics {
   min: integer
 }
 
-export interface MlTrainedModelAllocation {
-  allocation_state: MlDeploymentAllocationState
-  routing_table: Record<string, MlTrainedModelAllocationRoutingTable>
+export interface MlTrainedModelAssignment {
+  assignment_state: MlDeploymentAssignmentState
+  routing_table: Record<string, MlTrainedModelAssignmentRoutingTable>
   start_time: DateTime
-  task_parameters: MlTrainedModelAllocationTaskParameters
+  task_parameters: MlTrainedModelAssignmentTaskParameters
 }
 
-export interface MlTrainedModelAllocationRoutingTable {
+export interface MlTrainedModelAssignmentRoutingTable {
   reason: string
   routing_state: MlRoutingState
+  current_allocations: integer
+  target_allocations: integer
 }
 
-export interface MlTrainedModelAllocationTaskParameters {
+export interface MlTrainedModelAssignmentTaskParameters {
   model_bytes: integer
   model_id: Id
+  cache_size: ByteSize
+  number_of_allocations: integer
+  queue_capacity: integer
+  threads_per_allocation: integer
 }
 
 export interface MlTrainedModelConfig {
@@ -12559,7 +12567,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   number_of_allocations: integer
   number_of_pending_requests: integer
   rejection_execution_count: integer
-  routing_state: MlTrainedModelAllocationRoutingTable
+  routing_state: MlTrainedModelAssignmentRoutingTable
   start_time: EpochTime<UnitMillis>
   threads_per_allocation: integer
   timeout_count: integer
@@ -13746,6 +13754,7 @@ export interface MlStartDatafeedResponse {
 
 export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
+  cache_size?: ByteSize
   number_of_allocations?: integer
   queue_capacity?: integer
   threads_per_allocation?: integer
@@ -13754,7 +13763,7 @@ export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
 }
 
 export interface MlStartTrainedModelDeploymentResponse {
-  allocation: MlTrainedModelAllocation
+  assignment: MlTrainedModelAssignment
 }
 
 export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
