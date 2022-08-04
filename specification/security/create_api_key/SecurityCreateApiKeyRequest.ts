@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { RoleDescriptor } from './types'
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 
 /**
  * @rest_spec_name security.create_api_key
