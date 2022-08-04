@@ -37,15 +37,6 @@ export class ExistsQuery extends QueryBase {
   field: Field
 }
 
-/**
- * A k-nearest neighbor (kNN) search finds the k nearest vectors to a query vector, as measured by a similarity metric.
- */
-export class KnnQuery extends QueryBase {
-  field: Field
-  num_candidates: integer
-  query_vector: double[]
-}
-
 /** @shortcut_property value */
 export class FuzzyQuery extends QueryBase {
   max_expansions?: integer
