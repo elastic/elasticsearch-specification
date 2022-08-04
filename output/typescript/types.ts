@@ -569,6 +569,7 @@ export interface MsearchMultisearchBody {
   explain?: boolean
   stored_fields?: Fields
   docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+  knn?: KnnQuery
   from?: integer
   highlight?: SearchHighlight
   indices_boost?: Record<IndexName, double>[]
@@ -2125,14 +2126,12 @@ export type Ip = string
 
 export interface KnnQuery {
   field: Field
-  query_vector: KnnQueryVector
+  query_vector: double[]
   k: long
   num_candidates: long
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
 }
-
-export type KnnQueryVector = double[]
 
 export interface LatLonGeoLocation {
   lat: double
