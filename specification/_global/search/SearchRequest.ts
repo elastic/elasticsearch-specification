@@ -46,6 +46,7 @@ import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
 import { Sort, SortResults } from '@_types/sort'
+import { KnnQuery } from '@_types/Knn'
 
 /**
  * @rest_spec_name search
@@ -141,6 +142,11 @@ export interface Request extends RequestBase {
      * names matching these patterns in the hits.fields property of the response.
      */
     docvalue_fields?: FieldAndFormat[]
+    /**
+     * Defines the approximate kNN search to run.
+     * @since 8.4.0
+     */
+    knn?: KnnQuery
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.

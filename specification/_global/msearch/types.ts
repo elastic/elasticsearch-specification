@@ -42,6 +42,7 @@ import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
+import { KnnQuery } from '@_types/Knn'
 
 /**
  * @codegen_names header, body
@@ -91,6 +92,11 @@ export class MultisearchBody {
    * names matching these patterns in the hits.fields property of the response.
    */
   docvalue_fields?: FieldAndFormat[]
+  /**
+   * Defines the approximate kNN search to run.
+   * @since 8.4.0
+   */
+  knn?: KnnQuery
   /**
    * Starting document offset. By default, you cannot page through more than 10,000
    * hits using the from and size parameters. To page through more hits, use the
