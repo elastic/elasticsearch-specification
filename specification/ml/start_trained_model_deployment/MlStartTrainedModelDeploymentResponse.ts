@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TrainedModelAllocation } from '../_types/TrainedModel'
+import { TrainedModelAssignment } from '../_types/TrainedModel'
 
 export class Response {
   body: {
-    allocation: TrainedModelAllocation
+    assignment: TrainedModelAssignment
   }
 }

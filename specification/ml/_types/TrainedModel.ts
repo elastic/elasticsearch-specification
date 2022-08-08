@@ -144,7 +144,7 @@ export class TrainedModelDeploymentNodesStats {
   /** The number of inference requests that were not processed because the queue was full. */
   rejection_execution_count: integer
   /** The current routing state and reason for the current routing state for this allocation. */
-  routing_state: TrainedModelAllocationRoutingTable
+  routing_state: TrainedModelAssignmentRoutingTable
   /** The epoch timestamp when the allocation started. */
   start_time: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
@@ -289,7 +289,14 @@ export enum DeploymentAllocationState {
   fully_allocated = 3
 }
 
-export class TrainedModelAllocationTaskParameters {
+export enum DeploymentAssignmentState {
+  starting,
+  started,
+  stopping,
+  failed
+}
+
+export class TrainedModelAssignmentTaskParameters {
   /**
    * The size of the trained model in bytes.
    */
@@ -298,6 +305,23 @@ export class TrainedModelAllocationTaskParameters {
    * The unique identifier for the trained model.
    */
   model_id: Id
+  /**
+   * The size of the trained model cache.
+   * @since 8.4.0
+   */
+  cache_size: ByteSize
+  /**
+   * The total number of allocations this model is assigned across ML nodes.
+   */
+  number_of_allocations: integer
+  /**
+   * Number of inference requests are allowed in the queue at a time.
+   */
+  queue_capacity: integer
+  /**
+   * Number of threads per allocation.
+   */
+  threads_per_allocation: integer
 }
 
 export enum RoutingState {
@@ -323,7 +347,7 @@ export enum RoutingState {
   stopping = 4
 }
 
-export class TrainedModelAllocationRoutingTable {
+export class TrainedModelAssignmentRoutingTable {
   /**
    * The reason for the current state. It is usually populated only when the
    * `routing_state` is `failed`.
@@ -333,6 +357,14 @@ export class TrainedModelAllocationRoutingTable {
    * The current routing state.
    */
   routing_state: RoutingState
+  /**
+   * Current number of allocations.
+   */
+  current_allocations: integer
+  /**
+   * Target number of allocations.
+   */
+  target_allocations: integer
 }
 
 export class TrainedModelDeploymentAllocationStatus {
@@ -344,20 +376,20 @@ export class TrainedModelDeploymentAllocationStatus {
   target_allocation_count: integer
 }
 
-export class TrainedModelAllocation {
+export class TrainedModelAssignment {
   /**
-   * The overall allocation state.
+   * The overall assignment state.
    */
-  allocation_state: DeploymentAllocationState
+  assignment_state: DeploymentAssignmentState
   /**
    * The allocation state for each node.
    */
-  routing_table: Dictionary<string, TrainedModelAllocationRoutingTable>
+  routing_table: Dictionary<string, TrainedModelAssignmentRoutingTable>
   /**
    * The timestamp when the deployment started.
    */
   start_time: DateTime
-  task_parameters: TrainedModelAllocationTaskParameters
+  task_parameters: TrainedModelAssignmentTaskParameters
 }
 
 export class TrainedModelLocation {
