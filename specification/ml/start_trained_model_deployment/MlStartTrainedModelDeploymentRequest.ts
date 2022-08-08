@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { DeploymentAllocationState } from '../_types/TrainedModel'
@@ -38,6 +38,12 @@ export interface Request extends RequestBase {
     model_id: Id
   }
   query_parameters: {
+    /**
+     * The inference cache size (in memory outside the JVM heap) per node for the model.
+     * The default value is the same size as the `model_size_bytes`. To disable the cache,
+     * `0b` can be provided.
+     */
+    cache_size?: ByteSize
     /**
      * The number of model allocations on each node where the model is deployed.
      * All allocations on a node share the same copy of the model in memory but use
