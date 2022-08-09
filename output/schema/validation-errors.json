@@ -1359,6 +1359,12 @@
       ],
       "response": []
     },
+    "ml.clear_trained_model_deployment_cache": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.delete_calendar": {
       "request": [
         "Request: should not have a body"
@@ -1816,6 +1822,12 @@
       ],
       "response": []
     },
+    "security.bulk_update_api_keys": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.clear_api_key_cache": {
       "request": [
         "Request: should not have a body"
@@ -2233,6 +2245,12 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'nodes'",
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "text_structure.find_structure": {
+      "request": [
+        "Request: missing json spec query parameter 'ecs_compatibility'"
       ],
       "response": []
     },
