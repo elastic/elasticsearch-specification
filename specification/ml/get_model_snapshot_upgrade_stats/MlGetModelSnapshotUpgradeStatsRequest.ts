@@ -38,7 +38,7 @@ export interface Request extends RequestBase {
      * snapshots by using a comma-separated list or a wildcard expression. You can get all snapshots by using `_all`,
      * by specifying `*` as the snapshot ID, or by omitting the snapshot ID.
      */
-    snapshot_id?: Id
+    snapshot_id: Id
   }
   query_parameters: {
     /**
