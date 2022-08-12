@@ -13175,7 +13175,7 @@ export interface MlGetMemoryStatsResponse {
 
 export interface MlGetModelSnapshotUpgradeStatsRequest extends RequestBase {
   job_id: Id
-  snapshot_id?: Id
+  snapshot_id: Id
   allow_no_match?: boolean
 }
 
