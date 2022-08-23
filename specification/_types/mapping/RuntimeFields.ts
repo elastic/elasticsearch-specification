@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { Script } from '@_types/Scripting'
 
-export type RuntimeFields = Dictionary<Field, RuntimeField | RuntimeField[]>
+export type RuntimeFields = Dictionary<Field, RuntimeField>
 
 export class RuntimeField {
   format?: string
