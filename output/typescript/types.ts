@@ -3000,7 +3000,7 @@ export interface AggregationsFiltersAggregation extends AggregationsBucketAggreg
   filters?: AggregationsBuckets<QueryDslQueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
-  keyed?: boolean
+  sortable?: boolean
 }
 
 export interface AggregationsFiltersBucketKeys extends AggregationsMultiBucketBase {
