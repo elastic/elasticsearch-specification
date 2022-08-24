@@ -167,7 +167,7 @@ export class FiltersAggregation extends BucketAggregationBase {
   filters?: Buckets<QueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
-  keyed?: boolean
+  sortable?: boolean
 }
 
 export class GeoDistanceAggregation extends BucketAggregationBase {
