@@ -43,6 +43,7 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { KnnQuery } from '@_types/Knn'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @codegen_names header, body
@@ -80,6 +81,10 @@ export class MultisearchBody {
    * @server_default false
    */
   explain?: boolean
+  /**
+   * Configuration of search extensions defined by Elasticsearch plugins.
+   */
+  ext?: Dictionary<string, UserDefinedValue>
   /**
    * List of stored fields to return as part of a hit. If no fields are specified,
    * no stored fields are included in the response. If this field is specified, the _source
