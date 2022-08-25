@@ -1936,6 +1936,7 @@
     },
     "security.get_api_key": {
       "request": [
+        "Request: missing json spec query parameter 'with_limited_by'",
         "Request: should not have a body"
       ],
       "response": []
@@ -2020,6 +2021,12 @@
     "security.oidc_prepare_authentication": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Request: missing json spec query parameter 'with_limited_by'"
       ],
       "response": []
     },
