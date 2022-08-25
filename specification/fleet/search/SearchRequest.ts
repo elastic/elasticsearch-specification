@@ -50,6 +50,7 @@ import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * The purpose of the fleet search api is to provide a search api where the search will only be executed
@@ -138,6 +139,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     explain?: boolean
+    /**
+     * Configuration of search extensions defined by Elasticsearch plugins.
+     */
+    ext?: Dictionary<string, UserDefinedValue>
     /**
      * Starting document offset. By default, you cannot page through more than 10,000
      * hits using the from and size parameters. To page through more hits, use the

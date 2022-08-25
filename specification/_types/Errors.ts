@@ -36,7 +36,7 @@ export class ErrorCause
   /**
    * A human-readable explanation of the error, in english
    */
-  reason: string
+  reason?: string
   /**
    * The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.
    */
