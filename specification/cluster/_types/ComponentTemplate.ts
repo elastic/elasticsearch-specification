@@ -39,7 +39,7 @@ export class ComponentTemplateSummary {
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
   _meta?: Metadata
   version?: VersionNumber
-  settings: Dictionary<IndexName, IndexSettings>
+  settings?: Dictionary<IndexName, IndexSettings>
   mappings?: TypeMapping
   aliases?: Dictionary<string, AliasDefinition>
 }

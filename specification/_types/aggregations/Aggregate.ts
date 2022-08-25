@@ -289,7 +289,7 @@ export class ExtendedStatsBucketAggregate extends ExtendedStatsAggregate {}
 
 /** @variant name=geo_bounds */
 export class GeoBoundsAggregate extends AggregateBase {
-  bounds: GeoBounds
+  bounds?: GeoBounds
 }
 
 /** @variant name=geo_centroid */
