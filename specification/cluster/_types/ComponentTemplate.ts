@@ -39,7 +39,7 @@ export class ComponentTemplateSummary {
   /** @doc_id mapping-meta-field */
   _meta?: Metadata
   version?: VersionNumber
-  settings: Dictionary<IndexName, IndexSettings>
+  settings?: Dictionary<IndexName, IndexSettings>
   mappings?: TypeMapping
   aliases?: Dictionary<string, AliasDefinition>
 }

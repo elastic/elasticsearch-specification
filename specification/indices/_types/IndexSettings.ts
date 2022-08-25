@@ -260,8 +260,7 @@ export enum IndexCheckOnStartup {
 }
 
 export class IndexVersioning {
-  created: VersionString
-  created_string?: VersionString
+  created?: VersionString
 }
 
 export class IndexSettingsLifecycle {

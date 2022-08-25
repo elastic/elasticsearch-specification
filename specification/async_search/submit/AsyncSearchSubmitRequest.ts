@@ -50,6 +50,7 @@ import { Suggester } from '@global/search/_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
 import { KnnQuery } from '@_types/Knn'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name async_search.submit
@@ -128,6 +129,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     explain?: boolean
+    /**
+     * Configuration of search extensions defined by Elasticsearch plugins.
+     */
+    ext?: Dictionary<string, UserDefinedValue>
     /**
      * Starting document offset. By default, you cannot page through more than 10,000
      * hits using the from and size parameters. To page through more hits, use the
