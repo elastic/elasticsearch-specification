@@ -26,7 +26,7 @@ export class Response {
     expires_in: long
     scope?: string
     type: string
-    refresh_token: string
+    refresh_token?: string
     kerberos_authentication_response_token?: string
     authentication: AuthenticatedUser
   }

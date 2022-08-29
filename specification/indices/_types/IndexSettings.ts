@@ -331,7 +331,7 @@ export enum IndexCheckOnStartup {
 }
 
 export class IndexVersioning {
-  created: VersionString
+  created?: VersionString
 }
 
 export class IndexSettingsLifecycle {
