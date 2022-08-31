@@ -47,6 +47,9 @@ clean-dep:	## Clean npm dependencies
 transform-expand-generics: ## Create a new schema with all generics expanded
 	@npm run transform-expand-generics --prefix compiler
 
+transform-extract-routes: ## Create a new schema with all generics expanded
+	@npm run transform-extract-routes --prefix compiler
+
 contrib: | generate license-check spec-format-fix 	## Pre contribution target
 
 bump:
