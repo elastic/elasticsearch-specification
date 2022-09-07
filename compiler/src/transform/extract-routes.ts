@@ -8,6 +8,7 @@ import {
 
 class Node {
   path: string;
+  name: string;
   isVariable: boolean;
   children: Node[];
 
@@ -40,7 +41,7 @@ function matches(subject: string, search: string): string {
   return output;
 }
 
-function insert(node: Node, url: string) {
+function insert(node: Node, url: string, name: string) {
   if (!url) {
     return;
   }
@@ -62,7 +63,7 @@ function insert(node: Node, url: string) {
     //  -> lect
     if (match.length < node.path.length) {
       let child = new Node();
-      insert(child, rest);
+      insert(child, rest, name);
 
       // If the current node already has children we move them to the newly created node.
       if (node.children.length > 0) {
@@ -86,14 +87,14 @@ function insert(node: Node, url: string) {
       for (const child of node.children) {
         if (child.path[0] === rest[0]) {
           found = true;
-          insert(child, rest);
+          insert(child, rest, name);
         }
       }
 
       // if there's no match found we create a new child to this node
       if (!found) {
         let n = new Node();
-        insert(n, rest);
+        insert(n, rest, name);
         node.children.push(n);
       }
     }
@@ -104,19 +105,23 @@ function insert(node: Node, url: string) {
 
     node.path = match;
     if (rest.length) {
-      insert(node, rest);
+      insert(node, rest, name);
     }
 
     if (url[0] === "*") {
       node.path = "*";
       node.isVariable = true;
-      insert(node, url.slice(1))
+      insert(node, url.slice(1), name)
     } else if (url.endsWith("*")) {
       let child = new Node();
       child.path = "*";
       child.isVariable = true;
+      child.name = name;
       node.children.push(child);
     }
+  }
+  if (node.path == url) {
+    node.name = name;
   }
 }
 
@@ -136,9 +141,7 @@ function extractRoutes(inputModel: Model): Trees {
         if (node !== undefined) {
           let target = url.path.replace(/{\w+}/g, "*")
 
-          insert(node, target);
-
-          console.log();
+          insert(node, target, endpoint.name);
         }
       }
     }
