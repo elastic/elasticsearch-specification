@@ -22,14 +22,14 @@ import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 /**
- * @rest_spec_name rollup.rollup
- * @since 7.13.0
+ * @rest_spec_name indices.downsample
+ * @since 8.5.0
  * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
     index: IndexName
-    rollup_index: IndexName
+    target_index: IndexName
   }
   /** @codegen_name config */
   body?: UserDefinedValue // TODO: This API is experimental and no docs exist describing it. Requires reverse engineering if made stable
