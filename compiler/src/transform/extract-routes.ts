@@ -1,3 +1,22 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 import {readFile, writeFile} from "fs/promises";
 import stringify from "safe-stable-stringify";
 import {argv} from "zx";
@@ -6,19 +25,21 @@ import {
   Model,
 } from '../model/metamodel'
 
-class Node {
+export class Node {
   path: string;
   name: string;
   isVariable: boolean;
   children: Node[];
 
-  constructor() {
-    this.path = "";
-    this.children = [];
+  constructor(path: string = "", name: string = "", children: Node[] = [], isVariable: boolean = false) {
+    this.path = path;
+    this.name = name;
+    this.children = children;
+    this.isVariable = isVariable;
   }
 }
 
-class Trees {
+export class Trees {
   byMethod: Map<string, Node>;
 
   constructor() {
@@ -41,7 +62,7 @@ function matches(subject: string, search: string): string {
   return output;
 }
 
-function insert(node: Node, url: string, name: string) {
+export function insert(node: Node, url: string, name: string) {
   if (!url) {
     return;
   }
@@ -66,16 +87,15 @@ function insert(node: Node, url: string, name: string) {
       insert(child, rest, name);
 
       // If the current node already has children we move them to the newly created node.
-      if (node.children.length > 0) {
-        let oldNode = {...node};
-        oldNode.path = oldNode.path.slice(match.length);
-        node.children = [];
-        node.children.push(oldNode);
-      }
+      let oldNode = new Node(node.path, node.name, node.children);
+      oldNode.path = oldNode.path.slice(match.length);
+      node.children = [];
+      node.children.push(oldNode);
 
       if (child.path) {
         node.children.push(child);
       }
+      node.name = "";
       node.path = match;
     }
 
@@ -108,18 +128,15 @@ function insert(node: Node, url: string, name: string) {
       insert(node, rest, name);
     }
 
-    if (url[0] === "*") {
-      node.path = "*";
+    if (node.path === "*") {
       node.isVariable = true;
-      insert(node, url.slice(1), name)
-    } else if (url.endsWith("*")) {
-      let child = new Node();
-      child.path = "*";
-      child.isVariable = true;
-      child.name = name;
-      node.children.push(child);
-    }
+    } 
+  } else if (url[0] !== node.path[0]) {
+    let child = new Node();
+    insert(child, url, name);
+    node.children.push(child);
   }
+
   if (node.path == url) {
     node.name = name;
   }
