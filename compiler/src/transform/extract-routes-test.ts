@@ -115,7 +115,7 @@ test("insertions", t => {
     ], new Node("/", "", [
         new Node("_search", "search"),
         new Node("*", "", [
-          new Node("/", "", [
+          new Node("/", "doc", [
             new Node("*", "", [
               new Node("/_doc", "doc")
             ], true),
@@ -130,7 +130,7 @@ test("insertions", t => {
     ], new Node("/", "", [
         new Node("_search", "search"),
         new Node("*", "", [
-          new Node("/_doc/", "", [
+          new Node("/_doc/", "doc", [
             new Node("*", "doc", [], true),
           ]),
         ], true),

@@ -139,6 +139,8 @@ export function insert(node: Node, url: string, name: string) {
 
   if (node.path == url) {
     node.name = name;
+  } else if (node.children.length === 1 && node.children[0].isVariable) {
+    node.name = name;
   }
 }
 
@@ -156,8 +158,7 @@ function extractRoutes(inputModel: Model): Trees {
           node = t.byMethod.get(method);
         }
         if (node !== undefined) {
-          let target = url.path.replace(/{\w+}/g, "*")
-
+          let target = url.path.replace(/{\w+}/g, "*");
           insert(node, target, endpoint.name);
         }
       }
