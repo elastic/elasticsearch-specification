@@ -33,7 +33,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * @since 0.0.0
  * @stability stable
  */
-export interface Request {
+export interface Request extends RequestBase {
   path_parts: {
     /** Unique identifier of the document. */
     id: Id
