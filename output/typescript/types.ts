@@ -9913,6 +9913,14 @@ export interface IndicesDiskUsageRequest extends RequestBase {
 
 export type IndicesDiskUsageResponse = any
 
+export interface IndicesDownsampleRequest extends RequestBase {
+  index: IndexName
+  target_index: IndexName
+  body?: any
+}
+
+export type IndicesDownsampleResponse = any
+
 export interface IndicesExistsRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -15042,14 +15050,6 @@ export interface RollupPutJobRequest extends RequestBase {
 }
 
 export type RollupPutJobResponse = AcknowledgedResponseBase
-
-export interface RollupRollupRequest extends RequestBase {
-  index: IndexName
-  rollup_index: IndexName
-  body?: any
-}
-
-export type RollupRollupResponse = any
 
 export interface RollupRollupSearchRequest extends RequestBase {
   index: Indices
