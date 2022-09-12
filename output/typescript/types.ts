@@ -445,7 +445,7 @@ export interface GetScriptLanguagesResponse {
   types_allowed: string[]
 }
 
-export interface GetSourceRequest {
+export interface GetSourceRequest extends RequestBase {
   id: Id
   index: IndexName
   type?: string
