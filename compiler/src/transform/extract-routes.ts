@@ -47,6 +47,63 @@ export class Trees {
   }
 }
 
+function serializeNode(node: Node): string {
+  let output: string = "";
+  const template: string = `{
+    Name: "${node.name}",
+    Path: []byte("${node.path}"),
+    IsVariable: ${node.isVariable},
+  `
+
+  output += template
+  if (node.children.length) {
+    output += `Children: []Node{
+    `
+    for (const child of node.children) {
+      output += serializeNode(child);
+    }
+    output += `},
+    `
+  }
+  output += `},
+  `
+
+  return output;
+}
+
+function serializeTree(trees: Trees): string {
+  let output: string = "";
+  const begin: string = `package route
+
+  type Trees struct {
+  	ByMethod map[string]Node
+  }
+
+  type Node struct {
+    Name     string
+    Path     []byte
+    IsVariable bool
+    Children    []Node
+  }
+
+  var trees = Trees{
+    map[string]Node{
+  `
+
+  output += begin;
+  for (const [method, root] of trees.byMethod) {
+    output += `
+    "${method}":
+    `
+    output += serializeNode(root);
+  }
+
+  output += `},
+  }`
+
+  return output;
+}
+
 function matches(subject: string, search: string): string {
   let output: string = "";
 
@@ -130,7 +187,7 @@ export function insert(node: Node, url: string, name: string) {
 
     if (node.path === "*") {
       node.isVariable = true;
-    } 
+    }
   } else if (url[0] !== node.path[0]) {
     let child = new Node();
     insert(child, url, name);
@@ -176,25 +233,15 @@ async function extractRoutesFromFile(inPath: string, outPath: string): Promise<v
 
   const inputModel = JSON.parse(inputText)
   const routes = extractRoutes(inputModel)
+  const str = serializeTree(routes);
 
-  await writeFile(
-    outPath,
-    stringify(routes, function (key, value) {
-      if (value instanceof Map) {
-        return {
-          dataType: 'Map',
-          value: Array.from(value.entries()),
-        };
-      } else {
-        return value;
-      }
-    }, 2),
-    'utf8'
-  )
+  console.log(str);
+
+  await writeFile(outPath, str);
 }
 
 const inputPath = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
-const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'routes.json')
+const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'routes.go')
 
 extractRoutesFromFile(inputPath, outputPath)
   .catch(reason => console.error(reason))

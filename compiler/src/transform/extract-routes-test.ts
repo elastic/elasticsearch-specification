@@ -19,7 +19,6 @@
 
 import test from 'ava'
 import { insert, Node } from "./extract-routes"
-import stringify from "safe-stable-stringify";
 
 test("insertions", t => {
   class args {
