@@ -34,7 +34,6 @@ test("insertions", t => {
   }
 
   const cases: args[] = [
-    // new args("simple", [{name: "search", path: "/_search"}], new Node("/_search", "search")),
     new args("simple", [{name: "search", path: "/_search"}], new Node("/_search", "search")),
 
     new args("with subpath", [
@@ -99,10 +98,10 @@ test("insertions", t => {
 
     new args("with root variable", [
         {name: "search", path: "/_search"},
-        {name: "doc", path: "/*/_doc"},
+        {name: "doc", path: "/{index}/_doc"},
       ], new Node("/", "", [
         new Node("_search", "search"),
-        new Node("*", "", [
+        new Node("{index}", "", [
           new Node("/_doc", "doc")
         ], true),
       ])
@@ -110,12 +109,12 @@ test("insertions", t => {
 
     new args("with two consecutive variables from root", [
       {name: "search", path: "/_search"},
-      {name: "doc", path: "/*/*/_doc"},
+      {name: "doc", path: "/{a}/{b}/_doc"},
     ], new Node("/", "", [
         new Node("_search", "search"),
-        new Node("*", "", [
+        new Node("{a}", "", [
           new Node("/", "doc", [
-            new Node("*", "", [
+            new Node("{b}", "", [
               new Node("/_doc", "doc")
             ], true),
           ]),
@@ -125,12 +124,25 @@ test("insertions", t => {
 
     new args("with variable and an ending variable", [
       {name: "search", path: "/_search"},
-      {name: "doc", path: "/*/_doc/*"},
+      {name: "doc", path: "/{a}/_doc/{c}"},
     ], new Node("/", "", [
         new Node("_search", "search"),
-        new Node("*", "", [
+        new Node("{a}", "", [
           new Node("/_doc/", "doc", [
-            new Node("*", "doc", [], true),
+            new Node("{c}", "doc", [], true),
+          ]),
+        ], true),
+      ])
+    ),
+
+    new args("with variable and an ending variable", [
+      {name: "search", path: "/_search"},
+      {name: "doc", path: "/{a}/_doc/{c}"},
+    ], new Node("/", "", [
+        new Node("_search", "search"),
+        new Node("{a}", "", [
+          new Node("/_doc/", "doc", [
+            new Node("{c}", "doc", [], true),
           ]),
         ], true),
       ])
@@ -146,5 +158,5 @@ test("insertions", t => {
     }
     t.deepEqual(root, args.expect);
   }
-})
+});
 

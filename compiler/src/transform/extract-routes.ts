@@ -108,8 +108,15 @@ function matches(subject: string, search: string): string {
   let output: string = "";
 
   for (let i = 0; i < subject.length; i++) {
-    if (subject[i] === "*") {
-      return (output ? output : "*");
+    if (subject[i] === "{") {
+      if (i == 0) {
+        for (let j = 0; j < subject.length; j++) {
+          if (subject[j] === "}") {
+            return subject.slice(i,j+1);
+          }
+        }
+      }
+      return (output ? output : "");
     } else if (subject[i] === search[i]) {
       output += subject[i];
     } else {
@@ -185,7 +192,7 @@ export function insert(node: Node, url: string, name: string) {
       insert(node, rest, name);
     }
 
-    if (node.path === "*") {
+    if (node.path.startsWith("{")) {
       node.isVariable = true;
     }
   } else if (url[0] !== node.path[0]) {
@@ -215,8 +222,8 @@ function extractRoutes(inputModel: Model): Trees {
           node = t.byMethod.get(method);
         }
         if (node !== undefined) {
-          let target = url.path.replace(/{\w+}/g, "*");
-          insert(node, target, endpoint.name);
+          // let target = url.path.replace(/{\w+}/g, "*");
+          insert(node, url.path, endpoint.name);
         }
       }
     }
