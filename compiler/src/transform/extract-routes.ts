@@ -52,15 +52,21 @@ function serializeNode(node: Node): string {
   const template: string = `{
     Name: "${node.name}",
     Path: []byte("${node.path}"),
-    IsVariable: ${node.isVariable},
   `
 
   output += template
   if (node.children.length) {
+    for (const child of node.children) {
+      if (child.isVariable) {
+        output += `Variable: &Node${serializeNode(child)}`
+      }
+    }
     output += `Children: []Node{
     `
     for (const child of node.children) {
-      output += serializeNode(child);
+      if (!child.isVariable) {
+        output += serializeNode(child);
+      }
     }
     output += `},
     `
@@ -73,20 +79,20 @@ function serializeNode(node: Node): string {
 
 function serializeTree(trees: Trees): string {
   let output: string = "";
-  const begin: string = `package route
+  const begin: string = `package esroute
 
   type Trees struct {
   	ByMethod map[string]Node
   }
 
   type Node struct {
-    Name     string
-    Path     []byte
-    IsVariable bool
+    Name        string
+    Path        []byte
+    Variable    *Node
     Children    []Node
   }
 
-  var trees = Trees{
+  var Forest = Trees{
     map[string]Node{
   `
 
@@ -222,7 +228,6 @@ function extractRoutes(inputModel: Model): Trees {
           node = t.byMethod.get(method);
         }
         if (node !== undefined) {
-          // let target = url.path.replace(/{\w+}/g, "*");
           insert(node, url.path, endpoint.name);
         }
       }
