@@ -81,17 +81,6 @@ function serializeTree(trees: Trees): string {
   let output: string = "";
   const begin: string = `package esroute
 
-  type Trees struct {
-  	ByMethod map[string]Node
-  }
-
-  type Node struct {
-    Name        string
-    Path        []byte
-    Variable    *Node
-    Children    []Node
-  }
-
   var Forest = Trees{
     map[string]Node{
   `
@@ -153,20 +142,25 @@ export function insert(node: Node, url: string, name: string) {
     //  -> arch
     //  -> lect
     if (match.length < node.path.length) {
-      let child = new Node();
-      insert(child, rest, name);
-
       // If the current node already has children we move them to the newly created node.
-      let oldNode = new Node(node.path, node.name, node.children);
-      oldNode.path = oldNode.path.slice(match.length);
-      node.children = [];
-      node.children.push(oldNode);
+      if (match.startsWith("{") && node.path.startsWith("{")) {
+        node.path = match;
+        insert(node, rest, name);
+      } else {
+        let child = new Node();
+        insert(child, rest, name);
 
-      if (child.path) {
-        node.children.push(child);
+        let oldNode = new Node(node.path, node.name, node.children);
+        oldNode.path = oldNode.path.slice(match.length);
+        node.children = [];
+        node.children.push(oldNode);
+
+        node.name = "";
+        node.path = match;
+        if (child.path) {
+          node.children.push(child);
+        }
       }
-      node.name = "";
-      node.path = match;
     }
 
     // if the url is lengthier than the current node we have children to populate/match
@@ -202,14 +196,24 @@ export function insert(node: Node, url: string, name: string) {
       node.isVariable = true;
     }
   } else if (url[0] !== node.path[0]) {
-    let child = new Node();
-    insert(child, url, name);
-    node.children.push(child);
+    childrenPresent: {
+      for (let nodeChildren of node.children) {
+        if (nodeChildren.path[0] == url[0]) {
+          insert(nodeChildren,url,name);
+          break childrenPresent;
+        }
+      }
+      let child = new Node();
+      insert(child, url, name);
+      node.children.push(child);
+    }
   }
 
   if (node.path == url) {
     node.name = name;
   } else if (node.children.length === 1 && node.children[0].isVariable) {
+    node.name = name;
+  } else if (node.isVariable && !node.name && url.startsWith("{") && url.endsWith("}")) {
     node.name = name;
   }
 }
@@ -246,8 +250,6 @@ async function extractRoutesFromFile(inPath: string, outPath: string): Promise<v
   const inputModel = JSON.parse(inputText)
   const routes = extractRoutes(inputModel)
   const str = serializeTree(routes);
-
-  console.log(str);
 
   await writeFile(outPath, str);
 }
