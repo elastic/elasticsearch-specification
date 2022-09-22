@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import {Dictionary, SingleKeyDictionary} from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import {FieldValue} from "@_types/common";
-import {AdditionalProperty} from "@spec_utils/behaviors";
+import { FieldValue } from '@_types/common'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class AlwaysCondition {}
 
@@ -29,7 +29,9 @@ export class ArrayCompareOpParams {
   value: FieldValue
 }
 
-export class ArrayCompareCondition implements AdditionalProperty<ConditionOp, ArrayCompareOpParams> {
+export class ArrayCompareCondition
+  implements AdditionalProperty<ConditionOp, ArrayCompareOpParams>
+{
   path: string
 }
 
@@ -39,7 +41,7 @@ export enum ConditionOp {
   lt,
   gt,
   lte,
-  gte,
+  gte
 }
 
 /**
@@ -48,7 +50,10 @@ export enum ConditionOp {
 export class ConditionContainer {
   always?: AlwaysCondition
   array_compare?: SingleKeyDictionary<string, ArrayCompareCondition>
-  compare?: SingleKeyDictionary<string, SingleKeyDictionary<ConditionOp, FieldValue>>
+  compare?: SingleKeyDictionary<
+    string,
+    SingleKeyDictionary<ConditionOp, FieldValue>
+  >
   never?: NeverCondition
   script?: ScriptCondition
 }
