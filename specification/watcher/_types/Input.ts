@@ -43,7 +43,6 @@ export enum ConnectionScheme {
 }
 
 export class HttpInput {
-  http?: HttpInput
   extract?: string[]
   request?: HttpInputRequestDefinition
   response_content_type?: ResponseContentType
