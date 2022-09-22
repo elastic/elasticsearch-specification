@@ -17,8 +17,12 @@
  * under the License.
  */
 
+import { Role } from '@security/get_role/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Metadata, Name, Username } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { SortResults } from '@_types/sort'
+import { RoleDescriptor } from './RoleDescriptor'
 
 export class ApiKey {
   creation?: long
@@ -30,4 +34,8 @@ export class ApiKey {
   username?: Username
   /** @since 7.13.0 */
   metadata?: Metadata
+  role_descriptors?: Dictionary<string, RoleDescriptor>
+  /** @since 8.5.0 */
+  limited_by?: Array<Dictionary<string, RoleDescriptor>>
+  _sort?: SortResults
 }

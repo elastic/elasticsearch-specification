@@ -15170,6 +15170,9 @@ export interface SecurityApiKey {
   realm?: string
   username?: Username
   metadata?: Metadata
+  role_descriptors?: Record<string, SecurityRoleDescriptor>
+  limited_by?: Record<string, SecurityRoleDescriptor>[]
+  _sort?: SortResults
 }
 
 export interface SecurityApplicationGlobalUserPrivileges {
@@ -15296,6 +15299,7 @@ export interface SecurityUser {
   roles: string[]
   username: Username
   enabled: boolean
+  profile_uid?: SecurityUserProfileId
 }
 
 export interface SecurityUserProfile {
@@ -15571,6 +15575,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
   owner?: boolean
   realm_name?: Name
   username?: Username
+  with_limited_by?: boolean
 }
 
 export interface SecurityGetApiKeyResponse {
@@ -15696,6 +15701,7 @@ export interface SecurityGetTokenUserRealm {
 
 export interface SecurityGetUserRequest extends RequestBase {
   username?: Username | Username[]
+  with_profile_uid?: boolean
 }
 
 export type SecurityGetUserResponse = Record<string, SecurityUser>
@@ -15714,19 +15720,28 @@ export interface SecurityGetUserPrivilegesResponse {
   run_as: string[]
 }
 
+export interface SecurityGetUserProfileGetUserProfileErrors {
+  count: long
+  details: Record<SecurityUserProfileId, ErrorCause>
+}
+
 export interface SecurityGetUserProfileRequest extends RequestBase {
-  uid: SecurityUserProfileId
+  uid: SecurityUserProfileId | SecurityUserProfileId[]
   data?: string | string[]
 }
 
-export type SecurityGetUserProfileResponse = Record<string, SecurityUserProfileWithMetadata>
+export interface SecurityGetUserProfileResponse {
+  profiles: SecurityUserProfileWithMetadata[]
+  errors?: SecurityGetUserProfileGetUserProfileErrors
+}
 
 export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
 
 export interface SecurityGrantApiKeyGrantApiKey {
   name: Name
-  expiration?: Duration
-  role_descriptors?: Record<string, any>[]
+  expiration?: DurationLarge
+  role_descriptors?: Record<string, SecurityRoleDescriptor> | Record<string, SecurityRoleDescriptor>[]
+  metadata?: Metadata
 }
 
 export interface SecurityGrantApiKeyRequest extends RequestBase {
@@ -15736,6 +15751,7 @@ export interface SecurityGrantApiKeyRequest extends RequestBase {
     access_token?: string
     username?: Username
     password?: Password
+    run_as?: Username
   }
 }
 
@@ -15744,6 +15760,7 @@ export interface SecurityGrantApiKeyResponse {
   id: Id
   name: Name
   expiration?: EpochTime<UnitMillis>
+  encoded: string
 }
 
 export interface SecurityHasPrivilegesApplicationPrivilegesCheck {
@@ -15781,6 +15798,11 @@ export interface SecurityHasPrivilegesResponse {
   username: Username
 }
 
+export interface SecurityHasPrivilegesUserProfileHasPrivilegesUserProfileErrors {
+  count: long
+  details: Record<SecurityUserProfileId, ErrorCause>
+}
+
 export interface SecurityHasPrivilegesUserProfilePrivilegesCheck {
   application?: SecurityHasPrivilegesApplicationPrivilegesCheck[]
   cluster?: SecurityClusterPrivilege[]
@@ -15796,7 +15818,7 @@ export interface SecurityHasPrivilegesUserProfileRequest extends RequestBase {
 
 export interface SecurityHasPrivilegesUserProfileResponse {
   has_privilege_uids: SecurityUserProfileId[]
-  error_uids?: SecurityUserProfileId[]
+  errors?: SecurityHasPrivilegesUserProfileHasPrivilegesUserProfileErrors
 }
 
 export interface SecurityInvalidateApiKeyRequest extends RequestBase {
@@ -15902,6 +15924,7 @@ export interface SecurityPutUserResponse {
 }
 
 export interface SecurityQueryApiKeysRequest extends RequestBase {
+  with_limited_by?: boolean
   body?: {
     query?: QueryDslQueryContainer
     from?: integer

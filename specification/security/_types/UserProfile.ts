@@ -20,7 +20,6 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Username, Name } from '@_types/common'
-import { Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { SequenceNumber } from '@_types/common'
 
