@@ -27,7 +27,7 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
  * @codegen_names long, double, string, boolean
  */
 // FIXME: representation of geopoints and ip addresses?
-export type FieldValue = long | double | string | boolean
+export type FieldValue = long | double | string | boolean | UserDefinedValue
 
 export class UrlParameter {}
 
