@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
   body: {
     actions?: Dictionary<string, Action>
     condition?: ConditionContainer
-    input?: Array<SingleKeyDictionary<string, InputContainer>>
+    input?: InputContainer
     metadata?: Metadata
     throttle_period?: string
     transform?: TransformContainer
