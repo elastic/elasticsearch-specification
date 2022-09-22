@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import {Dictionary, SingleKeyDictionary} from '@spec_utils/Dictionary'
 import { Action } from '@watcher/_types/Action'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
   body: {
     actions?: Dictionary<string, Action>
     condition?: ConditionContainer
-    input?: InputContainer
+    input?: Array<SingleKeyDictionary<string, InputContainer>>
     metadata?: Metadata
     throttle_period?: string
     transform?: TransformContainer
