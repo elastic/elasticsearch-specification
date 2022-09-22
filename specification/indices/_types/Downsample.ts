@@ -17,20 +17,8 @@
  * under the License.
  */
 
-import { DownsampleConfig } from '@indices/_types/Downsample'
-import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { DurationLarge } from '@_types/Time'
 
-/**
- * @rest_spec_name indices.downsample
- * @since 8.5.0
- * @stability experimental
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    index: IndexName
-    target_index: IndexName
-  }
-  /** @codegen_name config */
-  body?: DownsampleConfig
+export class DownsampleConfig {
+  fixed_interval: DurationLarge
 }
