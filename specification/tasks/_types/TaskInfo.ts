@@ -18,9 +18,8 @@
  */
 
 import { TaskStatus } from '@tasks/_types/TaskStatus'
-import { HttpHeaders, Id, NodeId, TaskId } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-import { ErrorCause } from '@_types/Errors'
+import { NodeId, TaskId } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Duration,
@@ -32,6 +31,7 @@ import {
 
 export class TaskInfo {
   action: string
+  cancelled?: boolean
   cancellable: boolean
   description?: string
   headers: Dictionary<string, string>

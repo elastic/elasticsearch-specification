@@ -17,44 +17,43 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { FieldValue } from '@_types/common'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class AlwaysCondition {}
 
-export class ArrayCompareCondition {
-  array_path: string
-  comparison: string
-  path: string
+export class ArrayCompareOpParams {
   quantifier: Quantifier
-  value: UserDefinedValue
+  value: FieldValue
 }
 
-export class CompareCondition {
-  comparison?: string
-  path?: string
-  value?: UserDefinedValue
-  'ctx.payload.match'?: CompareContextPayloadCondition
-  'ctx.payload.value'?: CompareContextPayloadCondition
+export class ArrayCompareCondition
+  implements AdditionalProperty<ConditionOp, ArrayCompareOpParams>
+{
+  path: string
 }
 
-export class CompareContextPayloadCondition {
-  eq?: UserDefinedValue
-  lt?: UserDefinedValue
-  gt?: UserDefinedValue
-  lte?: UserDefinedValue
-  gte?: UserDefinedValue
+export enum ConditionOp {
+  not_eq,
+  eq,
+  lt,
+  gt,
+  lte,
+  gte
 }
-
-export class Condition {}
 
 /**
  * @variants container
  */
 export class ConditionContainer {
   always?: AlwaysCondition
-  array_compare?: ArrayCompareCondition
-  compare?: CompareCondition
+  array_compare?: SingleKeyDictionary<string, ArrayCompareCondition>
+  compare?: SingleKeyDictionary<
+    string,
+    SingleKeyDictionary<ConditionOp, FieldValue>
+  >
   never?: NeverCondition
   script?: ScriptCondition
 }
