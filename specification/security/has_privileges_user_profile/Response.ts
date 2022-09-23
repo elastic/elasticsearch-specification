@@ -18,6 +18,7 @@
  */
 
 import { UserProfileId } from '@security/_types/UserProfile'
+import { HasPrivilegesUserProfileErrors } from './types'
 
 export class Response {
   body: {
@@ -32,6 +33,6 @@ export class Response {
      * or the profile IDs of the users that do not have all the
      * requested privileges. This field is absent if empty.
      */
-    error_uids?: UserProfileId[]
+    errors?: HasPrivilegesUserProfileErrors
   }
 }

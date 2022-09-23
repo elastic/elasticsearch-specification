@@ -26,5 +26,6 @@ export class Response {
     id: Id
     name: Name
     expiration?: EpochTime<UnitMillis>
+    encoded: string
   }
 }

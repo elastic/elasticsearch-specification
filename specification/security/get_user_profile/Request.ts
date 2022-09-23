@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
     /**
      * A unique identifier for the user profile.
      */
-    uid: UserProfileId
+    uid: UserProfileId | UserProfileId[]
   }
   query_parameters: {
     /**

@@ -18,6 +18,7 @@
  */
 
 import { Metadata, Name, Username } from '@_types/common'
+import { UserProfileId } from './UserProfile'
 
 export class User {
   email?: string | null
@@ -26,4 +27,5 @@ export class User {
   roles: string[]
   username: Username
   enabled: boolean
+  profile_uid?: UserProfileId
 }
