@@ -18,10 +18,9 @@
  */
 
 import { Request as SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
-  ExpandWildcards,
   IndexName,
   IndicesOptions,
   Password,
@@ -34,7 +33,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 
 export class ChainInput {
-  inputs: InputContainer[]
+  inputs: Array<SingleKeyDictionary<string, InputContainer>>
 }
 
 export enum ConnectionScheme {
@@ -43,7 +42,6 @@ export enum ConnectionScheme {
 }
 
 export class HttpInput {
-  http?: HttpInput
   extract?: string[]
   request?: HttpInputRequestDefinition
   response_content_type?: ResponseContentType
