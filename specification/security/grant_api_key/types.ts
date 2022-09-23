@@ -17,15 +17,18 @@
  * under the License.
  */
 
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Name } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { Metadata, Name } from '@_types/common'
+import { DurationLarge } from '@_types/Time'
 
 export class GrantApiKey {
   name: Name
-  expiration?: Duration
-  role_descriptors?: Dictionary<string, UserDefinedValue>[]
+  expiration?: DurationLarge
+  role_descriptors?:
+    | Dictionary<string, RoleDescriptor>
+    | Dictionary<string, RoleDescriptor>[]
+  metadata?: Metadata
 }
 
 export enum ApiKeyGrantType {

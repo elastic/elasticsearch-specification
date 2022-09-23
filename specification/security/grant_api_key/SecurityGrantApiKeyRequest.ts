@@ -33,5 +33,6 @@ export interface Request extends RequestBase {
     access_token?: string
     username?: Username
     password?: Password
+    run_as?: Username
   }
 }

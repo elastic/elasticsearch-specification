@@ -18,6 +18,10 @@
  */
 
 import { ClusterPrivilege } from '@security/_types/Privileges'
+import { UserProfileId } from '@security/_types/UserProfile'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ErrorCause } from '@_types/Errors'
+import { long } from '@_types/Numeric'
 import {
   ApplicationPrivilegesCheck,
   IndexPrivilegesCheck
@@ -30,4 +34,9 @@ export class PrivilegesCheck {
    */
   cluster?: ClusterPrivilege[]
   index?: IndexPrivilegesCheck[]
+}
+
+export class HasPrivilegesUserProfileErrors {
+  count: long
+  details: Dictionary<UserProfileId, ErrorCause>
 }

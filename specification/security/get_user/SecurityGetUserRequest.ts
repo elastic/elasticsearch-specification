@@ -30,4 +30,12 @@ export interface Request extends RequestBase {
     /** An identifier for the user. You can specify multiple usernames as a comma-separated list. If you omit this parameter, the API retrieves information about all users. */
     username?: Username | Username[]
   }
+  query_parameters: {
+    /**
+     * If true will return the User Profile ID for a user, if any.
+     * @server_default false
+     * @since 8.5.0
+     */
+    with_profile_uid?: boolean
+  }
 }
