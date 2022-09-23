@@ -20,7 +20,6 @@
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
-  ExpandWildcards,
   Id,
   IndexName,
   IndicesOptions,
@@ -29,10 +28,9 @@ import {
   Username
 } from '@_types/common'
 import { Host } from '@_types/Networking'
-import { integer, uint } from '@_types/Numeric'
+import { uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 
 export class ChainInput {
   inputs: Array<SingleKeyDictionary<string, InputContainer>>
