@@ -28,6 +28,16 @@ import { Sort, SortResults } from '@_types/sort'
  * @stability stable
  */
 export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Return the snapshot of the owner user's role descriptors
+     * associated with the API key. An API key's actual
+     * permission is the intersection of its assigned role
+     * descriptors and the owner user's role descriptors.
+     * @since 8.5.0
+     */
+    with_limited_by?: boolean
+  }
   body: {
     /**
      * A query to filter which API keys to return.
@@ -48,6 +58,7 @@ export interface Request extends RequestBase {
      * The number of hits to return. By default, you cannot page through more
      * than 10,000 hits using the from and size parameters. To page through more
      * hits, use the search_after parameter.
+     * @server_default false
      * @server_default 10
      */
     size?: integer

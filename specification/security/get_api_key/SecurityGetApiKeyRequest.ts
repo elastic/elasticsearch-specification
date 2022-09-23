@@ -32,5 +32,14 @@ export interface Request extends RequestBase {
     owner?: boolean
     realm_name?: Name
     username?: Username
+    /**
+     * Return the snapshot of the owner user's role descriptors
+     * associated with the API key. An API key's actual
+     * permission is the intersection of its assigned role
+     * descriptors and the owner user's role descriptors.
+     * @server_default false
+     * @since 8.5.0
+     */
+    with_limited_by?: boolean
   }
 }

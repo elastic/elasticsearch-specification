@@ -18,8 +18,11 @@
  */
 
 import { UserProfileWithMetadata } from '@security/_types/UserProfile'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { GetUserProfileErrors } from './types'
 
 export class Response {
-  body: Dictionary<string, UserProfileWithMetadata>
+  body: {
+    profiles: UserProfileWithMetadata[]
+    errors?: GetUserProfileErrors
+  }
 }
