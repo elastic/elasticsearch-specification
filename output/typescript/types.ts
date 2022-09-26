@@ -4064,7 +4064,7 @@ export type AnalysisIcuTransformDirection = 'forward' | 'reverse'
 
 export interface AnalysisIcuTransformTokenFilter extends AnalysisTokenFilterBase {
   type: 'icu_transform'
-  dir: AnalysisIcuTransformDirection
+  dir?: AnalysisIcuTransformDirection
   id: string
 }
 

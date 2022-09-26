@@ -23,7 +23,7 @@ import { TokenFilterBase } from './token_filters'
 
 export class IcuTransformTokenFilter extends TokenFilterBase {
   type: 'icu_transform'
-  dir: IcuTransformDirection
+  dir?: IcuTransformDirection
   id: string
 }
 
