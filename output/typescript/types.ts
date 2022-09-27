@@ -1969,7 +1969,7 @@ export interface FieldSort {
 
 export type FieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
 
-export type FieldValue = long | double | string | boolean
+export type FieldValue = long | double | string | boolean | any
 
 export interface FielddataStats {
   evictions?: long
@@ -15569,6 +15569,7 @@ export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 
 export interface TasksInfo {
   action: string
+  cancelled?: boolean
   cancellable: boolean
   children?: TasksInfo[]
   description?: string
@@ -16031,41 +16032,30 @@ export interface WatcherAlwaysCondition {
   [key: string]: never
 }
 
-export interface WatcherArrayCompareCondition {
-  array_path: string
-  comparison: string
+export interface WatcherArrayCompareConditionKeys {
   path: string
+}
+export type WatcherArrayCompareCondition = WatcherArrayCompareConditionKeys
+  & { [property: string]: WatcherArrayCompareOpParams | string }
+
+export interface WatcherArrayCompareOpParams {
   quantifier: WatcherQuantifier
-  value: any
+  value: FieldValue
 }
 
 export interface WatcherChainInput {
-  inputs: WatcherInputContainer[]
-}
-
-export interface WatcherCompareCondition {
-  comparison?: string
-  path?: string
-  value?: any
-  'ctx.payload.match'?: WatcherCompareContextPayloadCondition
-  'ctx.payload.value'?: WatcherCompareContextPayloadCondition
-}
-
-export interface WatcherCompareContextPayloadCondition {
-  eq?: any
-  lt?: any
-  gt?: any
-  lte?: any
-  gte?: any
+  inputs: Partial<Record<string, WatcherInputContainer>>[]
 }
 
 export interface WatcherConditionContainer {
   always?: WatcherAlwaysCondition
-  array_compare?: WatcherArrayCompareCondition
-  compare?: WatcherCompareCondition
+  array_compare?: Partial<Record<string, WatcherArrayCompareCondition>>
+  compare?: Partial<Record<string, Partial<Record<WatcherConditionOp, FieldValue>>>>
   never?: WatcherNeverCondition
   script?: WatcherScriptCondition
 }
+
+export type WatcherConditionOp = 'not_eq' | 'eq' | 'lt' | 'gt' | 'lte' | 'gte'
 
 export type WatcherConditionType = 'always' | 'never' | 'script' | 'compare' | 'array_compare'
 
@@ -16142,7 +16132,6 @@ export interface WatcherHourlySchedule {
 }
 
 export interface WatcherHttpInput {
-  http?: WatcherHttpInput
   extract?: string[]
   request?: WatcherHttpInputRequestDefinition
   response_content_type?: WatcherResponseContentType

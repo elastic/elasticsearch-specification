@@ -23,6 +23,7 @@ import { long } from '@_types/Numeric'
 
 export class Info {
   action: string
+  cancelled?: boolean
   cancellable: boolean
   children?: Info[]
   description?: string
