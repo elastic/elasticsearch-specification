@@ -1368,8 +1368,9 @@ export interface SearchPhraseSuggestHighlight {
 
 export interface SearchPhraseSuggestOption {
   text: string
-  highlighted: string
   score: double
+  highlighted?: string
+  collate_match?: boolean
 }
 
 export interface SearchPhraseSuggester extends SearchSuggesterBase {
@@ -1512,8 +1513,10 @@ export interface SearchTermSuggest extends SearchSuggestBase {
 
 export interface SearchTermSuggestOption {
   text: string
-  freq: long
   score: double
+  freq: long
+  highlighted?: string
+  collate_match?: boolean
 }
 
 export interface SearchTermSuggester extends SearchSuggesterBase {
