@@ -24,7 +24,7 @@ import { Id } from '@_types/common'
  * Stops a trained model deployment.
  * @rest_spec_name ml.stop_trained_model_deployment
  * @since 8.0.0
- * @stability experimental
+ * @stability beta
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
