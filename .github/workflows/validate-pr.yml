@@ -18,7 +18,7 @@ jobs:
     if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
     env:
-      STACK_VERSION: 8.4-SNAPSHOT
+      STACK_VERSION: 8.6-SNAPSHOT
 
     steps:
       - uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
           token: ${{ secrets.PAT }}
-          ref: dev
+          ref: main
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
