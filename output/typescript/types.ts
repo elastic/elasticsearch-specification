@@ -4501,6 +4501,7 @@ export interface MappingAggregateMetricDoubleProperty extends MappingPropertyBas
   type: 'aggregate_metric_double'
   default_metric: string
   metrics: string[]
+  time_series_metric?: MappingTimeSeriesMetricType
 }
 
 export interface MappingAllField {
@@ -4528,7 +4529,7 @@ export interface MappingBooleanProperty extends MappingDocValuesPropertyBase {
   type: 'boolean'
 }
 
-export interface MappingByteNumberProperty extends MappingStandardNumberProperty {
+export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   type: 'byte'
   null_value?: byte
 }
@@ -4603,7 +4604,7 @@ export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
 }
 
-export interface MappingDoubleNumberProperty extends MappingStandardNumberProperty {
+export interface MappingDoubleNumberProperty extends MappingNumberPropertyBase {
   type: 'double'
   null_value?: double
 }
@@ -4679,7 +4680,7 @@ export interface MappingFlattenedProperty extends MappingPropertyBase {
   type: 'flattened'
 }
 
-export interface MappingFloatNumberProperty extends MappingStandardNumberProperty {
+export interface MappingFloatNumberProperty extends MappingNumberPropertyBase {
   type: 'float'
   null_value?: float
 }
@@ -4708,7 +4709,7 @@ export interface MappingGeoShapeProperty extends MappingDocValuesPropertyBase {
 
 export type MappingGeoStrategy = 'recursive' | 'term'
 
-export interface MappingHalfFloatNumberProperty extends MappingStandardNumberProperty {
+export interface MappingHalfFloatNumberProperty extends MappingNumberPropertyBase {
   type: 'half_float'
   null_value?: float
 }
@@ -4724,7 +4725,7 @@ export interface MappingIndexField {
 
 export type MappingIndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
 
-export interface MappingIntegerNumberProperty extends MappingStandardNumberProperty {
+export interface MappingIntegerNumberProperty extends MappingNumberPropertyBase {
   type: 'integer'
   null_value?: integer
 }
@@ -4736,8 +4737,11 @@ export interface MappingIntegerRangeProperty extends MappingRangePropertyBase {
 export interface MappingIpProperty extends MappingDocValuesPropertyBase {
   boost?: double
   index?: boolean
-  null_value?: string
   ignore_malformed?: boolean
+  null_value?: string
+  on_script_error?: MappingOnScriptError
+  script?: Script
+  time_series_dimension?: boolean
   type: 'ip'
 }
 
@@ -4763,7 +4767,7 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   type: 'keyword'
 }
 
-export interface MappingLongNumberProperty extends MappingStandardNumberProperty {
+export interface MappingLongNumberProperty extends MappingNumberPropertyBase {
   type: 'long'
   null_value?: long
 }
@@ -4793,9 +4797,16 @@ export interface MappingNestedProperty extends MappingCorePropertyBase {
 }
 
 export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase {
-  index?: boolean
+  boost?: double
+  coerce?: boolean
   ignore_malformed?: boolean
+  index?: boolean
+  meta?: Record<string, string>
+  on_script_error?: MappingOnScriptError
+  script?: Script
+  store?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
+  time_series_dimension?: boolean
 }
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
@@ -4883,7 +4894,7 @@ export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
   type: 'shape'
 }
 
-export interface MappingShortNumberProperty extends MappingStandardNumberProperty {
+export interface MappingShortNumberProperty extends MappingNumberPropertyBase {
   type: 'short'
   null_value?: short
 }
@@ -4898,12 +4909,6 @@ export interface MappingSourceField {
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
-}
-
-export interface MappingStandardNumberProperty extends MappingNumberPropertyBase {
-  coerce?: boolean
-  script?: Script
-  on_script_error?: MappingOnScriptError
 }
 
 export interface MappingSuggestContext {

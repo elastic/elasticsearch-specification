@@ -94,15 +94,38 @@ export class KeywordProperty extends DocValuesPropertyBase {
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
-  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   */
   time_series_dimension?: boolean
   type: 'keyword'
 }
 
 export class NumberPropertyBase extends DocValuesPropertyBase {
-  index?: boolean
+  boost?: double
+  coerce?: boolean
   ignore_malformed?: boolean
+  index?: boolean
+  /**
+   * Metadata about the field.
+   * @doc_id mapping-meta-field
+   */
+  meta?: Dictionary<string, string>
+  on_script_error?: OnScriptError
+  script?: Script
+  store?: boolean
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   */
   time_series_metric?: TimeSeriesMetricType
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   * @server_default false
+   */
+  time_series_dimension?: boolean
 }
 
 export enum OnScriptError {
@@ -110,43 +133,37 @@ export enum OnScriptError {
   continue
 }
 
-export class StandardNumberProperty extends NumberPropertyBase {
-  coerce?: boolean
-  script?: Script
-  on_script_error?: OnScriptError
-}
-
-export class FloatNumberProperty extends StandardNumberProperty {
+export class FloatNumberProperty extends NumberPropertyBase {
   type: 'float'
   null_value?: float
 }
 
-export class HalfFloatNumberProperty extends StandardNumberProperty {
+export class HalfFloatNumberProperty extends NumberPropertyBase {
   type: 'half_float'
   null_value?: float
 }
 
-export class DoubleNumberProperty extends StandardNumberProperty {
+export class DoubleNumberProperty extends NumberPropertyBase {
   type: 'double'
   null_value?: double
 }
 
-export class IntegerNumberProperty extends StandardNumberProperty {
+export class IntegerNumberProperty extends NumberPropertyBase {
   type: 'integer'
   null_value?: integer
 }
 
-export class LongNumberProperty extends StandardNumberProperty {
+export class LongNumberProperty extends NumberPropertyBase {
   type: 'long'
   null_value?: long
 }
 
-export class ShortNumberProperty extends StandardNumberProperty {
+export class ShortNumberProperty extends NumberPropertyBase {
   type: 'short'
   null_value?: short
 }
 
-export class ByteNumberProperty extends StandardNumberProperty {
+export class ByteNumberProperty extends NumberPropertyBase {
   type: 'byte'
   null_value?: byte
 }

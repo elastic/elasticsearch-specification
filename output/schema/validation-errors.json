@@ -551,7 +551,11 @@
         "Request: query parameter 'flat_settings' does not exist in the json spec",
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition _types.mapping:NumberPropertyBase - Property 'meta' is already defined in an ancestor class",
+        "interface definition _types.mapping:NumberPropertyBase - Property 'store' is already defined in an ancestor class",
+        "interface definition _types.mapping:ScaledFloatNumberProperty - Property 'coerce' is already defined in an ancestor class"
+      ]
     },
     "cluster.get_settings": {
       "request": [
