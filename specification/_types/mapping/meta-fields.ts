@@ -61,4 +61,15 @@ export class SourceField {
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
+  mode?: SourceFieldMode
+}
+
+export enum SourceFieldMode {
+  disabled,
+  stored,
+  /**
+   *  Instead of storing source documents on disk exactly as you send them,
+   *  Elasticsearch can reconstruct source content on the fly upon retrieval.
+   */
+  synthetic
 }
