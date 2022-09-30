@@ -4909,7 +4909,10 @@ export interface MappingSourceField {
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
+  mode?: MappingSourceFieldMode
 }
+
+export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface MappingSuggestContext {
   name: Name
