@@ -38,7 +38,6 @@ import {
   FloatNumberProperty,
   HalfFloatNumberProperty,
   IntegerNumberProperty,
-  IPProperty,
   JoinProperty,
   KeywordProperty,
   LongNumberProperty,
@@ -108,7 +107,6 @@ export type Property =
   | TextProperty
   | VersionProperty
   | WildcardProperty
-  | IPProperty
 
   // dates
   | DateNanosProperty

@@ -94,20 +94,12 @@ export class KeywordProperty extends DocValuesPropertyBase {
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
-  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   */
   time_series_dimension?: boolean
   type: 'keyword'
-}
-
-export class IPProperty extends DocValuesPropertyBase {
-  index?: boolean
-  ignore_malformed?: boolean
-  null_value?: string
-  on_script_error?: OnScriptError
-  script?: Script
-  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
-  time_series_dimension?: boolean
-  type: 'ip'
 }
 
 export class NumberPropertyBase extends DocValuesPropertyBase {
@@ -123,9 +115,16 @@ export class NumberPropertyBase extends DocValuesPropertyBase {
   on_script_error?: OnScriptError
   script?: Script
   store?: boolean
-  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   */
   time_series_metric?: TimeSeriesMetricType
-  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   * @server_default false
+   */
   time_series_dimension?: boolean
 }
 
