@@ -4785,6 +4785,8 @@ export interface MappingMatchOnlyTextProperty {
 
 export type MappingMatchType = 'simple' | 'regex'
 
+export type MappingMode = 'disabled' | 'stored' | 'synthetic'
+
 export interface MappingMurmur3HashProperty extends MappingDocValuesPropertyBase {
   type: 'murmur3'
 }
@@ -4909,6 +4911,7 @@ export interface MappingSourceField {
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
+  mode?: MappingMode
 }
 
 export interface MappingSuggestContext {
