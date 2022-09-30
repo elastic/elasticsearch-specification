@@ -167,6 +167,9 @@ export class IndexSettings
   store?: Storage
 }
 
+/**
+ * @variants internal tag='type'
+ */
 export class SettingsSimilarity {
   bm25?: SettingsSimilarityBm25
   dfi?: SettingsSimilarityDfi
