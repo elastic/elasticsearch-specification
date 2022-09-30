@@ -20,8 +20,9 @@
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { DocValuesPropertyBase, IndexOptions } from './core'
+import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
+import { Script } from '@_types/Scripting'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -58,8 +59,15 @@ export class HistogramProperty extends PropertyBase {
 export class IpProperty extends DocValuesPropertyBase {
   boost?: double
   index?: boolean
-  null_value?: string
   ignore_malformed?: boolean
+  null_value?: string
+  on_script_error?: OnScriptError
+  script?: Script
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @stability experimental
+   */
+  time_series_dimension?: boolean
   type: 'ip'
 }
 
