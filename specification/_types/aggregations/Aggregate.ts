@@ -596,6 +596,7 @@ export class CompositeBucket extends MultiBucketBase {
   key: Dictionary<string, UserDefinedValue>
 }
 
+/** @variant name=ip_prefix */
 export class IpPrefixAggregate extends MultiBucketAggregateBase<IpPrefixBucket> {}
 
 export class IpPrefixBucket extends MultiBucketBase {
