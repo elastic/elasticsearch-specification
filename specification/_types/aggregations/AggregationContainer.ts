@@ -50,7 +50,8 @@ import {
   SignificantTermsAggregation,
   SignificantTextAggregation,
   TermsAggregation,
-  VariableWidthHistogramAggregation
+  VariableWidthHistogramAggregation,
+  IpPrefixAggregation
 } from './bucket'
 import { MatrixStatsAggregation } from './matrix'
 import {
@@ -164,6 +165,7 @@ export class AggregationContainer {
   global?: GlobalAggregation
   histogram?: HistogramAggregation
   ip_range?: IpRangeAggregation
+  ip_prefix?: IpPrefixAggregation
   inference?: InferenceAggregation
   line?: GeoLineAggregation
   matrix_stats?: MatrixStatsAggregation
