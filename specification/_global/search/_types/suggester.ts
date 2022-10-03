@@ -87,14 +87,17 @@ export class CompletionSuggestOption<TDocument> {
 
 export class PhraseSuggestOption {
   text: string
-  highlighted: string
   score: double
+  highlighted?: string
+  collate_match?: boolean
 }
 
 export class TermSuggestOption {
   text: string
-  freq: long
   score: double
+  freq: long
+  highlighted?: string
+  collate_match?: boolean
 }
 
 export class Suggester implements AdditionalProperties<string, FieldSuggester> {
