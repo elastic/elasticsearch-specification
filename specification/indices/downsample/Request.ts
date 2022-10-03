@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { DownsampleConfig } from '@indices/_types/Downsample'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
@@ -32,5 +32,5 @@ export interface Request extends RequestBase {
     target_index: IndexName
   }
   /** @codegen_name config */
-  body?: UserDefinedValue // TODO: This API is experimental and no docs exist describing it. Requires reverse engineering if made stable
+  body?: DownsampleConfig
 }

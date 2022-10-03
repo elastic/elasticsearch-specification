@@ -9319,6 +9319,10 @@ export interface IndicesDataStreamVisibility {
   hidden?: boolean
 }
 
+export interface IndicesDownsampleConfig {
+  fixed_interval: DurationLarge
+}
+
 export interface IndicesFielddataFrequencyFilter {
   max: double
   min: double
@@ -9945,7 +9949,7 @@ export type IndicesDiskUsageResponse = any
 export interface IndicesDownsampleRequest extends RequestBase {
   index: IndexName
   target_index: IndexName
-  body?: any
+  body?: IndicesDownsampleConfig
 }
 
 export type IndicesDownsampleResponse = any
