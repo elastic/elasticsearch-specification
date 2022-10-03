@@ -506,3 +506,34 @@ export class CustomCategorizeTextAnalyzer {
   tokenizer?: string
   filter?: string[]
 }
+
+export class IpPrefixAggregation extends BucketAggregationBase {
+  /**
+   * The document IP address field to aggregation on. The field mapping type must be `ip`
+   */
+  field: Field
+  /**
+   * Length of the network prefix. For IPv4 addresses the accepted range is [0, 32].
+   * For IPv6 addresses the accepted range is [0, 128].
+   */
+  prefix_length: integer
+  /**
+   * Defines whether the prefix applies to IPv6 addresses.
+   * @server_default false
+   */
+  is_ipv6?: boolean
+  /**
+   * Defines whether the prefix length is appended to IP address keys in the response.
+   * @server_default false
+   */
+  append_prefix_length?: boolean
+  /**
+   * Defines whether buckets are returned as a hash rather than an array in the response.
+   */
+  keyed?: boolean
+  /**
+   * Minimum number of documents for buckets to be included in the response.
+   * @server_default 1
+   */
+  min_doc_count?: long
+}
