@@ -2591,7 +2591,7 @@ export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMulti
 export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucketKeys
   & { [property: string]: AggregationsAggregate | long }
 
-export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
+export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsIpPrefixAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
 
 export interface AggregationsAggregateBase {
   meta?: Metadata
@@ -2642,6 +2642,7 @@ export interface AggregationsAggregationContainer {
   global?: AggregationsGlobalAggregation
   histogram?: AggregationsHistogramAggregation
   ip_range?: AggregationsIpRangeAggregation
+  ip_prefix?: AggregationsIpPrefixAggregation
   inference?: AggregationsInferenceAggregation
   line?: AggregationsGeoLineAggregation
   matrix_stats?: AggregationsMatrixStatsAggregation
@@ -3222,6 +3223,26 @@ export interface AggregationsInferenceTopClassEntry {
   class_probability: double
   class_score: double
 }
+
+export interface AggregationsIpPrefixAggregate extends AggregationsMultiBucketAggregateBase<AggregationsIpPrefixBucket> {
+}
+
+export interface AggregationsIpPrefixAggregation extends AggregationsBucketAggregationBase {
+  field: Field
+  prefix_length: integer
+  is_ipv6?: boolean
+  append_prefix_length?: boolean
+  keyed?: boolean
+  min_doc_count?: long
+}
+
+export interface AggregationsIpPrefixBucketKeys extends AggregationsMultiBucketBase {
+  is_ipv6: boolean
+  key: string
+  prefix_length: integer
+}
+export type AggregationsIpPrefixBucket = AggregationsIpPrefixBucketKeys
+  & { [property: string]: AggregationsAggregate | boolean | string | integer | long }
 
 export interface AggregationsIpRangeAggregate extends AggregationsMultiBucketAggregateBase<AggregationsIpRangeBucket> {
 }
@@ -4504,6 +4525,7 @@ export interface MappingAggregateMetricDoubleProperty extends MappingPropertyBas
   type: 'aggregate_metric_double'
   default_metric: string
   metrics: string[]
+  time_series_metric?: MappingTimeSeriesMetricType
 }
 
 export interface MappingAllField {
@@ -4531,7 +4553,7 @@ export interface MappingBooleanProperty extends MappingDocValuesPropertyBase {
   type: 'boolean'
 }
 
-export interface MappingByteNumberProperty extends MappingStandardNumberProperty {
+export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   type: 'byte'
   null_value?: byte
 }
@@ -4606,7 +4628,7 @@ export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
 }
 
-export interface MappingDoubleNumberProperty extends MappingStandardNumberProperty {
+export interface MappingDoubleNumberProperty extends MappingNumberPropertyBase {
   type: 'double'
   null_value?: double
 }
@@ -4682,7 +4704,7 @@ export interface MappingFlattenedProperty extends MappingPropertyBase {
   type: 'flattened'
 }
 
-export interface MappingFloatNumberProperty extends MappingStandardNumberProperty {
+export interface MappingFloatNumberProperty extends MappingNumberPropertyBase {
   type: 'float'
   null_value?: float
 }
@@ -4711,7 +4733,7 @@ export interface MappingGeoShapeProperty extends MappingDocValuesPropertyBase {
 
 export type MappingGeoStrategy = 'recursive' | 'term'
 
-export interface MappingHalfFloatNumberProperty extends MappingStandardNumberProperty {
+export interface MappingHalfFloatNumberProperty extends MappingNumberPropertyBase {
   type: 'half_float'
   null_value?: float
 }
@@ -4727,7 +4749,7 @@ export interface MappingIndexField {
 
 export type MappingIndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
 
-export interface MappingIntegerNumberProperty extends MappingStandardNumberProperty {
+export interface MappingIntegerNumberProperty extends MappingNumberPropertyBase {
   type: 'integer'
   null_value?: integer
 }
@@ -4739,8 +4761,11 @@ export interface MappingIntegerRangeProperty extends MappingRangePropertyBase {
 export interface MappingIpProperty extends MappingDocValuesPropertyBase {
   boost?: double
   index?: boolean
-  null_value?: string
   ignore_malformed?: boolean
+  null_value?: string
+  on_script_error?: MappingOnScriptError
+  script?: Script
+  time_series_dimension?: boolean
   type: 'ip'
 }
 
@@ -4766,7 +4791,7 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   type: 'keyword'
 }
 
-export interface MappingLongNumberProperty extends MappingStandardNumberProperty {
+export interface MappingLongNumberProperty extends MappingNumberPropertyBase {
   type: 'long'
   null_value?: long
 }
@@ -4796,9 +4821,16 @@ export interface MappingNestedProperty extends MappingCorePropertyBase {
 }
 
 export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase {
-  index?: boolean
+  boost?: double
+  coerce?: boolean
   ignore_malformed?: boolean
+  index?: boolean
+  meta?: Record<string, string>
+  on_script_error?: MappingOnScriptError
+  script?: Script
+  store?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
+  time_series_dimension?: boolean
 }
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
@@ -4886,7 +4918,7 @@ export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
   type: 'shape'
 }
 
-export interface MappingShortNumberProperty extends MappingStandardNumberProperty {
+export interface MappingShortNumberProperty extends MappingNumberPropertyBase {
   type: 'short'
   null_value?: short
 }
@@ -4901,13 +4933,10 @@ export interface MappingSourceField {
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
+  mode?: MappingSourceFieldMode
 }
 
-export interface MappingStandardNumberProperty extends MappingNumberPropertyBase {
-  coerce?: boolean
-  script?: Script
-  on_script_error?: MappingOnScriptError
-}
+export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface MappingSuggestContext {
   name: Name
@@ -9293,6 +9322,10 @@ export interface IndicesDataStreamVisibility {
   hidden?: boolean
 }
 
+export interface IndicesDownsampleConfig {
+  fixed_interval: DurationLarge
+}
+
 export interface IndicesFielddataFrequencyFilter {
   max: double
   min: double
@@ -9919,7 +9952,7 @@ export type IndicesDiskUsageResponse = any
 export interface IndicesDownsampleRequest extends RequestBase {
   index: IndexName
   target_index: IndexName
-  body?: any
+  body?: IndicesDownsampleConfig
 }
 
 export type IndicesDownsampleResponse = any
