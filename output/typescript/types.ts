@@ -238,7 +238,7 @@ export interface DeleteByQueryResponse {
 }
 
 export interface DeleteByQueryRethrottleRequest extends RequestBase {
-  task_id: Id
+  task_id: TaskId
   requests_per_second?: float
 }
 
