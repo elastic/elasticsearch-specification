@@ -107,14 +107,8 @@ export class NumberPropertyBase extends DocValuesPropertyBase {
   coerce?: boolean
   ignore_malformed?: boolean
   index?: boolean
-  /**
-   * Metadata about the field.
-   * @doc_id mapping-meta-field
-   */
-  meta?: Dictionary<string, string>
   on_script_error?: OnScriptError
   script?: Script
-  store?: boolean
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
    * @stability experimental
@@ -175,7 +169,6 @@ export class UnsignedLongNumberProperty extends NumberPropertyBase {
 
 export class ScaledFloatNumberProperty extends NumberPropertyBase {
   type: 'scaled_float'
-  coerce?: boolean
   null_value?: double
   scaling_factor?: double
 }

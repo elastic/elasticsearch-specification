@@ -80,7 +80,10 @@ import {
 
 export class PropertyBase {
   local_metadata?: Metadata
-  /** @doc_id mapping-meta-field */
+  /**
+   * Metadata about the field.
+   * @doc_id mapping-meta-field
+   */
   meta?: Dictionary<string, string>
   properties?: Dictionary<PropertyName, Property>
   ignore_above?: integer

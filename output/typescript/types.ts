@@ -4825,10 +4825,8 @@ export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase 
   coerce?: boolean
   ignore_malformed?: boolean
   index?: boolean
-  meta?: Record<string, string>
   on_script_error?: MappingOnScriptError
   script?: Script
-  store?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
   time_series_dimension?: boolean
 }
@@ -4893,7 +4891,6 @@ export type MappingRuntimeFields = Record<Field, MappingRuntimeField>
 
 export interface MappingScaledFloatNumberProperty extends MappingNumberPropertyBase {
   type: 'scaled_float'
-  coerce?: boolean
   null_value?: double
   scaling_factor?: double
 }
