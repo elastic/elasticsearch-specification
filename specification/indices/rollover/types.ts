@@ -22,11 +22,15 @@ import { long } from '@_types/Numeric'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RolloverConditions {
+  min_age?: Duration
   max_age?: Duration
   max_age_millis?: DurationValue<UnitMillis>
+  min_docs?: long
   max_docs?: long
   max_size?: string
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
   max_primary_shard_size_bytes?: ByteSize
+  min_primary_shard_docs?: long
+  max_primary_shard_docs?: long
 }
