@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import {ForceMergeResponse} from "@indices/forcemerge/_types/response";
+import { ForceMergeResponseBody } from '@indices/forcemerge/_types/response'
 
 export class Response {
-  body: ForceMergeResponse
+  body: ForceMergeResponseBody
 }
