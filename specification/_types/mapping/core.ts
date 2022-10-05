@@ -82,6 +82,7 @@ export class DateNanosProperty extends DocValuesPropertyBase {
 
 export class JoinProperty extends PropertyBase {
   relations?: Dictionary<RelationName, RelationName | RelationName[]>
+  eager_global_ordinals?: boolean
   type: 'join'
 }
 

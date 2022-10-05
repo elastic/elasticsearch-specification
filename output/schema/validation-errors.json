@@ -956,7 +956,9 @@
         "Request: missing json spec query parameter 'index'",
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.clear_cache:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
+      ]
     },
     "indices.close": {
       "request": [
@@ -1061,7 +1063,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.flush:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
+      ]
     },
     "indices.forcemerge": {
       "request": [
@@ -1187,7 +1191,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.refresh:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
+      ]
     },
     "indices.reload_search_analyzers": {
       "request": [
