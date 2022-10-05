@@ -26,6 +26,7 @@ import { GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
 import { Void } from '@spec_utils/VoidValue'
+import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 
 /**
  * @variants external
@@ -598,11 +599,11 @@ export class UnmappedSignificantTermsAggregate extends MultiBucketAggregateBase<
 // Note: no keyed variant
 export class CompositeAggregate extends MultiBucketAggregateBase<CompositeBucket> {
   // Must be consistent with CompositeAggregation.after and CompositeBucket.key
-  after_key?: Dictionary<Field, FieldValue>
+  after_key?: CompositeAggregateKey
 }
 
 export class CompositeBucket extends MultiBucketBase {
-  key: Dictionary<Field, FieldValue>
+  key: CompositeAggregateKey
 }
 
 /** @variant name=ip_prefix */

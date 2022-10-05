@@ -74,9 +74,11 @@ export class ChildrenAggregation extends BucketAggregationBase {
   type?: RelationName
 }
 
+export type CompositeAggregateKey = Dictionary<Field, FieldValue>
+
 export class CompositeAggregation extends BucketAggregationBase {
   // Must be consistent with CompositeAggregate.after_key
-  after?: Dictionary<Field, FieldValue>
+  after?: CompositeAggregateKey
   size?: integer
   sources?: Array<Dictionary<string, CompositeAggregationSource>>
 }

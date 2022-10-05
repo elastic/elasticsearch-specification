@@ -2844,11 +2844,13 @@ export interface AggregationsChildrenAggregation extends AggregationsBucketAggre
 }
 
 export interface AggregationsCompositeAggregate extends AggregationsMultiBucketAggregateBase<AggregationsCompositeBucket> {
-  after_key?: Record<Field, FieldValue>
+  after_key?: AggregationsCompositeAggregateKey
 }
 
+export type AggregationsCompositeAggregateKey = Record<Field, FieldValue>
+
 export interface AggregationsCompositeAggregation extends AggregationsBucketAggregationBase {
-  after?: Record<Field, FieldValue>
+  after?: AggregationsCompositeAggregateKey
   size?: integer
   sources?: Record<string, AggregationsCompositeAggregationSource>[]
 }
@@ -2861,10 +2863,10 @@ export interface AggregationsCompositeAggregationSource {
 }
 
 export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucketBase {
-  key: Record<Field, FieldValue>
+  key: AggregationsCompositeAggregateKey
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
-  & { [property: string]: AggregationsAggregate | Record<Field, FieldValue> | long }
+  & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
 
 export interface AggregationsCumulativeCardinalityAggregate extends AggregationsAggregateBase {
   value: long
