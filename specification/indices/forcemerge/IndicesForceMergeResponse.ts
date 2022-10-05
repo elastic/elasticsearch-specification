@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ShardsOperationResponseBase } from '@_types/Base'
+import { ForceMergeResponseBody } from '@indices/forcemerge/_types/response'
 
 export class Response {
-  body: ShardsOperationResponseBase
+  body: ForceMergeResponseBody
 }

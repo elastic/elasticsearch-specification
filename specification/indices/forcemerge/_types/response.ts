@@ -17,20 +17,12 @@
  * under the License.
  */
 
-import { ByteSize } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { ShardsOperationResponseBase } from '@_types/Base'
 
-export class RolloverConditions {
-  min_age?: Duration
-  max_age?: Duration
-  max_age_millis?: DurationValue<UnitMillis>
-  min_docs?: long
-  max_docs?: long
-  max_size?: string
-  max_size_bytes?: ByteSize
-  max_primary_shard_size?: ByteSize
-  max_primary_shard_size_bytes?: ByteSize
-  min_primary_shard_docs?: long
-  max_primary_shard_docs?: long
+export class ForceMergeResponseBody extends ShardsOperationResponseBase {
+  /**
+   * task contains a task id returned when wait_for_completion=false,
+   * you can use the task_id to get the status of the task at _tasks/<task_id>
+   */
+  task?: string
 }

@@ -178,7 +178,7 @@ export class SettingsSimilarity {
 }
 
 export class SettingsSimilarityBm25 {
-  b: integer
+  b: double
   discount_overlaps: boolean
   k1: double
   type: 'BM25'
@@ -261,6 +261,7 @@ export enum IndexCheckOnStartup {
 
 export class IndexVersioning {
   created?: VersionString
+  created_string?: string
 }
 
 export class IndexSettingsLifecycle {
