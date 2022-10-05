@@ -50,8 +50,20 @@ export class PipelineAggregationBase extends BucketPathAggregation {
 export type BucketsPath = string | string[] | Dictionary<string, string>
 
 export enum GapPolicy {
-  skip = 0,
-  insert_zeros = 1
+  /**
+   * Treats missing data as if the bucket does not exist. It will skip the bucket and
+   * continue calculating using the next available value.
+   */
+  skip,
+  /**
+   * Replace missing values with a zero (0) and pipeline aggregation computation will proceed as normal.
+   */
+  insert_zeros,
+  /**
+   * Similar to skip, except if the metric provides a non-null, non-NaN value this value is used,
+   * otherwise the empty bucket is skipped.
+   */
+  keep_values
 }
 
 export class AverageBucketAggregation extends PipelineAggregationBase {}
