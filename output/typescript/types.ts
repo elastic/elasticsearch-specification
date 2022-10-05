@@ -1118,12 +1118,14 @@ export interface SearchAggregationProfileDelegateDebug {
   filters?: SearchAggregationProfileDelegateDebugFilter[]
   segments_counted?: integer
   segments_collected?: integer
+  map_reducer?: string
 }
 
 export interface SearchAggregationProfileDelegateDebugFilter {
   results_from_metadata?: integer
   query?: string
   specialized_for?: string
+  segments_counted_in_constant_time?: integer
 }
 
 export type SearchBoundaryScanner = 'chars' | 'sentence' | 'word'
@@ -1972,7 +1974,7 @@ export interface FieldSort {
 
 export type FieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
 
-export type FieldValue = long | double | string | boolean | any
+export type FieldValue = long | double | string | boolean | null | any
 
 export interface FielddataStats {
   evictions?: long
@@ -2542,9 +2544,10 @@ export interface AggregationsAdjacencyMatrixAggregation extends AggregationsBuck
 }
 
 export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMultiBucketBase {
+  key: string
 }
 export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucketKeys
-  & { [property: string]: AggregationsAggregate | long }
+  & { [property: string]: AggregationsAggregate | string | long }
 
 export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
 
@@ -2753,11 +2756,13 @@ export interface AggregationsClassificationInferenceOptions {
 }
 
 export interface AggregationsCompositeAggregate extends AggregationsMultiBucketAggregateBase<AggregationsCompositeBucket> {
-  after_key?: Record<string, any>
+  after_key?: AggregationsCompositeAggregateKey
 }
 
+export type AggregationsCompositeAggregateKey = Record<Field, FieldValue>
+
 export interface AggregationsCompositeAggregation extends AggregationsBucketAggregationBase {
-  after?: Record<string, string | float | null>
+  after?: AggregationsCompositeAggregateKey
   size?: integer
   sources?: Record<string, AggregationsCompositeAggregationSource>[]
 }
@@ -2770,10 +2775,10 @@ export interface AggregationsCompositeAggregationSource {
 }
 
 export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucketBase {
-  key: Record<string, any>
+  key: AggregationsCompositeAggregateKey
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
-  & { [property: string]: AggregationsAggregate | Record<string, any> | long }
+  & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
 
 export interface AggregationsCumulativeCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -2878,6 +2883,8 @@ export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAgg
   variance_population: double | null
   variance_sampling: double | null
   std_deviation: double | null
+  std_deviation_population: double | null
+  std_deviation_sampling: double | null
   std_deviation_bounds?: AggregationsStandardDeviationBounds
   sum_of_squares_as_string?: string
   variance_as_string?: string
@@ -2928,7 +2935,7 @@ export interface AggregationsFormattableMetricAggregation extends AggregationsMe
   format?: string
 }
 
-export type AggregationsGapPolicy = 'skip' | 'insert_zeros'
+export type AggregationsGapPolicy = 'skip' | 'insert_zeros' | 'keep_values'
 
 export interface AggregationsGeoBoundsAggregate extends AggregationsAggregateBase {
   bounds?: GeoBounds
@@ -2979,6 +2986,7 @@ export type AggregationsGeoHashGridBucket = AggregationsGeoHashGridBucketKeys
 export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase {
   type: string
   geometry: GeoLine
+  properties: any
 }
 
 export interface AggregationsGeoLineAggregation {
@@ -3137,6 +3145,7 @@ export interface AggregationsIpRangeAggregationRange {
 }
 
 export interface AggregationsIpRangeBucketKeys extends AggregationsMultiBucketBase {
+  key?: string
   from?: string
   to?: string
 }
@@ -3289,12 +3298,12 @@ export interface AggregationsMultiTermsAggregation extends AggregationsBucketAgg
 }
 
 export interface AggregationsMultiTermsBucketKeys extends AggregationsMultiBucketBase {
-  key: (long | double | string)[]
+  key: FieldValue[]
   key_as_string?: string
   doc_count_error_upper_bound?: long
 }
 export type AggregationsMultiTermsBucket = AggregationsMultiTermsBucketKeys
-  & { [property: string]: AggregationsAggregate | (long | double | string)[] | string | long }
+  & { [property: string]: AggregationsAggregate | FieldValue[] | string | long }
 
 export interface AggregationsMutualInformationHeuristic {
   background_is_superset?: boolean
@@ -3461,6 +3470,8 @@ export type AggregationsSignificantLongTermsBucket = AggregationsSignificantLong
   & { [property: string]: AggregationsAggregate | long | string | double }
 
 export interface AggregationsSignificantStringTermsAggregate extends AggregationsMultiBucketAggregateBase<AggregationsSignificantStringTermsBucket> {
+  bg_count?: long
+  doc_count?: long
 }
 
 export interface AggregationsSignificantStringTermsBucketKeys extends AggregationsSignificantTermsBucketBase {
@@ -3595,10 +3606,10 @@ export interface AggregationsStringTermsAggregate extends AggregationsTermsAggre
 }
 
 export interface AggregationsStringTermsBucketKeys extends AggregationsTermsBucketBase {
-  key: string
+  key: FieldValue
 }
 export type AggregationsStringTermsBucket = AggregationsStringTermsBucketKeys
-  & { [property: string]: AggregationsAggregate | string | long }
+  & { [property: string]: AggregationsAggregate | FieldValue | long }
 
 export interface AggregationsSumAggregate extends AggregationsSingleMetricAggregateBase {
 }
@@ -3634,7 +3645,7 @@ export type AggregationsTTestType = 'paired' | 'homoscedastic' | 'heteroscedasti
 
 export interface AggregationsTermsAggregateBase<TBucket = unknown> extends AggregationsMultiBucketAggregateBase<TBucket> {
   doc_count_error_upper_bound?: long
-  sum_other_doc_count: long
+  sum_other_doc_count?: long
 }
 
 export interface AggregationsTermsAggregation extends AggregationsBucketAggregationBase {

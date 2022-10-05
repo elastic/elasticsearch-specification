@@ -20,6 +20,7 @@
 import { SortOrder } from '@_types/sort'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { EmptyObject, FieldValue } from '@_types/common'
 import { Field, RelationName, Fields } from '@_types/common'
 import {
   GeoDistanceType,
@@ -73,8 +74,11 @@ export class ChildrenAggregation extends BucketAggregationBase {
   type?: RelationName
 }
 
+export type CompositeAggregateKey = Dictionary<Field, FieldValue>
+
 export class CompositeAggregation extends BucketAggregationBase {
-  after?: Dictionary<string, string | float | null>
+  // Must be consistent with CompositeAggregate.after_key
+  after?: CompositeAggregateKey
   size?: integer
   sources?: Array<Dictionary<string, CompositeAggregationSource>>
 }
