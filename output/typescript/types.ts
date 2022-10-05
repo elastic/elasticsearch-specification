@@ -8700,22 +8700,19 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
-export interface EnrichConfiguration {
-  geo_match?: EnrichPolicy
-  match: EnrichPolicy
-  range: EnrichPolicy
-}
-
 export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
   query?: string
   name?: Name
+  elasticsearch_version?: string
 }
 
+export type EnrichPolicyType = 'geo_match' | 'match' | 'range'
+
 export interface EnrichSummary {
-  config: EnrichConfiguration
+  config: Partial<Record<EnrichPolicyType, EnrichPolicy>>
 }
 
 export interface EnrichDeletePolicyRequest extends RequestBase {
@@ -11327,14 +11324,12 @@ export interface IngestSimulateDocument {
   _source: any
 }
 
-export interface IngestSimulateDocumentSimulation {
-  _id: Id
-  _index: IndexName
+export interface IngestSimulateDocumentSimulationKeys {
   _ingest: IngestSimulateIngest
-  _parent?: string
-  _routing?: string
   _source: Record<string, any>
 }
+export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationKeys
+  & { [property: string]: string | IngestSimulateIngest | Record<string, any> }
 
 export interface IngestSimulateIngest {
   timestamp: DateTime
@@ -11431,7 +11426,7 @@ export interface LicensePostRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
     license?: LicenseLicense
-    licenses: LicenseLicense[]
+    licenses?: LicenseLicense[]
   }
 }
 
@@ -12241,28 +12236,33 @@ export interface MlInfluencer {
 }
 
 export interface MlJob {
-  allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  allow_lazy_open?: boolean
+  analysis_config?: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
   background_persist_interval?: Duration
   blocked?: MlJobBlocked
+  count?: integer
+  created_by?: Record<string, string | integer>
   create_time?: DateTime
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days?: long
-  data_description: MlDataDescription
+  data_description?: MlDataDescription
   datafeed_config?: MlDatafeed
   deleting?: boolean
   description?: string
+  detectors?: MlJobStatistics
   finished_time?: DateTime
+  forecasts?: XpackUsageMlJobForecasts
   groups?: string[]
-  job_id: Id
+  job_id?: Id
   job_type?: string
   job_version?: VersionString
   model_plot_config?: MlModelPlotConfig
+  model_size?: MlJobStatistics
   model_snapshot_id?: Id
-  model_snapshot_retention_days: long
+  model_snapshot_retention_days?: long
   renormalization_window_days?: long
-  results_index_name: IndexName
+  results_index_name?: IndexName
   results_retention_days?: long
 }
 
@@ -16716,6 +16716,7 @@ export interface SslCertificatesCertificateInformation {
   expiry: DateTime
   format: string
   has_private_key: boolean
+  issuer?: string
   path: string
   serial_number: string
   subject_dn: string
@@ -16921,6 +16922,7 @@ export interface TransformSettings {
   deduce_mappings?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
+  unattended?: boolean
 }
 
 export interface TransformSource {
@@ -18138,9 +18140,15 @@ export interface XpackUsageMlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
+  pass_through?: long
   regression?: long
   classification?: long
   ner?: long
+}
+
+export interface XpackUsageMlJobForecasts {
+  total: long
+  forecasted_jobs: long
 }
 
 export interface XpackUsageMonitoring extends XpackUsageBase {

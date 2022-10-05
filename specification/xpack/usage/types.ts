@@ -230,6 +230,7 @@ export class MlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
+  pass_through?: long
   regression?: long
   classification?: long
   ner?: long

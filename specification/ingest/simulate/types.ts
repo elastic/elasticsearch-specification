@@ -22,6 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
 import { Id, IndexName, Name } from '@_types/common'
 import { DateTime } from '@_types/Time'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class Ingest {
   timestamp: DateTime
@@ -42,11 +43,12 @@ export class Document {
   _source: UserDefinedValue
 }
 
-export class DocumentSimulation {
-  _id: Id
-  _index: IndexName
+/**
+ * The simulated document, with optional metadata.
+ */
+export class DocumentSimulation
+  implements AdditionalProperties<string, string>
+{
   _ingest: Ingest
-  _parent?: string
-  _routing?: string
   _source: Dictionary<string, UserDefinedValue>
 }

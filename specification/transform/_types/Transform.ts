@@ -130,6 +130,16 @@ export class Settings {
    * @server_default 500
    */
   max_page_search_size?: integer
+
+  /**
+   * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case
+   * of an error which means the transform never fails. Setting the number of retries other than infinite fails in
+   * validation.
+   *
+   * @since 8.5.0
+   * @server_default false
+   */
+  unattended?: boolean
 }
 
 export class Source {

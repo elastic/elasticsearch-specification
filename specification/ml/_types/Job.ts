@@ -32,6 +32,7 @@ import {
 import { DiscoveryNode } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
 import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
+import { MlJobForecasts } from '@xpack/usage/types'
 
 export enum JobState {
   closing = 0,
@@ -49,28 +50,33 @@ export class JobStatistics {
 }
 
 export class Job {
-  allow_lazy_open: boolean
-  analysis_config: AnalysisConfig
+  allow_lazy_open?: boolean
+  analysis_config?: AnalysisConfig
   analysis_limits?: AnalysisLimits
   background_persist_interval?: Duration
   blocked?: JobBlocked
+  count?: integer
+  created_by?: Dictionary<string, string | integer>
   create_time?: DateTime
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
-  data_description: DataDescription
+  data_description?: DataDescription
   datafeed_config?: Datafeed
   deleting?: boolean
   description?: string
+  detectors?: JobStatistics
   finished_time?: DateTime
+  forecasts?: MlJobForecasts
   groups?: string[]
-  job_id: Id
+  job_id?: Id
   job_type?: string
   job_version?: VersionString
   model_plot_config?: ModelPlotConfig
+  model_size?: JobStatistics
   model_snapshot_id?: Id
-  model_snapshot_retention_days: long
+  model_snapshot_retention_days?: long
   renormalization_window_days?: long
-  results_index_name: IndexName
+  results_index_name?: IndexName
   results_retention_days?: long
 }
 
