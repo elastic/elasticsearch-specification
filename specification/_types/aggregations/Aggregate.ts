@@ -272,6 +272,8 @@ export class ExtendedStatsAggregate extends StatsAggregate {
   variance_population: double | null
   variance_sampling: double | null
   std_deviation: double | null
+  std_deviation_population: double | null
+  std_deviation_sampling: double | null
   // Always sent (see InternalExtendedStats), but semantically it's useless if std_deviation is null
   std_deviation_bounds?: StandardDeviationBounds
 
@@ -366,7 +368,7 @@ export class TermsAggregateBase<
   TBucket
 > extends MultiBucketAggregateBase<TBucket> {
   doc_count_error_upper_bound?: long
-  sum_other_doc_count: long
+  sum_other_doc_count?: long
 }
 
 /**
@@ -381,7 +383,7 @@ export class TermsBucketBase extends MultiBucketBase {
 }
 
 export class StringTermsBucket extends TermsBucketBase {
-  key: string
+  key: FieldValue
 }
 
 /**
@@ -451,7 +453,7 @@ export class UnmappedRareTermsAggregate extends MultiBucketAggregateBase<Void> {
 export class MultiTermsAggregate extends TermsAggregateBase<MultiTermsBucket> {}
 
 export class MultiTermsBucket extends MultiBucketBase {
-  key: Array<long | double | string>
+  key: Array<FieldValue>
   key_as_string?: string
   doc_count_error_upper_bound?: long
 }
@@ -539,6 +541,7 @@ export class GeoDistanceAggregate extends RangeAggregate {}
 export class IpRangeAggregate extends MultiBucketAggregateBase<IpRangeBucket> {}
 
 export class IpRangeBucket extends MultiBucketBase {
+  key?: string
   from?: string
   to?: string
 }
@@ -554,7 +557,9 @@ export class FiltersBucket extends MultiBucketBase {}
 // Note: no keyed variant in the `InternalAdjacencyMatrix`
 export class AdjacencyMatrixAggregate extends MultiBucketAggregateBase<AdjacencyMatrixBucket> {}
 
-export class AdjacencyMatrixBucket extends MultiBucketBase {}
+export class AdjacencyMatrixBucket extends MultiBucketBase {
+  key: string
+}
 
 /** @variant name=siglterms */
 // ES: SignificantLongTerms & InternalSignificantTerms
@@ -572,7 +577,10 @@ export class SignificantLongTermsBucket extends SignificantTermsBucketBase {
 
 /** @variant name=sigsterms */
 // ES: SignificantStringTerms & InternalSignificantTerms
-export class SignificantStringTermsAggregate extends MultiBucketAggregateBase<SignificantStringTermsBucket> {}
+export class SignificantStringTermsAggregate extends MultiBucketAggregateBase<SignificantStringTermsBucket> {
+  bg_count?: long
+  doc_count?: long
+}
 
 export class SignificantStringTermsBucket extends SignificantTermsBucketBase {
   key: string
@@ -589,11 +597,12 @@ export class UnmappedSignificantTermsAggregate extends MultiBucketAggregateBase<
 /** @variant name=composite */
 // Note: no keyed variant
 export class CompositeAggregate extends MultiBucketAggregateBase<CompositeBucket> {
-  after_key?: Dictionary<string, UserDefinedValue>
+  // Must be consistent with CompositeAggregation.after and CompositeBucket.key
+  after_key?: Dictionary<Field, FieldValue>
 }
 
 export class CompositeBucket extends MultiBucketBase {
-  key: Dictionary<string, UserDefinedValue>
+  key: Dictionary<Field, FieldValue>
 }
 
 /** @variant name=ip_prefix */
@@ -603,6 +612,7 @@ export class IpPrefixBucket extends MultiBucketBase {
   is_ipv6: boolean
   key: string
   prefix_length: integer
+  netmask?: string
 }
 
 //----- Misc
@@ -746,4 +756,7 @@ export class ParentAggregate extends SingleBucketAggregateBase {}
 export class GeoLineAggregate extends AggregateBase {
   type: string // should be "Feature"
   geometry: GeoLine
+  // https://www.rfc-editor.org/rfc/rfc7946#section-3.2
+  // "The value of the properties member is an object (any JSON object or a JSON null value)"
+  properties: UserDefinedValue
 }

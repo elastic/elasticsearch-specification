@@ -24,9 +24,17 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 
 /**
  * A field value.
- * @codegen_names long, double, string, boolean, any
+ * @codegen_names long, double, string, boolean, null, any
  */
-export type FieldValue = long | double | string | boolean | UserDefinedValue
+// Note: the ending `UserDefinedValue` includes all other union members, but we keep them explicit so that
+// code generators can provide direct access to scalar values, which are the most common use case.
+export type FieldValue =
+  | long
+  | double
+  | string
+  | boolean
+  | null
+  | UserDefinedValue
 
 export class UrlParameter {}
 
