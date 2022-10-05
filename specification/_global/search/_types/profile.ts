@@ -65,12 +65,14 @@ export class AggregationProfileDelegateDebug {
   filters?: AggregationProfileDelegateDebugFilter[]
   segments_counted?: integer
   segments_collected?: integer
+  map_reducer?: string
 }
 
 export class AggregationProfileDelegateDebugFilter {
   results_from_metadata?: integer
   query?: string
   specialized_for?: string
+  segments_counted_in_constant_time?: integer
 }
 
 export class AggregationProfile {
