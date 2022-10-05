@@ -4775,6 +4775,7 @@ export interface MappingIpRangeProperty extends MappingRangePropertyBase {
 
 export interface MappingJoinProperty extends MappingPropertyBase {
   relations?: Record<RelationName, RelationName | RelationName[]>
+  eager_global_ordinals?: boolean
   type: 'join'
 }
 
@@ -9499,6 +9500,7 @@ export interface IndicesIndexTemplateSummary {
 
 export interface IndicesIndexVersioning {
   created?: VersionString
+  created_string?: string
 }
 
 export interface IndicesIndexingPressure {
@@ -9604,7 +9606,7 @@ export interface IndicesSettingsSimilarity {
 }
 
 export interface IndicesSettingsSimilarityBm25 {
-  b: integer
+  b: double
   discount_overlaps: boolean
   k1: double
   type: 'BM25'
@@ -10071,7 +10073,11 @@ export interface IndicesForcemergeRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export type IndicesForcemergeResponse = ShardsOperationResponseBase
+export type IndicesForcemergeResponse = IndicesForcemergeForceMergeResponseBody
+
+export interface IndicesForcemergeForceMergeResponseBody extends ShardsOperationResponseBase {
+  task?: string
+}
 
 export type IndicesGetFeature = 'aliases' | 'mappings' | 'settings'
 
@@ -10516,13 +10522,17 @@ export interface IndicesRolloverResponse {
 }
 
 export interface IndicesRolloverRolloverConditions {
+  min_age?: Duration
   max_age?: Duration
   max_age_millis?: DurationValue<UnitMillis>
+  min_docs?: long
   max_docs?: long
   max_size?: string
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
   max_primary_shard_size_bytes?: ByteSize
+  min_primary_shard_docs?: long
+  max_primary_shard_docs?: long
 }
 
 export interface IndicesSegmentsIndexSegment {
