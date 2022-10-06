@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { TaskId } from '@_types/common'
 import { float } from '@_types/Numeric'
 
 /**
@@ -28,7 +28,7 @@ import { float } from '@_types/Numeric'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    task_id: Id
+    task_id: TaskId
   }
   query_parameters: {
     requests_per_second?: float
