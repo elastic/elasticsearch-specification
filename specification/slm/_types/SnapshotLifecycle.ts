@@ -74,10 +74,10 @@ export class Statistics {
 }
 
 export class Policy {
-  config: Configuration
+  config?: Configuration
   name: Name
   repository: string
-  retention: Retention
+  retention?: Retention
   schedule: CronExpression
 }
 
@@ -106,7 +106,7 @@ export class Configuration {
    * A comma-separated list of data streams and indices to include in the snapshot. Multi-index syntax is supported.
    * By default, a snapshot includes all data streams and indices in the cluster. If this argument is provided, the snapshot only includes the specified data streams and clusters.
    */
-  indices: Indices
+  indices?: Indices
   /**
    * If true, the current global state is included in the snapshot.
    * @server_default true
