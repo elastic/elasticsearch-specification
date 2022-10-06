@@ -1367,7 +1367,7 @@
     },
     "ml.clear_trained_model_deployment_cache": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
       "response": []
     },
