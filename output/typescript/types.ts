@@ -16183,7 +16183,7 @@ export type ShutdownPutNodeResponse = AcknowledgedResponseBase
 
 export interface SlmConfiguration {
   ignore_unavailable?: boolean
-  indices: Indices
+  indices?: Indices
   include_global_state?: boolean
   feature_states?: string[]
   metadata?: Metadata
@@ -16203,10 +16203,10 @@ export interface SlmInvocation {
 }
 
 export interface SlmPolicy {
-  config: SlmConfiguration
+  config?: SlmConfiguration
   name: Name
   repository: string
-  retention: SlmRetention
+  retention?: SlmRetention
   schedule: WatcherCronExpression
 }
 
