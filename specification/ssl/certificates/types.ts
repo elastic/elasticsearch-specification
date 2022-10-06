@@ -24,6 +24,7 @@ export class CertificateInformation {
   expiry: DateString
   format: string
   has_private_key: boolean
+  issuer?: string
   path: string
   serial_number: string
   subject_dn: string
