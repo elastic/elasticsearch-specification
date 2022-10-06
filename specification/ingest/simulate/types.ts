@@ -20,9 +20,10 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
-import { Id, IndexName, Name } from '@_types/common'
+import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class Ingest {
   timestamp: DateTime
@@ -49,6 +50,11 @@ export class Document {
 export class DocumentSimulation
   implements AdditionalProperties<string, string>
 {
+  _id: Id
+  _index: IndexName
   _ingest: Ingest
+  _routing?: string
   _source: Dictionary<string, UserDefinedValue>
+  _version?: Stringified<VersionNumber>
+  _version_type?: VersionType
 }

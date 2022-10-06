@@ -11325,11 +11325,16 @@ export interface IngestSimulateDocument {
 }
 
 export interface IngestSimulateDocumentSimulationKeys {
+  _id: Id
+  _index: IndexName
   _ingest: IngestSimulateIngest
+  _routing?: string
   _source: Record<string, any>
+  _version?: SpecUtilsStringified<VersionNumber>
+  _version_type?: VersionType
 }
 export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationKeys
-  & { [property: string]: string | IngestSimulateIngest | Record<string, any> }
+  & { [property: string]: string | Id | IndexName | IngestSimulateIngest | Record<string, any> | SpecUtilsStringified<VersionNumber> | VersionType }
 
 export interface IngestSimulateIngest {
   timestamp: DateTime
