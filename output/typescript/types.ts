@@ -12241,33 +12241,28 @@ export interface MlInfluencer {
 }
 
 export interface MlJob {
-  allow_lazy_open?: boolean
-  analysis_config?: MlAnalysisConfig
+  allow_lazy_open: boolean
+  analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
   background_persist_interval?: Duration
   blocked?: MlJobBlocked
-  count?: integer
-  created_by?: Record<string, string | integer>
   create_time?: DateTime
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days?: long
-  data_description?: MlDataDescription
+  data_description: MlDataDescription
   datafeed_config?: MlDatafeed
   deleting?: boolean
   description?: string
-  detectors?: MlJobStatistics
   finished_time?: DateTime
-  forecasts?: XpackUsageMlJobForecasts
   groups?: string[]
-  job_id?: Id
+  job_id: Id
   job_type?: string
   job_version?: VersionString
   model_plot_config?: MlModelPlotConfig
-  model_size?: MlJobStatistics
   model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
+  model_snapshot_retention_days: long
   renormalization_window_days?: long
-  results_index_name?: IndexName
+  results_index_name: IndexName
   results_retention_days?: long
 }
 
@@ -17915,14 +17910,6 @@ export interface XpackInfoResponse {
   tagline: string
 }
 
-export interface XpackUsageAllJobs {
-  count: integer
-  detectors: Record<string, integer>
-  created_by: Record<string, string | integer>
-  model_size: Record<string, integer>
-  forecasts: Record<string, integer>
-}
-
 export interface XpackUsageAnalytics extends XpackUsageBase {
   stats: XpackUsageAnalyticsStatistics
 }
@@ -18064,15 +18051,17 @@ export interface XpackUsageIpFilter {
   transport: boolean
 }
 
-export interface XpackUsageJobsKeys {
-  _all?: XpackUsageAllJobs
+export interface XpackUsageJobUsage {
+  count: integer
+  created_by: Record<string, long>
+  detectors: MlJobStatistics
+  forecasts: XpackUsageMlJobForecasts
+  model_size: MlJobStatistics
 }
-export type XpackUsageJobs = XpackUsageJobsKeys
-  & { [property: string]: MlJob | XpackUsageAllJobs }
 
 export interface XpackUsageMachineLearning extends XpackUsageBase {
   datafeeds: Record<string, XpackUsageDatafeed>
-  jobs: XpackUsageJobs
+  jobs: Record<string, XpackUsageJobUsage>
   node_count: integer
   data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobs
   inference: XpackUsageMlInference
