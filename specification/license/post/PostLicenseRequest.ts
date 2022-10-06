@@ -39,6 +39,6 @@ export interface Request extends RequestBase {
     /**
      * A sequence of one or more JSON documents containing the license information.
      */
-    licenses: Array<License>
+    licenses?: Array<License>
   }
 }
