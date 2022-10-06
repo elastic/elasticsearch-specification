@@ -18,14 +18,16 @@
  */
 
 import { Field, Fields, Indices, Name } from '@_types/common'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class Summary {
-  config: Configuration
+  config: SingleKeyDictionary<PolicyType, Policy>
 }
 
-export class Configuration {
-  geo_match?: Policy
-  match: Policy
+export enum PolicyType {
+  geo_match,
+  match,
+  range
 }
 
 export class Policy {
@@ -34,4 +36,5 @@ export class Policy {
   match_field: Field
   query?: string
   name?: Name
+  elasticsearch_version?: string
 }

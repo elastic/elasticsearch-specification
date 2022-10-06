@@ -1830,6 +1830,8 @@ export interface SpecUtilsBaseNode {
   transport_address: TransportAddress
 }
 
+export type SpecUtilsStringified<T = unknown> = T | string
+
 export type SpecUtilsVoid = void
 
 export interface AcknowledgedResponseBase {
@@ -8545,21 +8547,19 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
-export interface EnrichConfiguration {
-  geo_match?: EnrichPolicy
-  match: EnrichPolicy
-}
-
 export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
   query?: string
   name?: Name
+  elasticsearch_version?: string
 }
 
+export type EnrichPolicyType = 'geo_match' | 'match' | 'range'
+
 export interface EnrichSummary {
-  config: EnrichConfiguration
+  config: Partial<Record<EnrichPolicyType, EnrichPolicy>>
 }
 
 export interface EnrichDeletePolicyRequest extends RequestBase {
@@ -10917,15 +10917,18 @@ export interface IngestSimulateDocument {
   _source: any
 }
 
-export interface IngestSimulateDocumentSimulation {
+export interface IngestSimulateDocumentSimulationKeys {
   _id: Id
   _index: IndexName
   _ingest: IngestSimulateIngest
-  _parent?: string
   _routing?: string
   _source: Record<string, any>
   _type?: Type
+  _version?: SpecUtilsStringified<VersionNumber>
+  _version_type?: VersionType
 }
+export type IngestSimulateDocumentSimulation = IngestSimulateDocumentSimulationKeys
+  & { [property: string]: string | Id | IndexName | IngestSimulateIngest | Record<string, any> | Type | SpecUtilsStringified<VersionNumber> | VersionType }
 
 export interface IngestSimulateIngest {
   timestamp: DateString
@@ -15569,6 +15572,7 @@ export interface SslCertificatesCertificateInformation {
   expiry: DateString
   format: string
   has_private_key: boolean
+  issuer?: string
   path: string
   serial_number: string
   subject_dn: string
@@ -16668,14 +16672,6 @@ export interface XpackInfoResponse {
   tagline: string
 }
 
-export interface XpackUsageAllJobs {
-  count: integer
-  detectors: Record<string, integer>
-  created_by: Record<string, string>
-  model_size: Record<string, integer>
-  forecasts: Record<string, integer>
-}
-
 export interface XpackUsageAnalytics extends XpackUsageBase {
   stats: XpackUsageAnalyticsStatistics
 }
@@ -16813,15 +16809,17 @@ export interface XpackUsageIpFilter {
   transport: boolean
 }
 
-export interface XpackUsageJobsKeys {
-  _all?: XpackUsageAllJobs
+export interface XpackUsageJobUsage {
+  count: integer
+  created_by: Record<string, long>
+  detectors: MlJobStatistics
+  forecasts: XpackUsageMlJobForecasts
+  model_size: MlJobStatistics
 }
-export type XpackUsageJobs = XpackUsageJobsKeys
-  & { [property: string]: MlJob | XpackUsageAllJobs }
 
 export interface XpackUsageMachineLearning extends XpackUsageBase {
   datafeeds: Record<string, XpackUsageDatafeed>
-  jobs: XpackUsageJobs
+  jobs: Record<string, XpackUsageJobUsage>
   node_count: integer
   data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobs
   inference: XpackUsageMlInference
@@ -16874,8 +16872,14 @@ export interface XpackUsageMlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
+  pass_through?: long
   regression: long
   classification: long
+}
+
+export interface XpackUsageMlJobForecasts {
+  total: long
+  forecasted_jobs: long
 }
 
 export interface XpackUsageMonitoring extends XpackUsageBase {
