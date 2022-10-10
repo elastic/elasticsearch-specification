@@ -98,12 +98,7 @@ export type SortCombinations = Field | SortOptions
 
 export type Sort = SortCombinations | SortCombinations[]
 
-/**
- * Only used when sorting by "_tsid"
- */
-export type SortTsid = Dictionary<Field, FieldValue>
-
-export type SortResults = Array<long | double | string | null | SortTsid>
+export type SortResults = FieldValue[]
 
 /**
  * Defines what values to pick in the case a document contains multiple values for a particular field.

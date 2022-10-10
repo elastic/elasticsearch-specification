@@ -39,7 +39,11 @@ import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName
-  _id?: Id
+  /**
+   * @es_quirk '_id' is not available when using 'stored_fields: _none_'
+   * on a search request. Otherwise the field is always present on hits.
+   */
+  _id: Id
   _score?: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>

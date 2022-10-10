@@ -1287,7 +1287,7 @@ export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
-  _id?: Id
+  _id: Id
   _score?: double | null
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
@@ -2409,7 +2409,7 @@ export type Service = string
 
 export interface ShardFailure {
   index?: IndexName
-  node?: string | null
+  node?: string
   reason: ErrorCause
   shard: integer
   status?: string
@@ -2454,9 +2454,7 @@ export type SortOptions = SortOptionsKeys
 
 export type SortOrder = 'asc' | 'desc'
 
-export type SortResults = (long | double | string | null | SortTsid)[]
-
-export type SortTsid = Record<Field, FieldValue>
+export type SortResults = FieldValue[]
 
 export interface StoreStats {
   size?: ByteSize

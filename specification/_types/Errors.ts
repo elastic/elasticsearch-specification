@@ -49,7 +49,7 @@ export class ErrorCause
 
 export class ShardFailure {
   index?: IndexName
-  node?: string | null
+  node?: string
   reason: ErrorCause
   shard: integer
   status?: string
