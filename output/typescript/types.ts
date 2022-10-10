@@ -12734,6 +12734,14 @@ export interface MlZeroShotClassificationInferenceUpdateOptions {
   labels: string[]
 }
 
+export interface MlClearTrainedModelDeploymentCacheRequest extends RequestBase {
+  model_id?: Id
+}
+
+export interface MlClearTrainedModelDeploymentCacheResponse {
+  cleared: boolean
+}
+
 export interface MlCloseJobRequest extends RequestBase {
   job_id: Id
   allow_no_match?: boolean
