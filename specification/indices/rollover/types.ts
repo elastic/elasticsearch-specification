@@ -26,8 +26,13 @@ import { Dictionary } from '@spec_utils/Dictionary'
 export class RolloverConditions {
   max_age?: Time
   max_docs?: long
-  max_size?: string
+  max_size?: ByteSize
+  min_size?: ByteSize
+  max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
+  min_primary_shard_size?: ByteSize
+  max_primary_shard_docs?: long
+  min_primary_shard_docs?: long
 }
 
 /**
