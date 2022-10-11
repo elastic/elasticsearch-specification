@@ -18,8 +18,9 @@
  */
 
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Missing } from '@_types/aggregations/AggregationContainer'
-import { Field } from '@_types/common'
+import { Field, FieldValue } from '@_types/common'
 import { DistanceUnit, GeoDistanceType, GeoLocation } from '@_types/Geo'
 import { FieldType } from '@_types/mapping/Property'
 import { double, integer, long } from '@_types/Numeric'
@@ -74,7 +75,8 @@ export class ScriptSort {
 
 export enum ScriptSortType {
   string,
-  number
+  number,
+  version
 }
 
 /**
@@ -96,7 +98,7 @@ export type SortCombinations = Field | SortOptions
 
 export type Sort = SortCombinations | SortCombinations[]
 
-export type SortResults = Array<long | double | string | null>
+export type SortResults = FieldValue[]
 
 /**
  * Defines what values to pick in the case a document contains multiple values for a particular field.

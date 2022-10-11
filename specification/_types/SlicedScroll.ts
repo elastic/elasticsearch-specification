@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field } from './common'
+import { Field, Id } from './common'
 import { integer } from './Numeric'
 
 export class SlicedScroll {
   field?: Field
-  id: integer
+  id: Id
   max: integer
 }

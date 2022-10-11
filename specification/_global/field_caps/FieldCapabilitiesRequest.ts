@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
      */
-    fields: Fields
+    fields?: Fields
     /**
      * If `true`, missing or closed indices are not included in the response.
      * @server_default false
@@ -75,6 +75,11 @@ export interface Request extends RequestBase {
     types?: string[]
   }
   body: {
+    /**
+     * List of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
+     * @since 8.5.0
+     */
+    fields?: Fields
     /**
      * Allows to filter indices if the provided query rewrites to match_none on every shard.
      */
