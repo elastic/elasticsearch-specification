@@ -404,6 +404,7 @@ export class CacheQueries {
  * @doc_id mapping-settings-limit
  */
 export class MappingLimitSettings {
+  coerce?: boolean
   total_fields?: MappingLimitSettingsTotalFields
   depth?: MappingLimitSettingsDepth
   nested_fields?: MappingLimitSettingsNestedFields
