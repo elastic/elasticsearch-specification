@@ -562,9 +562,15 @@ export class AdjacencyMatrixBucket extends MultiBucketBase {
   key: string
 }
 
+export class SignificantTermsAggregateBase<
+  T
+> extends MultiBucketAggregateBase<T> {
+  bg_count: long
+}
+
 /** @variant name=siglterms */
 // ES: SignificantLongTerms & InternalSignificantTerms
-export class SignificantLongTermsAggregate extends MultiBucketAggregateBase<SignificantLongTermsBucket> {}
+export class SignificantLongTermsAggregate extends SignificantTermsAggregateBase<SignificantLongTermsBucket> {}
 
 export class SignificantTermsBucketBase extends MultiBucketBase {
   score: double
@@ -578,10 +584,7 @@ export class SignificantLongTermsBucket extends SignificantTermsBucketBase {
 
 /** @variant name=sigsterms */
 // ES: SignificantStringTerms & InternalSignificantTerms
-export class SignificantStringTermsAggregate extends MultiBucketAggregateBase<SignificantStringTermsBucket> {
-  bg_count?: long
-  doc_count?: long
-}
+export class SignificantStringTermsAggregate extends SignificantTermsAggregateBase<SignificantStringTermsBucket> {}
 
 export class SignificantStringTermsBucket extends SignificantTermsBucketBase {
   key: string
@@ -593,7 +596,7 @@ export class SignificantStringTermsBucket extends SignificantTermsBucketBase {
  */
 // ES: UnmappedSignificantTerms
 // See note in UnmappedTermsAggregate
-export class UnmappedSignificantTermsAggregate extends MultiBucketAggregateBase<Void> {}
+export class UnmappedSignificantTermsAggregate extends SignificantTermsAggregateBase<Void> {}
 
 /** @variant name=composite */
 // Note: no keyed variant

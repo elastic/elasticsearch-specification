@@ -344,12 +344,13 @@ export interface FieldCapsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
-  fields: Fields
+  fields?: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
   filters?: string
   types?: string[]
   body?: {
+    fields?: Fields
     index_filter?: QueryDslQueryContainer
     runtime_mappings?: MappingRuntimeFields
   }
@@ -1208,6 +1209,8 @@ export interface SearchFetchProfile {
 }
 
 export interface SearchFetchProfileBreakdown {
+  load_source?: integer
+  load_source_count?: integer
   load_stored_fields?: integer
   load_stored_fields_count?: integer
   next_reader?: integer
@@ -1269,6 +1272,7 @@ export interface SearchHighlightBase {
 export interface SearchHighlightField extends SearchHighlightBase {
   fragment_offset?: integer
   matched_fields?: Fields
+  analyzer?: AnalysisAnalyzer
 }
 
 export type SearchHighlighterEncoder = 'default' | 'html'
@@ -2194,10 +2198,11 @@ export interface NestedSortValue {
 export interface NodeAttributes {
   attributes: Record<string, string>
   ephemeral_id: Id
-  id?: Id
+  id?: NodeId
   name: NodeName
   transport_address: TransportAddress
   roles?: NodeRoles
+  external_id: string
 }
 
 export type NodeId = string
@@ -2330,7 +2335,7 @@ export interface ScriptSort {
   nested?: NestedSortValue
 }
 
-export type ScriptSortType = 'string' | 'number'
+export type ScriptSortType = 'string' | 'number' | 'version'
 
 export interface ScriptTransform {
   lang?: string
@@ -2424,7 +2429,7 @@ export interface ShardsOperationResponseBase {
 
 export interface SlicedScroll {
   field?: Field
-  id: integer
+  id: Id
   max: integer
 }
 
@@ -2449,7 +2454,7 @@ export type SortOptions = SortOptionsKeys
 
 export type SortOrder = 'asc' | 'desc'
 
-export type SortResults = (long | double | string | null)[]
+export type SortResults = FieldValue[]
 
 export interface StoreStats {
   size?: ByteSize
@@ -3577,7 +3582,7 @@ export interface AggregationsSerialDifferencingAggregation extends AggregationsP
   lag?: integer
 }
 
-export interface AggregationsSignificantLongTermsAggregate extends AggregationsMultiBucketAggregateBase<AggregationsSignificantLongTermsBucket> {
+export interface AggregationsSignificantLongTermsAggregate extends AggregationsSignificantTermsAggregateBase<AggregationsSignificantLongTermsBucket> {
 }
 
 export interface AggregationsSignificantLongTermsBucketKeys extends AggregationsSignificantTermsBucketBase {
@@ -3587,9 +3592,7 @@ export interface AggregationsSignificantLongTermsBucketKeys extends Aggregations
 export type AggregationsSignificantLongTermsBucket = AggregationsSignificantLongTermsBucketKeys
   & { [property: string]: AggregationsAggregate | long | string | double }
 
-export interface AggregationsSignificantStringTermsAggregate extends AggregationsMultiBucketAggregateBase<AggregationsSignificantStringTermsBucket> {
-  bg_count?: long
-  doc_count?: long
+export interface AggregationsSignificantStringTermsAggregate extends AggregationsSignificantTermsAggregateBase<AggregationsSignificantStringTermsBucket> {
 }
 
 export interface AggregationsSignificantStringTermsBucketKeys extends AggregationsSignificantTermsBucketBase {
@@ -3597,6 +3600,10 @@ export interface AggregationsSignificantStringTermsBucketKeys extends Aggregatio
 }
 export type AggregationsSignificantStringTermsBucket = AggregationsSignificantStringTermsBucketKeys
   & { [property: string]: AggregationsAggregate | string | double | long }
+
+export interface AggregationsSignificantTermsAggregateBase<T = unknown> extends AggregationsMultiBucketAggregateBase<T> {
+  bg_count: long
+}
 
 export interface AggregationsSignificantTermsAggregation extends AggregationsBucketAggregationBase {
   background_filter?: QueryDslQueryContainer
@@ -3856,7 +3863,7 @@ export interface AggregationsUnmappedSamplerAggregateKeys extends AggregationsSi
 export type AggregationsUnmappedSamplerAggregate = AggregationsUnmappedSamplerAggregateKeys
   & { [property: string]: AggregationsAggregate | long | Metadata }
 
-export interface AggregationsUnmappedSignificantTermsAggregate extends AggregationsMultiBucketAggregateBase<SpecUtilsVoid> {
+export interface AggregationsUnmappedSignificantTermsAggregate extends AggregationsSignificantTermsAggregateBase<SpecUtilsVoid> {
 }
 
 export interface AggregationsUnmappedTermsAggregate extends AggregationsTermsAggregateBase<SpecUtilsVoid> {
