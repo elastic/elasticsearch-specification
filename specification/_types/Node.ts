@@ -41,12 +41,16 @@ export class NodeAttributes {
   /** The ephemeral ID of the node. */
   ephemeral_id: Id
   /** The unique identifier of the node. */
-  id?: Id
+  id?: NodeId
   /** The unique identifier of the node. */
   name: NodeName
   /** The host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
   roles?: NodeRoles
+  /**
+   * @since 8.3.0
+   */
+  external_id: string
 }
 
 export class NodeShard {

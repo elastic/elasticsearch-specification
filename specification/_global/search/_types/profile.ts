@@ -147,6 +147,8 @@ export class FetchProfile {
 }
 
 export class FetchProfileBreakdown {
+  load_source?: integer
+  load_source_count?: integer
   load_stored_fields?: integer
   load_stored_fields_count?: integer
   next_reader?: integer
