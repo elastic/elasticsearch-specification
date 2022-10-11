@@ -3602,7 +3602,8 @@ export type AggregationsSignificantStringTermsBucket = AggregationsSignificantSt
   & { [property: string]: AggregationsAggregate | string | double | long }
 
 export interface AggregationsSignificantTermsAggregateBase<T = unknown> extends AggregationsMultiBucketAggregateBase<T> {
-  bg_count: long
+  bg_count?: long
+  doc_count?: long
 }
 
 export interface AggregationsSignificantTermsAggregation extends AggregationsBucketAggregationBase {
@@ -9528,6 +9529,7 @@ export interface IndicesIndexingPressureMemory {
 }
 
 export interface IndicesMappingLimitSettings {
+  coerce?: boolean
   total_fields?: IndicesMappingLimitSettingsTotalFields
   depth?: IndicesMappingLimitSettingsDepth
   nested_fields?: IndicesMappingLimitSettingsNestedFields
@@ -10543,12 +10545,13 @@ export interface IndicesRolloverRolloverConditions {
   max_age_millis?: DurationValue<UnitMillis>
   min_docs?: long
   max_docs?: long
-  max_size?: string
+  max_size?: ByteSize
+  min_size?: ByteSize
   max_size_bytes?: ByteSize
   max_primary_shard_size?: ByteSize
-  max_primary_shard_size_bytes?: ByteSize
-  min_primary_shard_docs?: long
+  min_primary_shard_size?: ByteSize
   max_primary_shard_docs?: long
+  min_primary_shard_docs?: long
 }
 
 export interface IndicesSegmentsIndexSegment {

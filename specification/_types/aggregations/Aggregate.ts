@@ -565,7 +565,8 @@ export class AdjacencyMatrixBucket extends MultiBucketBase {
 export class SignificantTermsAggregateBase<
   T
 > extends MultiBucketAggregateBase<T> {
-  bg_count: long
+  bg_count?: long
+  doc_count?: long
 }
 
 /** @variant name=siglterms */
