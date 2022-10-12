@@ -1618,6 +1618,12 @@
       ],
       "response": []
     },
+    "ml.update_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.upgrade_job_snapshot": {
       "request": [
         "Request: should not have a body"
