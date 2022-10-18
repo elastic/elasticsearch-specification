@@ -15293,7 +15293,7 @@ export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: SecurityIndicesPrivilegesQuery | SecurityIndicesPrivilegesQuery[]
+  query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
 }
 

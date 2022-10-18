@@ -93,9 +93,9 @@ export class IndicesPrivileges {
    */
   privileges: IndexPrivilege[]
   /**
-   * Search queries that define the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
+   * A search query that defines the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */
-  query?: IndicesPrivilegesQuery | IndicesPrivilegesQuery[]
+  query?: IndicesPrivilegesQuery
   /**
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    * @server_default false
