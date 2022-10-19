@@ -10977,39 +10977,38 @@ export interface IngestBytesProcessor extends IngestProcessorBase {
 export interface IngestCircleProcessor extends IngestProcessorBase {
   error_distance: double
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   shape_type: IngestShapeType
-  target_field: Field
+  target_field?: Field
 }
 
 export interface IngestConvertProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
-  target_field: Field
+  target_field?: Field
   type: IngestConvertType
 }
 
 export type IngestConvertType = 'integer' | 'long' | 'float' | 'double' | 'string' | 'boolean' | 'auto'
 
 export interface IngestCsvProcessor extends IngestProcessorBase {
-  empty_value: any
-  description?: string
+  empty_value?: any
   field: Field
   ignore_missing?: boolean
   quote?: string
   separator?: string
   target_fields: Fields
-  trim: boolean
+  trim?: boolean
 }
 
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
   date_formats: string[]
   date_rounding: string
   field: Field
-  index_name_format: string
-  index_name_prefix: string
-  locale: string
-  timezone: string
+  index_name_format?: string
+  index_name_prefix?: string
+  locale?: string
+  timezone?: string
 }
 
 export interface IngestDateProcessor extends IngestProcessorBase {
@@ -11021,9 +11020,9 @@ export interface IngestDateProcessor extends IngestProcessorBase {
 }
 
 export interface IngestDissectProcessor extends IngestProcessorBase {
-  append_separator: string
+  append_separator?: string
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   pattern: string
 }
 
@@ -11056,18 +11055,18 @@ export interface IngestForeachProcessor extends IngestProcessorBase {
 }
 
 export interface IngestGeoIpProcessor extends IngestProcessorBase {
-  database_file: string
+  database_file?: string
   field: Field
-  first_only: boolean
-  ignore_missing: boolean
-  properties: string[]
-  target_field: Field
+  first_only?: boolean
+  ignore_missing?: boolean
+  properties?: string[]
+  target_field?: Field
 }
 
 export interface IngestGrokProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
-  pattern_definitions: Record<string, string>
+  pattern_definitions?: Record<string, string>
   patterns: string[]
   trace_match?: boolean
 }
@@ -11100,7 +11099,7 @@ export interface IngestInferenceConfigRegression {
 
 export interface IngestInferenceProcessor extends IngestProcessorBase {
   model_id: Id
-  target_field: Field
+  target_field?: Field
   field_map?: Record<Field, any>
   inference_config?: IngestInferenceConfig
 }
@@ -11112,10 +11111,14 @@ export interface IngestJoinProcessor extends IngestProcessorBase {
 }
 
 export interface IngestJsonProcessor extends IngestProcessorBase {
-  add_to_root: boolean
+  add_to_root?: boolean
+  add_to_root_conflict_strategy?: IngestJsonProcessorConflictStrategy
+  allow_duplicate_keys?: boolean
   field: Field
-  target_field: Field
+  target_field?: Field
 }
+
+export type IngestJsonProcessorConflictStrategy = 'replace' | 'merge'
 
 export interface IngestKeyValueProcessor extends IngestProcessorBase {
   exclude_keys?: string[]
@@ -11152,9 +11155,11 @@ export interface IngestPipelineConfig {
 
 export interface IngestPipelineProcessor extends IngestProcessorBase {
   name: Name
+  ignore_missing_pipeline?: boolean
 }
 
 export interface IngestProcessorBase {
+  description?: string
   if?: string
   ignore_failure?: boolean
   on_failure?: IngestProcessorContainer[]
@@ -11210,9 +11215,12 @@ export interface IngestRenameProcessor extends IngestProcessorBase {
 }
 
 export interface IngestSetProcessor extends IngestProcessorBase {
+  copy_from?: Field
   field: Field
+  ignore_empty_value?: boolean
+  media_type?: string
   override?: boolean
-  value: any
+  value?: any
 }
 
 export interface IngestSetSecurityUserProcessor extends IngestProcessorBase {
@@ -11224,8 +11232,8 @@ export type IngestShapeType = 'geo_shape' | 'shape'
 
 export interface IngestSortProcessor extends IngestProcessorBase {
   field: Field
-  order: SortOrder
-  target_field: Field
+  order?: SortOrder
+  target_field?: Field
 }
 
 export interface IngestSplitProcessor extends IngestProcessorBase {
@@ -11256,10 +11264,10 @@ export interface IngestUrlDecodeProcessor extends IngestProcessorBase {
 
 export interface IngestUserAgentProcessor extends IngestProcessorBase {
   field: Field
-  ignore_missing: boolean
-  options: IngestUserAgentProperty[]
-  regex_file: string
-  target_field: Field
+  ignore_missing?: boolean
+  options?: IngestUserAgentProperty[]
+  regex_file?: string
+  target_field?: Field
 }
 
 export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
