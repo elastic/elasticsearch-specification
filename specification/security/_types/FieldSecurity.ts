@@ -21,5 +21,5 @@ import { Fields } from '@_types/common'
 
 export class FieldSecurity {
   except?: Fields
-  grant: Fields
+  grant?: Fields
 }
