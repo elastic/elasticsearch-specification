@@ -14423,7 +14423,7 @@ export interface SecurityFieldRule {
 
 export interface SecurityFieldSecurity {
   except?: Fields
-  grant: Fields
+  grant?: Fields
 }
 
 export interface SecurityGlobalPrivilege {
@@ -14436,7 +14436,7 @@ export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
   names: Indices
   privileges: SecurityIndexPrivilege[]
-  query?: SecurityIndicesPrivilegesQuery | SecurityIndicesPrivilegesQuery[]
+  query?: SecurityIndicesPrivilegesQuery
   allow_restricted_indices?: boolean
 }
 
@@ -14470,17 +14470,19 @@ export interface SecurityRoleMappingRule {
   except?: SecurityRoleMappingRule
 }
 
+export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
+
 export interface SecurityRoleTemplateInlineScript extends ScriptBase {
   lang?: ScriptLanguage
   options?: Record<string, string>
-  source: string | QueryDslQueryContainer
+  source: SecurityRoleTemplateInlineQuery
 }
 
 export interface SecurityRoleTemplateQuery {
   template?: SecurityRoleTemplateScript
 }
 
-export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | string | QueryDslQueryContainer | StoredScriptId
+export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | StoredScriptId
 
 export interface SecurityTransientMetadataConfig {
   enabled: boolean
@@ -14493,6 +14495,14 @@ export interface SecurityUser {
   roles: string[]
   username: Username
   enabled: boolean
+}
+
+export interface SecurityUserIndicesPrivileges {
+  field_security?: SecurityFieldSecurity[]
+  names: Indices
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery[]
+  allow_restricted_indices: boolean
 }
 
 export interface SecurityAuthenticateApiKey {
@@ -14865,7 +14875,7 @@ export interface SecurityGetUserPrivilegesResponse {
   applications: SecurityApplicationPrivileges[]
   cluster: string[]
   global: SecurityGlobalPrivilege[]
-  indices: SecurityIndicesPrivileges[]
+  indices: SecurityUserIndicesPrivileges[]
   run_as: string[]
 }
 
