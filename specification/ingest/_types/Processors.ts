@@ -67,6 +67,7 @@ export class ProcessorContainer {
 }
 
 export class ProcessorBase {
+  description?: string
   if?: string
   ignore_failure?: boolean
   on_failure?: ProcessorContainer[]
@@ -103,20 +104,20 @@ export class AttachmentProcessor extends ProcessorBase {
 }
 
 export class GeoIpProcessor extends ProcessorBase {
-  database_file: string
+  database_file?: string
   field: Field
-  first_only: boolean
-  ignore_missing: boolean
-  properties: string[]
-  target_field: Field
+  first_only?: boolean
+  ignore_missing?: boolean
+  properties?: string[]
+  target_field?: Field
 }
 
 export class UserAgentProcessor extends ProcessorBase {
   field: Field
-  ignore_missing: boolean
-  options: UserAgentProperty[]
-  regex_file: string
-  target_field: Field
+  ignore_missing?: boolean
+  options?: UserAgentProperty[]
+  regex_file?: string
+  target_field?: Field
 }
 
 export class BytesProcessor extends ProcessorBase {
@@ -128,9 +129,9 @@ export class BytesProcessor extends ProcessorBase {
 export class CircleProcessor extends ProcessorBase {
   error_distance: double
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   shape_type: ShapeType
-  target_field: Field
+  target_field?: Field
 }
 
 export enum ConvertType {
@@ -146,19 +147,18 @@ export enum ConvertType {
 export class ConvertProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
-  target_field: Field
+  target_field?: Field
   type: ConvertType
 }
 
 export class CsvProcessor extends ProcessorBase {
-  empty_value: UserDefinedValue
-  description?: string
+  empty_value?: UserDefinedValue
   field: Field
   ignore_missing?: boolean
   quote?: string
   separator?: string
   target_fields: Fields
-  trim: boolean
+  trim?: boolean
 }
 
 export class DateIndexNameProcessor extends ProcessorBase {
@@ -170,10 +170,10 @@ export class DateIndexNameProcessor extends ProcessorBase {
    */
   date_rounding: string
   field: Field
-  index_name_format: string
-  index_name_prefix: string
-  locale: string
-  timezone: string
+  index_name_format?: string
+  index_name_prefix?: string
+  locale?: string
+  timezone?: string
 }
 
 export class DateProcessor extends ProcessorBase {
@@ -185,9 +185,9 @@ export class DateProcessor extends ProcessorBase {
 }
 
 export class DissectProcessor extends ProcessorBase {
-  append_separator: string
+  append_separator?: string
   field: Field
-  ignore_missing: boolean
+  ignore_missing?: boolean
   pattern: string
 }
 
@@ -221,7 +221,7 @@ export class ForeachProcessor extends ProcessorBase {
 export class GrokProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
-  pattern_definitions: Dictionary<string, string>
+  pattern_definitions?: Dictionary<string, string>
   patterns: string[]
   trace_match?: boolean
 }
@@ -236,7 +236,7 @@ export class GsubProcessor extends ProcessorBase {
 
 export class InferenceProcessor extends ProcessorBase {
   model_id: Id
-  target_field: Field
+  target_field?: Field
   field_map?: Dictionary<Field, UserDefinedValue>
   inference_config?: InferenceConfig
 }
@@ -256,9 +256,18 @@ export class JoinProcessor extends ProcessorBase {
 }
 
 export class JsonProcessor extends ProcessorBase {
-  add_to_root: boolean
+  add_to_root?: boolean
+  add_to_root_conflict_strategy?: JsonProcessorConflictStrategy
+  allow_duplicate_keys?: boolean
   field: Field
-  target_field: Field
+  target_field?: Field
+}
+
+export enum JsonProcessorConflictStrategy {
+  /** Root fields that conflict with fields from the parsed JSON will be overridden. */
+  replace,
+  /** Conflicting fields will be merged. */
+  merge
 }
 
 export class KeyValueProcessor extends ProcessorBase {
@@ -283,6 +292,7 @@ export class LowercaseProcessor extends ProcessorBase {
 
 export class PipelineProcessor extends ProcessorBase {
   name: Name
+  ignore_missing_pipeline?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {
@@ -300,13 +310,16 @@ export class ScriptProcessor extends ProcessorBase {
   id?: Id
   lang?: string
   params?: Dictionary<string, UserDefinedValue>
-  source: string
+  source?: string
 }
 
 export class SetProcessor extends ProcessorBase {
+  copy_from?: Field
   field: Field
+  ignore_empty_value?: boolean
+  media_type?: string
   override?: boolean
-  value: UserDefinedValue
+  value?: UserDefinedValue
 }
 
 export class SetSecurityUserProcessor extends ProcessorBase {
@@ -321,8 +334,8 @@ export enum ShapeType {
 
 export class SortProcessor extends ProcessorBase {
   field: Field
-  order: SortOrder
-  target_field: Field
+  order?: SortOrder
+  target_field?: Field
 }
 
 export class SplitProcessor extends ProcessorBase {
