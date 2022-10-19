@@ -20,7 +20,8 @@
 import {
   IndicesPrivileges,
   GlobalPrivilege,
-  ApplicationPrivileges
+  ApplicationPrivileges,
+  UserIndicesPrivileges
 } from '@security/_types/Privileges'
 
 export class Response {
@@ -28,10 +29,7 @@ export class Response {
     applications: ApplicationPrivileges[]
     cluster: string[]
     global: GlobalPrivilege[]
-    /**
-     * In this context `IndicesPrivileges.query` property can only be a string, see `IndicesPrivileges` documentation for detail.
-     */
-    indices: IndicesPrivileges[]
+    indices: UserIndicesPrivileges[]
     run_as: string[]
   }
 }
