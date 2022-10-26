@@ -38,11 +38,11 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Filters the returned indices to only indices that are managed by ILM.
+     * Filters the returned indices to only indices that are managed by ILM and are in an error state, either due to an encountering an error while executing the policy, or attempting to use a policy that does not exist.
      */
     only_errors?: boolean
     /**
-     * Filters the returned indices to only indices that are managed by ILM and are in an error state, either due to an encountering an error while executing the policy, or attempting to use a policy that does not exist.
+     * Filters the returned indices to only indices that are managed by ILM.
      */
     only_managed?: boolean
     /**
