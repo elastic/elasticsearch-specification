@@ -83,6 +83,9 @@ export type GeoHash = string
 /** A map tile reference, represented as `{zoom}/{x}/{y}` */
 export type GeoTile = string
 
+/** A map hex cell (H3) reference */
+export type GeoHexCell = string
+
 export class LatLon {
   lat: double
   lon: double

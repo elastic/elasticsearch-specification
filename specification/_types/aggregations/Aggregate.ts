@@ -22,7 +22,14 @@ import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
-import { GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile } from '@_types/Geo'
+import {
+  GeoBounds,
+  GeoHash,
+  GeoHexCell,
+  GeoLine,
+  GeoLocation,
+  GeoTile
+} from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
 import { Void } from '@spec_utils/VoidValue'
@@ -86,6 +93,7 @@ export type Aggregate =
   // Geo grid
   | GeoHashGridAggregate
   | GeoTileGridAggregate
+  | GeoHexGridAggregate
   // Range
   | RangeAggregate
   | DateRangeAggregate
@@ -508,6 +516,13 @@ export class GeoTileGridAggregate extends MultiBucketAggregateBase<GeoTileGridBu
 
 export class GeoTileGridBucket extends MultiBucketBase {
   key: GeoTile
+}
+
+/** @variant name=geohex_grid */
+export class GeoHexGridAggregate extends MultiBucketAggregateBase<GeoHexGridBucket> {}
+
+export class GeoHexGridBucket extends MultiBucketBase {
+  key: GeoHexCell
 }
 
 //----- Ranges
