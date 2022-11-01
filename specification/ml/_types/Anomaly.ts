@@ -35,6 +35,10 @@ export class Anomaly {
   field_name?: string
   function?: string
   function_description?: string
+  /**
+   * If the detector function is `lat_long`, this object contains comma delimited strings for the latitude and longitude of the actual and typical values.  
+   */
+  geo_results?: GeoResults
   influencers?: Influence[]
   initial_record_score: double
   is_interim: boolean
@@ -72,6 +76,7 @@ export class Influence {
   influencer_field_values: string[]
 }
 
+<<<<<<< HEAD
 export class AnomalyExplanation {
   /**
    * Impact from the duration and magnitude of the detected anomaly relative to the historical average.
@@ -114,3 +119,15 @@ export class AnomalyExplanation {
    */
   upper_confidence_bound?: double
 }
+=======
+export class GeoResults {
+  /**
+   * The actual value for the bucket formatted as a `geo_point`.
+   */
+  actual_point: string
+  /**
+   * The typical value for the bucket formatted as a `geo_point`.
+   */
+  typical_point: string
+}
+>>>>>>> 20a1baf91 (Add geo_results.actual_point and geo_results.typical_point)
