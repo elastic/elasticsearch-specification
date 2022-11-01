@@ -36,7 +36,7 @@ export class Anomaly {
   function?: string
   function_description?: string
   /**
-   * If the detector function is `lat_long`, this object contains comma delimited strings for the latitude and longitude of the actual and typical values.  
+   * If the detector function is `lat_long`, this object contains comma delimited strings for the latitude and longitude of the actual and typical values.
    */
   geo_results?: GeoResults
   influencers?: Influence[]
