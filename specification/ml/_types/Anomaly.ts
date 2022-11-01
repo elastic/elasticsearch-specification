@@ -23,6 +23,10 @@ import { DurationValue, EpochTime, UnitMillis, UnitSeconds } from '@_types/Time'
 
 export class Anomaly {
   actual?: double[]
+  /**
+   * Information about the factors impacting the initial anomaly score.
+   */
+  anomaly_score_explanation?: AnomalyExplanation
   bucket_span: DurationValue<UnitSeconds>
   by_field_name?: string
   by_field_value?: string
@@ -66,4 +70,47 @@ export class AnomalyCause {
 export class Influence {
   influencer_field_name: string
   influencer_field_values: string[]
+}
+
+export class AnomalyExplanation {
+  /**
+   * Impact from the duration and magnitude of the detected anomaly relative to the historical average.
+   */
+  anomaly_characteristics_impact?: integer
+  /**
+   * Length of the detected anomaly in the number of buckets.
+   */
+  anomaly_length?: integer
+  /**
+   * Type of the detected anomaly: `spike` or `dip`.
+   */
+  anomaly_type?: string
+  /**
+   * Indicates reduction of anomaly score for the bucket with large confidence intervals. If a bucket has large confidence intervals, the score is reduced.
+   */
+  high_variance_penalty?: boolean
+  /**
+   * If the bucket contains fewer samples than expected, the score is reduced. If the bucket contains fewer samples than expected, the score is reduced.
+   */
+  incomplete_bucket_penalty?: boolean
+  /**
+   * Lower bound of the 95% confidence interval.
+   */
+  lower_confidence_bound?: double
+  /**
+   * Impact of the deviation between actual and typical values in the past 12 buckets.
+   */
+  multi_bucket_impact?: integer
+  /**
+   * Impact of the deviation between actual and typical values in the current bucket.
+   */
+  single_bucket_impact?: integer
+  /**
+   * Typical (expected) value for this bucket.
+   */
+  typical_value?: double
+  /**
+   * Upper bound of the 95% confidence interval.
+   */
+  upper_confidence_bound?: double
 }
