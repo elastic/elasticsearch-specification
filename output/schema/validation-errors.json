@@ -754,6 +754,7 @@
     },
     "fleet.msearch": {
       "request": [
+        "Request: path parameter 'index' is optional in the json spec",
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
@@ -1367,6 +1368,7 @@
     },
     "ml.clear_trained_model_deployment_cache": {
       "request": [
+        "Request: path parameter 'model_id' is required in the json spec",
         "Request: should not have a body"
       ],
       "response": []
@@ -1720,6 +1722,12 @@
       "response": [
         "response definition _global.put_script:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "rank_eval": {
+      "request": [
+        "Request: path parameter 'index' is optional in the json spec"
+      ],
+      "response": []
     },
     "reindex": {
       "request": [
