@@ -11640,6 +11640,7 @@ export interface MlAnomaly {
   field_name?: string
   function?: string
   function_description?: string
+  geo_results?: MlGeoResults
   influencers?: MlInfluence[]
   initial_record_score: double
   is_interim: boolean
@@ -12200,6 +12201,11 @@ export interface MlFilterRef {
 }
 
 export type MlFilterType = 'include' | 'exclude'
+
+export interface MlGeoResults {
+  actual_point: string
+  typical_point: string
+}
 
 export interface MlHyperparameter {
   absolute_importance?: double
