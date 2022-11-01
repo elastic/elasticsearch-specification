@@ -66,8 +66,8 @@ export class Anomaly {
    * If the detector function is `lat_long`, this object contains comma delimited strings for the latitude and longitude of the actual and typical values.
    */
   geo_results?: GeoResults
-   /**
-    * If influencers were specified in the detector configuration, this array contains influencers that contributed to or were to blame for an anomaly.
+  /**
+   * If influencers were specified in the detector configuration, this array contains influencers that contributed to or were to blame for an anomaly.
    */
   influencers?: Influence[]
   /**
