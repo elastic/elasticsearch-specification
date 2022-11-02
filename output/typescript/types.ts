@@ -4742,7 +4742,6 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
 export type MappingProperty = MappingFlattenedProperty | MappingJoinProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingDenseVectorProperty | MappingAggregateMetricDoubleProperty | MappingCoreProperty | MappingDynamicProperty
 
 export interface MappingPropertyBase {
-  local_metadata?: Metadata
   meta?: Record<string, string>
   properties?: Record<PropertyName, MappingProperty>
   ignore_above?: integer
