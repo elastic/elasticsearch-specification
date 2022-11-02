@@ -68,6 +68,35 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         }
       }
 
+      // are all path parameters properly required or optional?
+      let urlPartsRequired = new Set(urlParts)
+      // A part is considered required if it is included in
+      // every path for the API endpoint.
+      for (const path of spec.url.paths) {
+        if (path.parts == null) {
+          // No parts means that all path parameters are optional!
+          urlPartsRequired = new Set()
+          break
+        }
+        urlPartsRequired = new Set([...Object.keys(path.parts)].filter((x) => urlPartsRequired.has(x)))
+      }
+
+      // transform [{name: ..., required: ...}] -> {name: {required: ...}}
+      const pathPropertyMap: Record<string, model.Property> = requestProperties.path.reduce((prev, prop) => ({ ...prev, [prop.name]: prop }), {})
+      for (const name of pathProperties) {
+        // okay to skip if it's not included since this scenario
+        // is covered above with a different error.
+        if (!urlParts.includes(name)) {
+          continue
+        }
+        // Find the mismatches between the specs
+        if (urlPartsRequired.has(name) && !pathPropertyMap[name].required) {
+          errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: path parameter '${name}' is required in the json spec`)
+        } else if (!urlPartsRequired.has(name) && pathPropertyMap[name].required) {
+          errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: path parameter '${name}' is optional in the json spec`)
+        }
+      }
+
       if (spec.params != null) {
         const params = Object.keys(spec.params)
         const queryProperties = requestProperties.query.map(property => property.name)
