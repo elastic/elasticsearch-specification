@@ -69,7 +69,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       }
 
       // are all path parameters properly required or optional?
-      let urlPartsRequired = new Set(urlParts.slice())
+      let urlPartsRequired = new Set(urlParts)
       // A part is considered required if it is included in
       // every path for the API endpoint.
       for (const path of spec.url.paths) {
