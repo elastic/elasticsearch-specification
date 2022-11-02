@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
      */
-    index: IndexName | IndexAlias
+    index?: IndexName | IndexAlias
   }
   query_parameters: {
     /**
