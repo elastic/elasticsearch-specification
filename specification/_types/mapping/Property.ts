@@ -79,7 +79,6 @@ import {
 } from '@_types/mapping/geo'
 
 export class PropertyBase {
-  local_metadata?: Metadata
   /**
    * Metadata about the field.
    * @doc_id mapping-meta-field
