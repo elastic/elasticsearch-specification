@@ -90,7 +90,7 @@ export class AnomalyExplanation {
    */
   high_variance_penalty?: boolean
   /**
-   * If the bucket contains fewer samples than expected, the score is reduced. If the bucket contains fewer samples than expected, the score is reduced.
+   * If the bucket contains fewer samples than expected, the score is reduced.
    */
   incomplete_bucket_penalty?: boolean
   /**
