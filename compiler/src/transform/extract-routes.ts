@@ -18,12 +18,16 @@
  */
 
 import {readFile, writeFile} from "fs/promises";
-import stringify from "safe-stable-stringify";
 import {argv} from "zx";
 import {join} from "path";
+import {fetch} from "zx";
 import {
   Model,
 } from '../model/metamodel'
+
+const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'routes.go')
+const V8 = join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
+const V7 = "https://raw.githubusercontent.com/elastic/elasticsearch-specification/7.17/output/schema/schema.json"
 
 export class Node {
   path: string;
@@ -44,6 +48,14 @@ export class Trees {
 
   constructor() {
     this.byMethod = new Map();
+  }
+}
+
+export class Forest {
+  byVersion: Map<number, Trees>
+
+  constructor() {
+    this.byVersion = new Map();
   }
 }
 
@@ -79,13 +91,6 @@ function serializeNode(node: Node): string {
 
 function serializeTree(trees: Trees): string {
   let output: string = "";
-  const begin: string = `package esroute
-
-  var Forest = Trees{
-    map[string]Node{
-  `
-
-  output += begin;
   for (const [method, root] of trees.byMethod) {
     output += `
     "${method}":
@@ -93,9 +98,28 @@ function serializeTree(trees: Trees): string {
     output += serializeNode(root);
   }
 
-  output += `},
-  }`
+  output += `},`
 
+  return output;
+}
+
+function serializeForest(forest: Forest): string {
+  let output: string = "";
+  const begin: string = `package esroute
+
+  var routes = Forest{
+	  map[string]Trees{
+  `
+  output += begin;
+
+  for (const [version, tree] of forest.byVersion) {
+    output += `\n"${version}": { ByMethod: map[string]Node{`
+    output += serializeTree(tree)
+    output += `},`
+  }
+
+  output += `\n},
+  }`
   return output;
 }
 
@@ -241,22 +265,34 @@ function extractRoutes(inputModel: Model): Trees {
   return t;
 }
 
-async function extractRoutesFromFile(inPath: string, outPath: string): Promise<void> {
-  const inputText = await readFile(
-    inPath,
+async function extractRoutesFromFiles(outPath: string): Promise<void> {
+  const v8Spec = await readFile(
+    V8,
     {encoding: 'utf8'}
   )
 
-  const inputModel = JSON.parse(inputText)
-  const routes = extractRoutes(inputModel)
-  const str = serializeTree(routes);
+  const data = await fetch(V7)
+  const v7Spec = await data.text();
+
+
+  let versions = new Map<number, string>()
+  versions.set(7, v7Spec);
+  versions.set(8, v8Spec);
+
+
+  let forest = new Forest();
+
+  versions.forEach(function (spec, version) {
+    const inputModel = JSON.parse(spec)
+    const routes = extractRoutes(inputModel)
+    forest.byVersion.set(version, routes);
+  })
+
+  const str = serializeForest(forest);
 
   await writeFile(outPath, str);
 }
 
-const inputPath = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
-const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'routes.go')
-
-extractRoutesFromFile(inputPath, outputPath)
+extractRoutesFromFiles(outputPath)
   .catch(reason => console.error(reason))
   .finally(() => console.log('Routes extraction complete.', outputPath))
