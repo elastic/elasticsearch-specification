@@ -37,6 +37,6 @@ export interface Request extends RequestBase {
     /**
      * The unique identifier of the trained model.
      */
-    model_id?: Id
+    model_id: Id
   }
 }

@@ -805,7 +805,7 @@ export interface RankEvalRankEvalRequestItem {
 }
 
 export interface RankEvalRequest extends RequestBase {
-  index: Indices
+  index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -4884,7 +4884,6 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
 export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty
 
 export interface MappingPropertyBase {
-  local_metadata?: Metadata
   meta?: Record<string, string>
   properties?: Record<PropertyName, MappingProperty>
   ignore_above?: integer
@@ -8924,7 +8923,7 @@ export interface FleetGlobalCheckpointsResponse {
 }
 
 export interface FleetMsearchRequest extends RequestBase {
-  index: IndexName | IndexAlias
+  index?: IndexName | IndexAlias
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -12778,7 +12777,7 @@ export interface MlZeroShotClassificationInferenceUpdateOptions {
 }
 
 export interface MlClearTrainedModelDeploymentCacheRequest extends RequestBase {
-  model_id?: Id
+  model_id: Id
 }
 
 export interface MlClearTrainedModelDeploymentCacheResponse {
