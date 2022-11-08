@@ -195,7 +195,6 @@
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
         "request definition cat.indices:Request / body - A request with inherited properties must have a PropertyBody"
