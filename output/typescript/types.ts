@@ -11631,6 +11631,7 @@ export interface MlAnalysisMemoryLimit {
 
 export interface MlAnomaly {
   actual?: double[]
+  anomaly_score_explanation?: MlAnomalyExplanation
   bucket_span: DurationValue<UnitSeconds>
   by_field_name?: string
   by_field_value?: string
@@ -11669,6 +11670,19 @@ export interface MlAnomalyCause {
   partition_field_value: string
   probability: double
   typical: double[]
+}
+
+export interface MlAnomalyExplanation {
+  anomaly_characteristics_impact?: integer
+  anomaly_length?: integer
+  anomaly_type?: string
+  high_variance_penalty?: boolean
+  incomplete_bucket_penalty?: boolean
+  lower_confidence_bound?: double
+  multi_bucket_impact?: integer
+  single_bucket_impact?: integer
+  typical_value?: double
+  upper_confidence_bound?: double
 }
 
 export interface MlApiKeyAuthorization {
