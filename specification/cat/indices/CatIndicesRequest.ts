@@ -19,6 +19,7 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * @rest_spec_name cat.indices
@@ -36,5 +37,6 @@ export interface Request extends CatRequestBase {
     health?: HealthStatus
     include_unloaded_segments?: boolean
     pri?: boolean
+    time?: TimeUnit
   }
 }
