@@ -6489,6 +6489,7 @@ export interface CatIndicesRequest extends CatCatRequestBase {
   health?: HealthStatus
   include_unloaded_segments?: boolean
   pri?: boolean
+  time?: TimeUnit
 }
 
 export type CatIndicesResponse = CatIndicesIndicesRecord[]
