@@ -23,10 +23,10 @@ import { Base } from '@xpack/usage/types'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Stringified } from '@spec_utils/Stringified'
+import { Duration } from '@_types/Time'
 
-export class BaseRepository<Settings> {
+export class BaseRepository {
   uuid?: Uuid
-  settings: Settings
 }
 
 /**
@@ -42,8 +42,9 @@ export type Repository =
   | FsRepository
   | HdfsRepository
 
-export class S3Repository extends BaseRepository<S3RepositorySettings> {
+export class S3Repository extends BaseRepository {
   type: 's3'
+  settings: S3RepositorySettings
 }
 
 class BlobStoreSettings {
@@ -58,7 +59,7 @@ class BlobStoreSettings {
   use_for_peer_recovery?: boolean
 }
 
-export class S3RepositorySettings {
+export class S3RepositorySettings extends BlobStoreSettings {
   base_path?: string
   bucket?: string
   buffer_size?: ByteSize
@@ -68,46 +69,56 @@ export class S3RepositorySettings {
   storage_class?: string
 }
 
-export class AzureRepository extends BaseRepository<AzureRepositorySettings> {
+export class AzureRepository extends BaseRepository {
   type: 'azure'
+  settings: AzureRepositorySettings
 }
 
 export class AzureRepositorySettings extends BlobStoreSettings {
-  /** aliases account */
+  /** @aliases account */
   client?: string
   container?: string
-  location_mode: AzureRepositoryLocation
+  location_mode: AzureRepositoryLocationMode
   max_single_part_upload_size: ByteSize
 }
 
-export enum AzureRepositoryLocation {
+export enum AzureRepositoryLocationMode {
   primary_only,
   secondary_only,
   primary_then_secondary,
   secondary_then_primary
 }
 
-export class GoogleCloudRepository extends BaseRepository<GoogleCloudRepositorySettings> {
+export class GoogleCloudRepository extends BaseRepository {
   type: 'gcs'
+  settings: GoogleCloudRepositorySettings
 }
 
 export class GoogleCloudRepositorySettings extends BlobStoreSettings {
   bucket?: string
   base_path?: string
+  client?: string
 }
 
-export class UrlRepository extends BaseRepository<UrlRepositorySettings> {
+export class UrlRepository extends BaseRepository {
   type: 'url'
+  settings: UrlRepositorySettings
 }
 
 export class UrlRepositorySettings {
+  chunk_size: ByteSize
+  compress?: boolean
+  http_max_retries?: integer
+  http_socket_timeout?: Duration
+  max_number_of_snapshots?: integer
+  max_restore_bytes_per_sec: ByteSize
+  max_snapshot_bytes_per_sec: ByteSize
   url: string
-  supported_protocols?: string
-  allowed_urls?: string[]
 }
 
-export class SourceRepository extends BaseRepository<SourceRepositorySettings> {
+export class SourceRepository extends BaseRepository {
   type: 'source'
+  settings: SourceRepositorySettings
 }
 
 export class SourceRepositorySettings
@@ -116,16 +127,18 @@ export class SourceRepositorySettings
   delegate_type: string
 }
 
-export class FsRepository extends BaseRepository<FsRepositorySettings> {
+export class FsRepository extends BaseRepository {
   type: 'fs'
+  settings: FsRepositorySettings
 }
 
 export class FsRepositorySettings extends BlobStoreSettings {
   location?: string
 }
 
-export class HdfsRepository extends BaseRepository<HdfsRepositorySettings> {
+export class HdfsRepository extends BaseRepository {
   type: 'hdfs'
+  settings: HdfsRepositorySettings
 }
 
 export class HdfsRepositorySettings extends BlobStoreSettings {
