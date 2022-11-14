@@ -107,13 +107,13 @@ function serializeForest(forest: Forest): string {
   let output: string = "";
   const begin: string = `package esroute
 
-  var routes = Forest{
-	  map[string]Trees{
+  var Routes = Forest{
+	  map[byte]Trees{
   `
   output += begin;
 
   for (const [version, tree] of forest.byVersion) {
-    output += `\n"${version}": { ByMethod: map[string]Node{`
+    output += `\n'${version}': { ByMethod: map[string]Node{`
     output += serializeTree(tree)
     output += `},`
   }
@@ -131,7 +131,7 @@ function matches(subject: string, search: string): string {
       if (i == 0) {
         for (let j = 0; j < subject.length; j++) {
           if (subject[j] === "}") {
-            return subject.slice(i,j+1);
+            return subject.slice(i, j + 1);
           }
         }
       }
@@ -223,7 +223,7 @@ export function insert(node: Node, url: string, name: string) {
     childrenPresent: {
       for (let nodeChildren of node.children) {
         if (nodeChildren.path[0] == url[0]) {
-          insert(nodeChildren,url,name);
+          insert(nodeChildren, url, name);
           break childrenPresent;
         }
       }
@@ -287,6 +287,7 @@ async function extractRoutesFromFiles(outPath: string): Promise<void> {
     const routes = extractRoutes(inputModel)
     forest.byVersion.set(version, routes);
   })
+  forest.byVersion.set(0, defaultRoutes())
 
   const str = serializeForest(forest);
 
@@ -296,3 +297,237 @@ async function extractRoutesFromFiles(outPath: string): Promise<void> {
 extractRoutesFromFiles(outputPath)
   .catch(reason => console.error(reason))
   .finally(() => console.log('Routes extraction complete.', outputPath))
+
+
+function defaultRoutes(): Trees {
+  let routes: {method:string,path:string,name:string}[] = [
+    {"method":"DELETE", "path": "/_component_template/{name}","name": "cluster.delete_component_template"},
+    {"method":"DELETE", "path": "/{index}/_aliases/{name}","name": "indices.delete_alias"},
+    {"method":"DELETE", "path": "/{index}/_alias/{name}","name": "indices.delete_alias"},
+    {"method":"DELETE", "path": "/_index_template/{name}","name": "indices.delete_index_template"},
+    {"method":"DELETE", "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}","name": "ml.delete_trained_model_alias"},
+    {"method":"DELETE", "path": "/_search/scroll","name": "clear_scroll"},
+    {"method":"DELETE", "path": "/_search/scroll/{scroll_id}","name": "clear_scroll"},
+    {"method":"DELETE", "path": "/_security/role_mapping/{name}","name": "security.delete_role_mapping"},
+    {"method":"DELETE", "path": "/_template/{name}","name": "indices.delete_template"},
+    {"method":"GET", "path": "/_alias","name": "indices.get_alias"},
+    {"method":"GET", "path": "/_alias/{name}","name": "indices.get_alias"},
+    {"method":"GET", "path": "/_analyze","name": "indices.analyze"},
+    {"method":"GET", "path": "/_cat/component_templates","name": "cat.component_templates"},
+    {"method":"GET", "path": "/_cat/component_templates/{name}","name": "cat.component_templates"},
+    {"method":"GET", "path": "/_cat/templates","name": "cat.templates"},
+    {"method":"GET", "path": "/_cat/templates/{name}","name": "cat.templates"},
+    {"method":"GET", "path": "/_cluster/settings","name": "cluster.get_settings"},
+    {"method":"GET", "path": "/_component_template","name": "cluster.get_component_template"},
+    {"method":"GET", "path": "/_component_template/{name}","name": "cluster.get_component_template"},
+    {"method":"GET", "path": "/_count","name": "count"},
+    {"method":"GET", "path": "/_field_caps","name": "field_caps"},
+    {"method":"GET", "path": "/_fleet/_fleet_msearch","name": "fleet.msearch"},
+    {"method":"GET", "path": "/_flush","name": "indices.flush"},
+    {"method":"GET", "path": "/_flush/synced","name": "indices.flush_synced"},
+    {"method":"GET", "path": "/{index}/_alias","name": "indices.get_alias"},
+    {"method":"GET", "path": "/{index}/_alias/{name}","name": "indices.get_alias"},
+    {"method":"GET", "path": "/{index}/_analyze","name": "indices.analyze"},
+    {"method":"GET", "path": "/{index}/_count","name": "count"},
+    {"method":"GET", "path": "/{index}/_field_caps","name": "field_caps"},
+    {"method":"GET", "path": "/{index}/_fleet/_fleet_msearch","name": "fleet.msearch"},
+    {"method":"GET", "path": "/{index}/_flush","name": "indices.flush"},
+    {"method":"GET", "path": "/{index}/_flush/synced","name": "indices.flush_synced"},
+    {"method":"GET", "path": "/{index}/_graph/explore","name": "graph.explore"},
+    {"method":"GET", "path": "/{index}/_mapping/field/{fields}","name": "indices.get_field_mapping"},
+    {"method":"GET", "path": "/{index}/_mapping","name": "indices.get_mapping"},
+    {"method":"GET", "path": "/{index}/_mapping/{type}/field/{fields}","name": "indices.get_field_mapping"},
+    {"method":"GET", "path": "/{index}/_mapping/{type}","name": "indices.get_mapping"},
+    {"method":"GET", "path": "/{index}/_mget","name": "mget"},
+    {"method":"GET", "path": "/{index}/_msearch","name": "msearch"},
+    {"method":"GET", "path": "/{index}/_msearch/template","name": "msearch_template"},
+    {"method":"GET", "path": "/{index}/_mtermvectors","name": "mtermvectors"},
+    {"method":"GET", "path": "/{index}/_refresh","name": "indices.refresh"},
+    {"method":"GET", "path": "/{index}/_reload_search_analyzers","name": "indices.reload_search_analyzers"},
+    {"method":"GET", "path": "/{index}/_search_shards","name": "search_shards"},
+    {"method":"GET", "path": "/{index}/_search/template","name": "search_template"},
+    {"method":"GET", "path": "/{index}/_segments","name": "indices.segments"},
+    {"method":"GET", "path": "/{index}/_settings","name": "indices.get_settings"},
+    {"method":"GET", "path": "/{index}/_settings/{name}","name": "indices.get_settings"},
+    {"method":"GET", "path": "/{index}/_source/{id}","name": "get_source"},
+    {"method":"GET", "path": "/_index_template","name": "indices.get_index_template"},
+    {"method":"GET", "path": "/_index_template/{name}","name": "indices.get_index_template"},
+    {"method":"GET", "path": "/{index}/_termvectors/{id}","name": "termvectors"},
+    {"method":"GET", "path": "/{index}/_termvectors","name": "termvectors"},
+    {"method":"GET", "path": "/{index}/{type}/_count","name": "count"},
+    {"method":"GET", "path": "/{index}/{type}/_graph/explore","name": "graph.explore"},
+    {"method":"GET", "path": "/{index}/{type}/{id}/_source","name": "get_source"},
+    {"method":"GET", "path": "/{index}/{type}/{id}/_termvectors","name": "termvectors"},
+    {"method":"GET", "path": "/{index}/{type}/_mget","name": "mget"},
+    {"method":"GET", "path": "/{index}/{type}/_msearch","name": "msearch"},
+    {"method":"GET", "path": "/{index}/{type}/_msearch/template","name": "msearch_template"},
+    {"method":"GET", "path": "/{index}/{type}/_mtermvectors","name": "mtermvectors"},
+    {"method":"GET", "path": "/{index}/{type}/_search/template","name": "search_template"},
+    {"method":"GET", "path": "/{index}/{type}/_termvectors","name": "termvectors"},
+    {"method":"GET", "path": "/{index}/{type}/_validate/query","name": "indices.validate_query"},
+    {"method":"GET", "path": "/{index}/_validate/query","name": "indices.validate_query"},
+    {"method":"GET", "path": "/_mapping/field/{fields}","name": "indices.get_field_mapping"},
+    {"method":"GET", "path": "/_mapping","name": "indices.get_mapping"},
+    {"method":"GET", "path": "/_mapping/{type}/field/{fields}","name": "indices.get_field_mapping"},
+    {"method":"GET", "path": "/_mapping/{type}","name": "indices.get_mapping"},
+    {"method":"GET", "path": "/_mget","name": "mget"},
+    {"method":"GET", "path": "/_msearch","name": "msearch"},
+    {"method":"GET", "path": "/_msearch/template","name": "msearch_template"},
+    {"method":"GET", "path": "/_mtermvectors","name": "mtermvectors"},
+    {"method":"GET", "path": "/_refresh","name": "indices.refresh"},
+    {"method":"GET", "path": "/_render/template/{id}","name": "render_search_template"},
+    {"method":"GET", "path": "/_render/template","name": "render_search_template"},
+    {"method":"GET", "path": "/_search/scroll","name": "scroll"},
+    {"method":"GET", "path": "/_search/scroll/{scroll_id}","name": "scroll"},
+    {"method":"GET", "path": "/_search_shards","name": "search_shards"},
+    {"method":"GET", "path": "/_search/template","name": "search_template"},
+    {"method":"GET", "path": "/_security/_query/api_key","name": "security.query_api_keys"},
+    {"method":"GET", "path": "/_security/role_mapping/{name}","name": "security.get_role_mapping"},
+    {"method":"GET", "path": "/_security/role_mapping","name": "security.get_role_mapping"},
+    {"method":"GET", "path": "/_segments","name": "indices.segments"},
+    {"method":"GET", "path": "/_settings","name": "indices.get_settings"},
+    {"method":"GET", "path": "/_settings/{name}","name": "indices.get_settings"},
+    {"method":"GET", "path": "/_template","name": "indices.get_template"},
+    {"method":"GET", "path": "/_template/{name}","name": "indices.get_template"},
+    {"method":"GET", "path": "/_validate/query","name": "indices.validate_query"},
+    {"method":"GET", "path": "/_watcher/_query/watches","name": "watcher.query_watches"},
+    {"method":"HEAD", "path": "/_alias/{name}","name": "indices.exists_alias"},
+    {"method":"HEAD", "path": "/_component_template/{name}","name": "cluster.exists_component_template"},
+    {"method":"HEAD", "path": "/{index}/_alias/{name}","name": "indices.exists_alias"},
+    {"method":"HEAD", "path": "/{index}/_mapping/{type}","name": "indices.exists_type"},
+    {"method":"HEAD", "path": "/{index}/_source/{id}","name": "exists_source"},
+    {"method":"HEAD", "path": "/_index_template/{name}","name": "indices.exists_index_template"},
+    {"method":"HEAD", "path": "/{index}/{type}/{id}/_source","name": "exists_source"},
+    {"method":"HEAD", "path": "/_template/{name}","name": "indices.exists_template"},
+    {"method":"POST", "path": "/_aliases","name": "indices.update_aliases"},
+    {"method":"POST", "path": "/{alias}/_rollover","name": "indices.rollover"},
+    {"method":"POST", "path": "/{alias}/_rollover/{new_index}","name": "indices.rollover"},
+    {"method":"POST", "path": "/_analyze","name": "indices.analyze"},
+    {"method":"POST", "path": "/_bulk","name": "bulk"},
+    {"method":"POST", "path": "/_component_template/{name}","name": "cluster.put_component_template"},
+    {"method":"POST", "path": "/_count","name": "count"},
+    {"method":"POST", "path": "/_delete_by_query/{task_id}/_rethrottle","name": "delete_by_query_rethrottle"},
+    {"method":"POST", "path": "/_field_caps","name": "field_caps"},
+    {"method":"POST", "path": "/_fleet/_fleet_msearch","name": "fleet.msearch"},
+    {"method":"POST", "path": "/_flush","name": "indices.flush"},
+    {"method":"POST", "path": "/_flush/synced","name": "indices.flush_synced"},
+    {"method":"POST", "path": "/_forcemerge","name": "indices.forcemerge"},
+    {"method":"POST", "path": "/{index}/_aliases/{name}","name": "indices.put_alias"},
+    {"method":"POST", "path": "/{index}/_alias/{name}","name": "indices.put_alias"},
+    {"method":"POST", "path": "/{index}/_analyze","name": "indices.analyze"},
+    {"method":"POST", "path": "/{index}/_bulk","name": "bulk"},
+    {"method":"POST", "path": "/{index}/_close","name": "indices.close"},
+    {"method":"POST", "path": "/{index}/_count","name": "count"},
+    {"method":"POST", "path": "/{index}/_delete_by_query","name": "delete_by_query"},
+    {"method":"POST", "path": "/{index}/_field_caps","name": "field_caps"},
+    {"method":"POST", "path": "/{index}/_fleet/_fleet_msearch","name": "fleet.msearch"},
+    {"method":"POST", "path": "/{index}/_flush","name": "indices.flush"},
+    {"method":"POST", "path": "/{index}/_flush/synced","name": "indices.flush_synced"},
+    {"method":"POST", "path": "/{index}/_forcemerge","name": "indices.forcemerge"},
+    {"method":"POST", "path": "/{index}/_graph/explore","name": "graph.explore"},
+    {"method":"POST", "path": "/{index}/_mapping","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/{index}/_mappings","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/{index}/_mappings/{type}","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/{index}/_mapping/{type}","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/{index}/_mget","name": "mget"},
+    {"method":"POST", "path": "/{index}/_msearch","name": "msearch"},
+    {"method":"POST", "path": "/{index}/_msearch/template","name": "msearch_template"},
+    {"method":"POST", "path": "/{index}/_mtermvectors","name": "mtermvectors"},
+    {"method":"POST", "path": "/{index}/_open","name": "indices.open"},
+    {"method":"POST", "path": "/{index}/_refresh","name": "indices.refresh"},
+    {"method":"POST", "path": "/{index}/_reload_search_analyzers","name": "indices.reload_search_analyzers"},
+    {"method":"POST", "path": "/{index}/_search_shards","name": "search_shards"},
+    {"method":"POST", "path": "/{index}/_search/template","name": "search_template"},
+    {"method":"POST", "path": "/{index}/_shrink/{target}","name": "indices.shrink"},
+    {"method":"POST", "path": "/_index_template/{name}","name": "indices.put_index_template"},
+    {"method":"POST", "path": "/_index_template/_simulate_index/{name}","name": "indices.simulate_index_template"},
+    {"method":"POST", "path": "/_index_template/_simulate","name": "indices.simulate_template"},
+    {"method":"POST", "path": "/_index_template/_simulate/{name}","name": "indices.simulate_template"},
+    {"method":"POST", "path": "/{index}/_termvectors/{id}","name": "termvectors"},
+    {"method":"POST", "path": "/{index}/_termvectors","name": "termvectors"},
+    {"method":"POST", "path": "/{index}/{type}/_bulk","name": "bulk"},
+    {"method":"POST", "path": "/{index}/{type}/_count","name": "count"},
+    {"method":"POST", "path": "/{index}/{type}/_delete_by_query","name": "delete_by_query"},
+    {"method":"POST", "path": "/{index}/{type}/_graph/explore","name": "graph.explore"},
+    {"method":"POST", "path": "/{index}/{type}/{id}/_termvectors","name": "termvectors"},
+    {"method":"POST", "path": "/{index}/{type}/_mapping","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/{index}/{type}/_mappings","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/{index}/{type}/_mget","name": "mget"},
+    {"method":"POST", "path": "/{index}/{type}/_msearch","name": "msearch"},
+    {"method":"POST", "path": "/{index}/{type}/_msearch/template","name": "msearch_template"},
+    {"method":"POST", "path": "/{index}/{type}/_mtermvectors","name": "mtermvectors"},
+    {"method":"POST", "path": "/{index}/{type}/_search/template","name": "search_template"},
+    {"method":"POST", "path": "/{index}/{type}/_termvectors","name": "termvectors"},
+    {"method":"POST", "path": "/{index}/{type}/_update_by_query","name": "update_by_query"},
+    {"method":"POST", "path": "/{index}/{type}/_validate/query","name": "indices.validate_query"},
+    {"method":"POST", "path": "/{index}/_update_by_query","name": "update_by_query"},
+    {"method":"POST", "path": "/{index}/_validate/query","name": "indices.validate_query"},
+    {"method":"POST", "path": "/_mappings/{type}","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/_mapping/{type}","name": "indices.put_mapping"},
+    {"method":"POST", "path": "/_mget","name": "mget"},
+    {"method":"POST", "path": "/_ml/anomaly_detectors/{job_id}/_close","name": "ml.close_job"},
+    {"method":"POST", "path": "/_ml/anomaly_detectors/{job_id}/_flush","name": "ml.flush_job"},
+    {"method":"POST", "path": "/_ml/anomaly_detectors/{job_id}/_open","name": "ml.open_job"},
+    {"method":"POST", "path": "/_msearch","name": "msearch"},
+    {"method":"POST", "path": "/_msearch/template","name": "msearch_template"},
+    {"method":"POST", "path": "/_mtermvectors","name": "mtermvectors"},
+    {"method":"POST", "path": "/_nodes/{node_id}/reload_secure_settings","name": "nodes.reload_secure_settings"},
+    {"method":"POST", "path": "/_nodes/reload_secure_settings","name": "nodes.reload_secure_settings"},
+    {"method":"POST", "path": "/_refresh","name": "indices.refresh"},
+    {"method":"POST", "path": "/_reindex/{task_id}/_rethrottle","name": "reindex_rethrottle"},
+    {"method":"POST", "path": "/_render/template/{id}","name": "render_search_template"},
+    {"method":"POST", "path": "/_render/template","name": "render_search_template"},
+    {"method":"POST", "path": "/_search/scroll","name": "scroll"},
+    {"method":"POST", "path": "/_search/scroll/{scroll_id}","name": "scroll"},
+    {"method":"POST", "path": "/_search_shards","name": "search_shards"},
+    {"method":"POST", "path": "/_search/template","name": "search_template"},
+    {"method":"POST", "path": "/_security/api_key/_bulk_update","name": "security.bulk_update_api_keys"},
+    {"method":"POST", "path": "/_security/_query/api_key","name": "security.query_api_keys"},
+    {"method":"POST", "path": "/_security/role_mapping/{name}","name": "security.put_role_mapping"},
+    {"method":"POST", "path": "/_snapshot/{repository}/_analyze","name": "snapshot.repository_analyze"},
+    {"method":"POST", "path": "/_template/{name}","name": "indices.put_template"},
+    {"method":"POST", "path": "/_update_by_query/{task_id}/_rethrottle","name": "update_by_query_rethrottle"},
+    {"method":"POST", "path": "/_validate/query","name": "indices.validate_query"},
+    {"method":"POST", "path": "/_watcher/_query/watches","name": "watcher.query_watches"},
+    {"method":"PUT", "path": "/_bulk","name": "bulk"},
+    {"method":"PUT", "path": "/_cluster/settings","name": "cluster.put_settings"},
+    {"method":"PUT", "path": "/_component_template/{name}","name": "cluster.put_component_template"},
+    {"method":"PUT", "path": "/{index}/_aliases/{name}","name": "indices.put_alias"},
+    {"method":"PUT", "path": "/{index}/_alias/{name}","name": "indices.put_alias"},
+    {"method":"PUT", "path": "/{index}/_bulk","name": "bulk"},
+    {"method":"PUT", "path": "/{index}/_mapping","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/{index}/_mappings","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/{index}/_mappings/{type}","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/{index}/_mapping/{type}","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/{index}/_settings","name": "indices.put_settings"},
+    {"method":"PUT", "path": "/{index}/_shrink/{target}","name": "indices.shrink"},
+    {"method":"PUT", "path": "/_index_template/{name}","name": "indices.put_index_template"},
+    {"method":"PUT", "path": "/{index}/{type}/_bulk","name": "bulk"},
+    {"method":"PUT", "path": "/{index}/{type}/_mapping","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/{index}/{type}/_mappings","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/_mappings/{type}","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/_mapping/{type}","name": "indices.put_mapping"},
+    {"method":"PUT", "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}","name": "ml.put_trained_model_alias"},
+    {"method":"PUT", "path": "/_security/role_mapping/{name}","name": "security.put_role_mapping"},
+    {"method":"PUT", "path": "/_settings","name": "indices.put_settings"},
+    {"method":"PUT", "path": "/_template/{name}","name": "indices.put_template"},
+  ];
+
+  let t = new Trees();
+
+  for (const route of routes) {
+    let node: Node | undefined;
+    if (t.byMethod.has(route.method)) {
+      node = t.byMethod.get(route.method);
+    } else {
+      node = new Node();
+      t.byMethod.set(route.method, node);
+      node = t.byMethod.get(route.method);
+    }
+    if (node !== undefined) {
+      insert(node, route.path, route.name);
+    }
+  }
+
+  return t;
+}
