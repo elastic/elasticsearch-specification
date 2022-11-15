@@ -57,6 +57,7 @@ typescript-generator/lib
 report
 output/schema/import-*
 output/schema/schema-no-generics.json
+output/schema/routes.go
 .github/**/package-lock.json
 
 # Editor lockfiles
