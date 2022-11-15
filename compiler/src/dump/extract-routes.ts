@@ -49,6 +49,20 @@ export class Trees {
   constructor() {
     this.byMethod = new Map();
   }
+
+  insert(method: string, path: string, name: string) {
+    let node: Node | undefined;
+    if (this.byMethod.has(method)) {
+      node = this.byMethod.get(method);
+    } else {
+      node = new Node();
+      this.byMethod.set(method, node);
+      node = this.byMethod.get(method);
+    }
+    if (node !== undefined) {
+      insert(node, path, name);
+    }
+  }
 }
 
 export class Forest {
@@ -247,17 +261,7 @@ function extractRoutes(inputModel: Model): Trees {
   for (const endpoint of inputModel.endpoints) {
     for (const url of endpoint.urls) {
       for (const method of url.methods) {
-        let node: Node | undefined;
-        if (t.byMethod.has(method)) {
-          node = t.byMethod.get(method);
-        } else {
-          node = new Node();
-          t.byMethod.set(method, node);
-          node = t.byMethod.get(method);
-        }
-        if (node !== undefined) {
-          insert(node, url.path, endpoint.name);
-        }
+        t.insert(method, url.path, endpoint.name);
       }
     }
   }
@@ -527,17 +531,7 @@ function defaultRoutes(): Trees {
   let t = new Trees();
 
   for (const route of routes) {
-    let node: Node | undefined;
-    if (t.byMethod.has(route.method)) {
-      node = t.byMethod.get(route.method);
-    } else {
-      node = new Node();
-      t.byMethod.set(route.method, node);
-      node = t.byMethod.get(route.method);
-    }
-    if (node !== undefined) {
-      insert(node, route.path, route.name);
-    }
+    t.insert(route.method, route.path, route.name);
   }
 
   return t;
