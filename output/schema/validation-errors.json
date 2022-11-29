@@ -6,6 +6,12 @@
       ],
       "response": []
     },
+    "_internal.get_desired_balance": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "_internal.get_desired_nodes": {
       "request": [
         "Missing request & response"
@@ -13,6 +19,12 @@
       "response": []
     },
     "_internal.health": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.prevalidate_node_removal": {
       "request": [
         "Missing request & response"
       ],
@@ -1426,6 +1438,7 @@
     },
     "ml.delete_job": {
       "request": [
+        "Request: missing json spec query parameter 'delete_user_annotations'",
         "Request: should not have a body"
       ],
       "response": [
@@ -1591,6 +1604,7 @@
     },
     "ml.reset_job": {
       "request": [
+        "Request: missing json spec query parameter 'delete_user_annotations'",
         "Request: should not have a body"
       ],
       "response": [
@@ -1607,6 +1621,7 @@
     },
     "ml.start_trained_model_deployment": {
       "request": [
+        "Request: missing json spec query parameter 'priority'",
         "Request: should not have a body"
       ],
       "response": []
