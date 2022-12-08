@@ -126,12 +126,12 @@ function serializeForest (forest: Forest): string {
 
       // Code generated from the elasticsearch-specification DO NOT EDIT.
       var routes = forest{
-        map[byte]trees{
+        map[string]trees{
           `
   output += begin
 
   for (const [version, tree] of forest.byVersion) {
-    output += `\n'${version}': { byMethod: map[string]node{`
+    output += `\n"${version}": { byMethod: map[string]node{`
     output += serializeTree(tree)
     output += '},'
   }
