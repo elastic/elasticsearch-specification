@@ -124,6 +124,7 @@ function serializeForest (forest: Forest): string {
   let output: string = ''
   const begin: string = `package esroutes
 
+      // Code generated from the elasticsearch-specification DO NOT EDIT.
       var routes = forest{
         map[byte]trees{
           `
