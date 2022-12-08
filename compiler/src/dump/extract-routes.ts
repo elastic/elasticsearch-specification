@@ -79,18 +79,18 @@ export class Forest {
 function serializeNode (node: Node): string {
   let output: string = ''
   const template: string = `{
-    Name: "${node.name}",
-    Path: []byte("${node.path}"),
+    name: "${node.name}",
+    path: []byte("${node.path}"),
     `
 
   output += template
   if (node.children.length > 0) {
     for (const child of node.children) {
       if (child.isVariable) {
-        output += `Variable: &node${serializeNode(child)}`
+        output += `variable: &node${serializeNode(child)}`
       }
     }
-    output += `Children: []node{
+    output += `children: []node{
         `
     for (const child of node.children) {
       if (!child.isVariable) {
@@ -130,7 +130,7 @@ function serializeForest (forest: Forest): string {
   output += begin
 
   for (const [version, tree] of forest.byVersion) {
-    output += `\n'${version}': { ByMethod: map[string]node{`
+    output += `\n'${version}': { byMethod: map[string]node{`
     output += serializeTree(tree)
     output += '},'
   }
