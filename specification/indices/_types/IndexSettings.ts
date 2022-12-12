@@ -505,6 +505,9 @@ export class Storage {
   allow_mmap?: boolean
 }
 
+/**
+ * @non_exhaustive
+ */
 export enum StorageType {
   /**
    * Default file system implementation. This will pick the best implementation depending on the operating environment, which
