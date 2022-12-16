@@ -9705,7 +9705,7 @@ export interface IndicesStorage {
   allow_mmap?: boolean
 }
 
-export type IndicesStorageType = 'fs' | '' | 'niofs' | 'mmapfs' | 'hybridfs'
+export type IndicesStorageType = 'fs' | '' | 'niofs' | 'mmapfs' | 'hybridfs'| string
 
 export interface IndicesTemplateMapping {
   aliases: Record<IndexName, IndicesAlias>
