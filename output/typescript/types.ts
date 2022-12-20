@@ -9131,6 +9131,7 @@ export interface IlmPhase {
 export interface IlmPhases {
   cold?: IlmPhase
   delete?: IlmPhase
+  frozen?: IlmPhase
   hot?: IlmPhase
   warm?: IlmPhase
 }
