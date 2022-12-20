@@ -35,6 +35,7 @@ export class Phase {
 export class Phases {
   cold?: Phase
   delete?: Phase
+  frozen?: Phase
   hot?: Phase
   warm?: Phase
 }
