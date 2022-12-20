@@ -275,6 +275,7 @@ export class MultiTermsAggregation extends BucketAggregationBase {
 
 export class MultiTermLookup {
   field: Field
+  missing?: Missing
 }
 
 export class NestedAggregation extends BucketAggregationBase {
