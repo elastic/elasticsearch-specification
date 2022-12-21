@@ -3420,6 +3420,7 @@ export interface AggregationsMultiBucketBase {
 
 export interface AggregationsMultiTermLookup {
   field: Field
+  missing?: AggregationsMissing
 }
 
 export interface AggregationsMultiTermsAggregate extends AggregationsTermsAggregateBase<AggregationsMultiTermsBucket> {
