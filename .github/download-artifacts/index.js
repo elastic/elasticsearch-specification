@@ -29,7 +29,7 @@ const rimraf = require('rimraf')
 const fetch = require('node-fetch')
 const crossZip = require('cross-zip')
 
-const { mkdir, rename, readdir } = promises
+const { mkdir, rename, readdir, unlink } = promises
 const pipeline = promisify(stream.pipeline)
 const unzip = promisify(crossZip.unzip)
 const rm = promisify(rimraf)
@@ -83,6 +83,14 @@ async function downloadArtifacts (opts) {
   for (const file of files) {
     if (file === '_common.json') continue
     await rename(join(downloadedSpec, file), join(specFolder, file))
+  }
+
+  /** Delete files that weren't in the zip file */
+  const specFiles = await readdir(specFolder)
+  for (const file of specFiles) {
+    if (!files.includes(file)) {
+      await unlink(join(specFolder, file))
+    }
   }
 
   core.info('Done')
