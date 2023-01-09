@@ -1,22 +1,22 @@
 {
-  "_internal.health": {
+  "health": {
     "documentation": {
-      "url": null,
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html",
       "description": "Returns the health of the cluster."
     },
-    "stability": "experimental",
-    "visibility": "private",
+    "stability": "stable",
+    "visibility": "public",
     "headers": {
       "accept": ["application/json"]
     },
     "url": {
       "paths": [
         {
-          "path": "/_internal/_health",
+          "path": "/_health",
           "methods": ["GET"]
         },
         {
-          "path": "/_internal/_health/{feature}",
+          "path": "/_health/{feature}",
           "methods": ["GET"],
           "parts": {
             "feature": {
@@ -36,6 +36,11 @@
         "type": "boolean",
         "description": "Opt in for more information about the health of the system",
         "default": true
+      },
+      "size": {
+        "type": "int",
+        "description": "Limit the number of affected resources the health API returns",
+        "default": 1000
       }
     }
   }

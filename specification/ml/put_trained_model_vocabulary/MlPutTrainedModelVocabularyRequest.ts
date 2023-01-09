@@ -26,7 +26,7 @@ import { Id } from '@_types/common'
  * The vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.
  * @rest_spec_name ml.put_trained_model_vocabulary
  * @since 8.0.0
- * @stability beta
+ * @stability stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
