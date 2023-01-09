@@ -29,7 +29,7 @@ import { Include } from '@ml/_types/Include'
  * Calling this API clears the caches without restarting the deployment.
  * @rest_spec_name ml.clear_trained_model_deployment_cache
  * @since 8.5.0
- * @stability beta
+ * @stability stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

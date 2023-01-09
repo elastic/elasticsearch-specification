@@ -18,12 +18,6 @@
       ],
       "response": []
     },
-    "_internal.health": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "_internal.prevalidate_node_removal": {
       "request": [
         "Missing request & response"
@@ -860,6 +854,12 @@
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec",
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "health": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -2305,6 +2305,7 @@
     },
     "transform.get_transform_stats": {
       "request": [
+        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []
