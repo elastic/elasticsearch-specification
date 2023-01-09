@@ -6,6 +6,12 @@
       ],
       "response": []
     },
+    "_internal.get_desired_balance": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "_internal.get_desired_nodes": {
       "request": [
         "Missing request & response"
@@ -13,6 +19,12 @@
       "response": []
     },
     "_internal.health": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "_internal.prevalidate_node_removal": {
       "request": [
         "Missing request & response"
       ],
@@ -1607,6 +1619,7 @@
     },
     "ml.start_trained_model_deployment": {
       "request": [
+        "Request: missing json spec query parameter 'priority'",
         "Request: should not have a body"
       ],
       "response": []
@@ -2051,12 +2064,6 @@
       "response": [
         "response definition security.update_user_profile_data:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
-    },
-    "semantic_search": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
     },
     "shutdown.delete_node": {
       "request": [
