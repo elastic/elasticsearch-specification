@@ -710,6 +710,9 @@ export interface OpenPointInTimeRequest extends RequestBase {
   index: Indices
   keep_alive: Duration
   ignore_unavailable?: boolean
+  preference?: string
+  routing?: Routing
+  expand_wildcards?: ExpandWildcards
 }
 
 export interface OpenPointInTimeResponse {

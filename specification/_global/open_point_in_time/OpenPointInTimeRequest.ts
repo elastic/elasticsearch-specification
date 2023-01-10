@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { ExpandWildcards, Indices, Routing } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -41,5 +41,8 @@ export interface Request extends RequestBase {
   query_parameters: {
     keep_alive: Duration
     ignore_unavailable?: boolean
+    preference?: string
+    routing?: Routing
+    expand_wildcards?: ExpandWildcards
   }
 }
