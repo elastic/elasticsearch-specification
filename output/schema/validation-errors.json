@@ -1712,9 +1712,6 @@
     },
     "open_point_in_time": {
       "request": [
-        "Request: missing json spec query parameter 'preference'",
-        "Request: missing json spec query parameter 'routing'",
-        "Request: missing json spec query parameter 'expand_wildcards'",
         "Request: should not have a body"
       ],
       "response": []
