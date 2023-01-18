@@ -86,6 +86,10 @@ export interface Request extends RequestBase {
      */
     groups?: string[]
     /**
+     * Type of job. Eg: anomaly_detector
+     */
+    job_type?: string
+    /**
      * This advanced configuration option stores model information along with the results. It provides a more detailed view into anomaly detection. If you enable model plot it can add considerable overhead to the performance of the system; it is not feasible for jobs with many entities. Model plot provides a simplified and indicative view of the model and its bounds. It does not display complex features such as multivariate correlations or multimodal data. As such, anomalies may occasionally be reported which cannot be seen in the model plot. Model plot config can be configured when the job is created or updated later. It must be disabled if performance issues are experienced.
      */
     model_plot_config?: ModelPlotConfig
