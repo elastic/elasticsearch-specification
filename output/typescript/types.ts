@@ -13671,6 +13671,7 @@ export interface MlPutJobRequest extends RequestBase {
     datafeed_config?: MlDatafeedConfig
     description?: string
     groups?: string[]
+    job_type?: string
     model_plot_config?: MlModelPlotConfig
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
