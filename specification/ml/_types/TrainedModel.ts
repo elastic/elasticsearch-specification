@@ -62,6 +62,7 @@ export class TrainedModelStats {
 export class TrainedModelDeploymentStats {
   /** The detailed allocation status for the deployment. */
   allocation_status: TrainedModelDeploymentAllocationStatus
+  cache_size?: ByteSize
   /** The sum of `error_count` for all nodes in the deployment. */
   error_count: integer
   /** The sum of `inference_count` for all nodes in the deployment. */
@@ -296,6 +297,11 @@ export enum DeploymentAssignmentState {
   failed
 }
 
+export enum TrainingPriority {
+  normal,
+  low
+}
+
 export class TrainedModelAssignmentTaskParameters {
   /**
    * The size of the trained model in bytes.
@@ -314,6 +320,8 @@ export class TrainedModelAssignmentTaskParameters {
    * The total number of allocations this model is assigned across ML nodes.
    */
   number_of_allocations: integer
+  priority: TrainingPriority
+
   /**
    * Number of inference requests are allowed in the queue at a time.
    */
@@ -381,6 +389,7 @@ export class TrainedModelAssignment {
    * The overall assignment state.
    */
   assignment_state: DeploymentAssignmentState
+  max_assigned_allocations?: integer
   /**
    * The allocation state for each node.
    */

@@ -86,6 +86,7 @@ export interface Request extends RequestBase {
      */
     description?: string
     model_plot_config?: ModelPlotConfig
+    model_prune_window?: Duration
     /**
      * Advanced configuration option, which affects the automatic removal of old
      * model snapshots for this job. It specifies a period of time (in days)

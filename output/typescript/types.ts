@@ -1037,7 +1037,7 @@ export interface SearchRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    knn?: KnnQuery
+    knn?: KnnQuery | KnnQuery[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
@@ -1082,23 +1082,8 @@ export interface SearchResponseBody<TDocument = unknown> {
   terminated_early?: boolean
 }
 
-export interface SearchAggregationBreakdown {
-  build_aggregation: long
-  build_aggregation_count: long
-  build_leaf_collector: long
-  build_leaf_collector_count: long
-  collect: long
-  collect_count: long
-  initialize: long
-  initialize_count: long
-  post_collection?: long
-  post_collection_count?: long
-  reduce: long
-  reduce_count: long
-}
-
 export interface SearchAggregationProfile {
-  breakdown: SearchAggregationBreakdown
+  breakdown: Record<string, long>
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
@@ -1188,6 +1173,17 @@ export interface SearchCompletionSuggester extends SearchSuggesterBase {
 
 export type SearchContext = string | GeoLocation
 
+export interface SearchDfsProfile {
+  statistics: SearchDfsStatistics
+}
+
+export interface SearchDfsStatistics {
+  breakdown: Record<string, long>
+  description: string
+  time_in_nanos: DurationValue<UnitNanos>
+  type: string
+}
+
 export interface SearchDirectGenerator {
   field: Field
   max_edits?: integer
@@ -1206,20 +1202,9 @@ export interface SearchFetchProfile {
   type: string
   description: string
   time_in_nanos: DurationValue<UnitNanos>
-  breakdown: SearchFetchProfileBreakdown
+  breakdown: Record<string, long>
   debug?: SearchFetchProfileDebug
   children?: SearchFetchProfile[]
-}
-
-export interface SearchFetchProfileBreakdown {
-  load_source?: integer
-  load_source_count?: integer
-  load_stored_fields?: integer
-  load_stored_fields_count?: integer
-  next_reader?: integer
-  next_reader_count?: integer
-  process_count?: integer
-  process?: integer
 }
 
 export interface SearchFetchProfileDebug {
@@ -1407,29 +1392,8 @@ export interface SearchProfile {
   shards: SearchShardProfile[]
 }
 
-export interface SearchQueryBreakdown {
-  advance: long
-  advance_count: long
-  build_scorer: long
-  build_scorer_count: long
-  create_weight: long
-  create_weight_count: long
-  match: long
-  match_count: long
-  shallow_advance: long
-  shallow_advance_count: long
-  next_doc: long
-  next_doc_count: long
-  score: long
-  score_count: long
-  compute_max_score: long
-  compute_max_score_count: long
-  set_min_competitive_score: long
-  set_min_competitive_score_count: long
-}
-
 export interface SearchQueryProfile {
-  breakdown: SearchQueryBreakdown
+  breakdown: Record<string, long>
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
@@ -1461,6 +1425,7 @@ export interface SearchShardProfile {
   id: string
   searches: SearchSearchProfile[]
   fetch?: SearchFetchProfile
+  dfs?: SearchDfsProfile
 }
 
 export interface SearchSmoothingModelContainer {
@@ -1560,14 +1525,18 @@ export interface SearchMvtRequest extends RequestBase {
   y: SearchMvtCoordinate
   exact_bounds?: boolean
   extent?: integer
+  grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
   size?: integer
+  with_labels?: boolean
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
+    buffer?: integer
     exact_bounds?: boolean
     extent?: integer
     fields?: Fields
+    grid_agg?: SearchMvtGridAggregationType
     grid_precision?: integer
     grid_type?: SearchMvtGridType
     query?: QueryDslQueryContainer
@@ -1575,12 +1544,15 @@ export interface SearchMvtRequest extends RequestBase {
     size?: integer
     sort?: Sort
     track_total_hits?: SearchTrackHits
+    with_labels?: boolean
   }
 }
 
 export type SearchMvtResponse = MapboxVectorTiles
 
 export type SearchMvtCoordinate = integer
+
+export type SearchMvtGridAggregationType = 'geotile' | 'geohex'
 
 export type SearchMvtGridType = 'grid' | 'point' | 'centroid'
 
@@ -2106,6 +2078,7 @@ export interface IndexingStats {
   index_total: long
   index_failed: long
   types?: Record<string, IndexingStats>
+  write_load?: double
 }
 
 export type Indices = IndexName | IndexName[]
@@ -2207,7 +2180,7 @@ export interface NodeAttributes {
   name: NodeName
   transport_address: TransportAddress
   roles?: NodeRoles
-  external_id: string
+  external_id?: string
 }
 
 export type NodeId = string
@@ -2230,6 +2203,7 @@ export interface NodeShard {
   recovery_source?: Record<string, Id>
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
   relocating_node?: NodeId | null
+  relocation_failure_info?: RelocationFailureInfo
 }
 
 export interface NodeStatistics {
@@ -2259,7 +2233,6 @@ export interface PluginStats {
   name: Name
   version: VersionString
   licensed: boolean
-  type: string
 }
 
 export type PropertyName = string
@@ -2294,6 +2267,10 @@ export interface RefreshStats {
 }
 
 export type RelationName = string
+
+export interface RelocationFailureInfo {
+  failed_attempts: integer
+}
 
 export interface RequestBase extends SpecUtilsCommonQueryParameters {
 }
@@ -3328,7 +3305,7 @@ export interface AggregationsMatrixAggregation extends AggregationsAggregation {
 
 export interface AggregationsMatrixStatsAggregate extends AggregationsAggregateBase {
   doc_count: long
-  fields: AggregationsMatrixStatsFields[]
+  fields?: AggregationsMatrixStatsFields[]
 }
 
 export interface AggregationsMatrixStatsAggregation extends AggregationsMatrixAggregation {
@@ -4915,12 +4892,21 @@ export interface MappingRoutingField {
 }
 
 export interface MappingRuntimeField {
+  fetch_fields?: (MappingRuntimeFieldFetchFields | Field)[]
   format?: string
+  input_field?: Field
+  target_field?: Field
+  target_index?: IndexName
   script?: Script
   type: MappingRuntimeFieldType
 }
 
-export type MappingRuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long'
+export interface MappingRuntimeFieldFetchFields {
+  field: Field
+  format?: string
+}
+
+export type MappingRuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long' | 'lookup'
 
 export type MappingRuntimeFields = Record<Field, MappingRuntimeField>
 
@@ -6010,7 +5996,7 @@ export type CatCatDfaColumns = CatCatDfaColumn | CatCatDfaColumn[]
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
-export type CatCatTrainedModelsColumn = 'create_time' | 'ct' | 'created_by' | 'c' | 'createdBy' | 'data_frame_analytics_id' | 'df' | 'dataFrameAnalytics' | 'description' | 'd' | 'heap_size' | 'hs' | 'modelHeapSize' | 'id' | 'ingest.count' | 'ic' | 'ingestCount' | 'ingest.current' | 'icurr' | 'ingestCurrent' | 'ingest.failed' | 'if' | 'ingestFailed' | 'ingest.pipelines' | 'ip' | 'ingestPipelines' | 'ingest.time' | 'it' | 'ingestTime' | 'license' | 'l' | 'operations' | 'o' | 'modelOperations' | 'version' | 'v'
+export type CatCatTrainedModelsColumn = 'create_time' | 'ct' | 'created_by' | 'c' | 'createdBy' | 'data_frame_analytics_id' | 'df' | 'dataFrameAnalytics' | 'dfid' | 'description' | 'd' | 'heap_size' | 'hs' | 'modelHeapSize' | 'id' | 'ingest.count' | 'ic' | 'ingestCount' | 'ingest.current' | 'icurr' | 'ingestCurrent' | 'ingest.failed' | 'if' | 'ingestFailed' | 'ingest.pipelines' | 'ip' | 'ingestPipelines' | 'ingest.time' | 'it' | 'ingestTime' | 'license' | 'l' | 'operations' | 'o' | 'modelOperations' | 'version' | 'v'
 
 export type CatCatTrainedModelsColumns = CatCatTrainedModelsColumn | CatCatTrainedModelsColumn[]
 
@@ -8423,7 +8409,7 @@ export interface ClusterRerouteRerouteParameters {
 export interface ClusterRerouteResponse {
   acknowledged: boolean
   explanations?: ClusterRerouteRerouteExplanation[]
-  state: any
+  state?: any
 }
 
 export interface ClusterStateRequest extends RequestBase {
@@ -8606,12 +8592,19 @@ export interface ClusterStatsFieldTypes {
   name: Name
   count: integer
   index_count: integer
+  indexed_vector_count?: long
+  indexed_vector_dim_max?: long
+  indexed_vector_dim_min?: long
   script_count?: integer
 }
 
 export interface ClusterStatsFieldTypesMappings {
   field_types: ClusterStatsFieldTypes[]
   runtime_field_types?: ClusterStatsRuntimeFieldTypes[]
+  total_field_count?: integer
+  total_deduplicated_field_count?: integer
+  total_deduplicated_mapping_size?: ByteSize
+  total_deduplicated_mapping_size_in_bytes?: long
 }
 
 export interface ClusterStatsIndexingPressure {
@@ -10562,10 +10555,13 @@ export interface IndicesRolloverRolloverConditions {
   min_docs?: long
   max_docs?: long
   max_size?: ByteSize
+  max_size_bytes?: long
   min_size?: ByteSize
-  max_size_bytes?: ByteSize
+  min_size_bytes?: long
   max_primary_shard_size?: ByteSize
+  max_primary_shard_size_bytes?: long
   min_primary_shard_size?: ByteSize
+  min_primary_shard_size_bytes?: long
   max_primary_shard_docs?: long
   min_primary_shard_docs?: long
 }
@@ -10593,7 +10589,6 @@ export interface IndicesSegmentsSegment {
   compound: boolean
   deleted_docs: long
   generation: integer
-  memory_in_bytes: double
   search: boolean
   size_in_bytes: double
   num_docs: long
@@ -10629,22 +10624,28 @@ export interface IndicesShardStoresResponse {
   indices: Record<IndexName, IndicesShardStoresIndicesShardStores>
 }
 
-export interface IndicesShardStoresShardStore {
+export interface IndicesShardStoresShardStoreKeys {
   allocation: IndicesShardStoresShardStoreAllocation
-  allocation_id: Id
-  attributes: Record<string, any>
-  id: Id
-  legacy_version: VersionNumber
-  name: Name
-  store_exception: IndicesShardStoresShardStoreException
-  transport_address: TransportAddress
+  allocation_id?: Id
+  store_exception?: IndicesShardStoresShardStoreException
 }
+export type IndicesShardStoresShardStore = IndicesShardStoresShardStoreKeys
+  & { [property: string]: IndicesShardStoresShardStoreNode | IndicesShardStoresShardStoreAllocation | Id | IndicesShardStoresShardStoreException }
 
 export type IndicesShardStoresShardStoreAllocation = 'primary' | 'replica' | 'unused'
 
 export interface IndicesShardStoresShardStoreException {
   reason: string
   type: string
+}
+
+export interface IndicesShardStoresShardStoreNode {
+  attributes: Record<string, string>
+  ephemeral_id?: string
+  external_id?: string
+  name: Name
+  roles: string[]
+  transport_address: TransportAddress
 }
 
 export type IndicesShardStoresShardStoreStatus = 'green' | 'yellow' | 'red' | 'all'
@@ -10764,6 +10765,12 @@ export interface IndicesStatsIndicesStats {
   status?: IndicesStatsIndexMetadataState
 }
 
+export interface IndicesStatsMappingStats {
+  total_count: long
+  total_estimated_overhead?: ByteSize
+  total_estimated_overhead_in_bytes: long
+}
+
 export interface IndicesStatsRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
@@ -10852,6 +10859,7 @@ export interface IndicesStatsShardStats {
   flush?: FlushStats
   get?: GetStats
   indexing?: IndexingStats
+  mappings?: IndicesStatsMappingStats
   merges?: MergesStats
   shard_path?: IndicesStatsShardPath
   query_cache?: IndicesStatsShardQueryCache
@@ -10867,7 +10875,7 @@ export interface IndicesStatsShardStats {
   translog?: TranslogStats
   warmer?: WarmerStats
   bulk?: BulkStats
-  shards?: IndicesStatsShardsTotalStats
+  shards?: Record<IndexName, any>
   shard_stats?: IndicesStatsShardsTotalStats
   indices?: IndicesStatsIndicesStats
 }
@@ -11598,7 +11606,7 @@ export interface MigrationPostFeatureUpgradeResponse {
 }
 
 export interface MlAnalysisConfig {
-  bucket_span: Duration
+  bucket_span?: Duration
   categorization_analyzer?: MlCategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
@@ -11842,12 +11850,12 @@ export interface MlDatafeedConfig {
   datafeed_id?: Id
   delayed_data_check_config?: MlDelayedDataCheckConfig
   frequency?: Duration
+  indices?: string[]
   indexes?: string[]
-  indices: string[]
   indices_options?: IndicesOptions
   job_id?: Id
   max_empty_searches?: integer
-  query: QueryDslQueryContainer
+  query?: QueryDslQueryContainer
   query_delay?: Duration
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
@@ -12153,7 +12161,7 @@ export interface MlDetector {
   detector_index?: integer
   exclude_frequent?: MlExcludeFrequent
   field_name?: Field
-  function: string
+  function?: string
   over_field_name?: Field
   partition_field_name?: Field
   use_null?: boolean
@@ -12446,6 +12454,7 @@ export interface MlNerInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
   classification_labels?: string[]
+  vocabulary?: MlVocabulary
 }
 
 export interface MlNerInferenceUpdateOptions {
@@ -12506,6 +12515,7 @@ export interface MlPage {
 export interface MlPassThroughInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
+  vocabulary?: MlVocabulary
 }
 
 export interface MlPassThroughInferenceUpdateOptions {
@@ -12621,6 +12631,7 @@ export interface MlTotalFeatureImportanceStatistics {
 
 export interface MlTrainedModelAssignment {
   assignment_state: MlDeploymentAssignmentState
+  max_assigned_allocations?: integer
   routing_table: Record<string, MlTrainedModelAssignmentRoutingTable>
   start_time: DateTime
   task_parameters: MlTrainedModelAssignmentTaskParameters
@@ -12638,6 +12649,7 @@ export interface MlTrainedModelAssignmentTaskParameters {
   model_id: Id
   cache_size: ByteSize
   number_of_allocations: integer
+  priority: MlTrainingPriority
   queue_capacity: integer
   threads_per_allocation: integer
 }
@@ -12696,6 +12708,7 @@ export interface MlTrainedModelDeploymentNodesStats {
 
 export interface MlTrainedModelDeploymentStats {
   allocation_status: MlTrainedModelDeploymentAllocationStatus
+  cache_size?: ByteSize
   error_count: integer
   inference_count: integer
   model_id: Id
@@ -12761,6 +12774,8 @@ export interface MlTrainedModelStats {
 
 export type MlTrainedModelType = 'tree_ensemble' | 'lang_ident' | 'pytorch'
 
+export type MlTrainingPriority = 'normal' | 'low'
+
 export interface MlTransformAuthorization {
   api_key?: MlApiKeyAuthorization
   roles?: string[]
@@ -12770,6 +12785,10 @@ export interface MlTransformAuthorization {
 export interface MlValidationLoss {
   fold_values: string[]
   loss_type: string
+}
+
+export interface MlVocabulary {
+  index: IndexName
 }
 
 export interface MlZeroShotClassificationInferenceOptions {
@@ -12883,6 +12902,7 @@ export type MlDeleteForecastResponse = AcknowledgedResponseBase
 export interface MlDeleteJobRequest extends RequestBase {
   job_id: Id
   force?: boolean
+  delete_user_annotations?: boolean
   wait_for_completion?: boolean
 }
 
@@ -13476,6 +13496,7 @@ export interface MlOpenJobRequest extends RequestBase {
 
 export interface MlOpenJobResponse {
   opened: boolean
+  node: NodeId
 }
 
 export interface MlPostCalendarEventsRequest extends RequestBase {
@@ -13535,6 +13556,8 @@ export interface MlPreviewDataFrameAnalyticsResponse {
 
 export interface MlPreviewDatafeedRequest extends RequestBase {
   datafeed_id?: Id
+  start?: DateTime
+  end?: DateTime
   body?: {
     datafeed_config?: MlDatafeedConfig
     job_config?: MlJobConfig
@@ -13627,16 +13650,16 @@ export interface MlPutDatafeedRequest extends RequestBase {
 }
 
 export interface MlPutDatafeedResponse {
-  aggregations: Record<string, AggregationsAggregationContainer>
+  aggregations?: Record<string, AggregationsAggregationContainer>
   authorization?: MlDatafeedAuthorization
   chunking_config: MlChunkingConfig
   delayed_data_check_config?: MlDelayedDataCheckConfig
   datafeed_id: Id
-  frequency: Duration
+  frequency?: Duration
   indices: string[]
   job_id: Id
   indices_options?: IndicesOptions
-  max_empty_searches: integer
+  max_empty_searches?: integer
   query: QueryDslQueryContainer
   query_delay: Duration
   runtime_mappings?: MappingRuntimeFields
@@ -13751,7 +13774,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     definition?: MlPutTrainedModelDefinition
     description?: string
     inference_config: MlInferenceConfigCreateContainer
-    input: MlPutTrainedModelInput
+    input?: MlPutTrainedModelInput
     metadata?: any
     model_type?: MlTrainedModelType
     model_size_bytes?: long
@@ -13830,6 +13853,7 @@ export type MlPutTrainedModelVocabularyResponse = AcknowledgedResponseBase
 export interface MlResetJobRequest extends RequestBase {
   job_id: Id
   wait_for_completion?: boolean
+  delete_user_annotations?: boolean
 }
 
 export type MlResetJobResponse = AcknowledgedResponseBase
@@ -13885,6 +13909,7 @@ export interface MlStartTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
   cache_size?: ByteSize
   number_of_allocations?: integer
+  priority?: MlTrainingPriority
   queue_capacity?: integer
   threads_per_allocation?: integer
   timeout?: Duration
@@ -13971,6 +13996,7 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
     indices?: string[]
     indexes?: string[]
     indices_options?: IndicesOptions
+    job_id?: Id
     max_empty_searches?: integer
     query?: QueryDslQueryContainer
     query_delay?: Duration
@@ -13982,15 +14008,15 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
 
 export interface MlUpdateDatafeedResponse {
   authorization?: MlDatafeedAuthorization
-  aggregations: Record<string, AggregationsAggregationContainer>
+  aggregations?: Record<string, AggregationsAggregationContainer>
   chunking_config: MlChunkingConfig
   delayed_data_check_config?: MlDelayedDataCheckConfig
   datafeed_id: Id
-  frequency: Duration
+  frequency?: Duration
   indices: string[]
   indices_options?: IndicesOptions
   job_id: Id
-  max_empty_searches: integer
+  max_empty_searches?: integer
   query: QueryDslQueryContainer
   query_delay: Duration
   runtime_mappings?: MappingRuntimeFields
@@ -14023,6 +14049,7 @@ export interface MlUpdateJobRequest extends RequestBase {
     categorization_filters?: string[]
     description?: string
     model_plot_config?: MlModelPlotConfig
+    model_prune_window?: Duration
     daily_model_snapshot_retention_after_days?: long
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
@@ -14122,9 +14149,9 @@ export interface MonitoringBulkResponse {
 
 export interface NodesAdaptiveSelection {
   avg_queue_size?: long
-  avg_response_time?: long
+  avg_response_time?: Duration
   avg_response_time_ns?: long
-  avg_service_time?: string
+  avg_service_time?: Duration
   avg_service_time_ns?: long
   outgoing_searches?: long
   rank?: string
@@ -14298,6 +14325,7 @@ export interface NodesIndexingPressure {
 }
 
 export interface NodesIndexingPressureMemory {
+  limit?: ByteSize
   limit_in_bytes?: long
   current?: NodesPressureMemory
   total?: NodesPressureMemory
@@ -14415,11 +14443,16 @@ export interface NodesPool {
 }
 
 export interface NodesPressureMemory {
-  combined_coordinating_and_primary_in_bytes?: long
-  coordinating_in_bytes?: long
-  primary_in_bytes?: long
-  replica_in_bytes?: long
+  all?: ByteSize
   all_in_bytes?: long
+  combined_coordinating_and_primary?: ByteSize
+  combined_coordinating_and_primary_in_bytes?: long
+  coordinating?: ByteSize
+  coordinating_in_bytes?: long
+  primary?: ByteSize
+  primary_in_bytes?: long
+  replica?: ByteSize
+  replica_in_bytes?: long
   coordinating_rejections?: long
   primary_rejections?: long
   replica_rejections?: long
@@ -14495,6 +14528,7 @@ export interface NodesScriptCache {
 export interface NodesScripting {
   cache_evictions?: long
   compilations?: long
+  compilations_history?: Record<string, long>
   compilation_limit_triggered?: long
   contexts?: NodesContext[]
 }
@@ -14916,8 +14950,8 @@ export interface NodesInfoNodeJvmInfo {
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
-  bundled_jdk: boolean
   using_bundled_jdk: boolean
+  bundled_jdk: boolean
   using_compressed_ordinary_object_pointers?: boolean | string
   input_arguments: string[]
 }
@@ -15123,10 +15157,16 @@ export interface RollupGetRollupCapsRollupCapabilities {
 }
 
 export interface RollupGetRollupCapsRollupCapabilitySummary {
-  fields: Record<Field, Record<string, any>>
+  fields: Record<Field, RollupGetRollupCapsRollupFieldSummary[]>
   index_pattern: string
   job_id: string
   rollup_index: string
+}
+
+export interface RollupGetRollupCapsRollupFieldSummary {
+  agg: string
+  calendar_interval?: Duration
+  time_zone?: TimeZone
 }
 
 export interface RollupGetRollupIndexCapsIndexCapabilities {
@@ -17073,6 +17113,7 @@ export interface TransformGetTransformStatsRequest extends RequestBase {
   allow_no_match?: boolean
   from?: long
   size?: long
+  timeout?: Duration
 }
 
 export interface TransformGetTransformStatsResponse {
@@ -17110,11 +17151,16 @@ export interface TransformGetTransformStatsTransformProgress {
 
 export interface TransformGetTransformStatsTransformStats {
   checkpointing: TransformGetTransformStatsCheckpointing
+  health?: TransformGetTransformStatsTransformStatsHealth
   id: Id
   node?: NodeAttributes
   reason?: string
   state: string
   stats: TransformGetTransformStatsTransformIndexerStats
+}
+
+export interface TransformGetTransformStatsTransformStatsHealth {
+  status: HealthStatus
 }
 
 export interface TransformPreviewTransformRequest extends RequestBase {
@@ -18108,6 +18154,10 @@ export interface XpackUsageFrozenIndices extends XpackUsageBase {
   indices_count: long
 }
 
+export interface XpackUsageHealthStatistics extends XpackUsageBase {
+  invocations: XpackUsageInvocations
+}
+
 export interface XpackUsageIlm {
   policy_count: integer
   policy_stats: XpackUsageIlmPolicyStatistics[]
@@ -18116,6 +18166,10 @@ export interface XpackUsageIlm {
 export interface XpackUsageIlmPolicyStatistics {
   indices_managed: integer
   phases: IlmPhases
+}
+
+export interface XpackUsageInvocations {
+  total: long
 }
 
 export interface XpackUsageIpFilter {
@@ -18210,6 +18264,7 @@ export interface XpackUsageMlInferenceTrainedModelsCount {
   regression?: long
   classification?: long
   ner?: long
+  text_embedding?: long
 }
 
 export interface XpackUsageMlJobForecasts {
@@ -18263,6 +18318,7 @@ export interface XpackUsageResponse {
   flattened?: XpackUsageFlattened
   frozen_indices: XpackUsageFrozenIndices
   graph: XpackUsageBase
+  health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
   logstash: XpackUsageBase
   ml: XpackUsageMachineLearning

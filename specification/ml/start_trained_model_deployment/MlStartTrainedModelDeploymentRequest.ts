@@ -21,7 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
-import { DeploymentAllocationState } from '../_types/TrainedModel'
+import {
+  DeploymentAllocationState,
+  TrainingPriority
+} from '../_types/TrainedModel'
 
 /**
  * Starts a trained model deployment, which allocates the model to every machine learning node.
@@ -54,6 +57,7 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     number_of_allocations?: integer
+    priority?: TrainingPriority
     /**
      * Specifies the number of inference requests that are allowed in the queue. After the number of requests exceeds
      * this value, new requests are rejected with a 429 error.

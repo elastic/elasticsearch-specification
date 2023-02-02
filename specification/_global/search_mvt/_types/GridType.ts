@@ -23,3 +23,8 @@ export enum GridType {
   /** @since 7.16.0 */
   centroid
 }
+
+export enum GridAggregationType {
+  geotile,
+  geohex
+}

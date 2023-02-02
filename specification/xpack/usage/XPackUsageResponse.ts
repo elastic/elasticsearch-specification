@@ -27,6 +27,7 @@ import {
   Eql,
   Flattened,
   FrozenIndices,
+  HealthStatistics,
   Ilm,
   MachineLearning,
   Monitoring,
@@ -56,6 +57,7 @@ export class Response {
     flattened?: Flattened
     frozen_indices: FrozenIndices
     graph: Base
+    health_api?: HealthStatistics
     ilm: Ilm
     logstash: Base
     ml: MachineLearning

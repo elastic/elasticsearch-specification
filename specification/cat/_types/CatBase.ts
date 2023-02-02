@@ -572,7 +572,7 @@ export enum CatTrainedModelsColumn {
   /**
    * Identifier for the data frame analytics job that created the model. Only
    * displayed if it is still available.
-   * @aliases df, dataFrameAnalytics
+   * @aliases df, dataFrameAnalytics, dfid
    */
   data_frame_analytics_id,
   /**
@@ -586,7 +586,7 @@ export enum CatTrainedModelsColumn {
    */
   heap_size,
   /**
-   * Idetifier for the trained model.
+   * Identifier for the trained model.
    */
   id,
   /**

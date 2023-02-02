@@ -748,7 +748,7 @@ export class CumulativeCardinalityAggregate extends AggregateBase {
 /** @variant name=matrix_stats */
 export class MatrixStatsAggregate extends AggregateBase {
   doc_count: long
-  fields: MatrixStatsFields[]
+  fields?: MatrixStatsFields[]
 }
 
 export class MatrixStatsFields {

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
+import { DateTime } from '@_types/Time'
 
 /**
  * Previews a datafeed.
@@ -47,6 +48,10 @@ export interface Request extends RequestBase {
      * configuration details in the request body.
      */
     datafeed_id?: Id
+  }
+  query_parameters: {
+    start?: DateTime
+    end?: DateTime
   }
   body: {
     /**

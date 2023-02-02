@@ -53,7 +53,7 @@ export class NodeAttributes {
   /**
    * @since 8.3.0
    */
-  external_id: string
+  external_id?: string
 }
 
 export class NodeShard {
@@ -66,6 +66,11 @@ export class NodeShard {
   recovery_source?: Dictionary<string, Id>
   unassigned_info?: UnassignedInformation
   relocating_node?: NodeId | null
+  relocation_failure_info?: RelocationFailureInfo
+}
+
+export class RelocationFailureInfo {
+  failed_attempts: integer
 }
 
 /**

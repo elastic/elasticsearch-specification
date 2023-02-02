@@ -41,6 +41,10 @@ export class FeatureToggle {
   enabled: boolean
 }
 
+export class Invocations {
+  total: long
+}
+
 export class Archive extends Base {
   indices_count: long
 }
@@ -146,6 +150,10 @@ export class ForecastStatistics {
   total: long
 }
 
+export class HealthStatistics extends Base {
+  invocations: Invocations
+}
+
 export class IlmPolicyStatistics {
   indices_managed: integer
   phases: Phases
@@ -235,6 +243,7 @@ export class MlInferenceTrainedModelsCount {
   regression?: long
   classification?: long
   ner?: long
+  text_embedding?: long
 }
 
 export class MlCounter {

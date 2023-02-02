@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { HealthStatus, Id } from '@_types/common'
 import { NodeAttributes } from '@_types/Node'
 import { double, long } from '@_types/Numeric'
 import {
@@ -30,11 +30,16 @@ import {
 
 export class TransformStats {
   checkpointing: Checkpointing
+  health?: TransformStatsHealth
   id: Id
   node?: NodeAttributes
   reason?: string
   state: string
   stats: TransformIndexerStats
+}
+
+export class TransformStatsHealth {
+  status: HealthStatus
 }
 
 export class TransformProgress {

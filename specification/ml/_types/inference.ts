@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
+import { Field, IndexName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 
 /**
@@ -212,6 +212,11 @@ export class PassThroughInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+  vocabulary?: Vocabulary
+}
+
+export class Vocabulary {
+  index: IndexName
 }
 
 /** Text embedding inference options */
@@ -230,6 +235,7 @@ export class NerInferenceOptions {
   results_field?: string
   /** The token classification labels. Must be IOB formatted tags */
   classification_labels?: string[]
+  vocabulary?: Vocabulary
 }
 
 /** Fill mask inference options */

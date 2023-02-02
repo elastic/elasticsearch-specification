@@ -45,5 +45,13 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     wait_for_completion?: boolean
+
+    /**
+     * Specifies whether annotations that have been added by the
+     * user should be deleted along with any auto-generated annotations when the job is
+     * reset.
+     * @server_default false
+     */
+    delete_user_annotations?: boolean
   }
 }

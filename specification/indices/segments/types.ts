@@ -31,7 +31,6 @@ export class Segment {
   compound: boolean
   deleted_docs: long
   generation: integer
-  memory_in_bytes: double
   search: boolean
   size_in_bytes: double
   num_docs: long
