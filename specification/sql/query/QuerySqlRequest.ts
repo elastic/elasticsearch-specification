@@ -42,6 +42,10 @@ export interface Request extends RequestBase {
      * Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.
      */
     catalog?: string
+    /**
+     * If true, the results in a columnar fashion: one row represents all the values of a certain column from the current page of results.
+     * @server_default false
+     */
     columnar?: boolean
     cursor?: string
     /**
