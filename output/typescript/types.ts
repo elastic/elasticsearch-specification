@@ -1082,8 +1082,23 @@ export interface SearchResponseBody<TDocument = unknown> {
   terminated_early?: boolean
 }
 
+export interface SearchAggregationBreakdown {
+  build_aggregation: long
+  build_aggregation_count: long
+  build_leaf_collector: long
+  build_leaf_collector_count: long
+  collect: long
+  collect_count: long
+  initialize: long
+  initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
+  reduce: long
+  reduce_count: long
+}
+
 export interface SearchAggregationProfile {
-  breakdown: Record<string, long>
+  breakdown: SearchAggregationBreakdown
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
@@ -1173,17 +1188,6 @@ export interface SearchCompletionSuggester extends SearchSuggesterBase {
 
 export type SearchContext = string | GeoLocation
 
-export interface SearchDfsProfile {
-  statistics: SearchDfsStatistics
-}
-
-export interface SearchDfsStatistics {
-  breakdown: Record<string, long>
-  description: string
-  time_in_nanos: DurationValue<UnitNanos>
-  type: string
-}
-
 export interface SearchDirectGenerator {
   field: Field
   max_edits?: integer
@@ -1202,9 +1206,20 @@ export interface SearchFetchProfile {
   type: string
   description: string
   time_in_nanos: DurationValue<UnitNanos>
-  breakdown: Record<string, long>
+  breakdown: SearchFetchProfileBreakdown
   debug?: SearchFetchProfileDebug
   children?: SearchFetchProfile[]
+}
+
+export interface SearchFetchProfileBreakdown {
+  load_source?: integer
+  load_source_count?: integer
+  load_stored_fields?: integer
+  load_stored_fields_count?: integer
+  next_reader?: integer
+  next_reader_count?: integer
+  process_count?: integer
+  process?: integer
 }
 
 export interface SearchFetchProfileDebug {
@@ -1392,8 +1407,29 @@ export interface SearchProfile {
   shards: SearchShardProfile[]
 }
 
+export interface SearchQueryBreakdown {
+  advance: long
+  advance_count: long
+  build_scorer: long
+  build_scorer_count: long
+  create_weight: long
+  create_weight_count: long
+  match: long
+  match_count: long
+  shallow_advance: long
+  shallow_advance_count: long
+  next_doc: long
+  next_doc_count: long
+  score: long
+  score_count: long
+  compute_max_score: long
+  compute_max_score_count: long
+  set_min_competitive_score: long
+  set_min_competitive_score_count: long
+}
+
 export interface SearchQueryProfile {
-  breakdown: Record<string, long>
+  breakdown: SearchQueryBreakdown
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
@@ -1425,7 +1461,6 @@ export interface SearchShardProfile {
   id: string
   searches: SearchSearchProfile[]
   fetch?: SearchFetchProfile
-  dfs?: SearchDfsProfile
 }
 
 export interface SearchSmoothingModelContainer {

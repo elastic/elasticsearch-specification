@@ -19,7 +19,21 @@
 
 import { integer, long } from '@_types/Numeric'
 import { DurationValue, UnitNanos } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
+
+export class AggregationBreakdown {
+  build_aggregation: long
+  build_aggregation_count: long
+  build_leaf_collector: long
+  build_leaf_collector_count: long
+  collect: long
+  collect_count: long
+  initialize: long
+  initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
+  reduce: long
+  reduce_count: long
+}
 
 // This is a Map<String, Object> in ES. Below are the known fields.
 export class AggregationProfileDebug {
@@ -61,7 +75,7 @@ export class AggregationProfileDelegateDebugFilter {
 }
 
 export class AggregationProfile {
-  breakdown: Dictionary<string, long>
+  breakdown: AggregationBreakdown
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
@@ -80,8 +94,29 @@ export class Profile {
   shards: ShardProfile[]
 }
 
+export class QueryBreakdown {
+  advance: long
+  advance_count: long
+  build_scorer: long
+  build_scorer_count: long
+  create_weight: long
+  create_weight_count: long
+  match: long
+  match_count: long
+  shallow_advance: long
+  shallow_advance_count: long
+  next_doc: long
+  next_doc_count: long
+  score: long
+  score_count: long
+  compute_max_score: long
+  compute_max_score_count: long
+  set_min_competitive_score: long
+  set_min_competitive_score_count: long
+}
+
 export class QueryProfile {
-  breakdown: Dictionary<string, long>
+  breakdown: QueryBreakdown
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
@@ -99,27 +134,26 @@ export class ShardProfile {
   id: string
   searches: SearchProfile[]
   fetch?: FetchProfile
-  dfs?: DfsProfile
-}
-
-export class DfsProfile {
-  statistics: DfsStatistics
-}
-
-export class DfsStatistics {
-  breakdown: Dictionary<string, long>
-  description: string
-  time_in_nanos: DurationValue<UnitNanos>
-  type: string
 }
 
 export class FetchProfile {
   type: string
   description: string
   time_in_nanos: DurationValue<UnitNanos>
-  breakdown: Dictionary<string, long>
+  breakdown: FetchProfileBreakdown
   debug?: FetchProfileDebug
   children?: FetchProfile[]
+}
+
+export class FetchProfileBreakdown {
+  load_source?: integer
+  load_source_count?: integer
+  load_stored_fields?: integer
+  load_stored_fields_count?: integer
+  next_reader?: integer
+  next_reader_count?: integer
+  process_count?: integer
+  process?: integer
 }
 
 export class FetchProfileDebug {
