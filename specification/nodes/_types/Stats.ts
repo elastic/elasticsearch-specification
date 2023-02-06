@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexStats, IndicesStats, ShardStats } from '@indices/stats/types'
+import { ShardStats } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Field, Name } from '@_types/common'
+import { ByteSize, Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
@@ -57,17 +57,23 @@ export class IndexingPressure {
 }
 
 export class IndexingPressureMemory {
+  limit?: ByteSize
   limit_in_bytes?: long
   current?: PressureMemory
   total?: PressureMemory
 }
 
 export interface PressureMemory {
-  combined_coordinating_and_primary_in_bytes?: long
-  coordinating_in_bytes?: long
-  primary_in_bytes?: long
-  replica_in_bytes?: long
+  all?: ByteSize
   all_in_bytes?: long
+  combined_coordinating_and_primary?: ByteSize
+  combined_coordinating_and_primary_in_bytes?: long
+  coordinating?: ByteSize
+  coordinating_in_bytes?: long
+  primary?: ByteSize
+  primary_in_bytes?: long
+  replica?: ByteSize
+  replica_in_bytes?: long
   coordinating_rejections?: long
   primary_rejections?: long
   replica_rejections?: long
@@ -162,9 +168,9 @@ export class Processor {
 
 export class AdaptiveSelection {
   avg_queue_size?: long
-  avg_response_time?: long
+  avg_response_time?: Duration
   avg_response_time_ns?: long
-  avg_service_time?: string
+  avg_service_time?: Duration
   avg_service_time_ns?: long
   outgoing_searches?: long
   rank?: string
@@ -383,6 +389,7 @@ export class Process {
 export class Scripting {
   cache_evictions?: long
   compilations?: long
+  compilations_history?: Dictionary<string, long>
   compilation_limit_triggered?: long
   contexts?: Context[]
 }

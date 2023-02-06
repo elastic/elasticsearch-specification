@@ -28,10 +28,13 @@ export class RolloverConditions {
   min_docs?: long
   max_docs?: long
   max_size?: ByteSize
+  max_size_bytes?: long
   min_size?: ByteSize
-  max_size_bytes?: ByteSize
+  min_size_bytes?: long
   max_primary_shard_size?: ByteSize
+  max_primary_shard_size_bytes?: long
   min_primary_shard_size?: ByteSize
+  min_primary_shard_size_bytes?: long
   max_primary_shard_docs?: long
   min_primary_shard_docs?: long
 }

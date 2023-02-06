@@ -1438,7 +1438,6 @@
     },
     "ml.delete_job": {
       "request": [
-        "Request: missing json spec query parameter 'delete_user_annotations'",
         "Request: should not have a body"
       ],
       "response": [
@@ -1560,13 +1559,6 @@
       ],
       "response": []
     },
-    "ml.preview_datafeed": {
-      "request": [
-        "Request: missing json spec query parameter 'start'",
-        "Request: missing json spec query parameter 'end'"
-      ],
-      "response": []
-    },
     "ml.put_calendar_job": {
       "request": [
         "Request: should not have a body"
@@ -1604,7 +1596,6 @@
     },
     "ml.reset_job": {
       "request": [
-        "Request: missing json spec query parameter 'delete_user_annotations'",
         "Request: should not have a body"
       ],
       "response": [
@@ -1621,7 +1612,6 @@
     },
     "ml.start_trained_model_deployment": {
       "request": [
-        "Request: missing json spec query parameter 'priority'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1803,8 +1793,8 @@
     },
     "search_mvt": {
       "request": [
-        "Request: missing json spec query parameter 'track_total_hits'",
-        "Request: missing json spec query parameter 'with_labels'"
+        "Request: query parameter 'grid_agg' does not exist in the json spec",
+        "Request: missing json spec query parameter 'track_total_hits'"
       ],
       "response": [
         "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
@@ -2302,7 +2292,6 @@
     },
     "transform.get_transform_stats": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []

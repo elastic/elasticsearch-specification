@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
  * Retrieves usage information for transforms.
@@ -62,5 +63,6 @@ export interface Request extends RequestBase {
      * @server_default 100
      */
     size?: long
+    timeout?: Duration
   }
 }

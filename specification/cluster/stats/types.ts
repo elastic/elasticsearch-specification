@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, VersionString } from '@_types/common'
+import { ByteSize, Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
   CompletionStats,
@@ -96,12 +96,19 @@ export class ClusterIndices {
 export class FieldTypesMappings {
   field_types: FieldTypes[]
   runtime_field_types?: RuntimeFieldTypes[]
+  total_field_count?: integer
+  total_deduplicated_field_count?: integer
+  total_deduplicated_mapping_size?: ByteSize
+  total_deduplicated_mapping_size_in_bytes?: long
 }
 
 export class FieldTypes {
   name: Name
   count: integer
   index_count: integer
+  indexed_vector_count?: long
+  indexed_vector_dim_max?: long
+  indexed_vector_dim_min?: long
   /** @since 7.13.0 */
   script_count?: integer
 }

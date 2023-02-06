@@ -79,11 +79,11 @@ export class DatafeedConfig {
    * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   frequency?: Duration
-  indexes?: string[]
   /**
    * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
+   * @aliases indexes
    */
-  indices: string[]
+  indices?: string[]
   /**
    * Specifies index expansion options that are used during search.
    */
@@ -96,7 +96,7 @@ export class DatafeedConfig {
   /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
    */
-  query: QueryContainer
+  query?: QueryContainer
   /**
    * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.
    */

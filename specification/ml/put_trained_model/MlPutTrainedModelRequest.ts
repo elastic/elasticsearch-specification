@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
     /**
      * The input field names for the model definition.
      */
-    input: Input
+    input?: Input
     /**
      * An object map that contains metadata about the model.
      */

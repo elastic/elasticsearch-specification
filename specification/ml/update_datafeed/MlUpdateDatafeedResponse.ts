@@ -31,15 +31,15 @@ import { Duration } from '@_types/Time'
 export class Response {
   body: {
     authorization?: DatafeedAuthorization
-    aggregations: Dictionary<string, AggregationContainer>
+    aggregations?: Dictionary<string, AggregationContainer>
     chunking_config: ChunkingConfig
     delayed_data_check_config?: DelayedDataCheckConfig
     datafeed_id: Id
-    frequency: Duration
+    frequency?: Duration
     indices: string[]
     indices_options?: IndicesOptions
     job_id: Id
-    max_empty_searches: integer
+    max_empty_searches?: integer
     query: QueryContainer
     query_delay: Duration
     runtime_mappings?: RuntimeFields

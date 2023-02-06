@@ -117,6 +117,7 @@ export interface Request extends RequestBase {
      * Specifies index expansion options that are used during search.
      */
     indices_options?: IndicesOptions
+    job_id?: Id
     /**
      * If a real-time datafeed has never seen any data (including during any initial training period), it automatically
      * stops and closes the associated job after this many real-time searches return no documents. In other words,

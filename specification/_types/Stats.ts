@@ -21,7 +21,7 @@ import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name, VersionString } from './common'
 import { ErrorCause, ShardFailure } from './Errors'
-import { integer, long, uint } from './Numeric'
+import { double, integer, long, uint } from './Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class ClusterStatistics {
@@ -113,6 +113,7 @@ export class IndexingStats {
   index_total: long
   index_failed: long
   types?: Dictionary<string, IndexingStats>
+  write_load?: double
 }
 
 export class MergesStats {
@@ -144,7 +145,6 @@ export class PluginStats {
   name: Name
   version: VersionString
   licensed: boolean
-  type: string
 }
 
 export class QueryCacheStats {

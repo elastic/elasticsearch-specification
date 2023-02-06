@@ -23,7 +23,9 @@ import {
   Id,
   SequenceNumber,
   VersionNumber,
-  HealthStatus
+  HealthStatus,
+  IndexName,
+  ByteSize
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
@@ -45,6 +47,7 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class IndexStats {
   /** Contains statistics about completions across all shards assigned to the node. */
@@ -171,6 +174,12 @@ export class ShardsTotalStats {
   total_count: long
 }
 
+export class MappingStats {
+  total_count: long
+  total_estimated_overhead?: ByteSize
+  total_estimated_overhead_in_bytes: long
+}
+
 export class ShardStats {
   commit?: ShardCommit
   completion?: CompletionStats
@@ -179,6 +188,7 @@ export class ShardStats {
   flush?: FlushStats
   get?: GetStats
   indexing?: IndexingStats
+  mappings?: MappingStats
   merges?: MergesStats
   shard_path?: ShardPath
   query_cache?: ShardQueryCache
@@ -195,7 +205,7 @@ export class ShardStats {
   warmer?: WarmerStats
   bulk?: BulkStats
   /** @since 7.15.0 */
-  shards?: ShardsTotalStats
+  shards?: Dictionary<IndexName, UserDefinedValue>
   shard_stats?: ShardsTotalStats
   indices?: IndicesStats
 }

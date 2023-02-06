@@ -19,21 +19,26 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, VersionNumber, Name } from '@_types/common'
+import { Id, VersionNumber, Name, NodeId } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class IndicesShardStores {
   shards: Dictionary<string, ShardStoreWrapper>
 }
 
-export class ShardStore {
+export class ShardStore implements AdditionalProperty<NodeId, ShardStoreNode> {
   allocation: ShardStoreAllocation
-  allocation_id: Id
-  attributes: Dictionary<string, UserDefinedValue>
-  id: Id
-  legacy_version: VersionNumber
+  allocation_id?: Id
+  store_exception?: ShardStoreException
+}
+
+export class ShardStoreNode {
+  attributes: Dictionary<string, string>
+  ephemeral_id?: string
+  external_id?: string
   name: Name
-  store_exception: ShardStoreException
+  roles: string[]
   transport_address: TransportAddress
 }
 
