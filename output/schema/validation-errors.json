@@ -2054,12 +2054,6 @@
         "response definition security.update_user_profile_data:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "semantic_search": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "shutdown.delete_node": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -2316,6 +2310,12 @@
       "response": [
         "response definition transform.reset_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "transform.schedule_now_transform": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "transform.start_transform": {
       "request": [
