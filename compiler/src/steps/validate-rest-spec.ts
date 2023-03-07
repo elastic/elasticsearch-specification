@@ -153,7 +153,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         query.push(...definition.query)
       }
 
-      if (definition.body != null) {
+      if (definition.body.kind !== 'no_body') {
         body = Body.yesBody
       }
     } else {
