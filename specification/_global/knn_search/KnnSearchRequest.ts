@@ -27,6 +27,7 @@ import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 /**
  * @rest_spec_name knn_search
  * @since 8.0.0
+ * @deprecated 8.4.0
  * @stability experimental
  */
 export interface Request extends RequestBase {
