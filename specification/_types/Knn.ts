@@ -40,8 +40,9 @@ export interface KnnQuery {
   filter?: QueryContainer | QueryContainer[]
 }
 
+/** @variants container */
 export interface QueryVectorBuilder {
-  text_embedding: TextEmbedding
+  text_embedding?: TextEmbedding
 }
 
 export interface TextEmbedding {
