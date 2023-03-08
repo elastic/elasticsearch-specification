@@ -25,7 +25,9 @@ export interface KnnQuery {
   /** The name of the vector field to search against */
   field: Field
   /** The query vector */
-  query_vector: double[]
+  query_vector?: double[]
+  /** The query vector builder. You must provide a query_vector_builder or query_vector, but not both. */
+  query_vector_builder?: QueryVectorBuilder
   /** The final number of nearest neighbors to return as top hits */
   k: long
   /** The number of nearest neighbor candidates to consider per shard */
@@ -34,4 +36,13 @@ export interface KnnQuery {
   boost?: float
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
+}
+
+export interface QueryVectorBuilder {
+  text_embedding: TextEmbedding
+}
+
+export interface TextEmbedding {
+  model_id: string
+  model_text: string
 }
