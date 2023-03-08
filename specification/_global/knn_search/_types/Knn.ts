@@ -18,9 +18,8 @@
  */
 
 import { Field } from '@_types/common'
-import { long, double } from '@_types/Numeric'
-
-export type QueryVector = double[]
+import { long, float } from '@_types/Numeric'
+import { QueryVector } from '@_types/Knn'
 
 export interface Query {
   /** The name of the vector field to search against */
