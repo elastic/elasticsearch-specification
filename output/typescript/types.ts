@@ -508,12 +508,10 @@ export interface KnnSearchResponse<TDocument = unknown> {
 
 export interface KnnSearchQuery {
   field: Field
-  query_vector: KnnSearchQueryVector
+  query_vector: QueryVector
   k: long
   num_candidates: long
 }
-
-export type KnnSearchQueryVector = double[]
 
 export interface MgetMultiGetError {
   error: ErrorCause
@@ -2150,7 +2148,7 @@ export type Ip = string
 
 export interface KnnQuery {
   field: Field
-  query_vector?: double[]
+  query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
   k: long
   num_candidates: long
@@ -2284,8 +2282,10 @@ export interface QueryCacheStats {
   total_count: integer
 }
 
+export type QueryVector = float[]
+
 export interface QueryVectorBuilder {
-  text_embedding: TextEmbedding
+  text_embedding?: TextEmbedding
 }
 
 export interface RecoveryStats {
