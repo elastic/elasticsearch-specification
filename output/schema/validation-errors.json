@@ -957,6 +957,12 @@
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'r_squared' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'"
       ]
     },
+    "ml.get_categories": {
+      "request": [
+        "Url path '/_ml/anomaly_detectors/{job_id}/results/categories/' has a trailing slash"
+      ],
+      "response": []
+    },
     "ml.get_memory_stats": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",
@@ -1083,6 +1089,18 @@
       ],
       "response": []
     },
+    "rollup.get_jobs": {
+      "request": [
+        "Url path '/_rollup/job/' has a trailing slash"
+      ],
+      "response": []
+    },
+    "rollup.get_rollup_caps": {
+      "request": [
+        "Url path '/_rollup/data/' has a trailing slash"
+      ],
+      "response": []
+    },
     "rollup.put_job": {
       "request": [],
       "response": [
@@ -1175,6 +1193,12 @@
     "security.oidc_prepare_authentication": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.put_privileges": {
+      "request": [
+        "Url path '/_security/privilege/' has a trailing slash"
       ],
       "response": []
     },
