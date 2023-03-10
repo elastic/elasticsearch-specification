@@ -234,6 +234,12 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
         const urlProperties = new Set<string>()
         for (const url of endpoint.urls) {
+          // Strip trailing slashes from paths
+          if (url.path !== '/' && url.path.endsWith('/')) {
+            modelError(`Url path '${url.path}' has a trailing slash`)
+            url.path = url.path.replace(/\/$/, '')
+          }
+
           const re = /{([^}]+)}/g
           let m
           while ((m = re.exec(url.path)) != null) { // eslint-disable-line no-cond-assign
