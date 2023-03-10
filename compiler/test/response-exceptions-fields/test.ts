@@ -23,9 +23,10 @@ import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
+const outputFolder = join(__dirname, 'output')
 
 test('Response exceptions definition cannot have unknown properties', t => {
-  const compiler = new Compiler(specsFolder)
+  const compiler = new Compiler(specsFolder, outputFolder)
   const error = t.throws(() => compiler.generateModel())
   t.is(error?.message, 'Exception.body and Exception.statusCode are the only Exception properties supported')
 })

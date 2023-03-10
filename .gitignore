@@ -62,3 +62,6 @@ output/schema/routes.go
 
 # Editor lockfiles
 .*.swp
+
+# Test suite outputs
+compiler/test/**/output/

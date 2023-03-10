@@ -27,7 +27,7 @@ jobs:
 
     - name: Generate output
       run: |
-        npm run generate-schema --prefix compiler
+        make generate
 
     - name: Generate graph
       run: |

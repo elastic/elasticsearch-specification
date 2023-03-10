@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { writeFile } from 'fs/promises'
+import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
@@ -41,17 +41,19 @@ export default class Compiler {
   jsonSpec: Map<string, JsonSpec>
   errors: ValidationErrors
   specsFolder: string
+  outputFolder: string
 
-  constructor (specsFolder: string) {
+  constructor (specsFolder: string, outputFolder: string) {
     this.queue = []
     this.errors = new ValidationErrors()
     this.specsFolder = specsFolder
+    this.outputFolder = outputFolder
   }
 
   generateModel (): this {
     this.jsonSpec = buildJsonSpec()
     const endpoints = compileEndpoints()
-    this.model = compileSpecification(endpoints, this.specsFolder)
+    this.model = compileSpecification(endpoints, this.specsFolder, this.outputFolder)
     return this
   }
 
@@ -60,18 +62,19 @@ export default class Compiler {
       this.model = await step(this.model, this.jsonSpec, this.errors)
     }
 
+    await mkdir(join(this.outputFolder, 'schema'), { recursive: true })
     await writeFile(
-      join(__dirname, '..', '..', 'output', 'schema', 'schema.json'),
+      join(this.outputFolder, 'schema', 'schema.json'),
       stringify(this.model, null, 2),
-      'utf8'
+      { encoding: 'utf8', flag: 'w' }
     )
 
     this.errors.log()
 
     await writeFile(
-      join(__dirname, '..', '..', 'output', 'schema', 'validation-errors.json'),
+      join(this.outputFolder, 'schema', 'validation-errors.json'),
       stringify(this.errors, null, 2),
-      'utf8'
+      { encoding: 'utf8', flag: 'w' }
     )
   }
 

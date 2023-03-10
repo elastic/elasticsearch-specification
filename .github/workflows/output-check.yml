@@ -22,7 +22,7 @@ jobs:
 
     - name: Generate output
       run: |
-        npm run generate-schema --prefix compiler
+        make generate
         npm run start --prefix typescript-generator
 
     - name: Validate TS output

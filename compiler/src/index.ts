@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { readFileSync } from 'fs'
-import { join } from 'path'
+import { readFileSync, existsSync, lstatSync } from 'fs'
+import { join, resolve } from 'path'
+import { argv } from 'zx'
 import Compiler from './compiler'
 import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
@@ -36,7 +37,32 @@ if (nodejsMajor !== nvmMajor) {
   process.exit(1)
 }
 
-const compiler = new Compiler(join(__dirname, '..', '..', 'specification'))
+let specsFolder: string = argv.spec
+if ((specsFolder ?? '') !== '') {
+  // We were given a specification, let's make sure it's a directory.
+  specsFolder = resolve(specsFolder)
+
+  // lstatSync raises an error if there's nothing at the path so we
+  // check that something exists there first before checking it's a directory.
+  const specFolderIsDirectory: boolean = (existsSync(specsFolder) && lstatSync(specsFolder).isDirectory())
+  if (!specFolderIsDirectory) {
+    console.error(`The specification specified at '${specsFolder}' wasn't a valid directory`)
+    process.exit(1)
+  }
+// User didn't specify a spec location so we ask for one.
+} else {
+  console.error('--spec must be specified and be a valid directory path')
+  process.exit(1)
+}
+
+// It's okay if the output folder doesn't exist initially.
+const outputFolder: string = argv.output
+if ((outputFolder ?? '') === '') {
+  console.error('--output must be specified')
+  process.exit(1)
+}
+
+const compiler = new Compiler(specsFolder, outputFolder)
 
 compiler
   .generateModel()
