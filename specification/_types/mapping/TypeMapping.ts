@@ -36,9 +36,7 @@ export class TypeMapping {
   date_detection?: boolean
   dynamic?: DynamicMapping
   dynamic_date_formats?: string[]
-  dynamic_templates?:
-    | Dictionary<string, DynamicTemplate>
-    | Dictionary<string, DynamicTemplate>[]
+  dynamic_templates?: Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
   /** @doc_id mapping-meta-field */
