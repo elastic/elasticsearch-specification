@@ -51,7 +51,8 @@ import {
   SignificantTextAggregation,
   TermsAggregation,
   VariableWidthHistogramAggregation,
-  IpPrefixAggregation
+  IpPrefixAggregation,
+  FrequentItemSetsAggregation
 } from './bucket'
 import { MatrixStatsAggregation } from './matrix'
 import {
@@ -153,6 +154,7 @@ export class AggregationContainer {
   diversified_sampler?: DiversifiedSamplerAggregation
   extended_stats?: ExtendedStatsAggregation
   extended_stats_bucket?: ExtendedStatsBucketAggregation
+  frequent_item_sets?: FrequentItemSetsAggregation
   filter?: QueryContainer
   filters?: FiltersAggregation
   geo_bounds?: GeoBoundsAggregation

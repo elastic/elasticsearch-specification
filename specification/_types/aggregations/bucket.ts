@@ -541,3 +541,35 @@ export class IpPrefixAggregation extends BucketAggregationBase {
    */
   min_doc_count?: long
 }
+
+export class FrequentItemSetsField {
+  field: Field
+  exclude?: string | string[]
+  include?: string | string[]
+}
+
+export class FrequentItemSetsAggregation {
+  /**
+   * Fields to analyze
+   */
+  fields: FrequentItemSetsField[]
+  /**
+   * The minimum size of one item set.
+   * @server_default 1
+   */
+  minimum_set_size?: integer
+  /**
+   * The minimum support of one item set.
+   * @server_default 0.1
+   */
+  minimum_support?: double
+  /**
+   * The number of top item sets to return.
+   * @server_default 10
+   */
+  size?: integer
+  /**
+   * Query that filters documents from analysis.
+   */
+  filter?: QueryContainer
+}
