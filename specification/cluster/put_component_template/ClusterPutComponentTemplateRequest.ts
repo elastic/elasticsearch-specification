@@ -43,12 +43,23 @@ export interface Request extends RequestBase {
     master_timeout?: Duration
   }
   body: {
+    /**
+     * The template to be applied which includes mappings, settings, or aliases configuration.
+     */
     template: IndexState
-    aliases?: Dictionary<string, AliasDefinition>
-    mappings?: TypeMapping
-    settings?: IndexSettings
+    /**
+     * Version number used to manage component templates externally.
+     * This number isn't automatically generated or incremented by Elasticsearch.
+     */
     version?: VersionNumber
     /** @doc_id mapping-meta-field */
     _meta?: Metadata
+    /**
+     * This setting overrides the value of the `action.auto_create_index` cluster setting.
+     * If set to `true` in a template, then indices can be automatically created using that
+     * template even if auto-creation of indices is disabled via `actions.auto_create_index`.
+     * If set to `false` then data streams matching the template must always be explicitly created.
+     */
+    allow_auto_create?: boolean
   }
 }
