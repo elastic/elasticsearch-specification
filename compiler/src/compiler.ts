@@ -66,7 +66,7 @@ export default class Compiler {
     await writeFile(
       join(this.outputFolder, 'schema', 'schema.json'),
       stringify(this.model, null, 2),
-      { encoding: 'utf8', flag: 'w' }
+      'utf8'
     )
 
     this.errors.log()
@@ -74,7 +74,7 @@ export default class Compiler {
     await writeFile(
       join(this.outputFolder, 'schema', 'validation-errors.json'),
       stringify(this.errors, null, 2),
-      { encoding: 'utf8', flag: 'w' }
+      'utf8'
     )
   }
 
