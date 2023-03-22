@@ -17,16 +17,9 @@
  * under the License.
  */
 
-import { join } from 'path'
-import test from 'ava'
-import Compiler from '../../src/compiler'
-import * as Model from '../../src/model/metamodel'
-
-const specsFolder = join(__dirname, 'specification')
-const outputFolder = join(__dirname, 'output')
-
-test('Wrong rest_spec_name for request definition', t => {
-  const compiler = new Compiler(specsFolder, outputFolder)
-  const error = t.throws(() => compiler.generateModel())
-  t.true(error?.message.startsWith("The api 'foobar' does not exists, did you mean"))
-})
+/**
+ * @rest_spec_name index
+ * @since 0.0.0
+ * @stability stable
+ */
+export interface Request {}

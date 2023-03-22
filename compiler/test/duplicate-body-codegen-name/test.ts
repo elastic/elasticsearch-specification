@@ -23,9 +23,10 @@ import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
+const outputFolder = join(__dirname, 'output')
 
 test('@codegen_name cannot already exist elsewhere', t => {
-  const compiler = new Compiler(specsFolder)
+  const compiler = new Compiler(specsFolder, outputFolder)
   const error = t.throws(() => compiler.generateModel())
   t.is(error?.message, "The codegen_name 'id' already exists as a property in the path or query.")
 })

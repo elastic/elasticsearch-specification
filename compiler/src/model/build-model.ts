@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { writeFileSync } from 'fs'
+import { mkdirSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { STATUS_CODES } from 'http'
 import {
@@ -88,7 +88,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
   return map
 }
 
-export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string): model.Model {
+export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
   const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
 
@@ -123,10 +123,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
     }
   }
 
+  mkdirSync(join(outputFolder, 'dangling-types'), { recursive: true })
   writeFileSync(
-    join(__dirname, '..', '..', '..', 'output', 'dangling-types', 'dangling.csv'),
+    join(outputFolder, 'dangling-types', 'dangling.csv'),
     definedButNeverUsed.join('\n'),
-    'utf8'
+    { encoding: 'utf8', flag: 'w' }
   )
   for (const api of jsonSpec.keys()) {
     model.endpoints.push(endpointMappings[api])

@@ -23,7 +23,8 @@ import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
-const compiler = new Compiler(specsFolder)
+const outputFolder = join(__dirname, 'output')
+const compiler = new Compiler(specsFolder, outputFolder)
 const { model } = compiler.generateModel()
 
 test('interfaces', t => {
