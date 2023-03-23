@@ -27,7 +27,7 @@ import {
   Routing,
   SuggestMode
 } from '@_types/common'
-import { GeoHash, GeoHashPrecision, GeoLocation } from '@_types/Geo'
+import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 
@@ -130,9 +130,13 @@ export class SuggesterBase {
 export class CompletionSuggester extends SuggesterBase {
   contexts?: Dictionary<Field, CompletionContext | CompletionContext[]>
   fuzzy?: SuggestFuzziness
-  prefix?: string
-  regex?: string
+  regex?: RegexOptions
   skip_duplicates?: boolean
+}
+
+export class RegexOptions {
+  flags?: string
+  max_determinized_states?: integer
 }
 
 export class SuggestFuzziness {
