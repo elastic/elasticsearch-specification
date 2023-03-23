@@ -1434,7 +1434,7 @@ export interface SearchQueryProfile {
 }
 
 export interface SearchRegexOptions {
-  flags?: string
+  flags?: integer | string
   max_determinized_states?: integer
 }
 

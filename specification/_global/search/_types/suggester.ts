@@ -135,7 +135,7 @@ export class CompletionSuggester extends SuggesterBase {
 }
 
 export class RegexOptions {
-  flags?: string
+  flags?: integer | string
   max_determinized_states?: integer
 }
 
