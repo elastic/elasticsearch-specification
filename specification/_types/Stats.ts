@@ -20,7 +20,7 @@
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name, VersionString } from './common'
-import { ErrorCause, ShardFailure } from './Errors'
+import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
@@ -153,7 +153,7 @@ export class QueryCacheStats {
   evictions: integer
   hit_count: integer
   memory_size?: ByteSize
-  memory_size_in_bytes: integer
+  memory_size_in_bytes: long
   miss_count: integer
   total_count: integer
 }
@@ -206,37 +206,37 @@ export class SearchStats {
 export class SegmentsStats {
   count: integer
   doc_values_memory?: ByteSize
-  doc_values_memory_in_bytes: integer
+  doc_values_memory_in_bytes: long
   file_sizes: Dictionary<string, ShardFileSizeInfo>
   fixed_bit_set?: ByteSize
-  fixed_bit_set_memory_in_bytes: integer
+  fixed_bit_set_memory_in_bytes: long
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: integer
-  index_writer_memory_in_bytes: integer
+  index_writer_max_memory_in_bytes?: long
+  index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
-  memory_in_bytes: integer
+  memory_in_bytes: long
   norms_memory?: ByteSize
-  norms_memory_in_bytes: integer
+  norms_memory_in_bytes: long
   points_memory?: ByteSize
-  points_memory_in_bytes: integer
+  points_memory_in_bytes: long
   stored_memory?: ByteSize
-  stored_fields_memory_in_bytes: integer
-  terms_memory_in_bytes: integer
+  stored_fields_memory_in_bytes: long
+  terms_memory_in_bytes: long
   terms_memory?: ByteSize
   term_vectory_memory?: ByteSize
-  term_vectors_memory_in_bytes: integer
+  term_vectors_memory_in_bytes: long
   version_map_memory?: ByteSize
-  version_map_memory_in_bytes: integer
+  version_map_memory_in_bytes: long
 }
 
 export class StoreStats {
   size?: ByteSize
-  size_in_bytes: integer
+  size_in_bytes: long
   reserved?: ByteSize
-  reserved_in_bytes: integer
+  reserved_in_bytes: long
   total_data_set_size?: ByteSize
-  total_data_set_size_in_bytes?: integer
+  total_data_set_size_in_bytes?: long
 }
 
 export class TranslogStats {
