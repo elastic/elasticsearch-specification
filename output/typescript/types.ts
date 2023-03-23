@@ -1181,8 +1181,7 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
 export interface SearchCompletionSuggester extends SearchSuggesterBase {
   contexts?: Record<Field, SearchCompletionContext | SearchContext | (SearchCompletionContext | SearchContext)[]>
   fuzzy?: SearchSuggestFuzziness
-  prefix?: string
-  regex?: string
+  regex?: SearchRegexOptions
   skip_duplicates?: boolean
 }
 
@@ -1434,6 +1433,11 @@ export interface SearchQueryProfile {
   time_in_nanos: DurationValue<UnitNanos>
   type: string
   children?: SearchQueryProfile[]
+}
+
+export interface SearchRegexOptions {
+  flags?: integer | string
+  max_determinized_states?: integer
 }
 
 export interface SearchRescore {
