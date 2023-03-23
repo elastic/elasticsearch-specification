@@ -8333,11 +8333,9 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   master_timeout?: Duration
   body?: {
     template: IndicesIndexState
-    aliases?: Record<string, IndicesAliasDefinition>
-    mappings?: MappingTypeMapping
-    settings?: IndicesIndexSettings
     version?: VersionNumber
     _meta?: Metadata
+    allow_auto_create?: boolean
   }
 }
 
