@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "TestCase": {
+        "properties": {
+          "multi_type_union_list": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "multi_type_union_one_of": {
+            "oneOf": [
+              {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              }
+            ]
+          },
+          "multi_type_union_one_of_and_list": {
+            "oneOf": [
+              {
+                "type": [
+                  "number"
+                ]
+              },
+              {
+                "type": [
+                  "string"
+                ]
+              }
+            ]
+          },
+          "scalar": {
+            "type": "number"
+          },
+          "single_type_union_list": {
+            "type": [
+              "number"
+            ]
+          },
+          "single_type_union_one_of": {
+            "oneOf": [
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "single_type_union_one_of_and_list": {
+            "oneOf": [
+              {
+                "type": [
+                  "number"
+                ]
+              }
+            ]
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}

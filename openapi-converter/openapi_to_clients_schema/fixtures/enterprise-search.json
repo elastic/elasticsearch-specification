@@ -1,0 +1,1423 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Enterprise Search API V1",
+    "description": "A set of solution-wide APIs for managing Elastic Enterprise Search",
+    "version": "v1",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "{schemes}://{host}:{port}",
+      "variables": {
+        "schemes": {
+          "enum": [
+            "http",
+            "https"
+          ],
+          "default": "http"
+        },
+        "host": {
+          "default": "localhost",
+          "description": "The host running Enterprise Search"
+        },
+        "port": {
+          "default": "3002"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearer_auth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      },
+      "basic_auth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "version": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "build_date",
+          "build_hash",
+          "number"
+        ],
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "build_hash": {
+            "type": "string"
+          },
+          "build_date": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "memory_usage": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "heap_committed",
+          "heap_init",
+          "heap_max",
+          "heap_used",
+          "non_heap_committed",
+          "non_heap_init",
+          "object_pending_finalization_count"
+        ],
+        "properties": {
+          "heap_init": {
+            "type": "integer"
+          },
+          "heap_used": {
+            "type": "integer"
+          },
+          "heap_committed": {
+            "type": "integer"
+          },
+          "heap_max": {
+            "type": "integer"
+          },
+          "non_heap_init": {
+            "type": "integer"
+          },
+          "non_heap_committed": {
+            "type": "integer"
+          },
+          "object_pending_finalization_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "thread_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "daemon_thread_count",
+          "peak_thread_count",
+          "thread_count",
+          "total_started_thread_count"
+        ],
+        "properties": {
+          "thread_count": {
+            "type": "integer"
+          },
+          "peak_thread_count": {
+            "type": "integer"
+          },
+          "total_started_thread_count": {
+            "type": "integer"
+          },
+          "daemon_thread_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "jvm_gc_collector_info": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "collection_count": {
+              "type": "integer"
+            },
+            "collection_time": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "java_gc_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "collection_count",
+          "collection_time",
+          "garbage_collectors"
+        ],
+        "properties": {
+          "collection_count": {
+            "type": "integer"
+          },
+          "collection_time": {
+            "type": "integer"
+          },
+          "garbage_collectors": {
+            "$ref": "#/components/schemas/jvm_gc_collector_info"
+          }
+        }
+      },
+      "jvm_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "memory_pools",
+          "memory_usage",
+          "pid",
+          "threads",
+          "gc",
+          "uptime",
+          "vm_name",
+          "vm_vendor",
+          "vm_version"
+        ],
+        "properties": {
+          "pid": {
+            "type": "integer"
+          },
+          "uptime": {
+            "type": "integer"
+          },
+          "memory_usage": {
+            "$ref": "#/components/schemas/memory_usage"
+          },
+          "memory_pools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "threads": {
+            "$ref": "#/components/schemas/thread_stats"
+          },
+          "vm_version": {
+            "type": "string"
+          },
+          "vm_vendor": {
+            "type": "string"
+          },
+          "vm_name": {
+            "type": "string"
+          },
+          "gc": {
+            "$ref": "#/components/schemas/java_gc_info"
+          }
+        }
+      },
+      "sidecar_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "alive"
+        ],
+        "properties": {
+          "pid": {
+            "type": "integer"
+          },
+          "alive": {
+            "type": "boolean"
+          },
+          "restart_count": {
+            "type": "integer"
+          },
+          "seconds_since_last_restart": {
+            "type": "integer"
+          }
+        }
+      },
+      "system_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "java_version",
+          "jruby_version",
+          "os_name",
+          "os_version"
+        ],
+        "properties": {
+          "java_version": {
+            "type": "string"
+          },
+          "jruby_version": {
+            "type": "string"
+          },
+          "os_name": {
+            "type": "string"
+          },
+          "os_version": {
+            "type": "string"
+          }
+        }
+      },
+      "esqueues_me_job_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "created_at",
+          "scheduled_at",
+          "processing_started_at",
+          "processing_latency",
+          "time_since_last_scheduled",
+          "time_since_last_processed",
+          "total_processed"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "scheduled_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "processing_started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "processing_latency": {
+            "type": "integer"
+          },
+          "time_since_last_scheduled": {
+            "type": "integer"
+          },
+          "time_since_last_processed": {
+            "type": "integer"
+          },
+          "total_processed": {
+            "type": "integer"
+          }
+        }
+      },
+      "esqueues_me_info": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/esqueues_me_job_info"
+        },
+        "properties": {
+          "instance": {
+            "$ref": "#/components/schemas/esqueues_me_job_info"
+          }
+        }
+      },
+      "crawler_workers_pool_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pool_size",
+          "active",
+          "available"
+        ],
+        "properties": {
+          "pool_size": {
+            "type": "integer"
+          },
+          "active": {
+            "type": "integer"
+          },
+          "available": {
+            "type": "integer"
+          }
+        }
+      },
+      "crawler_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "running",
+          "workers"
+        ],
+        "properties": {
+          "running": {
+            "type": "boolean"
+          },
+          "workers": {
+            "$ref": "#/components/schemas/crawler_workers_pool_info"
+          }
+        }
+      },
+      "storage_summary": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index_count",
+          "size_in_bytes"
+        ],
+        "properties": {
+          "index_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size_in_bytes": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "index_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "size_in_bytes"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "size_in_bytes": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "storage_cleanup_response": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "indices",
+          "index_count"
+        ],
+        "properties": {
+          "indices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "index_count": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "storage_response": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "indices",
+          "summary"
+        ],
+        "properties": {
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/index_info"
+            }
+          },
+          "summary": {
+            "$ref": "#/components/schemas/storage_summary"
+          }
+        }
+      },
+      "health_response": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "filebeat",
+          "jvm",
+          "name",
+          "system",
+          "version",
+          "cluster_uuid"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "cluster_uuid": {
+            "type": "string"
+          },
+          "version": {
+            "$ref": "#/components/schemas/version"
+          },
+          "jvm": {
+            "$ref": "#/components/schemas/jvm_info"
+          },
+          "filebeat": {
+            "$ref": "#/components/schemas/sidecar_info"
+          },
+          "metricbeat": {
+            "$ref": "#/components/schemas/sidecar_info"
+          },
+          "system": {
+            "$ref": "#/components/schemas/system_info"
+          },
+          "esqueues_me": {
+            "$ref": "#/components/schemas/esqueues_me_info"
+          },
+          "crawler": {
+            "$ref": "#/components/schemas/crawler_info"
+          }
+        }
+      },
+      "timer": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "max",
+          "mean",
+          "sum"
+        ],
+        "properties": {
+          "sum": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "mean": {
+            "type": "number"
+          }
+        }
+      },
+      "app_metrics": {
+        "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "$ref": "#/components/schemas/timer"
+            }
+          ]
+        }
+      },
+      "connections": {
+        "type": "object",
+        "required": [
+          "current",
+          "max",
+          "total"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "max": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "request_duration_ms": {
+        "type": "object",
+        "required": [
+          "max",
+          "mean",
+          "std_dev"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "max": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mean": {
+            "type": "number",
+            "format": "double"
+          },
+          "std_dev": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "network_bytes": {
+        "type": "object",
+        "required": [
+          "received_total",
+          "received_rate",
+          "sent_total",
+          "sent_rate"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "received_total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "received_rate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sent_total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sent_rate": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "responses": {
+        "type": "object",
+        "required": [
+          "1xx",
+          "2xx",
+          "3xx",
+          "4xx",
+          "5xx"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "1xx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "2xx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "3xx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "4xx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "5xx": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "http_stats": {
+        "type": "object",
+        "required": [
+          "connections",
+          "request_duration_ms",
+          "network_bytes",
+          "responses"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "connections": {
+            "$ref": "#/components/schemas/connections"
+          },
+          "request_duration_ms": {
+            "$ref": "#/components/schemas/request_duration_ms"
+          },
+          "network_bytes": {
+            "$ref": "#/components/schemas/network_bytes"
+          },
+          "responses": {
+            "$ref": "#/components/schemas/responses"
+          }
+        }
+      },
+      "app_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "end",
+          "metrics",
+          "pid",
+          "start"
+        ],
+        "properties": {
+          "pid": {
+            "type": "integer"
+          },
+          "start": {
+            "type": "string"
+          },
+          "end": {
+            "type": "string"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/app_metrics"
+          }
+        }
+      },
+      "queue_progress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pending"
+        ],
+        "properties": {
+          "pending": {
+            "type": "integer"
+          }
+        }
+      },
+      "queue_stats": {
+        "type": "object",
+        "required": [
+          "failed"
+        ],
+        "properties": {
+          "failed": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "additionalProperties": {
+          "$ref": "#/components/schemas/queue_progress"
+        }
+      },
+      "connector_pool": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "busy",
+          "idle",
+          "queue_depth",
+          "running",
+          "size",
+          "total_completed",
+          "total_scheduled"
+        ],
+        "properties": {
+          "running": {
+            "type": "boolean"
+          },
+          "queue_depth": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "busy": {
+            "type": "integer"
+          },
+          "idle": {
+            "type": "integer"
+          },
+          "total_scheduled": {
+            "type": "integer"
+          },
+          "total_completed": {
+            "type": "integer"
+          }
+        }
+      },
+      "connector_pools": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "extract_worker_pool",
+          "publish_worker_pool",
+          "subextract_worker_pool"
+        ],
+        "properties": {
+          "extract_worker_pool": {
+            "$ref": "#/components/schemas/connector_pool"
+          },
+          "subextract_worker_pool": {
+            "$ref": "#/components/schemas/connector_pool"
+          },
+          "publish_worker_pool": {
+            "$ref": "#/components/schemas/connector_pool"
+          }
+        }
+      },
+      "job_types": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "delete",
+          "full",
+          "incremental",
+          "permissions"
+        ],
+        "properties": {
+          "full": {
+            "type": "integer"
+          },
+          "incremental": {
+            "type": "integer"
+          },
+          "delete": {
+            "type": "integer"
+          },
+          "permissions": {
+            "type": "integer"
+          }
+        }
+      },
+      "job_store": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "job_types",
+          "waiting",
+          "working"
+        ],
+        "properties": {
+          "waiting": {
+            "type": "integer"
+          },
+          "working": {
+            "type": "integer"
+          },
+          "job_types": {
+            "$ref": "#/components/schemas/job_types"
+          }
+        }
+      },
+      "connector_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "alive",
+          "job_store",
+          "pool"
+        ],
+        "properties": {
+          "alive": {
+            "type": "boolean"
+          },
+          "pool": {
+            "$ref": "#/components/schemas/connector_pools"
+          },
+          "job_store": {
+            "$ref": "#/components/schemas/job_store"
+          }
+        }
+      },
+      "app_search_product_usage_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "total_engines"
+        ],
+        "properties": {
+          "total_engines": {
+            "type": "integer"
+          }
+        }
+      },
+      "workplace_search_product_usage_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "total_org_sources",
+          "total_private_sources",
+          "total_queries_last_30_days"
+        ],
+        "properties": {
+          "total_org_sources": {
+            "type": "integer"
+          },
+          "total_private_sources": {
+            "type": "integer"
+          },
+          "total_queries_last_30_days": {
+            "type": "integer"
+          }
+        }
+      },
+      "enterprise_search_product_usage_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "total_search_indices"
+        ],
+        "properties": {
+          "total_search_indices": {
+            "type": "integer"
+          }
+        }
+      },
+      "product_usage_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "app_search",
+          "workplace_search",
+          "enterprise_search"
+        ],
+        "properties": {
+          "app_search": {
+            "$ref": "#/components/schemas/app_search_product_usage_info"
+          },
+          "workplace_search": {
+            "$ref": "#/components/schemas/workplace_search_product_usage_info"
+          },
+          "enterprise_search": {
+            "$ref": "#/components/schemas/enterprise_search_product_usage_info"
+          }
+        }
+      },
+      "crawler_crawl_requests_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pending",
+          "active",
+          "successful",
+          "failed"
+        ],
+        "properties": {
+          "pending": {
+            "type": "integer"
+          },
+          "active": {
+            "type": "integer"
+          },
+          "successful": {
+            "type": "integer"
+          },
+          "failed": {
+            "type": "integer"
+          }
+        }
+      },
+      "crawler_global_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "crawl_requests"
+        ],
+        "properties": {
+          "crawl_requests": {
+            "$ref": "#/components/schemas/crawler_crawl_requests_stats"
+          }
+        }
+      },
+      "crawler_denied_urls_info": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        }
+      },
+      "crawler_status_codes_info": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        }
+      },
+      "crawler_workers_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pool_size",
+          "active",
+          "available"
+        ],
+        "properties": {
+          "pool_size": {
+            "type": "integer"
+          },
+          "active": {
+            "type": "integer"
+          },
+          "available": {
+            "type": "integer"
+          }
+        }
+      },
+      "crawler_queue_sizes_info": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "primary",
+          "purge"
+        ],
+        "properties": {
+          "primary": {
+            "type": "integer"
+          },
+          "purge": {
+            "type": "integer"
+          }
+        }
+      },
+      "crawler_node_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pages_visited",
+          "urls_allowed",
+          "urls_denied",
+          "status_codes",
+          "queue_size",
+          "active_threads",
+          "workers"
+        ],
+        "properties": {
+          "active_threads": {
+            "type": "integer"
+          },
+          "pages_visited": {
+            "type": "integer"
+          },
+          "urls_allowed": {
+            "type": "integer"
+          },
+          "queue_size": {
+            "$ref": "#/components/schemas/crawler_queue_sizes_info"
+          },
+          "urls_denied": {
+            "$ref": "#/components/schemas/crawler_denied_urls_info"
+          },
+          "status_codes": {
+            "$ref": "#/components/schemas/crawler_status_codes_info"
+          },
+          "workers": {
+            "$ref": "#/components/schemas/crawler_workers_info"
+          }
+        }
+      },
+      "crawler_stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "global",
+          "node"
+        ],
+        "properties": {
+          "global": {
+            "$ref": "#/components/schemas/crawler_global_stats"
+          },
+          "node": {
+            "$ref": "#/components/schemas/crawler_node_stats"
+          }
+        }
+      },
+      "stats_response": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cluster_uuid",
+          "http",
+          "app",
+          "queues",
+          "connectors"
+        ],
+        "properties": {
+          "cluster_uuid": {
+            "type": "string"
+          },
+          "http": {
+            "$ref": "#/components/schemas/http_stats"
+          },
+          "app": {
+            "$ref": "#/components/schemas/app_stats"
+          },
+          "queues": {
+            "$ref": "#/components/schemas/queue_stats"
+          },
+          "connectors": {
+            "$ref": "#/components/schemas/connector_stats"
+          },
+          "crawler": {
+            "$ref": "#/components/schemas/crawler_stats"
+          },
+          "product_usage": {
+            "$ref": "#/components/schemas/product_usage_info"
+          }
+        }
+      },
+      "read_only_state": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "enabled"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "force": {
+        "description": "The value for the \"force\" flag",
+        "in": "query",
+        "name": "force",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "included_stats": {
+        "name": "include",
+        "in": "query",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "description": "Comma-separated list of stats to return"
+      }
+    }
+  },
+  "security": [
+    {
+      "basic_auth": [
+
+      ]
+    },
+    {
+      "bearer_auth": [
+
+      ]
+    }
+  ],
+  "paths": {
+    "/api/ent/v1/internal/health": {
+      "get": {
+        "summary": "Get information on the health of a deployment and basic statistics around resource usage",
+        "tags": [
+          "Health API"
+        ],
+        "description": "Get information on the health of a deployment and basic statistics around resource usage",
+        "operationId": "getHealth",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/monitoring-apis.html#health-api-example"
+        },
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/health_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ent/v1/internal/read_only_mode": {
+      "get": {
+        "summary": "Get the read-only flag's state",
+        "tags": [
+          "Read-Only API"
+        ],
+        "description": "Get the read-only flag's state",
+        "operationId": "getReadOnly",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/read-only-api.html#getting-read-only-state"
+        },
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/read_only_state"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update the read-only flag's state",
+        "tags": [
+          "Read-Only API"
+        ],
+        "description": "Update the read-only flag's state",
+        "operationId": "putReadOnly",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/read-only-api.html#setting-read-only-state"
+        },
+        "parameters": [
+
+        ],
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/read_only_state"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/read_only_state"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/ent/v1/internal/stats": {
+      "get": {
+        "summary": "Get information about the resource usage of the application, the state of different internal queues, etc.",
+        "tags": [
+          "Stats API"
+        ],
+        "description": "Get information about the resource usage of the application, the state of different internal queues, etc.",
+        "operationId": "getStats",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "$ref": "#/components/parameters/included_stats"
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/monitoring-apis.html#stats-api-example"
+        },
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/stats_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ent/v1/internal/storage": {
+      "get": {
+        "summary": "Get information on the application indices and the space used",
+        "tags": [
+          "Storage API"
+        ],
+        "description": "Get information on the application indices and the space used",
+        "operationId": "getStorage",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/storage-api.html#get-storage-api"
+        },
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/storage_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ent/v1/internal/storage/stale": {
+      "get": {
+        "summary": "Get information on the outdated application indices",
+        "tags": [
+          "Storage API"
+        ],
+        "description": "Get information on the outdated application indices",
+        "operationId": "getStaleStorage",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/storage-api.html#get-stale-storage-api"
+        },
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/storage_response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cleanup outdated application indices",
+        "tags": [
+          "Storage API"
+        ],
+        "description": "Cleanup outdated application indices",
+        "operationId": "deleteStaleStorage",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/storage-api.html#delete-stale-storage-api"
+        },
+        "parameters": [
+          {
+            "name": "force",
+            "in": "query",
+            "description": "The value for the \"force\" flag",
+            "$ref": "#/components/parameters/force",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/storage_cleanup_response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ent/v1/internal/version": {
+      "get": {
+        "summary": "Get version information for this server",
+        "tags": [
+          "Version API"
+        ],
+        "description": "Get version information for this server",
+        "operationId": "getVersion",
+        "security": [
+          {
+            "basic_auth": [
+
+            ]
+          }
+        ],
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/monitoring-apis.html#monitoring-apis-version-api"
+        },
+        "responses": {
+          "401": {
+            "description": "unauthorized"
+          },
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/version"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Health API",
+      "description": "An API for quickly getting information on the health of a deployment and basic statistics around resource usage",
+      "externalDocs": {
+        "url": "https://www.elastic.co/guide/en/enterprise-search/current/monitoring-apis.html#health-api"
+      }
+    },
+    {
+      "name": "Version API",
+      "description": "An API for getting version information for this server",
+      "externalDocs": {
+        "url": "https://www.elastic.co/guide/en/enterprise-search/current/monitoring-apis.html#monitoring-apis-version-api"
+      }
+    },
+    {
+      "name": "Stats API",
+      "description": "A dedicated API for getting information about the resource usage of the application, the state of different internal queues, etc.",
+      "externalDocs": {
+        "url": "https://www.elastic.co/guide/en/enterprise-search/current/monitoring-apis.html#stats-api"
+      }
+    },
+    {
+      "name": "Read-Only API",
+      "description": "An API endpoint for managing the read-only mode for a deployment",
+      "externalDocs": {
+        "url": "https://www.elastic.co/guide/en/enterprise-search/current/read-only-api.html"
+      }
+    },
+    {
+      "name": "Storage API",
+      "description": "An API endpoint for managing storage for a deployment",
+      "externalDocs": {
+        "url": "https://www.elastic.co/guide/en/enterprise-search/current/storage-api.html"
+      }
+    }
+  ]
+}

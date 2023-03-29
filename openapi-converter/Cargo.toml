@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "clients_schema",
+    "openapi_to_clients_schema",
+]
