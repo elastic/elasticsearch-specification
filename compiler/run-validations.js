@@ -48,6 +48,8 @@ const cloneEsPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 
 const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'upload-recording')
 const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 const DAY = 1000 * 60 * 60 * 24
+const specPath = path.join(__dirname, '..', 'specification')
+const outputPath = path.join(__dirname, '..', 'output/schema')
 
 const apis = require('../output/schema/schema.json')
   .endpoints
@@ -135,7 +137,7 @@ async function run () {
 
   {
     spinner.text = 'Generating schema'
-    const Process = await nothrow($`node ${path.join(compilerPath, 'lib', 'index.js')}`)
+    const Process = await nothrow($`node ${path.join(compilerPath, 'lib', 'index.js')} --spec ${specPath} --output ${outputPath}`)
     if (Process.exitCode !== 0) {
       spinner.fail(removeHeader(Process.stdout))
       console.log(Process.stderr)
