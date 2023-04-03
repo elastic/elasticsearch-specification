@@ -107,6 +107,7 @@ export type Aggregate =
   | SignificantStringTermsAggregate
   | UnmappedSignificantTermsAggregate
   | CompositeAggregate
+  | FrequentItemSetsAggregate
   //
   | ScriptedMetricAggregate
   | TopHitsAggregate
@@ -633,6 +634,14 @@ export class IpPrefixBucket extends MultiBucketBase {
   key: string
   prefix_length: integer
   netmask?: string
+}
+
+/** @variant name=frequent_item_sets */
+export class FrequentItemSetsAggregate extends MultiBucketAggregateBase<FrequentItemSetsBucket> {}
+
+export class FrequentItemSetsBucket extends MultiBucketBase {
+  key: Dictionary<Field, string[]>
+  support: double
 }
 
 //----- Misc
