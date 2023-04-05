@@ -858,6 +858,12 @@
       ],
       "response": []
     },
+    "health_report": {
+      "request": [
+        "Request: should not have a body"
+      ],
+      "response": []
+    },
     "ilm.delete_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -2309,9 +2315,11 @@
     },
     "transform.schedule_now_transform": {
       "request": [
-        "Missing request & response"
+        "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition transform.schedule_now_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "transform.start_transform": {
       "request": [
