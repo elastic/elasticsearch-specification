@@ -1347,6 +1347,7 @@
     },
     "logstash.get_pipeline": {
       "request": [
+        "Request: path parameter 'id' is optional in the json spec",
         "Request: should not have a body"
       ],
       "response": []
