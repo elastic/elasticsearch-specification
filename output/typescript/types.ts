@@ -454,6 +454,150 @@ export interface GetSourceRequest extends RequestBase {
 
 export type GetSourceResponse<TDocument = unknown> = TDocument
 
+export interface HealthReportBaseIndicator {
+  status: HealthReportIndicatorHealthStatus
+  symptom: string
+  impacts?: HealthReportImpact[]
+  diagnosis?: HealthReportDiagnosis[]
+}
+
+export interface HealthReportDiagnosis {
+  id: string
+  action: string
+  affected_resources: HealthReportDiagnosisAffectedResources
+  cause: string
+  help_url: string
+}
+
+export interface HealthReportDiagnosisAffectedResources {
+  indices?: Indices
+  nodes?: HealthReportIndicatorNode[]
+  slm_policies?: string[]
+  feature_states?: string[]
+  snapshot_repositories?: string[]
+}
+
+export interface HealthReportDiskIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportDiskIndicatorDetails
+}
+
+export interface HealthReportDiskIndicatorDetails {
+  indices_with_readonly_block: long
+  nodes_with_enough_disk_space: long
+  nodes_over_high_watermark: long
+  nodes_over_flood_stage_watermark: long
+  nodes_with_unknown_disk_status: long
+}
+
+export interface HealthReportIlmIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportIlmIndicatorDetails
+}
+
+export interface HealthReportIlmIndicatorDetails {
+  ilm_status: LifecycleOperationMode
+  policies: long
+}
+
+export interface HealthReportImpact {
+  description: string
+  id: string
+  impact_areas: HealthReportImpactArea[]
+  severity: integer
+}
+
+export type HealthReportImpactArea = 'search' | 'ingest' | 'backup' | 'deployment_management'
+
+export type HealthReportIndicatorHealthStatus = 'green' | 'yellow' | 'red' | 'unknown'
+
+export interface HealthReportIndicatorNode {
+  name: string | null
+  node_id: string | null
+}
+
+export interface HealthReportIndicators {
+  master_is_stable?: HealthReportMasterIsStableIndicator
+  shards_availability?: HealthReportShardsAvailabilityIndicator
+  disk?: HealthReportDiskIndicator
+  repository_integrity?: HealthReportRepositoryIntegrityIndicator
+  ilm?: HealthReportIlmIndicator
+  slm?: HealthReportSlmIndicator
+}
+
+export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportMasterIsStableIndicatorDetails
+}
+
+export interface HealthReportMasterIsStableIndicatorClusterFormationNode {
+  name?: string
+  node_id: string
+  cluster_formation_message: string
+}
+
+export interface HealthReportMasterIsStableIndicatorDetails {
+  current_master: HealthReportIndicatorNode
+  recent_masters: HealthReportIndicatorNode[]
+  exception_fetching_history?: HealthReportMasterIsStableIndicatorExceptionFetchingHistory
+  cluster_formation?: HealthReportMasterIsStableIndicatorClusterFormationNode[]
+}
+
+export interface HealthReportMasterIsStableIndicatorExceptionFetchingHistory {
+  message: string
+  stack_trace: string
+}
+
+export interface HealthReportRepositoryIntegrityIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportRepositoryIntegrityIndicatorDetails
+}
+
+export interface HealthReportRepositoryIntegrityIndicatorDetails {
+  total_repositories?: long
+  corrupted_repositories?: long
+  corrupted?: string[]
+}
+
+export interface HealthReportRequest extends RequestBase {
+  feature?: string | string[]
+  timeout?: Duration
+  verbose?: boolean
+  size?: integer
+}
+
+export interface HealthReportResponse {
+  cluster_name: string
+  indicators: HealthReportIndicators
+}
+
+export interface HealthReportShardsAvailabilityIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportShardsAvailabilityIndicatorDetails
+}
+
+export interface HealthReportShardsAvailabilityIndicatorDetails {
+  creating_primaries: long
+  initializing_primaries: long
+  initializing_replicas: long
+  restarting_primaries: long
+  restarting_replicas: long
+  started_primaries: long
+  started_replicas: long
+  unassigned_primaries: long
+  unassigned_replicas: long
+}
+
+export interface HealthReportSlmIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportSlmIndicatorDetails
+}
+
+export interface HealthReportSlmIndicatorDetails {
+  slm_status: LifecycleOperationMode
+  policies: long
+  unhealthy_policies: HealthReportSlmIndicatorUnhealthyPolicies
+}
+
+export interface HealthReportSlmIndicatorUnhealthyPolicies {
+  count: long
+  invocations_since_last_success?: Record<string, long>
+}
+
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
