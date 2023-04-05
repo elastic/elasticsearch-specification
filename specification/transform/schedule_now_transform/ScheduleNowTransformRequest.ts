@@ -22,9 +22,9 @@ import { Duration } from '@_types/Time'
 
 /**
  * Schedules now a transform.
- * 
- * If you _schedule_now a transform, it will process the new data instantly, 
- * without waiting for the configured frequency interval. After _schedule_now API is called, 
+ *
+ * If you _schedule_now a transform, it will process the new data instantly,
+ * without waiting for the configured frequency interval. After _schedule_now API is called,
  * the transform will be processed again at now + frequency unless _schedule_now API
  * is called again in the meantime.
  * @rest_spec_name transform.schedule_now_transform
