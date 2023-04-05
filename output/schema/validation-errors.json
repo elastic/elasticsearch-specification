@@ -1358,10 +1358,10 @@
       ]
     },
     "transform.schedule_now_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition transform.schedule_now_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "transform.start_transform": {
       "request": [
