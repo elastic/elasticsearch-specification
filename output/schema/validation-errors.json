@@ -858,12 +858,6 @@
       ],
       "response": []
     },
-    "health_report": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ilm.delete_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
