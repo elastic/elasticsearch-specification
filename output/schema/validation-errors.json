@@ -1364,9 +1364,7 @@
       ]
     },
     "transform.start_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'from'"
-      ],
+      "request": [],
       "response": [
         "response definition transform.start_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
