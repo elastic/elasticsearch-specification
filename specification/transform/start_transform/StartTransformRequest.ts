@@ -57,5 +57,9 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     timeout?: Duration
+    /**
+     * Restricts the set of transformed entities to those changed after this time. Relative times like now-30d are supported. Only applicable for continuous transforms.
+     */
+    from?: string
   }
 }
