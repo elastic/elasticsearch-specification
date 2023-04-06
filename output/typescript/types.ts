@@ -16865,6 +16865,7 @@ export interface SnapshotRestoreRequest extends RequestBase {
   master_timeout?: Duration
   wait_for_completion?: boolean
   body?: {
+    feature_states?: string[]
     ignore_index_settings?: string[]
     ignore_unavailable?: boolean
     include_aliases?: boolean

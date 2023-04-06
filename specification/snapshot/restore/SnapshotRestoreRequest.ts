@@ -37,6 +37,7 @@ export interface Request extends RequestBase {
     wait_for_completion?: boolean
   }
   body: {
+    feature_states?: string[]
     ignore_index_settings?: string[]
     ignore_unavailable?: boolean
     include_aliases?: boolean
