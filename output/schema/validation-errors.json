@@ -461,7 +461,8 @@
     },
     "cluster.get_component_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec"
+        "Request: query parameter 'flat_settings' does not exist in the json spec",
+        "Request: missing json spec query parameter 'include_defaults'"
       ],
       "response": []
     },
@@ -517,6 +518,12 @@
       "response": [
         "response definition _global.delete_script:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "dlm.explain_lifecycle": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "enrich.delete_policy": {
       "request": [],
@@ -730,6 +737,12 @@
         "response definition indices.delete_alias:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "indices.delete_data_lifecycle": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "indices.delete_data_stream": {
       "request": [],
       "response": [
@@ -775,6 +788,24 @@
         "response definition indices.get:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
     },
+    "indices.get_data_lifecycle": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "indices.get_data_stream": {
+      "request": [
+        "Request: missing json spec query parameter 'include_defaults'"
+      ],
+      "response": []
+    },
+    "indices.get_index_template": {
+      "request": [
+        "Request: missing json spec query parameter 'include_defaults'"
+      ],
+      "response": []
+    },
     "indices.get_settings": {
       "request": [],
       "response": [
@@ -798,6 +829,12 @@
       "response": [
         "response definition indices.put_alias:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "indices.put_data_lifecycle": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "indices.put_index_template": {
       "request": [
@@ -831,13 +868,15 @@
     },
     "indices.simulate_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'cause'"
+        "Request: missing json spec query parameter 'cause'",
+        "Request: missing json spec query parameter 'include_defaults'"
       ],
       "response": []
     },
     "indices.simulate_template": {
       "request": [
-        "Request: missing json spec query parameter 'cause'"
+        "Request: missing json spec query parameter 'cause'",
+        "Request: missing json spec query parameter 'include_defaults'"
       ],
       "response": []
     },
@@ -869,6 +908,12 @@
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'"
+      ],
+      "response": []
+    },
+    "logstash.get_pipeline": {
+      "request": [
+        "Request: path parameter 'id' is optional in the json spec"
       ],
       "response": []
     },
@@ -1109,11 +1154,54 @@
     },
     "search": {
       "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
+        "Request: missing json spec query parameter 'force_synthetic_source'",
+        "Request: missing json spec query parameter 'include_named_queries_score'"
       ],
       "response": [
         "response definition _global.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
       ]
+    },
+    "search_application.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.delete_behavioral_analytics": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.get_behavioral_analytics": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.list": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.put_behavioral_analytics": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "search_mvt": {
       "request": [
@@ -1325,7 +1413,9 @@
       "response": []
     },
     "transform.delete_transform": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'delete_dest_index'"
+      ],
       "response": [
         "response definition transform.delete_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
