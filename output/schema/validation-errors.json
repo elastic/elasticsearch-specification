@@ -519,12 +519,6 @@
         "response definition _global.delete_script:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "dlm.explain_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "enrich.delete_policy": {
       "request": [],
       "response": [
@@ -765,6 +759,12 @@
       "request": [
         "Request: missing json spec query parameter 'flat_settings'",
         "Request: missing json spec query parameter 'local'"
+      ],
+      "response": []
+    },
+    "indices.explain_lifecycle": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
