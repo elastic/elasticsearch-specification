@@ -4620,7 +4620,8 @@ export interface AnalysisStemmerOverrideTokenFilter extends AnalysisTokenFilterB
 
 export interface AnalysisStemmerTokenFilter extends AnalysisTokenFilterBase {
   type: 'stemmer'
-  language: string
+  language?: string
+  name?: string
 }
 
 export interface AnalysisStopAnalyzer {
