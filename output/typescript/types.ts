@@ -713,7 +713,7 @@ export interface MsearchMultisearchBody {
   ext?: Record<string, any>
   stored_fields?: Fields
   docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-  knn?: KnnQuery
+  knn?: KnnQuery | KnnQuery[]
   from?: integer
   highlight?: SearchHighlight
   indices_boost?: Record<IndexName, double>[]
@@ -6114,7 +6114,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    knn?: KnnQuery
+    knn?: KnnQuery | KnnQuery[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
