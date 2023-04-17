@@ -161,7 +161,7 @@ export interface Request extends RequestBase {
      * Defines the approximate kNN search to run.
      * @since 8.4.0
      */
-    knn?: KnnQuery
+    knn?: KnnQuery | KnnQuery[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.

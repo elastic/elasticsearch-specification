@@ -101,7 +101,7 @@ export class MultisearchBody {
    * Defines the approximate kNN search to run.
    * @since 8.4.0
    */
-  knn?: KnnQuery
+  knn?: KnnQuery | KnnQuery[]
   /**
    * Starting document offset. By default, you cannot page through more than 10,000
    * hits using the from and size parameters. To page through more hits, use the
