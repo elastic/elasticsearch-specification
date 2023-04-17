@@ -15590,7 +15590,7 @@ export type SecurityGrantType = 'password' | 'access_token'
 export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
-  field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
+  field_security?: SecurityFieldSecurity
   names: Indices
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
