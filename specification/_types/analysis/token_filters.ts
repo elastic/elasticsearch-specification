@@ -318,7 +318,8 @@ export class StemmerOverrideTokenFilter extends TokenFilterBase {
 
 export class StemmerTokenFilter extends TokenFilterBase {
   type: 'stemmer'
-  language: string
+  /** @aliases name */
+  language?: string
 }
 
 export class TrimTokenFilter extends TokenFilterBase {
