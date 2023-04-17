@@ -762,7 +762,7 @@
       ],
       "response": []
     },
-    "indices.explain_lifecycle": {
+    "indices.explain_data_lifecycle": {
       "request": [
         "Missing request & response"
       ],
@@ -1191,6 +1191,12 @@
       ],
       "response": []
     },
+    "search_application.post_behavioral_analytics_event": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "search_application.put": {
       "request": [
         "Missing request & response"
@@ -1198,6 +1204,12 @@
       "response": []
     },
     "search_application.put_behavioral_analytics": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.search": {
       "request": [
         "Missing request & response"
       ],
