@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import {SearchApplication} from "../_types/SearchApplication";
+import { SearchApplication } from '../_types/SearchApplication'
 
 /**
  * Creates or updates a search application.

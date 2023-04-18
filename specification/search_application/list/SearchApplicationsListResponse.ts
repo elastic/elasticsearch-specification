@@ -17,12 +17,32 @@
  * under the License.
  */
 
-import {SearchApplication, SearchApplicationListItem} from "../_types/SearchApplication";
-import {long} from "@_types/Numeric";
+import { long } from '@_types/Numeric'
+import { IndexName, Name } from '@_types/common'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
     count: long
     results: SearchApplicationListItem[]
   }
+}
+
+export class SearchApplicationListItem {
+  /**
+   * Search Application name
+   */
+  name: Name
+  /**
+   * Indices that are part of the Search Application
+   */
+  indices: IndexName[]
+  /**
+   * Last time the Search Application was updated
+   */
+  updated_at_millis: EpochTime<UnitMillis>
+  /**
+   * Analytics collection associated to the Search Application
+   */
+  analytics_collection_name?: Name
 }

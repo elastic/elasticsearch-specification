@@ -17,29 +17,9 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
-import { IndexName } from '@_types/common'
-import {EpochTime, UnitMillis} from "@_types/Time";
-import {InlineScript} from "@_types/Scripting";
-
-export class SearchApplicationListItem {
-  /**
-   * Search Application name
-   */
-  name: Name
-  /**
-   * Indices that are part of the Search Application
-   */
-  indices: IndexName[]
-  /**
-   * Last time the Search Application was updated
-   */
-  updated_at_millis: EpochTime<UnitMillis>
-  /**
-   * Analytics collection associated to the Search Application
-   */
-  analytics_collection_name?: Name
-}
+import { IndexName, Name } from '@_types/common'
+import { EpochTime, UnitMillis } from '@_types/Time'
+import { InlineScript } from '@_types/Scripting'
 
 export class SearchApplication {
   /**
