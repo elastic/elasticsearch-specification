@@ -1192,10 +1192,10 @@
       "response": []
     },
     "search_application.search": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition search_application.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
+      ]
     },
     "search_mvt": {
       "request": [

@@ -15472,13 +15472,6 @@ export interface SearchApplicationSearchApplication {
   template?: SearchApplicationSearchApplicationTemplate
 }
 
-export interface SearchApplicationSearchApplicationListItem {
-  name: Name
-  indices: IndexName[]
-  updated_at_millis: EpochTime<UnitMillis>
-  analytics_collection_name?: Name
-}
-
 export interface SearchApplicationSearchApplicationTemplate {
   script: InlineScript | string
 }
@@ -15503,7 +15496,14 @@ export interface SearchApplicationListRequest extends RequestBase {
 
 export interface SearchApplicationListResponse {
   count: long
-  results: SearchApplicationSearchApplicationListItem[]
+  results: SearchApplicationListSearchApplicationListItem[]
+}
+
+export interface SearchApplicationListSearchApplicationListItem {
+  name: Name
+  indices: IndexName[]
+  updated_at_millis: EpochTime<UnitMillis>
+  analytics_collection_name?: Name
 }
 
 export interface SearchApplicationPutRequest extends RequestBase {
@@ -15514,6 +15514,17 @@ export interface SearchApplicationPutRequest extends RequestBase {
 
 export interface SearchApplicationPutResponse {
   result: Result
+}
+
+export interface SearchApplicationSearchRequest extends RequestBase {
+  name: Name
+  body?: SearchApplicationSearchSearchApplicationSearchBody
+}
+
+export type SearchApplicationSearchResponse<TDocument = unknown> = SearchResponseBody<TDocument>
+
+export interface SearchApplicationSearchSearchApplicationSearchBody {
+  params?: Record<string, any>
 }
 
 export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
