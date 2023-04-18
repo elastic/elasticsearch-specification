@@ -15464,6 +15464,24 @@ export interface RollupStopJobResponse {
   stopped: boolean
 }
 
+export interface SearchApplicationSearchApplication {
+  name: Name
+  indices: IndexName[]
+  updated_at_millis: EpochTime<UnitMillis>
+  analytics_collection_name?: Name
+  template?: SearchApplicationSearchApplicationTemplate
+}
+
+export interface SearchApplicationSearchApplicationTemplate {
+  script: InlineScript | string
+}
+
+export interface SearchApplicationGetRequest extends RequestBase {
+  name: Name
+}
+
+export type SearchApplicationGetResponse = SearchApplicationSearchApplication
+
 export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
 
 export interface SearchableSnapshotsCacheStatsNode {
