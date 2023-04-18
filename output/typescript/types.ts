@@ -713,7 +713,7 @@ export interface MsearchMultisearchBody {
   ext?: Record<string, any>
   stored_fields?: Fields
   docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-  knn?: KnnQuery
+  knn?: KnnQuery | KnnQuery[]
   from?: integer
   highlight?: SearchHighlight
   indices_boost?: Record<IndexName, double>[]
@@ -4620,7 +4620,8 @@ export interface AnalysisStemmerOverrideTokenFilter extends AnalysisTokenFilterB
 
 export interface AnalysisStemmerTokenFilter extends AnalysisTokenFilterBase {
   type: 'stemmer'
-  language: string
+  language?: string
+  name?: string
 }
 
 export interface AnalysisStopAnalyzer {
@@ -6114,7 +6115,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    knn?: KnnQuery
+    knn?: KnnQuery | KnnQuery[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
@@ -15591,7 +15592,7 @@ export type SecurityGrantType = 'password' | 'access_token'
 export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
-  field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
+  field_security?: SecurityFieldSecurity
   names: Indices
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
