@@ -1162,10 +1162,10 @@
       ]
     },
     "search_application.delete": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition search_application.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "search_application.delete_behavioral_analytics": {
       "request": [
@@ -1179,19 +1179,7 @@
       ],
       "response": []
     },
-    "search_application.list": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.put": {
       "request": [
         "Missing request & response"
       ],

@@ -15472,15 +15472,49 @@ export interface SearchApplicationSearchApplication {
   template?: SearchApplicationSearchApplicationTemplate
 }
 
+export interface SearchApplicationSearchApplicationListItem {
+  name: Name
+  indices: IndexName[]
+  updated_at_millis: EpochTime<UnitMillis>
+  analytics_collection_name?: Name
+}
+
 export interface SearchApplicationSearchApplicationTemplate {
   script: InlineScript | string
 }
+
+export interface SearchApplicationDeleteRequest extends RequestBase {
+  name: Name
+}
+
+export type SearchApplicationDeleteResponse = AcknowledgedResponseBase
 
 export interface SearchApplicationGetRequest extends RequestBase {
   name: Name
 }
 
 export type SearchApplicationGetResponse = SearchApplicationSearchApplication
+
+export interface SearchApplicationListRequest extends RequestBase {
+  q?: string
+  from?: integer
+  size?: integer
+}
+
+export interface SearchApplicationListResponse {
+  count: long
+  results: SearchApplicationSearchApplicationListItem[]
+}
+
+export interface SearchApplicationPutRequest extends RequestBase {
+  name: Name
+  create?: boolean
+  body?: SearchApplicationSearchApplication
+}
+
+export interface SearchApplicationPutResponse {
+  result: Result
+}
 
 export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
 
