@@ -15518,14 +15518,12 @@ export interface SearchApplicationPutResponse {
 
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name
-  body?: SearchApplicationSearchSearchApplicationSearchBody
+  body?: {
+    params?: Record<string, any>
+  }
 }
 
 export type SearchApplicationSearchResponse<TDocument = unknown> = SearchResponseBody<TDocument>
-
-export interface SearchApplicationSearchSearchApplicationSearchBody {
-  params?: Record<string, any>
-}
 
 export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
 

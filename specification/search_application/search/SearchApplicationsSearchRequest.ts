@@ -34,9 +34,7 @@ interface Request extends RequestBase {
      */
     name: Name
   }
-  body: SearchApplicationSearchBody
-}
-
-export class SearchApplicationSearchBody {
-  params?: Dictionary<string, UserDefinedValue>
+  body: {
+    params?: Dictionary<string, UserDefinedValue>
+  }
 }
