@@ -34,7 +34,6 @@ interface Request extends RequestBase {
      */
     name: Name
   }
-  /** @codegen_name search_params */
   body: SearchApplicationSearchBody
 }
 
