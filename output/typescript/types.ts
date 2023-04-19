@@ -12866,6 +12866,7 @@ export interface MlTrainedModelAssignmentRoutingTable {
 export interface MlTrainedModelAssignmentTaskParameters {
   model_bytes: integer
   model_id: Id
+  deployment_id: Id
   cache_size: ByteSize
   number_of_allocations: integer
   priority: MlTrainingPriority
@@ -12885,6 +12886,7 @@ export interface MlTrainedModelConfig {
   description?: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
+  fully_defined?: boolean
   inference_config: MlInferenceConfigCreateContainer
   input: MlTrainedModelConfigInput
   license_level?: string
