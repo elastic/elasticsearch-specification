@@ -247,7 +247,7 @@ export class IndexSettingBlocks {
   read_only_allow_delete?: boolean
   read?: boolean
   write?: boolean | string // TODO: should be bool only
-  metadata?: boolean
+  metadata?: Stringified<boolean>
 }
 
 /**

@@ -9620,7 +9620,7 @@ export interface IndicesIndexSettingBlocks {
   read_only_allow_delete?: boolean
   read?: boolean
   write?: boolean | string
-  metadata?: boolean
+  metadata?: SpecUtilsStringified<boolean>
 }
 
 export interface IndicesIndexSettingsKeys {
