@@ -4423,7 +4423,7 @@ export interface AnalysisLetterTokenizer extends AnalysisTokenizerBase {
 export interface AnalysisLimitTokenCountTokenFilter extends AnalysisTokenFilterBase {
   type: 'limit'
   consume_all_tokens?: boolean
-  max_token_count?: integer
+  max_token_count?: SpecUtilsStringified<integer>
 }
 
 export interface AnalysisLowercaseNormalizer {
@@ -9634,7 +9634,7 @@ export interface IndicesIndexSettingsKeys {
   number_of_routing_shards?: integer
   check_on_startup?: IndicesIndexCheckOnStartup
   codec?: string
-  routing_partition_size?: integer
+  routing_partition_size?: SpecUtilsStringified<integer>
   load_fixed_bitset_filters_eagerly?: boolean
   hidden?: boolean | string
   auto_expand_replicas?: string
@@ -9794,8 +9794,8 @@ export interface IndicesMerge {
 }
 
 export interface IndicesMergeScheduler {
-  max_thread_count?: integer
-  max_merge_count?: integer
+  max_thread_count?: SpecUtilsStringified<integer>
+  max_merge_count?: SpecUtilsStringified<integer>
 }
 
 export interface IndicesNumericFielddata {
@@ -9823,7 +9823,7 @@ export type IndicesSegmentSortMode = 'min' | 'MIN' | 'max' | 'MAX'
 export type IndicesSegmentSortOrder = 'asc' | 'ASC' | 'desc' | 'DESC'
 
 export interface IndicesSettingsAnalyze {
-  max_token_count?: integer
+  max_token_count?: SpecUtilsStringified<integer>
 }
 
 export interface IndicesSettingsHighlight {
@@ -9831,7 +9831,7 @@ export interface IndicesSettingsHighlight {
 }
 
 export interface IndicesSettingsQueryString {
-  lenient: boolean
+  lenient: SpecUtilsStringified<boolean>
 }
 
 export interface IndicesSettingsSearch {

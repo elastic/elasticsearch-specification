@@ -87,7 +87,7 @@ export class IndexSettings
   /** @server_default LZ4 */
   codec?: string
   /** @server_default 1 */
-  routing_partition_size?: integer
+  routing_partition_size?: Stringified<integer>
   /** @server_default true */
   load_fixed_bitset_filters_eagerly?: boolean
   /** @server_default false */
@@ -225,7 +225,7 @@ export class SettingsHighlight {
 
 export class SettingsAnalyze {
   /** @server_default 10000 */
-  max_token_count?: integer
+  max_token_count?: Stringified<integer>
 }
 
 export class SettingsSearch {
@@ -239,7 +239,7 @@ export class SearchIdle {
 }
 
 export class SettingsQueryString {
-  lenient: boolean
+  lenient: Stringified<boolean>
 }
 
 export class IndexSettingBlocks {
@@ -325,8 +325,8 @@ export class Merge {
 }
 
 export class MergeScheduler {
-  max_thread_count?: integer
-  max_merge_count?: integer
+  max_thread_count?: Stringified<integer>
+  max_merge_count?: Stringified<integer>
 }
 
 export class Translog {
