@@ -24,7 +24,7 @@ import { SearchApplication } from '../_types/SearchApplication'
  * Creates or updates a search application.
  * @rest_spec_name search_application.put
  * @since 8.8.0
- * @stability beta
+ * @stability experimental
  */
 interface Request extends RequestBase {
   path_parts: {
