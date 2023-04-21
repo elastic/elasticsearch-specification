@@ -35,6 +35,7 @@ import {
   IcuTransformTokenFilter
 } from './icu-plugin'
 import { PhoneticTokenFilter } from './phonetic-plugin'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class TokenFilterBase {
   version?: VersionString
@@ -248,7 +249,7 @@ export class LengthTokenFilter extends TokenFilterBase {
 export class LimitTokenCountTokenFilter extends TokenFilterBase {
   type: 'limit'
   consume_all_tokens?: boolean
-  max_token_count?: integer
+  max_token_count?: Stringified<integer>
 }
 
 export class LowercaseTokenFilter extends TokenFilterBase {

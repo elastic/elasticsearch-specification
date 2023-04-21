@@ -4423,7 +4423,7 @@ export interface AnalysisLetterTokenizer extends AnalysisTokenizerBase {
 export interface AnalysisLimitTokenCountTokenFilter extends AnalysisTokenFilterBase {
   type: 'limit'
   consume_all_tokens?: boolean
-  max_token_count?: integer
+  max_token_count?: SpecUtilsStringified<integer>
 }
 
 export interface AnalysisLowercaseNormalizer {
@@ -9621,7 +9621,7 @@ export interface IndicesIndexSettingBlocks {
   read_only_allow_delete?: boolean
   read?: boolean
   write?: boolean | string
-  metadata?: boolean
+  metadata?: SpecUtilsStringified<boolean>
 }
 
 export interface IndicesIndexSettingsKeys {
@@ -9635,7 +9635,7 @@ export interface IndicesIndexSettingsKeys {
   number_of_routing_shards?: integer
   check_on_startup?: IndicesIndexCheckOnStartup
   codec?: string
-  routing_partition_size?: integer
+  routing_partition_size?: SpecUtilsStringified<integer>
   load_fixed_bitset_filters_eagerly?: boolean
   hidden?: boolean | string
   auto_expand_replicas?: string
@@ -9795,8 +9795,8 @@ export interface IndicesMerge {
 }
 
 export interface IndicesMergeScheduler {
-  max_thread_count?: integer
-  max_merge_count?: integer
+  max_thread_count?: SpecUtilsStringified<integer>
+  max_merge_count?: SpecUtilsStringified<integer>
 }
 
 export interface IndicesNumericFielddata {
@@ -9824,7 +9824,7 @@ export type IndicesSegmentSortMode = 'min' | 'MIN' | 'max' | 'MAX'
 export type IndicesSegmentSortOrder = 'asc' | 'ASC' | 'desc' | 'DESC'
 
 export interface IndicesSettingsAnalyze {
-  max_token_count?: integer
+  max_token_count?: SpecUtilsStringified<integer>
 }
 
 export interface IndicesSettingsHighlight {
@@ -9832,7 +9832,7 @@ export interface IndicesSettingsHighlight {
 }
 
 export interface IndicesSettingsQueryString {
-  lenient: boolean
+  lenient: SpecUtilsStringified<boolean>
 }
 
 export interface IndicesSettingsSearch {
@@ -15464,6 +15464,67 @@ export interface RollupStopJobRequest extends RequestBase {
 export interface RollupStopJobResponse {
   stopped: boolean
 }
+
+export interface SearchApplicationSearchApplication {
+  name: Name
+  indices: IndexName[]
+  updated_at_millis: EpochTime<UnitMillis>
+  analytics_collection_name?: Name
+  template?: SearchApplicationSearchApplicationTemplate
+}
+
+export interface SearchApplicationSearchApplicationTemplate {
+  script: InlineScript | string
+}
+
+export interface SearchApplicationDeleteRequest extends RequestBase {
+  name: Name
+}
+
+export type SearchApplicationDeleteResponse = AcknowledgedResponseBase
+
+export interface SearchApplicationGetRequest extends RequestBase {
+  name: Name
+}
+
+export type SearchApplicationGetResponse = SearchApplicationSearchApplication
+
+export interface SearchApplicationListRequest extends RequestBase {
+  q?: string
+  from?: integer
+  size?: integer
+}
+
+export interface SearchApplicationListResponse {
+  count: long
+  results: SearchApplicationListSearchApplicationListItem[]
+}
+
+export interface SearchApplicationListSearchApplicationListItem {
+  name: Name
+  indices: IndexName[]
+  updated_at_millis: EpochTime<UnitMillis>
+  analytics_collection_name?: Name
+}
+
+export interface SearchApplicationPutRequest extends RequestBase {
+  name: Name
+  create?: boolean
+  body?: SearchApplicationSearchApplication
+}
+
+export interface SearchApplicationPutResponse {
+  result: Result
+}
+
+export interface SearchApplicationSearchRequest extends RequestBase {
+  name: Name
+  body?: {
+    params?: Record<string, any>
+  }
+}
+
+export type SearchApplicationSearchResponse<TDocument = unknown> = SearchResponseBody<TDocument>
 
 export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
 
