@@ -13781,9 +13781,7 @@ export interface MlPreviewDatafeedRequest extends RequestBase {
   }
 }
 
-export interface MlPreviewDatafeedResponse<TDocument = unknown> {
-  data: TDocument[]
-}
+export type MlPreviewDatafeedResponse<TDocument = unknown> = TDocument[]
 
 export interface MlPutCalendarRequest extends RequestBase {
   calendar_id: Id
