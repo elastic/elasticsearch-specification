@@ -8415,6 +8415,26 @@ export interface ClusterGetSettingsResponse {
   defaults?: Record<string, any>
 }
 
+export interface ClusterHealthHealthResponseBody {
+  active_primary_shards: integer
+  active_shards: integer
+  active_shards_percent_as_number: Percentage
+  cluster_name: Name
+  delayed_unassigned_shards: integer
+  indices?: Record<IndexName, ClusterHealthIndexHealthStats>
+  initializing_shards: integer
+  number_of_data_nodes: integer
+  number_of_in_flight_fetch: integer
+  number_of_nodes: integer
+  number_of_pending_tasks: integer
+  relocating_shards: integer
+  status: HealthStatus
+  task_max_waiting_in_queue?: Duration
+  task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
+  timed_out: boolean
+  unassigned_shards: integer
+}
+
 export interface ClusterHealthIndexHealthStats {
   active_primary_shards: integer
   active_shards: integer
@@ -8442,27 +8462,7 @@ export interface ClusterHealthRequest extends RequestBase {
   wait_for_status?: HealthStatus
 }
 
-export type ClusterHealthResponse = ClusterHealthResponseBody
-
-export interface ClusterHealthResponseBody {
-  active_primary_shards: integer
-  active_shards: integer
-  active_shards_percent_as_number: Percentage
-  cluster_name: Name
-  delayed_unassigned_shards: integer
-  indices?: Record<IndexName, ClusterHealthIndexHealthStats>
-  initializing_shards: integer
-  number_of_data_nodes: integer
-  number_of_in_flight_fetch: integer
-  number_of_nodes: integer
-  number_of_pending_tasks: integer
-  relocating_shards: integer
-  status: HealthStatus
-  task_max_waiting_in_queue?: Duration
-  task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
-  timed_out: boolean
-  unassigned_shards: integer
-}
+export type ClusterHealthResponse = ClusterHealthHealthResponseBody
 
 export interface ClusterHealthShardHealthStats {
   active_shards: integer

@@ -27,16 +27,16 @@ import { IndexHealthStats } from './types'
  * @doc_id cluster-health
  */
 export class Response {
-  body: ResponseBody
+  body: HealthResponseBody
   exceptions: [
     {
       statusCodes: [408]
-      body: ResponseBody
+      body: HealthResponseBody
     }
   ]
 }
 
-export class ResponseBody {
+export class HealthResponseBody {
   /** The number of active primary shards. */
   active_primary_shards: integer
   /** The total number of active primary and replica shards. */
