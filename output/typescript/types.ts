@@ -8442,7 +8442,9 @@ export interface ClusterHealthRequest extends RequestBase {
   wait_for_status?: HealthStatus
 }
 
-export interface ClusterHealthResponse {
+export type ClusterHealthResponse = ClusterHealthResponseBody
+
+export interface ClusterHealthResponseBody {
   active_primary_shards: integer
   active_shards: integer
   active_shards_percent_as_number: Percentage
