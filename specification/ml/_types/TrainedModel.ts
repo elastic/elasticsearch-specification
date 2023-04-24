@@ -176,6 +176,8 @@ export class TrainedModelConfig {
   estimated_heap_memory_usage_bytes?: integer
   /** The estimated number of operations to use the trained model. */
   estimated_operations?: integer
+  /** True if the full model definition is present. */
+  fully_defined?: boolean
   /** The default configuration for inference. This can be either a regression, classification, or one of the many NLP focused configurations. It must match the underlying definition.trained_model's target_type. */
   inference_config: InferenceConfigCreateContainer
   /** The input field names for the model definition. */
@@ -311,6 +313,10 @@ export class TrainedModelAssignmentTaskParameters {
    * The unique identifier for the trained model.
    */
   model_id: Id
+  /**
+   * The unique identifier for the trained model deployment.
+   */
+  deployment_id: Id
   /**
    * The size of the trained model cache.
    * @since 8.4.0
