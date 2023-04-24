@@ -12464,7 +12464,7 @@ export interface MlHyperparameters {
   soft_tree_depth_tolerance?: double
 }
 
-export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance'
+export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance' | 'definition_status'
 
 export interface MlInferenceConfigCreateContainer {
   regression?: MlRegressionInferenceOptions
