@@ -313,7 +313,7 @@ export class TrainedModelAssignmentTaskParameters {
    * The unique identifier for the trained model.
    */
   model_id: Id
-    /**
+  /**
    * The unique identifier for the trained model deployment.
    */
   deployment_id: Id
