@@ -38,6 +38,7 @@ export class ApplicationPrivileges {
   resources: string[]
 }
 
+/** @non_exhaustive */
 export enum ClusterPrivilege {
   all,
   cancel_task,
@@ -161,6 +162,7 @@ export type RoleTemplateInlineQuery = string | QueryContainer
 /** @codegen_names inline, stored */
 export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
 
+/** @non_exhaustive */
 export enum IndexPrivilege {
   none,
   all,
