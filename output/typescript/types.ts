@@ -12475,6 +12475,7 @@ export interface MlInferenceConfigCreateContainer {
   ner?: MlNerInferenceOptions
   pass_through?: MlPassThroughInferenceOptions
   text_embedding?: MlTextEmbeddingInferenceOptions
+  text_expansion?: MlTextExpansionInferenceOptions
   question_answering?: MlQuestionAnsweringInferenceOptions
 }
 
@@ -12487,6 +12488,7 @@ export interface MlInferenceConfigUpdateContainer {
   ner?: MlNerInferenceUpdateOptions
   pass_through?: MlPassThroughInferenceUpdateOptions
   text_embedding?: MlTextEmbeddingInferenceUpdateOptions
+  text_expansion?: MlTextExpansionInferenceUpdateOptions
   question_answering?: MlQuestionAnsweringInferenceUpdateOptions
 }
 
@@ -12803,11 +12805,22 @@ export interface MlTextClassificationInferenceUpdateOptions {
 }
 
 export interface MlTextEmbeddingInferenceOptions {
+  embedding_size?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
 }
 
 export interface MlTextEmbeddingInferenceUpdateOptions {
+  tokenization?: MlNlpTokenizationUpdateOptions
+  results_field?: string
+}
+
+export interface MlTextExpansionInferenceOptions {
+  tokenization?: MlTokenizationConfigContainer
+  results_field?: string
+}
+
+export interface MlTextExpansionInferenceUpdateOptions {
   tokenization?: MlNlpTokenizationUpdateOptions
   results_field?: string
 }
@@ -12887,7 +12900,7 @@ export interface MlTrainedModelConfig {
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
   fully_defined?: boolean
-  inference_config: MlInferenceConfigCreateContainer
+  inference_config?: MlInferenceConfigCreateContainer
   input: MlTrainedModelConfigInput
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
@@ -12930,6 +12943,7 @@ export interface MlTrainedModelDeploymentNodesStats {
 export interface MlTrainedModelDeploymentStats {
   allocation_status: MlTrainedModelDeploymentAllocationStatus
   cache_size?: ByteSize
+  deployment_id: Id
   error_count: integer
   inference_count: integer
   model_id: Id

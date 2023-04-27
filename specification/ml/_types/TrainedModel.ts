@@ -63,6 +63,8 @@ export class TrainedModelDeploymentStats {
   /** The detailed allocation status for the deployment. */
   allocation_status: TrainedModelDeploymentAllocationStatus
   cache_size?: ByteSize
+  /** The unique identifier for the trained model deployment. */
+  deployment_id: Id
   /** The sum of `error_count` for all nodes in the deployment. */
   error_count: integer
   /** The sum of `inference_count` for all nodes in the deployment. */
@@ -178,8 +180,8 @@ export class TrainedModelConfig {
   estimated_operations?: integer
   /** True if the full model definition is present. */
   fully_defined?: boolean
-  /** The default configuration for inference. This can be either a regression, classification, or one of the many NLP focused configurations. It must match the underlying definition.trained_model's target_type. */
-  inference_config: InferenceConfigCreateContainer
+  /** The default configuration for inference. This can be either a regression, classification, or one of the many NLP focused configurations. It must match the underlying definition.trained_model's target_type. For pre-packaged models such as ELSER the config is not required. */
+  inference_config?: InferenceConfigCreateContainer
   /** The input field names for the model definition. */
   input: TrainedModelConfigInput
   /** The license level of the trained model. */
