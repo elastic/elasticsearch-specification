@@ -8416,6 +8416,26 @@ export interface ClusterGetSettingsResponse {
   defaults?: Record<string, any>
 }
 
+export interface ClusterHealthHealthResponseBody {
+  active_primary_shards: integer
+  active_shards: integer
+  active_shards_percent_as_number: Percentage
+  cluster_name: Name
+  delayed_unassigned_shards: integer
+  indices?: Record<IndexName, ClusterHealthIndexHealthStats>
+  initializing_shards: integer
+  number_of_data_nodes: integer
+  number_of_in_flight_fetch: integer
+  number_of_nodes: integer
+  number_of_pending_tasks: integer
+  relocating_shards: integer
+  status: HealthStatus
+  task_max_waiting_in_queue?: Duration
+  task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
+  timed_out: boolean
+  unassigned_shards: integer
+}
+
 export interface ClusterHealthIndexHealthStats {
   active_primary_shards: integer
   active_shards: integer
@@ -8443,25 +8463,7 @@ export interface ClusterHealthRequest extends RequestBase {
   wait_for_status?: HealthStatus
 }
 
-export interface ClusterHealthResponse {
-  active_primary_shards: integer
-  active_shards: integer
-  active_shards_percent_as_number: Percentage
-  cluster_name: Name
-  delayed_unassigned_shards: integer
-  indices?: Record<IndexName, ClusterHealthIndexHealthStats>
-  initializing_shards: integer
-  number_of_data_nodes: integer
-  number_of_in_flight_fetch: integer
-  number_of_nodes: integer
-  number_of_pending_tasks: integer
-  relocating_shards: integer
-  status: HealthStatus
-  task_max_waiting_in_queue?: Duration
-  task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
-  timed_out: boolean
-  unassigned_shards: integer
-}
+export type ClusterHealthResponse = ClusterHealthHealthResponseBody
 
 export interface ClusterHealthShardHealthStats {
   active_shards: integer
@@ -12463,7 +12465,7 @@ export interface MlHyperparameters {
   soft_tree_depth_tolerance?: double
 }
 
-export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance'
+export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance' | 'definition_status'
 
 export interface MlInferenceConfigCreateContainer {
   regression?: MlRegressionInferenceOptions
@@ -12865,6 +12867,7 @@ export interface MlTrainedModelAssignmentRoutingTable {
 export interface MlTrainedModelAssignmentTaskParameters {
   model_bytes: integer
   model_id: Id
+  deployment_id: Id
   cache_size: ByteSize
   number_of_allocations: integer
   priority: MlTrainingPriority
@@ -12884,6 +12887,7 @@ export interface MlTrainedModelConfig {
   description?: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
+  fully_defined?: boolean
   inference_config: MlInferenceConfigCreateContainer
   input: MlTrainedModelConfigInput
   license_level?: string
@@ -13782,9 +13786,7 @@ export interface MlPreviewDatafeedRequest extends RequestBase {
   }
 }
 
-export interface MlPreviewDatafeedResponse<TDocument = unknown> {
-  data: TDocument[]
-}
+export type MlPreviewDatafeedResponse<TDocument = unknown> = TDocument[]
 
 export interface MlPutCalendarRequest extends RequestBase {
   calendar_id: Id
@@ -15625,7 +15627,7 @@ export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'| string
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -15650,7 +15652,7 @@ export interface SecurityGlobalPrivilege {
 
 export type SecurityGrantType = 'password' | 'access_token'
 
-export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
+export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'| string
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity

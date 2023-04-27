@@ -38,5 +38,10 @@ export enum Include {
    * baseline and total feature importance values are returned in the metadata
    * field in the response body.
    */
-  total_feature_importance
+  total_feature_importance,
+
+  /**
+   * Includes the model definition status.
+   */
+  definition_status
 }
