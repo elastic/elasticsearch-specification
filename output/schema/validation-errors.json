@@ -1,5 +1,11 @@
 {
   "endpointErrors": {
+    "_internal.delete_desired_balance": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "_internal.delete_desired_nodes": {
       "request": [
         "Missing request & response"
@@ -1024,6 +1030,12 @@
       ],
       "response": []
     },
+    "ml.put_trained_model": {
+      "request": [
+        "Request: missing json spec query parameter 'wait_for_completion'"
+      ],
+      "response": []
+    },
     "ml.put_trained_model_alias": {
       "request": [],
       "response": [
@@ -1053,6 +1065,12 @@
       "response": [
         "response definition ml.set_upgrade_mode:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "ml.start_trained_model_deployment": {
+      "request": [
+        "Request: missing json spec query parameter 'deployment_id'"
+      ],
+      "response": []
     },
     "ml.stop_datafeed": {
       "request": [
@@ -1186,6 +1204,12 @@
       "response": []
     },
     "search_application.put_behavioral_analytics": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "search_application.render_query": {
       "request": [
         "Missing request & response"
       ],
@@ -1484,6 +1508,12 @@
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
     },
+    "watcher.get_settings": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "watcher.start": {
       "request": [],
       "response": [
@@ -1501,6 +1531,12 @@
       "response": [
         "response definition watcher.stop:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "watcher.update_settings": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "xpack.info": {
       "request": [
