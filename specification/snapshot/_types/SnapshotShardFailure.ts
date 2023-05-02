@@ -21,7 +21,7 @@ import { Id, IndexName } from '@_types/common'
 
 export class SnapshotShardFailure {
   index: IndexName
-  node_id: Id
+  node_id?: Id
   reason: string
   shard_id: Id
   status: string
