@@ -31,5 +31,10 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     expand_wildcards?: ExpandWildcards
+    /**
+     * @since 8.8.0
+     * @stability experimental
+     */
+    include_defaults?: boolean
   }
 }
