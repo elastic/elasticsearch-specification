@@ -22,7 +22,7 @@ import { DataStreamName, IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
-import {DataLifecycle} from "@indices/_types/DataLifecycle";
+import { DataLifecycle } from '@indices/_types/DataLifecycle'
 
 export class IndexState {
   aliases?: Dictionary<IndexName, Alias>

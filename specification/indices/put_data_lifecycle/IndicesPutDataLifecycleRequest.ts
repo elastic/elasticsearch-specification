@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {DataStreamNames, ExpandWildcards} from '@_types/common'
+import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**

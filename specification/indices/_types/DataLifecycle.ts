@@ -17,29 +17,29 @@
  * under the License.
  */
 
-import {Duration} from "@_types/Time";
-import {long} from "@_types/Numeric";
-import {ByteSize} from "@_types/common";
+import { Duration } from '@_types/Time'
+import { long } from '@_types/Numeric'
+import { ByteSize } from '@_types/common'
 
 export class DataLifecycle {
-    data_retention?: Duration
+  data_retention?: Duration
 }
 
 export class DataLifecycleWithRollover {
-    data_retention?: Duration
-    rollover?: DlmRolloverConditions
+  data_retention?: Duration
+  rollover?: DlmRolloverConditions
 }
 
 class DlmRolloverConditions {
-    min_age?: Duration
-    // max_age is a string because it can contain a label to signal that it's automatically calculated
-    max_age?: string
-    min_docs?: long
-    max_docs?: long
-    min_size?: ByteSize
-    max_size?: ByteSize
-    min_primary_shard_size?: ByteSize
-    max_primary_shard_size?: ByteSize
-    min_primary_shard_docs?: long
-    max_primary_shard_docs?: long
+  min_age?: Duration
+  // max_age is a string because it can contain a label to signal that it's automatically calculated
+  max_age?: string
+  min_docs?: long
+  max_docs?: long
+  min_size?: ByteSize
+  max_size?: ByteSize
+  min_primary_shard_size?: ByteSize
+  max_primary_shard_size?: ByteSize
+  min_primary_shard_docs?: long
+  max_primary_shard_docs?: long
 }

@@ -19,8 +19,8 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
-import {Duration, EpochTime, UnitMillis} from "@_types/Time";
-import {DataLifecycleWithRollover} from "@indices/_types/DataLifecycle";
+import { Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { DataLifecycleWithRollover } from '@indices/_types/DataLifecycle'
 
 export class Response {
   body: {

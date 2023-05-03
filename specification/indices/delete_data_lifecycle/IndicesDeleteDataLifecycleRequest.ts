@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
-import {Duration} from "@_types/Time";
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.delete_data_lifecycle

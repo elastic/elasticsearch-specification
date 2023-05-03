@@ -23,7 +23,10 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
-import {DataLifecycle, DataLifecycleWithRollover} from "@indices/_types/DataLifecycle";
+import {
+  DataLifecycle,
+  DataLifecycleWithRollover
+} from '@indices/_types/DataLifecycle'
 
 export class IndexTemplate {
   index_patterns: Names

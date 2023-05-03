@@ -27,7 +27,7 @@ import {
   Uuid
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import {DataLifecycleWithRollover} from "@indices/_types/DataLifecycle";
+import { DataLifecycleWithRollover } from '@indices/_types/DataLifecycle'
 
 export class DataStream {
   name: DataStreamName
