@@ -16725,9 +16725,71 @@ export interface SlmStopRequest extends RequestBase {
 
 export type SlmStopResponse = AcknowledgedResponseBase
 
+export interface SnapshotAzureRepository extends SnapshotBaseRepository {
+  type: 'azure'
+  settings: SnapshotAzureRepositorySettings
+}
+
+export type SnapshotAzureRepositoryLocationMode = 'primary_only' | 'secondary_only' | 'primary_then_secondary' | 'secondary_then_primary'
+
+export interface SnapshotAzureRepositorySettings extends SnapshotBlobStoreSettings {
+  client?: string
+  account?: string
+  container?: string
+  location_mode: SnapshotAzureRepositoryLocationMode
+  max_single_part_upload_size: ByteSize
+}
+
+export interface SnapshotBaseRepository {
+  uuid?: Uuid
+}
+
+export interface SnapshotBlobStoreSettings {
+  chunk_size?: ByteSize
+  concurrent_streams?: SpecUtilsStringified<integer>
+  compress?: SpecUtilsStringified<boolean>
+  max_number_of_snapshots?: integer
+  max_snapshot_bytes_per_sec?: ByteSize
+  max_restore_bytes_per_sec?: ByteSize
+  readonly?: SpecUtilsStringified<boolean>
+  read_only?: SpecUtilsStringified<boolean>
+  use_for_peer_recovery?: boolean
+}
+
 export interface SnapshotFileCountSnapshotStats {
   file_count: integer
   size_in_bytes: long
+}
+
+export interface SnapshotFsRepository extends SnapshotBaseRepository {
+  type: 'fs'
+  settings: SnapshotFsRepositorySettings
+}
+
+export interface SnapshotFsRepositorySettings extends SnapshotBlobStoreSettings {
+  location?: string
+}
+
+export interface SnapshotGoogleCloudRepository extends SnapshotBaseRepository {
+  type: 'gcs'
+  settings: SnapshotGoogleCloudRepositorySettings
+}
+
+export interface SnapshotGoogleCloudRepositorySettings extends SnapshotBlobStoreSettings {
+  bucket?: string
+  base_path?: string
+  client?: string
+}
+
+export interface SnapshotHdfsRepository extends SnapshotBaseRepository {
+  type: 'hdfs'
+  settings: SnapshotHdfsRepositorySettings
+}
+
+export interface SnapshotHdfsRepositorySettings extends SnapshotBlobStoreSettings {
+  uri: string
+  path: string
+  'security.principal': string
 }
 
 export interface SnapshotIndexDetails {
@@ -16742,19 +16804,21 @@ export interface SnapshotInfoFeatureState {
   indices: Indices
 }
 
-export interface SnapshotRepository {
-  type: string
-  uuid?: Uuid
-  settings: SnapshotRepositorySettings
+export type SnapshotRepository = SnapshotS3Repository | SnapshotGoogleCloudRepository | SnapshotAzureRepository | SnapshotSourceRepository | SnapshotUrlRepository | SnapshotFsRepository | SnapshotHdfsRepository
+
+export interface SnapshotS3Repository extends SnapshotBaseRepository {
+  type: 's3'
+  settings: SnapshotS3RepositorySettings
 }
 
-export interface SnapshotRepositorySettings {
-  chunk_size?: string
-  compress?: string | boolean
-  concurrent_streams?: string | integer
+export interface SnapshotS3RepositorySettings extends SnapshotBlobStoreSettings {
+  base_path?: string
+  bucket?: string
+  buffer_size?: ByteSize
+  client?: string
   location: string
-  read_only?: string | boolean
-  readonly?: string | boolean
+  server_size_encryption?: boolean
+  storage_class?: string
 }
 
 export interface SnapshotShardsStats {
@@ -16834,6 +16898,17 @@ export interface SnapshotSnapshotStats {
   total: SnapshotFileCountSnapshotStats
 }
 
+export interface SnapshotSourceRepository extends SnapshotBaseRepository {
+  type: 'source'
+  settings: SnapshotSourceRepositorySettings
+}
+
+export interface SnapshotSourceRepositorySettingsKeys {
+  delegate_type: string
+}
+export type SnapshotSourceRepositorySettings = SnapshotSourceRepositorySettingsKeys
+  & { [property: string]: any }
+
 export interface SnapshotStatus {
   include_global_state: boolean
   indices: Record<string, SnapshotSnapshotIndexStats>
@@ -16843,6 +16918,22 @@ export interface SnapshotStatus {
   state: string
   stats: SnapshotSnapshotStats
   uuid: Uuid
+}
+
+export interface SnapshotUrlRepository extends SnapshotBaseRepository {
+  type: 'url'
+  settings: SnapshotUrlRepositorySettings
+}
+
+export interface SnapshotUrlRepositorySettings {
+  chunk_size: ByteSize
+  compress?: boolean
+  http_max_retries?: integer
+  http_socket_timeout?: Duration
+  max_number_of_snapshots?: integer
+  max_restore_bytes_per_sec: ByteSize
+  max_snapshot_bytes_per_sec: ByteSize
+  url: string
 }
 
 export interface SnapshotCleanupRepositoryCleanupRepositoryResults {
@@ -16898,11 +16989,7 @@ export interface SnapshotCreateRepositoryRequest extends RequestBase {
   master_timeout?: Duration
   timeout?: Duration
   verify?: boolean
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+  body?: SnapshotRepository
 }
 
 export type SnapshotCreateRepositoryResponse = AcknowledgedResponseBase
