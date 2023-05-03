@@ -22,6 +22,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import {DataLifecycle, DataLifecycleWithRollover} from "@indices/_types/DataLifecycle";
 
 export class ComponentTemplate {
   name: Name
@@ -42,4 +43,9 @@ export class ComponentTemplateSummary {
   settings?: Dictionary<IndexName, IndexSettings>
   mappings?: TypeMapping
   aliases?: Dictionary<string, AliasDefinition>
+  /**
+   * @since 8.8.0
+   * @stability experimental
+   */
+  lifecycle?: DataLifecycleWithRollover
 }

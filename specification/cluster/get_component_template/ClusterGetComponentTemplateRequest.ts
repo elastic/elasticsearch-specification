@@ -38,5 +38,10 @@ export interface Request extends RequestBase {
     local?: boolean
     /** @server_default 30s */
     master_timeout?: Duration
+    /**
+     * @since 8.8.0
+     * @stability experimental
+     */
+    include_defaults?: boolean
   }
 }
