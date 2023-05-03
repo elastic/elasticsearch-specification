@@ -21,10 +21,17 @@ import { Duration } from '@_types/Time'
 import { long } from '@_types/Numeric'
 import { ByteSize } from '@_types/common'
 
+/**
+ * Data lifecycle denotes that a data stream is managed by DLM and contains the configuration.
+ */
 export class DataLifecycle {
   data_retention?: Duration
 }
 
+/**
+ * Data lifecycle with rollover can be used to display the configuration including the default rollover conditions,
+ * if asked.
+ */
 export class DataLifecycleWithRollover {
   data_retention?: Duration
   rollover?: DlmRolloverConditions

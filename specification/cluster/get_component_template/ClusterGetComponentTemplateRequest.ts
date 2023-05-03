@@ -41,6 +41,7 @@ export interface Request extends RequestBase {
     /**
      * @since 8.8.0
      * @stability experimental
+     * @server_default false
      */
     include_defaults?: boolean
   }
