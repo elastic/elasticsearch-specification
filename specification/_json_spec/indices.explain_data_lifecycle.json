@@ -13,7 +13,7 @@
       "paths": [
         {
           "path": "/{index}/_lifecycle/explain",
-          "methods": ["POST"],
+          "methods": ["GET"],
           "parts": {
             "index": {
               "type": "string",
