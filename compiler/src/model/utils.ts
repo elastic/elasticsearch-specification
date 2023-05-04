@@ -60,6 +60,13 @@ export const knownBehaviors = [
   'OverloadOf'
 ]
 
+export const knownMarkers = [
+  'serverless',
+  'serverless-public',
+  'serverless-internal',
+  'stack'
+]
+
 /**
  * Custom types that we use in the compiler
  * to help contributors shape the specification.
@@ -575,7 +582,8 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id'
+    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id',
+    'exclude_if', 'include_if'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -648,6 +656,16 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1]
+    } else if (tag === 'exclude_if') {
+      const values = parseCommaSeparated(value)
+      for (const v of values) {
+        assert(jsDocs, knownMarkers.includes(v), `The marker '${v}' does not exist`)
+      }
+    } else if (tag === 'include_if') {
+      const values = parseCommaSeparated(value)
+      for (const v of values) {
+        assert(jsDocs, knownMarkers.includes(v), `The marker '${v}' does not exist`)
+      }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }

@@ -53,6 +53,9 @@ Furthermore, every request definition **must** contain three JS Doc tags:
 - `@rest_spec_name`: the API name (eg: `search`, `indices.create`...).
 - `@since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`)
 - `@stability`: the API stability, one of `experimental`, `beta`, `stable`
+- `@exclude_if`/`@include_if`: Explicitly exclude or include the API depending on what
+  annotations(s) are passed to the compiler. For example, if an API is not available on
+  Serverless Elasticsearch it will be annotated with `@exclude_if serverless`.
 
 Following you can find a template valid for any request definition.
 
@@ -61,6 +64,7 @@ Following you can find a template valid for any request definition.
  * @rest_spec_name endpoint.name
  * @since 1.2.3
  * @stability stable | beta | experimental
+ * @exclude_if serverless
  */
 interface Request extends RequestBase {
   path_parts: {
