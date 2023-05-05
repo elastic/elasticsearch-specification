@@ -10293,7 +10293,6 @@ export interface IndicesExplainDataLifecycleRequest extends RequestBase {
   index: IndexName
   include_defaults?: boolean
   master_timeout?: Duration
-  timeout?: Duration
 }
 
 export interface IndicesExplainDataLifecycleResponse {

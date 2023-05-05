@@ -34,6 +34,5 @@ export interface Request extends RequestBase {
   query_parameters: {
     include_defaults?: boolean
     master_timeout?: Duration
-    timeout?: Duration
   }
 }
