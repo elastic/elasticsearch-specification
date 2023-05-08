@@ -10290,7 +10290,7 @@ export interface IndicesExplainDataLifecycleDataLifecycleExplain {
 }
 
 export interface IndicesExplainDataLifecycleRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   include_defaults?: boolean
   master_timeout?: Duration
 }

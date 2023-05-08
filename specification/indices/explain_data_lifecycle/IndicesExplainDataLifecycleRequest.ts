@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -29,7 +29,7 @@ import { Duration } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index: IndexName
+    index: Indices
   }
   query_parameters: {
     include_defaults?: boolean
