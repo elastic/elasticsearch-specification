@@ -60,6 +60,11 @@ export class InferenceConfigCreateContainer {
    * */
   text_embedding?: TextEmbeddingInferenceOptions
   /**
+   * Text expansion configuration for inference.
+   * @since 8.8.0
+   * */
+  text_expansion?: TextExpansionInferenceOptions
+  /**
    * Question answering configuration for inference.
    * @since 8.3.0
    */
@@ -221,6 +226,16 @@ export class Vocabulary {
 
 /** Text embedding inference options */
 export class TextEmbeddingInferenceOptions {
+  /** The number of dimensions in the embedding output */
+  embedding_size?: integer
+  /** The tokenization options */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+/** Text expansion inference options */
+export class TextExpansionInferenceOptions {
   /** The tokenization options */
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
@@ -280,6 +295,8 @@ export class InferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Text expansion configuration for inference. */
+  text_expansion?: TextExpansionInferenceUpdateOptions
   /** Question answering configuration for inference */
   question_answering?: QuestionAnsweringInferenceUpdateOptions
 }
@@ -298,6 +315,8 @@ export class NlpInferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Text expansion configuration for inference. */
+  text_expansion?: TextExpansionInferenceUpdateOptions
   /** Question answering configuration for inference */
   question_answering?: QuestionAnsweringInferenceUpdateOptions
 }
@@ -355,6 +374,12 @@ export class PassThroughInferenceUpdateOptions {
 }
 
 export class TextEmbeddingInferenceUpdateOptions {
+  tokenization?: NlpTokenizationUpdateOptions
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+export class TextExpansionInferenceUpdateOptions {
   tokenization?: NlpTokenizationUpdateOptions
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
