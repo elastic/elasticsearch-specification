@@ -243,10 +243,10 @@ export class SettingsQueryString {
 }
 
 export class IndexSettingBlocks {
-  read_only?: boolean
-  read_only_allow_delete?: boolean
-  read?: boolean
-  write?: boolean | string // TODO: should be bool only
+  read_only?: Stringified<boolean>
+  read_only_allow_delete?: Stringified<boolean>
+  read?: Stringified<boolean>
+  write?: Stringified<boolean>
   metadata?: Stringified<boolean>
 }
 
