@@ -9593,10 +9593,10 @@ export interface IndicesIndexSegmentSort {
 }
 
 export interface IndicesIndexSettingBlocks {
-  read_only?: boolean
-  read_only_allow_delete?: boolean
-  read?: boolean
-  write?: boolean | string
+  read_only?: SpecUtilsStringified<boolean>
+  read_only_allow_delete?: SpecUtilsStringified<boolean>
+  read?: SpecUtilsStringified<boolean>
+  write?: SpecUtilsStringified<boolean>
   metadata?: SpecUtilsStringified<boolean>
 }
 
