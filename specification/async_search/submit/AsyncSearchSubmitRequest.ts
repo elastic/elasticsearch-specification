@@ -72,18 +72,18 @@ export interface Request extends RequestBase {
     /**
      * Blocks and waits until the search is completed up to a certain timeout.
      * When the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster.
-     * @server_default 1s  
-    */
+     * @server_default 1s
+     */
     wait_for_completion_timeout?: Duration
-    /** 
+    /**
      * If `true`, results are stored for later retrieval when the search completes within the `wait_for_completion_timeout`.
-     * @server_default false 
+     * @server_default false
      */
     keep_on_completion?: boolean
     /**
      * Specifies how long the async search needs to be available.
      * Ongoing async searches and any saved search results are deleted after this period.
-     * @server_default 5d 
+     * @server_default 5d
      */
     keep_alive?: Duration
     allow_no_indices?: boolean
@@ -93,7 +93,7 @@ export interface Request extends RequestBase {
     /**
      * Affects how often partial results become available, which happens whenever shard results are reduced.
      * A partial reduction is performed every time the coordinating node has received a certain number of new shard responses (5 by default).
-     * @server_default 5 
+     * @server_default 5
      */
     batched_reduce_size?: long
     /**
@@ -114,8 +114,8 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.
-     * @server_default 1 
-    */
+     * @server_default 1
+     */
     pre_filter_shard_size?: long
     /** @server_default true */
     request_cache?: boolean
