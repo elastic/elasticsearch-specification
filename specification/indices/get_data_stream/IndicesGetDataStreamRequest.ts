@@ -31,5 +31,12 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     expand_wildcards?: ExpandWildcards
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @since 8.8.0
+     * @stability experimental
+     */
+    include_defaults?: boolean
   }
 }

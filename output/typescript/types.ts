@@ -8248,6 +8248,7 @@ export interface ClusterComponentTemplateSummary {
   settings?: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
+  lifecycle?: IndicesDataLifecycleWithRollover
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -8396,6 +8397,7 @@ export interface ClusterGetComponentTemplateRequest extends RequestBase {
   flat_settings?: boolean
   local?: boolean
   master_timeout?: Duration
+  include_defaults?: boolean
 }
 
 export interface ClusterGetComponentTemplateResponse {
@@ -9537,6 +9539,15 @@ export interface IndicesCacheQueries {
   enabled: boolean
 }
 
+export interface IndicesDataLifecycle {
+  data_retention?: Duration
+}
+
+export interface IndicesDataLifecycleWithRollover {
+  data_retention?: Duration
+  rollover?: IndicesDlmRolloverConditions
+}
+
 export interface IndicesDataStream {
   name: DataStreamName
   timestamp_field: IndicesDataStreamTimestampField
@@ -9550,6 +9561,7 @@ export interface IndicesDataStream {
   ilm_policy?: Name
   _meta?: Metadata
   allow_custom_routing?: boolean
+  lifecycle?: IndicesDataLifecycleWithRollover
 }
 
 export interface IndicesDataStreamIndex {
@@ -9563,6 +9575,19 @@ export interface IndicesDataStreamTimestampField {
 
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
+}
+
+export interface IndicesDlmRolloverConditions {
+  min_age?: Duration
+  max_age?: string
+  min_docs?: long
+  max_docs?: long
+  min_size?: ByteSize
+  max_size?: ByteSize
+  min_primary_shard_size?: ByteSize
+  max_primary_shard_size?: ByteSize
+  min_primary_shard_docs?: long
+  max_primary_shard_docs?: long
 }
 
 export interface IndicesDownsampleConfig {
@@ -9719,6 +9744,7 @@ export interface IndicesIndexState {
   settings?: IndicesIndexSettings
   defaults?: IndicesIndexSettings
   data_stream?: DataStreamName
+  lifecycle?: IndicesDataLifecycle
 }
 
 export interface IndicesIndexTemplate {
@@ -9741,6 +9767,7 @@ export interface IndicesIndexTemplateSummary {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
+  lifecycle?: IndicesDataLifecycleWithRollover
 }
 
 export interface IndicesIndexVersioning {
@@ -10160,6 +10187,15 @@ export interface IndicesDeleteAliasRequest extends RequestBase {
 
 export type IndicesDeleteAliasResponse = AcknowledgedResponseBase
 
+export interface IndicesDeleteDataLifecycleRequest extends RequestBase {
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IndicesDeleteDataLifecycleResponse = AcknowledgedResponseBase
+
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
   name: DataStreamNames
   expand_wildcards?: ExpandWildcards
@@ -10240,6 +10276,28 @@ export interface IndicesExistsTemplateRequest extends RequestBase {
 }
 
 export type IndicesExistsTemplateResponse = boolean
+
+export interface IndicesExplainDataLifecycleDataLifecycleExplain {
+  index: IndexName
+  managed_by_dlm: boolean
+  index_creation_date_millis?: EpochTime<UnitMillis>
+  time_since_index_creation?: Duration
+  rollover_date_millis?: EpochTime<UnitMillis>
+  time_since_rollover?: Duration
+  lifecycle?: IndicesDataLifecycleWithRollover
+  generation_time?: Duration
+  error?: string
+}
+
+export interface IndicesExplainDataLifecycleRequest extends RequestBase {
+  index: Indices
+  include_defaults?: boolean
+  master_timeout?: Duration
+}
+
+export interface IndicesExplainDataLifecycleResponse {
+  indices: Record<IndexName, IndicesExplainDataLifecycleDataLifecycleExplain>
+}
 
 export interface IndicesFieldUsageStatsFieldSummary {
   any: uint
@@ -10358,9 +10416,25 @@ export interface IndicesGetAliasRequest extends RequestBase {
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
 
+export interface IndicesGetDataLifecycleDataStreamLifecycle {
+  name: DataStreamName
+  lifecycle?: IndicesDataLifecycle
+}
+
+export interface IndicesGetDataLifecycleRequest extends RequestBase {
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
+  include_defaults?: boolean
+}
+
+export interface IndicesGetDataLifecycleResponse {
+  data_streams: IndicesGetDataLifecycleDataStreamLifecycle[]
+}
+
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
+  include_defaults?: boolean
 }
 
 export interface IndicesGetDataStreamResponse {
@@ -10393,6 +10467,7 @@ export interface IndicesGetIndexTemplateRequest extends RequestBase {
   local?: boolean
   flat_settings?: boolean
   master_timeout?: Duration
+  include_defaults?: boolean
 }
 
 export interface IndicesGetIndexTemplateResponse {
@@ -10499,10 +10574,23 @@ export interface IndicesPutAliasRequest extends RequestBase {
 
 export type IndicesPutAliasResponse = AcknowledgedResponseBase
 
+export interface IndicesPutDataLifecycleRequest extends RequestBase {
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    data_retention?: Duration
+  }
+}
+
+export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
+
 export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
+  lifecycle?: IndicesDataLifecycle
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
@@ -10895,6 +10983,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   master_timeout?: Duration
+  include_defaults?: boolean
   body?: {
     allow_auto_create?: boolean
     index_patterns?: Indices
@@ -10919,6 +11008,7 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
   master_timeout?: Duration
+  include_defaults?: boolean
   body?: IndicesIndexTemplate
 }
 

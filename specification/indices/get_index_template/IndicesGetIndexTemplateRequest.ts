@@ -49,5 +49,12 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @since 8.8.0
+     * @stability experimental
+     */
+    include_defaults?: boolean
   }
 }
