@@ -92,6 +92,7 @@ import {
   TypeQuery,
   WildcardQuery
 } from './term'
+import { TextExpansionQuery } from './TextExpansionQuery'
 
 /**
  * @variants container
@@ -152,6 +153,8 @@ export class QueryContainer {
   term?: SingleKeyDictionary<Field, TermQuery>
   terms?: TermsQuery
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
+  /** @since 8.8.0 */
+  text_expansion?: TextExpansionQuery
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
   wrapper?: WrapperQuery
 
