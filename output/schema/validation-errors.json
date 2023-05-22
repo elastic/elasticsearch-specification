@@ -1159,16 +1159,10 @@
       ]
     },
     "search_application.delete_behavioral_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.get_behavioral_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition search_application.delete_behavioral_analytics:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "search_application.post_behavioral_analytics_event": {
       "request": [
@@ -1176,7 +1170,7 @@
       ],
       "response": []
     },
-    "search_application.put_behavioral_analytics": {
+    "search_application.render_query": {
       "request": [
         "Missing request & response"
       ],
