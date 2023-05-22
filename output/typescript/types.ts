@@ -15577,6 +15577,14 @@ export interface RollupStopJobResponse {
   stopped: boolean
 }
 
+export interface SearchApplicationAnalyticsCollection {
+  event_data_stream: SearchApplicationEventDataStream
+}
+
+export interface SearchApplicationEventDataStream {
+  name: IndexName
+}
+
 export interface SearchApplicationSearchApplication {
   name: Name
   indices: IndexName[]
@@ -15595,11 +15603,23 @@ export interface SearchApplicationDeleteRequest extends RequestBase {
 
 export type SearchApplicationDeleteResponse = AcknowledgedResponseBase
 
+export interface SearchApplicationDeleteBehavioralAnalyticsRequest extends RequestBase {
+  name: Name
+}
+
+export type SearchApplicationDeleteBehavioralAnalyticsResponse = AcknowledgedResponseBase
+
 export interface SearchApplicationGetRequest extends RequestBase {
   name: Name
 }
 
 export type SearchApplicationGetResponse = SearchApplicationSearchApplication
+
+export interface SearchApplicationGetBehavioralAnalyticsRequest extends RequestBase {
+  name?: Name[]
+}
+
+export type SearchApplicationGetBehavioralAnalyticsResponse = Record<Name, SearchApplicationAnalyticsCollection>
 
 export interface SearchApplicationListRequest extends RequestBase {
   q?: string
@@ -15628,6 +15648,16 @@ export interface SearchApplicationPutRequest extends RequestBase {
 export interface SearchApplicationPutResponse {
   result: Result
 }
+
+export interface SearchApplicationPutBehavioralAnalyticsAnalyticsAcknowledgeResponseBase extends AcknowledgedResponseBase {
+  name: Name
+}
+
+export interface SearchApplicationPutBehavioralAnalyticsRequest extends RequestBase {
+  name: Name
+}
+
+export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationPutBehavioralAnalyticsAnalyticsAcknowledgeResponseBase
 
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name
