@@ -54,8 +54,7 @@ import { Duration } from '@_types/Time'
  * give users any privileges on `.data-frame-internal*` indices.
  *
  * @rest_spec_name transform.put_transform
- * @since 7.2.0
- * @stability stable
+ * @availability stack since=7.2.0 stability=stable
  * @cluster_privileges manage_transform
  * @index_privileges create_index, read, index, view_index_metadata
  */

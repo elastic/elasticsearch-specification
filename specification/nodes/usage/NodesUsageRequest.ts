@@ -23,8 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name nodes.usage
- * @since 6.0.0
- * @stability stable
+ * @availability stack since=6.0.0 stability=stable
  * @doc_id cluster-nodes-usage
  */
 export interface Request extends RequestBase {

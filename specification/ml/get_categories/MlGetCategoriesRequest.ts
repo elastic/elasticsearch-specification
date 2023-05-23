@@ -25,8 +25,7 @@ import { integer } from '@_types/Numeric'
 /**
  * Retrieves anomaly detection job results for one or more categories.
  * @rest_spec_name ml.get_categories
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

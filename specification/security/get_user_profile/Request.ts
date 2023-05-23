@@ -23,8 +23,7 @@ import { UserProfileId } from '@security/_types/UserProfile'
 /**
  * Retrieves a user's profile using the unique profile ID.
  * @rest_spec_name security.get_user_profile
- * @since 8.2.0
- * @stability stable
+ * @availability stack since=8.2.0 stability=stable
  * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {

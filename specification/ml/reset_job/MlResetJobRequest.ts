@@ -27,8 +27,7 @@ import { Id } from '@_types/common'
  * It is not currently possible to reset multiple jobs using wildcards or a
  * comma separated list.
  * @rest_spec_name ml.reset_job
- * @since 7.14.0
- * @stability stable
+ * @availability stack since=7.14.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

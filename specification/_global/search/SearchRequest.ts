@@ -51,8 +51,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name search
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -23,8 +23,7 @@ import { float, long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name update_by_query_rethrottle
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

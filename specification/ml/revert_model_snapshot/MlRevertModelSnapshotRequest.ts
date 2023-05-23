@@ -30,8 +30,7 @@ import { Id } from '@_types/common'
  * before this event. For example, you might consider reverting to a saved
  * snapshot after Black Friday or a critical system failure.
  * @rest_spec_name ml.revert_model_snapshot
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

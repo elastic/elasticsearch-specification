@@ -29,8 +29,7 @@ import { Id } from '@_types/common'
  * This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.
  * For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.
  * @rest_spec_name watcher.execute_watch
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @cluster_privileges manage_watcher
  */
 export interface Request extends RequestBase {

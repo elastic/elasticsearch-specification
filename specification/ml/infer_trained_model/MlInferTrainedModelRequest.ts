@@ -27,8 +27,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 /**
  * Evaluates a trained model.
  * @rest_spec_name ml.infer_trained_model
- * @since 8.3.0
- * @stability stable
+ * @availability stack since=8.3.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

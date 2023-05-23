@@ -36,8 +36,7 @@ import { Duration, DateTime } from '@_types/Time'
  * update it had at the time of creation or update and runs the query using those same roles. If you provided secondary
  * authorization headers when you created or updated the datafeed, those credentials are used instead.
  * @rest_spec_name ml.start_datafeed
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

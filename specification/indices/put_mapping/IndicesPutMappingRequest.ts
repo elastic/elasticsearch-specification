@@ -41,8 +41,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_mapping
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

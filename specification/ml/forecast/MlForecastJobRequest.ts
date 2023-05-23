@@ -30,8 +30,7 @@ import { Duration } from '@_types/Time'
  * `over_field_name` in its configuration.
  *
  * @rest_spec_name ml.forecast
- * @since 6.1.0
- * @stability stable
+ * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

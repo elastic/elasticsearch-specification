@@ -35,8 +35,7 @@ import { ScriptField } from '@_types/Scripting'
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,
  * those credentials are used instead.
  * @rest_spec_name ml.update_datafeed
- * @since 6.4.0
- * @stability stable
+ * @availability stack since=6.4.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

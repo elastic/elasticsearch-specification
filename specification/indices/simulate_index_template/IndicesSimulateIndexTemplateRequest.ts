@@ -32,8 +32,7 @@ import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTempl
 
 /**
  * @rest_spec_name indices.simulate_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
 /**
  * Returns the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {

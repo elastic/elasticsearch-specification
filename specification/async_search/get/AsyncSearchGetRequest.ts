@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
  * Retrieves the results of a previously submitted async search request given its identifier.
  * If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.
  * @rest_spec_name async_search.get
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
  * @doc_id async-search
  */
 export interface Request extends RequestBase {

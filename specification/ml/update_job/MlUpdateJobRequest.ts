@@ -33,8 +33,7 @@ import { Duration } from '@_types/Time'
 /**
  * Updates certain properties of an anomaly detection job.
  * @rest_spec_name ml.update_job
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

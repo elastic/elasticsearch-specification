@@ -31,8 +31,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name search_template
- * @since 2.0.0
- * @stability stable
+ * @availability stack since=2.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

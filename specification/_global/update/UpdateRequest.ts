@@ -37,8 +37,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name update
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {

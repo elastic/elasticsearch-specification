@@ -24,8 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Removes the data lifecycle from a data stream rendering it not managed by DLM
  * @rest_spec_name indices.delete_data_lifecycle
- * @since 8.8.0
- * @stability experimental
+ * @availability stack since=8.8.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {

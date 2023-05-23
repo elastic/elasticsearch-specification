@@ -22,8 +22,7 @@ import { Action } from './types'
 
 /**
  * @rest_spec_name indices.modify_data_stream
- * @since 7.16.0
- * @stability stable
+ * @availability stack since=7.16.0 stability=stable
  */
 export interface Request extends RequestBase {
   body: {

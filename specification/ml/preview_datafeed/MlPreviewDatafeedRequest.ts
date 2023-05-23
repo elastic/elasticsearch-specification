@@ -34,8 +34,7 @@ import { DateTime } from '@_types/Time'
  * datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.
  * You can also use secondary authorization headers to supply the credentials.
  * @rest_spec_name ml.preview_datafeed
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @index_privileges read
  * @cluster_privileges manage_ml
  */

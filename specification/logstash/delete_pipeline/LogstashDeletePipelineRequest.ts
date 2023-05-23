@@ -22,8 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name logstash.delete_pipeline
- * @since 7.12.0
- * @stability stable
+ * @availability stack since=7.12.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

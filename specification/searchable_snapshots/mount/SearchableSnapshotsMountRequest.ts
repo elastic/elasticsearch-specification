@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name searchable_snapshots.mount
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

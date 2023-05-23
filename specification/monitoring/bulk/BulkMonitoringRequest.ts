@@ -23,8 +23,7 @@ import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
 /**
  * @rest_spec_name monitoring.bulk
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {

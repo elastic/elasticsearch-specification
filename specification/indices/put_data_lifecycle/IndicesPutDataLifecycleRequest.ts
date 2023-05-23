@@ -24,8 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Update the data lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
- * @since 8.8.0
- * @stability experimental
+ * @availability stack since=8.8.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {

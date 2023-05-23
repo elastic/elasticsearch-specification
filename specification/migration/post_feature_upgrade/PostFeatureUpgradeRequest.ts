@@ -21,8 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name migration.post_feature_upgrade
- * @since 7.16.0
- * @stability stable
+ * @availability stack since=7.16.0 stability=stable
  * @index_privileges manage
  */
 export interface Request extends RequestBase {}

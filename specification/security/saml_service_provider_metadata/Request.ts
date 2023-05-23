@@ -23,8 +23,7 @@ import { Name } from '@_types/common'
 /**
  * Generate SAML metadata for a SAML 2.0 Service Provider.
  * @rest_spec_name security.saml_service_provider_metadata
- * @since 7.11.0
- * @stability stable
+ * @availability stack since=7.11.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

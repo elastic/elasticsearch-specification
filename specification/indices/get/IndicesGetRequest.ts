@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
  * Returns information about one or more indices. For data streams, the API returns information about the
  * stream’s backing indices.
  * @rest_spec_name indices.get
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @index_privileges view_index_metadata, manage
  */
 export interface Request extends RequestBase {

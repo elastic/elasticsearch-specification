@@ -28,8 +28,7 @@ import { Duration } from '@_types/Time'
  * jobs API. The delete forecast API enables you to delete one or more
  * forecasts before they expire.
  * @rest_spec_name ml.delete_forecast
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

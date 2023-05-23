@@ -22,8 +22,7 @@ import { Names, Namespace, Service } from '@_types/common'
 
 /**
  * @rest_spec_name security.clear_cached_service_tokens
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

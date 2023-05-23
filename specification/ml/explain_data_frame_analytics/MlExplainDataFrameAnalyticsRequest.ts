@@ -36,8 +36,7 @@ import { integer } from '@_types/Numeric'
  * * how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.
  * If you have object fields or fields that are excluded via source filtering, they are not included in the explanation.
  * @rest_spec_name ml.explain_data_frame_analytics
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
