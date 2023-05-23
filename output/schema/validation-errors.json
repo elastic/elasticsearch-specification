@@ -1170,12 +1170,6 @@
       ],
       "response": []
     },
-    "search_application.render_query": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_application.search": {
       "request": [],
       "response": [
