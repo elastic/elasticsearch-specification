@@ -51,16 +51,20 @@ A request definition is an interface and should contains three top level keys:
 Furthermore, every request definition **must** contain three JS Doc tags:
 
 - `@rest_spec_name`: the API name (eg: `search`, `indices.create`...).
-- `@since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`)
-- `@stability`: the API stability, one of `experimental`, `beta`, `stable`
+- `@availability` Which flavor of Elasticsearch is this API available for? (eg `stack` or `serverless`)
+  - `stability`: the API stability, one of `experimental`, `beta`, `stable`
+  - `visibility`: the API stability, one of `public` or `private`.
+  - `since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`).
+    This field is only available for `stack`.
+  - `feature_flag`: the feature flag value, only valid if the `visibility` is set to `feature_flag`.
+    This field is only available for `stack`.
 
 Following you can find a template valid for any request definition.
 
 ```ts
  /*
  * @rest_spec_name endpoint.name
- * @since 1.2.3
- * @stability stable | beta | experimental
+ * @availability stack since=1.2.3 stability=stable|beta|experimental
  */
 interface Request extends RequestBase {
   path_parts: {
@@ -79,8 +83,7 @@ In some cases, the request could take one or more generics, in such case the def
 ```ts
  /*
  * @rest_spec_name endpoint.name
- * @since 1.2.3
- * @stability stable | beta | experimental
+ * @availability stack since=1.2.3 stability=stable|beta|experimental
  */
 interface Request<Generic> extends RequestBase {
   path_parts: {
