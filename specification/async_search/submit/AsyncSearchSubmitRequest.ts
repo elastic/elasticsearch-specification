@@ -53,6 +53,11 @@ import { KnnQuery } from '@_types/Knn'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
+ * Runs a search request asynchronously.
+ * When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.
+ * Warning: Async search does not support scroll nor search requests that only include the suggest section.
+ * By default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.
+ * The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.
  * @rest_spec_name async_search.submit
  * @since 7.7.0
  * @stability stable
@@ -64,17 +69,37 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
-    /** @server_default 1s */
+    /**
+     * Blocks and waits until the search is completed up to a certain timeout.
+     * When the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster.
+     * @server_default 1s
+     */
     wait_for_completion_timeout?: Duration
-    /** @server_default false */
+    /**
+     * If `true`, results are stored for later retrieval when the search completes within the `wait_for_completion_timeout`.
+     * @server_default false
+     */
     keep_on_completion?: boolean
-    /** @server_default 5d */
+    /**
+     * Specifies how long the async search needs to be available.
+     * Ongoing async searches and any saved search results are deleted after this period.
+     * @server_default 5d
+     */
     keep_alive?: Duration
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
+    /**
+     * Affects how often partial results become available, which happens whenever shard results are reduced.
+     * A partial reduction is performed every time the coordinating node has received a certain number of new shard responses (5 by default).
+     * @server_default 5
+     */
     batched_reduce_size?: long
+    /**
+     * The default value is the only supported value.
+     * @server_default false
+     */
     ccs_minimize_roundtrips?: boolean
     default_operator?: Operator
     df?: string
@@ -87,7 +112,12 @@ export interface Request extends RequestBase {
     max_concurrent_shard_requests?: long
     min_compatible_shard_node?: VersionString
     preference?: string
+    /**
+     * The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.
+     * @server_default 1
+     */
     pre_filter_shard_size?: long
+    /** @server_default true */
     request_cache?: boolean
     routing?: Routing
     scroll?: Duration

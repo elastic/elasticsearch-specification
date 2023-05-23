@@ -22,7 +22,13 @@ import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class StatusResponseBase extends AsyncSearchResponseBase {
+  /** Indicates how many shards have run the query so far. */
   _shards: ShardStatistics
+  /**
+   * If the async search completed, this field shows the status code of the search.
+   * For example, 200 indicates that the async search was successfully completed.
+   * 503 indicates that the async search was completed with an error.
+   */
   completion_status?: integer
 }
 export class Response {
