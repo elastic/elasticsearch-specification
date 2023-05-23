@@ -369,7 +369,7 @@ export enum Stability {
 }
 export enum Visibility {
   public = 'public',
-  featureFlag = 'feature_flag',
+  feature_flag = 'feature_flag',
   private = 'private'
 }
 
@@ -378,12 +378,30 @@ export class Deprecation {
   description: string
 }
 
+export class Availability {
+  stack?: StackAvailability
+  serverless?: ServerlessAvailability
+}
+
+export class StackAvailability {
+  since?: string
+  featureFlag?: string
+  stability?: Stability
+  visibility?: Visibility
+}
+
+export class ServerlessAvailability {
+  stability?: Stability
+  visibility?: Visibility
+}
+
 export class Endpoint {
   name: string
   description: string
   docUrl: string
   docId?: string
   deprecation?: Deprecation
+  availability: Availability
 
   /**
    * If the request value is `null` it means that there is not yet a

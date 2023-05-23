@@ -19,7 +19,6 @@
 
 /**
  * @rest_spec_name info
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request {}

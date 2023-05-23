@@ -19,16 +19,27 @@
 
 /**
  * @rest_spec_name index
- * @availability stack since=0.0.0 stability=stable
+ * @availability serverless visibility=private stability=experimental
+ * @availability stack stability=beta since=1.2.3 visibility=feature_flag feature_flag=abc
  */
-export interface Request {
+export interface Request<TDocument> {
   path_parts: {
-    id: string
+    id?: string
+    index: string
   }
-  /** @codegen_name id */
-  body: Foo
-}
-
-export class Foo {
-  bar: string
+  query_parameters: {
+    if_primary_term?: number
+    if_seq_no?: number
+    op_type?: string
+    pipeline?: string
+    refresh?: string
+    routing?: string
+    timeout?: string
+    version?: number
+    version_type?: string
+    wait_for_active_shards?: string
+    require_alias?: boolean
+  }
+  /** @codegen_name document */
+  body?: TDocument
 }
