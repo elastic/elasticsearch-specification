@@ -55,7 +55,7 @@ export interface Request extends CatRequestBase {
     /**
      * If true, the response includes information from segments that are not loaded into memory.
      * @server_default false
-    */
+     */
     include_unloaded_segments?: boolean
     /**
      * If true, the response only includes information from primary shards.
