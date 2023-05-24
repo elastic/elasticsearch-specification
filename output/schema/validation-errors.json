@@ -467,8 +467,7 @@
     },
     "cluster.get_component_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: missing json spec query parameter 'include_defaults'"
+        "Request: query parameter 'flat_settings' does not exist in the json spec"
       ],
       "response": []
     },
@@ -738,10 +737,10 @@
       ]
     },
     "indices.delete_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition indices.delete_data_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "indices.delete_data_stream": {
       "request": [],
@@ -768,12 +767,6 @@
       ],
       "response": []
     },
-    "indices.explain_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "indices.field_usage_stats": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -793,24 +786,6 @@
       "response": [
         "response definition indices.get:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
-    },
-    "indices.get_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "indices.get_data_stream": {
-      "request": [
-        "Request: missing json spec query parameter 'include_defaults'"
-      ],
-      "response": []
-    },
-    "indices.get_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'include_defaults'"
-      ],
-      "response": []
     },
     "indices.get_settings": {
       "request": [],
@@ -837,10 +812,10 @@
       ]
     },
     "indices.put_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition indices.put_data_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "indices.put_index_template": {
       "request": [
@@ -874,15 +849,13 @@
     },
     "indices.simulate_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'include_defaults'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
     "indices.simulate_template": {
       "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'include_defaults'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -1186,24 +1159,12 @@
       ]
     },
     "search_application.delete_behavioral_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.get_behavioral_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition search_application.delete_behavioral_analytics:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.put_behavioral_analytics": {
       "request": [
         "Missing request & response"
       ],

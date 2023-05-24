@@ -31,6 +31,7 @@ import {
 } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
+import { DataLifecycle } from '@indices/_types/DataLifecycle'
 
 /**
  * @rest_spec_name indices.put_index_template
@@ -61,4 +62,9 @@ export class IndexTemplateMapping {
   aliases?: Dictionary<IndexName, Alias>
   mappings?: TypeMapping
   settings?: IndexSettings
+  /**
+   * @since 8.8.0
+   * @stability experimental
+   */
+  lifecycle?: DataLifecycle
 }
