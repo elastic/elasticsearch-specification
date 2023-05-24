@@ -21,13 +21,17 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
+ * Retrieves the cluster’s index aliases, including filter and routing information.
+ * The API does not return data stream aliases.
  * @rest_spec_name cat.aliases
  * @since 0.0.0
  * @stability stable
  * @doc_id cat-alias
+ * @index_privileges view_index_metadata, manage
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /** A comma-separated list of aliases to retrieve. Supports wildcards (`*`).  To retrieve all aliases, omit this parameter or use `*` or `_all`. */
     name?: Names
   }
   query_parameters: {
