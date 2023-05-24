@@ -73,5 +73,6 @@ export interface Request extends CatRequestBase {
      * The unit used to display time values.
      */
     time?: TimeUnit
+    }
   }
 }
