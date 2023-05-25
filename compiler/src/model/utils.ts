@@ -1069,21 +1069,12 @@ export function parseAvailabilityTags (node: Node | Node[], values: string[]): m
     // Since we're using reduce() we need to check that there's no duplicates.
     assert(node, !(availabilityName in result), `Duplicate @availability tag: '${availabilityName}'`)
 
-    // Based on which availability definition we're parsing we have different valid tags.
-    let validKeys: string[] = []
-    switch (availabilityName) {
-      case 'stack':
-        validKeys = ['stability', 'visibility', 'since', 'feature_flag']
-        break
-      case 'serverless':
-        validKeys = ['stability', 'visibility']
-        break
-      default:
-        assert(node, false, 'The @availablility <name> value must either be stack or serverless')
-    }
+    // Enforce only known availability names.
+    assert(node, availabilityName === 'stack' || availabilityName === 'serverless', 'The @availablility <name> value must either be stack or serverless')
 
     // Now we can parse all the key-values and load them into variables
     // for easier access below.
+    const validKeys = ['stability', 'visibility', 'since', 'feature_flag']
     const parsedKeyValues = parseKeyValues(node, values, ...validKeys)
     const visibility = parsedKeyValues.visibility
     const stability = parsedKeyValues.stability
@@ -1108,11 +1099,9 @@ export function parseAvailabilityTags (node: Node | Node[], values: string[]): m
     }
     if (since !== undefined) {
       assert(node, semver.valid(since), `'since' is not valid semver: ${since}`)
-      assert(node, availabilityName === 'stack', `'since' is only valid on 'stack', not valid for '${availabilityName}'`)
     }
     if (featureFlag !== undefined) {
       assert(node, visibility === 'feature_flag', '\'visibility\' must be \'feature_flag\' if a feature flag is defined')
-      assert(node, availabilityName === 'stack', `'feature_flag' is only valid on 'stack', not valid for '${availabilityName}'`)
       parsedKeyValues.featureFlag = featureFlag
     }
 
