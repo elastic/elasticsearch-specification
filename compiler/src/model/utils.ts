@@ -643,24 +643,15 @@ export function hoistRequestAnnotations (
       const availabilities = parseAvailabilityTags(jsDocs, jsDocsMulti.availability)
 
       // Apply the availabilities to the Endpoint.
-      for (const availabilityName in availabilities) {
-        const availabilityValue = availabilities[availabilityName]
+      for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         endpoint.availability[availabilityName] = availabilityValue
 
         // Backfilling deprecated fields on an endpoint.
         if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            endpoint.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            endpoint.stability = availabilityValue.stability
-          }
-          if (availabilityValue.visibility !== undefined) {
-            endpoint.visibility = availabilityValue.visibility
-          }
-          if (availabilityValue.featureFlag !== undefined) {
-            endpoint.featureFlag = availabilityValue.featureFlag
-          }
+          endpoint.featureFlag = availabilityValue?.featureFlag
+          endpoint.since = availabilityValue?.since
+          endpoint.stability = availabilityValue?.stability
+          endpoint.visibility = availabilityValue?.visibility
         }
       }
     } else {
