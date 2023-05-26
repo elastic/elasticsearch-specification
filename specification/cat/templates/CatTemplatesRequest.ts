@@ -22,8 +22,7 @@ import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name cat.templates
- * @since 5.2.0
- * @stability stable
+ * @availability stack since=5.2.0 stability=stable
  * @doc_id cat-templates
  */
 export interface Request extends CatRequestBase {

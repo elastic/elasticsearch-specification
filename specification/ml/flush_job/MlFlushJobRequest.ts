@@ -32,8 +32,7 @@ import { DateTime } from '@_types/Time'
  * persists the model state to disk and the job must be opened again before
  * analyzing further data.
  * @rest_spec_name ml.flush_job
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

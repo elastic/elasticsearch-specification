@@ -22,8 +22,7 @@ import { ExpandWildcards, IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.data_streams_stats
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

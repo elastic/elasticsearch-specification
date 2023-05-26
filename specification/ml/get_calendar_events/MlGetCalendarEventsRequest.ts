@@ -25,8 +25,7 @@ import { DateTime } from '@_types/Time'
 /**
  * Retrieves information about the scheduled events in calendars.
  * @rest_spec_name ml.get_calendar_events
- * @since 6.2.0
- * @stability stable
+ * @availability stack since=6.2.0 stability=stable
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

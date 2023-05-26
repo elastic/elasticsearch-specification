@@ -32,8 +32,7 @@ import { Duration } from '@_types/Time'
  * upgraded snapshot cannot be the current snapshot of the anomaly detection
  * job.
  * @rest_spec_name ml.upgrade_job_snapshot
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

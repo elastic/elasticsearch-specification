@@ -21,8 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name sql.clear_cursor
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
  */
 export interface Request extends RequestBase {
   body: {

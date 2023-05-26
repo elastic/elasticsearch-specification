@@ -21,8 +21,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * @rest_spec_name cat.health
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @doc_id cat-health
  */
 export interface Request extends CatRequestBase {

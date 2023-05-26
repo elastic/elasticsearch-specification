@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name enrich.stats
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
  */
 export interface Request extends RequestBase {}

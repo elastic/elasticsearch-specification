@@ -35,8 +35,7 @@ import { DataLifecycle } from '@indices/_types/DataLifecycle'
 
 /**
  * @rest_spec_name indices.put_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

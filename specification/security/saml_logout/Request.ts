@@ -22,8 +22,7 @@ import { RequestBase } from '@_types/Base'
 /**
  * Submits a request to invalidate an access token and refresh token.
  * @rest_spec_name security.saml_logout
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
  */
 export interface Request extends RequestBase {
   body: {

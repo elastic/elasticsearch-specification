@@ -34,8 +34,7 @@ import { Duration } from '@_types/Time'
  * You can see the current value for the upgrade_mode setting by using the get
  * machine learning info API.
  * @rest_spec_name ml.set_upgrade_mode
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

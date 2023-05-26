@@ -24,8 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Deletes a data frame analytics job.
  * @rest_spec_name ml.delete_data_frame_analytics
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
  * @cluster_privileges manage_ml
  * @doc_id ml-delete-dfanalytics
  */

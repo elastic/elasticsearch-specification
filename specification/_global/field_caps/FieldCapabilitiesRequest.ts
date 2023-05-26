@@ -27,8 +27,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type
  * of keyword is returned as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @index_privileges view_index_metadata,read,manage
  */
 export interface Request extends RequestBase {

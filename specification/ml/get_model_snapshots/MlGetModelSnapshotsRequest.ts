@@ -26,8 +26,7 @@ import { Duration, DateTime } from '@_types/Time'
 /**
  * Retrieves information about model snapshots.
  * @rest_spec_name ml.get_model_snapshots
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

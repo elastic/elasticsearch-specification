@@ -26,8 +26,7 @@ import { Id } from '@_types/common'
  * revert to a different one. To identify the active model snapshot, refer to
  * the `model_snapshot_id` in the results from the get jobs API.
  * @rest_spec_name ml.delete_model_snapshot
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

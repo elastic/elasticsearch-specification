@@ -30,8 +30,7 @@ import { DatafeedConfig } from '@ml/_types/Datafeed'
 /**
  * Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.
  * @rest_spec_name ml.put_job
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @index_privileges read
  * @cluster_privileges manage_ml
  */

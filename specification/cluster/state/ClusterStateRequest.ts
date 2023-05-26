@@ -28,8 +28,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.state
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
  * @cluster_privileges monitor, manage
  * @doc_id cluster-state
  */

@@ -24,8 +24,7 @@ import { Id } from '@_types/common'
  * Deletes an existing trained inference model that is currently not referenced
  * by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

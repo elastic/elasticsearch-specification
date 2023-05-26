@@ -22,8 +22,7 @@ import { Indices } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.follow_info
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
  * @doc_id ccr-get-follow-info
  */
 export interface Request extends RequestBase {

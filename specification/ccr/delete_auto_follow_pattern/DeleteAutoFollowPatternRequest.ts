@@ -22,8 +22,7 @@ import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.delete_auto_follow_pattern
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-delete-auto-follow-pattern
  */
 export interface Request extends RequestBase {

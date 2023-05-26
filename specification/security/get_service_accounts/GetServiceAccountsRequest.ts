@@ -23,8 +23,7 @@ import { Namespace, Service } from '@_types/common'
 /**
  * This API returns a list of service accounts that match the provided path parameter(s).
  * @rest_spec_name security.get_service_accounts
- * @since 7.13.0
- * @stability stable
+ * @availability stack since=7.13.0 stability=stable
  * @cluster_privileges manage_service_account
  */
 export interface Request extends RequestBase {

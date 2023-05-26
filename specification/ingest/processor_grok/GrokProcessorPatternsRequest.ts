@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name ingest.processor_grok
- * @since 6.1.0
- * @stability stable
+ * @availability stack since=6.1.0 stability=stable
  */
 export interface Request extends RequestBase {}

@@ -26,8 +26,7 @@ import { Destination, Source } from './types'
 
 /**
  * @rest_spec_name reindex
- * @since 2.3.0
- * @stability stable
+ * @availability stack since=2.3.0 stability=stable
  */
 export interface Request extends RequestBase {
   query_parameters: {

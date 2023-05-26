@@ -23,8 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.status
- * @since 7.8.0
- * @stability stable
+ * @availability stack since=7.8.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

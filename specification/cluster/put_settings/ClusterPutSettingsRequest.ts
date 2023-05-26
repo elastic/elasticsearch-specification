@@ -24,8 +24,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.put_settings
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @doc_id cluster-update-settings
  */
 export interface Request extends RequestBase {

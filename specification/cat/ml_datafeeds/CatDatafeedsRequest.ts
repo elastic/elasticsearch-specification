@@ -32,8 +32,7 @@ import { TimeUnit } from '@_types/Time'
  * application consumption, use the get datafeed statistics API.
  *
  * @rest_spec_name cat.ml_datafeeds
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
  * @cluster_privileges monitor_ml
  * @doc_id cat-datafeeds
  */

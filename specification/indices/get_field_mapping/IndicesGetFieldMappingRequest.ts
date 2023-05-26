@@ -22,8 +22,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name indices.get_field_mapping
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

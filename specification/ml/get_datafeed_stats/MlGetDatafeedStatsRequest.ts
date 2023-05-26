@@ -29,8 +29,7 @@ import { Ids } from '@_types/common'
  * only information you receive is the `datafeed_id` and the `state`.
  * This API returns a maximum of 10,000 datafeeds.
  * @rest_spec_name ml.get_datafeed_stats
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

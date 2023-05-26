@@ -29,8 +29,7 @@ import { Duration } from '@_types/Time'
  * application consumption, use the get data frame analytics jobs statistics API.
  *
  * @rest_spec_name cat.ml_data_frame_analytics
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
  * @doc_id cat-dfanalytics
  */
 export interface Request extends CatRequestBase {

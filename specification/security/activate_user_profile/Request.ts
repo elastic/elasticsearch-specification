@@ -23,8 +23,7 @@ import { GrantType } from '@security/_types/GrantType'
 /**
  * Creates or updates a user profile on behalf of another user.
  * @rest_spec_name security.activate_user_profile
- * @since 8.2.0
- * @stability stable
+ * @availability stack since=8.2.0 stability=stable
  * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {

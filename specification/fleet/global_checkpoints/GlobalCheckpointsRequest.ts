@@ -24,8 +24,7 @@ import { Checkpoint } from '../_types/Checkpoints'
 
 /**
  * @rest_spec_name fleet.global_checkpoints
- * @since 7.13.0
- * @stability stable
+ * @availability stack since=7.13.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -28,8 +28,7 @@ import { Duration } from '@_types/Time'
  * the transform will be processed again at now + frequency unless _schedule_now API
  * is called again in the meantime.
  * @rest_spec_name transform.schedule_now_transform
- * @since 8.7.0
- * @stability stable
+ * @availability stack since=8.7.0 stability=stable
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {

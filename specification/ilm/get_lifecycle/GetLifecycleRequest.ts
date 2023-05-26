@@ -24,8 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Retrieves a lifecycle policy.
  * @rest_spec_name ilm.get_lifecycle
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm, read_ilm
  */
 export interface Request extends RequestBase {

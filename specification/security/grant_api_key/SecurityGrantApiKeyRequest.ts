@@ -23,8 +23,7 @@ import { GrantApiKey, ApiKeyGrantType } from './types'
 
 /**
  * @rest_spec_name security.grant_api_key
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   body: {
