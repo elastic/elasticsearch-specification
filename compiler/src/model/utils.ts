@@ -648,10 +648,18 @@ export function hoistRequestAnnotations (
 
         // Backfilling deprecated fields on an endpoint.
         if (availabilityName === 'stack') {
-          endpoint.featureFlag = availabilityValue?.featureFlag
-          endpoint.since = availabilityValue?.since
-          endpoint.stability = availabilityValue?.stability
-          endpoint.visibility = availabilityValue?.visibility
+          if (availabilityValue.since !== undefined) {
+            endpoint.since = availabilityValue.since
+          }
+          if (availabilityValue.stability !== undefined) {
+            endpoint.stability = availabilityValue.stability
+          }
+          if (availabilityValue.visibility !== undefined) {
+            endpoint.visibility = availabilityValue.visibility
+          }
+          if (availabilityValue.featureFlag !== undefined) {
+            endpoint.featureFlag = availabilityValue.featureFlag
+          }
         }
       }
     } else {
