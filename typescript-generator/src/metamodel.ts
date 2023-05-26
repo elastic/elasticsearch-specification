@@ -378,19 +378,14 @@ export class Deprecation {
   description: string
 }
 
-export class Availability {
-  stack?: StackAvailability
-  serverless?: ServerlessAvailability
+export class Availabilities {
+  stack?: Availability
+  serverless?: Availability
 }
 
-export class StackAvailability {
+export class Availability {
   since?: string
   featureFlag?: string
-  stability?: Stability
-  visibility?: Visibility
-}
-
-export class ServerlessAvailability {
   stability?: Stability
   visibility?: Visibility
 }
@@ -401,7 +396,7 @@ export class Endpoint {
   docUrl: string
   docId?: string
   deprecation?: Deprecation
-  availability: Availability
+  availability: Availabilities
 
   /**
    * If the request value is `null` it means that there is not yet a
