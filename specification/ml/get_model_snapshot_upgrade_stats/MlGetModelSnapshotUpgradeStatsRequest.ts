@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * Retrieves usage information for anomaly detection job model snapshot upgrades.
  * @rest_spec_name ml.get_model_snapshot_upgrade_stats
  * @availability stack since=7.16.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

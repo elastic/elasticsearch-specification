@@ -27,6 +27,7 @@ import { Id } from '@_types/common'
  * the `model_snapshot_id` in the results from the get jobs API.
  * @rest_spec_name ml.delete_model_snapshot
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

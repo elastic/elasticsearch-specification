@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name cat.ml_data_frame_analytics
  * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-dfanalytics
  */
 export interface Request extends CatRequestBase {

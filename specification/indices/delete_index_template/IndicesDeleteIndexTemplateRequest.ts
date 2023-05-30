@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * existing templates.
  * @rest_spec_name indices.delete_index_template
  * @availability stack since=7.8.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {

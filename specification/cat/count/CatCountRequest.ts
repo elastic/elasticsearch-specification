@@ -23,6 +23,7 @@ import { Indices } from '@_types/common'
 /**
  * @rest_spec_name cat.count
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-count
  */
 export interface Request extends CatRequestBase {

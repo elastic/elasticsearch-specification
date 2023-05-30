@@ -30,6 +30,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * field and an analytics result field to be present.
  * @rest_spec_name ml.evaluate_data_frame
  * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

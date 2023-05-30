@@ -23,6 +23,7 @@ import { Bytes, NodeIds } from '@_types/common'
 /**
  * @rest_spec_name cat.allocation
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-allocation
  */
 export interface Request extends CatRequestBase {

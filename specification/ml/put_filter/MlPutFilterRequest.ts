@@ -26,6 +26,7 @@ import { Id } from '@_types/common'
  * Specifically, filters are referenced in the `custom_rules` property of detector configuration objects.
  * @rest_spec_name ml.put_filter
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

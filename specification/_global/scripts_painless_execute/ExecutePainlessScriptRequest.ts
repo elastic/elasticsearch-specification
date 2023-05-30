@@ -24,6 +24,7 @@ import { PainlessContextSetup } from './types'
 /**
  * @rest_spec_name scripts_painless_execute
  * @availability stack since=6.3.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   body: {

@@ -31,6 +31,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 /**
  * @rest_spec_name exists
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

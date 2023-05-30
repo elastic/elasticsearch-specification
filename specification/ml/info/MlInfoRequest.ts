@@ -29,6 +29,7 @@ import { RequestBase } from '@_types/Base'
  * cluster configuration.
  * @rest_spec_name ml.info
  * @availability stack since=6.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {}

@@ -23,6 +23,7 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name close_point_in_time
  * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id point-in-time-api
  */
 export interface Request extends RequestBase {

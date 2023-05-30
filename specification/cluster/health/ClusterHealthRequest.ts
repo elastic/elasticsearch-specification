@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster, yellow means that the primary shard is allocated but replicas are not, and green means that all shards are allocated. The index level status is controlled by the worst shard status. The cluster status is controlled by the worst index status.
  * @rest_spec_name cluster.health
  * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor, manage
  * @doc_id cluster-health
  */

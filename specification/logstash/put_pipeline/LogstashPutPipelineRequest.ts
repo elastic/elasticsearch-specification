@@ -24,6 +24,7 @@ import { Pipeline } from '@logstash/_types/Pipeline'
 /**
  * @rest_spec_name logstash.put_pipeline
  * @availability stack since=7.12.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

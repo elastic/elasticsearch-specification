@@ -25,6 +25,7 @@ import { Id } from '@_types/common'
  * by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
  * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

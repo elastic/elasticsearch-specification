@@ -39,6 +39,7 @@ import { Id, Name } from '@_types/common'
  * returns a warning.
  * @rest_spec_name ml.put_trained_model_alias
  * @availability stack since=7.13.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

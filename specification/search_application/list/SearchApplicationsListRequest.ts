@@ -24,6 +24,7 @@ import { integer } from '@_types/Numeric'
  * Returns the existing search applications.
  * @rest_spec_name search_application.list
  * @availability stack since=8.8.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   query_parameters: {

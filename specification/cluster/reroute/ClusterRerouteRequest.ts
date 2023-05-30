@@ -25,6 +25,7 @@ import { Command } from './types'
 /**
  * @rest_spec_name cluster.reroute
  * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cluster-reroute
  */
 export interface Request extends RequestBase {

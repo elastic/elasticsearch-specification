@@ -28,6 +28,7 @@ import { Ids } from '@_types/common'
  * `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.
  * @rest_spec_name ml.get_jobs
  * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

@@ -28,6 +28,7 @@ import { integer } from '@_types/Numeric'
  * wildcard expression.
  * @rest_spec_name ml.get_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

@@ -36,6 +36,7 @@ import { ScriptField } from '@_types/Scripting'
  * those credentials are used instead.
  * @rest_spec_name ml.update_datafeed
  * @availability stack since=6.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

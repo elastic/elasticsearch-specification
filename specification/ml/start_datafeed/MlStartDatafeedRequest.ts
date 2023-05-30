@@ -37,6 +37,7 @@ import { Duration, DateTime } from '@_types/Time'
  * authorization headers when you created or updated the datafeed, those credentials are used instead.
  * @rest_spec_name ml.start_datafeed
  * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

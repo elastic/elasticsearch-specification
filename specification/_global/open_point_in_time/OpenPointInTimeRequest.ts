@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * between searches are only visible to the more recent point in time.
  * @rest_spec_name open_point_in_time
  * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id point-in-time-api
  * @index_privileges read
  */

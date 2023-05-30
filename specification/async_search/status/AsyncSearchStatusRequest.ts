@@ -25,6 +25,7 @@ import { Id } from '@_types/common'
  * If the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.
  * @rest_spec_name async_search.status
  * @availability stack since=7.11.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id async-search
  */
 export interface Request extends RequestBase {

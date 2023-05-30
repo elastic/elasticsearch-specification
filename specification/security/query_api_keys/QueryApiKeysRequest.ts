@@ -25,6 +25,7 @@ import { Sort, SortResults } from '@_types/sort'
 /**
  * @rest_spec_name security.query_api_keys
  * @availability stack since=7.15.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {

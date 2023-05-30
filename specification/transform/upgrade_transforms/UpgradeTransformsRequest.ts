@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * remains unchanged.
  * @rest_spec_name transform.upgrade_transforms
  * @availability stack since=7.16.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {

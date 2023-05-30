@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * Deletes an existing datafeed.
  * @rest_spec_name ml.delete_datafeed
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_id ml-delete-datafeed
  */

@@ -24,6 +24,7 @@ import { SearchApplication } from '../_types/SearchApplication'
  * Creates a behavioral analytics collection
  * @rest_spec_name search_application.put_behavioral_analytics
  * @availability stack since=8.8.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {

@@ -25,6 +25,7 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 /**
  * @rest_spec_name security.has_privileges
  * @availability stack since=6.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

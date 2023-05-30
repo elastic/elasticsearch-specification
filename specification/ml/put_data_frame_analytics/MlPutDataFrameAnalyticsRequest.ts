@@ -33,6 +33,7 @@ import { integer } from '@_types/Numeric'
  * source indices and stores the outcome in a destination index.
  * @rest_spec_name ml.put_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
  * @doc_id put-dfanalytics

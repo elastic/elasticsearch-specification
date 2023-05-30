@@ -24,6 +24,7 @@ import { TimeUnit } from '@_types/Time'
 /**
  * @rest_spec_name cat.indices
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-indices
  */
 export interface Request extends CatRequestBase {

@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
  * Stops one or more transforms.
  * @rest_spec_name transform.stop_transform
  * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {

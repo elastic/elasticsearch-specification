@@ -23,6 +23,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 /**
  * @rest_spec_name indices.disk_usage
  * @availability stack since=7.15.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
