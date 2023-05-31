@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * @rest_spec_name text_structure.find_structure
  * @availability stack since=7.13.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request<TJsonDocument> {
   query_parameters: {

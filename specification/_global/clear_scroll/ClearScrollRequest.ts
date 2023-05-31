@@ -23,6 +23,7 @@ import { Ids, ScrollIds } from '@_types/common'
 /**
  * @rest_spec_name clear_scroll
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id clear-scroll-api
  */
 export interface Request extends RequestBase {

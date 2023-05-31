@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * @rest_spec_name cluster.exists_component_template
  * @availability stack since=7.8.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template
  */
 export interface Request extends RequestBase {

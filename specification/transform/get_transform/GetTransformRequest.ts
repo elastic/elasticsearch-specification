@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  * Retrieves configuration information for transforms.
  * @rest_spec_name transform.get_transform
  * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_transform
  */
 export interface Request extends RequestBase {

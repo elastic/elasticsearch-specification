@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * @rest_spec_name cluster.stats
  * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cluster-stats
  */
 export interface Request extends RequestBase {

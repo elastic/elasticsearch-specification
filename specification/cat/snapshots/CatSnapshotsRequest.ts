@@ -23,6 +23,7 @@ import { Names } from '@_types/common'
 /**
  * @rest_spec_name cat.snapshots
  * @availability stack since=2.1.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-snapshots
  */
 export interface Request extends CatRequestBase {

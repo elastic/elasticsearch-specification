@@ -23,6 +23,7 @@ import { Name } from '@_types/common'
 /**
  * @rest_spec_name security.get_user_privileges
  * @availability stack since=6.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   query_parameters: {

@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * Updates the description of a filter, adds items, or removes items from the list.
  * @rest_spec_name ml.update_filter
  * @availability stack since=6.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

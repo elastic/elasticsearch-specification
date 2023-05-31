@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
  * Returns information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {

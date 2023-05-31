@@ -23,5 +23,6 @@ import { RequestBase } from '@_types/Base'
  * Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.
  * @rest_spec_name security.authenticate
  * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {}

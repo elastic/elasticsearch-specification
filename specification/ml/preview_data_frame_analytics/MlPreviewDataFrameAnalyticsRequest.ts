@@ -25,6 +25,7 @@ import { DataframePreviewConfig } from './types'
  * Previews the extracted features used by a data frame analytics config.
  * @rest_spec_name ml.preview_data_frame_analytics
  * @availability stack since=7.13.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

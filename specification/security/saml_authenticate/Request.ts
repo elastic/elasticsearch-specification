@@ -24,6 +24,7 @@ import { Ids } from '@_types/common'
  * Submits a SAML Response message to Elasticsearch for consumption.
  * @rest_spec_name security.saml_authenticate
  * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   body: {

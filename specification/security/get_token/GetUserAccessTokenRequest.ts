@@ -25,6 +25,7 @@ import { AccessTokenGrantType } from './types'
 /**
  * @rest_spec_name security.get_token
  * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   body: {

@@ -29,6 +29,7 @@ import { RolloverConditions } from './types'
 /**
  * @rest_spec_name indices.rollover
  * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

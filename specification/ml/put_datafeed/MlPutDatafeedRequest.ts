@@ -47,6 +47,7 @@ import { Duration } from '@_types/Time'
  * directly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.
  * @rest_spec_name ml.put_datafeed
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
  */

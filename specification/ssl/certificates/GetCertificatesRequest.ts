@@ -22,5 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name ssl.certificates
  * @availability stack since=6.2.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {}

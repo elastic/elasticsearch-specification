@@ -23,6 +23,7 @@ import { Name, Namespace } from '@_types/common'
 /**
  * @rest_spec_name security.get_service_credentials
  * @availability stack since=7.13.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

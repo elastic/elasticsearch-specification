@@ -28,6 +28,7 @@ import { DateTime } from '@_types/Time'
  * The API presents a chronological view of the records, grouped by bucket.
  * @rest_spec_name ml.get_buckets
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

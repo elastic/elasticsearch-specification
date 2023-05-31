@@ -31,6 +31,7 @@ import { Duration, TimeUnit } from '@_types/Time'
  *
  * @rest_spec_name cat.transforms
  * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-transforms
  */
 export interface Request extends CatRequestBase {

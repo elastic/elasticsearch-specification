@@ -24,6 +24,7 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name cluster.allocation_explain
  * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cluster-allocation-explain
  */
 export interface Request extends RequestBase {

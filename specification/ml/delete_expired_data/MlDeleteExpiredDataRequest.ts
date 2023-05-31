@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * <job_id>.
  * @rest_spec_name ml.delete_expired_data
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

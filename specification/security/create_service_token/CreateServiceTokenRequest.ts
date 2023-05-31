@@ -25,6 +25,7 @@ import { Refresh } from '@_types/common'
  * Creates a service accounts token for access without requiring basic authentication.
  * @rest_spec_name security.create_service_token
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

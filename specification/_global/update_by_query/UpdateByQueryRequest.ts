@@ -37,6 +37,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 /**
  * @rest_spec_name update_by_query
  * @availability stack since=2.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

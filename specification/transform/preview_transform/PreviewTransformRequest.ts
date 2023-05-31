@@ -38,6 +38,7 @@ import { Duration } from '@_types/Time'
  * types of the source index and the transform aggregations.
  * @rest_spec_name transform.preview_transform
  * @availability stack since=7.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, view_index_metadata
  */

@@ -22,6 +22,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 /**
  * @rest_spec_name cat.pending_tasks
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-pending-tasks
  */
 export interface Request extends CatRequestBase {}

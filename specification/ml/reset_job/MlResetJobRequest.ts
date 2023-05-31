@@ -28,6 +28,7 @@ import { Id } from '@_types/common'
  * comma separated list.
  * @rest_spec_name ml.reset_job
  * @availability stack since=7.14.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

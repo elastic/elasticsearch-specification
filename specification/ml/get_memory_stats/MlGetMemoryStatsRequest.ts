@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  * on each node, both within the JVM heap, and natively, outside of the JVM.
  * @rest_spec_name ml.get_memory_stats
  * @availability stack since=8.2.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

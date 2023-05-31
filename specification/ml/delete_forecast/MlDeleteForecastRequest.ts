@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * forecasts before they expire.
  * @rest_spec_name ml.delete_forecast
  * @availability stack since=6.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

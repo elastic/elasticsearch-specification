@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * When a datafeed that has a specified end date stops, it automatically closes its associated job.
  * @rest_spec_name ml.close_job
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_id ml-close-job
  */

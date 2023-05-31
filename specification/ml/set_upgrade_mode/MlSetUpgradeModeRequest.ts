@@ -35,6 +35,7 @@ import { Duration } from '@_types/Time'
  * machine learning info API.
  * @rest_spec_name ml.set_upgrade_mode
  * @availability stack since=6.7.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

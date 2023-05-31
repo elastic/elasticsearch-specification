@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * Adds an anomaly detection job to a calendar.
  * @rest_spec_name ml.put_calendar_job
  * @availability stack since=6.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

@@ -57,6 +57,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
  * @rest_spec_name fleet.search
  * @availability stack since=7.16.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @index_privileges read
  */
 export interface Request extends RequestBase {

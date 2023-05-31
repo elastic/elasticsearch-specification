@@ -28,6 +28,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * of keyword is returned as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
  * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata,read,manage
  */
 export interface Request extends RequestBase {

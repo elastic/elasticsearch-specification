@@ -25,6 +25,7 @@ import { UserProfileId } from '@security/_types/UserProfile'
  * Disables a user profile so it's not visible in user profile searches.
  * @rest_spec_name security.disable_user_profile
  * @availability stack since=8.2.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {

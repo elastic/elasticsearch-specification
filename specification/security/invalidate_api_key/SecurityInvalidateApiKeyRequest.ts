@@ -23,6 +23,7 @@ import { Id, Name, Username } from '@_types/common'
 /**
  * @rest_spec_name security.invalidate_api_key
  * @availability stack since=6.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   body: {

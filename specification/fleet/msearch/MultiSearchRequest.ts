@@ -35,6 +35,7 @@ import { Checkpoint } from '../_types/Checkpoints'
  * supports the wait_for_checkpoints parameter.
  * @rest_spec_name fleet.msearch
  * @availability stack since=7.16.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @index_privileges read
  */
 export interface Request extends RequestBase {

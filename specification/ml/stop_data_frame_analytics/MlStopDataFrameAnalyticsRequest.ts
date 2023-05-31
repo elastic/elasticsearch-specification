@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * throughout its lifecycle.
  * @rest_spec_name ml.stop_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
