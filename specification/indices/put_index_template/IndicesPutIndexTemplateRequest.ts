@@ -63,8 +63,8 @@ export class IndexTemplateMapping {
   mappings?: TypeMapping
   settings?: IndexSettings
   /**
-   * @since 8.8.0
-   * @stability experimental
+   * @availability stack since=8.8.0 stability=experimental
+   * @availability serverless stability=experimental
    */
   lifecycle?: DataLifecycle
 }

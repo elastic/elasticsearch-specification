@@ -68,8 +68,9 @@ export interface Request extends RequestBase {
     search_type?: SearchType
     /**
      * If true, hits.total are rendered as an integer in the response.
-     * @since 7.0.0
      * @server_default false
+     * @availability stack since=7.0.0
+     * @availability serverless
      */
     rest_total_hits_as_int?: boolean
     /** @server_default false */

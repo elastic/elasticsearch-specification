@@ -28,12 +28,14 @@ export class Response {
     snapshots?: SnapshotInfo[]
     /**
      * The total number of snapshots that match the request when ignoring size limit or after query parameter.
-     * @since 7.15.0
+     * @availability stack since=7.15.0
+     * @availability serverless
      */
     total: integer
     /**
      * The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the next field value.
-     * @since 7.15.0
+     * @availability stack since=7.15.0
+     * @availability serverless
      */
     remaining: integer
   }

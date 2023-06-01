@@ -41,7 +41,8 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * @since 8.0.0
+     * @availability stack since=8.0.0
+     * @availability serverless
      */
     defer_definition_decompression?: boolean
   }

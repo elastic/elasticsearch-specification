@@ -128,11 +128,13 @@ export interface Request extends RequestBase {
      */
     source: DataframeAnalyticsSource
     /**
-     * @since 8.0.0
+     * @availability stack since=8.0.0
+     * @availability serverless
      */
     headers?: HttpHeaders
     /**
-     * @since 7.16.0
+     * @availability stack since=7.16.0
+     * @availability serverless
      */
     version?: VersionString
   }

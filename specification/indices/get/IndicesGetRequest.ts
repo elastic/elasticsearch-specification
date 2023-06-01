@@ -80,7 +80,8 @@ export interface Request extends RequestBase {
     /**
      * Return only information on specified index features
      * @server_default ['aliases', 'mappings', 'settings']
-     * @since 8.1.0
+     * @availability stack since=8.1.0
+     * @availability serverless
      */
     features?: Features
   }

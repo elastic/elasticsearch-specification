@@ -47,11 +47,17 @@ export class SnapshotInfo {
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
   indices?: IndexName[]
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   index_details?: Dictionary<IndexName, IndexDetails>
   metadata?: Metadata
   reason?: string
-  /** @since 7.14.0 */
+  /**
+   * @availability stack since=7.14.0
+   * @availability serverless
+   */
   repository?: Name
   snapshot: Name
   shards?: ShardStatistics

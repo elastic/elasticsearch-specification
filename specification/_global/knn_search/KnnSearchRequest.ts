@@ -70,7 +70,8 @@ export interface Request extends RequestBase {
      * Query to filter the documents that can match. The kNN search will return the top
      * `k` documents that also match this filter. The value can be a single query or a
      * list of queries. If `filter` isn't provided, all documents are allowed to match.
-     * @since 8.2.0
+     * @availability stack since=8.2.0
+     * @availability serverless
      */
     filter?: QueryContainer | QueryContainer[]
     /** kNN query to execute */
