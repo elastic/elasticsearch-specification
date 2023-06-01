@@ -1146,7 +1146,8 @@
     "search": {
       "request": [
         "Request: missing json spec query parameter 'force_synthetic_source'",
-        "Request: missing json spec query parameter 'include_named_queries_score'"
+        "Request: missing json spec query parameter 'include_named_queries_score'",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": [
         "response definition _global.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
