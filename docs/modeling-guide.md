@@ -445,21 +445,58 @@ Code generators should track the `es_quirk` they implement and fail if a new unh
 If needed, you can specify additional information on each type with the approariate JSDoc tag.
 Following you can find a list of the supported tags:
 
-#### `@since`
+#### `@availability`
 
-Every API already has a `@since` tag, which describes when an API was added.
-You can specify an additional `@since` tag for every property that has been added afterwards.
+Every API already has a `@availability <name> ...` annotation, which describes when an API was added.
+You can specify an additional `since=` value for every property that has been added afterwards.
 If the tag is not defined, it's assumed that the property has been added with the API the first time
 
 ```ts
 /**
- * @since 7.10.0
+ * @availability stack since=7.10.0
+ * @availability serverless
  */
 class FooRequest {
   bar: string
-  /** @since 7.11.0 */
+  /**
+   * @availability stack since=7.11.0
+   * @availability serverless
+   */
   baz: string
   faz: string
+}
+```
+
+If you'd like an API or property to be available for only Stack or Serverless Elasticsearch
+the annotation with the desired flavor should be used without specifying the other. If the property
+is available in both flavors either the `@availability` annotation can either be omitted entirely
+or both flavors can be specified.
+
+```ts
+export class Example {
+  /**
+   * This field is available in both (default when there aren't any annotations).
+   */
+  fieldBoth1: integer
+
+  /**
+   * This field is available in both flavors and is explicitly annotated.
+   * @availability stack
+   * @availability serverless
+   */ 
+  fieldBoth2: integer
+
+  /**
+   * This field is only available on Serverless Elasticsearch.
+   * @availability serverless
+   */
+  fieldServerlessOnly: integer
+
+  /**
+   * This field is only available on Stack Elasticsearch.
+   * @availability stack
+   */
+  fieldStackOnly: integer
 }
 ```
 
