@@ -19,12 +19,17 @@
 
 import { long } from '@_types/Numeric'
 
-export interface RankQuery {
+/**
+ * @variants container
+ */
+export class RankContainer {
   /** The reciprocal rank fusion parameters */
-  rrf: RrfType
+  rrf?: RrfRank
 }
 
-export interface RrfType {
+export class RankBase {}
+
+export class RrfRank extends RankBase {
   /** How much influence documents in individual result sets per query have over the final ranked result set  */
   rank_constant?: long
   /** Size of the individual result sets per query */

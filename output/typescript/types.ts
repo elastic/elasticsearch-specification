@@ -1180,7 +1180,7 @@ export interface SearchRequest extends RequestBase {
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     knn?: KnnQuery | KnnQuery[]
-    rank?: RankQuery
+    rank?: RankContainer
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
@@ -2437,8 +2437,12 @@ export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
 }
 
-export interface RankQuery {
-  rrf: RrfType
+export interface RankBase {
+  [key: string]: never
+}
+
+export interface RankContainer {
+  rrf?: RrfRank
 }
 
 export interface RecoveryStats {
@@ -2485,7 +2489,7 @@ export interface Retries {
 
 export type Routing = string
 
-export interface RrfType {
+export interface RrfRank {
   rank_constant?: long
   window_size?: long
 }
