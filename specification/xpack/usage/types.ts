@@ -198,7 +198,10 @@ export class MlDataFrameAnalyticsJobsCount {
 export class MlInference {
   ingest_processors: Dictionary<string, MlInferenceIngestProcessor>
   trained_models: MlInferenceTrainedModels
-  /** @since 8.0.0 */
+  /**
+   * @availability stack since=8.0.0
+   * @availability serverless
+   */
   deployments?: MlInferenceDeployments
 }
 
@@ -214,7 +217,10 @@ export class MlInferenceTrainedModels {
   estimated_heap_memory_usage_bytes?: JobStatistics
   count?: MlInferenceTrainedModelsCount
   _all: MlCounter
-  /** @since 8.0.0 */
+  /**
+   * @availability stack since=8.0.0
+   * @availability serverless
+   */
   model_size_bytes?: JobStatistics
 }
 
@@ -332,7 +338,10 @@ export class Ccr extends Base {
 
 export class DataTiers extends Base {
   data_warm: DataTierPhaseStatistics
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   data_frozen?: DataTierPhaseStatistics
   data_cold: DataTierPhaseStatistics
   data_content: DataTierPhaseStatistics

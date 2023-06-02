@@ -39,9 +39,9 @@ export interface Request extends RequestBase {
     /** @server_default 30s */
     master_timeout?: Duration
     /**
-     * @since 8.8.0
-     * @stability experimental
      * @server_default false
+     * @availability stack since=8.8.0 stability=experimental
+     * @availability serverless stability=experimental
      */
     include_defaults?: boolean
   }

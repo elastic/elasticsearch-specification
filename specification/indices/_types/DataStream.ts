@@ -37,7 +37,10 @@ export class DataStream {
   template: Name
   hidden: boolean
   replicated?: boolean
-  /** @since 7.10.0 */
+  /**
+   * @availability stack since=7.10.0
+   * @availability serverless
+   */
   system?: boolean
   status: HealthStatus
   ilm_policy?: Name
@@ -45,8 +48,8 @@ export class DataStream {
   _meta?: Metadata
   allow_custom_routing?: boolean
   /**
-   * @since 8.8.0
-   * @stability experimental
+   * @availability stack since=8.8.0 stability=experimental
+   * @availability serverless stability=experimental
    */
   lifecycle?: DataLifecycleWithRollover
 }

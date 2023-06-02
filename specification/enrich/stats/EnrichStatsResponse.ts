@@ -23,7 +23,10 @@ export class Response {
   body: {
     coordinator_stats: CoordinatorStats[]
     executing_policies: ExecutingPolicy[]
-    /** @since 7.16.0 */
+    /**
+     * @availability stack since=7.16.0
+     * @availability serverless
+     */
     cache_stats?: CacheStats[]
   }
 }

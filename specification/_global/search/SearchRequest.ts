@@ -150,12 +150,14 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Defines the approximate kNN search to run.
-     * @since 8.4.0
+     * @availability stack since=8.4.0
+     * @availability serverless
      */
     knn?: KnnQuery | KnnQuery[]
     /**
      * Defines the Reciprocal Rank Fusion (RRF) to use
-     * @since 8.8.0
+     * @availability stack since=8.8.0
+     * @availability serverless
      */
     rank?: RankContainer
     /**

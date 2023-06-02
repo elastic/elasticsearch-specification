@@ -25,6 +25,9 @@ export class AliasDefinition {
   is_write_index?: boolean
   routing?: string
   search_routing?: string
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   is_hidden?: boolean
 }

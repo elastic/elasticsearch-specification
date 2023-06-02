@@ -130,18 +130,21 @@ export class AggregationContainer {
   bucket_sort?: BucketSortAggregation
   /**
    * @doc_id search-aggregations-bucket-count-ks-test-aggregation
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   bucket_count_ks_test?: BucketKsAggregation
   /**
    * @doc_id search-aggregations-bucket-correlation-aggregation
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   bucket_correlation?: BucketCorrelationAggregation
   cardinality?: CardinalityAggregation
   /**
    * @doc_id search-aggregations-bucket-categorize-text-aggregation
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   categorize_text?: CategorizeTextAggregation
   children?: ChildrenAggregation

@@ -726,8 +726,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'since', 'server_default',
-    'variant', 'doc_id', 'es_quirk']
+  const validTags = ['prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'server_default',
+    'variant', 'doc_id', 'es_quirk', 'availability']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -751,9 +751,29 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       property.docUrl = value
-    } else if (tag === 'since') {
-      assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
-      property.since = value
+    } else if (tag === 'availability') {
+      // The @availability jsTag is different than most because it allows
+      // multiple values within the same docstring, hence needing to parse
+      // the values again in order to preserve multiple values.
+      const jsDocsMulti = parseJsDocTagsAllowDuplicates(jsDocs)
+      const availabilities = parseAvailabilityTags(jsDocs, jsDocsMulti.availability)
+
+      // The absence of an 'availability' field on a property implies that
+      // the property is available in all flavors.
+      property.availability = {}
+      for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
+        property.availability[availabilityName] = availabilityValue
+
+        // Backfilling deprecated fields on a property.
+        if (availabilityName === 'stack') {
+          if (availabilityValue.since !== undefined) {
+            property.since = availabilityValue.since
+          }
+          if (availabilityValue.stability !== undefined) {
+            property.stability = availabilityValue.stability
+          }
+        }
+      }
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
       property.docId = value
@@ -761,9 +781,6 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       if (docUrl != null) {
         property.docUrl = docUrl[1]
       }
-    } else if (tag === 'stability') {
-      assert(jsDocs, model.Stability[value] != null, `Property ${property.name}'s @stability can be either 'beta' or 'experimental'`)
-      property.stability = model.Stability[value]
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
       assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')

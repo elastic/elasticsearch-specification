@@ -51,8 +51,8 @@ export interface Request extends RequestBase {
     /**
      * If true, returns all relevant default configurations for the index template.
      * @server_default false
-     * @since 8.8.0
-     * @stability experimental
+     * @availability stack since=8.8.0 stability=experimental
+     * @availability serverless stability=experimental
      */
     include_defaults?: boolean
   }

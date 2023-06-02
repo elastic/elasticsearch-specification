@@ -41,7 +41,8 @@ export class AutoFollowPatternSummary {
   leader_index_patterns: IndexPatterns
   /**
    * An array of simple index patterns that can be used to exclude indices from being auto-followed.
-   * @since 7.14.0
+   * @availability stack since=7.14.0
+   * @availability serverless
    */
   leader_index_exclusion_patterns: IndexPatterns
   /**
