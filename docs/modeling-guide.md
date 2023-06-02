@@ -615,8 +615,7 @@ If an endpoint has some index security prerequisites to satisfy, you can specify
 ```ts
 /**
  * @rest_spec_name indices.create
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @index_privileges create_index, manage
  */
 export interface Request extends RequestBase {
@@ -631,8 +630,7 @@ If an endpoint has some cluster security prerequisites to satisfy, you can speci
 ```ts
 /**
  * @rest_spec_name cluster.state
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {
@@ -684,7 +682,7 @@ You can mark a request as `public`/`feature_flag`/`private` with this tag (the d
 ```ts
 /**
  * @rest_spec_name namespace.api
- * @since 7.5.0
+ * @availability stack since=7.5.0
  * @visibility private
  */
 export interface Request extends RequestBase {
