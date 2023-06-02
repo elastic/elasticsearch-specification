@@ -17,7 +17,7 @@
           "parts": {
             "target": {
               "type": "list",
-              "options": ["_all", "http"],
+              "options": ["_all", "http", "ingest", "thread_pool"],
               "description": "Limit the information returned to the specified target."
             }
           }
