@@ -38,5 +38,6 @@ export interface Request extends RequestBase {
      * @stability experimental
      */
     include_defaults?: boolean
+    ignore_unavailable?: boolean;
   }
 }
