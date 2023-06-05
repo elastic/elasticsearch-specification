@@ -145,7 +145,6 @@
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'v'",
-        "Request: missing json spec query parameter 'fields'",
         "request definition cat.fielddata:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -156,7 +155,6 @@
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.health:Request / body - A request with inherited properties must have a PropertyBody"
       ],

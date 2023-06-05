@@ -6408,6 +6408,7 @@ export interface CatHealthHealthRecord {
 }
 
 export interface CatHealthRequest extends CatCatRequestBase {
+  time?: TimeUnit
   ts?: boolean
 }
 
