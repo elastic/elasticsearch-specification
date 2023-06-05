@@ -75,10 +75,19 @@ export enum SnapshotSort {
   duration,
   name,
   index_count,
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   repository,
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   shard_count,
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   failed_shard_count
 }

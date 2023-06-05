@@ -850,7 +850,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['obsolete', 'obsolete_description', 'codegen_name', 'since', 'aliases']
+  const validTags = ['obsolete', 'obsolete_description', 'codegen_name', 'availability', 'aliases']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -862,9 +862,26 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
       member.codegenName = value
     } else if (tag === 'aliases') {
       member.aliases = parseCommaSeparated(value)
-    } else if (tag === 'since') {
-      assert(jsDocs, semver.valid(value), `${member.name}'s @since is not valid semver: ${value}`)
-      member.since = value
+    } else if (tag === 'availability') {
+      // The @availability jsTag is different than most because it allows
+      // multiple values within the same docstring, hence needing to parse
+      // the values again in order to preserve multiple values.
+      const jsDocsMulti = parseJsDocTagsAllowDuplicates(jsDocs)
+      const availabilities = parseAvailabilityTags(jsDocs, jsDocsMulti.availability)
+
+      // The absence of an 'availability' field on a property implies that
+      // the property is available in all flavors.
+      member.availability = {}
+      for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
+        member.availability[availabilityName] = availabilityValue
+
+        // Backfilling deprecated fields on a property.
+        if (availabilityName === 'stack') {
+          if (availabilityValue.since !== undefined) {
+            member.since = availabilityValue.since
+          }
+        }
+      }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
     }
