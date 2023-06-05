@@ -19,37 +19,37 @@
 
 export class NodeAttributesRecord {
   /**
-   * node name
+   * The node name.
    */
   'node'?: string
   /**
-   * unique node id
+   * The unique node identifier.
    */
   'id'?: string
   /**
-   * process id
+   * The process identifier.
    */
   'pid'?: string
   /**
-   * host name
+   * The host name.
    * @aliases h
    */
   'host'?: string
   /**
-   * ip address
+   * The IP address.
    * @aliases i
    */
   'ip'?: string
   /**
-   * bound transport port
+   * The bound transport port.
    */
   'port'?: string
   /**
-   * attribute description
+   * The attribute name.
    */
   'attr'?: string
   /**
-   * attribute value
+   * The attribute value.
    */
   'value'?: string
 }
