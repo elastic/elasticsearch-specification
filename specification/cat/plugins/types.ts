@@ -21,31 +21,31 @@ import { Name, NodeId, VersionString } from '@_types/common'
 
 export class PluginsRecord {
   /**
-   * unique node id
+   * The unique node identifier.
    */
   'id'?: NodeId
   /**
-   * node name
+   * The node name.
    * @aliases n
    */
   'name'?: Name
   /**
-   * component
+   * The component name.
    * @aliases c
    */
   'component'?: string
   /**
-   * component version
+   * The component version.
    * @aliases v
    */
   'version'?: VersionString
   /**
-   * plugin details
+   * The plugin details.
    * @aliases d
    */
   'description'?: string
   /**
-   * plugin type
+   * The plugin type.
    * @aliases t
    */
   'type'?: string
