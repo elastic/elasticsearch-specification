@@ -334,6 +334,7 @@ export class EnumMember {
   description?: string
   deprecation?: Deprecation
   since?: string
+  availability?: Availabilities
 }
 
 /**
