@@ -7379,6 +7379,7 @@ export interface CatNodesNodesRecord {
 export interface CatNodesRequest extends CatCatRequestBase {
   bytes?: Bytes
   full_id?: boolean | string
+  include_unloaded_segments?: boolean
 }
 
 export type CatNodesResponse = CatNodesNodesRecord[]
