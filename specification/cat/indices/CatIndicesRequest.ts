@@ -29,8 +29,8 @@ import { TimeUnit } from '@_types/Time'
  * These metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.
  * To get an accurate count of Elasticsearch documents, use the cat count or count APIs.
  * @rest_spec_name cat.indices
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-indices
  * @cluster_privileges monitor
  * @index_privileges monitor

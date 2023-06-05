@@ -65,7 +65,8 @@ export class IpProperty extends DocValuesPropertyBase {
   script?: Script
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
   type: 'ip'

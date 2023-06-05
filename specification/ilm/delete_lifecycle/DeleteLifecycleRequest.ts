@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
  * Deletes the specified lifecycle policy definition. You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
  *
  * @rest_spec_name ilm.delete_lifecycle
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  */
 export interface Request extends RequestBase {

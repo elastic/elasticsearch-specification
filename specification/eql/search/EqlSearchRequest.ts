@@ -27,8 +27,7 @@ import { ResultPosition } from './types'
 
 /**
  * @rest_spec_name eql.search
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -109,7 +108,10 @@ export interface Request extends RequestBase {
      * @server_default tail
      */
     result_position?: ResultPosition
-    /** @since 8.0.0 */
+    /**
+     * @availability stack since=8.0.0
+     * @availability serverless
+     */
     runtime_mappings?: RuntimeFields
   }
 }

@@ -31,8 +31,8 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name search_template
- * @since 2.0.0
- * @stability stable
+ * @availability stack since=2.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -68,8 +68,9 @@ export interface Request extends RequestBase {
     search_type?: SearchType
     /**
      * If true, hits.total are rendered as an integer in the response.
-     * @since 7.0.0
      * @server_default false
+     * @availability stack since=7.0.0
+     * @availability serverless
      */
     rest_total_hits_as_int?: boolean
     /** @server_default false */

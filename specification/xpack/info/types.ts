@@ -67,7 +67,10 @@ export class Features {
   vectors?: Feature
   voting_only: Feature
   watcher: Feature
-  /** @since 8.2.0 */
+  /**
+   * @availability stack since=8.2.0
+   * @availability serverless
+   */
   archive: Feature
 }
 

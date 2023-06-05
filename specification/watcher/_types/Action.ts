@@ -52,7 +52,10 @@ export class Action {
   email?: EmailAction
   pagerduty?: PagerDutyAction
   slack?: SlackAction
-  /** @since 7.14.0 */
+  /**
+   * @availability stack since=7.14.0
+   * @availability serverless
+   */
   webhook?: WebhookAction
 }
 

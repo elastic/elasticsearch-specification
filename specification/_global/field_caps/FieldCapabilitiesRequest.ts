@@ -27,8 +27,8 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type
  * of keyword is returned as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata,read,manage
  */
 export interface Request extends RequestBase {
@@ -66,18 +66,21 @@ export interface Request extends RequestBase {
      */
     include_unmapped?: boolean
     /**
-     * @since 8.2.0
+     * @availability stack since=8.2.0
+     * @availability serverless
      */
     filters?: string
     /**
-     * @since 8.2.0
+     * @availability stack since=8.2.0
+     * @availability serverless
      */
     types?: string[]
   }
   body: {
     /**
      * List of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
-     * @since 8.5.0
+     * @availability stack since=8.5.0
+     * @availability serverless
      */
     fields?: Fields
     /**
@@ -87,8 +90,9 @@ export interface Request extends RequestBase {
     /**
      * Defines ad-hoc runtime fields in the request similar to the way it is done in search requests.
      * These fields exist only as part of the query and take precedence over fields defined with the same name in the index mappings.
-     * @since 7.12.0
      * @doc_id runtime-search-request
+     * @availability stack since=7.12.0
+     * @availability serverless
      */
     runtime_mappings?: RuntimeFields
   }

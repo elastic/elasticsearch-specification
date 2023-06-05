@@ -22,8 +22,8 @@ import { Name } from '@_types/common'
 /**
  * Returns the existing behavioral analytics collections.
  * @rest_spec_name search_application.get_behavioral_analytics
- * @since 8.8.0
- * @stability experimental
+ * @availability stack since=8.8.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {

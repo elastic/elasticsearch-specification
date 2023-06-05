@@ -46,8 +46,8 @@ import { Duration } from '@_types/Time'
  * You must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed
  * directly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.
  * @rest_spec_name ml.put_datafeed
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
  */
@@ -164,7 +164,8 @@ export interface Request extends RequestBase {
      */
     scroll_size?: integer
     /**
-     * @since 8.0.0
+     * @availability stack since=8.0.0
+     * @availability serverless
      */
     headers?: HttpHeaders
   }

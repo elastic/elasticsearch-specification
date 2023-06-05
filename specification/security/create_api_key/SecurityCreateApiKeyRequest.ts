@@ -25,8 +25,8 @@ import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 
 /**
  * @rest_spec_name security.create_api_key
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
@@ -44,7 +44,8 @@ export interface Request extends RequestBase {
     role_descriptors?: Dictionary<string, RoleDescriptor>
     /**
      * Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with _ are reserved for system usage.
-     * @since 7.13.0
+     * @availability stack since=7.13.0
+     * @availability serverless
      */
     metadata?: Metadata
   }

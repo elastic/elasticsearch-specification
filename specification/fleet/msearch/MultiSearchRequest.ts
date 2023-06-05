@@ -34,8 +34,8 @@ import { Checkpoint } from '../_types/Checkpoints'
  * The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it
  * supports the wait_for_checkpoints parameter.
  * @rest_spec_name fleet.msearch
- * @since 7.16.0
- * @stability experimental
+ * @availability stack since=7.16.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @index_privileges read
  */
 export interface Request extends RequestBase {

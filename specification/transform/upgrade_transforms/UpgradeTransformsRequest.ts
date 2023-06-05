@@ -28,8 +28,8 @@ import { Duration } from '@_types/Time'
  * Elasticsearch security features are enabled; the role used to read source data and write to the destination index
  * remains unchanged.
  * @rest_spec_name transform.upgrade_transforms
- * @since 7.16.0
- * @stability stable
+ * @availability stack since=7.16.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {

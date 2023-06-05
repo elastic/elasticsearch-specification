@@ -34,7 +34,10 @@ export class Role {
   transient_metadata: TransientMetadataConfig
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]
-  /** @since 8.0.0 */
+  /**
+   * @availability stack since=8.0.0
+   * @availability serverless
+   */
   global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
 }
 

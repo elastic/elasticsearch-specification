@@ -25,8 +25,8 @@ import { RequestItem } from './types'
 /**
  * Runs multiple templated searches with a single request.
  * @rest_spec_name msearch_template
- * @since 5.0.0
- * @stability stable
+ * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  */
 export interface Request extends RequestBase {

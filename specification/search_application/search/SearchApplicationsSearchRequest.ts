@@ -24,8 +24,8 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 /**
  * Perform a search against a search application
  * @rest_spec_name search_application.search
- * @since 8.8.0
- * @stability experimental
+ * @availability stack since=8.8.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {

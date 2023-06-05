@@ -469,6 +469,12 @@
       ],
       "response": []
     },
+    "cluster.info": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "cluster.post_voting_config_exclusions": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
@@ -1144,7 +1150,8 @@
     "search": {
       "request": [
         "Request: missing json spec query parameter 'force_synthetic_source'",
-        "Request: missing json spec query parameter 'include_named_queries_score'"
+        "Request: missing json spec query parameter 'include_named_queries_score'",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": [
         "response definition _global.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
@@ -1200,6 +1207,12 @@
       "response": []
     },
     "security.bulk_update_api_keys": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.create_cross_cluster_api_key": {
       "request": [
         "Missing request & response"
       ],
@@ -1266,6 +1279,12 @@
       "response": [
         "response definition security.suggest_user_profiles:Response / body / Property 'profiles' / array_of / instance_of - Non-leaf type cannot be used here: 'security._types:UserProfile'"
       ]
+    },
+    "security.update_cross_cluster_api_key": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "security.update_user_profile_data": {
       "request": [],
@@ -1368,6 +1387,12 @@
       "response": [
         "response definition sql.delete_async:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "synonyms.put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "tasks.get": {
       "request": [],

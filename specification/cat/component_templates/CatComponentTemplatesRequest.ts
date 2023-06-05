@@ -25,8 +25,8 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the get component template API.
  * @rest_spec_name cat.component_templates
- * @since 5.1.0
- * @stability stable
+ * @availability stack since=5.1.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {

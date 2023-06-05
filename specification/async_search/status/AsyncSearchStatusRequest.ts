@@ -24,8 +24,8 @@ import { Id } from '@_types/common'
  * Retreives the status of a previously submitted async search request given its identifier, without retrieving search results.
  * If the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.
  * @rest_spec_name async_search.status
- * @since 7.11.0
- * @stability stable
+ * @availability stack since=7.11.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id async-search
  */
 export interface Request extends RequestBase {

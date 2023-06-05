@@ -22,7 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * Allows a new node to join an existing cluster with security features enabled.
  * @rest_spec_name security.enroll_node
- * @since 8.0.0
- * @stability stable
+ * @availability stack since=8.0.0 stability=stable
  */
 export interface Request extends RequestBase {}

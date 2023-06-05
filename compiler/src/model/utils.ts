@@ -575,7 +575,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id'
+    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -602,19 +602,6 @@ export function hoistRequestAnnotations (
   setTags(jsDocs, request, tags, knownRequestAnnotations, (tags, tag, value) => {
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'rest_spec_name') {
-    } else if (tag === 'visibility') {
-      if (endpoint.visibility !== null && endpoint.visibility !== undefined) {
-        assert(jsDocs, endpoint.visibility === value,
-          `Request ${request.name.name} visibility on annotation ${value} does not match spec: ${endpoint.visibility ?? ''}`)
-      }
-      endpoint.visibility = model.Visibility[value]
-    } else if (tag === 'stability') {
-      assert(jsDocs, endpoint.stability === value,
-        `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
-      endpoint.stability = model.Stability[value]
-    } else if (tag === 'since') {
-      assert(jsDocs, semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)
-      endpoint.since = value
     } else if (tag === 'index_privileges') {
       const privileges = [
         'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'delete', 'delete_index', 'index',
@@ -648,6 +635,33 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1]
+    } else if (tag === 'availability') {
+      // The @availability jsTag is different than most because it allows
+      // multiple values within the same docstring, hence needing to parse
+      // the values again in order to preserve multiple values.
+      const jsDocsMulti = parseJsDocTagsAllowDuplicates(jsDocs)
+      const availabilities = parseAvailabilityTags(jsDocs, jsDocsMulti.availability)
+
+      // Apply the availabilities to the Endpoint.
+      for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
+        endpoint.availability[availabilityName] = availabilityValue
+
+        // Backfilling deprecated fields on an endpoint.
+        if (availabilityName === 'stack') {
+          if (availabilityValue.since !== undefined) {
+            endpoint.since = availabilityValue.since
+          }
+          if (availabilityValue.stability !== undefined) {
+            endpoint.stability = availabilityValue.stability
+          }
+          if (availabilityValue.visibility !== undefined) {
+            endpoint.visibility = availabilityValue.visibility
+          }
+          if (availabilityValue.featureFlag !== undefined) {
+            endpoint.featureFlag = availabilityValue.featureFlag
+          }
+        }
+      }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
@@ -712,8 +726,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'since', 'server_default',
-    'variant', 'doc_id', 'es_quirk']
+  const validTags = ['prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'server_default',
+    'variant', 'doc_id', 'es_quirk', 'availability']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -737,9 +751,29 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       property.docUrl = value
-    } else if (tag === 'since') {
-      assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
-      property.since = value
+    } else if (tag === 'availability') {
+      // The @availability jsTag is different than most because it allows
+      // multiple values within the same docstring, hence needing to parse
+      // the values again in order to preserve multiple values.
+      const jsDocsMulti = parseJsDocTagsAllowDuplicates(jsDocs)
+      const availabilities = parseAvailabilityTags(jsDocs, jsDocsMulti.availability)
+
+      // The absence of an 'availability' field on a property implies that
+      // the property is available in all flavors.
+      property.availability = {}
+      for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
+        property.availability[availabilityName] = availabilityValue
+
+        // Backfilling deprecated fields on a property.
+        if (availabilityName === 'stack') {
+          if (availabilityValue.since !== undefined) {
+            property.since = availabilityValue.since
+          }
+          if (availabilityValue.stability !== undefined) {
+            property.stability = availabilityValue.stability
+          }
+        }
+      }
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
       property.docId = value
@@ -747,9 +781,6 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       if (docUrl != null) {
         property.docUrl = docUrl[1]
       }
-    } else if (tag === 'stability') {
-      assert(jsDocs, model.Stability[value] != null, `Property ${property.name}'s @stability can be either 'beta' or 'experimental'`)
-      property.stability = model.Stability[value]
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
       assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')
@@ -899,7 +930,7 @@ export function getNameSpace (node: Node): string {
 
   function cleanPath (path: string): string {
     path = dirname(path)
-      .replace(/.*[/\\]specification[/\\]?/, '')
+      .replace(/.*[/\\]specification[^/\\]*[/\\]?/, '')
       .replace(/[/\\]/g, '.')
     if (path === '') path = '_builtins'
     return path
@@ -967,6 +998,25 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
 }
 
 /**
+ * Given a JSDoc definition, return a mapping from a tag name to all its values.
+ * This function is similar to the above parseJsDocTags() function except
+ * it allows for multiple annotations with the same name.
+ */
+export function parseJsDocTagsAllowDuplicates (jsDoc: JSDoc[]): Record<string, string[]> {
+  const mapped = {}
+  jsDoc.forEach((elem: JSDoc) => {
+    elem.getTags().forEach((tag) => {
+      const tagName = tag.getTagName()
+      if (mapped[tagName] === undefined) {
+        mapped[tagName] = []
+      }
+      mapped[tagName].push(tag.getComment() ?? '')
+    })
+  })
+  return mapped
+}
+
+/**
  * Given a JSDoc definition, it returns the Variants is present.
  * It also validates the variants syntax.
  */
@@ -1021,6 +1071,60 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
   assert(jsDoc, typeof name === 'string', 'The @variant key should be "name"')
 
   return name.replace(/'/g, '')
+}
+
+/**
+ * Parses the '@availability' JS tags into known values.
+ */
+export function parseAvailabilityTags (node: Node | Node[], values: string[]): model.Availability {
+  return values.reduce((result, value, index, array) => {
+    // Ensure that there is actually a name for this availability definition.
+    assert(node, value.split(' ').length >= 1, 'The @availability tag must include a name (either stack or serverless)')
+    const [availabilityName, ...values] = value.split(' ')
+
+    // Since we're using reduce() we need to check that there's no duplicates.
+    assert(node, !(availabilityName in result), `Duplicate @availability tag: '${availabilityName}'`)
+
+    // Enforce only known availability names.
+    assert(node, availabilityName === 'stack' || availabilityName === 'serverless', 'The @availablility <name> value must either be stack or serverless')
+
+    // Now we can parse all the key-values and load them into variables
+    // for easier access below.
+    const validKeys = ['stability', 'visibility', 'since', 'feature_flag']
+    const parsedKeyValues = parseKeyValues(node, values, ...validKeys)
+    const visibility = parsedKeyValues.visibility
+    const stability = parsedKeyValues.stability
+    const since = parsedKeyValues.since
+    const featureFlag = parsedKeyValues.feature_flag
+
+    // Remove the 'feature_flag' name used in the annotations
+    // in favor of 'featureFlag' as used in the metamodel.
+    delete parsedKeyValues.feature_flag
+
+    // Lastly we go through all the fields and validate them.
+    if (visibility !== undefined) {
+      parsedKeyValues.visibility = model.Visibility[visibility]
+      assert(node, parsedKeyValues.visibility !== undefined, `visibility is not valid: ${visibility}`)
+      if (visibility === model.Visibility.feature_flag) {
+        assert(node, featureFlag !== undefined, '\'feature_flag\' must be defined if visibility is \'feature_flag\'')
+      }
+    }
+    if (stability !== undefined) {
+      parsedKeyValues.stability = model.Stability[stability]
+      assert(node, parsedKeyValues.stability !== undefined, `stability is not valid: ${stability}`)
+    }
+    if (since !== undefined) {
+      assert(node, semver.valid(since), `'since' is not valid semver: ${since}`)
+    }
+    if (featureFlag !== undefined) {
+      assert(node, visibility === 'feature_flag', '\'visibility\' must be \'feature_flag\' if a feature flag is defined')
+      parsedKeyValues.featureFlag = featureFlag
+    }
+
+    // Add the computed set of fields to the result.
+    result[availabilityName] = parsedKeyValues
+    return result
+  }, {})
 }
 
 /**

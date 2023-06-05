@@ -28,8 +28,8 @@ import { Ids } from '@_types/common'
  * `<feed_id>`, or by omitting the `<feed_id>`.
  * This API returns a maximum of 10,000 datafeeds.
  * @rest_spec_name ml.get_datafeeds
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

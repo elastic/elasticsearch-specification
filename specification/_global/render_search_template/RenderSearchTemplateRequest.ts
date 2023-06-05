@@ -24,8 +24,8 @@ import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name render_search_template
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

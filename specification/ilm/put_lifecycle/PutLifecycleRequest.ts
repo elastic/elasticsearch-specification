@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
 /**
  * Creates a lifecycle policy. If the specified policy exists, the policy is replaced and the policy version is incremented.
  * @rest_spec_name ilm.put_lifecycle
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @index_privileges manage
  */

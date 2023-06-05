@@ -59,8 +59,8 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * By default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.
  * The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.
  * @rest_spec_name async_search.submit
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id async-search
  */
 // NOTE: this is a SearchRequest with 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
@@ -189,7 +189,8 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Defines the approximate kNN search to run.
-     * @since 8.4.0
+     * @availability stack since=8.4.0
+     * @availability serverless
      */
     knn?: KnnQuery | KnnQuery[]
     /**

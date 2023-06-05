@@ -23,8 +23,7 @@ import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name sql.get_async_status
- * @since 7.15.0
- * @stability stable
+ * @availability stack since=7.15.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

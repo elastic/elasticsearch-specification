@@ -23,8 +23,8 @@ import { Ids } from '@_types/common'
 /**
  * Verifies the logout response sent from the SAML IdP.
  * @rest_spec_name security.saml_complete_logout
- * @since 7.14.0
- * @stability stable
+ * @availability stack since=7.14.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   body: {

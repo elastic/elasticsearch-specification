@@ -26,8 +26,8 @@ import { Indices } from '@_types/common'
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the count API.
  * @rest_spec_name cat.count
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-count
  * @index_privileges read
  */

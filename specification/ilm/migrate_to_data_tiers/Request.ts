@@ -25,8 +25,7 @@ import { RequestBase } from '@_types/Base'
  * Using node roles enables ILM to automatically move the indices between data tiers.
  *
  * @rest_spec_name ilm.migrate_to_data_tiers
- * @since 7.14.0
- * @stability stable
+ * @availability stack since=7.14.0 stability=stable
  */
 export interface Request extends RequestBase {
   query_parameters: {

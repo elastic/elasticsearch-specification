@@ -32,10 +32,16 @@ export class ApiKey {
   name: Name
   realm?: string
   username?: Username
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   metadata?: Metadata
   role_descriptors?: Dictionary<string, RoleDescriptor>
-  /** @since 8.5.0 */
+  /**
+   * @availability stack since=8.5.0
+   * @availability serverless
+   */
   limited_by?: Array<Dictionary<string, RoleDescriptor>>
   _sort?: SortResults
 }

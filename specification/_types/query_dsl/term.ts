@@ -60,7 +60,8 @@ export class PrefixQuery extends QueryBase {
   value: string
   /**
    * @server_default false
-   * @since 7.10.0
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   case_insensitive?: boolean
 }
@@ -102,8 +103,9 @@ export enum RangeRelation {
 /** @shortcut_property value */
 export class RegexpQuery extends QueryBase {
   /**
-   * @since 7.10.0
    * @server_default false
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   case_insensitive?: boolean
   flags?: string
@@ -116,7 +118,10 @@ export class RegexpQuery extends QueryBase {
 /** @shortcut_property value */
 export class TermQuery extends QueryBase {
   value: FieldValue
-  /** @since 7.10.0 */
+  /**
+   * @availability stack since=7.10.0
+   * @availability serverless
+   */
   case_insensitive?: boolean
 }
 
@@ -150,7 +155,8 @@ export class TypeQuery extends QueryBase {
 export class WildcardQuery extends QueryBase {
   /**
    * Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.
-   * @since 7.10.0
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   case_insensitive?: boolean
   /** Method used to rewrite the query */

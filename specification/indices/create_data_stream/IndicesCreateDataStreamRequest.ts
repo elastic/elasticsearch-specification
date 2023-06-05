@@ -22,8 +22,8 @@ import { DataStreamName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.create_data_stream
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

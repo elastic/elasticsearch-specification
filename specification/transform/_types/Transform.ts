@@ -136,8 +136,9 @@ export class Settings {
    * of an error which means the transform never fails. Setting the number of retries other than infinite fails in
    * validation.
    *
-   * @since 8.5.0
    * @server_default false
+   * @availability stack since=8.5.0
+   * @availability serverless
    */
   unattended?: boolean
 }
@@ -157,7 +158,8 @@ export class Source {
   /**
    * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data
    * nodes, including remote nodes, must be 7.12 or later.
-   * @since 7.12.0
+   * @availability stack since=7.12.0
+   * @availability serverless
    */
   runtime_mappings?: RuntimeFields
 }

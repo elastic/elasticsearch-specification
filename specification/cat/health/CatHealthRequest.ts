@@ -32,8 +32,7 @@ import { TimeUnit } from '@_types/Time'
  * You can use the cat health API to verify cluster health across multiple nodes.
  * You also can use the API to track the recovery of a large cluster over a longer period of time.
  * @rest_spec_name cat.health
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @doc_id cat-health
  * @cluster_privileges monitor
  */

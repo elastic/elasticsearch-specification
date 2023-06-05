@@ -28,8 +28,8 @@ import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 /**
  * Enables you to supply a trained model that is not created by data frame analytics.
  * @rest_spec_name ml.put_trained_model
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -41,7 +41,8 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * @since 8.0.0
+     * @availability stack since=8.0.0
+     * @availability serverless
      */
     defer_definition_decompression?: boolean
   }

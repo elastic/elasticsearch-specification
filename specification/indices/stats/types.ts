@@ -85,7 +85,10 @@ export class IndexStats {
   /** Contains statistics about index warming operations for the node. */
   warmer?: WarmerStats
   bulk?: BulkStats
-  /** @since 7.15.0 */
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
   shard_stats?: ShardsTotalStats
 }
 
@@ -94,9 +97,15 @@ export class IndicesStats {
   shards?: Dictionary<string, ShardStats[]>
   total?: IndexStats
   uuid?: Uuid
-  /** @since 8.1.0 */
+  /**
+   * @availability stack since=8.1.0
+   * @availability serverless
+   */
   health?: HealthStatus
-  /** @since 8.1.0 */
+  /**
+   * @availability stack since=8.1.0
+   * @availability serverless
+   */
   status?: IndexMetadataState
 }
 
@@ -204,7 +213,10 @@ export class ShardStats {
   translog?: TranslogStats
   warmer?: WarmerStats
   bulk?: BulkStats
-  /** @since 7.15.0 */
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
   shards?: Dictionary<IndexName, UserDefinedValue>
   shard_stats?: ShardsTotalStats
   indices?: IndicesStats

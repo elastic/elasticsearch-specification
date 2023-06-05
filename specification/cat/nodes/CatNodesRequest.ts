@@ -22,8 +22,8 @@ import { Bytes } from '@_types/common'
 
 /**
  * @rest_spec_name cat.nodes
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-nodes
  */
 export interface Request extends CatRequestBase {

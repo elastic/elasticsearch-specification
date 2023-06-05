@@ -60,7 +60,7 @@ async function run () {
     }
   }
 
-  const specFiles = files.filter(file => file.includes('specification'))
+  const specFiles = files.filter(file => file.includes('specification') && !file.includes('compiler/test'))
   const table = []
 
   cd(tsValidationPath)

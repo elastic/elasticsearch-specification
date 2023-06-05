@@ -97,7 +97,8 @@ export class KeywordProperty extends DocValuesPropertyBase {
   split_queries_on_whitespace?: boolean
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
   type: 'keyword'
@@ -112,13 +113,15 @@ export class NumberPropertyBase extends DocValuesPropertyBase {
   script?: Script
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_metric?: TimeSeriesMetricType
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
    * @server_default false
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
 }
@@ -268,7 +271,10 @@ export class VersionProperty extends DocValuesPropertyBase {
 
 export class WildcardProperty extends DocValuesPropertyBase {
   type: 'wildcard'
-  /** @since 7.15.0  */
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
   null_value?: string
 }
 

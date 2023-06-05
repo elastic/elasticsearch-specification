@@ -21,6 +21,9 @@ import { Name } from '@_types/common'
 
 export class Token {
   name: Name
-  /** @since 7.14.0 */
+  /**
+   * @availability stack since=7.14.0
+   * @availability serverless
+   */
   type?: string
 }

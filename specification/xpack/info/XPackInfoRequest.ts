@@ -22,8 +22,8 @@ import { RequestBase } from '@_types/Base'
 /**
  * Provides general information about the installed X-Pack features.
  * @rest_spec_name xpack.info
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor,manage
  */
 export interface Request extends RequestBase {

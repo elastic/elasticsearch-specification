@@ -23,8 +23,8 @@ import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.downsample
- * @since 8.5.0
- * @stability experimental
+ * @availability stack since=8.5.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

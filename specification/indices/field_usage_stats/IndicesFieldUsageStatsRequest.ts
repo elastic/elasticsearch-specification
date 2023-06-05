@@ -28,8 +28,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.field_usage_stats
- * @since 7.15.0
- * @stability experimental
+ * @availability stack since=7.15.0 stability=experimental
  * @index_privileges manage
  */
 export interface Request extends RequestBase {

@@ -22,8 +22,8 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.pending_tasks
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cluster-pending
  */
 export interface Request extends RequestBase {

@@ -22,8 +22,8 @@ import { Id, Name, Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_api_key
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
@@ -38,7 +38,8 @@ export interface Request extends RequestBase {
      * permission is the intersection of its assigned role
      * descriptors and the owner user's role descriptors.
      * @server_default false
-     * @since 8.5.0
+     * @availability stack since=8.5.0
+     * @availability serverless
      */
     with_limited_by?: boolean
   }

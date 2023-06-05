@@ -23,8 +23,8 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.get_component_template
- * @since 7.8.0
- * @stability stable
+ * @availability stack since=7.8.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template
  */
 export interface Request extends RequestBase {
@@ -39,9 +39,9 @@ export interface Request extends RequestBase {
     /** @server_default 30s */
     master_timeout?: Duration
     /**
-     * @since 8.8.0
-     * @stability experimental
      * @server_default false
+     * @availability stack since=8.8.0 stability=experimental
+     * @availability serverless stability=experimental
      */
     include_defaults?: boolean
   }

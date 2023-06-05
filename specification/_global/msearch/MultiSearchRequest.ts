@@ -24,8 +24,8 @@ import { RequestItem } from './types'
 
 /**
  * @rest_spec_name msearch
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  */
 export interface Request extends RequestBase {

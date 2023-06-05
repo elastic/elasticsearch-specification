@@ -22,9 +22,8 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name ml.validate_detector
- * @since 5.4.0
- * @visibility private
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable visibility=private
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   /** @codegen_name detector */
