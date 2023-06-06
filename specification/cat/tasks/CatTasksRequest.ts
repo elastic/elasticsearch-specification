@@ -27,7 +27,6 @@ import { long } from '@_types/Numeric'
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @doc_id tasks
- * @stability beta
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
