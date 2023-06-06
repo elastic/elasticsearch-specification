@@ -31,7 +31,7 @@ export class SegmentsRecord {
    */
   'shard'?: string
   /**
-   * The shard type. Returned values are `primary` or `replica`.
+   * The shard type: `primary` or `replica`.
    * @aliases p,pr,primaryOrReplica
    */
   'prirep'?: string
