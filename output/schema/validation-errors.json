@@ -260,7 +260,6 @@
         "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
-        "Request: missing json spec query parameter 'include_unloaded_segments'",
         "request definition cat.nodes:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
