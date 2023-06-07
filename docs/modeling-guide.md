@@ -662,21 +662,6 @@ class Foo {
 }
 ```
 
-#### `@stability`
+#### `@stability` and `@visibility`
 
-Use `@availability` instead.
-
-#### `@visibility`
-
-You can mark a request as `public`/`feature_flag`/`private` with this tag (the default is `public`).
-
-```ts
-/**
- * @rest_spec_name namespace.api
- * @availability stack since=7.5.0
- * @visibility private
- */
-export interface Request extends RequestBase {
- ...
-}
-```
+These annotations have been removed, use `@availability` instead.
