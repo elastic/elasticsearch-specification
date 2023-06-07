@@ -340,13 +340,7 @@ export enum SlicesCalculation {
   auto
 }
 
-export enum ClusterInfoTarget {
-  http,
-  ingest,
-  thread_pool,
-  script
-}
-
+export type ClusterInfoTarget = 'http' | 'ingest' | 'thread_pool' | 'script'
 export type ClusterInfoTargets =
   | '_all'
   | ClusterInfoTarget

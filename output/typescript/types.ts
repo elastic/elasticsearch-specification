@@ -2039,7 +2039,7 @@ export type CategoryId = string
 
 export type ClusterInfoTarget = 'http' | 'ingest' | 'thread_pool' | 'script'
 
-export type ClusterInfoTargets = '"_all"' | ClusterInfoTarget | ClusterInfoTarget[]
+export type ClusterInfoTargets = '_all' | ClusterInfoTarget | ClusterInfoTarget[]
 
 export interface ClusterStatistics {
   skipped: integer
