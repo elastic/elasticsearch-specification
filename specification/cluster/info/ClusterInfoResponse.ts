@@ -18,10 +18,10 @@
  */
 
 import { Name } from '@_types/common'
-import { Http, Ingest, Scripting, ThreadCount,  } from '@nodes/_types/Stats'
+import { Http, Ingest, Scripting, ThreadCount } from '@nodes/_types/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 
-// The cluster info response can be filtered by target. Every property needs to 
+// The cluster info response can be filtered by target. Every property needs to
 // be optional to be compliant with the API behaviour
 export class Response {
   body: {

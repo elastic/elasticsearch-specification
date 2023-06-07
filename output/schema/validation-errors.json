@@ -468,12 +468,6 @@
       ],
       "response": []
     },
-    "cluster.info": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "cluster.post_voting_config_exclusions": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
