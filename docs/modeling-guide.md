@@ -662,30 +662,6 @@ class Foo {
 }
 ```
 
-#### `@stability`
+#### `@stability` and `@visibility`
 
-You can mark a class or property of a type as stable/beta/experimental with this tag (the default is stable).
-
-```ts
-class Foo {
-  bar: string
-  /** @stability experimental */
-  baz?: string
-  faz: string
-}
-```
-
-#### `@visibility`
-
-You can mark a request as `public`/`feature_flag`/`private` with this tag (the default is `public`).
-
-```ts
-/**
- * @rest_spec_name namespace.api
- * @availability stack since=7.5.0
- * @visibility private
- */
-export interface Request extends RequestBase {
- ...
-}
-```
+These annotations have been removed, use `@availability` instead.
