@@ -2037,9 +2037,9 @@ export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
-export type ClusterInfoTarget = 'http' | 'ingest' | 'thread_pool' | 'script'
+export type ClusterInfoTarget = '_all' | 'http' | 'ingest' | 'thread_pool' | 'script'
 
-export type ClusterInfoTargets = '_all' | ClusterInfoTarget | ClusterInfoTarget[]
+export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
 
 export interface ClusterStatistics {
   skipped: integer
