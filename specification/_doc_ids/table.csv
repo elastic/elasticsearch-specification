@@ -49,6 +49,7 @@ indices-component-template,https://www.elastic.co/guide/en/elasticsearch/referen
 voting-config-exclusions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/voting-config-exclusions.html
 cluster-get-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-get-settings.html
 cluster-health,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-health.html
+cluster-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-info.html
 cluster-pending,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-pending.html
 cluster-update-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-update-settings.html
 cluster-remote-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-remote-info.html
