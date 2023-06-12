@@ -5221,7 +5221,7 @@ export interface MappingTextProperty extends MappingCorePropertyBase {
   type: 'text'
 }
 
-export type MappingTimeSeriesMetricType = 'gauge' | 'counter' | 'summary' | 'histogram'
+export type MappingTimeSeriesMetricType = 'gauge' | 'counter' | 'summary' | 'histogram' | 'position'
 
 export interface MappingTokenCountProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
