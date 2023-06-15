@@ -521,6 +521,7 @@ export interface HealthReportIndicators {
   repository_integrity?: HealthReportRepositoryIntegrityIndicator
   ilm?: HealthReportIlmIndicator
   slm?: HealthReportSlmIndicator
+  shards_capacity?: HealthReportShardsCapacityIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
@@ -581,6 +582,20 @@ export interface HealthReportShardsAvailabilityIndicatorDetails {
   started_replicas: long
   unassigned_primaries: long
   unassigned_replicas: long
+}
+
+export interface HealthReportShardsCapacityIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportShardsCapacityIndicatorDetails
+}
+
+export interface HealthReportShardsCapacityIndicatorDetails {
+  data: HealthReportShardsCapacityIndicatorTierDetail
+  frozen: HealthReportShardsCapacityIndicatorTierDetail
+}
+
+export interface HealthReportShardsCapacityIndicatorTierDetail {
+  max_shards_in_cluster: integer
+  current_used_shards?: integer
 }
 
 export interface HealthReportSlmIndicator extends HealthReportBaseIndicator {
