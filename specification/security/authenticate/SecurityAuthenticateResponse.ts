@@ -34,7 +34,10 @@ export class Response {
     username: Username
     enabled: boolean
     authentication_type: string
-    /** @since 7.14.0 */
+    /**
+     * @availability stack since=7.14.0
+     * @availability serverless
+     */
     token?: Token
   }
 }

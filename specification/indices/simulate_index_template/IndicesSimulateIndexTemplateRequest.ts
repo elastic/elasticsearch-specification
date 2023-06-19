@@ -32,8 +32,8 @@ import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTempl
 
 /**
  * @rest_spec_name indices.simulate_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -56,6 +56,13 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @availability stack since=8.8.0 stability=experimental
+     * @availability serverless stability=experimental
+     */
+    include_defaults?: boolean
   }
   body: {
     allow_auto_create?: boolean

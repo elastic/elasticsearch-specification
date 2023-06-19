@@ -23,6 +23,10 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
+import {
+  DataLifecycle,
+  DataLifecycleWithRollover
+} from '@indices/_types/DataLifecycle'
 
 export class IndexTemplate {
   index_patterns: Names
@@ -53,4 +57,9 @@ export class IndexTemplateSummary {
   aliases?: Dictionary<IndexName, Alias>
   mappings?: TypeMapping
   settings?: IndexSettings
+  /**
+   * @availability stack since=8.8.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  lifecycle?: DataLifecycleWithRollover
 }

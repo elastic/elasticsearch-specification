@@ -133,7 +133,10 @@ export class NodeInfoSettingsCluster {
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
   initial_master_nodes?: string
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   deprecation_indexing?: DeprecationIndexing
 }
 

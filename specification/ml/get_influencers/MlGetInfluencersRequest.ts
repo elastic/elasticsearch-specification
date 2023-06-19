@@ -29,8 +29,8 @@ import { DateTime } from '@_types/Time'
  * the anomalies. Influencer results are available only if an
  * `influencer_field_name` is specified in the job configuration.
  * @rest_spec_name ml.get_influencers
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

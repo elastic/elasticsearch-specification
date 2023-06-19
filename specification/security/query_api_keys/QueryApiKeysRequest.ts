@@ -24,8 +24,8 @@ import { Sort, SortResults } from '@_types/sort'
 
 /**
  * @rest_spec_name security.query_api_keys
- * @since 7.15.0
- * @stability stable
+ * @availability stack since=7.15.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
@@ -34,7 +34,8 @@ export interface Request extends RequestBase {
      * associated with the API key. An API key's actual
      * permission is the intersection of its assigned role
      * descriptors and the owner user's role descriptors.
-     * @since 8.5.0
+     * @availability stack since=8.5.0
+     * @availability serverless
      */
     with_limited_by?: boolean
   }

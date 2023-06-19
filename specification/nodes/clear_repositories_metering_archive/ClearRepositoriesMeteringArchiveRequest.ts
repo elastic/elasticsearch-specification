@@ -24,8 +24,7 @@ import { long } from '@_types/Numeric'
 /**
  * You can use this API to clear the archived repositories metering information in the cluster.
  * @rest_spec_name nodes.clear_repositories_metering_archive
- * @since 7.16.0
- * @stability experimental
+ * @availability stack since=7.16.0 stability=experimental
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {

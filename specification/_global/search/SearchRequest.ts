@@ -47,12 +47,13 @@ import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
 import { Sort, SortResults } from '@_types/sort'
 import { KnnQuery } from '@_types/Knn'
+import { RankContainer } from '@_types/Rank'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name search
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -149,9 +150,16 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Defines the approximate kNN search to run.
-     * @since 8.4.0
+     * @availability stack since=8.4.0
+     * @availability serverless
      */
     knn?: KnnQuery | KnnQuery[]
+    /**
+     * Defines the Reciprocal Rank Fusion (RRF) to use
+     * @availability stack since=8.8.0
+     * @availability serverless
+     */
+    rank?: RankContainer
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.

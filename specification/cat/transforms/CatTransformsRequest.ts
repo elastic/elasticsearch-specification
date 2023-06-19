@@ -30,8 +30,8 @@ import { Duration, TimeUnit } from '@_types/Time'
  * application consumption, use the get transform statistics API.
  *
  * @rest_spec_name cat.transforms
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-transforms
  */
 export interface Request extends CatRequestBase {

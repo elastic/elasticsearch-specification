@@ -26,8 +26,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name rollup.put_job
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges manage, manage_rollup
  */
 export interface Request extends RequestBase {

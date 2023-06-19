@@ -31,11 +31,12 @@ import {
 } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
+import { DataLifecycle } from '@indices/_types/DataLifecycle'
 
 /**
  * @rest_spec_name indices.put_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -61,4 +62,9 @@ export class IndexTemplateMapping {
   aliases?: Dictionary<IndexName, Alias>
   mappings?: TypeMapping
   settings?: IndexSettings
+  /**
+   * @availability stack since=8.8.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  lifecycle?: DataLifecycle
 }

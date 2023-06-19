@@ -23,8 +23,19 @@ import { AsyncSearch } from './AsyncSearch'
 
 export class AsyncSearchResponseBase {
   id?: Id
+  /**
+   * When the query is no longer running, this property indicates whether the search failed or was successfully completed on all shards.
+   * While the query is running, `is_partial` is always set to `true`.
+   */
   is_partial: boolean
+  /**
+   * Indicates whether the search is still running or has completed.
+   * NOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.
+   */
   is_running: boolean
+  /**
+   * Indicates when the async search will expire.
+   */
   expiration_time?: DateTime
   expiration_time_in_millis: EpochTime<UnitMillis>
   start_time?: DateTime

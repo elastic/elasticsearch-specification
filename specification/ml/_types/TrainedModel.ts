@@ -321,7 +321,8 @@ export class TrainedModelAssignmentTaskParameters {
   deployment_id: Id
   /**
    * The size of the trained model cache.
-   * @since 8.4.0
+   * @availability stack since=8.4.0
+   * @availability serverless
    */
   cache_size: ByteSize
   /**

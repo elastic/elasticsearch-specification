@@ -31,42 +31,50 @@ export class InferenceConfigCreateContainer {
   classification?: ClassificationInferenceOptions
   /**
    * Text classification configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    * */
   text_classification?: TextClassificationInferenceOptions
   /**
    * Zeroshot classification configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    */
   zero_shot_classification?: ZeroShotClassificationInferenceOptions
   /**
    * Fill mask configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    */
   fill_mask?: FillMaskInferenceOptions
   /**
    * Named entity recognition configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    * */
   ner?: NerInferenceOptions
   /**
    * Pass through configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    */
   pass_through?: PassThroughInferenceOptions
   /**
    * Text embedding configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    * */
   text_embedding?: TextEmbeddingInferenceOptions
   /**
    * Text expansion configuration for inference.
-   * @since 8.8.0
+   * @availability stack since=8.8.0
+   * @availability serverless
    * */
   text_expansion?: TextExpansionInferenceOptions
   /**
    * Question answering configuration for inference.
-   * @since 8.3.0
+   * @availability stack since=8.3.0
+   * @availability serverless
    */
   question_answering?: QuestionAnsweringInferenceOptions
 }
@@ -108,12 +116,14 @@ export class TokenizationConfigContainer {
   bert?: NlpBertTokenizationConfig
   /**
    * Indicates MPNET tokenization and its options
-   * @since 8.1.0
+   * @availability stack since=8.1.0
+   * @availability serverless
    * */
   mpnet?: NlpBertTokenizationConfig
   /**
    * Indicates RoBERTa tokenization and its options
-   * @since 8.2.0
+   * @availability stack since=8.2.0
+   * @availability serverless
    * */
   roberta?: NlpRobertaTokenizationConfig
 }

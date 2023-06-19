@@ -24,8 +24,8 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name ingest.put_pipeline
- * @since 5.0.0
- * @stability stable
+ * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

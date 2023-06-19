@@ -37,8 +37,8 @@ import { Duration } from '@_types/Time'
  * Elasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the
  * time of update and runs with those privileges.
  * @rest_spec_name transform.update_transform
- * @since 7.2.0
- * @stability stable
+ * @availability stack since=7.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, index, view_index_metadata
  */

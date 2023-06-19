@@ -26,8 +26,7 @@ import { SortOrder } from '@_types/sort'
 
 /**
  * @rest_spec_name snapshot.get
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -60,14 +59,16 @@ export interface Request extends RequestBase {
     verbose?: boolean
     /**
      * If true, returns additional information about each index in the snapshot comprising the number of shards in the index, the total size of the index in bytes, and the maximum number of segments per shard in the index. Defaults to false, meaning that this information is omitted.
-     * @since 7.13.0
      * @server_default false
+     * @availability stack since=7.13.0
+     * @availability serverless
      */
     index_details?: boolean
     /**
      * If true, returns the name of each index in each snapshot.
-     * @since 8.3.0
      * @server_default true
+     * @availability stack since=8.3.0
+     * @availability serverless
      */
     index_names?: boolean
     /**
@@ -77,41 +78,48 @@ export interface Request extends RequestBase {
     include_repository?: boolean
     /**
      * Allows setting a sort order for the result. Defaults to start_time, i.e. sorting by snapshot start time stamp.
-     * @since 7.14.0
      * @server_default start_time
+     * @availability stack since=7.14.0
+     * @availability serverless
      */
     sort?: SnapshotSort
     /**
      * Maximum number of snapshots to return. Defaults to 0 which means return all that match the request without limit.
-     * @since 7.14.0
      * @server_default 0
+     * @availability stack since=7.14.0
+     * @availability serverless
      */
     size?: integer
     /**
      * Sort order. Valid values are asc for ascending and desc for descending order. Defaults to asc, meaning ascending order.
-     * @since 7.14.0
      * @server_default asc
+     * @availability stack since=7.14.0
+     * @availability serverless
      */
     order?: SortOrder
     /**
      * Offset identifier to start pagination from as returned by the next field in the response body.
-     * @since 7.14.0
+     * @availability stack since=7.14.0
+     * @availability serverless
      */
     after?: string
     /**
      * Numeric offset to start pagination from based on the snapshots matching this request. Using a non-zero value for this parameter is mutually exclusive with using the after parameter. Defaults to 0.
-     * @since 7.15.0
      * @server_default 0
+     * @availability stack since=7.15.0
+     * @availability serverless
      */
     offset?: integer
     /**
      * Value of the current sort column at which to start retrieval. Can either be a string snapshot- or repository name when sorting by snapshot or repository name, a millisecond time value or a number when sorting by index- or shard count.
-     * @since 7.16.0
+     * @availability stack since=7.16.0
+     * @availability serverless
      */
     from_sort_value?: string
     /**
      * Filter snapshots by a comma-separated list of SLM policy names that snapshots belong to. Also accepts wildcards (*) and combinations of wildcards followed by exclude patterns starting with -. To include snapshots not created by an SLM policy you can use the special pattern _none that will match all snapshots without an SLM policy.
-     * @since 7.16.0
+     * @availability stack since=7.16.0
+     * @availability serverless
      */
     slm_policy_filter?: Name
   }

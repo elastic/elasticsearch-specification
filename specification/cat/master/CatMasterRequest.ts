@@ -20,9 +20,12 @@
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
+ * Returns information about the master node, including the ID, bound IP address, and name.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.master
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-master
+ * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {}

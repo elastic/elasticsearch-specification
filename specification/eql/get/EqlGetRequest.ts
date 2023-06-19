@@ -23,8 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name eql.get
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -22,8 +22,7 @@ import { Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_user
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -34,7 +33,8 @@ export interface Request extends RequestBase {
     /**
      * If true will return the User Profile ID for a user, if any.
      * @server_default false
-     * @since 8.5.0
+     * @availability stack since=8.5.0
+     * @availability serverless
      */
     with_profile_uid?: boolean
   }

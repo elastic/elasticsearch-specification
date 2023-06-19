@@ -51,7 +51,8 @@ export class NodeAttributes {
   transport_address: TransportAddress
   roles?: NodeRoles
   /**
-   * @since 8.3.0
+   * @availability stack since=8.3.0
+   * @availability serverless
    */
   external_id?: string
 }

@@ -29,8 +29,8 @@ import { integer } from '@_types/Numeric'
  * application consumption, use the get trained models statistics API.
  *
  * @rest_spec_name cat.ml_trained_models
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id cat-trained-model
  */
 export interface Request extends CatRequestBase {

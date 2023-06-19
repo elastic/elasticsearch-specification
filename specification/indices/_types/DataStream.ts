@@ -27,6 +27,7 @@ import {
   Uuid
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { DataLifecycleWithRollover } from '@indices/_types/DataLifecycle'
 
 export class DataStream {
   name: DataStreamName
@@ -36,13 +37,21 @@ export class DataStream {
   template: Name
   hidden: boolean
   replicated?: boolean
-  /** @since 7.10.0 */
+  /**
+   * @availability stack since=7.10.0
+   * @availability serverless
+   */
   system?: boolean
   status: HealthStatus
   ilm_policy?: Name
   /** @doc_id mapping-meta-field */
   _meta?: Metadata
   allow_custom_routing?: boolean
+  /**
+   * @availability stack since=8.8.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  lifecycle?: DataLifecycleWithRollover
 }
 
 export class DataStreamTimestampField {

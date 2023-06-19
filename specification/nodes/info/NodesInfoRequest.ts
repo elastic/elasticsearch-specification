@@ -23,8 +23,8 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name nodes.info
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-info
  */
 export interface Request extends RequestBase {

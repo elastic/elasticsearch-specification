@@ -24,8 +24,7 @@ import { TimeZone } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.translate
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
  */
 export interface Request extends RequestBase {
   body: {

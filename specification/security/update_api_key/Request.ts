@@ -25,8 +25,8 @@ import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 /**
  * Updates attributes of an existing API key.
  * @rest_spec_name security.update_api_key
- * @since 8.4.0
- * @stability stable
+ * @availability stack since=8.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

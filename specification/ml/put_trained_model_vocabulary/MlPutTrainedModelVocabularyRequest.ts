@@ -25,8 +25,8 @@ import { Id } from '@_types/common'
  * This API is supported only for natural language processing (NLP) models.
  * The vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.
  * @rest_spec_name ml.put_trained_model_vocabulary
- * @since 8.0.0
- * @stability stable
+ * @availability stack since=8.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -44,7 +44,8 @@ export interface Request extends RequestBase {
 
     /**
      * The optional model merges if required by the tokenizer.
-     * @since 8.2.0
+     * @availability stack since=8.2.0
+     * @availability serverless
      */
     merges?: string[]
   }

@@ -12,8 +12,7 @@ Additional lines start with a `*` followed by a space. Long lines are allowed bu
 /**
  * Enables you to evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
- * @since 6.2.0
- * @stability stable
+ * @availability stack since=6.2.0 stability=stable
  * @index_privileges read
  */
 export interface Request extends RequestBase {

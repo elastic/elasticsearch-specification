@@ -19,8 +19,7 @@
 
 /**
  * @rest_spec_name index
- * @since 0.0.0
- * @stability stable
+ * @availability stack stability=stable since=0.0.0
  */
 export interface Request<TDocument> {
   path_parts: {

@@ -24,8 +24,8 @@ import { UserProfileId } from '@security/_types/UserProfile'
 /**
  * Enables a user profile so it's visible in user profile searches.
  * @rest_spec_name security.enable_user_profile
- * @since 8.2.0
- * @stability stable
+ * @availability stack since=8.2.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {

@@ -23,8 +23,8 @@ import { PainlessContextSetup } from './types'
 
 /**
  * @rest_spec_name scripts_painless_execute
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   body: {

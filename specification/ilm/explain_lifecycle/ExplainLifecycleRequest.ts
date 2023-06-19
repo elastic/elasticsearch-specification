@@ -24,8 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Retrieves information about the index’s current lifecycle state, such as the currently executing phase, action, and step. Shows when the index entered each one, the definition of the running phase, and information about any failures.
  * @rest_spec_name ilm.explain_lifecycle
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  * @index_privileges view_index_metadata,manage_ilm
  */
 export interface Request extends RequestBase {

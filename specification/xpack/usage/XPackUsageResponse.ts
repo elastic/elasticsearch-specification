@@ -44,7 +44,10 @@ export class Response {
   body: {
     aggregate_metric: Base
     analytics: Analytics
-    /** @since 8.2.0 */
+    /**
+     * @availability stack since=8.2.0
+     * @availability serverless
+     */
     archive: Archive
     watcher: Watcher
     ccr: Ccr

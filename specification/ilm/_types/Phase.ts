@@ -28,7 +28,10 @@ export class Phase {
    * @es_quirk output as a millis number in XPack usage stats, which cannot roundtrip with a Duration as it requires a unit.
    */
   min_age?: Duration | long
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   configurations?: Configurations
 }
 

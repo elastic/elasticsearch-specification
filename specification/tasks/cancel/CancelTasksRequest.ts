@@ -22,8 +22,7 @@ import { TaskId } from '@_types/common'
 
 /**
  * @rest_spec_name tasks.cancel
- * @since 2.3.0
- * @stability experimental
+ * @availability stack since=2.3.0 stability=experimental
  * @doc_id tasks
  */
 export interface Request extends RequestBase {

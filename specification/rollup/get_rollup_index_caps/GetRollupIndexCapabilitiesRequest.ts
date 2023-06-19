@@ -22,8 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * @rest_spec_name rollup.get_rollup_index_caps
- * @since 6.4.0
- * @stability experimental
+ * @availability stack since=6.4.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {

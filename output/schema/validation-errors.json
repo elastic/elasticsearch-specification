@@ -145,7 +145,6 @@
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'v'",
-        "Request: missing json spec query parameter 'fields'",
         "request definition cat.fielddata:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -156,7 +155,6 @@
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "request definition cat.health:Request / body - A request with inherited properties must have a PropertyBody"
       ],
@@ -262,7 +260,6 @@
         "Request: missing json spec query parameter 's'",
         "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
-        "Request: missing json spec query parameter 'include_unloaded_segments'",
         "request definition cat.nodes:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": []
@@ -467,8 +464,7 @@
     },
     "cluster.get_component_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: missing json spec query parameter 'include_defaults'"
+        "Request: query parameter 'flat_settings' does not exist in the json spec"
       ],
       "response": []
     },
@@ -738,10 +734,10 @@
       ]
     },
     "indices.delete_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition indices.delete_data_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "indices.delete_data_stream": {
       "request": [],
@@ -768,12 +764,6 @@
       ],
       "response": []
     },
-    "indices.explain_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "indices.field_usage_stats": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -793,24 +783,6 @@
       "response": [
         "response definition indices.get:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
-    },
-    "indices.get_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "indices.get_data_stream": {
-      "request": [
-        "Request: missing json spec query parameter 'include_defaults'"
-      ],
-      "response": []
-    },
-    "indices.get_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'include_defaults'"
-      ],
-      "response": []
     },
     "indices.get_settings": {
       "request": [],
@@ -837,10 +809,10 @@
       ]
     },
     "indices.put_data_lifecycle": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition indices.put_data_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "indices.put_index_template": {
       "request": [
@@ -874,15 +846,13 @@
     },
     "indices.simulate_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'include_defaults'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
     "indices.simulate_template": {
       "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'include_defaults'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -1173,7 +1143,8 @@
     "search": {
       "request": [
         "Request: missing json spec query parameter 'force_synthetic_source'",
-        "Request: missing json spec query parameter 'include_named_queries_score'"
+        "Request: missing json spec query parameter 'include_named_queries_score'",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": [
         "response definition _global.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
@@ -1186,24 +1157,12 @@
       ]
     },
     "search_application.delete_behavioral_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.get_behavioral_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition search_application.delete_behavioral_analytics:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "search_application.post_behavioral_analytics_event": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "search_application.put_behavioral_analytics": {
       "request": [
         "Missing request & response"
       ],
@@ -1241,6 +1200,12 @@
       "response": []
     },
     "security.bulk_update_api_keys": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.create_cross_cluster_api_key": {
       "request": [
         "Missing request & response"
       ],
@@ -1307,6 +1272,12 @@
       "response": [
         "response definition security.suggest_user_profiles:Response / body / Property 'profiles' / array_of / instance_of - Non-leaf type cannot be used here: 'security._types:UserProfile'"
       ]
+    },
+    "security.update_cross_cluster_api_key": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "security.update_user_profile_data": {
       "request": [],
@@ -1409,6 +1380,24 @@
       "response": [
         "response definition sql.delete_async:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "synonyms.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "synonyms.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "synonyms.put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "tasks.get": {
       "request": [],

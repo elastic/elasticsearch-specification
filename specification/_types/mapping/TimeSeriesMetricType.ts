@@ -21,5 +21,6 @@ export enum TimeSeriesMetricType {
   gauge,
   counter,
   summary,
-  histogram
+  histogram,
+  position
 }

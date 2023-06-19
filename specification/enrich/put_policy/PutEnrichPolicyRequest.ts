@@ -23,8 +23,8 @@ import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name enrich.put_policy
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

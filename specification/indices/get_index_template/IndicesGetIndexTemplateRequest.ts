@@ -24,8 +24,8 @@ import { Duration } from '@_types/Time'
 /**
  * Returns information about one or more index templates.
  * @rest_spec_name indices.get_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {
@@ -49,5 +49,12 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @availability stack since=8.8.0 stability=experimental
+     * @availability serverless stability=experimental
+     */
+    include_defaults?: boolean
   }
 }

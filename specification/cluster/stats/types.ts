@@ -109,7 +109,10 @@ export class FieldTypes {
   indexed_vector_count?: long
   indexed_vector_dim_max?: long
   indexed_vector_dim_min?: long
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   script_count?: integer
 }
 
@@ -188,7 +191,10 @@ export class ClusterNodeCount {
   total: integer
   voting_only: integer
   data_cold: integer
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   data_frozen?: integer
   data_content: integer
   data_warm: integer
@@ -223,7 +229,10 @@ export class ClusterNodes {
   process: ClusterProcess
   /** Array of Elasticsearch versions used on selected nodes. */
   versions: VersionString[]
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   indexing_pressure: IndexingPressure
 }
 
@@ -292,7 +301,10 @@ export class OperatingSystemMemoryInfo {
   total_in_bytes: long
   used_in_bytes: long
   used_percent: integer
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   adjusted_total_in_bytes?: long
 }
 

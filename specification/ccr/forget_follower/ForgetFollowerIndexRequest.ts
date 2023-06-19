@@ -22,8 +22,7 @@ import { IndexName, Uuid } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.forget_follower
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
  * @doc_id ccr-post-forget-follower
  */
 export interface Request extends RequestBase {

@@ -92,6 +92,7 @@ import {
   TypeQuery,
   WildcardQuery
 } from './term'
+import { TextExpansionQuery } from './TextExpansionQuery'
 
 /**
  * @variants container
@@ -103,7 +104,10 @@ export class QueryContainer {
   boosting?: BoostingQuery
   /** @deprecated 7.3.0 */
   common?: SingleKeyDictionary<Field, CommonTermsQuery>
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   combined_fields?: CombinedFieldsQuery
   constant_score?: ConstantScoreQuery
   dis_max?: DisMaxQuery
@@ -152,6 +156,11 @@ export class QueryContainer {
   term?: SingleKeyDictionary<Field, TermQuery>
   terms?: TermsQuery
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
+  /**
+   * @availability stack since=8.8.0
+   * @availability serverless
+   */
+  text_expansion?: TextExpansionQuery
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
   wrapper?: WrapperQuery
 
