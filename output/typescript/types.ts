@@ -228,9 +228,9 @@ export interface DeleteByQueryResponse {
   slice_id?: integer
   task?: TaskId
   throttled?: Duration
-  throttled_millis: DurationValue<UnitMillis>
+  throttled_millis?: DurationValue<UnitMillis>
   throttled_until?: Duration
-  throttled_until_millis: DurationValue<UnitMillis>
+  throttled_until_millis?: DurationValue<UnitMillis>
   timed_out?: boolean
   took?: DurationValue<UnitMillis>
   total?: long
@@ -2036,6 +2036,10 @@ export type ByteSize = long | string
 export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
+
+export type ClusterInfoTarget = '_all' | 'http' | 'ingest' | 'thread_pool' | 'script'
+
+export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
 
 export interface ClusterStatistics {
   skipped: integer
@@ -5221,7 +5225,7 @@ export interface MappingTextProperty extends MappingCorePropertyBase {
   type: 'text'
 }
 
-export type MappingTimeSeriesMetricType = 'gauge' | 'counter' | 'summary' | 'histogram'
+export type MappingTimeSeriesMetricType = 'gauge' | 'counter' | 'summary' | 'histogram' | 'position'
 
 export interface MappingTokenCountProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
@@ -8496,6 +8500,18 @@ export interface ClusterHealthShardHealthStats {
   relocating_shards: integer
   status: HealthStatus
   unassigned_shards: integer
+}
+
+export interface ClusterInfoRequest extends RequestBase {
+  target: ClusterInfoTargets
+}
+
+export interface ClusterInfoResponse {
+  cluster_name: Name
+  http?: NodesHttp
+  ingest?: NodesIngest
+  thread_pool?: Record<string, NodesThreadCount>
+  script?: NodesScripting
 }
 
 export interface ClusterPendingTasksPendingTask {

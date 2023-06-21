@@ -466,12 +466,6 @@
       ],
       "response": []
     },
-    "cluster.info": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "cluster.post_voting_config_exclusions": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
@@ -1384,6 +1378,18 @@
       "response": [
         "response definition sql.delete_async:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "synonyms.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "synonyms.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "synonyms.put": {
       "request": [
