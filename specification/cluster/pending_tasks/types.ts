@@ -40,7 +40,7 @@ export class PendingTask {
    * The time since the task is waiting for being performed.
    */
   time_in_queue?: Duration
-  /** 
+  /**
    * The time expressed in milliseconds since the task is waiting for being performed.
    */
   time_in_queue_millis: DurationValue<UnitMillis>
