@@ -7817,7 +7817,7 @@ export interface CatTasksRequest extends CatCatRequestBase {
   actions?: string[]
   detailed?: boolean
   node_id?: string[]
-  parent_task?: long
+  parent_task_id?: string
 }
 
 export type CatTasksResponse = CatTasksTasksRecord[]

@@ -33,27 +33,45 @@ import { Duration, TimeUnit } from '@_types/Time'
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-transforms
+ * @cluster_privileges monitor_transform
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /**
+     * A transform identifier or a wildcard expression.
+     * If you do not specify one of these options, the API returns information for all transforms.
+     */
     transform_id?: Id
   }
   query_parameters: {
+    /**
+     * Specifies what to do when the request: contains wildcard expressions and there are no transforms that match; contains the `_all` string or no identifiers and there are no matches; contains wildcard expressions and there are only partial matches.
+     * If `true`, it returns an empty transforms array when there are no matches and the subset of results when there are partial matches.
+     * If `false`, the request returns a 404 status code when there are no matches or only partial matches.
+     * @server_default true
+     */
     allow_no_match?: boolean
+    /**
+     * Skips the specified number of transforms.
+     * @server_default 0
+     */
     from?: integer
     /**
      * Comma-separated list of column names to display.
-     * @server_default create_time,id,state,type
+     * @server_default changes_last_detection_time,checkpoint,checkpoint_progress,documents_processed,id,last_search_time,state
      */
     h?: CatTransformColumns
-    /** Comma-separated list of column names or column aliases used to sort the
-     * response.
+    /** Comma-separated list of column names or column aliases used to sort the response.
      */
     s?: CatTransformColumns
     /**
-     * Unit used to display time values.
+     * The unit used to display time values.
      */
     time?: TimeUnit
+    /**
+     * The maximum number of transforms to obtain.
+     * @server_default 100
+     */
     size?: integer
   }
 }

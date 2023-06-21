@@ -498,7 +498,6 @@ export class NodesRecord {
    * @aliases sfbm,fixedBitsetMemory
    */
   'segments.fixed_bitset_memory'?: string
-
   /**
    * The number of current suggest operations.
    * @aliases suc,suggestCurrent

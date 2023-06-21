@@ -358,10 +358,8 @@
     "cat.tasks": {
       "request": [
         "Request: query parameter 'node_id' does not exist in the json spec",
-        "Request: query parameter 'parent_task' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'nodes'",
-        "Request: missing json spec query parameter 'parent_task_id'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
