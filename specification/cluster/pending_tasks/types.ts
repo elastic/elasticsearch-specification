@@ -21,10 +21,27 @@ import { integer, long } from '@_types/Numeric'
 import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class PendingTask {
+  /** Indicates whether the pending tasks are currently executing or not. */
   executing: boolean
+  /**
+   * The number that represents when the task has been inserted into the task queue.
+   */
   insert_order: integer
+  /**
+   * The priority of the pending task.
+   * The valid priorities in descending priority order are: `IMMEDIATE` > `URGENT` > `HIGH` > `NORMAL` > `LOW` > `LANGUID`.
+   */
   priority: string
+  /**
+   * A general description of the cluster task that may include a reason and origin.
+   */
   source: string
+  /**
+   * The time since the task is waiting for being performed.
+   */
   time_in_queue?: Duration
+  /** 
+   * The time expressed in milliseconds since the task is waiting for being performed.
+   */
   time_in_queue_millis: DurationValue<UnitMillis>
 }
