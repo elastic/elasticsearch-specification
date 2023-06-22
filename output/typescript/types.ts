@@ -3069,11 +3069,21 @@ export interface AggregationsCompositeAggregation extends AggregationsBucketAggr
   sources?: Record<string, AggregationsCompositeAggregationSource>[]
 }
 
+export interface AggregationsCompositeAggregationBase {
+  field?: Field
+  missing?: AggregationsMissing
+  missing_order?: AggregationsMissingOrder
+  missing_bucket?: boolean
+  script?: Script
+  value_type?: string
+  order: SortOrder
+}
+
 export interface AggregationsCompositeAggregationSource {
-  terms?: AggregationsTermsAggregation
-  histogram?: AggregationsHistogramAggregation
-  date_histogram?: AggregationsDateHistogramAggregation
-  geotile_grid?: AggregationsGeoTileGridAggregation
+  terms?: AggregationsCompositeTermsAggregation
+  histogram?: AggregationsCompositeHistogramAggregation
+  date_histogram?: AggregationsCompositeDateHistogramAggregation
+  geotile_grid?: AggregationsCompositeGeoTileGridAggregation
 }
 
 export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucketBase {
@@ -3081,6 +3091,25 @@ export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucket
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
   & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
+
+export interface AggregationsCompositeDateHistogramAggregation extends AggregationsCompositeAggregationBase {
+  format: string
+  calendar_interval: DurationLarge
+  offset?: Duration
+  time_zone?: TimeZone
+}
+
+export interface AggregationsCompositeGeoTileGridAggregation extends AggregationsCompositeAggregationBase {
+  precision: integer
+  bounds?: GeoBounds
+}
+
+export interface AggregationsCompositeHistogramAggregation extends AggregationsCompositeAggregationBase {
+  interval: double
+}
+
+export interface AggregationsCompositeTermsAggregation extends AggregationsCompositeAggregationBase {
+}
 
 export interface AggregationsCumulativeCardinalityAggregate extends AggregationsAggregateBase {
   value: long
