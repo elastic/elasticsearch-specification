@@ -36,6 +36,7 @@ export class Indicators {
   repository_integrity?: RepositoryIntegrityIndicator
   ilm?: IlmIndicator
   slm?: SlmIndicator
+  shards_capacity?: ShardsCapacityIndicator
 }
 
 export class BaseIndicator {
@@ -165,4 +166,20 @@ export class SlmIndicatorDetails {
 export class SlmIndicatorUnhealthyPolicies {
   count: long
   invocations_since_last_success?: Dictionary<string, long>
+}
+
+/** SHARDS_CAPACITY */
+
+export class ShardsCapacityIndicator extends BaseIndicator {
+  details?: ShardsCapacityIndicatorDetails
+}
+
+export class ShardsCapacityIndicatorDetails {
+  data: ShardsCapacityIndicatorTierDetail
+  frozen: ShardsCapacityIndicatorTierDetail
+}
+
+export class ShardsCapacityIndicatorTierDetail {
+  max_shards_in_cluster: integer
+  current_used_shards?: integer
 }
