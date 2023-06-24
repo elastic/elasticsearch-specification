@@ -24,8 +24,7 @@ import { ClusterIndices, ClusterNodes } from './types'
 
 export class StatsResponseBase extends NodesResponseBase {
   /**
-   * Name of the cluster, based on the Cluster name setting setting.
-   * @doc_id cluster-name
+   * Name of the cluster, based on the cluster name setting.
    */
   cluster_name: Name
   /**
@@ -46,8 +45,7 @@ export class StatsResponseBase extends NodesResponseBase {
    */
   status: HealthStatus
   /**
-   * Unix timestamp, in milliseconds, of the last time the cluster statistics were refreshed.
-   * @doc_url https://en.wikipedia.org/wiki/Unix_time
+   * Unix timestamp, in milliseconds, for the last time the cluster statistics were refreshed.
    */
   timestamp: long
 }

@@ -2173,8 +2173,17 @@ export type FieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
 export type FieldValue = long | double | string | boolean | null | any
 
 export interface FielddataStats {
+  /**
+   * Total number of evictions from the field data cache across all shards assigned to selected nodes.
+   */
   evictions?: long
+  /**
+   * Total amount of memory used for the field data cache across all shards assigned to selected nodes.
+   */
   memory_size?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for the field data cache across all shards assigned to selected nodes.
+   */
   memory_size_in_bytes: long
   fields?: Record<Field, FieldMemoryUsage>
 }
@@ -2409,10 +2418,22 @@ export interface NodeShard {
 }
 
 export interface NodeStatistics {
-  failures?: ErrorCause[]
-  total: integer
-  successful: integer
+  /**
+   * Number of nodes that rejected the request or failed to respond.
+   */
   failed: integer
+  /**
+   * If the `failed` value is not 0, the reason for the rejection or failure is returned.
+   */
+  failures?: ErrorCause[]
+  /**
+   * Number of nodes that responded successfully to the request.
+   */
+  successful: integer
+  /**
+   * Total number of nodes selected by the request.
+   */
+  total: integer
 }
 
 export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
@@ -2426,15 +2447,37 @@ export type Percentage = string | float
 export type PipelineName = string
 
 export interface PluginStats {
+  /**
+   * The class name used as the plugin entry point.
+   */
   classname: string
+  /**
+   * A short description of the plugin.
+   */
   description: string
+  /**
+   * Elasticsearch version for which the plugin was built.
+   */
   elasticsearch_version: VersionString
+  /**
+   * An array of other plugins extended by this plugin through the Java Service Provider Interface (SPI).
+   * If this plugin extends no other plugins, this array is empty.
+   */
   extended_plugins: string[]
+  /**
+   * If `true`, the plugin has a native controller process.
+   */
   has_native_controller: boolean
+  /**
+   * Java version for which the plugin was built.
+   */
   java_version: VersionString
+  licensed: boolean
+  /**
+   * Name of the Elasticsearch plugin.
+   */
   name: Name
   version: VersionString
-  licensed: boolean
 }
 
 export type PropertyName = string
