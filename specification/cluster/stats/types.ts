@@ -245,7 +245,7 @@ export class CharFilterTypes {
   /**
    * Contains statistics about built-in tokenizers used in selected nodes.
    */
-  built_in_tokenizers: FieldTypes[]  
+  built_in_tokenizers: FieldTypes[]
   /**
    * Contains statistics about character filter types used in selected nodes.
    */
@@ -417,7 +417,7 @@ export class ClusterOperatingSystem {
    * Number of processors used to calculate thread pool size across all selected nodes.
    * This number can be set with the processors setting of a node and defaults to the number of processors reported by the operating system.
    * In both cases, this number will never be larger than 32.
-   */ 
+   */
   allocated_processors: integer
   /**
    * Contains statistics about processor architectures (for example, x86_64 or aarch64) used by selected nodes.

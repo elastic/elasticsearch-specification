@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
      */
     flat_settings?: boolean
     /**
-     * If `true`, returns default cluster settings from the local node. 
+     * If `true`, returns default cluster settings from the local node.
      * @server_default false
      */
     include_defaults?: boolean

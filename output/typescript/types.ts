@@ -2173,17 +2173,8 @@ export type FieldSortNumericType = 'long' | 'double' | 'date' | 'date_nanos'
 export type FieldValue = long | double | string | boolean | null | any
 
 export interface FielddataStats {
-  /**
-   * Total number of evictions from the field data cache across all shards assigned to selected nodes.
-   */
   evictions?: long
-  /**
-   * Total amount of memory used for the field data cache across all shards assigned to selected nodes.
-   */
   memory_size?: ByteSize
-  /**
-   * Total amount, in bytes, of memory used for the field data cache across all shards assigned to selected nodes.
-   */
   memory_size_in_bytes: long
   fields?: Record<Field, FieldMemoryUsage>
 }
@@ -2418,22 +2409,10 @@ export interface NodeShard {
 }
 
 export interface NodeStatistics {
-  /**
-   * Number of nodes that rejected the request or failed to respond.
-   */
-  failed: integer
-  /**
-   * If the `failed` value is not 0, the reason for the rejection or failure is returned.
-   */
   failures?: ErrorCause[]
-  /**
-   * Number of nodes that responded successfully to the request.
-   */
-  successful: integer
-  /**
-   * Total number of nodes selected by the request.
-   */
   total: integer
+  successful: integer
+  failed: integer
 }
 
 export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
@@ -2447,37 +2426,15 @@ export type Percentage = string | float
 export type PipelineName = string
 
 export interface PluginStats {
-  /**
-   * The class name used as the plugin entry point.
-   */
   classname: string
-  /**
-   * A short description of the plugin.
-   */
   description: string
-  /**
-   * Elasticsearch version for which the plugin was built.
-   */
   elasticsearch_version: VersionString
-  /**
-   * An array of other plugins extended by this plugin through the Java Service Provider Interface (SPI).
-   * If this plugin extends no other plugins, this array is empty.
-   */
   extended_plugins: string[]
-  /**
-   * If `true`, the plugin has a native controller process.
-   */
   has_native_controller: boolean
-  /**
-   * Java version for which the plugin was built.
-   */
   java_version: VersionString
-  licensed: boolean
-  /**
-   * Name of the Elasticsearch plugin.
-   */
   name: Name
   version: VersionString
+  licensed: boolean
 }
 
 export type PropertyName = string
@@ -8746,14 +8703,14 @@ export interface ClusterStateRequest extends RequestBase {
 export type ClusterStateResponse = any
 
 export interface ClusterStatsCharFilterTypes {
-  char_filter_types: ClusterStatsFieldTypes[]
-  tokenizer_types: ClusterStatsFieldTypes[]
-  filter_types: ClusterStatsFieldTypes[]
   analyzer_types: ClusterStatsFieldTypes[]
-  built_in_char_filters: ClusterStatsFieldTypes[]
-  built_in_tokenizers: ClusterStatsFieldTypes[]
-  built_in_filters: ClusterStatsFieldTypes[]
   built_in_analyzers: ClusterStatsFieldTypes[]
+  built_in_char_filters: ClusterStatsFieldTypes[]
+  built_in_filters: ClusterStatsFieldTypes[]
+  built_in_tokenizers: ClusterStatsFieldTypes[]
+  char_filter_types: ClusterStatsFieldTypes[]
+  filter_types: ClusterStatsFieldTypes[]
+  tokenizer_types: ClusterStatsFieldTypes[]
 }
 
 export interface ClusterStatsClusterFileSystem {
@@ -8763,6 +8720,7 @@ export interface ClusterStatsClusterFileSystem {
 }
 
 export interface ClusterStatsClusterIndices {
+  analysis: ClusterStatsCharFilterTypes
   completion: CompletionStats
   count: long
   docs: DocStats
@@ -8772,7 +8730,6 @@ export interface ClusterStatsClusterIndices {
   shards: ClusterStatsClusterIndicesShards
   store: StoreStats
   mappings: ClusterStatsFieldTypesMappings
-  analysis: ClusterStatsCharFilterTypes
   versions?: ClusterStatsIndicesVersions[]
 }
 
@@ -8824,24 +8781,25 @@ export interface ClusterStatsClusterNetworkTypes {
 export interface ClusterStatsClusterNodeCount {
   coordinating_only: integer
   data: integer
+  data_cold: integer
+  data_content: integer
+  data_frozen?: integer
+  data_hot: integer
+  data_warm: integer
   ingest: integer
   master: integer
-  total: integer
-  voting_only: integer
-  data_cold: integer
-  data_frozen?: integer
-  data_content: integer
-  data_warm: integer
-  data_hot: integer
   ml: integer
   remote_cluster_client: integer
+  total: integer
   transform: integer
+  voting_only: integer
 }
 
 export interface ClusterStatsClusterNodes {
   count: ClusterStatsClusterNodeCount
   discovery_types: Record<string, integer>
   fs: ClusterStatsClusterFileSystem
+  indexing_pressure: ClusterStatsIndexingPressure
   ingest: ClusterStatsClusterIngest
   jvm: ClusterStatsClusterJvm
   network_types: ClusterStatsClusterNetworkTypes
@@ -8850,21 +8808,20 @@ export interface ClusterStatsClusterNodes {
   plugins: PluginStats[]
   process: ClusterStatsClusterProcess
   versions: VersionString[]
-  indexing_pressure: ClusterStatsIndexingPressure
 }
 
 export interface ClusterStatsClusterOperatingSystem {
   allocated_processors: integer
+  architectures?: ClusterStatsClusterOperatingSystemArchitecture[]
   available_processors: integer
   mem: ClusterStatsOperatingSystemMemoryInfo
   names: ClusterStatsClusterOperatingSystemName[]
   pretty_names: ClusterStatsClusterOperatingSystemPrettyName[]
-  architectures?: ClusterStatsClusterOperatingSystemArchitecture[]
 }
 
 export interface ClusterStatsClusterOperatingSystemArchitecture {
-  count: integer
   arch: string
+  count: integer
 }
 
 export interface ClusterStatsClusterOperatingSystemName {
@@ -8930,8 +8887,8 @@ export interface ClusterStatsIndexingPressure {
 }
 
 export interface ClusterStatsIndexingPressureMemory {
-  limit_in_bytes: long
   current: ClusterStatsIndexingPressureMemorySummary
+  limit_in_bytes: long
   total: ClusterStatsIndexingPressureMemorySummary
 }
 
@@ -8960,12 +8917,12 @@ export interface ClusterStatsNodePackagingType {
 }
 
 export interface ClusterStatsOperatingSystemMemoryInfo {
+  adjusted_total_in_bytes?: long
   free_in_bytes: long
   free_percent: integer
   total_in_bytes: long
   used_in_bytes: long
   used_percent: integer
-  adjusted_total_in_bytes?: long
 }
 
 export interface ClusterStatsRequest extends RequestBase {
@@ -8977,20 +8934,20 @@ export interface ClusterStatsRequest extends RequestBase {
 export type ClusterStatsResponse = ClusterStatsStatsResponseBase
 
 export interface ClusterStatsRuntimeFieldTypes {
-  name: Name
+  chars_max: integer
+  chars_total: integer
   count: integer
+  doc_max: integer
+  doc_total: integer
   index_count: integer
-  scriptless_count: integer
-  shadowed_count: integer
   lang: string[]
   lines_max: integer
   lines_total: integer
-  chars_max: integer
-  chars_total: integer
+  name: Name
+  scriptless_count: integer
+  shadowed_count: integer
   source_max: integer
   source_total: integer
-  doc_max: integer
-  doc_total: integer
 }
 
 export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
