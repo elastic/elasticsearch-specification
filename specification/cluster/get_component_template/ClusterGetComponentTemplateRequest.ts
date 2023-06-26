@@ -57,7 +57,7 @@ export interface Request extends RequestBase {
     local?: boolean
     /**
      * Period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error. 
+     * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
