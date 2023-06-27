@@ -25,7 +25,7 @@ import { ByteSize } from '@_types/common'
  * Data lifecycle denotes that a data stream is managed by DLM and contains the configuration.
  */
 export class DataLifecycle {
-  data_retention?: Duration
+  data_retention?: Duration | null
 }
 
 /**
