@@ -15,7 +15,7 @@ on:
 jobs:
   validate-pr:
     name: build
-    if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
+    if: github.event.pull_request.head.repo.owner.login == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
     env:
       STACK_VERSION: 8.9-SNAPSHOT
