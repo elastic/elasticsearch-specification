@@ -18,7 +18,14 @@
  */
 
 import { GetResult } from '@global/get/types'
+import { ErrorResponseBase } from '@_types/Base'
 
 export class Response<TDocument> {
   body: GetResult<TDocument>
+  exceptions: [
+    {
+      statusCodes: [404]
+      body: GetResult<TDocument> | ErrorResponseBase
+    }
+  ]
 }
