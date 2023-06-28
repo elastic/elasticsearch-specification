@@ -18,6 +18,13 @@
  */
 
 export enum GrantType {
+  /**
+   * In this type of grant, you must supply the user ID and password for which you want to create the API key.
+   */
   password,
+  /**
+   * In this type of grant, you must supply an access token that was created by the Elasticsearch token service. 
+   * @doc_id security-api-get-token
+   */
   access_token
 }
