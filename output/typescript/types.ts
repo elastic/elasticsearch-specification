@@ -9603,19 +9603,19 @@ export interface IndicesDataLifecycleWithRollover {
 }
 
 export interface IndicesDataStream {
-  name: DataStreamName
-  timestamp_field: IndicesDataStreamTimestampField
-  indices: IndicesDataStreamIndex[]
-  generation: integer
-  template: Name
-  hidden: boolean
-  replicated?: boolean
-  system?: boolean
-  status: HealthStatus
-  ilm_policy?: Name
   _meta?: Metadata
   allow_custom_routing?: boolean
+  generation: integer
+  hidden: boolean
+  ilm_policy?: Name
+  indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataLifecycleWithRollover
+  name: DataStreamName
+  replicated?: boolean
+  status: HealthStatus
+  system?: boolean
+  template: Name
+  timestamp_field: IndicesDataStreamTimestampField
 }
 
 export interface IndicesDataStreamIndex {

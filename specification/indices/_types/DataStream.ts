@@ -60,9 +60,9 @@ export class DataStream {
    */
   indices: DataStreamIndex[]
   /**
+   * Contains the configuration for the data lifecycle management of this data stream.
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
-   * Contains the configuration for the data lifecycle management of this data stream.
    */
   lifecycle?: DataLifecycleWithRollover
   /**
@@ -74,14 +74,14 @@ export class DataStream {
    */
   replicated?: boolean
   /**
-   *  Health status of the data stream.
+   * Health status of the data stream.
    * This health status is based on the state of the primary and replica shards of the stream’s backing indices.
    */
   status: HealthStatus
   /**
+   * If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.
    * @availability stack since=7.10.0
    * @availability serverless
-   * If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.
    */
   system?: boolean
   /**
@@ -97,7 +97,7 @@ export class DataStream {
 
 export class DataStreamTimestampField {
   /**
-   * Name of the timestamp field for the data stream, which must be `@timestamp`. The @timestamp field must be included in every document indexed to the data stream.
+   * Name of the timestamp field for the data stream, which must be `@timestamp`. The `@timestamp` field must be included in every document indexed to the data stream.
    */
   name: Field
 }
