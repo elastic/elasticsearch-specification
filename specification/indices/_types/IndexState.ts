@@ -32,7 +32,7 @@ export class IndexState {
   defaults?: IndexSettings
   data_stream?: DataStreamName
   /**
-   * Data lifecycle applicable iff this is a data stream.
+   * Data lifecycle applicable if this is a data stream.
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
    */

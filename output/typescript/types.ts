@@ -8437,9 +8437,9 @@ export type ClusterExistsComponentTemplateResponse = boolean
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
   name?: Name
   flat_settings?: boolean
+  include_defaults?: boolean
   local?: boolean
   master_timeout?: Duration
-  include_defaults?: boolean
 }
 
 export interface ClusterGetComponentTemplateResponse {
@@ -8560,10 +8560,10 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   create?: boolean
   master_timeout?: Duration
   body?: {
+    allow_auto_create?: boolean
     template: IndicesIndexState
     version?: VersionNumber
     _meta?: Metadata
-    allow_auto_create?: boolean
   }
 }
 
