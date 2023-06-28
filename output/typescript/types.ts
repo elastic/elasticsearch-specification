@@ -8703,14 +8703,14 @@ export interface ClusterStateRequest extends RequestBase {
 export type ClusterStateResponse = any
 
 export interface ClusterStatsCharFilterTypes {
-  char_filter_types: ClusterStatsFieldTypes[]
-  tokenizer_types: ClusterStatsFieldTypes[]
-  filter_types: ClusterStatsFieldTypes[]
   analyzer_types: ClusterStatsFieldTypes[]
-  built_in_char_filters: ClusterStatsFieldTypes[]
-  built_in_tokenizers: ClusterStatsFieldTypes[]
-  built_in_filters: ClusterStatsFieldTypes[]
   built_in_analyzers: ClusterStatsFieldTypes[]
+  built_in_char_filters: ClusterStatsFieldTypes[]
+  built_in_filters: ClusterStatsFieldTypes[]
+  built_in_tokenizers: ClusterStatsFieldTypes[]
+  char_filter_types: ClusterStatsFieldTypes[]
+  filter_types: ClusterStatsFieldTypes[]
+  tokenizer_types: ClusterStatsFieldTypes[]
 }
 
 export interface ClusterStatsClusterFileSystem {
@@ -8720,6 +8720,7 @@ export interface ClusterStatsClusterFileSystem {
 }
 
 export interface ClusterStatsClusterIndices {
+  analysis: ClusterStatsCharFilterTypes
   completion: CompletionStats
   count: long
   docs: DocStats
@@ -8729,7 +8730,6 @@ export interface ClusterStatsClusterIndices {
   shards: ClusterStatsClusterIndicesShards
   store: StoreStats
   mappings: ClusterStatsFieldTypesMappings
-  analysis: ClusterStatsCharFilterTypes
   versions?: ClusterStatsIndicesVersions[]
 }
 
@@ -8781,24 +8781,25 @@ export interface ClusterStatsClusterNetworkTypes {
 export interface ClusterStatsClusterNodeCount {
   coordinating_only: integer
   data: integer
+  data_cold: integer
+  data_content: integer
+  data_frozen?: integer
+  data_hot: integer
+  data_warm: integer
   ingest: integer
   master: integer
-  total: integer
-  voting_only: integer
-  data_cold: integer
-  data_frozen?: integer
-  data_content: integer
-  data_warm: integer
-  data_hot: integer
   ml: integer
   remote_cluster_client: integer
+  total: integer
   transform: integer
+  voting_only: integer
 }
 
 export interface ClusterStatsClusterNodes {
   count: ClusterStatsClusterNodeCount
   discovery_types: Record<string, integer>
   fs: ClusterStatsClusterFileSystem
+  indexing_pressure: ClusterStatsIndexingPressure
   ingest: ClusterStatsClusterIngest
   jvm: ClusterStatsClusterJvm
   network_types: ClusterStatsClusterNetworkTypes
@@ -8807,21 +8808,20 @@ export interface ClusterStatsClusterNodes {
   plugins: PluginStats[]
   process: ClusterStatsClusterProcess
   versions: VersionString[]
-  indexing_pressure: ClusterStatsIndexingPressure
 }
 
 export interface ClusterStatsClusterOperatingSystem {
   allocated_processors: integer
+  architectures?: ClusterStatsClusterOperatingSystemArchitecture[]
   available_processors: integer
   mem: ClusterStatsOperatingSystemMemoryInfo
   names: ClusterStatsClusterOperatingSystemName[]
   pretty_names: ClusterStatsClusterOperatingSystemPrettyName[]
-  architectures?: ClusterStatsClusterOperatingSystemArchitecture[]
 }
 
 export interface ClusterStatsClusterOperatingSystemArchitecture {
-  count: integer
   arch: string
+  count: integer
 }
 
 export interface ClusterStatsClusterOperatingSystemName {
@@ -8887,8 +8887,8 @@ export interface ClusterStatsIndexingPressure {
 }
 
 export interface ClusterStatsIndexingPressureMemory {
-  limit_in_bytes: long
   current: ClusterStatsIndexingPressureMemorySummary
+  limit_in_bytes: long
   total: ClusterStatsIndexingPressureMemorySummary
 }
 
@@ -8917,12 +8917,12 @@ export interface ClusterStatsNodePackagingType {
 }
 
 export interface ClusterStatsOperatingSystemMemoryInfo {
+  adjusted_total_in_bytes?: long
   free_in_bytes: long
   free_percent: integer
   total_in_bytes: long
   used_in_bytes: long
   used_percent: integer
-  adjusted_total_in_bytes?: long
 }
 
 export interface ClusterStatsRequest extends RequestBase {
@@ -8934,20 +8934,20 @@ export interface ClusterStatsRequest extends RequestBase {
 export type ClusterStatsResponse = ClusterStatsStatsResponseBase
 
 export interface ClusterStatsRuntimeFieldTypes {
-  name: Name
+  chars_max: integer
+  chars_total: integer
   count: integer
+  doc_max: integer
+  doc_total: integer
   index_count: integer
-  scriptless_count: integer
-  shadowed_count: integer
   lang: string[]
   lines_max: integer
   lines_total: integer
-  chars_max: integer
-  chars_total: integer
+  name: Name
+  scriptless_count: integer
+  shadowed_count: integer
   source_max: integer
   source_total: integer
-  doc_max: integer
-  doc_total: integer
 }
 
 export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {

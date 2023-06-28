@@ -21,16 +21,37 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
+ * Returns cluster-wide settings.
+ * By default, it returns only settings that have been explicitly defined.
  * @rest_spec_name cluster.get_settings
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges monitor
  * @doc_id cluster-get-settings
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
+    /**
+     * If `true`, returns default cluster settings from the local node.
+     * @server_default false
+     */
     include_defaults?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }
