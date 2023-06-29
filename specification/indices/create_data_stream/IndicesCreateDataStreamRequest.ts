@@ -32,10 +32,10 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * Name of the data stream, which must meet the following criteria:
-     * Lowercase only
-     * Cannot include `\`, `/`, `*`, `?`, `"`, `<`, `>`, `|`, `,`, `#`, `:`, or a space character
-     * Cannot start with `-`, `_`, `+`, or `.ds-`
-     * Cannot be `.` or `..`
+     * Lowercase only;
+     * Cannot include `\`, `/`, `*`, `?`, `"`, `<`, `>`, `|`, `,`, `#`, `:`, or a space character;
+     * Cannot start with `-`, `_`, `+`, or `.ds-`;
+     * Cannot be `.` or `..`;
      * Cannot be longer than 255 bytes. Multi-byte characters count towards this limit faster.
      */
     name: DataStreamName
