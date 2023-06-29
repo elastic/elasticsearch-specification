@@ -33,7 +33,17 @@ export class DataLifecycle {
  * if asked.
  */
 export class DataLifecycleWithRollover {
+  /**
+   * If defined, every document added to this data stream will be stored at least for this time frame.
+   * Any time after this duration the document could be deleted.
+   * When empty, every document in this data stream will be stored indefinitely.
+   */
   data_retention?: Duration
+  /**
+   * The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.
+   * This property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.
+   * The contents of this field are subject to change.
+   */
   rollover?: DlmRolloverConditions
 }
 
