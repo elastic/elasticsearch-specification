@@ -23,8 +23,7 @@ export enum GrantType {
    */
   password,
   /**
-   * In this type of grant, you must supply an access token that was created by the Elasticsearch token service. 
-   * @doc_id security-api-get-token
+   * In this type of grant, you must supply an access token that was created by the Elasticsearch token service.
    */
   access_token
 }
