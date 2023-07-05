@@ -65,9 +65,10 @@ export interface Request extends RequestBase {
     /**
      * The default configuration for inference. This can be either a regression
      * or classification configuration. It must match the underlying
-     * definition.trained_model's target_type.
+     * definition.trained_model's target_type. For pre-packaged models such as
+     * ELSER the config is not required.
      */
-    inference_config: InferenceConfigCreateContainer
+    inference_config?: InferenceConfigCreateContainer
     /**
      * The input field names for the model definition.
      */
