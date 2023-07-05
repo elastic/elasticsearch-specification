@@ -15,6 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::collections::HashMap;
+use std::fmt::{Display, Formatter};
+use anyhow::bail;
 // Re-export crates whose types we expose publicly
 pub use once_cell;
 
@@ -30,7 +33,7 @@ const fn is_false(v: &bool) -> bool {
     !(*v)
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Hash)]
 pub struct TypeName {
     pub namespace: String,
     pub name: String
@@ -44,6 +47,14 @@ impl TypeName {
         }
     }
 }
+
+impl Display for TypeName {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}:{}", self.namespace, self.name)
+    }
+}
+
+
 ///
 /// Type of a value. Used both for property types and nested type definitions.
 ///
@@ -737,6 +748,10 @@ impl Model {
     pub fn from_reader(r: impl std::io::Read) -> Result<Self, serde_json::error::Error> {
         serde_json::from_reader(r)
     }
+
+    pub fn type_registry(&self) -> TypeRegistry {
+        TypeRegistry::new(self)
+    }
 }
 
 #[cfg(test)]
@@ -770,5 +785,47 @@ mod tests {
             TypeDefinition::Request(r) => assert_eq!(true, !r.path.is_empty()),
             _ => panic!("Expecting a Request")
         };
+    }
+}
+
+pub struct TypeRegistry<'a> {
+    types: HashMap<&'a TypeName, &'a TypeDefinition>
+}
+
+impl<'a> TypeRegistry<'a> {
+    pub fn new(model: &Model) -> TypeRegistry {
+        let types = model.types.iter()
+            .map(|typedef| (typedef.name(), typedef))
+            .collect::<HashMap<_,_>>();
+
+        TypeRegistry{ types }
+    }
+
+    pub fn get(&self, name: &TypeName) -> anyhow::Result<&'a TypeDefinition> {
+        match self.types.get(name) {
+            Some(typedef) => Ok(typedef),
+            None => bail!("No definition for type {}", name),
+        }
+    }
+
+    // pub fn get_interface(&self, name: &TypeName) -> anyhow::Result<&'a Interface> {
+    //     match self.get(name)? {
+    //         TypeDefinition::Interface(itf) => Ok(itf),
+    //         _ => bail!("Type {} is not an interface", name),
+    //     }
+    // }
+
+    pub fn get_request(&self, name: &TypeName) -> anyhow::Result<&'a Request> {
+        match self.get(name)? {
+            TypeDefinition::Request(req) => Ok(req),
+            _ => bail!("Type {} is not a request", name),
+        }
+    }
+
+    pub fn get_resppnse(&self, name: &TypeName) -> anyhow::Result<&'a Response> {
+        match self.get(name)? {
+            TypeDefinition::Response(resp) => Ok(resp),
+            _ => bail!("Type {} is not a response", name),
+        }
     }
 }
