@@ -25,10 +25,10 @@ import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 
 /**
  * Creates an API key for access without requiring basic authentication.
- * A successful request returns a JSON structure that contains the API key, its unique id, and its name. 
+ * A successful request returns a JSON structure that contains the API key, its unique id, and its name.
  * If applicable, it also returns expiration information for the API key in milliseconds.
  * NOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.
- * 
+ *
  * @rest_spec_name security.create_api_key
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public

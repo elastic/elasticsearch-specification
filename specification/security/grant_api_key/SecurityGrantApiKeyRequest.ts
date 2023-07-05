@@ -28,12 +28,12 @@ import { GrantApiKey, ApiKeyGrantType } from './types'
  * It is not possible to use this API to create an API key without that user’s credentials.
  * The user, for whom the authentication credentials is provided, can optionally "run as" (impersonate) another user.
  * In this case, the API key will be created on behalf of the impersonated user.
- * 
+ *
  * This API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.
- * 
+ *
  * A successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.
  * If applicable, it also returns expiration information for the API key in milliseconds.
- * 
+ *
  * By default, API keys never expire. You can specify expiration information when you create the API keys.
  * @rest_spec_name security.grant_api_key
  * @availability stack since=7.9.0 stability=stable
@@ -51,19 +51,19 @@ export interface Request extends RequestBase {
      */
     grant_type: ApiKeyGrantType
     /**
-     * The user’s access token. 
-     * If you specify the `access_token` grant type, this parameter is required. 
+     * The user’s access token.
+     * If you specify the `access_token` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
     access_token?: string
-    /** 
-     * The user name that identifies the user. 
-     * If you specify the `password` grant type, this parameter is required. 
+    /**
+     * The user name that identifies the user.
+     * If you specify the `password` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
     username?: Username
     /**
-     * The user’s password. If you specify the `password` grant type, this parameter is required. 
+     * The user’s password. If you specify the `password` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
     password?: Password

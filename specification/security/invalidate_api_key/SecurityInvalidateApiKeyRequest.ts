@@ -22,7 +22,7 @@ import { Id, Name, Username } from '@_types/common'
 
 /**
  * Invalidates one or more API keys.
- * The `manage_api_key` privilege allows deleting any API keys. 
+ * The `manage_api_key` privilege allows deleting any API keys.
  * The `manage_own_api_key` only allows deleting API keys that are owned by the user.
  * In addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:
  * - Set the parameter `owner=true`.
@@ -37,12 +37,12 @@ export interface Request extends RequestBase {
   body: {
     id?: Id
     /**
-     * A list of API key ids. 
+     * A list of API key ids.
      * This parameter cannot be used with any of `name`, `realm_name`, or `username`.
      */
     ids?: Id[]
     /**
-     * An API key name. 
+     * An API key name.
      * This parameter cannot be used with any of `ids`, `realm_name` or `username`.
      */
     name?: Name
@@ -58,7 +58,7 @@ export interface Request extends RequestBase {
      */
     realm_name?: string
     /**
-     * The username of a user. 
+     * The username of a user.
      * This parameter cannot be used with either `ids` or `name`, or when `owner` flag is set to `true`.
      */
     username?: Username

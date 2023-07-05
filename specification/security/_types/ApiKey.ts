@@ -37,8 +37,8 @@ export class ApiKey {
    * Id for the API key
    */
   id: Id
-  /** 
-   * Invalidation status for the API key. 
+  /**
+   * Invalidation status for the API key.
    * If the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.
    */
   invalidated?: boolean

@@ -48,19 +48,19 @@ export interface Request extends RequestBase {
      */
     query?: QueryContainer
     /**
-     * Starting document offset. 
-     * By default, you cannot page through more than 10,000 hits using the from and size parameters. 
+     * Starting document offset.
+     * By default, you cannot page through more than 10,000 hits using the from and size parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 0
      */
     from?: integer
-    /** 
+    /**
      * Other than `id`, all public fields of an API key are eligible for sorting.
-     * In addition, sort can also be applied to the `_doc` field to sort by index order. 
+     * In addition, sort can also be applied to the `_doc` field to sort by index order.
      * @doc_id sort-search-results */
     sort?: Sort
     /**
-     * The number of hits to return. 
+     * The number of hits to return.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 10
