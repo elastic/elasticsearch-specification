@@ -23,46 +23,52 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Sort, SortResults } from '@_types/sort'
 
 /**
+ * Retrieves information for API keys in a paginated manner. You can optionally filter the results with a query.
  * @rest_spec_name security.query_api_keys
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_own_api_key, read_security
  */
 export interface Request extends RequestBase {
   query_parameters: {
     /**
-     * Return the snapshot of the owner user's role descriptors
-     * associated with the API key. An API key's actual
-     * permission is the intersection of its assigned role
-     * descriptors and the owner user's role descriptors.
+     * Return the snapshot of the owner user's role descriptors associated with the API key. 
+     * An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.
      * @availability stack since=8.5.0
      * @availability serverless
+
      */
     with_limited_by?: boolean
   }
   body: {
     /**
      * A query to filter which API keys to return.
-     * The query supports a subset of query types, including match_all, bool, term, terms, ids, prefix, wildcard, and range.
-     * You can query all public information associated with an API key
+     * The query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `ids`, `prefix`, `wildcard`, and `range`.
+     * You can query all public information associated with an API key.
      */
     query?: QueryContainer
     /**
-     * Starting document offset. By default, you cannot page through more than 10,000
-     * hits using the from and size parameters. To page through more hits, use the
-     * search_after parameter.
+     * Starting document offset.
+     * By default, you cannot page through more than 10,000 hits using the from and size parameters.
+     * To page through more hits, use the `search_after` parameter.
      * @server_default 0
      */
     from?: integer
-    /** @doc_id sort-search-results */
+    /**
+     * Other than `id`, all public fields of an API key are eligible for sorting.
+     * In addition, sort can also be applied to the `_doc` field to sort by index order.
+     * @doc_id sort-search-results */
     sort?: Sort
     /**
-     * The number of hits to return. By default, you cannot page through more
-     * than 10,000 hits using the from and size parameters. To page through more
-     * hits, use the search_after parameter.
-     * @server_default false
+     * The number of hits to return.
+     * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
+     * To page through more hits, use the `search_after` parameter.
      * @server_default 10
      */
     size?: integer
+    /**
+     * Search after definition
+     */
     search_after?: SortResults
   }
 }

@@ -22,8 +22,17 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    /**
+     * The total number of API keys found.
+     */
     total: integer
+    /**
+     * The number of API keys returned in the response.
+     */
     count: integer
+    /**
+     * A list of API key information.
+     */
     api_keys: ApiKey[]
   }
 }

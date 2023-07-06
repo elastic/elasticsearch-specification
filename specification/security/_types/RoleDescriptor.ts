@@ -25,23 +25,61 @@ import { Metadata } from '@_types/common'
 import { OverloadOf } from '@spec_utils/behaviors'
 
 export class RoleDescriptor {
+  /**
+   * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
+   */
   cluster?: string[]
-  /** @aliases index */
+  /**
+   * A list of indices permissions entries.
+   * @aliases index
+   */
   indices?: IndicesPrivileges[]
+  /**
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+   */
   global?: GlobalPrivilege[] | GlobalPrivilege
+  /**
+   * A list of application privilege entries
+   */
   applications?: ApplicationPrivileges[]
+  /**
+   * Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.
+   */
   metadata?: Metadata
+  /**
+   * A list of users that the API keys can impersonate.
+   * @doc_id run-as-privilege
+   */
   run_as?: string[]
   transient_metadata?: TransientMetadataConfig
 }
 
 export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
+  /**
+   * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
+   */
   cluster: string[]
-  /** @aliases index */
+  /**
+   * A list of indices permissions entries.
+   * @aliases index
+   */
   indices: IndicesPrivileges[]
+  /**
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+   */
   global?: GlobalPrivilege[] | GlobalPrivilege
+  /**
+   * A list of application privilege entries
+   */
   applications?: ApplicationPrivileges[]
+  /**
+   * Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.
+   */
   metadata?: Metadata
+  /**
+   * A list of users that the API keys can impersonate.
+   * @doc_id run-as-privilege
+   */
   run_as?: string[]
   transient_metadata?: TransientMetadataConfig
 }
