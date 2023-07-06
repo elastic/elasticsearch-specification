@@ -35,7 +35,7 @@ export class RoleDescriptor {
    */
   indices?: IndicesPrivileges[]
   /**
-   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges. This field is optional.
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    */
   global?: GlobalPrivilege[] | GlobalPrivilege
   /**
@@ -65,7 +65,7 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    */
   indices: IndicesPrivileges[]
   /**
-   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges. This field is optional.
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    */
   global?: GlobalPrivilege[] | GlobalPrivilege
   /**
