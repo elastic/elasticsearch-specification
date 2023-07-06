@@ -24,6 +24,8 @@ import { Script } from '@_types/Scripting'
 export type RuntimeFields = Dictionary<Field, RuntimeField>
 
 export class RuntimeField {
+  /** For type `composite` */
+  fields?: Dictionary<string, Dictionary<string, RuntimeFieldType>>
   /** For type `lookup` */
   fetch_fields?: RuntimeFieldFetchFields[]
   format?: string
@@ -45,11 +47,12 @@ export class RuntimeFieldFetchFields {
 
 export enum RuntimeFieldType {
   boolean = 0,
-  date = 1,
-  double = 2,
-  geo_point = 3,
-  ip = 4,
-  keyword = 5,
-  long = 6,
+  composite = 1,
+  date = 2,
+  double = 3,
+  geo_point = 4,
+  ip = 5,
+  keyword = 6,
+  long = 7,
   lookup
 }

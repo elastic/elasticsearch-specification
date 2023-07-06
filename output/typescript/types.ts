@@ -5144,6 +5144,7 @@ export interface MappingRoutingField {
 }
 
 export interface MappingRuntimeField {
+  fields?: Record<string, Record<string, MappingRuntimeFieldType>>
   fetch_fields?: (MappingRuntimeFieldFetchFields | Field)[]
   format?: string
   input_field?: Field
@@ -5158,7 +5159,7 @@ export interface MappingRuntimeFieldFetchFields {
   format?: string
 }
 
-export type MappingRuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long' | 'lookup'
+export type MappingRuntimeFieldType = 'boolean' | 'composite' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long' | 'lookup'
 
 export type MappingRuntimeFields = Record<Field, MappingRuntimeField>
 
