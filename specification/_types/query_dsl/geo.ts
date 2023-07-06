@@ -49,7 +49,7 @@ export class GeoDistanceQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoLocation>
 {
-  distance?: Distance
+  distance: Distance
   /** @server_default 'arc' */
   distance_type?: GeoDistanceType
   /** @server_default 'strict' */

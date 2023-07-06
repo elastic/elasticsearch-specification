@@ -5447,7 +5447,7 @@ export interface QueryDslGeoDistanceFeatureQuery extends QueryDslDistanceFeature
 }
 
 export interface QueryDslGeoDistanceQueryKeys extends QueryDslQueryBase {
-  distance?: Distance
+  distance: Distance
   distance_type?: GeoDistanceType
   validation_method?: QueryDslGeoValidationMethod
 }
