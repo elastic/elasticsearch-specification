@@ -750,7 +750,7 @@ impl Model {
     }
 
     pub fn type_registry(&self) -> TypeRegistry {
-        TypeRegistry::new(self)
+        TypeRegistry::new(&self.types)
     }
 }
 
@@ -793,8 +793,8 @@ pub struct TypeRegistry<'a> {
 }
 
 impl<'a> TypeRegistry<'a> {
-    pub fn new(model: &Model) -> TypeRegistry {
-        let types = model.types.iter()
+    pub fn new(types_vec: &Vec<TypeDefinition>) -> TypeRegistry {
+        let types = types_vec.iter()
             .map(|typedef| (typedef.name(), typedef))
             .collect::<HashMap<_,_>>();
 
