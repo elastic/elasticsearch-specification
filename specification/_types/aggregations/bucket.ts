@@ -390,6 +390,7 @@ export class TermsAggregation extends BucketAggregationBase {
   value_type?: string
   order?: AggregateOrder
   script?: Script
+  shard_min_doc_count?: long
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
