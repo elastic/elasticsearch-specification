@@ -26,17 +26,49 @@ export class Rescore {
 }
 
 export class RescoreQuery {
-  /** @codegen_name Query */
+  /**
+   * The query to use for rescoring.
+   * This query is only run on the Top-K results returned by the `query` and `post_filter` phases.
+   * @codegen_name Query
+   * */
   rescore_query: QueryContainer
+  /**
+   * Relative importance of the original query versus the rescore query.
+   * @server_default 1.0
+   */
   query_weight?: double
+  /**
+   * Relative importance of the rescore query versus the original query.
+   * @server_default 1.0
+   */
   rescore_query_weight?: double
+  /**
+   * Determines how scores are combined.
+   * @server_default total
+   */
   score_mode?: ScoreMode
 }
 
 export enum ScoreMode {
+  /**
+   * Average the original score and the rescore query score.
+   */
   avg = 0,
+  /**
+   * Take the max of original score and the rescore query score.
+   */
   max = 1,
+  /**
+   * Take the min of the original score and the rescore query score.
+   */
   min = 2,
+  /**
+   * Multiply the original score by the rescore query score.
+   * Useful for `function` query rescores.
+   */
   multiply = 3,
+  /**
+   * Add the original score and the rescore query score.
+   */
   total = 4
 }
