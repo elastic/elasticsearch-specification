@@ -243,7 +243,6 @@ export interface Request extends RequestBase {
     /**
      * Specifies the period of time to wait for a response from each shard.
      * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default no timeout
      */
     timeout?: Duration
     /**
