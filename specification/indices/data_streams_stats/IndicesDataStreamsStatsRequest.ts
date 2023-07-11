@@ -21,15 +21,27 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, IndexName } from '@_types/common'
 
 /**
+ * Retrieves statistics for one or more data streams.
  * @rest_spec_name indices.data_streams_stats
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges monitor
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams used to limit the request.
+     * Wildcard expressions (`*`) are supported.
+     * To target all data streams in a cluster, omit this parameter or use `*`.
+     */
     name?: IndexName
   }
   query_parameters: {
-    expand_wildcards?: ExpandWildcards // default: open
+    /**
+     * Type of data stream that wildcard patterns can match.
+     * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open 
+     */
+    expand_wildcards?: ExpandWildcards
   }
 }
