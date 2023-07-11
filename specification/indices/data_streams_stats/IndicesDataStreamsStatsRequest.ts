@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * @server_default open 
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
   }
