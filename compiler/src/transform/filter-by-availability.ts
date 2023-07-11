@@ -254,11 +254,16 @@ async function filterSchema(inPath: string, outPath: string, stack: boolean, ser
   )
 }
 
-const inputPath = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema-no-generics.json')
+const inputPath: string = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema-filtered.json')
 const stack = !!argv.stack
 const serverless = !!argv.serverless
 
+// Usage:
+// npm run filter-by-availability -- [--serverless|--stack]
+// Optional args:
+// input, if not provided default to versioned schema.json
+// output, if not provided default to schema-filtered.json
 filterSchema(inputPath, outputPath, stack, serverless)
   .catch(reason => console.error(reason))
   .finally(() => console.log('Done, filtered schema is at', outputPath))
