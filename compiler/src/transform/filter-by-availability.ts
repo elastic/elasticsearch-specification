@@ -236,6 +236,10 @@ function filterEndpoints(inputModel: Model, stack, serverless: boolean): Model {
 }
 
 async function filterSchema(inPath: string, outPath: string, stack: boolean, serverless: boolean): Promise<void> {
+  if (!stack && !serverless) {
+    throw new Error("Expected one of --stack or --serverless to be specified.");
+  }
+
   const inputText = await readFile(
     inPath,
     {encoding: 'utf8'}
@@ -243,9 +247,6 @@ async function filterSchema(inPath: string, outPath: string, stack: boolean, ser
 
   const inputModel = JSON.parse(inputText)
   const outputModel = filterEndpoints(inputModel, stack, serverless)
-
-  console.log("Endpoints: " + outputModel.endpoints.length)
-  console.log("Types: " + outputModel.types.length)
 
   await writeFile(
     outPath,
@@ -265,5 +266,7 @@ const serverless = !!argv.serverless
 // input, if not provided default to versioned schema.json
 // output, if not provided default to schema-filtered.json
 filterSchema(inputPath, outputPath, stack, serverless)
-  .catch(reason => console.error(reason))
+  .catch(reason => {
+    console.error(reason.message? reason.message:reason)
+  })
   .finally(() => console.log('Done, filtered schema is at', outputPath))
