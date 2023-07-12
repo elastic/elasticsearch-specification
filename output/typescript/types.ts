@@ -12554,6 +12554,7 @@ export interface MlDiscoveryNode {
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
 export interface MlFillMaskInferenceOptions {
+  mask_token?: string
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
