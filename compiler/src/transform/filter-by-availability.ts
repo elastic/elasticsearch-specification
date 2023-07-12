@@ -17,46 +17,46 @@
  * under the License.
  */
 
-import {Availabilities, Endpoint, Model, TypeDefinition, TypeName, ValueOf} from '../model/metamodel'
-import {readFile, writeFile} from 'fs/promises'
+import { Availabilities, Endpoint, Model, TypeDefinition, TypeName, ValueOf } from '../model/metamodel'
+import { readFile, writeFile } from 'fs/promises'
 import stringify from 'safe-stable-stringify'
-import {argv} from 'zx'
-import {join} from 'path'
+import { argv } from 'zx'
+import { join } from 'path'
 
-function filterModel(inputModel: Model, stack, serverless: boolean): Model {
+function filterModel (inputModel: Model, stack, serverless: boolean): Model {
   // filter used against the provided availability
   // used to filter out endpoints and as a filter for items with availability (Enum & Property).
-  function include(availabilities: Availabilities, stack: boolean, serverless: boolean): boolean {
-    if (availabilities.stack && stack && !serverless) {
+  function include (availabilities: Availabilities, stack: boolean, serverless: boolean): boolean {
+    if ((availabilities.stack != null) && stack && !serverless) {
       return true
     }
-    if (availabilities.serverless && serverless && !stack) {
+    if ((availabilities.serverless != null) && serverless && !stack) {
       return true
     }
-    if ((availabilities.serverless || availabilities.stack) && serverless && stack) {
+    if (((availabilities.serverless != null) || (availabilities.stack != null)) && serverless && stack) {
       return true
     }
     return false
   }
 
   // used to filter out individual items within types.
-  function filterItem() {
+  function filterItem () {
     return (item) => {
-      return item.availability ? include(item.availability, stack, serverless) : true
-    };
+      return (item.availability !== undefined) ? include(item.availability, stack, serverless) : true
+    }
   }
 
   // short comparison for two TypeNames
-  function cmpTypeNames(t1, t2: TypeName): boolean {
-    return t1.name === t2.name && t1.namespace == t2.namespace
+  function cmpTypeNames (t1, t2: TypeName): boolean {
+    return t1.name === t2.name && t1.namespace === t2.namespace
   }
 
   // return early if the type already has been added
   // fetches the original type from the input model
   // save its presence to prevent recursion and doubles
   // continues down the type tree for any new types
-  function addTypeToOutput(typeName: TypeName) {
-    if (seen.get(typeName.namespace)?.includes(typeName.name)) {
+  function addTypeToOutput (typeName: TypeName): void {
+    if (seen.get(typeName.namespace)?.includes(typeName.name) === true) {
       return
     }
 
@@ -66,9 +66,9 @@ function filterModel(inputModel: Model, stack, serverless: boolean): Model {
         output.types.push(typeDef)
 
         // store the type infos to prevent doubles & recursive calls
-        seen.get(typeName.namespace) ?
-          seen.get(typeName.namespace)?.push(typeName.name) :
-          seen.set(typeName.namespace, [typeName.name])
+        ;(seen.get(typeName.namespace) != null)
+          ? seen.get(typeName.namespace)?.push(typeName.name)
+          : seen.set(typeName.namespace, [typeName.name])
 
         // first time seeing this type so we explore the type
         exploreTypedef(typeDef)
@@ -78,37 +78,37 @@ function filterModel(inputModel: Model, stack, serverless: boolean): Model {
 
   // handles the basic type field we can find
   // user_defined_value and literal_value are omitted.
-  function addValueOf(item: ValueOf) {
+  function addValueOf (item: ValueOf): void {
     switch (item.kind) {
-      case "instance_of":
+      case 'instance_of':
         addTypeToOutput(item.type)
-        break;
-      case "array_of":
+        break
+      case 'array_of':
         addValueOf(item.value)
-        break;
-      case "union_of":
+        break
+      case 'union_of':
         item.items.forEach((member) => {
           addValueOf(member)
         })
-        break;
-      case "dictionary_of":
+        break
+      case 'dictionary_of':
         addValueOf(item.key)
         addValueOf(item.value)
-        break;
+        break
     }
   }
 
-  function exploreTypedef(typeDef: TypeDefinition) {
+  function exploreTypedef (typeDef: TypeDefinition): void {
     // handle generics
     // not really useful for everyone, still useful for type_alias
-    if (typeDef.kind === "interface" || typeDef.kind === "request" || typeDef.kind === "response" || typeDef.kind === "type_alias") {
+    if (typeDef.kind === 'interface' || typeDef.kind === 'request' || typeDef.kind === 'response' || typeDef.kind === 'type_alias') {
       typeDef.generics?.forEach((generic) => {
         addTypeToOutput(generic)
       })
     }
 
     // handle behaviors
-    if (typeDef.kind === "interface" || typeDef.kind === "request" || typeDef.kind === "response") {
+    if (typeDef.kind === 'interface' || typeDef.kind === 'request' || typeDef.kind === 'response') {
       typeDef.behaviors?.forEach((behavior) => {
         addTypeToOutput(behavior.type)
         behavior.generics?.forEach((generic) => {
@@ -118,68 +118,69 @@ function filterModel(inputModel: Model, stack, serverless: boolean): Model {
     }
 
     // handle inherits & implements
-    if (typeDef.kind === "interface" || typeDef.kind === "request") {
-      typeDef.inherits ? addTypeToOutput(typeDef.inherits.type) : void 0
+    if (typeDef.kind === 'interface' || typeDef.kind === 'request') {
+      if (typeDef.inherits !== undefined) {
+        addTypeToOutput(typeDef.inherits.type)
+      }
       typeDef.implements?.forEach((implemented) => {
         addTypeToOutput(implemented.type)
       })
     }
 
     // handle body value and body properties for request and response
-    if (typeDef.kind === "request" || typeDef.kind === "response") {
+    if (typeDef.kind === 'request' || typeDef.kind === 'response') {
       switch (typeDef.body.kind) {
-        case "value":
+        case 'value':
           addValueOf(typeDef.body.value)
-          break;
-        case "properties":
+          break
+        case 'properties':
           typeDef.body.properties.forEach((property) => {
-            addValueOf(property.type);
+            addValueOf(property.type)
           })
-          break;
+          break
       }
     }
 
     // left over specific cases
     switch (typeDef.kind) {
-      case "interface":
+      case 'interface':
         typeDef.properties.forEach((property) => {
-          addValueOf(property.type);
+          addValueOf(property.type)
         })
-        break;
+        break
 
-      case "request":
+      case 'request':
         typeDef.path.forEach((path) => {
           addValueOf(path.type)
         })
         typeDef.query.forEach((query) => {
           addValueOf(query.type)
         })
-        break;
+        break
 
-      case "type_alias":
+      case 'type_alias':
         addValueOf(typeDef.type)
-        break;
-
+        break
     }
   }
 
-  let seen = new Map<string, string[]>();
+  const seen = new Map<string, string[]>()
 
-  let output: Model = {
+  const output: Model = {
     _info: inputModel._info,
     types: new Array<TypeDefinition>(),
     endpoints: new Array<Endpoint>()
-  };
+  }
 
   // we filter to include only the matching endpoints
   inputModel.endpoints.forEach((endpoint) => {
     if (include(endpoint.availability, stack, serverless)) {
       // add the current endpoint
-      output.endpoints.push(endpoint);
+      output.endpoints.push(endpoint)
 
       // add the request and response type for current endpoint
       inputModel.types.forEach((typeDef) => {
-        if ((endpoint.request && cmpTypeNames(endpoint.request, typeDef.name)) || (endpoint.response && cmpTypeNames(endpoint.response, typeDef.name))) {
+        if (((endpoint.request != null) && cmpTypeNames(endpoint.request, typeDef.name)) || ((endpoint.response != null) && cmpTypeNames(endpoint.response, typeDef.name))) {
           output.types.push(typeDef)
         }
       })
@@ -189,60 +190,60 @@ function filterModel(inputModel: Model, stack, serverless: boolean): Model {
   // from what was gathered we filter out anything that doesn't match the requested tags
   inputModel.types.forEach((typeDef) => {
     switch (typeDef.kind) {
-      case "interface":
+      case 'interface':
         typeDef.properties.filter(filterItem())
-        break;
-      case "enum":
+        break
+      case 'enum':
         typeDef.members = typeDef.members.filter(filterItem())
         addTypeToOutput(typeDef.name)
-        break;
-      case "request":
+        break
+      case 'request':
         output.endpoints.forEach((endpoint) => {
-          if (endpoint.request?.name == typeDef.name.name && endpoint.request.namespace == typeDef.name.namespace) {
+          if (endpoint.request?.name === typeDef.name.name && endpoint.request.namespace === typeDef.name.namespace) {
             typeDef.path = typeDef.path.filter(filterItem())
             typeDef.query = typeDef.query.filter(filterItem())
-            //filter out body properties
+            // filter out body properties
             switch (typeDef.body.kind) {
-              case "properties":
+              case 'properties':
                 typeDef.body.properties.filter(filterItem())
-                break;
+                break
             }
           }
         })
-        break;
-      case "response":
+        break
+      case 'response':
         output.endpoints.forEach((endpoint) => {
-          if (endpoint.response?.name == typeDef.name.name && endpoint.response.namespace == typeDef.name.namespace) {
-            //filter out body properties
+          if (endpoint.response?.name === typeDef.name.name && endpoint.response.namespace === typeDef.name.namespace) {
+            // filter out body properties
             switch (typeDef.body.kind) {
-              case "properties":
+              case 'properties':
                 typeDef.body.properties.filter(filterItem())
-                break;
+                break
             }
           }
         })
-        break;
-      case "type_alias":
+        break
+      case 'type_alias':
         addTypeToOutput(typeDef.name)
     }
   })
 
   // we complete the spec with the missing types for the tree until exhaustion
   output.types.forEach((typeDef) => {
-    exploreTypedef(typeDef);
+    exploreTypedef(typeDef)
   })
 
-  return output;
+  return output
 }
 
-async function filterSchema(inPath: string, outPath: string, stack: boolean, serverless: boolean): Promise<void> {
+async function filterSchema (inPath: string, outPath: string, stack: boolean, serverless: boolean): Promise<void> {
   if (!stack && !serverless) {
-    throw new Error("Expected one of --stack or --serverless to be specified.");
+    throw new Error('Expected one of --stack or --serverless to be specified.')
   }
 
   const inputText = await readFile(
     inPath,
-    {encoding: 'utf8'}
+    { encoding: 'utf8' }
   )
 
   const inputModel = JSON.parse(inputText)
@@ -257,8 +258,8 @@ async function filterSchema(inPath: string, outPath: string, stack: boolean, ser
 
 const inputPath: string = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema-filtered.json')
-const stack = !!argv.stack
-const serverless = !!argv.serverless
+const stack: boolean = (argv.stack !== undefined)
+const serverless: boolean = (argv.serverless !== undefined)
 
 // Usage:
 // npm run filter-by-availability -- [--serverless|--stack]
@@ -267,6 +268,6 @@ const serverless = !!argv.serverless
 // output, if not provided default to schema-filtered.json
 filterSchema(inputPath, outputPath, stack, serverless)
   .catch(reason => {
-    console.error(reason.message? reason.message:reason)
+    console.error((reason.message !== null) ? reason.message : reason)
   })
   .finally(() => console.log('Done, filtered schema is at', outputPath))
