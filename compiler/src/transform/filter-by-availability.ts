@@ -23,7 +23,7 @@ import stringify from 'safe-stable-stringify'
 import {argv} from 'zx'
 import {join} from 'path'
 
-function filterEndpoints(inputModel: Model, stack, serverless: boolean): Model {
+function filterModel(inputModel: Model, stack, serverless: boolean): Model {
   // filter used against the provided availability
   // used to filter out endpoints and as a filter for items with availability (Enum & Property).
   function include(availabilities: Availabilities, stack: boolean, serverless: boolean): boolean {
@@ -246,7 +246,7 @@ async function filterSchema(inPath: string, outPath: string, stack: boolean, ser
   )
 
   const inputModel = JSON.parse(inputText)
-  const outputModel = filterEndpoints(inputModel, stack, serverless)
+  const outputModel = filterModel(inputModel, stack, serverless)
 
   await writeFile(
     outPath,
