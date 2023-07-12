@@ -10579,8 +10579,8 @@ export interface IndicesModifyDataStreamAction {
 }
 
 export interface IndicesModifyDataStreamIndexAndDataStreamAction {
-  index: IndexName
   data_stream: DataStreamName
+  index: IndexName
 }
 
 export interface IndicesModifyDataStreamRequest extends RequestBase {
