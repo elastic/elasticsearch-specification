@@ -17,32 +17,38 @@
  * under the License.
  */
 
-import { Availabilities, Endpoint, Model, TypeDefinition, TypeName, ValueOf } from '../model/metamodel'
+import { Availabilities, Endpoint, Model, TypeDefinition, TypeName, ValueOf, Visibility } from '../model/metamodel'
 import { readFile, writeFile } from 'fs/promises'
 import stringify from 'safe-stable-stringify'
 import { argv } from 'zx'
 import { join } from 'path'
 
-function filterModel (inputModel: Model, stack, serverless: boolean): Model {
+function filterModel (inputModel: Model, stack: boolean, serverless: boolean, visibility: string): Model {
+  // filter over visibility only exclude if present and not matching, include by default.
+  function includeVisibility (localVis: Visibility | undefined): boolean {
+    if (localVis === undefined || visibility === undefined) {
+      return true
+    }
+    return localVis === visibility
+  }
+
   // filter used against the provided availability
   // used to filter out endpoints and as a filter for items with availability (Enum & Property).
-  function include (availabilities: Availabilities, stack: boolean, serverless: boolean): boolean {
-    if ((availabilities.stack != null) && stack && !serverless) {
-      return true
+  function include (availabilities: Availabilities): boolean {
+    if ((availabilities.stack !== undefined) && stack) {
+      return includeVisibility(availabilities.stack.visibility)
     }
-    if ((availabilities.serverless != null) && serverless && !stack) {
-      return true
+    if ((availabilities.serverless !== undefined) && serverless) {
+      return includeVisibility(availabilities.serverless.visibility)
     }
-    if (((availabilities.serverless != null) || (availabilities.stack != null)) && serverless && stack) {
-      return true
-    }
+
     return false
   }
 
   // used to filter out individual items within types.
   function filterItem () {
     return (item) => {
-      return (item.availability !== undefined) ? include(item.availability, stack, serverless) : true
+      return (item.availability !== undefined) ? include(item.availability) : true
     }
   }
 
@@ -187,18 +193,18 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
 
   // we filter to include only the matching endpoints
   inputModel.endpoints.forEach((endpoint) => {
-    if (include(endpoint.availability, stack, serverless)) {
+    if (include(endpoint.availability)) {
       // add the current endpoint
       output.endpoints.push(endpoint)
 
-      if (endpoint.request) {
-        let requestType = typeDefByName.get(fqn(endpoint.request));
-        requestType ? output.types.push(requestType) : void 0;
+      if (endpoint.request != null) {
+        const requestType = typeDefByName.get(fqn(endpoint.request))
+        if (requestType !== undefined) output.types.push(requestType)
       }
 
-      if (endpoint.response) {
-        let responseType = typeDefByName.get(fqn(endpoint.response));
-        responseType ? output.types.push(responseType) : void 0;
+      if (endpoint.response != null) {
+        const responseType = typeDefByName.get(fqn(endpoint.response))
+        if (responseType !== undefined) output.types.push(responseType)
       }
     }
   })
@@ -252,8 +258,8 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
   return output
 }
 
-async function filterSchema (inPath: string, outPath: string, stack: boolean, serverless: boolean): Promise<void> {
-  if (!stack && !serverless) {
+async function filterSchema (inPath: string, outPath: string, stack: boolean, serverless: boolean, visibility: string): Promise<void> {
+  if ((!stack && !serverless) || (serverless && stack)) {
     throw new Error('Expected one of --stack or --serverless to be specified.')
   }
 
@@ -263,7 +269,10 @@ async function filterSchema (inPath: string, outPath: string, stack: boolean, se
   )
 
   const inputModel = JSON.parse(inputText)
-  const outputModel = filterModel(inputModel, stack, serverless)
+  const outputModel = filterModel(inputModel, stack, serverless, visibility)
+
+  console.log(outputModel.endpoints.length)
+  console.log(outputModel.types.length)
 
   await writeFile(
     outPath,
@@ -271,17 +280,11 @@ async function filterSchema (inPath: string, outPath: string, stack: boolean, se
     'utf8'
   )
 }
+
 const stack: boolean = (argv.stack !== undefined)
 const serverless: boolean = (argv.serverless !== undefined)
-let target: string = ''
-
-if (stack && serverless) {
-  target = 'stack-serverless'
-} else if (serverless) {
-  target = 'serverless'
-} else if (stack) {
-  target = 'stack'
-}
+const target: string = (serverless) ? 'serverless' : 'stack'
+const visibility: string = argv.visibility
 
 const inputPath: string = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', `schema-filtered-${target}.json`)
@@ -291,7 +294,7 @@ const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 's
 // Optional args:
 // input, if not provided default to versioned schema.json
 // output, if not provided default to schema-filtered.json
-filterSchema(inputPath, outputPath, stack, serverless)
+filterSchema(inputPath, outputPath, stack, serverless, visibility)
   .catch(reason => {
     console.error((reason.message !== null) ? reason.message : reason)
   })
