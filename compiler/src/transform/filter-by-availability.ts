@@ -180,7 +180,7 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
 
       // add the request and response type for current endpoint
       inputModel.types.forEach((typeDef) => {
-        if (((endpoint.request != null) && cmpTypeNames(endpoint.request, typeDef.name)) || ((endpoint.response != null) && cmpTypeNames(endpoint.response, typeDef.name))) {
+        if (((endpoint.request !== null) && cmpTypeNames(endpoint.request, typeDef.name)) || ((endpoint.response !== null) && cmpTypeNames(endpoint.response, typeDef.name))) {
           output.types.push(typeDef)
         }
       })
