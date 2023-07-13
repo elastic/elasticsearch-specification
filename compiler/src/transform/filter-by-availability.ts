@@ -197,12 +197,12 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
       // add the current endpoint
       output.endpoints.push(endpoint)
 
-      if (endpoint.request != null) {
+      if (endpoint.request !== null) {
         const requestType = typeDefByName.get(fqn(endpoint.request))
         if (requestType !== undefined) output.types.push(requestType)
       }
 
-      if (endpoint.response != null) {
+      if (endpoint.response !== null) {
         const responseType = typeDefByName.get(fqn(endpoint.response))
         if (responseType !== undefined) output.types.push(responseType)
       }
