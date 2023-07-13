@@ -166,6 +166,11 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
     }
   }
 
+  // Returns the fully-qualified name of a type name
+  function fqn (name: TypeName): string {
+    return `${name.namespace}:${name.name}`
+  }
+
   const seen = new Map<string, string[]>()
 
   const output: Model = {
@@ -174,18 +179,27 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
     endpoints: new Array<Endpoint>()
   }
 
+  const typeDefByName = new Map<string, TypeDefinition>()
+
+  for (const type of inputModel.types) {
+    typeDefByName.set(fqn(type.name), type)
+  }
+
   // we filter to include only the matching endpoints
   inputModel.endpoints.forEach((endpoint) => {
     if (include(endpoint.availability, stack, serverless)) {
       // add the current endpoint
       output.endpoints.push(endpoint)
 
-      // add the request and response type for current endpoint
-      inputModel.types.forEach((typeDef) => {
-        if (((endpoint.request !== null) && cmpTypeNames(endpoint.request, typeDef.name)) || ((endpoint.response !== null) && cmpTypeNames(endpoint.response, typeDef.name))) {
-          output.types.push(typeDef)
-        }
-      })
+      if (endpoint.request) {
+        let requestType = typeDefByName.get(fqn(endpoint.request));
+        requestType ? output.types.push(requestType) : void 0;
+      }
+
+      if (endpoint.response) {
+        let responseType = typeDefByName.get(fqn(endpoint.response));
+        responseType ? output.types.push(responseType) : void 0;
+      }
     }
   })
 
