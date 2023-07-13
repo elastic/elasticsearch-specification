@@ -57,12 +57,17 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
     return t1.name === t2.name && t1.namespace === t2.namespace
   }
 
+  // Returns the fully-qualified name of a type name
+  function fqn (name: TypeName): string {
+    return `${name.namespace}:${name.name}`
+  }
+
   // return early if the type already has been added
   // fetches the original type from the input model
   // save its presence to prevent recursion and doubles
   // continues down the type tree for any new types
   function addTypeToOutput (typeName: TypeName): void {
-    if (seen.get(typeName.namespace)?.includes(typeName.name) === true) {
+    if (seen.has(fqn(typeName))) {
       return
     }
 
@@ -72,11 +77,7 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
         output.types.push(typeDef)
 
         // store the type infos to prevent doubles & recursive calls
-        if (seen.get(typeName.namespace) !== undefined) {
-          seen.get(typeName.namespace)?.push(typeName.name)
-        } else {
-          seen.set(typeName.namespace, [typeName.name])
-        }
+        seen.add(fqn(typeName))
 
         // first time seeing this type so we explore the type
         exploreTypedef(typeDef)
@@ -172,12 +173,7 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
     }
   }
 
-  // Returns the fully-qualified name of a type name
-  function fqn (name: TypeName): string {
-    return `${name.namespace}:${name.name}`
-  }
-
-  const seen = new Map<string, string[]>()
+  const seen = new Set<string>()
 
   const output: Model = {
     _info: inputModel._info,
