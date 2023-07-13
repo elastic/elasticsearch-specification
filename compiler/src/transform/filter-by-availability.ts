@@ -265,20 +265,26 @@ async function filterSchema (inPath: string, outPath: string, stack: boolean, se
   const inputModel = JSON.parse(inputText)
   const outputModel = filterModel(inputModel, stack, serverless)
 
-  console.log(outputModel.endpoints.length)
-  console.log(outputModel.types.length)
-
   await writeFile(
     outPath,
     stringify(outputModel, null, 2),
     'utf8'
   )
 }
-
-const inputPath: string = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
-const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema-filtered.json')
 const stack: boolean = (argv.stack !== undefined)
 const serverless: boolean = (argv.serverless !== undefined)
+let target: string = ''
+
+if (stack && serverless) {
+  target = 'stack-serverless'
+} else if (serverless) {
+  target = 'serverless'
+} else if (stack) {
+  target = 'stack'
+}
+
+const inputPath: string = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
+const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', `schema-filtered-${target}.json`)
 
 // Usage:
 // npm run filter-by-availability -- [--serverless|--stack]
