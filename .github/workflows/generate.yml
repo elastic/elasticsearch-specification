@@ -1,0 +1,90 @@
+name: Generate Output
+
+on:
+  push:
+    branches:
+      - main
+
+  # For debugging purposes:
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   branches:
+  #     - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'elastic' && github.actor != 'elasticmachine'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.PAT }}
+        persist-credentials: true
+
+    - name: Setup Node 16.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        cache: npm
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Setup Dependencies
+      run: |
+        make setup
+
+    - name: Generate Output
+      run: |
+        make compile
+        make generate
+
+    - name: Check for Changed Files
+      id: changes
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "has-changes=1" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Set Git Identity
+      if: steps.changes.outputs.has-changes == '1'
+      run: |-
+        git config --global user.email "elasticmachine@users.noreply.github.com"
+        git config --global user.name "Elastic Machine"
+
+    - name: Push Output
+      if: steps.changes.outputs.has-changes == '1'
+      run: |
+        cd ./output
+
+        git add -A
+        git commit -m "Update specification output"
+
+        git status
+
+        git push
+
+    # For debugging purposes:
+    # - name: Push Output
+    #   if: steps.changes.outputs.has-changes == '1'
+    #   env:
+    #     BRANCH_NAME: output_${{ github.run_id }}_${{ github.run_attempt }}
+    #   run: |
+    #     cd ./output
+
+    #     git fetch
+    #     git switch main
+
+    #     git add -A
+    #     git commit -m "Update specification output"
+
+    #     git status
+
+    #     git push origin HEAD:refs/heads/${{ env.BRANCH_NAME }}
