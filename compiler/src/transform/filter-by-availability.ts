@@ -66,9 +66,11 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
         output.types.push(typeDef)
 
         // store the type infos to prevent doubles & recursive calls
-        ;(seen.get(typeName.namespace) != null)
-          ? seen.get(typeName.namespace)?.push(typeName.name)
-          : seen.set(typeName.namespace, [typeName.name])
+        if (seen.get(typeName.namespace) !== undefined) {
+          seen.get(typeName.namespace)?.push(typeName.name)
+        } else {
+          seen.set(typeName.namespace, [typeName.name])
+        }
 
         // first time seeing this type so we explore the type
         exploreTypedef(typeDef)
