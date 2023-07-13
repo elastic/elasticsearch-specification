@@ -23,13 +23,13 @@ import stringify from 'safe-stable-stringify'
 import { argv } from 'zx'
 import { join } from 'path'
 
-function filterModel (inputModel: Model, stack: boolean, serverless: boolean, visibility: string): Model {
+function filterModel (inputModel: Model, stack: boolean, serverless: boolean, visibility: string[]): Model {
   // filter over visibility only exclude if present and not matching, include by default.
   function includeVisibility (localVis: Visibility | undefined): boolean {
     if (localVis === undefined || visibility === undefined) {
       return true
     }
-    return localVis === visibility
+    return visibility.includes(localVis)
   }
 
   // filter used against the provided availability
@@ -258,7 +258,7 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
   return output
 }
 
-async function filterSchema (inPath: string, outPath: string, stack: boolean, serverless: boolean, visibility: string): Promise<void> {
+async function filterSchema (inPath: string, outPath: string, stack: boolean, serverless: boolean, visibility: string[]): Promise<void> {
   if ((!stack && !serverless) || (serverless && stack)) {
     throw new Error('Expected one of --stack or --serverless to be specified.')
   }
@@ -271,9 +271,6 @@ async function filterSchema (inPath: string, outPath: string, stack: boolean, se
   const inputModel = JSON.parse(inputText)
   const outputModel = filterModel(inputModel, stack, serverless, visibility)
 
-  console.log(outputModel.endpoints.length)
-  console.log(outputModel.types.length)
-
   await writeFile(
     outPath,
     stringify(outputModel, null, 2),
@@ -284,7 +281,7 @@ async function filterSchema (inPath: string, outPath: string, stack: boolean, se
 const stack: boolean = (argv.stack !== undefined)
 const serverless: boolean = (argv.serverless !== undefined)
 const target: string = (serverless) ? 'serverless' : 'stack'
-const visibility: string = argv.visibility
+const visibility: string[] = argv.visibility.split(',')
 
 const inputPath: string = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', `schema-filtered-${target}.json`)
@@ -292,6 +289,7 @@ const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 's
 // Usage:
 // npm run filter-by-availability -- [--serverless|--stack]
 // Optional args:
+// visibility, comma separated list in [public|private|feature_flag]
 // input, if not provided default to versioned schema.json
 // output, if not provided default to schema-filtered.json
 filterSchema(inputPath, outputPath, stack, serverless, visibility)
