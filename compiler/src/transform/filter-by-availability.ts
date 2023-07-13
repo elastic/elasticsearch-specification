@@ -189,11 +189,11 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
     }
   })
 
-  // from what was gathered we filter out anything that doesn't match the requested tags
+  // filter type items (properties / enum members)
   inputModel.types.forEach((typeDef) => {
     switch (typeDef.kind) {
       case 'interface':
-        typeDef.properties.filter(filterItem())
+        typeDef.properties = typeDef.properties.filter(filterItem())
         break
       case 'enum':
         typeDef.members = typeDef.members.filter(filterItem())
@@ -207,7 +207,7 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
             // filter out body properties
             switch (typeDef.body.kind) {
               case 'properties':
-                typeDef.body.properties.filter(filterItem())
+                typeDef.body.properties = typeDef.body.properties.filter(filterItem())
                 break
             }
           }
@@ -219,7 +219,7 @@ function filterModel (inputModel: Model, stack, serverless: boolean): Model {
             // filter out body properties
             switch (typeDef.body.kind) {
               case 'properties':
-                typeDef.body.properties.filter(filterItem())
+                typeDef.body.properties = typeDef.body.properties.filter(filterItem())
                 break
             }
           }
@@ -250,6 +250,9 @@ async function filterSchema (inPath: string, outPath: string, stack: boolean, se
 
   const inputModel = JSON.parse(inputText)
   const outputModel = filterModel(inputModel, stack, serverless)
+
+  console.log(outputModel.endpoints.length)
+  console.log(outputModel.types.length)
 
   await writeFile(
     outPath,
