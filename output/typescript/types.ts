@@ -10202,9 +10202,9 @@ export type IndicesCreateDataStreamResponse = AcknowledgedResponseBase
 export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
   data_stream: Name
+  maximum_timestamp: EpochTime<UnitMillis>
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: EpochTime<UnitMillis>
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
@@ -10216,9 +10216,9 @@ export interface IndicesDataStreamsStatsResponse {
   _shards: ShardStatistics
   backing_indices: integer
   data_stream_count: integer
+  data_streams: IndicesDataStreamsStatsDataStreamsStatsItem[]
   total_store_sizes?: ByteSize
   total_store_size_bytes: integer
-  data_streams: IndicesDataStreamsStatsDataStreamsStatsItem[]
 }
 
 export interface IndicesDeleteRequest extends RequestBase {
@@ -10579,8 +10579,8 @@ export interface IndicesModifyDataStreamAction {
 }
 
 export interface IndicesModifyDataStreamIndexAndDataStreamAction {
-  index: IndexName
   data_stream: DataStreamName
+  index: IndexName
 }
 
 export interface IndicesModifyDataStreamRequest extends RequestBase {
