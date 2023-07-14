@@ -3,7 +3,9 @@ name: Generate Output
 on:
   push:
     branches:
-      - main
+      - 'main'
+      - '7.17'
+      - '8.[0-9]+'
 
   # For debugging purposes:
   # pull_request:
