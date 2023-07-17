@@ -4162,7 +4162,7 @@ export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnaly
 
 export interface AnalysisAsciiFoldingTokenFilter extends AnalysisTokenFilterBase {
   type: 'asciifolding'
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export type AnalysisCharFilter = string | AnalysisCharFilterDefinition
@@ -4242,7 +4242,7 @@ export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
   max_gram?: integer
   min_gram?: integer
   side?: AnalysisEdgeNGramSide
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
@@ -4481,14 +4481,14 @@ export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
 export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
   type: 'multiplexer'
   filters: string[]
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
   type: 'ngram'
   max_gram?: integer
   min_gram?: integer
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
@@ -4545,7 +4545,7 @@ export interface AnalysisPatternAnalyzer {
 export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_capture'
   patterns: string[]
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase {
@@ -4758,7 +4758,7 @@ export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisTokenFilt
   generate_number_parts?: boolean
   generate_word_parts?: boolean
   ignore_keywords?: boolean
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -4775,7 +4775,7 @@ export interface AnalysisWordDelimiterTokenFilter extends AnalysisTokenFilterBas
   catenate_words?: boolean
   generate_number_parts?: boolean
   generate_word_parts?: boolean
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -9776,7 +9776,7 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
-  indexing_complete?: boolean
+  indexing_complete?: SpecUtilsStringified<boolean>
   origination_date?: long
   parse_origination_date?: boolean
   step?: IndicesIndexSettingsLifecycleStep
