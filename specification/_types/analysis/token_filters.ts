@@ -80,7 +80,7 @@ export class EdgeNGramTokenFilter extends TokenFilterBase {
   max_gram?: integer
   min_gram?: integer
   side?: EdgeNGramSide
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class ShingleTokenFilter extends TokenFilterBase {
@@ -135,7 +135,7 @@ export class WordDelimiterTokenFilter extends TokenFilterBase {
   catenate_words?: boolean
   generate_number_parts?: boolean
   generate_word_parts?: boolean
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -154,7 +154,7 @@ export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
   generate_number_parts?: boolean
   generate_word_parts?: boolean
   ignore_keywords?: boolean
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -166,7 +166,7 @@ export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
   type: 'asciifolding'
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
@@ -259,14 +259,14 @@ export class LowercaseTokenFilter extends TokenFilterBase {
 export class MultiplexerTokenFilter extends TokenFilterBase {
   type: 'multiplexer'
   filters: string[]
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class NGramTokenFilter extends TokenFilterBase {
   type: 'ngram'
   max_gram?: integer
   min_gram?: integer
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
@@ -277,7 +277,7 @@ export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
 export class PatternCaptureTokenFilter extends TokenFilterBase {
   type: 'pattern_capture'
   patterns: string[]
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class PatternReplaceTokenFilter extends TokenFilterBase {

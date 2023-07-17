@@ -344,7 +344,7 @@ export class IndexSettingsLifecycle {
    * You can explicitly set it to skip rollover.
    * @server_default false
    */
-  indexing_complete?: boolean
+  indexing_complete?: Stringified<boolean>
   /**
    * If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting
    * if you create a new index that contains old data and want to use the original creation date to calculate the index
