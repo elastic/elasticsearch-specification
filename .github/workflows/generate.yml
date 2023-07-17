@@ -45,8 +45,8 @@ jobs:
 
     - name: Generate Output
       run: |
-        make compile
-        make generate
+        make spec-compile
+        make spec-generate
 
     - name: Check for Changed Files
       id: changes
