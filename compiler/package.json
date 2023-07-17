@@ -10,6 +10,7 @@
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
     "generate-schema": "ts-node src/index.ts",
     "transform-expand-generics": "ts-node src/transform/expand-generics.ts",
+    "filter-by-availability": "ts-node src/transform/filter-by-availability.ts",
     "dump-routes": "ts-node src/dump/extract-routes.ts",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",
