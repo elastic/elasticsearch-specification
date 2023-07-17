@@ -53,7 +53,7 @@ jobs:
     - name: Check for Changed Files
       id: changes
       run: |
-        if [ -n "$(git status --porcelain)" ]; then
+        if [ -n "$(git status --porcelain ./output)" ]; then
           echo "has-changes=1" >> $GITHUB_OUTPUT
         fi
 
