@@ -5740,6 +5740,16 @@ export interface QueryDslPrefixQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
 }
 
+export type QueryDslMatchCriteria = Map<string,object>
+
+export type QueryDslRulesetId = string
+
+export interface QueryDslRuleQuery extends QueryDslQueryBase {
+  organic: QueryDslQueryContainer
+  match_criteria: QueryDslMatchCriteria
+  ruleset_id: QueryDslRulesetId
+}
+
 export interface QueryDslQueryBase {
   boost?: float
   _name?: string
@@ -18970,3 +18980,46 @@ export interface SpecUtilsOverloadOf<TDefinition = unknown> {
   [key: string]: never
 }
 
+export type QueryRulesetId = string
+
+export type QueryRuleId = string
+
+export enum QueryRuleType {
+  pinned
+}
+
+export enum QueryRuleCriteriaType {
+  global,
+  exact,
+  exact_fuzzy,
+  prefix,
+  suffix,
+  contains,
+  lt,
+  lte,
+  gt,
+  gte
+}
+
+export interface QueryRuleCriteria {
+  type: QueryRuleCriteriaType
+  metadata: string
+  value: string
+}
+
+export interface QueryRuleActions {
+  ids?: string[],
+  docs?: QueryDslPinnedDoc[]
+}
+
+export interface QueryRule {
+  rule_id: QueryRuleId
+  type: QueryRuleType,
+  criteria: QueryRuleCriteria[],
+  actions: QueryRuleActions
+}
+
+export interface QueryRuleset {
+  ruleset_id: QueryRulesetId
+  rules: QueryRule[]
+}

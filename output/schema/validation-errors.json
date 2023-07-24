@@ -1154,6 +1154,12 @@
         "response definition search_application.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "query_ruleset.delete": {
+      "request": [],
+      "response": [
+        "response definition query_ruleset.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
     "search_application.delete_behavioral_analytics": {
       "request": [],
       "response": [
