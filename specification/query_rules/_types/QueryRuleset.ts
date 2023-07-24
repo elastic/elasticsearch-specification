@@ -20,6 +20,7 @@
 import { IndexName, Name } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
 import { InlineScript } from '@_types/Scripting'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class QueryRuleset {
   /**
@@ -50,7 +51,7 @@ export enum QueryRuleType {
 export class QueryRuleCriteria {
   type: QueryRuleCriteriaType
   metadata: string
-  values: (string | number)[]
+  values?: UserDefinedValue[]
 }
 
 export enum QueryRuleCriteriaType {
