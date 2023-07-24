@@ -24,6 +24,7 @@ export class Response {
     /**
      * The ID of the node that the datafeed was started on. If the datafeed is allowed to open lazily and has not yet
      * been assigned to a node, this value is an empty string.
+     * @availability stack
      */
     node: NodeIds
     /**

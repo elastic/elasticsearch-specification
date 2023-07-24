@@ -22,6 +22,9 @@ import { NodeId } from '@_types/common'
 export class Response {
   body: {
     opened: boolean
+    /**
+     * @availability stack
+     */
     node: NodeId
   }
 }

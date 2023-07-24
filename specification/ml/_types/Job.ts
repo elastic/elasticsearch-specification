@@ -109,6 +109,9 @@ export class JobStats {
   forecasts_stats: JobForecastStatistics
   job_id: string
   model_size_stats: ModelSizeStats
+  /**
+   * @availability stack
+   */
   node?: DiscoveryNode
   open_time?: DateTime
   state: JobState

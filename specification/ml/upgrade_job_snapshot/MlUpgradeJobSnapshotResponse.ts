@@ -21,7 +21,10 @@ import { NodeId } from '@_types/common'
 
 export class Response {
   body: {
-    /** The ID of the assigned node for the upgrade task if it is still running. */
+    /**
+     * The ID of the assigned node for the upgrade task if it is still running.
+     * @availability stack
+     */
     node: NodeId
     /** When true, this means the task is complete. When false, it is still running. */
     completed: boolean
