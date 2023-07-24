@@ -50,7 +50,7 @@ export enum QueryRuleType {
 export class QueryRuleCriteria {
   type: QueryRuleCriteriaType
   metadata: string
-  values: object[]
+  values: (string | number)[]
 }
 
 export enum QueryRuleCriteriaType {

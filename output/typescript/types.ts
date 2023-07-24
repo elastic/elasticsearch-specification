@@ -19004,7 +19004,7 @@ export enum QueryRuleCriteriaType {
 export interface QueryRuleCriteria {
   type: QueryRuleCriteriaType
   metadata: string
-  value: string
+  values: (string | number)[]
 }
 
 export interface QueryRuleActions {
