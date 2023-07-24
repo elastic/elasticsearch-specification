@@ -7,17 +7,13 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": [
-        "application/json"
-      ]
+      "accept": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_query_rules/{ruleset_id}",
-          "methods": [
-            "DELETE"
-          ],
+          "methods": ["DELETE"],
           "parts": {
             "ruleset_id": {
               "type": "string",

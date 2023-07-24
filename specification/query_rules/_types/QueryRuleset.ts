@@ -33,7 +33,7 @@ export class QueryRuleset {
   rules: QueryRule[]
 }
 
-export type QueryRulesetId = string;
+export type QueryRulesetId = string
 
 export class QueryRule {
   rule_id: QueryRulesetId
@@ -42,7 +42,7 @@ export class QueryRule {
   actions: QueryRuleActions
 }
 
-export type QueryRuleId = string;
+export type QueryRuleId = string
 
 export enum QueryRuleType {
   pinned
