@@ -28,7 +28,6 @@ import { DateTime } from '@_types/Time'
  * It is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.
  * @rest_spec_name ml.post_data
  * @availability stack since=5.4.0 stability=stable
- * @availability serverless stability=stable visibility=private
  * @deprecated 7.11.0 Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.
  * @cluster_privileges manage_ml
  */
