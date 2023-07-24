@@ -35,8 +35,17 @@ export class GeoBoundingBoxQuery
 {
   /** @deprecated 7.14.0 */
   type?: GeoExecution
-  /** @server_default 'strict' */
+  /**
+   * Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.
+   * Set to `COERCE` to also try to infer correct latitude or longitude.
+   * @server_default 'strict'
+   */
   validation_method?: GeoValidationMethod
+  /**
+   * Set to `true` to ignore an unmapped field and not match any documents for this query.
+   * Set to `false` to throw an exception if the field is not mapped.
+   * @server_default false
+   */
   ignore_unmapped?: boolean
 }
 
@@ -49,10 +58,23 @@ export class GeoDistanceQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoLocation>
 {
+  /**
+   * The radius of the circle centred on the specified location.
+   * Points which fall into this circle are considered to be matches.
+   * @doc_id distance-units
+   */
   distance: Distance
-  /** @server_default 'arc' */
+  /**
+   * How to compute the distance.
+   * Set to `plane` for a faster calculation that's inaccurate on long distances and close to the poles.
+   * @server_default 'arc'
+   */
   distance_type?: GeoDistanceType
-  /** @server_default 'strict' */
+  /**
+   * Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.
+   * Set to `COERCE` to also try to infer correct latitude or longitude.
+   * @server_default 'strict'
+   */
   validation_method?: GeoValidationMethod
 }
 
@@ -77,7 +99,14 @@ export enum GeoFormat {
 
 export class GeoShapeFieldQuery {
   shape?: GeoShape
+  /**
+   * Query using an indexed shape retrieved from the the specified document and path.
+   */
   indexed_shape?: FieldLookup
+  /**
+   * Spatial relation operator used to search a geo field.
+   * @server_default intersects
+   */
   relation?: GeoShapeRelation
 }
 
@@ -87,6 +116,11 @@ export class GeoShapeQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoShapeFieldQuery>
 {
+  /**
+   * Set to `true` to ignore an unmapped field and not match any documents for this query.
+   * Set to `false` to throw an exception if the field is not mapped.
+   * @server_default false
+   */
   ignore_unmapped?: boolean
 }
 
@@ -105,7 +139,13 @@ export enum TokenType {
 }
 
 export enum GeoValidationMethod {
+  /**
+   * Accept geo points with invalid latitude or longitude and additionally try and infer correct coordinates.
+   */
   coerce = 0,
+  /**
+   * Accept geo points with invalid latitude or longitude.
+   */
   ignore_malformed = 1,
   strict = 2
 }

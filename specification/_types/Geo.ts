@@ -65,9 +65,22 @@ export class GeoLine {
 }
 
 export enum GeoShapeRelation {
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field intersects the query geometry.
+   */
   intersects = 0,
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field has nothing in common with the query geometry.
+   */
   disjoint = 1,
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field is within the query geometry.
+   * Line geometries are not supported.
+   */
   within = 2,
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field contains the query geometry.
+   */
   contains = 3
 }
 

@@ -403,3 +403,17 @@ templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{b
 mapping-settings-limit,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-settings-limit.html
 index-modules-slowlog-slowlog,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-modules-slowlog.html#index-slow-log
 multi-fields,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/multi-fields.html
+query-dsl-bool-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-bool-query.html
+query-dsl-boosting-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-boosting-query.html
+query-dsl-combined-fields-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-combined-fields-query.html
+query-dsl-constant-score-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-constant-score-query.html
+query-dsl-dis-max-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-dis-max-query.html
+query-dsl-distance-feature-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-distance-feature-query.html
+query-dsl-exists-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-exists-query.html
+query-dsl-function-score-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-function-score-query.html
+fuzziness,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html#fuzziness
+query-dsl-fuzzy-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-fuzzy-query.html
+query-dsl-geo-bounding-box-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-bounding-box-query.html
+query-dsl-geo-distance-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-distance-query.html
+distance-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#distance-units
+query-dsl-geo-shape-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-geo-shape-query.html

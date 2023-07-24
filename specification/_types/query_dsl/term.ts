@@ -34,16 +34,43 @@ import { QueryBase } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class ExistsQuery extends QueryBase {
+  /**
+   * Name of the field you wish to search.
+   */
   field: Field
 }
 
 /** @shortcut_property value */
 export class FuzzyQuery extends QueryBase {
+  /**
+   * Maximum number of variations created.
+   * @server_default 50
+   */
   max_expansions?: integer
+  /**
+   * Number of beginning characters left unchanged when creating expansions.
+   * @server_default 0
+   */
   prefix_length?: integer
+  /**
+   * Number of beginning characters left unchanged when creating expansions.
+   * @doc_id query-dsl-multi-term-rewrite
+   * @server_default constant_score
+   */
   rewrite?: MultiTermQueryRewrite
+  /**
+   * Indicates whether edits include transpositions of two adjacent characters (for example `ab` to `ba`).
+   * @server_default true
+   */
   transpositions?: boolean
+  /**
+   * Maximum edit distance allowed for matching.
+   * @doc_id fuzziness
+   */
   fuzziness?: Fuzziness
+  /**
+   * Term you wish to find in the provided field.
+   */
   // ES is lenient and accepts any primitive type, but ultimately converts it to a string.
   // Changing this field definition from UserDefinedValue to string breaks a recording produced from Nest tests,
   // but Nest is probably also overly flexible here and exposes an option that should not exist.

@@ -100,24 +100,72 @@ import { TextExpansionQuery } from './TextExpansionQuery'
  * @doc_id query-dsl
  */
 export class QueryContainer {
+  /**
+   * matches documents matching boolean combinations of other queries.
+   * @doc_id query-dsl-bool-query
+   */
   bool?: BoolQuery
+  /**
+   * Returns documents matching a `positive` query while reducing the relevance score of documents that also match a `negative` query.
+   * @doc_id query-dsl-boosting-query
+   */
   boosting?: BoostingQuery
   /** @deprecated 7.3.0 */
   common?: SingleKeyDictionary<Field, CommonTermsQuery>
   /**
+   * The `combined_fields` query supports searching multiple text fields as if their contents had been indexed into one combined field.
+   * @doc_id query-dsl-combined-fields-query
    * @availability stack since=7.13.0
    * @availability serverless
    */
   combined_fields?: CombinedFieldsQuery
+  /**
+   * Wraps a filter query and returns every matching document with a relevance score equal to the `boost` parameter value.
+   * @doc_id query-dsl-constant-score-query
+   */
   constant_score?: ConstantScoreQuery
+  /**
+   * Returns documents matching one or more wrapped queries, called query clauses or clauses.
+   * If a returned document matches multiple query clauses, the `dis_max` query assigns the document the highest relevance score from any matching clause, plus a tie breaking increment for any additional matching subqueries.
+   * @doc_id query-dsl-dis-max-query
+   */
   dis_max?: DisMaxQuery
+  /**
+   * Boosts the relevance score of documents closer to a provided origin date or point.
+   * For example, you can use this query to give more weight to documents closer to a certain date or location.
+   * @doc_id query-dsl-distance-feature-query
+   */
   distance_feature?: DistanceFeatureQuery
+  /**
+   * Returns documents that contain an indexed value for a field.
+   * @doc_id query-dsl-exists-query
+   */
   exists?: ExistsQuery
+  /**
+   * The `function_score` enables you to modify the score of documents that are retrieved by a query.
+   * @doc_id query-dsl-function-score-query
+   */
   function_score?: FunctionScoreQuery
+  /**
+   * Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.
+   * @doc_id query-dsl-fuzzy-query
+   */
   fuzzy?: SingleKeyDictionary<Field, FuzzyQuery>
+  /**
+   * Matches geo_point and geo_shape values that intersect a bounding box.
+   * @doc_id query-dsl-geo-bounding-box-query
+   */
   geo_bounding_box?: GeoBoundingBoxQuery
+  /**
+   * Matches `geo_point` and `geo_shape` values within a given distance of a geopoint.
+   * @doc_id query-dsl-geo-distance-query
+   */
   geo_distance?: GeoDistanceQuery
   geo_polygon?: GeoPolygonQuery
+  /**
+   * Filter documents indexed using either the `geo_shape` or the `geo_point` type.
+   * @doc_id query-dsl-geo-shape-query
+   */
   geo_shape?: GeoShapeQuery
   has_child?: HasChildQuery
   has_parent?: HasParentQuery
@@ -171,9 +219,21 @@ export class QueryContainer {
 }
 
 export class FieldLookup {
+  /**
+   * `id` of the document.
+   */
   id: Id
+  /**
+   * Index from which to retrieve the document.
+   */
   index?: IndexName
+  /**
+   * Name of the field.
+   */
   path?: Field
+  /**
+   * Custom routing value.
+   */
   routing?: Routing
 }
 
@@ -182,24 +242,51 @@ export class FieldNameQuery {
 }
 
 export class QueryBase {
+  /**
+   * Floating point number used to decrease or increase the relevance scores of the query.
+   * Boost values are relative to the default value of 1.0.
+   * A boost value between 0 and 1.0 decreases the relevance score.
+   * A value greater than 1.0 increases the relevance score.
+   * @server_default 1.0
+   */
   boost?: float
   /** @codegen_name query_name */
   _name?: string
 }
 
 export class CombinedFieldsQuery extends QueryBase {
+  /**
+   * List of fields to search. Field wildcard patterns are allowed. Only `text` fields are supported, and they must all have the same search `analyzer`.
+   */
   fields: Field[]
+  /**
+   * Text to search for in the provided `fields`.
+   * The `combined_fields` query analyzes the provided text before performing a search.
+   */
   query: string
 
-  /** @server_default true */
+  /**
+   * If true, match phrase queries are automatically created for multi-term synonyms.
+   * @server_default true
+   */
   auto_generate_synonyms_phrase_query?: boolean
 
-  /** @server_default or */
+  /**
+   * Boolean logic used to interpret text in the query value.
+   * @server_default or
+   */
   operator?: CombinedFieldsOperator
 
+  /**
+   * Minimum number of clauses that must match for a document to be returned.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
 
-  /** @server_default none */
+  /**
+   * Indicates whether no documents are returned if the analyzer removes all tokens, such as when using a `stop` filter.
+   * @server_default none
+   */
   zero_terms_query?: CombinedFieldsZeroTerms
 }
 
@@ -214,7 +301,13 @@ export enum CombinedFieldsOperator {
 }
 
 export enum CombinedFieldsZeroTerms {
+  /**
+   * No documents are returned if the analyzer removes all tokens.
+   */
   none,
+  /**
+   * Returns all documents, similar to a `match_all` query.
+   */
   all
 }
 
