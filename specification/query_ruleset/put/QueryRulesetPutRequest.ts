@@ -17,7 +17,8 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { QueryRulesetId, QueryRuleset } from '../_types/QueryRuleset'
+import { Id } from '@_types/common'
+import { QueryRuleset } from '../_types/QueryRuleset'
 
 /**
  * Creates or updates a query ruleset.
@@ -30,7 +31,7 @@ interface Request extends RequestBase {
     /**
      * The unique identifier of the query ruleset to be created or updated
      */
-    ruleset_id: QueryRulesetId
+    ruleset_id: Id
   }
   /**
    * The query ruleset information to update

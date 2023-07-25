@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { QueryRulesetId } from '../_types/QueryRuleset'
+import { Id } from '@_types/common'
 
 /**
  * Deletes a query ruleset.
@@ -30,6 +30,6 @@ interface Request extends RequestBase {
     /**
      * The unique identifier of the query ruleset to delete
      */
-    ruleset_id: QueryRulesetId
+    ruleset_id: Id
   }
 }

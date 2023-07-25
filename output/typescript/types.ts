@@ -15435,21 +15435,16 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
-export interface QueryRulesetPinnedDocument {
-  _id: string
-  _index?: string
-}
-
 export interface QueryRulesetQueryRule {
-  rule_id: QueryRulesetQueryRulesetId
+  rule_id: Id
   type: QueryRulesetQueryRuleType
   criteria: QueryRulesetQueryRuleCriteria[]
   actions: QueryRulesetQueryRuleActions
 }
 
 export interface QueryRulesetQueryRuleActions {
-  ids?: string[]
-  docs?: QueryRulesetPinnedDocument[]
+  ids?: Id[]
+  docs?: QueryDslPinnedDoc[]
 }
 
 export interface QueryRulesetQueryRuleCriteria {
@@ -15463,26 +15458,24 @@ export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzz
 export type QueryRulesetQueryRuleType = 'pinned'
 
 export interface QueryRulesetQueryRuleset {
-  ruleset_id: QueryRulesetQueryRulesetId
+  ruleset_id: Id
   rules: QueryRulesetQueryRule[]
 }
 
-export type QueryRulesetQueryRulesetId = string
-
 export interface QueryRulesetDeleteRequest extends RequestBase {
-  ruleset_id: QueryRulesetQueryRulesetId
+  ruleset_id: Id
 }
 
 export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
 
 export interface QueryRulesetGetRequest extends RequestBase {
-  ruleset_id: QueryRulesetQueryRulesetId
+  ruleset_id: Id
 }
 
 export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
 
 export interface QueryRulesetListQueryRulesetListItem {
-  ruleset_id: QueryRulesetQueryRulesetId
+  ruleset_id: Id
   rules_count: integer
 }
 
@@ -15497,7 +15490,7 @@ export interface QueryRulesetListResponse {
 }
 
 export interface QueryRulesetPutRequest extends RequestBase {
-  ruleset_id: QueryRulesetQueryRulesetId
+  ruleset_id: Id
   body?: QueryRulesetQueryRuleset
 }
 

@@ -18,7 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { QueryRulesetId } from '../_types/QueryRuleset'
+import { Id } from '@_types/common'
 
 export class Response {
   body: {
@@ -31,7 +31,7 @@ export class QueryRulesetListItem {
   /**
    * Ruleset unique identifier
    */
-  ruleset_id: QueryRulesetId
+  ruleset_id: Id
   /**
    * The number of rules associated with this ruleset
    */

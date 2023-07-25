@@ -17,32 +17,29 @@
  * under the License.
  */
 
-import { IndexName, Name } from '@_types/common'
+import { Id, IndexName, Name } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
 import { InlineScript } from '@_types/Scripting'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { PinnedDoc } from '../../_types/query_dsl/specialized'
 
 export class QueryRuleset {
   /**
    * Query Ruleset unique identifier
    */
-  ruleset_id: QueryRulesetId
+  ruleset_id: Id
   /**
    * Rules associated with the query ruleset
    */
   rules: QueryRule[]
 }
 
-export type QueryRulesetId = string
-
 export class QueryRule {
-  rule_id: QueryRulesetId
+  rule_id: Id
   type: QueryRuleType
   criteria: QueryRuleCriteria[]
   actions: QueryRuleActions
 }
-
-export type QueryRuleId = string
 
 export enum QueryRuleType {
   pinned
@@ -68,11 +65,6 @@ export enum QueryRuleCriteriaType {
 }
 
 export class QueryRuleActions {
-  ids?: string[]
-  docs?: PinnedDocument[]
-}
-
-export class PinnedDocument {
-  _id: string
-  _index?: string
+  ids?: Id[]
+  docs?: PinnedDoc[]
 }
