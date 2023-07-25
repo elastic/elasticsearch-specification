@@ -5740,16 +5740,6 @@ export interface QueryDslPrefixQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
 }
 
-export type QueryDslMatchCriteria = Map<string,object>
-
-export type QueryDslRulesetId = string
-
-export interface QueryDslRuleQuery extends QueryDslQueryBase {
-  organic: QueryDslQueryContainer
-  match_criteria: QueryDslMatchCriteria
-  ruleset_id: QueryDslRulesetId
-}
-
 export interface QueryDslQueryBase {
   boost?: float
   _name?: string
@@ -15445,6 +15435,76 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface QueryRulesetPinnedDocument {
+  _id: string
+  _index?: string
+}
+
+export interface QueryRulesetQueryRule {
+  rule_id: QueryRulesetQueryRulesetId
+  type: QueryRulesetQueryRuleType
+  criteria: QueryRulesetQueryRuleCriteria[]
+  actions: QueryRulesetQueryRuleActions
+}
+
+export interface QueryRulesetQueryRuleActions {
+  ids?: string[]
+  docs?: QueryRulesetPinnedDocument[]
+}
+
+export interface QueryRulesetQueryRuleCriteria {
+  type: QueryRulesetQueryRuleCriteriaType
+  metadata: string
+  values?: any[]
+}
+
+export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte'
+
+export type QueryRulesetQueryRuleType = 'pinned'
+
+export interface QueryRulesetQueryRuleset {
+  ruleset_id: QueryRulesetQueryRulesetId
+  rules: QueryRulesetQueryRule[]
+}
+
+export type QueryRulesetQueryRulesetId = string
+
+export interface QueryRulesetDeleteRequest extends RequestBase {
+  ruleset_id: QueryRulesetQueryRulesetId
+}
+
+export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
+
+export interface QueryRulesetGetRequest extends RequestBase {
+  ruleset_id: QueryRulesetQueryRulesetId
+}
+
+export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
+
+export interface QueryRulesetListQueryRulesetListItem {
+  ruleset_id: QueryRulesetQueryRulesetId
+  rules_count: integer
+}
+
+export interface QueryRulesetListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface QueryRulesetListResponse {
+  count: long
+  results: QueryRulesetListQueryRulesetListItem[]
+}
+
+export interface QueryRulesetPutRequest extends RequestBase {
+  ruleset_id: QueryRulesetQueryRulesetId
+  body?: QueryRulesetQueryRuleset
+}
+
+export interface QueryRulesetPutResponse {
+  result: Result
+}
+
 export interface RollupDateHistogramGrouping {
   delay?: Duration
   field: Field
@@ -18980,46 +19040,3 @@ export interface SpecUtilsOverloadOf<TDefinition = unknown> {
   [key: string]: never
 }
 
-export type QueryRulesetId = string
-
-export type QueryRuleId = string
-
-export enum QueryRuleType {
-  pinned
-}
-
-export enum QueryRuleCriteriaType {
-  global,
-  exact,
-  exact_fuzzy,
-  prefix,
-  suffix,
-  contains,
-  lt,
-  lte,
-  gt,
-  gte
-}
-
-export interface QueryRuleCriteria {
-  type: QueryRuleCriteriaType
-  metadata: string
-  values: (string | number)[]
-}
-
-export interface QueryRuleActions {
-  ids?: string[],
-  docs?: QueryDslPinnedDoc[]
-}
-
-export interface QueryRule {
-  rule_id: QueryRuleId
-  type: QueryRuleType,
-  criteria: QueryRuleCriteria[],
-  actions: QueryRuleActions
-}
-
-export interface QueryRuleset {
-  ruleset_id: QueryRulesetId
-  rules: QueryRule[]
-}

@@ -36,7 +36,7 @@ import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
 import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
-import { QueryRulesetId } from '../../query_rules/_types/QueryRuleset'
+import { QueryRulesetId } from '../../query_ruleset/_types/QueryRuleset'
 
 export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
   /**
