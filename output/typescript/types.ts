@@ -17309,6 +17309,13 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export interface SynonymRuleGetRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleGetResponse = SynonymsSynonymRule
+
 export interface SynonymRulePutRequest extends RequestBase {
   synonyms_set: Name
   synonym_rule: Name
@@ -17325,15 +17332,23 @@ export interface SynonymRulePutSynonymRuleUpdate {
   synonyms: SynonymsSynonymString[]
 }
 
-export interface SynonymsSynonymRule {
+export interface SynonymsSynonymRule extends SynonymsSynonymRuleOptionalId {
+  id: Id
+}
+
+export interface SynonymsSynonymRuleOptionalId {
   id?: Id
   synonyms: SynonymsSynonymString
 }
 
 export type SynonymsSynonymString = string
 
-export interface SynonymsSynonymsSet {
+export interface SynonymsSynonymsSet extends SynonymsSynonymsSetUpdate {
   synonymRules: SynonymsSynonymRule[]
+}
+
+export interface SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRuleOptionalId[]
 }
 
 export interface SynonymsDeleteRequest extends RequestBase {
@@ -17355,7 +17370,7 @@ export interface SynonymsGetResponse {
 
 export interface SynonymsPutRequest extends RequestBase {
   synonyms_set: Name
-  body?: SynonymsSynonymsSet
+  body?: SynonymsSynonymsSetUpdate
 }
 
 export interface SynonymsPutResponse {

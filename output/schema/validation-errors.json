@@ -1386,16 +1386,29 @@
       "response": []
     },
     "synonym_rule.get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "interface definition synonyms._types:SynonymRule - Property 'id' is already defined in an ancestor class"
+      ]
     },
     "synonyms.delete": {
       "request": [],
       "response": [
         "response definition synonyms.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "synonyms.get": {
+      "request": [],
+      "response": [
+        "interface definition synonyms._types:SynonymsSetUpdate / Property 'synonymRules' / array_of / instance_of - Non-leaf type cannot be used here: 'synonyms._types:SynonymRuleOptionalId'",
+        "interface definition synonyms._types:SynonymsSet - Property 'synonymRules' is already defined in an ancestor class"
+      ]
+    },
+    "synonyms.put": {
+      "request": [
+        "request definition synonyms.put:Request / body / instance_of - Non-leaf type cannot be used here: 'synonyms._types:SynonymsSetUpdate'"
+      ],
+      "response": []
     },
     "tasks.get": {
       "request": [],
