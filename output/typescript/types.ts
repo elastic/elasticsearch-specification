@@ -17320,6 +17320,12 @@ export interface SynonymsSynonymsSet {
   synonymRules: SynonymsSynonymRule[]
 }
 
+export interface SynonymsDeleteRequest extends RequestBase {
+  synonyms_set: Name
+}
+
+export type SynonymsDeleteResponse = AcknowledgedResponseBase
+
 export interface SynonymsGetRequest extends RequestBase {
   synonyms_set: Name
   from?: integer

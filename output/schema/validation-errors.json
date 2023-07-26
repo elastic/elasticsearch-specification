@@ -1398,10 +1398,10 @@
       "response": []
     },
     "synonyms.delete": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition synonyms.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "synonyms_sets.get": {
       "request": [
