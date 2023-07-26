@@ -17,8 +17,20 @@
  * under the License.
  */
 
-import {SynonymsUpdateResult} from "../../synonyms/_types/SynonymsUpdateResult";
 
-export class Response {
-  body: SynonymsUpdateResult
+import {Result} from "@_types/Result";
+import {ReloadDetails} from "@indices/reload_search_analyzers/types";
+import {ShardStatistics} from "@_types/Stats";
+
+export class SynonymsUpdateResult {
+  /**
+   * Update operation result
+   */
+  result: Result;
+
+  /**
+   * Updating synonyms in a synonym set reloads the associated analyzers.
+   * This is the analyzers reloading result
+   */
+  reload_analyzers_details: ReloadDetails[]; _shards: ShardStatistics;
 }

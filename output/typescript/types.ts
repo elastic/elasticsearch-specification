@@ -17314,11 +17314,7 @@ export interface SynonymRuleDeleteRequest extends RequestBase {
   synonym_rule: Name
 }
 
-export interface SynonymRuleDeleteResponse {
-  result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
-  _shards: ShardStatistics
-}
+export type SynonymRuleDeleteResponse = SynonymsSynonymsUpdateResult
 
 export interface SynonymRuleGetRequest extends RequestBase {
   synonyms_set: Name
@@ -17333,11 +17329,7 @@ export interface SynonymRulePutRequest extends RequestBase {
   body?: SynonymRulePutSynonymRuleUpdate
 }
 
-export interface SynonymRulePutResponse {
-  result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
-  _shards: ShardStatistics
-}
+export type SynonymRulePutResponse = SynonymsSynonymsUpdateResult
 
 export interface SynonymRulePutSynonymRuleUpdate {
   synonyms: SynonymsSynonymString[]
@@ -17360,6 +17352,12 @@ export interface SynonymsSynonymsSet extends SynonymsSynonymsSetUpdate {
 
 export interface SynonymsSynonymsSetUpdate {
   synonymRules: SynonymsSynonymRuleOptionalId[]
+}
+
+export interface SynonymsSynonymsUpdateResult {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
 }
 
 export interface SynonymsDeleteRequest extends RequestBase {
