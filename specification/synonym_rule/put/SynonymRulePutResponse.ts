@@ -16,26 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {RequestBase} from '@_types/Base'
-import {Name} from '@_types/common'
-import {SynonymsSet} from "../_types/SynonymsSet";
 
-/**
- * Creates or updates a synonym set.
- * @rest_spec_name synonyms.put
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- */
-interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The name of the synonyms set to be created or updated
-     */
-    synonyms_set: Name
+import { Result } from '@_types/Result'
+import {ReloadDetails} from "@indices/reload_search_analyzers/types";
+import {ShardStatistics} from "@_types/Stats";
+
+export class Response {
+  body: {
+    result: Result,
+    reload_analyzers_details: ReloadDetails[]; _shards: ShardStatistics
   }
-  /**
-   * The synonym set information to update
-   */
-  /** @codegen_name synonym_set */
-  body: SynonymsSet
 }

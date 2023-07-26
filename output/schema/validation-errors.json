@@ -1391,12 +1391,6 @@
       ],
       "response": []
     },
-    "synonym_rule.put": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "synonyms.delete": {
       "request": [],
       "response": [

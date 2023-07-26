@@ -18,24 +18,33 @@
  */
 import {RequestBase} from '@_types/Base'
 import {Name} from '@_types/common'
-import {SynonymsSet} from "../_types/SynonymsSet";
+import {SynonymRule, SynonymString} from "../../synonyms/_types/SynonymRule";
 
 /**
- * Creates or updates a synonym set.
- * @rest_spec_name synonyms.put
+ * Creates or updates a synonym rule in a synonym set
+ * @rest_spec_name synonym_rule.put
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the synonyms set to be created or updated
+     * The id of the synonym set to be updated with the synonym rule
      */
-    synonyms_set: Name
+    synonyms_set: Name,
+
+  /**
+   * The id of the synonym rule to be updated or created
+   */
+    synonym_rule: Name
   }
   /**
-   * The synonym set information to update
+   * The synonym rule information to update
    */
-  /** @codegen_name synonym_set */
-  body: SynonymsSet
+  /** @codegen_name synonyms */
+  body: SynonymRuleUpdate
+}
+
+export class SynonymRuleUpdate {
+  synonyms: SynonymString[]
 }
