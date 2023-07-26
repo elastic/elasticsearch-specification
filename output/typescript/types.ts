@@ -17320,6 +17320,17 @@ export interface SynonymsSynonymsSet {
   synonymRules: SynonymsSynonymRule[]
 }
 
+export interface SynonymsGetRequest extends RequestBase {
+  synonyms_set: Name
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsGetResponse {
+  count: integer
+  synonyms_set: SynonymsSynonymsSet
+}
+
 export interface SynonymsPutRequest extends RequestBase {
   synonyms_set: Name
   body?: SynonymsSynonymsSet

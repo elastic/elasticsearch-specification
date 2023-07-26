@@ -1403,12 +1403,6 @@
       ],
       "response": []
     },
-    "synonyms.get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "synonyms_sets.get": {
       "request": [
         "Missing request & response"
