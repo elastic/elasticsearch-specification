@@ -1379,6 +1379,24 @@
         "response definition sql.delete_async:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "synonym_rule.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "synonym_rule.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "synonym_rule.put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "synonyms.delete": {
       "request": [
         "Missing request & response"
@@ -1391,7 +1409,7 @@
       ],
       "response": []
     },
-    "synonyms.put": {
+    "synonyms_sets.get": {
       "request": [
         "Missing request & response"
       ],

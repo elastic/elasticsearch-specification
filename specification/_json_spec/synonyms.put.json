@@ -5,17 +5,22 @@
       "description": "Creates or updates a synonyms set"
     },
     "stability": "experimental",
-    "visibility": "feature_flag",
-    "feature_flag": "es.synonyms_feature_flag_enabled",
+    "visibility": "public",
     "headers": {
-      "accept": ["application/json"],
-      "content_type": ["application/json"]
+      "accept": [
+        "application/json"
+      ],
+      "content_type": [
+        "application/json"
+      ]
     },
     "url": {
       "paths": [
         {
           "path": "/_synonyms/{synonyms_set}",
-          "methods": ["PUT"],
+          "methods": [
+            "PUT"
+          ],
           "parts": {
             "synonyms_set": {
               "type": "string",

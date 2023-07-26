@@ -5,16 +5,19 @@
       "description": "Retrieves a synonym set"
     },
     "stability": "experimental",
-    "visibility": "feature_flag",
-    "feature_flag": "es.synonyms_feature_flag_enabled",
+    "visibility": "public",
     "headers": {
-      "accept": ["application/json"]
+      "accept": [
+        "application/json"
+      ]
     },
     "url": {
       "paths": [
         {
           "path": "/_synonyms/{synonyms_set}",
-          "methods": ["GET"],
+          "methods": [
+            "GET"
+          ],
           "parts": {
             "synonyms_set": {
               "type": "string",
