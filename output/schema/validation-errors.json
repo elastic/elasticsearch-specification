@@ -1403,12 +1403,6 @@
         "response definition synonyms.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "synonyms_sets.get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "tasks.get": {
       "request": [],
       "response": [

@@ -17348,6 +17348,21 @@ export interface SynonymsPutResponse {
   _shards: ShardStatistics
 }
 
+export interface SynonymsSetsGetRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsSetsGetResponse {
+  count: integer
+  results: SynonymsSetsGetSynonymsSetListItem[]
+}
+
+export interface SynonymsSetsGetSynonymsSetListItem {
+  synonyms_set: Name
+  count: integer
+}
+
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 
 export interface TasksNodeTasks {
