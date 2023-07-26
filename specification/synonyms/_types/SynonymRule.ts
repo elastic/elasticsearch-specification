@@ -21,7 +21,7 @@ import {Id} from '@_types/common'
 
 export type SynonymString = string;
 
-export class SynonymRule {
+export class SynonymRuleOptionalId {
   /**
    * Synonym Rule identifier
    */
@@ -30,4 +30,11 @@ export class SynonymRule {
    * Synonyms, in Solr format, that conform the synonym rule. See https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html#_solr_synonyms_2
    */
   synonyms: SynonymString
+}
+
+export class SynonymRule extends SynonymRuleOptionalId {
+  /**
+   * Synonym Rule identifier
+   */
+  id: Id
 }

@@ -18,7 +18,7 @@
  */
 import {RequestBase} from '@_types/Base'
 import {Name} from '@_types/common'
-import {SynonymsSet} from "../_types/SynonymsSet";
+import {SynonymsSetUpdate} from "../_types/SynonymsSet";
 
 /**
  * Creates or updates a synonym set.
@@ -37,5 +37,5 @@ interface Request extends RequestBase {
    * The synonym set information to update
    */
   /** @codegen_name synonym_set */
-  body: SynonymsSet
+  body: SynonymsSetUpdate
 }

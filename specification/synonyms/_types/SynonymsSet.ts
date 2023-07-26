@@ -17,9 +17,16 @@
  * under the License.
  */
 
-import {SynonymRule} from "./SynonymRule";
+import {SynonymRule, SynonymRuleOptionalId} from "./SynonymRule";
 
-export class SynonymsSet {
+export class SynonymsSetUpdate {
+  /**
+   * Synonym rules that conform the synonym set
+   */
+  synonymRules: SynonymRuleOptionalId[]
+}
+
+export class SynonymsSet extends SynonymsSetUpdate {
   /**
    * Synonym rules that conform the synonym set
    */
