@@ -12812,7 +12812,7 @@ export interface MlModelSnapshotUpgrade {
   job_id: Id
   snapshot_id: Id
   state: MlSnapshotUpgradeState
-  node: MlDiscoveryNode
+  node?: MlDiscoveryNode
   assignment_explanation: string
 }
 

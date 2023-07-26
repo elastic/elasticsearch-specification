@@ -73,7 +73,7 @@ export class TrainedModelDeploymentStats {
   model_id: Id
   /**
    * The deployment stats for each node that currently has the model allocated.
-   * @availability stack
+   * In serverless, stats are reported for a virtual node called "serverless".
    */
   nodes: TrainedModelDeploymentNodesStats
   /** The number of allocations requested. */
