@@ -17309,6 +17309,17 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export interface SynonymRuleDeleteRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export interface SynonymRuleDeleteResponse {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
 export interface SynonymRuleGetRequest extends RequestBase {
   synonyms_set: Name
   synonym_rule: Name
