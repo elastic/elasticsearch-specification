@@ -8,20 +8,14 @@
     "visibility": "public",
     "feature_flag": "es.synonyms_api_feature_flag_enabled",
     "headers": {
-      "accept": [
-        "application/json"
-      ],
-      "content_type": [
-        "application/json"
-      ]
+      "accept": ["application/json"],
+      "content_type": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_synonyms/{synonyms_set}/{synonym_rule}",
-          "methods": [
-            "GET"
-          ],
+          "methods": ["GET"],
           "parts": {
             "synonyms_set": {
               "type": "string",

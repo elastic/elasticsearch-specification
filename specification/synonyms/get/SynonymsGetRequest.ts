@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {RequestBase} from '@_types/Base'
-import {Name} from '@_types/common'
-import {SynonymsSet} from "../_types/SynonymsSet";
-import {integer} from "@_types/Numeric";
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { SynonymsSet } from '../_types/SynonymsSet'
+import { integer } from '@_types/Numeric'
 
 /**
  * Retrieves a synonym set
@@ -33,7 +33,7 @@ interface Request extends RequestBase {
      * "The name of the synonyms set to be retrieved
      */
     synonyms_set: Name
-  },
+  }
   query_parameters: {
     /**
      * Starting offset for query rules to be retrieved (default: 0)

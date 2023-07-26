@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import {SynonymRule, SynonymRuleOptionalId} from "./SynonymRule";
+import { SynonymRule, SynonymRuleOptionalId } from './SynonymRule'
 
 export class SynonymsSetUpdate {
   /**

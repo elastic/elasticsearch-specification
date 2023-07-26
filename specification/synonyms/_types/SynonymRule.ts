@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import {Id} from '@_types/common'
+import { Id } from '@_types/common'
 
-export type SynonymString = string;
+export type SynonymString = string
 
 export class SynonymRuleOptionalId {
   /**

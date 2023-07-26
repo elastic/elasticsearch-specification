@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {RequestBase} from '@_types/Base'
-import {Name} from '@_types/common'
-import {SynonymRule, SynonymString} from "../../synonyms/_types/SynonymRule";
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { SynonymRule, SynonymString } from '../../synonyms/_types/SynonymRule'
 
 /**
  * Creates or updates a synonym rule in a synonym set
@@ -31,11 +31,11 @@ interface Request extends RequestBase {
     /**
      * The id of the synonym set to be updated with the synonym rule
      */
-    synonyms_set: Name,
+    synonyms_set: Name
 
-  /**
-   * The id of the synonym rule to be updated or created
-   */
+    /**
+     * The id of the synonym rule to be updated or created
+     */
     synonym_rule: Name
   }
   /**

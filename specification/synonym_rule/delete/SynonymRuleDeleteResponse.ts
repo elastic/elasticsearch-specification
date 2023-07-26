@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import {SynonymsUpdateResult} from "../../synonyms/_types/SynonymsUpdateResult";
+import { SynonymsUpdateResult } from '../../synonyms/_types/SynonymsUpdateResult'
 
 export class Response {
   body: SynonymsUpdateResult

@@ -18,14 +18,14 @@
  */
 
 import { Result } from '@_types/Result'
-import {ReloadDetails} from "@indices/reload_search_analyzers/types";
-import {ShardStatistics} from "@_types/Stats";
-import {integer} from "@_types/Numeric";
-import {SynonymsSet} from "../_types/SynonymsSet";
+import { ReloadDetails } from '@indices/reload_search_analyzers/types'
+import { ShardStatistics } from '@_types/Stats'
+import { integer } from '@_types/Numeric'
+import { SynonymsSet } from '../_types/SynonymsSet'
 
 export class Response {
   body: {
-    count: integer,
+    count: integer
     synonyms_set: SynonymsSet
   }
 }

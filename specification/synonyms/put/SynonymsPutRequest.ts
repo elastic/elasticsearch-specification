@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {RequestBase} from '@_types/Base'
-import {Name} from '@_types/common'
-import {SynonymsSetUpdate} from "../_types/SynonymsSet";
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { SynonymsSetUpdate } from '../_types/SynonymsSet'
 
 /**
  * Creates or updates a synonym set.

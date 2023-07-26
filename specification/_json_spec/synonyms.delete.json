@@ -7,17 +7,13 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": [
-        "application/json"
-      ]
+      "accept": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_synonyms/{synonyms_set}",
-          "methods": [
-            "DELETE"
-          ],
+          "methods": ["DELETE"],
           "parts": {
             "synonyms_set": {
               "type": "string",

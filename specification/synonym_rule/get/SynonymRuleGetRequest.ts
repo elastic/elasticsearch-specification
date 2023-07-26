@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {RequestBase} from '@_types/Base'
-import {Name} from '@_types/common'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 /**
  * Retrieves a synonym rule from a synonym set
@@ -30,7 +30,7 @@ interface Request extends RequestBase {
     /**
      * The id of the synonym set to retrieve the synonym rule from
      */
-    synonyms_set: Name,
+    synonyms_set: Name
 
     /**
      * The id of the synonym rule to retrieve
