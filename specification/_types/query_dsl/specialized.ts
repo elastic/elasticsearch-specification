@@ -202,14 +202,8 @@ export class ShapeFieldQuery {
   shape?: GeoShape
 }
 
-/**
- * @variants container
- */
 export class RuleQuery extends QueryBase {
-  /** @variant container_property */
   organic: QueryContainer
-  /** @variant container_property */
   ruleset_id: Id
-  /** @variant container_property */
   match_criteria: UserDefinedValue
 }

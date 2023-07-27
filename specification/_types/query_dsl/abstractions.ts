@@ -75,6 +75,7 @@ import {
   PercolateQuery,
   PinnedQuery,
   RankFeatureQuery,
+  RuleQuery,
   ScriptQuery,
   ScriptScoreQuery,
   ShapeQuery
@@ -188,6 +189,7 @@ export class QueryContainer {
   range?: SingleKeyDictionary<Field, RangeQuery>
   rank_feature?: RankFeatureQuery
   regexp?: SingleKeyDictionary<Field, RegexpQuery>
+  rule_query?: RuleQuery
   script?: ScriptQuery
   script_score?: ScriptScoreQuery
   shape?: ShapeQuery

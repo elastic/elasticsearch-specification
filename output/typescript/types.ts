@@ -5781,6 +5781,7 @@ export interface QueryDslQueryContainer {
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
+  rule_query?: QueryDslRuleQuery
   script?: QueryDslScriptQuery
   script_score?: QueryDslScriptScoreQuery
   shape?: QueryDslShapeQuery
@@ -5879,6 +5880,12 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
   max_determinized_states?: integer
   rewrite?: MultiTermQueryRewrite
   value: string
+}
+
+export interface QueryDslRuleQuery extends QueryDslQueryBase {
+  organic: QueryDslQueryContainer
+  ruleset_id: Id
+  match_criteria: any
 }
 
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
