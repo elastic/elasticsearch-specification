@@ -6,7 +6,6 @@
     },
     "stability": "experimental",
     "visibility": "public",
-    "feature_flag": "es.synonyms_api_feature_flag_enabled",
     "headers": {
       "accept": ["application/json"],
       "content_type": ["application/json"]

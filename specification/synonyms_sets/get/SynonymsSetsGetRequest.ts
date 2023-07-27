@@ -33,7 +33,7 @@ interface Request extends RequestBase {
      */
     from?: integer
     /**
-     * specifies a max number of results to get
+     * specifies a max number of results to get (default: 10)
      */
     size?: integer
   }
