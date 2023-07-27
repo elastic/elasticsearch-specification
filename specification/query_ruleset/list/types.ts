@@ -16,13 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { integer } from '@_types/Numeric'
+import { Id } from '@_types/common'
 
-import { long } from '@_types/Numeric'
-import { QueryRulesetListItem } from './types'
-
-export class Response {
-  body: {
-    count: long
-    results: QueryRulesetListItem[]
-  }
+export class QueryRulesetListItem {
+  /**
+   * Ruleset unique identifier
+   */
+  ruleset_id: Id
+  /**
+   * The number of rules associated with this ruleset
+   */
+  rules_count: integer
 }
