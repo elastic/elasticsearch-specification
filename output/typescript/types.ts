@@ -5781,6 +5781,7 @@ export interface QueryDslQueryContainer {
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
+  rule_query?: QueryDslRuleQuery
   script?: QueryDslScriptQuery
   script_score?: QueryDslScriptScoreQuery
   shape?: QueryDslShapeQuery
@@ -5879,6 +5880,12 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
   max_determinized_states?: integer
   rewrite?: MultiTermQueryRewrite
   value: string
+}
+
+export interface QueryDslRuleQuery extends QueryDslQueryBase {
+  organic: QueryDslQueryContainer
+  ruleset_id: Id
+  match_criteria: any
 }
 
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
@@ -15433,6 +15440,69 @@ export type NodesUsageResponse = NodesUsageResponseBase
 export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   cluster_name: Name
   nodes: Record<string, NodesUsageNodeUsage>
+}
+
+export interface QueryRulesetQueryRule {
+  rule_id: Id
+  type: QueryRulesetQueryRuleType
+  criteria: QueryRulesetQueryRuleCriteria[]
+  actions: QueryRulesetQueryRuleActions
+}
+
+export interface QueryRulesetQueryRuleActions {
+  ids?: Id[]
+  docs?: QueryDslPinnedDoc[]
+}
+
+export interface QueryRulesetQueryRuleCriteria {
+  type: QueryRulesetQueryRuleCriteriaType
+  metadata: string
+  values?: any[]
+}
+
+export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte'
+
+export type QueryRulesetQueryRuleType = 'pinned'
+
+export interface QueryRulesetQueryRuleset {
+  ruleset_id: Id
+  rules: QueryRulesetQueryRule[]
+}
+
+export interface QueryRulesetDeleteRequest extends RequestBase {
+  ruleset_id: Id
+}
+
+export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
+
+export interface QueryRulesetGetRequest extends RequestBase {
+  ruleset_id: Id
+}
+
+export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
+
+export interface QueryRulesetListQueryRulesetListItem {
+  ruleset_id: Id
+  rules_count: integer
+}
+
+export interface QueryRulesetListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface QueryRulesetListResponse {
+  count: long
+  results: QueryRulesetListQueryRulesetListItem[]
+}
+
+export interface QueryRulesetPutRequest extends RequestBase {
+  ruleset_id: Id
+  body?: QueryRulesetQueryRuleset
+}
+
+export interface QueryRulesetPutResponse {
+  result: Result
 }
 
 export interface RollupDateHistogramGrouping {
