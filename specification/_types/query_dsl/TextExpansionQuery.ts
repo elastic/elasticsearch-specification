@@ -17,13 +17,10 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
 import { QueryBase } from './abstractions'
 
 /** @shortcut_property value */
 export class TextExpansionQuery extends QueryBase {
-  /** The name of the rank features field to search against */
-  value: Field
   /** The text expansion NLP model to use */
   model_id: string
   /** The query text */
