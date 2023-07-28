@@ -21,6 +21,7 @@ import { Id } from '@_types/common'
 
 export type SynonymString = string
 
+// Synonym Rule with optional ID, used for PUT method
 export class SynonymRuleOptionalId {
   /**
    * Synonym Rule identifier
@@ -32,6 +33,7 @@ export class SynonymRuleOptionalId {
   synonyms: SynonymString
 }
 
+// Synonym Rule with mandatory ID, used for responses (which always include it)
 export class SynonymRule extends SynonymRuleOptionalId {
   /**
    * Synonym Rule identifier

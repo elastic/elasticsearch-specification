@@ -19,6 +19,7 @@
 
 import { SynonymRule, SynonymRuleOptionalId } from './SynonymRule'
 
+// Synonyms set used for updating operations. Synonym rules can omit ID here.
 export class SynonymsSetUpdate {
   /**
    * Synonym rules that conform the synonym set
@@ -26,6 +27,7 @@ export class SynonymsSetUpdate {
   synonymRules: SynonymRuleOptionalId[]
 }
 
+// Synonyms set used for responses, which always include synonym rule IDs
 export class SynonymsSet extends SynonymsSetUpdate {
   /**
    * Synonym rules that conform the synonym set
