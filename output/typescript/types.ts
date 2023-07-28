@@ -5782,7 +5782,7 @@ export interface QueryDslQueryContainer {
   term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
-  text_expansion?: QueryDslTextExpansionQuery | Field
+  text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -5999,7 +5999,6 @@ export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
 }
 
 export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
-  value: Field
   model_id: string
   model_text: string
 }
