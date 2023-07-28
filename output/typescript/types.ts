@@ -17378,6 +17378,100 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export interface SynonymRuleDeleteRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleDeleteResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymRuleGetRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleGetResponse = SynonymsSynonymRule
+
+export interface SynonymRulePutRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+  body?: SynonymRulePutSynonymRuleUpdate
+}
+
+export type SynonymRulePutResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymRulePutSynonymRuleUpdate {
+  synonyms: SynonymsSynonymString[]
+}
+
+export interface SynonymsSynonymRule extends SynonymsSynonymRuleOptionalId {
+  id: Id
+}
+
+export interface SynonymsSynonymRuleOptionalId {
+  id?: Id
+  synonyms: SynonymsSynonymString
+}
+
+export type SynonymsSynonymString = string
+
+export interface SynonymsSynonymsSet extends SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRule[]
+}
+
+export interface SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRuleOptionalId[]
+}
+
+export interface SynonymsSynonymsUpdateResult {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
+export interface SynonymsDeleteRequest extends RequestBase {
+  synonyms_set: Name
+}
+
+export type SynonymsDeleteResponse = AcknowledgedResponseBase
+
+export interface SynonymsGetRequest extends RequestBase {
+  synonyms_set: Name
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsGetResponse {
+  count: integer
+  synonyms_set: SynonymsSynonymsSet
+}
+
+export interface SynonymsPutRequest extends RequestBase {
+  synonyms_set: Name
+  body?: SynonymsSynonymsSetUpdate
+}
+
+export interface SynonymsPutResponse {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
+export interface SynonymsSetsGetRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsSetsGetResponse {
+  count: integer
+  results: SynonymsSetsGetSynonymsSetListItem[]
+}
+
+export interface SynonymsSetsGetSynonymsSetListItem {
+  synonyms_set: Name
+  count: integer
+}
+
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 
 export interface TasksNodeTasks {
