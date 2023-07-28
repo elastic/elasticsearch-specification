@@ -22,8 +22,8 @@ import { Name } from '@_types/common'
 /**
  * Returns the details about a search application
  * @rest_spec_name search_application.get
- * @availability stack since=8.8.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.8.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {

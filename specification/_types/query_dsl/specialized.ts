@@ -312,3 +312,9 @@ export class ShapeFieldQuery {
   relation?: GeoShapeRelation
   shape?: GeoShape
 }
+
+export class RuleQuery extends QueryBase {
+  organic: QueryContainer
+  ruleset_id: Id
+  match_criteria: UserDefinedValue
+}
