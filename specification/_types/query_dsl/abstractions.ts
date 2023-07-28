@@ -160,7 +160,7 @@ export class QueryContainer {
    * @availability stack since=8.8.0
    * @availability serverless
    */
-  text_expansion?: TextExpansionQuery
+  text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
   wrapper?: WrapperQuery
 
