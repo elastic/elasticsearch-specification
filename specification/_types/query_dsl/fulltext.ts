@@ -145,7 +145,7 @@ export class IntervalsFilter {
   overlapping?: IntervalsContainer
   /**
    * Script used to return matching documents.
-   * This script must return a boolean value, `true` or `false`.
+   * This script must return a boolean value: `true` or `false`.
    */
   script?: Script
 }
@@ -171,7 +171,7 @@ export class IntervalsFuzzy {
    */
   term: string
   /**
-   * Indicates whether edits include transpositions of two adjacent characters (for example `ab` to `ba`).
+   * Indicates whether edits include transpositions of two adjacent characters (for example, `ab` to `ba`).
    * @server_default true
    */
   transpositions?: boolean
@@ -303,7 +303,7 @@ export class MatchQuery extends QueryBase {
    */
   fuzzy_rewrite?: MultiTermQueryRewrite
   /**
-   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example `ab` to `ba`).
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
    * @server_default true
    */
   fuzzy_transpositions?: boolean
@@ -365,7 +365,7 @@ export class MatchBoolPrefixQuery extends QueryBase {
    */
   fuzzy_rewrite?: MultiTermQueryRewrite
   /**
-   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example `ab` to `ba`).
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
    * Can be applied to the term subqueries constructed for all terms but the final term.
    * @server_default true
    */
@@ -481,7 +481,7 @@ export class MultiMatchQuery extends QueryBase {
    */
   fuzzy_rewrite?: MultiTermQueryRewrite
   /**
-   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example `ab` to `ba`).
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
    * Can be applied to the term subqueries constructed for all terms but the final term.
    * @server_default true
    */
@@ -539,11 +539,11 @@ export class MultiMatchQuery extends QueryBase {
 
 export enum TextQueryType {
   /**
-   * Finds documents which match any field, but uses the `_score` from the best field.
+   * Finds documents that match any field, but uses the `_score` from the best field.
    */
   best_fields = 0,
   /**
-   * Finds documents which match any field and combines the `_score` from each field.
+   * Finds documents that match any field and combines the `_score` from each field.
    */
   most_fields = 1,
   /**
@@ -593,7 +593,7 @@ export class QueryStringQuery extends QueryBase {
    */
   analyze_wildcard?: boolean
   /**
-   * If true, match phrase queries are automatically created for multi-term synonyms.
+   * If `true`, match phrase queries are automatically created for multi-term synonyms.
    * @server_default true
    */
   auto_generate_synonyms_phrase_query?: boolean
@@ -640,7 +640,7 @@ export class QueryStringQuery extends QueryBase {
    */
   fuzzy_rewrite?: MultiTermQueryRewrite
   /**
-   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example `ab` to `ba`).
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
    * @server_default true
    */
   fuzzy_transpositions?: boolean

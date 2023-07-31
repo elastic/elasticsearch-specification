@@ -105,8 +105,8 @@ export enum TotalHitsRelation {
 
 export class InnerHits {
   /**
-   * The name to be used for the particular inner hit definition in the response.
-   * Useful when multiple inner hits have been defined in a single search request.
+   * The name for the particular inner hit definition in the response.
+   * Useful when a search request contains multiple inner hits.
    */
   name?: Name
   /**

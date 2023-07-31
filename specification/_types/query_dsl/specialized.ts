@@ -109,22 +109,22 @@ export class MoreLikeThisQuery extends QueryBase {
    */
   like: Like | Like[]
   /**
-   * The maximum document frequency above which the terms will be ignored from the input document.
+   * The maximum document frequency above which the terms are ignored from the input document.
    */
   max_doc_freq?: integer
   /**
-   * The maximum number of query terms that will be selected.
+   * The maximum number of query terms that can be selected.
    * @server_default 25
    */
   max_query_terms?: integer
   /**
-   * The maximum word length above which the terms will be ignored.
+   * The maximum word length above which the terms are ignored.
    * Defaults to unbounded (`0`).
    * @server_default 0
    */
   max_word_length?: integer
   /**
-   * The minimum document frequency below which the terms will be ignored from the input document.
+   * The minimum document frequency below which the terms are ignored from the input document.
    * @server_default 5
    */
   min_doc_freq?: integer
@@ -134,12 +134,12 @@ export class MoreLikeThisQuery extends QueryBase {
    */
   minimum_should_match?: MinimumShouldMatch
   /**
-   * The minimum term frequency below which the terms will be ignored from the input document.
+   * The minimum term frequency below which the terms are ignored from the input document.
    * @server_default 2
    */
   min_term_freq?: integer
   /**
-   * The minimum word length below which the terms will be ignored.
+   * The minimum word length below which the terms are ignored.
    * @server_default 0
    */
   min_word_length?: integer
@@ -150,7 +150,7 @@ export class MoreLikeThisQuery extends QueryBase {
   routing?: Routing
   /**
    * An array of stop words.
-   * Any word in this set is considered "uninteresting" and ignored.
+   * Any word in this set is ignored.
    */
   stop_words?: StopWords
   /**
@@ -200,7 +200,7 @@ export class PercolateQuery extends QueryBase {
    */
   documents?: UserDefinedValue[]
   /**
-   * The field of type percolator that holds the indexed queries.
+   * Field that holds the indexed queries. The field must use the `percolator` mapping type.
    */
   field: Field
   /**
@@ -212,15 +212,15 @@ export class PercolateQuery extends QueryBase {
    */
   index?: IndexName
   /**
-   * The suffix to be used for the `_percolator_document_slot` field in case multiple `percolate` queries have been specified.
+   * The suffix used for the `_percolator_document_slot` field when multiple `percolate` queries are specified.
    */
   name?: string
   /**
-   * Preference to be used to fetch document to percolate.
+   * Preference used to fetch document to percolate.
    */
   preference?: string
   /**
-   * Routing to be used to fetch document to percolate.
+   * Routing used to fetch document to percolate.
    */
   routing?: Routing
   /**
