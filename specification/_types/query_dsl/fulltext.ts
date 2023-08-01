@@ -47,224 +47,654 @@ export class Intervals {
 }
 
 export class IntervalsAllOf {
+  /**
+   * An array of rules to combine. All rules must produce a match in a document for the overall source to match.
+   */
   intervals: IntervalsContainer[]
-  /** @server_default -1 */
+  /**
+   * Maximum number of positions between the matching terms.
+   * Intervals produced by the rules further apart than this are not considered matches.
+   * @server_default -1
+   */
   max_gaps?: integer
-  /** @server_default false */
+  /**
+   * If `true`, intervals produced by the rules should appear in the order in which they are specified.
+   * @server_default false
+   * */
   ordered?: boolean
+  /**
+   * Rule used to filter returned intervals.
+   */
   filter?: IntervalsFilter
 }
 
 export class IntervalsAnyOf {
+  /**
+   * An array of rules to match.
+   */
   intervals: IntervalsContainer[]
+  /**
+   * Rule used to filter returned intervals.
+   */
   filter?: IntervalsFilter
 }
 
 /** @variants container */
 // Note: similar to IntervalsQuery - see comment there
 export class IntervalsContainer {
+  /**
+   * Returns matches that span a combination of other rules.
+   */
   all_of?: IntervalsAllOf
+  /**
+   * Returns intervals produced by any of its sub-rules.
+   */
   any_of?: IntervalsAnyOf
+  /**
+   * Matches analyzed text.
+   */
   fuzzy?: IntervalsFuzzy
+  /**
+   * Matches analyzed text.
+   */
   match?: IntervalsMatch
+  /**
+   * Matches terms that start with a specified set of characters.
+   */
   prefix?: IntervalsPrefix
+  /**
+   * Matches terms using a wildcard pattern.
+   */
   wildcard?: IntervalsWildcard
 }
 
 /** @variants container */
 // Note: doc says filters are queries, but they're actually intervals
 export class IntervalsFilter {
+  /**
+   * Query used to return intervals that follow an interval from the `filter` rule.
+   */
   after?: IntervalsContainer
+  /**
+   * Query used to return intervals that occur before an interval from the `filter` rule.
+   */
   before?: IntervalsContainer
+  /**
+   * Query used to return intervals contained by an interval from the `filter` rule.
+   */
   contained_by?: IntervalsContainer
+  /**
+   * Query used to return intervals that contain an interval from the `filter` rule.
+   */
   containing?: IntervalsContainer
+  /**
+   * Query used to return intervals that are **not** contained by an interval from the `filter` rule.
+   */
   not_contained_by?: IntervalsContainer
+  /**
+   * Query used to return intervals that do **not** contain an interval from the `filter` rule.
+   */
   not_containing?: IntervalsContainer
+  /**
+   * Query used to return intervals that do **not** overlap with an interval from the `filter` rule.
+   */
   not_overlapping?: IntervalsContainer
+  /**
+   * Query used to return intervals that overlap with an interval from the `filter` rule.
+   */
   overlapping?: IntervalsContainer
+  /**
+   * Script used to return matching documents.
+   * This script must return a boolean value: `true` or `false`.
+   */
   script?: Script
 }
 
 export class IntervalsFuzzy {
+  /**
+   * Analyzer used to normalize the term.
+   * @doc_id analysis
+   */
   analyzer?: string
+  /**
+   * Maximum edit distance allowed for matching.
+   * @server_default auto
+   */
   fuzziness?: Fuzziness
-  /** @server_default 0 */
+  /**
+   * Number of beginning characters left unchanged when creating expansions.
+   * @server_default 0
+   */
   prefix_length?: integer
+  /**
+   * The term to match.
+   */
   term: string
-  /** @server_default true */
+  /**
+   * Indicates whether edits include transpositions of two adjacent characters (for example, `ab` to `ba`).
+   * @server_default true
+   */
   transpositions?: boolean
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `term` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
   use_field?: Field
 }
 
 export class IntervalsMatch {
+  /**
+   * Analyzer used to analyze terms in the query.
+   * @doc_id analysis
+   */
   analyzer?: string
-  /** @server_default -1 */
+  /**
+   * Maximum number of positions between the matching terms.
+   * Terms further apart than this are not considered matches.
+   * @server_default -1
+   */
   max_gaps?: integer
-  /** @server_default false */
+  /**
+   * If `true`, matching terms must appear in their specified order.
+   * @server_default false
+   */
   ordered?: boolean
+  /**
+   * Text you wish to find in the provided field.
+   */
   query: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `term` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
   use_field?: Field
+  /**
+   * An optional interval filter.
+   */
   filter?: IntervalsFilter
 }
 
 export class IntervalsPrefix {
+  /**
+   * Analyzer used to analyze the `prefix`.
+   * @doc_id analysis
+   */
   analyzer?: string
+  /**
+   * Beginning characters of terms you wish to find in the top-level field.
+   */
   prefix: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `prefix` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
   use_field?: Field
 }
 
 /** @variants container */
 // Note: similar to IntervalsContainer, but has to be duplicated because of the QueryBase parent class
 export class IntervalsQuery extends QueryBase {
+  /**
+   * Returns matches that span a combination of other rules.
+   */
   all_of?: IntervalsAllOf
+  /**
+   * Returns intervals produced by any of its sub-rules.
+   */
   any_of?: IntervalsAnyOf
+  /**
+   * Matches terms that are similar to the provided term, within an edit distance defined by `fuzziness`.
+   * @doc_id fuzziness
+   */
   fuzzy?: IntervalsFuzzy
+  /**
+   * Matches analyzed text.
+   */
   match?: IntervalsMatch
+  /**
+   * Matches terms that start with a specified set of characters.
+   */
   prefix?: IntervalsPrefix
+  /**
+   * Matches terms using a wildcard pattern.
+   */
   wildcard?: IntervalsWildcard
 }
 
 export class IntervalsWildcard {
+  /**
+   * Analyzer used to analyze the `pattern`.
+   * Defaults to the top-level field's analyzer.
+   */
   analyzer?: string
+  /**
+   * Wildcard pattern used to find matching terms.
+   */
   pattern: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `pattern` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
   use_field?: Field
 }
 
 /** @shortcut_property query */
 export class MatchQuery extends QueryBase {
+  /**
+   * Analyzer used to convert the text in the query value into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
-  /** @server_default true */
+  /**
+   * If `true`, match phrase queries are automatically created for multi-term synonyms.
+   * @server_default true
+   */
   auto_generate_synonyms_phrase_query?: boolean
   /** @deprecated 7.3.0 */
   cutoff_frequency?: double
+  /**
+   * Maximum edit distance allowed for matching.
+   * @doc_id fuzziness
+   */
   fuzziness?: Fuzziness
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   fuzzy_rewrite?: MultiTermQueryRewrite
-  /** @server_default true */
+  /**
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
+   * @server_default true
+   */
   fuzzy_transpositions?: boolean
-  /** @server_default false */
+  /**
+   *  If `true`, format-based errors, such as providing a text query value for a numeric field, are ignored.
+   * @server_default false
+   */
   lenient?: boolean
-  /** @server_default 50 */
+  /**
+   * Maximum number of terms to which the query will expand.
+   * @server_default 50
+   */
   max_expansions?: integer
+  /**
+   * Minimum number of clauses that must match for a document to be returned.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
-  /** @server_default 'or' */
+  /**
+   * Boolean logic used to interpret text in the query value.
+   * @server_default 'or'
+   */
   operator?: Operator
-  /** @server_default 0 */
+  /**
+   * Number of beginning characters left unchanged for fuzzy matching.
+   * @server_default 0
+   */
   prefix_length?: integer
+  /**
+   * Text, number, boolean value or date you wish to find in the provided field.
+   */
   // FIXME: docs states "date" as a possible format. Add DateMath, or DurationLarge?
-  //        Should also be consisitent with MultiMatchQuery.query
+  //        Should also be consistent with MultiMatchQuery.query
   query: string | float | boolean
-  /** @server_default 'none' */
+  /**
+   * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
+   * @server_default 'none'
+   */
   zero_terms_query?: ZeroTermsQuery
 }
 
 /** @shortcut_property query */
 export class MatchBoolPrefixQuery extends QueryBase {
+  /**
+   * Analyzer used to convert the text in the query value into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
+  /**
+   * Maximum edit distance allowed for matching.
+   * Can be applied to the term subqueries constructed for all terms but the final term.
+   * @doc_id fuzziness
+   */
   fuzziness?: Fuzziness
+  /**
+   * Method used to rewrite the query.
+   * Can be applied to the term subqueries constructed for all terms but the final term.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   fuzzy_rewrite?: MultiTermQueryRewrite
+  /**
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
+   * Can be applied to the term subqueries constructed for all terms but the final term.
+   * @server_default true
+   */
   fuzzy_transpositions?: boolean
+  /**
+   * Maximum number of terms to which the query will expand.
+   * Can be applied to the term subqueries constructed for all terms but the final term.
+   * @server_default 50
+   */
   max_expansions?: integer
+  /**
+   * Minimum number of clauses that must match for a document to be returned.
+   * Applied to the constructed bool query.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
+  /**
+   * Boolean logic used to interpret text in the query value.
+   * Applied to the constructed bool query.
+   * @server_default 'or'
+   */
   operator?: Operator
+  /**
+   * Number of beginning characters left unchanged for fuzzy matching.
+   * Can be applied to the term subqueries constructed for all terms but the final term.
+   * @server_default 0
+   */
   prefix_length?: integer
+  /**
+   * Terms you wish to find in the provided field.
+   * The last term is used in a prefix query.
+   */
   query: string
 }
 
 /** @shortcut_property query */
 export class MatchPhraseQuery extends QueryBase {
+  /**
+   * Analyzer used to convert the text in the query value into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
+  /**
+   * Query terms that are analyzed and turned into a phrase query.
+   */
   query: string
-  /** @server_default 0 */
+  /**
+   * Maximum number of positions allowed between matching tokens.
+   * @server_default 0
+   */
   slop?: integer
+  /**
+   * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
+   * @server_default 'none'
+   */
   zero_terms_query?: ZeroTermsQuery
 }
 
 /** @shortcut_property query */
 export class MatchPhrasePrefixQuery extends QueryBase {
+  /**
+   * Analyzer used to convert text in the query value into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
+  /**
+   * Maximum number of terms to which the last provided term of the query value will expand.
+   * @server_default 50
+   */
   max_expansions?: integer
+  /**
+   * Text you wish to find in the provided field.
+   */
   query: string
+  /**
+   * Maximum number of positions allowed between matching tokens.
+   * @server_default 0
+   */
   slop?: integer
+  /**
+   * Indicates whether no documents are returned if the analyzer removes all tokens, such as when using a `stop` filter.
+   * @server_default none
+   */
   zero_terms_query?: ZeroTermsQuery
 }
 
 export class MultiMatchQuery extends QueryBase {
+  /**
+   * Analyzer used to convert the text in the query value into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
-  /** @server_default true */
+  /**
+   * If `true`, match phrase queries are automatically created for multi-term synonyms.
+   * @server_default true
+   */
   auto_generate_synonyms_phrase_query?: boolean
   /** @deprecated 7.3.0 */
   cutoff_frequency?: double
+  /**
+   * The fields to be queried.
+   * Defaults to the `index.query.default_field` index settings, which in turn defaults to `*`.
+   */
   fields?: Fields
+  /**
+   * Maximum edit distance allowed for matching.
+   * @doc_id fuzziness
+   */
   fuzziness?: Fuzziness
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   fuzzy_rewrite?: MultiTermQueryRewrite
-  /** @server_default true */
+  /**
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
+   * Can be applied to the term subqueries constructed for all terms but the final term.
+   * @server_default true
+   */
   fuzzy_transpositions?: boolean
-  /** @server_default false */
+  /**
+   *  If `true`, format-based errors, such as providing a text query value for a numeric field, are ignored.
+   * @server_default false
+   */
   lenient?: boolean
-  /** @server_default 50 */
+  /**
+   * Maximum number of terms to which the query will expand.
+   * @server_default 50
+   */
   max_expansions?: integer
+  /**
+   * Minimum number of clauses that must match for a document to be returned.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
-  /** @server_default 'or' */
+  /**
+   * Boolean logic used to interpret text in the query value.
+   * @server_default 'or'
+   */
   operator?: Operator
-  /** @server_default 0 */
+  /**
+   * Number of beginning characters left unchanged for fuzzy matching.
+   * @server_default 0
+   */
   prefix_length?: integer
+  /**
+   * Text, number, boolean value or date you wish to find in the provided field.
+   */
   query: string
+  /**
+   * Maximum number of positions allowed between matching tokens.
+   * @server_default 0
+   */
   slop?: integer
+  /**
+   * Determines how scores for each per-term blended query and scores across groups are combined.
+   * @server_default 0.0
+   */
   tie_breaker?: double
-  /** @server_default 'best_fields' */
+  /**
+   * How `the` multi_match query is executed internally.
+   * @server_default 'best_fields'
+   */
   type?: TextQueryType
+  /**
+   * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
+   * @server_default 'none'
+   */
   zero_terms_query?: ZeroTermsQuery
 }
 
 export enum TextQueryType {
+  /**
+   * Finds documents that match any field, but uses the `_score` from the best field.
+   */
   best_fields = 0,
+  /**
+   * Finds documents that match any field and combines the `_score` from each field.
+   */
   most_fields = 1,
+  /**
+   * Treats fields with the same analyzer as though they were one big field.
+   * Looks for each word in any field.
+   */
   cross_fields = 2,
+  /**
+   * Runs a `match_phrase` query on each field and uses the `_score` from the best field.
+   */
   phrase = 3,
+  /**
+   * Runs a `match_phrase_prefix` query on each field and uses the `_score` from the best field.
+   */
   phrase_prefix = 4,
+  /**
+   * Creates a `match_bool_prefix` query on each field and combines the `_score` from each field.
+   */
   bool_prefix = 5
 }
 
 export enum ZeroTermsQuery {
+  /**
+   * Returns all documents, similar to a `match_all` query.
+   */
   all = 0,
+  /**
+   * No documents are returned if the `analyzer` removes all tokens.
+   */
   none = 1
 }
 
 export class QueryStringQuery extends QueryBase {
-  /** @server_default true */
+  /**
+   * If `true`, the wildcard characters `*` and `?` are allowed as the first character of the query string.
+   * @server_default true
+   */
   allow_leading_wildcard?: boolean
+  /**
+   * Analyzer used to convert text in the query string into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
-  /** @server_default false */
+  /**
+   * If `true`, the query attempts to analyze wildcard terms in the query string.
+   * @server_default false
+   */
   analyze_wildcard?: boolean
-  /** @server_default true */
+  /**
+   * If `true`, match phrase queries are automatically created for multi-term synonyms.
+   * @server_default true
+   */
   auto_generate_synonyms_phrase_query?: boolean
+  /**
+   * Default field to search if no field is provided in the query string.
+   * Supports wildcards (`*`).
+   * Defaults to the `index.query.default_field` index setting, which has a default value of `*`.
+   */
   default_field?: Field
-  /** @server_default 'or' */
+  /**
+   * Default boolean logic used to interpret text in the query string if no operators are specified.
+   * @server_default 'or'
+   */
   default_operator?: Operator
-  /** @server_default true */
+  /**
+   * If `true`, enable position increments in queries constructed from a `query_string` search.
+   * @server_default true
+   */
   enable_position_increments?: boolean
   /** @server_default false */
   escape?: boolean
+  /**
+   * Array of fields to search. Supports wildcards (`*`).
+   */
   fields?: Field[]
+  /**
+   * Maximum edit distance allowed for fuzzy matching.
+   * @doc_id fuzziness
+   */
   fuzziness?: Fuzziness
-  /** @server_default 50 */
+  /**
+   * Maximum number of terms to which the query expands for fuzzy matching.
+   * @server_default 50
+   */
   fuzzy_max_expansions?: integer
+  /**
+   * Number of beginning characters left unchanged for fuzzy matching.
+   * @server_default 0
+   */
   fuzzy_prefix_length?: integer
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   fuzzy_rewrite?: MultiTermQueryRewrite
+  /**
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
+   * @server_default true
+   */
   fuzzy_transpositions?: boolean
-  /** @server_default false */
+  /**
+   * If `true`, format-based errors, such as providing a text value for a numeric field, are ignored.
+   * @server_default false
+   */
   lenient?: boolean
-  /** @server_default 10000 */
+  /**
+   * Maximum number of automaton states required for the query.
+   * @server_default 10000
+   */
   max_determinized_states?: integer
+  /**
+   * Minimum number of clauses that must match for a document to be returned.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
+  /**
+   * Maximum number of positions allowed between matching tokens for phrases.
+   * @server_default 0
+   */
   phrase_slop?: double
+  /**
+   * Query string you wish to parse and use for search.
+   */
   query: string
+  /**
+   * Analyzer used to convert quoted text in the query string into tokens.
+   * For quoted text, this parameter overrides the analyzer specified in the `analyzer` parameter.
+   */
   quote_analyzer?: string
+  /**
+   * Suffix appended to quoted text in the query string.
+   * You can use this suffix to use a different analysis method for exact matches.
+   */
   quote_field_suffix?: string
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   rewrite?: MultiTermQueryRewrite
+  /**
+   * How to combine the queries generated from the individual search terms in the resulting `dis_max` query.
+   */
   tie_breaker?: double
+  /**
+   * Coordinated Universal Time (UTC) offset or IANA time zone used to convert date values in the query string to UTC.
+   */
   time_zone?: TimeZone
-  /** @server_default 'best_fields' */
+  /**
+   * Determines how the query matches and scores documents.
+   * @server_default 'best_fields'
+   * */
   type?: TextQueryType
 }
 

@@ -168,23 +168,102 @@ export class QueryContainer {
    * @doc_id query-dsl-geo-shape-query
    */
   geo_shape?: GeoShapeQuery
+  /**
+   * Returns parent documents whose joined child documents match a provided query.
+   * @doc_id query-dsl-has-child-query
+   */
   has_child?: HasChildQuery
+  /**
+   * Returns child documents whose joined parent document matches a provided query.
+   * @doc_id query-dsl-has-parent-query
+   */
   has_parent?: HasParentQuery
+  /**
+   * Returns documents based on their IDs.
+   * This query uses document IDs stored in the `_id` field.
+   * @doc_id query-dsl-ids-query
+   */
   ids?: IdsQuery
+  /**
+   * Returns documents based on the order and proximity of matching terms.
+   * @doc_id query-dsl-intervals-query
+   */
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  /**
+   * Returns documents that match a provided text, number, date or boolean value.
+   * The provided text is analyzed before matching.
+   * @doc_id query-dsl-match-query
+   */
   match?: SingleKeyDictionary<Field, MatchQuery>
+  /**
+   * Matches all documents, giving them all a `_score` of 1.0.
+   * @doc_id query-dsl-match-all-query
+   */
   match_all?: MatchAllQuery
+  /**
+   * Analyzes its input and constructs a `bool` query from the terms.
+   * Each term except the last is used in a `term` query.
+   * The last term is used in a prefix query.
+   * @doc_id query-dsl-match-bool-prefix-query
+   */
   match_bool_prefix?: SingleKeyDictionary<Field, MatchBoolPrefixQuery>
+  /**
+   * Matches no documents.
+   * @doc_id query-dsl-match-none-query
+   */
   match_none?: MatchNoneQuery
+  /**
+   * Analyzes the text and creates a phrase query out of the analyzed text.
+   * @doc_id query-dsl-match-query-phrase
+   */
   match_phrase?: SingleKeyDictionary<Field, MatchPhraseQuery>
+  /**
+   * Returns documents that contain the words of a provided text, in the same order as provided.
+   * The last term of the provided text is treated as a prefix, matching any words that begin with that term.
+   * @doc_id query-dsl-match-query-phrase-prefix
+   */
   match_phrase_prefix?: SingleKeyDictionary<Field, MatchPhrasePrefixQuery>
+  /**
+   * Returns documents that are "like" a given set of documents.
+   * @doc_id query-dsl-mlt-query
+   */
   more_like_this?: MoreLikeThisQuery
+  /**
+   * Enables you to search for a provided text, number, date or boolean value across multiple fields.
+   * The provided text is analyzed before matching.
+   * @doc_id query-dsl-multi-match-query
+   */
   multi_match?: MultiMatchQuery
+  /**
+   * Wraps another query to search nested fields.
+   * If an object matches the search, the nested query returns the root parent document.
+   * @doc_id query-dsl-nested-query
+   */
   nested?: NestedQuery
+  /**
+   * Returns child documents joined to a specific parent document.
+   * @doc_id query-dsl-parent-id-query
+   */
   parent_id?: ParentIdQuery
+  /**
+   * Matches queries stored in an index.
+   * @doc_id query-dsl-percolate-query
+   */
   percolate?: PercolateQuery
+  /**
+   * Promotes selected documents to rank higher than those matching a given query.
+   * @doc_id query-dsl-pinned-query
+   */
   pinned?: PinnedQuery
+  /**
+   * Returns documents that contain a specific prefix in a provided field.
+   * @doc_id query-dsl-prefix-query
+   */
   prefix?: SingleKeyDictionary<Field, PrefixQuery>
+  /**
+   * Returns documents based on a provided query string, using a parser with a strict syntax.
+   * @doc_id query-dsl-query-string-query
+   */
   query_string?: QueryStringQuery
   range?: SingleKeyDictionary<Field, RangeQuery>
   rank_feature?: RankFeatureQuery
