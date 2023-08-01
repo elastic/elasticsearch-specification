@@ -176,7 +176,7 @@ export class IntervalsFuzzy {
    */
   transpositions?: boolean
   /**
-   * If specified, match intervals from this field rather than the top-level `<field>`.
+   * If specified, match intervals from this field rather than the top-level field.
    * The `term` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
    */
   use_field?: Field
@@ -200,11 +200,11 @@ export class IntervalsMatch {
    */
   ordered?: boolean
   /**
-   * Text you wish to find in the provided `<field>`.
+   * Text you wish to find in the provided field.
    */
   query: string
   /**
-   * If specified, match intervals from this field rather than the top-level `<field>`.
+   * If specified, match intervals from this field rather than the top-level field.
    * The `term` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
    */
   use_field?: Field
@@ -221,11 +221,11 @@ export class IntervalsPrefix {
    */
   analyzer?: string
   /**
-   * Beginning characters of terms you wish to find in the top-level `<field>`.
+   * Beginning characters of terms you wish to find in the top-level field.
    */
   prefix: string
   /**
-   * If specified, match intervals from this field rather than the top-level `<field>`.
+   * If specified, match intervals from this field rather than the top-level field.
    * The `prefix` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
    */
   use_field?: Field
@@ -264,7 +264,7 @@ export class IntervalsQuery extends QueryBase {
 export class IntervalsWildcard {
   /**
    * Analyzer used to analyze the `pattern`.
-   * Defaults to the top-level `<field>`'s analyzer.
+   * Defaults to the top-level field's analyzer.
    */
   analyzer?: string
   /**
@@ -272,7 +272,7 @@ export class IntervalsWildcard {
    */
   pattern: string
   /**
-   * If specified, match intervals from this field rather than the top-level `<field>`.
+   * If specified, match intervals from this field rather than the top-level field.
    * The `pattern` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
    */
   use_field?: Field
@@ -333,7 +333,7 @@ export class MatchQuery extends QueryBase {
    */
   prefix_length?: integer
   /**
-   * Text, number, boolean value or date you wish to find in the provided `<field>`.
+   * Text, number, boolean value or date you wish to find in the provided field.
    */
   // FIXME: docs states "date" as a possible format. Add DateMath, or DurationLarge?
   //        Should also be consistent with MultiMatchQuery.query
@@ -395,7 +395,7 @@ export class MatchBoolPrefixQuery extends QueryBase {
    */
   prefix_length?: integer
   /**
-   * Terms you wish to find in the provided `<field>`.
+   * Terms you wish to find in the provided field.
    * The last term is used in a prefix query.
    */
   query: string
@@ -437,7 +437,7 @@ export class MatchPhrasePrefixQuery extends QueryBase {
    */
   max_expansions?: integer
   /**
-   * Text you wish to find in the provided `<field>`.
+   * Text you wish to find in the provided field.
    */
   query: string
   /**
@@ -512,7 +512,7 @@ export class MultiMatchQuery extends QueryBase {
    */
   prefix_length?: integer
   /**
-   * Text, number, boolean value or date you wish to find in the provided `<field>`.
+   * Text, number, boolean value or date you wish to find in the provided field.
    */
   query: string
   /**
@@ -684,7 +684,7 @@ export class QueryStringQuery extends QueryBase {
    */
   rewrite?: MultiTermQueryRewrite
   /**
-   * combining the several queries generated from the individual search terms is done using a `dis_max query` with the provided `tie_breaker`.
+   * How to combine the queries generated from the individual search terms in the resulting `dis_max` query.
    */
   tie_breaker?: double
   /**

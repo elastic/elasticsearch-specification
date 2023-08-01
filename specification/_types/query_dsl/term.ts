@@ -92,7 +92,7 @@ export class PrefixQuery extends QueryBase {
    */
   rewrite?: MultiTermQueryRewrite
   /**
-   * Beginning characters of terms you wish to find in the provided `<field>`.
+   * Beginning characters of terms you wish to find in the provided field.
    */
   value: string
   /**
