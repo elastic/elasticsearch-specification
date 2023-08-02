@@ -104,8 +104,20 @@ export enum TotalHitsRelation {
 }
 
 export class InnerHits {
+  /**
+   * The name for the particular inner hit definition in the response.
+   * Useful when a search request contains multiple inner hits.
+   */
   name?: Name
+  /**
+   * The maximum number of hits to return per `inner_hits`.
+   * @server_default 3
+   */
   size?: integer
+  /**
+   * Inner hit starting document offset.
+   * @server_default 0
+   */
   from?: integer
   collapse?: FieldCollapse
   docvalue_fields?: FieldAndFormat[]
@@ -115,6 +127,10 @@ export class InnerHits {
   script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
   fields?: Fields
+  /**
+   * How the inner hits should be sorted per `inner_hits`.
+   * By default, inner hits are sorted by score.
+   */
   sort?: Sort
   _source?: SourceConfig
   stored_field?: Fields

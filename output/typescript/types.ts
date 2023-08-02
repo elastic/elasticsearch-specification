@@ -4163,7 +4163,7 @@ export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnaly
 
 export interface AnalysisAsciiFoldingTokenFilter extends AnalysisTokenFilterBase {
   type: 'asciifolding'
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export type AnalysisCharFilter = string | AnalysisCharFilterDefinition
@@ -4243,7 +4243,7 @@ export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
   max_gram?: integer
   min_gram?: integer
   side?: AnalysisEdgeNGramSide
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
@@ -4482,14 +4482,14 @@ export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
 export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
   type: 'multiplexer'
   filters: string[]
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
   type: 'ngram'
   max_gram?: integer
   min_gram?: integer
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
@@ -4546,7 +4546,7 @@ export interface AnalysisPatternAnalyzer {
 export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_capture'
   patterns: string[]
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase {
@@ -4759,7 +4759,7 @@ export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisTokenFilt
   generate_number_parts?: boolean
   generate_word_parts?: boolean
   ignore_keywords?: boolean
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -4776,7 +4776,7 @@ export interface AnalysisWordDelimiterTokenFilter extends AnalysisTokenFilterBas
   catenate_words?: boolean
   generate_number_parts?: boolean
   generate_word_parts?: boolean
-  preserve_original?: boolean
+  preserve_original?: SpecUtilsStringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -5782,6 +5782,7 @@ export interface QueryDslQueryContainer {
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
+  rule_query?: QueryDslRuleQuery
   script?: QueryDslScriptQuery
   script_score?: QueryDslScriptScoreQuery
   shape?: QueryDslShapeQuery
@@ -5798,7 +5799,7 @@ export interface QueryDslQueryContainer {
   term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
-  text_expansion?: QueryDslTextExpansionQuery | Field
+  text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -5880,6 +5881,12 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
   max_determinized_states?: integer
   rewrite?: MultiTermQueryRewrite
   value: string
+}
+
+export interface QueryDslRuleQuery extends QueryDslQueryBase {
+  organic: QueryDslQueryContainer
+  ruleset_id: Id
+  match_criteria: any
 }
 
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
@@ -6015,7 +6022,6 @@ export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
 }
 
 export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
-  value: Field
   model_id: string
   model_text: string
 }
@@ -9777,7 +9783,7 @@ export interface IndicesIndexSettingsAnalysis {
 
 export interface IndicesIndexSettingsLifecycle {
   name: Name
-  indexing_complete?: boolean
+  indexing_complete?: SpecUtilsStringified<boolean>
   origination_date?: long
   parse_origination_date?: boolean
   step?: IndicesIndexSettingsLifecycleStep
@@ -10203,9 +10209,9 @@ export type IndicesCreateDataStreamResponse = AcknowledgedResponseBase
 export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
   data_stream: Name
+  maximum_timestamp: EpochTime<UnitMillis>
   store_size?: ByteSize
   store_size_bytes: integer
-  maximum_timestamp: EpochTime<UnitMillis>
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
@@ -10217,9 +10223,9 @@ export interface IndicesDataStreamsStatsResponse {
   _shards: ShardStatistics
   backing_indices: integer
   data_stream_count: integer
+  data_streams: IndicesDataStreamsStatsDataStreamsStatsItem[]
   total_store_sizes?: ByteSize
   total_store_size_bytes: integer
-  data_streams: IndicesDataStreamsStatsDataStreamsStatsItem[]
 }
 
 export interface IndicesDeleteRequest extends RequestBase {
@@ -10580,8 +10586,8 @@ export interface IndicesModifyDataStreamAction {
 }
 
 export interface IndicesModifyDataStreamIndexAndDataStreamAction {
-  index: IndexName
   data_stream: DataStreamName
+  index: IndexName
 }
 
 export interface IndicesModifyDataStreamRequest extends RequestBase {
@@ -12555,6 +12561,7 @@ export interface MlDiscoveryNode {
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
 export interface MlFillMaskInferenceOptions {
+  mask_token?: string
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
@@ -15435,6 +15442,69 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface QueryRulesetQueryRule {
+  rule_id: Id
+  type: QueryRulesetQueryRuleType
+  criteria: QueryRulesetQueryRuleCriteria[]
+  actions: QueryRulesetQueryRuleActions
+}
+
+export interface QueryRulesetQueryRuleActions {
+  ids?: Id[]
+  docs?: QueryDslPinnedDoc[]
+}
+
+export interface QueryRulesetQueryRuleCriteria {
+  type: QueryRulesetQueryRuleCriteriaType
+  metadata: string
+  values?: any[]
+}
+
+export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte'
+
+export type QueryRulesetQueryRuleType = 'pinned'
+
+export interface QueryRulesetQueryRuleset {
+  ruleset_id: Id
+  rules: QueryRulesetQueryRule[]
+}
+
+export interface QueryRulesetDeleteRequest extends RequestBase {
+  ruleset_id: Id
+}
+
+export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
+
+export interface QueryRulesetGetRequest extends RequestBase {
+  ruleset_id: Id
+}
+
+export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
+
+export interface QueryRulesetListQueryRulesetListItem {
+  ruleset_id: Id
+  rules_count: integer
+}
+
+export interface QueryRulesetListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface QueryRulesetListResponse {
+  count: long
+  results: QueryRulesetListQueryRulesetListItem[]
+}
+
+export interface QueryRulesetPutRequest extends RequestBase {
+  ruleset_id: Id
+  body?: QueryRulesetQueryRuleset
+}
+
+export interface QueryRulesetPutResponse {
+  result: Result
+}
+
 export interface RollupDateHistogramGrouping {
   delay?: Duration
   field: Field
@@ -17308,6 +17378,100 @@ export interface SslCertificatesRequest extends RequestBase {
 }
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
+
+export interface SynonymRuleDeleteRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleDeleteResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymRuleGetRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleGetResponse = SynonymsSynonymRule
+
+export interface SynonymRulePutRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+  body?: SynonymRulePutSynonymRuleUpdate
+}
+
+export type SynonymRulePutResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymRulePutSynonymRuleUpdate {
+  synonyms: SynonymsSynonymString[]
+}
+
+export interface SynonymsSynonymRule extends SynonymsSynonymRuleOptionalId {
+  id: Id
+}
+
+export interface SynonymsSynonymRuleOptionalId {
+  id?: Id
+  synonyms: SynonymsSynonymString
+}
+
+export type SynonymsSynonymString = string
+
+export interface SynonymsSynonymsSet extends SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRule[]
+}
+
+export interface SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRuleOptionalId[]
+}
+
+export interface SynonymsSynonymsUpdateResult {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
+export interface SynonymsDeleteRequest extends RequestBase {
+  synonyms_set: Name
+}
+
+export type SynonymsDeleteResponse = AcknowledgedResponseBase
+
+export interface SynonymsGetRequest extends RequestBase {
+  synonyms_set: Name
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsGetResponse {
+  count: integer
+  synonyms_set: SynonymsSynonymsSet
+}
+
+export interface SynonymsPutRequest extends RequestBase {
+  synonyms_set: Name
+  body?: SynonymsSynonymsSetUpdate
+}
+
+export interface SynonymsPutResponse {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
+export interface SynonymsSetsGetRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsSetsGetResponse {
+  count: integer
+  results: SynonymsSetsGetSynonymsSetListItem[]
+}
+
+export interface SynonymsSetsGetSynonymsSetListItem {
+  synonyms_set: Name
+  count: integer
+}
 
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 

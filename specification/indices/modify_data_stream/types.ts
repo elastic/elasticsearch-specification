@@ -21,11 +21,24 @@ import { DataStreamName, IndexName } from '@_types/common'
 
 /** @variants container */
 export class Action {
+  /**
+   * Adds an existing index as a backing index for a data stream.
+   * The index is hidden as part of this operation.
+   * WARNING: Adding indices with the `add_backing_index` action can potentially result in improper data stream behavior.
+   * This should be considered an expert level API.
+   */
   add_backing_index?: IndexAndDataStreamAction
+  /**
+   * Removes a backing index from a data stream.
+   * The index is unhidden as part of this operation.
+   * A data stream’s write index cannot be removed.
+   */
   remove_backing_index?: IndexAndDataStreamAction
 }
 
 export class IndexAndDataStreamAction {
-  index: IndexName
+  /** Data stream targeted by the action. */
   data_stream: DataStreamName
+  /** Index for the action. */
+  index: IndexName
 }
