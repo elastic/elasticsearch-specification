@@ -41,8 +41,8 @@ export interface Request extends RequestBase {
      */
     keep_alive?: Duration
     /**
-     * Timeout duration to wait for the request to finish.
-     * @server_default no timeout
+     * Timeout duration to wait for the request to finish. 
+     * Defaults to no timeout, meaning the request waits for complete search results.
      */
     wait_for_completion_timeout?: Duration
   }
