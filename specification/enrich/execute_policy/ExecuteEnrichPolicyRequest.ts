@@ -22,16 +22,16 @@ import { Name } from '@_types/common'
 
 /**
  * Creates the enrich index for an existing enrich policy.
- * The enrich index contains documents from the policy’s source indices. Enrich 
+ * The enrich index contains documents from the policy’s source indices. Enrich
  * indices always begin with `.enrich-*`, are read-only, and are force merged.
- * Enrich indices should be used by the enrich processor only. Avoid using 
+ * Enrich indices should be used by the enrich processor only. Avoid using
  * enrich indices for other purposes.
- * Once created, you cannot update or index documents to an enrich index. 
- * Instead, update your source indices and execute the enrich policy again. This 
- * creates a new enrich index from your updated source indices. The previous 
- * enrich index will deleted with a delayed maintenance job. By default this is 
- * done every 15 minutes. 
- * Because this API request performs several operations, it may take a while to 
+ * Once created, you cannot update or index documents to an enrich index.
+ * Instead, update your source indices and execute the enrich policy again. This
+ * creates a new enrich index from your updated source indices. The previous
+ * enrich index will deleted with a delayed maintenance job. By default this is
+ * done every 15 minutes.
+ * Because this API request performs several operations, it may take a while to
  * return a response.
  * @rest_spec_name enrich.execute_policy
  * @availability stack since=7.5.0 stability=stable
@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If `true`, the request blocks other enrich policy execution requests 
+     * If `true`, the request blocks other enrich policy execution requests
      * until complete. Defaults to `true`.
      */
     wait_for_completion?: boolean

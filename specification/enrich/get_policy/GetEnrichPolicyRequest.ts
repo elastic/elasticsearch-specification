@@ -29,7 +29,7 @@ import { Names } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of enrich policy names used to limit the request. To 
+     * Comma-separated list of enrich policy names used to limit the request. To
      * return information for all enrich policies, omit this parameter.
      */
     name?: Names
