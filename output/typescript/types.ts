@@ -13081,7 +13081,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   error_count: integer
   inference_count: integer
   last_access: long
-  node: MlDiscoveryNode
+  node?: MlDiscoveryNode
   number_of_allocations: integer
   number_of_pending_requests: integer
   rejection_execution_count: integer
