@@ -22,17 +22,38 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Creates an enrich policy.
+ * Once created, you can’t update or change an enrich policy. 
+ * Instead, you can:
+ * 
+ * 1. Create and execute a new enrich policy.
+ * 2. Replace the previous enrich policy with the new enrich policy in any 
+ *    in-use enrich processors.
+ * 3. Use the delete enrich policy API to delete the previous enrich policy.
  * @rest_spec_name enrich.put_policy
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Name of the enrich policy to create or update.
+     */
     name: Name
   }
   body: {
+    /**
+     * Matches enrich data to incoming documents based on a `geo_shape` query.
+     */
     geo_match?: Policy
+    /**
+     * Matches enrich data to incoming documents based on a `term` query.
+     */
     match?: Policy
+    /**
+     * Matches a number, date, or IP address in incoming documents to a range in 
+     * the enrich index based on a `term` query.
+     */
     range?: Policy
   }
 }
