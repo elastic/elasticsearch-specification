@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * If `true`, the request blocks other enrich policy execution requests until complete.
-     * @server_default: true
+     * @server_default true
      */
     wait_for_completion?: boolean
   }
