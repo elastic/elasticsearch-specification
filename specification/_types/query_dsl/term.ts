@@ -78,14 +78,26 @@ export class FuzzyQuery extends QueryBase {
 }
 
 export class IdsQuery extends QueryBase {
+  /**
+   * An array of document IDs.
+   */
   values?: Ids
 }
 
 /** @shortcut_property value */
 export class PrefixQuery extends QueryBase {
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   rewrite?: MultiTermQueryRewrite
+  /**
+   * Beginning characters of terms you wish to find in the provided field.
+   */
   value: string
   /**
+   * Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.
+   * Default is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.
    * @server_default false
    * @availability stack since=7.10.0
    * @availability serverless

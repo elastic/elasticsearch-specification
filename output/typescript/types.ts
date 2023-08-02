@@ -5781,6 +5781,7 @@ export interface QueryDslQueryContainer {
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
+  rule_query?: QueryDslRuleQuery
   script?: QueryDslScriptQuery
   script_score?: QueryDslScriptScoreQuery
   shape?: QueryDslShapeQuery
@@ -5797,7 +5798,7 @@ export interface QueryDslQueryContainer {
   term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
-  text_expansion?: QueryDslTextExpansionQuery | Field
+  text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -5879,6 +5880,12 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
   max_determinized_states?: integer
   rewrite?: MultiTermQueryRewrite
   value: string
+}
+
+export interface QueryDslRuleQuery extends QueryDslQueryBase {
+  organic: QueryDslQueryContainer
+  ruleset_id: Id
+  match_criteria: any
 }
 
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
@@ -6014,7 +6021,6 @@ export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
 }
 
 export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
-  value: Field
   model_id: string
   model_text: string
 }
@@ -15435,6 +15441,69 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface QueryRulesetQueryRule {
+  rule_id: Id
+  type: QueryRulesetQueryRuleType
+  criteria: QueryRulesetQueryRuleCriteria[]
+  actions: QueryRulesetQueryRuleActions
+}
+
+export interface QueryRulesetQueryRuleActions {
+  ids?: Id[]
+  docs?: QueryDslPinnedDoc[]
+}
+
+export interface QueryRulesetQueryRuleCriteria {
+  type: QueryRulesetQueryRuleCriteriaType
+  metadata: string
+  values?: any[]
+}
+
+export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte'
+
+export type QueryRulesetQueryRuleType = 'pinned'
+
+export interface QueryRulesetQueryRuleset {
+  ruleset_id: Id
+  rules: QueryRulesetQueryRule[]
+}
+
+export interface QueryRulesetDeleteRequest extends RequestBase {
+  ruleset_id: Id
+}
+
+export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
+
+export interface QueryRulesetGetRequest extends RequestBase {
+  ruleset_id: Id
+}
+
+export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
+
+export interface QueryRulesetListQueryRulesetListItem {
+  ruleset_id: Id
+  rules_count: integer
+}
+
+export interface QueryRulesetListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface QueryRulesetListResponse {
+  count: long
+  results: QueryRulesetListQueryRulesetListItem[]
+}
+
+export interface QueryRulesetPutRequest extends RequestBase {
+  ruleset_id: Id
+  body?: QueryRulesetQueryRuleset
+}
+
+export interface QueryRulesetPutResponse {
+  result: Result
+}
+
 export interface RollupDateHistogramGrouping {
   delay?: Duration
   field: Field
@@ -17308,6 +17377,100 @@ export interface SslCertificatesRequest extends RequestBase {
 }
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
+
+export interface SynonymRuleDeleteRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleDeleteResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymRuleGetRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+}
+
+export type SynonymRuleGetResponse = SynonymsSynonymRule
+
+export interface SynonymRulePutRequest extends RequestBase {
+  synonyms_set: Name
+  synonym_rule: Name
+  body?: SynonymRulePutSynonymRuleUpdate
+}
+
+export type SynonymRulePutResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymRulePutSynonymRuleUpdate {
+  synonyms: SynonymsSynonymString[]
+}
+
+export interface SynonymsSynonymRule extends SynonymsSynonymRuleOptionalId {
+  id: Id
+}
+
+export interface SynonymsSynonymRuleOptionalId {
+  id?: Id
+  synonyms: SynonymsSynonymString
+}
+
+export type SynonymsSynonymString = string
+
+export interface SynonymsSynonymsSet extends SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRule[]
+}
+
+export interface SynonymsSynonymsSetUpdate {
+  synonymRules: SynonymsSynonymRuleOptionalId[]
+}
+
+export interface SynonymsSynonymsUpdateResult {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
+export interface SynonymsDeleteRequest extends RequestBase {
+  synonyms_set: Name
+}
+
+export type SynonymsDeleteResponse = AcknowledgedResponseBase
+
+export interface SynonymsGetRequest extends RequestBase {
+  synonyms_set: Name
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsGetResponse {
+  count: integer
+  synonyms_set: SynonymsSynonymsSet
+}
+
+export interface SynonymsPutRequest extends RequestBase {
+  synonyms_set: Name
+  body?: SynonymsSynonymsSetUpdate
+}
+
+export interface SynonymsPutResponse {
+  result: Result
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
+export interface SynonymsSetsGetRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsSetsGetResponse {
+  count: integer
+  results: SynonymsSetsGetSynonymsSetListItem[]
+}
+
+export interface SynonymsSetsGetSynonymsSetListItem {
+  synonyms_set: Name
+  count: integer
+}
 
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 

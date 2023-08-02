@@ -76,28 +76,86 @@ export type DistanceFeatureQuery =
   | DateDistanceFeatureQuery
 
 export class MoreLikeThisQuery extends QueryBase {
+  /**
+   * The analyzer that is used to analyze the free form text.
+   * Defaults to the analyzer associated with the first field in fields.
+   * @doc_id analysis
+   */
   analyzer?: string
+  /**
+   * Each term in the formed query could be further boosted by their tf-idf score.
+   * This sets the boost factor to use when using this feature.
+   * Defaults to deactivated (0).
+   * @server_default 0
+   */
   boost_terms?: double
-  /** @server_default true */
+  /**
+   * Controls whether the query should fail (throw an exception) if any of the specified fields are not of the supported types (`text` or `keyword`).
+   * @server_default true
+   */
   fail_on_unsupported_field?: boolean
+  /**
+   * A list of fields to fetch and analyze the text from.
+   * Defaults to the `index.query.default_field` index setting, which has a default value of `*`.
+   */
   fields?: Field[]
-  /** @server_default false */
+  /**
+   * Specifies whether the input documents should also be included in the search results returned.
+   * @server_default false
+   */
   include?: boolean
+  /**
+   * Specifies free form text and/or a single or multiple documents for which you want to find similar documents.
+   */
   like: Like | Like[]
+  /**
+   * The maximum document frequency above which the terms are ignored from the input document.
+   */
   max_doc_freq?: integer
-  /** @server_default 25 */
+  /**
+   * The maximum number of query terms that can be selected.
+   * @server_default 25
+   */
   max_query_terms?: integer
+  /**
+   * The maximum word length above which the terms are ignored.
+   * Defaults to unbounded (`0`).
+   * @server_default 0
+   */
   max_word_length?: integer
-  /** @server_default 5 */
+  /**
+   * The minimum document frequency below which the terms are ignored from the input document.
+   * @server_default 5
+   */
   min_doc_freq?: integer
+  /**
+   * After the disjunctive query has been formed, this parameter controls the number of terms that must match.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
-  /** @server_default 2 */
+  /**
+   * The minimum term frequency below which the terms are ignored from the input document.
+   * @server_default 2
+   */
   min_term_freq?: integer
-  /** @server_default 0 */
+  /**
+   * The minimum word length below which the terms are ignored.
+   * @server_default 0
+   */
   min_word_length?: integer
+  /**
+   * Overrides the default analyzer.
+   */
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
+  /**
+   * An array of stop words.
+   * Any word in this set is ignored.
+   */
   stop_words?: StopWords
+  /**
+   * Used in combination with `like` to exclude documents that match a set of terms.
+   */
   unlike?: Like | Like[]
   version?: VersionNumber
   /** @server_default 'internal' */
@@ -105,9 +163,18 @@ export class MoreLikeThisQuery extends QueryBase {
 }
 
 export class LikeDocument {
+  /**
+   * A document not present in the index.
+   */
   doc?: UserDefinedValue
   fields?: Field[]
+  /**
+   * ID of a document.
+   */
   _id?: Id
+  /**
+   * Index of a document.
+   */
   _index?: IndexName
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
@@ -124,14 +191,41 @@ export class LikeDocument {
 export type Like = string | LikeDocument
 
 export class PercolateQuery extends QueryBase {
+  /**
+   * The source of the document being percolated.
+   */
   document?: UserDefinedValue
+  /**
+   * An array of sources of the documents being percolated.
+   */
   documents?: UserDefinedValue[]
+  /**
+   * Field that holds the indexed queries. The field must use the `percolator` mapping type.
+   */
   field: Field
+  /**
+   * The ID of a stored document to percolate.
+   */
   id?: Id
+  /**
+   * The index of a stored document to percolate.
+   */
   index?: IndexName
+  /**
+   * The suffix used for the `_percolator_document_slot` field when multiple `percolate` queries are specified.
+   */
   name?: string
+  /**
+   * Preference used to fetch document to percolate.
+   */
   preference?: string
+  /**
+   * Routing used to fetch document to percolate.
+   */
   routing?: Routing
+  /**
+   * The expected version of a stored document to percolate.
+   */
   version?: VersionNumber
 }
 
@@ -139,14 +233,31 @@ export class PercolateQuery extends QueryBase {
  * @variants container
  */
 export class PinnedQuery extends QueryBase {
-  /** @variant container_property */
+  /**
+   * Any choice of query used to rank documents which will be ranked below the "pinned" documents.
+   * @variant container_property
+   */
   organic: QueryContainer
+  /**
+   * Document IDs listed in the order they are to appear in results.
+   * Required if `docs` is not specified.
+   */
   ids?: Id[]
+  /**
+   * Documents listed in the order they are to appear in results.
+   * Required if `ids` is not specified.
+   */
   docs?: PinnedDoc[]
 }
 
 export class PinnedDoc {
+  /**
+   * The unique document ID.
+   */
   _id: Id
+  /**
+   * The index that contains the document.
+   */
   _index: IndexName
 }
 
@@ -200,4 +311,10 @@ export class ShapeFieldQuery {
   indexed_shape?: FieldLookup
   relation?: GeoShapeRelation
   shape?: GeoShape
+}
+
+export class RuleQuery extends QueryBase {
+  organic: QueryContainer
+  ruleset_id: Id
+  match_criteria: UserDefinedValue
 }
