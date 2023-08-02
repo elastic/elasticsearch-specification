@@ -21,18 +21,17 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an async EQL search or a stored synchronous EQL search. The API also 
- * deletes results for the search.
+ * Deletes an async EQL search or a stored synchronous EQL search.
+ * The API also deletes results for the search.
  * @rest_spec_name eql.delete
  * @availability stack since=7.9.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** 
+    /**
      * Identifier for the search to delete.
-     * A search ID is provided in the EQL search API's response for an async 
-     * search. A search ID is also provided if the request’s 
-     * `keep_on_completion` parameter is `true`.
+     * A search ID is provided in the EQL search API's response for an async search.
+     * A search ID is also provided if the request’s `keep_on_completion` parameter is `true`.
      */
     id: Id
   }

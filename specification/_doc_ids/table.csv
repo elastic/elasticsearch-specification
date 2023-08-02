@@ -72,6 +72,8 @@ execute-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/referenc
 get-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-enrich-policy-api.html
 put-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-enrich-policy-api.html
 enrich-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-stats-api.html
+eql-async-search-api, https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
+eql-async-search-status-api, https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html
 eql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-search-api.html
 docs-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-get.html
 search-explain,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-explain.html
