@@ -4033,7 +4033,9 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   order?: AggregationsAggregateOrder
   script?: Script
   shard_size?: integer
+  shard_min_doc_count?: integer
   show_term_doc_count_error?: boolean
+  sum_other_doc_count?: integer
   size?: integer
   format?: string
 }
