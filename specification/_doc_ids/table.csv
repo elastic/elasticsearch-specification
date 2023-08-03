@@ -352,7 +352,12 @@ search-aggregations-bucket-categorize-text-aggregation,https://www.elastic.co/gu
 search-aggregations-bucket-significantterms-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-significantterms-aggregation.html
 search-aggregations-pipeline-bucket-path,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#buckets-path-syntax
 ml-feature-importance,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-feature-importance.html
+analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
+analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
+analysis-standard-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-standard-analyzer.html
+analysis-tokenfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-tokenfilters.html
+analysis-tokenizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-tokenizers.html
 geo-shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geo-shape.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
 mapping-meta-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html
