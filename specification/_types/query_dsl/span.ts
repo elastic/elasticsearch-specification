@@ -88,7 +88,7 @@ export class SpanNotQuery extends QueryBase {
    */
   exclude: SpanQuery
   /**
-   * Span query whose matches are filtered
+   * Span query whose matches are filtered.
    */
   include: SpanQuery
   /**
@@ -105,7 +105,7 @@ export class SpanNotQuery extends QueryBase {
 
 export class SpanOrQuery extends QueryBase {
   /**
-   * Array of one or more other span type queries
+   * Array of one or more other span type queries.
    */
   clauses: SpanQuery[]
 }

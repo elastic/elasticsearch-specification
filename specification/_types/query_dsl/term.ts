@@ -274,7 +274,7 @@ export class WildcardQuery extends QueryBase {
    */
   case_insensitive?: boolean
   /**
-   * Method used to rewrite the query
+   * Method used to rewrite the query.
    * @doc_id query-dsl-multi-term-rewrite
    */
   rewrite?: MultiTermQueryRewrite
