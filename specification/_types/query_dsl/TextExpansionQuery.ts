@@ -19,7 +19,6 @@
 
 import { QueryBase } from './abstractions'
 
-/** @shortcut_property value */
 export class TextExpansionQuery extends QueryBase {
   /** The text expansion NLP model to use */
   model_id: string
