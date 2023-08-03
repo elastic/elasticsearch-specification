@@ -156,7 +156,7 @@ export class IndexSettings
    * Enable or disable dynamic mapping for an index.
    */
   mapping?: MappingLimitSettings
-  'indexing.slowlog'?: SlowlogSettings
+  'indexing.slowlog'?: IndexingSlowlogSettings
   /**
    * Configure indexing back pressure limits.
    */
@@ -479,12 +479,6 @@ export class SlowlogSettings {
 export class SlowlogTresholds {
   query?: SlowlogTresholdLevels
   fetch?: SlowlogTresholdLevels
-  /**
-   * The indexing slow log, similar in functionality to the search slow log. The log file name ends with `_index_indexing_slowlog.json`.
-   * Log and the thresholds are configured in the same way as the search slowlog.
-   * @doc_id index-modules-slowlog-slowlog
-   */
-  index?: SlowlogTresholdLevels
 }
 
 export class SlowlogTresholdLevels {
@@ -548,4 +542,20 @@ export class IndexingPressureMemory {
    * the node will reject new replica operations. Defaults to 10% of the heap.
    */
   limit?: integer
+}
+
+export class IndexingSlowlogSettings {
+  level?: string
+  source?: integer
+  reformat?: boolean
+  threshold?: IndexingSlowlogTresholds
+}
+
+export class IndexingSlowlogTresholds {
+  /**
+   * The indexing slow log, similar in functionality to the search slow log. The log file name ends with `_index_indexing_slowlog.json`.
+   * Log and the thresholds are configured in the same way as the search slowlog.
+   * @doc_id index-modules-slowlog-slowlog
+   */
+  index?: SlowlogTresholdLevels
 }
