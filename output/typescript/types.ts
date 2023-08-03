@@ -9743,7 +9743,7 @@ export interface IndicesIndexSettingsKeys {
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
   mapping?: IndicesMappingLimitSettings
-  'indexing.slowlog'?: IndicesSlowlogSettings
+  'indexing.slowlog'?: IndicesIndexingSlowlogSettings
   indexing_pressure?: IndicesIndexingPressure
   store?: IndicesStorage
 }
@@ -9819,6 +9819,17 @@ export interface IndicesIndexingPressure {
 
 export interface IndicesIndexingPressureMemory {
   limit?: integer
+}
+
+export interface IndicesIndexingSlowlogSettings {
+  level?: string
+  source?: integer
+  reformat?: boolean
+  threshold?: IndicesIndexingSlowlogTresholds
+}
+
+export interface IndicesIndexingSlowlogTresholds {
+  index?: IndicesSlowlogTresholdLevels
 }
 
 export interface IndicesMappingLimitSettings {
@@ -9974,7 +9985,6 @@ export interface IndicesSlowlogTresholdLevels {
 export interface IndicesSlowlogTresholds {
   query?: IndicesSlowlogTresholdLevels
   fetch?: IndicesSlowlogTresholdLevels
-  index?: IndicesSlowlogTresholdLevels
 }
 
 export interface IndicesSoftDeletes {
