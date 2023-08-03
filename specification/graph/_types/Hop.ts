@@ -21,7 +21,16 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { VertexDefinition } from './Vertex'
 
 export class Hop {
+  /**
+   * Specifies or more fields from which you want to extract terms that are associated with the specified vertices.
+   */
   connections?: Hop
+  /**
+   * A seed query that identifies the documents of interest. Can be any valid Elasticsearch query.
+   */
   query: QueryContainer
+  /**
+   * Specifies one or more fields that contain the terms you want to include in the graph as vertices.
+   */
   vertices: VertexDefinition[]
 }

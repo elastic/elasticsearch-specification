@@ -28,11 +28,33 @@ export class Vertex {
 }
 
 export class VertexDefinition {
+  /**
+   * Prevents the specified terms from being included in the results.
+   */
   exclude?: string[]
+  /**
+   * Identifies a field in the documents of interest.
+   */
   field: Field
+  /**
+   * Identifies the terms of interest that form the starting points from which you want to spider out.
+   */
   include?: VertexInclude[]
+  /**
+   * Specifies how many documents must contain a pair of terms before it is considered to be a useful connection. 
+   * This setting acts as a certainty threshold.
+   * @server_default 3
+   */
   min_doc_count?: long
+  /**
+   * Controls how many documents on a particular shard have to contain a pair of terms before the connection is returned for global consideration.
+   * @server_default 2
+   */
   shard_min_doc_count?: long
+  /**
+   * Specifies the maximum number of vertex terms returned for each field.
+   * @server_default 5
+   */
   size?: integer
 }
 
