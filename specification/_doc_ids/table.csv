@@ -134,7 +134,6 @@ get-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 put-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-pipeline-api.html
 simulate-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-pipeline-api.html
-
 search-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-search.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
 get-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-license.html
