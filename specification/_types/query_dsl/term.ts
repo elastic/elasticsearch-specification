@@ -106,24 +106,58 @@ export class PrefixQuery extends QueryBase {
 }
 
 export class RangeQueryBase extends QueryBase {
+  /**
+   * Indicates how the range query matches values for `range` fields.
+   * @server_default intersects
+   */
   relation?: RangeRelation
 }
 
 export class DateRangeQuery extends RangeQueryBase {
+  /**
+   * Greater than.
+   */
   gt?: DateMath
+  /**
+   * Greater than or equal to.
+   */
   gte?: DateMath
+  /**
+   * Less than.
+   */
   lt?: DateMath
+  /**
+   * Less than or equal to.
+   */
   lte?: DateMath
   from?: DateMath | null
   to?: DateMath | null
+  /**
+   * Date format used to convert `date` values in the query.
+   */
   format?: DateFormat
+  /**
+   *  Coordinated Universal Time (UTC) offset or IANA time zone used to convert `date` values in the query to UTC.
+   */
   time_zone?: TimeZone
 }
 
 export class NumberRangeQuery extends RangeQueryBase {
+  /**
+   * Greater than.
+   */
   gt?: double
+  /**
+   * Greater than or equal to.
+   */
   gte?: double
+  /**
+   * Less than.
+   */
   lt?: double
+  /**
+   * Less than or equal to.
+   */
   lte?: double
   from?: double | null
   to?: double | null
@@ -134,32 +168,64 @@ export class NumberRangeQuery extends RangeQueryBase {
 export type RangeQuery = DateRangeQuery | NumberRangeQuery
 
 export enum RangeRelation {
+  /**
+   * Matches documents with a range field value entirely within the query’s range.
+   */
   within = 0,
+  /**
+   * Matches documents with a range field value that entirely contains the query’s range.
+   */
   contains = 1,
+  /**
+   * Matches documents with a range field value that intersects the query’s range.
+   */
   intersects = 2
 }
 
 /** @shortcut_property value */
 export class RegexpQuery extends QueryBase {
   /**
+   *  Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.
+   * When `false`, case sensitivity of matching depends on the underlying field’s mapping.
    * @server_default false
    * @availability stack since=7.10.0
    * @availability serverless
    */
   case_insensitive?: boolean
+  /**
+   * Enables optional operators for the regular expression.
+   * @doc_id regexp-syntax
+   */
   flags?: string
-  /** @server_default 10000 */
+  /**
+   * Maximum number of automaton states required for the query.
+   * @server_default 10000
+   */
   max_determinized_states?: integer
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   rewrite?: MultiTermQueryRewrite
+  /**
+   * Regular expression for terms you wish to find in the provided field.
+   * @doc_id regexp-syntax
+   */
   value: string
 }
 
 /** @shortcut_property value */
 export class TermQuery extends QueryBase {
+  /**
+   * Term you wish to find in the provided field.
+   */
   value: FieldValue
   /**
+   * Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.
+   * When `false`, the case sensitivity of matching depends on the underlying field’s mapping.
    * @availability stack since=7.10.0
    * @availability serverless
+   * @server_default false
    */
   case_insensitive?: boolean
 }
@@ -181,8 +247,17 @@ export class TermsLookup {
 }
 
 export class TermsSetQuery extends QueryBase {
+  /**
+   * Numeric field containing the number of matching terms required to return a document.
+   */
   minimum_should_match_field?: Field
+  /**
+   * Custom script containing the number of matching terms required to return a document.
+   */
   minimum_should_match_script?: Script
+  /**
+   *  Array of terms you wish to find in the provided field.
+   */
   terms: string[]
 }
 
@@ -198,7 +273,10 @@ export class WildcardQuery extends QueryBase {
    * @availability serverless
    */
   case_insensitive?: boolean
-  /** Method used to rewrite the query */
+  /**
+   * Method used to rewrite the query.
+   * @doc_id query-dsl-multi-term-rewrite
+   */
   rewrite?: MultiTermQueryRewrite
   /** Wildcard pattern for terms you wish to find in the provided field. Required, when wildcard is not set. */
   value?: string

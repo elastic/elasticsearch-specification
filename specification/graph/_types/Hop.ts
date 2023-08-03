@@ -21,7 +21,16 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { VertexDefinition } from './Vertex'
 
 export class Hop {
+  /**
+   * Specifies one or more fields from which you want to extract terms that are associated with the specified vertices.
+   */
   connections?: Hop
+  /**
+   * An optional guiding query that constrains the Graph API as it explores connected terms.
+   */
   query: QueryContainer
+  /**
+   * Contains the fields you are interested in.
+   */
   vertices: VertexDefinition[]
 }
