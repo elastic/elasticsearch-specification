@@ -706,37 +706,125 @@ export class QueryStringQuery extends QueryBase {
 export type SimpleQueryStringFlags = SimpleQueryStringFlag | string
 
 export enum SimpleQueryStringFlag {
+  /**
+   * Disables all operators.
+   */
   NONE = 1,
+  /**
+   * Enables the `+` AND operator.
+   */
   AND = 2,
+  /**
+   * Enables the `\|` OR operator.
+   */
   OR = 4,
+  /**
+   * Enables the `-` NOT operator.
+   */
   NOT = 8,
+  /**
+   * Enables the `*` prefix operator.
+   */
   PREFIX = 16,
+  /**
+   * Enables the `"` quotes operator used to search for phrases.
+   */
   PHRASE = 32,
+  /**
+   * Enables the `(` and `)` operators to control operator precedence.
+   */
   PRECEDENCE = 64,
+  /**
+   * Enables `\` as an escape character.
+   */
   ESCAPE = 128,
+  /**
+   * Enables whitespace as split characters.
+   */
   WHITESPACE = 256,
+  /**
+   * Enables the `~N` operator after a word, where `N` is an integer denoting the allowed edit distance for matching.
+   */
   FUZZY = 512,
+  /**
+   * Enables the `~N` operator, after a phrase where `N` is the maximum number of positions allowed between matching tokens.
+   * Synonymous to `SLOP`.
+   */
   NEAR = 1024,
+  /**
+   * Enables the `~N` operator, after a phrase where `N` is maximum number of positions allowed between matching tokens.
+   * Synonymous to `NEAR`.
+   */
   SLOP = 2048,
+  /**
+   * Enables all optional operators.
+   */
   ALL = 4096
 }
 
 export class SimpleQueryStringQuery extends QueryBase {
+  /**
+   * Analyzer used to convert text in the query string into tokens.
+   * @doc_id analysis
+   */
   analyzer?: string
-  /** @server_default false */
+  /**
+   * If `true`, the query attempts to analyze wildcard terms in the query string.
+   * @server_default false
+   */
   analyze_wildcard?: boolean
-  /** @server_default true */
+  /**
+   * If `true`, the parser creates a match_phrase query for each multi-position token.
+   * @server_default true
+   */
   auto_generate_synonyms_phrase_query?: boolean
-  /** @server_default 'or' */
+  /**
+   * Default boolean logic used to interpret text in the query string if no operators are specified.
+   * @server_default 'or'
+   */
   default_operator?: Operator
+  /**
+   * Array of fields you wish to search.
+   * Accepts wildcard expressions.
+   * You also can boost relevance scores for matches to particular fields using a caret (`^`) notation.
+   * Defaults to the `index.query.default_field index` setting, which has a default value of `*`.
+   */
   fields?: Field[]
+  /**
+   * List of enabled operators for the simple query string syntax.
+   * @server_default ALL
+   */
   flags?: SimpleQueryStringFlags
+  /**
+   * Maximum number of terms to which the query expands for fuzzy matching.
+   * @server_default 50
+   */
   fuzzy_max_expansions?: integer
+  /**
+   * Number of beginning characters left unchanged for fuzzy matching.
+   * @server_default 0
+   */
   fuzzy_prefix_length?: integer
+  /**
+   * If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).
+   */
   fuzzy_transpositions?: boolean
-  /** @server_default false */
+  /**
+   * If `true`, format-based errors, such as providing a text value for a numeric field, are ignored.
+   * @server_default false
+   */
   lenient?: boolean
+  /**
+   * Minimum number of clauses that must match for a document to be returned.
+   * @doc_id query-dsl-minimum-should-match
+   */
   minimum_should_match?: MinimumShouldMatch
+  /**
+   * Query string in the simple query string syntax you wish to parse and use for search.
+   */
   query: string
+  /**
+   * Suffix appended to quoted text in the query string.
+   */
   quote_field_suffix?: string
 }
