@@ -52,7 +52,7 @@ export class ModelSnapshotUpgrade {
   /**
    * @availability stack
    */
-  node?: DiscoveryNode
+  node: DiscoveryNode
   assignment_explanation: string
 }
 
