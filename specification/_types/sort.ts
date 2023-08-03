@@ -112,6 +112,12 @@ export enum SortMode {
 }
 
 export enum SortOrder {
+  /**
+   * Ascending (smallest to largest)
+   */
   asc = 0,
+  /**
+   * Descending (largest to smallest)
+   */
   desc = 1
 }
