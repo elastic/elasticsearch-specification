@@ -667,9 +667,13 @@ export interface KnnSearchResponse<TDocument = unknown> {
 
 export interface KnnSearchQuery {
   field: Field
-  query_vector: QueryVector
+  query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
   k: long
   num_candidates: long
+  boost?: float
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  similarity: double
 }
 
 export interface MgetMultiGetError {
@@ -2322,6 +2326,7 @@ export interface KnnQuery {
   num_candidates: long
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  similarity: double
 }
 
 export interface LatLonGeoLocation {

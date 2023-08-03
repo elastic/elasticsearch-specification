@@ -18,16 +18,25 @@
  */
 
 import { Field } from '@_types/common'
-import { long, float } from '@_types/Numeric'
-import { QueryVector } from '@_types/Knn'
+import { long, float, double } from '@_types/Numeric'
+import { QueryVector, QueryVectorBuilder } from '@_types/Knn'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export interface Query {
   /** The name of the vector field to search against */
   field: Field
   /** The query vector */
-  query_vector: QueryVector
+  query_vector?: QueryVector
+  /** The query vector builder. You must provide a query_vector_builder or query_vector, but not both. */
+  query_vector_builder?: QueryVectorBuilder
   /** The final number of nearest neighbors to return as top hits */
   k: long
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates: long
+  /** Boost value to apply to kNN scores */
+  boost?: float
+  /** Filters for the kNN search query */
+  filter?: QueryContainer | QueryContainer[]
+  /** The required minimum similarity for a vector to be considered a match */
+  similarity: double
 }
