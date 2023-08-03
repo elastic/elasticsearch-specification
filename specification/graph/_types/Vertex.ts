@@ -41,7 +41,7 @@ export class VertexDefinition {
    */
   include?: VertexInclude[]
   /**
-   * Specifies how many documents must contain a pair of terms before it is considered to be a useful connection. 
+   * Specifies how many documents must contain a pair of terms before it is considered to be a useful connection.
    * This setting acts as a certainty threshold.
    * @server_default 3
    */

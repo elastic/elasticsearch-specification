@@ -134,6 +134,7 @@ get-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 grok-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html
 put-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-pipeline-api.html
 simulate-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/simulate-pipeline-api.html
+
 search-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-search.html
 delete-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-license.html
 get-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-license.html
@@ -349,6 +350,7 @@ modules-node,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mo
 search-aggregations-bucket-count-ks-test-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-count-ks-test-aggregation.html
 search-aggregations-bucket-correlation-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-correlation-aggregation.html
 search-aggregations-bucket-categorize-text-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-categorize-text-aggregation.html
+search-aggregations-bucket-significantterms-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-significantterms-aggregation.html
 search-aggregations-pipeline-bucket-path,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#buckets-path-syntax
 ml-feature-importance,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-feature-importance.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
