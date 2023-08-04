@@ -71,7 +71,10 @@ export class TrainedModelDeploymentStats {
   inference_count: integer
   /** The unique identifier for the trained model. */
   model_id: Id
-  /** The deployent stats for each node that currently has the model allocated. */
+  /**
+   * The deployment stats for each node that currently has the model allocated.
+   * In serverless, stats are reported for a single unnamed virtual node.
+   */
   nodes: TrainedModelDeploymentNodesStats
   /** The number of allocations requested. */
   number_of_allocations: integer
@@ -136,7 +139,10 @@ export class TrainedModelDeploymentNodesStats {
   inference_count: integer
   /** The epoch time stamp of the last inference call for the model on this node. */
   last_access: long
-  /** Information pertaining to the node. */
+  /**
+   * Information pertaining to the node.
+   * @availability stack
+   */
   node: DiscoveryNode
   /**
    * The number of allocations assigned to this node.
