@@ -32,7 +32,14 @@ import { CalendarInterval } from './bucket'
 import { GeoLocation } from '@_types/Geo'
 
 export class MetricAggregationBase {
+  /**
+   * The field on which to run the aggregation.
+   */
   field?: Field
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: Missing
   script?: Script
 }
@@ -48,24 +55,53 @@ export class FormattableMetricAggregation extends MetricAggregationBase {
 export class AverageAggregation extends FormatMetricAggregationBase {}
 
 export class BoxplotAggregation extends MetricAggregationBase {
+  /**
+   * Controls memory usage and approximation error by limiting the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`.
+   */
   compression?: double
 }
 
 export enum CardinalityExecutionMode {
+  /**
+   * Run aggregation by using global ordinals of the field and resolving those values after finishing a shard.
+   */
   global_ordinals,
+  /**
+   * Run aggregation by using segment ordinal values and resolving those values after each segment.
+   */
   segment_ordinals,
+  /**
+   * Run aggregation by using field values directly.
+   */
   direct,
+  /**
+   * Heuristic-based mode, default in Elasticsearch 8.3 and earlier.
+   */
   save_memory_heuristic,
+  /**
+   * Heuristic-based mode, default in Elasticsearch 8.4 and later.
+   */
   save_time_heuristic
 }
 
 export class CardinalityAggregation extends MetricAggregationBase {
+  /**
+   * A unique count below which counts are expected to be close to accurate.
+   * This allows to trade memory for accuracy.
+   * @server_default 3000
+   */
   precision_threshold?: integer
   rehash?: boolean
+  /**
+   * Mechanism by which cardinality aggregations is run.
+   */
   execution_hint?: CardinalityExecutionMode
 }
 
 export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
+  /**
+   * The number of standard deviations above/below the mean to display.
+   */
   sigma?: double
 }
 

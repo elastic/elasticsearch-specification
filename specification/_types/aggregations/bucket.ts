@@ -46,18 +46,47 @@ import { Missing, MissingOrder } from './AggregationContainer'
 export class BucketAggregationBase extends Aggregation {}
 
 export class AdjacencyMatrixAggregation extends BucketAggregationBase {
+  /**
+   * Filters used to create buckets.
+   * At least one filter is required.
+   */
   filters?: Dictionary<string, QueryContainer>
 }
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
+  /**
+   * The target number of buckets.
+   * @server_default 10
+   */
   buckets?: integer
+  /**
+   * The field on which to run the aggregation.
+   */
   field?: Field
+  /**
+   * The date format used to format `key_as_string` in the response.
+   * If no `format` is specified, the first date format specified in the field mapping is used.
+   */
   format?: string
+  /**
+   * The minimum rounding interval.
+   * This can make the collection process more efficient, as the aggregation will not attempt to round at any interval lower than `minimum_interval`.
+   */
   minimum_interval?: MinimumInterval
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: DateTime
+  /**
+   * Time zone specified as a ISO 8601 UTC offset.
+   */
   offset?: string
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
+  /**
+   * Time zone ID.
+   */
   time_zone?: TimeZone
 }
 
@@ -71,6 +100,9 @@ export enum MinimumInterval {
 }
 
 export class ChildrenAggregation extends BucketAggregationBase {
+  /**
+   * The child type that should be selected.
+   */
   type?: RelationName
 }
 
@@ -78,34 +110,98 @@ export type CompositeAggregateKey = Dictionary<Field, FieldValue>
 
 export class CompositeAggregation extends BucketAggregationBase {
   // Must be consistent with CompositeAggregate.after_key
+  /**
+   * When paginating, use the `after_key` value returned in the previous response to retrieve the next page.
+   */
   after?: CompositeAggregateKey
+  /**
+   * The number of composite buckets that should be returned.
+   * @server_default 10
+   */
   size?: integer
+  /**
+   * The value sources used to build composite buckets.
+   * Keys are returned in the order of the `sources` definition.
+   */
   sources?: Array<Dictionary<string, CompositeAggregationSource>>
 }
 
 export class CompositeAggregationSource {
+  /**
+   * A terms aggregation.
+   */
   terms?: TermsAggregation
+  /**
+   * A histogram aggregation.
+   */
   histogram?: HistogramAggregation
+  /**
+   * A date histogram aggregation.
+   */
   date_histogram?: DateHistogramAggregation
+  /**
+   * A geotile grid aggregation.
+   */
   geotile_grid?: GeoTileGridAggregation
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
+  /**
+   * Calendar-aware interval.
+   * Can be specified using the unit name, such as `month`, or as a single unit quantity, such as `1M`.
+   */
   calendar_interval?: CalendarInterval
+  /**
+   * Enables extending the bounds of the histogram beyond the data itself.
+   */
   extended_bounds?: ExtendedBounds<FieldDateMath>
+  /**
+   * Limits the histogram to specified bounds.
+   */
   hard_bounds?: ExtendedBounds<FieldDateMath>
+  /**
+   * The date field whose values are use to build a histogram.
+   */
   field?: Field
+  /**
+   * Fixed intervals: a fixed number of SI units and never deviate, regardless of where they fall on the calendar.
+   */
   fixed_interval?: Duration
+  /**
+   * The date format used to format `key_as_string` in the response.
+   * If no `format` is specified, the first date format specified in the field mapping is used.
+   */
   format?: string
   /** @deprecated 7.2.0 use `fixed_interval` or `calendar_interval` */
   interval?: Duration
+  /**
+   * Only returns buckets that have `min_doc_count` number of documents.
+   * By default, all buckets between the first bucket that matches documents and the last one are returned.
+   */
   min_doc_count?: integer
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: DateTime
+  /**
+   * Changes the start value of each bucket by the specified positive (`+`) or negative offset (`-`) duration.
+   */
   offset?: Duration
+  /**
+   * The order of the returned buckets.
+   */
   order?: AggregateOrder
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
+  /**
+   * Time zone used for bucketing and rounding.
+   * Defaults to Coordinated Universal Time (UTC).
+   */
   time_zone?: TimeZone
+  /**
+   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   */
   keyed?: boolean
 }
 
@@ -129,11 +225,30 @@ export enum CalendarInterval {
 }
 
 export class DateRangeAggregation extends BucketAggregationBase {
+  /**
+   * The date field whose values are use to build ranges.
+   */
   field?: Field
+  /**
+   * The date format used to format `from` and `to` in the response.
+   */
   format?: string
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: Missing
+  /**
+   * Array of date ranges.
+   */
   ranges?: DateRangeExpression[]
+  /**
+   * Time zone used to convert dates from another time zone to UTC.
+   */
   time_zone?: TimeZone
+  /**
+   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   */
   keyed?: boolean
 }
 
@@ -147,29 +262,77 @@ export class DateRangeAggregation extends BucketAggregationBase {
 export type FieldDateMath = DateMath | double
 
 export class DateRangeExpression {
+  /**
+   * Start of the range.
+   */
   from?: FieldDateMath
+  /**
+   * Custom key to return the range with.
+   */
   key?: string
+  /**
+   * End of the range.
+   */
   to?: FieldDateMath
 }
 
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
+  /**
+   * The type of value used for de-duplication.
+   * @server_default global_ordinals
+   */
   execution_hint?: SamplerAggregationExecutionHint
+  /**
+   * Limits how many documents are permitted per choice of de-duplicating value.
+   * @server_default 1
+   */
   max_docs_per_value?: integer
   script?: Script
+  /**
+   * Limits how many top-scoring documents are collected in the sample processed on each shard.
+   * @server_default 100
+   */
   shard_size?: integer
+  /**
+   * The field used to provide values used for de-duplication.
+   */
   field?: Field
 }
 
 export enum SamplerAggregationExecutionHint {
+  /**
+   * Hold field values directly.
+   */
   map = 0,
+  /**
+   * Hold ordinals of the field as determined by the Lucene index.
+   */
   global_ordinals = 1,
+  /**
+   * Hold hashes of the field values - with potential for hash collisions.
+   */
   bytes_hash = 2
 }
 
 export class FiltersAggregation extends BucketAggregationBase {
+  /**
+   * Collection of queries from which to build buckets.
+   */
   filters?: Buckets<QueryContainer>
+  /**
+   * Set to `true` to add a bucket to the response which will contain all documents that do not match any of the given filters.
+   */
   other_bucket?: boolean
+  /**
+   * The key with which the other bucket is returned.
+   * @server_default _other_
+   */
   other_bucket_key?: string
+  /**
+   * By default, the named filters aggregation returns the buckets as an object.
+   * Set to `false` to return the buckets as an array of objects.
+   * @server_default true
+   */
   keyed?: boolean
 }
 
@@ -544,7 +707,15 @@ export class IpPrefixAggregation extends BucketAggregationBase {
 
 export class FrequentItemSetsField {
   field: Field
+  /**
+   * Values to exclude.
+   * Can be regular expression strings or arrays of strings of exact terms.
+   */
   exclude?: string | string[]
+  /**
+   * Values to include.
+   * Can be regular expression strings or arrays of strings of exact terms.
+   */
   include?: string | string[]
 }
 
