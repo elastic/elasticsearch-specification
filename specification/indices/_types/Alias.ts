@@ -37,7 +37,7 @@ export class Alias {
    */
   is_hidden?: boolean
   /**
-   *  If true, the index is the write index for the alias.
+   *  If `true`, the index is the write index for the alias.
    * @server_default false
    */
   is_write_index?: boolean
