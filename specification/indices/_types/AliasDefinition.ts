@@ -20,12 +20,33 @@
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class AliasDefinition {
+  /**
+   * Query used to limit documents the alias can access.
+   */
   filter?: QueryContainer
+  /**
+   * Value used to route indexing operations to a specific shard.
+   * If specified, this overwrites the `routing` value for indexing operations.
+   */
   index_routing?: string
+  /**
+   *  If `true`, the index is the write index for the alias.
+   * @server_default false
+   */
   is_write_index?: boolean
+  /**
+   * Value used to route indexing and search operations to a specific shard.
+   */
   routing?: string
+  /**
+   * Value used to route search operations to a specific shard.
+   * If specified, this overwrites the `routing` value for search operations.
+   */
   search_routing?: string
   /**
+   * If `true`, the alias is hidden.
+   * All indices for the alias must have the same `is_hidden` value.
+   * @server_default false
    * @availability stack since=7.16.0
    * @availability serverless
    */
