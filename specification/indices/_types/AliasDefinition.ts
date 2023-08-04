@@ -30,7 +30,7 @@ export class AliasDefinition {
    */
   index_routing?: string
   /**
-   *  If true, the index is the write index for the alias.
+   *  If `true`, the index is the write index for the alias.
    * @server_default false
    */
   is_write_index?: boolean
