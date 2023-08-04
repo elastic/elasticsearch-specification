@@ -36,8 +36,6 @@ export interface Request extends RequestBase {
     index: IndexName
     /**
      * Name of the index to create.
-
-
      */
     target_index: IndexName
   }
