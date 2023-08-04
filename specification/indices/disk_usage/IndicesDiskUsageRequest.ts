@@ -30,28 +30,28 @@ import { ExpandWildcards, Indices } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases used to limit the request. 
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
      * It’s recommended to execute this API with a single index (or the latest backing index of a data stream) as the API consumes resources significantly.
      */
     index: Indices
   }
   query_parameters?: {
     /**
-     * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices. 
-     * This behavior applies even if the request targets other open indices. 
+     * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
      * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
      * @server_default true
      */
     allow_no_indices?: boolean
     /**
-     * Type of index that wildcard patterns can match. 
-     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. 
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `true`, the API performs a flush before analysis. 
+     * If `true`, the API performs a flush before analysis.
      * If `false`, the response may not include uncommitted data.
      * @server_default true
      */

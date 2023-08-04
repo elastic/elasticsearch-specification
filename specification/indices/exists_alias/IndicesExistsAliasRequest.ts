@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
      */
     name: Names
     /**
-     * Comma-separated list of data streams or indices used to limit the request. Supports wildcards (`*`). 
+     * Comma-separated list of data streams or indices used to limit the request. Supports wildcards (`*`).
      * To target all data streams and indices, omit this parameter or use `*` or `_all`.
      */
     index?: Indices
@@ -46,22 +46,21 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
-     * Type of index that wildcard patterns can match. 
-     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. 
-     * Supports comma-separated values, such as `open,hidden`. 
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
      * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * Period to wait for a connection to the master node. 
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
+     * If `false`, requests that include a missing data stream or index in the target indices or data streams return an error.
+     * @server_default false
      */
     ignore_unavailable?: boolean
     /**
      * If `true`, the request retrieves information from the local node only.
-     * @sever_default false
+     * @server_default false
      */
     local?: boolean
   }

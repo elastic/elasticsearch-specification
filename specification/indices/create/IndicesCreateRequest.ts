@@ -42,15 +42,15 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. 
+     * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
-     * @sever_default 30s
+     * @server_default 30s
      */
     timeout?: Duration
     /**
@@ -61,8 +61,8 @@ export interface Request extends RequestBase {
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {
-    /** 
-     * Aliases for the index. 
+    /**
+     * Aliases for the index.
      */
     aliases?: Dictionary<Name, Alias>
     /**
@@ -74,7 +74,7 @@ export interface Request extends RequestBase {
      */
     mappings?: TypeMapping
     /**
-     * Configuration options for the index. 
+     * Configuration options for the index.
      */
     settings?: IndexSettings
   }

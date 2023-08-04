@@ -30,27 +30,27 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams or indices used to limit the request. 
+     * Comma-separated list of data streams or indices used to limit the request.
      * Supports wildcards (`*`).
      */
     index: Indices
     /**
-     * Comma-separated list of aliases to remove. 
+     * Comma-separated list of aliases to remove.
      * Supports wildcards (`*`). To remove all aliases, use `*` or `_all`.
      */
     name: Names
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. 
+     * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
-     * @sever_default 30s
+     * @server_default 30s
      */
     timeout?: Duration
   }

@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The name of the analyzer that should be applied to the provided `text`. 
+     * The name of the analyzer that should be applied to the provided `text`.
      * This could be a built-in analyzer, or an analyzer that’s been configured in the index.
      * @doc_id analysis-analyzers
      */
@@ -79,7 +79,7 @@ export interface Request extends RequestBase {
      */
     normalizer?: string
     /**
-     * Text to analyze. 
+     * Text to analyze.
      * If an array of strings is provided, it is analyzed as a multi-value field.
      */
     text?: TextToAnalyze

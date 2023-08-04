@@ -30,9 +30,9 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of indices to delete. 
+     * Comma-separated list of indices to delete.
      * You cannot specify index aliases.
-     * By default, this parameter does not support wildcards (`*`) or `_all`. 
+     * By default, this parameter does not support wildcards (`*`) or `_all`.
      * To use wildcards or `_all`, set the `action.destructive_requires_name` cluster setting to `false`.
      */
     index: Indices
@@ -45,9 +45,9 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
-     * Type of index that wildcard patterns can match. 
-     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. 
-     * Supports comma-separated values, such as `open,hidden`. 
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
      * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
@@ -58,15 +58,15 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. 
+     * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
-     * @sever_default 30s
+     * @server_default 30s
      */
     timeout?: Duration
   }

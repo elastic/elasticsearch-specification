@@ -29,7 +29,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases to flush. 
+     * Comma-separated list of data streams, indices, and aliases to flush.
      * Supports wildcards (`*`).
      * To flush all data streams and indices, omit this parameter or use `*` or `_all`.
      */
@@ -43,16 +43,16 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
-     * Type of index that wildcard patterns can match. 
-     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. 
-     * Supports comma-separated values, such as `open,hidden`. 
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
      * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
      * If `true`, the request forces a flush even if there are no changes to commit to the index.
-     * @sever_default true
+     * @server_default true
      */
     force?: boolean
     /**
