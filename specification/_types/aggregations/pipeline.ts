@@ -37,7 +37,16 @@ export class BucketPathAggregation extends Aggregation {
 }
 
 export class PipelineAggregationBase extends BucketPathAggregation {
+  /**
+   * DecimalFormat pattern for the output value.
+   * If specified, the formatted value is returned in the aggregation’s `value_as_string` property.
+   */
   format?: string
+  /**
+   * Policy to apply when gaps are found in the data.
+   * @doc_id gap-policy
+   * @server_default skip
+   */
   gap_policy?: GapPolicy
 }
 
@@ -69,10 +78,16 @@ export enum GapPolicy {
 export class AverageBucketAggregation extends PipelineAggregationBase {}
 
 export class BucketScriptAggregation extends PipelineAggregationBase {
+  /**
+   * The script to run for this aggregation.
+   */
   script?: Script
 }
 
 export class BucketSelectorAggregation extends PipelineAggregationBase {
+  /**
+   * The script to run for this aggregation.
+   */
   script?: Script
 }
 
@@ -152,9 +167,25 @@ export class BucketCorrelationFunctionCountCorrelationIndicator {
 }
 
 export class BucketSortAggregation extends Aggregation {
+  /**
+   * Buckets in positions prior to `from` will be truncated.
+   */
   from?: integer
+  /**
+   * The policy to apply when gaps are found in the data.
+   * @doc_id gap-policy
+   * @server_default skip
+   */
   gap_policy?: GapPolicy
+  /**
+   * The number of buckets to return.
+   * Defaults to all buckets of the parent aggregation.
+   */
   size?: integer
+  /**
+   * The list of fields to sort on.
+   * @doc_id sort-search-results
+   */
   sort?: Sort
 }
 
@@ -165,6 +196,9 @@ export class CumulativeSumAggregation extends PipelineAggregationBase {}
 export class DerivativeAggregation extends PipelineAggregationBase {}
 
 export class ExtendedStatsBucketAggregation extends PipelineAggregationBase {
+  /**
+   * The number of standard deviations above/below the mean to display.
+   */
   sigma?: double
 }
 
