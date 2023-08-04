@@ -98,6 +98,7 @@ index-modules-blocks,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
 indices-clone-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clone-index.html
+indices-close,https://www.elastic.co/guide/en/elasticsearch/reference{branch}/indices-close.html
 indices-open-close,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-open-close.html
 indices-create-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
@@ -146,6 +147,7 @@ logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/refer
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
 docs-multi-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-get.html
+mapping,https://www.elastic.co/guide/en/elasticsearch/reference/master/mapping.html
 migration-api-deprecation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-deprecation.html
 migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-feature-upgrade.html
 ml-close-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html
