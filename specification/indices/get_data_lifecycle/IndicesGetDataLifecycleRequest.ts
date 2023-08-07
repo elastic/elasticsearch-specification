@@ -28,10 +28,25 @@ import { ExpandWildcards, DataStreamNames } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams to limit the request. 
+     * Supports wildcards (`*`). 
+     * To target all data streams, omit this parameter or use `*` or `_all`.
+     */
     name: DataStreamNames
   }
   query_parameters: {
+    /**
+     * Type of data stream that wildcard patterns can match.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `true`, return all default settings in the response.
+     * @server_default false
+     */
     include_defaults?: boolean
   }
 }
