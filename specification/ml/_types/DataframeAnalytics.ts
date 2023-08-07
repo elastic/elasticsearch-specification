@@ -332,7 +332,10 @@ export class DataframeAnalytics {
   id: Id
   /** An object describing memory usage of the analytics. It is present only after the job is started and memory usage is reported. */
   memory_usage: DataframeAnalyticsStatsMemoryUsage
-  /** Contains properties for the node that runs the job. This information is available only for running jobs. */
+  /**
+   * Contains properties for the node that runs the job. This information is available only for running jobs.
+   * @availability stack
+   */
   node?: NodeAttributes
   /** The progress report of the data frame analytics job by phase. */
   progress: DataframeAnalyticsStatsProgress[]

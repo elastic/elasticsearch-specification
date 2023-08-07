@@ -20,5 +20,8 @@
 import { DurationLarge } from '@_types/Time'
 
 export class DownsampleConfig {
+  /**
+   * The interval at which to aggregate the original time series index.
+   */
   fixed_interval: DurationLarge
 }

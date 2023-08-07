@@ -60,6 +60,7 @@ cluster-nodes-hot-threads,https://www.elastic.co/guide/en/elasticsearch/referenc
 cluster-nodes-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-info.html
 cluster-nodes-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-stats.html
 cluster-nodes-usage,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-nodes-usage.html
+indices-downsample-data-stream,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-downsample-data-stream.html
 search-count,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-count.html
 docs-index_,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-index_.html
 modules-gateway-dangling-indices,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/modules-gateway-dangling-indices.html
@@ -98,6 +99,7 @@ index-modules-blocks,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
 indices-clone-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clone-index.html
+indices-close,https://www.elastic.co/guide/en/elasticsearch/reference{branch}/indices-close.html
 indices-open-close,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-open-close.html
 indices-create-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
@@ -146,6 +148,7 @@ logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/refer
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
 docs-multi-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-multi-get.html
+mapping,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping.html
 migration-api-deprecation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-deprecation.html
 migration-api-feature-upgrade,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/migration-api-feature-upgrade.html
 ml-close-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html
@@ -352,7 +355,12 @@ search-aggregations-bucket-categorize-text-aggregation,https://www.elastic.co/gu
 search-aggregations-bucket-significantterms-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-significantterms-aggregation.html
 search-aggregations-pipeline-bucket-path,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#buckets-path-syntax
 ml-feature-importance,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-feature-importance.html
+analysis-analyzers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-analyzers.html
+analysis-charfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-charfilters.html
 analysis-normalizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-normalizers.html
+analysis-standard-analyzer,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-standard-analyzer.html
+analysis-tokenfilters,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-tokenfilters.html
+analysis-tokenizers,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/analysis-tokenizers.html
 geo-shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geo-shape.html
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html
 mapping-meta-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html
