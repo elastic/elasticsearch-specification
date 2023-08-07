@@ -673,7 +673,7 @@ export interface KnnSearchQuery {
   num_candidates: long
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
-  similarity: double
+  similarity?: double
 }
 
 export interface MgetMultiGetError {
@@ -2326,7 +2326,7 @@ export interface KnnQuery {
   num_candidates: long
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
-  similarity: double
+  similarity?: double
 }
 
 export interface LatLonGeoLocation {
