@@ -22,6 +22,8 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { ShardStoreStatus } from './types'
 
 /**
+ * Retrieves store information about replica shards in one or more indices.
+ * For data streams, the API retrieves store information for the stream’s backing indices.
  * @rest_spec_name indices.shard_stores
  * @availability stack since=0.0.0 stability=stable
  */
