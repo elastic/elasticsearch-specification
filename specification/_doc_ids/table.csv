@@ -1,8 +1,10 @@
+api-date-math-index-names,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#api-date-math-index-names
 async-search,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html
 autoscaling-delete-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-delete-autoscaling-policy.html
 autoscaling-get-autoscaling-capacity,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-capacity.html
 autoscaling-get-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-get-autoscaling-policy.html
 autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/autoscaling-put-autoscaling-policy.html
+avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
 docs-bulk,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-bulk.html
 cat-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html
 cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-allocation.html
@@ -99,7 +101,7 @@ index-modules-blocks,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
 indices-clone-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clone-index.html
-indices-close,https://www.elastic.co/guide/en/elasticsearch/reference{branch}/indices-close.html
+indices-close,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-close.html
 indices-open-close,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-open-close.html
 indices-create-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
