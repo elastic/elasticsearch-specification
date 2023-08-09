@@ -101,7 +101,7 @@ index-modules-blocks,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 indices-analyze,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html
 indices-clearcache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clearcache.html
 indices-clone-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-clone-index.html
-indices-close,https://www.elastic.co/guide/en/elasticsearch/reference{branch}/indices-close.html
+indices-close,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-close.html
 indices-open-close,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-open-close.html
 indices-create-index,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html
 data-streams,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/data-streams.html
