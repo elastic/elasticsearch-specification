@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, returns settings in flat format.
      * @server_default false
-     * 
+     *
      */
     flat_settings?: boolean
     /**
@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. 
+     * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */

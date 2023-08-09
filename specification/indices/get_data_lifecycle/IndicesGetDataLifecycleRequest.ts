@@ -29,8 +29,8 @@ import { ExpandWildcards, DataStreamNames } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams to limit the request. 
-     * Supports wildcards (`*`). 
+     * Comma-separated list of data streams to limit the request.
+     * Supports wildcards (`*`).
      * To target all data streams, omit this parameter or use `*` or `_all`.
      */
     name: DataStreamNames

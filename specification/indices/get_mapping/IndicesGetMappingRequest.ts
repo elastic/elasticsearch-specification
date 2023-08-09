@@ -22,7 +22,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Retrieves mapping definitions for one or more indices. 
+ * Retrieves mapping definitions for one or more indices.
  * For data streams, the API retrieves mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_mapping
  * @availability stack since=0.0.0 stability=stable
@@ -31,7 +31,7 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases used to limit the request. 
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
      * Supports wildcards (`*`).
      * To target all data streams and indices, omit this parameter or use `*` or `_all`.
      */
@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
      */
     local?: boolean
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */

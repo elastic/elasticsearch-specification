@@ -31,10 +31,10 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases used to limit the request. 
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
      * Supports wildcards (`*`).
-     * By default, you must explicitly name the indices you using to limit the request. 
-     * To limit a request using `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to false. 
+     * By default, you must explicitly name the indices you using to limit the request.
+     * To limit a request using `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to false.
      * You can update this setting in the `elasticsearch.yml` file or using the cluster update settings API.
      * @doc_id cluster-update-settings
      */
@@ -61,21 +61,21 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. 
+     * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     timeout?: Duration
     /**
-     * The number of shard copies that must be active before proceeding with the operation. 
+     * The number of shard copies that must be active before proceeding with the operation.
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
-     * @server_default 1 
+     * @server_default 1
      */
     wait_for_active_shards?: WaitForActiveShards
   }

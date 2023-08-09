@@ -22,39 +22,118 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /** @variants container */
 export class Action {
+  /**
+   * Adds a data stream or index to an alias.
+   * If the alias doesn’t exist, the `add` action creates it.
+   */
   add?: AddAction
+  /**
+   * Removes a data stream or index from an alias.
+   */
   remove?: RemoveAction
+  /**
+   * Deletes an index.
+   * You cannot use this action on aliases or data streams.
+   */
   remove_index?: RemoveIndexAction
 }
 
 export class AddAction {
+  /**
+   * Alias for the action.
+   * Index alias names support date math.
+   */
   alias?: IndexAlias
+  /**
+   * Aliases for the action.
+   * Index alias names support date math.
+   */
   aliases?: IndexAlias | IndexAlias[]
+  /**
+   * Query used to limit documents the alias can access.
+   */
   filter?: QueryContainer
+  /**
+   * Data stream or index for the action.
+   * Supports wildcards (`*`).
+   */
   index?: IndexName
+  /**
+   * Data streams or indices for the action.
+   * Supports wildcards (`*`).
+   */
   indices?: Indices
+  /**
+   * Value used to route indexing operations to a specific shard.
+   * If specified, this overwrites the `routing` value for indexing operations.
+   * Data stream aliases don’t support this parameter.
+   */
   index_routing?: Routing
-  /** @server_default false */
+  /**
+   * If `true`, the alias is hidden.
+   * @server_default false */
   is_hidden?: boolean
+  /**
+   * If `true`, sets the write index or data stream for the alias.
+   */
   is_write_index?: boolean
+  /**
+   * Value used to route indexing and search operations to a specific shard.
+   * Data stream aliases don’t support this parameter.
+   */
   routing?: Routing
+  /**
+   * Value used to route search operations to a specific shard.
+   * If specified, this overwrites the `routing` value for search operations.
+   * Data stream aliases don’t support this parameter.
+   */
   search_routing?: Routing
-  /** @server_default false */
+  /**
+   * If `true`, the alias must exist to perform the action.
+   * @server_default false */
   must_exist?: boolean
 }
 
 export class RemoveAction {
+  /**
+   * Alias for the action.
+   * Index alias names support date math.
+   */
   alias?: IndexAlias
+  /**
+   * Aliases for the action.
+   * Index alias names support date math.
+   */
   aliases?: IndexAlias | IndexAlias[]
+  /**
+   * Data stream or index for the action.
+   * Supports wildcards (`*`).
+   */
   index?: IndexName
+  /**
+   * Data streams or indices for the action.
+   * Supports wildcards (`*`).
+   */
   indices?: Indices
-  /** @server_default false */
+  /**
+   * If `true`, the alias must exist to perform the action.
+   * @server_default false */
   must_exist?: boolean
 }
 
 export class RemoveIndexAction {
+  /**
+   * Data stream or index for the action.
+   * Supports wildcards (`*`).
+   */
   index?: IndexName
+  /**
+   * Data streams or indices for the action.
+   * Supports wildcards (`*`).
+   */
   indices?: Indices
-  /** @server_default false */
+  /**
+   * If `true`, the alias must exist to perform the action.
+   * @server_default false */
   must_exist?: boolean
 }

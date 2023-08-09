@@ -30,7 +30,7 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of index template names used to limit the request. 
+     * Comma-separated list of index template names used to limit the request.
      * Wildcard (`*`) expressions are supported.
      * To return all index templates, omit this parameter or use a value of `_all` or `*`.
      */
@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
      */
     local?: boolean
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */

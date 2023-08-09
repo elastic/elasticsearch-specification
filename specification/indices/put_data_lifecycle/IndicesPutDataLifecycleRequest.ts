@@ -30,7 +30,7 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams used to limit the request. 
+     * Comma-separated list of data streams used to limit the request.
      * Supports wildcards (`*`).
      * To target all data streams use `*` or `_all`.
      */
@@ -38,8 +38,8 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Type of data stream that wildcard patterns can match. 
-     * Supports comma-separated values, such as `open,hidden`. 
+     * Type of data stream that wildcard patterns can match.
+     * Supports comma-separated values, such as `open,hidden`.
      * Valid values are: all, hidden, open, closed, none.
      * @server_default open
      */
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. 
+     * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
@@ -60,8 +60,8 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * If defined, every document added to this data stream will be stored at least for this time frame. 
-     * Any time after this duration the document could be deleted. 
+     * If defined, every document added to this data stream will be stored at least for this time frame.
+     * Any time after this duration the document could be deleted.
      * When empty, every document in this data stream will be stored indefinitely.
      */
     data_retention?: Duration

@@ -31,14 +31,14 @@ import { Duration } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated list of data streams or indices to add. 
-     * Supports wildcards (`*`). 
+     * Comma-separated list of data streams or indices to add.
+     * Supports wildcards (`*`).
      * Wildcard patterns that match both data streams and indices return an error.
      */
     index: Indices
     /**
-     * Alias to update. 
-     * If the alias doesn’t exist, the request creates it. 
+     * Alias to update.
+     * If the alias doesn’t exist, the request creates it.
      * Index alias names support date math.
      * @doc_id api-date-math-index-names
      */
@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node. 
+     * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /**
      * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s 
+     * @server_default 30s
      */
     timeout?: Duration
   }
@@ -65,7 +65,7 @@ export interface Request extends RequestBase {
     filter?: QueryContainer
     /**
      * Value used to route indexing operations to a specific shard.
-     * If specified, this overwrites the `routing` value for indexing operations. 
+     * If specified, this overwrites the `routing` value for indexing operations.
      * ata stream aliases don’t support this parameter.
      */
     index_routing?: Routing
