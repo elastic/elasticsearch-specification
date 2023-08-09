@@ -30,8 +30,8 @@ import { ExpandWildcards, Names } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve
-     *  Resources on remote clusters can be specified using the` <cluster>`:`<name>` syntax.
+     * Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.
+     * Resources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.
      */
     name: Names
   }

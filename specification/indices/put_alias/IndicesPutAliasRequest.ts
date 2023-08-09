@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
     /**
      * Value used to route indexing operations to a specific shard.
      * If specified, this overwrites the `routing` value for indexing operations.
-     * ata stream aliases don’t support this parameter.
+     * Data stream aliases don’t support this parameter.
      */
     index_routing?: Routing
     /**
