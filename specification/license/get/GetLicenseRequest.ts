@@ -24,6 +24,7 @@ import { RequestBase } from '@_types/Base'
  * For more information about the different types of licenses, see https://www.elastic.co/subscriptions.
  * @rest_spec_name license.get
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {

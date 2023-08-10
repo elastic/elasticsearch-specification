@@ -33,6 +33,7 @@ import { TrackHits } from '@global/search/_types/hits'
 /**
  * @rest_spec_name search_mvt
  * @availability stack since=7.15.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

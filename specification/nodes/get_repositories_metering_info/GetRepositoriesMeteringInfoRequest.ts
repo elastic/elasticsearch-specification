@@ -27,6 +27,7 @@ import { NodeIds } from '@_types/common'
  * API is volatile, meaning that it won’t be present after node restarts.
  * @rest_spec_name nodes.get_repositories_metering_info
  * @availability stack since=7.16.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {

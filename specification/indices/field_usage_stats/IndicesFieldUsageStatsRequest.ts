@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * Returns field usage information for each shard and field of an index.
  * @rest_spec_name indices.field_usage_stats
  * @availability stack since=7.15.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
