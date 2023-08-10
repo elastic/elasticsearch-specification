@@ -28,6 +28,7 @@ import { Duration, TimeZone } from '@_types/Time'
 /**
  * @rest_spec_name sql.query
  * @availability stack since=6.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {

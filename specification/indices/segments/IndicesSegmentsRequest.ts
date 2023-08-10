@@ -24,6 +24,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * For data streams, the API returns information about the stream’s backing indices.
  * @rest_spec_name indices.segments
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

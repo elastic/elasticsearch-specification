@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * @rest_spec_name tasks.get
  * @availability stack since=5.0.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
