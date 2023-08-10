@@ -21,9 +21,22 @@ import { VersionNumber } from '@_types/common'
 import { ProcessorContainer } from './Processors'
 
 export class Pipeline {
+  /**
+   * Description of the ingest pipeline.
+   */
   description?: string
+  /**
+   * Processors to run immediately after a processor failure.
+   */
   on_failure?: ProcessorContainer[]
+  /**
+   * Processors used to perform transformations on documents before indexing.
+   * Processors run sequentially in the order specified.
+   */
   processors?: ProcessorContainer[]
+  /**
+   * Version number used by external systems to track ingest pipelines.
+   */
   version?: VersionNumber
 }
 
@@ -42,7 +55,17 @@ export enum PipelineFailure {
 }
 
 export class PipelineConfig {
+  /**
+   * Description of the ingest pipeline.
+   */ 
   description?: string
+  /**
+   * Version number used by external systems to track ingest pipelines.
+   */ 
   version?: VersionNumber
+  /**
+   * Processors used to perform transformations on documents before indexing.
+   * Processors run sequentially in the order specified.
+   */
   processors: ProcessorContainer[]
 }

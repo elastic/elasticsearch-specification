@@ -39,8 +39,18 @@ export class PipelineSimulation {
 }
 
 export class Document {
+  /**
+   * Unique identifier for the document.
+   * This ID must be unique within the `_index`.
+   */
   _id?: Id
+  /**
+   * Name of the index containing the document.
+   */
   _index?: IndexName
+  /**
+   * JSON body for the document.
+   */
   _source: UserDefinedValue
 }
 

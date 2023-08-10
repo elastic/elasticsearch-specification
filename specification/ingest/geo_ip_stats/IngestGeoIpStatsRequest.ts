@@ -20,6 +20,8 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Gets download statistics for GeoIP2 databases used with the geoip processor.
+ * @doc_id geoip-processor
  * @rest_spec_name ingest.geo_ip_stats
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
