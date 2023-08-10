@@ -3071,12 +3071,11 @@ export interface AggregationsCompositeAggregation extends AggregationsBucketAggr
 
 export interface AggregationsCompositeAggregationBase {
   field?: Field
-  missing?: AggregationsMissing
-  missing_order?: AggregationsMissingOrder
   missing_bucket?: boolean
+  missing_order?: AggregationsMissingOrder
   script?: Script
-  value_type?: string
-  order: SortOrder
+  value_type?: AggregationsValueType
+  order?: SortOrder
 }
 
 export interface AggregationsCompositeAggregationSource {
@@ -3093,14 +3092,15 @@ export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
   & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
 
 export interface AggregationsCompositeDateHistogramAggregation extends AggregationsCompositeAggregationBase {
-  format: string
-  calendar_interval: DurationLarge
+  format?: string
+  calendar_interval?: DurationLarge
+  fixed_interval?: DurationLarge
   offset?: Duration
   time_zone?: TimeZone
 }
 
 export interface AggregationsCompositeGeoTileGridAggregation extends AggregationsCompositeAggregationBase {
-  precision: integer
+  precision?: integer
   bounds?: GeoBounds
 }
 

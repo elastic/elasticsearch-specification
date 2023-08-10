@@ -45,6 +45,7 @@ import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
 import { OverloadOf } from '@spec_utils/behaviors'
 import { Term } from '@global/termvectors/types'
+import { ValueType } from '@_types/aggregations/metric'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -154,13 +155,14 @@ export class CompositeAggregationSource {
 }
 
 export class CompositeAggregationBase {
+  /** Either `field` or `script` must be present */
   field?: Field
-  missing?: Missing
-  missing_order?: MissingOrder
   missing_bucket?: boolean
+  missing_order?: MissingOrder
+  /** Either `field` or `script` must be present */
   script?: Script
-  value_type?: string
-  order: SortOrder
+  value_type?: ValueType
+  order?: SortOrder
 }
 
 export class CompositeTermsAggregation extends CompositeAggregationBase {}
@@ -170,14 +172,17 @@ export class CompositeHistogramAggregation extends CompositeAggregationBase {
 }
 
 export class CompositeDateHistogramAggregation extends CompositeAggregationBase {
-  format: string
-  calendar_interval: DurationLarge
+  format?: string
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  calendar_interval?: DurationLarge
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  fixed_interval?: DurationLarge
   offset?: Duration
   time_zone?: TimeZone
 }
 
 export class CompositeGeoTileGridAggregation extends CompositeAggregationBase {
-  precision: integer
+  precision?: integer
   bounds?: GeoBounds
 }
 
