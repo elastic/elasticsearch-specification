@@ -10888,6 +10888,11 @@ export interface IndicesReloadSearchAnalyzersReloadDetails {
   reloaded_node_ids: string[]
 }
 
+export interface IndicesReloadSearchAnalyzersReloadResult {
+  reload_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
 export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -10895,10 +10900,7 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
   ignore_unavailable?: boolean
 }
 
-export interface IndicesReloadSearchAnalyzersResponse {
-  reload_details: IndicesReloadSearchAnalyzersReloadDetails[]
-  _shards: ShardStatistics
-}
+export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
 
 export interface IndicesResolveIndexRequest extends RequestBase {
   name: Names
@@ -17417,11 +17419,6 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
-export interface SynonymsReloadAnalyzersDetails {
-  _shard: ShardStatistics
-  reload_details: IndicesReloadSearchAnalyzersReloadDetails[]
-}
-
 export interface SynonymsSynonymRule {
   id?: Id
   synonyms: SynonymsSynonymString
@@ -17436,7 +17433,7 @@ export type SynonymsSynonymString = string
 
 export interface SynonymsSynonymsUpdateResult {
   result: Result
-  reload_analyzers_details: SynonymsReloadAnalyzersDetails
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadResult
 }
 
 export interface SynonymsDeleteSynonymRequest extends RequestBase {
