@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SynonymRule } from '../_types/SynonymRule'
+import { SynonymRuleRead } from '../_types/SynonymRule'
 
 export class Response {
-  body: SynonymRule
+  body: SynonymRuleRead
 }

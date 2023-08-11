@@ -17,8 +17,8 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { SynonymsSetUpdate } from '../_types/SynonymsSet'
+import { Id } from '@_types/common'
+import { SynonymRule } from '../_types/SynonymRule'
 
 /**
  * Creates or updates a synonym set.
@@ -31,11 +31,12 @@ interface Request extends RequestBase {
     /**
      * The id of the synonyms set to be created or updated
      */
-    id: Name
+    id: Id
   }
-  /**
-   * The synonym set information to update
-   */
-  /** @codegen_name synonym_set */
-  body: SynonymsSetUpdate
+  body: {
+    /**
+     * The synonym set information to update
+     */
+    synonyms_set: SynonymRule[]
+  }
 }

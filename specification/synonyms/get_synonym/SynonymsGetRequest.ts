@@ -17,8 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { SynonymsSet } from '../_types/SynonymsSet'
+import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -32,15 +31,17 @@ interface Request extends RequestBase {
     /**
      * "The id of the synonyms set to be retrieved
      */
-    id: Name
+    id: Id
   }
   query_parameters: {
     /**
-     * Starting offset for query rules to be retrieved (default: 0)
+     * Starting offset for query rules to be retrieved
+     * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of query rules to retrieve (default: 10)
+     * specifies a max number of query rules to retrieve
+     * @server_default 10
      */
     size?: integer
   }

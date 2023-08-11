@@ -29,11 +29,13 @@ import { integer } from '@_types/Numeric'
 interface Request extends RequestBase {
   query_parameters: {
     /**
-     * Starting offset (default: 0)
+     * Starting offset
+     * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of results to get (default: 10)
+     * specifies a max number of results to get
+     * @server_default 10
      */
     size?: integer
   }

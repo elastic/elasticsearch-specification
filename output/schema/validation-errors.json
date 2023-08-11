@@ -1391,20 +1391,6 @@
         "response definition synonyms.delete_synonym:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "synonyms.get_synonym": {
-      "request": [],
-      "response": [
-        "interface definition synonyms._types:SynonymsSetUpdate / Property 'synonymRules' / array_of / instance_of - Non-leaf type cannot be used here: 'synonyms._types:SynonymRuleOptionalId'",
-        "interface definition synonyms._types:SynonymsSet - Property 'synonymRules' is already defined in an ancestor class",
-        "interface definition synonyms._types:SynonymRule - Property 'id' is already defined in an ancestor class"
-      ]
-    },
-    "synonyms.put_synonym": {
-      "request": [
-        "request definition synonyms.put_synonym:Request / body / instance_of - Non-leaf type cannot be used here: 'synonyms._types:SynonymsSetUpdate'"
-      ],
-      "response": []
-    },
     "tasks.get": {
       "request": [],
       "response": [
