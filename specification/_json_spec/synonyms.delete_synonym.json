@@ -1,5 +1,5 @@
 {
-  "synonyms.delete": {
+  "synonyms.delete_synonym": {
     "documentation": {
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html",
       "description": "Deletes a synonym set"
@@ -7,17 +7,21 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": ["application/json"]
+      "accept": [
+        "application/json"
+      ]
     },
     "url": {
       "paths": [
         {
-          "path": "/_synonyms/{synonyms_set}",
-          "methods": ["DELETE"],
+          "path": "/_synonyms/{id}",
+          "methods": [
+            "DELETE"
+          ],
           "parts": {
-            "synonyms_set": {
+            "id": {
               "type": "string",
-              "description": "The name of the synonyms set to be deleted"
+              "description": "The id of the synonyms set to be deleted"
             }
           }
         }

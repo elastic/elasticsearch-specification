@@ -17417,32 +17417,6 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
-export interface SynonymRuleDeleteRequest extends RequestBase {
-  synonyms_set: Name
-  synonym_rule: Name
-}
-
-export type SynonymRuleDeleteResponse = SynonymsSynonymsUpdateResult
-
-export interface SynonymRuleGetRequest extends RequestBase {
-  synonyms_set: Name
-  synonym_rule: Name
-}
-
-export type SynonymRuleGetResponse = SynonymsSynonymRule
-
-export interface SynonymRulePutRequest extends RequestBase {
-  synonyms_set: Name
-  synonym_rule: Name
-  body?: SynonymRulePutSynonymRuleUpdate
-}
-
-export type SynonymRulePutResponse = SynonymsSynonymsUpdateResult
-
-export interface SynonymRulePutSynonymRuleUpdate {
-  synonyms: SynonymsSynonymString[]
-}
-
 export interface SynonymsSynonymRule extends SynonymsSynonymRuleOptionalId {
   id: Id
 }
@@ -17468,47 +17442,73 @@ export interface SynonymsSynonymsUpdateResult {
   _shards: ShardStatistics
 }
 
-export interface SynonymsDeleteRequest extends RequestBase {
-  synonyms_set: Name
+export interface SynonymsDeleteSynonymRequest extends RequestBase {
+  id: Name
 }
 
-export type SynonymsDeleteResponse = AcknowledgedResponseBase
+export type SynonymsDeleteSynonymResponse = AcknowledgedResponseBase
 
-export interface SynonymsGetRequest extends RequestBase {
-  synonyms_set: Name
+export interface SynonymsDeleteSynonymRuleRequest extends RequestBase {
+  set_id: Name
+  rule_id: Name
+}
+
+export type SynonymsDeleteSynonymRuleResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymsGetSynonymRequest extends RequestBase {
+  id: Name
   from?: integer
   size?: integer
 }
 
-export interface SynonymsGetResponse {
+export interface SynonymsGetSynonymResponse {
   count: integer
   synonyms_set: SynonymsSynonymsSet
 }
 
-export interface SynonymsPutRequest extends RequestBase {
+export interface SynonymsGetSynonymRuleRequest extends RequestBase {
+  set_id: Name
+  rule_id: Name
+}
+
+export type SynonymsGetSynonymRuleResponse = SynonymsSynonymRule
+
+export interface SynonymsGetSynonymsSetsRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsGetSynonymsSetsResponse {
+  count: integer
+  results: SynonymsGetSynonymsSetsSynonymsSetListItem[]
+}
+
+export interface SynonymsGetSynonymsSetsSynonymsSetListItem {
   synonyms_set: Name
+  count: integer
+}
+
+export interface SynonymsPutSynonymRequest extends RequestBase {
+  id: Name
   body?: SynonymsSynonymsSetUpdate
 }
 
-export interface SynonymsPutResponse {
+export interface SynonymsPutSynonymResponse {
   result: Result
   reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
   _shards: ShardStatistics
 }
 
-export interface SynonymsSetsGetRequest extends RequestBase {
-  from?: integer
-  size?: integer
+export interface SynonymsPutSynonymRuleRequest extends RequestBase {
+  set_id: Name
+  rule_id: Name
+  body?: SynonymsPutSynonymRuleSynonymRuleUpdate
 }
 
-export interface SynonymsSetsGetResponse {
-  count: integer
-  results: SynonymsSetsGetSynonymsSetListItem[]
-}
+export type SynonymsPutSynonymRuleResponse = SynonymsSynonymsUpdateResult
 
-export interface SynonymsSetsGetSynonymsSetListItem {
-  synonyms_set: Name
-  count: integer
+export interface SynonymsPutSynonymRuleSynonymRuleUpdate {
+  synonyms: SynonymsSynonymString[]
 }
 
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
