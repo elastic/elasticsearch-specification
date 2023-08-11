@@ -7,20 +7,14 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": [
-        "application/json"
-      ],
-      "content_type": [
-        "application/json"
-      ]
+      "accept": ["application/json"],
+      "content_type": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_synonyms/{set_id}/{rule_id}",
-          "methods": [
-            "GET"
-          ],
+          "methods": ["GET"],
           "parts": {
             "set_id": {
               "type": "string",
