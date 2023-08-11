@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Id } from '@_types/common'
 
 /**
  * Deletes a synonym rule in a synonym set
@@ -30,11 +30,11 @@ interface Request extends RequestBase {
     /**
      * The id of the synonym set to be updated
      */
-    set_id: Name
+    set_id: Id
 
     /**
      * The id of the synonym rule to be deleted
      */
-    rule_id: Name
+    rule_id: Id
   }
 }

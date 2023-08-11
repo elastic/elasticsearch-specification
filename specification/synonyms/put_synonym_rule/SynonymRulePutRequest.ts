@@ -17,8 +17,8 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { SynonymRule, SynonymString } from '../_types/SynonymRule'
+import { Id } from '@_types/common'
+import { SynonymString } from '../_types/SynonymRule'
 
 /**
  * Creates or updates a synonym rule in a synonym set
@@ -31,20 +31,17 @@ interface Request extends RequestBase {
     /**
      * The id of the synonym set to be updated with the synonym rule
      */
-    set_id: Name
+    set_id: Id
 
     /**
      * The id of the synonym rule to be updated or created
      */
-    rule_id: Name
+    rule_id: Id
   }
   /**
    * The synonym rule information to update
    */
-  /** @codegen_name synonyms */
-  body: SynonymRuleUpdate
-}
-
-export class SynonymRuleUpdate {
-  synonyms: SynonymString[]
+  body: {
+    synonyms: SynonymString[]
+  }
 }

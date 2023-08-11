@@ -18,20 +18,20 @@
  */
 
 import { integer } from '@_types/Numeric'
-import { Name } from '@_types/common'
+import { Id } from '@_types/common'
 
 export class Response {
   body: {
     count: integer
-    results: SynonymsSetListItem[]
+    results: SynonymsSetItem[]
   }
 }
 
-export class SynonymsSetListItem {
+export class SynonymsSetItem {
   /**
-   * Synonyms set name
+   * Synonyms set identifier
    */
-  synonyms_set: Name
+  synonyms_set: Id
   /**
    * Number of synonym rules that the synonym set contains
    */

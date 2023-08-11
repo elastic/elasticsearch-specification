@@ -17,8 +17,16 @@
  * under the License.
  */
 
+import { ShardStatistics } from '@_types/Stats'
+import { NodeId } from '@_types/common'
+
 export class ReloadDetails {
+  _shards: ShardStatistics
   index: string
+  reload_details: ReloadDetail[]
+}
+
+export class ReloadDetail {
   reloaded_analyzers: string[]
-  reloaded_node_ids: string[]
+  reloaded_node_ids: NodeId[]
 }

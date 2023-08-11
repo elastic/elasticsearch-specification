@@ -24,7 +24,6 @@ import { ShardStatistics } from '@_types/Stats'
 export class Response {
   body: {
     result: Result
-    reload_analyzers_details: ReloadDetails[]
-    _shards: ShardStatistics
+    reload_analyzers_details: ReloadDetails
   }
 }
