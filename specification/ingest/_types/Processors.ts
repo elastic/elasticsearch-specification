@@ -329,33 +329,96 @@ export class AttachmentProcessor extends ProcessorBase {
 }
 
 export class GeoIpProcessor extends ProcessorBase {
+  /**
+   * The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.
+   * @server_default GeoLite2-City.mmdb
+   */
   database_file?: string
+  /**
+   * The field to get the ip address from for the geographical lookup.
+   */
   field: Field
+  /**
+   * f `true` only first found geoip data will be returned, even if field contains array.
+   * @server_default true
+   */
   first_only?: boolean
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * Controls what properties are added to the `target_field` based on the geoip lookup.
+   */
   properties?: string[]
+  /**
+   * The field that will hold the geographical information looked up from the MaxMind database.
+   * @server_default geoip
+   */
   target_field?: Field
 }
 
 export class UserAgentProcessor extends ProcessorBase {
+  /**
+   * The field containing the user agent string.
+   */
   field: Field
+  /**
+   * 	If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
   options?: UserAgentProperty[]
+  /**
+   * The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the regexes.yaml from uap-core it ships with.
+   */
   regex_file?: string
+  /**
+   * 	The field that will be filled with the user agent details.
+   * @server_default user_agent
+   */
   target_field?: Field
 }
 
 export class BytesProcessor extends ProcessorBase {
+  /**
+   * The field to convert.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The field to assign the converted value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
 export class CircleProcessor extends ProcessorBase {
+  /**
+   * The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).
+   */
   error_distance: double
+  /**
+   * The field to interpret as a circle. Either a string in WKT format or a map for GeoJSON.
+   */
   field: Field
+  /**
+   * 	If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * 	Which field mapping type is to be used when processing the circle: `geo_shape` or `shape`.
+   */
   shape_type: ShapeType
+  /**
+   * 	The field to assign the polygon shape to, by default `field` is updated in-place.
+   */
   target_field?: Field
 }
 
@@ -370,23 +433,66 @@ export enum ConvertType {
 }
 
 export class ConvertProcessor extends ProcessorBase {
+  /**
+   * The field whose value is to be converted.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The field to assign the converted value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
+  /**
+   * The type to convert the existing value to.
+   */
   type: ConvertType
 }
 
 export class CsvProcessor extends ProcessorBase {
+  /**
+   * Value used to fill empty fields, empty fields will be skipped if this is not provided.
+   * Empty field is one with no value (2 consecutive separators) or empty quotes (`""`).
+   */
   empty_value?: UserDefinedValue
+  /**
+   * The field to extract data from.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   */
   ignore_missing?: boolean
+  /**
+   * Quote used in CSV, has to be single character string.
+   * @server_default "
+   */
   quote?: string
+  /**
+   * Separator used in CSV, has to be single character string.
+   * @server_default ,
+   */
   separator?: string
+  /**
+   * The array of fields to assign extracted values to.
+   */
   target_fields: Fields
+  /**
+   * Trim whitespaces in unquoted fields.
+   */
   trim?: boolean
 }
 
 export class DateIndexNameProcessor extends ProcessorBase {
+  /**
+   * An array of the expected date formats for parsing dates / timestamps in the document being preprocessed.
+   * Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N.
+   * @server_default yyyy-MM-dd'T'HH:mm:ss.SSSXX
+   */
   date_formats: string[]
   /**
    * How to round the date when formatting the date into the index name. Valid values are:
@@ -394,68 +500,213 @@ export class DateIndexNameProcessor extends ProcessorBase {
    * Supports template snippets.
    */
   date_rounding: string
+  /**
+   * The field to get the date or timestamp from.
+   */
   field: Field
+  /**
+   * The format to be used when printing the parsed date into the index name.
+   * A valid java time pattern is expected here.
+   * Supports template snippets.
+   * @server_default yyyy-MM-dd
+   */
   index_name_format?: string
+  /**
+   * A prefix of the index name to be prepended before the printed date.
+   * Supports template snippets.
+   */
   index_name_prefix?: string
+  /**
+   * The locale to use when parsing the date from the document being preprocessed, relevant when parsing month names or week days.
+   * @server_default ENGLISH
+   */
   locale?: string
+  /**
+   * The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.
+   * @server_default UTC
+   */
   timezone?: string
 }
 
 export class DateProcessor extends ProcessorBase {
+  /**
+   * The field to get the date from.
+   */
   field: Field
+  /**
+   * 	An array of the expected date formats.
+   * Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N.
+   */
   formats: string[]
+  /**
+   * The locale to use when parsing the date, relevant when parsing month names or week days.
+   * Supports template snippets.
+   * @server_default ENGLISH
+   */
   locale?: string
+  /**
+   * The field that will hold the parsed date.
+   * @server_default @timestamp
+   */
   target_field?: Field
+  /**
+   * The timezone to use when parsing the date.
+   * Supports template snippets.
+   * @server_default UTC
+   */
   timezone?: string
 }
 
 export class DissectProcessor extends ProcessorBase {
+  /**
+   * The character(s) that separate the appended fields.
+   * @server_default ""
+   */
   append_separator?: string
+  /**
+   * The field to dissect.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The pattern to apply to the field.
+   */
   pattern: string
 }
 
 export class DotExpanderProcessor extends ProcessorBase {
+  /**
+   * The field to expand into an object field.
+   * If set to `*`, all top-level fields will be expanded.
+   */
   field: Field
+  /**
+   * The field that contains the field to expand.
+   * Only required if the field to expand is part another object field, because the `field` option can only understand leaf fields.
+   */
   path?: string
 }
 
 export class DropProcessor extends ProcessorBase {}
 
 export class EnrichProcessor extends ProcessorBase {
+  /**
+   * 	The field in the input document that matches the policies match_field used to retrieve the enrichment data.
+   * Supports template snippets.
+   */
   field: Field
+  /**
+   * 	If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The maximum number of matched documents to include under the configured target field.
+   * The `target_field` will be turned into a json array if `max_matches` is higher than 1, otherwise `target_field` will become a json object.
+   * In order to avoid documents getting too large, the maximum allowed value is 128.
+   * @server_default 1
+   */
   max_matches?: integer
+  /**
+   * If processor will update fields with pre-existing non-null-valued field.
+   * When set to `false`, such fields will not be touched.
+   * @server_default true
+   */
   override?: boolean
+  /**
+   * The name of the enrich policy to use.
+   */
   policy_name: string
+  /**
+   * A spatial relation operator used to match the geoshape of incoming documents to documents in the enrich index.
+   * This option is only used for `geo_match` enrich policy types.
+   * @server_default INTERSECTS
+   */
   shape_relation?: GeoShapeRelation
+  /**
+   * Field added to incoming documents to contain enrich data. This field contains both the `match_field` and `enrich_fields` specified in the enrich policy.
+   * Supports template snippets.
+   */
   target_field: Field
 }
 
 export class FailProcessor extends ProcessorBase {
+  /**
+   * The error message thrown by the processor.
+   * Supports template snippets.
+   */
   message: string
 }
 
 export class ForeachProcessor extends ProcessorBase {
+  /**
+   * Field containing array or object values.
+   */
   field: Field
+  /**
+   * If `true`, the processor silently exits without changing the document if the `field` is `null` or missing.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * Ingest processor to run on each element.
+   */
   processor: ProcessorContainer
 }
 
 export class GrokProcessor extends ProcessorBase {
+  /**
+   * The field to use for grok expression parsing.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * 	A map of pattern-name and pattern tuples defining custom patterns to be used by the current processor.
+   * Patterns matching existing names will override the pre-existing definition.
+   */
   pattern_definitions?: Dictionary<string, string>
+  /**
+   * 	An ordered list of grok expression to match and extract named captures with.
+   * Returns on the first expression in the list that matches.
+   */
   patterns: string[]
+  /**
+   * When `true`, `_ingest._grok_match_index` will be inserted into your matched document’s metadata with the index into the pattern found in `patterns` that matched.
+   * @server_default false
+   */
   trace_match?: boolean
 }
 
 export class GsubProcessor extends ProcessorBase {
+  /**
+   * The field to apply the replacement to.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The pattern to be replaced.
+   */
   pattern: string
+  /**
+   * The string to replace the matching patterns with.
+   */
   replacement: string
+  /**
+   * The field to assign the converted value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
