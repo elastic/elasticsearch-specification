@@ -10882,15 +10882,10 @@ export interface IndicesRefreshRequest extends RequestBase {
 
 export type IndicesRefreshResponse = ShardsOperationResponseBase
 
-export interface IndicesReloadSearchAnalyzersReloadDetail {
-  reloaded_analyzers: string[]
-  reloaded_node_ids: NodeId[]
-}
-
 export interface IndicesReloadSearchAnalyzersReloadDetails {
-  _shards: ShardStatistics
   index: string
-  reload_details: IndicesReloadSearchAnalyzersReloadDetail[]
+  reloaded_analyzers: string[]
+  reloaded_node_ids: string[]
 }
 
 export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
@@ -17422,6 +17417,11 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export interface SynonymsReloadAnalyzersDetails {
+  _shard: ShardStatistics
+  reload_details: IndicesReloadSearchAnalyzersReloadDetails[]
+}
+
 export interface SynonymsSynonymRule {
   id?: Id
   synonyms: SynonymsSynonymString
@@ -17436,7 +17436,7 @@ export type SynonymsSynonymString = string
 
 export interface SynonymsSynonymsUpdateResult {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails
+  reload_analyzers_details: SynonymsReloadAnalyzersDetails
 }
 
 export interface SynonymsDeleteSynonymRequest extends RequestBase {

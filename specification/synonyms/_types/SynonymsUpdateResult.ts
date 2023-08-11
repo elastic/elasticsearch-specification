@@ -31,5 +31,10 @@ export class SynonymsUpdateResult {
    * Updating synonyms in a synonym set reloads the associated analyzers.
    * This is the analyzers reloading result
    */
-  reload_analyzers_details: ReloadDetails
+  reload_analyzers_details: ReloadAnalyzersDetails
+}
+
+export class ReloadAnalyzersDetails {
+  _shard: ShardStatistics
+  reload_details: ReloadDetails[]
 }
