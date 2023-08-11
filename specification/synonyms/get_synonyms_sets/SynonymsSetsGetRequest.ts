@@ -18,33 +18,23 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { SynonymRule, SynonymString } from '../../synonyms/_types/SynonymRule'
+import { integer } from '@_types/Numeric'
 
 /**
- * Creates or updates a synonym rule in a synonym set
- * @rest_spec_name synonym_rule.put
+ * Retrieves a summary of all defined synonym sets
+ * @rest_spec_name synonyms.get_synonyms_sets
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
-  path_parts: {
+  query_parameters: {
     /**
-     * The id of the synonym set to be updated with the synonym rule
+     * Starting offset (default: 0)
      */
-    synonyms_set: Name
-
+    from?: integer
     /**
-     * The id of the synonym rule to be updated or created
+     * specifies a max number of results to get (default: 10)
      */
-    synonym_rule: Name
+    size?: integer
   }
-  /**
-   * The synonym rule information to update
-   */
-  /** @codegen_name synonyms */
-  body: SynonymRuleUpdate
-}
-
-export class SynonymRuleUpdate {
-  synonyms: SynonymString[]
 }

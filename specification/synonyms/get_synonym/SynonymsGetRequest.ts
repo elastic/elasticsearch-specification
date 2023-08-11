@@ -16,9 +16,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { SynonymsSet } from '../_types/SynonymsSet'
+import { integer } from '@_types/Numeric'
 
-import { SynonymsUpdateResult } from '../../synonyms/_types/SynonymsUpdateResult'
-
-export class Response {
-  body: SynonymsUpdateResult
+/**
+ * Retrieves a synonym set
+ * @rest_spec_name synonyms.get_synonym
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * "The id of the synonyms set to be retrieved
+     */
+    id: Name
+  }
+  query_parameters: {
+    /**
+     * Starting offset for query rules to be retrieved (default: 0)
+     */
+    from?: integer
+    /**
+     * specifies a max number of query rules to retrieve (default: 10)
+     */
+    size?: integer
+  }
 }

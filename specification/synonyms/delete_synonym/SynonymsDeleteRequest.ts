@@ -18,30 +18,18 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { SynonymsSet } from '../_types/SynonymsSet'
-import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves a synonym set
- * @rest_spec_name synonyms.get
+ * Deletes a synonym set
+ * @rest_spec_name synonyms.delete_synonym
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {
     /**
-     * "The name of the synonyms set to be retrieved
+     * The id of the synonyms set to be deleted
      */
-    synonyms_set: Name
-  }
-  query_parameters: {
-    /**
-     * Starting offset for query rules to be retrieved (default: 0)
-     */
-    from?: integer
-    /**
-     * specifies a max number of query rules to retrieve (default: 10)
-     */
-    size?: integer
+    id: Name
   }
 }
