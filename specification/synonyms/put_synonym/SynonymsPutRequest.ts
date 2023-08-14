@@ -16,24 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { SynonymRule } from '../_types/SynonymRule'
 
-import { integer } from '@_types/Numeric'
-import { Name } from '@_types/common'
-
-export class Response {
-  body: {
-    count: integer
-    results: SynonymsSetListItem[]
+/**
+ * Creates or updates a synonym set.
+ * @rest_spec_name synonyms.put_synonym
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The id of the synonyms set to be created or updated
+     */
+    id: Id
   }
-}
-
-export class SynonymsSetListItem {
-  /**
-   * Synonyms set name
-   */
-  synonyms_set: Name
-  /**
-   * Number of synonym rules that the synonym set contains
-   */
-  count: integer
+  body: {
+    /**
+     * The synonym set information to update
+     */
+    synonyms_set: SynonymRule[]
+  }
 }

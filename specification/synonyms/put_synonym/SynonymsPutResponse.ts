@@ -16,25 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
-/**
- * Retrieves a summary of all defined synonym sets
- * @rest_spec_name synonyms_sets.get
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- */
-interface Request extends RequestBase {
-  query_parameters: {
-    /**
-     * Starting offset (default: 0)
-     */
-    from?: integer
-    /**
-     * specifies a max number of results to get (default: 10)
-     */
-    size?: integer
+import { Result } from '@_types/Result'
+import { ReloadDetails } from '@indices/reload_search_analyzers/types'
+import { ShardStatistics } from '@_types/Stats'
+
+export class Response {
+  body: {
+    result: Result
+    reload_analyzers_details: ReloadDetails
   }
 }
