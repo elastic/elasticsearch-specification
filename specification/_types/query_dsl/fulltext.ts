@@ -29,7 +29,7 @@ import { Script } from '@_types/Scripting'
 import { QueryBase } from './abstractions'
 import { Operator } from './Operator'
 import { DateMath, TimeZone } from '@_types/Time'
-import { FlagsEnum } from '@spec_utils/FlagsEnum'
+import { FlagsEnum, PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 
 /**
  * @shortcut_property query
@@ -703,7 +703,7 @@ export class QueryStringQuery extends QueryBase {
  * Query flags can be either a single flag or a combination of flags, e.g. `OR|AND|PREFIX`
  * @doc_id supported-flags
  */
-export type SimpleQueryStringFlags = FlagsEnum<SimpleQueryStringFlag[]>
+export type SimpleQueryStringFlags = PipeSeparatedFlags<SimpleQueryStringFlag>
 
 export enum SimpleQueryStringFlag {
   /**
@@ -722,7 +722,6 @@ export enum SimpleQueryStringFlag {
    * Enables the `\|` OR operator.
    */
   OR = 1 << 2,
-  
   /**
    * Enables the `*` prefix operator.
    */

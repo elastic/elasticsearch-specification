@@ -18,10 +18,10 @@
  */
 
 /**
- * This type type marks the underlaying enum as a "flags enum". Individual members of flags enums
- * are combined using the pipe separator ("A|B|C|...").
+ * A set of flags that can be represented as a single enum value or a set of values that are encoded
+ * as a pipe-separated string
  *
  * Depending on the target language, code generators can use this hint to generate language specific
  * flags enum constructs and the corresponding (de-)serialization code.
  */
-export type FlagsEnum<T> = T
+export type PipeSeparatedFlags<T> = T | string
