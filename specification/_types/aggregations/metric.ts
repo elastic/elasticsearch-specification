@@ -341,7 +341,7 @@ export class TopHitsAggregation extends MetricAggregationBase {
   docvalue_fields?: Fields
   /**
    * If `true`, returns detailed information about score computation as part of a hit.
-   * @server_default false.
+   * @server_default false
    */
   explain?: boolean
   /**
