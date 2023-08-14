@@ -78,7 +78,7 @@ export class DocumentSimulation
    */
   _source: Dictionary<string, UserDefinedValue>
   /**
-   * 
+   *
    */
   _version?: Stringified<VersionNumber>
   _version_type?: VersionType

@@ -94,7 +94,7 @@ export class ProcessorContainer {
    */
   json?: JsonProcessor
   /**
-   * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests. 
+   * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.
    * This processor adds this information by default under the `user_agent` field.
    * @doc_id user-agent-processor
    */
@@ -491,7 +491,6 @@ export class DateIndexNameProcessor extends ProcessorBase {
   /**
    * An array of the expected date formats for parsing dates / timestamps in the document being preprocessed.
    * Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N.
-   * @server_default yyyy-MM-dd'T'HH:mm:ss.SSSXX
    */
   date_formats: string[]
   /**
@@ -546,7 +545,7 @@ export class DateProcessor extends ProcessorBase {
   locale?: string
   /**
    * The field that will hold the parsed date.
-   * @server_default @timestamp
+   * @server_default `@timestamp`
    */
   target_field?: Field
   /**
@@ -761,7 +760,7 @@ export class InferenceConfigRegression {
 export class InferenceConfigClassification {
   /**
    * Specifies the number of top class predictions to return.
-   * @server_default 0 
+   * @server_default 0
    */
   num_top_classes?: integer
   /**
@@ -843,7 +842,6 @@ export enum JsonProcessorConflictStrategy {
 export class KeyValueProcessor extends ProcessorBase {
   /**
    * List of keys to exclude from document.
-   * @server_default null
    */
   exclude_keys?: string[]
   /**
@@ -863,7 +861,6 @@ export class KeyValueProcessor extends ProcessorBase {
   /**
    * List of keys to filter and insert into document.
    * Defaults to including all keys.
-   * @server_default null
    */
   include_keys?: string[]
   /**

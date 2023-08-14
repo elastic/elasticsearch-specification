@@ -57,11 +57,11 @@ export enum PipelineFailure {
 export class PipelineConfig {
   /**
    * Description of the ingest pipeline.
-   */ 
+   */
   description?: string
   /**
    * Version number used by external systems to track ingest pipelines.
-   */ 
+   */
   version?: VersionNumber
   /**
    * Processors used to perform transformations on documents before indexing.
