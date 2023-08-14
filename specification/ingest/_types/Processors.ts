@@ -154,7 +154,7 @@ export class ProcessorContainer {
    */
   script?: Script
   /**
-   * Sets one field and associates it with the specified value.
+   * Adds a field with the specified value.
    * If the field already exists, its value will be replaced with the provided one.
    * @doc_id set-processor
    */
@@ -173,7 +173,7 @@ export class ProcessorContainer {
    */
   split?: SplitProcessor
   /**
-   * Trims whitespace from field.
+   * Trims whitespace from a field.
    * If the field is an array of strings, all members of the array will be trimmed.
    * This only works on leading and trailing whitespace.
    * @doc_id trim-processor
@@ -192,7 +192,7 @@ export class ProcessorContainer {
    */
   urldecode?: UrlDecodeProcessor
   /**
-   * Converts a human readable byte value (e.g. 1kb) to its value in bytes (e.g. 1024).
+   * Converts a human readable byte value (for example `1kb`) to its value in bytes (for example `1024`).
    * If the field is an array of strings, all members of the array will be converted.
    * Supported human readable units are "b", "kb", "mb", "gb", "tb", "pb" case insensitive.
    * An error will occur if the field is not a supported format or resultant value exceeds 2^63.
@@ -200,10 +200,7 @@ export class ProcessorContainer {
    */
   bytes?: BytesProcessor
   /**
-   * Similar to the Grok Processor, dissect also extracts structured fields out of a single text field within a document.
-   * However unlike the Grok Processor, dissect does not use Regular Expressions.
-   * This allows dissect’s syntax to be simple and for some cases faster than the Grok Processor.
-   * Dissect matches a single text field against a defined pattern.
+   * Extracts structured fields out of a single text field by matching the text field against a delimiter-based pattern.
    * @doc_id dissect-processor
    */
   dissect?: DissectProcessor
@@ -339,7 +336,7 @@ export class GeoIpProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * f `true` only first found geoip data will be returned, even if field contains array.
+   * If `true`, only the first found geoip data will be returned, even if the field contains an array.
    * @server_default true
    */
   first_only?: boolean
@@ -365,17 +362,17 @@ export class UserAgentProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * 	If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
    * @server_default false
    */
   ignore_missing?: boolean
   options?: UserAgentProperty[]
   /**
-   * The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the regexes.yaml from uap-core it ships with.
+   * The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.
    */
   regex_file?: string
   /**
-   * 	The field that will be filled with the user agent details.
+   * The field that will be filled with the user agent details.
    * @server_default user_agent
    */
   target_field?: Field
@@ -392,7 +389,8 @@ export class BytesProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
-   * The field to assign the converted value to, by default `field` is updated in-place.
+   * The field to assign the converted value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -408,16 +406,17 @@ export class CircleProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * 	If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
    * @server_default false
    */
   ignore_missing?: boolean
   /**
-   * 	Which field mapping type is to be used when processing the circle: `geo_shape` or `shape`.
+   * Which field mapping type is to be used when processing the circle: `geo_shape` or `shape`.
    */
   shape_type: ShapeType
   /**
-   * 	The field to assign the polygon shape to, by default `field` is updated in-place.
+   * The field to assign the polygon shape to
+   * By default, the field is updated in-place.
    */
   target_field?: Field
 }
@@ -443,7 +442,8 @@ export class ConvertProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
-   * The field to assign the converted value to, by default `field` is updated in-place.
+   * The field to assign the converted value to.
+   * By default, the `field` is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -455,8 +455,9 @@ export class ConvertProcessor extends ProcessorBase {
 
 export class CsvProcessor extends ProcessorBase {
   /**
-   * Value used to fill empty fields, empty fields will be skipped if this is not provided.
-   * Empty field is one with no value (2 consecutive separators) or empty quotes (`""`).
+   * Value used to fill empty fields.
+   * Empty fields are skipped if this is not provided.
+   * An empty field is one with no value (2 consecutive separators) or empty quotes (`""`).
    */
   empty_value?: UserDefinedValue
   /**
@@ -533,7 +534,7 @@ export class DateProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * 	An array of the expected date formats.
+   * An array of the expected date formats.
    * Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N.
    */
   formats: string[]
@@ -594,12 +595,12 @@ export class DropProcessor extends ProcessorBase {}
 
 export class EnrichProcessor extends ProcessorBase {
   /**
-   * 	The field in the input document that matches the policies match_field used to retrieve the enrichment data.
+   * The field in the input document that matches the policies match_field used to retrieve the enrichment data.
    * Supports template snippets.
    */
   field: Field
   /**
-   * 	If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
    * @server_default false
    */
   ignore_missing?: boolean
@@ -668,12 +669,12 @@ export class GrokProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
-   * 	A map of pattern-name and pattern tuples defining custom patterns to be used by the current processor.
+   * A map of pattern-name and pattern tuples defining custom patterns to be used by the current processor.
    * Patterns matching existing names will override the pre-existing definition.
    */
   pattern_definitions?: Dictionary<string, string>
   /**
-   * 	An ordered list of grok expression to match and extract named captures with.
+   * An ordered list of grok expression to match and extract named captures with.
    * Returns on the first expression in the list that matches.
    */
   patterns: string[]
@@ -703,7 +704,8 @@ export class GsubProcessor extends ProcessorBase {
    */
   replacement: string
   /**
-   * The field to assign the converted value to, by default `field` is updated in-place.
+   * The field to assign the converted value to
+   * By default, the `field` is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -795,7 +797,8 @@ export class JoinProcessor extends ProcessorBase {
    */
   separator: string
   /**
-   * The field to assign the joined value to, by default field is updated in-place.
+   * The field to assign the joined value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -904,7 +907,8 @@ export class LowercaseProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
-   * The field to assign the converted value to, by default field is updated in-place.
+   * The field to assign the converted value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -961,7 +965,7 @@ export class ScriptProcessor extends ProcessorBase {
   id?: Id
   /**
    * Script language.
-   * @server_default "painless"
+   * @server_default painless
    */
   lang?: string
   /**
@@ -1035,11 +1039,12 @@ export class SortProcessor extends ProcessorBase {
   /**
    * The sort order to use.
    * Accepts `"asc"` or `"desc"`.
-   * @server_default "asc"
+   * @server_default asc
    */
   order?: SortOrder
   /**
-   * The field to assign the sorted value to, by default `field` is updated in-place.
+   * The field to assign the sorted value to.
+   * By default, the field is updated in-place.
    */
   target_field?: Field
 }
@@ -1064,7 +1069,8 @@ export class SplitProcessor extends ProcessorBase {
    */
   separator: string
   /**
-   * The field to assign the split value to, by default `field` is updated in-place.
+   * The field to assign the split value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -1081,7 +1087,8 @@ export class TrimProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
-   * The field to assign the trimmed value to, by default `field` is updated in-place.
+   * The field to assign the trimmed value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -1098,7 +1105,8 @@ export class UppercaseProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
-   * 	The field to assign the converted value to, by default `field` is updated in-place.
+   * The field to assign the converted value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
@@ -1115,7 +1123,8 @@ export class UrlDecodeProcessor extends ProcessorBase {
    */
   ignre_missing?: boolean
   /**
-   * The field to assign the converted value to, by default `field` is updated in-place.
+   * The field to assign the converted value to.
+   * By default, the field is updated in-place.
    * @server_default field
    */
   target_field?: Field
