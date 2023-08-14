@@ -711,9 +711,23 @@ export class GsubProcessor extends ProcessorBase {
 }
 
 export class InferenceProcessor extends ProcessorBase {
+  /**
+   * The ID or alias for the trained model, or the ID of the deployment.
+   */
   model_id: Id
+  /**
+   * Field added to incoming documents to contain results objects.
+   * @server_default ml.inference.<processor_tag>
+   */
   target_field?: Field
+  /**
+   * Maps the document field names to the known field names of the model.
+   * This mapping takes precedence over any default mappings provided in the model configuration.
+   */
   field_map?: Dictionary<Field, UserDefinedValue>
+  /**
+   * Contains the inference type and its options.
+   */
   inference_config?: InferenceConfig
 }
 
@@ -721,34 +735,101 @@ export class InferenceProcessor extends ProcessorBase {
  * @variants container
  */
 export class InferenceConfig {
+  /**
+   * Regression configuration for inference.
+   */
   regression?: InferenceConfigRegression
+  /**
+   * Classification configuration for inference.
+   */
   classification?: InferenceConfigClassification
 }
 
 export class InferenceConfigRegression {
+  /**
+   * The field that is added to incoming documents to contain the inference prediction.
+   * @server_default <dependent_variable>_prediction
+   */
   results_field?: Field
+  /**
+   * Specifies the maximum number of feature importance values per document.
+   * @server_default 0
+   */
   num_top_feature_importance_values?: integer
 }
 
 export class InferenceConfigClassification {
+  /**
+   * Specifies the number of top class predictions to return.
+   * @server_default 0 
+   */
   num_top_classes?: integer
+  /**
+   * Specifies the maximum number of feature importance values per document.
+   * @server_default 0
+   */
   num_top_feature_importance_values?: integer
+  /**
+   * The field that is added to incoming documents to contain the inference prediction.
+   * @server_default <dependent_variable>_prediction
+   */
   results_field?: Field
+  /**
+   * Specifies the field to which the top classes are written.
+   * @server_default top_classes
+   */
   top_classes_results_field?: Field
+  /**
+   * Specifies the type of the predicted field to write.
+   * Valid values are: `string`, `number`, `boolean`.
+   */
   prediction_field_type?: string
 }
 
 export class JoinProcessor extends ProcessorBase {
+  /**
+   * Field containing array values to join.
+   */
   field: Field
+  /**
+   * The separator character.
+   */
   separator: string
+  /**
+   * The field to assign the joined value to, by default field is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
 export class JsonProcessor extends ProcessorBase {
+  /**
+   * Flag that forces the parsed JSON to be added at the top level of the document.
+   * `target_field` must not be set when this option is chosen.
+   * @server_default false
+   */
   add_to_root?: boolean
+  /**
+   * When set to `replace`, root fields that conflict with fields from the parsed JSON will be overridden.
+   * When set to `merge`, conflicting fields will be merged.
+   * Only applicable `if add_to_root` is set to true.
+   */
   add_to_root_conflict_strategy?: JsonProcessorConflictStrategy
+  /**
+   * When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.
+   * Instead, the last encountered value for any duplicate key wins.
+   * @server_default false
+   */
   allow_duplicate_keys?: boolean
+  /**
+   * The field to be parsed.
+   */
   field: Field
+  /**
+   * The field that the converted structured object will be written into.
+   * Any existing content in this field will be overwritten.
+   * @server_default field
+   */
   target_field?: Field
 }
 
@@ -760,59 +841,187 @@ export enum JsonProcessorConflictStrategy {
 }
 
 export class KeyValueProcessor extends ProcessorBase {
+  /**
+   * List of keys to exclude from document.
+   * @server_default null
+   */
   exclude_keys?: string[]
+  /**
+   * The field to be parsed.
+   * Supports template snippets.
+   */
   field: Field
+  /**
+   * Regex pattern to use for splitting key-value pairs.
+   */
   field_split: string
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * List of keys to filter and insert into document.
+   * Defaults to including all keys.
+   * @server_default null
+   */
   include_keys?: string[]
+  /**
+   * Prefix to be added to extracted keys.
+   * @server_default null
+   */
   prefix?: string
+  /**
+   * If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `"` from extracted values.
+   * @server_default false
+   */
   strip_brackets?: boolean
+  /**
+   * The field to insert the extracted keys into.
+   * Defaults to the root of the document.
+   * Supports template snippets.
+   */
   target_field?: Field
+  /**
+   * String of characters to trim from extracted keys.
+   */
   trim_key?: string
+  /**
+   * String of characters to trim from extracted values.
+   */
   trim_value?: string
+  /**
+   * Regex pattern to use for splitting the key from the value within a key-value pair.
+   */
   value_split: string
 }
 
 export class LowercaseProcessor extends ProcessorBase {
+  /**
+   * The field to make lowercase.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The field to assign the converted value to, by default field is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
 export class PipelineProcessor extends ProcessorBase {
+  /**
+   * The name of the pipeline to execute.
+   * Supports template snippets.
+   */
   name: Name
+  /**
+   * Whether to ignore missing pipelines instead of failing.
+   * @server_default false
+   */
   ignore_missing_pipeline?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {
+  /**
+   * Fields to be removed. Supports template snippets.
+   */
   field: Fields
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
 }
 
 export class RenameProcessor extends ProcessorBase {
+  /**
+   * The field to be renamed.
+   * Supports template snippets.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The new name of the field.
+   * Supports template snippets.
+   */
   target_field: Field
 }
 
 export class ScriptProcessor extends ProcessorBase {
+  /**
+   * ID of a stored script.
+   * If no `source` is specified, this parameter is required.
+   */
   id?: Id
+  /**
+   * Script language.
+   * @server_default "painless"
+   */
   lang?: string
+  /**
+   * Object containing parameters for the script.
+   */
   params?: Dictionary<string, UserDefinedValue>
+  /**
+   * Inline script.
+   * If no `id` is specified, this parameter is required.
+   */
   source?: string
 }
 
 export class SetProcessor extends ProcessorBase {
+  /**
+   * The origin field which will be copied to `field`, cannot set `value` simultaneously.
+   * Supported data types are `boolean`, `number`, `array`, `object`, `string`, `date`, etc.
+   */
   copy_from?: Field
+  /**
+   * The field to insert, upsert, or update.
+   * Supports template snippets.
+   */
   field: Field
+  /**
+   * If `true` and `value` is a template snippet that evaluates to `null` or the empty string, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_empty_value?: boolean
+  /**
+   * The media type for encoding `value`.
+   * Applies only when value is a template snippet.
+   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   */
   media_type?: string
+  /**
+   * If `true` processor will update fields with pre-existing non-null-valued field.
+   * When set to `false`, such fields will not be touched.
+   * @server_default true
+   */
   override?: boolean
+  /**
+   * The value to be set for the field.
+   * Supports template snippets.
+   * May specify only one of `value` or `copy_from`.
+   */
   value?: UserDefinedValue
 }
 
 export class SetSecurityUserProcessor extends ProcessorBase {
+  /**
+   * The field to store the user information into.
+   */
   field: Field
+  /**
+   * Controls what user related properties are added to the field.
+   */
   properties?: string[]
 }
 
@@ -822,33 +1031,95 @@ export enum ShapeType {
 }
 
 export class SortProcessor extends ProcessorBase {
+  /**
+   * The field to be sorted.
+   */
   field: Field
+  /**
+   * The sort order to use.
+   * Accepts `"asc"` or `"desc"`.
+   * @server_default "asc"
+   */
   order?: SortOrder
+  /**
+   * The field to assign the sorted value to, by default `field` is updated in-place.
+   */
   target_field?: Field
 }
 
 export class SplitProcessor extends ProcessorBase {
+  /**
+   * The field to split.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * Preserves empty trailing fields, if any.
+   * @server_default false
+   */
   preserve_trailing?: boolean
+  /**
+   * A regex which matches the separator, for example, `,` or `\s+`.
+   */
   separator: string
+  /**
+   * The field to assign the split value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
 export class TrimProcessor extends ProcessorBase {
+  /**
+   * The string-valued field to trim whitespace from.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * The field to assign the trimmed value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
 export class UppercaseProcessor extends ProcessorBase {
+  /**
+   * The field to make uppercase.
+   */
   field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
   ignore_missing?: boolean
+  /**
+   * 	The field to assign the converted value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
 
 export class UrlDecodeProcessor extends ProcessorBase {
+  /**
+   * The field to decode.
+   */
   field: Field
-  ignore_missing?: boolean
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignre_missing?: boolean
+  /**
+   * The field to assign the converted value to, by default `field` is updated in-place.
+   * @server_default field
+   */
   target_field?: Field
 }
