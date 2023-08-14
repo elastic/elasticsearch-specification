@@ -16,9 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
-import { SynonymsUpdateResult } from '../../synonyms/_types/SynonymsUpdateResult'
-
-export class Response {
-  body: SynonymsUpdateResult
+/**
+ * Deletes a synonym set
+ * @rest_spec_name synonyms.delete_synonym
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The id of the synonyms set to be deleted
+     */
+    id: Id
+  }
 }

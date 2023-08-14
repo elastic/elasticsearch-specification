@@ -17,14 +17,8 @@
  * under the License.
  */
 
-import { Result } from '@_types/Result'
-import { ReloadDetails } from '@indices/reload_search_analyzers/types'
-import { ShardStatistics } from '@_types/Stats'
+import { SynonymsUpdateResult } from '../_types/SynonymsUpdateResult'
 
 export class Response {
-  body: {
-    result: Result
-    reload_analyzers_details: ReloadDetails[]
-    _shards: ShardStatistics
-  }
+  body: SynonymsUpdateResult
 }

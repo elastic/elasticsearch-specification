@@ -17,25 +17,24 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { SynonymsSetUpdate } from '../_types/SynonymsSet'
+import { Id } from '@_types/common'
 
 /**
- * Creates or updates a synonym set.
- * @rest_spec_name synonyms.put
+ * Deletes a synonym rule in a synonym set
+ * @rest_spec_name synonyms.delete_synonym_rule
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
 interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the synonyms set to be created or updated
+     * The id of the synonym set to be updated
      */
-    synonyms_set: Name
+    set_id: Id
+
+    /**
+     * The id of the synonym rule to be deleted
+     */
+    rule_id: Id
   }
-  /**
-   * The synonym set information to update
-   */
-  /** @codegen_name synonym_set */
-  body: SynonymsSetUpdate
 }

@@ -16,25 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
-/**
- * Retrieves a synonym rule from a synonym set
- * @rest_spec_name synonym_rule.get
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- */
-interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The id of the synonym set to retrieve the synonym rule from
-     */
-    synonyms_set: Name
+import { SynonymsUpdateResult } from '../_types/SynonymsUpdateResult'
 
-    /**
-     * The id of the synonym rule to retrieve
-     */
-    synonym_rule: Name
-  }
+export class Response {
+  body: SynonymsUpdateResult
 }

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { ShardStatistics } from '@_types/Stats'
-import { ReloadDetails } from './types'
+import { ReloadResult } from './types'
 
 export class Response {
-  body: { reload_details: ReloadDetails[]; _shards: ShardStatistics }
+  body: ReloadResult
 }
