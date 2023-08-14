@@ -11692,7 +11692,7 @@ export interface IngestUppercaseProcessor extends IngestProcessorBase {
 
 export interface IngestUrlDecodeProcessor extends IngestProcessorBase {
   field: Field
-  ignore_missing?: boolean
+  ignre_missing?: boolean
   target_field?: Field
 }
 
