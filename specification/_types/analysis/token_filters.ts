@@ -188,7 +188,7 @@ export class ElisionTokenFilter extends TokenFilterBase {
   type: 'elision'
   articles?: string[]
   articles_path?: string
-  articles_case?: boolean
+  articles_case?: Stringified<boolean>
 }
 
 export class FingerprintTokenFilter extends TokenFilterBase {
