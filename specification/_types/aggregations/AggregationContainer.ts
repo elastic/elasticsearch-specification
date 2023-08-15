@@ -291,7 +291,7 @@ export class AggregationContainer {
   geotile_grid?: GeoTileGridAggregation
   /**
    * A multi-bucket aggregation that groups `geo_point` and `geo_shape` values into buckets that represent a grid.
-   *  Each cell corresponds to a H3 cell index and is labeled using the H3Index representation.
+   * Each cell corresponds to a H3 cell index and is labeled using the H3Index representation.
    * @doc_id search-aggregations-bucket-geohexgrid-aggregation
    */
   geohex_grid?: GeohexGridAggregation

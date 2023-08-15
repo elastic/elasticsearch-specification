@@ -817,7 +817,7 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
    */
   script_heuristic?: ScriptedHeuristic
   /**
-   * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the`min_doc_count`.
+   * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.
    * Terms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.
    */
   shard_min_doc_count?: long
@@ -957,7 +957,7 @@ export class TermsAggregation extends BucketAggregationBase {
    */
   shard_size?: integer
   /**
-   * Set to `true to return the `doc_count_error_upper_bound`, which is an upper bound to the error on the `doc_count` returned by each shard.
+   * Set to `true` to return the `doc_count_error_upper_bound`, which is an upper bound to the error on the `doc_count` returned by each shard.
    */
   show_term_doc_count_error?: boolean
   /**
