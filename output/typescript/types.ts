@@ -2016,6 +2016,8 @@ export interface SpecUtilsBaseNode {
   transport_address: TransportAddress
 }
 
+export type SpecUtilsPipeSeparatedFlags<T = unknown> = T | string
+
 export type SpecUtilsStringified<T = unknown> = T | string
 
 export type SpecUtilsVoid = void
@@ -5943,9 +5945,9 @@ export interface QueryDslShapeQueryKeys extends QueryDslQueryBase {
 export type QueryDslShapeQuery = QueryDslShapeQueryKeys
   & { [property: string]: QueryDslShapeFieldQuery | boolean | float | string }
 
-export type QueryDslSimpleQueryStringFlag = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
+export type QueryDslSimpleQueryStringFlag = 'NONE' | 'AND' | 'NOT' | 'OR' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
 
-export type QueryDslSimpleQueryStringFlags = QueryDslSimpleQueryStringFlag | string
+export type QueryDslSimpleQueryStringFlags = SpecUtilsPipeSeparatedFlags<QueryDslSimpleQueryStringFlag>
 
 export interface QueryDslSimpleQueryStringQuery extends QueryDslQueryBase {
   analyzer?: string
