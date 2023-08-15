@@ -97,9 +97,9 @@ export class PathHierarchyTokenizer extends TokenizerBase {
 
 export class PatternTokenizer extends TokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export class StandardTokenizer extends TokenizerBase {
