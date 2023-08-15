@@ -39,8 +39,18 @@ export class PipelineSimulation {
 }
 
 export class Document {
+  /**
+   * Unique identifier for the document.
+   * This ID must be unique within the `_index`.
+   */
   _id?: Id
+  /**
+   * Name of the index containing the document.
+   */
   _index?: IndexName
+  /**
+   * JSON body for the document.
+   */
   _source: UserDefinedValue
 }
 
@@ -50,11 +60,26 @@ export class Document {
 export class DocumentSimulation
   implements AdditionalProperties<string, string>
 {
+  /**
+   * Unique identifier for the document. This ID must be unique within the `_index`.
+   */
   _id: Id
+  /**
+   * Name of the index containing the document.
+   */
   _index: IndexName
   _ingest: Ingest
+  /**
+   * Value used to send the document to a specific primary shard.
+   */
   _routing?: string
+  /**
+   * JSON body for the document.
+   */
   _source: Dictionary<string, UserDefinedValue>
+  /**
+   *
+   */
   _version?: Stringified<VersionNumber>
   _version_type?: VersionType
 }
