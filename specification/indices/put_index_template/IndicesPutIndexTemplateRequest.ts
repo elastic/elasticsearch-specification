@@ -115,5 +115,5 @@ export class IndexTemplateMapping {
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  lifecycle?: DataLifecycle
+  lifecycle?: DataLifecycle | null
 }

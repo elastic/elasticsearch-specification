@@ -9629,7 +9629,7 @@ export interface IndicesCacheQueries {
 }
 
 export interface IndicesDataLifecycle {
-  data_retention?: Duration
+  data_retention?: Duration | null
 }
 
 export interface IndicesDataLifecycleWithRollover {
@@ -10689,7 +10689,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
-  lifecycle?: IndicesDataLifecycle
+  lifecycle?: IndicesDataLifecycle | null
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
