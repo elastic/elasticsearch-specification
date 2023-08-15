@@ -408,7 +408,8 @@ export class GeoHashGridAggregation extends BucketAggregationBase {
    */
   bounds?: GeoBounds
   /**
-   * The name of the field.
+   * Field containing indexed `geo_point` or `geo_shape` values.
+   * If the field contains an array, `geohash_grid` aggregates all array values.
    */
   field?: Field
   /**
@@ -431,6 +432,7 @@ export class GeoHashGridAggregation extends BucketAggregationBase {
 export class GeoTileGridAggregation extends BucketAggregationBase {
   /**
    * Field containing indexed `geo_point` or `geo_shape` values.
+   * If the field contains an array, `geotile_grid` aggregates all array values.
    */
   field?: Field
   /**
@@ -457,9 +459,8 @@ export class GeoTileGridAggregation extends BucketAggregationBase {
 
 export class GeohexGridAggregation extends BucketAggregationBase {
   /**
-   * Field containing indexed geo-point values. Must be explicitly
-   * mapped as a `geo_point` field. If the field contains an array
-   * `geohex_grid` aggregates all array values.
+   * Field containing indexed `geo_point` or `geo_shape` values.
+   * If the field contains an array, `geohex_grid` aggregates all array values.
    */
   field: Field
   /**
