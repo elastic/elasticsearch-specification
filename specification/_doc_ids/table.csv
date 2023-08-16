@@ -219,6 +219,8 @@ kv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
+logstash-configuration-file-structure,https://www.elastic.co/guide/en/logstash/{branch}/configuration-file-structure.html
+logstash-logstash-settings-file,https://www.elastic.co/guide/en/logstash/{branch}/logstash-settings-file.html
 lowercase-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/lowercase-processor.html
 mapping-date-format,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-date-format.html
 mapping-meta-field,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/mapping-meta-field.html

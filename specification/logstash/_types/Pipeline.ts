@@ -35,10 +35,35 @@ export class PipelineSettings {
   'queue.checkpoint.writes': integer
 }
 export class Pipeline {
+  /**
+   * Description of the pipeline.
+   * This description is not used by Elasticsearch or Logstash.
+   */
   description: string
+  /**
+   * Date the pipeline was last updated.
+   * Must be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.
+   */
   last_modified: DateTime
+  /**
+   * Optional metadata about the pipeline.
+   * May have any contents.
+   * This metadata is not generated or used by Elasticsearch or Logstash.
+   */
   pipeline_metadata: PipelineMetadata
+  /**
+   * User who last updated the pipeline.
+   */
   username: string
+  /**
+   * Configuration for the pipeline.
+   * @doc_id logstash-configuration-file-structure
+   */
   pipeline: string
+  /**
+   * Settings for the pipeline.
+   * Supports only flat keys in dot notation.
+   * @doc_id logstash-logstash-settings-file
+   */
   pipeline_settings: PipelineSettings
 }
