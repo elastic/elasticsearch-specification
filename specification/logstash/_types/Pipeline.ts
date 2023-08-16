@@ -26,12 +26,35 @@ export class PipelineMetadata {
 }
 
 export class PipelineSettings {
+  /**
+   * The number of workers that will, in parallel, execute the filter and output stages of the pipeline.
+   * @doc_id logstash-logstash-settings-file 
+   */
   'pipeline.workers': integer
+  /**
+   * The maximum number of events an individual worker thread will collect from inputs before attempting to execute its filters and outputs.
+   */
   'pipeline.batch.size': integer
+  /**
+   * When creating pipeline event batches, how long in milliseconds to wait for each event before dispatching an undersized batch to pipeline workers.
+   */
   'pipeline.batch.delay': integer
+  /**
+   * The internal queuing model to use for event buffering.
+   * @doc_id logstash-logstash-settings-file
+   */
   'queue.type': string
+  /**
+   * The total capacity of the queue (`queue.type: persisted`) in number of bytes.
+   */
   'queue.max_bytes.number': integer
+  /**
+   * The total capacity of the queue (`queue.type: persisted`) in terms of units of bytes.
+   */
   'queue.max_bytes.units': string
+  /**
+   * The maximum number of written events before forcing a checkpoint when persistent queues are enabled (`queue.type: persisted`).
+   */
   'queue.checkpoint.writes': integer
 }
 export class Pipeline {
