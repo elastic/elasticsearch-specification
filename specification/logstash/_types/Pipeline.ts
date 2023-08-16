@@ -28,7 +28,7 @@ export class PipelineMetadata {
 export class PipelineSettings {
   /**
    * The number of workers that will, in parallel, execute the filter and output stages of the pipeline.
-   * @doc_id logstash-logstash-settings-file 
+   * @doc_id logstash-logstash-settings-file
    */
   'pipeline.workers': integer
   /**
