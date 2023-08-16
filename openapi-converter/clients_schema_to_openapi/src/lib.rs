@@ -1,8 +1,10 @@
 mod paths;
 mod schemas;
 mod components;
+mod utils;
 
-use std::io::Write;
+use std::collections::HashSet;
+use std::io::{BufWriter, Write};
 use std::path::Path;
 use openapiv3::{Components, OpenAPI};
 
@@ -10,12 +12,25 @@ use clients_schema::{Endpoint, Model};
 use crate::components::TypesAndComponents;
 
 pub fn convert_schema_file(path: impl AsRef<Path>, endpoint_filter: fn(e: &Endpoint) -> bool, out: impl Write) -> anyhow::Result<()> {
-    let file = std::fs::File::open(path)?;
-    let model: Model = serde_json::from_reader(file)?;
+
+    // Parsing from a string is faster than using a buffered reader when there is a need for look-ahead
+    // See https://github.com/serde-rs/json/issues/160
+    let json = &std::fs::read_to_string(path)?;
+    let json_deser = &mut serde_json::Deserializer::from_str(&json);
+
+    let mut unused = HashSet::new();
+    let model: Model = serde_ignored::deserialize(json_deser, |path| {
+        if let serde_ignored::Path::Map {parent: _, key} = path {
+            unused.insert(key);
+        }
+    })?;
+    if !unused.is_empty() {
+        let msg = unused.into_iter().collect::<Vec<_>>().join(", ");
+        tracing::warn!("Unknown fields found in schema.json: {}", msg);
+    }
 
     let openapi = convert_schema(&model, endpoint_filter)?;
-
-    serde_json::to_writer_pretty(out, &openapi)?;
+    //serde_json::to_writer_pretty(BufWriter::new(out), &openapi)?;
     Ok(())
 }
 

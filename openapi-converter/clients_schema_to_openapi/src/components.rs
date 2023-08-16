@@ -1,6 +1,6 @@
 use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schema, StatusCode};
 use clients_schema::{TypeDefinition, TypeName, TypeRegistry};
-use crate::schemas::SchemaName;
+use crate::utils::SchemaName;
 
 pub struct TypesAndComponents<'a> {
     pub types: TypeRegistry<'a>,

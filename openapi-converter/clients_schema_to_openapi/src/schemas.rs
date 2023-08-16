@@ -4,90 +4,26 @@ use openapiv3::{AdditionalProperties, ArrayType, Discriminator, ExternalDocument
 use clients_schema::{Body, Enum, Interface, LiteralValueValue, PropertiesBody, Property, Request, Response, TypeAlias, TypeAliasVariants, TypeDefinition, TypeName, ValueOf};
 
 use crate::components::TypesAndComponents;
+use crate::utils::{ IntoSchema, SchemaName, ReferenceOrBoxed };
 
 // A placeholder in components.schema to handle recursive types
 const SCHEMA_PLACEHOLDER: ReferenceOr<Schema> = ReferenceOr::Reference {
     reference: String::new()
 };
 
-pub trait ReferenceOrBoxed<T> {
-    fn boxed(self) -> ReferenceOr<Box<T>>;
-}
-
-impl <T> ReferenceOrBoxed<T> for ReferenceOr<T> {
-    fn boxed(self) -> ReferenceOr<Box<T>> {
-        match self {
-            ReferenceOr::Item(t) => ReferenceOr::Item(Box::new(t)),
-            ReferenceOr::Reference { reference } => ReferenceOr::Reference { reference },
-        }
-    }
-}
-
-pub trait SchemaName {
-    fn schema_name(&self) -> String;
-    fn schema_ref(&self) -> ReferenceOr<Schema>;
-}
-
-impl SchemaName for TypeName {
-    fn schema_name(&self) -> String {
-        format!("{}", self)
-    }
-
-    fn schema_ref(&self) -> ReferenceOr<Schema> {
-        ReferenceOr::Reference {
-            reference: format!("#/components/schemas/{}", self)
-        }
-    }
-}
-
-pub trait IntoSchema {
-    fn into_schema(self) -> ReferenceOr<Schema>;
-    fn into_schema_with_base(self, base: &clients_schema::BaseType) -> ReferenceOr<Schema> where Self: Sized {
-        let mut result = self.into_schema();
-        if let ReferenceOr::Item(ref mut schema) = &mut result {
-            fill_data_with_base(&mut schema.schema_data, base);
-        }
-        result
-    }
-
-    fn into_schema_with_data_fn(self, f: fn (&mut SchemaData) -> ()) -> ReferenceOr<Schema> where Self: Sized {
-        let mut result = self.into_schema();
-        if let ReferenceOr::Item(ref mut schema) = &mut result {
-            f(&mut schema.schema_data);
-        }
-        result
-    }
-}
-
-impl IntoSchema for SchemaKind {
-    fn into_schema(self) -> ReferenceOr<Schema> {
-        ReferenceOr::Item(Schema {
-            schema_data: Default::default(),
-            schema_kind: self,
-        })
-    }
-}
-
-impl IntoSchema for Type {
-    fn into_schema(self) -> ReferenceOr<Schema> {
-        ReferenceOr::Item(Schema {
-            schema_kind: SchemaKind::Type(self),
-            schema_data: Default::default(),
-        })
-    }
-}
-
-impl IntoSchema for ObjectType {
-    fn into_schema(self) -> ReferenceOr<Schema> {
-        ReferenceOr::Item(Schema {
-            schema_kind: SchemaKind::Type(Type::Object(self)),
-            schema_data: Default::default(),
-        })
-    }
-}
-
+///
+/// Convert `schema.json` type and value definitions to OpenAPI schemas:
+///
+/// The `convert_*` functions return a concrete schema and not a reference and do not store them in
+/// the OpenAPI `components.schema`. This is the role of `for_type_name` hat creates and stores the
+/// schema and returns a reference.
+///
 impl <'a> TypesAndComponents<'a> {
 
+    ///
+    /// Convert a value. Returns a schema reference and not a concrete schema, as values can
+    /// be simple references to types.
+    ///
     pub fn convert_value_of(&mut self, value_of: &ValueOf) -> anyhow::Result<ReferenceOr<Schema>> {
 
         Ok(match value_of {
@@ -139,7 +75,7 @@ impl <'a> TypesAndComponents<'a> {
                     // Single key dictionaries have exactly one property
                     min_properties: if dict.single_key { Some(1) } else { None },
                     max_properties: if dict.single_key { Some(1) } else { None },
-                }.into_schema()
+                }.into_schema_ref()
             },
 
             //
@@ -176,9 +112,9 @@ impl <'a> TypesAndComponents<'a> {
         })
     }
 
-    //
-    // Return the reference for a type name, registering it if needed
-    //
+    ///
+    /// Return the reference for a type name, registering it if needed
+    ///
     pub fn for_type_name(&mut self, type_name: &TypeName) -> anyhow::Result<ReferenceOr<Schema>> {
         let schema_name = type_name.schema_name();
 
@@ -197,17 +133,17 @@ impl <'a> TypesAndComponents<'a> {
                         enumeration: vec![],
                         min_length: None,
                         max_length: None,
-                    }).into_schema())
+                    }).into_schema_ref())
                 },
                 "boolean" => {
-                    Ok(Type::Boolean {}.into_schema())
+                    Ok(Type::Boolean {}.into_schema_ref())
                 },
                 "number" => {
-                    Ok(Type::Number(NumberType::default()).into_schema())
+                    Ok(Type::Number(NumberType::default()).into_schema_ref())
                 },
                 "void" => {
                     // Empty object
-                    Ok(ObjectType::default().into_schema())
+                    Ok(ObjectType::default().into_schema_ref())
                 },
                 "null" => {
                     // Note that there is no null type; instead, the nullable attribute is used as a modifier of the base type.
@@ -220,7 +156,11 @@ impl <'a> TypesAndComponents<'a> {
                         enumeration: vec![],
                         min_length: None,
                         max_length: None,
-                    }).into_schema_with_data_fn(|data| { data.nullable = true; }))
+                    }).into_schema_ref_with_data_fn(|data| { data.nullable = true; }))
+                },
+                "binary" => {
+                    // FIXME: must be handled in requests and responses
+                    Ok(ObjectType::default().into_schema_ref())
                 }
                 _ => bail!("unknown builtin type: {}", type_name),
             }
@@ -229,7 +169,7 @@ impl <'a> TypesAndComponents<'a> {
         if type_name.namespace == "_types" {
             match type_name.name.as_str() {
                 "double" | "long" | "integer" | "float" => {
-                    return Ok(Type::Number(NumberType::default()).into_schema());
+                    return Ok(Type::Number(NumberType::default()).into_schema_ref());
                 },
                 _ => {},
             }
@@ -245,9 +185,9 @@ impl <'a> TypesAndComponents<'a> {
             Request(_) => bail!("Requests should be handled using for_request"),
             Response(_) => bail!("Responses should be handled using for_request"),
 
-            Enum(enumm) =>  self.convert_enum(enumm)?,
-            Interface(itf) => self.convert_interface_definition(itf)?,
-            TypeAlias(alias) => self.convert_type_alias(alias)?,
+            Enum(enumm) =>  self.convert_enum(enumm)?.into_schema_ref(),
+            Interface(itf) => self.convert_interface_definition(itf)?.into_schema_ref(),
+            TypeAlias(alias) => self.convert_type_alias(alias)?.into_schema_ref(),
         };
 
         Ok(self.add_schema(type_name, schema))
@@ -274,7 +214,7 @@ impl <'a> TypesAndComponents<'a> {
                     additional_properties: None,
                     min_properties: None,
                     max_properties: None,
-                }.into_schema())
+                }.into_schema_ref())
             }
         };
 
@@ -283,6 +223,7 @@ impl <'a> TypesAndComponents<'a> {
 
     fn convert_property(&mut self, prop: &Property) -> anyhow::Result<ReferenceOr<Schema>> {
         let mut result = self.convert_value_of(&prop.typ)?;
+        // TODO: how can we just wrap a reference so that we can add docs?
         if let ReferenceOr::Item(ref mut schema) = &mut result {
             fill_data_with_prop(&mut schema.schema_data, prop);
         }
@@ -301,10 +242,10 @@ impl <'a> TypesAndComponents<'a> {
         props.filter_map(|prop| prop.required.then(|| prop.name.clone())).collect()
     }
 
-    //
-    // Register an interface definition and return the schema reference.
-    //
-    fn convert_interface_definition(&mut self, itf: &Interface) -> anyhow::Result<ReferenceOr<Schema>> {
+    ///
+    /// Convert an interface definition into a schema
+    ///
+    fn convert_interface_definition(&mut self, itf: &Interface) -> anyhow::Result<Schema> {
 
         let mut schema = if let Some(container) = &itf.variants {
             // TODO: interface definition container.non_exhaustive
@@ -332,10 +273,10 @@ impl <'a> TypesAndComponents<'a> {
                     additional_properties: None,
                     min_properties: None,
                     max_properties: None,
-                }.into_schema();
+                }.into_schema_ref();
 
                 schema = SchemaKind::AllOf {
-                    all_of: vec![container_props_schema, schema],
+                    all_of: vec![container_props_schema, schema.into_schema_ref()],
                 }.into_schema();
             }
 
@@ -357,7 +298,7 @@ impl <'a> TypesAndComponents<'a> {
         // Inheritance
         if let Some(inherit) = &itf.inherits {
             schema = SchemaKind::AllOf {
-                all_of: vec![self.for_type_name(&inherit.typ)?, schema],
+                all_of: vec![self.for_type_name(&inherit.typ)?, schema.into_schema_ref()],
             }.into_schema();
         }
 
@@ -380,20 +321,15 @@ impl <'a> TypesAndComponents<'a> {
             }
         }
         Ok(schema)
-        // FIXME: implements
     }
 
-    //
-    // Register a type alias and return the schema reference.
-    //
-    fn convert_type_alias(&mut self, alias: &TypeAlias) -> anyhow::Result<ReferenceOr<Schema>> {
-
-        let mut schema = self.convert_value_of(&alias.typ)?;
-
-        // Add docs, etc.
-        if let ReferenceOr::Item(ref mut schema) = &mut schema {
-            schema.schema_data = convert_base_type(&alias.base);
-        }
+    ///
+    /// Creates alias an alias that references another type.
+    ///
+    fn convert_type_alias(&mut self, alias: &TypeAlias) -> anyhow::Result<Schema> {
+        let mut schema = self
+            .convert_value_of(&alias.typ)?
+            .into_schema_with_base(&alias.base);
 
         match &alias.variants {
             None => {},
@@ -401,24 +337,22 @@ impl <'a> TypesAndComponents<'a> {
                 // TODO: typed-keys: add an extension to identify it?
             },
             Some(TypeAliasVariants::InternalTag(tag)) => {
-                if let ReferenceOr::Item(ref mut schema) = &mut schema {
-                    // TODO: add tag.default_tag as an extension
-                    schema.schema_data.discriminator = Some(Discriminator {
-                        property_name: tag.tag.clone(),
-                        mapping: Default::default(),
-                        extensions: Default::default(),
-                    });
-                }
+                // TODO: add tag.default_tag as an extension
+                schema.schema_data.discriminator = Some(Discriminator {
+                    property_name: tag.tag.clone(),
+                    mapping: Default::default(),
+                    extensions: Default::default(),
+                });
             },
         };
 
         Ok(schema)
     }
 
-    //
-    // Register an enumeration and return the schema reference.
-    //
-    fn convert_enum(&mut self, enumm: &Enum) -> anyhow::Result<ReferenceOr<Schema>> {
+    ///
+    /// Register an enumeration and return the schema reference.
+    ///
+    fn convert_enum(&mut self, enumm: &Enum) -> anyhow::Result<Schema> {
 
         // TODO: enum.is_open
 
@@ -426,37 +360,21 @@ impl <'a> TypesAndComponents<'a> {
             Some(m.name.clone())
         }).collect::<Vec<_>>();
 
-        let schema = ReferenceOr::Item(Schema {
-            schema_data: convert_base_type(&enumm.base),
-            schema_kind: SchemaKind::Type(Type::String(StringType {
-                format: Default::default(),
-                pattern: None,
-                enumeration: enum_values,
-                min_length: None,
-                max_length: None,
-            })),
-        });
-
-        Ok(schema)
+        Ok(StringType {
+            format: Default::default(),
+            pattern: None,
+            enumeration: enum_values,
+            min_length: None,
+            max_length: None,
+        }.into_schema_with_base(&enumm.base))
     }
 }
 
-//
-// Convert common type information.
-//
-fn convert_base_type(base: &clients_schema::BaseType) -> SchemaData {
-    let mut result = SchemaData::default();
-    fill_data_with_base(&mut result, base);
-    return result;
+fn fill_schema_with_base(schema: &mut Schema, base: &clients_schema::BaseType) {
+    fill_data_with_base(&mut schema.schema_data, base);
 }
 
-fn fill_schema_with_base(schema: &mut ReferenceOr<Schema>, base: &clients_schema::BaseType) {
-    if let ReferenceOr::Item(ref mut schema) = schema {
-        fill_data_with_base(&mut schema.schema_data, base);
-    }
-}
-
-fn fill_data_with_base(data: &mut SchemaData, base: &clients_schema::BaseType) {
+pub fn fill_data_with_base(data: &mut SchemaData, base: &clients_schema::BaseType) {
     // SchemaData {
     //     nullable: false,
     //     read_only: false,

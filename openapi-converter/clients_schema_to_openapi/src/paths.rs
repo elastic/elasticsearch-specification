@@ -13,8 +13,13 @@ use crate::components::TypesAndComponents;
 ///
 pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndComponents, out: &mut Paths) -> anyhow::Result<()> {
 
-    if endpoint.request.is_none() || endpoint.response.is_none() {
-        tracing::warn!("Endpoint {} is missing either request or response", &endpoint.name);
+    if endpoint.request.is_none() {
+        tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
+        return Ok(());
+    }
+
+    if endpoint.response.is_none() {
+        tracing::warn!("Endpoint {} is missing a response -- ignored", &endpoint.name);
         return Ok(());
     }
 
