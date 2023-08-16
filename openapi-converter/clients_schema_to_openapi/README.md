@@ -14,4 +14,6 @@ flowchart LR
     schema --> openapi
 ```
 
-This is still a work in progress. The OpenAPI specification generated from the current `schema.json` can be found in the [output/openapi](../../output/openapi) directory. 
+This is still a work in progress and this branch is the work for [PR #2047](https://github.com/elastic/elasticsearch-specification/pull/2047) where reviews and comments should be made.
+
+The OpenAPI specification generated from the current `schema.json` can be found in the [output/openapi](../../output/openapi) directory.
