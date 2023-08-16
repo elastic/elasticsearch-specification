@@ -566,6 +566,7 @@ export interface HealthReportRequest extends RequestBase {
 export interface HealthReportResponse {
   cluster_name: string
   indicators: HealthReportIndicators
+  status?: HealthReportIndicatorHealthStatus
 }
 
 export interface HealthReportShardsAvailabilityIndicator extends HealthReportBaseIndicator {
@@ -4288,7 +4289,7 @@ export interface AnalysisElisionTokenFilter extends AnalysisTokenFilterBase {
   type: 'elision'
   articles?: string[]
   articles_path?: string
-  articles_case?: boolean
+  articles_case?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisFingerprintAnalyzer {
@@ -4557,11 +4558,11 @@ export type AnalysisNormalizer = AnalysisLowercaseNormalizer | AnalysisCustomNor
 
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: integer
+  buffer_size: SpecUtilsStringified<integer>
   delimiter: string
   replacement: string
-  reverse: boolean
-  skip: integer
+  reverse: SpecUtilsStringified<boolean>
+  skip: SpecUtilsStringified<integer>
 }
 
 export interface AnalysisPatternAnalyzer {
@@ -4596,9 +4597,9 @@ export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBa
 
 export interface AnalysisPatternTokenizer extends AnalysisTokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export type AnalysisPhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
