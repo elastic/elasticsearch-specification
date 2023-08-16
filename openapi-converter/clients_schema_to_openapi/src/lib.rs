@@ -30,7 +30,7 @@ pub fn convert_schema_file(path: impl AsRef<Path>, endpoint_filter: fn(e: &Endpo
     }
 
     let openapi = convert_schema(&model, endpoint_filter)?;
-    //serde_json::to_writer_pretty(BufWriter::new(out), &openapi)?;
+    serde_json::to_writer_pretty(BufWriter::new(out), &openapi)?;
     Ok(())
 }
 

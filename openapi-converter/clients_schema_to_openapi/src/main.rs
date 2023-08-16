@@ -22,7 +22,8 @@ fn main() -> anyhow::Result<()> {
         "../output/schema/schema-no-generics.json",
         |e| true,
         //|e| e.name == "search",
-        std::io::stdout()
+        std::fs::File::create("../output/openapi/elasticsearch-openapi.json")?
+        //std::io::stdout()
     )?;
 
     Ok(())
