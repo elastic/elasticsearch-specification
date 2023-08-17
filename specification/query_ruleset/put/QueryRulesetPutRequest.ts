@@ -26,7 +26,7 @@ import { QueryRuleset } from '../_types/QueryRuleset'
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
      * The unique identifier of the query ruleset to be created or updated
