@@ -1121,7 +1121,7 @@ export class UrlDecodeProcessor extends ProcessorBase {
    * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
    * @server_default false
    */
-  ignre_missing?: boolean
+  ignore_missing?: boolean
   /**
    * The field to assign the converted value to.
    * By default, the field is updated in-place.
