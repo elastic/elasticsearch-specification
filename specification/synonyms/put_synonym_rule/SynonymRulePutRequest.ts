@@ -26,7 +26,7 @@ import { SynonymString } from '../_types/SynonymRule'
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
      * The id of the synonym set to be updated with the synonym rule
