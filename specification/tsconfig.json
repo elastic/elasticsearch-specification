@@ -29,6 +29,7 @@
       "@enrich/*": ["enrich/*"],
       "@eql/*": ["eql/*"],
       "@features/*": ["features/*"],
+      "@fleet/*": ["fleet/*"],
       "@graph/*": ["graph/*"],
       "@ilm/*": ["ilm/*"],
       "@indices/*": ["indices/*"],
@@ -39,14 +40,17 @@
       "@ml/*": ["ml/*"],
       "@monitoring/*": ["monitoring/*"],
       "@nodes/*": ["nodes/*"],
+      "@query_ruleset/*": ["query_ruleset/*"],
       "@rollup/*": ["rollup/*"],
       "@searchable_snapshots/*": ["searchable_snapshots/*"],
+      "@search_application/*": ["search_application/*"],
       "@security/*": ["security/*"],
       "@shutdown/*": ["shutdown/*"],
       "@slm/*": ["slm/*"],
       "@snapshot/*": ["snapshot/*"],
       "@sql/*": ["sql/*"],
       "@ssl/*": ["ssl/*"],
+      "@synonyms/*": ["synonyms/*"],
       "@tasks/*": ["tasks/*"],
       "@text_structure/*": ["text_structure/*"],
       "@transform/*": ["transform/*"],
@@ -57,3 +61,4 @@
   "include": ["./**/*.ts"],
   "exclude": ["node_modules"]
 }
+
