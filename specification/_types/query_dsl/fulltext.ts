@@ -28,8 +28,8 @@ import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { QueryBase } from './abstractions'
 import { Operator } from './Operator'
-import { DateMath, TimeZone } from '@_types/Time'
-import { FlagsEnum, PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
+import { TimeZone } from '@_types/Time'
+import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 
 /**
  * @shortcut_property query
