@@ -70,6 +70,7 @@ async function run () {
     if (file.startsWith('specification/_spec_utils')) continue
     if (file.startsWith('specification/_doc_ids')) continue
     if (file.startsWith('specification/_json_spec')) continue
+    if (file === 'specification/tsconfig.json') continue
     if (getApi(file).endsWith('_types')) {
       const apis = specification.endpoints
         .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])

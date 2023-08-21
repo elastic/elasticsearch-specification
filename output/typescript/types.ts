@@ -566,6 +566,7 @@ export interface HealthReportRequest extends RequestBase {
 export interface HealthReportResponse {
   cluster_name: string
   indicators: HealthReportIndicators
+  status?: HealthReportIndicatorHealthStatus
 }
 
 export interface HealthReportShardsAvailabilityIndicator extends HealthReportBaseIndicator {
@@ -2020,6 +2021,8 @@ export interface SpecUtilsBaseNode {
   transport_address: TransportAddress
 }
 
+export type SpecUtilsPipeSeparatedFlags<T = unknown> = T | string
+
 export type SpecUtilsStringified<T = unknown> = T | string
 
 export type SpecUtilsVoid = void
@@ -3074,11 +3077,20 @@ export interface AggregationsCompositeAggregation extends AggregationsBucketAggr
   sources?: Record<string, AggregationsCompositeAggregationSource>[]
 }
 
+export interface AggregationsCompositeAggregationBase {
+  field?: Field
+  missing_bucket?: boolean
+  missing_order?: AggregationsMissingOrder
+  script?: Script
+  value_type?: AggregationsValueType
+  order?: SortOrder
+}
+
 export interface AggregationsCompositeAggregationSource {
-  terms?: AggregationsTermsAggregation
-  histogram?: AggregationsHistogramAggregation
-  date_histogram?: AggregationsDateHistogramAggregation
-  geotile_grid?: AggregationsGeoTileGridAggregation
+  terms?: AggregationsCompositeTermsAggregation
+  histogram?: AggregationsCompositeHistogramAggregation
+  date_histogram?: AggregationsCompositeDateHistogramAggregation
+  geotile_grid?: AggregationsCompositeGeoTileGridAggregation
 }
 
 export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucketBase {
@@ -3086,6 +3098,26 @@ export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucket
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
   & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
+
+export interface AggregationsCompositeDateHistogramAggregation extends AggregationsCompositeAggregationBase {
+  format?: string
+  calendar_interval?: DurationLarge
+  fixed_interval?: DurationLarge
+  offset?: Duration
+  time_zone?: TimeZone
+}
+
+export interface AggregationsCompositeGeoTileGridAggregation extends AggregationsCompositeAggregationBase {
+  precision?: integer
+  bounds?: GeoBounds
+}
+
+export interface AggregationsCompositeHistogramAggregation extends AggregationsCompositeAggregationBase {
+  interval: double
+}
+
+export interface AggregationsCompositeTermsAggregation extends AggregationsCompositeAggregationBase {
+}
 
 export interface AggregationsCumulativeCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -4262,7 +4294,7 @@ export interface AnalysisElisionTokenFilter extends AnalysisTokenFilterBase {
   type: 'elision'
   articles?: string[]
   articles_path?: string
-  articles_case?: boolean
+  articles_case?: SpecUtilsStringified<boolean>
 }
 
 export interface AnalysisFingerprintAnalyzer {
@@ -4531,11 +4563,11 @@ export type AnalysisNormalizer = AnalysisLowercaseNormalizer | AnalysisCustomNor
 
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: integer
+  buffer_size: SpecUtilsStringified<integer>
   delimiter: string
   replacement: string
-  reverse: boolean
-  skip: integer
+  reverse: SpecUtilsStringified<boolean>
+  skip: SpecUtilsStringified<integer>
 }
 
 export interface AnalysisPatternAnalyzer {
@@ -4570,9 +4602,9 @@ export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBa
 
 export interface AnalysisPatternTokenizer extends AnalysisTokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export type AnalysisPhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
@@ -5919,9 +5951,9 @@ export interface QueryDslShapeQueryKeys extends QueryDslQueryBase {
 export type QueryDslShapeQuery = QueryDslShapeQueryKeys
   & { [property: string]: QueryDslShapeFieldQuery | boolean | float | string }
 
-export type QueryDslSimpleQueryStringFlag = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
+export type QueryDslSimpleQueryStringFlag = 'NONE' | 'AND' | 'NOT' | 'OR' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
 
-export type QueryDslSimpleQueryStringFlags = QueryDslSimpleQueryStringFlag | string
+export type QueryDslSimpleQueryStringFlags = SpecUtilsPipeSeparatedFlags<QueryDslSimpleQueryStringFlag>
 
 export interface QueryDslSimpleQueryStringQuery extends QueryDslQueryBase {
   analyzer?: string
@@ -10864,6 +10896,11 @@ export interface IndicesReloadSearchAnalyzersReloadDetails {
   reloaded_node_ids: string[]
 }
 
+export interface IndicesReloadSearchAnalyzersReloadResult {
+  reload_details: IndicesReloadSearchAnalyzersReloadDetails[]
+  _shards: ShardStatistics
+}
+
 export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -10871,10 +10908,7 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
   ignore_unavailable?: boolean
 }
 
-export interface IndicesReloadSearchAnalyzersResponse {
-  reload_details: IndicesReloadSearchAnalyzersReloadDetails[]
-  _shards: ShardStatistics
-}
+export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
 
 export interface IndicesResolveIndexRequest extends RequestBase {
   name: Names
@@ -17393,99 +17427,90 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
-export interface SynonymRuleDeleteRequest extends RequestBase {
-  synonyms_set: Name
-  synonym_rule: Name
-}
-
-export type SynonymRuleDeleteResponse = SynonymsSynonymsUpdateResult
-
-export interface SynonymRuleGetRequest extends RequestBase {
-  synonyms_set: Name
-  synonym_rule: Name
-}
-
-export type SynonymRuleGetResponse = SynonymsSynonymRule
-
-export interface SynonymRulePutRequest extends RequestBase {
-  synonyms_set: Name
-  synonym_rule: Name
-  body?: SynonymRulePutSynonymRuleUpdate
-}
-
-export type SynonymRulePutResponse = SynonymsSynonymsUpdateResult
-
-export interface SynonymRulePutSynonymRuleUpdate {
-  synonyms: SynonymsSynonymString[]
-}
-
-export interface SynonymsSynonymRule extends SynonymsSynonymRuleOptionalId {
-  id: Id
-}
-
-export interface SynonymsSynonymRuleOptionalId {
+export interface SynonymsSynonymRule {
   id?: Id
+  synonyms: SynonymsSynonymString
+}
+
+export interface SynonymsSynonymRuleRead {
+  id: Id
   synonyms: SynonymsSynonymString
 }
 
 export type SynonymsSynonymString = string
 
-export interface SynonymsSynonymsSet extends SynonymsSynonymsSetUpdate {
-  synonymRules: SynonymsSynonymRule[]
-}
-
-export interface SynonymsSynonymsSetUpdate {
-  synonymRules: SynonymsSynonymRuleOptionalId[]
-}
-
 export interface SynonymsSynonymsUpdateResult {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
-  _shards: ShardStatistics
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadResult
 }
 
-export interface SynonymsDeleteRequest extends RequestBase {
-  synonyms_set: Name
+export interface SynonymsDeleteSynonymRequest extends RequestBase {
+  id: Id
 }
 
-export type SynonymsDeleteResponse = AcknowledgedResponseBase
+export type SynonymsDeleteSynonymResponse = AcknowledgedResponseBase
 
-export interface SynonymsGetRequest extends RequestBase {
-  synonyms_set: Name
+export interface SynonymsDeleteSynonymRuleRequest extends RequestBase {
+  set_id: Id
+  rule_id: Id
+}
+
+export type SynonymsDeleteSynonymRuleResponse = SynonymsSynonymsUpdateResult
+
+export interface SynonymsGetSynonymRequest extends RequestBase {
+  id: Id
   from?: integer
   size?: integer
 }
 
-export interface SynonymsGetResponse {
+export interface SynonymsGetSynonymResponse {
   count: integer
-  synonyms_set: SynonymsSynonymsSet
+  synonyms_set: SynonymsSynonymRuleRead[]
 }
 
-export interface SynonymsPutRequest extends RequestBase {
-  synonyms_set: Name
-  body?: SynonymsSynonymsSetUpdate
+export interface SynonymsGetSynonymRuleRequest extends RequestBase {
+  set_id: Id
+  rule_id: Id
 }
 
-export interface SynonymsPutResponse {
+export type SynonymsGetSynonymRuleResponse = SynonymsSynonymRuleRead
+
+export interface SynonymsGetSynonymsSetsRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface SynonymsGetSynonymsSetsResponse {
+  count: integer
+  results: SynonymsGetSynonymsSetsSynonymsSetItem[]
+}
+
+export interface SynonymsGetSynonymsSetsSynonymsSetItem {
+  synonyms_set: Id
+  count: integer
+}
+
+export interface SynonymsPutSynonymRequest extends RequestBase {
+  id: Id
+  body?: {
+    synonyms_set: SynonymsSynonymRule[]
+  }
+}
+
+export interface SynonymsPutSynonymResponse {
   result: Result
-  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails[]
-  _shards: ShardStatistics
+  reload_analyzers_details: IndicesReloadSearchAnalyzersReloadDetails
 }
 
-export interface SynonymsSetsGetRequest extends RequestBase {
-  from?: integer
-  size?: integer
+export interface SynonymsPutSynonymRuleRequest extends RequestBase {
+  set_id: Id
+  rule_id: Id
+  body?: {
+    synonyms: SynonymsSynonymString[]
+  }
 }
 
-export interface SynonymsSetsGetResponse {
-  count: integer
-  results: SynonymsSetsGetSynonymsSetListItem[]
-}
-
-export interface SynonymsSetsGetSynonymsSetListItem {
-  synonyms_set: Name
-  count: integer
-}
+export type SynonymsPutSynonymRuleResponse = SynonymsSynonymsUpdateResult
 
 export type TasksGroupBy = 'nodes' | 'parents' | 'none'
 

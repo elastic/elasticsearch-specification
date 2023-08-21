@@ -49,7 +49,13 @@ export enum DistanceUnit {
 }
 
 export enum GeoDistanceType {
+  /**
+   * The `arc` calculation is the most accurate.
+   */
   arc = 0,
+  /**
+   * The `plane` calculation is faster but less accurate.
+   */
   plane = 1
 }
 
@@ -121,7 +127,13 @@ export type GeoLocation =
   | string
 
 export class LatLonGeoLocation {
+  /**
+   * Latitude
+   */
   lat: double
+  /**
+   * Longitude
+   */
   lon: double
 }
 

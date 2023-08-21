@@ -16,32 +16,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { SearchApplication } from '../_types/SearchApplication'
 
-/**
- * Creates or updates a search application.
- * @rest_spec_name search_application.put
- * @availability stack since=8.8.0 stability=beta
- * @availability serverless stability=beta visibility=public
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The name of the search application to be created or updated
-     */
-    name: Name
+import { integer } from '@_types/Numeric'
+import { Id } from '@_types/common'
+
+export class Response {
+  body: {
+    count: integer
+    results: SynonymsSetItem[]
   }
-  query_parameters: {
-    /**
-     * If true, requires that a search application with the specified resource_id does not already exist. (default: false)
-     */
-    create?: boolean
-  }
+}
+
+export class SynonymsSetItem {
   /**
-   * The search application information to update
+   * Synonyms set identifier
    */
-  /** @codegen_name search_application */
-  body: SearchApplication
+  synonyms_set: Id
+  /**
+   * Number of synonym rules that the synonym set contains
+   */
+  count: integer
 }

@@ -33,10 +33,19 @@ import {
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
-import { DateTime, Duration, DateMath, TimeZone } from '@_types/Time'
-import { Buckets } from './Aggregate'
+import {
+  DateTime,
+  Duration,
+  DateMath,
+  TimeZone,
+  DurationLarge
+} from '@_types/Time'
+import { Buckets, TermsAggregateBase } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
+import { OverloadOf } from '@spec_utils/behaviors'
+import { Term } from '@global/termvectors/types'
+import { ValueType } from '@_types/aggregations/metric'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -130,19 +139,51 @@ export class CompositeAggregationSource {
   /**
    * A terms aggregation.
    */
-  terms?: TermsAggregation
+  terms?: CompositeTermsAggregation
   /**
    * A histogram aggregation.
    */
-  histogram?: HistogramAggregation
+  histogram?: CompositeHistogramAggregation
   /**
    * A date histogram aggregation.
    */
-  date_histogram?: DateHistogramAggregation
+  date_histogram?: CompositeDateHistogramAggregation
   /**
    * A geotile grid aggregation.
    */
-  geotile_grid?: GeoTileGridAggregation
+  geotile_grid?: CompositeGeoTileGridAggregation
+}
+
+export class CompositeAggregationBase {
+  /** Either `field` or `script` must be present */
+  field?: Field
+  missing_bucket?: boolean
+  missing_order?: MissingOrder
+  /** Either `field` or `script` must be present */
+  script?: Script
+  value_type?: ValueType
+  order?: SortOrder
+}
+
+export class CompositeTermsAggregation extends CompositeAggregationBase {}
+
+export class CompositeHistogramAggregation extends CompositeAggregationBase {
+  interval: double
+}
+
+export class CompositeDateHistogramAggregation extends CompositeAggregationBase {
+  format?: string
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  calendar_interval?: DurationLarge
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  fixed_interval?: DurationLarge
+  offset?: Duration
+  time_zone?: TimeZone
+}
+
+export class CompositeGeoTileGridAggregation extends CompositeAggregationBase {
+  precision?: integer
+  bounds?: GeoBounds
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
@@ -189,7 +230,7 @@ export class DateHistogramAggregation extends BucketAggregationBase {
    */
   offset?: Duration
   /**
-   * The order of the returned buckets.
+   * The sort order of the returned buckets.
    */
   order?: AggregateOrder
   params?: Dictionary<string, UserDefinedValue>
@@ -200,7 +241,7 @@ export class DateHistogramAggregation extends BucketAggregationBase {
    */
   time_zone?: TimeZone
   /**
-   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   * Set to `true` to associate a unique string key with each bucket and return the ranges as a hash rather than an array.
    */
   keyed?: boolean
 }
@@ -263,7 +304,7 @@ export type FieldDateMath = DateMath | double
 
 export class DateRangeExpression {
   /**
-   * Start of the range.
+   * Start of the range (inclusive).
    */
   from?: FieldDateMath
   /**
@@ -271,7 +312,7 @@ export class DateRangeExpression {
    */
   key?: string
   /**
-   * End of the range.
+   * End of the range (exclusive).
    */
   to?: FieldDateMath
 }
@@ -337,34 +378,89 @@ export class FiltersAggregation extends BucketAggregationBase {
 }
 
 export class GeoDistanceAggregation extends BucketAggregationBase {
+  /**
+   * The distance calculation type.
+   * @server_default arc
+   */
   distance_type?: GeoDistanceType
+  /**
+   * A field of type `geo_point` used to evaluate the distance.
+   */
   field?: Field
+  /**
+   * The origin  used to evaluate the distance.
+   */
   origin?: GeoLocation
+  /**
+   * An array of ranges used to bucket documents.
+   */
   ranges?: AggregationRange[]
+  /**
+   * The distance unit.
+   * @server_default m
+   */
   unit?: DistanceUnit
 }
 
 export class GeoHashGridAggregation extends BucketAggregationBase {
+  /**
+   * The bounding box to filter the points in each bucket.
+   */
   bounds?: GeoBounds
+  /**
+   * Field containing indexed `geo_point` or `geo_shape` values.
+   * If the field contains an array, `geohash_grid` aggregates all array values.
+   */
   field?: Field
+  /**
+   * The string length of the geohashes used to define cells/buckets in the results.
+   * @server_default 5
+   */
   precision?: GeoHashPrecision
+  /**
+   * Allows for more accurate counting of the top cells returned in the final result the aggregation.
+   * Defaults to returning `max(10,(size x number-of-shards))` buckets from each shard.
+   */
   shard_size?: integer
+  /**
+   * The maximum number of geohash buckets to return.
+   * @server_default 10000
+   */
   size?: integer
 }
 
 export class GeoTileGridAggregation extends BucketAggregationBase {
+  /**
+   * Field containing indexed `geo_point` or `geo_shape` values.
+   * If the field contains an array, `geotile_grid` aggregates all array values.
+   */
   field?: Field
+  /**
+   * Integer zoom of the key used to define cells/buckets in the results.
+   * Values outside of the range [0,29] will be rejected.
+   * @server_default 7
+   */
   precision?: GeoTilePrecision
+  /**
+   * Allows for more accurate counting of the top cells returned in the final result the aggregation.
+   * Defaults to returning `max(10,(size x number-of-shards))` buckets from each shard.
+   */
   shard_size?: integer
+  /**
+   * The maximum number of buckets to return.
+   * @server_default 10000
+   */
   size?: integer
+  /**
+   * A bounding box to filter the geo-points or geo-shapes in each bucket.
+   */
   bounds?: GeoBounds
 }
 
 export class GeohexGridAggregation extends BucketAggregationBase {
   /**
-   * Field containing indexed geo-point values. Must be explicitly
-   * mapped as a `geo_point` field. If the field contains an array
-   * `geohex_grid` aggregates all array values.
+   * Field containing indexed `geo_point` or `geo_shape` values.
+   * If the field contains an array, `geohex_grid` aggregates all array values.
    */
   field: Field
   /**
@@ -391,108 +487,277 @@ export class GeohexGridAggregation extends BucketAggregationBase {
 export class GlobalAggregation extends BucketAggregationBase {}
 
 export class ExtendedBounds<T> {
+  /**
+   * Maximum value for the bound.
+   */
   max: T
+  /**
+   * Minimum value for the bound.
+   */
   min: T
 }
 
 export class HistogramAggregation extends BucketAggregationBase {
+  /**
+   * Enables extending the bounds of the histogram beyond the data itself.
+   */
   extended_bounds?: ExtendedBounds<double>
+  /**
+   * Limits the range of buckets in the histogram.
+   * It is particularly useful in the case of open data ranges that can result in a very large number of buckets.
+   */
   hard_bounds?: ExtendedBounds<double>
+  /**
+   * The name of the field to aggregate on.
+   */
   field?: Field
+  /**
+   * The interval for the buckets.
+   * Must be a positive decimal.
+   */
   interval?: double
+  /**
+   * Only returns buckets that have `min_doc_count` number of documents.
+   * By default, the response will fill gaps in the histogram with empty buckets.
+   */
   min_doc_count?: integer
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: double
+  /**
+   * By default, the bucket keys start with 0 and then continue in even spaced steps of `interval`.
+   * The bucket boundaries can be shifted by using the `offset` option.
+   */
   offset?: double
+  /**
+   * The sort order of the returned buckets.
+   * By default, the returned buckets are sorted by their key ascending.
+   */
   order?: AggregateOrder
   script?: Script
   format?: string
+  /**
+   * If `true`, returns buckets as a hash instead of an array, keyed by the bucket keys.
+   * @server_default false
+   */
   keyed?: boolean
 }
 
 export class IpRangeAggregation extends BucketAggregationBase {
+  /**
+   * The date field whose values are used to build ranges.
+   */
   field?: Field
+  /**
+   * Array of IP ranges.
+   */
   ranges?: IpRangeAggregationRange[]
 }
 
 export class IpRangeAggregationRange {
+  /**
+   * Start of the range.
+   */
   from?: string | null
+  /**
+   * IP range defined as a CIDR mask.
+   */
   mask?: string
+  /**
+   * End of the range.
+   */
   to?: string | null
 }
 
 export class MissingAggregation extends BucketAggregationBase {
+  /**
+   * The name of the field.
+   */
   field?: Field
   missing?: Missing
 }
 
 export class MultiTermsAggregation extends BucketAggregationBase {
+  /**
+   * Specifies the strategy for data collection.
+   * @server_default breadth_first
+   */
   collect_mode?: TermsAggregationCollectMode
+  /**
+   * Specifies the sort order of the buckets.
+   * Defaults to sorting by descending document count.
+   */
   order?: AggregateOrder
+  /**
+   * The minimum number of documents in a bucket for it to be returned.
+   * @server_default 1
+   */
   min_doc_count?: long
+  /**
+   * The minimum number of documents in a bucket on each shard for it to be returned.
+   * @server_default 1
+   */
   shard_min_doc_count?: long
+  /**
+   * The number of candidate terms produced by each shard.
+   * By default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.
+   */
   shard_size?: integer
+  /**
+   * Calculates the doc count error on per term basis.
+   * @server_default false
+   */
   show_term_doc_count_error?: boolean
+  /**
+   * The number of term buckets should be returned out of the overall terms list.
+   * @server_default 10
+   */
   size?: integer
+  /**
+   * The field from which to generate sets of terms.
+   */
   terms: MultiTermLookup[]
 }
 
 export class MultiTermLookup {
+  /**
+   * A fields from which to retrieve terms.
+   */
   field: Field
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: Missing
 }
 
 export class NestedAggregation extends BucketAggregationBase {
+  /**
+   * The path to the field of type `nested`.
+   */
   path?: Field
 }
 
 export class ParentAggregation extends BucketAggregationBase {
+  /**
+   * The child type that should be selected.
+   */
   type?: RelationName
 }
 
 export class RangeAggregation extends BucketAggregationBase {
+  /**
+   * The date field whose values are use to build ranges.
+   */
   field?: Field
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: integer
+  /**
+   * An array of ranges used to bucket documents.
+   */
   ranges?: AggregationRange[]
   script?: Script
+  /**
+   * Set to `true` to associate a unique string key with each bucket and return the ranges as a hash rather than an array.
+   */
   keyed?: boolean
   format?: string
 }
 
 export class AggregationRange {
+  /**
+   * Start of the range (inclusive).
+   */
   from?: double | string | null
+  /**
+   * Custom key to return the range with.
+   */
   key?: string
+  /**
+   * End of the range (exclusive).
+   */
   to?: double | string | null
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
+  /**
+   * Terms that should be excluded from the aggregation.
+   */
   exclude?: TermsExclude
+  /**
+   * The field from which to return rare terms.
+   */
   field?: Field
+  /**
+   * Terms that should be included in the aggregation.
+   */
   include?: TermsInclude
+  /**
+   * The maximum number of documents a term should appear in.
+   * @server_default 1
+   */
   max_doc_count?: long
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: Missing
+  /**
+   * The precision of the internal CuckooFilters.
+   * Smaller precision leads to better approximation, but higher memory usage.
+   * @server_default 0.001
+   */
   precision?: double
   value_type?: string
 }
 
 export class ReverseNestedAggregation extends BucketAggregationBase {
+  /**
+   * Defines the nested object field that should be joined back to.
+   * The default is empty, which means that it joins back to the root/main document level.
+   */
   path?: Field
 }
 
 export class SamplerAggregation extends BucketAggregationBase {
+  /**
+   * Limits how many top-scoring documents are collected in the sample processed on each shard.
+   * @server_default 100
+   */
   shard_size?: integer
 }
 
 export class ChiSquareHeuristic {
+  /**
+   * Set to `false` if you defined a custom background filter that represents a different set of documents that you want to compare to.
+   */
   background_is_superset: boolean
+  /**
+   * Set to `false` to filter out the terms that appear less often in the subset than in documents outside the subset.
+   */
   include_negatives: boolean
 }
 
 export class GoogleNormalizedDistanceHeuristic {
+  /**
+   * Set to `false` if you defined a custom background filter that represents a different set of documents that you want to compare to.
+   */
   background_is_superset?: boolean
 }
 
 export class MutualInformationHeuristic {
+  /**
+   * Set to `false` if you defined a custom background filter that represents a different set of documents that you want to compare to.
+   */
   background_is_superset?: boolean
+  /**
+   * Set to `false` to filter out the terms that appear less often in the subset than in documents outside the subset.
+   */
   include_negatives?: boolean
 }
 
@@ -503,58 +768,203 @@ export class ScriptedHeuristic {
 }
 
 export class SignificantTermsAggregation extends BucketAggregationBase {
+  /**
+   * A background filter that can be used to focus in on significant terms within a narrower context, instead of the entire index.
+   */
   background_filter?: QueryContainer
+  /**
+   * Use Chi square, as described in "Information Retrieval", Manning et al., Chapter 13.5.2, as the significance score.
+   */
   chi_square?: ChiSquareHeuristic
+  /**
+   * Terms to exclude.
+   */
   exclude?: TermsExclude
+  /**
+   * Mechanism by which the aggregation should be executed: using field values directly or using global ordinals.
+   */
   execution_hint?: TermsAggregationExecutionHint
+  /**
+   * The field from which to return significant terms.
+   */
   field?: Field
+  /**
+   * Use Google normalized distance as described in "The Google Similarity Distance", Cilibrasi and Vitanyi, 2007, as the significance score.
+   */
   gnd?: GoogleNormalizedDistanceHeuristic
+  /**
+   * Terms to include.
+   */
   include?: TermsInclude
+  /**
+   * Use JLH score as the significance score.
+   */
   jlh?: EmptyObject
+  /**
+   * Only return terms that are found in more than `min_doc_count` hits.
+   * @server_default 3
+   */
   min_doc_count?: long
+  /**
+   * Use mutual information as described in "Information Retrieval", Manning et al., Chapter 13.5.1, as the significance score.
+   */
   mutual_information?: MutualInformationHeuristic
+  /**
+   * A simple calculation of the number of documents in the foreground sample with a term divided by the number of documents in the background with the term.
+   */
   percentage?: PercentageScoreHeuristic
+  /**
+   * Customized score, implemented via a script.
+   */
   script_heuristic?: ScriptedHeuristic
+  /**
+   * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.
+   * Terms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.
+   */
   shard_min_doc_count?: long
+  /**
+   * Can be used to control the volumes of candidate terms produced by each shard.
+   * By default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.
+   */
   shard_size?: integer
+  /**
+   * The number of buckets returned out of the overall terms list.
+   */
   size?: integer
 }
 
 export class SignificantTextAggregation extends BucketAggregationBase {
+  /**
+   * A background filter that can be used to focus in on significant terms within a narrower context, instead of the entire index.
+   */
   background_filter?: QueryContainer
+  /**
+   * Use Chi square, as described in "Information Retrieval", Manning et al., Chapter 13.5.2, as the significance score.
+   */
   chi_square?: ChiSquareHeuristic
+  /**
+   * Values to exclude.
+   */
   exclude?: TermsExclude
+  /**
+   * Determines whether the aggregation will use field values directly or global ordinals.
+   */
   execution_hint?: TermsAggregationExecutionHint
+  /**
+   * The field from which to return significant text.
+   */
   field?: Field
+  /**
+   * Whether to out duplicate text to deal with noisy data.
+   */
   filter_duplicate_text?: boolean
+  /**
+   * Use Google normalized distance as described in "The Google Similarity Distance", Cilibrasi and Vitanyi, 2007, as the significance score.
+   */
   gnd?: GoogleNormalizedDistanceHeuristic
+  /**
+   * Values to include.
+   */
   include?: string | string[]
+  /**
+   * Use JLH score as the significance score.
+   */
   jlh?: EmptyObject
+  /**
+   * Only return values that are found in more than `min_doc_count` hits.
+   * @server_default 3
+   */
   min_doc_count?: long
+  /**
+   * Use mutual information as described in "Information Retrieval", Manning et al., Chapter 13.5.1, as the significance score.
+   */
   mutual_information?: MutualInformationHeuristic
+  /**
+   * A simple calculation of the number of documents in the foreground sample with a term divided by the number of documents in the background with the term.
+   */
   percentage?: PercentageScoreHeuristic
+  /**
+   * Customized score, implemented via a script.
+   */
   script_heuristic?: ScriptedHeuristic
+  /**
+   * Regulates the certainty a shard has if the values should actually be added to the candidate list or not with respect to the min_doc_count.
+   * Values will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.
+   */
   shard_min_doc_count?: long
+  /**
+   * The number of candidate terms produced by each shard.
+   * By default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.
+   */
   shard_size?: integer
+  /**
+   * The number of buckets returned out of the overall terms list.
+   */
   size?: integer
+  /**
+   * Overrides the JSON `_source` fields from which text will be analyzed.
+   */
   source_fields?: Fields
 }
 
 export class TermsAggregation extends BucketAggregationBase {
+  /**
+   * Determines how child aggregations should be calculated: breadth-first or depth-first.
+   */
   collect_mode?: TermsAggregationCollectMode
+  /**
+   * Values to exclude.
+   * Accepts regular expressions and partitions.
+   */
   exclude?: TermsExclude
+  /**
+   * Determines whether the aggregation will use field values directly or global ordinals.
+   */
   execution_hint?: TermsAggregationExecutionHint
+  /**
+   * The field from which to return terms.
+   */
   field?: Field
+  /**
+   * Values to include.
+   * Accepts regular expressions and partitions.
+   */
   include?: TermsInclude
+  /**
+   * Only return values that are found in more than `min_doc_count` hits.
+   * @server_default 1
+   */
   min_doc_count?: integer
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: Missing
   missing_order?: MissingOrder
   missing_bucket?: boolean
+  /**
+   * Coerced unmapped fields into the specified type.
+   */
   value_type?: string
+  /**
+   * Specifies the sort order of the buckets.
+   * Defaults to sorting by descending document count.
+   */
   order?: AggregateOrder
   script?: Script
+  /**
+   * The number of candidate terms produced by each shard.
+   * By default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.
+   */
   shard_size?: integer
+  /**
+   * Set to `true` to return the `doc_count_error_upper_bound`, which is an upper bound to the error on the `doc_count` returned by each shard.
+   */
   show_term_doc_count_error?: boolean
+  /**
+   * The number of buckets returned out of the overall terms list.
+   * @server_default 10
+   */
   size?: integer
   format?: string
 }
@@ -568,7 +978,13 @@ export type AggregateOrder =
   | SingleKeyDictionary<Field, SortOrder>[]
 
 export enum TermsAggregationCollectMode {
+  /**
+   * Expands all branches of the aggregation tree in one depth-first pass, before any pruning occurs.
+   */
   depth_first = 0,
+  /**
+   * Caches the set of documents that fall into the uppermost buckets for subsequent replay.
+   */
   breadth_first = 1
 }
 
@@ -586,14 +1002,35 @@ export type TermsInclude = string | string[] | TermsPartition
 export type TermsExclude = string | string[]
 
 export class TermsPartition {
+  /**
+   * The number of partitions.
+   */
   num_partitions: long
+  /**
+   * The partition number for this request.
+   */
   partition: long
 }
 
 export class VariableWidthHistogramAggregation {
+  /**
+   * The name of the field.
+   */
   field?: Field
+  /**
+   * The target number of buckets.
+   * @server_default 10
+   */
   buckets?: integer
+  /**
+   * The number of buckets that the coordinating node will request from each shard.
+   * Defaults to `buckets * 50`.
+   */
   shard_size?: integer
+  /**
+   * Specifies the number of individual documents that will be stored in memory on a shard before the initial bucketing algorithm is run.
+   * Defaults to `min(10 * shard_size, 50000)`.
+   */
   initial_buffer?: integer
 }
 
@@ -654,11 +1091,11 @@ export class CategorizeTextAggregation extends Aggregation {
    */
   size?: integer
   /**
-   * The minimum number of documents for a bucket to be returned to the results.
+   * The minimum number of documents in a bucket to be returned to the results.
    */
   min_doc_count?: integer
   /**
-   * The minimum number of documents for a bucket to be returned from the shard before merging.
+   * The minimum number of documents in a bucket to be returned from the shard before merging.
    */
   shard_min_doc_count?: integer
 }
@@ -676,7 +1113,7 @@ export class CustomCategorizeTextAnalyzer {
 
 export class IpPrefixAggregation extends BucketAggregationBase {
   /**
-   * The document IP address field to aggregation on. The field mapping type must be `ip`
+   * The IP address field to aggregation on. The field mapping type must be `ip`.
    */
   field: Field
   /**
@@ -699,7 +1136,7 @@ export class IpPrefixAggregation extends BucketAggregationBase {
    */
   keyed?: boolean
   /**
-   * Minimum number of documents for buckets to be included in the response.
+   * Minimum number of documents in a bucket for it to be included in the response.
    * @server_default 1
    */
   min_doc_count?: long
@@ -721,7 +1158,7 @@ export class FrequentItemSetsField {
 
 export class FrequentItemSetsAggregation {
   /**
-   * Fields to analyze
+   * Fields to analyze.
    */
   fields: FrequentItemSetsField[]
   /**

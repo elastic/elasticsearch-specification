@@ -17,24 +17,24 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Id } from '@_types/common'
 
 /**
- * Deletes a synonym rule in a synonym set
- * @rest_spec_name synonym_rule.delete
+ * Retrieves a synonym rule from a synonym set
+ * @rest_spec_name synonyms.get_synonym_rule
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The id of the synonym set to be updated
+     * The id of the synonym set to retrieve the synonym rule from
      */
-    synonyms_set: Name
+    set_id: Id
 
     /**
-     * The id of the synonym rule to be deleted
+     * The id of the synonym rule to retrieve
      */
-    synonym_rule: Name
+    rule_id: Id
   }
 }

@@ -17,15 +17,12 @@
  * under the License.
  */
 
-import { Result } from '@_types/Result'
-import { ReloadDetails } from '@indices/reload_search_analyzers/types'
-import { ShardStatistics } from '@_types/Stats'
 import { integer } from '@_types/Numeric'
-import { SynonymsSet } from '../_types/SynonymsSet'
+import { SynonymRuleRead } from '../_types/SynonymRule'
 
 export class Response {
   body: {
     count: integer
-    synonyms_set: SynonymsSet
+    synonyms_set: SynonymRuleRead[]
   }
 }

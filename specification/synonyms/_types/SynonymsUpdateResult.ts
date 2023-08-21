@@ -18,8 +18,7 @@
  */
 
 import { Result } from '@_types/Result'
-import { ReloadDetails } from '@indices/reload_search_analyzers/types'
-import { ShardStatistics } from '@_types/Stats'
+import { ReloadResult } from '@indices/reload_search_analyzers/types'
 
 export class SynonymsUpdateResult {
   /**
@@ -31,6 +30,5 @@ export class SynonymsUpdateResult {
    * Updating synonyms in a synonym set reloads the associated analyzers.
    * This is the analyzers reloading result
    */
-  reload_analyzers_details: ReloadDetails[]
-  _shards: ShardStatistics
+  reload_analyzers_details: ReloadResult
 }

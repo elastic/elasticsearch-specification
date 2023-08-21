@@ -17,19 +17,19 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Id } from '@_types/common'
 
 /**
  * Deletes a synonym set
- * @rest_spec_name synonyms.delete
+ * @rest_spec_name synonyms.delete_synonym
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the synonyms set to be deleted
+     * The id of the synonyms set to be deleted
      */
-    synonyms_set: Name
+    id: Id
   }
 }

@@ -22,6 +22,7 @@ import { integer } from '@_types/Numeric'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
 import { TokenFilterDefinition } from '@_types/analysis/token_filters'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class TokenizerBase {
   version?: VersionString
@@ -87,18 +88,18 @@ export class NoriTokenizer extends TokenizerBase {
 
 export class PathHierarchyTokenizer extends TokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: integer
+  buffer_size: Stringified<integer>
   delimiter: string
   replacement: string
-  reverse: boolean
-  skip: integer
+  reverse: Stringified<boolean>
+  skip: Stringified<integer>
 }
 
 export class PatternTokenizer extends TokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export class StandardTokenizer extends TokenizerBase {

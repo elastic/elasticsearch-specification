@@ -16,21 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { SynonymRule } from '../_types/SynonymRule'
 
-import { SynonymRule, SynonymRuleOptionalId } from './SynonymRule'
-
-// Synonyms set used for updating operations. Synonym rules can omit ID here.
-export class SynonymsSetUpdate {
-  /**
-   * Synonym rules that conform the synonym set
-   */
-  synonymRules: SynonymRuleOptionalId[]
-}
-
-// Synonyms set used for responses, which always include synonym rule IDs
-export class SynonymsSet extends SynonymsSetUpdate {
-  /**
-   * Synonym rules that conform the synonym set
-   */
-  synonymRules: SynonymRule[]
+/**
+ * Creates or updates a synonym set.
+ * @rest_spec_name synonyms.put_synonym
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The id of the synonyms set to be created or updated
+     */
+    id: Id
+  }
+  body: {
+    /**
+     * The synonym set information to update
+     */
+    synonyms_set: SynonymRule[]
+  }
 }

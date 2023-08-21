@@ -17,8 +17,13 @@
  * under the License.
  */
 
-import { SynonymRule } from '../../synonyms/_types/SynonymRule'
+import { Result } from '@_types/Result'
+import { ReloadDetails } from '@indices/reload_search_analyzers/types'
+import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  body: SynonymRule
+  body: {
+    result: Result
+    reload_analyzers_details: ReloadDetails
+  }
 }

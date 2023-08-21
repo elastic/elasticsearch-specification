@@ -25,7 +25,7 @@ import { Name } from '@_types/common'
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
      * The name of the analytics collection to be deleted
