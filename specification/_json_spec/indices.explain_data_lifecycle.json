@@ -7,17 +7,13 @@
     "stability": "stable",
     "visibility": "public",
     "headers": {
-      "accept": [
-        "application/json"
-      ]
+      "accept": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/{index}/_lifecycle/explain",
-          "methods": [
-            "GET"
-          ],
+          "methods": ["GET"],
           "parts": {
             "index": {
               "type": "string",
