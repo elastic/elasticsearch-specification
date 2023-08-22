@@ -23,9 +23,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import {
-  DataLifecycle,
-  DataLifecycleWithRollover
-} from '@indices/_types/DataLifecycle'
+  DataStreamLifecycle,
+  DataStreamLifecycleWithRollover
+} from '@indices/_types/DataStreamLifecycle'
 
 export class ComponentTemplate {
   name: Name
@@ -50,5 +50,5 @@ export class ComponentTemplateSummary {
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  lifecycle?: DataLifecycleWithRollover
+  lifecycle?: DataStreamLifecycleWithRollover
 }

@@ -24,9 +24,9 @@ import { long } from '@_types/Numeric'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
 import {
-  DataLifecycle,
-  DataLifecycleWithRollover
-} from '@indices/_types/DataLifecycle'
+  DataStreamLifecycle,
+  DataStreamLifecycleWithRollover
+} from '@indices/_types/DataStreamLifecycle'
 
 export class IndexTemplate {
   /**
@@ -103,5 +103,5 @@ export class IndexTemplateSummary {
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  lifecycle?: DataLifecycleWithRollover
+  lifecycle?: DataStreamLifecycleWithRollover
 }

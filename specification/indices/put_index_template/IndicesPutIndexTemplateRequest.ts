@@ -31,7 +31,7 @@ import {
 } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
-import { DataLifecycle } from '@indices/_types/DataLifecycle'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 
 /**
  * Creates or updates an index template.
@@ -115,5 +115,5 @@ export class IndexTemplateMapping {
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  lifecycle?: DataLifecycle
+  lifecycle?: DataStreamLifecycle
 }

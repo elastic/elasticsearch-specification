@@ -27,7 +27,7 @@ import {
   Uuid
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DataLifecycleWithRollover } from '@indices/_types/DataLifecycle'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 
 export class DataStream {
   /**
@@ -64,7 +64,7 @@ export class DataStream {
    * @availability stack since=8.8.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  lifecycle?: DataLifecycleWithRollover
+  lifecycle?: DataStreamLifecycleWithRollover
   /**
    * Name of the data stream.
    */
