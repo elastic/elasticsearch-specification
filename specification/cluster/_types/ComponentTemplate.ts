@@ -47,8 +47,8 @@ export class ComponentTemplateSummary {
   mappings?: TypeMapping
   aliases?: Dictionary<string, AliasDefinition>
   /**
-   * @availability stack since=8.8.0 stability=experimental
-   * @availability serverless stability=experimental
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable
    */
   lifecycle?: DataStreamLifecycleWithRollover
 }

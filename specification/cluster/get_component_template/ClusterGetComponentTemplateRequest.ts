@@ -45,8 +45,8 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /**
      * @server_default false
-     * @availability stack since=8.8.0 stability=experimental
-     * @availability serverless stability=experimental
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
      */
     include_defaults?: boolean
     /**
