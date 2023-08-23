@@ -22,24 +22,65 @@ import { Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 
 export class DataframeOutlierDetectionSummary {
+  /**
+   * The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve.
+   * @server_default "include_curve": false
+   */
   auc_roc?: DataframeEvaluationSummaryAucRoc
+  /**
+   * Set the different thresholds of the outlier score at where the metric is calculated.
+   */
   precision?: Dictionary<string, double>
+  /**
+   * Set the different thresholds of the outlier score at where the metric is calculated.
+   */
   recall?: Dictionary<string, double>
+  /**
+   * Set the different thresholds of the outlier score at where the metrics (`tp` - true positive, `fp` - false positive, `tn` - true negative, `fn` - false negative) are calculated.
+   */
   confusion_matrix?: Dictionary<string, ConfusionMatrixThreshold>
 }
 
 export class DataframeClassificationSummary {
+  /**
+   * The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve.
+   * It is calculated for a specific class (provided as "class_name") treated as positive.
+   */
   auc_roc?: DataframeEvaluationSummaryAucRoc
+  /**
+   * Accuracy of predictions (per-class and overall).
+   */
   accuracy?: DataframeClassificationSummaryAccuracy
+  /**
+   * Multiclass confusion matrix.
+   */
   multiclass_confusion_matrix?: DataframeClassificationSummaryMulticlassConfusionMatrix
+  /**
+   * Precision of predictions (per-class and average).
+   */
   precision?: DataframeClassificationSummaryPrecision
+  /**
+   * Recall of predictions (per-class and average).
+   */
   recall?: DataframeClassificationSummaryRecall
 }
 
 export class DataframeRegressionSummary {
+  /**
+   * Pseudo Huber loss function.
+   */
   huber?: DataframeEvaluationValue
+  /**
+   * Average squared difference between the predicted values and the actual (`ground truth`) value.
+   */
   mse?: DataframeEvaluationValue
+  /**
+   * Average squared difference between the logarithm of the predicted values and the logarithm of the actual (`ground truth`) value.
+   */
   msle?: DataframeEvaluationValue
+  /**
+   * Proportion of the variance in the dependent variable that is predictable from the independent variables.
+   */
   r_squared?: DataframeEvaluationValue
 }
 
