@@ -27,12 +27,18 @@ import { Duration } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The names of particular nodes in the cluster to target.
+     */
     node_id?: NodeIds
   }
   query_parameters: {
     timeout?: Duration
   }
   body: {
+    /**
+     * The password for the Elasticsearch keystore.
+     */
     secure_settings_password?: Password
   }
 }
