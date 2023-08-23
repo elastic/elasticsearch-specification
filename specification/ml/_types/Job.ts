@@ -154,7 +154,6 @@ export class Job {
    * It specifies the maximum period of time (in days) that snapshots are retained.
    * This period is relative to the timestamp of the most recent snapshot for this job.
    * By default, snapshots ten days older than the newest snapshot are deleted.
-   * @server_default 10
    */
   model_snapshot_retention_days: long
   /**

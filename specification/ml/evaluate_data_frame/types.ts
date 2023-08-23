@@ -24,7 +24,7 @@ import { double, integer } from '@_types/Numeric'
 export class DataframeOutlierDetectionSummary {
   /**
    * The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve.
-   * @server_default "include_curve": false
+   * @server_default {"include_curve": false}
    */
   auc_roc?: DataframeEvaluationSummaryAucRoc
   /**
