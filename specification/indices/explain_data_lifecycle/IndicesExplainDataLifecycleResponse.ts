@@ -20,22 +20,22 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { Duration, EpochTime, UnitMillis } from '@_types/Time'
-import { DataLifecycleWithRollover } from '@indices/_types/DataLifecycle'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 
 export class Response {
   body: {
-    indices: Dictionary<IndexName, DataLifecycleExplain>
+    indices: Dictionary<IndexName, DataStreamLifecycleExplain>
   }
 }
 
-class DataLifecycleExplain {
+class DataStreamLifecycleExplain {
   index: IndexName
-  managed_by_dlm: boolean
+  managed_by_lifecycle: boolean
   index_creation_date_millis?: EpochTime<UnitMillis>
   time_since_index_creation?: Duration
   rollover_date_millis?: EpochTime<UnitMillis>
   time_since_rollover?: Duration
-  lifecycle?: DataLifecycleWithRollover
+  lifecycle?: DataStreamLifecycleWithRollover
   generation_time?: Duration
   error?: string
 }

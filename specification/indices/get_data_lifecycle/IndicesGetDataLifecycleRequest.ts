@@ -21,10 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
 
 /**
- * Retrieves the data lifecycle configuration of one or more data streams.
+ * Retrieves the data stream lifecycle configuration of one or more data streams.
  * @rest_spec_name indices.get_data_lifecycle
- * @availability stack since=8.8.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
