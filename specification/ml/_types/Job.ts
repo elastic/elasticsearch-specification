@@ -99,7 +99,7 @@ export class Job {
   daily_model_snapshot_retention_after_days?: long
   /**
    * The data description defines the format of the input data when you send data to the job by using the post data API.
-   * Note that when configure a datafeed, these properties are automatically set.
+   * Note that when configuring a datafeed, these properties are automatically set.
    * When data is received via the post data API, it is not stored in Elasticsearch.
    * Only the results for anomaly detection are retained.
    */
@@ -153,7 +153,8 @@ export class Job {
    * Advanced configuration option, which affects the automatic removal of old model snapshots for this job.
    * It specifies the maximum period of time (in days) that snapshots are retained.
    * This period is relative to the timestamp of the most recent snapshot for this job.
-   * The default value is `10`, which means snapshots ten days older than the newest snapshot are deleted.
+   * By default, snapshots ten days older than the newest snapshot are deleted.
+   * @server_default 10
    */
   model_snapshot_retention_days: long
   /**

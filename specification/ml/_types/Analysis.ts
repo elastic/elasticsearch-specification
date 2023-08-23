@@ -124,8 +124,9 @@ export class AnalysisConfigRead implements OverloadOf<AnalysisConfig> {
   model_prune_window?: Duration
   /**
    * The size of the window in which to expect data that is out of time order.
-   * The default value is 0 (no latency).
+   * Defaults to no latency.
    * If you specify a non-zero value, it must be greater than or equal to one second.
+   * @server_default 0
    */
   latency?: Duration
   /**
