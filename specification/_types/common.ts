@@ -96,8 +96,19 @@ export type VersionNumbers = VersionNumber[]
 export type VersionString = string
 export type VersionStrings = VersionString[]
 export enum VersionType {
+  /**
+   * Use internal versioning that starts at 1 and increments with each update or delete.
+   */
   internal = 0,
+  /**
+   * Only index the document if the given version is strictly higher than the version of the stored document or if there is no existing document.
+   */
   external = 1,
+  /**
+   * Only index the document if the given version is equal or higher than the version of the stored document or if there is no existing document.
+   * Note: the external_gte version type is meant for special use cases and should be used with care.
+   * If used incorrectly, it can result in loss of data.
+   */
   external_gte = 2,
   force = 3
 }
@@ -168,7 +179,13 @@ export enum Bytes {
 }
 
 export enum Conflicts {
+  /**
+   * Stop reindexing if there are conflicts.
+   */
   abort = 0,
+  /**
+   * Continue reindexing even if there are conflicts.
+   */
   proceed = 1
 }
 
@@ -234,7 +251,13 @@ export enum Level {
 }
 
 export enum OpType {
+  /**
+   * Overwrite any documents that already exist.
+   */
   index = 0,
+  /**
+   * Only index documents that do not already exist.
+   */
   create = 1
 }
 
