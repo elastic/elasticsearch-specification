@@ -255,8 +255,17 @@ export enum SearchType {
 }
 
 export enum SuggestMode {
+  /**
+   * Only generate suggestions for terms that are not in the shard.
+   */
   missing = 0,
+  /**
+   * Only suggest terms that occur in more docs on the shard than the original term.
+   */
   popular = 1,
+  /**
+   * Suggest any matching suggestions based on terms in the suggest text.
+   */
   always = 2
 }
 
