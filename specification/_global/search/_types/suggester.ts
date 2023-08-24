@@ -370,7 +370,8 @@ export class PhraseSuggester extends SuggesterBase {
   direct_generator?: DirectGenerator[]
   force_unigrams?: boolean
   /**
-   * Sets max size of the n-grams (shingles) in the field. If the field doesn’t contain n-grams (shingles), this should be omitted or set to `1`.
+   * Sets max size of the n-grams (shingles) in the field.
+   * If the field doesn’t contain n-grams (shingles), this should be omitted or set to `1`.
    * If the field uses a shingle filter, the `gram_size` is set to the `max_shingle_size` if not explicitly set.
    */
   gram_size?: integer
