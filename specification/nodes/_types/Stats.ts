@@ -460,7 +460,7 @@ export class Breaker {
 
 export class Cgroup {
   /**
-   * Contains statistics about cpuacct control group for the node.
+   * Contains statistics about `cpuacct` control group for the node.
    */
   cpuacct?: CpuAcct
   /**
