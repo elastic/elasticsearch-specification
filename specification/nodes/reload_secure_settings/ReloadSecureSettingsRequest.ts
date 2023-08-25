@@ -22,17 +22,29 @@ import { NodeIds, Password } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Reloads the keystore on nodes in the cluster.
  * @rest_spec_name nodes.reload_secure_settings
  * @availability stack since=6.5.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The names of particular nodes in the cluster to target.
+     */
     node_id?: NodeIds
   }
   query_parameters: {
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
   body: {
+    /**
+     * The password for the Elasticsearch keystore.
+     */
     secure_settings_password?: Password
   }
 }

@@ -22,6 +22,7 @@ import { Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Returns cluster nodes information.
  * @rest_spec_name nodes.info
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
