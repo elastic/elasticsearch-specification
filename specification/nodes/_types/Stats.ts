@@ -572,7 +572,7 @@ export class DataPathStats {
    */
   free_in_bytes?: long
   /**
-   * Mount point of the file store (ex: /dev/sda2).
+   * Mount point of the file store (for example: `/dev/sda2`).
    */
   mount?: string
   /**
