@@ -641,7 +641,7 @@ export class Http {
   total_opened?: long
   /**
    * Information on current and recently-closed HTTP client connections.
-   * Clients that have been closed longer than the `http`.`client_stats`.`closed_channels`.`max_age` setting will not be represented here.
+   * Clients that have been closed longer than the `http.client_stats.closed_channels.max_age` setting will not be represented here.
    */
   clients?: Client[]
 }
