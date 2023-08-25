@@ -422,7 +422,7 @@ export class AdaptiveSelection {
    */
   avg_service_time_ns?: long
   /**
-   * The number of outstanding search requests from the node these stats are for to the keyed node.
+   * The number of outstanding search requests to the keyed node from the node these stats are for.
    */
   outgoing_searches?: long
   /**
