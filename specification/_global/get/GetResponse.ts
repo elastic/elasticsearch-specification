@@ -22,13 +22,4 @@ import { ErrorResponseBase } from '@_types/Base'
 
 export class Response<TDocument> {
   body: GetResult<TDocument>
-  exceptions: [
-    {
-      // Special case exception for 404 status code, Elasticsearch will return either:
-      //  * index_not_found_exception as an error if the index doesn't exist
-      //  * GetResult with only the requested _id, _index properties and found as a false boolean
-      statusCodes: [404]
-      body: GetResult<TDocument> | ErrorResponseBase
-    }
-  ]
 }
