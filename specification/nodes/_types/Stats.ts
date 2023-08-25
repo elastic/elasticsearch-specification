@@ -289,7 +289,7 @@ export class ClusterStateUpdate {
    */
   computation_time_millis?: DurationValue<UnitMillis>
   /**
-   * The cumulative amount of time spent publishing cluster state updates which ultimately succeeded, which includes everything from the start of the publication (i.e. just after the computation of the new cluster state) until the publication has finished and the master node is ready to start processing the next state update.
+   * The cumulative amount of time spent publishing cluster state updates which ultimately succeeded, which includes everything from the start of the publication (just after the computation of the new cluster state) until the publication has finished and the master node is ready to start processing the next state update.
    * This includes the time measured by `context_construction_time`, `commit_time`, `completion_time` and `master_apply_time`.
    */
   publication_time?: Duration
