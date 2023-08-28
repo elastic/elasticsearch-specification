@@ -21,7 +21,13 @@ import { ByteSize, Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
-export type Repository = AzureRepository | GcsRepository | S3Repository | SharedFileSystemRepository | ReadOnlyUrlRepository | SourceOnlyRepository
+export type Repository =
+  | AzureRepository
+  | GcsRepository
+  | S3Repository
+  | SharedFileSystemRepository
+  | ReadOnlyUrlRepository
+  | SourceOnlyRepository
 
 export class AzureRepository {
   type: 'azure'
@@ -59,7 +65,13 @@ export class SourceOnlyRepository {
   settings: SourceOnlyRepositorySettings
 }
 
-export type RepositorySettings = AzureRepositorySettings | GcsRepositorySettings | S3RepositorySettings | SharedFileSystemRepositorySettings | ReadOnlyUrlRepositorySettings | SourceOnlyRepositorySettings
+export type RepositorySettings =
+  | AzureRepositorySettings
+  | GcsRepositorySettings
+  | S3RepositorySettings
+  | SharedFileSystemRepositorySettings
+  | ReadOnlyUrlRepositorySettings
+  | SourceOnlyRepositorySettings
 
 export class RepositorySettingsBase {
   chunk_size?: ByteSize
