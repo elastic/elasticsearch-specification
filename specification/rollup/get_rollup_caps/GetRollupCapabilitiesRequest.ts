@@ -21,11 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern.
  * @rest_spec_name rollup.get_rollup_caps
  * @availability stack since=6.3.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Index, indices or index-pattern to return rollup capabilities for.
+     * `_all` may be used to fetch rollup capabilities from all jobs.
+     */
     id?: Id
   }
 }
