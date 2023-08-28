@@ -17,22 +17,114 @@
  * under the License.
  */
 
-import { Uuid } from '@_types/common'
+import { ByteSize, Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
-export class Repository {
-  type: string
+export type Repository = AzureRepository | GcsRepository | S3Repository | SharedFileSystemRepository | ReadOnlyUrlRepository | SourceOnlyRepository
+
+export class AzureRepository {
+  type: 'azure'
   uuid?: Uuid
-  settings: RepositorySettings
+  settings: AzureRepositorySettings
 }
 
-export class RepositorySettings {
-  chunk_size?: string
-  compress?: string | boolean
-  concurrent_streams?: string | integer
-  location: string
+export class GcsRepository {
+  type: 'gcs'
+  uuid?: Uuid
+  settings: GcsRepositorySettings
+}
+
+export class S3Repository {
+  type: 's3'
+  uuid?: Uuid
+  settings: S3RepositorySettings
+}
+
+export class SharedFileSystemRepository {
+  type: 'fs'
+  uuid?: Uuid
+  settings: SharedFileSystemRepositorySettings
+}
+
+export class ReadOnlyUrlRepository {
+  type: 'url'
+  uuid?: Uuid
+  settings: ReadOnlyUrlRepositorySettings
+}
+
+export class SourceOnlyRepository {
+  type: 'source'
+  uuid?: Uuid
+  settings: SourceOnlyRepositorySettings
+}
+
+export type RepositorySettings = AzureRepositorySettings | GcsRepositorySettings | S3RepositorySettings | SharedFileSystemRepositorySettings | ReadOnlyUrlRepositorySettings | SourceOnlyRepositorySettings
+
+export class RepositorySettingsBase {
+  chunk_size?: ByteSize
+  compress?: boolean
+  max_restore_bytes_per_sec?: ByteSize
+  max_snapshot_bytes_per_sec?: ByteSize
+}
+
+export class AzureRepositorySettings extends RepositorySettingsBase {
+  client?: string
+  container?: string
+  base_path?: string
   /**
    * @aliases readonly
    */
-  read_only?: string | boolean
+  read_only?: boolean
+  location_mode?: string
+}
+
+export class GcsRepositorySettings extends RepositorySettingsBase {
+  bucket: string
+  client?: string
+  base_path?: string
+  /**
+   * @aliases readonly
+   */
+  read_only?: boolean
+  application_name?: string
+}
+
+export class S3RepositorySettings extends RepositorySettingsBase {
+  bucket: string
+  client?: string
+  base_path?: string
+  /**
+   * @aliases readonly
+   */
+  read_only?: boolean
+  server_side_encryption?: boolean
+  buffer_size?: ByteSize
+  canned_acl?: string
+  storage_class?: string
+}
+
+export class SharedFileSystemRepositorySettings extends RepositorySettingsBase {
+  location: string
+  max_number_of_snapshots?: integer
+  /**
+   * @aliases readonly
+   */
+  read_only?: boolean
+}
+
+export class ReadOnlyUrlRepositorySettings extends RepositorySettingsBase {
+  http_max_retries?: integer
+  http_socket_timeout?: Duration
+  max_number_of_snapshots?: integer
+  url: string
+}
+
+export class SourceOnlyRepositorySettings extends RepositorySettingsBase {
+  delegate_type?: string
+  max_number_of_snapshots?: integer
+  /**
+   * @aliases readonly
+   */
+  read_only?: boolean
 }
