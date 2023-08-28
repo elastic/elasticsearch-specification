@@ -17,6 +17,7 @@ autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units
 bytes-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html
+calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals
 cat-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html
 cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-allocation.html
 cat-anomaly-detectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html
