@@ -10694,7 +10694,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   timeout?: Duration
   body?: {
     data_retention?: Duration
-    downsamplig?: IndicesDataStreamLifecycleDownsampling
+    downsampling?: IndicesDataStreamLifecycleDownsampling
   }
 }
 
