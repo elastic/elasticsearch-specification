@@ -36,7 +36,7 @@ enum ClusterSearchStatusEnum {
   successful = 1,
   partial = 2,
   skipped = 3,
-  failed = 4,
+  failed = 4
 }
 
 property: ClusterSearchStatusEnum
