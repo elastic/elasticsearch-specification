@@ -70,6 +70,6 @@ export interface Request extends RequestBase {
      * If defined, every backing index will execute the configured downsampling configuration after the backing
      * index is not the data stream write index anymore.
      */
-    downsamplig?: DataStreamLifecycleDownsampling
+    downsampling?: DataStreamLifecycleDownsampling
   }
 }
