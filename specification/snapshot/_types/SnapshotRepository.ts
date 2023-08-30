@@ -21,6 +21,10 @@ import { ByteSize, Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
+/**
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
 export type Repository =
   | AzureRepository
   | GcsRepository
@@ -65,6 +69,10 @@ export class SourceOnlyRepository {
   settings: SourceOnlyRepositorySettings
 }
 
+/**
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
 export type RepositorySettings =
   | AzureRepositorySettings
   | GcsRepositorySettings
