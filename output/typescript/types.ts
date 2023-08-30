@@ -9658,7 +9658,7 @@ export interface IndicesDataStreamLifecycle {
 }
 
 export interface IndicesDataStreamLifecycleDownsampling {
-  rounds?: IndicesDownsamplingRound[]
+  rounds: IndicesDownsamplingRound[]
 }
 
 export interface IndicesDataStreamLifecycleRolloverConditions {
