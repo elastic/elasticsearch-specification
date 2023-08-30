@@ -23,5 +23,5 @@ export class DataStreamLifecycleDownsampling {
   /**
    * The list of downsampling rounds to execute as part of this downsampling configuration
    */
-  rounds?: DownsamplingRound[]
+  rounds: DownsamplingRound[]
 }
