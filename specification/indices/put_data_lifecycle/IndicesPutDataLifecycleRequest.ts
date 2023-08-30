@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
  * Update the data lifecycle of the specified data streams.
@@ -65,5 +66,10 @@ export interface Request extends RequestBase {
      * When empty, every document in this data stream will be stored indefinitely.
      */
     data_retention?: Duration
+    /**
+     * If defined, every backing index will execute the configured downsampling configuration after the backing
+     * index is not the data stream write index anymore.
+     */
+    downsampling?: DataStreamLifecycleDownsampling
   }
 }
