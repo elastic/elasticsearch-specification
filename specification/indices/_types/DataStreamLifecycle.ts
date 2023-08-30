@@ -20,12 +20,14 @@
 import { Duration } from '@_types/Time'
 import { long } from '@_types/Numeric'
 import { ByteSize } from '@_types/common'
+import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
  * Data lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
  */
 export class DataStreamLifecycle {
   data_retention?: Duration
+  downsampling?: DataStreamLifecycleDownsampling
 }
 
 /**
@@ -39,6 +41,11 @@ export class DataStreamLifecycleWithRollover {
    * When empty, every document in this data stream will be stored indefinitely.
    */
   data_retention?: Duration
+
+  /**
+   * The downsampling configuration to execute for the managed backing index after rollover.
+   */
+  downsampling?: DataStreamLifecycleDownsampling
   /**
    * The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.
    * This property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.
