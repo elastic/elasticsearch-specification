@@ -33,39 +33,37 @@ export type Repository =
   | ReadOnlyUrlRepository
   | SourceOnlyRepository
 
-export class AzureRepository {
-  type: 'azure'
+export class RepositoryBase {
   uuid?: Uuid
+}
+
+export class AzureRepository extends RepositoryBase {
+  type: 'azure'
   settings: AzureRepositorySettings
 }
 
-export class GcsRepository {
+export class GcsRepository extends RepositoryBase {
   type: 'gcs'
-  uuid?: Uuid
   settings: GcsRepositorySettings
 }
 
-export class S3Repository {
+export class S3Repository extends RepositoryBase {
   type: 's3'
-  uuid?: Uuid
   settings: S3RepositorySettings
 }
 
-export class SharedFileSystemRepository {
+export class SharedFileSystemRepository extends RepositoryBase {
   type: 'fs'
-  uuid?: Uuid
   settings: SharedFileSystemRepositorySettings
 }
 
-export class ReadOnlyUrlRepository {
+export class ReadOnlyUrlRepository extends RepositoryBase {
   type: 'url'
-  uuid?: Uuid
   settings: ReadOnlyUrlRepositorySettings
 }
 
-export class SourceOnlyRepository {
+export class SourceOnlyRepository extends RepositoryBase {
   type: 'source'
-  uuid?: Uuid
   settings: SourceOnlyRepositorySettings
 }
 
