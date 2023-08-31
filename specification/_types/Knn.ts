@@ -38,6 +38,8 @@ export interface KnnQuery {
   boost?: float
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
+  /** The minimum similarity for a vector to be considered a match */
+  similarity?: double
 }
 
 /** @variants container */
