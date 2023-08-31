@@ -2058,9 +2058,9 @@ export type CategoryId = string
 export type ClusterAlias = string
 
 export interface ClusterDetails {
-  status: ClusterSearchStatusEnum
+  status: ClusterSearchStatus
   indices: string
-  took?: long
+  took?: DurationValue<UnitMillis>
   timed_out: boolean
   _shards?: ShardStatistics
   failures?: ShardFailure[]
@@ -2070,7 +2070,7 @@ export type ClusterInfoTarget = '_all' | 'http' | 'ingest' | 'thread_pool' | 'sc
 
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
 
-export type ClusterSearchStatusEnum = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
+export type ClusterSearchStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
 
 export interface ClusterStatistics {
   skipped: integer

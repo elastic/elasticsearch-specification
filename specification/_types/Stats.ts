@@ -31,7 +31,7 @@ export class ClusterStatistics {
   details?: Dictionary<ClusterAlias, ClusterDetails>
 }
 
-enum ClusterSearchStatusEnum {
+enum ClusterSearchStatus {
   running = 0,
   successful = 1,
   partial = 2,
@@ -39,12 +39,10 @@ enum ClusterSearchStatusEnum {
   failed = 4
 }
 
-property: ClusterSearchStatusEnum
-
 export class ClusterDetails {
-  status: ClusterSearchStatusEnum
+  status: ClusterSearchStatus
   indices: string
-  took?: long
+  took?: DurationValue<UnitMillis>
   timed_out: boolean
   _shards?: ShardStatistics
   failures?: ShardFailure[]
