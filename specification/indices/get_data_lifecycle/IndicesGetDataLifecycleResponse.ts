@@ -18,13 +18,13 @@
  */
 
 import { DataStreamName } from '@_types/common'
-import { DataLifecycle } from '@indices/_types/DataLifecycle'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 
 export class Response {
-  body: { data_streams: DataStreamLifecycle[] }
+  body: { data_streams: DataStreamWithLifecycle[] }
 }
 
-class DataStreamLifecycle {
+class DataStreamWithLifecycle {
   name: DataStreamName
-  lifecycle?: DataLifecycle
+  lifecycle?: DataStreamLifecycle
 }

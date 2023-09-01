@@ -20,34 +20,41 @@
 import { Duration } from '@_types/Time'
 import { long } from '@_types/Numeric'
 import { ByteSize } from '@_types/common'
+import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
- * Data lifecycle denotes that a data stream is managed by DLM and contains the configuration.
+ * Data lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
  */
-export class DataLifecycle {
+export class DataStreamLifecycle {
   data_retention?: Duration
+  downsampling?: DataStreamLifecycleDownsampling
 }
 
 /**
  * Data lifecycle with rollover can be used to display the configuration including the default rollover conditions,
  * if asked.
  */
-export class DataLifecycleWithRollover {
+export class DataStreamLifecycleWithRollover {
   /**
    * If defined, every document added to this data stream will be stored at least for this time frame.
    * Any time after this duration the document could be deleted.
    * When empty, every document in this data stream will be stored indefinitely.
    */
   data_retention?: Duration
+
+  /**
+   * The downsampling configuration to execute for the managed backing index after rollover.
+   */
+  downsampling?: DataStreamLifecycleDownsampling
   /**
    * The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.
    * This property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.
    * The contents of this field are subject to change.
    */
-  rollover?: DlmRolloverConditions
+  rollover?: DataStreamLifecycleRolloverConditions
 }
 
-class DlmRolloverConditions {
+class DataStreamLifecycleRolloverConditions {
   min_age?: Duration
   // max_age is a string because it can contain a label to signal that it's automatically calculated
   max_age?: string

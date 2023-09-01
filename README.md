@@ -5,7 +5,7 @@ you can find them inside [`/specification`](./specification).
 The [`/compiler`](./compiler) folder contains a TypeScript program that compiles the entire definition
 in a JSON representation that can be used for generating language clients.
 
-This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/model/metamodel.ts)
+This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/src/model/metamodel.ts)
 that also explains the various properties and their values.
 
 ## Prepare the environment
@@ -64,7 +64,7 @@ Usage:
 
 ### Structure of the JSON representation
 
-The JSON representation is [formally defined as TypeScript definitions](./compiler/model/metamodel.ts).
+The JSON representation is [formally defined as TypeScript definitions](./compiler/src/model/metamodel.ts).
 Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
@@ -163,7 +163,7 @@ the `request` and `response` value will be `null`.
 ## How to validate the specification
 
 The specification is validated daily by the [client-flight-recorder](https://github.com/elastic/clients-flight-recorder) project.
-The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/dev/recordings/types-validation/types-validation.md).
+The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/main/recordings/types-validation/types-validation.md).
 
 ### Validate the specification in your machine
 

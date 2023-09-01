@@ -17,26 +17,11 @@
  * under the License.
  */
 
-import { float, long } from '@_types/Numeric'
-import { Retries } from '@_types/Retries'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
-export class TaskStatus {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: Retries
-  throttled?: Duration
-  throttled_millis: DurationValue<UnitMillis>
-  throttled_until?: Duration
-  throttled_until_millis: DurationValue<UnitMillis>
-  timed_out?: boolean
-  took?: DurationValue<UnitMillis>
-  total: long
-  updated: long
-  version_conflicts: long
+export class DataStreamLifecycleDownsampling {
+  /**
+   * The list of downsampling rounds to execute as part of this downsampling configuration
+   */
+  rounds: DownsamplingRound[]
 }

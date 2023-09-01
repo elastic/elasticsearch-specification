@@ -17,26 +17,16 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { DownsampleConfig } from '@indices/_types/Downsample'
 
-/**
- * Deletes scheduled events from a calendar.
- * @rest_spec_name ml.delete_calendar_event
- * @availability stack since=6.2.0 stability=stable
- * @availability serverless stability=stable visibility=public
- * @doc_id ml-delete-calendar-event
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * A string that uniquely identifies a calendar.
-     */
-    calendar_id: Id
-    /**
-     * Identifier for the scheduled event.
-     * You can obtain this identifier by using the get calendar events API.
-     */
-    event_id: Id
-  }
+export class DownsamplingRound {
+  /**
+   * The duration since rollover when this downsampling round should execute
+   */
+  after: Duration
+  /**
+   * The downsample configuration to execute.
+   */
+  config: DownsampleConfig
 }

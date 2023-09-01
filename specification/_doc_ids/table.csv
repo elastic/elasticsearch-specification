@@ -17,6 +17,7 @@ autoscaling-put-autoscaling-policy,https://www.elastic.co/guide/en/elasticsearch
 avoid-index-pattern-collisions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/index-templates.html#avoid-index-pattern-collisions
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units
 bytes-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html
+calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals
 cat-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html
 cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-allocation.html
 cat-anomaly-detectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html
@@ -248,6 +249,7 @@ ml-delete-snapshot,https://www.elastic.co/guide/en/elasticsearch/reference/{bran
 ml-feature-importance,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-feature-importance.html
 ml-flush-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-flush-job.html
 ml-forecast,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-forecast.html
+ml-functions,https://www.elastic.co/guide/en/machine-learning/{branch}/ml-functions.html
 ml-get-bucket,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-get-bucket.html
 ml-get-calendar-event,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-get-calendar-event.html
 ml-get-calendar,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-get-calendar.html
