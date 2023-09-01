@@ -19,7 +19,7 @@
 
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ByteSize, Field, Name, VersionString } from './common'
+import { ByteSize, ClusterAlias, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
@@ -28,6 +28,24 @@ export class ClusterStatistics {
   skipped: integer
   successful: integer
   total: integer
+  details?: Dictionary<ClusterAlias, ClusterDetails>
+}
+
+enum ClusterSearchStatus {
+  running = 0,
+  successful = 1,
+  partial = 2,
+  skipped = 3,
+  failed = 4
+}
+
+export class ClusterDetails {
+  status: ClusterSearchStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  timed_out: boolean
+  _shards?: ShardStatistics
+  failures?: ShardFailure[]
 }
 
 export class ShardStatistics {
