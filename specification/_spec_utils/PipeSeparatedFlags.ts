@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { SynonymsUpdateResult } from '../../synonyms/_types/SynonymsUpdateResult'
-
-export class Response {
-  body: SynonymsUpdateResult
-}
+/**
+ * A set of flags that can be represented as a single enum value or a set of values that are encoded
+ * as a pipe-separated string
+ *
+ * Depending on the target language, code generators can use this hint to generate language specific
+ * flags enum constructs and the corresponding (de-)serialization code.
+ */
+export type PipeSeparatedFlags<T> = T | string

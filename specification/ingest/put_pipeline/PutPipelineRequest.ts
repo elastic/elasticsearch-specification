@@ -23,6 +23,9 @@ import { Id, VersionNumber, Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Creates or updates an ingest pipeline.
+ * Changes made using this API take effect immediately.
+ * @doc_id ingest
  * @rest_spec_name ingest.put_pipeline
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public

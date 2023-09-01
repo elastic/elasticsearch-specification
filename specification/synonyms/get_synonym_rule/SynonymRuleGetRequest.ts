@@ -16,24 +16,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
-import { integer } from '@_types/Numeric'
-import { Name } from '@_types/common'
+/**
+ * Retrieves a synonym rule from a synonym set
+ * @rest_spec_name synonyms.get_synonym_rule
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The id of the synonym set to retrieve the synonym rule from
+     */
+    set_id: Id
 
-export class Response {
-  body: {
-    count: integer
-    results: SynonymsSetListItem[]
+    /**
+     * The id of the synonym rule to retrieve
+     */
+    rule_id: Id
   }
-}
-
-export class SynonymsSetListItem {
-  /**
-   * Synonyms set name
-   */
-  synonyms_set: Name
-  /**
-   * Number of synonym rules that the synonym set contains
-   */
-  count: integer
 }

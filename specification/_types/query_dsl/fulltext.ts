@@ -28,7 +28,8 @@ import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { QueryBase } from './abstractions'
 import { Operator } from './Operator'
-import { DateMath, TimeZone } from '@_types/Time'
+import { TimeZone } from '@_types/Time'
+import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 
 /**
  * @shortcut_property query
@@ -701,65 +702,64 @@ export class QueryStringQuery extends QueryBase {
 /**
  * Query flags can be either a single flag or a combination of flags, e.g. `OR|AND|PREFIX`
  * @doc_id supported-flags
- * @codegen_names single, multiple
  */
-export type SimpleQueryStringFlags = SimpleQueryStringFlag | string
+export type SimpleQueryStringFlags = PipeSeparatedFlags<SimpleQueryStringFlag>
 
 export enum SimpleQueryStringFlag {
   /**
    * Disables all operators.
    */
-  NONE = 1,
+  NONE = 0,
   /**
    * Enables the `+` AND operator.
    */
-  AND = 2,
-  /**
-   * Enables the `\|` OR operator.
-   */
-  OR = 4,
+  AND = 1 << 0,
   /**
    * Enables the `-` NOT operator.
    */
-  NOT = 8,
+  NOT = 1 << 1,
+  /**
+   * Enables the `\|` OR operator.
+   */
+  OR = 1 << 2,
   /**
    * Enables the `*` prefix operator.
    */
-  PREFIX = 16,
+  PREFIX = 1 << 3,
   /**
    * Enables the `"` quotes operator used to search for phrases.
    */
-  PHRASE = 32,
+  PHRASE = 1 << 4,
   /**
    * Enables the `(` and `)` operators to control operator precedence.
    */
-  PRECEDENCE = 64,
+  PRECEDENCE = 1 << 5,
   /**
    * Enables `\` as an escape character.
    */
-  ESCAPE = 128,
+  ESCAPE = 1 << 6,
   /**
    * Enables whitespace as split characters.
    */
-  WHITESPACE = 256,
+  WHITESPACE = 1 << 7,
   /**
    * Enables the `~N` operator after a word, where `N` is an integer denoting the allowed edit distance for matching.
    */
-  FUZZY = 512,
+  FUZZY = 1 << 8,
   /**
    * Enables the `~N` operator, after a phrase where `N` is the maximum number of positions allowed between matching tokens.
    * Synonymous to `SLOP`.
    */
-  NEAR = 1024,
+  NEAR = 1 << 9,
   /**
    * Enables the `~N` operator, after a phrase where `N` is maximum number of positions allowed between matching tokens.
    * Synonymous to `NEAR`.
    */
-  SLOP = 2048,
+  SLOP = 1 << 9,
   /**
    * Enables all optional operators.
    */
-  ALL = 4096
+  ALL = -1
 }
 
 export class SimpleQueryStringQuery extends QueryBase {

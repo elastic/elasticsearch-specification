@@ -16,16 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
-import { Result } from '@_types/Result'
-import { ReloadDetails } from '@indices/reload_search_analyzers/types'
-import { ShardStatistics } from '@_types/Stats'
-import { integer } from '@_types/Numeric'
-import { SynonymsSet } from '../_types/SynonymsSet'
-
-export class Response {
-  body: {
-    count: integer
-    synonyms_set: SynonymsSet
+/**
+ * Deletes a synonym set
+ * @rest_spec_name synonyms.delete_synonym
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The id of the synonyms set to be deleted
+     */
+    id: Id
   }
 }

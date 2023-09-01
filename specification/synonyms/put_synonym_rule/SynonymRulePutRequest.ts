@@ -16,27 +16,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { SynonymString } from '../_types/SynonymRule'
 
-import { float, long } from '@_types/Numeric'
-import { Retries } from '@_types/Retries'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+/**
+ * Creates or updates a synonym rule in a synonym set
+ * @rest_spec_name synonyms.put_synonym_rule
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The id of the synonym set to be updated with the synonym rule
+     */
+    set_id: Id
 
-export class TaskStatus {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: Retries
-  throttled?: Duration
-  throttled_millis: DurationValue<UnitMillis>
-  throttled_until?: Duration
-  throttled_until_millis: DurationValue<UnitMillis>
-  timed_out?: boolean
-  took?: DurationValue<UnitMillis>
-  total: long
-  updated: long
-  version_conflicts: long
+    /**
+     * The id of the synonym rule to be updated or created
+     */
+    rule_id: Id
+  }
+  /**
+   * The synonym rule information to update
+   */
+  body: {
+    synonyms: SynonymString[]
+  }
 }

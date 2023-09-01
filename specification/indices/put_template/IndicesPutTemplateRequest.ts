@@ -27,6 +27,8 @@ import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Creates or updates an index template.
+ * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * @rest_spec_name indices.put_template
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -41,6 +43,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     create?: boolean
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     *
+     */
     flat_settings?: boolean
     /**
      * Period to wait for a connection to the master node. If no response is
@@ -48,6 +55,11 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
     /**
      * Order in which Elasticsearch applies this template if index

@@ -37,7 +37,16 @@ export class BucketPathAggregation extends Aggregation {
 }
 
 export class PipelineAggregationBase extends BucketPathAggregation {
+  /**
+   * `DecimalFormat` pattern for the output value.
+   * If specified, the formatted value is returned in the aggregation’s `value_as_string` property.
+   */
   format?: string
+  /**
+   * Policy to apply when gaps are found in the data.
+   * @doc_id gap-policy
+   * @server_default skip
+   */
   gap_policy?: GapPolicy
 }
 
@@ -69,10 +78,16 @@ export enum GapPolicy {
 export class AverageBucketAggregation extends PipelineAggregationBase {}
 
 export class BucketScriptAggregation extends PipelineAggregationBase {
+  /**
+   * The script to run for this aggregation.
+   */
   script?: Script
 }
 
 export class BucketSelectorAggregation extends PipelineAggregationBase {
+  /**
+   * The script to run for this aggregation.
+   */
   script?: Script
 }
 
@@ -152,9 +167,25 @@ export class BucketCorrelationFunctionCountCorrelationIndicator {
 }
 
 export class BucketSortAggregation extends Aggregation {
+  /**
+   * Buckets in positions prior to `from` will be truncated.
+   */
   from?: integer
+  /**
+   * The policy to apply when gaps are found in the data.
+   * @doc_id gap-policy
+   * @server_default skip
+   */
   gap_policy?: GapPolicy
+  /**
+   * The number of buckets to return.
+   * Defaults to all buckets of the parent aggregation.
+   */
   size?: integer
+  /**
+   * The list of fields to sort on.
+   * @doc_id sort-search-results
+   */
   sort?: Sort
 }
 
@@ -165,11 +196,20 @@ export class CumulativeSumAggregation extends PipelineAggregationBase {}
 export class DerivativeAggregation extends PipelineAggregationBase {}
 
 export class ExtendedStatsBucketAggregation extends PipelineAggregationBase {
+  /**
+   * The number of standard deviations above/below the mean to display.
+   */
   sigma?: double
 }
 
 export class InferenceAggregation extends PipelineAggregationBase {
+  /**
+   * The ID or alias for the trained model.
+   */
   model_id: Name
+  /**
+   * Contains the inference type and its options.
+   */
   inference_config?: InferenceConfigContainer
 }
 
@@ -248,36 +288,83 @@ export enum HoltWintersType {
 }
 
 export class MovingFunctionAggregation extends PipelineAggregationBase {
+  /**
+   * The script that should be executed on each window of data.
+   */
   script?: string
+  /**
+   * By default, the window consists of the last n values excluding the current bucket.
+   * Increasing `shift` by 1, moves the starting window position by 1 to the right.
+   * @server_default 0
+   */
   shift?: integer
+  /**
+   * The size of window to "slide" across the histogram.
+   */
   window?: integer
 }
 
 export class MovingPercentilesAggregation extends PipelineAggregationBase {
+  /**
+   * The size of window to "slide" across the histogram.
+   */
   window?: integer
+  /**
+   * By default, the window consists of the last n values excluding the current bucket.
+   * Increasing `shift` by 1, moves the starting window position by 1 to the right.
+   * @server_default 0
+   */
   shift?: integer
   keyed?: boolean
 }
 
 export class NormalizeAggregation extends PipelineAggregationBase {
+  /**
+   * The specific method to apply.
+   */
   method?: NormalizeMethod
 }
 
 export enum NormalizeMethod {
+  /**
+   * This method rescales the data such that the minimum number is 0, and the maximum number is 1, with the rest normalized linearly in-between.
+   */
   rescale_0_1,
+  /**
+   * This method rescales the data such that the minimum number is 0, and the maximum number is 100, with the rest normalized linearly in-between.
+   */
   rescale_0_100,
+  /**
+   * This method normalizes each value so that it represents a percentage of the total sum it attributes to.
+   */
   percent_of_sum,
+  /**
+   * This method normalizes such that each value is normalized by how much it differs from the average.
+   */
   mean,
-  /** @codegen_name z_score */
+  /**
+   * This method normalizes such that each value represents how far it is from the mean relative to the standard deviation.
+   * @codegen_name z_score
+   */
   'z-score',
+  /**
+   * This method normalizes such that each value is exponentiated and relative to the sum of the exponents of the original values.
+   */
   softmax
 }
 
 export class PercentilesBucketAggregation extends PipelineAggregationBase {
+  /**
+   * The list of percentiles to calculate.
+   */
   percents?: double[]
 }
 
 export class SerialDifferencingAggregation extends PipelineAggregationBase {
+  /**
+   * The historical bucket to subtract from the current value.
+   * Must be a positive, non-zero integer.
+   */
   lag?: integer
 }
 

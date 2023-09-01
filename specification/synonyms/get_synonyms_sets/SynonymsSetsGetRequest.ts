@@ -17,24 +17,25 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves a synonym rule from a synonym set
- * @rest_spec_name synonym_rule.get
+ * Retrieves a summary of all defined synonym sets
+ * @rest_spec_name synonyms.get_synonyms_sets
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
-  path_parts: {
+export interface Request extends RequestBase {
+  query_parameters: {
     /**
-     * The id of the synonym set to retrieve the synonym rule from
+     * Starting offset
+     * @server_default 0
      */
-    synonyms_set: Name
-
+    from?: integer
     /**
-     * The id of the synonym rule to retrieve
+     * specifies a max number of results to get
+     * @server_default 10
      */
-    synonym_rule: Name
+    size?: integer
   }
 }

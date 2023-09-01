@@ -16,25 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
-/**
- * Deletes a synonym rule in a synonym set
- * @rest_spec_name synonym_rule.delete
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- */
-interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The id of the synonym set to be updated
-     */
-    synonyms_set: Name
+import { Duration } from '@_types/Time'
+import { DownsampleConfig } from '@indices/_types/Downsample'
 
-    /**
-     * The id of the synonym rule to be deleted
-     */
-    synonym_rule: Name
-  }
+export class DownsamplingRound {
+  /**
+   * The duration since rollover when this downsampling round should execute
+   */
+  after: Duration
+  /**
+   * The downsample configuration to execute.
+   */
+  config: DownsampleConfig
 }

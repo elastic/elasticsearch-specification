@@ -17,34 +17,26 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { SynonymRule, SynonymString } from '../../synonyms/_types/SynonymRule'
+import { Id } from '@_types/common'
+import { SynonymRule } from '../_types/SynonymRule'
 
 /**
- * Creates or updates a synonym rule in a synonym set
- * @rest_spec_name synonym_rule.put
+ * Creates or updates a synonym set.
+ * @rest_spec_name synonyms.put_synonym
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The id of the synonym set to be updated with the synonym rule
+     * The id of the synonyms set to be created or updated
      */
-    synonyms_set: Name
-
-    /**
-     * The id of the synonym rule to be updated or created
-     */
-    synonym_rule: Name
+    id: Id
   }
-  /**
-   * The synonym rule information to update
-   */
-  /** @codegen_name synonyms */
-  body: SynonymRuleUpdate
-}
-
-export class SynonymRuleUpdate {
-  synonyms: SynonymString[]
+  body: {
+    /**
+     * The synonym set information to update
+     */
+    synonyms_set: SynonymRule[]
+  }
 }

@@ -16,20 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
-/**
- * Deletes a synonym set
- * @rest_spec_name synonyms.delete
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- */
-interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The name of the synonyms set to be deleted
-     */
-    synonyms_set: Name
-  }
+import { SynonymRuleRead } from '../_types/SynonymRule'
+
+export class Response {
+  body: SynonymRuleRead
 }

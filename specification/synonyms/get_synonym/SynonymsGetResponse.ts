@@ -17,20 +17,12 @@
  * under the License.
  */
 
-import { SynonymRule, SynonymRuleOptionalId } from './SynonymRule'
+import { integer } from '@_types/Numeric'
+import { SynonymRuleRead } from '../_types/SynonymRule'
 
-// Synonyms set used for updating operations. Synonym rules can omit ID here.
-export class SynonymsSetUpdate {
-  /**
-   * Synonym rules that conform the synonym set
-   */
-  synonymRules: SynonymRuleOptionalId[]
-}
-
-// Synonyms set used for responses, which always include synonym rule IDs
-export class SynonymsSet extends SynonymsSetUpdate {
-  /**
-   * Synonym rules that conform the synonym set
-   */
-  synonymRules: SynonymRule[]
+export class Response {
+  body: {
+    count: integer
+    synonyms_set: SynonymRuleRead[]
+  }
 }

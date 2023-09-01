@@ -22,16 +22,32 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Deletes a legacy index template.
  * @rest_spec_name indices.delete_template
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The name of the legacy index template to delete.
+     * Wildcard (`*`) expressions are supported.
+     */
     name: Name
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

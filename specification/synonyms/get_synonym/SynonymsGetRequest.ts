@@ -16,15 +16,33 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
-import { Result } from '@_types/Result'
-import { ReloadDetails } from '@indices/reload_search_analyzers/types'
-import { ShardStatistics } from '@_types/Stats'
-
-export class Response {
-  body: {
-    result: Result
-    reload_analyzers_details: ReloadDetails[]
-    _shards: ShardStatistics
+/**
+ * Retrieves a synonym set
+ * @rest_spec_name synonyms.get_synonym
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * "The id of the synonyms set to be retrieved
+     */
+    id: Id
+  }
+  query_parameters: {
+    /**
+     * Starting offset for query rules to be retrieved
+     * @server_default 0
+     */
+    from?: integer
+    /**
+     * specifies a max number of query rules to retrieve
+     * @server_default 10
+     */
+    size?: integer
   }
 }

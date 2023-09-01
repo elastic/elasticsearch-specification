@@ -26,7 +26,7 @@ import { SearchApplication } from '../_types/SearchApplication'
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
      * The name of the search application to be created or updated

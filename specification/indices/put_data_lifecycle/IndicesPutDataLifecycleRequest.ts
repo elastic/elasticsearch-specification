@@ -20,23 +20,56 @@
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
  * Update the data lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
- * @availability stack since=8.8.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams used to limit the request.
+     * Supports wildcards (`*`).
+     * To target all data streams use `*` or `_all`.
+     */
     name: DataStreamNames
   }
   query_parameters: {
+    /**
+     * Type of data stream that wildcard patterns can match.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `hidden`, `open`, `closed`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Period to wait for a connection to the master node. If no response is
+     * received before the timeout expires, the request fails and returns an
+     * error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
   body: {
+    /**
+     * If defined, every document added to this data stream will be stored at least for this time frame.
+     * Any time after this duration the document could be deleted.
+     * When empty, every document in this data stream will be stored indefinitely.
+     */
     data_retention?: Duration
+    /**
+     * If defined, every backing index will execute the configured downsampling configuration after the backing
+     * index is not the data stream write index anymore.
+     */
+    downsampling?: DataStreamLifecycleDownsampling
   }
 }

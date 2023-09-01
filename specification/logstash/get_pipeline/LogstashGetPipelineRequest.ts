@@ -21,12 +21,17 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
+ * Retrieves pipelines used for Logstash Central Management.
  * @rest_spec_name logstash.get_pipeline
  * @availability stack since=7.12.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_logstash_pipelines
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of pipeline identifiers.
+     */
     id: Ids
   }
 }

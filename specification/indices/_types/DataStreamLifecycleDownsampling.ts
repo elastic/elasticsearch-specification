@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { SynonymRule } from '../../synonyms/_types/SynonymRule'
+import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
-export class Response {
-  body: SynonymRule
+export class DataStreamLifecycleDownsampling {
+  /**
+   * The list of downsampling rounds to execute as part of this downsampling configuration
+   */
+  rounds: DownsamplingRound[]
 }

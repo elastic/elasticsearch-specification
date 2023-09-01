@@ -24,10 +24,21 @@ import { Aggregation } from './Aggregation'
 import { SortMode } from '@_types/sort'
 
 export class MatrixAggregation extends Aggregation {
+  /**
+   * An array of fields for computing the statistics.
+   */
   fields?: Fields
+  /**
+   * The value to apply to documents that do not have a value.
+   * By default, documents without a value are ignored.
+   */
   missing?: Dictionary<Field, double>
 }
 
 export class MatrixStatsAggregation extends MatrixAggregation {
+  /**
+   * Array value the aggregation will use for array or multi-valued fields.
+   * @server_default avg
+   */
   mode?: SortMode
 }
