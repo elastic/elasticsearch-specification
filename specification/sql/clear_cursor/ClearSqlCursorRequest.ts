@@ -25,6 +25,9 @@ import { RequestBase } from '@_types/Base'
  */
 export interface Request extends RequestBase {
   body: {
+    /**
+     * Cursor to clear.
+     */
     cursor: string
   }
 }
