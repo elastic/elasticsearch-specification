@@ -29,7 +29,7 @@ import { TimeZone } from '@_types/Time'
 export interface Request extends RequestBase {
   body: {
     /**
-     * The maximum number of rows (or entries) to return in one response
+     * The maximum number of rows (or entries) to return in one response.
      * @server_default 1000
      */
     fetch_size?: integer
