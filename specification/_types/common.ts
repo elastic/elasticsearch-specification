@@ -69,6 +69,8 @@ export type LongId = string
 export type IndexMetrics = string
 export type Metrics = string | string[]
 
+export type ClusterAlias = string
+
 export type Name = string
 export type Names = Name | Name[]
 
