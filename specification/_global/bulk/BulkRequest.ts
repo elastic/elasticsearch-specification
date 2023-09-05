@@ -48,7 +48,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   query_parameters: {
     /**
      * ID of the pipeline to use to preprocess incoming documents.
-     * If the index has a default ingest pipeline specified, then setting the value to _none disables the default ingest pipeline for this request.
+     * If the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.
      * If a final pipeline is configured it will always run, regardless of the value of this parameter.
      */
     pipeline?: string
@@ -63,7 +63,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     routing?: Routing
     /**
-     * True or false to return the `_source` field or not, or a list of fields to return.
+     * `true` or `false` to return the `_source` field or not, or a list of fields to return.
      */
     _source?: SourceConfigParam
     /**
