@@ -197,7 +197,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The maximum number of documents to update. 
+     * The maximum number of documents to update.
      */
     max_docs?: long
     /**

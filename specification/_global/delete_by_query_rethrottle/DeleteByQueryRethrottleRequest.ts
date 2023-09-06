@@ -32,10 +32,9 @@ export interface Request extends RequestBase {
      */
     task_id: TaskId
   }
-  qery_parameters: {
+  query_parameters: {
     /**
      * The throttle for this request in sub-requests per second.
-     * @server_default -1
      */
     requests_per_second?: float
   }

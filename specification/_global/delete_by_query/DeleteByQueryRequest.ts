@@ -119,7 +119,6 @@ export interface Request extends RequestBase {
     request_cache?: boolean
     /**
      * The throttle for this request in sub-requests per second.
-     * @seerver_default -1
      */
     requests_per_second?: float
     /**
@@ -195,7 +194,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The maximum number of documents to delete. 
+     * The maximum number of documents to delete.
      */
     max_docs?: long
     /**
