@@ -208,6 +208,9 @@ export interface Request extends RequestBase {
      * The script to run to update the document source or metadata when updating.
      */
     script?: Script
+    /**
+     * Slice the request manually using the provided slice ID and total number of slices.
+     */
     slice?: SlicedScroll
     /**
      * What to do if update by query hits version conflicts: `abort` or `proceed`.

@@ -201,6 +201,9 @@ export interface Request extends RequestBase {
      * Specifies the documents to delete using the Query DSL.
      */
     query?: QueryContainer
+    /**
+     * Slice the request manually using the provided slice ID and total number of slices.
+     */
     slice?: SlicedScroll
   }
 }
