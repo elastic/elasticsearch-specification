@@ -39,10 +39,30 @@ export interface Request extends RequestBase {
     index: Indices
   }
   query_parameters: {
+    /**
+     * Extends the time to live of the corresponding point in time.
+     */
     keep_alive: Duration
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
+    /**
+     * Specifies the node or shard the operation should be performed on.
+     * Random by default.
+     */
     preference?: string
+    /**
+     * Custom value used to route operations to a specific shard.
+     */
     routing?: Routing
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`. Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
   }
 }
