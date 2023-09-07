@@ -29,24 +29,65 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
+ * Checks if a document is stored in the `source`.
  * @rest_spec_name exists_source
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier of the document.
+     */
     id: Id
+    /**
+     * Comma-separated list of data streams, indices, and aliases.
+     * Supports wildcards (`*`).
+     */
     index: IndexName
   }
   query_parameters: {
+    /**
+     * Specifies the node or shard the operation should be performed on.
+     * Random by default.
+     */
     preference?: string
+    /**
+     * If true, the request is real-time as opposed to near-real-time.
+     * @server_default true
+     * @doc_id realtime
+     */
     realtime?: boolean
+    /**
+     * If `true`, Elasticsearch refreshes all shards involved in the delete by query after the request completes.
+     * @server_default false
+     */
     refresh?: boolean
+    /**
+     * Target the specified primary shard.
+     * @doc_id routing
+     */
     routing?: Routing
+    /**
+     * True or false to return the _source field or not, or a list of fields to return.
+     */
     _source?: SourceConfigParam
+    /**
+     * A comma-separated list of source fields to exclude in the response.
+     */
     _source_excludes?: Fields
+    /**
+     * A comma-separated list of source fields to include in the response.
+     */
     _source_includes?: Fields
+    /**
+     * Explicit version number for concurrency control.
+     * The specified version must match the current version of the document for the request to succeed.
+     */
     version?: VersionNumber
+    /**
+     * Specific version type: `external`, `external_gte`.
+     */
     version_type?: VersionType
   }
 }

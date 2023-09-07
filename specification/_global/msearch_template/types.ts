@@ -26,15 +26,24 @@ import { MultisearchHeader } from '@global/msearch/types'
 export type RequestItem = MultisearchHeader | TemplateConfig
 
 export class TemplateConfig {
-  /** @server_default false */
+  /**
+   * If `true`, returns detailed information about score calculation as part of each hit.
+   * @server_default false */
   explain?: boolean
   /**
    * ID of the search template to use. If no source is specified,
    * this parameter is required.
    */
   id?: Id
+  /**
+   * Key-value pairs used to replace Mustache variables in the template.
+   * The key is the variable name.
+   * The value is the variable value.
+   */
   params?: Dictionary<string, UserDefinedValue>
-  /** @server_default false */
+  /**
+   * If `true`, the query execution is profiled.
+   * @server_default false */
   profile?: boolean
   /**
    * An inline search template. Supports the same parameters as the search API's
