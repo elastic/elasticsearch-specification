@@ -15629,7 +15629,7 @@ export interface TasksInfo {
   node: string
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: TasksStatus
+  status?: any
   type: string
   parent_task_id?: Id
 }
@@ -15644,28 +15644,8 @@ export interface TasksState {
   parent_task_id?: TaskId
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: TasksStatus
+  status?: any
   type: string
-}
-
-export interface TasksStatus {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: Retries
-  throttled?: Time
-  throttled_millis: long
-  throttled_until?: Time
-  throttled_until_millis: long
-  timed_out?: boolean
-  took?: long
-  total: long
-  updated: long
-  version_conflicts: long
 }
 
 export interface TasksTaskExecutingNode extends SpecUtilsBaseNode {
@@ -15694,7 +15674,7 @@ export interface TasksGetRequest extends RequestBase {
 export interface TasksGetResponse {
   completed: boolean
   task: TasksInfo
-  response?: TasksStatus
+  response?: any
   error?: ErrorCause
 }
 
