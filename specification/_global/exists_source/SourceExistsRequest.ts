@@ -29,7 +29,7 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
- * Checks if a document is stored in the `source`.
+ * Checks if a document's `_source` is stored.
  * @rest_spec_name exists_source
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
      */
     routing?: Routing
     /**
-     * True or false to return the _source field or not, or a list of fields to return.
+     * `true` or `false` to return the `_source` field or not, or a list of fields to return.
      */
     _source?: SourceConfigParam
     /**

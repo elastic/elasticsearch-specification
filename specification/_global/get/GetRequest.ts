@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
      */
     preference?: string
     /**
-     * If true, the request is real-time as opposed to near-real-time.
+     * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
      * @doc_id realtime
      */

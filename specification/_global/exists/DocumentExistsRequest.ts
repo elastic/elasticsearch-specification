@@ -53,7 +53,7 @@ export interface Request extends RequestBase {
      */
     preference?: string
     /**
-     * If true, the request is real-time as opposed to near-real-time.
+     * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
      * @doc_id realtime
      */
@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
      */
     routing?: Routing
     /**
-     * True or false to return the _source field or not, or a list of fields to return.
+     * `true` or `false` to return the `_source` field or not, or a list of fields to return.
      */
     _source?: SourceConfigParam
     /**

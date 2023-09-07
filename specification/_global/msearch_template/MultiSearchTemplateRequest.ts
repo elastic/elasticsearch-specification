@@ -54,8 +54,8 @@ export interface Request extends RequestBase {
      */
     search_type?: SearchType
     /**
-     * If `true`, the response returns hits.total as an integer.
-     * If `false`, it returns hits.total as an object.
+     * If `true`, the response returns `hits.total` as an integer.
+     * If `false`, it returns `hits.total` as an object.
      * @server_default false
      */
     rest_total_hits_as_int?: boolean

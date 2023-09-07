@@ -59,9 +59,6 @@ export class ReindexStatus {
    * The number of retries attempted by reindex. `bulk` is the number of bulk actions retried and `search` is the number of search actions retried.
    */
   retries: Retries
-  /**
-   *
-   */
   throttled?: Duration
   /**
    * Number of milliseconds the request slept to conform to `requests_per_second`.
