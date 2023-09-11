@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "validate": "./node_modules/.bin/spectral lint ../../output/openapi/elasticsearch-openapi.json"
+    "validate": "./node_modules/.bin/spectral lint ../../output/openapi/elasticsearch-openapi.json",
+    "validate-serverless": "./node_modules/.bin/spectral lint ../../output/openapi/elasticsearch-serverless-openapi.json"
   },
   "author": "",
   "license": "ISC",
