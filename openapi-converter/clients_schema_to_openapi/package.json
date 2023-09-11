@@ -1,0 +1,15 @@
+{
+  "name": "clients_schema_to_openapi",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "validate": "./node_modules/.bin/spectral lint ../../output/openapi/elasticsearch-openapi.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@stoplight/spectral-cli": "^6.10.1"
+  }
+}

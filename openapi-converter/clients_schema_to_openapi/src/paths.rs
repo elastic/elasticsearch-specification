@@ -1,8 +1,25 @@
+// Licensed to Elasticsearch B.V. under one or more contributor
+// license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright
+// ownership. Elasticsearch B.V. licenses this file to you under
+// the Apache License, Version 2.0 (the "License"); you may
+// not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 use std::collections::HashMap;
 use anyhow::{anyhow, bail};
 use indexmap::indexmap;
 
-use openapiv3::{ExternalDocumentation, MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, Paths, PathStyle, QueryStyle, ReferenceOr, RequestBody, Response, Responses, StatusCode};
+use openapiv3::{MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, Paths, PathStyle, QueryStyle, ReferenceOr, RequestBody, Response, Responses, StatusCode};
 use regex::Regex;
 
 use clients_schema::Property;
@@ -23,16 +40,22 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
         return Ok(());
     }
 
+    // Namespace
+    //let namespace = match endpoint.name.split_once('.') {
+    //    Some((ns, _)) => ns,
+    //    None => "core",
+    //};
+
     // Will we produce multiple paths? If true, we will register components for reuse across paths
     let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().find(|u| u.methods.len() > 1).is_some();
 
-    let request = tac.types.get_request(endpoint.request.as_ref().unwrap())?;
+    let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
-    fn parameter_data(prop: &Property, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+    fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
         Ok(ParameterData {
             name: prop.name.clone(),
             description: prop.description.clone(),
-            required: prop.required,
+            required: in_path || prop.required, // Path parameters are always required
             deprecated: Some(prop.deprecation.is_some()),
             format: ParameterSchemaOrContent::Schema(tac.convert_value_of(&prop.typ)?),
             example: None,
@@ -47,7 +70,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     let mut path_params = HashMap::new();
     for prop in request.path.iter() {
         let parameter = Parameter::Path {
-            parameter_data: parameter_data(prop, tac)?,
+            parameter_data: parameter_data(prop, true, tac)?,
             // Simple (the default) maps array to comma-separated values, which is ES behavior
             // See https://www.rfc-editor.org/rfc/rfc6570#section-3.2.2
             style: PathStyle::Simple,
@@ -55,7 +78,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
 
         // Reuse reference if multiple paths, and inline otherwise
         path_params.insert(prop.name.clone(), if is_multipath {
-            tac.add_parameter(&endpoint.name, parameter)
+            tac.add_parameter(&endpoint.name, parameter, false)
         } else {
             ReferenceOr::Item(parameter)
         });
@@ -66,14 +89,17 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     let mut query_params = Vec::new();
     for prop in request.query.iter() {
         let parameter = Parameter::Query {
-            parameter_data: parameter_data(prop, tac)?,
+            parameter_data: parameter_data(prop, false, tac)?,
             allow_reserved: false,
             style: QueryStyle::Form,
             allow_empty_value: None,
         };
 
+        // Does this also exist as a path parameter? (e.g fields in _cat/fielddata)
+        let duplicate = path_params.contains_key(&prop.name);
+
         query_params.push(if is_multipath {
-            tac.add_parameter(&endpoint.name, parameter)
+            tac.add_parameter(&endpoint.name, parameter, duplicate)
         } else {
             ReferenceOr::Item(parameter)
         });
@@ -109,7 +135,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
 
     // FIXME: buggy for responses with no body
     // TODO: handle binary responses
-    let response_def = tac.types.get_resppnse(endpoint.response.as_ref().unwrap())?;
+    let response_def = tac.model.get_response(endpoint.response.as_ref().unwrap())?;
     let response = Response {
         description: "".to_string(),
         headers: Default::default(),
@@ -160,11 +186,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
             tags: vec![],
             summary: None,
             description: Some(endpoint.description.clone()),
-            external_docs: endpoint.doc_url.as_ref().map(|url| ExternalDocumentation {
-                description: None,
-                url: url.clone(),
-                extensions: Default::default(),
-            }),
+            external_docs: tac.convert_external_docs(endpoint),
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
             request_body: request_body.clone(),
@@ -179,50 +201,69 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
             extensions: Default::default(), // FIXME: translate availability?
         };
 
-        let mut path = PathItem {
-            summary: None,
-            description: None,
-            get: None,
-            put: None,
-            post: None,
-            delete: None,
-            options: None,
-            head: None,
-            patch: None,
-            trace: None,
-            servers: vec![],
-            parameters: vec![],
-            extensions: Default::default(),
-        };
-
-        let mut clone_operation = || {
-            let mut clone = operation.clone();
-            clone.operation_id = Some(format!("{}#{}", endpoint.name, operation_counter));
-            operation_counter += 1;
-            Some(clone)
-        };
-
-        for method in &url_template.methods {
-            match method.as_str() {
-                "HEAD" => path.get = clone_operation(),
-                "GET" => path.get = clone_operation(),
-                "POST" => path.post = clone_operation(),
-                "PUT" => path.put = clone_operation(),
-                "DELETE" => path.put = clone_operation(),
-                _ => bail!("Unsupported method: {}", method),
-            }
-        }
 
         let mut operation_path = url_template.path.clone();
 
-        // Add query parameter names to the path template
-        // See https://www.rfc-editor.org/rfc/rfc6570#section-3.2.8
-        if !&request.query.is_empty() {
-            let params = &request.query.iter().map(|p| p.name.as_str()).collect::<Vec<_>>().join(",");
-            operation_path = format!("{operation_path}{{?{params}}}");
+        // Disabled -- OpenAPI path templates do not contain the query string
+        if false {
+            // Add query parameter names to the path template
+            // See https://www.rfc-editor.org/rfc/rfc6570#section-3.2.8
+            if !&request.query.is_empty() {
+                let params = &request.query.iter().map(|p| p.name.as_str()).collect::<Vec<_>>().join(",");
+                operation_path = format!("{operation_path}{{?{params}}}");
+            }
         }
 
-        out.paths.insert(operation_path, ReferenceOr::Item(path));
+        // info!("Adding {} - {}", &endpoint.name, &operation_path);
+
+        // Check if this path has already been encountered with a different http method (possibly in a
+        // different endpoint)
+        let path = out.paths
+            .entry(operation_path)
+            .or_insert(ReferenceOr::Item(PathItem::default()));
+
+        // A PathItem contains entries for all http methods, and some additional fields
+        // that we can't fill as they cross several endpoints. This could be some namespace-level
+        // documentation though.
+        // PathItem {
+        //     summary: None,
+        //     description: None,
+        //     get: None,
+        //     put: None,
+        //     post: None,
+        //     delete: None,
+        //     options: None,
+        //     head: None,
+        //     patch: None,
+        //     trace: None,
+        //     servers: vec![],
+        //     parameters: vec![],
+        //     extensions: Default::default(),
+        // };
+
+        let path = match path {
+            ReferenceOr::Item(ref mut item) => item,
+            _ => bail!("Expecting an item (should not happe)")
+        };
+
+        for method in &url_template.methods {
+            let method_field = match method.as_str() {
+                "GET" => &mut path.get,
+                "PUT" => &mut path.put,
+                "POST" => &mut path.post,
+                "DELETE" => &mut path.delete,
+                "OPTIONS" => &mut path.options,
+                "HEAD" => &mut path.head,
+                "PATCH" => &mut path.patch,
+                "TRACE" => &mut path.trace,
+                _ => bail!("Unsupported method: {}", method),
+            };
+
+            let mut operation = operation.clone();
+            operation.operation_id = Some(format!("{}#{}", endpoint.name, operation_counter));
+            operation_counter += 1;
+            *method_field = Some(operation);
+        }
     }
 
     Ok(())

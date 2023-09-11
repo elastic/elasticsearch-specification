@@ -17,20 +17,31 @@
 
 use std::collections::HashMap;
 use std::fmt::{Display, Formatter};
-use anyhow::bail;
+use anyhow::anyhow;
+use indexmap::IndexMap;
 // Re-export crates whose types we expose publicly
 pub use once_cell;
 
 // Child modules
 pub mod builtins;
+pub mod transform;
 
 use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
+use serde::de::SeqAccess;
+use serde::ser::SerializeSeq;
 
 #[allow(clippy::trivially_copy_pass_by_ref)] // needs to match signature for use in serde attribute
 #[inline]
 const fn is_false(v: &bool) -> bool {
     !(*v)
+}
+
+pub trait  Documented {
+    fn doc_url(&self) -> Option<&str>;
+    fn doc_id(&self) -> Option<&str>;
+    fn description(&self) -> Option<&str>;
+    fn since(&self) -> Option<&str>;
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Hash)]
@@ -45,6 +56,10 @@ impl TypeName {
             namespace: String::from(namespace),
             name: name.into(),
         }
+    }
+
+    pub fn is_builtin(&self) -> bool {
+        self.namespace == "_builtins"
     }
 }
 
@@ -206,6 +221,48 @@ pub struct Deprecation {
     pub description: String,
 }
 
+/// An API flavor
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum Flavor {
+    Stack,
+    Serverless,
+}
+
+/// The availability of an item in a API flavor
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Availability {
+    since: Option<String>,
+    stability: Option<Stability>,
+    visibility: Option<Visibility>,
+}
+
+/// The availability of an
+pub type Availabilities = HashMap<Flavor, Availability>;
+
+pub trait AvailabilityFilter: Fn(&Option<Availabilities>) -> bool {}
+
+impl Flavor {
+    /// Predicate that indicates if a flavor is available in a given set of availabilities
+    pub fn available(&self, availabilities: &Option<Availabilities>) -> bool {
+        if let Some(ref avail) = availabilities {
+            avail.contains_key(self)
+        } else {
+            // No restriction
+            true
+        }
+    }
+
+    pub fn is_serverless(a: &Option<Availabilities>) -> bool {
+        Flavor::Serverless.available(a)
+    }
+
+    pub fn is_stack(a: &Option<Availabilities>) -> bool {
+        Flavor::Stack.available(a)
+    }
+}
+
 ///
 /// An interface or request interface property.
 ///
@@ -238,6 +295,9 @@ pub struct Property {
     pub deprecation: Option<Deprecation>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub availability: Option<Availabilities>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub stability: Option<Stability>,
 
     /// If specified takes precedence over `name` when generating code. `name` is always the value
@@ -256,6 +316,24 @@ pub struct Property {
     /// If this property has a quirk that needs special attention, give a short explanation about it
     #[serde(skip_serializing_if = "Option::is_none")]
     pub es_quirk: Option<String>,
+}
+
+impl Documented for Property {
+    fn doc_url(&self) -> Option<&str> {
+        self.doc_url.as_deref()
+    }
+
+    fn doc_id(&self) -> Option<&str> {
+        self.doc_id.as_deref()
+    }
+
+    fn description(&self) -> Option<&str> {
+        self.description.as_deref()
+    }
+
+    fn since(&self) -> Option<&str> {
+        self.since.as_deref()
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -406,6 +484,46 @@ impl BaseType {
     }
 }
 
+impl Documented for BaseType {
+    fn doc_url(&self) -> Option<&str> {
+        self.doc_url.as_deref()
+    }
+
+    fn doc_id(&self) -> Option<&str> {
+        self.doc_id.as_deref()
+    }
+
+    fn description(&self) -> Option<&str> {
+        self.description.as_deref()
+    }
+
+    fn since(&self) -> Option<&str> {
+        None
+    }
+}
+
+trait WithBaseType {
+    fn base(&self) -> &BaseType;
+}
+
+impl <T: WithBaseType> Documented for T {
+    fn doc_url(&self) -> Option<&str> {
+        self.base().doc_url()
+    }
+
+    fn doc_id(&self) -> Option<&str> {
+        self.base().doc_id()
+    }
+
+    fn description(&self) -> Option<&str> {
+        self.base().description()
+    }
+
+    fn since(&self) -> Option<&str> {
+        self.base().since()
+    }
+}
+
 ///
 /// An interface type
 ///
@@ -446,6 +564,12 @@ pub struct Interface {
     pub variants: Option<Container>
 }
 
+impl WithBaseType for Interface {
+    fn base(&self) -> &BaseType {
+        &self.base
+    }
+}
+
 ///
 /// A request type
 ///
@@ -483,6 +607,12 @@ pub struct Request {
     pub attached_behaviors: Vec<String>,
 }
 
+impl WithBaseType for Request {
+    fn base(&self) -> &BaseType {
+        &self.base
+    }
+}
+
 ///
 /// A response type
 ///
@@ -505,6 +635,12 @@ pub struct Response {
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub exceptions: Vec<ResponseException>,
+}
+
+impl WithBaseType for Response {
+    fn base(&self) -> &BaseType {
+        &self.base
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -575,7 +711,10 @@ pub struct EnumMember {
     pub deprecation: Option<Deprecation>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>
+    pub since: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub availability: Option<Availabilities>,
 }
 
 impl From<&str> for EnumMember {
@@ -661,6 +800,9 @@ pub struct Endpoint {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecation: Option<Deprecation>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub availability: Option<Availabilities>,
+
     /// If missing, there is not yet a request definition for this endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request: Option<TypeName>,
@@ -698,6 +840,24 @@ pub struct Endpoint {
     pub privileges: Option<Privileges>,
 }
 
+impl Documented for Endpoint {
+    fn doc_url(&self) -> Option<&str> {
+        self.doc_url.as_deref()
+    }
+
+    fn doc_id(&self) -> Option<&str> {
+        self.doc_id.as_deref()
+    }
+
+    fn description(&self) -> Option<&str> {
+        Some(self.description.as_str())
+    }
+
+    fn since(&self) -> Option<&str> {
+        self.since.as_deref()
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Privileges {
@@ -724,6 +884,7 @@ pub struct UrlTemplate {
 pub struct ModelInfo {
     pub title: String,
     pub license: License,
+    pub version: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -738,21 +899,157 @@ pub struct License {
 pub struct Model {
     #[serde(rename="_info", skip_serializing_if = "Option::is_none")]
     pub info: Option<ModelInfo>,
-
-    pub types: Vec<TypeDefinition>,
-
     pub endpoints: Vec<Endpoint>,
+    pub types: Vec<TypeDefinition>,
 }
 
 impl Model {
     pub fn from_reader(r: impl std::io::Read) -> Result<Self, serde_json::error::Error> {
         serde_json::from_reader(r)
     }
+}
 
-    pub fn type_registry(&self) -> TypeRegistry {
-        TypeRegistry::new(&self.types)
+//-------------------------------------------------------------------------------------------------
+/// An api model with types indexed by their name. This version is much more convenient to use
+/// when traversing the type graph and provides convenience accessors to the various kinds of
+/// types.
+///
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[serde(rename_all = "camelCase")]
+pub struct IndexedModel {
+    #[serde(rename="_info", skip_serializing_if = "Option::is_none")]
+    pub info: Option<ModelInfo>,
+
+    pub endpoints: Vec<Endpoint>,
+
+    #[serde(serialize_with = "serialize_types")]
+    #[serde(deserialize_with = "deserialize_types")]
+    pub types: IndexMap<TypeName, TypeDefinition>,
+}
+
+impl IndexedModel {
+    pub fn from_reader(r: impl std::io::Read) -> Result<Self, serde_json::error::Error> {
+        serde_json::from_reader(r)
+    }
+
+    pub fn get_type(&self, name: &TypeName) -> anyhow::Result<&TypeDefinition> {
+        match self.types.get(name) {
+            Some(value) => Ok(value),
+            None => Err(anyhow!("Type not found: {}", name)),
+        }
+    }
+
+    pub fn get_type_mut(&mut self, name: &TypeName) -> anyhow::Result<&mut TypeDefinition> {
+        match self.types.get_mut(name) {
+            Some(value) => Ok(value),
+            None => Err(anyhow!("Type not found: {}", name)),
+        }
+    }
+
+    pub fn get_interface(&self, name: &TypeName) -> anyhow::Result<&Interface> {
+        match self.get_type(name)? {
+            TypeDefinition::Interface(ref v) => Ok(v),
+            _ => Err(anyhow!("Type is not an interface: {}", name)),
+        }
+    }
+
+    pub fn get_interface_mut(&mut self, name: &TypeName) -> anyhow::Result<&mut Interface> {
+        match self.get_type_mut(name)? {
+            TypeDefinition::Interface(ref mut v) => Ok(v),
+            _ => Err(anyhow!("Type is not an interface: {}", name)),
+        }
+    }
+
+    pub fn get_request(&self, name: &TypeName) -> anyhow::Result<&Request> {
+        match self.get_type(name)? {
+            TypeDefinition::Request(ref v) => Ok(v),
+            _ => Err(anyhow!("Type is not a request: {}", name)),
+        }
+    }
+
+    pub fn get_request_mut(&mut self, name: &TypeName) -> anyhow::Result<&mut Request> {
+        match self.get_type_mut(name)? {
+            TypeDefinition::Request(ref mut v) => Ok(v),
+            _ => Err(anyhow!("Type is not a request: {}", name)),
+        }
+    }
+
+    pub fn get_response(&self, name: &TypeName) -> anyhow::Result<&Response> {
+        match self.get_type(name)? {
+            TypeDefinition::Response(ref v) => Ok(v),
+            _ => Err(anyhow!("Type is not a request: {}", name)),
+        }
+    }
+
+    pub fn get_response_mut(&mut self, name: &TypeName) -> anyhow::Result<&mut Response> {
+        match self.get_type_mut(name)? {
+            TypeDefinition::Response(ref mut v) => Ok(v),
+            _ => Err(anyhow!("Type is not a request: {}", name)),
+        }
     }
 }
+
+//-------------------------------------------------------------------------------------------------
+// IndexedModel serialization and deserialization
+//-------------------------------------------------------------------------------------------------
+
+fn serialize_types<S> (value: &IndexMap<TypeName, TypeDefinition>, serializer: S) -> Result<S::Ok, S::Error> where S: serde::Serializer {
+    let mut seq = serializer.serialize_seq(Some(value.len()))?;
+    for (_, v) in value {
+        seq.serialize_element(v)?;
+    }
+    seq.end()
+}
+
+fn deserialize_types<'de, D>(deser: D) -> Result<IndexMap<TypeName, TypeDefinition>, D::Error> where D: serde::Deserializer<'de> {
+    deser.deserialize_seq(IndexMapVisitor)
+}
+
+struct IndexMapVisitor;
+
+impl<'a> serde::de::Visitor<'a> for IndexMapVisitor {
+    type Value = IndexMap<TypeName, TypeDefinition>;
+
+    fn expecting(&self, formatter: &mut Formatter) -> std::fmt::Result {
+        write!(formatter, "an array")
+    }
+
+    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error> where A: SeqAccess<'a> {
+        let mut result = IndexMap::with_capacity(seq.size_hint().unwrap_or(0));
+
+        while let Some(item) = seq.next_element::<TypeDefinition>()? {
+            result.insert(item.name().clone(), item);
+        }
+
+        Ok(result)
+    }
+}
+
+//-------------------------------------------------------------------------------------------------
+// Conversions between Model and IndexedModel
+//-------------------------------------------------------------------------------------------------
+
+impl Into<IndexedModel> for Model {
+    fn into(self) -> IndexedModel {
+        IndexedModel {
+            info: self.info,
+            endpoints: self.endpoints,
+            types: self.types.into_iter().map(|t| (t.name().clone(), t)).collect(),
+        }
+    }
+}
+
+impl Into<Model> for IndexedModel {
+    fn into(self) -> Model {
+        Model {
+            info: self.info,
+            endpoints: self.endpoints,
+            types: self.types.into_iter().map(|(_, t)| t).collect(),
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------------
 
 #[cfg(test)]
 mod tests {
@@ -763,10 +1060,10 @@ mod tests {
     /// checked out as a sibling of this one.
     fn load_schema() {
         println!("{:?}", std::env::current_dir());
-        let file = std::fs::File::open("../../elasticsearch-specification/output/schema/schema.json").unwrap();
+        let json = std::fs::read_to_string("../../output/schema/schema.json").unwrap();
 
-        let jd = &mut serde_json::Deserializer::from_reader(file);
-        let result = serde_path_to_error::deserialize::<_, Model>(jd);
+        let jd = &mut serde_json::Deserializer::from_str(&json);
+        let result = serde_path_to_error::deserialize::<_, IndexedModel>(jd);
 
         let result = result.map_err(|e| {
             println!("Error at path {}", e.path());
@@ -779,53 +1076,11 @@ mod tests {
             name: "Request".into(),
         };
 
-        let search_type = result.types.iter().find(|t| t.name() == &search_req).unwrap();
+        let search_type = result.get_type(&search_req).unwrap();
 
         match search_type {
             TypeDefinition::Request(r) => assert_eq!(true, !r.path.is_empty()),
             _ => panic!("Expecting a Request")
         };
-    }
-}
-
-pub struct TypeRegistry<'a> {
-    types: HashMap<&'a TypeName, &'a TypeDefinition>
-}
-
-impl<'a> TypeRegistry<'a> {
-    pub fn new(types_vec: &Vec<TypeDefinition>) -> TypeRegistry {
-        let types = types_vec.iter()
-            .map(|typedef| (typedef.name(), typedef))
-            .collect::<HashMap<_,_>>();
-
-        TypeRegistry{ types }
-    }
-
-    pub fn get(&self, name: &TypeName) -> anyhow::Result<&'a TypeDefinition> {
-        match self.types.get(name) {
-            Some(typedef) => Ok(typedef),
-            None => bail!("No definition for type {}", name),
-        }
-    }
-
-    // pub fn get_interface(&self, name: &TypeName) -> anyhow::Result<&'a Interface> {
-    //     match self.get(name)? {
-    //         TypeDefinition::Interface(itf) => Ok(itf),
-    //         _ => bail!("Type {} is not an interface", name),
-    //     }
-    // }
-
-    pub fn get_request(&self, name: &TypeName) -> anyhow::Result<&'a Request> {
-        match self.get(name)? {
-            TypeDefinition::Request(req) => Ok(req),
-            _ => bail!("Type {} is not a request", name),
-        }
-    }
-
-    pub fn get_resppnse(&self, name: &TypeName) -> anyhow::Result<&'a Response> {
-        match self.get(name)? {
-            TypeDefinition::Response(resp) => Ok(resp),
-            _ => bail!("Type {} is not a response", name),
-        }
     }
 }

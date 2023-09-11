@@ -1,3 +1,20 @@
+// Licensed to Elasticsearch B.V. under one or more contributor
+// license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright
+// ownership. Elasticsearch B.V. licenses this file to you under
+// the Apache License, Version 2.0 (the "License"); you may
+// not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 use anyhow::bail;
 use indexmap::IndexMap;
 use openapiv3::{AdditionalProperties, ArrayType, Discriminator, ExternalDocumentation, NumberType, ObjectType, ReferenceOr, Schema, SchemaData, SchemaKind, StringType, Type};
@@ -178,7 +195,7 @@ impl <'a> TypesAndComponents<'a> {
         // Store a placeholder, it will avoid infinite loops with recursive types
         self.components.schemas.insert(schema_name, SCHEMA_PLACEHOLDER);
 
-        let typedef = self.types.get(type_name)?;
+        let typedef = self.model.get_type(type_name)?;
         use TypeDefinition::*;
         let schema = match typedef {
             // Request and response may not have a body (and a schema) and so have dedicated methods below
@@ -200,6 +217,19 @@ impl <'a> TypesAndComponents<'a> {
 
     pub fn convert_response(&mut self, response: &Response) -> anyhow::Result<Option<ReferenceOr<Schema>>> {
         self.for_body(&response.body)
+    }
+
+    pub fn convert_external_docs(&self, obj: & impl clients_schema::Documented)
+        -> Option<ExternalDocumentation> {
+        // FIXME: does the model contain resolved doc_id?
+        obj.doc_url().map (|url| {
+            let branch: &str = self.model.info.as_ref().and_then(|i| i.version.as_deref()).unwrap_or("current");
+            ExternalDocumentation {
+                description: None,
+                url: url.trim().replace("{branch}", branch),
+                extensions: Default::default(),
+            }
+        })
     }
 
     fn for_body(&mut self, body: &Body) -> anyhow::Result<Option<ReferenceOr<Schema>>> {
@@ -225,7 +255,7 @@ impl <'a> TypesAndComponents<'a> {
         let mut result = self.convert_value_of(&prop.typ)?;
         // TODO: how can we just wrap a reference so that we can add docs?
         if let ReferenceOr::Item(ref mut schema) = &mut result {
-            fill_data_with_prop(&mut schema.schema_data, prop);
+            self.fill_data_with_prop(&mut schema.schema_data, prop);
         }
         Ok(result)
     }
@@ -280,7 +310,7 @@ impl <'a> TypesAndComponents<'a> {
                 }.into_schema();
             }
 
-            fill_schema_with_base(&mut schema, &itf.base);
+            self.fill_schema_with_base(&mut schema, &itf.base);
             schema
 
         } else {
@@ -329,7 +359,7 @@ impl <'a> TypesAndComponents<'a> {
     fn convert_type_alias(&mut self, alias: &TypeAlias) -> anyhow::Result<Schema> {
         let mut schema = self
             .convert_value_of(&alias.typ)?
-            .into_schema_with_base(&alias.base);
+            .into_schema_with_base(self, &alias.base);
 
         match &alias.variants {
             None => {},
@@ -366,60 +396,50 @@ impl <'a> TypesAndComponents<'a> {
             enumeration: enum_values,
             min_length: None,
             max_length: None,
-        }.into_schema_with_base(&enumm.base))
+        }.into_schema_with_base(self, &enumm.base))
+    }
+
+    fn fill_schema_with_base(&self, schema: &mut Schema, base: &clients_schema::BaseType) {
+        self.fill_data_with_base(&mut schema.schema_data, base);
+    }
+
+    pub fn fill_data_with_base(&self, data: &mut SchemaData, base: &clients_schema::BaseType) {
+        // SchemaData {
+        //     nullable: false,
+        //     read_only: false,
+        //     write_only: false,
+        //     deprecated: false,
+        //     external_docs: Default::default(),
+        //     example: None,
+        //     title: None,
+        //     description: base.description.clone(),
+        //     discriminator: None,
+        //     default: None,
+        //     extensions: Default::default(),
+        // }
+
+        data.external_docs = self.convert_external_docs(base);
+        data.deprecated = base.deprecation.is_some();
+        data.description = base.description.clone();
+        // TODO: base.deprecation as extension
+        // TODO: base.spec_location as extension?
+        // TODO: base.doc_id as extension
+        // TODO: base.variant_name as extension? (used for external_variants)
+        // TODO: base.codegen_names as extension?
+    }
+
+    fn fill_data_with_prop(&self, data: &mut SchemaData, prop: &Property) {
+        data.external_docs = self.convert_external_docs(prop);
+        data.deprecated = prop.deprecation.is_some();
+        data.description = prop.description.clone();
+        // TODO: prop.aliases as extensions
+        // TODO: prop.server_default as extension
+        // TODO: prop.availability as extension
+        // TODO: prop.doc_id as extension (new representation of since and stability)
+        // TODO: prop.es_quirk as extension?
+        // TODO: prop.codegen_name as extension?
+        // TODO: prop.deprecation as extension
     }
 }
 
-fn fill_schema_with_base(schema: &mut Schema, base: &clients_schema::BaseType) {
-    fill_data_with_base(&mut schema.schema_data, base);
-}
-
-pub fn fill_data_with_base(data: &mut SchemaData, base: &clients_schema::BaseType) {
-    // SchemaData {
-    //     nullable: false,
-    //     read_only: false,
-    //     write_only: false,
-    //     deprecated: false,
-    //     external_docs: Default::default(),
-    //     example: None,
-    //     title: None,
-    //     description: base.description.clone(),
-    //     discriminator: None,
-    //     default: None,
-    //     extensions: Default::default(),
-    // }
-
-    let external_docs = base.doc_url.as_ref().map(|url| ExternalDocumentation {
-        description: None,
-        url: url.clone(),
-        extensions: Default::default(),
-    });
-
-    data.external_docs = external_docs;
-    data.deprecated = base.deprecation.is_some();
-    data.description = base.description.clone();
-    // TODO: base.deprecation as extension
-    // TODO: base.spec_location as extension?
-    // TODO: base.doc_id as extension
-    // TODO: base.variant_name as extension? (used for external_variants)
-    // TODO: base.codegen_names as extension?
-}
-
-fn fill_data_with_prop(data: &mut SchemaData, prop: &Property) {
-    let external_docs = prop.doc_url.as_ref().map(|url| ExternalDocumentation {
-        description: None,
-        url: url.clone(),
-        extensions: Default::default(),
-    });
-    data.external_docs = external_docs;
-    data.deprecated = prop.deprecation.is_some();
-    data.description = prop.description.clone();
-    // TODO: prop.aliases as extensions
-    // TODO: prop.server_default as extension
-    // TODO: prop.availability as extension
-    // TODO: prop.doc_id as extension (new representation of since and stability)
-    // TODO: prop.es_quirk as extension?
-    // TODO: prop.codegen_name as extension?
-    // TODO: prop.deprecation as extension
-}
 

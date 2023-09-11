@@ -1,3 +1,20 @@
+// Licensed to Elasticsearch B.V. under one or more contributor
+// license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright
+// ownership. Elasticsearch B.V. licenses this file to you under
+// the Apache License, Version 2.0 (the "License"); you may
+// not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 mod paths;
 mod schemas;
 mod components;
@@ -7,11 +24,17 @@ use std::collections::HashSet;
 use std::io::{BufWriter, Write};
 use std::path::Path;
 use openapiv3::{Components, OpenAPI};
+use tracing::warn;
 
-use clients_schema::{Endpoint, Model};
+use clients_schema::{Availabilities, Endpoint, IndexedModel};
 use crate::components::TypesAndComponents;
 
-pub fn convert_schema_file(path: impl AsRef<Path>, endpoint_filter: fn(e: &Endpoint) -> bool, out: impl Write) -> anyhow::Result<()> {
+pub fn convert_schema_file(
+    path: impl AsRef<Path>,
+    filter: Option<fn(&Option<Availabilities>) -> bool>,
+    endpoint_filter: fn(e: &Endpoint) -> bool,
+    out: impl Write
+) -> anyhow::Result<()> {
 
     // Parsing from a string is faster than using a buffered reader when there is a need for look-ahead
     // See https://github.com/serde-rs/json/issues/160
@@ -19,22 +42,30 @@ pub fn convert_schema_file(path: impl AsRef<Path>, endpoint_filter: fn(e: &Endpo
     let json_deser = &mut serde_json::Deserializer::from_str(&json);
 
     let mut unused = HashSet::new();
-    let model: Model = serde_ignored::deserialize(json_deser, |path| {
+    let mut model: IndexedModel = serde_ignored::deserialize(json_deser, |path| {
         if let serde_ignored::Path::Map {parent: _, key} = path {
             unused.insert(key);
         }
     })?;
     if !unused.is_empty() {
         let msg = unused.into_iter().collect::<Vec<_>>().join(", ");
-        tracing::warn!("Unknown fields found in schema.json: {}", msg);
+        warn!("Unknown fields found in schema.json: {}", msg);
     }
 
-    let openapi = convert_schema(&model, endpoint_filter)?;
+    if let Some(filter) = filter {
+        model = clients_schema::transform::filter_availability(model, filter)?;
+    }
+
+    model.endpoints.retain(endpoint_filter);
+
+    let openapi = convert_schema(&model)?;
     serde_json::to_writer_pretty(BufWriter::new(out), &openapi)?;
     Ok(())
 }
 
-pub fn convert_schema(model: &Model, endpoint_filter: fn(e: &Endpoint) -> bool) -> anyhow::Result<OpenAPI> {
+pub fn convert_schema(
+    model: &IndexedModel,
+) -> anyhow::Result<OpenAPI> {
 
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
@@ -64,23 +95,17 @@ pub fn convert_schema(model: &Model, endpoint_filter: fn(e: &Endpoint) -> bool) 
         extensions: Default::default(),
     };
 
-    let mut tac = TypesAndComponents::new(&model.types, openapi.components.as_mut().unwrap());
+    let mut tac = TypesAndComponents::new(&model, openapi.components.as_mut().unwrap());
 
     // Endpoints
-    for endpoint in model.endpoints.iter().filter(|e| endpoint_filter(e)) {
+    for endpoint in &model.endpoints {
         paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
     }
-    //let paths = paths::build_paths(model.endpoints, &types)?;
-
-    //openapi.paths = openapiv3::Paths {
-    //    paths: paths,
-    //    extensions: Default::default(),
-    //};
 
     Ok(openapi)
 }
 
-fn info(model: &Model) -> openapiv3::Info {
+fn info(model: &IndexedModel) -> openapiv3::Info {
     let (title, license) = if let Some(info) = &model.info {
         (
             info.title.clone(),

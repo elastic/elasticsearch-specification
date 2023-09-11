@@ -21,15 +21,15 @@ pub mod endpoints;
 
 use std::convert::Into;
 use tracing::warn;
-use clients_schema::Model;
+use clients_schema::IndexedModel;
 use openapi::OpenAPI;
 
 ///
 /// Generate a schema.json from an OpenAPI schema
 ///
-pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::Model> {
+pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::IndexedModel> {
 
-    let mut json_schema = clients_schema::Model::default();
+    let mut json_schema = clients_schema::IndexedModel::default();
 
     generate_types(open_api, &mut json_schema)?;
 
@@ -47,7 +47,7 @@ pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::Model> {
 ///
 fn generate_types(
     open_api: &OpenAPI,
-    model: &mut Model
+    model: &mut IndexedModel
 ) -> anyhow::Result<()> {
 
     if let Some(ref components) = open_api.components {

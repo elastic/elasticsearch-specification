@@ -1,5 +1,23 @@
+// Licensed to Elasticsearch B.V. under one or more contributor
+// license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright
+// ownership. Elasticsearch B.V. licenses this file to you under
+// the Apache License, Version 2.0 (the "License"); you may
+// not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 use openapiv3::{ObjectType, ReferenceOr, Schema, SchemaData, SchemaKind, StringType, Type};
 use clients_schema::TypeName;
+use crate::components::TypesAndComponents;
 
 ///
 /// Extensions to `ReferenceOr` to ease conversion to boxed versions.
@@ -48,13 +66,13 @@ pub trait IntoSchema {
         ReferenceOr::Item(self.into_schema())
     }
 
-    fn into_schema_ref_with_base(self, base: &clients_schema::BaseType) -> ReferenceOr<Schema> where Self: Sized {
-        let mut result = self.into_schema_ref();
-        if let ReferenceOr::Item(ref mut schema) = &mut result {
-            crate::schemas::fill_data_with_base(&mut schema.schema_data, base);
-        }
-        result
-    }
+    // fn into_schema_ref_with_base(self, base: &clients_schema::BaseType) -> ReferenceOr<Schema> where Self: Sized {
+    //     let mut result = self.into_schema_ref();
+    //     if let ReferenceOr::Item(ref mut schema) = &mut result {
+    //         crate::schemas::fill_data_with_base(&mut schema.schema_data, base);
+    //     }
+    //     result
+    // }
 
     fn into_schema_ref_with_data_fn(self, f: fn (&mut SchemaData) -> ()) -> ReferenceOr<Schema> where Self: Sized {
         let mut result = self.into_schema_ref();
@@ -64,9 +82,9 @@ pub trait IntoSchema {
         result
     }
 
-    fn into_schema_with_base(self, base: &clients_schema::BaseType) -> Schema where Self: Sized {
+    fn into_schema_with_base(self, tac: &TypesAndComponents, base: &clients_schema::BaseType) -> Schema where Self: Sized {
         let mut schema = self.into_schema();
-        crate::schemas::fill_data_with_base(&mut schema.schema_data, base);
+        tac.fill_data_with_base(&mut schema.schema_data, base);
         schema
     }
 
@@ -99,7 +117,6 @@ impl IntoSchema for ReferenceOr<Schema> {
         }
     }
 }
-
 
 impl IntoSchema for SchemaKind {
     fn into_schema(self) -> Schema {
