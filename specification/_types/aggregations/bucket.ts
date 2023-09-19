@@ -1148,12 +1148,12 @@ export class FrequentItemSetsField {
    * Values to exclude.
    * Can be regular expression strings or arrays of strings of exact terms.
    */
-  exclude?: string | string[]
+  exclude?: TermsExclude
   /**
    * Values to include.
    * Can be regular expression strings or arrays of strings of exact terms.
    */
-  include?: string | string[]
+  include?: TermsInclude
 }
 
 export class FrequentItemSetsAggregation {
