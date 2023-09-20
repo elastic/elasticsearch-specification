@@ -97,7 +97,7 @@ export class IndexSettings
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
-  refresh_interval?: Duration
+  refresh_interval?: RefreshInterval
   /** @server_default 10000 */
   max_result_window?: integer
   /** @server_default 100 */
@@ -232,6 +232,8 @@ export class SettingsSearch {
   idle?: SearchIdle
   slowlog?: SlowlogSettings
 }
+
+export type RefreshInterval = Duration | null
 
 export class SearchIdle {
   /** @server_default 30s */
