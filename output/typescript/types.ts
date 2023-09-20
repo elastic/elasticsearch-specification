@@ -2335,8 +2335,9 @@ export interface KnnQuery {
   field: Field
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
-  k: long
-  num_candidates: long
+  k: integer
+  num_candidates: integer
+  similarity?: float
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
 }
@@ -9787,7 +9788,7 @@ export interface IndicesIndexSettingsKeys {
   auto_expand_replicas?: string
   merge?: IndicesMerge
   search?: IndicesSettingsSearch
-  refresh_interval?: Duration
+  refresh_interval?: IndicesRefreshInterval
   max_result_window?: integer
   max_inner_result_window?: integer
   max_rescore_window?: integer
@@ -9967,6 +9968,8 @@ export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 export interface IndicesQueries {
   cache?: IndicesCacheQueries
 }
+
+export type IndicesRefreshInterval = Duration | null
 
 export interface IndicesRetentionLease {
   period: Duration
