@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@_types/common'
-import { long, double, float } from '@_types/Numeric'
+import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from './query_dsl/abstractions'
 
 export type QueryVector = float[]
@@ -31,9 +31,9 @@ export interface KnnQuery {
   /** The query vector builder. You must provide a query_vector_builder or query_vector, but not both. */
   query_vector_builder?: QueryVectorBuilder
   /** The final number of nearest neighbors to return as top hits */
-  k: long
+  k: integer
   /** The number of nearest neighbor candidates to consider per shard */
-  num_candidates: long
+  num_candidates: integer
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
