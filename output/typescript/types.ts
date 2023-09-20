@@ -15558,7 +15558,9 @@ export interface QueryRulesetListResponse {
 
 export interface QueryRulesetPutRequest extends RequestBase {
   ruleset_id: Id
-  body?: QueryRulesetQueryRuleset
+  body?: {
+    rules: QueryRulesetQueryRule[]
+  }
 }
 
 export interface QueryRulesetPutResponse {

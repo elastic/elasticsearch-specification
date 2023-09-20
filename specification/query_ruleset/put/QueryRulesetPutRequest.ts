@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { QueryRuleset } from '../_types/QueryRuleset'
+import { QueryRule } from '../_types/QueryRuleset'
 
 /**
  * Creates or updates a query ruleset.
@@ -34,8 +34,10 @@ export interface Request extends RequestBase {
     ruleset_id: Id
   }
   /**
-   * The query ruleset information to update
+   * The query rules in this ruleset
    */
   /** @codegen_name query_ruleset */
-  body: QueryRuleset
+  body: {
+    rules: QueryRule[]
+  }
 }
