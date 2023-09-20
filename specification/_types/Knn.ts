@@ -34,6 +34,8 @@ export interface KnnQuery {
   k: integer
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates: integer
+  /** The minimum similarity required for a document to be considered a match */
+  similarity?: float
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
