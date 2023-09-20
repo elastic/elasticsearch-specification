@@ -3309,8 +3309,8 @@ export type AggregationsFrequentItemSetsBucket = AggregationsFrequentItemSetsBuc
 
 export interface AggregationsFrequentItemSetsField {
   field: Field
-  exclude?: string | string[]
-  include?: string | string[]
+  exclude?: AggregationsTermsExclude
+  include?: AggregationsTermsInclude
 }
 
 export type AggregationsGapPolicy = 'skip' | 'insert_zeros' | 'keep_values'
