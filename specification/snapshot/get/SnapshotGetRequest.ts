@@ -27,6 +27,7 @@ import { SortOrder } from '@_types/sort'
 /**
  * @rest_spec_name snapshot.get
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

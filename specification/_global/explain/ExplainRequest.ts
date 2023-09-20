@@ -27,6 +27,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  * Returns information about why a specific document matches (or doesn’t match) a query.
  * @rest_spec_name explain
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

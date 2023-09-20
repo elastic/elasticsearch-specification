@@ -25,6 +25,7 @@ import { float } from '@_types/Numeric'
  * Copies documents from a source to a destination.
  * @rest_spec_name reindex_rethrottle
  * @availability stack since=2.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
