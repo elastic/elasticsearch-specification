@@ -865,7 +865,7 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   /**
    * Values to include.
    */
-  include?: string | string[]
+  include?: TermsInclude
   /**
    * Use JLH score as the significance score.
    */
