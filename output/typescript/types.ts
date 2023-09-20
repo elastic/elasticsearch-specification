@@ -3520,7 +3520,7 @@ export interface AggregationsSignificantTextAggregation extends AggregationsBuck
   field?: Field
   filter_duplicate_text?: boolean
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: AggregationsTermsInclude
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
