@@ -865,7 +865,7 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   /**
    * Values to include.
    */
-  include?: string | string[]
+  include?: TermsInclude
   /**
    * Use JLH score as the significance score.
    */
@@ -1148,12 +1148,12 @@ export class FrequentItemSetsField {
    * Values to exclude.
    * Can be regular expression strings or arrays of strings of exact terms.
    */
-  exclude?: string | string[]
+  exclude?: TermsExclude
   /**
    * Values to include.
    * Can be regular expression strings or arrays of strings of exact terms.
    */
-  include?: string | string[]
+  include?: TermsInclude
 }
 
 export class FrequentItemSetsAggregation {

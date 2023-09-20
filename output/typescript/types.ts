@@ -2055,14 +2055,28 @@ export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
+export type ClusterAlias = string
+
+export interface ClusterDetails {
+  status: ClusterSearchStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  timed_out: boolean
+  _shards?: ShardStatistics
+  failures?: ShardFailure[]
+}
+
 export type ClusterInfoTarget = '_all' | 'http' | 'ingest' | 'thread_pool' | 'script'
 
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
+
+export type ClusterSearchStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
 
 export interface ClusterStatistics {
   skipped: integer
   successful: integer
   total: integer
+  details?: Record<ClusterAlias, ClusterDetails>
 }
 
 export interface CompletionStats {
@@ -3295,8 +3309,8 @@ export type AggregationsFrequentItemSetsBucket = AggregationsFrequentItemSetsBuc
 
 export interface AggregationsFrequentItemSetsField {
   field: Field
-  exclude?: string | string[]
-  include?: string | string[]
+  exclude?: AggregationsTermsExclude
+  include?: AggregationsTermsInclude
 }
 
 export type AggregationsGapPolicy = 'skip' | 'insert_zeros' | 'keep_values'
@@ -3912,7 +3926,7 @@ export interface AggregationsSignificantTextAggregation extends AggregationsBuck
   field?: Field
   filter_duplicate_text?: boolean
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: AggregationsTermsInclude
   jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
@@ -6105,6 +6119,8 @@ export interface AsyncSearchAsyncSearchResponseBase {
   expiration_time_in_millis: EpochTime<UnitMillis>
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
+  completion_time?: DateTime
+  completion_time_in_millis?: EpochTime<UnitMillis>
 }
 
 export interface AsyncSearchDeleteRequest extends RequestBase {
@@ -6130,6 +6146,7 @@ export type AsyncSearchStatusResponse = AsyncSearchStatusStatusResponseBase
 
 export interface AsyncSearchStatusStatusResponseBase extends AsyncSearchAsyncSearchResponseBase {
   _shards: ShardStatistics
+  _clusters?: ClusterStatistics
   completion_status?: integer
 }
 
@@ -8328,7 +8345,7 @@ export interface ClusterComponentTemplateSummary {
   settings?: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
-  lifecycle?: IndicesDataLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -9631,15 +9648,6 @@ export interface IndicesCacheQueries {
   enabled: boolean
 }
 
-export interface IndicesDataLifecycle {
-  data_retention?: Duration
-}
-
-export interface IndicesDataLifecycleWithRollover {
-  data_retention?: Duration
-  rollover?: IndicesDlmRolloverConditions
-}
-
 export interface IndicesDataStream {
   _meta?: Metadata
   allow_custom_routing?: boolean
@@ -9647,7 +9655,7 @@ export interface IndicesDataStream {
   hidden: boolean
   ilm_policy?: Name
   indices: IndicesDataStreamIndex[]
-  lifecycle?: IndicesDataLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
   name: DataStreamName
   replicated?: boolean
   status: HealthStatus
@@ -9661,15 +9669,16 @@ export interface IndicesDataStreamIndex {
   index_uuid: Uuid
 }
 
-export interface IndicesDataStreamTimestampField {
-  name: Field
+export interface IndicesDataStreamLifecycle {
+  data_retention?: Duration
+  downsampling?: IndicesDataStreamLifecycleDownsampling
 }
 
-export interface IndicesDataStreamVisibility {
-  hidden?: boolean
+export interface IndicesDataStreamLifecycleDownsampling {
+  rounds: IndicesDownsamplingRound[]
 }
 
-export interface IndicesDlmRolloverConditions {
+export interface IndicesDataStreamLifecycleRolloverConditions {
   min_age?: Duration
   max_age?: string
   min_docs?: long
@@ -9682,8 +9691,27 @@ export interface IndicesDlmRolloverConditions {
   max_primary_shard_docs?: long
 }
 
+export interface IndicesDataStreamLifecycleWithRollover {
+  data_retention?: Duration
+  downsampling?: IndicesDataStreamLifecycleDownsampling
+  rollover?: IndicesDataStreamLifecycleRolloverConditions
+}
+
+export interface IndicesDataStreamTimestampField {
+  name: Field
+}
+
+export interface IndicesDataStreamVisibility {
+  hidden?: boolean
+}
+
 export interface IndicesDownsampleConfig {
   fixed_interval: DurationLarge
+}
+
+export interface IndicesDownsamplingRound {
+  after: Duration
+  config: IndicesDownsampleConfig
 }
 
 export interface IndicesFielddataFrequencyFilter {
@@ -9836,7 +9864,7 @@ export interface IndicesIndexState {
   settings?: IndicesIndexSettings
   defaults?: IndicesIndexSettings
   data_stream?: DataStreamName
-  lifecycle?: IndicesDataLifecycle
+  lifecycle?: IndicesDataStreamLifecycle
 }
 
 export interface IndicesIndexTemplate {
@@ -9859,7 +9887,7 @@ export interface IndicesIndexTemplateSummary {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
-  lifecycle?: IndicesDataLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
 }
 
 export interface IndicesIndexVersioning {
@@ -10379,14 +10407,14 @@ export interface IndicesExistsTemplateRequest extends RequestBase {
 
 export type IndicesExistsTemplateResponse = boolean
 
-export interface IndicesExplainDataLifecycleDataLifecycleExplain {
+export interface IndicesExplainDataLifecycleDataStreamLifecycleExplain {
   index: IndexName
-  managed_by_dlm: boolean
+  managed_by_lifecycle: boolean
   index_creation_date_millis?: EpochTime<UnitMillis>
   time_since_index_creation?: Duration
   rollover_date_millis?: EpochTime<UnitMillis>
   time_since_rollover?: Duration
-  lifecycle?: IndicesDataLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
   generation_time?: Duration
   error?: string
 }
@@ -10398,7 +10426,7 @@ export interface IndicesExplainDataLifecycleRequest extends RequestBase {
 }
 
 export interface IndicesExplainDataLifecycleResponse {
-  indices: Record<IndexName, IndicesExplainDataLifecycleDataLifecycleExplain>
+  indices: Record<IndexName, IndicesExplainDataLifecycleDataStreamLifecycleExplain>
 }
 
 export interface IndicesFieldUsageStatsFieldSummary {
@@ -10518,9 +10546,9 @@ export interface IndicesGetAliasRequest extends RequestBase {
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
 
-export interface IndicesGetDataLifecycleDataStreamLifecycle {
+export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
-  lifecycle?: IndicesDataLifecycle
+  lifecycle?: IndicesDataStreamLifecycle
 }
 
 export interface IndicesGetDataLifecycleRequest extends RequestBase {
@@ -10530,7 +10558,7 @@ export interface IndicesGetDataLifecycleRequest extends RequestBase {
 }
 
 export interface IndicesGetDataLifecycleResponse {
-  data_streams: IndicesGetDataLifecycleDataStreamLifecycle[]
+  data_streams: IndicesGetDataLifecycleDataStreamWithLifecycle[]
 }
 
 export interface IndicesGetDataStreamRequest extends RequestBase {
@@ -10683,6 +10711,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   timeout?: Duration
   body?: {
     data_retention?: Duration
+    downsampling?: IndicesDataStreamLifecycleDownsampling
   }
 }
 
@@ -10692,7 +10721,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
-  lifecycle?: IndicesDataLifecycle
+  lifecycle?: IndicesDataStreamLifecycle
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
@@ -15541,7 +15570,9 @@ export interface QueryRulesetListResponse {
 
 export interface QueryRulesetPutRequest extends RequestBase {
   ruleset_id: Id
-  body?: QueryRulesetQueryRuleset
+  body?: {
+    rules: QueryRulesetQueryRule[]
+  }
 }
 
 export interface QueryRulesetPutResponse {
@@ -17534,7 +17565,7 @@ export interface TasksTaskInfo {
   running_time?: Duration
   running_time_in_nanos: DurationValue<UnitNanos>
   start_time_in_millis: EpochTime<UnitMillis>
-  status?: TasksTaskStatus
+  status?: any
   type: string
   parent_task_id?: TaskId
 }
@@ -17546,26 +17577,6 @@ export interface TasksTaskListResponseBase {
   task_failures?: TaskFailure[]
   nodes?: Record<string, TasksNodeTasks>
   tasks?: TasksTaskInfos
-}
-
-export interface TasksTaskStatus {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: Retries
-  throttled?: Duration
-  throttled_millis: DurationValue<UnitMillis>
-  throttled_until?: Duration
-  throttled_until_millis: DurationValue<UnitMillis>
-  timed_out?: boolean
-  took?: DurationValue<UnitMillis>
-  total: long
-  updated: long
-  version_conflicts: long
 }
 
 export interface TasksCancelRequest extends RequestBase {
@@ -17587,7 +17598,7 @@ export interface TasksGetRequest extends RequestBase {
 export interface TasksGetResponse {
   completed: boolean
   task: TasksTaskInfo
-  response?: TasksTaskStatus
+  response?: any
   error?: ErrorCause
 }
 

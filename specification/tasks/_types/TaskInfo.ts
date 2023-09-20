@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { TaskStatus } from '@tasks/_types/TaskStatus'
 import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -28,6 +27,7 @@ import {
   UnitMillis,
   UnitNanos
 } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class TaskInfo {
   action: string
@@ -40,7 +40,8 @@ export class TaskInfo {
   running_time?: Duration
   running_time_in_nanos: DurationValue<UnitNanos>
   start_time_in_millis: EpochTime<UnitMillis>
-  status?: TaskStatus
+  /** Task status information can vary wildly from task to task. */
+  status?: UserDefinedValue
   type: string
   parent_task_id?: TaskId
 }

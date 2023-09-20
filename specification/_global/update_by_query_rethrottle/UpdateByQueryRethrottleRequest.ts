@@ -28,9 +28,16 @@ import { float, long } from '@_types/Numeric'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The ID for the task.
+     */
     task_id: Id
   }
   query_parameters: {
+    /**
+     * The throttle for this request in sub-requests per second.
+     * @server_default -1
+     */
     requests_per_second?: float
   }
 }

@@ -33,18 +33,63 @@ import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
 export class Operation {
+  /**
+   * The ID of the document.
+   */
   _id: Id
+  /**
+   * The index of the document.
+   */
   _index?: IndexName
+  /**
+   * An artificial document (a document not present in the index) for which you want to retrieve term vectors.
+   */
   doc?: UserDefinedValue
+  /**
+   * Comma-separated list or wildcard expressions of fields to include in the statistics.
+   * Used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
+   */
   fields?: Fields
+  /**
+   * If `true`, the response includes the document count, sum of document frequencies, and sum of total term frequencies.
+   * @server_default true
+   */
   field_statistics?: boolean
+  /**
+   * Filter terms based on their tf-idf scores.
+   */
   filter?: Filter
+  /**
+   * If `true`, the response includes term offsets.
+   * @server_default true
+   */
   offsets?: boolean
+  /**
+   * If `true`, the response includes term payloads.
+   * @server_default true
+   */
   payloads?: boolean
+  /**
+   * If `true`, the response includes term positions.
+   * @server_default true
+   */
   positions?: boolean
+  /**
+   * Custom value used to route operations to a specific shard.
+   */
   routing?: Routing
+  /**
+   * If true, the response includes term frequency and document frequency.
+   * @server_default false
+   */
   term_statistics?: boolean
+  /**
+   * If `true`, returns the document version as part of a hit.
+   */
   version?: VersionNumber
+  /**
+   * Specific version type.
+   */
   version_type?: VersionType
 }
 

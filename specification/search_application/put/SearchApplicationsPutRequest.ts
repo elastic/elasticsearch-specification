@@ -29,18 +29,19 @@ import { SearchApplication } from '../_types/SearchApplication'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the search application to be created or updated
+     * The name of the search application to be created or updated.
      */
     name: Name
   }
   query_parameters: {
     /**
-     * If true, requires that a search application with the specified resource_id does not already exist. (default: false)
+     * If `true`, this request cannot replace or update existing Search Applications.
+     * @server_default false
      */
     create?: boolean
   }
   /**
-   * The search application information to update
+   * Contains parameters for a search application.
    */
   /** @codegen_name search_application */
   body: SearchApplication

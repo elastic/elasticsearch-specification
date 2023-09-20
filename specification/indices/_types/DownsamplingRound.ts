@@ -16,20 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
-/**
- * Creates a behavioral analytics collection.
- * @rest_spec_name search_application.put_behavioral_analytics
- * @availability stack since=8.8.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The name of the analytics collection to be created or updated.
-     */
-    name: Name
-  }
+import { Duration } from '@_types/Time'
+import { DownsampleConfig } from '@indices/_types/Downsample'
+
+export class DownsamplingRound {
+  /**
+   * The duration since rollover when this downsampling round should execute
+   */
+  after: Duration
+  /**
+   * The downsample configuration to execute.
+   */
+  config: DownsampleConfig
 }

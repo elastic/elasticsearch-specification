@@ -21,7 +21,7 @@ import { IndexName, Name } from '@_types/common'
 
 export class AnalyticsCollection {
   /**
-   * Data stream for the collection
+   * Data stream for the collection.
    */
   event_data_stream: EventDataStream
 }

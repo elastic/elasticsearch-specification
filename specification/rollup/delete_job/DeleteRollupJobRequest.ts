@@ -21,11 +21,15 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes an existing rollup job.
  * @rest_spec_name rollup.delete_job
  * @availability stack since=6.3.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the job.
+     */
     id: Id
   }
 }

@@ -22,17 +22,28 @@ import { Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Returns information on the usage of features.
  * @rest_spec_name nodes.usage
  * @availability stack since=6.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-usage
+ * @cluster_privileges monitor,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
     node_id?: NodeIds
+    /**
+     * Limits the information returned to the specific metrics.
+     * A comma-separated list of the following options: `_all`, `rest_actions`.
+     */
     metric?: Metrics
   }
   query_parameters: {
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

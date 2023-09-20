@@ -26,14 +26,45 @@ import { ExpandWildcards, Indices, Routing } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Returns the indices and shards that a search request would be executed against.
+     */
     index?: Indices
   }
   query_parameters: {
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * @server_default false
+     */
     allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
+    /**
+     * If `true`, the request retrieves information from the local node only.
+     * @server_default false
+     */
     local?: boolean
+    /**
+     * Specifies the node or shard the operation should be performed on.
+     * Random by default.
+     */
     preference?: string
+    /**
+     * Custom value used to route operations to a specific shard.
+     */
     routing?: Routing
   }
 }
