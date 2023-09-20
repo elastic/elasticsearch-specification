@@ -544,8 +544,8 @@ export class IpPrefixAggregation extends BucketAggregationBase {
 
 export class FrequentItemSetsField {
   field: Field
-  exclude?: string | string[]
-  include?: string | string[]
+  exclude?: TermsExclude
+  include?: TermsInclude
 }
 
 export class FrequentItemSetsAggregation {
