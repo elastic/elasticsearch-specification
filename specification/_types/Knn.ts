@@ -39,7 +39,7 @@ export interface KnnQuery {
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
-  similarity?: double
+  similarity?: float
 }
 
 /** @variants container */
