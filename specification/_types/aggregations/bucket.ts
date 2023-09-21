@@ -365,7 +365,7 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   field?: Field
   filter_duplicate_text?: boolean
   gnd?: GoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: TermsInclude
   jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: MutualInformationHeuristic
