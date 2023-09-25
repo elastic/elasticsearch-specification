@@ -23,8 +23,18 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class PainlessContextSetup {
+  /**
+   * Document that’s temporarily indexed in-memory and accessible from the script.
+   */
   document: UserDefinedValue
+  /**
+   * Index containing a mapping that’s compatible with the indexed document.
+   * You may specify a remote index by prefixing the index with the remote cluster alias.
+   */
   index: IndexName
+  /**
+   * Use this parameter to specify a query for computing a score.
+   */
   query: QueryContainer
 }
 

@@ -25,6 +25,7 @@ import { Id } from '@_types/common'
  * The API also deletes results for the search.
  * @rest_spec_name eql.delete
  * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

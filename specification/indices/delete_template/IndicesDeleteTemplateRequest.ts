@@ -25,7 +25,6 @@ import { Duration } from '@_types/Time'
  * Deletes a legacy index template.
  * @rest_spec_name indices.delete_template
  * @availability stack since=0.0.0 stability=stable
- * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {

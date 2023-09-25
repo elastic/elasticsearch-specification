@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Perform a search against a search application
+ * Perform a search against a search application.
  * @rest_spec_name search_application.search
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
@@ -30,11 +30,14 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The name of the search application to be searched
+     * The name of the search application to be searched.
      */
     name: Name
   }
   body: {
+    /**
+     * Query parameters specific to this request, which will override any defaults specified in the template.
+     */
     params?: Dictionary<string, UserDefinedValue>
   }
 }

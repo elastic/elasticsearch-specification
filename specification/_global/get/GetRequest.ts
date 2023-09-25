@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
      */
     preference?: string
     /**
-     *  Boolean) If true, the request is real-time as opposed to near-real-time.
+     * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
      * @doc_id realtime
      */
@@ -73,6 +73,11 @@ export interface Request extends RequestBase {
      * A comma-separated list of source fields to include in the response.
      */
     _source_includes?: Fields
+    /**
+     * List of stored fields to return as part of a hit.
+     * If no fields are specified, no stored fields are included in the response.
+     * If this field is specified, the `_source` parameter defaults to false.
+     */
     stored_fields?: Fields
     /**
      * Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.

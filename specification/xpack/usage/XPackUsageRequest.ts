@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
  * This API provides information about which features are currently enabled and available under the current license and some usage statistics.
  * @rest_spec_name xpack.usage
  * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor,manage
  */
 export interface Request extends RequestBase {

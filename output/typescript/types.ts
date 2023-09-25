@@ -3310,8 +3310,8 @@ export type AggregationsFrequentItemSetsBucket = AggregationsFrequentItemSetsBuc
 
 export interface AggregationsFrequentItemSetsField {
   field: Field
-  exclude?: string | string[]
-  include?: string | string[]
+  exclude?: AggregationsTermsExclude
+  include?: AggregationsTermsInclude
 }
 
 export type AggregationsGapPolicy = 'skip' | 'insert_zeros' | 'keep_values'
@@ -3927,7 +3927,7 @@ export interface AggregationsSignificantTextAggregation extends AggregationsBuck
   field?: Field
   filter_duplicate_text?: boolean
   gnd?: AggregationsGoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: AggregationsTermsInclude
   jlh?: EmptyObject
   min_doc_count?: long
   mutual_information?: AggregationsMutualInformationHeuristic
@@ -15571,7 +15571,9 @@ export interface QueryRulesetListResponse {
 
 export interface QueryRulesetPutRequest extends RequestBase {
   ruleset_id: Id
-  body?: QueryRulesetQueryRuleset
+  body?: {
+    rules: QueryRulesetQueryRule[]
+  }
 }
 
 export interface QueryRulesetPutResponse {
