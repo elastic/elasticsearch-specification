@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@_types/common'
-import { long, double, float } from '@_types/Numeric'
+import { long, float } from '@_types/Numeric'
 import { QueryContainer } from './query_dsl/abstractions'
 
 export type QueryVector = float[]
@@ -38,6 +38,8 @@ export interface KnnQuery {
   boost?: float
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
+  /** The minimum similarity for a vector to be considered a match */
+  similarity?: float
 }
 
 /** @variants container */
