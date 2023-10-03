@@ -437,7 +437,7 @@ search-aggregations-metrics-max-aggregation,https://www.elastic.co/guide/en/elas
 search-aggregations-pipeline-max-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-max-bucket-aggregation.html
 search-aggregations-metrics-median-absolute-deviation-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-median-absolute-deviation-aggregation.html
 search-aggregations-metrics-min-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-min-aggregation.html
-,search-aggregations-pipeline-min-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-min-bucket-aggregation.html
+search-aggregations-pipeline-min-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-min-bucket-aggregation.html
 search-aggregations-bucket-missing-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-missing-aggregation.html
 search-aggregations-pipeline-moving-percentiles-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-moving-percentiles-aggregation.html
 search-aggregations-pipeline-movfn-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-movfn-aggregation.html
