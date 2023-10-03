@@ -14236,6 +14236,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     metadata?: any
     model_type?: MlTrainedModelType
     model_size_bytes?: long
+    platform_architecture?: string
     tags?: string[]
   }
 }
