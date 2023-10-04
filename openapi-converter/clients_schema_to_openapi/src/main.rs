@@ -20,7 +20,7 @@ use tracing::Level;
 use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::FmtSubscriber;
 use std::path::{Path, PathBuf};
-use clients_schema::Availabilities;
+use clients_schema::{Availabilities, Visibility};
 
 fn main() -> anyhow::Result<()> {
 
@@ -77,9 +77,17 @@ impl Cli {
         if let Some(flavor) = self.flavor {
             if flavor != SchemaFlavor::All {
                 let filter: fn(&Option<Availabilities>) -> bool = match flavor {
-                    SchemaFlavor::All => |_| true,
-                    SchemaFlavor::Stack => |a| clients_schema::Flavor::is_stack(a),
-                    SchemaFlavor::Serverless => |a| clients_schema::Flavor::is_serverless(a),
+                    SchemaFlavor::All => |_| {
+                        true
+                    },
+                    SchemaFlavor::Stack => |a| {
+                        // Generate public and private items for Stack
+                        clients_schema::Flavor::Stack.available(a)
+                    },
+                    SchemaFlavor::Serverless => |a| {
+                        // Generate only public items for Serverless
+                        clients_schema::Flavor::Serverless.visibility(a) == Some(Visibility::Public)
+                    },
                 };
 
                 model = clients_schema::transform::filter_availability(model, filter)?;

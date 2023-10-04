@@ -198,7 +198,7 @@ pub enum LiteralValueValue {
 
 //--------------------------------------------------------------------------------------------
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Stability {
     Stable,
@@ -206,7 +206,7 @@ pub enum Stability {
     Experimental,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Visibility {
     Public,
@@ -254,12 +254,22 @@ impl Flavor {
         }
     }
 
-    pub fn is_serverless(a: &Option<Availabilities>) -> bool {
-        Flavor::Serverless.available(a)
-    }
-
-    pub fn is_stack(a: &Option<Availabilities>) -> bool {
-        Flavor::Stack.available(a)
+    /// Gets the visibility for a given set of availabilities. If the result is `None`,
+    /// this flavor isn't available.
+    pub fn visibility(&self, availabilities: &Option<Availabilities>) -> Option<Visibility> {
+        if let Some(ref availabilities) = availabilities {
+            // Some availabilities defined
+            if let Some(ref availability) = availabilities.get(self) {
+                // This one exists. Public by default
+                availability.visibility.clone().or(Some(Visibility::Public))
+            } else {
+                // Not available
+                None
+            }
+        } else {
+            // No restriction: available and public
+            Some(Visibility::Public)
+        }
     }
 }
 
