@@ -19,7 +19,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
-        "operationId": "async_search.get#0",
+        "operationId": "async-search-get",
         "parameters": [
           {
             "in": "path",
@@ -85,7 +85,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
-        "operationId": "async_search.delete#0",
+        "operationId": "async-search-delete",
         "parameters": [
           {
             "in": "path",
@@ -123,7 +123,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
-        "operationId": "async_search.status#0",
+        "operationId": "async-search-status",
         "parameters": [
           {
             "in": "path",
@@ -161,7 +161,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
-        "operationId": "async_search.submit#0",
+        "operationId": "async-search-submit",
         "parameters": [
           {
             "$ref": "#/components/parameters/async_search.submit#wait_for_completion_timeout"
@@ -322,7 +322,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
-        "operationId": "async_search.submit#1",
+        "operationId": "async-search-submit-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/async_search.submit#index"
@@ -486,7 +486,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
-        "operationId": "bulk#1",
+        "operationId": "bulk-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#pipeline"
@@ -534,7 +534,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
-        "operationId": "bulk#0",
+        "operationId": "bulk",
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#pipeline"
@@ -584,7 +584,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
-        "operationId": "bulk#3",
+        "operationId": "bulk-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#index"
@@ -635,7 +635,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
-        "operationId": "bulk#2",
+        "operationId": "bulk-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/bulk#index"
@@ -688,7 +688,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
-        "operationId": "cat.aliases#0",
+        "operationId": "cat-aliases",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.aliases#expand_wildcards"
@@ -711,7 +711,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
-        "operationId": "cat.aliases#1",
+        "operationId": "cat-aliases-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.aliases#name"
@@ -737,7 +737,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
-        "operationId": "cat.component_templates#0",
+        "operationId": "cat-component-templates",
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
@@ -755,7 +755,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
-        "operationId": "cat.component_templates#1",
+        "operationId": "cat-component-templates-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.component_templates#name"
@@ -778,7 +778,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
-        "operationId": "cat.count#0",
+        "operationId": "cat-count",
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count#200"
@@ -796,7 +796,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
-        "operationId": "cat.count#1",
+        "operationId": "cat-count-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count#index"
@@ -819,7 +819,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html"
         },
-        "operationId": "cat.help#0",
+        "operationId": "cat-help",
         "responses": {
           "200": {
             "description": "",
@@ -847,7 +847,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
-        "operationId": "cat.indices#0",
+        "operationId": "cat-indices",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.indices#bytes"
@@ -885,7 +885,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
-        "operationId": "cat.indices#1",
+        "operationId": "cat-indices-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.indices#index"
@@ -926,7 +926,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
-        "operationId": "cat.ml_data_frame_analytics#0",
+        "operationId": "cat-ml-data-frame-analytics",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics#allow_no_match"
@@ -961,7 +961,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
-        "operationId": "cat.ml_data_frame_analytics#1",
+        "operationId": "cat-ml-data-frame-analytics-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics#id"
@@ -999,7 +999,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
-        "operationId": "cat.ml_datafeeds#0",
+        "operationId": "cat-ml-datafeeds",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds#allow_no_match"
@@ -1031,7 +1031,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
-        "operationId": "cat.ml_datafeeds#1",
+        "operationId": "cat-ml-datafeeds-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds#datafeed_id"
@@ -1066,7 +1066,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
-        "operationId": "cat.ml_jobs#0",
+        "operationId": "cat-ml-jobs",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_jobs#allow_no_match"
@@ -1101,7 +1101,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
-        "operationId": "cat.ml_jobs#1",
+        "operationId": "cat-ml-jobs-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_jobs#job_id"
@@ -1139,7 +1139,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
-        "operationId": "cat.ml_trained_models#0",
+        "operationId": "cat-ml-trained-models",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#allow_no_match"
@@ -1177,7 +1177,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
-        "operationId": "cat.ml_trained_models#1",
+        "operationId": "cat-ml-trained-models-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.ml_trained_models#model_id"
@@ -1218,7 +1218,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
-        "operationId": "cat.transforms#0",
+        "operationId": "cat-transforms",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.transforms#allow_no_match"
@@ -1256,7 +1256,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
-        "operationId": "cat.transforms#1",
+        "operationId": "cat-transforms-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.transforms#transform_id"
@@ -1297,7 +1297,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
         },
-        "operationId": "scroll#0",
+        "operationId": "scroll",
         "parameters": [
           {
             "$ref": "#/components/parameters/scroll#scroll"
@@ -1327,7 +1327,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
         },
-        "operationId": "scroll#1",
+        "operationId": "scroll-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/scroll#scroll"
@@ -1357,7 +1357,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-scroll-api.html"
         },
-        "operationId": "clear_scroll#0",
+        "operationId": "clear-scroll",
         "requestBody": {
           "$ref": "#/components/requestBodies/clear_scroll"
         },
@@ -1378,7 +1378,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
         },
-        "operationId": "scroll#2",
+        "operationId": "scroll-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/scroll#scroll_id"
@@ -1411,7 +1411,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
         },
-        "operationId": "scroll#3",
+        "operationId": "scroll-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/scroll#scroll_id"
@@ -1444,7 +1444,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-scroll-api.html"
         },
-        "operationId": "clear_scroll#1",
+        "operationId": "clear-scroll-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/clear_scroll#scroll_id"
@@ -1470,7 +1470,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html"
         },
-        "operationId": "close_point_in_time#0",
+        "operationId": "close-point-in-time",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1524,7 +1524,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
-        "operationId": "cluster.get_component_template#1",
+        "operationId": "cluster-get-component-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.get_component_template#name"
@@ -1557,7 +1557,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
-        "operationId": "cluster.put_component_template#0",
+        "operationId": "cluster-put-component-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.put_component_template#name"
@@ -1587,7 +1587,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
-        "operationId": "cluster.put_component_template#1",
+        "operationId": "cluster-put-component-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.put_component_template#name"
@@ -1617,7 +1617,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
-        "operationId": "cluster.delete_component_template#0",
+        "operationId": "cluster-delete-component-template",
         "parameters": [
           {
             "in": "path",
@@ -1673,7 +1673,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
-        "operationId": "cluster.exists_component_template#0",
+        "operationId": "cluster-exists-component-template",
         "parameters": [
           {
             "in": "path",
@@ -1727,7 +1727,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
-        "operationId": "cluster.get_component_template#0",
+        "operationId": "cluster-get-component-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.get_component_template#flat_settings"
@@ -1759,7 +1759,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html"
         },
-        "operationId": "cluster.get_settings#0",
+        "operationId": "cluster-get-settings",
         "parameters": [
           {
             "in": "query",
@@ -1848,7 +1848,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html"
         },
-        "operationId": "cluster.put_settings#0",
+        "operationId": "cluster-put-settings",
         "parameters": [
           {
             "in": "query",
@@ -1951,7 +1951,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-info.html"
         },
-        "operationId": "cluster.info#0",
+        "operationId": "cluster-info",
         "parameters": [
           {
             "in": "path",
@@ -2012,7 +2012,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-pending.html"
         },
-        "operationId": "cluster.pending_tasks#0",
+        "operationId": "cluster-pending-tasks",
         "parameters": [
           {
             "in": "query",
@@ -2070,7 +2070,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html"
         },
-        "operationId": "cluster.stats#0",
+        "operationId": "cluster-stats",
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.stats#flat_settings"
@@ -2096,7 +2096,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html"
         },
-        "operationId": "cluster.stats#1",
+        "operationId": "cluster-stats-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.stats#node_id"
@@ -2125,7 +2125,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
         },
-        "operationId": "count#1",
+        "operationId": "count-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/count#allow_no_indices"
@@ -2188,7 +2188,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
         },
-        "operationId": "count#0",
+        "operationId": "count",
         "parameters": [
           {
             "$ref": "#/components/parameters/count#allow_no_indices"
@@ -2253,7 +2253,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
         },
-        "operationId": "count#3",
+        "operationId": "count-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/count#index"
@@ -2319,7 +2319,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
         },
-        "operationId": "count#2",
+        "operationId": "count-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/count#index"
@@ -2387,7 +2387,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
-        "operationId": "create#0",
+        "operationId": "create",
         "parameters": [
           {
             "$ref": "#/components/parameters/create#index"
@@ -2435,7 +2435,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
-        "operationId": "create#1",
+        "operationId": "create-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/create#index"
@@ -2485,7 +2485,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
-        "operationId": "get#0",
+        "operationId": "get",
         "parameters": [
           {
             "in": "path",
@@ -2632,7 +2632,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
-        "operationId": "index#0",
+        "operationId": "index",
         "parameters": [
           {
             "$ref": "#/components/parameters/index#index"
@@ -2692,7 +2692,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
-        "operationId": "index#1",
+        "operationId": "index-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/index#index"
@@ -2752,7 +2752,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html"
         },
-        "operationId": "delete#0",
+        "operationId": "delete",
         "parameters": [
           {
             "in": "path",
@@ -2879,7 +2879,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
-        "operationId": "exists#0",
+        "operationId": "exists",
         "parameters": [
           {
             "in": "path",
@@ -3024,7 +3024,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html"
         },
-        "operationId": "delete_by_query#0",
+        "operationId": "delete-by-query",
         "parameters": [
           {
             "in": "path",
@@ -3433,7 +3433,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
-        "operationId": "get_script#0",
+        "operationId": "get-script",
         "parameters": [
           {
             "in": "path",
@@ -3494,7 +3494,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
-        "operationId": "put_script#0",
+        "operationId": "put-script",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
@@ -3524,7 +3524,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
-        "operationId": "put_script#1",
+        "operationId": "put-script-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
@@ -3554,7 +3554,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
-        "operationId": "delete_script#0",
+        "operationId": "delete-script",
         "parameters": [
           {
             "in": "path",
@@ -3612,7 +3612,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
         },
-        "operationId": "enrich.get_policy#0",
+        "operationId": "enrich-get-policy",
         "parameters": [
           {
             "$ref": "#/components/parameters/enrich.get_policy#name"
@@ -3633,7 +3633,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-enrich-policy-api.html"
         },
-        "operationId": "enrich.put_policy#0",
+        "operationId": "enrich-put-policy",
         "parameters": [
           {
             "in": "path",
@@ -3690,7 +3690,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html"
         },
-        "operationId": "enrich.delete_policy#0",
+        "operationId": "enrich-delete-policy",
         "parameters": [
           {
             "in": "path",
@@ -3728,7 +3728,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html"
         },
-        "operationId": "enrich.execute_policy#0",
+        "operationId": "enrich-execute-policy",
         "parameters": [
           {
             "in": "path",
@@ -3787,7 +3787,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
         },
-        "operationId": "enrich.get_policy#1",
+        "operationId": "enrich-get-policy-1",
         "responses": {
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
@@ -3805,7 +3805,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html"
         },
-        "operationId": "enrich.stats#0",
+        "operationId": "enrich-stats",
         "responses": {
           "200": {
             "description": "",
@@ -3857,7 +3857,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
-        "operationId": "get_source#0",
+        "operationId": "get-source",
         "parameters": [
           {
             "in": "path",
@@ -4003,7 +4003,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
-        "operationId": "exists_source#0",
+        "operationId": "exists-source",
         "parameters": [
           {
             "in": "path",
@@ -4138,7 +4138,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
-        "operationId": "field_caps#0",
+        "operationId": "field-caps",
         "parameters": [
           {
             "$ref": "#/components/parameters/field_caps#allow_no_indices"
@@ -4180,7 +4180,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
-        "operationId": "field_caps#1",
+        "operationId": "field-caps-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/field_caps#allow_no_indices"
@@ -4224,7 +4224,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
-        "operationId": "field_caps#2",
+        "operationId": "field-caps-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/field_caps#index"
@@ -4269,7 +4269,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
-        "operationId": "field_caps#3",
+        "operationId": "field-caps-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/field_caps#index"
@@ -4316,7 +4316,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html"
         },
-        "operationId": "graph.explore#0",
+        "operationId": "graph-explore",
         "parameters": [
           {
             "$ref": "#/components/parameters/graph.explore#index"
@@ -4346,7 +4346,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html"
         },
-        "operationId": "graph.explore#1",
+        "operationId": "graph-explore-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/graph.explore#index"
@@ -4378,7 +4378,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
-        "operationId": "index#2",
+        "operationId": "index-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/index#index"
@@ -4437,7 +4437,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
         },
-        "operationId": "indices.analyze#0",
+        "operationId": "indices-analyze",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
         },
@@ -4456,7 +4456,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
         },
-        "operationId": "indices.analyze#1",
+        "operationId": "indices-analyze-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/indices.analyze"
         },
@@ -4477,7 +4477,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
         },
-        "operationId": "indices.analyze#2",
+        "operationId": "indices-analyze-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.analyze#index"
@@ -4501,7 +4501,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
         },
-        "operationId": "indices.analyze#3",
+        "operationId": "indices-analyze-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.analyze#index"
@@ -4527,7 +4527,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html"
         },
-        "operationId": "indices.get#0",
+        "operationId": "indices-get",
         "parameters": [
           {
             "in": "path",
@@ -4646,7 +4646,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html"
         },
-        "operationId": "indices.create#0",
+        "operationId": "indices-create",
         "parameters": [
           {
             "in": "path",
@@ -4752,7 +4752,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html"
         },
-        "operationId": "indices.delete#0",
+        "operationId": "indices-delete",
         "parameters": [
           {
             "in": "path",
@@ -4838,7 +4838,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html"
         },
-        "operationId": "indices.exists#0",
+        "operationId": "indices-exists",
         "parameters": [
           {
             "in": "path",
@@ -4932,7 +4932,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.get_data_stream#1",
+        "operationId": "indices-get-data-stream-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_data_stream#name"
@@ -4959,7 +4959,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.create_data_stream#0",
+        "operationId": "indices-create-data-stream",
         "parameters": [
           {
             "in": "path",
@@ -4995,7 +4995,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.delete_data_stream#0",
+        "operationId": "indices-delete-data-stream",
         "parameters": [
           {
             "in": "path",
@@ -5043,7 +5043,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.data_streams_stats#0",
+        "operationId": "indices-data-streams-stats",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.data_streams_stats#expand_wildcards"
@@ -5066,7 +5066,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.data_streams_stats#1",
+        "operationId": "indices-data-streams-stats-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.data_streams_stats#name"
@@ -5092,7 +5092,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.get_alias#2",
+        "operationId": "indices-get-alias-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_alias#index"
@@ -5128,7 +5128,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.put_alias#0",
+        "operationId": "indices-put-alias",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_alias#index"
@@ -5161,7 +5161,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.put_alias#1",
+        "operationId": "indices-put-alias-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_alias#index"
@@ -5194,7 +5194,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.delete_alias#0",
+        "operationId": "indices-delete-alias",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.delete_alias#index"
@@ -5224,7 +5224,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.exists_alias#1",
+        "operationId": "indices-exists-alias-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.exists_alias#index"
@@ -5262,7 +5262,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.put_alias#2",
+        "operationId": "indices-put-alias-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_alias#index"
@@ -5295,7 +5295,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.put_alias#3",
+        "operationId": "indices-put-alias-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_alias#index"
@@ -5328,7 +5328,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.delete_alias#1",
+        "operationId": "indices-delete-alias-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.delete_alias#index"
@@ -5360,7 +5360,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html"
         },
-        "operationId": "indices.get_data_lifecycle#0",
+        "operationId": "indices-get-data-lifecycle",
         "parameters": [
           {
             "in": "path",
@@ -5427,7 +5427,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html"
         },
-        "operationId": "indices.put_data_lifecycle#0",
+        "operationId": "indices-put-data-lifecycle",
         "parameters": [
           {
             "in": "path",
@@ -5510,7 +5510,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html"
         },
-        "operationId": "indices.delete_data_lifecycle#0",
+        "operationId": "indices-delete-data-lifecycle",
         "parameters": [
           {
             "in": "path",
@@ -5578,7 +5578,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.get_index_template#1",
+        "operationId": "indices-get-index-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_index_template#name"
@@ -5611,7 +5611,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.put_index_template#0",
+        "operationId": "indices-put-index-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_index_template#name"
@@ -5638,7 +5638,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.put_index_template#1",
+        "operationId": "indices-put-index-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_index_template#name"
@@ -5665,7 +5665,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.delete_index_template#0",
+        "operationId": "indices-delete-index-template",
         "parameters": [
           {
             "in": "path",
@@ -5721,7 +5721,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.exists_index_template#0",
+        "operationId": "indices-exists-index-template",
         "parameters": [
           {
             "in": "path",
@@ -5765,7 +5765,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.get_template#1",
+        "operationId": "indices-get-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_template#name"
@@ -5795,7 +5795,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.put_template#0",
+        "operationId": "indices-put-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_template#name"
@@ -5834,7 +5834,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.put_template#1",
+        "operationId": "indices-put-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_template#name"
@@ -5873,7 +5873,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.delete_template#0",
+        "operationId": "indices-delete-template",
         "parameters": [
           {
             "in": "path",
@@ -5929,7 +5929,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.exists_template#0",
+        "operationId": "indices-exists-template",
         "parameters": [
           {
             "in": "path",
@@ -5993,7 +5993,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-disk-usage.html"
         },
-        "operationId": "indices.disk_usage#0",
+        "operationId": "indices-disk-usage",
         "parameters": [
           {
             "in": "path",
@@ -6081,7 +6081,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.get_alias#1",
+        "operationId": "indices-get-alias-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_alias#name"
@@ -6114,7 +6114,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.exists_alias#0",
+        "operationId": "indices-exists-alias",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.exists_alias#name"
@@ -6149,7 +6149,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html"
         },
-        "operationId": "indices.explain_data_lifecycle#0",
+        "operationId": "indices-explain-data-lifecycle",
         "parameters": [
           {
             "in": "path",
@@ -6218,7 +6218,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.get_alias#0",
+        "operationId": "indices-get-alias",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_alias#allow_no_indices"
@@ -6250,7 +6250,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.get_alias#3",
+        "operationId": "indices-get-alias-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_alias#index"
@@ -6285,7 +6285,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.get_data_stream#0",
+        "operationId": "indices-get-data-stream",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_data_stream#expand_wildcards"
@@ -6311,7 +6311,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.get_index_template#0",
+        "operationId": "indices-get-index-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_index_template#local"
@@ -6343,7 +6343,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
         },
-        "operationId": "indices.get_mapping#0",
+        "operationId": "indices-get-mapping",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_mapping#allow_no_indices"
@@ -6378,7 +6378,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
         },
-        "operationId": "indices.get_mapping#1",
+        "operationId": "indices-get-mapping-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_mapping#index"
@@ -6414,7 +6414,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
         },
-        "operationId": "indices.put_mapping#0",
+        "operationId": "indices-put-mapping",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_mapping#index"
@@ -6456,7 +6456,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
         },
-        "operationId": "indices.put_mapping#1",
+        "operationId": "indices-put-mapping-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_mapping#index"
@@ -6500,7 +6500,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
-        "operationId": "indices.get_settings#0",
+        "operationId": "indices-get-settings",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_settings#allow_no_indices"
@@ -6539,7 +6539,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
-        "operationId": "indices.put_settings#0",
+        "operationId": "indices-put-settings",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_settings#allow_no_indices"
@@ -6583,7 +6583,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
-        "operationId": "indices.get_settings#1",
+        "operationId": "indices-get-settings-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_settings#index"
@@ -6625,7 +6625,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
-        "operationId": "indices.put_settings#1",
+        "operationId": "indices-put-settings-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.put_settings#index"
@@ -6672,7 +6672,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
-        "operationId": "indices.get_settings#2",
+        "operationId": "indices-get-settings-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_settings#index"
@@ -6719,7 +6719,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
-        "operationId": "indices.get_settings#3",
+        "operationId": "indices-get-settings-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_settings#name"
@@ -6763,7 +6763,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.get_template#0",
+        "operationId": "indices-get-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.get_template#flat_settings"
@@ -6792,7 +6792,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.migrate_to_data_stream#0",
+        "operationId": "indices-migrate-to-data-stream",
         "parameters": [
           {
             "in": "path",
@@ -6830,7 +6830,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
-        "operationId": "indices.modify_data_stream#0",
+        "operationId": "indices-modify-data-stream",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6877,7 +6877,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html"
         },
-        "operationId": "indices.resolve_index#0",
+        "operationId": "indices-resolve-index",
         "parameters": [
           {
             "in": "path",
@@ -6950,7 +6950,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
-        "operationId": "indices.rollover#0",
+        "operationId": "indices-rollover",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.rollover#alias"
@@ -6988,7 +6988,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
-        "operationId": "indices.rollover#1",
+        "operationId": "indices-rollover-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.rollover#alias"
@@ -7029,7 +7029,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.simulate_index_template#0",
+        "operationId": "indices-simulate-index-template",
         "parameters": [
           {
             "in": "path",
@@ -7138,7 +7138,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.simulate_template#0",
+        "operationId": "indices-simulate-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.simulate_template#create"
@@ -7170,7 +7170,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
         },
-        "operationId": "indices.simulate_template#1",
+        "operationId": "indices-simulate-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.simulate_template#name"
@@ -7205,7 +7205,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
-        "operationId": "indices.update_aliases#0",
+        "operationId": "indices-update-aliases",
         "parameters": [
           {
             "in": "query",
@@ -7271,7 +7271,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
-        "operationId": "indices.validate_query#0",
+        "operationId": "indices-validate-query",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.validate_query#allow_no_indices"
@@ -7328,7 +7328,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
-        "operationId": "indices.validate_query#1",
+        "operationId": "indices-validate-query-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.validate_query#allow_no_indices"
@@ -7387,7 +7387,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
-        "operationId": "indices.validate_query#2",
+        "operationId": "indices-validate-query-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.validate_query#index"
@@ -7447,7 +7447,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
-        "operationId": "indices.validate_query#3",
+        "operationId": "indices-validate-query-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/indices.validate_query#index"
@@ -7509,7 +7509,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
         },
-        "operationId": "info#0",
+        "operationId": "info",
         "responses": {
           "200": {
             "description": "",
@@ -7556,7 +7556,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
         },
-        "operationId": "ping#0",
+        "operationId": "ping",
         "responses": {
           "200": {
             "description": "",
@@ -7577,7 +7577,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html"
         },
-        "operationId": "ingest.get_pipeline#1",
+        "operationId": "ingest-get-pipeline-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.get_pipeline#id"
@@ -7604,7 +7604,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
         },
-        "operationId": "ingest.put_pipeline#0",
+        "operationId": "ingest-put-pipeline",
         "parameters": [
           {
             "in": "path",
@@ -7706,7 +7706,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html"
         },
-        "operationId": "ingest.delete_pipeline#0",
+        "operationId": "ingest-delete-pipeline",
         "parameters": [
           {
             "in": "path",
@@ -7764,7 +7764,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html"
         },
-        "operationId": "ingest.get_pipeline#0",
+        "operationId": "ingest-get-pipeline",
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.get_pipeline#master_timeout"
@@ -7790,7 +7790,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
         },
-        "operationId": "ingest.processor_grok#0",
+        "operationId": "ingest-processor-grok",
         "responses": {
           "200": {
             "description": "",
@@ -7826,7 +7826,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
         },
-        "operationId": "ingest.simulate#0",
+        "operationId": "ingest-simulate",
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.simulate#verbose"
@@ -7850,7 +7850,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
         },
-        "operationId": "ingest.simulate#1",
+        "operationId": "ingest-simulate-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.simulate#verbose"
@@ -7876,7 +7876,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
         },
-        "operationId": "ingest.simulate#2",
+        "operationId": "ingest-simulate-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.simulate#id"
@@ -7903,7 +7903,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
         },
-        "operationId": "ingest.simulate#3",
+        "operationId": "ingest-simulate-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/ingest.simulate#id"
@@ -7932,7 +7932,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html"
         },
-        "operationId": "logstash.get_pipeline#1",
+        "operationId": "logstash-get-pipeline-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/logstash.get_pipeline#id"
@@ -7953,7 +7953,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html"
         },
-        "operationId": "logstash.put_pipeline#0",
+        "operationId": "logstash-put-pipeline",
         "parameters": [
           {
             "in": "path",
@@ -7995,7 +7995,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html"
         },
-        "operationId": "logstash.delete_pipeline#0",
+        "operationId": "logstash-delete-pipeline",
         "parameters": [
           {
             "in": "path",
@@ -8029,7 +8029,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html"
         },
-        "operationId": "logstash.get_pipeline#0",
+        "operationId": "logstash-get-pipeline",
         "responses": {
           "200": {
             "$ref": "#/components/responses/logstash.get_pipeline#200"
@@ -8047,7 +8047,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
         },
-        "operationId": "mget#0",
+        "operationId": "mget",
         "parameters": [
           {
             "$ref": "#/components/parameters/mget#preference"
@@ -8092,7 +8092,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
         },
-        "operationId": "mget#1",
+        "operationId": "mget-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/mget#preference"
@@ -8139,7 +8139,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
         },
-        "operationId": "mget#2",
+        "operationId": "mget-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/mget#index"
@@ -8187,7 +8187,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
         },
-        "operationId": "mget#3",
+        "operationId": "mget-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/mget#index"
@@ -8237,7 +8237,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html"
         },
-        "operationId": "ml.close_job#0",
+        "operationId": "ml-close-job",
         "parameters": [
           {
             "in": "path",
@@ -8335,7 +8335,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
-        "operationId": "ml.get_calendars#2",
+        "operationId": "ml-get-calendars-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_calendars#calendar_id"
@@ -8365,7 +8365,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html"
         },
-        "operationId": "ml.put_calendar#0",
+        "operationId": "ml-put-calendar",
         "parameters": [
           {
             "in": "path",
@@ -8439,7 +8439,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
-        "operationId": "ml.get_calendars#3",
+        "operationId": "ml-get-calendars-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_calendars#calendar_id"
@@ -8469,7 +8469,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar.html"
         },
-        "operationId": "ml.delete_calendar#0",
+        "operationId": "ml-delete-calendar",
         "parameters": [
           {
             "in": "path",
@@ -8507,7 +8507,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-event.html"
         },
-        "operationId": "ml.delete_calendar_event#0",
+        "operationId": "ml-delete-calendar-event",
         "parameters": [
           {
             "in": "path",
@@ -8556,7 +8556,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html"
         },
-        "operationId": "ml.put_calendar_job#0",
+        "operationId": "ml-put-calendar-job",
         "parameters": [
           {
             "in": "path",
@@ -8619,7 +8619,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-job.html"
         },
-        "operationId": "ml.delete_calendar_job#0",
+        "operationId": "ml-delete-calendar-job",
         "parameters": [
           {
             "in": "path",
@@ -8684,7 +8684,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
         },
-        "operationId": "ml.get_data_frame_analytics#0",
+        "operationId": "ml-get-data-frame-analytics",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_data_frame_analytics#id"
@@ -8717,7 +8717,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html"
         },
-        "operationId": "ml.put_data_frame_analytics#0",
+        "operationId": "ml-put-data-frame-analytics",
         "parameters": [
           {
             "in": "path",
@@ -8856,7 +8856,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html"
         },
-        "operationId": "ml.delete_data_frame_analytics#0",
+        "operationId": "ml-delete-data-frame-analytics",
         "parameters": [
           {
             "in": "path",
@@ -8914,7 +8914,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
         },
-        "operationId": "ml.get_datafeeds#0",
+        "operationId": "ml-get-datafeeds",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_datafeeds#datafeed_id"
@@ -8941,7 +8941,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html"
         },
-        "operationId": "ml.put_datafeed#0",
+        "operationId": "ml-put-datafeed",
         "parameters": [
           {
             "in": "path",
@@ -9146,7 +9146,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html"
         },
-        "operationId": "ml.delete_datafeed#0",
+        "operationId": "ml-delete-datafeed",
         "parameters": [
           {
             "in": "path",
@@ -9194,7 +9194,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html"
         },
-        "operationId": "ml.get_filters#1",
+        "operationId": "ml-get-filters-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_filters#filter_id"
@@ -9221,7 +9221,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html"
         },
-        "operationId": "ml.put_filter#0",
+        "operationId": "ml-put-filter",
         "parameters": [
           {
             "in": "path",
@@ -9299,7 +9299,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html"
         },
-        "operationId": "ml.delete_filter#0",
+        "operationId": "ml-delete-filter",
         "parameters": [
           {
             "in": "path",
@@ -9337,7 +9337,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
         },
-        "operationId": "ml.get_jobs#0",
+        "operationId": "ml-get-jobs",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_jobs#job_id"
@@ -9364,7 +9364,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html"
         },
-        "operationId": "ml.put_job#0",
+        "operationId": "ml-put-job",
         "parameters": [
           {
             "in": "path",
@@ -9549,7 +9549,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html"
         },
-        "operationId": "ml.delete_job#0",
+        "operationId": "ml-delete-job",
         "parameters": [
           {
             "in": "path",
@@ -9617,7 +9617,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
         },
-        "operationId": "ml.get_trained_models#0",
+        "operationId": "ml-get-trained-models",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_trained_models#model_id"
@@ -9659,7 +9659,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html"
         },
-        "operationId": "ml.put_trained_model#0",
+        "operationId": "ml-put-trained-model",
         "parameters": [
           {
             "in": "path",
@@ -9752,7 +9752,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html"
         },
-        "operationId": "ml.delete_trained_model#0",
+        "operationId": "ml-delete-trained-model",
         "parameters": [
           {
             "in": "path",
@@ -9800,7 +9800,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html"
         },
-        "operationId": "ml.put_trained_model_alias#0",
+        "operationId": "ml-put-trained-model-alias",
         "parameters": [
           {
             "in": "path",
@@ -9857,7 +9857,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html"
         },
-        "operationId": "ml.delete_trained_model_alias#0",
+        "operationId": "ml-delete-trained-model-alias",
         "parameters": [
           {
             "in": "path",
@@ -9906,7 +9906,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html"
         },
-        "operationId": "ml.estimate_model_memory#0",
+        "operationId": "ml-estimate-model-memory",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9968,7 +9968,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html"
         },
-        "operationId": "ml.evaluate_data_frame#0",
+        "operationId": "ml-evaluate-data-frame",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10029,7 +10029,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html"
         },
-        "operationId": "ml.flush_job#0",
+        "operationId": "ml-flush-job",
         "parameters": [
           {
             "in": "path",
@@ -10156,7 +10156,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html"
         },
-        "operationId": "ml.get_calendar_events#0",
+        "operationId": "ml-get-calendar-events",
         "parameters": [
           {
             "in": "path",
@@ -10257,7 +10257,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html"
         },
-        "operationId": "ml.post_calendar_events#0",
+        "operationId": "ml-post-calendar-events",
         "parameters": [
           {
             "in": "path",
@@ -10328,7 +10328,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
-        "operationId": "ml.get_calendars#0",
+        "operationId": "ml-get-calendars",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_calendars#from"
@@ -10355,7 +10355,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
-        "operationId": "ml.get_calendars#1",
+        "operationId": "ml-get-calendars-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_calendars#from"
@@ -10384,7 +10384,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
         },
-        "operationId": "ml.get_data_frame_analytics#1",
+        "operationId": "ml-get-data-frame-analytics-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_data_frame_analytics#allow_no_match"
@@ -10416,7 +10416,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html"
         },
-        "operationId": "ml.get_data_frame_analytics_stats#0",
+        "operationId": "ml-get-data-frame-analytics-stats",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_data_frame_analytics_stats#allow_no_match"
@@ -10448,7 +10448,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html"
         },
-        "operationId": "ml.get_data_frame_analytics_stats#1",
+        "operationId": "ml-get-data-frame-analytics-stats-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_data_frame_analytics_stats#id"
@@ -10483,7 +10483,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
         },
-        "operationId": "ml.get_datafeed_stats#0",
+        "operationId": "ml-get-datafeed-stats",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_datafeed_stats#datafeed_id"
@@ -10509,7 +10509,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
         },
-        "operationId": "ml.get_datafeed_stats#1",
+        "operationId": "ml-get-datafeed-stats-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_datafeed_stats#allow_no_match"
@@ -10532,7 +10532,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
         },
-        "operationId": "ml.get_datafeeds#1",
+        "operationId": "ml-get-datafeeds-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_datafeeds#allow_no_match"
@@ -10558,7 +10558,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html"
         },
-        "operationId": "ml.get_filters#0",
+        "operationId": "ml-get-filters",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_filters#from"
@@ -10584,7 +10584,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html"
         },
-        "operationId": "ml.get_job_stats#0",
+        "operationId": "ml-get-job-stats",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_job_stats#allow_no_match"
@@ -10607,7 +10607,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html"
         },
-        "operationId": "ml.get_job_stats#1",
+        "operationId": "ml-get-job-stats-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_job_stats#job_id"
@@ -10633,7 +10633,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
         },
-        "operationId": "ml.get_jobs#1",
+        "operationId": "ml-get-jobs-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_jobs#allow_no_match"
@@ -10659,7 +10659,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
         },
-        "operationId": "ml.get_overall_buckets#0",
+        "operationId": "ml-get-overall-buckets",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_overall_buckets#job_id"
@@ -10704,7 +10704,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
         },
-        "operationId": "ml.get_overall_buckets#1",
+        "operationId": "ml-get-overall-buckets-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_overall_buckets#job_id"
@@ -10751,7 +10751,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
         },
-        "operationId": "ml.get_trained_models#1",
+        "operationId": "ml-get-trained-models-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_trained_models#allow_no_match"
@@ -10792,7 +10792,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
         },
-        "operationId": "ml.get_trained_models_stats#0",
+        "operationId": "ml-get-trained-models-stats",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_trained_models_stats#model_id"
@@ -10824,7 +10824,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
         },
-        "operationId": "ml.get_trained_models_stats#1",
+        "operationId": "ml-get-trained-models-stats-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.get_trained_models_stats#allow_no_match"
@@ -10853,7 +10853,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html"
         },
-        "operationId": "ml.infer_trained_model#0",
+        "operationId": "ml-infer-trained-model",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
@@ -10882,7 +10882,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html"
         },
-        "operationId": "ml.infer_trained_model#1",
+        "operationId": "ml-infer-trained-model-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.infer_trained_model#model_id"
@@ -10911,7 +10911,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html"
         },
-        "operationId": "ml.open_job#0",
+        "operationId": "ml-open-job",
         "parameters": [
           {
             "in": "path",
@@ -10985,7 +10985,7 @@
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
-        "operationId": "ml.preview_data_frame_analytics#0",
+        "operationId": "ml-preview-data-frame-analytics",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
         },
@@ -11004,7 +11004,7 @@
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
-        "operationId": "ml.preview_data_frame_analytics#1",
+        "operationId": "ml-preview-data-frame-analytics-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/ml.preview_data_frame_analytics"
         },
@@ -11025,7 +11025,7 @@
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
-        "operationId": "ml.preview_data_frame_analytics#2",
+        "operationId": "ml-preview-data-frame-analytics-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.preview_data_frame_analytics#id"
@@ -11049,7 +11049,7 @@
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
-        "operationId": "ml.preview_data_frame_analytics#3",
+        "operationId": "ml-preview-data-frame-analytics-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.preview_data_frame_analytics#id"
@@ -11075,7 +11075,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
-        "operationId": "ml.preview_datafeed#0",
+        "operationId": "ml-preview-datafeed",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.preview_datafeed#datafeed_id"
@@ -11105,7 +11105,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
-        "operationId": "ml.preview_datafeed#1",
+        "operationId": "ml-preview-datafeed-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.preview_datafeed#datafeed_id"
@@ -11137,7 +11137,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
-        "operationId": "ml.preview_datafeed#2",
+        "operationId": "ml-preview-datafeed-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.preview_datafeed#start"
@@ -11164,7 +11164,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
-        "operationId": "ml.preview_datafeed#3",
+        "operationId": "ml-preview-datafeed-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/ml.preview_datafeed#start"
@@ -11193,7 +11193,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html"
         },
-        "operationId": "ml.put_trained_model_definition_part#0",
+        "operationId": "ml-put-trained-model-definition-part",
         "parameters": [
           {
             "in": "path",
@@ -11271,7 +11271,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html"
         },
-        "operationId": "ml.put_trained_model_vocabulary#0",
+        "operationId": "ml-put-trained-model-vocabulary",
         "parameters": [
           {
             "in": "path",
@@ -11338,7 +11338,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html"
         },
-        "operationId": "ml.reset_job#0",
+        "operationId": "ml-reset-job",
         "parameters": [
           {
             "in": "path",
@@ -11396,7 +11396,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html"
         },
-        "operationId": "ml.start_data_frame_analytics#0",
+        "operationId": "ml-start-data-frame-analytics",
         "parameters": [
           {
             "in": "path",
@@ -11456,7 +11456,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html"
         },
-        "operationId": "ml.start_datafeed#0",
+        "operationId": "ml-start-datafeed",
         "parameters": [
           {
             "in": "path",
@@ -11557,7 +11557,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html"
         },
-        "operationId": "ml.start_trained_model_deployment#0",
+        "operationId": "ml-start-trained-model-deployment",
         "parameters": [
           {
             "in": "path",
@@ -11673,7 +11673,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html"
         },
-        "operationId": "ml.stop_data_frame_analytics#0",
+        "operationId": "ml-stop-data-frame-analytics",
         "parameters": [
           {
             "in": "path",
@@ -11749,7 +11749,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html"
         },
-        "operationId": "ml.stop_datafeed#0",
+        "operationId": "ml-stop-datafeed",
         "parameters": [
           {
             "in": "path",
@@ -11847,7 +11847,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html"
         },
-        "operationId": "ml.stop_trained_model_deployment#0",
+        "operationId": "ml-stop-trained-model-deployment",
         "parameters": [
           {
             "in": "path",
@@ -11913,7 +11913,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html"
         },
-        "operationId": "ml.update_data_frame_analytics#0",
+        "operationId": "ml-update-data-frame-analytics",
         "parameters": [
           {
             "in": "path",
@@ -12034,7 +12034,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html"
         },
-        "operationId": "ml.update_datafeed#0",
+        "operationId": "ml-update-datafeed",
         "parameters": [
           {
             "in": "path",
@@ -12242,7 +12242,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html"
         },
-        "operationId": "ml.update_filter#0",
+        "operationId": "ml-update-filter",
         "parameters": [
           {
             "in": "path",
@@ -12329,7 +12329,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html"
         },
-        "operationId": "ml.update_job#0",
+        "operationId": "ml-update-job",
         "parameters": [
           {
             "in": "path",
@@ -12538,7 +12538,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
         },
-        "operationId": "msearch#0",
+        "operationId": "msearch",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch#allow_no_indices"
@@ -12595,7 +12595,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
         },
-        "operationId": "msearch#1",
+        "operationId": "msearch-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch#allow_no_indices"
@@ -12654,7 +12654,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
         },
-        "operationId": "msearch#2",
+        "operationId": "msearch-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch#index"
@@ -12714,7 +12714,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
         },
-        "operationId": "msearch#3",
+        "operationId": "msearch-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch#index"
@@ -12776,7 +12776,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
         },
-        "operationId": "msearch_template#0",
+        "operationId": "msearch-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch_template#ccs_minimize_roundtrips"
@@ -12812,7 +12812,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
         },
-        "operationId": "msearch_template#1",
+        "operationId": "msearch-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch_template#ccs_minimize_roundtrips"
@@ -12850,7 +12850,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
         },
-        "operationId": "msearch_template#2",
+        "operationId": "msearch-template-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch_template#index"
@@ -12889,7 +12889,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
         },
-        "operationId": "msearch_template#3",
+        "operationId": "msearch-template-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/msearch_template#index"
@@ -12930,7 +12930,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
         },
-        "operationId": "mtermvectors#0",
+        "operationId": "mtermvectors",
         "parameters": [
           {
             "$ref": "#/components/parameters/mtermvectors#ids"
@@ -12987,7 +12987,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
         },
-        "operationId": "mtermvectors#1",
+        "operationId": "mtermvectors-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/mtermvectors#ids"
@@ -13046,7 +13046,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
         },
-        "operationId": "mtermvectors#2",
+        "operationId": "mtermvectors-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/mtermvectors#index"
@@ -13106,7 +13106,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
         },
-        "operationId": "mtermvectors#3",
+        "operationId": "mtermvectors-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/mtermvectors#index"
@@ -13168,7 +13168,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html"
         },
-        "operationId": "open_point_in_time#0",
+        "operationId": "open-point-in-time",
         "parameters": [
           {
             "in": "path",
@@ -13265,7 +13265,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
-        "operationId": "put_script#2",
+        "operationId": "put-script-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
@@ -13298,7 +13298,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
-        "operationId": "put_script#3",
+        "operationId": "put-script-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/put_script#id"
@@ -13333,7 +13333,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html"
         },
-        "operationId": "query_ruleset.get#0",
+        "operationId": "query-ruleset-get",
         "parameters": [
           {
             "in": "path",
@@ -13369,7 +13369,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html"
         },
-        "operationId": "query_ruleset.put#0",
+        "operationId": "query-ruleset-put",
         "parameters": [
           {
             "in": "path",
@@ -13423,7 +13423,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html"
         },
-        "operationId": "query_ruleset.delete#0",
+        "operationId": "query-ruleset-delete",
         "parameters": [
           {
             "in": "path",
@@ -13461,7 +13461,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html"
         },
-        "operationId": "query_ruleset.list#0",
+        "operationId": "query-ruleset-list",
         "parameters": [
           {
             "in": "query",
@@ -13523,7 +13523,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
         },
-        "operationId": "rank_eval#0",
+        "operationId": "rank-eval",
         "parameters": [
           {
             "$ref": "#/components/parameters/rank_eval#allow_no_indices"
@@ -13556,7 +13556,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
         },
-        "operationId": "rank_eval#1",
+        "operationId": "rank-eval-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/rank_eval#allow_no_indices"
@@ -13591,7 +13591,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
         },
-        "operationId": "rank_eval#2",
+        "operationId": "rank-eval-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/rank_eval#index"
@@ -13627,7 +13627,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
         },
-        "operationId": "rank_eval#3",
+        "operationId": "rank-eval-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/rank_eval#index"
@@ -13665,7 +13665,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
         },
-        "operationId": "render_search_template#0",
+        "operationId": "render-search-template",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
         },
@@ -13684,7 +13684,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
         },
-        "operationId": "render_search_template#1",
+        "operationId": "render-search-template-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/render_search_template"
         },
@@ -13705,7 +13705,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
         },
-        "operationId": "render_search_template#2",
+        "operationId": "render-search-template-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/render_search_template#id"
@@ -13729,7 +13729,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
         },
-        "operationId": "render_search_template#3",
+        "operationId": "render-search-template-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/render_search_template#id"
@@ -13755,7 +13755,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
         },
-        "operationId": "scripts_painless_execute#0",
+        "operationId": "scripts-painless-execute",
         "requestBody": {
           "$ref": "#/components/requestBodies/scripts_painless_execute"
         },
@@ -13774,7 +13774,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
         },
-        "operationId": "scripts_painless_execute#1",
+        "operationId": "scripts-painless-execute-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/scripts_painless_execute"
         },
@@ -13795,7 +13795,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
-        "operationId": "search#0",
+        "operationId": "search",
         "parameters": [
           {
             "$ref": "#/components/parameters/search#allow_no_indices"
@@ -13945,7 +13945,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
-        "operationId": "search#1",
+        "operationId": "search-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/search#allow_no_indices"
@@ -14097,7 +14097,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
-        "operationId": "search#2",
+        "operationId": "search-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/search#index"
@@ -14250,7 +14250,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
-        "operationId": "search#3",
+        "operationId": "search-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/search#index"
@@ -14405,7 +14405,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html"
         },
-        "operationId": "search_application.get#0",
+        "operationId": "search-application-get",
         "parameters": [
           {
             "in": "path",
@@ -14441,7 +14441,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
         },
-        "operationId": "search_application.put#0",
+        "operationId": "search-application-put",
         "parameters": [
           {
             "in": "path",
@@ -14505,7 +14505,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
         },
-        "operationId": "search_application.delete#0",
+        "operationId": "search-application-delete",
         "parameters": [
           {
             "in": "path",
@@ -14543,7 +14543,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
         },
-        "operationId": "search_application.get_behavioral_analytics#1",
+        "operationId": "search-application-get-behavioral-analytics-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.get_behavioral_analytics#name"
@@ -14564,7 +14564,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html"
         },
-        "operationId": "search_application.put_behavioral_analytics#0",
+        "operationId": "search-application-put-behavioral-analytics",
         "parameters": [
           {
             "in": "path",
@@ -14600,7 +14600,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html"
         },
-        "operationId": "search_application.delete_behavioral_analytics#0",
+        "operationId": "search-application-delete-behavioral-analytics",
         "parameters": [
           {
             "in": "path",
@@ -14638,7 +14638,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
         },
-        "operationId": "search_application.get_behavioral_analytics#0",
+        "operationId": "search-application-get-behavioral-analytics",
         "responses": {
           "200": {
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
@@ -14656,7 +14656,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-search-applications.html"
         },
-        "operationId": "search_application.list#0",
+        "operationId": "search-application-list",
         "parameters": [
           {
             "in": "query",
@@ -14728,7 +14728,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
         },
-        "operationId": "search_application.search#0",
+        "operationId": "search-application-search",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.search#name"
@@ -14752,7 +14752,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
         },
-        "operationId": "search_application.search#1",
+        "operationId": "search-application-search-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.search#name"
@@ -14778,7 +14778,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
         },
-        "operationId": "search_mvt#1",
+        "operationId": "search-mvt-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_mvt#index"
@@ -14835,7 +14835,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
         },
-        "operationId": "search_mvt#0",
+        "operationId": "search-mvt",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_mvt#index"
@@ -14894,7 +14894,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
-        "operationId": "search_template#0",
+        "operationId": "search-template",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_template#allow_no_indices"
@@ -14954,7 +14954,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
-        "operationId": "search_template#1",
+        "operationId": "search-template-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_template#allow_no_indices"
@@ -15016,7 +15016,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
-        "operationId": "search_template#2",
+        "operationId": "search-template-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_template#index"
@@ -15079,7 +15079,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
         },
-        "operationId": "search_template#3",
+        "operationId": "search-template-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/search_template#index"
@@ -15144,7 +15144,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"
         },
-        "operationId": "security.authenticate#0",
+        "operationId": "security-authenticate",
         "responses": {
           "200": {
             "description": "",
@@ -15232,7 +15232,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html"
         },
-        "operationId": "security.clear_api_key_cache#0",
+        "operationId": "security-clear-api-key-cache",
         "parameters": [
           {
             "in": "path",
@@ -15289,7 +15289,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html"
         },
-        "operationId": "security.get_api_key#0",
+        "operationId": "security-get-api-key",
         "parameters": [
           {
             "in": "query",
@@ -15385,7 +15385,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
-        "operationId": "security.create_api_key#0",
+        "operationId": "security-create-api-key",
         "parameters": [
           {
             "$ref": "#/components/parameters/security.create_api_key#refresh"
@@ -15409,7 +15409,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
-        "operationId": "security.create_api_key#1",
+        "operationId": "security-create-api-key-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/security.create_api_key#refresh"
@@ -15433,7 +15433,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html"
         },
-        "operationId": "security.invalidate_api_key#0",
+        "operationId": "security-invalidate-api-key",
         "requestBody": {
           "content": {
             "application/json": {
@@ -15522,7 +15522,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
         },
-        "operationId": "security.query_api_keys#0",
+        "operationId": "security-query-api-keys",
         "parameters": [
           {
             "$ref": "#/components/parameters/security.query_api_keys#with_limited_by"
@@ -15546,7 +15546,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
         },
-        "operationId": "security.query_api_keys#1",
+        "operationId": "security-query-api-keys-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/security.query_api_keys#with_limited_by"
@@ -15572,7 +15572,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html"
         },
-        "operationId": "security.update_api_key#0",
+        "operationId": "security-update-api-key",
         "parameters": [
           {
             "in": "path",
@@ -15643,7 +15643,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonyms-set.html"
         },
-        "operationId": "synonyms.get_synonym#0",
+        "operationId": "synonyms-get-synonym",
         "parameters": [
           {
             "in": "path",
@@ -15714,7 +15714,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html"
         },
-        "operationId": "synonyms.put_synonym#0",
+        "operationId": "synonyms-put-synonym",
         "parameters": [
           {
             "in": "path",
@@ -15784,7 +15784,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html"
         },
-        "operationId": "synonyms.delete_synonym#0",
+        "operationId": "synonyms-delete-synonym",
         "parameters": [
           {
             "in": "path",
@@ -15822,7 +15822,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonym-rule.html"
         },
-        "operationId": "synonyms.get_synonym_rule#0",
+        "operationId": "synonyms-get-synonym-rule",
         "parameters": [
           {
             "in": "path",
@@ -15869,7 +15869,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonym-rule.html"
         },
-        "operationId": "synonyms.put_synonym_rule#0",
+        "operationId": "synonyms-put-synonym-rule",
         "parameters": [
           {
             "in": "path",
@@ -15937,7 +15937,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonym-rule.html"
         },
-        "operationId": "synonyms.delete_synonym_rule#0",
+        "operationId": "synonyms-delete-synonym-rule",
         "parameters": [
           {
             "in": "path",
@@ -15986,7 +15986,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-synonyms-sets.html"
         },
-        "operationId": "synonyms.get_synonyms_sets#0",
+        "operationId": "synonyms-get-synonyms-sets",
         "parameters": [
           {
             "in": "query",
@@ -16048,7 +16048,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html"
         },
-        "operationId": "terms_enum#0",
+        "operationId": "terms-enum",
         "parameters": [
           {
             "$ref": "#/components/parameters/terms_enum#index"
@@ -16072,7 +16072,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html"
         },
-        "operationId": "terms_enum#1",
+        "operationId": "terms-enum-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/terms_enum#index"
@@ -16098,7 +16098,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
-        "operationId": "termvectors#0",
+        "operationId": "termvectors",
         "parameters": [
           {
             "$ref": "#/components/parameters/termvectors#index"
@@ -16158,7 +16158,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
-        "operationId": "termvectors#1",
+        "operationId": "termvectors-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/termvectors#index"
@@ -16220,7 +16220,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
-        "operationId": "termvectors#2",
+        "operationId": "termvectors-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/termvectors#index"
@@ -16277,7 +16277,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
-        "operationId": "termvectors#3",
+        "operationId": "termvectors-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/termvectors#index"
@@ -16336,7 +16336,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html"
         },
-        "operationId": "transform.get_transform#0",
+        "operationId": "transform-get-transform",
         "parameters": [
           {
             "$ref": "#/components/parameters/transform.get_transform#transform_id"
@@ -16369,7 +16369,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html"
         },
-        "operationId": "transform.put_transform#0",
+        "operationId": "transform-put-transform",
         "parameters": [
           {
             "in": "path",
@@ -16472,7 +16472,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html"
         },
-        "operationId": "transform.delete_transform#0",
+        "operationId": "transform-delete-transform",
         "parameters": [
           {
             "in": "path",
@@ -16530,7 +16530,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html"
         },
-        "operationId": "transform.get_transform#1",
+        "operationId": "transform-get-transform-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/transform.get_transform#allow_no_match"
@@ -16562,7 +16562,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html"
         },
-        "operationId": "transform.get_transform_stats#0",
+        "operationId": "transform-get-transform-stats",
         "parameters": [
           {
             "in": "path",
@@ -16655,7 +16655,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
-        "operationId": "transform.preview_transform#0",
+        "operationId": "transform-preview-transform",
         "parameters": [
           {
             "$ref": "#/components/parameters/transform.preview_transform#transform_id"
@@ -16682,7 +16682,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
-        "operationId": "transform.preview_transform#1",
+        "operationId": "transform-preview-transform-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/transform.preview_transform#transform_id"
@@ -16711,7 +16711,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
-        "operationId": "transform.preview_transform#2",
+        "operationId": "transform-preview-transform-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/transform.preview_transform#timeout"
@@ -16735,7 +16735,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
-        "operationId": "transform.preview_transform#3",
+        "operationId": "transform-preview-transform-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/transform.preview_transform#timeout"
@@ -16761,7 +16761,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html"
         },
-        "operationId": "transform.reset_transform#0",
+        "operationId": "transform-reset-transform",
         "parameters": [
           {
             "in": "path",
@@ -16809,7 +16809,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html"
         },
-        "operationId": "transform.schedule_now_transform#0",
+        "operationId": "transform-schedule-now-transform",
         "parameters": [
           {
             "in": "path",
@@ -16857,7 +16857,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html"
         },
-        "operationId": "transform.start_transform#0",
+        "operationId": "transform-start-transform",
         "parameters": [
           {
             "in": "path",
@@ -16915,7 +16915,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html"
         },
-        "operationId": "transform.stop_transform#0",
+        "operationId": "transform-stop-transform",
         "parameters": [
           {
             "in": "path",
@@ -17003,7 +17003,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html"
         },
-        "operationId": "transform.update_transform#0",
+        "operationId": "transform-update-transform",
         "parameters": [
           {
             "in": "path",
@@ -17160,7 +17160,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html"
         },
-        "operationId": "update#0",
+        "operationId": "update",
         "parameters": [
           {
             "in": "path",
@@ -17367,7 +17367,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
         },
-        "operationId": "update_by_query#0",
+        "operationId": "update-by-query",
         "parameters": [
           {
             "in": "path",

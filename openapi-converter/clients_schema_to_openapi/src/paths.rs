@@ -16,6 +16,7 @@
 // under the License.
 
 use std::collections::HashMap;
+use std::fmt::Write;
 use anyhow::{anyhow, bail};
 use indexmap::indexmap;
 
@@ -260,7 +261,17 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
             };
 
             let mut operation = operation.clone();
-            operation.operation_id = Some(format!("{}#{}", endpoint.name, operation_counter));
+            let mut operation_id: String = endpoint.name
+                .chars()
+                .map(|x| match x {
+                    '_' | '.' => '-',
+                    _ => x
+                }).collect();
+            if operation_counter != 0 {
+                write!(&mut operation_id, "-{}", operation_counter)?;
+            }
+            operation.operation_id = Some(operation_id);
+
             operation_counter += 1;
             *method_field = Some(operation);
         }
