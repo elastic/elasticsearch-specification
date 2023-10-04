@@ -183,8 +183,8 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
-            tags: vec![],
-            summary: None,
+            tags: vec![endpoint.name.clone()],
+            summary: Some(endpoint.description.clone()),
             description: Some(endpoint.description.clone()),
             external_docs: tac.convert_external_docs(endpoint),
             operation_id: None, // set in clone_operation below with operation_counter

@@ -11,6 +11,10 @@
   "paths": {
     "/_async_search/{id}": {
       "get": {
+        "tags": [
+          "async_search.get"
+        ],
+        "summary": "Retrieves the results of a previously submitted async search request given its ID.",
         "description": "Retrieves the results of a previously submitted async search request given its ID.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
@@ -73,6 +77,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "async_search.delete"
+        ],
+        "summary": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
         "description": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
@@ -107,6 +115,10 @@
     },
     "/_async_search/status/{id}": {
       "get": {
+        "tags": [
+          "async_search.status"
+        ],
+        "summary": "Retrieves the status of a previously submitted async search request given its ID.",
         "description": "Retrieves the status of a previously submitted async search request given its ID.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
@@ -141,6 +153,10 @@
     },
     "/_async_search": {
       "post": {
+        "tags": [
+          "async_search.submit"
+        ],
+        "summary": "Executes a search request asynchronously.",
         "description": "Executes a search request asynchronously.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
@@ -298,6 +314,10 @@
     },
     "/{index}/_async_search": {
       "post": {
+        "tags": [
+          "async_search.submit"
+        ],
+        "summary": "Executes a search request asynchronously.",
         "description": "Executes a search request asynchronously.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
@@ -458,6 +478,10 @@
     },
     "/_bulk": {
       "put": {
+        "tags": [
+          "bulk"
+        ],
+        "summary": "Allows to perform multiple index/update/delete operations in a single request.",
         "description": "Allows to perform multiple index/update/delete operations in a single request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
@@ -502,6 +526,10 @@
         }
       },
       "post": {
+        "tags": [
+          "bulk"
+        ],
+        "summary": "Allows to perform multiple index/update/delete operations in a single request.",
         "description": "Allows to perform multiple index/update/delete operations in a single request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
@@ -548,6 +576,10 @@
     },
     "/{index}/_bulk": {
       "put": {
+        "tags": [
+          "bulk"
+        ],
+        "summary": "Allows to perform multiple index/update/delete operations in a single request.",
         "description": "Allows to perform multiple index/update/delete operations in a single request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
@@ -595,6 +627,10 @@
         }
       },
       "post": {
+        "tags": [
+          "bulk"
+        ],
+        "summary": "Allows to perform multiple index/update/delete operations in a single request.",
         "description": "Allows to perform multiple index/update/delete operations in a single request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
@@ -644,6 +680,10 @@
     },
     "/_cat/aliases": {
       "get": {
+        "tags": [
+          "cat.aliases"
+        ],
+        "summary": "Shows information about currently configured aliases to indices including filter and routing infos.",
         "description": "Shows information about currently configured aliases to indices including filter and routing infos.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
@@ -663,6 +703,10 @@
     },
     "/_cat/aliases/{name}": {
       "get": {
+        "tags": [
+          "cat.aliases"
+        ],
+        "summary": "Shows information about currently configured aliases to indices including filter and routing infos.",
         "description": "Shows information about currently configured aliases to indices including filter and routing infos.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
@@ -685,6 +729,10 @@
     },
     "/_cat/component_templates": {
       "get": {
+        "tags": [
+          "cat.component_templates"
+        ],
+        "summary": "Returns information about existing component_templates templates.",
         "description": "Returns information about existing component_templates templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
@@ -699,6 +747,10 @@
     },
     "/_cat/component_templates/{name}": {
       "get": {
+        "tags": [
+          "cat.component_templates"
+        ],
+        "summary": "Returns information about existing component_templates templates.",
         "description": "Returns information about existing component_templates templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
@@ -718,6 +770,10 @@
     },
     "/_cat/count": {
       "get": {
+        "tags": [
+          "cat.count"
+        ],
+        "summary": "Provides quick access to the document count of the entire cluster, or individual indices.",
         "description": "Provides quick access to the document count of the entire cluster, or individual indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
@@ -732,6 +788,10 @@
     },
     "/_cat/count/{index}": {
       "get": {
+        "tags": [
+          "cat.count"
+        ],
+        "summary": "Provides quick access to the document count of the entire cluster, or individual indices.",
         "description": "Provides quick access to the document count of the entire cluster, or individual indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
@@ -751,6 +811,10 @@
     },
     "/_cat": {
       "get": {
+        "tags": [
+          "cat.help"
+        ],
+        "summary": "Returns help for the Cat APIs.",
         "description": "Returns help for the Cat APIs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html"
@@ -775,6 +839,10 @@
     },
     "/_cat/indices": {
       "get": {
+        "tags": [
+          "cat.indices"
+        ],
+        "summary": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
         "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
@@ -809,6 +877,10 @@
     },
     "/_cat/indices/{index}": {
       "get": {
+        "tags": [
+          "cat.indices"
+        ],
+        "summary": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
         "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
@@ -846,6 +918,10 @@
     },
     "/_cat/ml/data_frame/analytics": {
       "get": {
+        "tags": [
+          "cat.ml_data_frame_analytics"
+        ],
+        "summary": "Gets configuration and usage information about data frame analytics jobs.",
         "description": "Gets configuration and usage information about data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
@@ -877,6 +953,10 @@
     },
     "/_cat/ml/data_frame/analytics/{id}": {
       "get": {
+        "tags": [
+          "cat.ml_data_frame_analytics"
+        ],
+        "summary": "Gets configuration and usage information about data frame analytics jobs.",
         "description": "Gets configuration and usage information about data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
@@ -911,6 +991,10 @@
     },
     "/_cat/ml/datafeeds": {
       "get": {
+        "tags": [
+          "cat.ml_datafeeds"
+        ],
+        "summary": "Gets configuration and usage information about datafeeds.",
         "description": "Gets configuration and usage information about datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
@@ -939,6 +1023,10 @@
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
       "get": {
+        "tags": [
+          "cat.ml_datafeeds"
+        ],
+        "summary": "Gets configuration and usage information about datafeeds.",
         "description": "Gets configuration and usage information about datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
@@ -970,6 +1058,10 @@
     },
     "/_cat/ml/anomaly_detectors": {
       "get": {
+        "tags": [
+          "cat.ml_jobs"
+        ],
+        "summary": "Gets configuration and usage information about anomaly detection jobs.",
         "description": "Gets configuration and usage information about anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
@@ -1001,6 +1093,10 @@
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
       "get": {
+        "tags": [
+          "cat.ml_jobs"
+        ],
+        "summary": "Gets configuration and usage information about anomaly detection jobs.",
         "description": "Gets configuration and usage information about anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
@@ -1035,6 +1131,10 @@
     },
     "/_cat/ml/trained_models": {
       "get": {
+        "tags": [
+          "cat.ml_trained_models"
+        ],
+        "summary": "Gets configuration and usage information about inference trained models.",
         "description": "Gets configuration and usage information about inference trained models.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
@@ -1069,6 +1169,10 @@
     },
     "/_cat/ml/trained_models/{model_id}": {
       "get": {
+        "tags": [
+          "cat.ml_trained_models"
+        ],
+        "summary": "Gets configuration and usage information about inference trained models.",
         "description": "Gets configuration and usage information about inference trained models.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
@@ -1106,6 +1210,10 @@
     },
     "/_cat/transforms": {
       "get": {
+        "tags": [
+          "cat.transforms"
+        ],
+        "summary": "Gets configuration and usage information about transforms.",
         "description": "Gets configuration and usage information about transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
@@ -1140,6 +1248,10 @@
     },
     "/_cat/transforms/{transform_id}": {
       "get": {
+        "tags": [
+          "cat.transforms"
+        ],
+        "summary": "Gets configuration and usage information about transforms.",
         "description": "Gets configuration and usage information about transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
@@ -1177,6 +1289,10 @@
     },
     "/_search/scroll": {
       "get": {
+        "tags": [
+          "scroll"
+        ],
+        "summary": "Allows to retrieve a large numbers of results from a single search request.",
         "description": "Allows to retrieve a large numbers of results from a single search request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
@@ -1203,6 +1319,10 @@
         }
       },
       "post": {
+        "tags": [
+          "scroll"
+        ],
+        "summary": "Allows to retrieve a large numbers of results from a single search request.",
         "description": "Allows to retrieve a large numbers of results from a single search request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
@@ -1229,6 +1349,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "clear_scroll"
+        ],
+        "summary": "Explicitly clears the search context for a scroll.",
         "description": "Explicitly clears the search context for a scroll.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-scroll-api.html"
@@ -1246,6 +1370,10 @@
     },
     "/_search/scroll/{scroll_id}": {
       "get": {
+        "tags": [
+          "scroll"
+        ],
+        "summary": "Allows to retrieve a large numbers of results from a single search request.",
         "description": "Allows to retrieve a large numbers of results from a single search request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
@@ -1275,6 +1403,10 @@
         }
       },
       "post": {
+        "tags": [
+          "scroll"
+        ],
+        "summary": "Allows to retrieve a large numbers of results from a single search request.",
         "description": "Allows to retrieve a large numbers of results from a single search request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll"
@@ -1304,6 +1436,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "clear_scroll"
+        ],
+        "summary": "Explicitly clears the search context for a scroll.",
         "description": "Explicitly clears the search context for a scroll.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-scroll-api.html"
@@ -1326,6 +1462,10 @@
     },
     "/_pit": {
       "delete": {
+        "tags": [
+          "close_point_in_time"
+        ],
+        "summary": "Close a point in time",
         "description": "Close a point in time",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html"
@@ -1376,6 +1516,10 @@
     },
     "/_component_template/{name}": {
       "get": {
+        "tags": [
+          "cluster.get_component_template"
+        ],
+        "summary": "Returns one or more component templates",
         "description": "Returns one or more component templates",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
@@ -1405,6 +1549,10 @@
         }
       },
       "put": {
+        "tags": [
+          "cluster.put_component_template"
+        ],
+        "summary": "Creates or updates a component template",
         "description": "Creates or updates a component template",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
@@ -1431,6 +1579,10 @@
         }
       },
       "post": {
+        "tags": [
+          "cluster.put_component_template"
+        ],
+        "summary": "Creates or updates a component template",
         "description": "Creates or updates a component template",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
@@ -1457,6 +1609,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "cluster.delete_component_template"
+        ],
+        "summary": "Deletes a component template",
         "description": "Deletes a component template",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
@@ -1509,6 +1665,10 @@
         }
       },
       "head": {
+        "tags": [
+          "cluster.exists_component_template"
+        ],
+        "summary": "Returns information about whether a particular component template exist",
         "description": "Returns information about whether a particular component template exist",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
@@ -1559,6 +1719,10 @@
     },
     "/_component_template": {
       "get": {
+        "tags": [
+          "cluster.get_component_template"
+        ],
+        "summary": "Returns one or more component templates",
         "description": "Returns one or more component templates",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
@@ -1587,6 +1751,10 @@
     },
     "/_cluster/settings": {
       "get": {
+        "tags": [
+          "cluster.get_settings"
+        ],
+        "summary": "Returns cluster settings.",
         "description": "Returns cluster settings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html"
@@ -1672,6 +1840,10 @@
         }
       },
       "put": {
+        "tags": [
+          "cluster.put_settings"
+        ],
+        "summary": "Updates the cluster settings.",
         "description": "Updates the cluster settings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html"
@@ -1771,6 +1943,10 @@
     },
     "/_info/{target}": {
       "get": {
+        "tags": [
+          "cluster.info"
+        ],
+        "summary": "Returns different information about the cluster.",
         "description": "Returns different information about the cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-info.html"
@@ -1828,6 +2004,10 @@
     },
     "/_cluster/pending_tasks": {
       "get": {
+        "tags": [
+          "cluster.pending_tasks"
+        ],
+        "summary": "Returns a list of any cluster-level changes (e.g. create index, update mapping,\nallocate or fail shard) which have not yet been executed.",
         "description": "Returns a list of any cluster-level changes (e.g. create index, update mapping,\nallocate or fail shard) which have not yet been executed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-pending.html"
@@ -1882,6 +2062,10 @@
     },
     "/_cluster/stats": {
       "get": {
+        "tags": [
+          "cluster.stats"
+        ],
+        "summary": "Returns high-level overview of cluster statistics.",
         "description": "Returns high-level overview of cluster statistics.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html"
@@ -1904,6 +2088,10 @@
     },
     "/_cluster/stats/nodes/{node_id}": {
       "get": {
+        "tags": [
+          "cluster.stats"
+        ],
+        "summary": "Returns high-level overview of cluster statistics.",
         "description": "Returns high-level overview of cluster statistics.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html"
@@ -1929,6 +2117,10 @@
     },
     "/_count": {
       "get": {
+        "tags": [
+          "count"
+        ],
+        "summary": "Returns number of documents matching a query.",
         "description": "Returns number of documents matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
@@ -1988,6 +2180,10 @@
         }
       },
       "post": {
+        "tags": [
+          "count"
+        ],
+        "summary": "Returns number of documents matching a query.",
         "description": "Returns number of documents matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
@@ -2049,6 +2245,10 @@
     },
     "/{index}/_count": {
       "get": {
+        "tags": [
+          "count"
+        ],
+        "summary": "Returns number of documents matching a query.",
         "description": "Returns number of documents matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
@@ -2111,6 +2311,10 @@
         }
       },
       "post": {
+        "tags": [
+          "count"
+        ],
+        "summary": "Returns number of documents matching a query.",
         "description": "Returns number of documents matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html"
@@ -2175,6 +2379,10 @@
     },
     "/{index}/_create/{id}": {
       "put": {
+        "tags": [
+          "create"
+        ],
+        "summary": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
         "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -2219,6 +2427,10 @@
         }
       },
       "post": {
+        "tags": [
+          "create"
+        ],
+        "summary": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
         "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -2265,6 +2477,10 @@
     },
     "/{index}/_doc/{id}": {
       "get": {
+        "tags": [
+          "get"
+        ],
+        "summary": "Returns a document.",
         "description": "Returns a document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
@@ -2408,6 +2624,10 @@
         }
       },
       "put": {
+        "tags": [
+          "index"
+        ],
+        "summary": "Creates or updates a document in an index.",
         "description": "Creates or updates a document in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -2464,6 +2684,10 @@
         }
       },
       "post": {
+        "tags": [
+          "index"
+        ],
+        "summary": "Creates or updates a document in an index.",
         "description": "Creates or updates a document in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -2520,6 +2744,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "delete"
+        ],
+        "summary": "Removes a document from the index.",
         "description": "Removes a document from the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html"
@@ -2643,6 +2871,10 @@
         }
       },
       "head": {
+        "tags": [
+          "exists"
+        ],
+        "summary": "Returns information about whether a document exists in an index.",
         "description": "Returns information about whether a document exists in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
@@ -2784,6 +3016,10 @@
     },
     "/{index}/_delete_by_query": {
       "post": {
+        "tags": [
+          "delete_by_query"
+        ],
+        "summary": "Deletes documents matching the provided query.",
         "description": "Deletes documents matching the provided query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html"
@@ -3189,6 +3425,10 @@
     },
     "/_scripts/{id}": {
       "get": {
+        "tags": [
+          "get_script"
+        ],
+        "summary": "Returns a script.",
         "description": "Returns a script.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
@@ -3246,6 +3486,10 @@
         }
       },
       "put": {
+        "tags": [
+          "put_script"
+        ],
+        "summary": "Creates or updates a script.",
         "description": "Creates or updates a script.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
@@ -3272,6 +3516,10 @@
         }
       },
       "post": {
+        "tags": [
+          "put_script"
+        ],
+        "summary": "Creates or updates a script.",
         "description": "Creates or updates a script.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
@@ -3298,6 +3546,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "delete_script"
+        ],
+        "summary": "Deletes a script.",
         "description": "Deletes a script.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
@@ -3352,6 +3604,10 @@
     },
     "/_enrich/policy/{name}": {
       "get": {
+        "tags": [
+          "enrich.get_policy"
+        ],
+        "summary": "Gets information about an enrich policy.",
         "description": "Gets information about an enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
@@ -3369,6 +3625,10 @@
         }
       },
       "put": {
+        "tags": [
+          "enrich.put_policy"
+        ],
+        "summary": "Creates a new enrich policy.",
         "description": "Creates a new enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-enrich-policy-api.html"
@@ -3422,6 +3682,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "enrich.delete_policy"
+        ],
+        "summary": "Deletes an existing enrich policy and its enrich index.",
         "description": "Deletes an existing enrich policy and its enrich index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html"
@@ -3456,6 +3720,10 @@
     },
     "/_enrich/policy/{name}/_execute": {
       "put": {
+        "tags": [
+          "enrich.execute_policy"
+        ],
+        "summary": "Creates the enrich index for an existing enrich policy.",
         "description": "Creates the enrich index for an existing enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html"
@@ -3511,6 +3779,10 @@
     },
     "/_enrich/policy": {
       "get": {
+        "tags": [
+          "enrich.get_policy"
+        ],
+        "summary": "Gets information about an enrich policy.",
         "description": "Gets information about an enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
@@ -3525,6 +3797,10 @@
     },
     "/_enrich/_stats": {
       "get": {
+        "tags": [
+          "enrich.stats"
+        ],
+        "summary": "Gets enrich coordinator statistics and information about enrich policies that are currently executing.",
         "description": "Gets enrich coordinator statistics and information about enrich policies that are currently executing.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html"
@@ -3573,6 +3849,10 @@
     },
     "/{index}/_source/{id}": {
       "get": {
+        "tags": [
+          "get_source"
+        ],
+        "summary": "Returns the source of a document.",
         "description": "Returns the source of a document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
@@ -3715,6 +3995,10 @@
         }
       },
       "head": {
+        "tags": [
+          "exists_source"
+        ],
+        "summary": "Returns information about whether a document source exists in an index.",
         "description": "Returns information about whether a document source exists in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
@@ -3846,6 +4130,10 @@
     },
     "/_field_caps": {
       "get": {
+        "tags": [
+          "field_caps"
+        ],
+        "summary": "Returns the information about the capabilities of fields among multiple indices.",
         "description": "Returns the information about the capabilities of fields among multiple indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
@@ -3884,6 +4172,10 @@
         }
       },
       "post": {
+        "tags": [
+          "field_caps"
+        ],
+        "summary": "Returns the information about the capabilities of fields among multiple indices.",
         "description": "Returns the information about the capabilities of fields among multiple indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
@@ -3924,6 +4216,10 @@
     },
     "/{index}/_field_caps": {
       "get": {
+        "tags": [
+          "field_caps"
+        ],
+        "summary": "Returns the information about the capabilities of fields among multiple indices.",
         "description": "Returns the information about the capabilities of fields among multiple indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
@@ -3965,6 +4261,10 @@
         }
       },
       "post": {
+        "tags": [
+          "field_caps"
+        ],
+        "summary": "Returns the information about the capabilities of fields among multiple indices.",
         "description": "Returns the information about the capabilities of fields among multiple indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
@@ -4008,6 +4308,10 @@
     },
     "/{index}/_graph/explore": {
       "get": {
+        "tags": [
+          "graph.explore"
+        ],
+        "summary": "Explore extracted and summarized information about the documents and terms in an index.",
         "description": "Explore extracted and summarized information about the documents and terms in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html"
@@ -4034,6 +4338,10 @@
         }
       },
       "post": {
+        "tags": [
+          "graph.explore"
+        ],
+        "summary": "Explore extracted and summarized information about the documents and terms in an index.",
         "description": "Explore extracted and summarized information about the documents and terms in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html"
@@ -4062,6 +4370,10 @@
     },
     "/{index}/_doc": {
       "post": {
+        "tags": [
+          "index"
+        ],
+        "summary": "Creates or updates a document in an index.",
         "description": "Creates or updates a document in an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -4117,6 +4429,10 @@
     },
     "/_analyze": {
       "get": {
+        "tags": [
+          "indices.analyze"
+        ],
+        "summary": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
@@ -4132,6 +4448,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.analyze"
+        ],
+        "summary": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
@@ -4149,6 +4469,10 @@
     },
     "/{index}/_analyze": {
       "get": {
+        "tags": [
+          "indices.analyze"
+        ],
+        "summary": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
@@ -4169,6 +4493,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.analyze"
+        ],
+        "summary": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html"
@@ -4191,6 +4519,10 @@
     },
     "/{index}": {
       "get": {
+        "tags": [
+          "indices.get"
+        ],
+        "summary": "Returns information about one or more indices.",
         "description": "Returns information about one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html"
@@ -4306,6 +4638,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.create"
+        ],
+        "summary": "Creates an index with optional settings and mappings.",
         "description": "Creates an index with optional settings and mappings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html"
@@ -4408,6 +4744,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete"
+        ],
+        "summary": "Deletes an index.",
         "description": "Deletes an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html"
@@ -4490,6 +4830,10 @@
         }
       },
       "head": {
+        "tags": [
+          "indices.exists"
+        ],
+        "summary": "Returns information about whether a particular index exists.",
         "description": "Returns information about whether a particular index exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html"
@@ -4580,6 +4924,10 @@
     },
     "/_data_stream/{name}": {
       "get": {
+        "tags": [
+          "indices.get_data_stream"
+        ],
+        "summary": "Returns data streams.",
         "description": "Returns data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -4603,6 +4951,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.create_data_stream"
+        ],
+        "summary": "Creates a data stream",
         "description": "Creates a data stream",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -4635,6 +4987,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete_data_stream"
+        ],
+        "summary": "Deletes a data stream.",
         "description": "Deletes a data stream.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -4679,6 +5035,10 @@
     },
     "/_data_stream/_stats": {
       "get": {
+        "tags": [
+          "indices.data_streams_stats"
+        ],
+        "summary": "Provides statistics on operations happening in a data stream.",
         "description": "Provides statistics on operations happening in a data stream.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -4698,6 +5058,10 @@
     },
     "/_data_stream/{name}/_stats": {
       "get": {
+        "tags": [
+          "indices.data_streams_stats"
+        ],
+        "summary": "Provides statistics on operations happening in a data stream.",
         "description": "Provides statistics on operations happening in a data stream.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -4720,6 +5084,10 @@
     },
     "/{index}/_alias/{name}": {
       "get": {
+        "tags": [
+          "indices.get_alias"
+        ],
+        "summary": "Returns an alias.",
         "description": "Returns an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4752,6 +5120,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_alias"
+        ],
+        "summary": "Creates or updates an alias.",
         "description": "Creates or updates an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4781,6 +5153,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.put_alias"
+        ],
+        "summary": "Creates or updates an alias.",
         "description": "Creates or updates an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4810,6 +5186,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete_alias"
+        ],
+        "summary": "Deletes an alias.",
         "description": "Deletes an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4836,6 +5216,10 @@
         }
       },
       "head": {
+        "tags": [
+          "indices.exists_alias"
+        ],
+        "summary": "Returns information about whether a particular alias exists.",
         "description": "Returns information about whether a particular alias exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4870,6 +5254,10 @@
     },
     "/{index}/_aliases/{name}": {
       "put": {
+        "tags": [
+          "indices.put_alias"
+        ],
+        "summary": "Creates or updates an alias.",
         "description": "Creates or updates an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4899,6 +5287,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.put_alias"
+        ],
+        "summary": "Creates or updates an alias.",
         "description": "Creates or updates an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4928,6 +5320,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete_alias"
+        ],
+        "summary": "Deletes an alias.",
         "description": "Deletes an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -4956,6 +5352,10 @@
     },
     "/_data_stream/{name}/_lifecycle": {
       "get": {
+        "tags": [
+          "indices.get_data_lifecycle"
+        ],
+        "summary": "Returns the data stream lifecycle of the selected data streams.",
         "description": "Returns the data stream lifecycle of the selected data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html"
@@ -5019,6 +5419,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_data_lifecycle"
+        ],
+        "summary": "Updates the data stream lifecycle of the selected data streams.",
         "description": "Updates the data stream lifecycle of the selected data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html"
@@ -5098,6 +5502,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete_data_lifecycle"
+        ],
+        "summary": "Deletes the data stream lifecycle of the selected data streams.",
         "description": "Deletes the data stream lifecycle of the selected data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html"
@@ -5162,6 +5570,10 @@
     },
     "/_index_template/{name}": {
       "get": {
+        "tags": [
+          "indices.get_index_template"
+        ],
+        "summary": "Returns an index template.",
         "description": "Returns an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5191,6 +5603,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_index_template"
+        ],
+        "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5214,6 +5630,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.put_index_template"
+        ],
+        "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5237,6 +5657,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete_index_template"
+        ],
+        "summary": "Deletes an index template.",
         "description": "Deletes an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5289,6 +5713,10 @@
         }
       },
       "head": {
+        "tags": [
+          "indices.exists_index_template"
+        ],
+        "summary": "Returns information about whether a particular index template exists.",
         "description": "Returns information about whether a particular index template exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5329,6 +5757,10 @@
     },
     "/_template/{name}": {
       "get": {
+        "tags": [
+          "indices.get_template"
+        ],
+        "summary": "Returns an index template.",
         "description": "Returns an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5355,6 +5787,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_template"
+        ],
+        "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5390,6 +5826,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.put_template"
+        ],
+        "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5425,6 +5865,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "indices.delete_template"
+        ],
+        "summary": "Deletes an index template.",
         "description": "Deletes an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5477,6 +5921,10 @@
         }
       },
       "head": {
+        "tags": [
+          "indices.exists_template"
+        ],
+        "summary": "Returns information about whether a particular index template exists.",
         "description": "Returns information about whether a particular index template exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5537,6 +5985,10 @@
     },
     "/{index}/_disk_usage": {
       "post": {
+        "tags": [
+          "indices.disk_usage"
+        ],
+        "summary": "Analyzes the disk usage of each field of an index or data stream",
         "description": "Analyzes the disk usage of each field of an index or data stream",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-disk-usage.html"
@@ -5621,6 +6073,10 @@
     },
     "/_alias/{name}": {
       "get": {
+        "tags": [
+          "indices.get_alias"
+        ],
+        "summary": "Returns an alias.",
         "description": "Returns an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -5650,6 +6106,10 @@
         }
       },
       "head": {
+        "tags": [
+          "indices.exists_alias"
+        ],
+        "summary": "Returns information about whether a particular alias exists.",
         "description": "Returns information about whether a particular alias exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -5681,6 +6141,10 @@
     },
     "/{index}/_lifecycle/explain": {
       "get": {
+        "tags": [
+          "indices.explain_data_lifecycle"
+        ],
+        "summary": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc.",
         "description": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html"
@@ -5746,6 +6210,10 @@
     },
     "/_alias": {
       "get": {
+        "tags": [
+          "indices.get_alias"
+        ],
+        "summary": "Returns an alias.",
         "description": "Returns an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -5774,6 +6242,10 @@
     },
     "/{index}/_alias": {
       "get": {
+        "tags": [
+          "indices.get_alias"
+        ],
+        "summary": "Returns an alias.",
         "description": "Returns an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -5805,6 +6277,10 @@
     },
     "/_data_stream": {
       "get": {
+        "tags": [
+          "indices.get_data_stream"
+        ],
+        "summary": "Returns data streams.",
         "description": "Returns data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -5827,6 +6303,10 @@
     },
     "/_index_template": {
       "get": {
+        "tags": [
+          "indices.get_index_template"
+        ],
+        "summary": "Returns an index template.",
         "description": "Returns an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -5855,6 +6335,10 @@
     },
     "/_mapping": {
       "get": {
+        "tags": [
+          "indices.get_mapping"
+        ],
+        "summary": "Returns mappings for one or more indices.",
         "description": "Returns mappings for one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
@@ -5886,6 +6370,10 @@
     },
     "/{index}/_mapping": {
       "get": {
+        "tags": [
+          "indices.get_mapping"
+        ],
+        "summary": "Returns mappings for one or more indices.",
         "description": "Returns mappings for one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
@@ -5918,6 +6406,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_mapping"
+        ],
+        "summary": "Updates the index mappings.",
         "description": "Updates the index mappings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
@@ -5956,6 +6448,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.put_mapping"
+        ],
+        "summary": "Updates the index mappings.",
         "description": "Updates the index mappings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
@@ -5996,6 +6492,10 @@
     },
     "/_settings": {
       "get": {
+        "tags": [
+          "indices.get_settings"
+        ],
+        "summary": "Returns settings for one or more indices.",
         "description": "Returns settings for one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
@@ -6031,6 +6531,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_settings"
+        ],
+        "summary": "Updates the index settings.",
         "description": "Updates the index settings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
@@ -6071,6 +6575,10 @@
     },
     "/{index}/_settings": {
       "get": {
+        "tags": [
+          "indices.get_settings"
+        ],
+        "summary": "Returns settings for one or more indices.",
         "description": "Returns settings for one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
@@ -6109,6 +6617,10 @@
         }
       },
       "put": {
+        "tags": [
+          "indices.put_settings"
+        ],
+        "summary": "Updates the index settings.",
         "description": "Updates the index settings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
@@ -6152,6 +6664,10 @@
     },
     "/{index}/_settings/{name}": {
       "get": {
+        "tags": [
+          "indices.get_settings"
+        ],
+        "summary": "Returns settings for one or more indices.",
         "description": "Returns settings for one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
@@ -6195,6 +6711,10 @@
     },
     "/_settings/{name}": {
       "get": {
+        "tags": [
+          "indices.get_settings"
+        ],
+        "summary": "Returns settings for one or more indices.",
         "description": "Returns settings for one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
@@ -6235,6 +6755,10 @@
     },
     "/_template": {
       "get": {
+        "tags": [
+          "indices.get_template"
+        ],
+        "summary": "Returns an index template.",
         "description": "Returns an index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -6260,6 +6784,10 @@
     },
     "/_data_stream/_migrate/{name}": {
       "post": {
+        "tags": [
+          "indices.migrate_to_data_stream"
+        ],
+        "summary": "Migrates an alias to a data stream",
         "description": "Migrates an alias to a data stream",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -6294,6 +6822,10 @@
     },
     "/_data_stream/_modify": {
       "post": {
+        "tags": [
+          "indices.modify_data_stream"
+        ],
+        "summary": "Modifies a data stream",
         "description": "Modifies a data stream",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
@@ -6337,6 +6869,10 @@
     },
     "/_resolve/index/{name}": {
       "get": {
+        "tags": [
+          "indices.resolve_index"
+        ],
+        "summary": "Returns information about any matching indices, aliases, and data streams",
         "description": "Returns information about any matching indices, aliases, and data streams",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html"
@@ -6406,6 +6942,10 @@
     },
     "/{alias}/_rollover": {
       "post": {
+        "tags": [
+          "indices.rollover"
+        ],
+        "summary": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
         "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
@@ -6440,6 +6980,10 @@
     },
     "/{alias}/_rollover/{new_index}": {
       "post": {
+        "tags": [
+          "indices.rollover"
+        ],
+        "summary": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
         "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
@@ -6477,6 +7021,10 @@
     },
     "/_index_template/_simulate_index/{name}": {
       "post": {
+        "tags": [
+          "indices.simulate_index_template"
+        ],
+        "summary": "Simulate matching the given index name against the index templates in the system",
         "description": "Simulate matching the given index name against the index templates in the system",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -6582,6 +7130,10 @@
     },
     "/_index_template/_simulate": {
       "post": {
+        "tags": [
+          "indices.simulate_template"
+        ],
+        "summary": "Simulate resolving the given template name or body",
         "description": "Simulate resolving the given template name or body",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -6610,6 +7162,10 @@
     },
     "/_index_template/_simulate/{name}": {
       "post": {
+        "tags": [
+          "indices.simulate_template"
+        ],
+        "summary": "Simulate resolving the given template name or body",
         "description": "Simulate resolving the given template name or body",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
@@ -6641,6 +7197,10 @@
     },
     "/_aliases": {
       "post": {
+        "tags": [
+          "indices.update_aliases"
+        ],
+        "summary": "Updates index aliases.",
         "description": "Updates index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
@@ -6703,6 +7263,10 @@
     },
     "/_validate/query": {
       "get": {
+        "tags": [
+          "indices.validate_query"
+        ],
+        "summary": "Allows a user to validate a potentially expensive query without executing it.",
         "description": "Allows a user to validate a potentially expensive query without executing it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
@@ -6756,6 +7320,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.validate_query"
+        ],
+        "summary": "Allows a user to validate a potentially expensive query without executing it.",
         "description": "Allows a user to validate a potentially expensive query without executing it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
@@ -6811,6 +7379,10 @@
     },
     "/{index}/_validate/query": {
       "get": {
+        "tags": [
+          "indices.validate_query"
+        ],
+        "summary": "Allows a user to validate a potentially expensive query without executing it.",
         "description": "Allows a user to validate a potentially expensive query without executing it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
@@ -6867,6 +7439,10 @@
         }
       },
       "post": {
+        "tags": [
+          "indices.validate_query"
+        ],
+        "summary": "Allows a user to validate a potentially expensive query without executing it.",
         "description": "Allows a user to validate a potentially expensive query without executing it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
@@ -6925,6 +7501,10 @@
     },
     "/": {
       "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Returns basic information about the cluster.",
         "description": "Returns basic information about the cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
@@ -6968,6 +7548,10 @@
         }
       },
       "head": {
+        "tags": [
+          "ping"
+        ],
+        "summary": "Returns whether the cluster is running.",
         "description": "Returns whether the cluster is running.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
@@ -6985,6 +7569,10 @@
     },
     "/_ingest/pipeline/{id}": {
       "get": {
+        "tags": [
+          "ingest.get_pipeline"
+        ],
+        "summary": "Returns a pipeline.",
         "description": "Returns a pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html"
@@ -7008,6 +7596,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ingest.put_pipeline"
+        ],
+        "summary": "Creates or updates a pipeline.",
         "description": "Creates or updates a pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html"
@@ -7106,6 +7698,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ingest.delete_pipeline"
+        ],
+        "summary": "Deletes a pipeline.",
         "description": "Deletes a pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html"
@@ -7160,6 +7756,10 @@
     },
     "/_ingest/pipeline": {
       "get": {
+        "tags": [
+          "ingest.get_pipeline"
+        ],
+        "summary": "Returns a pipeline.",
         "description": "Returns a pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html"
@@ -7182,6 +7782,10 @@
     },
     "/_ingest/processor/grok": {
       "get": {
+        "tags": [
+          "ingest.processor_grok"
+        ],
+        "summary": "Returns a list of the built-in patterns.",
         "description": "Returns a list of the built-in patterns.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
@@ -7214,6 +7818,10 @@
     },
     "/_ingest/pipeline/_simulate": {
       "get": {
+        "tags": [
+          "ingest.simulate"
+        ],
+        "summary": "Allows to simulate a pipeline with example documents.",
         "description": "Allows to simulate a pipeline with example documents.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
@@ -7234,6 +7842,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ingest.simulate"
+        ],
+        "summary": "Allows to simulate a pipeline with example documents.",
         "description": "Allows to simulate a pipeline with example documents.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
@@ -7256,6 +7868,10 @@
     },
     "/_ingest/pipeline/{id}/_simulate": {
       "get": {
+        "tags": [
+          "ingest.simulate"
+        ],
+        "summary": "Allows to simulate a pipeline with example documents.",
         "description": "Allows to simulate a pipeline with example documents.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
@@ -7279,6 +7895,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ingest.simulate"
+        ],
+        "summary": "Allows to simulate a pipeline with example documents.",
         "description": "Allows to simulate a pipeline with example documents.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html"
@@ -7304,6 +7924,10 @@
     },
     "/_logstash/pipeline/{id}": {
       "get": {
+        "tags": [
+          "logstash.get_pipeline"
+        ],
+        "summary": "Retrieves Logstash Pipelines used by Central Management",
         "description": "Retrieves Logstash Pipelines used by Central Management",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html"
@@ -7321,6 +7945,10 @@
         }
       },
       "put": {
+        "tags": [
+          "logstash.put_pipeline"
+        ],
+        "summary": "Adds and updates Logstash Pipelines used for Central Management",
         "description": "Adds and updates Logstash Pipelines used for Central Management",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html"
@@ -7359,6 +7987,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "logstash.delete_pipeline"
+        ],
+        "summary": "Deletes Logstash Pipelines used by Central Management",
         "description": "Deletes Logstash Pipelines used by Central Management",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html"
@@ -7389,6 +8021,10 @@
     },
     "/_logstash/pipeline": {
       "get": {
+        "tags": [
+          "logstash.get_pipeline"
+        ],
+        "summary": "Retrieves Logstash Pipelines used by Central Management",
         "description": "Retrieves Logstash Pipelines used by Central Management",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html"
@@ -7403,6 +8039,10 @@
     },
     "/_mget": {
       "get": {
+        "tags": [
+          "mget"
+        ],
+        "summary": "Allows to get multiple documents in one request.",
         "description": "Allows to get multiple documents in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
@@ -7444,6 +8084,10 @@
         }
       },
       "post": {
+        "tags": [
+          "mget"
+        ],
+        "summary": "Allows to get multiple documents in one request.",
         "description": "Allows to get multiple documents in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
@@ -7487,6 +8131,10 @@
     },
     "/{index}/_mget": {
       "get": {
+        "tags": [
+          "mget"
+        ],
+        "summary": "Allows to get multiple documents in one request.",
         "description": "Allows to get multiple documents in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
@@ -7531,6 +8179,10 @@
         }
       },
       "post": {
+        "tags": [
+          "mget"
+        ],
+        "summary": "Allows to get multiple documents in one request.",
         "description": "Allows to get multiple documents in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html"
@@ -7577,6 +8229,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
       "post": {
+        "tags": [
+          "ml.close_job"
+        ],
+        "summary": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
         "description": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html"
@@ -7671,6 +8327,10 @@
     },
     "/_ml/calendars/{calendar_id}": {
       "get": {
+        "tags": [
+          "ml.get_calendars"
+        ],
+        "summary": "Retrieves configuration information for calendars.",
         "description": "Retrieves configuration information for calendars.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
@@ -7697,6 +8357,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ml.put_calendar"
+        ],
+        "summary": "Instantiates a calendar.",
         "description": "Instantiates a calendar.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html"
@@ -7767,6 +8431,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.get_calendars"
+        ],
+        "summary": "Retrieves configuration information for calendars.",
         "description": "Retrieves configuration information for calendars.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
@@ -7793,6 +8461,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_calendar"
+        ],
+        "summary": "Deletes a calendar.",
         "description": "Deletes a calendar.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar.html"
@@ -7827,6 +8499,10 @@
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
       "delete": {
+        "tags": [
+          "ml.delete_calendar_event"
+        ],
+        "summary": "Deletes scheduled events from a calendar.",
         "description": "Deletes scheduled events from a calendar.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-event.html"
@@ -7872,6 +8548,10 @@
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
       "put": {
+        "tags": [
+          "ml.put_calendar_job"
+        ],
+        "summary": "Adds an anomaly detection job to a calendar.",
         "description": "Adds an anomaly detection job to a calendar.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html"
@@ -7931,6 +8611,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_calendar_job"
+        ],
+        "summary": "Deletes anomaly detection jobs from a calendar.",
         "description": "Deletes anomaly detection jobs from a calendar.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-job.html"
@@ -7992,6 +8676,10 @@
     },
     "/_ml/data_frame/analytics/{id}": {
       "get": {
+        "tags": [
+          "ml.get_data_frame_analytics"
+        ],
+        "summary": "Retrieves configuration information for data frame analytics jobs.",
         "description": "Retrieves configuration information for data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
@@ -8021,6 +8709,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ml.put_data_frame_analytics"
+        ],
+        "summary": "Instantiates a data frame analytics job.",
         "description": "Instantiates a data frame analytics job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html"
@@ -8156,6 +8848,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_data_frame_analytics"
+        ],
+        "summary": "Deletes an existing data frame analytics job.",
         "description": "Deletes an existing data frame analytics job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html"
@@ -8210,6 +8906,10 @@
     },
     "/_ml/datafeeds/{datafeed_id}": {
       "get": {
+        "tags": [
+          "ml.get_datafeeds"
+        ],
+        "summary": "Retrieves configuration information for datafeeds.",
         "description": "Retrieves configuration information for datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
@@ -8233,6 +8933,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ml.put_datafeed"
+        ],
+        "summary": "Instantiates a datafeed.",
         "description": "Instantiates a datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html"
@@ -8434,6 +9138,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_datafeed"
+        ],
+        "summary": "Deletes an existing datafeed.",
         "description": "Deletes an existing datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html"
@@ -8478,6 +9186,10 @@
     },
     "/_ml/filters/{filter_id}": {
       "get": {
+        "tags": [
+          "ml.get_filters"
+        ],
+        "summary": "Retrieves filters.",
         "description": "Retrieves filters.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html"
@@ -8501,6 +9213,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ml.put_filter"
+        ],
+        "summary": "Instantiates a filter.",
         "description": "Instantiates a filter.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html"
@@ -8575,6 +9291,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_filter"
+        ],
+        "summary": "Deletes a filter.",
         "description": "Deletes a filter.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html"
@@ -8609,6 +9329,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}": {
       "get": {
+        "tags": [
+          "ml.get_jobs"
+        ],
+        "summary": "Retrieves configuration information for anomaly detection jobs.",
         "description": "Retrieves configuration information for anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
@@ -8632,6 +9356,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ml.put_job"
+        ],
+        "summary": "Instantiates an anomaly detection job.",
         "description": "Instantiates an anomaly detection job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html"
@@ -8813,6 +9541,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_job"
+        ],
+        "summary": "Deletes an existing anomaly detection job.",
         "description": "Deletes an existing anomaly detection job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html"
@@ -8877,6 +9609,10 @@
     },
     "/_ml/trained_models/{model_id}": {
       "get": {
+        "tags": [
+          "ml.get_trained_models"
+        ],
+        "summary": "Retrieves configuration information for a trained inference model.",
         "description": "Retrieves configuration information for a trained inference model.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
@@ -8915,6 +9651,10 @@
         }
       },
       "put": {
+        "tags": [
+          "ml.put_trained_model"
+        ],
+        "summary": "Creates an inference trained model.",
         "description": "Creates an inference trained model.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html"
@@ -9004,6 +9744,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_trained_model"
+        ],
+        "summary": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
         "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html"
@@ -9048,6 +9792,10 @@
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
       "put": {
+        "tags": [
+          "ml.put_trained_model_alias"
+        ],
+        "summary": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
         "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html"
@@ -9101,6 +9849,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "ml.delete_trained_model_alias"
+        ],
+        "summary": "Deletes a model alias that refers to the trained model",
         "description": "Deletes a model alias that refers to the trained model",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html"
@@ -9146,6 +9898,10 @@
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
       "post": {
+        "tags": [
+          "ml.estimate_model_memory"
+        ],
+        "summary": "Estimates the model memory",
         "description": "Estimates the model memory",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html"
@@ -9204,6 +9960,10 @@
     },
     "/_ml/data_frame/_evaluate": {
       "post": {
+        "tags": [
+          "ml.evaluate_data_frame"
+        ],
+        "summary": "Evaluates the data frame analytics for an annotated index.",
         "description": "Evaluates the data frame analytics for an annotated index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html"
@@ -9261,6 +10021,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
       "post": {
+        "tags": [
+          "ml.flush_job"
+        ],
+        "summary": "Forces any buffered data to be processed by the job.",
         "description": "Forces any buffered data to be processed by the job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html"
@@ -9384,6 +10148,10 @@
     },
     "/_ml/calendars/{calendar_id}/events": {
       "get": {
+        "tags": [
+          "ml.get_calendar_events"
+        ],
+        "summary": "Retrieves information about the scheduled events in calendars.",
         "description": "Retrieves information about the scheduled events in calendars.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html"
@@ -9481,6 +10249,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.post_calendar_events"
+        ],
+        "summary": "Posts scheduled events in a calendar.",
         "description": "Posts scheduled events in a calendar.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html"
@@ -9548,6 +10320,10 @@
     },
     "/_ml/calendars": {
       "get": {
+        "tags": [
+          "ml.get_calendars"
+        ],
+        "summary": "Retrieves configuration information for calendars.",
         "description": "Retrieves configuration information for calendars.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
@@ -9571,6 +10347,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.get_calendars"
+        ],
+        "summary": "Retrieves configuration information for calendars.",
         "description": "Retrieves configuration information for calendars.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
@@ -9596,6 +10376,10 @@
     },
     "/_ml/data_frame/analytics": {
       "get": {
+        "tags": [
+          "ml.get_data_frame_analytics"
+        ],
+        "summary": "Retrieves configuration information for data frame analytics jobs.",
         "description": "Retrieves configuration information for data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
@@ -9624,6 +10408,10 @@
     },
     "/_ml/data_frame/analytics/_stats": {
       "get": {
+        "tags": [
+          "ml.get_data_frame_analytics_stats"
+        ],
+        "summary": "Retrieves usage information for data frame analytics jobs.",
         "description": "Retrieves usage information for data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html"
@@ -9652,6 +10440,10 @@
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
       "get": {
+        "tags": [
+          "ml.get_data_frame_analytics_stats"
+        ],
+        "summary": "Retrieves usage information for data frame analytics jobs.",
         "description": "Retrieves usage information for data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html"
@@ -9683,6 +10475,10 @@
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
       "get": {
+        "tags": [
+          "ml.get_datafeed_stats"
+        ],
+        "summary": "Retrieves usage information for datafeeds.",
         "description": "Retrieves usage information for datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
@@ -9705,6 +10501,10 @@
     },
     "/_ml/datafeeds/_stats": {
       "get": {
+        "tags": [
+          "ml.get_datafeed_stats"
+        ],
+        "summary": "Retrieves usage information for datafeeds.",
         "description": "Retrieves usage information for datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
@@ -9724,6 +10524,10 @@
     },
     "/_ml/datafeeds": {
       "get": {
+        "tags": [
+          "ml.get_datafeeds"
+        ],
+        "summary": "Retrieves configuration information for datafeeds.",
         "description": "Retrieves configuration information for datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
@@ -9746,6 +10550,10 @@
     },
     "/_ml/filters": {
       "get": {
+        "tags": [
+          "ml.get_filters"
+        ],
+        "summary": "Retrieves filters.",
         "description": "Retrieves filters.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html"
@@ -9768,6 +10576,10 @@
     },
     "/_ml/anomaly_detectors/_stats": {
       "get": {
+        "tags": [
+          "ml.get_job_stats"
+        ],
+        "summary": "Retrieves usage information for anomaly detection jobs.",
         "description": "Retrieves usage information for anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html"
@@ -9787,6 +10599,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
       "get": {
+        "tags": [
+          "ml.get_job_stats"
+        ],
+        "summary": "Retrieves usage information for anomaly detection jobs.",
         "description": "Retrieves usage information for anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html"
@@ -9809,6 +10625,10 @@
     },
     "/_ml/anomaly_detectors": {
       "get": {
+        "tags": [
+          "ml.get_jobs"
+        ],
+        "summary": "Retrieves configuration information for anomaly detection jobs.",
         "description": "Retrieves configuration information for anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
@@ -9831,6 +10651,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
       "get": {
+        "tags": [
+          "ml.get_overall_buckets"
+        ],
+        "summary": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
         "description": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
@@ -9872,6 +10696,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.get_overall_buckets"
+        ],
+        "summary": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
         "description": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
@@ -9915,6 +10743,10 @@
     },
     "/_ml/trained_models": {
       "get": {
+        "tags": [
+          "ml.get_trained_models"
+        ],
+        "summary": "Retrieves configuration information for a trained inference model.",
         "description": "Retrieves configuration information for a trained inference model.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
@@ -9952,6 +10784,10 @@
     },
     "/_ml/trained_models/{model_id}/_stats": {
       "get": {
+        "tags": [
+          "ml.get_trained_models_stats"
+        ],
+        "summary": "Retrieves usage information for trained inference models.",
         "description": "Retrieves usage information for trained inference models.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
@@ -9980,6 +10816,10 @@
     },
     "/_ml/trained_models/_stats": {
       "get": {
+        "tags": [
+          "ml.get_trained_models_stats"
+        ],
+        "summary": "Retrieves usage information for trained inference models.",
         "description": "Retrieves usage information for trained inference models.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
@@ -10005,6 +10845,10 @@
     },
     "/_ml/trained_models/{model_id}/_infer": {
       "post": {
+        "tags": [
+          "ml.infer_trained_model"
+        ],
+        "summary": "Evaluate a trained model.",
         "description": "Evaluate a trained model.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html"
@@ -10030,6 +10874,10 @@
     },
     "/_ml/trained_models/{model_id}/deployment/_infer": {
       "post": {
+        "tags": [
+          "ml.infer_trained_model"
+        ],
+        "summary": "Evaluate a trained model.",
         "description": "Evaluate a trained model.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html"
@@ -10055,6 +10903,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
       "post": {
+        "tags": [
+          "ml.open_job"
+        ],
+        "summary": "Opens one or more anomaly detection jobs.",
         "description": "Opens one or more anomaly detection jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html"
@@ -10125,6 +10977,10 @@
     },
     "/_ml/data_frame/analytics/_preview": {
       "get": {
+        "tags": [
+          "ml.preview_data_frame_analytics"
+        ],
+        "summary": "Previews that will be analyzed given a data frame analytics config.",
         "description": "Previews that will be analyzed given a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
@@ -10140,6 +10996,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.preview_data_frame_analytics"
+        ],
+        "summary": "Previews that will be analyzed given a data frame analytics config.",
         "description": "Previews that will be analyzed given a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
@@ -10157,6 +11017,10 @@
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
       "get": {
+        "tags": [
+          "ml.preview_data_frame_analytics"
+        ],
+        "summary": "Previews that will be analyzed given a data frame analytics config.",
         "description": "Previews that will be analyzed given a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
@@ -10177,6 +11041,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.preview_data_frame_analytics"
+        ],
+        "summary": "Previews that will be analyzed given a data frame analytics config.",
         "description": "Previews that will be analyzed given a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
@@ -10199,6 +11067,10 @@
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
       "get": {
+        "tags": [
+          "ml.preview_datafeed"
+        ],
+        "summary": "Previews a datafeed.",
         "description": "Previews a datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -10225,6 +11097,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.preview_datafeed"
+        ],
+        "summary": "Previews a datafeed.",
         "description": "Previews a datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -10253,6 +11129,10 @@
     },
     "/_ml/datafeeds/_preview": {
       "get": {
+        "tags": [
+          "ml.preview_datafeed"
+        ],
+        "summary": "Previews a datafeed.",
         "description": "Previews a datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -10276,6 +11156,10 @@
         }
       },
       "post": {
+        "tags": [
+          "ml.preview_datafeed"
+        ],
+        "summary": "Previews a datafeed.",
         "description": "Previews a datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -10301,6 +11185,10 @@
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
       "put": {
+        "tags": [
+          "ml.put_trained_model_definition_part"
+        ],
+        "summary": "Creates part of a trained model definition",
         "description": "Creates part of a trained model definition",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html"
@@ -10375,6 +11263,10 @@
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
       "put": {
+        "tags": [
+          "ml.put_trained_model_vocabulary"
+        ],
+        "summary": "Creates a trained model vocabulary",
         "description": "Creates a trained model vocabulary",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html"
@@ -10438,6 +11330,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
       "post": {
+        "tags": [
+          "ml.reset_job"
+        ],
+        "summary": "Resets an existing anomaly detection job.",
         "description": "Resets an existing anomaly detection job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html"
@@ -10492,6 +11388,10 @@
     },
     "/_ml/data_frame/analytics/{id}/_start": {
       "post": {
+        "tags": [
+          "ml.start_data_frame_analytics"
+        ],
+        "summary": "Starts a data frame analytics job.",
         "description": "Starts a data frame analytics job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html"
@@ -10548,6 +11448,10 @@
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
       "post": {
+        "tags": [
+          "ml.start_datafeed"
+        ],
+        "summary": "Starts one or more datafeeds.",
         "description": "Starts one or more datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html"
@@ -10645,6 +11549,10 @@
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
       "post": {
+        "tags": [
+          "ml.start_trained_model_deployment"
+        ],
+        "summary": "Start a trained model deployment.",
         "description": "Start a trained model deployment.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html"
@@ -10757,6 +11665,10 @@
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
       "post": {
+        "tags": [
+          "ml.stop_data_frame_analytics"
+        ],
+        "summary": "Stops one or more data frame analytics jobs.",
         "description": "Stops one or more data frame analytics jobs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html"
@@ -10829,6 +11741,10 @@
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
       "post": {
+        "tags": [
+          "ml.stop_datafeed"
+        ],
+        "summary": "Stops one or more datafeeds.",
         "description": "Stops one or more datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html"
@@ -10923,6 +11839,10 @@
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
       "post": {
+        "tags": [
+          "ml.stop_trained_model_deployment"
+        ],
+        "summary": "Stop a trained model deployment.",
         "description": "Stop a trained model deployment.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html"
@@ -10985,6 +11905,10 @@
     },
     "/_ml/data_frame/analytics/{id}/_update": {
       "post": {
+        "tags": [
+          "ml.update_data_frame_analytics"
+        ],
+        "summary": "Updates certain properties of a data frame analytics job.",
         "description": "Updates certain properties of a data frame analytics job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html"
@@ -11102,6 +12026,10 @@
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
       "post": {
+        "tags": [
+          "ml.update_datafeed"
+        ],
+        "summary": "Updates certain properties of a datafeed.",
         "description": "Updates certain properties of a datafeed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html"
@@ -11306,6 +12234,10 @@
     },
     "/_ml/filters/{filter_id}/_update": {
       "post": {
+        "tags": [
+          "ml.update_filter"
+        ],
+        "summary": "Updates the description of a filter, adds items, or removes items.",
         "description": "Updates the description of a filter, adds items, or removes items.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html"
@@ -11389,6 +12321,10 @@
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
       "post": {
+        "tags": [
+          "ml.update_job"
+        ],
+        "summary": "Updates certain properties of an anomaly detection job.",
         "description": "Updates certain properties of an anomaly detection job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html"
@@ -11594,6 +12530,10 @@
     },
     "/_msearch": {
       "get": {
+        "tags": [
+          "msearch"
+        ],
+        "summary": "Allows to execute several search operations in one request.",
         "description": "Allows to execute several search operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
@@ -11647,6 +12587,10 @@
         }
       },
       "post": {
+        "tags": [
+          "msearch"
+        ],
+        "summary": "Allows to execute several search operations in one request.",
         "description": "Allows to execute several search operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
@@ -11702,6 +12646,10 @@
     },
     "/{index}/_msearch": {
       "get": {
+        "tags": [
+          "msearch"
+        ],
+        "summary": "Allows to execute several search operations in one request.",
         "description": "Allows to execute several search operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
@@ -11758,6 +12706,10 @@
         }
       },
       "post": {
+        "tags": [
+          "msearch"
+        ],
+        "summary": "Allows to execute several search operations in one request.",
         "description": "Allows to execute several search operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
@@ -11816,6 +12768,10 @@
     },
     "/_msearch/template": {
       "get": {
+        "tags": [
+          "msearch_template"
+        ],
+        "summary": "Allows to execute several search template operations in one request.",
         "description": "Allows to execute several search template operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
@@ -11848,6 +12804,10 @@
         }
       },
       "post": {
+        "tags": [
+          "msearch_template"
+        ],
+        "summary": "Allows to execute several search template operations in one request.",
         "description": "Allows to execute several search template operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
@@ -11882,6 +12842,10 @@
     },
     "/{index}/_msearch/template": {
       "get": {
+        "tags": [
+          "msearch_template"
+        ],
+        "summary": "Allows to execute several search template operations in one request.",
         "description": "Allows to execute several search template operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
@@ -11917,6 +12881,10 @@
         }
       },
       "post": {
+        "tags": [
+          "msearch_template"
+        ],
+        "summary": "Allows to execute several search template operations in one request.",
         "description": "Allows to execute several search template operations in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
@@ -11954,6 +12922,10 @@
     },
     "/_mtermvectors": {
       "get": {
+        "tags": [
+          "mtermvectors"
+        ],
+        "summary": "Returns multiple termvectors in one request.",
         "description": "Returns multiple termvectors in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
@@ -12007,6 +12979,10 @@
         }
       },
       "post": {
+        "tags": [
+          "mtermvectors"
+        ],
+        "summary": "Returns multiple termvectors in one request.",
         "description": "Returns multiple termvectors in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
@@ -12062,6 +13038,10 @@
     },
     "/{index}/_mtermvectors": {
       "get": {
+        "tags": [
+          "mtermvectors"
+        ],
+        "summary": "Returns multiple termvectors in one request.",
         "description": "Returns multiple termvectors in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
@@ -12118,6 +13098,10 @@
         }
       },
       "post": {
+        "tags": [
+          "mtermvectors"
+        ],
+        "summary": "Returns multiple termvectors in one request.",
         "description": "Returns multiple termvectors in one request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html"
@@ -12176,6 +13160,10 @@
     },
     "/{index}/_pit": {
       "post": {
+        "tags": [
+          "open_point_in_time"
+        ],
+        "summary": "Open a point in time that can be used in subsequent searches",
         "description": "Open a point in time that can be used in subsequent searches",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html"
@@ -12269,6 +13257,10 @@
     },
     "/_scripts/{id}/{context}": {
       "put": {
+        "tags": [
+          "put_script"
+        ],
+        "summary": "Creates or updates a script.",
         "description": "Creates or updates a script.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
@@ -12298,6 +13290,10 @@
         }
       },
       "post": {
+        "tags": [
+          "put_script"
+        ],
+        "summary": "Creates or updates a script.",
         "description": "Creates or updates a script.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
@@ -12329,6 +13325,10 @@
     },
     "/_query_rules/{ruleset_id}": {
       "get": {
+        "tags": [
+          "query_ruleset.get"
+        ],
+        "summary": "Returns the details about a query ruleset.",
         "description": "Returns the details about a query ruleset.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html"
@@ -12361,6 +13361,10 @@
         }
       },
       "put": {
+        "tags": [
+          "query_ruleset.put"
+        ],
+        "summary": "Creates or updates a query ruleset.",
         "description": "Creates or updates a query ruleset.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html"
@@ -12411,6 +13415,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "query_ruleset.delete"
+        ],
+        "summary": "Deletes a query ruleset.",
         "description": "Deletes a query ruleset.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html"
@@ -12445,6 +13453,10 @@
     },
     "/_query_rules": {
       "get": {
+        "tags": [
+          "query_ruleset.list"
+        ],
+        "summary": "Lists query rulesets.",
         "description": "Lists query rulesets.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html"
@@ -12503,6 +13515,10 @@
     },
     "/_rank_eval": {
       "get": {
+        "tags": [
+          "rank_eval"
+        ],
+        "summary": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
@@ -12532,6 +13548,10 @@
         }
       },
       "post": {
+        "tags": [
+          "rank_eval"
+        ],
+        "summary": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
@@ -12563,6 +13583,10 @@
     },
     "/{index}/_rank_eval": {
       "get": {
+        "tags": [
+          "rank_eval"
+        ],
+        "summary": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
@@ -12595,6 +13619,10 @@
         }
       },
       "post": {
+        "tags": [
+          "rank_eval"
+        ],
+        "summary": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html"
@@ -12629,6 +13657,10 @@
     },
     "/_render/template": {
       "get": {
+        "tags": [
+          "render_search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
@@ -12644,6 +13676,10 @@
         }
       },
       "post": {
+        "tags": [
+          "render_search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
@@ -12661,6 +13697,10 @@
     },
     "/_render/template/{id}": {
       "get": {
+        "tags": [
+          "render_search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
@@ -12681,6 +13721,10 @@
         }
       },
       "post": {
+        "tags": [
+          "render_search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html"
@@ -12703,6 +13747,10 @@
     },
     "/_scripts/painless/_execute": {
       "get": {
+        "tags": [
+          "scripts_painless_execute"
+        ],
+        "summary": "Allows an arbitrary script to be executed and a result to be returned",
         "description": "Allows an arbitrary script to be executed and a result to be returned",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
@@ -12718,6 +13766,10 @@
         }
       },
       "post": {
+        "tags": [
+          "scripts_painless_execute"
+        ],
+        "summary": "Allows an arbitrary script to be executed and a result to be returned",
         "description": "Allows an arbitrary script to be executed and a result to be returned",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
@@ -12735,6 +13787,10 @@
     },
     "/_search": {
       "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Returns results matching a query.",
         "description": "Returns results matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
@@ -12881,6 +13937,10 @@
         }
       },
       "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Returns results matching a query.",
         "description": "Returns results matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
@@ -13029,6 +14089,10 @@
     },
     "/{index}/_search": {
       "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Returns results matching a query.",
         "description": "Returns results matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
@@ -13178,6 +14242,10 @@
         }
       },
       "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Returns results matching a query.",
         "description": "Returns results matching a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
@@ -13329,6 +14397,10 @@
     },
     "/_application/search_application/{name}": {
       "get": {
+        "tags": [
+          "search_application.get"
+        ],
+        "summary": "Returns the details about a search application.",
         "description": "Returns the details about a search application.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html"
@@ -13361,6 +14433,10 @@
         }
       },
       "put": {
+        "tags": [
+          "search_application.put"
+        ],
+        "summary": "Creates or updates a search application.",
         "description": "Creates or updates a search application.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
@@ -13421,6 +14497,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "search_application.delete"
+        ],
+        "summary": "Deletes a search application.",
         "description": "Deletes a search application.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
@@ -13455,6 +14535,10 @@
     },
     "/_application/analytics/{name}": {
       "get": {
+        "tags": [
+          "search_application.get_behavioral_analytics"
+        ],
+        "summary": "Returns the existing behavioral analytics collections.",
         "description": "Returns the existing behavioral analytics collections.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
@@ -13472,6 +14556,10 @@
         }
       },
       "put": {
+        "tags": [
+          "search_application.put_behavioral_analytics"
+        ],
+        "summary": "Creates a behavioral analytics collection.",
         "description": "Creates a behavioral analytics collection.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-analytics-collection.html"
@@ -13504,6 +14592,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "search_application.delete_behavioral_analytics"
+        ],
+        "summary": "Delete a behavioral analytics collection.",
         "description": "Delete a behavioral analytics collection.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-analytics-collection.html"
@@ -13538,6 +14630,10 @@
     },
     "/_application/analytics": {
       "get": {
+        "tags": [
+          "search_application.get_behavioral_analytics"
+        ],
+        "summary": "Returns the existing behavioral analytics collections.",
         "description": "Returns the existing behavioral analytics collections.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-analytics-collection.html"
@@ -13552,6 +14648,10 @@
     },
     "/_application/search_application": {
       "get": {
+        "tags": [
+          "search_application.list"
+        ],
+        "summary": "Returns the existing search applications.",
         "description": "Returns the existing search applications.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-search-applications.html"
@@ -13620,6 +14720,10 @@
     },
     "/_application/search_application/{name}/_search": {
       "get": {
+        "tags": [
+          "search_application.search"
+        ],
+        "summary": "Perform a search against a search application",
         "description": "Perform a search against a search application",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
@@ -13640,6 +14744,10 @@
         }
       },
       "post": {
+        "tags": [
+          "search_application.search"
+        ],
+        "summary": "Perform a search against a search application",
         "description": "Perform a search against a search application",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html"
@@ -13662,6 +14770,10 @@
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
       "get": {
+        "tags": [
+          "search_mvt"
+        ],
+        "summary": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
         "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
@@ -13715,6 +14827,10 @@
         }
       },
       "post": {
+        "tags": [
+          "search_mvt"
+        ],
+        "summary": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
         "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
@@ -13770,6 +14886,10 @@
     },
     "/_search/template": {
       "get": {
+        "tags": [
+          "search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
@@ -13826,6 +14946,10 @@
         }
       },
       "post": {
+        "tags": [
+          "search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
@@ -13884,6 +15008,10 @@
     },
     "/{index}/_search/template": {
       "get": {
+        "tags": [
+          "search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
@@ -13943,6 +15071,10 @@
         }
       },
       "post": {
+        "tags": [
+          "search_template"
+        ],
+        "summary": "Allows to use the Mustache language to pre-render a search definition.",
         "description": "Allows to use the Mustache language to pre-render a search definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html"
@@ -14004,6 +15136,10 @@
     },
     "/_security/_authenticate": {
       "get": {
+        "tags": [
+          "security.authenticate"
+        ],
+        "summary": "Enables authentication as a user and retrieve information about the authenticated user.",
         "description": "Enables authentication as a user and retrieve information about the authenticated user.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"
@@ -14088,6 +15224,10 @@
     },
     "/_security/api_key/{ids}/_clear_cache": {
       "post": {
+        "tags": [
+          "security.clear_api_key_cache"
+        ],
+        "summary": "Clear a subset or all entries from the API key cache.",
         "description": "Clear a subset or all entries from the API key cache.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-api-key-cache.html"
@@ -14141,6 +15281,10 @@
     },
     "/_security/api_key": {
       "get": {
+        "tags": [
+          "security.get_api_key"
+        ],
+        "summary": "Retrieves information for one or more API keys.",
         "description": "Retrieves information for one or more API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html"
@@ -14233,6 +15377,10 @@
         }
       },
       "put": {
+        "tags": [
+          "security.create_api_key"
+        ],
+        "summary": "Creates an API key for access without requiring basic authentication.",
         "description": "Creates an API key for access without requiring basic authentication.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
@@ -14253,6 +15401,10 @@
         }
       },
       "post": {
+        "tags": [
+          "security.create_api_key"
+        ],
+        "summary": "Creates an API key for access without requiring basic authentication.",
         "description": "Creates an API key for access without requiring basic authentication.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
@@ -14273,6 +15425,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "security.invalidate_api_key"
+        ],
+        "summary": "Invalidates one or more API keys.",
         "description": "Invalidates one or more API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html"
@@ -14358,6 +15514,10 @@
     },
     "/_security/_query/api_key": {
       "get": {
+        "tags": [
+          "security.query_api_keys"
+        ],
+        "summary": "Retrieves information for API keys using a subset of query DSL",
         "description": "Retrieves information for API keys using a subset of query DSL",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
@@ -14378,6 +15538,10 @@
         }
       },
       "post": {
+        "tags": [
+          "security.query_api_keys"
+        ],
+        "summary": "Retrieves information for API keys using a subset of query DSL",
         "description": "Retrieves information for API keys using a subset of query DSL",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
@@ -14400,6 +15564,10 @@
     },
     "/_security/api_key/{id}": {
       "put": {
+        "tags": [
+          "security.update_api_key"
+        ],
+        "summary": "Updates attributes of an existing API key.",
         "description": "Updates attributes of an existing API key.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html"
@@ -14467,6 +15635,10 @@
     },
     "/_synonyms/{id}": {
       "get": {
+        "tags": [
+          "synonyms.get_synonym"
+        ],
+        "summary": "Retrieves a synonym set",
         "description": "Retrieves a synonym set",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonyms-set.html"
@@ -14534,6 +15706,10 @@
         }
       },
       "put": {
+        "tags": [
+          "synonyms.put_synonym"
+        ],
+        "summary": "Creates or updates a synonyms set",
         "description": "Creates or updates a synonyms set",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html"
@@ -14600,6 +15776,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "synonyms.delete_synonym"
+        ],
+        "summary": "Deletes a synonym set",
         "description": "Deletes a synonym set",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonyms-set.html"
@@ -14634,6 +15814,10 @@
     },
     "/_synonyms/{set_id}/{rule_id}": {
       "get": {
+        "tags": [
+          "synonyms.get_synonym_rule"
+        ],
+        "summary": "Retrieves a synonym rule from a synonym set",
         "description": "Retrieves a synonym rule from a synonym set",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-synonym-rule.html"
@@ -14677,6 +15861,10 @@
         }
       },
       "put": {
+        "tags": [
+          "synonyms.put_synonym_rule"
+        ],
+        "summary": "Creates or updates a synonym rule in a synonym set",
         "description": "Creates or updates a synonym rule in a synonym set",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonym-rule.html"
@@ -14741,6 +15929,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "synonyms.delete_synonym_rule"
+        ],
+        "summary": "Deletes a synonym rule in a synonym set",
         "description": "Deletes a synonym rule in a synonym set",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-synonym-rule.html"
@@ -14786,6 +15978,10 @@
     },
     "/_synonyms": {
       "get": {
+        "tags": [
+          "synonyms.get_synonyms_sets"
+        ],
+        "summary": "Retrieves a summary of all defined synonym sets",
         "description": "Retrieves a summary of all defined synonym sets",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-synonyms-sets.html"
@@ -14844,6 +16040,10 @@
     },
     "/{index}/_terms_enum": {
       "get": {
+        "tags": [
+          "terms_enum"
+        ],
+        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
         "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html"
@@ -14864,6 +16064,10 @@
         }
       },
       "post": {
+        "tags": [
+          "terms_enum"
+        ],
+        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
         "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html"
@@ -14886,6 +16090,10 @@
     },
     "/{index}/_termvectors/{id}": {
       "get": {
+        "tags": [
+          "termvectors"
+        ],
+        "summary": "Returns information and statistics about terms in the fields of a particular document.",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
@@ -14942,6 +16150,10 @@
         }
       },
       "post": {
+        "tags": [
+          "termvectors"
+        ],
+        "summary": "Returns information and statistics about terms in the fields of a particular document.",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
@@ -15000,6 +16212,10 @@
     },
     "/{index}/_termvectors": {
       "get": {
+        "tags": [
+          "termvectors"
+        ],
+        "summary": "Returns information and statistics about terms in the fields of a particular document.",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
@@ -15053,6 +16269,10 @@
         }
       },
       "post": {
+        "tags": [
+          "termvectors"
+        ],
+        "summary": "Returns information and statistics about terms in the fields of a particular document.",
         "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
@@ -15108,6 +16328,10 @@
     },
     "/_transform/{transform_id}": {
       "get": {
+        "tags": [
+          "transform.get_transform"
+        ],
+        "summary": "Retrieves configuration information for transforms.",
         "description": "Retrieves configuration information for transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html"
@@ -15137,6 +16361,10 @@
         }
       },
       "put": {
+        "tags": [
+          "transform.put_transform"
+        ],
+        "summary": "Instantiates a transform.",
         "description": "Instantiates a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html"
@@ -15236,6 +16464,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "transform.delete_transform"
+        ],
+        "summary": "Deletes an existing transform.",
         "description": "Deletes an existing transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html"
@@ -15290,6 +16522,10 @@
     },
     "/_transform": {
       "get": {
+        "tags": [
+          "transform.get_transform"
+        ],
+        "summary": "Retrieves configuration information for transforms.",
         "description": "Retrieves configuration information for transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html"
@@ -15318,6 +16554,10 @@
     },
     "/_transform/{transform_id}/_stats": {
       "get": {
+        "tags": [
+          "transform.get_transform_stats"
+        ],
+        "summary": "Retrieves usage information for transforms.",
         "description": "Retrieves usage information for transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html"
@@ -15407,6 +16647,10 @@
     },
     "/_transform/{transform_id}/_preview": {
       "get": {
+        "tags": [
+          "transform.preview_transform"
+        ],
+        "summary": "Previews a transform.",
         "description": "Previews a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
@@ -15430,6 +16674,10 @@
         }
       },
       "post": {
+        "tags": [
+          "transform.preview_transform"
+        ],
+        "summary": "Previews a transform.",
         "description": "Previews a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
@@ -15455,6 +16703,10 @@
     },
     "/_transform/_preview": {
       "get": {
+        "tags": [
+          "transform.preview_transform"
+        ],
+        "summary": "Previews a transform.",
         "description": "Previews a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
@@ -15475,6 +16727,10 @@
         }
       },
       "post": {
+        "tags": [
+          "transform.preview_transform"
+        ],
+        "summary": "Previews a transform.",
         "description": "Previews a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
@@ -15497,6 +16753,10 @@
     },
     "/_transform/{transform_id}/_reset": {
       "post": {
+        "tags": [
+          "transform.reset_transform"
+        ],
+        "summary": "Resets an existing transform.",
         "description": "Resets an existing transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html"
@@ -15541,6 +16801,10 @@
     },
     "/_transform/{transform_id}/_schedule_now": {
       "post": {
+        "tags": [
+          "transform.schedule_now_transform"
+        ],
+        "summary": "Schedules now a transform.",
         "description": "Schedules now a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html"
@@ -15585,6 +16849,10 @@
     },
     "/_transform/{transform_id}/_start": {
       "post": {
+        "tags": [
+          "transform.start_transform"
+        ],
+        "summary": "Starts one or more transforms.",
         "description": "Starts one or more transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html"
@@ -15639,6 +16907,10 @@
     },
     "/_transform/{transform_id}/_stop": {
       "post": {
+        "tags": [
+          "transform.stop_transform"
+        ],
+        "summary": "Stops one or more transforms.",
         "description": "Stops one or more transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html"
@@ -15723,6 +16995,10 @@
     },
     "/_transform/{transform_id}/_update": {
       "post": {
+        "tags": [
+          "transform.update_transform"
+        ],
+        "summary": "Updates certain properties of a transform.",
         "description": "Updates certain properties of a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html"
@@ -15876,6 +17152,10 @@
     },
     "/{index}/_update/{id}": {
       "post": {
+        "tags": [
+          "update"
+        ],
+        "summary": "Updates a document with a script or partial document.",
         "description": "Updates a document with a script or partial document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html"
@@ -16079,6 +17359,10 @@
     },
     "/{index}/_update_by_query": {
       "post": {
+        "tags": [
+          "update_by_query"
+        ],
+        "summary": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
         "description": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
