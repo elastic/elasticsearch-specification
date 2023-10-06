@@ -197,6 +197,7 @@ export enum FieldType {
   constant_keyword,
   aggregate_metric_double,
   dense_vector,
+  sparse_vector,
   match_only_text
 }
 
