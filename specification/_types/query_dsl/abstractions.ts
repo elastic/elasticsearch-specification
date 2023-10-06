@@ -367,7 +367,7 @@ export class QueryContainer {
    */
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
   /**
-   * Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a rank features field.
+   * Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.
    * @availability stack since=8.8.0
    * @availability serverless
    * @doc_id query-dsl-text-expansion-query
