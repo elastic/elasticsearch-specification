@@ -11981,7 +11981,7 @@ export interface LogstashDeletePipelineRequest extends RequestBase {
 export type LogstashDeletePipelineResponse = boolean
 
 export interface LogstashGetPipelineRequest extends RequestBase {
-  id: Ids
+  id?: Ids
 }
 
 export type LogstashGetPipelineResponse = Record<Id, LogstashPipeline>
