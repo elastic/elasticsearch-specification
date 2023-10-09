@@ -886,12 +886,6 @@
       ],
       "response": []
     },
-    "logstash.get_pipeline": {
-      "request": [
-        "Request: path parameter 'id' is optional in the json spec"
-      ],
-      "response": []
-    },
     "mget": {
       "request": [
         "Request: missing json spec query parameter 'force_synthetic_source'"

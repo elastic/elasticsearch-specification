@@ -32,6 +32,6 @@ export interface Request extends RequestBase {
     /**
      * Comma-separated list of pipeline identifiers.
      */
-    id: Ids
+    id?: Ids
   }
 }
