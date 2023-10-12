@@ -2076,6 +2076,9 @@ export interface ClusterStatistics {
   skipped: integer
   successful: integer
   total: integer
+  running: integer
+  partial: integer
+  failed: integer
   details?: Record<ClusterAlias, ClusterDetails>
 }
 
