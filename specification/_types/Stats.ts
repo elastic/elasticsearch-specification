@@ -28,6 +28,9 @@ export class ClusterStatistics {
   skipped: integer
   successful: integer
   total: integer
+  running: integer
+  partial: integer
+  failed: integer
   details?: Dictionary<ClusterAlias, ClusterDetails>
 }
 
