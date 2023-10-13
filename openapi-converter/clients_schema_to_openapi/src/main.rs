@@ -90,6 +90,7 @@ impl Cli {
                     },
                 };
 
+                model = clients_schema::transform::expand_generics(model)?;
                 model = clients_schema::transform::filter_availability(model, filter)?;
             }
         }
@@ -161,6 +162,15 @@ mod tests {
             schema: "../../output/schema/schema-no-generics.json".into(),
             flavor: Some(SchemaFlavor::Serverless),
             output: Some("../../output/openapi/elasticsearch-serverless-openapi.json".into())
+        }.run()
+    }
+
+    #[test]
+    fn test_serverless0() -> anyhow::Result<()> {
+        Cli {
+            schema: "../../output/schema/schema.json".into(),
+            flavor: Some(SchemaFlavor::Serverless),
+            output: Some("../../output/openapi/elasticsearch-serverless-openapi2.json".into())
         }.run()
     }
 }

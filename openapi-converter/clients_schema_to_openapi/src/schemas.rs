@@ -277,6 +277,10 @@ impl <'a> TypesAndComponents<'a> {
     ///
     fn convert_interface_definition(&mut self, itf: &Interface) -> anyhow::Result<Schema> {
 
+        if !itf.generics.is_empty() {
+            bail!("Interface definition {} has generic parameters. Expand generics before conversion", itf.base.name);
+        }
+
         let mut schema = if let Some(container) = &itf.variants {
             // TODO: interface definition container.non_exhaustive
             let _non_exhaustive = container.non_exhaustive;
@@ -357,6 +361,11 @@ impl <'a> TypesAndComponents<'a> {
     /// Creates alias an alias that references another type.
     ///
     fn convert_type_alias(&mut self, alias: &TypeAlias) -> anyhow::Result<Schema> {
+
+        if !alias.generics.is_empty() {
+            bail!("Type alias {} has generic parameters. Expand generics before conversion", alias.base.name);
+        }
+
         let mut schema = self
             .convert_value_of(&alias.typ)?
             .into_schema_with_base(self, &alias.base);

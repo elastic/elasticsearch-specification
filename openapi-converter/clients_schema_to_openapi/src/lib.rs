@@ -102,6 +102,21 @@ pub fn convert_schema(
         paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
     }
 
+    // // Sort maps to ensure output stability
+    // openapi.paths.extensions.sort_keys();
+    // if let Some(ref mut comp) = openapi.components {
+    //     comp.callbacks.sort_keys();
+    //     comp.examples.sort_keys();
+    //     comp.extensions.sort_keys();
+    //     comp.headers.sort_keys();
+    //     comp.links.sort_keys();
+    //     comp.parameters.sort_keys();
+    //     comp.request_bodies.sort_keys();
+    //     comp.responses.sort_keys();
+    //     comp.schemas.sort_keys();
+    //     comp.security_schemes.sort_keys();
+    // }
+
     Ok(openapi)
 }
 

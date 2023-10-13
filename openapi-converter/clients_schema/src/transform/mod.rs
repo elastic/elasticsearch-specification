@@ -20,6 +20,7 @@
 //!
 
 mod availability;
+mod expand_generics;
 
 use std::collections::HashSet;
 use availability::Availability;
@@ -70,4 +71,10 @@ pub fn filter_availability(
     avail_filter: fn(&Option<Availabilities>) -> bool
 ) -> anyhow::Result<IndexedModel> {
     Availability::filter(model, avail_filter)
+}
+
+pub fn expand_generics(
+    model: IndexedModel
+) -> anyhow::Result<IndexedModel> {
+    expand_generics::expand_generics(model)
 }

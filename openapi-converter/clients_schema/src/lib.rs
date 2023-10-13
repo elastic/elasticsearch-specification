@@ -15,8 +15,8 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::collections::HashMap;
-use std::fmt::{Display, Formatter};
+use std::cmp::Ordering;
+use std::fmt::{Debug, Display, Formatter};
 use anyhow::anyhow;
 use indexmap::IndexMap;
 // Re-export crates whose types we expose publicly
@@ -44,16 +44,23 @@ pub trait  Documented {
     fn since(&self) -> Option<&str>;
 }
 
+// ArcStr is a compact reference counted string that makes cloning a very cheap operation.
+// This is particularly important for `TypeName` that is cloned a lot, e.g. for `IndexedModel` keys
+// See https://swatinem.de/blog/optimized-strings/ for a general discussion
+//
+// TODO: interning at deserialization time to reuse identical values (links from values to types)
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Hash)]
 pub struct TypeName {
-    pub namespace: String,
-    pub name: String
+    pub namespace: arcstr::ArcStr,
+    pub name: arcstr::ArcStr,
+    // pub namespace: String,
+    // pub name: String,
 }
 
 impl TypeName {
     pub fn new(namespace: &str, name: &str) -> TypeName {
         TypeName {
-            namespace: String::from(namespace),
+            namespace: namespace.into(),
             name: name.into(),
         }
     }
@@ -69,6 +76,16 @@ impl Display for TypeName {
     }
 }
 
+impl Ord for TypeName {
+    fn cmp(&self, other: &Self) -> Ordering {
+        match self.namespace.cmp(&other.namespace) {
+            Ordering::Equal => self.name.cmp(&other.name),
+            ordering @ _ => ordering,
+        }
+    }
+}
+
+//-----------------------------------------------------------------------------
 
 ///
 /// Type of a value. Used both for property types and nested type definitions.
@@ -90,6 +107,30 @@ impl ValueOf {
     }
 }
 
+impl From<InstanceOf> for ValueOf {
+    fn from(value: InstanceOf) -> Self {
+        ValueOf::InstanceOf(value)
+    }
+}
+
+impl From<ArrayOf> for ValueOf {
+    fn from(value: ArrayOf) -> Self {
+        ValueOf::ArrayOf(value)
+    }
+}
+
+impl From<UnionOf> for ValueOf {
+    fn from(value: UnionOf) -> Self {
+        ValueOf::UnionOf(value)
+    }
+}
+
+impl From<DictionaryOf> for ValueOf {
+    fn from(value: DictionaryOf) -> Self {
+        ValueOf::DictionaryOf(value)
+    }
+}
+
 impl From<TypeName> for ValueOf {
     fn from(name: TypeName) -> Self {
         ValueOf::InstanceOf(InstanceOf::new(name))
@@ -107,6 +148,8 @@ impl From<&Lazy<TypeName>> for ValueOf {
         ValueOf::InstanceOf(InstanceOf::new((*name).clone()))
     }
 }
+
+//-----------------------------------------------------------------------------
 
 ///
 /// A single value
@@ -188,12 +231,28 @@ pub struct LiteralValue {
     pub value: LiteralValueValue
 }
 
+impl Display for LiteralValue {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        Display::fmt(&self.value, f)
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 #[serde(untagged)]
 pub enum LiteralValueValue {
     String(String),
     Number(f64),
     Boolean(bool)
+}
+
+impl Display for LiteralValueValue {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        match self {
+            LiteralValueValue::String(x) => Display::fmt(x, f),
+            LiteralValueValue::Number(x) => Display::fmt(x, f),
+            LiteralValueValue::Boolean(x) => Display::fmt(x, f),
+        }
+    }
 }
 
 //--------------------------------------------------------------------------------------------
@@ -239,7 +298,7 @@ pub struct Availability {
 }
 
 /// The availability of an
-pub type Availabilities = HashMap<Flavor, Availability>;
+pub type Availabilities = IndexMap<Flavor, Availability>;
 
 pub trait AvailabilityFilter: Fn(&Option<Availabilities>) -> bool {}
 
@@ -423,15 +482,60 @@ impl TypeDefinition {
     }
 }
 
+impl From<Interface> for TypeDefinition {
+    fn from(value: Interface) -> Self {
+        TypeDefinition::Interface(value)
+    }
+}
+
+impl From<Request> for TypeDefinition {
+    fn from(value: Request) -> Self {
+        TypeDefinition::Request(value)
+    }
+}
+
+impl From<Response> for TypeDefinition {
+    fn from(value: Response) -> Self {
+        TypeDefinition::Response(value)
+    }
+}
+
+impl From<Enum> for TypeDefinition {
+    fn from(value: Enum) -> Self {
+        TypeDefinition::Enum(value)
+    }
+}
+
+impl From<TypeAlias> for TypeDefinition {
+    fn from(value: TypeAlias) -> Self {
+        TypeDefinition::TypeAlias(value)
+    }
+}
+
 impl TypeDefinition {
     pub fn name(&self) -> &TypeName {
+        &self.base().name
+    }
+
+    pub fn base(&self) -> &BaseType {
         use TypeDefinition::*;
         match self {
-            Interface(x) => &x.base.name,
-            Request(x) => &x.base.name,
-            Response(x) => &x.base.name,
-            Enum(x) => &x.base.name,
-            TypeAlias(x) => &x.base.name,
+            Interface(x) => &x.base,
+            Request(x) => &x.base,
+            Response(x) => &x.base,
+            Enum(x) => &x.base,
+            TypeAlias(x) => &x.base,
+        }
+    }
+
+    pub fn base_mut(&mut self) -> &mut BaseType {
+        use TypeDefinition::*;
+        match self {
+            Interface(x) => &mut x.base,
+            Request(x) => &mut x.base,
+            Response(x) => &mut x.base,
+            Enum(x) => &mut x.base,
+            TypeAlias(x) => &mut x.base,
         }
     }
 }

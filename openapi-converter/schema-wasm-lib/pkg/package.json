@@ -1,0 +1,12 @@
+{
+  "name": "schema-wasm-lib",
+  "description": "WASM library to manipulate and convert schema.json files",
+  "version": "0.1.0",
+  "files": [
+    "schema_wasm_lib_bg.wasm",
+    "schema_wasm_lib.js",
+    "schema_wasm_lib.d.ts"
+  ],
+  "main": "schema_wasm_lib.js",
+  "types": "schema_wasm_lib.d.ts"
+}

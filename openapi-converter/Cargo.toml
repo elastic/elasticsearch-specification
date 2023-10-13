@@ -1,6 +1,13 @@
 [workspace]
+resolver = "2"
 members = [
     "clients_schema",
     "openapi_to_clients_schema",
-    "clients_schema_to_openapi"
+    "clients_schema_to_openapi",
+    "schema-wasm-lib",
 ]
+
+[profile.release]
+lto = true
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
