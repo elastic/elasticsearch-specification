@@ -9658,6 +9658,8 @@ export interface IndicesDataStream {
   generation: integer
   hidden: boolean
   ilm_policy?: Name
+  next_generation_managed_by: string
+  prefer_ilm: boolean
   indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataStreamLifecycleWithRollover
   name: DataStreamName
@@ -9671,6 +9673,9 @@ export interface IndicesDataStream {
 export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
+  ilm_policy?: Name
+  managed_by: string
+  prefer_ilm: boolean
 }
 
 export interface IndicesDataStreamLifecycle {
