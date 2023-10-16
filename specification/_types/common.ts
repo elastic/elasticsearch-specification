@@ -71,7 +71,10 @@ export type Metrics = string | string[]
 
 export type ClusterAlias = string
 
-export type ManagedBy = 'Index Lifecycle Management' | 'Data Stream Lifecycle' | 'Unmanaged'
+export type ManagedBy =
+  | "Index Lifecycle Management"
+  | "Data Stream Lifecycle"
+  | "Unmanaged";
 
 export type Name = string
 export type Names = Name | Name[]
