@@ -22,6 +22,7 @@ import {
   Field,
   HealthStatus,
   IndexName,
+  ManagedBy,
   Metadata,
   Name,
   Uuid
@@ -57,7 +58,7 @@ export class DataStream {
   /**
    * Name of the lifecycle system that'll manage the next generation of the data stream.
    */
-  next_generation_managed_by: string
+  next_generation_managed_by: ManagedBy
   /**
    * Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.
    */
@@ -126,7 +127,7 @@ export class DataStreamIndex {
   /**
    * Name of the lifecycle system that's currently managing this backing index.
    */
-  managed_by: string
+  managed_by: ManagedBy
   /**
    * Indicates if ILM should take precedence over DSL in case both are configured to manage this index.
    */
