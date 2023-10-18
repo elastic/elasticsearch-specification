@@ -73,7 +73,7 @@ export type ClusterAlias = string
 
 export type ManagedBy =
   | 'Index Lifecycle Management'
-  | 'Data Stream Lifecycle'
+  | 'Data stream lifecycle'
   | 'Unmanaged'
 
 export type Name = string
