@@ -11,4 +11,4 @@ This directory contains a set of Rust crates to manipulate and transform the API
 
 ## Building
 
-The output of this directory is the `schema-wasm-lib` WebAssembly library. It must be built and committed in this repository every time the Rust code is changed.
+The output of this directory is the `schema-wasm-lib` WebAssembly library. It must be built and committed in this repository every time the Rust code is changed. Use `make schema-wasm-lib` to build it.
