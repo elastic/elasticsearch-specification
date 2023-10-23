@@ -4,7 +4,7 @@ members = [
     "clients_schema",
     "openapi_to_clients_schema",
     "clients_schema_to_openapi",
-    "schema-wasm-lib",
+    "compiler-wasm-lib",
 ]
 
 [profile.release]

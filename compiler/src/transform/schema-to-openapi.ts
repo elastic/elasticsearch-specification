@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { convert_schema_to_openapi } from 'schema-wasm-lib'
+import { convert_schema_to_openapi } from 'compiler-wasm-lib'
 import { argv } from 'zx'
 import { join } from 'path'
 import { readFileSync, writeFileSync } from 'fs'

@@ -181,7 +181,7 @@ module.exports.__wbindgen_object_drop_ref = function(arg0) {
     takeObject(arg0);
 };
 
-const path = require('path').join(__dirname, 'schema_wasm_lib_bg.wasm');
+const path = require('path').join(__dirname, 'compiler_wasm_lib_bg.wasm');
 const bytes = require('fs').readFileSync(path);
 
 const wasmModule = new WebAssembly.Module(bytes);
