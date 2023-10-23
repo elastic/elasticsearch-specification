@@ -30601,6 +30601,15 @@
           "total": {
             "type": "number"
           },
+          "running": {
+            "type": "number"
+          },
+          "partial": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
           "details": {
             "type": "object",
             "additionalProperties": {
@@ -30611,7 +30620,10 @@
         "required": [
           "skipped",
           "successful",
-          "total"
+          "total",
+          "running",
+          "partial",
+          "failed"
         ]
       },
       "_types:ClusterDetails": {
@@ -32189,7 +32201,7 @@
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
             },
-            "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a rank features field.",
+            "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl:TextExpansionQuery"
@@ -48459,6 +48471,13 @@
           "ilm_policy": {
             "$ref": "#/components/schemas/_types:Name"
           },
+          "next_generation_managed_by": {
+            "$ref": "#/components/schemas/_types:ManagedBy"
+          },
+          "prefer_ilm": {
+            "description": "Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.",
+            "type": "boolean"
+          },
           "indices": {
             "description": "Array of objects containing information about the data stream’s backing indices.\nThe last item in this array contains information about the stream’s current write index.",
             "type": "array",
@@ -48493,11 +48512,35 @@
         "required": [
           "generation",
           "hidden",
+          "next_generation_managed_by",
+          "prefer_ilm",
           "indices",
           "name",
           "status",
           "template",
           "timestamp_field"
+        ]
+      },
+      "_types:ManagedBy": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "Index Lifecycle Management"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "Data stream lifecycle"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "Unmanaged"
+            ]
+          }
         ]
       },
       "indices._types:DataStreamIndex": {
@@ -48508,11 +48551,23 @@
           },
           "index_uuid": {
             "$ref": "#/components/schemas/_types:Uuid"
+          },
+          "ilm_policy": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "managed_by": {
+            "$ref": "#/components/schemas/_types:ManagedBy"
+          },
+          "prefer_ilm": {
+            "description": "Indicates if ILM should take precedence over DSL in case both are configured to manage this index.",
+            "type": "boolean"
           }
         },
         "required": [
           "index_name",
-          "index_uuid"
+          "index_uuid",
+          "managed_by",
+          "prefer_ilm"
         ]
       },
       "indices._types:DataStreamTimestampField": {
