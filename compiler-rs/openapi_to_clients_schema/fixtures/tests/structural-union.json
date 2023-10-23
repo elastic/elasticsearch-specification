@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "InlineScript": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_ScriptParams"
+          },
+          {
+            "properties": {
+              "lang": {
+                "$ref": "#/components/schemas/ScriptLanguage"
+              },
+              "options": {
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "Script": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InlineScript"
+          },
+          {
+            "$ref": "#/components/schemas/StoredScriptId"
+          }
+        ]
+      },
+      "ScriptLanguage": {
+        "enum": [
+          "painless",
+          "expression",
+          "mustache",
+          "java"
+        ],
+        "type": "string"
+      },
+      "StoredScriptId": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_ScriptParams"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        ]
+      },
+      "_ScriptParams": {
+        "additionalProperties": false,
+        "properties": {
+          "params": {
+            "additionalProperties": true
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}

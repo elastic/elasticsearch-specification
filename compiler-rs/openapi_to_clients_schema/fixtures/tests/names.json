@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "test": {
+        "properties": {
+          "Name6": {
+            "type": "boolean"
+          },
+          "NameFive": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "boolean"
+          },
+          "name1": {
+            "type": "boolean"
+          },
+          "nameThree": {
+            "type": "boolean"
+          },
+          "name_2": {
+            "type": "boolean"
+          },
+          "name_four": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
