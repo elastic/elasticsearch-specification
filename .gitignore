@@ -40,8 +40,6 @@ node_modules
 # Build output directory
 dist/
 flight-recorder-generator/output
-*.d.ts
-java-generator/*.js
 specification/**/*.js
 specification/lib
 

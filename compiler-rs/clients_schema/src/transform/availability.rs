@@ -20,13 +20,14 @@ use crate::{Availabilities, Body, IndexedModel, Inherits, Property, TypeDefiniti
 use crate::transform::Worksheet;
 
 pub struct Availability {
+    #[allow(clippy::type_complexity)]
     avail_filter: Box<dyn Fn(&Option<Availabilities>) -> bool>,
     // Note: we could have avoided the use of interior mutability by adding
     // a `&mut Worksheet` parameter to all methods.
     worksheet: RefCell<Worksheet>,
 }
 
-impl <'a> Availability {
+impl Availability {
     pub fn filter (mut model: IndexedModel, avail_filter: fn(&Option<Availabilities>) -> bool) -> anyhow::Result<IndexedModel> {
         let filter = Availability {
             avail_filter: Box::new(avail_filter),
@@ -38,8 +39,9 @@ impl <'a> Availability {
 
         // Initialize worksheet with request and response of all retained endpoints
         for endpoint in &model.endpoints {
-            endpoint.request.as_ref().map(|name| filter.filter_type(name));
-            endpoint.response.as_ref().map(|name| filter.filter_type(name));
+            for name in [&endpoint.request, &endpoint.response].into_iter().flatten() {
+                filter.filter_type(name);
+            }
         }
 
         while let Some(name) = {
@@ -57,7 +59,7 @@ impl <'a> Availability {
         let ws = filter.worksheet.borrow();
         model.types.retain(|k, _| ws.was_visited(k));
 
-        return Ok(model);
+        Ok(model)
     }
 
     fn is_available(&self, availabilities: &Option<Availabilities>) -> bool {
@@ -71,7 +73,7 @@ impl <'a> Availability {
     fn filter_typedef(&self, typedef: &mut TypeDefinition) {
         match typedef {
             TypeDefinition::Interface(ref mut itf) => {
-                itf.inherits.as_ref().map(|i| self.filter_inherits(i));
+                itf.inherits.iter().for_each(|i| self.filter_inherits(i));
                 itf.behaviors.iter().for_each(|i| self.filter_behaviors(i));
                 self.filter_properties(&mut itf.properties);
             },
@@ -86,7 +88,7 @@ impl <'a> Availability {
             },
 
             TypeDefinition::Request(ref mut request) => {
-                request.inherits.as_ref().map(|i| self.filter_inherits(i));
+                request.inherits.iter().for_each(|i| self.filter_inherits(i));
                 request.behaviors.iter().for_each(|i| self.filter_behaviors(i));
                 self.filter_properties(&mut request.path);
                 self.filter_properties(&mut request.query);
@@ -113,7 +115,7 @@ impl <'a> Availability {
     fn filter_properties(&self, props: &mut Vec<Property>) {
         props.retain(|p| self.is_available(&p.availability));
         for prop in props {
-            self.filter_value_of(&mut prop.typ);
+            self.filter_value_of(&prop.typ);
         }
     }
 

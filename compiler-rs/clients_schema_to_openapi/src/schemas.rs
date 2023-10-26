@@ -292,7 +292,7 @@ impl <'a> TypesAndComponents<'a> {
             // A container is represented by an object will all optional properties and exactly one that
             // needs to be set.
             let mut schema = ObjectType {
-                properties: self.convert_properties(variant_props.iter().map(|p| *p))?,
+                properties: self.convert_properties(variant_props.iter().copied())?,
                 required: vec![],
                 additional_properties: None,
                 min_properties: Some(1),
@@ -302,8 +302,8 @@ impl <'a> TypesAndComponents<'a> {
             if !container_props.is_empty() {
                 // Create a schema for the container property, and group it in an "allOf" with variants
                 let container_props_schema = ObjectType {
-                    properties: self.convert_properties(container_props.iter().map(|p| *p))?,
-                    required: self.required_properties(container_props.iter().map(|p| *p)),
+                    properties: self.convert_properties(container_props.iter().copied())?,
+                    required: self.required_properties(container_props.iter().copied()),
                     additional_properties: None,
                     min_properties: None,
                     max_properties: None,

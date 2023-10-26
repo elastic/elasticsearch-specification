@@ -53,14 +53,14 @@ fn generate_types(
     if let Some(ref components) = open_api.components {
         let mut types = types::Types::default();
         for (id, schema) in &components.schemas {
-            let result = types::generate_type(open_api, &id, &schema.into(), &mut types);
+            let result = types::generate_type(open_api, id, &schema.into(), &mut types);
 
             if let Err(err) = result {
                 warn!("Problem with type '{id}'\n    {err}\n    Definition: {:?}", &schema);
             }
         }
         let _ = types.check_tracker(); // TODO: actually fail
-        model.types = types.types();
+        model.types = types.types().into_iter().map(|t| (t.name().clone(), t)).collect();
     }
 
     Ok(())

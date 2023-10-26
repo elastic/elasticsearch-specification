@@ -47,19 +47,23 @@ impl Worksheet {
         }
     }
 
+    /// Has this type name been visited?
+    pub fn was_visited(&self, name: &TypeName) -> bool {
+        self.visited.contains(name)
+    }
+}
+
+impl Iterator for Worksheet {
+    type Item = TypeName;
+
     /// Retrieves a type name from the work list, if some are left. This assumes the caller will
     /// process the corresponding type, and thus adds it to the list of visited type names.
-    pub fn next(&mut self) -> Option<TypeName> {
+    fn next(&mut self) -> Option<Self::Item> {
         let result = self.pending.pop();
         if let Some(ref name) = result {
             self.visited.insert(name.clone());
         }
         result
-    }
-
-    /// Has this type name been visited?
-    pub fn was_visited(&self, name: &TypeName) -> bool {
-        self.visited.contains(name)
     }
 }
 

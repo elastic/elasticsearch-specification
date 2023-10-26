@@ -22,7 +22,6 @@ use openapiv3::*;
 use std::ops::Deref;
 use anyhow::{anyhow, bail};
 use serde_json::Value as JsonValue;
-use tracing::info;
 
 /// A wrapper around an openapi schema, also providing helper methods to explore it.
 pub struct OpenAPI(pub openapiv3::OpenAPI);
@@ -58,8 +57,8 @@ impl OpenAPI {
     ///
     pub fn get_schema<'a>(&'a self, r_or_s: &'a ReferenceOr<Schema>) -> anyhow::Result<&'a Schema> {
         match r_or_s {
-            ReferenceOr::Reference { reference } => self.ref_to_schema(&reference),
-            ReferenceOr::Item(schema) => Ok(&schema),
+            ReferenceOr::Reference { reference } => self.ref_to_schema(reference),
+            ReferenceOr::Item(schema) => Ok(schema),
         }
     }
 
@@ -113,7 +112,7 @@ impl OpenAPI {
             SchemaKind::AllOf { all_of } | SchemaKind::Any(AnySchema{ all_of, .. }) if !all_of.is_empty() => {
                 let mut result = acc;
                 for schema in all_of {
-                    result = self.merge_in_any(result, &schema)?;
+                    result = self.merge_in_any(result, schema)?;
                 }
                 return Ok(result);
             },
@@ -193,8 +192,8 @@ pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
                 maximum: x.maximum,
                 enumeration: x.enumeration.iter()
                     .filter_map(|e| *e)
-                    .filter_map(|s| serde_json::Number::from_f64(s))
-                    .map(|s| JsonValue::Number(s))
+                    .filter_map(serde_json::Number::from_f64)
+                    .map(JsonValue::Number)
                     .collect(),
                 ..AnySchema::default()
             }),
