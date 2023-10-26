@@ -39,7 +39,7 @@ pub fn convert_schema_file(
     // Parsing from a string is faster than using a buffered reader when there is a need for look-ahead
     // See https://github.com/serde-rs/json/issues/160
     let json = &std::fs::read_to_string(path)?;
-    let json_deser = &mut serde_json::Deserializer::from_str(&json);
+    let json_deser = &mut serde_json::Deserializer::from_str(json);
 
     let mut unused = HashSet::new();
     let mut model: IndexedModel = serde_ignored::deserialize(json_deser, |path| {
@@ -95,7 +95,7 @@ pub fn convert_schema(
         extensions: Default::default(),
     };
 
-    let mut tac = TypesAndComponents::new(&model, openapi.components.as_mut().unwrap());
+    let mut tac = TypesAndComponents::new(model, openapi.components.as_mut().unwrap());
 
     // Endpoints
     for endpoint in &model.endpoints {

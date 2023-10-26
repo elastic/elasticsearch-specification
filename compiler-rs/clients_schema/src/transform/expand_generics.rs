@@ -46,8 +46,9 @@ pub fn expand_generics(
     let mut ctx = Ctx::default();
 
     for endpoint in &model.endpoints {
-        endpoint.request.as_ref().map(|t| expand_root_type(&t, &model, &mut ctx));
-        endpoint.response.as_ref().map(|t| expand_root_type(&t, &model, &mut ctx));
+        for name in [&endpoint.request, &endpoint.response].into_iter().flatten() {
+            expand_root_type(name, &model, &mut ctx)?;
+        }
     }
 
     // Add new types that were created to the model
@@ -210,7 +211,7 @@ pub fn expand_generics(
         // We keep the generic parameters of behaviors, but expand their value
         for behavior in behaviors {
             for arg in &mut behavior.generics {
-                *arg = expand_valueof(arg, &mappings, model, ctx)?;
+                *arg = expand_valueof(arg, mappings, model, ctx)?;
             }
         }
         Ok(())
@@ -309,7 +310,7 @@ pub fn expand_generics(
     /// Builds the mapping from generic parameter name to actual value
     ///
     fn param_mapping(generics: &GenericParams, args: GenericArgs) -> GenericMapping {
-        generics.iter().map(|name| name.clone()).zip(args).collect()
+        generics.iter().cloned().zip(args).collect()
     }
 
     ///
@@ -394,10 +395,10 @@ mod tests {
         if canonical_json != json_no_generics {
             std::fs::create_dir("test-output")?;
             let mut out = std::fs::File::create("test-output/schema-no-generics-canonical.json")?;
-            out.write(canonical_json.as_bytes())?;
+            out.write_all(canonical_json.as_bytes())?;
 
             let mut out = std::fs::File::create("test-output/schema-no-generics-new.json")?;
-            out.write(json_no_generics.as_bytes())?;
+            out.write_all(json_no_generics.as_bytes())?;
 
             panic!("Output differs from the canonical version. Both were written to 'test-output'");
         }

@@ -48,7 +48,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     //};
 
     // Will we produce multiple paths? If true, we will register components for reuse across paths
-    let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().find(|u| u.methods.len() > 1).is_some();
+    let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().any(|u| u.methods.len() > 1);
 
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 

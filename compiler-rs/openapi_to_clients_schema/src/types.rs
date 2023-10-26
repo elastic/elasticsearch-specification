@@ -85,7 +85,7 @@ pub fn generate_type (
             let type_name = ref_to_typename(id);
             types.add(id, TypeDefinition::type_alias(
                 type_name.clone(),
-                ref_to_typename(&ref_id).into()
+                ref_to_typename(ref_id).into()
             ));
             Ok(type_name)
         }
@@ -164,7 +164,7 @@ fn generate_type_for_schema(
         // We choose to handle it like a oneOf, even if oneOf is more constrained, as allOf is used for
         // composition/inheritance.
         AllOf {all_of} => {
-            let merged = open_api.merge_schemas(&all_of, &data)?;
+            let merged = open_api.merge_schemas(all_of, data)?;
             generate_type_for_schema(open_api, id, &merged, types)?;
         }
         AnyOf {any_of: one_of} | OneOf {one_of} => {
@@ -276,7 +276,7 @@ fn generate_schema_kind_type(
 fn generate_union_of(
     open_api: &OpenAPI,
     id: &str,
-    items: &Vec<ReferenceOr<Schema>>,
+    items: &[ReferenceOr<Schema>],
     types: &mut Types
 ) -> anyhow::Result<UnionOf> {
     // Open API items are ref_or_schema that we turn into a value_of
@@ -299,7 +299,7 @@ fn generate_union_of(
 fn generate_schema_kind_one_of(
     open_api: &OpenAPI,
     id: &str,
-    one_of: &Vec<ReferenceOr<Schema>>,
+    one_of: &[ReferenceOr<Schema>],
     discriminator: &Option<Discriminator>,
     base: BaseType,
     types: &mut Types
@@ -333,7 +333,7 @@ fn generate_schema_kind_one_of(
         base,
         typ: ValueOf::UnionOf(union_of),
         generics: Vec::default(),
-        variants: variants, // May be set below
+        variants, // May be set below
     };
     types.add(id, TypeDefinition::TypeAlias(type_alias));
 
@@ -374,7 +374,7 @@ fn generate_interface_def(
     open_api: &OpenAPI,
     id: &str,
     base: BaseType,
-    required: &Vec<String>,
+    required: &[String],
     properties: &IndexMap<String, ReferenceOr<Box<Schema>>>,
     additional_properties: &Option<AdditionalProperties>,
     types: &mut Types
@@ -405,6 +405,7 @@ fn generate_interface_def(
             container_property: false,
             es_quirk: None,
             server_default: None,
+            availability: None,
         };
 
         props.push(property);
@@ -474,7 +475,7 @@ fn generate_value_for_schema(
                     Ok((&builtins::STRING).into())
                 }
                 String(_) => {
-                    let type_name = generate_type_for_schema(open_api, &id_gen(), &schema, types)?;
+                    let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
                     Ok(type_name.into())
                 }
                 Number(_) => {
@@ -488,7 +489,7 @@ fn generate_value_for_schema(
                     Ok((&builtins::LONG).into())
                 }
                 Object(_) => {
-                    let type_name = generate_type_for_schema(open_api, &id_gen(), &schema, types)?;
+                    let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
                     Ok(type_name.into())
                 }
                 Array(array) => {
@@ -521,7 +522,7 @@ fn generate_value_for_schema(
             Ok((&builtins::NULL).into())
         },
         Any(_) => {
-            let type_name = generate_type_for_schema(open_api, &id_gen(), &schema, types)?;
+            let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
             Ok(type_name.into())
         }
     }
@@ -532,7 +533,7 @@ fn id_to_typename(id: &str) -> TypeName {
 
     TypeName {
         namespace: "_global".into(),
-        name: id.to_case(Case::UpperCamel),
+        name: id.to_case(Case::UpperCamel).into(),
     }
 }
 

@@ -15,7 +15,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::cmp::Ordering;
 use std::fmt::{Debug, Display, Formatter};
 use anyhow::anyhow;
 use indexmap::IndexMap;
@@ -37,6 +36,14 @@ const fn is_false(v: &bool) -> bool {
     !(*v)
 }
 
+// String type where efficient cloning brings significant improvements
+// ArcStr is a compact reference counted string that makes cloning a very cheap operation.
+// This is particularly important for `TypeName` that is cloned a lot, e.g. for `IndexedModel` keys
+// See https://swatinem.de/blog/optimized-strings/ for a general discussion
+//
+// TODO: interning at deserialization time to reuse identical values (links from values to types)
+type FastString = arcstr::ArcStr;
+
 pub trait  Documented {
     fn doc_url(&self) -> Option<&str>;
     fn doc_id(&self) -> Option<&str>;
@@ -44,17 +51,11 @@ pub trait  Documented {
     fn since(&self) -> Option<&str>;
 }
 
-// ArcStr is a compact reference counted string that makes cloning a very cheap operation.
-// This is particularly important for `TypeName` that is cloned a lot, e.g. for `IndexedModel` keys
-// See https://swatinem.de/blog/optimized-strings/ for a general discussion
-//
-// TODO: interning at deserialization time to reuse identical values (links from values to types)
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TypeName {
-    pub namespace: arcstr::ArcStr,
-    pub name: arcstr::ArcStr,
-    // pub namespace: String,
-    // pub name: String,
+    // Order is important for Ord implementation
+    pub namespace: FastString,
+    pub name: FastString,
 }
 
 impl TypeName {
@@ -73,15 +74,6 @@ impl TypeName {
 impl Display for TypeName {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}:{}", self.namespace, self.name)
-    }
-}
-
-impl Ord for TypeName {
-    fn cmp(&self, other: &Self) -> Ordering {
-        match self.namespace.cmp(&other.namespace) {
-            Ordering::Equal => self.name.cmp(&other.name),
-            ordering @ _ => ordering,
-        }
     }
 }
 
@@ -318,7 +310,7 @@ impl Flavor {
     pub fn visibility(&self, availabilities: &Option<Availabilities>) -> Option<Visibility> {
         if let Some(ref availabilities) = availabilities {
             // Some availabilities defined
-            if let Some(ref availability) = availabilities.get(self) {
+            if let Some(availability) = availabilities.get(self) {
                 // This one exists. Public by default
                 availability.visibility.clone().or(Some(Visibility::Public))
             } else {
@@ -468,6 +460,7 @@ pub struct Inherits {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case", tag="kind")]
+#[allow(clippy::large_enum_variant)]
 pub enum TypeDefinition {
     Interface(Interface),
     Request(Request),
@@ -1143,22 +1136,22 @@ impl<'a> serde::de::Visitor<'a> for IndexMapVisitor {
 // Conversions between Model and IndexedModel
 //-------------------------------------------------------------------------------------------------
 
-impl Into<IndexedModel> for Model {
-    fn into(self) -> IndexedModel {
+impl From<Model> for IndexedModel {
+    fn from(value: Model) -> Self {
         IndexedModel {
-            info: self.info,
-            endpoints: self.endpoints,
-            types: self.types.into_iter().map(|t| (t.name().clone(), t)).collect(),
+            info: value.info,
+            endpoints: value.endpoints,
+            types: value.types.into_iter().map(|t| (t.name().clone(), t)).collect(),
         }
     }
 }
 
-impl Into<Model> for IndexedModel {
-    fn into(self) -> Model {
+impl From<IndexedModel> for Model {
+    fn from(value: IndexedModel) -> Model {
         Model {
-            info: self.info,
-            endpoints: self.endpoints,
-            types: self.types.into_iter().map(|(_, t)| t).collect(),
+            info: value.info,
+            endpoints: value.endpoints,
+            types: value.types.into_iter().map(|(_, t)| t).collect(),
         }
     }
 }
@@ -1193,7 +1186,7 @@ mod tests {
         let search_type = result.get_type(&search_req).unwrap();
 
         match search_type {
-            TypeDefinition::Request(r) => assert_eq!(true, !r.path.is_empty()),
+            TypeDefinition::Request(r) => assert!(!r.path.is_empty()),
             _ => panic!("Expecting a Request")
         };
     }
