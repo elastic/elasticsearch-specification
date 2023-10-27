@@ -83,10 +83,10 @@ pub fn generate_type (
         RefOrSchema::Ref(ref_id) => {
             // Type alias
             let type_name = ref_to_typename(id);
-            types.add(id, TypeDefinition::type_alias(
+            types.add(id, TypeAlias::new(
                 type_name.clone(),
                 ref_to_typename(ref_id).into()
-            ));
+            ).into());
             Ok(type_name)
         }
         RefOrSchema::Schema(schema) => {

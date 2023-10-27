@@ -17,6 +17,7 @@
 
 use std::fmt::{Debug, Display, Formatter};
 use anyhow::anyhow;
+use derive_more::From;
 use indexmap::IndexMap;
 // Re-export crates whose types we expose publicly
 pub use once_cell;
@@ -82,7 +83,7 @@ impl Display for TypeName {
 ///
 /// Type of a value. Used both for property types and nested type definitions.
 ///
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd, From)]
 #[serde(tag = "kind", rename_all="snake_case")]
 pub enum ValueOf {
     InstanceOf(InstanceOf),
@@ -96,30 +97,6 @@ pub enum ValueOf {
 impl ValueOf {
     pub fn instance_of(name: TypeName) -> ValueOf {
         ValueOf::InstanceOf(InstanceOf::new(name))
-    }
-}
-
-impl From<InstanceOf> for ValueOf {
-    fn from(value: InstanceOf) -> Self {
-        ValueOf::InstanceOf(value)
-    }
-}
-
-impl From<ArrayOf> for ValueOf {
-    fn from(value: ArrayOf) -> Self {
-        ValueOf::ArrayOf(value)
-    }
-}
-
-impl From<UnionOf> for ValueOf {
-    fn from(value: UnionOf) -> Self {
-        ValueOf::UnionOf(value)
-    }
-}
-
-impl From<DictionaryOf> for ValueOf {
-    fn from(value: DictionaryOf) -> Self {
-        ValueOf::DictionaryOf(value)
     }
 }
 
@@ -458,7 +435,7 @@ pub struct Inherits {
     pub generics: Vec<ValueOf>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, From)]
 #[serde(rename_all = "snake_case", tag="kind")]
 #[allow(clippy::large_enum_variant)]
 pub enum TypeDefinition {
@@ -467,42 +444,6 @@ pub enum TypeDefinition {
     Response(Response),
     Enum(Enum),
     TypeAlias(TypeAlias),
-}
-
-impl TypeDefinition {
-    pub fn type_alias(name: TypeName, value: ValueOf) -> TypeDefinition {
-        TypeDefinition::TypeAlias(TypeAlias::new(name, value))
-    }
-}
-
-impl From<Interface> for TypeDefinition {
-    fn from(value: Interface) -> Self {
-        TypeDefinition::Interface(value)
-    }
-}
-
-impl From<Request> for TypeDefinition {
-    fn from(value: Request) -> Self {
-        TypeDefinition::Request(value)
-    }
-}
-
-impl From<Response> for TypeDefinition {
-    fn from(value: Response) -> Self {
-        TypeDefinition::Response(value)
-    }
-}
-
-impl From<Enum> for TypeDefinition {
-    fn from(value: Enum) -> Self {
-        TypeDefinition::Enum(value)
-    }
-}
-
-impl From<TypeAlias> for TypeDefinition {
-    fn from(value: TypeAlias) -> Self {
-        TypeDefinition::TypeAlias(value)
-    }
 }
 
 impl TypeDefinition {
