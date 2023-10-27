@@ -21,7 +21,6 @@ use anyhow::{anyhow, bail};
 use indexmap::indexmap;
 
 use openapiv3::{MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, Paths, PathStyle, QueryStyle, ReferenceOr, RequestBody, Response, Responses, StatusCode};
-use regex::Regex;
 
 use clients_schema::Property;
 use crate::components::TypesAndComponents;
@@ -280,12 +279,19 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     Ok(())
 }
 
-fn get_path_parameters (template: &str) -> Vec<&str> {
-    let regex = Regex::new(r"\{([^}]*)\}").unwrap();
-    regex
-        .find_iter(template)
-        .map(|m| &template[m.start()+1 .. m.end()-1])
-        .collect()
+fn get_path_parameters(template: &str) -> Vec<&str> {
+    // Note: could be done with regex, but it adds 1 MB to the resulting WASM module
+    let mut result = Vec::new();
+    let mut template = template;
+    while let Some((_start, end)) = template.split_once('{') {
+        if let Some((name, remainder)) = end.split_once('}') {
+            result.push(name);
+            template = remainder;
+        } else {
+            break;
+        }
+    }
+    result
 }
 
 #[cfg(test)]
@@ -294,6 +300,12 @@ mod tests {
 
     #[test]
     fn test_path_parameters() {
-        assert_eq!(get_path_parameters("/{index}/{id}"), vec!{"index", "id"})
+        assert_eq!(get_path_parameters("/{index}/{id}"), vec!{"index", "id"});
+        assert_eq!(get_path_parameters("{index}{id}/"), vec!{"index", "id"});
+        assert_eq!(get_path_parameters("/{index}/{id}/"), vec!{"index", "id"});
+
+        // Should normally not happen as we expect the model to be correct. Just make sure we don't crash.
+        assert_eq!(get_path_parameters("{index}{id/"), vec!{"index"});
+        assert_eq!(get_path_parameters("{index{id}/"), vec!{"index{id"});
     }
 }
