@@ -14314,6 +14314,7 @@ export interface MlPutTrainedModelVocabularyRequest extends RequestBase {
   body?: {
     vocabulary: string[]
     merges?: string[]
+    scores?: double[]
   }
 }
 
