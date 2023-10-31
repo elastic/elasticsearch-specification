@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import {double} from "@_types/Numeric";
 
 /**
  * Creates a trained model vocabulary.
@@ -54,6 +55,6 @@ export interface Request extends RequestBase {
      * @availability stack since=8.9.0
      * @availability serverless
      */
-    scores?: string[]
+    scores?: double[]
   }
 }
