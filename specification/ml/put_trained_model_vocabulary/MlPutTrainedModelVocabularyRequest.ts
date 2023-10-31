@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import {double} from "@_types/Numeric";
+import { double } from '@_types/Numeric'
 
 /**
  * Creates a trained model vocabulary.
