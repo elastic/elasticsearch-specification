@@ -17724,6 +17724,7 @@ export interface TransformTimeSync {
 export interface TransformDeleteTransformRequest extends RequestBase {
   transform_id: Id
   force?: boolean
+  delete_dest_index?: boolean
   timeout?: Duration
 }
 
