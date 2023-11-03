@@ -11429,6 +11429,65 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export type InferenceInferenceResult = Record<string, double>
+
+export interface InferenceModelConfig {
+  service: string
+  service_settings: InferenceServiceSettings
+  task_settings: InferenceTaskSettings
+}
+
+export interface InferenceModelConfigContainer {
+  service: string
+  service_settings: InferenceServiceSettings
+  task_settings: InferenceTaskSettings
+}
+
+export interface InferenceServiceSettings {
+  [key: string]: never
+}
+
+export interface InferenceTaskSettings {
+  [key: string]: never
+}
+
+export type InferenceTaskType = 'sparse_embedding'
+
+export interface InferenceDeleteModelRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+}
+
+export type InferenceDeleteModelResponse = AcknowledgedResponseBase
+
+export interface InferenceGetModelRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+}
+
+export type InferenceGetModelResponse = InferenceModelConfigContainer
+
+export interface InferenceInferenceRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+  body?: {
+    input: string
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export interface InferenceInferenceResponse {
+  predicted_value: InferenceInferenceResult
+}
+
+export interface InferencePutModelRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+  body?: InferenceModelConfig
+}
+
+export type InferencePutModelResponse = InferenceModelConfigContainer
+
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
   value: any[]
