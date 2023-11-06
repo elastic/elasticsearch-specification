@@ -26307,7 +26307,14 @@
                   "description": "Array of wildcard (`*`) patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:Field"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                      }
+                    ]
                   }
                 },
                 "knn": {
@@ -26382,7 +26389,14 @@
                   "description": "Array of wildcard (`*`) patterns.\nThe request returns values for field names matching these patterns in the `hits.fields` property of the response.",
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_types:Field"
+                      }
+                    ]
                   }
                 },
                 "suggest": {
@@ -34067,6 +34081,9 @@
         "oneOf": [
           {
             "type": "boolean"
+          },
+          {
+            "$ref": "#/components/schemas/_types:Fields"
           },
           {
             "$ref": "#/components/schemas/_global.search._types:SourceFilter"
@@ -54979,7 +54996,14 @@
             "description": "Array of wildcard (*) patterns. The request returns doc values for field\nnames matching these patterns in the hits.fields property of the response.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/_types:Field"
+                },
+                {
+                  "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                }
+              ]
             }
           },
           "knn": {
@@ -55060,7 +55084,14 @@
             "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/_types:Field"
+                },
+                {
+                  "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                }
+              ]
             }
           },
           "terminate_after": {
