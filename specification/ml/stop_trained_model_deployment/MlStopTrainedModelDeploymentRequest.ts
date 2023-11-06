@@ -30,9 +30,9 @@ import { Id } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier for the deployment of the model.
+     * The unique identifier of the trained model.
      */
-    deployment_id: Id
+    model_id: Id
   }
   query_parameters: {
     /**
