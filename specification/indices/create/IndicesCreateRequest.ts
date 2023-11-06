@@ -71,6 +71,7 @@ export interface Request extends RequestBase {
      * - Field data types
      * - Mapping parameters
      * @doc_id mapping
+     * @aliases mapping
      */
     mappings?: TypeMapping
     /**
