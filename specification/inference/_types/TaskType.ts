@@ -17,6 +17,10 @@
  * under the License.
  */
 
+/**
+ * Task types used in the API
+ */
 export enum TaskType {
-  sparse_embedding = 0
+  sparse_embedding = 0,
+  text_embedding = 1
 }

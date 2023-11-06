@@ -19,8 +19,8 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TaskType } from '../_types/TaskType'
-import { TaskSettings } from '../_types/Services'
+import { TaskType } from '@inference/_types/TaskType'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
  * Perform inference on the service

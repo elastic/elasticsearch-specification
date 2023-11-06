@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ModelConfigContainer } from '../_types/Services'
+import { ModelConfigContainer } from '@inference/_types/Services'
 
 export class Response {
   body: ModelConfigContainer

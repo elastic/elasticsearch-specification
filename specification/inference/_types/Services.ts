@@ -42,6 +42,14 @@ export class ModelConfig {
  */
 export class ModelConfigContainer {
   /**
+   * The model Id
+   */
+  model_id: string
+  /**
+   * The model's task type
+   */
+  task_type: TaskType
+  /**
    * The service type
    */
   service: string

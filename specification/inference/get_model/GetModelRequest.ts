@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TaskType } from '../_types/TaskType'
+import { TaskType } from '@inference/_types/TaskType'
 
 /**
  * Get an inference service model

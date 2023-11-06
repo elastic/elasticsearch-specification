@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { InferenceResult } from '../_types/Results'
+import { InferenceResult } from '@inference/_types/Results'
 
 export class Response {
   body: {

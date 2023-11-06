@@ -20,4 +20,20 @@
 import { double } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
-export type InferenceResult = Dictionary<string, double>
+/**
+ * Sparse Embedding tokens are represented as a dictionary
+ * of string to double.
+ */
+
+export type SparseVector = Dictionary<string, double>
+
+/**
+ * Text Embedding results are represented as Dense Vectors
+ * of doubles.
+ */
+export type DenseVector = Array<double>
+
+/**
+ * Inference result is the union of all the result types
+ */
+export type InferenceResult = SparseVector | DenseVector
