@@ -146,7 +146,7 @@ export interface Request extends RequestBase {
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
      */
-    docvalue_fields?: FieldAndFormat[]
+    docvalue_fields?: Array<Field | FieldAndFormat>
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.
@@ -183,7 +183,10 @@ export interface Request extends RequestBase {
      * Array of wildcard (*) patterns. The request returns values for field names
      * matching these patterns in the hits.fields property of the response.
      */
-    fields?: Array<FieldAndFormat>
+    fields?: Array<FieldAndFormat | Field>
+    /**
+     * Defines a suggester that provides similar looking terms based on a provided text.
+     */
     suggest?: Suggester
     /**
      * Maximum number of documents to collect for each shard. If a query reaches this
