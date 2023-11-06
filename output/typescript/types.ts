@@ -728,7 +728,7 @@ export interface MsearchMultisearchBody {
   explain?: boolean
   ext?: Record<string, any>
   stored_fields?: Fields
-  docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+  docvalue_fields?: (Field | QueryDslFieldAndFormat | Field)[]
   knn?: KnnQuery | KnnQuery[]
   from?: integer
   highlight?: SearchHighlight
@@ -742,7 +742,7 @@ export interface MsearchMultisearchBody {
   size?: integer
   sort?: Sort
   _source?: SearchSourceConfig
-  fields?: (QueryDslFieldAndFormat | Field)[]
+  fields?: (Field | QueryDslFieldAndFormat | Field)[]
   terminate_after?: long
   stats?: string[]
   timeout?: string
@@ -1194,7 +1194,7 @@ export interface SearchRequest extends RequestBase {
     highlight?: SearchHighlight
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+    docvalue_fields?: (Field | QueryDslFieldAndFormat | Field)[]
     knn?: KnnQuery | KnnQuery[]
     rank?: RankContainer
     min_score?: double
@@ -1208,7 +1208,7 @@ export interface SearchRequest extends RequestBase {
     slice?: SlicedScroll
     sort?: Sort
     _source?: SearchSourceConfig
-    fields?: (QueryDslFieldAndFormat | Field)[]
+    fields?: (QueryDslFieldAndFormat | Field | Field)[]
     suggest?: SearchSuggester
     terminate_after?: long
     timeout?: string
@@ -1632,7 +1632,7 @@ export interface SearchSmoothingModelContainer {
   stupid_backoff?: SearchStupidBackoffSmoothingModel
 }
 
-export type SearchSourceConfig = boolean | SearchSourceFilter | Fields
+export type SearchSourceConfig = boolean | Fields | SearchSourceFilter | Fields
 
 export type SearchSourceConfigParam = boolean | Fields
 
