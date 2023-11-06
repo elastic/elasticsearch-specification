@@ -371,7 +371,7 @@ export interface Request extends RequestBase {
      * Array of wildcard (`*`) patterns.
      * The request returns doc values for field names matching these patterns in the `hits.fields` property of the response.
      */
-    docvalue_fields?: FieldAndFormat[]
+    docvalue_fields?: Array<Field | FieldAndFormat>
     /**
      * Defines the approximate kNN search to run.
      * @availability stack since=8.4.0
@@ -442,7 +442,7 @@ export interface Request extends RequestBase {
      * Array of wildcard (`*`) patterns.
      * The request returns values for field names matching these patterns in the `hits.fields` property of the response.
      */
-    fields?: Array<FieldAndFormat>
+    fields?: Array<FieldAndFormat | Field>
     /**
      * Defines a suggester that provides similar looking terms based on a provided text.
      */
