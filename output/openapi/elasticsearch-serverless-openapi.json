@@ -11403,13 +11403,6 @@
                     "items": {
                       "type": "string"
                     }
-                  },
-                  "scores": {
-                    "description": "The optional vocabulary value scores if required by the tokenizer.",
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    }
                   }
                 },
                 "required": [
@@ -44776,7 +44769,7 @@
         "type": "object",
         "properties": {
           "limit": {
-            "description": "[preview] This functionality is in technical preview and may be changed or removed in a future release.\nElastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.",
+            "description": "[preview] This functionality is in technical preview and may be changed or removed in a future release. Elastic will\napply best effort to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.",
             "type": "number"
           }
         }
