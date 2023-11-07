@@ -32,9 +32,9 @@ export class SourceFilter {
 
 /**
  * Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.
- * @codegen_names fetch, fields, filter
+ * @codegen_names fetch, filter
  */
-export type SourceConfig = boolean | Fields | SourceFilter
+export type SourceConfig = boolean | SourceFilter
 
 /**
  * Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.

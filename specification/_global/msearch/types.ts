@@ -23,7 +23,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import {
   ExpandWildcards,
-  Field,
   Fields,
   IndexName,
   Indices,
@@ -96,7 +95,7 @@ export class MultisearchBody {
    * Array of wildcard (*) patterns. The request returns doc values for field
    * names matching these patterns in the hits.fields property of the response.
    */
-  docvalue_fields?: Array<Field | FieldAndFormat>
+  docvalue_fields?: FieldAndFormat[]
   /**
    * Starting document offset. By default, you cannot page through more than 10,000
    * hits using the from and size parameters. To page through more hits, use the
@@ -140,7 +139,7 @@ export class MultisearchBody {
    * Array of wildcard (*) patterns. The request returns values for field names
    * matching these patterns in the hits.fields property of the response.
    */
-  fields?: Array<Field | FieldAndFormat>
+  fields?: Array<FieldAndFormat>
   /**
    * Maximum number of documents to collect for each shard. If a query reaches this
    * limit, Elasticsearch terminates the query early. Elasticsearch collects documents
