@@ -5763,7 +5763,7 @@
         "summary": "Returns an index template.",
         "description": "Returns an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
         "operationId": "indices-get-index-template-1",
         "parameters": [
@@ -5796,7 +5796,7 @@
         "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html"
         },
         "operationId": "indices-put-index-template",
         "parameters": [
@@ -5823,7 +5823,7 @@
         "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html"
         },
         "operationId": "indices-put-index-template-1",
         "parameters": [
@@ -5850,7 +5850,7 @@
         "summary": "Deletes an index template.",
         "description": "Deletes an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html"
         },
         "operationId": "indices-delete-index-template",
         "parameters": [
@@ -5906,7 +5906,7 @@
         "summary": "Returns information about whether a particular index template exists.",
         "description": "Returns information about whether a particular index template exists.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-templates.html"
         },
         "operationId": "indices-exists-index-template",
         "parameters": [
@@ -6180,7 +6180,7 @@
         "summary": "Returns an index template.",
         "description": "Returns an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
         "operationId": "indices-get-index-template",
         "parameters": [
@@ -6717,7 +6717,7 @@
         "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html"
         },
         "operationId": "indices-put-template",
         "parameters": [
@@ -6756,7 +6756,7 @@
         "summary": "Creates or updates an index template.",
         "description": "Creates or updates an index template.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html"
         },
         "operationId": "indices-put-template-1",
         "parameters": [
@@ -7067,7 +7067,7 @@
         "summary": "Simulate matching the given index name against the index templates in the system",
         "description": "Simulate matching the given index name against the index templates in the system",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html"
         },
         "operationId": "indices-simulate-index-template",
         "parameters": [
@@ -7176,7 +7176,7 @@
         "summary": "Simulate resolving the given template name or body",
         "description": "Simulate resolving the given template name or body",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html"
         },
         "operationId": "indices-simulate-template",
         "parameters": [
@@ -7208,7 +7208,7 @@
         "summary": "Simulate resolving the given template name or body",
         "description": "Simulate resolving the given template name or body",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html"
         },
         "operationId": "indices-simulate-template-1",
         "parameters": [
@@ -11403,6 +11403,13 @@
                     "items": {
                       "type": "string"
                     }
+                  },
+                  "scores": {
+                    "description": "The optional vocabulary value scores if required by the tokenizer.",
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
                   }
                 },
                 "required": [
@@ -14808,7 +14815,7 @@
         "summary": "Deletes a search application.",
         "description": "Deletes a search application.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-search-application.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-search-application.html"
         },
         "operationId": "search-application-delete",
         "parameters": [
@@ -17266,6 +17273,16 @@
             "in": "query",
             "name": "force",
             "description": "If this value is false, the transform must be stopped before it can be deleted. If true, the transform is\ndeleted regardless of its current state.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "delete_dest_index",
+            "description": "If this value is true, the destination index is deleted together with the transform. If false, the destination\nindex will not be deleted",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -44752,7 +44769,7 @@
         "type": "object",
         "properties": {
           "limit": {
-            "description": "[preview] This functionality is in technical preview and may be changed or removed in a future release. Elastic will\napply best effort to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.",
+            "description": "[preview] This functionality is in technical preview and may be changed or removed in a future release.\nElastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.",
             "type": "number"
           }
         }

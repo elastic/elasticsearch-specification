@@ -552,9 +552,27 @@
       ],
       "response": []
     },
+    "esql.query": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "features.get_features": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "fleet.delete_secret": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "fleet.get_secret": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -577,6 +595,12 @@
       "response": [
         "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
       ]
+    },
+    "fleet.post_secret": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "fleet.search": {
       "request": [
@@ -843,6 +867,12 @@
         "response definition indices.refresh:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
       ]
     },
+    "indices.reload_search_analyzers": {
+      "request": [
+        "Request: missing json spec query parameter 'resource'"
+      ],
+      "response": []
+    },
     "indices.simulate_index_template": {
       "request": [
         "Request: missing json spec query parameter 'cause'"
@@ -860,6 +890,30 @@
       "response": [
         "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "inference.delete_model": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.get_model": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.inference": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "inference.put_model": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "ingest.delete_pipeline": {
       "request": [],
@@ -1216,6 +1270,12 @@
         "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "security.get_settings": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.get_user": {
       "request": [],
       "response": [
@@ -1267,6 +1327,12 @@
       ]
     },
     "security.update_cross_cluster_api_key": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.update_settings": {
       "request": [
         "Missing request & response"
       ],
