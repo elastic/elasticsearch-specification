@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@_types/Numeric'
+import { float } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -25,13 +25,13 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * of string to double.
  */
 
-export type SparseVector = Dictionary<string, double>
+export type SparseVector = Dictionary<string, float>
 
 /**
  * Text Embedding results are represented as Dense Vectors
  * of doubles.
  */
-export type DenseVector = Array<double>
+export type DenseVector = Array<float>
 
 /**
  * Inference result is the union of all the result types

@@ -11429,7 +11429,7 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
-export type InferenceDenseVector = double[]
+export type InferenceDenseVector = float[]
 
 export type InferenceInferenceResult = InferenceSparseVector | InferenceDenseVector
 
@@ -11451,7 +11451,7 @@ export interface InferenceServiceSettings {
   [key: string]: never
 }
 
-export type InferenceSparseVector = Record<string, double>
+export type InferenceSparseVector = Record<string, float>
 
 export interface InferenceTaskSettings {
   [key: string]: never
