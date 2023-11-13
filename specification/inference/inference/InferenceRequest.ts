@@ -41,9 +41,10 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * Text input to the model
+     * Text input to the model.
+     * Either a string or an array of strings.
      */
-    input: string
+    input: string | Array<string>
     /**
      * Optional task settings
      */

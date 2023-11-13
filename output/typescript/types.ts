@@ -11481,7 +11481,7 @@ export interface InferenceInferenceRequest extends RequestBase {
   task_type: InferenceTaskType
   model_id: Id
   body?: {
-    input: string
+    input: string | string[]
     task_settings?: InferenceTaskSettings
   }
 }
