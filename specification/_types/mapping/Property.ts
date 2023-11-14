@@ -48,6 +48,7 @@ import {
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
   ShortNumberProperty,
+  SparseVectorProperty,
   TextProperty,
   UnsignedLongNumberProperty,
   VersionProperty,
@@ -117,6 +118,7 @@ export type Property =
   // complex
   | AggregateMetricDoubleProperty
   | DenseVectorProperty
+  | SparseVectorProperty
   | FlattenedProperty
   | NestedProperty
   | ObjectProperty
