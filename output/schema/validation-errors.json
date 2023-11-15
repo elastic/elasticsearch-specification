@@ -1036,12 +1036,6 @@
         "response definition ml.set_upgrade_mode:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "ml.start_trained_model_deployment": {
-      "request": [
-        "Request: missing json spec query parameter 'deployment_id'"
-      ],
-      "response": []
-    },
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
