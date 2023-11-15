@@ -48,6 +48,11 @@ export interface Request extends RequestBase {
      */
     cache_size?: ByteSize
     /**
+     * A unique identifier for the deployment of the model.
+     * @availability stack since=8.8.0
+     */
+    deployment_id?: string
+    /**
      * The number of model allocations on each node where the model is deployed.
      * All allocations on a node share the same copy of the model in memory but use
      * a separate set of threads to evaluate the model.
