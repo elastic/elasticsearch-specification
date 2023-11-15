@@ -45050,6 +45050,9 @@
             "$ref": "#/components/schemas/_types.mapping:DenseVectorProperty"
           },
           {
+            "$ref": "#/components/schemas/_types.mapping:SparseVectorProperty"
+          },
+          {
             "$ref": "#/components/schemas/_types.mapping:FlattenedProperty"
           },
           {
@@ -45953,6 +45956,27 @@
           "type",
           "m",
           "ef_construction"
+        ]
+      },
+      "_types.mapping:SparseVectorProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "sparse_vector"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
         ]
       },
       "_types.mapping:FlattenedProperty": {
