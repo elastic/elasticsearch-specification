@@ -18,6 +18,7 @@
  */
 
 import { TaskType } from '../_types/TaskType'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Configuration options when storing the model config
@@ -63,6 +64,6 @@ export class ModelConfigContainer {
   task_settings: TaskSettings
 }
 
-export class ServiceSettings {}
+export type ServiceSettings = UserDefinedValue
 
-export class TaskSettings {}
+export type TaskSettings = UserDefinedValue

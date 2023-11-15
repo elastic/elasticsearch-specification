@@ -11435,7 +11435,10 @@ export interface IndicesValidateQueryResponse {
 
 export type InferenceDenseVector = float[]
 
-export type InferenceInferenceResult = InferenceSparseVector | InferenceDenseVector
+export interface InferenceInferenceResult {
+  text_embedding?: InferenceTextEmbeddingResult[]
+  sparse_vector?: InferenceSparseVector[]
+}
 
 export interface InferenceModelConfig {
   service: string
@@ -11451,17 +11454,17 @@ export interface InferenceModelConfigContainer {
   task_settings: InferenceTaskSettings
 }
 
-export interface InferenceServiceSettings {
-  [key: string]: never
-}
+export type InferenceServiceSettings = any
 
 export type InferenceSparseVector = Record<string, float>
 
-export interface InferenceTaskSettings {
-  [key: string]: never
-}
+export type InferenceTaskSettings = any
 
 export type InferenceTaskType = 'sparse_embedding' | 'text_embedding'
+
+export interface InferenceTextEmbeddingResult {
+  embedding: InferenceDenseVector
+}
 
 export interface InferenceDeleteModelRequest extends RequestBase {
   task_type: InferenceTaskType
@@ -11486,9 +11489,7 @@ export interface InferenceInferenceRequest extends RequestBase {
   }
 }
 
-export interface InferenceInferenceResponse {
-  predicted_value: InferenceInferenceResult
-}
+export type InferenceInferenceResponse = InferenceInferenceResult
 
 export interface InferencePutModelRequest extends RequestBase {
   task_type: InferenceTaskType

@@ -20,7 +20,5 @@
 import { InferenceResult } from '@inference/_types/Results'
 
 export class Response {
-  body: {
-    predicted_value: InferenceResult
-  }
+  body: InferenceResult
 }

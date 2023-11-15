@@ -24,16 +24,26 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * Sparse Embedding tokens are represented as a dictionary
  * of string to double.
  */
-
 export type SparseVector = Dictionary<string, float>
 
 /**
  * Text Embedding results are represented as Dense Vectors
- * of doubles.
+ * of floats.
  */
 export type DenseVector = Array<float>
 
 /**
- * Inference result is the union of all the result types
+ * The text embedding result object
  */
-export type InferenceResult = SparseVector | DenseVector
+export class TextEmbeddingResult {
+  embedding: DenseVector
+}
+
+/**
+ * InferenceResult is an aggregation of mutually exclusive variants
+ * @variants container
+ */
+export class InferenceResult {
+  text_embedding?: Array<TextEmbeddingResult>
+  sparse_vector?: Array<SparseVector>
+}
