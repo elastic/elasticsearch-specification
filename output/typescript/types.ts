@@ -11437,7 +11437,7 @@ export type InferenceDenseVector = float[]
 
 export interface InferenceInferenceResult {
   text_embedding?: InferenceTextEmbeddingResult[]
-  sparse_vector?: InferenceSparseVector[]
+  sparse_embedding?: InferenceSparseVector[]
 }
 
 export interface InferenceModelConfig {

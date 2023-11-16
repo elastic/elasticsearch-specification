@@ -45,5 +45,5 @@ export class TextEmbeddingResult {
  */
 export class InferenceResult {
   text_embedding?: Array<TextEmbeddingResult>
-  sparse_vector?: Array<SparseVector>
+  sparse_embedding?: Array<SparseVector>
 }
