@@ -90,7 +90,7 @@ export class PathHierarchyTokenizer extends TokenizerBase {
   type: 'path_hierarchy'
   buffer_size: Stringified<integer>
   delimiter: string
-  replacement: string
+  replacement?: string
   reverse: Stringified<boolean>
   skip: Stringified<integer>
 }
