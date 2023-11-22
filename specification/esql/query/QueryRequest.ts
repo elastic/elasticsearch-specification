@@ -43,23 +43,23 @@ export interface Request extends RequestBase {
    */
   body: {
     /**
-     * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
-     */
-    query: string
-    /**
      * By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the json, yaml, cbor and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.
      */
     columnar?: boolean
-    time_zone?: TimeZone
     /**
      * Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.
      */
     filter?: QueryContainer
+    locale?: string
     /**
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      */
     params?: Array<string>
     pragmas?: Pragmas
-    locale?: string
+    /**
+     * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
+     */
+    query: string
+    time_zone?: TimeZone
   }
 }
