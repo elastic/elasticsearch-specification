@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { TimeZone } from '@_types/Time'
-import { Pragmas } from 'esql/_types/Pragmas'
+import { Pragmas } from '@esql/_types/Pragmas'
 
 /**
  * Executes an ESQL request
