@@ -32,6 +32,10 @@ export type SparseVector = Dictionary<string, float>
  */
 export type DenseVector = Array<float>
 
+export class SparseEmbeddingResult {
+  embedding: SparseVector
+}
+
 /**
  * The text embedding result object
  */
@@ -45,5 +49,5 @@ export class TextEmbeddingResult {
  */
 export class InferenceResult {
   text_embedding?: Array<TextEmbeddingResult>
-  sparse_embedding?: Array<SparseVector>
+  sparse_embedding?: Array<SparseEmbeddingResult>
 }

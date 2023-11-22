@@ -11437,7 +11437,7 @@ export type InferenceDenseVector = float[]
 
 export interface InferenceInferenceResult {
   text_embedding?: InferenceTextEmbeddingResult[]
-  sparse_embedding?: InferenceSparseVector[]
+  sparse_embedding?: InferenceSparseEmbeddingResult[]
 }
 
 export interface InferenceModelConfig {
@@ -11455,6 +11455,10 @@ export interface InferenceModelConfigContainer {
 }
 
 export type InferenceServiceSettings = any
+
+export interface InferenceSparseEmbeddingResult {
+  embedding: InferenceSparseVector
+}
 
 export type InferenceSparseVector = Record<string, float>
 
