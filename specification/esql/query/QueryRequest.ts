@@ -23,7 +23,7 @@ import { TimeZone } from '@_types/Time'
 import { Pragmas } from '@esql/_types/Pragmas'
 
 /**
- * Executes an ESQL request
+ * Executes an ES|QL request
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0 stability=experimental
  */
