@@ -26,6 +26,7 @@ import { Pragmas } from '@esql/_types/Pragmas'
  * Executes an ES|QL request
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0 stability=experimental
+ * @doc_id esql-query
  */
 export interface Request extends RequestBase {
   query_parameters: {
@@ -53,6 +54,7 @@ export interface Request extends RequestBase {
     locale?: string
     /**
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
+     * @doc_id esql-query-params
      */
     params?: Array<string>
     pragmas?: Pragmas
