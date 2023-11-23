@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
    */
   body: {
     /**
-     * By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the json, yaml, cbor and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.
+     * By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the JSON, YAML, CBOR and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.
      */
     columnar?: boolean
     /**
