@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
      */
     format?: string
     /**
-     * The character to use between values within a CSV row. Only valid for the csv format.
+     * The character to use between values within a CSV row. Only valid for the CSV format.
      */
     delimiter?: string
   }
