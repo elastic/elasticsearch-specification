@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { EsqlColumns } from '@_types/Binary'
+
 export class Response {
-  body: ArrayBuffer
+  body: EsqlColumns
 }

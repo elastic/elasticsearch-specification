@@ -19,3 +19,6 @@
 
 // Vector tile response
 export type MapboxVectorTiles = ArrayBuffer
+
+// ES|QL columns
+export type EsqlColumns = ArrayBuffer
