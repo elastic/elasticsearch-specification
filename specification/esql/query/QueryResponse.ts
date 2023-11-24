@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-
 export class Response {
-  body: UserDefinedValue
+  body: ArrayBuffer
 }
