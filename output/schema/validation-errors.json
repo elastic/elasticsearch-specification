@@ -897,6 +897,12 @@
         "response definition inference.delete_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "inference.put_model": {
+      "request": [
+        "request definition inference.put_model:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:ModelConfig'"
+      ],
+      "response": []
+    },
     "ingest.delete_pipeline": {
       "request": [],
       "response": [

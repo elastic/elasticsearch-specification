@@ -11446,12 +11446,9 @@ export interface InferenceModelConfig {
   task_settings: InferenceTaskSettings
 }
 
-export interface InferenceModelConfigContainer {
+export interface InferenceModelConfigContainer extends InferenceModelConfig {
   model_id: string
   task_type: InferenceTaskType
-  service: string
-  service_settings: InferenceServiceSettings
-  task_settings: InferenceTaskSettings
 }
 
 export type InferenceServiceSettings = any

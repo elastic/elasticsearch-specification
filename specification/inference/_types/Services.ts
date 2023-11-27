@@ -41,7 +41,7 @@ export class ModelConfig {
 /**
  * Represents a model as returned by the GET API
  */
-export class ModelConfigContainer {
+export class ModelConfigContainer extends ModelConfig {
   /**
    * The model Id
    */
@@ -50,18 +50,6 @@ export class ModelConfigContainer {
    * The model's task type
    */
   task_type: TaskType
-  /**
-   * The service type
-   */
-  service: string
-  /**
-   * Settings specific to the service
-   */
-  service_settings: ServiceSettings
-  /**
-   * Task settings specific to the service and model
-   */
-  task_settings: TaskSettings
 }
 
 export type ServiceSettings = UserDefinedValue
