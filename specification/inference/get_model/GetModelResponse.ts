@@ -20,5 +20,7 @@
 import { ModelConfigContainer } from '@inference/_types/Services'
 
 export class Response {
-  body: ModelConfigContainer
+  body: {
+    models: Array<ModelConfigContainer>
+  }
 }

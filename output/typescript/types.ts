@@ -11482,7 +11482,9 @@ export interface InferenceGetModelRequest extends RequestBase {
   model_id: Id
 }
 
-export type InferenceGetModelResponse = InferenceModelConfigContainer
+export interface InferenceGetModelResponse {
+  models: InferenceModelConfigContainer[]
+}
 
 export interface InferenceInferenceRequest extends RequestBase {
   task_type: InferenceTaskType
