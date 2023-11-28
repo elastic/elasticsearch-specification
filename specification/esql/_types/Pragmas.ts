@@ -25,13 +25,3 @@ export enum DataPartitioning {
   SEGMENT,
   DOC
 }
-
-export class Pragmas {
-  exchange_buffer_size?: integer
-  exchange_concurrent_clients?: integer
-  enrich_max_workers?: integer
-  task_concurrency?: integer
-  data_partitioning?: DataPartitioning
-  page_size?: integer
-  status_interval?: Duration
-}

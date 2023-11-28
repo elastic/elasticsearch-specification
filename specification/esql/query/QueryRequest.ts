@@ -57,7 +57,6 @@ export interface Request extends RequestBase {
      * @doc_id esql-query-params
      */
     params?: Array<ScalarValue>
-    pragmas?: Pragmas
     /**
      * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
      */
