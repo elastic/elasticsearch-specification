@@ -17,8 +17,8 @@
  * under the License.
  */
 
-// Vector tile response
-export type MapboxVectorTiles = ArrayBuffer
+import { EsqlColumns } from '@_types/Binary'
 
-// ES|QL columns
-export type EsqlColumns = ArrayBuffer
+export class Response {
+  body: EsqlColumns
+}

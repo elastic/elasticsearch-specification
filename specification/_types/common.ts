@@ -36,6 +36,12 @@ export type FieldValue =
   | null
   | UserDefinedValue
 
+/**
+ * A scalar value.
+ * @codegen_names long, double, string, boolean, null
+ */
+export type ScalarValue = long | double | string | boolean | null
+
 export class UrlParameter {}
 
 export type Uri = string

@@ -17,8 +17,11 @@
  * under the License.
  */
 
-// Vector tile response
-export type MapboxVectorTiles = ArrayBuffer
+import { integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
-// ES|QL columns
-export type EsqlColumns = ArrayBuffer
+export enum DataPartitioning {
+  SHARD,
+  SEGMENT,
+  DOC
+}
