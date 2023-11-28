@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Pragmas } from '@esql/_types/Pragmas'
 import { ScalarValue } from '@_types/common'
 
 /**
