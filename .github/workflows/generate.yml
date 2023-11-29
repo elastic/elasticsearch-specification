@@ -49,6 +49,7 @@ jobs:
       run: |
         make compile
         make generate
+        make transform-to-openapi
 
     - name: Check for Changed Files
       id: changes

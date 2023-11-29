@@ -28,6 +28,7 @@
       "@dangling_indices/*": ["dangling_indices/*"],
       "@enrich/*": ["enrich/*"],
       "@eql/*": ["eql/*"],
+      "@esql/*": ["esql/*"],
       "@features/*": ["features/*"],
       "@fleet/*": ["fleet/*"],
       "@graph/*": ["graph/*"],

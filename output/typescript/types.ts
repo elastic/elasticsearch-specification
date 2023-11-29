@@ -2162,6 +2162,8 @@ export interface ErrorResponseBase {
   status: integer
 }
 
+export type EsqlColumns = ArrayBuffer
+
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -2535,6 +2537,8 @@ export interface RrfRank {
   rank_constant?: long
   window_size?: long
 }
+
+export type ScalarValue = long | double | string | boolean | null
 
 export interface ScoreSort {
   order?: SortOrder
@@ -9225,6 +9229,20 @@ export interface EqlSearchRequest extends RequestBase {
 export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEvent>
 
 export type EqlSearchResultPosition = 'tail' | 'head'
+
+export interface EsqlQueryRequest extends RequestBase {
+  format?: string
+  delimiter?: string
+  body?: {
+    columnar?: boolean
+    filter?: QueryDslQueryContainer
+    locale?: string
+    params?: ScalarValue[]
+    query: string
+  }
+}
+
+export type EsqlQueryResponse = EsqlColumns
 
 export interface FeaturesFeature {
   name: string

@@ -553,10 +553,10 @@
       "response": []
     },
     "esql.query": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
+      ]
     },
     "features.get_features": {
       "request": [
