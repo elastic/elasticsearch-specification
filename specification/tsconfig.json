@@ -35,6 +35,7 @@
       "@ilm/*": ["ilm/*"],
       "@indices/*": ["indices/*"],
       "@ingest/*": ["ingest/*"],
+      "@inference/*": ["inference/*"],
       "@license/*": ["license/*"],
       "@logstash/*": ["logstash/*"],
       "@migration/*": ["migration/*"],
