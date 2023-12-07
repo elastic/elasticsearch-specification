@@ -17,26 +17,15 @@
  * under the License.
  */
 
-import {
-  IndicesPrivileges,
-  ApplicationPrivileges
-} from '@security/_types/Privileges'
-import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Metadata } from '@_types/common'
-import { RoleTemplate } from '@security/_types/RoleTemplate'
+import { Script } from '@_types/Scripting'
 
-export class Role {
-  cluster: string[]
-  indices: IndicesPrivileges[]
-  metadata: Metadata
-  run_as: string[]
-  transient_metadata: TransientMetadataConfig
-  applications: ApplicationPrivileges[]
-  role_templates?: RoleTemplate[]
-  /**
-   * @availability stack since=8.0.0
-   * @availability serverless
-   */
-  global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
+export enum TemplateFormat {
+  string = 0,
+  json = 1
+}
+
+// ES: TemplateRoleName
+export class RoleTemplate {
+  format?: TemplateFormat
+  template: Script
 }
