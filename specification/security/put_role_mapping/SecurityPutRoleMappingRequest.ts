@@ -20,6 +20,7 @@
 import { RoleMappingRule } from '@security/_types/RoleMappingRule'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
+import { RoleTemplate } from '@security/_types/RoleTemplate'
 
 /**
  * @rest_spec_name security.put_role_mapping
@@ -37,6 +38,7 @@ export interface Request extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
+    role_templates?: RoleTemplate[]
     rules?: RoleMappingRule
     run_as?: string[]
   }
