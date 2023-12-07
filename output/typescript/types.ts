@@ -16073,7 +16073,7 @@ export interface SecurityRoleMapping {
   metadata: Metadata
   roles: string[]
   rules: SecurityRoleMappingRule
-  role_templates?: SecurityGetRoleRoleTemplate[]
+  role_templates?: SecurityRoleTemplate[]
 }
 
 export interface SecurityRoleMappingRule {
@@ -16081,6 +16081,11 @@ export interface SecurityRoleMappingRule {
   all?: SecurityRoleMappingRule[]
   field?: SecurityFieldRule
   except?: SecurityRoleMappingRule
+}
+
+export interface SecurityRoleTemplate {
+  format?: SecurityTemplateFormat
+  template: Script
 }
 
 export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
@@ -16096,6 +16101,8 @@ export interface SecurityRoleTemplateQuery {
 }
 
 export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | StoredScriptId
+
+export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityTransientMetadataConfig {
   enabled: boolean
@@ -16427,16 +16434,9 @@ export interface SecurityGetRoleRole {
   run_as: string[]
   transient_metadata: SecurityTransientMetadataConfig
   applications: SecurityApplicationPrivileges[]
-  role_templates?: SecurityGetRoleRoleTemplate[]
+  role_templates?: SecurityRoleTemplate[]
   global?: Record<string, Record<string, Record<string, string[]>>>
 }
-
-export interface SecurityGetRoleRoleTemplate {
-  format?: SecurityGetRoleTemplateFormat
-  template: Script
-}
-
-export type SecurityGetRoleTemplateFormat = 'string' | 'json'
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Names
@@ -16711,6 +16711,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
+    role_templates?: SecurityRoleTemplate[]
     rules?: SecurityRoleMappingRule
     run_as?: string[]
   }
