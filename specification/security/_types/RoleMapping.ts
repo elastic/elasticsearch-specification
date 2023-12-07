@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RoleTemplate } from '@security/get_role/types'
 import { Metadata } from '@_types/common'
 import { RoleMappingRule } from './RoleMappingRule'
+import { RoleTemplate } from './RoleTemplate'
 
 // ES: ExpressionRoleMapping
 export class RoleMapping {
