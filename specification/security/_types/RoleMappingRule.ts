@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Name, Names } from '@_types/common'
 
@@ -33,14 +34,11 @@ export class RoleMappingRule {
 /**
  * @variants container
  */
-export class FieldRule {
-  username?: Name
+export class FieldRule
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  username?: Names
   dn?: Names
   groups?: Names
-  metadata?: UserDefinedValue
-  realm?: Realm
-}
-
-export class Realm {
-  name: Name
+  'realm.name'?: Name
 }
