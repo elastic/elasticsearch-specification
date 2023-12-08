@@ -22,13 +22,18 @@ import {
   Field,
   HealthStatus,
   IndexName,
-  ManagedBy,
   Metadata,
   Name,
   Uuid
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+
+enum ManagedBy {
+  'Index Lifecycle Management',
+  'Data stream lifecycle',
+  'Unmanaged'
+}
 
 export class DataStream {
   /**
