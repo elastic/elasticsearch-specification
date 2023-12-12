@@ -38,16 +38,6 @@ enum ManagedBy {
   'Unmanaged'
 }
 
-enum Foo {
-  FirstItem,
-  SecondItem
-}
-
-enum Bar {
-  first_item,
-  second_item
-}
-
 export class DataStream {
   /**
    * Custom metadata for the stream, copied from the `_meta` object of the stream’s matching index template.
