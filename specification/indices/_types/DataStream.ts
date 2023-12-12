@@ -30,9 +30,22 @@ import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 
 enum ManagedBy {
+  /** @codegen_name ilm */
   'Index Lifecycle Management',
+  /** @codegen_name datastream */
   'Data stream lifecycle',
+  /** @codegen_name unmanaged */
   'Unmanaged'
+}
+
+enum Foo {
+  FirstItem,
+  SecondItem
+}
+
+enum Bar {
+  first_item,
+  second_item
 }
 
 export class DataStream {
