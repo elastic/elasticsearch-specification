@@ -33,9 +33,9 @@ export class RoleMappingRule {
 
 /**
  * @variants container
+ * @non_exhaustive
  */
 export class FieldRule
-  implements AdditionalProperties<string, UserDefinedValue>
 {
   username?: Names
   dn?: Names
