@@ -44278,7 +44278,6 @@
               "type",
               "buffer_size",
               "delimiter",
-              "replacement",
               "reverse",
               "skip"
             ]
@@ -48513,7 +48512,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "next_generation_managed_by": {
-            "$ref": "#/components/schemas/_types:ManagedBy"
+            "$ref": "#/components/schemas/indices._types:ManagedBy"
           },
           "prefer_ilm": {
             "description": "Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.",
@@ -48562,26 +48561,12 @@
           "timestamp_field"
         ]
       },
-      "_types:ManagedBy": {
-        "oneOf": [
-          {
-            "type": "string",
-            "enum": [
-              "Index Lifecycle Management"
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "Data stream lifecycle"
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "Unmanaged"
-            ]
-          }
+      "indices._types:ManagedBy": {
+        "type": "string",
+        "enum": [
+          "Index Lifecycle Management",
+          "Data stream lifecycle",
+          "Unmanaged"
         ]
       },
       "indices._types:DataStreamIndex": {
@@ -48597,7 +48582,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "managed_by": {
-            "$ref": "#/components/schemas/_types:ManagedBy"
+            "$ref": "#/components/schemas/indices._types:ManagedBy"
           },
           "prefer_ilm": {
             "description": "Indicates if ILM should take precedence over DSL in case both are configured to manage this index.",
@@ -49147,8 +49132,14 @@
           },
           "version": {
             "$ref": "#/components/schemas/_types:VersionNumber"
+          },
+          "_meta": {
+            "$ref": "#/components/schemas/_types:Metadata"
           }
-        }
+        },
+        "required": [
+          "_meta"
+        ]
       },
       "ingest._types:ProcessorContainer": {
         "type": "object",

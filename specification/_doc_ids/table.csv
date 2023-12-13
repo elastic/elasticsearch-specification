@@ -114,13 +114,15 @@ dot-expand-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 drop-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/drop-processor.html
 enrich-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-processor.html
 enrich-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-stats-api.html
-eql-async-search-api, https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
-eql-async-search-status-api, https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html
+eql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
+eql-async-search-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-basic-syntax
 eql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-search-api.html
 eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-sequences
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
+esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
+esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params
 evaluate-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/evaluate-dfanalytics.html
 execute-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/execute-enrich-policy-api.html
 expected-reciprocal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_expected_reciprocal_rank_err

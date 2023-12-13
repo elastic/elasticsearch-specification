@@ -2162,6 +2162,8 @@ export interface ErrorResponseBase {
   status: integer
 }
 
+export type EsqlColumns = ArrayBuffer
+
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -2354,8 +2356,6 @@ export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
-export type ManagedBy = 'Index Lifecycle Management' | 'Data stream lifecycle' | 'Unmanaged'
-
 export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
@@ -2535,6 +2535,8 @@ export interface RrfRank {
   rank_constant?: long
   window_size?: long
 }
+
+export type ScalarValue = long | double | string | boolean | null
 
 export interface ScoreSort {
   order?: SortOrder
@@ -4580,7 +4582,7 @@ export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   type: 'path_hierarchy'
   buffer_size: SpecUtilsStringified<integer>
   delimiter: string
-  replacement: string
+  replacement?: string
   reverse: SpecUtilsStringified<boolean>
   skip: SpecUtilsStringified<integer>
 }
@@ -9226,6 +9228,20 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export interface EsqlQueryRequest extends RequestBase {
+  format?: string
+  delimiter?: string
+  body?: {
+    columnar?: boolean
+    filter?: QueryDslQueryContainer
+    locale?: string
+    params?: ScalarValue[]
+    query: string
+  }
+}
+
+export type EsqlQueryResponse = EsqlColumns
+
 export interface FeaturesFeature {
   name: string
   description: string
@@ -9664,7 +9680,7 @@ export interface IndicesDataStream {
   generation: integer
   hidden: boolean
   ilm_policy?: Name
-  next_generation_managed_by: ManagedBy
+  next_generation_managed_by: IndicesManagedBy
   prefer_ilm: boolean
   indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataStreamLifecycleWithRollover
@@ -9680,7 +9696,7 @@ export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
   ilm_policy?: Name
-  managed_by: ManagedBy
+  managed_by: IndicesManagedBy
   prefer_ilm: boolean
 }
 
@@ -9928,6 +9944,8 @@ export interface IndicesIndexingSlowlogSettings {
 export interface IndicesIndexingSlowlogTresholds {
   index?: IndicesSlowlogTresholdLevels
 }
+
+export type IndicesManagedBy = 'Index Lifecycle Management' | 'Data stream lifecycle' | 'Unmanaged'
 
 export interface IndicesMappingLimitSettings {
   coerce?: boolean
@@ -11433,6 +11451,75 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export type InferenceDenseVector = float[]
+
+export interface InferenceInferenceResult {
+  text_embedding?: InferenceTextEmbeddingResult[]
+  sparse_embedding?: InferenceSparseEmbeddingResult[]
+}
+
+export interface InferenceModelConfig {
+  service: string
+  service_settings: InferenceServiceSettings
+  task_settings: InferenceTaskSettings
+}
+
+export interface InferenceModelConfigContainer extends InferenceModelConfig {
+  model_id: string
+  task_type: InferenceTaskType
+}
+
+export type InferenceServiceSettings = any
+
+export interface InferenceSparseEmbeddingResult {
+  embedding: InferenceSparseVector
+}
+
+export type InferenceSparseVector = Record<string, float>
+
+export type InferenceTaskSettings = any
+
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding'
+
+export interface InferenceTextEmbeddingResult {
+  embedding: InferenceDenseVector
+}
+
+export interface InferenceDeleteModelRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+}
+
+export type InferenceDeleteModelResponse = AcknowledgedResponseBase
+
+export interface InferenceGetModelRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+}
+
+export interface InferenceGetModelResponse {
+  models: InferenceModelConfigContainer[]
+}
+
+export interface InferenceInferenceRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+  body?: {
+    input: string | string[]
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceInferenceResponse = InferenceInferenceResult
+
+export interface InferencePutModelRequest extends RequestBase {
+  task_type: InferenceTaskType
+  model_id: Id
+  body?: InferenceModelConfig
+}
+
+export type InferencePutModelResponse = InferenceModelConfigContainer
+
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
   value: any[]
@@ -11626,6 +11713,7 @@ export interface IngestPipeline {
   on_failure?: IngestProcessorContainer[]
   processors?: IngestProcessorContainer[]
   version?: VersionNumber
+  _meta: Metadata
 }
 
 export interface IngestPipelineConfig {
@@ -16054,7 +16142,7 @@ export interface SecurityRoleMapping {
   metadata: Metadata
   roles: string[]
   rules: SecurityRoleMappingRule
-  role_templates?: SecurityGetRoleRoleTemplate[]
+  role_templates?: SecurityRoleTemplate[]
 }
 
 export interface SecurityRoleMappingRule {
@@ -16062,6 +16150,11 @@ export interface SecurityRoleMappingRule {
   all?: SecurityRoleMappingRule[]
   field?: SecurityFieldRule
   except?: SecurityRoleMappingRule
+}
+
+export interface SecurityRoleTemplate {
+  format?: SecurityTemplateFormat
+  template: Script
 }
 
 export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
@@ -16077,6 +16170,8 @@ export interface SecurityRoleTemplateQuery {
 }
 
 export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | StoredScriptId
+
+export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityTransientMetadataConfig {
   enabled: boolean
@@ -16408,16 +16503,9 @@ export interface SecurityGetRoleRole {
   run_as: string[]
   transient_metadata: SecurityTransientMetadataConfig
   applications: SecurityApplicationPrivileges[]
-  role_templates?: SecurityGetRoleRoleTemplate[]
+  role_templates?: SecurityRoleTemplate[]
   global?: Record<string, Record<string, Record<string, string[]>>>
 }
-
-export interface SecurityGetRoleRoleTemplate {
-  format?: SecurityGetRoleTemplateFormat
-  template: Script
-}
-
-export type SecurityGetRoleTemplateFormat = 'string' | 'json'
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Names
@@ -16692,6 +16780,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
+    role_templates?: SecurityRoleTemplate[]
     rules?: SecurityRoleMappingRule
     run_as?: string[]
   }

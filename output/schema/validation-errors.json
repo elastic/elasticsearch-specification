@@ -553,10 +553,10 @@
       "response": []
     },
     "esql.query": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
+      ]
     },
     "features.get_features": {
       "request": [
@@ -892,26 +892,14 @@
       ]
     },
     "inference.delete_model": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "inference.get_model": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "inference.inference": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
+      "request": [],
+      "response": [
+        "response definition inference.delete_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "inference.put_model": {
       "request": [
-        "Missing request & response"
+        "request definition inference.put_model:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:ModelConfig'"
       ],
       "response": []
     },

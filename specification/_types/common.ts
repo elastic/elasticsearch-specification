@@ -36,6 +36,12 @@ export type FieldValue =
   | null
   | UserDefinedValue
 
+/**
+ * A scalar value.
+ * @codegen_names long, double, string, boolean, null
+ */
+export type ScalarValue = long | double | string | boolean | null
+
 export class UrlParameter {}
 
 export type Uri = string
@@ -70,11 +76,6 @@ export type IndexMetrics = string
 export type Metrics = string | string[]
 
 export type ClusterAlias = string
-
-export type ManagedBy =
-  | 'Index Lifecycle Management'
-  | 'Data stream lifecycle'
-  | 'Unmanaged'
 
 export type Name = string
 export type Names = Name | Name[]
