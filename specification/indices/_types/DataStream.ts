@@ -34,7 +34,7 @@ enum ManagedBy {
   'Index Lifecycle Management',
   /** @codegen_name datastream */
   // This should have been written with capital letters, it's a known typo and should not be corrected,
-  // since the test cases have already been written
+  // since the test cases have already been written.
   'Data stream lifecycle',
   /** @codegen_name unmanaged */
   'Unmanaged'
