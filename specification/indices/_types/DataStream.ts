@@ -32,9 +32,11 @@ import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifec
 enum ManagedBy {
   /** @codegen_name ilm */
   'Index Lifecycle Management',
-  /** This should have been written with capital letters, it's a known typo and should not be corrected
+  /**
+   * This should have been written with capital letters, it's a known typo and should not be corrected
    * since the test cases have already been written
-   * @codegen_name datastream */
+   * @codegen_name datastream
+   */
   'Data stream lifecycle',
   /** @codegen_name unmanaged */
   'Unmanaged'
@@ -44,7 +46,8 @@ export class DataStream {
   /**
    * Custom metadata for the stream, copied from the `_meta` object of the stream’s matching index template.
    * If empty, the response omits this property.
-   * @doc_id mapping-meta-field */
+   * @doc_id mapping-meta-field
+   */
   _meta?: Metadata
   /**
    *  If `true`, the data stream allows custom routing on write request.
