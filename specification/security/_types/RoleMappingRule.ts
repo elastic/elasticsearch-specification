@@ -35,8 +35,7 @@ export class RoleMappingRule {
  * @variants container
  * @non_exhaustive
  */
-export class FieldRule
-{
+export class FieldRule {
   username?: Names
   dn?: Names
   groups?: Names

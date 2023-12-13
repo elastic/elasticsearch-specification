@@ -16071,14 +16071,12 @@ export interface SecurityCreatedStatus {
   created: boolean
 }
 
-export interface SecurityFieldRuleKeys {
+export interface SecurityFieldRule {
   username?: Names
   dn?: Names
   groups?: Names
   'realm.name'?: Name
 }
-export type SecurityFieldRule = SecurityFieldRuleKeys
-  & { [property: string]: any }
 
 export interface SecurityFieldSecurity {
   except?: Fields
