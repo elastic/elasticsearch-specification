@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Name, Names } from '@_types/common'
 
