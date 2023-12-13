@@ -1810,6 +1810,919 @@
         }
       }
     },
+    "/_connector/{connector_id}/_check_in": {
+      "put": {
+        "tags": [
+          "connector.check_in"
+        ],
+        "summary": "Updates the last_seen timestamp in the connector document.",
+        "description": "Updates the last_seen timestamp in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-check-in",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be checked in",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}": {
+      "get": {
+        "tags": [
+          "connector.get"
+        ],
+        "summary": "Returns the details about a connector.",
+        "description": "Returns the details about a connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connector._types:Connector"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "connector.put"
+        ],
+        "summary": "Creates or updates a connector.",
+        "description": "Creates or updates a connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "index_name": {
+                    "type": "string"
+                  },
+                  "is_native": {
+                    "type": "boolean"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "service_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "index_name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "connector.delete"
+        ],
+        "summary": "Deletes a connector.",
+        "description": "Deletes a connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be deleted",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_last_sync": {
+      "put": {
+        "tags": [
+          "connector.last_sync"
+        ],
+        "summary": "Updates the stats of last sync in the connector document.",
+        "description": "Updates the stats of last sync in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-last-sync",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "last_access_control_sync_error": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_access_control_sync_scheduled_at": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_access_control_sync_status": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/connector._types:SyncStatus"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_deleted_document_count": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_incremental_sync_scheduled_at": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_indexed_document_count": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_seen": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_sync_error": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_sync_scheduled_at": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_sync_status": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/connector._types:SyncStatus"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "last_synced": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "last_access_control_sync_error",
+                  "last_access_control_sync_scheduled_at",
+                  "last_access_control_sync_status",
+                  "last_deleted_document_count",
+                  "last_incremental_sync_scheduled_at",
+                  "last_indexed_document_count",
+                  "last_seen",
+                  "last_sync_error",
+                  "last_sync_scheduled_at",
+                  "last_sync_status",
+                  "last_synced"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector": {
+      "get": {
+        "tags": [
+          "connector.list"
+        ],
+        "summary": "Lists all connectors.",
+        "description": "Lists all connectors.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Starting offset (default: 0)",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "description": "Specifies a max number of results to get",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/connector._types:Connector"
+                      }
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "results"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "connector.post"
+        ],
+        "summary": "Creates a connector.",
+        "description": "Creates a connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "index_name": {
+                    "type": "string"
+                  },
+                  "is_native": {
+                    "type": "boolean"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "service_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "index_name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_configuration": {
+      "put": {
+        "tags": [
+          "connector.update_configuration"
+        ],
+        "summary": "Updates the connector configuration.",
+        "description": "Updates the connector configuration.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-update-configuration",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "configuration": {
+                    "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
+                  }
+                },
+                "required": [
+                  "configuration"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_error": {
+      "put": {
+        "tags": [
+          "connector.update_error"
+        ],
+        "summary": "Updates the error field in the connector document.",
+        "description": "Updates the error field in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-update-error",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "error"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_filtering": {
+      "put": {
+        "tags": [
+          "connector.update_filtering"
+        ],
+        "summary": "Updates the filtering field in the connector document.",
+        "description": "Updates the filtering field in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-update-filtering",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filtering": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/connector._types:FilteringConfig"
+                    }
+                  }
+                },
+                "required": [
+                  "filtering"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_name": {
+      "put": {
+        "tags": [
+          "connector.update_name"
+        ],
+        "summary": "Updates the name and/or description fields in the connector document.",
+        "description": "Updates the name and/or description fields in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-update-name",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_pipeline": {
+      "put": {
+        "tags": [
+          "connector.update_pipeline"
+        ],
+        "summary": "Updates the pipeline field in the connector document.",
+        "description": "Updates the pipeline field in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-update-pipeline",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pipeline": {
+                    "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
+                  }
+                },
+                "required": [
+                  "pipeline"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_scheduling": {
+      "put": {
+        "tags": [
+          "connector.update_scheduling"
+        ],
+        "summary": "Updates the scheduling field in the connector document.",
+        "description": "Updates the scheduling field in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+        },
+        "operationId": "connector-update-scheduling",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "scheduling": {
+                    "$ref": "#/components/schemas/connector._types:SchedulingConfiguraton"
+                  }
+                },
+                "required": [
+                  "scheduling"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_count": {
       "get": {
         "tags": [
@@ -47406,6 +48319,908 @@
           }
         }
       },
+      "_types:Result": {
+        "type": "string",
+        "enum": [
+          "created",
+          "updated",
+          "deleted",
+          "not_found",
+          "noop"
+        ]
+      },
+      "connector._types:Connector": {
+        "type": "object",
+        "properties": {
+          "api_key_id": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
+          },
+          "custom_scheduling": {
+            "$ref": "#/components/schemas/connector._types:ConnectorCustomScheduling"
+          },
+          "description": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "error": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "features": {
+            "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
+          },
+          "filtering": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:FilteringConfig"
+            }
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "index_name": {
+            "type": "string"
+          },
+          "is_native": {
+            "type": "boolean"
+          },
+          "language": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_access_control_sync_error": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_access_control_sync_scheduled_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_access_control_sync_status": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/connector._types:SyncStatus"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_deleted_document_count": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_incremental_sync_scheduled_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_indexed_document_count": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_seen": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_sync_error": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_sync_scheduled_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_sync_status": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/connector._types:SyncStatus"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "last_synced": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "pipeline": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/connector._types:SchedulingConfiguraton"
+          },
+          "service_type": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/connector._types:ConnectorStatus"
+          },
+          "sync_now": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "api_key_id",
+          "configuration",
+          "custom_scheduling",
+          "description",
+          "error",
+          "features",
+          "filtering",
+          "index_name",
+          "is_native",
+          "language",
+          "last_access_control_sync_error",
+          "last_access_control_sync_scheduled_at",
+          "last_access_control_sync_status",
+          "last_deleted_document_count",
+          "last_incremental_sync_scheduled_at",
+          "last_indexed_document_count",
+          "last_seen",
+          "last_sync_error",
+          "last_sync_scheduled_at",
+          "last_sync_status",
+          "last_synced",
+          "name",
+          "scheduling",
+          "service_type",
+          "status",
+          "sync_now"
+        ]
+      },
+      "connector._types:ConnectorConfiguration": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/connector._types:ConnectorConfigProperties"
+            },
+            {
+              "$ref": "#/components/schemas/connector._types:ConnectorConfigCategoryProperties"
+            },
+            {
+              "nullable": true,
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "connector._types:ConnectorConfigProperties": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "default_value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:Dependency"
+            }
+          },
+          "display": {
+            "$ref": "#/components/schemas/connector._types:DisplayType"
+          },
+          "label": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:SelectOption"
+            }
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "placeholder": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sensitive": {
+            "type": "boolean"
+          },
+          "tooltip": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "type": {
+            "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
+          },
+          "ui_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "validations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:Validation"
+            }
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "required": [
+          "default_value",
+          "depends_on",
+          "display",
+          "label",
+          "options",
+          "required",
+          "sensitive",
+          "tooltip",
+          "type",
+          "ui_restrictions",
+          "validations",
+          "value"
+        ]
+      },
+      "connector._types:Dependency": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "required": [
+          "field",
+          "value"
+        ]
+      },
+      "connector._types:DisplayType": {
+        "type": "string",
+        "enum": [
+          "TEXTBOX",
+          "TEXTAREA",
+          "NUMERIC",
+          "TOGGLE",
+          "DROPDOWN"
+        ]
+      },
+      "connector._types:SelectOption": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "connector._types:ConnectorFieldType": {
+        "type": "string",
+        "enum": [
+          "STRING",
+          "INTEGER",
+          "LIST",
+          "BOOLEAN"
+        ]
+      },
+      "connector._types:Validation": {
+        "type": "object",
+        "properties": {
+          "constraint": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "constraint",
+          "type"
+        ]
+      },
+      "connector._types:ConnectorConfigCategoryProperties": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "\"category\""
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "order",
+          "type"
+        ]
+      },
+      "connector._types:ConnectorCustomScheduling": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/connector._types:CustomScheduling"
+            },
+            {
+              "nullable": true,
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "connector._types:CustomScheduling": {
+        "type": "object",
+        "properties": {
+          "configuration_overrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "interval": {
+            "type": "string"
+          },
+          "last_synced": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "configuration_overrides",
+          "enabled",
+          "interval",
+          "last_synced",
+          "name"
+        ]
+      },
+      "connector._types:ConnectorFeatures": {
+        "type": "object",
+        "properties": {
+          "[FeatureName.DOCUMENT_LEVEL_SECURITY]": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "[FeatureName.FILTERING_ADVANCED_CONFIG]": {
+            "type": "boolean"
+          },
+          "[FeatureName.FILTERING_RULES]": {
+            "type": "boolean"
+          },
+          "[FeatureName.INCREMENTAL_SYNC]": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "[FeatureName.SYNC_RULES]": {
+            "$ref": "#/components/schemas/connector._types:SyncRulesFeature"
+          }
+        }
+      },
+      "connector._types:FeatureEnabled": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      },
+      "connector._types:SyncRulesFeature": {
+        "type": "object",
+        "properties": {
+          "advanced": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "basic": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          }
+        }
+      },
+      "connector._types:FilteringConfig": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "$ref": "#/components/schemas/connector._types:FilteringRules"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "draft": {
+            "$ref": "#/components/schemas/connector._types:FilteringRules"
+          }
+        },
+        "required": [
+          "active",
+          "domain",
+          "draft"
+        ]
+      },
+      "connector._types:FilteringRules": {
+        "type": "object",
+        "properties": {
+          "advanced_snippet": {
+            "$ref": "#/components/schemas/connector._types:FilteringAdvancedSnippet"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:FilteringRule"
+            }
+          },
+          "validation": {
+            "$ref": "#/components/schemas/connector._types:FilteringRulesValidation"
+          }
+        },
+        "required": [
+          "advanced_snippet",
+          "rules",
+          "validation"
+        ]
+      },
+      "connector._types:FilteringAdvancedSnippet": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "value": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "created_at",
+          "updated_at",
+          "value"
+        ]
+      },
+      "connector._types:FilteringRule": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/connector._types:FilteringPolicy"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/connector._types:FilteringRuleRule"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "created_at",
+          "field",
+          "id",
+          "order",
+          "policy",
+          "rule",
+          "updated_at",
+          "value"
+        ]
+      },
+      "connector._types:FilteringPolicy": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "\"exclude\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\"include\""
+            ]
+          }
+        ]
+      },
+      "connector._types:FilteringRuleRule": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "\"contains\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\"ends_with\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\"equals\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\">\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\"<\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\"regex\""
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "\"starts_with\""
+            ]
+          }
+        ]
+      },
+      "connector._types:FilteringRulesValidation": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:FilteringValidation"
+            }
+          },
+          "state": {
+            "$ref": "#/components/schemas/connector._types:FilteringValidationState"
+          }
+        },
+        "required": [
+          "errors",
+          "state"
+        ]
+      },
+      "connector._types:FilteringValidation": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "ids",
+          "messages"
+        ]
+      },
+      "connector._types:FilteringValidationState": {
+        "type": "string",
+        "enum": [
+          "EDITED",
+          "INVALID",
+          "VALID"
+        ]
+      },
+      "connector._types:SyncStatus": {
+        "type": "string",
+        "enum": [
+          "CANCELING",
+          "CANCELED",
+          "COMPLETED",
+          "ERROR",
+          "IN_PROGRESS",
+          "PENDING",
+          "SUSPENDED"
+        ]
+      },
+      "connector._types:IngestPipelineParams": {
+        "type": "object",
+        "properties": {
+          "extract_binary_content": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reduce_whitespace": {
+            "type": "boolean"
+          },
+          "run_ml_inference": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "extract_binary_content",
+          "name",
+          "reduce_whitespace",
+          "run_ml_inference"
+        ]
+      },
+      "connector._types:SchedulingConfiguraton": {
+        "type": "object",
+        "properties": {
+          "access_control": {
+            "$ref": "#/components/schemas/connector._types:ConnectorScheduling"
+          },
+          "full": {
+            "$ref": "#/components/schemas/connector._types:ConnectorScheduling"
+          },
+          "incremental": {
+            "$ref": "#/components/schemas/connector._types:ConnectorScheduling"
+          }
+        },
+        "required": [
+          "access_control",
+          "full",
+          "incremental"
+        ]
+      },
+      "connector._types:ConnectorScheduling": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "interval": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "enabled",
+          "interval"
+        ]
+      },
+      "connector._types:ConnectorStatus": {
+        "type": "string",
+        "enum": [
+          "CREATED",
+          "NEEDS_CONFIGURATION",
+          "CONFIGURED",
+          "CONNECTED",
+          "ERROR"
+        ]
+      },
       "_types:WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -47442,16 +49257,6 @@
           "_seq_no",
           "_shards",
           "_version"
-        ]
-      },
-      "_types:Result": {
-        "type": "string",
-        "enum": [
-          "created",
-          "updated",
-          "deleted",
-          "not_found",
-          "noop"
         ]
       },
       "_types:Conflicts": {
