@@ -32,11 +32,9 @@ import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifec
 enum ManagedBy {
   /** @codegen_name ilm */
   'Index Lifecycle Management',
-  /**
-   * This should have been written with capital letters, it's a known typo and should not be corrected
-   * since the test cases have already been written
-   * @codegen_name datastream
-   */
+  /** @codegen_name datastream */
+  // This should have been written with capital letters, it's a known typo and should not be corrected,
+  // since the test cases have already been written
   'Data stream lifecycle',
   /** @codegen_name unmanaged */
   'Unmanaged'
