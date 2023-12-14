@@ -23,8 +23,8 @@ import { integer } from '@_types/Numeric'
 /**
  * Retrieves a synonym set
  * @rest_spec_name synonyms.get_synonym
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
