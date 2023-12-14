@@ -47579,7 +47579,7 @@
             "$ref": "#/components/schemas/_types:Field"
           },
           "query": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
           },
           "name": {
             "$ref": "#/components/schemas/_types:Name"

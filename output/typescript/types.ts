@@ -9062,7 +9062,7 @@ export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
-  query?: string
+  query?: QueryDslQueryContainer
   name?: Name
   elasticsearch_version?: string
 }
