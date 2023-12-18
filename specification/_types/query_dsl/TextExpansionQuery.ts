@@ -28,6 +28,6 @@ export class TextExpansionQuery extends QueryBase {
   /** Token pruning configurations
    * @availability stack since=8.13.0 stability=experimental
    * @availability serverless stability=experimental
-  */
+   */
   pruning_config?: TokenPruningConfig
 }

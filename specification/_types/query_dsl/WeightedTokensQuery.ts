@@ -24,7 +24,10 @@ import { Field, FieldValue } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { float } from '@_types/Numeric'
 
-export class WeightedTokensQuery extends QueryBase implements AdditionalProperty<Field, FieldValue> {
+export class WeightedTokensQuery
+  extends QueryBase
+  implements AdditionalProperty<Field, FieldValue>
+{
   /** The field to query */
   value: FieldValue
   /** The tokens representing this query */
