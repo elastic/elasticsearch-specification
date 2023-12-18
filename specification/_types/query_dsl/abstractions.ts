@@ -94,6 +94,7 @@ import {
   WildcardQuery
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
+import { WeightedTokensQuery } from './WeightedTokensQuery'
 
 /**
  * @variants container
@@ -373,6 +374,13 @@ export class QueryContainer {
    * @doc_id query-dsl-text-expansion-query
    */
   text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
+  /**
+   * Supports prototyping text_expansion query results by sending in precomputed tokens with the query. Not intended for production workflows.
+   * @availability stack since=8.13.0
+   * @availability serverless
+   * @doc_id query-dsl-weighted-tokens-query
+   */
+  weighted_tokens?: SingleKeyDictionary<Field, WeightedTokensQuery>
   /**
    * Returns documents that contain terms matching a wildcard pattern.
    * @doc_id query-dsl-wildcard-query

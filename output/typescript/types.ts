@@ -5857,6 +5857,7 @@ export interface QueryDslQueryContainer {
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
   text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
+  weighted_tokens?: Partial<Record<Field, QueryDslWeightedTokensQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -6095,6 +6096,14 @@ export interface QueryDslTokenPruningConfig {
 export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
 }
+
+export interface QueryDslWeightedTokensQueryKeys extends QueryDslQueryBase {
+  value: FieldValue
+  tokens: Record<string, float>
+  pruning_config?: QueryDslTokenPruningConfig
+}
+export type QueryDslWeightedTokensQuery = QueryDslWeightedTokensQueryKeys
+  & { [property: string]: FieldValue | Record<string, float> | QueryDslTokenPruningConfig | float | string }
 
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
