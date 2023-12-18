@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { TokenPruningConfig } from './TokenPruningConfig'
 import { QueryBase } from './abstractions'
 
 export class TextExpansionQuery extends QueryBase {
@@ -24,4 +25,9 @@ export class TextExpansionQuery extends QueryBase {
   model_id: string
   /** The query text */
   model_text: string
+  /** Token pruning configurations
+   * @availability stack since=8.13.0 stability=experimental
+   * @availability serverless stability=experimental
+  */
+  pruning_config?: TokenPruningConfig
 }
