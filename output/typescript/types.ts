@@ -5857,6 +5857,7 @@ export interface QueryDslQueryContainer {
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
   text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
+  weighted_tokens?: Partial<Record<Field, QueryDslWeightedTokensQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -6081,12 +6082,24 @@ export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
 export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
   model_id: string
   model_text: string
+  pruning_config?: QueryDslTokenPruningConfig
 }
 
 export type QueryDslTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
 
+export interface QueryDslTokenPruningConfig {
+  tokens_freq_ratio_threshold?: integer
+  tokens_weight_threshold?: float
+  only_score_pruned_tokens?: boolean
+}
+
 export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
+}
+
+export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
+  tokens: Record<string, float>
+  pruning_config?: QueryDslTokenPruningConfig
 }
 
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {
