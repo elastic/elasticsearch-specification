@@ -6088,7 +6088,7 @@ export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
 export type QueryDslTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
 
 export interface QueryDslTokenPruningConfig {
-  tokens_freq_ratio_threshold?: float
+  tokens_freq_ratio_threshold?: integer
   tokens_weight_threshold?: float
   only_score_pruned_tokens?: boolean
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { float } from '@_types/Numeric'
+import { float, integer } from '@_types/Numeric'
 
 export class TokenPruningConfig {
   /** Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.
    * @server_default 5
    */
-  tokens_freq_ratio_threshold?: float
+  tokens_freq_ratio_threshold?: integer
   /** Tokens whose weight is less than this threshold are considered nonsignificant and pruned.
    * @server_default 0.4
    */
