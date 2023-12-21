@@ -32226,6 +32226,15 @@
             "minProperties": 1,
             "maxProperties": 1
           },
+          "weighted_tokens": {
+            "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WeightedTokensQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
           "wildcard": {
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
@@ -36022,11 +36031,56 @@
               "model_text": {
                 "description": "The query text",
                 "type": "string"
+              },
+              "pruning_config": {
+                "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
               }
             },
             "required": [
               "model_id",
               "model_text"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl:TokenPruningConfig": {
+        "type": "object",
+        "properties": {
+          "tokens_freq_ratio_threshold": {
+            "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
+            "type": "number"
+          },
+          "tokens_weight_threshold": {
+            "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
+            "type": "number"
+          },
+          "only_score_pruned_tokens": {
+            "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
+            "type": "boolean"
+          }
+        }
+      },
+      "_types.query_dsl:WeightedTokensQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "tokens": {
+                "description": "The tokens representing this query",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "pruning_config": {
+                "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
+              }
+            },
+            "required": [
+              "tokens"
             ]
           }
         ]
