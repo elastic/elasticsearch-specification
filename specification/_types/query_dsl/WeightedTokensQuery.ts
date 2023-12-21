@@ -26,7 +26,6 @@ import { float } from '@_types/Numeric'
 
 export class WeightedTokensQuery
   extends QueryBase
-  implements AdditionalProperty<Field, FieldValue>
 {
   /** The tokens representing this query */
   tokens: Dictionary<string, float>

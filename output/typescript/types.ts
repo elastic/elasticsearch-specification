@@ -6097,12 +6097,10 @@ export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
 }
 
-export interface QueryDslWeightedTokensQueryKeys extends QueryDslQueryBase {
+export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
   tokens: Record<string, float>
   pruning_config?: QueryDslTokenPruningConfig
 }
-export type QueryDslWeightedTokensQuery = QueryDslWeightedTokensQueryKeys
-  & { [property: string]: FieldValue | Record<string, float> | QueryDslTokenPruningConfig | float | string }
 
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
