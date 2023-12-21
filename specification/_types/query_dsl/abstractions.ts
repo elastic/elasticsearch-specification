@@ -375,7 +375,7 @@ export class QueryContainer {
    */
   text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
   /**
-   * Supports prototyping text_expansion query results by sending in precomputed tokens with the query. Not intended for production workflows.
+   * Supports returning text_expansion query results by sending in precomputed tokens with the query.
    * @availability stack since=8.13.0
    * @availability serverless
    * @doc_id query-dsl-weighted-tokens-query
