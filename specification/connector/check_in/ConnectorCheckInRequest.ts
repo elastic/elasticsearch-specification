@@ -24,6 +24,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name connector.check_in
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-checkin
  */
 export interface Request extends RequestBase {
   path_parts: {

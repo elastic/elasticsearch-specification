@@ -25,6 +25,7 @@ import { SyncStatus } from '../_types/Connector'
  * @rest_spec_name connector.last_sync
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-last-sync
  */
 export interface Request extends RequestBase {
   path_parts: {

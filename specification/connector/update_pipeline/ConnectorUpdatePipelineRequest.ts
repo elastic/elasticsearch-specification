@@ -25,6 +25,7 @@ import { IngestPipelineParams } from '../_types/Connector'
  * @rest_spec_name connector.update_pipeline
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-update-pipeline
  */
 export interface Request extends RequestBase {
   path_parts: {
