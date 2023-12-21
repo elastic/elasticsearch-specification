@@ -24,9 +24,7 @@ import { Field, FieldValue } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { float } from '@_types/Numeric'
 
-export class WeightedTokensQuery
-  extends QueryBase
-{
+export class WeightedTokensQuery extends QueryBase {
   /** The tokens representing this query */
   tokens: Dictionary<string, float>
   /** Token pruning configurations */
