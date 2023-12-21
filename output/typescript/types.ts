@@ -6098,7 +6098,6 @@ export interface QueryDslTypeQuery extends QueryDslQueryBase {
 }
 
 export interface QueryDslWeightedTokensQueryKeys extends QueryDslQueryBase {
-  value: FieldValue
   tokens: Record<string, float>
   pruning_config?: QueryDslTokenPruningConfig
 }

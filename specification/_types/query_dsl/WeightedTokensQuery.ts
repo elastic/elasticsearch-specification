@@ -28,8 +28,6 @@ export class WeightedTokensQuery
   extends QueryBase
   implements AdditionalProperty<Field, FieldValue>
 {
-  /** The field to query */
-  value: FieldValue
   /** The tokens representing this query */
   tokens: Dictionary<string, float>
   /** Token pruning configurations */
