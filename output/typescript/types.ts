@@ -16469,6 +16469,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
   realm_name?: Name
   username?: Username
   with_limited_by?: boolean
+  active_only?: boolean
 }
 
 export interface SecurityGetApiKeyResponse {
