@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
      */
     with_limited_by?: boolean
     /**
-     * A boolean flag that can be used to query API keys that are currently active. An API key is considered active if it is neither invalidated, nor expired at query time. You can specify this together with other parameters such as owner or name. If `active_only` is false, the response will include both active and inactive (expired or invalidated) keys.
+     * A boolean flag that can be used to query API keys that are currently active. An API key is considered active if it is neither invalidated, nor expired at query time. You can specify this together with other parameters such as `owner` or `name`. If `active_only` is false, the response will include both active and inactive (expired or invalidated) keys.
      * @server_default false
      * @availability stack since=8.12.1
      * @availability serverless
