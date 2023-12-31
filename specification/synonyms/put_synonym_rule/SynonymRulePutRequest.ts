@@ -23,8 +23,8 @@ import { SynonymString } from '../_types/SynonymRule'
 /**
  * Creates or updates a synonym rule in a synonym set
  * @rest_spec_name synonyms.put_synonym_rule
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

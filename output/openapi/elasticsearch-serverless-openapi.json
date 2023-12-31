@@ -15605,6 +15605,16 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "active_only",
+            "description": "A boolean flag that can be used to query API keys that are currently active. An API key is considered active if it is neither invalidated, nor expired at query time. You can specify this together with other parameters such as `owner` or `name`. If `active_only` is false, the response will include both active and inactive (expired or invalidated) keys.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -32226,6 +32236,15 @@
             "minProperties": 1,
             "maxProperties": 1
           },
+          "weighted_tokens": {
+            "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WeightedTokensQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
           "wildcard": {
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
@@ -36022,11 +36041,56 @@
               "model_text": {
                 "description": "The query text",
                 "type": "string"
+              },
+              "pruning_config": {
+                "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
               }
             },
             "required": [
               "model_id",
               "model_text"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl:TokenPruningConfig": {
+        "type": "object",
+        "properties": {
+          "tokens_freq_ratio_threshold": {
+            "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
+            "type": "number"
+          },
+          "tokens_weight_threshold": {
+            "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
+            "type": "number"
+          },
+          "only_score_pruned_tokens": {
+            "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
+            "type": "boolean"
+          }
+        }
+      },
+      "_types.query_dsl:WeightedTokensQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "tokens": {
+                "description": "The tokens representing this query",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "pruning_config": {
+                "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
+              }
+            },
+            "required": [
+              "tokens"
             ]
           }
         ]
@@ -47579,7 +47643,7 @@
             "$ref": "#/components/schemas/_types:Field"
           },
           "query": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
           },
           "name": {
             "$ref": "#/components/schemas/_types:Name"
@@ -48512,7 +48576,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "next_generation_managed_by": {
-            "$ref": "#/components/schemas/_types:ManagedBy"
+            "$ref": "#/components/schemas/indices._types:ManagedBy"
           },
           "prefer_ilm": {
             "description": "Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.",
@@ -48561,26 +48625,12 @@
           "timestamp_field"
         ]
       },
-      "_types:ManagedBy": {
-        "oneOf": [
-          {
-            "type": "string",
-            "enum": [
-              "Index Lifecycle Management"
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "Data stream lifecycle"
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "Unmanaged"
-            ]
-          }
+      "indices._types:ManagedBy": {
+        "type": "string",
+        "enum": [
+          "Index Lifecycle Management",
+          "Data stream lifecycle",
+          "Unmanaged"
         ]
       },
       "indices._types:DataStreamIndex": {
@@ -48596,7 +48646,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "managed_by": {
-            "$ref": "#/components/schemas/_types:ManagedBy"
+            "$ref": "#/components/schemas/indices._types:ManagedBy"
           },
           "prefer_ilm": {
             "description": "Indicates if ILM should take precedence over DSL in case both are configured to manage this index.",

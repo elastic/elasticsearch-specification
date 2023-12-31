@@ -18,7 +18,7 @@ jobs:
     if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
     env:
-      STACK_VERSION: 8.10-SNAPSHOT
+      STACK_VERSION: 8.13-SNAPSHOT
 
     steps:
       - uses: actions/checkout@v2
