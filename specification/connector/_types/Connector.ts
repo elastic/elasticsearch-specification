@@ -196,7 +196,7 @@ export interface ConnectorFeatures {
   sync_rules?: SyncRulesFeature
 }
 
-export interface SchedulingConfiguraton {
+export interface SchedulingConfiguration {
   access_control: ConnectorScheduling
   full: ConnectorScheduling
   incremental: ConnectorScheduling
