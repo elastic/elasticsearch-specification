@@ -16,33 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
-/**
- * Retrieves a synonym set
- * @rest_spec_name synonyms.get_synonym
- * @availability stack since=8.10.0 stability=stable
- * @availability serverless stability=stable visibility=public
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * "The id of the synonyms set to be retrieved
-     */
-    id: Id
-  }
-  query_parameters: {
-    /**
-     * Starting offset for query rules to be retrieved
-     * @server_default 0
-     */
-    from?: integer
-    /**
-     * specifies a max number of query rules to retrieve
-     * @server_default 10
-     */
-    size?: integer
-  }
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { TokenPruningConfig } from './TokenPruningConfig'
+import { QueryBase } from './abstractions'
+import { Field, FieldValue } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { float } from '@_types/Numeric'
+
+export class WeightedTokensQuery extends QueryBase {
+  /** The tokens representing this query */
+  tokens: Dictionary<string, float>
+  /** Token pruning configurations */
+  pruning_config?: TokenPruningConfig
 }

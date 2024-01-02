@@ -1264,6 +1264,12 @@
         "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "security.get_api_key": {
+      "request": [
+        "Request: query parameter 'active_only' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "security.get_settings": {
       "request": [
         "Missing request & response"

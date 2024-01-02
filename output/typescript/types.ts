@@ -5857,6 +5857,7 @@ export interface QueryDslQueryContainer {
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
   text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
+  weighted_tokens?: Partial<Record<Field, QueryDslWeightedTokensQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -6081,12 +6082,24 @@ export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
 export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
   model_id: string
   model_text: string
+  pruning_config?: QueryDslTokenPruningConfig
 }
 
 export type QueryDslTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
 
+export interface QueryDslTokenPruningConfig {
+  tokens_freq_ratio_threshold?: integer
+  tokens_weight_threshold?: float
+  only_score_pruned_tokens?: boolean
+}
+
 export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
+}
+
+export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
+  tokens: Record<string, float>
+  pruning_config?: QueryDslTokenPruningConfig
 }
 
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {
@@ -9375,7 +9388,7 @@ export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
-  query?: string
+  query?: QueryDslQueryContainer
   name?: Name
   elasticsearch_version?: string
 }
@@ -13546,6 +13559,7 @@ export interface MlTrainedModelConfig {
   metadata?: MlTrainedModelConfigMetadata
   model_size_bytes?: ByteSize
   location?: MlTrainedModelLocation
+  prefix_strings?: MlTrainedModelPrefixStrings
 }
 
 export interface MlTrainedModelConfigInput {
@@ -13631,6 +13645,11 @@ export interface MlTrainedModelLocation {
 
 export interface MlTrainedModelLocationIndex {
   name: IndexName
+}
+
+export interface MlTrainedModelPrefixStrings {
+  ingest: string
+  search: string
 }
 
 export interface MlTrainedModelSizeStats {
@@ -16782,6 +16801,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
   realm_name?: Name
   username?: Username
   with_limited_by?: boolean
+  active_only?: boolean
 }
 
 export interface SecurityGetApiKeyResponse {
