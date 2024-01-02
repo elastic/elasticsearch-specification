@@ -9051,16 +9051,10 @@ export interface ConnectorConnector {
   last_synced: string | null
   name: string | null
   pipeline?: ConnectorIngestPipelineParams | null
-  scheduling: ConnectorSchedulingConfiguraton
+  scheduling: ConnectorSchedulingConfiguration
   service_type: string | null
   status: ConnectorConnectorStatus
   sync_now: boolean
-}
-
-export interface ConnectorConnectorConfigCategoryProperties {
-  label: string
-  order: number
-  type: '"category"'
 }
 
 export interface ConnectorConnectorConfigProperties {
@@ -9081,16 +9075,16 @@ export interface ConnectorConnectorConfigProperties {
   value: string | number | boolean | null
 }
 
-export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties | ConnectorConnectorConfigCategoryProperties | null>
+export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties | null>
 
 export type ConnectorConnectorCustomScheduling = Record<string, ConnectorCustomScheduling | null>
 
 export interface ConnectorConnectorFeatures {
-  '[FeatureName.DOCUMENT_LEVEL_SECURITY]'?: ConnectorFeatureEnabled
-  '[FeatureName.FILTERING_ADVANCED_CONFIG]'?: boolean
-  '[FeatureName.FILTERING_RULES]'?: boolean
-  '[FeatureName.INCREMENTAL_SYNC]'?: ConnectorFeatureEnabled
-  '[FeatureName.SYNC_RULES]'?: ConnectorSyncRulesFeature
+  document_level_security?: ConnectorFeatureEnabled
+  filtering_advanced_config?: boolean
+  filtering_rules?: boolean
+  incremental_sync?: ConnectorFeatureEnabled
+  sync_rules?: ConnectorSyncRulesFeature
 }
 
 export type ConnectorConnectorFieldType = 'STRING' | 'INTEGER' | 'LIST' | 'BOOLEAN'
@@ -9133,7 +9127,7 @@ export interface ConnectorFilteringConfig {
   draft: ConnectorFilteringRules
 }
 
-export type ConnectorFilteringPolicy = '"exclude"' | '"include"'
+export type ConnectorFilteringPolicy = 'EXCLUDE' | 'INCLUDE'
 
 export interface ConnectorFilteringRule {
   created_at: string
@@ -9146,7 +9140,7 @@ export interface ConnectorFilteringRule {
   value: string
 }
 
-export type ConnectorFilteringRuleRule = '"contains"' | '"ends_with"' | '"equals"' | '">"' | '"<"' | '"regex"' | '"starts_with"'
+export type ConnectorFilteringRuleRule = 'CONTAINS' | 'ENDS_WITH' | 'EQUALS' | 'GREATER_THAN' | 'LESS_THAN' | 'REGEX' | 'STARTS_WITH'
 
 export interface ConnectorFilteringRules {
   advanced_snippet: ConnectorFilteringAdvancedSnippet
@@ -9173,7 +9167,7 @@ export interface ConnectorIngestPipelineParams {
   run_ml_inference: boolean
 }
 
-export interface ConnectorSchedulingConfiguraton {
+export interface ConnectorSchedulingConfiguration {
   access_control: ConnectorConnectorScheduling
   full: ConnectorConnectorScheduling
   incremental: ConnectorConnectorScheduling
@@ -9337,7 +9331,7 @@ export interface ConnectorUpdatePipelineResponse {
 export interface ConnectorUpdateSchedulingRequest extends RequestBase {
   connector_id: Id
   body?: {
-    scheduling: ConnectorSchedulingConfiguraton
+    scheduling: ConnectorSchedulingConfiguration
   }
 }
 

@@ -1818,7 +1818,7 @@
         "summary": "Updates the last_seen timestamp in the connector document.",
         "description": "Updates the last_seen timestamp in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/check-in-connector-api.html"
         },
         "operationId": "connector-check-in",
         "parameters": [
@@ -1864,7 +1864,7 @@
         "summary": "Returns the details about a connector.",
         "description": "Returns the details about a connector.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-connector-api.html"
         },
         "operationId": "connector-get",
         "parameters": [
@@ -1900,7 +1900,7 @@
         "summary": "Creates or updates a connector.",
         "description": "Creates or updates a connector.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/create-connector-api.html"
         },
         "operationId": "connector-put",
         "parameters": [
@@ -1977,7 +1977,7 @@
         "summary": "Deletes a connector.",
         "description": "Deletes a connector.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-connector-api.html"
         },
         "operationId": "connector-delete",
         "parameters": [
@@ -2015,7 +2015,7 @@
         "summary": "Updates the stats of last sync in the connector document.",
         "description": "Updates the stats of last sync in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-last-sync-api.html"
         },
         "operationId": "connector-last-sync",
         "parameters": [
@@ -2207,7 +2207,7 @@
         "summary": "Lists all connectors.",
         "description": "Lists all connectors.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/list-connector-api.html"
         },
         "operationId": "connector-list",
         "parameters": [
@@ -2267,7 +2267,7 @@
         "summary": "Creates a connector.",
         "description": "Creates a connector.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/create-connector-api.html"
         },
         "operationId": "connector-post",
         "requestBody": {
@@ -2333,7 +2333,7 @@
         "summary": "Updates the connector configuration.",
         "description": "Updates the connector configuration.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-configuration-api.html"
         },
         "operationId": "connector-update-configuration",
         "parameters": [
@@ -2397,7 +2397,7 @@
         "summary": "Updates the error field in the connector document.",
         "description": "Updates the error field in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-error-api.html"
         },
         "operationId": "connector-update-error",
         "parameters": [
@@ -2469,7 +2469,7 @@
         "summary": "Updates the filtering field in the connector document.",
         "description": "Updates the filtering field in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-filtering-api.html"
         },
         "operationId": "connector-update-filtering",
         "parameters": [
@@ -2536,7 +2536,7 @@
         "summary": "Updates the name and/or description fields in the connector document.",
         "description": "Updates the name and/or description fields in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-name-description-api.html"
         },
         "operationId": "connector-update-name",
         "parameters": [
@@ -2603,7 +2603,7 @@
         "summary": "Updates the pipeline field in the connector document.",
         "description": "Updates the pipeline field in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-pipeline-api.html"
         },
         "operationId": "connector-update-pipeline",
         "parameters": [
@@ -2667,7 +2667,7 @@
         "summary": "Updates the scheduling field in the connector document.",
         "description": "Updates the scheduling field in the connector document.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/enterprise-search/current/connectors.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-scheduling-api.html"
         },
         "operationId": "connector-update-scheduling",
         "parameters": [
@@ -2690,7 +2690,7 @@
                 "type": "object",
                 "properties": {
                   "scheduling": {
-                    "$ref": "#/components/schemas/connector._types:SchedulingConfiguraton"
+                    "$ref": "#/components/schemas/connector._types:SchedulingConfiguration"
                   }
                 },
                 "required": [
@@ -48544,7 +48544,7 @@
             ]
           },
           "scheduling": {
-            "$ref": "#/components/schemas/connector._types:SchedulingConfiguraton"
+            "$ref": "#/components/schemas/connector._types:SchedulingConfiguration"
           },
           "service_type": {
             "oneOf": [
@@ -48599,9 +48599,6 @@
           "oneOf": [
             {
               "$ref": "#/components/schemas/connector._types:ConnectorConfigProperties"
-            },
-            {
-              "$ref": "#/components/schemas/connector._types:ConnectorConfigCategoryProperties"
             },
             {
               "nullable": true,
@@ -48815,28 +48812,6 @@
           "type"
         ]
       },
-      "connector._types:ConnectorConfigCategoryProperties": {
-        "type": "object",
-        "properties": {
-          "label": {
-            "type": "string"
-          },
-          "order": {
-            "type": "number"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "\"category\""
-            ]
-          }
-        },
-        "required": [
-          "label",
-          "order",
-          "type"
-        ]
-      },
       "connector._types:ConnectorCustomScheduling": {
         "type": "object",
         "additionalProperties": {
@@ -48892,19 +48867,19 @@
       "connector._types:ConnectorFeatures": {
         "type": "object",
         "properties": {
-          "[FeatureName.DOCUMENT_LEVEL_SECURITY]": {
+          "document_level_security": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
-          "[FeatureName.FILTERING_ADVANCED_CONFIG]": {
+          "filtering_advanced_config": {
             "type": "boolean"
           },
-          "[FeatureName.FILTERING_RULES]": {
+          "filtering_rules": {
             "type": "boolean"
           },
-          "[FeatureName.INCREMENTAL_SYNC]": {
+          "incremental_sync": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
-          "[FeatureName.SYNC_RULES]": {
+          "sync_rules": {
             "$ref": "#/components/schemas/connector._types:SyncRulesFeature"
           }
         }
@@ -49034,65 +49009,22 @@
         ]
       },
       "connector._types:FilteringPolicy": {
-        "oneOf": [
-          {
-            "type": "string",
-            "enum": [
-              "\"exclude\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\"include\""
-            ]
-          }
+        "type": "string",
+        "enum": [
+          "EXCLUDE",
+          "INCLUDE"
         ]
       },
       "connector._types:FilteringRuleRule": {
-        "oneOf": [
-          {
-            "type": "string",
-            "enum": [
-              "\"contains\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\"ends_with\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\"equals\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\">\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\"<\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\"regex\""
-            ]
-          },
-          {
-            "type": "string",
-            "enum": [
-              "\"starts_with\""
-            ]
-          }
+        "type": "string",
+        "enum": [
+          "CONTAINS",
+          "ENDS_WITH",
+          "EQUALS",
+          "GREATER_THAN",
+          "LESS_THAN",
+          "REGEX",
+          "STARTS_WITH"
         ]
       },
       "connector._types:FilteringRulesValidation": {
@@ -49177,7 +49109,7 @@
           "run_ml_inference"
         ]
       },
-      "connector._types:SchedulingConfiguraton": {
+      "connector._types:SchedulingConfiguration": {
         "type": "object",
         "properties": {
           "access_control": {

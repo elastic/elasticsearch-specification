@@ -45,12 +45,6 @@ enum ConnectorFieldType {
   BOOLEAN = 'bool'
 }
 
-interface ConnectorConfigCategoryProperties {
-  label: string
-  order: number
-  type: 'category'
-}
-
 interface Validation {
   constraint: string | number
   type: string
@@ -76,7 +70,7 @@ export interface ConnectorConfigProperties {
 
 export type ConnectorConfiguration = Dictionary<
   string,
-  ConnectorConfigProperties | ConnectorConfigCategoryProperties | null
+  ConnectorConfigProperties | null
 >
 
 export interface ConnectorScheduling {
@@ -122,16 +116,20 @@ export interface IngestPipelineParams {
   run_ml_inference: boolean
 }
 
-type FilteringPolicy = 'exclude' | 'include'
+enum FilteringPolicy {
+  EXCLUDE = 'exclude',
+  INCLUDE = 'include'
+}
 
-type FilteringRuleRule =
-  | 'contains'
-  | 'ends_with'
-  | 'equals'
-  | '>'
-  | '<'
-  | 'regex'
-  | 'starts_with'
+enum FilteringRuleRule {
+  CONTAINS = 'contains',
+  ENDS_WITH = 'ends_with',
+  EQUALS = 'equals',
+  GREATER_THAN = '>',
+  LESS_THAN = '<',
+  REGEX = 'regex',
+  STARTS_WITH = 'starts_with'
+}
 
 interface FilteringRule {
   created_at: string
@@ -177,7 +175,6 @@ export interface FilteringConfig {
   domain: string
   draft: FilteringRules
 }
-
 
 interface FeatureEnabled {
   enabled: boolean
@@ -227,7 +224,7 @@ export interface Connector {
   last_synced: string | null
   name: string | null
   pipeline?: IngestPipelineParams | null
-  scheduling: SchedulingConfiguraton
+  scheduling: SchedulingConfiguration
   service_type: string | null
   status: ConnectorStatus
   sync_now: boolean

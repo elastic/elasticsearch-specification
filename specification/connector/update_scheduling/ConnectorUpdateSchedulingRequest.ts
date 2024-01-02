@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SchedulingConfiguraton } from '../_types/Connector'
+import { SchedulingConfiguration } from '../_types/Connector'
 
 /**
  * Updates the scheduling field in the connector document
@@ -39,6 +39,6 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name scheduling */
   body: {
-    scheduling: SchedulingConfiguraton
+    scheduling: SchedulingConfiguration
   }
 }
