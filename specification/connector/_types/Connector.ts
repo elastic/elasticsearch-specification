@@ -196,11 +196,11 @@ interface SyncRulesFeature {
 }
 
 export interface ConnectorFeatures {
-  [FeatureName.DOCUMENT_LEVEL_SECURITY]?: FeatureEnabled
-  [FeatureName.FILTERING_ADVANCED_CONFIG]?: boolean
-  [FeatureName.FILTERING_RULES]?: boolean
-  [FeatureName.INCREMENTAL_SYNC]?: FeatureEnabled
-  [FeatureName.SYNC_RULES]?: SyncRulesFeature
+  document_level_security?: FeatureEnabled
+  filtering_advanced_config?: boolean
+  filtering_rules?: boolean
+  incremental_sync?: FeatureEnabled
+  sync_rules?: SyncRulesFeature
 }
 
 export interface SchedulingConfiguraton {
