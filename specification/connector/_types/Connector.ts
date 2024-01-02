@@ -178,13 +178,6 @@ export interface FilteringConfig {
   draft: FilteringRules
 }
 
-enum FeatureName {
-  FILTERING_ADVANCED_CONFIG = 'filtering_advanced_config',
-  FILTERING_RULES = 'filtering_rules',
-  DOCUMENT_LEVEL_SECURITY = 'document_level_security',
-  INCREMENTAL_SYNC = 'incremental_sync',
-  SYNC_RULES = 'sync_rules'
-}
 
 interface FeatureEnabled {
   enabled: boolean
