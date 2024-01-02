@@ -2356,8 +2356,6 @@ export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
-export type ManagedBy = 'Index Lifecycle Management' | 'Data stream lifecycle' | 'Unmanaged'
-
 export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
@@ -9682,7 +9680,7 @@ export interface IndicesDataStream {
   generation: integer
   hidden: boolean
   ilm_policy?: Name
-  next_generation_managed_by: ManagedBy
+  next_generation_managed_by: IndicesManagedBy
   prefer_ilm: boolean
   indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataStreamLifecycleWithRollover
@@ -9698,7 +9696,7 @@ export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
   ilm_policy?: Name
-  managed_by: ManagedBy
+  managed_by: IndicesManagedBy
   prefer_ilm: boolean
 }
 
@@ -9946,6 +9944,8 @@ export interface IndicesIndexingSlowlogSettings {
 export interface IndicesIndexingSlowlogTresholds {
   index?: IndicesSlowlogTresholdLevels
 }
+
+export type IndicesManagedBy = 'Index Lifecycle Management' | 'Data stream lifecycle' | 'Unmanaged'
 
 export interface IndicesMappingLimitSettings {
   coerce?: boolean
