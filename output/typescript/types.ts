@@ -13246,6 +13246,7 @@ export interface MlTrainedModelConfig {
   metadata?: MlTrainedModelConfigMetadata
   model_size_bytes?: ByteSize
   location?: MlTrainedModelLocation
+  prefix_strings?: MlTrainedModelPrefixStrings
 }
 
 export interface MlTrainedModelConfigInput {
@@ -13331,6 +13332,11 @@ export interface MlTrainedModelLocation {
 
 export interface MlTrainedModelLocationIndex {
   name: IndexName
+}
+
+export interface MlTrainedModelPrefixStrings {
+  ingest: string
+  search: string
 }
 
 export interface MlTrainedModelSizeStats {
