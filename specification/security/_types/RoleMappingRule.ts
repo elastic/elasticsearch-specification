@@ -26,6 +26,9 @@ import { Name, Names } from '@_types/common'
 export class RoleMappingRule {
   any?: RoleMappingRule[]
   all?: RoleMappingRule[]
+  // `field` should have been defined as SingleKeyDictionary<String, ScalarValue|ScalarValue[]>
+  // However, this was initially defined as a container with a limited number of variants,
+  // and was later made non_exhaustive to limit breaking changes.
   field?: FieldRule
   except?: RoleMappingRule
 }
@@ -38,5 +41,4 @@ export class FieldRule {
   username?: Names
   dn?: Names
   groups?: Names
-  'realm.name'?: Name
 }
