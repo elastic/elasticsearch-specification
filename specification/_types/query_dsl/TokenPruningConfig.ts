@@ -16,33 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
-/**
- * Retrieves a synonym set
- * @rest_spec_name synonyms.get_synonym
- * @availability stack since=8.10.0 stability=stable
- * @availability serverless stability=stable visibility=public
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * "The id of the synonyms set to be retrieved
-     */
-    id: Id
-  }
-  query_parameters: {
-    /**
-     * Starting offset for query rules to be retrieved
-     * @server_default 0
-     */
-    from?: integer
-    /**
-     * specifies a max number of query rules to retrieve
-     * @server_default 10
-     */
-    size?: integer
-  }
+import { float, integer } from '@_types/Numeric'
+
+export class TokenPruningConfig {
+  /** Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.
+   * @server_default 5
+   */
+  tokens_freq_ratio_threshold?: integer
+  /** Tokens whose weight is less than this threshold are considered nonsignificant and pruned.
+   * @server_default 0.4
+   */
+  tokens_weight_threshold?: float
+  /** Whether to only score pruned tokens, vs only scoring kept tokens.
+   * @server_default false
+   */
+  only_score_pruned_tokens?: boolean
 }
