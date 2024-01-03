@@ -9852,7 +9852,7 @@ export interface IndicesIndexSettingsKeys {
   analysis?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
   time_series?: IndicesIndexSettingsTimeSeries
-  shards?: integer
+  shards?: integer//from here too?
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
   mapping?: IndicesMappingLimitSettings
