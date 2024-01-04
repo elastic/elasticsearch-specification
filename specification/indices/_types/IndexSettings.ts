@@ -146,7 +146,6 @@ export class IndexSettings
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
   time_series?: IndexSettingsTimeSeries
-  shards?: integer
   queries?: Queries
   /**
    * Configure custom similarity settings to customize how search results are scored.
