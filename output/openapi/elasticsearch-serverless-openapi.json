@@ -29890,15 +29890,7 @@
         "type": "object",
         "properties": {
           "total": {
-            "description": "Total hit count information, present only if `track_total_hits` wasn't `false` in the search request.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types:TotalHits"
-              },
-              {
-                "type": "number"
-              }
-            ]
+            "$ref": "#/components/schemas/_global.search._types:TotalHits"
           },
           "hits": {
             "type": "array",
