@@ -41405,9 +41405,6 @@
           "time_series": {
             "$ref": "#/components/schemas/indices._types:IndexSettingsTimeSeries"
           },
-          "shards": {
-            "type": "number"
-          },
           "queries": {
             "$ref": "#/components/schemas/indices._types:Queries"
           },
