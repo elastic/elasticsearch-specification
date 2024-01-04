@@ -2723,6 +2723,475 @@
         }
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
+      "put": {
+        "tags": [
+          "connector_sync_job.cancel"
+        ],
+        "summary": "Cancels a connector sync job.",
+        "description": "Cancels a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cancel-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-cancel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be cancelled",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_check_in": {
+      "put": {
+        "tags": [
+          "connector_sync_job.check_in"
+        ],
+        "summary": "Checks in a connector sync job (refreshes 'last_seen').",
+        "description": "Checks in a connector sync job (refreshes 'last_seen').",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/check-in-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-check-in",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be checked in",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}": {
+      "get": {
+        "tags": [
+          "connector_sync_job.get"
+        ],
+        "summary": "Returns the details about a connector sync job.",
+        "description": "Returns the details about a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connector_sync_job._types:ConnectorSyncJob"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "connector_sync_job.delete"
+        ],
+        "summary": "Deletes a connector sync job.",
+        "description": "Deletes a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be deleted",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_error": {
+      "put": {
+        "tags": [
+          "connector_sync_job.error"
+        ],
+        "summary": "Sets an error for a connector sync job.",
+        "description": "Sets an error for a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/set-connector-sync-job-error-api.html"
+        },
+        "operationId": "connector-sync-job-error",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "error"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job": {
+      "get": {
+        "tags": [
+          "connector_sync_job.list"
+        ],
+        "summary": "Lists all connector sync jobs.",
+        "description": "Lists all connector sync jobs.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/list-connector-sync-jobs-api.html"
+        },
+        "operationId": "connector-sync-job-list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Starting offset (default: 0)",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "description": "Specifies a max number of results to get",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "connector_id",
+            "description": "The connector id the fetched sync jobs need to have.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "The job status the fetched sync jobs need to have.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/connector._types:SyncStatus"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/connector_sync_job._types:ConnectorSyncJob"
+                      }
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "results"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "connector_sync_job.post"
+        ],
+        "summary": "Creates a connector sync job.",
+        "description": "Creates a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/create-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "job_type": {
+                    "$ref": "#/components/schemas/connector_sync_job._types:SyncJobType"
+                  },
+                  "trigger_method": {
+                    "$ref": "#/components/schemas/connector_sync_job._types:TriggerMethod"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_stats": {
+      "put": {
+        "tags": [
+          "connector_sync_job.update_stats"
+        ],
+        "summary": "Updates the stats fields in the connector sync job document.",
+        "description": "Updates the stats fields in the connector sync job document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/set-connector-sync-job-stats-api.html"
+        },
+        "operationId": "connector-sync-job-update-stats",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deleted_document_count": {
+                    "type": "number"
+                  },
+                  "indexed_document_count": {
+                    "type": "number"
+                  },
+                  "indexed_document_volume": {
+                    "type": "number"
+                  },
+                  "last_seen": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "total_document_count": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "deleted_document_count",
+                  "indexed_document_count",
+                  "indexed_document_volume"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_count": {
       "get": {
         "tags": [
@@ -49215,6 +49684,229 @@
           "CONFIGURED",
           "CONNECTED",
           "ERROR"
+        ]
+      },
+      "connector_sync_job._types:ConnectorSyncJob": {
+        "type": "object",
+        "properties": {
+          "cancelation_requested_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "canceled_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "completed_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "connector": {
+            "$ref": "#/components/schemas/connector_sync_job._types:SyncJobConnector"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "deleted_document_count": {
+            "type": "number"
+          },
+          "error": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "indexed_document_count": {
+            "type": "number"
+          },
+          "indexed_document_volume": {
+            "type": "number"
+          },
+          "job_type": {
+            "$ref": "#/components/schemas/connector_sync_job._types:SyncJobType"
+          },
+          "last_seen": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "started_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/connector._types:SyncStatus"
+          },
+          "total_document_count": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "trigger_method": {
+            "$ref": "#/components/schemas/connector_sync_job._types:TriggerMethod"
+          },
+          "worker_hostname": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "required": [
+          "cancelation_requested_at",
+          "canceled_at",
+          "completed_at",
+          "connector",
+          "created_at",
+          "deleted_document_count",
+          "error",
+          "id",
+          "indexed_document_count",
+          "indexed_document_volume",
+          "job_type",
+          "last_seen",
+          "metadata",
+          "started_at",
+          "status",
+          "total_document_count",
+          "trigger_method",
+          "worker_hostname"
+        ]
+      },
+      "connector_sync_job._types:SyncJobConnector": {
+        "type": "object",
+        "properties": {
+          "configuration": {
+            "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
+          },
+          "filtering": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:FilteringConfig"
+            }
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "index_name": {
+            "type": "string"
+          },
+          "language": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "pipeline": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "service_type": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "required": [
+          "configuration",
+          "filtering",
+          "id",
+          "index_name",
+          "language",
+          "pipeline",
+          "service_type"
+        ]
+      },
+      "connector_sync_job._types:SyncJobType": {
+        "type": "string",
+        "enum": [
+          "FULL",
+          "INCREMENTAL",
+          "ACCESS_CONTROL"
+        ]
+      },
+      "connector_sync_job._types:TriggerMethod": {
+        "type": "string",
+        "enum": [
+          "ON_DEMAND",
+          "SCHEDULED"
         ]
       },
       "_types:WriteResponseBase": {

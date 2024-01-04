@@ -488,6 +488,12 @@
         "response definition connector.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "connector_sync_job.delete": {
+      "request": [],
+      "response": [
+        "response definition connector_sync_job.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
     "create": {
       "request": [],
       "response": [

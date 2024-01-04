@@ -91,6 +91,14 @@ connector-update-filtering,https://www.elastic.co/guide/en/elasticsearch/referen
 connector-update-name,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-name-description-api.html
 connector-update-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-pipeline-api.html
 connector-scheduling,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-scheduling-api.html
+connector-sync-job-post,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/create-connector-sync-job-api.html
+connector-sync-job-cancel,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cancel-connector-sync-job-api.html
+connector-sync-job-checkin,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-sync-job-api.html
+connector-sync-job-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-connector-sync-job-api.html
+connector-sync-job-get,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html
+connector-sync-job-list,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-sync-jobs-api.html
+connector-sync-job-update-error,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-connector-sync-job-error-api.html
+connector-sync-job-update-stats,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-connector-sync-job-stats-api.html
 convert-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/convert-processor.html
 cron-expressions,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#api-cron-expressions
 csv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/csv-processor.html

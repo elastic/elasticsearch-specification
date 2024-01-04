@@ -9352,6 +9352,119 @@ export interface ConnectorUpdateSchedulingResponse {
   result: Result
 }
 
+export interface ConnectorSyncJobConnectorSyncJob {
+  cancelation_requested_at: string | null
+  canceled_at: string | null
+  completed_at: string | null
+  connector: ConnectorSyncJobSyncJobConnector
+  created_at: string
+  deleted_document_count: number
+  error: string | null
+  id: Id
+  indexed_document_count: number
+  indexed_document_volume: number
+  job_type: ConnectorSyncJobSyncJobType
+  last_seen: string | null
+  metadata: Record<string, any>
+  started_at: string | null
+  status: ConnectorSyncStatus
+  total_document_count: number | null
+  trigger_method: ConnectorSyncJobTriggerMethod
+  worker_hostname: string | null
+}
+
+export interface ConnectorSyncJobSyncJobConnector {
+  configuration: ConnectorConnectorConfiguration
+  filtering: ConnectorFilteringConfig[]
+  id: Id
+  index_name: string
+  language: string | null
+  pipeline: ConnectorIngestPipelineParams | null
+  service_type: string | null
+}
+
+export type ConnectorSyncJobSyncJobType = 'FULL' | 'INCREMENTAL' | 'ACCESS_CONTROL'
+
+export type ConnectorSyncJobTriggerMethod = 'ON_DEMAND' | 'SCHEDULED'
+
+export interface ConnectorSyncJobCancelRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export interface ConnectorSyncJobCancelResponse {
+  result: Result
+}
+
+export interface ConnectorSyncJobCheckInRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export interface ConnectorSyncJobCheckInResponse {
+  result: Result
+}
+
+export interface ConnectorSyncJobDeleteRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export type ConnectorSyncJobDeleteResponse = AcknowledgedResponseBase
+
+export interface ConnectorSyncJobErrorRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    error: string | null
+  }
+}
+
+export interface ConnectorSyncJobErrorResponse {
+  result: Result
+}
+
+export interface ConnectorSyncJobGetRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export type ConnectorSyncJobGetResponse = ConnectorSyncJobConnectorSyncJob
+
+export interface ConnectorSyncJobListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+  connector_id?: string
+  status?: ConnectorSyncStatus
+}
+
+export interface ConnectorSyncJobListResponse {
+  count: long
+  results: ConnectorSyncJobConnectorSyncJob[]
+}
+
+export interface ConnectorSyncJobPostRequest extends RequestBase {
+  body?: {
+    id: string
+    job_type?: ConnectorSyncJobSyncJobType
+    trigger_method?: ConnectorSyncJobTriggerMethod
+  }
+}
+
+export interface ConnectorSyncJobPostResponse {
+  id: Id
+}
+
+export interface ConnectorSyncJobUpdateStatsRequest extends RequestBase {
+  connector_sync_job_id: Id
+  body?: {
+    deleted_document_count: number
+    indexed_document_count: number
+    indexed_document_volume: number
+    last_seen?: string | null
+    total_document_count?: number | null
+  }
+}
+
+export interface ConnectorSyncJobUpdateStatsResponse {
+  result: Result
+}
+
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {
   index_uuid: Uuid
   accept_data_loss: boolean
