@@ -21,7 +21,7 @@ import { Id } from '@_types/common'
 import { SyncStatus } from '../_types/Connector'
 
 /**
- * Updates the scheduling field in the connector document
+ * Updates last sync stats in the connector document
  * @rest_spec_name connector.last_sync
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
     connector_id: Id
   }
   /**
-   * The connector scheduling object
+   * Connector last sync stats
    */
   body: {
     last_access_control_sync_error: string | null
