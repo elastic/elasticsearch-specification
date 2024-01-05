@@ -67,18 +67,11 @@ export type DurationLarge = string
 export type DurationValue<Unit> = Unit
 
 export enum TimeUnit {
-  /** @codegen_name nanoseconds */
-  nanos,
-  /** @codegen_name microseconds */
-  micros,
-  /** @codegen_name milliseconds */
-  ms,
-  /** @codegen_name seconds */
-  s,
-  /** @codegen_name minutes */
-  m,
-  /** @codegen_name hours */
-  h,
-  /** @codegen_name days */
-  d
+  nanoseconds = 'nanos',
+  microseconds = 'micros',
+  milliseconds = 'ms',
+  seconds = 's',
+  minutes = 'm',
+  hours = 'h',
+  days = 'd'
 }

@@ -35,20 +35,20 @@ import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
 
 export enum JobState {
   /** The job close action is in progress and has not yet completed. A closing job cannot accept further data. */
-  closing = 0,
+  closing,
   /** The job finished successfully with its model state persisted. The job must be opened before it can accept further data. */
-  closed = 1,
+  closed,
   /** The job is available to receive and process data. */
-  opened = 2,
+  opened,
   /**
    * The job did not finish successfully due to an error.
    * This situation can occur due to invalid input data, a fatal error occurring during the analysis, or an external interaction such as the process being killed by the Linux out of memory (OOM) killer.
    * If the job had irrevocably failed, it must be force closed and then deleted.
    * If the datafeed can be corrected, the job can be closed and then re-opened.
    */
-  failed = 3,
+  failed,
   /** The job open action is in progress and has not yet completed. */
-  opening = 4
+  opening
 }
 
 export class JobStatistics {
@@ -395,7 +395,7 @@ export class JobBlocked {
 }
 
 export enum JobBlockedReason {
-  delete = 0,
-  reset = 1,
-  revert = 2
+  delete,
+  reset,
+  revert
 }

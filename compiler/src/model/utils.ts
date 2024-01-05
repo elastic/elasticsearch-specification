@@ -440,8 +440,13 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
       .map(m => {
         // names that contains `.` or `-` will be wrapped inside single quotes
         const name = m.getName().replace(/'/g, '')
-        const member = {
+        const member: model.EnumMember = {
           name: name
+        }
+        const value = m.getValue()
+        if (value && (typeof value === 'string')) {
+          member.name = value
+          member.codegenName = name
         }
         hoistEnumMemberAnnotations(member, m.getJsDocs())
 

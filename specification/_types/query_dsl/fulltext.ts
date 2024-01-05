@@ -542,39 +542,39 @@ export enum TextQueryType {
   /**
    * Finds documents that match any field, but uses the `_score` from the best field.
    */
-  best_fields = 0,
+  best_fields,
   /**
    * Finds documents that match any field and combines the `_score` from each field.
    */
-  most_fields = 1,
+  most_fields,
   /**
    * Treats fields with the same analyzer as though they were one big field.
    * Looks for each word in any field.
    */
-  cross_fields = 2,
+  cross_fields,
   /**
    * Runs a `match_phrase` query on each field and uses the `_score` from the best field.
    */
-  phrase = 3,
+  phrase,
   /**
    * Runs a `match_phrase_prefix` query on each field and uses the `_score` from the best field.
    */
-  phrase_prefix = 4,
+  phrase_prefix,
   /**
    * Creates a `match_bool_prefix` query on each field and combines the `_score` from each field.
    */
-  bool_prefix = 5
+  bool_prefix
 }
 
 export enum ZeroTermsQuery {
   /**
    * Returns all documents, similar to a `match_all` query.
    */
-  all = 0,
+  all,
   /**
    * No documents are returned if the `analyzer` removes all tokens.
    */
-  none = 1
+  none
 }
 
 export class QueryStringQuery extends QueryBase {
@@ -709,57 +709,57 @@ export enum SimpleQueryStringFlag {
   /**
    * Disables all operators.
    */
-  NONE = 0,
+  NONE,
   /**
    * Enables the `+` AND operator.
    */
-  AND = 1 << 0,
+  AND,
   /**
    * Enables the `-` NOT operator.
    */
-  NOT = 1 << 1,
+  NOT,
   /**
    * Enables the `\|` OR operator.
    */
-  OR = 1 << 2,
+  OR,
   /**
    * Enables the `*` prefix operator.
    */
-  PREFIX = 1 << 3,
+  PREFIX,
   /**
    * Enables the `"` quotes operator used to search for phrases.
    */
-  PHRASE = 1 << 4,
+  PHRASE,
   /**
    * Enables the `(` and `)` operators to control operator precedence.
    */
-  PRECEDENCE = 1 << 5,
+  PRECEDENCE,
   /**
    * Enables `\` as an escape character.
    */
-  ESCAPE = 1 << 6,
+  ESCAPE,
   /**
    * Enables whitespace as split characters.
    */
-  WHITESPACE = 1 << 7,
+  WHITESPACE,
   /**
    * Enables the `~N` operator after a word, where `N` is an integer denoting the allowed edit distance for matching.
    */
-  FUZZY = 1 << 8,
+  FUZZY,
   /**
    * Enables the `~N` operator, after a phrase where `N` is the maximum number of positions allowed between matching tokens.
    * Synonymous to `SLOP`.
    */
-  NEAR = 1 << 9,
+  NEAR,
   /**
    * Enables the `~N` operator, after a phrase where `N` is maximum number of positions allowed between matching tokens.
    * Synonymous to `NEAR`.
    */
-  SLOP = 1 << 9,
+  SLOP,
   /**
    * Enables all optional operators.
    */
-  ALL = -1
+  ALL
 }
 
 export class SimpleQueryStringQuery extends QueryBase {
