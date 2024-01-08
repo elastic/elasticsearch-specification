@@ -258,16 +258,16 @@ export class ProcessorBase {
 }
 
 export enum UserAgentProperty {
-  NAME = 0,
-  MAJOR = 1,
-  MINOR = 2,
-  PATCH = 3,
-  OS = 4,
-  OS_NAME = 5,
-  OS_MAJOR = 6,
-  OS_MINOR = 7,
-  DEVICE = 8,
-  BUILD = 9
+  NAME,
+  MAJOR,
+  MINOR,
+  PATCH,
+  OS,
+  OS_NAME,
+  OS_MAJOR,
+  OS_MINOR,
+  DEVICE,
+  BUILD
 }
 
 export class AppendProcessor extends ProcessorBase {
@@ -422,13 +422,13 @@ export class CircleProcessor extends ProcessorBase {
 }
 
 export enum ConvertType {
-  integer = 0,
-  long = 1,
-  float = 2,
-  double = 3,
-  string = 4,
-  boolean = 5,
-  auto = 6
+  integer,
+  long,
+  float,
+  double,
+  string,
+  boolean,
+  auto
 }
 
 export class ConvertProcessor extends ProcessorBase {
@@ -1027,8 +1027,8 @@ export class SetSecurityUserProcessor extends ProcessorBase {
 }
 
 export enum ShapeType {
-  geo_shape = 0,
-  shape = 1
+  geo_shape,
+  shape
 }
 
 export class SortProcessor extends ProcessorBase {

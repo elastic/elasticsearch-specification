@@ -36,25 +36,25 @@ import { ConditionType } from './Conditions'
 import { InputType } from './Input'
 
 export enum ExecutionStatus {
-  awaits_execution = 0,
-  checking = 1,
-  execution_not_needed = 2,
-  throttled = 3,
-  executed = 4,
-  failed = 5,
-  deleted_while_queued = 6,
-  not_executed_already_queued = 7
+  awaits_execution,
+  checking,
+  execution_not_needed,
+  throttled,
+  executed,
+  failed,
+  deleted_while_queued,
+  not_executed_already_queued
 }
 
 export enum ExecutionPhase {
-  awaits_execution = 0,
-  started = 1,
-  input = 2,
-  condition = 3,
-  actions = 4,
-  watch_transform = 5,
-  aborted = 6,
-  finished = 7
+  awaits_execution,
+  started,
+  input,
+  condition,
+  actions,
+  watch_transform,
+  aborted,
+  finished
 }
 
 export class ExecutionResult {

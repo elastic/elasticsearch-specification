@@ -27,15 +27,15 @@ import { QueryBase, QueryContainer } from './abstractions'
  */
 export enum ChildScoreMode {
   /* Do no scoring. */
-  none = 0,
+  none,
   /* Parent hit's score is the average of all child scores. */
-  avg = 1,
+  avg,
   /* Parent hit's score is the max of all child scores. */
-  sum = 2,
+  sum,
   /* Parent hit's score is the sum of all child scores. */
-  max = 3,
+  max,
   /* Parent hit's score is the min of all child scores. */
-  min = 4
+  min
 }
 
 export class HasChildQuery extends QueryBase {

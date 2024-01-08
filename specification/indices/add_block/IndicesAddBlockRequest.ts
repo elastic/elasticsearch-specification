@@ -41,8 +41,8 @@ export interface Request extends RequestBase {
 }
 
 export enum IndicesBlockOptions {
-  metadata = 0,
-  read = 1,
-  read_only = 2,
-  write = 3
+  metadata,
+  read,
+  read_only,
+  write
 }
