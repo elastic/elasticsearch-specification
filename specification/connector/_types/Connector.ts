@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Id } from '@_types/common'
+import { Id, ScalarValue } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -27,22 +27,22 @@ interface SelectOption {
 
 interface Dependency {
   field: string
-  value: string | number | boolean | null
+  value: ScalarValue
 }
 
 enum DisplayType {
-  TEXTBOX = 'textbox',
-  TEXTAREA = 'textarea',
-  NUMERIC = 'numeric',
-  TOGGLE = 'toggle',
-  DROPDOWN = 'dropdown'
+  textbox,
+  textarea,
+  numeric,
+  toggle,
+  dropdown
 }
 
 enum ConnectorFieldType {
-  STRING = 'str',
-  INTEGER = 'int',
-  LIST = 'list',
-  BOOLEAN = 'bool'
+  str,
+  int,
+  list,
+  bool
 }
 
 interface Validation {
@@ -52,61 +52,67 @@ interface Validation {
 
 export interface ConnectorConfigProperties {
   category?: string
-  default_value: string | number | boolean | null
+  default_value: ScalarValue
   depends_on: Dependency[]
   display: DisplayType
   label: string
   options: SelectOption[]
-  order?: number | null
+  order?: number
   placeholder?: string
   required: boolean
   sensitive: boolean
-  tooltip: string | null
+  tooltip?: string
   type: ConnectorFieldType
   ui_restrictions: string[]
   validations: Validation[]
-  value: string | number | boolean | null
+  value: ScalarValue
 }
 
 export type ConnectorConfiguration = Dictionary<
   string,
-  ConnectorConfigProperties | null
+  ConnectorConfigProperties
 >
 
 export interface ConnectorScheduling {
   enabled: boolean
-  interval: string // interval has crontab syntax
+  /** The interval is expressed using the crontab syntax */
+  interval: string
+}
+
+interface CustomSchedulingConfigurationOverrides {
+  max_crawl_depth?: number
+  sitemap_discovery_disabled?: boolean
+  domain_allowlist?: string[]
+  sitemap_urls?: string[]
+  seed_urls?: string[]
 }
 
 interface CustomScheduling {
-  configuration_overrides: Dictionary<string, UserDefinedValue>
+  configuration_overrides: CustomSchedulingConfigurationOverrides
   enabled: boolean
   interval: string
-  last_synced: string | null
+  last_synced?: string
   name: string
 }
 
-export type ConnectorCustomScheduling = Dictionary<
-  string,
-  CustomScheduling | null
->
+export type ConnectorCustomScheduling = Dictionary<string, CustomScheduling>
 
 enum ConnectorStatus {
-  CREATED = 'created',
-  NEEDS_CONFIGURATION = 'needs_configuration',
-  CONFIGURED = 'configured',
-  CONNECTED = 'connected',
-  ERROR = 'error'
+  created,
+  needs_configuration,
+  configured,
+  connected,
+  error
 }
 
 export enum SyncStatus {
-  CANCELING = 'canceling',
-  CANCELED = 'canceled',
-  COMPLETED = 'completed',
-  ERROR = 'error',
-  IN_PROGRESS = 'in_progress',
-  PENDING = 'pending',
-  SUSPENDED = 'suspended'
+  canceling,
+  canceled,
+  completed,
+  error,
+  in_progress,
+  pending,
+  suspended
 }
 
 export interface IngestPipelineParams {
@@ -117,18 +123,18 @@ export interface IngestPipelineParams {
 }
 
 enum FilteringPolicy {
-  EXCLUDE = 'exclude',
-  INCLUDE = 'include'
+  exclude,
+  include
 }
 
 enum FilteringRuleRule {
-  CONTAINS = 'contains',
-  ENDS_WITH = 'ends_with',
-  EQUALS = 'equals',
-  GREATER_THAN = '>',
-  LESS_THAN = '<',
-  REGEX = 'regex',
-  STARTS_WITH = 'starts_with'
+  contains,
+  ends_with,
+  equals,
+  regex,
+  starts_with,
+  greater_than = '>',
+  less_than = '<'
 }
 
 interface FilteringRule {
@@ -148,9 +154,9 @@ interface FilteringValidation {
 }
 
 enum FilteringValidationState {
-  EDITED = 'edited',
-  INVALID = 'invalid',
-  VALID = 'valid'
+  edited,
+  invalid,
+  valid
 }
 
 interface FilteringAdvancedSnippet {
@@ -200,32 +206,32 @@ export interface SchedulingConfiguration {
 }
 
 export interface Connector {
-  api_key_id: string | null
+  api_key_id?: string
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
-  description: string | null
+  description?: string
   error: string | null
   features: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
   index_name: string
   is_native: boolean
-  language: string | null
-  last_access_control_sync_error: string | null
-  last_access_control_sync_scheduled_at: string | null
-  last_access_control_sync_status: SyncStatus | null
-  last_deleted_document_count: number | null
-  last_incremental_sync_scheduled_at: string | null
-  last_indexed_document_count: number | null
-  last_seen: string | null
-  last_sync_error: string | null
-  last_sync_scheduled_at: string | null
-  last_sync_status: SyncStatus | null
-  last_synced: string | null
-  name: string | null
-  pipeline?: IngestPipelineParams | null
+  language?: string
+  last_access_control_sync_error?: string | null
+  last_access_control_sync_scheduled_at?: string | null
+  last_access_control_sync_status?: SyncStatus | null
+  last_deleted_document_count?: number | null
+  last_incremental_sync_scheduled_at?: string | null
+  last_indexed_document_count?: number | null
+  last_seen?: string | null
+  last_sync_error?: string | null
+  last_sync_scheduled_at?: string | null
+  last_sync_status?: SyncStatus | null
+  last_synced?: string | null
+  name?: string
+  pipeline?: IngestPipelineParams
   scheduling: SchedulingConfiguration
-  service_type: string | null
+  service_type: string
   status: ConnectorStatus
   sync_now: boolean
 }

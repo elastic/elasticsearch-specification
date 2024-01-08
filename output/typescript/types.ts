@@ -9040,57 +9040,57 @@ export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
 }
 
 export interface ConnectorConnector {
-  api_key_id: string | null
+  api_key_id?: string
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
-  description: string | null
+  description?: string
   error: string | null
   features: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
   index_name: string
   is_native: boolean
-  language: string | null
-  last_access_control_sync_error: string | null
-  last_access_control_sync_scheduled_at: string | null
-  last_access_control_sync_status: ConnectorSyncStatus | null
-  last_deleted_document_count: number | null
-  last_incremental_sync_scheduled_at: string | null
-  last_indexed_document_count: number | null
-  last_seen: string | null
-  last_sync_error: string | null
-  last_sync_scheduled_at: string | null
-  last_sync_status: ConnectorSyncStatus | null
-  last_synced: string | null
-  name: string | null
-  pipeline?: ConnectorIngestPipelineParams | null
+  language?: string
+  last_access_control_sync_error?: string | null
+  last_access_control_sync_scheduled_at?: string | null
+  last_access_control_sync_status?: ConnectorSyncStatus | null
+  last_deleted_document_count?: number | null
+  last_incremental_sync_scheduled_at?: string | null
+  last_indexed_document_count?: number | null
+  last_seen?: string | null
+  last_sync_error?: string | null
+  last_sync_scheduled_at?: string | null
+  last_sync_status?: ConnectorSyncStatus | null
+  last_synced?: string | null
+  name?: string
+  pipeline?: ConnectorIngestPipelineParams
   scheduling: ConnectorSchedulingConfiguration
-  service_type: string | null
+  service_type: string
   status: ConnectorConnectorStatus
   sync_now: boolean
 }
 
 export interface ConnectorConnectorConfigProperties {
   category?: string
-  default_value: string | number | boolean | null
+  default_value: ScalarValue
   depends_on: ConnectorDependency[]
   display: ConnectorDisplayType
   label: string
   options: ConnectorSelectOption[]
-  order?: number | null
+  order?: number
   placeholder?: string
   required: boolean
   sensitive: boolean
-  tooltip: string | null
+  tooltip?: string
   type: ConnectorConnectorFieldType
   ui_restrictions: string[]
   validations: ConnectorValidation[]
-  value: string | number | boolean | null
+  value: ScalarValue
 }
 
-export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties | null>
+export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties>
 
-export type ConnectorConnectorCustomScheduling = Record<string, ConnectorCustomScheduling | null>
+export type ConnectorConnectorCustomScheduling = Record<string, ConnectorCustomScheduling>
 
 export interface ConnectorConnectorFeatures {
   document_level_security?: ConnectorFeatureEnabled
@@ -9100,29 +9100,37 @@ export interface ConnectorConnectorFeatures {
   sync_rules?: ConnectorSyncRulesFeature
 }
 
-export type ConnectorConnectorFieldType = 'STRING' | 'INTEGER' | 'LIST' | 'BOOLEAN'
+export type ConnectorConnectorFieldType = 'str' | 'int' | 'list' | 'bool'
 
 export interface ConnectorConnectorScheduling {
   enabled: boolean
   interval: string
 }
 
-export type ConnectorConnectorStatus = 'CREATED' | 'NEEDS_CONFIGURATION' | 'CONFIGURED' | 'CONNECTED' | 'ERROR'
+export type ConnectorConnectorStatus = 'created' | 'needs_configuration' | 'configured' | 'connected' | 'error'
 
 export interface ConnectorCustomScheduling {
-  configuration_overrides: Record<string, any>
+  configuration_overrides: ConnectorCustomSchedulingConfigurationOverrides
   enabled: boolean
   interval: string
-  last_synced: string | null
+  last_synced?: string
   name: string
+}
+
+export interface ConnectorCustomSchedulingConfigurationOverrides {
+  max_crawl_depth?: number
+  sitemap_discovery_disabled?: boolean
+  domain_allowlist?: string[]
+  sitemap_urls?: string[]
+  seed_urls?: string[]
 }
 
 export interface ConnectorDependency {
   field: string
-  value: string | number | boolean | null
+  value: ScalarValue
 }
 
-export type ConnectorDisplayType = 'TEXTBOX' | 'TEXTAREA' | 'NUMERIC' | 'TOGGLE' | 'DROPDOWN'
+export type ConnectorDisplayType = 'textbox' | 'textarea' | 'numeric' | 'toggle' | 'dropdown'
 
 export interface ConnectorFeatureEnabled {
   enabled: boolean
@@ -9140,7 +9148,7 @@ export interface ConnectorFilteringConfig {
   draft: ConnectorFilteringRules
 }
 
-export type ConnectorFilteringPolicy = 'EXCLUDE' | 'INCLUDE'
+export type ConnectorFilteringPolicy = 'exclude' | 'include'
 
 export interface ConnectorFilteringRule {
   created_at: string
@@ -9153,7 +9161,7 @@ export interface ConnectorFilteringRule {
   value: string
 }
 
-export type ConnectorFilteringRuleRule = 'CONTAINS' | 'ENDS_WITH' | 'EQUALS' | 'GREATER_THAN' | 'LESS_THAN' | 'REGEX' | 'STARTS_WITH'
+export type ConnectorFilteringRuleRule = 'contains' | 'ends_with' | 'equals' | 'regex' | 'starts_with' | 'greater_than' | 'less_than'
 
 export interface ConnectorFilteringRules {
   advanced_snippet: ConnectorFilteringAdvancedSnippet
@@ -9171,7 +9179,7 @@ export interface ConnectorFilteringValidation {
   messages: string[]
 }
 
-export type ConnectorFilteringValidationState = 'EDITED' | 'INVALID' | 'VALID'
+export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorIngestPipelineParams {
   extract_binary_content: boolean
@@ -9196,7 +9204,7 @@ export interface ConnectorSyncRulesFeature {
   basic?: ConnectorFeatureEnabled
 }
 
-export type ConnectorSyncStatus = 'CANCELING' | 'CANCELED' | 'COMPLETED' | 'ERROR' | 'IN_PROGRESS' | 'PENDING' | 'SUSPENDED'
+export type ConnectorSyncStatus = 'canceling' | 'canceled' | 'completed' | 'error' | 'in_progress' | 'pending' | 'suspended'
 
 export interface ConnectorValidation {
   constraint: string | number

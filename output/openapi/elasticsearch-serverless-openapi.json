@@ -48397,15 +48397,7 @@
         "type": "object",
         "properties": {
           "api_key_id": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "configuration": {
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
@@ -48414,15 +48406,7 @@
             "$ref": "#/components/schemas/connector._types:ConnectorCustomScheduling"
           },
           "description": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "error": {
             "oneOf": [
@@ -48454,15 +48438,7 @@
             "type": "boolean"
           },
           "language": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "last_access_control_sync_error": {
             "oneOf": [
@@ -48586,40 +48562,16 @@
             ]
           },
           "name": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "pipeline": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
           },
           "scheduling": {
             "$ref": "#/components/schemas/connector._types:SchedulingConfiguration"
           },
           "service_type": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/connector._types:ConnectorStatus"
@@ -48629,28 +48581,13 @@
           }
         },
         "required": [
-          "api_key_id",
           "configuration",
           "custom_scheduling",
-          "description",
           "error",
           "features",
           "filtering",
           "index_name",
           "is_native",
-          "language",
-          "last_access_control_sync_error",
-          "last_access_control_sync_scheduled_at",
-          "last_access_control_sync_status",
-          "last_deleted_document_count",
-          "last_incremental_sync_scheduled_at",
-          "last_indexed_document_count",
-          "last_seen",
-          "last_sync_error",
-          "last_sync_scheduled_at",
-          "last_sync_status",
-          "last_synced",
-          "name",
           "scheduling",
           "service_type",
           "status",
@@ -48660,15 +48597,7 @@
       "connector._types:ConnectorConfiguration": {
         "type": "object",
         "additionalProperties": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/connector._types:ConnectorConfigProperties"
-            },
-            {
-              "nullable": true,
-              "type": "string"
-            }
-          ]
+          "$ref": "#/components/schemas/connector._types:ConnectorConfigProperties"
         }
       },
       "connector._types:ConnectorConfigProperties": {
@@ -48678,21 +48607,7 @@
             "type": "string"
           },
           "default_value": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "boolean"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_types:ScalarValue"
           },
           "depends_on": {
             "type": "array",
@@ -48713,15 +48628,7 @@
             }
           },
           "order": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           },
           "placeholder": {
             "type": "string"
@@ -48733,15 +48640,7 @@
             "type": "boolean"
           },
           "tooltip": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "type": {
             "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
@@ -48759,21 +48658,7 @@
             }
           },
           "value": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "boolean"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_types:ScalarValue"
           }
         },
         "required": [
@@ -48784,11 +48669,31 @@
           "options",
           "required",
           "sensitive",
-          "tooltip",
           "type",
           "ui_restrictions",
           "validations",
           "value"
+        ]
+      },
+      "_types:ScalarValue": {
+        "description": "A scalar value.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "nullable": true,
+            "type": "string"
+          }
         ]
       },
       "connector._types:Dependency": {
@@ -48798,21 +48703,7 @@
             "type": "string"
           },
           "value": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "boolean"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_types:ScalarValue"
           }
         },
         "required": [
@@ -48823,11 +48714,11 @@
       "connector._types:DisplayType": {
         "type": "string",
         "enum": [
-          "TEXTBOX",
-          "TEXTAREA",
-          "NUMERIC",
-          "TOGGLE",
-          "DROPDOWN"
+          "textbox",
+          "textarea",
+          "numeric",
+          "toggle",
+          "dropdown"
         ]
       },
       "connector._types:SelectOption": {
@@ -48848,10 +48739,10 @@
       "connector._types:ConnectorFieldType": {
         "type": "string",
         "enum": [
-          "STRING",
-          "INTEGER",
-          "LIST",
-          "BOOLEAN"
+          "str",
+          "int",
+          "list",
+          "bool"
         ]
       },
       "connector._types:Validation": {
@@ -48879,25 +48770,14 @@
       "connector._types:ConnectorCustomScheduling": {
         "type": "object",
         "additionalProperties": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/connector._types:CustomScheduling"
-            },
-            {
-              "nullable": true,
-              "type": "string"
-            }
-          ]
+          "$ref": "#/components/schemas/connector._types:CustomScheduling"
         }
       },
       "connector._types:CustomScheduling": {
         "type": "object",
         "properties": {
           "configuration_overrides": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+            "$ref": "#/components/schemas/connector._types:CustomSchedulingConfigurationOverrides"
           },
           "enabled": {
             "type": "boolean"
@@ -48906,15 +48786,7 @@
             "type": "string"
           },
           "last_synced": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "name": {
             "type": "string"
@@ -48924,9 +48796,37 @@
           "configuration_overrides",
           "enabled",
           "interval",
-          "last_synced",
           "name"
         ]
+      },
+      "connector._types:CustomSchedulingConfigurationOverrides": {
+        "type": "object",
+        "properties": {
+          "max_crawl_depth": {
+            "type": "number"
+          },
+          "sitemap_discovery_disabled": {
+            "type": "boolean"
+          },
+          "domain_allowlist": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sitemap_urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "seed_urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "connector._types:ConnectorFeatures": {
         "type": "object",
@@ -49075,20 +48975,20 @@
       "connector._types:FilteringPolicy": {
         "type": "string",
         "enum": [
-          "EXCLUDE",
-          "INCLUDE"
+          "exclude",
+          "include"
         ]
       },
       "connector._types:FilteringRuleRule": {
         "type": "string",
         "enum": [
-          "CONTAINS",
-          "ENDS_WITH",
-          "EQUALS",
-          "GREATER_THAN",
-          "LESS_THAN",
-          "REGEX",
-          "STARTS_WITH"
+          "contains",
+          "ends_with",
+          "equals",
+          "regex",
+          "starts_with",
+          "greater_than",
+          "less_than"
         ]
       },
       "connector._types:FilteringRulesValidation": {
@@ -49133,21 +49033,21 @@
       "connector._types:FilteringValidationState": {
         "type": "string",
         "enum": [
-          "EDITED",
-          "INVALID",
-          "VALID"
+          "edited",
+          "invalid",
+          "valid"
         ]
       },
       "connector._types:SyncStatus": {
         "type": "string",
         "enum": [
-          "CANCELING",
-          "CANCELED",
-          "COMPLETED",
-          "ERROR",
-          "IN_PROGRESS",
-          "PENDING",
-          "SUSPENDED"
+          "canceling",
+          "canceled",
+          "completed",
+          "error",
+          "in_progress",
+          "pending",
+          "suspended"
         ]
       },
       "connector._types:IngestPipelineParams": {
@@ -49199,6 +49099,7 @@
             "type": "boolean"
           },
           "interval": {
+            "description": "The interval is expressed using the crontab syntax",
             "type": "string"
           }
         },
@@ -49210,11 +49111,11 @@
       "connector._types:ConnectorStatus": {
         "type": "string",
         "enum": [
-          "CREATED",
-          "NEEDS_CONFIGURATION",
-          "CONFIGURED",
-          "CONNECTED",
-          "ERROR"
+          "created",
+          "needs_configuration",
+          "configured",
+          "connected",
+          "error"
         ]
       },
       "_types:WriteResponseBase": {
