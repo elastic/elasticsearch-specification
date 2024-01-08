@@ -50,8 +50,8 @@ export class GeoBoundingBoxQuery
 }
 
 export enum GeoExecution {
-  memory = 0,
-  indexed = 1
+  memory,
+  indexed
 }
 
 export class GeoDistanceQuery
@@ -93,8 +93,8 @@ export class GeoPolygonQuery
 }
 
 export enum GeoFormat {
-  GeoJson = 0,
-  WellKnownText = 1
+  GeoJson,
+  WellKnownText
 }
 
 export class GeoShapeFieldQuery {
@@ -125,27 +125,27 @@ export class GeoShapeQuery
 }
 
 export enum CharacterType {
-  Whitespace = 0,
-  Alpha = 1,
-  Comment = 2
+  Whitespace,
+  Alpha,
+  Comment
 }
 
 export enum TokenType {
-  None = 0,
-  Word = 1,
-  LParen = 2,
-  RParen = 3,
-  Comma = 4
+  None,
+  Word,
+  LParen,
+  RParen,
+  Comma
 }
 
 export enum GeoValidationMethod {
   /**
    * Accept geo points with invalid latitude or longitude and additionally try and infer correct coordinates.
    */
-  coerce = 0,
+  coerce,
   /**
    * Accept geo points with invalid latitude or longitude.
    */
-  ignore_malformed = 1,
-  strict = 2
+  ignore_malformed,
+  strict
 }

@@ -18,41 +18,41 @@
  */
 
 export enum DFIIndependenceMeasure {
-  standardized = 0,
-  saturated = 1,
-  chisquared = 2
+  standardized,
+  saturated,
+  chisquared
 }
 
 export enum DFRAfterEffect {
-  no = 0,
-  b = 1,
-  l = 2
+  no,
+  b,
+  l
 }
 
 export enum DFRBasicModel {
-  be = 0,
-  d = 1,
-  g = 2,
-  if = 3,
-  in = 4,
-  ine = 5,
-  p = 6
+  be,
+  d,
+  g,
+  if,
+  in,
+  ine,
+  p
 }
 
 export enum IBDistribution {
-  ll = 0,
-  spl = 1
+  ll,
+  spl
 }
 
 export enum IBLambda {
-  df = 0,
-  ttf = 1
+  df,
+  ttf
 }
 
 export enum Normalization {
-  no = 0,
-  h1 = 1,
-  h2 = 2,
-  h3 = 3,
-  z = 4
+  no,
+  h1,
+  h2,
+  h3,
+  z
 }

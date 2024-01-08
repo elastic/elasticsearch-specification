@@ -244,117 +244,117 @@ export enum FunctionScoreMode {
   /**
    * Scores are multiplied.
    */
-  multiply = 0,
+  multiply,
   /**
    * Scores are summed.
    */
-  sum = 1,
+  sum,
   /**
    * Scores are averaged.
    */
-  avg = 2,
+  avg,
   /**
    * The first function that has a matching filter is applied.
    */
-  first = 3,
+  first,
   /**
    * Maximum score is used.
    */
-  max = 4,
+  max,
   /**
    * Minimum score is used.
    */
-  min = 5
+  min
 }
 
 export enum FunctionBoostMode {
   /**
    * Query score and function score are multiplied
    */
-  multiply = 0,
+  multiply,
   /**
    * Only the function score is used.
    * The query score is ignored.
    */
-  replace = 1,
+  replace,
   /**
    * Query score and function score are added
    */
-  sum = 2,
+  sum,
   /**
    * Query score and function score are averaged
    */
-  avg = 3,
+  avg,
   /**
    * Max of query score and function score
    */
-  max = 4,
+  max,
   /**
    * Min of query score and function score
    */
-  min = 5
+  min
 }
 
 export enum FieldValueFactorModifier {
   /**
    * Do not apply any multiplier to the field value.
    */
-  none = 0,
+  none,
   /**
    * Take the common logarithm of the field value.
    * Because this function will return a negative value and cause an error if used on values between 0 and 1, it is recommended to use `log1p` instead.
    */
-  log = 1,
+  log,
   /**
    * Add 1 to the field value and take the common logarithm.
    */
-  log1p = 2,
+  log1p,
   /**
    * Add 2 to the field value and take the common logarithm.
    */
-  log2p = 3,
+  log2p,
   /**
    * Take the natural logarithm of the field value.
    * Because this function will return a negative value and cause an error if used on values between 0 and 1, it is recommended to use `ln1p` instead.
    */
-  ln = 4,
+  ln,
   /**
    * Add 1 to the field value and take the natural logarithm.
    */
-  ln1p = 5,
+  ln1p,
   /**
    * Add 2 to the field value and take the natural logarithm.
    */
-  ln2p = 6,
+  ln2p,
   /**
    * Square the field value (multiply it by itself).
    */
-  square = 7,
+  square,
   /**
    * Take the square root of the field value.
    */
-  sqrt = 8,
+  sqrt,
   /**
    * Reciprocate the field value, same as `1/x` where `x` is the field’s value.
    */
-  reciprocal = 9
+  reciprocal
 }
 
 export enum MultiValueMode {
   /**
    * Distance is the minimum distance.
    */
-  min = 0,
+  min,
   /**
    * Distance is the maximum distance.
    */
-  max = 1,
+  max,
   /**
    * Distance is the average distance.
    */
-  avg = 2,
+  avg,
   /**
    * Distance is the sum of all distances.
    */
-  sum = 3
+  sum
 }

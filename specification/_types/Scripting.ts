@@ -29,19 +29,19 @@ export enum ScriptLanguage {
   /**
    * Painless scripting language, purpose-built for Elasticsearch.
    */
-  painless = 0,
+  painless,
   /**
    * Lucene’s expressions language, compiles a JavaScript expression to bytecode.
    */
-  expression = 1,
+  expression,
   /**
    * Mustache templated, used for templates.
    */
-  mustache = 2,
+  mustache,
   /**
    * Expert Java API
    */
-  java = 3
+  java
 }
 
 export class StoredScript {

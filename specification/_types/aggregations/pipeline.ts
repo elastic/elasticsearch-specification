@@ -281,10 +281,8 @@ export class HoltWintersModelSettings {
   type?: HoltWintersType
 }
 export enum HoltWintersType {
-  /** @codegen_name Additive */
-  add,
-  /** @codegen_name Multiplicative */
-  mult
+  Additive = 'add',
+  Multiplicative = 'mult'
 }
 
 export class MovingFunctionAggregation extends PipelineAggregationBase {

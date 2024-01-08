@@ -18,12 +18,12 @@
  */
 
 export enum DeprecationLevel {
-  none = 0,
-  info = 1,
+  none,
+  info,
   /** You can upgrade directly, but you are using deprecated functionality which will not be available or behave differently in the next major version. */
-  warning = 2,
+  warning,
   /** You cannot upgrade without fixing this problem. */
-  critical = 3
+  critical
 }
 
 export class Deprecation {
