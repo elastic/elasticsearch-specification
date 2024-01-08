@@ -49690,37 +49690,13 @@
         "type": "object",
         "properties": {
           "cancelation_requested_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "canceled_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "completed_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "connector": {
             "$ref": "#/components/schemas/connector_sync_job._types:SyncJobConnector"
@@ -49755,15 +49731,7 @@
             "$ref": "#/components/schemas/connector_sync_job._types:SyncJobType"
           },
           "last_seen": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "metadata": {
             "type": "object",
@@ -49772,49 +49740,22 @@
             }
           },
           "started_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/connector._types:SyncStatus"
           },
           "total_document_count": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           },
           "trigger_method": {
             "$ref": "#/components/schemas/connector_sync_job._types:TriggerMethod"
           },
           "worker_hostname": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           }
         },
         "required": [
-          "cancelation_requested_at",
-          "canceled_at",
-          "completed_at",
           "connector",
           "created_at",
           "deleted_document_count",
@@ -49823,13 +49764,9 @@
           "indexed_document_count",
           "indexed_document_volume",
           "job_type",
-          "last_seen",
           "metadata",
-          "started_at",
           "status",
-          "total_document_count",
-          "trigger_method",
-          "worker_hostname"
+          "trigger_method"
         ]
       },
       "connector_sync_job._types:SyncJobConnector": {
@@ -49851,37 +49788,13 @@
             "type": "string"
           },
           "language": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "pipeline": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
           },
           "service_type": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           }
         },
         "required": [
@@ -49889,7 +49802,6 @@
           "filtering",
           "id",
           "index_name",
-          "language",
           "pipeline",
           "service_type"
         ]
@@ -49897,16 +49809,16 @@
       "connector_sync_job._types:SyncJobType": {
         "type": "string",
         "enum": [
-          "FULL",
-          "INCREMENTAL",
-          "ACCESS_CONTROL"
+          "full",
+          "incremental",
+          "access_control"
         ]
       },
       "connector_sync_job._types:TriggerMethod": {
         "type": "string",
         "enum": [
-          "ON_DEMAND",
-          "SCHEDULED"
+          "on_demand",
+          "scheduled"
         ]
       },
       "_types:WriteResponseBase": {

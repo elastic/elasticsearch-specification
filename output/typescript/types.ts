@@ -9353,9 +9353,9 @@ export interface ConnectorUpdateSchedulingResponse {
 }
 
 export interface ConnectorSyncJobConnectorSyncJob {
-  cancelation_requested_at: string | null
-  canceled_at: string | null
-  completed_at: string | null
+  cancelation_requested_at?: string
+  canceled_at?: string
+  completed_at?: string
   connector: ConnectorSyncJobSyncJobConnector
   created_at: string
   deleted_document_count: number
@@ -9364,13 +9364,13 @@ export interface ConnectorSyncJobConnectorSyncJob {
   indexed_document_count: number
   indexed_document_volume: number
   job_type: ConnectorSyncJobSyncJobType
-  last_seen: string | null
+  last_seen?: string
   metadata: Record<string, any>
-  started_at: string | null
+  started_at?: string
   status: ConnectorSyncStatus
-  total_document_count: number | null
+  total_document_count?: number
   trigger_method: ConnectorSyncJobTriggerMethod
-  worker_hostname: string | null
+  worker_hostname?: string
 }
 
 export interface ConnectorSyncJobSyncJobConnector {
@@ -9378,14 +9378,14 @@ export interface ConnectorSyncJobSyncJobConnector {
   filtering: ConnectorFilteringConfig[]
   id: Id
   index_name: string
-  language: string | null
-  pipeline: ConnectorIngestPipelineParams | null
-  service_type: string | null
+  language?: string
+  pipeline: ConnectorIngestPipelineParams
+  service_type: string
 }
 
-export type ConnectorSyncJobSyncJobType = 'FULL' | 'INCREMENTAL' | 'ACCESS_CONTROL'
+export type ConnectorSyncJobSyncJobType = 'full' | 'incremental' | 'access_control'
 
-export type ConnectorSyncJobTriggerMethod = 'ON_DEMAND' | 'SCHEDULED'
+export type ConnectorSyncJobTriggerMethod = 'on_demand' | 'scheduled'
 
 export interface ConnectorSyncJobCancelRequest extends RequestBase {
   connector_sync_job_id: Id
