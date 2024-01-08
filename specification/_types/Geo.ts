@@ -28,35 +28,26 @@ export class DistanceParsed {
 export type Distance = string
 
 export enum DistanceUnit {
-  /** @codegen_name inches */
-  in = 0,
-  /** @codegen_name feet */
-  ft = 1,
-  /** @codegen_name yards */
-  yd = 2,
-  /** @codegen_name miles */
-  mi = 3,
-  /** @codegen_name nautic_miles */
-  nmi = 4,
-  /** @codegen_name kilometers */
-  km = 5,
-  /** @codegen_name meters */
-  m = 6,
-  /** @codegen_name centimeters */
-  cm = 7,
-  /** @codegen_name millimeters */
-  mm = 8
+  inches = 'in',
+  'feet' = 'ft',
+  'yards' = 'yd',
+  miles = 'mi',
+  nautic_miles = 'nmi',
+  kilometers = 'km',
+  meters = 'm',
+  centimeters = 'cm',
+  millimeters = 'mm'
 }
 
 export enum GeoDistanceType {
   /**
    * The `arc` calculation is the most accurate.
    */
-  arc = 0,
+  arc,
   /**
    * The `plane` calculation is faster but less accurate.
    */
-  plane = 1
+  plane
 }
 
 /** A GeoJson shape, that can also use Elasticsearch's `envelope` extension. */
@@ -74,20 +65,20 @@ export enum GeoShapeRelation {
   /**
    * Return all documents whose `geo_shape` or `geo_point` field intersects the query geometry.
    */
-  intersects = 0,
+  intersects,
   /**
    * Return all documents whose `geo_shape` or `geo_point` field has nothing in common with the query geometry.
    */
-  disjoint = 1,
+  disjoint,
   /**
    * Return all documents whose `geo_shape` or `geo_point` field is within the query geometry.
    * Line geometries are not supported.
    */
-  within = 2,
+  within,
   /**
    * Return all documents whose `geo_shape` or `geo_point` field contains the query geometry.
    */
-  contains = 3
+  contains
 }
 
 export type GeoTilePrecision = number

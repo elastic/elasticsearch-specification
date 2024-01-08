@@ -470,34 +470,34 @@ export enum StringDistance {
   /**
    * Based on the Damerau-Levenshtein algorithm, but highly optimized for comparing string distance for terms inside the index.
    */
-  internal = 0,
+  internal,
   /**
    * String distance algorithm based on Damerau-Levenshtein algorithm.
    */
-  damerau_levenshtein = 1,
+  damerau_levenshtein,
   /**
    * String distance algorithm based on the Levenshtein edit distance algorithm.
    */
-  levenshtein = 2,
+  levenshtein,
   /**
    * String distance algorithm based on Jaro-Winkler algorithm.
    */
-  jaro_winkler = 3,
+  jaro_winkler,
   /**
    * String distance algorithm based on character n-grams.
    */
-  ngram = 4
+  ngram
 }
 
 export enum SuggestSort {
   /**
    * Sort by score first, then document frequency and then the term itself.
    */
-  score = 0,
+  score,
   /**
    * Sort by document frequency first, then similarity score and then the term itself.
    */
-  frequency = 1
+  frequency
 }
 
 export class TermSuggester extends SuggesterBase {

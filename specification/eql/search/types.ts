@@ -24,9 +24,9 @@ export enum ResultPosition {
   /**
    * Return the most recent matches, similar to the Unix tail command.
    */
-  tail = 0,
+  tail,
   /**
    * Return the earliest matches, similar to the Unix head command.
    */
-  head = 1
+  head
 }

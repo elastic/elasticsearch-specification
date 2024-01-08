@@ -37,8 +37,8 @@ export class ChainInput {
 }
 
 export enum ConnectionScheme {
-  http = 0,
-  https = 1
+  http,
+  https
 }
 
 export class HttpInput {
@@ -57,11 +57,11 @@ export class HttpInputBasicAuthentication {
 }
 
 export enum HttpInputMethod {
-  head = 0,
-  get = 1,
-  post = 2,
-  put = 3,
-  delete = 4
+  head,
+  get,
+  post,
+  put,
+  delete
 }
 
 export class HttpInputProxy {
@@ -98,15 +98,15 @@ export class InputContainer {
 }
 
 export enum InputType {
-  http = 0,
-  search = 1,
-  simple = 2
+  http,
+  search,
+  simple
 }
 
 export enum ResponseContentType {
-  json = 0,
-  yaml = 1,
-  text = 2
+  json,
+  yaml,
+  text
 }
 
 export class SearchInput {

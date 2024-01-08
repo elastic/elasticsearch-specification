@@ -10186,7 +10186,6 @@ export interface IndicesIndexSettingsKeys {
   analysis?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
   time_series?: IndicesIndexSettingsTimeSeries
-  shards?: integer
   queries?: IndicesQueries
   similarity?: IndicesSettingsSimilarity
   mapping?: IndicesMappingLimitSettings

@@ -21,44 +21,44 @@ import { integer } from '@_types/Numeric'
 import { TokenFilterBase } from './token_filters'
 
 export enum PhoneticEncoder {
-  metaphone = 0,
-  double_metaphone = 1,
-  soundex = 2,
-  refined_soundex = 3,
-  caverphone1 = 4,
-  caverphone2 = 5,
-  cologne = 6,
-  nysiis = 7,
-  koelnerphonetik = 8,
-  haasephonetik = 9,
-  beider_morse = 10,
-  daitch_mokotoff = 11
+  metaphone,
+  double_metaphone,
+  soundex,
+  refined_soundex,
+  caverphone1,
+  caverphone2,
+  cologne,
+  nysiis,
+  koelnerphonetik,
+  haasephonetik,
+  beider_morse,
+  daitch_mokotoff
 }
 
 export enum PhoneticLanguage {
-  any = 0,
-  common = 1,
-  cyrillic = 2,
-  english = 3,
-  french = 4,
-  german = 5,
-  hebrew = 6,
-  hungarian = 7,
-  polish = 8,
-  romanian = 9,
-  russian = 10,
-  spanish = 11
+  any,
+  common,
+  cyrillic,
+  english,
+  french,
+  german,
+  hebrew,
+  hungarian,
+  polish,
+  romanian,
+  russian,
+  spanish
 }
 
 export enum PhoneticNameType {
-  generic = 0,
-  ashkenazi = 1,
-  sephardic = 2
+  generic,
+  ashkenazi,
+  sephardic
 }
 
 export enum PhoneticRuleType {
-  approx = 0,
-  exact = 1
+  approx,
+  exact
 }
 
 export class PhoneticTokenFilter extends TokenFilterBase {
