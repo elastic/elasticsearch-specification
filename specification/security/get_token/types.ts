@@ -21,10 +21,10 @@ import { User } from '@security/_types/User'
 import { Name } from '@_types/common'
 
 export enum AccessTokenGrantType {
-  password = 0,
-  client_credentials = 1,
-  _kerberos = 2,
-  refresh_token = 3
+  password,
+  client_credentials,
+  _kerberos,
+  refresh_token
 }
 
 export class UserRealm {

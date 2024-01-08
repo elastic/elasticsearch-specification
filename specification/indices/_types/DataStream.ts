@@ -30,12 +30,10 @@ import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 
 enum ManagedBy {
-  /** @codegen_name ilm */
-  'Index Lifecycle Management',
-  /** @codegen_name datastream */
-  'Data stream lifecycle',
-  /** @codegen_name unmanaged */
-  'Unmanaged'
+  ilm = 'Index Lifecycle Management',
+  // This should have been written with capital letters, it's a known typo and should not be corrected.
+  datastream = 'Data stream lifecycle',
+  unmanaged = 'Unmanaged'
 }
 
 export class DataStream {

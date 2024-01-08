@@ -59,18 +59,18 @@ export class ConditionContainer {
 }
 
 export enum ConditionType {
-  always = 0,
-  never = 1,
-  script = 2,
-  compare = 3,
-  array_compare = 4
+  always,
+  never,
+  script,
+  compare,
+  array_compare
 }
 
 export class NeverCondition {}
 
 export enum Quantifier {
-  some = 0,
-  all = 1
+  some,
+  all
 }
 
 export class ScriptCondition {

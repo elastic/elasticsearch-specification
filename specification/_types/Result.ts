@@ -18,10 +18,9 @@
  */
 
 export enum Result {
-  created = 1,
-  updated = 2,
-  deleted = 3,
-  not_found = 4,
-  /** @codegen_name no_op */
-  noop = 5
+  created,
+  updated,
+  deleted,
+  not_found,
+  no_op = 'noop'
 }

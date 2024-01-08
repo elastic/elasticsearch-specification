@@ -35,11 +35,11 @@ export class ClusterStatistics {
 }
 
 enum ClusterSearchStatus {
-  running = 0,
-  successful = 1,
-  partial = 2,
-  skipped = 3,
-  failed = 4
+  running,
+  successful,
+  partial,
+  skipped,
+  failed
 }
 
 export class ClusterDetails {

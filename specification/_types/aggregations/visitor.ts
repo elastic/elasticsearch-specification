@@ -18,7 +18,7 @@
  */
 
 export enum AggregationVisitorScope {
-  Unknown = 0,
-  Aggregation = 1,
-  Bucket = 2
+  Unknown,
+  Aggregation,
+  Bucket
 }

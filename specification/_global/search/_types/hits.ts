@@ -98,9 +98,9 @@ export class TotalHits {
 
 export enum TotalHitsRelation {
   /** Accurate */
-  eq = 0,
+  eq,
   /** Lower bound, including returned events or sequences */
-  gte = 1
+  gte
 }
 
 export class InnerHits {

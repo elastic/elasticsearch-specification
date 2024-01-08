@@ -20,8 +20,8 @@
 import { Script } from '@_types/Scripting'
 
 export enum TemplateFormat {
-  string = 0,
-  json = 1
+  string,
+  json
 }
 
 // ES: TemplateRoleName

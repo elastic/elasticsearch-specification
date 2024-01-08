@@ -50,13 +50,13 @@ export class GeoShapeProperty extends DocValuesPropertyBase {
 }
 
 export enum GeoStrategy {
-  recursive = 0,
-  term = 1
+  recursive,
+  term
 }
 
 export enum GeoTree {
-  geohash = 0,
-  quadtree = 1
+  geohash,
+  quadtree
 }
 
 export class PointProperty extends DocValuesPropertyBase {

@@ -46,6 +46,6 @@ export class GrantApiKey {
 }
 
 export enum ApiKeyGrantType {
-  access_token = 0,
-  password = 1
+  access_token,
+  password
 }

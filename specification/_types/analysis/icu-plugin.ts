@@ -71,40 +71,40 @@ export class IcuAnalyzer {
 }
 
 export enum IcuTransformDirection {
-  forward = 0,
-  reverse = 1
+  forward,
+  reverse
 }
 
 export enum IcuNormalizationMode {
-  decompose = 0,
-  compose = 1
+  decompose,
+  compose
 }
 
 export enum IcuNormalizationType {
-  nfc = 0,
-  nfkc = 1,
-  nfkc_cf = 2
+  nfc,
+  nfkc,
+  nfkc_cf
 }
 
 export enum IcuCollationAlternate {
-  shifted = 0,
-  'non-ignorable' = 1
+  shifted,
+  'non-ignorable'
 }
 
 export enum IcuCollationCaseFirst {
-  lower = 0,
-  upper = 1
+  lower,
+  upper
 }
 
 export enum IcuCollationDecomposition {
-  no = 0,
-  identical = 1
+  no,
+  identical
 }
 
 export enum IcuCollationStrength {
-  primary = 0,
-  secondary = 1,
-  tertiary = 2,
-  quaternary = 3,
-  identical = 4
+  primary,
+  secondary,
+  tertiary,
+  quaternary,
+  identical
 }
