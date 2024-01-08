@@ -444,7 +444,7 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
           name: name
         }
         const value = m.getValue()
-        if (value && (typeof value === 'string')) {
+        if (value != null && (typeof value === 'string')) {
           member.name = value
           member.codegenName = name
         }
