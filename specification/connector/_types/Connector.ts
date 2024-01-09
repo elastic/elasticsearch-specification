@@ -17,6 +17,7 @@
  * under the License.
  */
 import { Id, ScalarValue } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -45,9 +46,37 @@ enum ConnectorFieldType {
   bool
 }
 
-interface Validation {
-  constraint: string | number
-  type: string
+/** @variants internal tag='type' */
+type Validation =
+  | LessThanValidation
+  | GreaterThanValidation
+  | ListTypeValidation
+  | IncludedInValidation
+  | RegexValidation
+
+export interface LessThanValidation {
+  type: 'less_than'
+  constraint: double
+}
+
+export interface GreaterThanValidation {
+  type: 'greater_than'
+  constraint: double
+}
+
+export interface ListTypeValidation {
+  type: 'list_type'
+  constraint: ScalarValue[]
+}
+
+export interface IncludedInValidation {
+  type: 'included_in'
+  constraint: string
+}
+
+export interface RegexValidation {
+  type: 'regex'
+  constraint: string
 }
 
 export interface ConnectorConfigProperties {
@@ -57,7 +86,7 @@ export interface ConnectorConfigProperties {
   display: DisplayType
   label: string
   options: SelectOption[]
-  order?: number
+  order?: integer
   placeholder?: string
   required: boolean
   sensitive: boolean
@@ -80,7 +109,7 @@ export interface ConnectorScheduling {
 }
 
 interface CustomSchedulingConfigurationOverrides {
-  max_crawl_depth?: number
+  max_crawl_depth?: integer
   sitemap_discovery_disabled?: boolean
   domain_allowlist?: string[]
   sitemap_urls?: string[]
@@ -141,7 +170,7 @@ interface FilteringRule {
   created_at: string
   field: string
   id: string
-  order: number
+  order: integer
   policy: FilteringPolicy
   rule: FilteringRuleRule
   updated_at: string
@@ -220,9 +249,9 @@ export interface Connector {
   last_access_control_sync_error?: string | null
   last_access_control_sync_scheduled_at?: string | null
   last_access_control_sync_status?: SyncStatus | null
-  last_deleted_document_count?: number | null
+  last_deleted_document_count?: long | null
   last_incremental_sync_scheduled_at?: string | null
-  last_indexed_document_count?: number | null
+  last_indexed_document_count?: long | null
   last_seen?: string | null
   last_sync_error?: string | null
   last_sync_scheduled_at?: string | null

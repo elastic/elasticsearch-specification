@@ -48743,25 +48743,118 @@
         ]
       },
       "connector._types:Validation": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/connector._types:LessThanValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:GreaterThanValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:ListTypeValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:IncludedInValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:RegexValidation"
+          }
+        ]
+      },
+      "connector._types:LessThanValidation": {
         "type": "object",
         "properties": {
-          "constraint": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "number"
-              }
+          "type": {
+            "type": "string",
+            "enum": [
+              "\"less_than\""
             ]
           },
+          "constraint": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:GreaterThanValidation": {
+        "type": "object",
+        "properties": {
           "type": {
+            "type": "string",
+            "enum": [
+              "\"greater_than\""
+            ]
+          },
+          "constraint": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:ListTypeValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "\"list_type\""
+            ]
+          },
+          "constraint": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ScalarValue"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:IncludedInValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "\"included_in\""
+            ]
+          },
+          "constraint": {
             "type": "string"
           }
         },
         "required": [
-          "constraint",
-          "type"
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:RegexValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "\"regex\""
+            ]
+          },
+          "constraint": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
         ]
       },
       "connector._types:ConnectorCustomScheduling": {

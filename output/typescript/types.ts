@@ -9054,9 +9054,9 @@ export interface ConnectorConnector {
   last_access_control_sync_error?: string | null
   last_access_control_sync_scheduled_at?: string | null
   last_access_control_sync_status?: ConnectorSyncStatus | null
-  last_deleted_document_count?: number | null
+  last_deleted_document_count?: long | null
   last_incremental_sync_scheduled_at?: string | null
-  last_indexed_document_count?: number | null
+  last_indexed_document_count?: long | null
   last_seen?: string | null
   last_sync_error?: string | null
   last_sync_scheduled_at?: string | null
@@ -9077,7 +9077,7 @@ export interface ConnectorConnectorConfigProperties {
   display: ConnectorDisplayType
   label: string
   options: ConnectorSelectOption[]
-  order?: number
+  order?: integer
   placeholder?: string
   required: boolean
   sensitive: boolean
@@ -9118,7 +9118,7 @@ export interface ConnectorCustomScheduling {
 }
 
 export interface ConnectorCustomSchedulingConfigurationOverrides {
-  max_crawl_depth?: number
+  max_crawl_depth?: integer
   sitemap_discovery_disabled?: boolean
   domain_allowlist?: string[]
   sitemap_urls?: string[]
@@ -9154,7 +9154,7 @@ export interface ConnectorFilteringRule {
   created_at: string
   field: string
   id: string
-  order: number
+  order: integer
   policy: ConnectorFilteringPolicy
   rule: ConnectorFilteringRuleRule
   updated_at: string
@@ -9181,11 +9181,36 @@ export interface ConnectorFilteringValidation {
 
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
+export interface ConnectorGreaterThanValidation {
+  type: '"greater_than"'
+  constraint: double
+}
+
+export interface ConnectorIncludedInValidation {
+  type: '"included_in"'
+  constraint: string
+}
+
 export interface ConnectorIngestPipelineParams {
   extract_binary_content: boolean
   name: string
   reduce_whitespace: boolean
   run_ml_inference: boolean
+}
+
+export interface ConnectorLessThanValidation {
+  type: '"less_than"'
+  constraint: double
+}
+
+export interface ConnectorListTypeValidation {
+  type: '"list_type"'
+  constraint: ScalarValue[]
+}
+
+export interface ConnectorRegexValidation {
+  type: '"regex"'
+  constraint: string
 }
 
 export interface ConnectorSchedulingConfiguration {
@@ -9206,10 +9231,7 @@ export interface ConnectorSyncRulesFeature {
 
 export type ConnectorSyncStatus = 'canceling' | 'canceled' | 'completed' | 'error' | 'in_progress' | 'pending' | 'suspended'
 
-export interface ConnectorValidation {
-  constraint: string | number
-  type: string
-}
+export type ConnectorValidation = ConnectorLessThanValidation | ConnectorGreaterThanValidation | ConnectorListTypeValidation | ConnectorIncludedInValidation | ConnectorRegexValidation
 
 export interface ConnectorCheckInRequest extends RequestBase {
   connector_id: Id
