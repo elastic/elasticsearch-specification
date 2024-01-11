@@ -16,8 +16,10 @@
 // under the License.
 
 use std::collections::HashMap;
+
 use anyhow::bail;
 use indexmap::IndexMap;
+
 use crate::*;
 
 #[derive(Default)]
@@ -34,14 +36,10 @@ type GenericArgs = Vec<ValueOf>;
 type GenericMapping = HashMap<TypeName, ValueOf>;
 
 /// Expand all generics by creating new concrete types for every instanciation of a generic type.
-/// 
+///
 /// The resulting model has no generics anymore. Top-level generic parameters (e.g. SearchRequest's TDocument) are
 /// replaced by user_defined_data.
-///
-pub fn expand_generics(
-    model: IndexedModel
-) -> anyhow::Result<IndexedModel> {
-    
+pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
     let mut model = model;
     let mut ctx = Ctx::default();
 
@@ -63,7 +61,7 @@ pub fn expand_generics(
 
     fn expand_root_type(t: &TypeName, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<()> {
         const NO_GENERICS: &Vec<TypeName> = &Vec::new();
-        const USER_DEFINED: ValueOf = ValueOf::UserDefinedValue(UserDefinedValue{});
+        const USER_DEFINED: ValueOf = ValueOf::UserDefinedValue(UserDefinedValue {});
 
         use TypeDefinition::*;
         let generics = match model.get_type(t)? {
@@ -81,13 +79,16 @@ pub fn expand_generics(
         Ok(())
     }
 
-    ///
     /// Expand a type definition, given concrete values for its generic parameters.
     /// The new type definition is stored in the context.
     ///
     /// Returns the name to use for this (type, args) combination
-    ///
-    fn expand_type(name: &TypeName, args: GenericArgs, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<TypeName> {
+    fn expand_type(
+        name: &TypeName,
+        args: GenericArgs,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<TypeName> {
         if name.is_builtin() {
             return Ok(name.clone());
         }
@@ -105,7 +106,6 @@ pub fn expand_generics(
                 TypeDefinition::Response(resp) => expand_response(resp, args, model, ctx)?,
                 TypeDefinition::TypeAlias(ref alias) => expand_type_alias(alias, args, model, ctx)?,
                 TypeDefinition::Enum(_) => def.clone(),
-
             };
             new_def.base_mut().name = name.clone();
             ctx.new_types.insert(name.clone(), new_def);
@@ -114,7 +114,12 @@ pub fn expand_generics(
         Ok(name)
     }
 
-    fn expand_interface(itf: &Interface, args: GenericArgs, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<TypeDefinition> {
+    fn expand_interface(
+        itf: &Interface,
+        args: GenericArgs,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<TypeDefinition> {
         // Clone and modify in place
         let mut itf = itf.clone();
 
@@ -138,7 +143,12 @@ pub fn expand_generics(
         Ok(itf.into())
     }
 
-    fn expand_request(req: &Request, args: GenericArgs, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<TypeDefinition> {
+    fn expand_request(
+        req: &Request,
+        args: GenericArgs,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<TypeDefinition> {
         // Clone and modify in place
         let mut req = req.clone();
 
@@ -157,7 +167,12 @@ pub fn expand_generics(
         Ok(req.into())
     }
 
-    fn expand_response(resp: &Response, args: GenericArgs, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<TypeDefinition> {
+    fn expand_response(
+        resp: &Response,
+        args: GenericArgs,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<TypeDefinition> {
         // Clone and modify in place
         let mut resp = resp.clone();
 
@@ -172,7 +187,12 @@ pub fn expand_generics(
         Ok(resp.into())
     }
 
-    fn expand_type_alias(t: &TypeAlias, args: GenericArgs, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<TypeDefinition> {
+    fn expand_type_alias(
+        t: &TypeAlias,
+        args: GenericArgs,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<TypeDefinition> {
         let mapping = param_mapping(&t.generics, args);
         let value = expand_valueof(&t.typ, &mapping, model, ctx)?;
 
@@ -188,11 +208,22 @@ pub fn expand_generics(
     // Expanding type parts in place
     //---------------------------------------------------------------------------------------------
 
-    fn expand_inherits(i: Inherits, mappings: &GenericMapping, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<Inherits> {
-        let expanded = expand_valueof(&InstanceOf {
-            typ: i.typ,
-            generics: i.generics
-        }.into(), mappings, model, ctx)?;
+    fn expand_inherits(
+        i: Inherits,
+        mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<Inherits> {
+        let expanded = expand_valueof(
+            &InstanceOf {
+                typ: i.typ,
+                generics: i.generics,
+            }
+            .into(),
+            mappings,
+            model,
+            ctx,
+        )?;
 
         if let ValueOf::InstanceOf(inst) = expanded {
             Ok(Inherits {
@@ -204,10 +235,13 @@ pub fn expand_generics(
         }
     }
 
-    ///
     /// Expand behaviors in place
-    ///
-    fn expand_behaviors(behaviors: &mut Vec<Inherits>,  mappings: &GenericMapping, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<()> {
+    fn expand_behaviors(
+        behaviors: &mut Vec<Inherits>,
+        mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<()> {
         // We keep the generic parameters of behaviors, but expand their value
         for behavior in behaviors {
             for arg in &mut behavior.generics {
@@ -217,28 +251,34 @@ pub fn expand_generics(
         Ok(())
     }
 
-    ///
     /// Expand properties in place
-    ///
-    fn expand_properties(props: &mut Vec<Property>, mappings: &GenericMapping, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<()> {
+    fn expand_properties(
+        props: &mut Vec<Property>,
+        mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<()> {
         for prop in props {
             prop.typ = expand_valueof(&prop.typ, mappings, model, ctx)?;
         }
         Ok(())
     }
 
-    ///
     /// Expand body in place
-    ///
-    fn expand_body(body: &mut Body, mappings: &GenericMapping, model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<()> {
+    fn expand_body(
+        body: &mut Body,
+        mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<()> {
         match body {
             Body::Value(ref mut value) => {
                 value.value = expand_valueof(&value.value, mappings, model, ctx)?;
-            },
+            }
             Body::Properties(ref mut prop_body) => {
                 expand_properties(&mut prop_body.properties, mappings, model, ctx)?;
-            },
-            Body::NoBody(_) => {},
+            }
+            Body::NoBody(_) => {}
         }
 
         Ok(())
@@ -248,14 +288,17 @@ pub fn expand_generics(
     // Expanding values
     //---------------------------------------------------------------------------------------------
 
-    fn expand_valueof(value: &ValueOf, mappings: &GenericMapping,  model: &IndexedModel, ctx: &mut Ctx) -> anyhow::Result<ValueOf> {
+    fn expand_valueof(
+        value: &ValueOf,
+        mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<ValueOf> {
         match value {
             ValueOf::ArrayOf(ref arr) => {
                 let value = expand_valueof(&arr.value, mappings, model, ctx)?;
-                Ok(ArrayOf{
-                    value: Box::new(value)
-                }.into())
-            },
+                Ok(ArrayOf { value: Box::new(value) }.into())
+            }
 
             ValueOf::DictionaryOf(dict) => {
                 let key = expand_valueof(&dict.key, mappings, model, ctx)?;
@@ -264,9 +307,9 @@ pub fn expand_generics(
                     single_key: dict.single_key,
                     key: Box::new(key),
                     value: Box::new(value),
-                }.into())
-
-            },
+                }
+                .into())
+            }
 
             ValueOf::InstanceOf(inst) => {
                 // If this is a generic parameter, return its mapping
@@ -275,30 +318,31 @@ pub fn expand_generics(
                 }
 
                 // Expand generic parameters, if any
-                let args = inst.generics.iter()
+                let args = inst
+                    .generics
+                    .iter()
                     .map(|arg| expand_valueof(arg, mappings, model, ctx))
                     .collect::<Result<Vec<_>, _>>()?;
 
                 Ok(InstanceOf {
                     typ: expand_type(&inst.typ, args, model, ctx)?,
-                    generics: Vec::new()
-                }.into())
-            },
+                    generics: Vec::new(),
+                }
+                .into())
+            }
 
             ValueOf::UnionOf(u) => {
-                let items = u.items.iter()
+                let items = u
+                    .items
+                    .iter()
                     .map(|item| expand_valueof(item, mappings, model, ctx))
                     .collect::<Result<Vec<_>, _>>()?;
                 Ok(UnionOf { items }.into())
-            },
+            }
 
-            ValueOf::UserDefinedValue(_) => {
-                Ok(value.clone())
-            },
+            ValueOf::UserDefinedValue(_) => Ok(value.clone()),
 
-            ValueOf::LiteralValue(_) => {
-                Ok(value.clone())
-            },
+            ValueOf::LiteralValue(_) => Ok(value.clone()),
         }
     }
 
@@ -306,16 +350,12 @@ pub fn expand_generics(
     // Misc
     //---------------------------------------------------------------------------------------------
 
-    ///
     /// Builds the mapping from generic parameter name to actual value
-    ///
     fn param_mapping(generics: &GenericParams, args: GenericArgs) -> GenericMapping {
         generics.iter().cloned().zip(args).collect()
     }
 
-    ///
     /// Creates an expanded type name if needed (i.e. when `generics` is not empty)
-    ///
     fn expanded_name(type_name: &TypeName, args: &GenericArgs) -> TypeName {
         if args.is_empty() {
             return type_name.clone();
@@ -336,18 +376,12 @@ pub fn expand_generics(
         }
     }
 
-    ///
     /// Appends the type representation of a value to a string
-    ///
     fn push_valueof_name(name: &mut String, value: &ValueOf) {
         use std::fmt::Write;
         match value {
-            ValueOf::LiteralValue(lit) => {
-                write!(name, "{}", lit).unwrap()
-            }
-            ValueOf::UserDefinedValue(_) => {
-                write!(name, "UserDefined").unwrap()
-            }
+            ValueOf::LiteralValue(lit) => write!(name, "{}", lit).unwrap(),
+            ValueOf::UserDefinedValue(_) => write!(name, "UserDefined").unwrap(),
             ValueOf::ArrayOf(a) => {
                 name.push_str("Array");
                 push_valueof_name(name, a.value.as_ref());
@@ -374,11 +408,11 @@ pub fn expand_generics(
 #[cfg(test)]
 mod tests {
     use std::io::Write;
+
     use super::*;
 
     #[test]
     pub fn compare_with_js_version() -> testresult::TestResult {
-
         let canonical_json = {
             // Deserialize and reserialize to have a consistent JSON format
             let json = std::fs::read_to_string("../../output/schema/schema-no-generics.json")?;
@@ -406,5 +440,3 @@ mod tests {
         Ok(())
     }
 }
-
-

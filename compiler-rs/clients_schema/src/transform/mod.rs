@@ -17,13 +17,14 @@
 
 //! Utilities to transform API models and common transformations:
 //! * filtering according to availability
-//!
 
 mod availability;
 mod expand_generics;
 
 use std::collections::HashSet;
+
 use availability::Availability;
+
 use crate::{Availabilities, IndexedModel, TypeName};
 
 /// The working state of a type graph traversal algorithm. It keeps track of the types that
@@ -31,10 +32,9 @@ use crate::{Availabilities, IndexedModel, TypeName};
 ///
 /// Using this structure allows to flatten recursion and also handle recursive data structures
 /// by ensuring a type is never visited twice.
-///
 #[derive(Default)]
 pub struct Worksheet {
-    visited: HashSet::<TypeName>,
+    visited: HashSet<TypeName>,
     pending: Vec<TypeName>,
 }
 
@@ -69,16 +69,13 @@ impl Iterator for Worksheet {
 
 /// Transform a model to only keep the endpoints and types that match a predicate on the `availability`
 /// properties.
-///
 pub fn filter_availability(
     model: IndexedModel,
-    avail_filter: fn(&Option<Availabilities>) -> bool
+    avail_filter: fn(&Option<Availabilities>) -> bool,
 ) -> anyhow::Result<IndexedModel> {
     Availability::filter(model, avail_filter)
 }
 
-pub fn expand_generics(
-    model: IndexedModel
-) -> anyhow::Result<IndexedModel> {
+pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
     expand_generics::expand_generics(model)
 }
