@@ -266,7 +266,7 @@ impl<'a> TypesAndComponents<'a> {
 
     fn required_properties<'b>(&mut self, props: impl Iterator<Item = &'b Property>) -> Vec<String> {
         props
-            .filter_map(|prop| prop.required.then(|| prop.name.clone()))
+            .filter(|&prop| prop.required).map(|prop| prop.name.clone())
             .collect()
     }
 

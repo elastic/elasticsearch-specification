@@ -270,7 +270,7 @@ pub fn any_to_schema(any: AnySchema) -> anyhow::Result<SchemaKind> {
         Some(typ)
     } else if any.additional_properties.is_some() || !any.properties.is_empty() || !any.required.is_empty() {
         Some("object")
-    } else if let Some(JsonValue::String(_)) = any.enumeration.get(0) {
+    } else if let Some(JsonValue::String(_)) = any.enumeration.first() {
         Some("string")
     } else {
         // TODO: add more heuristics
