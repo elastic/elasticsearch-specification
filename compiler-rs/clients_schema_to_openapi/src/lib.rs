@@ -63,6 +63,13 @@ pub fn convert_schema_file(
     Ok(())
 }
 
+/// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, converstion
+/// will fail otherwise.
+///
+/// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understood it.
+///
+/// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
+///
 pub fn convert_schema(
     model: &IndexedModel,
 ) -> anyhow::Result<OpenAPI> {
