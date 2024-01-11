@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
-import { Duration } from "@_types/Time";
+import { Duration } from '@_types/Time'
 
 /**
  * Updates attributes of an existing API key.
