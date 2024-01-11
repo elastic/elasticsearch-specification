@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Duration } from "@_types/Time";
 
 /**
  * Updates attributes of an existing API key.
@@ -58,5 +59,7 @@ export interface Request extends RequestBase {
      * Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with _ are reserved for system usage.
      */
     metadata?: Metadata
+    /** Expiration time for the API key. */
+    expiration?: Duration
   }
 }
