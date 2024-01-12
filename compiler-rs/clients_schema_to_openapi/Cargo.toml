@@ -16,7 +16,6 @@ anyhow = "1.0"
 indexmap = "1.9"
 convert_case = "0.6"
 either_n = "0.2.0"
-regex = "1.8"
 maplit = "1.0"
 
 tracing = "0.1.37"
