@@ -15959,6 +15959,9 @@
                   },
                   "metadata": {
                     "$ref": "#/components/schemas/_types:Metadata"
+                  },
+                  "expiration": {
+                    "$ref": "#/components/schemas/_types:Duration"
                   }
                 }
               }
