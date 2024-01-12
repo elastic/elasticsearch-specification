@@ -127,7 +127,7 @@ export class IndexSettings
   /** @server_default 60s */
   gc_deletes?: Duration
   /** @server_default _none */
-  default_pipeline?: PipelineName
+  default_pipeline?: PipelineName | null
   /** @server_default _none */
   final_pipeline?: PipelineName
   lifecycle?: IndexSettingsLifecycle
