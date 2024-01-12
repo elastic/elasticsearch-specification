@@ -18,9 +18,10 @@
 //! OpenAPI schema utilities
 
 use std::fmt::Debug;
-use openapiv3::*;
 use std::ops::Deref;
+
 use anyhow::{anyhow, bail};
+use openapiv3::*;
 use serde_json::Value as JsonValue;
 
 /// A wrapper around an openapi schema, also providing helper methods to explore it.
@@ -35,26 +36,20 @@ impl Deref for OpenAPI {
 }
 
 impl OpenAPI {
-
-    ///
     /// Get the schema for a reference, if it exists, and follows references until we find a schema
-    ///
     pub fn ref_to_schema(&self, reference: &str) -> anyhow::Result<&Schema> {
-
         if let Some(name) = reference.strip_prefix("#/components/schemas/") {
             match self.components.as_ref().unwrap().schemas.get(name) {
                 Some(ReferenceOr::Item(sch)) => return Ok(sch),
                 Some(ReferenceOr::Reference { reference }) => return self.ref_to_schema(reference),
-                _ => {},
+                _ => {}
             }
         }
 
         bail!("No schema definition found for {reference}")
     }
 
-    ///
     /// Get the schema for a reference or schema
-    ///
     pub fn get_schema<'a>(&'a self, r_or_s: &'a ReferenceOr<Schema>) -> anyhow::Result<&'a Schema> {
         match r_or_s {
             ReferenceOr::Reference { reference } => self.ref_to_schema(reference),
@@ -62,36 +57,30 @@ impl OpenAPI {
         }
     }
 
-    ///
     /// Is this type nullable?
-    ///
     pub fn is_nullable(&self, id: &str) -> bool {
         self.components
             .as_ref()
             .and_then(|c| c.schemas.get(id))
             .map(|s| match s {
                 ReferenceOr::Reference { reference: _r } => false,
-                ReferenceOr::Item(item) => item.schema_data.nullable
+                ReferenceOr::Item(item) => item.schema_data.nullable,
             })
             .unwrap_or_default()
     }
 
-    ///
     /// Is this a `not` schema?
-    ///
     pub fn is_not(&self, r_or_s: &ReferenceOr<Schema>) -> bool {
         if let Ok(schema) = self.get_schema(r_or_s) {
-            if let SchemaKind::Not {..} = schema.schema_kind {
+            if let SchemaKind::Not { .. } = schema.schema_kind {
                 return true;
             }
         }
         false
     }
 
-    ///
     /// Merge a series of schemas and return a single combined schema that is guaranteed to not be an `Any`.
     /// Used to resolve `allOf` directives.
-    ///
     pub fn merge_schemas(&self, schemas: &Vec<ReferenceOr<Schema>>, data: &SchemaData) -> anyhow::Result<Schema> {
         let mut merged = AnySchema::default();
         for schema in schemas {
@@ -105,18 +94,17 @@ impl OpenAPI {
     }
 
     fn merge_in_any(&self, acc: AnySchema, schema: &ReferenceOr<Schema>) -> anyhow::Result<AnySchema> {
-
         let schema = self.get_schema(schema)?;
 
         match &schema.schema_kind {
-            SchemaKind::AllOf { all_of } | SchemaKind::Any(AnySchema{ all_of, .. }) if !all_of.is_empty() => {
+            SchemaKind::AllOf { all_of } | SchemaKind::Any(AnySchema { all_of, .. }) if !all_of.is_empty() => {
                 let mut result = acc;
                 for schema in all_of {
                     result = self.merge_in_any(result, schema)?;
                 }
                 return Ok(result);
-            },
-            _ => {},
+            }
+            _ => {}
         }
 
         let schema = schema_to_any(&schema.schema_kind)?;
@@ -161,10 +149,8 @@ impl OpenAPI {
     }
 }
 
-///
 /// Converts a schema to the "any" form that has all properties of an OpenAPI schema.
 /// Used for schema merging operations
-///
 pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
     // TODO: could return Cow<AnySchema> to reduce cloning
 
@@ -174,7 +160,9 @@ pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
                 typ: Some("string".into()),
                 format: format_to_string(&x.format),
                 pattern: x.pattern.clone(),
-                enumeration: x.enumeration.iter()
+                enumeration: x
+                    .enumeration
+                    .iter()
                     // turn Vec<Option<String>> into Vec<Value::String>
                     .filter_map(|e| e.as_ref().map(|s| JsonValue::String(s.clone())))
                     .collect(),
@@ -190,7 +178,9 @@ pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
                 exclusive_maximum: Some(x.exclusive_maximum),
                 minimum: x.minimum,
                 maximum: x.maximum,
-                enumeration: x.enumeration.iter()
+                enumeration: x
+                    .enumeration
+                    .iter()
                     .filter_map(|e| *e)
                     .filter_map(serde_json::Number::from_f64)
                     .map(JsonValue::Number)
@@ -205,7 +195,9 @@ pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
                 exclusive_maximum: Some(x.exclusive_maximum),
                 minimum: x.minimum.map(|x| x as f64),
                 maximum: x.maximum.map(|x| x as f64),
-                enumeration: x.enumeration.iter()
+                enumeration: x
+                    .enumeration
+                    .iter()
                     .filter_map(|e| *e)
                     .map(|s| JsonValue::Number(s.into()))
                     .collect(),
@@ -232,7 +224,7 @@ pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
                 typ: Some("boolean".into()),
                 ..AnySchema::default()
             }),
-        }
+        },
 
         SchemaKind::OneOf { one_of } => Ok(AnySchema {
             one_of: one_of.clone(),
@@ -258,35 +250,27 @@ pub fn schema_to_any(schema: &SchemaKind) -> anyhow::Result<AnySchema> {
     }
 }
 
-
-///
 /// Concatenates two vectors and returns the resulting vector
-///
 fn merge_vec<T>(mut vec1: Vec<T>, mut vec2: Vec<T>) -> Vec<T> {
     vec1.append(&mut vec2);
     vec1
 }
 
-///
 /// Merge two options. Fails if both options are set and have different values.
-///
 fn merge_option<T: Debug + PartialEq>(opt1: Option<T>, opt2: Option<T>) -> anyhow::Result<Option<T>> {
     match (&opt1, &opt2) {
         (Some(v1), Some(v2)) if v1 == v2 => bail!("Merge conflict: {opt1:?} and {opt2:?}"),
-        _ => Ok(opt1.or(opt2))
+        _ => Ok(opt1.or(opt2)),
     }
 }
 
 pub fn any_to_schema(any: AnySchema) -> anyhow::Result<SchemaKind> {
-
     // TODO: SchemaData.default could be used for disambiguation
     let typ: Option<&str> = if let Some(typ) = &any.typ {
         Some(typ)
-    } else if any.additional_properties.is_some() ||
-            !any.properties.is_empty() ||
-            !any.required.is_empty() {
-            Some("object")
-    } else if let Some(JsonValue::String(_)) = any.enumeration.get(0) {
+    } else if any.additional_properties.is_some() || !any.properties.is_empty() || !any.required.is_empty() {
+        Some("object")
+    } else if let Some(JsonValue::String(_)) = any.enumeration.first() {
         Some("string")
     } else {
         // TODO: add more heuristics
@@ -296,7 +280,6 @@ pub fn any_to_schema(any: AnySchema) -> anyhow::Result<SchemaKind> {
     let typ = typ.ok_or_else(|| anyhow!("Cannot infer schema type in {:?}", any))?;
 
     match typ {
-
         "object" => Ok(SchemaKind::Type(Type::Object(ObjectType {
             properties: any.properties,
             required: any.required,
@@ -308,8 +291,16 @@ pub fn any_to_schema(any: AnySchema) -> anyhow::Result<SchemaKind> {
         "string" => Ok(SchemaKind::Type(Type::String(StringType {
             format: as_unknown_or_empty(any.format),
             pattern: any.pattern,
-            enumeration: any.enumeration.iter()
-                .map(|v| if let JsonValue::String(s) = v { Some(s.clone()) } else { None })
+            enumeration: any
+                .enumeration
+                .iter()
+                .map(|v| {
+                    if let JsonValue::String(s) = v {
+                        Some(s.clone())
+                    } else {
+                        None
+                    }
+                })
                 .collect(),
             min_length: any.min_length,
             max_length: any.max_length,
@@ -335,8 +326,7 @@ pub fn any_to_schema(any: AnySchema) -> anyhow::Result<SchemaKind> {
             enumeration: vec![], // TODO: not supported in schema.json
         }))),
 
-        "boolean" => Ok(SchemaKind::Type(Type::Boolean {
-        })),
+        "boolean" => Ok(SchemaKind::Type(Type::Boolean {})),
 
         "array" => Ok(SchemaKind::Type(Type::Array(ArrayType {
             items: any.items,
@@ -373,13 +363,12 @@ fn format_to_string<T: Debug>(value: &VariantOrUnknownOrEmpty<T>) -> Option<Stri
 ///
 /// This makes it impractical to have functions that operate on all shapes. `RefOrSchema` solves this by holding only
 /// references and providing easy conversion with `From` implementations for all variants.
-///
 pub enum RefOrSchema<'a> {
     Ref(&'a str),
     Schema(&'a Schema),
 }
 
-impl <'a> From<&'a ReferenceOr<Schema>> for RefOrSchema<'a> {
+impl<'a> From<&'a ReferenceOr<Schema>> for RefOrSchema<'a> {
     fn from(value: &'a ReferenceOr<Schema>) -> Self {
         match value {
             ReferenceOr::Reference { reference } => RefOrSchema::Ref(reference),
@@ -388,7 +377,7 @@ impl <'a> From<&'a ReferenceOr<Schema>> for RefOrSchema<'a> {
     }
 }
 
-impl <'a> From<&'a ReferenceOr<Box<Schema>>> for RefOrSchema<'a> {
+impl<'a> From<&'a ReferenceOr<Box<Schema>>> for RefOrSchema<'a> {
     fn from(value: &'a ReferenceOr<Box<Schema>>) -> Self {
         match value {
             ReferenceOr::Reference { reference } => RefOrSchema::Ref(reference),
@@ -397,7 +386,7 @@ impl <'a> From<&'a ReferenceOr<Box<Schema>>> for RefOrSchema<'a> {
     }
 }
 
-impl <'a> From<&'a Box<ReferenceOr<Schema>>> for RefOrSchema<'a> {
+impl<'a> From<&'a Box<ReferenceOr<Schema>>> for RefOrSchema<'a> {
     fn from(value: &'a Box<ReferenceOr<Schema>>) -> Self {
         match value.as_ref() {
             ReferenceOr::Reference { reference } => RefOrSchema::Ref(reference),

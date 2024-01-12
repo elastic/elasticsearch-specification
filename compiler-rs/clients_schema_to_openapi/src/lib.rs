@@ -15,27 +15,27 @@
 // specific language governing permissions and limitations
 // under the License.
 
+mod components;
 mod paths;
 mod schemas;
-mod components;
 mod utils;
 
 use std::collections::HashSet;
 use std::io::{BufWriter, Write};
 use std::path::Path;
+
+use clients_schema::{Availabilities, Endpoint, IndexedModel};
 use openapiv3::{Components, OpenAPI};
 use tracing::warn;
 
-use clients_schema::{Availabilities, Endpoint, IndexedModel};
 use crate::components::TypesAndComponents;
 
 pub fn convert_schema_file(
     path: impl AsRef<Path>,
     filter: Option<fn(&Option<Availabilities>) -> bool>,
     endpoint_filter: fn(e: &Endpoint) -> bool,
-    out: impl Write
+    out: impl Write,
 ) -> anyhow::Result<()> {
-
     // Parsing from a string is faster than using a buffered reader when there is a need for look-ahead
     // See https://github.com/serde-rs/json/issues/160
     let json = &std::fs::read_to_string(path)?;
@@ -43,7 +43,7 @@ pub fn convert_schema_file(
 
     let mut unused = HashSet::new();
     let mut model: IndexedModel = serde_ignored::deserialize(json_deser, |path| {
-        if let serde_ignored::Path::Map {parent: _, key} = path {
+        if let serde_ignored::Path::Map { parent: _, key } = path {
             unused.insert(key);
         }
     })?;
@@ -63,10 +63,13 @@ pub fn convert_schema_file(
     Ok(())
 }
 
-pub fn convert_schema(
-    model: &IndexedModel,
-) -> anyhow::Result<OpenAPI> {
-
+/// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, converstion
+/// will fail otherwise.
+///
+/// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understood it.
+///
+/// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
+pub fn convert_schema(model: &IndexedModel) -> anyhow::Result<OpenAPI> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -128,7 +131,7 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
                 name: info.license.name.clone(),
                 url: Some(info.license.url.clone()),
                 extensions: Default::default(),
-            })
+            }),
         )
     } else {
         ("".to_string(), None)

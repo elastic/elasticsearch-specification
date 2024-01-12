@@ -15,8 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schema, StatusCode};
 use clients_schema::TypeName;
+use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schema, StatusCode};
+
 use crate::utils::SchemaName;
 
 pub struct TypesAndComponents<'a> {
@@ -24,37 +25,43 @@ pub struct TypesAndComponents<'a> {
     pub components: &'a mut Components,
 }
 
-impl <'a> TypesAndComponents<'a> {
+impl<'a> TypesAndComponents<'a> {
     pub fn new(model: &'a clients_schema::IndexedModel, components: &'a mut Components) -> TypesAndComponents<'a> {
-        TypesAndComponents {
-            model,
-            components,
-        }
+        TypesAndComponents { model, components }
     }
 
-    pub fn add_request_body(&mut self, endpoint: &str, body: RequestBody,) -> ReferenceOr<RequestBody> {
-        self.components.request_bodies.insert(endpoint.to_string(), ReferenceOr::Item(body));
+    pub fn add_request_body(&mut self, endpoint: &str, body: RequestBody) -> ReferenceOr<RequestBody> {
+        self.components
+            .request_bodies
+            .insert(endpoint.to_string(), ReferenceOr::Item(body));
         ReferenceOr::Reference {
-            reference: format!("#/components/requestBodies/{}", endpoint)
+            reference: format!("#/components/requestBodies/{}", endpoint),
         }
     }
 
     pub fn add_parameter(&mut self, endpoint: &str, param: Parameter, duplicate: bool) -> ReferenceOr<Parameter> {
-        let suffix = if duplicate {"_"} else {""};
+        let suffix = if duplicate { "_" } else { "" };
         let result = ReferenceOr::Reference {
-            reference: format!("#/components/parameters/{}#{}{}", endpoint, &param.parameter_data_ref().name, suffix)
+            reference: format!(
+                "#/components/parameters/{}#{}{}",
+                endpoint,
+                &param.parameter_data_ref().name,
+                suffix
+            ),
         };
         self.components.parameters.insert(
             format!("{}#{}{}", endpoint, &param.parameter_data_ref().name, suffix),
-            ReferenceOr::Item(param)
+            ReferenceOr::Item(param),
         );
         result
     }
 
     pub fn add_response(&mut self, endpoint: &str, status: StatusCode, response: Response) -> ReferenceOr<Response> {
-        self.components.responses.insert(format!("{}#{}", endpoint, status), ReferenceOr::Item(response));
+        self.components
+            .responses
+            .insert(format!("{}#{}", endpoint, status), ReferenceOr::Item(response));
         ReferenceOr::Reference {
-            reference: format!("#/components/responses/{}#{}", endpoint, status)
+            reference: format!("#/components/responses/{}#{}", endpoint, status),
         }
     }
 

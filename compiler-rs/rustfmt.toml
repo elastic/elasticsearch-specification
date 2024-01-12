@@ -1,0 +1,12 @@
+# This uses unstable features. Format using `cargo +nightly fmt`
+
+max_width = 120
+comment_width = 120
+
+normalize_doc_attributes = true # useful for generated code
+group_imports = "StdExternalCrate"
+
+wrap_comments = true
+normalize_comments = true
+
+where_single_line = true

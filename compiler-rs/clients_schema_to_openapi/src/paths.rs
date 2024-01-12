@@ -17,20 +17,24 @@
 
 use std::collections::HashMap;
 use std::fmt::Write;
+
 use anyhow::{anyhow, bail};
-use indexmap::indexmap;
-
-use openapiv3::{MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, Paths, PathStyle, QueryStyle, ReferenceOr, RequestBody, Response, Responses, StatusCode};
-use regex::Regex;
-
 use clients_schema::Property;
+use indexmap::indexmap;
+use openapiv3::{
+    MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
+    RequestBody, Response, Responses, StatusCode,
+};
+
 use crate::components::TypesAndComponents;
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
-///
-pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndComponents, out: &mut Paths) -> anyhow::Result<()> {
-
+pub fn add_endpoint(
+    endpoint: &clients_schema::Endpoint,
+    tac: &mut TypesAndComponents,
+    out: &mut Paths,
+) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
         return Ok(());
@@ -42,7 +46,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     }
 
     // Namespace
-    //let namespace = match endpoint.name.split_once('.') {
+    // let namespace = match endpoint.name.split_once('.') {
     //    Some((ns, _)) => ns,
     //    None => "core",
     //};
@@ -78,12 +82,15 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
         };
 
         // Reuse reference if multiple paths, and inline otherwise
-        path_params.insert(prop.name.clone(), if is_multipath {
-            tac.add_parameter(&endpoint.name, parameter, false)
-        } else {
-            ReferenceOr::Item(parameter)
-        });
-    };
+        path_params.insert(
+            prop.name.clone(),
+            if is_multipath {
+                tac.add_parameter(&endpoint.name, parameter, false)
+            } else {
+                ReferenceOr::Item(parameter)
+            },
+        );
+    }
 
     //----- Prepare query parameters
 
@@ -104,7 +111,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
         } else {
             ReferenceOr::Item(parameter)
         });
-    };
+    }
 
     //---- Prepare request body
 
@@ -120,7 +127,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
         let body = RequestBody {
             description: None,
             // FIXME: nd-json requests
-            content: indexmap!{ "application/json".to_string() => media },
+            content: indexmap! { "application/json".to_string() => media },
             required: endpoint.request_body_required,
             extensions: Default::default(),
         };
@@ -167,16 +174,18 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     let mut operation_counter = 0;
 
     for url_template in &endpoint.urls {
-
         // Path and query parameters
 
         let mut parameters = Vec::new();
 
         for path_variable in get_path_parameters(&url_template.path) {
-            let parameter = path_params.get(path_variable)
-                .ok_or_else(|| anyhow!("Missing path parameter definition {} for endpoint {}",
-                    path_variable, &endpoint.name)
-                )?;
+            let parameter = path_params.get(path_variable).ok_or_else(|| {
+                anyhow!(
+                    "Missing path parameter definition {} for endpoint {}",
+                    path_variable,
+                    &endpoint.name
+                )
+            })?;
             parameters.push(parameter.clone());
         }
 
@@ -202,7 +211,6 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
             extensions: Default::default(), // FIXME: translate availability?
         };
 
-
         let mut operation_path = url_template.path.clone();
 
         // Disabled -- OpenAPI path templates do not contain the query string
@@ -210,7 +218,12 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
             // Add query parameter names to the path template
             // See https://www.rfc-editor.org/rfc/rfc6570#section-3.2.8
             if !&request.query.is_empty() {
-                let params = &request.query.iter().map(|p| p.name.as_str()).collect::<Vec<_>>().join(",");
+                let params = &request
+                    .query
+                    .iter()
+                    .map(|p| p.name.as_str())
+                    .collect::<Vec<_>>()
+                    .join(",");
                 operation_path = format!("{operation_path}{{?{params}}}");
             }
         }
@@ -219,7 +232,8 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
 
         // Check if this path has already been encountered with a different http method (possibly in a
         // different endpoint)
-        let path = out.paths
+        let path = out
+            .paths
             .entry(operation_path)
             .or_insert(ReferenceOr::Item(PathItem::default()));
 
@@ -244,7 +258,7 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
 
         let path = match path {
             ReferenceOr::Item(ref mut item) => item,
-            _ => bail!("Expecting an item (should not happe)")
+            _ => bail!("Expecting an item (should not happe)"),
         };
 
         for method in &url_template.methods {
@@ -261,12 +275,14 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
             };
 
             let mut operation = operation.clone();
-            let mut operation_id: String = endpoint.name
+            let mut operation_id: String = endpoint
+                .name
                 .chars()
                 .map(|x| match x {
                     '_' | '.' => '-',
-                    _ => x
-                }).collect();
+                    _ => x,
+                })
+                .collect();
             if operation_counter != 0 {
                 write!(&mut operation_id, "-{}", operation_counter)?;
             }
@@ -280,12 +296,19 @@ pub fn add_endpoint(endpoint: &clients_schema::Endpoint, tac: &mut TypesAndCompo
     Ok(())
 }
 
-fn get_path_parameters (template: &str) -> Vec<&str> {
-    let regex = Regex::new(r"\{([^}]*)\}").unwrap();
-    regex
-        .find_iter(template)
-        .map(|m| &template[m.start()+1 .. m.end()-1])
-        .collect()
+fn get_path_parameters(template: &str) -> Vec<&str> {
+    // Note: could be done with regex, but it adds 1 MB to the resulting WASM module
+    let mut result = Vec::new();
+    let mut template = template;
+    while let Some((_start, end)) = template.split_once('{') {
+        if let Some((name, remainder)) = end.split_once('}') {
+            result.push(name);
+            template = remainder;
+        } else {
+            break;
+        }
+    }
+    result
 }
 
 #[cfg(test)]
@@ -294,6 +317,12 @@ mod tests {
 
     #[test]
     fn test_path_parameters() {
-        assert_eq!(get_path_parameters("/{index}/{id}"), vec!{"index", "id"})
+        assert_eq!(get_path_parameters("/{index}/{id}"), vec! {"index", "id"});
+        assert_eq!(get_path_parameters("{index}{id}/"), vec! {"index", "id"});
+        assert_eq!(get_path_parameters("/{index}/{id}/"), vec! {"index", "id"});
+
+        // Should normally not happen as we expect the model to be correct. Just make sure we don't crash.
+        assert_eq!(get_path_parameters("{index}{id/"), vec! {"index"});
+        assert_eq!(get_path_parameters("{index{id}/"), vec! {"index{id"});
     }
 }
