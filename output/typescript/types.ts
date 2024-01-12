@@ -16951,6 +16951,7 @@ export interface SecurityUpdateApiKeyRequest extends RequestBase {
   body?: {
     role_descriptors?: Record<string, SecurityRoleDescriptor>
     metadata?: Metadata
+    expiration?: Duration
   }
 }
 
