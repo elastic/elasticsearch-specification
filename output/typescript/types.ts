@@ -16074,7 +16074,6 @@ export interface SecurityFieldRule {
   username?: Names
   dn?: Names
   groups?: Names
-  'realm.name'?: Name
 }
 
 export interface SecurityFieldSecurity {
