@@ -16071,11 +16071,10 @@ export interface SecurityCreatedStatus {
 }
 
 export interface SecurityFieldRule {
-  username?: Name
+  username?: Names
   dn?: Names
   groups?: Names
-  metadata?: any
-  realm?: SecurityRealm
+  'realm.name'?: Name
 }
 
 export interface SecurityFieldSecurity {
@@ -16103,10 +16102,6 @@ export type SecurityIndicesPrivilegesQuery = string | QueryDslQueryContainer | S
 
 export interface SecurityManageUserPrivileges {
   applications: string[]
-}
-
-export interface SecurityRealm {
-  name: Name
 }
 
 export interface SecurityRealmInfo {
