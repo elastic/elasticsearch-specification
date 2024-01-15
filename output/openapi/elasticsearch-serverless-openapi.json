@@ -33051,6 +33051,10 @@
               },
               "validation_method": {
                 "$ref": "#/components/schemas/_types.query_dsl:GeoValidationMethod"
+              },
+              "ignore_unmapped": {
+                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "type": "boolean"
               }
             },
             "required": [
