@@ -17797,6 +17797,28 @@ export interface TextStructureFindStructureTopHit {
   value: any
 }
 
+export interface TextStructureTestGrokPatternMatchedField {
+  match: string
+  offset: integer
+  length: integer
+}
+
+export interface TextStructureTestGrokPatternMatchedText {
+  matched: boolean
+  fields?: Record<string, TextStructureTestGrokPatternMatchedField | TextStructureTestGrokPatternMatchedField[]>
+}
+
+export interface TextStructureTestGrokPatternRequest extends RequestBase {
+  body?: {
+    grok_pattern: string
+    text: string[]
+  }
+}
+
+export interface TextStructureTestGrokPatternResponse {
+  matches: TextStructureTestGrokPatternMatchedText[]
+}
+
 export interface TransformDestination {
   index?: IndexName
   pipeline?: string

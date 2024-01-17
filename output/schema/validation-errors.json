@@ -1460,6 +1460,12 @@
       ],
       "response": []
     },
+    "text_structure.test_grok_pattern": {
+      "request": [
+        "Request: should not have a body"
+      ],
+      "response": []
+    },
     "transform.delete_transform": {
       "request": [],
       "response": [
