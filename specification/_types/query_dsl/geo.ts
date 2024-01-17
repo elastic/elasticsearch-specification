@@ -84,6 +84,15 @@ export class GeoDistanceQuery
   ignore_unmapped?: boolean
 }
 
+export class GeoGridQuery
+  extends QueryBase
+  implements AdditionalProperty<Field, unknown>
+{
+  geohash?: string;
+  geohex?: string;
+  geotile?: string;
+}
+
 export class GeoPolygonPoints {
   points: GeoLocation[]
 }
