@@ -148,6 +148,13 @@ export class ProcessorContainer {
    */
   rename?: RenameProcessor
   /**
+   * Routes a document to another target index or data stream.
+   * When setting the `destination` option, the target is explicitly specified and the dataset and namespace options can’t be set.
+   * When the `destination` option is not set, this processor is in a data stream mode. Note that in this mode, the reroute processor can only be used on data streams that follow the data stream naming scheme.
+   * @doc_id reroute-processor
+   */
+  reroute?: RerouteProcessor
+  /**
    * Runs an inline or stored script on incoming documents.
    * The script runs in the `ingest` context.
    * @doc_id script-processor
@@ -955,6 +962,36 @@ export class RenameProcessor extends ProcessorBase {
    * Supports template snippets.
    */
   target_field: Field
+}
+
+export class RerouteProcessor extends ProcessorBase {
+  /**
+   * A static value for the target. Can’t be set when the dataset or namespace option is set.
+   */
+  destination?: string
+  /**
+   * Field references or a static value for the dataset part of the data stream name.
+   * In addition to the criteria for index names, cannot contain - and must be no longer than 100 characters.
+   * Example values are nginx.access and nginx.error.
+   *
+   * Supports field references with a mustache-like syntax (denoted as {{double}} or {{{triple}}} curly braces).
+   * When resolving field references, the processor replaces invalid characters with _. Uses the <dataset> part
+   * of the index name as a fallback if all field references resolve to a null, missing, or non-string value.
+   *
+   * default {{data_stream.dataset}}
+   */
+  dataset?: string | string[]
+  /**
+   * Field references or a static value for the namespace part of the data stream name. See the criteria for
+   * index names for allowed characters. Must be no longer than 100 characters.
+   *
+   * Supports field references with a mustache-like syntax (denoted as {{double}} or {{{triple}}} curly braces).
+   * When resolving field references, the processor replaces invalid characters with _. Uses the <namespace> part
+   * of the index name as a fallback if all field references resolve to a null, missing, or non-string value.
+   *
+   * default {{data_stream.namespace}}
+   */
+  namespace?: string | string[]
 }
 
 export class ScriptProcessor extends ProcessorBase {
