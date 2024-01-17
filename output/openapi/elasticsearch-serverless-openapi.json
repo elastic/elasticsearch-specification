@@ -49272,6 +49272,9 @@
           "rename": {
             "$ref": "#/components/schemas/ingest._types:RenameProcessor"
           },
+          "reroute": {
+            "$ref": "#/components/schemas/ingest._types:RerouteProcessor"
+          },
           "script": {
             "$ref": "#/components/schemas/_types:Script"
           },
@@ -50070,6 +50073,50 @@
               "field",
               "target_field"
             ]
+          }
+        ]
+      },
+      "ingest._types:RerouteProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "destination": {
+                "description": "A static value for the target. Can’t be set when the dataset or namespace option is set.",
+                "type": "string"
+              },
+              "dataset": {
+                "description": "Field references or a static value for the dataset part of the data stream name.\nIn addition to the criteria for index names, cannot contain - and must be no longer than 100 characters.\nExample values are nginx.access and nginx.error.\n\nSupports field references with a mustache-like syntax (denoted as {{double}} or {{{triple}}} curly braces).\nWhen resolving field references, the processor replaces invalid characters with _. Uses the <dataset> part\nof the index name as a fallback if all field references resolve to a null, missing, or non-string value.\n\ndefault {{data_stream.dataset}}",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "namespace": {
+                "description": "Field references or a static value for the namespace part of the data stream name. See the criteria for\nindex names for allowed characters. Must be no longer than 100 characters.\n\nSupports field references with a mustache-like syntax (denoted as {{double}} or {{{triple}}} curly braces).\nWhen resolving field references, the processor replaces invalid characters with _. Uses the <namespace> part\nof the index name as a fallback if all field references resolve to a null, missing, or non-string value.\n\ndefault {{data_stream.namespace}}",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
           }
         ]
       },
