@@ -11769,6 +11769,7 @@ export interface IngestProcessorContainer {
   lowercase?: IngestLowercaseProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
+  reroute?: IngestRerouteProcessor
   script?: Script
   set?: IngestSetProcessor
   sort?: IngestSortProcessor
@@ -11794,6 +11795,12 @@ export interface IngestRenameProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field: Field
+}
+
+export interface IngestRerouteProcessor extends IngestProcessorBase {
+  destination?: string
+  dataset?: string | string[]
+  namespace?: string | string[]
 }
 
 export interface IngestSetProcessor extends IngestProcessorBase {
