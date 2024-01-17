@@ -54,6 +54,12 @@ export class GeoDistanceQuery
   distance_type?: GeoDistanceType
   /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
+  /**
+   * Set to `true` to ignore an unmapped field and not match any documents for this query.
+   * Set to `false` to throw an exception if the field is not mapped.
+   * @server_default false
+   */
+  ignore_unmapped?: boolean
 }
 
 export class GeoPolygonPoints {

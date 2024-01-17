@@ -5071,9 +5071,10 @@ export interface QueryDslGeoDistanceQueryKeys extends QueryDslQueryBase {
   distance?: Distance
   distance_type?: GeoDistanceType
   validation_method?: QueryDslGeoValidationMethod
+  ignore_unmapped?: boolean
 }
 export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
-  & { [property: string]: GeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | float | string }
+  & { [property: string]: GeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | boolean | float | string }
 
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
