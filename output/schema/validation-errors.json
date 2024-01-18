@@ -1460,6 +1460,12 @@
       ],
       "response": []
     },
+    "text_structure.test_grok_pattern": {
+      "request": [
+        "Request: missing json spec query parameter 'ecs_compatibility'"
+      ],
+      "response": []
+    },
     "transform.delete_transform": {
       "request": [],
       "response": [
