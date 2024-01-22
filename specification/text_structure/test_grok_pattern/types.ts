@@ -28,5 +28,5 @@ export class MatchedField {
 
 export class MatchedText {
   matched: boolean
-  fields?: Dictionary<string, MatchedField | MatchedField[]>
+  fields?: Dictionary<string, MatchedField[]>
 }

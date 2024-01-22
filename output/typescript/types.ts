@@ -17812,7 +17812,7 @@ export interface TextStructureTestGrokPatternMatchedField {
 
 export interface TextStructureTestGrokPatternMatchedText {
   matched: boolean
-  fields?: Record<string, TextStructureTestGrokPatternMatchedField | TextStructureTestGrokPatternMatchedField[]>
+  fields?: Record<string, TextStructureTestGrokPatternMatchedField[]>
 }
 
 export interface TextStructureTestGrokPatternRequest extends RequestBase {
