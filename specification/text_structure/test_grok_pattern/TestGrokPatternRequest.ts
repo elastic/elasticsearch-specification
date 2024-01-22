@@ -25,6 +25,10 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {
+  query_parameters: {
+    /** The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled). */
+    ecs_compatibility?: string
+  }
   body: {
     /**
      * Grok pattern to run on the text.

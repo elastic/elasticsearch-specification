@@ -17760,6 +17760,7 @@ export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   charset?: string
   column_names?: string
   delimiter?: string
+  ecs_compatibility?: string
   explain?: boolean
   format?: string
   grok_pattern?: string
@@ -17816,6 +17817,7 @@ export interface TextStructureTestGrokPatternMatchedText {
 }
 
 export interface TextStructureTestGrokPatternRequest extends RequestBase {
+  ecs_compatibility?: string
   body?: {
     grok_pattern: string
     text: string[]
