@@ -49276,7 +49276,7 @@
             "$ref": "#/components/schemas/ingest._types:RerouteProcessor"
           },
           "script": {
-            "$ref": "#/components/schemas/_types:Script"
+            "$ref": "#/components/schemas/ingest._types:ScriptProcessor"
           },
           "set": {
             "$ref": "#/components/schemas/ingest._types:SetProcessor"
@@ -50115,6 +50115,36 @@
                     }
                   }
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "ingest._types:ScriptProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/components/schemas/_types:Id"
+              },
+              "lang": {
+                "description": "Script language.",
+                "type": "string"
+              },
+              "params": {
+                "description": "Object containing parameters for the script.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              },
+              "source": {
+                "description": "Inline script.\nIf no `id` is specified, this parameter is required.",
+                "type": "string"
               }
             }
           }
