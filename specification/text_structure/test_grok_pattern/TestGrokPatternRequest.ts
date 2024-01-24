@@ -21,8 +21,8 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name text_structure.test_grok_pattern
- * @availability stack since=8.13.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=private
+ * @availability stack since=8.13.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   query_parameters: {
