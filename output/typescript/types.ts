@@ -17760,6 +17760,7 @@ export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   charset?: string
   column_names?: string
   delimiter?: string
+  ecs_compatibility?: string
   explain?: boolean
   format?: string
   grok_pattern?: string
@@ -17802,6 +17803,29 @@ export interface TextStructureFindStructureResponse {
 export interface TextStructureFindStructureTopHit {
   count: long
   value: any
+}
+
+export interface TextStructureTestGrokPatternMatchedField {
+  match: string
+  offset: integer
+  length: integer
+}
+
+export interface TextStructureTestGrokPatternMatchedText {
+  matched: boolean
+  fields?: Record<string, TextStructureTestGrokPatternMatchedField[]>
+}
+
+export interface TextStructureTestGrokPatternRequest extends RequestBase {
+  ecs_compatibility?: string
+  body?: {
+    grok_pattern: string
+    text: string[]
+  }
+}
+
+export interface TextStructureTestGrokPatternResponse {
+  matches: TextStructureTestGrokPatternMatchedText[]
 }
 
 export interface TransformDestination {

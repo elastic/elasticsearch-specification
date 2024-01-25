@@ -1454,12 +1454,6 @@
       ],
       "response": []
     },
-    "text_structure.find_structure": {
-      "request": [
-        "Request: missing json spec query parameter 'ecs_compatibility'"
-      ],
-      "response": []
-    },
     "transform.delete_transform": {
       "request": [],
       "response": [

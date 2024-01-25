@@ -34,6 +34,8 @@ export interface Request<TJsonDocument> {
     column_names?: string
     /** If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row. */
     delimiter?: string
+    /** The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled). */
+    ecs_compatibility?: string
     /**
      * If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.
      * @server_default false
