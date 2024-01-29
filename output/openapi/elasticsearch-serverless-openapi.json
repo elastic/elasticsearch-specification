@@ -44343,11 +44343,7 @@
               }
             },
             "required": [
-              "type",
-              "buffer_size",
-              "delimiter",
-              "reverse",
-              "skip"
+              "type"
             ]
           }
         ]
