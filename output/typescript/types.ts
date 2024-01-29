@@ -10783,7 +10783,7 @@ export interface IngestProcessorContainer {
   lowercase?: IngestLowercaseProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
-  script?: Script
+  script?: IngestScriptProcessor
   set?: IngestSetProcessor
   sort?: IngestSortProcessor
   split?: IngestSplitProcessor
@@ -10808,6 +10808,13 @@ export interface IngestRenameProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field: Field
+}
+
+export interface IngestScriptProcessor extends IngestProcessorBase {
+  id?: Id
+  lang?: string
+  params?: Record<string, any>
+  source?: string
 }
 
 export interface IngestSetProcessor extends IngestProcessorBase {
@@ -14427,7 +14434,6 @@ export interface SecurityFieldRule {
   username?: Names
   dn?: Names
   groups?: Names
-  'realm.name'?: Name
 }
 
 export interface SecurityFieldSecurity {
