@@ -11770,7 +11770,7 @@ export interface IngestProcessorContainer {
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
   reroute?: IngestRerouteProcessor
-  script?: Script
+  script?: IngestScriptProcessor
   set?: IngestSetProcessor
   sort?: IngestSortProcessor
   split?: IngestSplitProcessor
@@ -11801,6 +11801,13 @@ export interface IngestRerouteProcessor extends IngestProcessorBase {
   destination?: string
   dataset?: string | string[]
   namespace?: string | string[]
+}
+
+export interface IngestScriptProcessor extends IngestProcessorBase {
+  id?: Id
+  lang?: string
+  params?: Record<string, any>
+  source?: string
 }
 
 export interface IngestSetProcessor extends IngestProcessorBase {

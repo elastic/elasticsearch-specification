@@ -23,7 +23,6 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { Script } from '@_types/Scripting'
 
 /**
  * @variants container
@@ -159,7 +158,7 @@ export class ProcessorContainer {
    * The script runs in the `ingest` context.
    * @doc_id script-processor
    */
-  script?: Script
+  script?: ScriptProcessor
   /**
    * Adds a field with the specified value.
    * If the field already exists, its value will be replaced with the provided one.
