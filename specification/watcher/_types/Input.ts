@@ -21,6 +21,7 @@ import { Request as SearchTemplateRequest } from '@global/search_template/Search
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
+  Id,
   IndexName,
   IndicesOptions,
   Password,
@@ -120,8 +121,28 @@ export class SearchInputRequestDefinition {
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
-  template?: SearchTemplateRequest
+  template?: SearchTemplateRequestBody
   rest_total_hits_as_int?: boolean
+}
+
+// Should be kept in sync with _global/search_template/SearchTemplateRequest.body
+export class SearchTemplateRequestBody {
+  /** @server_default false */
+  explain?: boolean
+  /**
+   * ID of the search template to use. If no source is specified,
+   * this parameter is required.
+   */
+  id?: Id
+  params?: Dictionary<string, UserDefinedValue>
+  /** @server_default false */
+  profile?: boolean
+  /**
+   * An inline search template. Supports the same parameters as the search API's
+   * request body. Also supports Mustache variables. If no id is specified, this
+   * parameter is required.
+   */
+  source?: string
 }
 
 export class SearchInputRequestBody {

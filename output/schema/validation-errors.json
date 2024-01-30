@@ -1956,12 +1956,6 @@
       ],
       "response": []
     },
-    "snapshot.restore": {
-      "request": [
-        "request definition snapshot.restore:Request / body / Property 'index_settings' / instance_of - 'indices.put_settings:Request' is a request and must only be used in endpoints"
-      ],
-      "response": []
-    },
     "snapshot.status": {
       "request": [
         "Request: should not have a body"
@@ -2101,7 +2095,6 @@
     },
     "watcher.execute_watch": {
       "request": [
-        "interface definition watcher._types:SearchInputRequestDefinition / Property 'template' / instance_of - '_global.search_template:Request' is a request and must only be used in endpoints",
         "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
         "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
       ],
