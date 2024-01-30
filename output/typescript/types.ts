@@ -4580,11 +4580,11 @@ export type AnalysisNormalizer = AnalysisLowercaseNormalizer | AnalysisCustomNor
 
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: SpecUtilsStringified<integer>
-  delimiter: string
+  buffer_size?: SpecUtilsStringified<integer>
+  delimiter?: string
   replacement?: string
-  reverse: SpecUtilsStringified<boolean>
-  skip: SpecUtilsStringified<integer>
+  reverse?: SpecUtilsStringified<boolean>
+  skip?: SpecUtilsStringified<integer>
 }
 
 export interface AnalysisPatternAnalyzer {
