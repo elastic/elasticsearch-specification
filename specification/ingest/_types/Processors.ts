@@ -325,6 +325,11 @@ export class AttachmentProcessor extends ProcessorBase {
    */
   target_field?: Field
   /**
+   * If true, the binary field will be removed from the document
+   * @server_default false
+   */
+  remove_binary?: boolean
+  /**
    * Field containing the name of the resource to decode.
    * If specified, the processor passes this resource name to the underlying Tika library to enable Resource Name Based Detection.
    */
