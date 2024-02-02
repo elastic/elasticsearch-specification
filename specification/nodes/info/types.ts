@@ -67,7 +67,7 @@ export class NodeInfo {
 export class NodeInfoSettings {
   cluster: NodeInfoSettingsCluster
   node: NodeInfoSettingsNode
-  path: NodeInfoPath
+  path?: NodeInfoPath
   repositories?: NodeInfoRepositories
   discovery?: NodeInfoDiscover
   action?: NodeInfoAction
@@ -151,9 +151,9 @@ export class NodeInfoSettingsNode {
 }
 
 export class NodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
