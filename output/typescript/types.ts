@@ -15357,9 +15357,9 @@ export interface NodesInfoNodeInfoOSCPU {
 }
 
 export interface NodesInfoNodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
@@ -15387,7 +15387,7 @@ export interface NodesInfoNodeInfoSearchRemote {
 export interface NodesInfoNodeInfoSettings {
   cluster: NodesInfoNodeInfoSettingsCluster
   node: NodesInfoNodeInfoSettingsNode
-  path: NodesInfoNodeInfoPath
+  path?: NodesInfoNodeInfoPath
   repositories?: NodesInfoNodeInfoRepositories
   discovery?: NodesInfoNodeInfoDiscover
   action?: NodesInfoNodeInfoAction

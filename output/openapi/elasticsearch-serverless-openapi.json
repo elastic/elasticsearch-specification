@@ -49346,6 +49346,10 @@
               "target_field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
+              "remove_binary": {
+                "description": "If true, the binary field will be removed from the document",
+                "type": "boolean"
+              },
               "resource_name": {
                 "description": "Field containing the name of the resource to decode.\nIf specified, the processor passes this resource name to the underlying Tika library to enable Resource Name Based Detection.",
                 "type": "string"
