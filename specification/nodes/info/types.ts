@@ -170,7 +170,7 @@ export class NodeInfoRepositoriesUrl {
 }
 
 export class NodeInfoDiscover {
-  seed_hosts: string
+  seed_hosts?: string
 }
 
 export class NodeInfoAction {

@@ -15290,7 +15290,7 @@ export interface NodesInfoNodeInfoClient {
 }
 
 export interface NodesInfoNodeInfoDiscover {
-  seed_hosts: string
+  seed_hosts?: string
 }
 
 export interface NodesInfoNodeInfoHttp {
