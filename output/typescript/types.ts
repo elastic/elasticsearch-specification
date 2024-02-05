@@ -11464,7 +11464,7 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
-export type InferenceDenseVector = float[] | byte[]
+export type InferenceDenseVector = float[]
 
 export interface InferenceInferenceResult {
   text_embedding?: InferenceTextEmbeddingResult[]

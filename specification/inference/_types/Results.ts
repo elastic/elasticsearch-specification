@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, byte } from '@_types/Numeric'
+import { float } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -28,9 +28,9 @@ export type SparseVector = Dictionary<string, float>
 
 /**
  * Text Embedding results are represented as Dense Vectors
- * of floats or signed bytes.
+ * of floats.
  */
-export type DenseVector = Array<float> | Array<byte>
+export type DenseVector = Array<float>
 
 export class SparseEmbeddingResult {
   embedding: SparseVector
