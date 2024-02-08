@@ -16622,10 +16622,7 @@
                 "type": "object",
                 "properties": {
                   "synonyms": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/synonyms._types:SynonymString"
-                    }
+                    "$ref": "#/components/schemas/synonyms._types:SynonymString"
                   }
                 },
                 "required": [
