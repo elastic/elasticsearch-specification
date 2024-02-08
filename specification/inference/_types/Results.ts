@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@_types/Numeric'
+import { float, byte } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -37,6 +37,19 @@ export class SparseEmbeddingResult {
 }
 
 /**
+ * Text Embedding results containing bytes are represented as Dense
+ * Vectors of bytes.
+ */
+export type DenseByteVector = Array<byte>;
+
+/**
+ * The text embedding result object for byte representation
+ */
+export class TextEmbeddingByteResult {
+  embedding: DenseByteVector
+}
+
+/**
  * The text embedding result object
  */
 export class TextEmbeddingResult {
@@ -48,6 +61,7 @@ export class TextEmbeddingResult {
  * @variants container
  */
 export class InferenceResult {
+  text_embedding_bytes?: Array<TextEmbeddingByteResult>
   text_embedding?: Array<TextEmbeddingResult>
   sparse_embedding?: Array<SparseEmbeddingResult>
 }
