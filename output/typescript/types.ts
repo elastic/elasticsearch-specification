@@ -11464,9 +11464,12 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export type InferenceDenseByteVector = byte[]
+
 export type InferenceDenseVector = float[]
 
 export interface InferenceInferenceResult {
+  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
   text_embedding?: InferenceTextEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
 }
@@ -11493,6 +11496,10 @@ export type InferenceSparseVector = Record<string, float>
 export type InferenceTaskSettings = any
 
 export type InferenceTaskType = 'sparse_embedding' | 'text_embedding'
+
+export interface InferenceTextEmbeddingByteResult {
+  embedding: InferenceDenseByteVector
+}
 
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
