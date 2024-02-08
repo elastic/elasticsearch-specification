@@ -40,7 +40,7 @@ export class SparseEmbeddingResult {
  * Text Embedding results containing bytes are represented as Dense
  * Vectors of bytes.
  */
-export type DenseByteVector = Array<byte>;
+export type DenseByteVector = Array<byte>
 
 /**
  * The text embedding result object for byte representation
