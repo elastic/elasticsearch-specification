@@ -17538,7 +17538,7 @@ export interface SynonymsPutSynonymRuleRequest extends RequestBase {
   set_id: Id
   rule_id: Id
   body?: {
-    synonyms: SynonymsSynonymString[]
+    synonyms: SynonymsSynonymString
   }
 }
 
