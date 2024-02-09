@@ -75,6 +75,12 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     types?: string[]
+    /**
+     * If false, empty fields are not included in the response.
+     * @availability stack since=8.13.0
+     * @server_default true
+     */
+    include_empty_fields?: boolean
   }
   body: {
     /**
