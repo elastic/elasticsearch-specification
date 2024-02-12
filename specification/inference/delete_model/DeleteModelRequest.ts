@@ -25,7 +25,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * Delete an inference service model
  * @rest_spec_name inference.delete_model
  * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=private
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
