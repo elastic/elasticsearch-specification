@@ -4229,6 +4229,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -4271,6 +4274,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -4318,6 +4324,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -4363,6 +4372,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -21918,6 +21930,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "style": "form"
+      },
+      "field_caps#include_empty_fields": {
+        "in": "query",
+        "name": "include_empty_fields",
+        "description": "If false, empty fields are not included in the response.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
