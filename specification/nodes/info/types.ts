@@ -131,7 +131,7 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  initial_master_nodes?: string
+  initial_master_nodes?: string[]
   /** @since 7.16.0 */
   deprecation_indexing?: DeprecationIndexing
 }
