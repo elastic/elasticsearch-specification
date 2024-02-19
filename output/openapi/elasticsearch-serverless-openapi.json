@@ -4229,6 +4229,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -4271,6 +4274,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -4318,6 +4324,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -4363,6 +4372,9 @@
           },
           {
             "$ref": "#/components/parameters/field_caps#types"
+          },
+          {
+            "$ref": "#/components/parameters/field_caps#include_empty_fields"
           }
         ],
         "requestBody": {
@@ -7535,6 +7547,247 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.validate_query#200"
+          }
+        }
+      }
+    },
+    "/_inference/{task_type}/{model_id}": {
+      "get": {
+        "tags": [
+          "inference.get_model"
+        ],
+        "summary": "Get a model in the Inference API",
+        "description": "Get a model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
+        },
+        "operationId": "inference-get-model",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The model task type",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:TaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the inference model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "models": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+                      }
+                    }
+                  },
+                  "required": [
+                    "models"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "inference.put_model"
+        ],
+        "summary": "Configure a model for use in the Inference API",
+        "description": "Configure a model for use in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html"
+        },
+        "operationId": "inference-put-model",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The model task type",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:TaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the inference model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inference._types:ModelConfig"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "inference.inference"
+        ],
+        "summary": "Perform inference on a model",
+        "description": "Perform inference on a model",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html"
+        },
+        "operationId": "inference-inference",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The model task type",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:TaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the inference model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "Text input to the model.\nEither a string or an array of strings.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference._types:TaskSettings"
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types:InferenceResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "inference.delete_model"
+        ],
+        "summary": "Delete model in the Inference API",
+        "description": "Delete model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html"
+        },
+        "operationId": "inference-delete-model",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The model task type",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:TaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the inference model.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
           }
         }
       }
@@ -21918,6 +22171,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "style": "form"
+      },
+      "field_caps#include_empty_fields": {
+        "in": "query",
+        "name": "include_empty_fields",
+        "description": "If false, empty fields are not included in the response.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -42287,9 +42550,6 @@
             "$ref": "#/components/schemas/_types.analysis:KuromojiPartOfSpeechTokenFilter"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:IcuTokenizer"
-          },
-          {
             "$ref": "#/components/schemas/_types.analysis:IcuCollationTokenFilter"
           },
           {
@@ -43649,39 +43909,6 @@
           }
         ]
       },
-      "_types.analysis:IcuTokenizer": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "icu_tokenizer"
-                ]
-              },
-              "rule_files": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "rule_files"
-            ]
-          }
-        ]
-      },
-      "_types.analysis:TokenizerBase": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        }
-      },
       "_types.analysis:IcuCollationTokenFilter": {
         "allOf": [
           {
@@ -44117,6 +44344,14 @@
           }
         ]
       },
+      "_types.analysis:TokenizerBase": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        }
+      },
       "_types.analysis:EdgeNGramTokenizer": {
         "allOf": [
           {
@@ -44489,6 +44724,31 @@
             },
             "required": [
               "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis:IcuTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "icu_tokenizer"
+                ]
+              },
+              "rule_files": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "rule_files"
             ]
           }
         ]
@@ -49128,6 +49388,142 @@
           "index",
           "valid"
         ]
+      },
+      "inference._types:TaskType": {
+        "type": "string",
+        "enum": [
+          "sparse_embedding",
+          "text_embedding"
+        ]
+      },
+      "inference._types:ModelConfigContainer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types:ModelConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "model_id": {
+                "description": "The model Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types:TaskType"
+              }
+            },
+            "required": [
+              "model_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types:ModelConfig": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "description": "The service type",
+            "type": "string"
+          },
+          "service_settings": {
+            "$ref": "#/components/schemas/inference._types:ServiceSettings"
+          },
+          "task_settings": {
+            "$ref": "#/components/schemas/inference._types:TaskSettings"
+          }
+        },
+        "required": [
+          "service",
+          "service_settings",
+          "task_settings"
+        ]
+      },
+      "inference._types:ServiceSettings": {
+        "type": "object"
+      },
+      "inference._types:TaskSettings": {
+        "type": "object"
+      },
+      "inference._types:InferenceResult": {
+        "description": "InferenceResult is an aggregation of mutually exclusive variants",
+        "type": "object",
+        "properties": {
+          "text_embedding_bytes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingByteResult"
+            }
+          },
+          "text_embedding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:TextEmbeddingResult"
+            }
+          },
+          "sparse_embedding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:SparseEmbeddingResult"
+            }
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "inference._types:TextEmbeddingByteResult": {
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "$ref": "#/components/schemas/inference._types:DenseByteVector"
+          }
+        },
+        "required": [
+          "embedding"
+        ]
+      },
+      "inference._types:DenseByteVector": {
+        "description": "Text Embedding results containing bytes are represented as Dense\nVectors of bytes.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:byte"
+        }
+      },
+      "inference._types:TextEmbeddingResult": {
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "$ref": "#/components/schemas/inference._types:DenseVector"
+          }
+        },
+        "required": [
+          "embedding"
+        ]
+      },
+      "inference._types:DenseVector": {
+        "description": "Text Embedding results are represented as Dense Vectors\nof floats.",
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "inference._types:SparseEmbeddingResult": {
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "$ref": "#/components/schemas/inference._types:SparseVector"
+          }
+        },
+        "required": [
+          "embedding"
+        ]
+      },
+      "inference._types:SparseVector": {
+        "description": "Sparse Embedding tokens are represented as a dictionary\nof string to double.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        }
       },
       "_types:ElasticsearchVersionInfo": {
         "type": "object",
