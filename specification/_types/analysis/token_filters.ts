@@ -392,7 +392,6 @@ export type TokenFilterDefinition =
   | KuromojiStemmerTokenFilter
   | KuromojiReadingFormTokenFilter
   | KuromojiPartOfSpeechTokenFilter
-  | IcuTokenizer
   | IcuCollationTokenFilter
   | IcuFoldingTokenFilter
   | IcuNormalizationTokenFilter
