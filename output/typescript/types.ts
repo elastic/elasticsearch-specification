@@ -11554,6 +11554,7 @@ export interface IngestAttachmentProcessor extends IngestProcessorBase {
   indexed_chars_field?: Field
   properties?: string[]
   target_field?: Field
+  remove_binary?: boolean
   resource_name?: string
 }
 
@@ -15296,9 +15297,13 @@ export interface NodesInfoNodeInfoClient {
   type: string
 }
 
-export interface NodesInfoNodeInfoDiscover {
-  seed_hosts: string
+export interface NodesInfoNodeInfoDiscoverKeys {
+  seed_hosts?: string[]
+  type?: string
+  seed_providers?: string[]
 }
+export type NodesInfoNodeInfoDiscover = NodesInfoNodeInfoDiscoverKeys
+  & { [property: string]: any }
 
 export interface NodesInfoNodeInfoHttp {
   bound_address: string[]
@@ -15364,9 +15369,9 @@ export interface NodesInfoNodeInfoOSCPU {
 }
 
 export interface NodesInfoNodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
@@ -15394,7 +15399,7 @@ export interface NodesInfoNodeInfoSearchRemote {
 export interface NodesInfoNodeInfoSettings {
   cluster: NodesInfoNodeInfoSettingsCluster
   node: NodesInfoNodeInfoSettingsNode
-  path: NodesInfoNodeInfoPath
+  path?: NodesInfoNodeInfoPath
   repositories?: NodesInfoNodeInfoRepositories
   discovery?: NodesInfoNodeInfoDiscover
   action?: NodesInfoNodeInfoAction
@@ -15413,7 +15418,7 @@ export interface NodesInfoNodeInfoSettingsCluster {
   name: Name
   routing?: IndicesIndexRouting
   election: NodesInfoNodeInfoSettingsClusterElection
-  initial_master_nodes?: string
+  initial_master_nodes?: string[]
   deprecation_indexing?: NodesInfoDeprecationIndexing
 }
 
