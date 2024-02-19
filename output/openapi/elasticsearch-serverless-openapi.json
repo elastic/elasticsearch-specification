@@ -18419,8 +18419,8 @@
         "tags": [
           "update_by_query"
         ],
-        "summary": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
-        "description": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "summary": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "description": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
         },
@@ -44810,7 +44810,9 @@
           "scripted_tfidf": {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityScriptedTfidf"
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "indices._types:SettingsSimilarityBm25": {
         "type": "object",
@@ -49744,6 +49746,10 @@
               },
               "target_field": {
                 "$ref": "#/components/schemas/_types:Field"
+              },
+              "remove_binary": {
+                "description": "If true, the binary field will be removed from the document",
+                "type": "boolean"
               },
               "resource_name": {
                 "description": "Field containing the name of the resource to decode.\nIf specified, the processor passes this resource name to the underlying Tika library to enable Resource Name Based Detection.",
