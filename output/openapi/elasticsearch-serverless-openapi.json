@@ -42550,9 +42550,6 @@
             "$ref": "#/components/schemas/_types.analysis:KuromojiPartOfSpeechTokenFilter"
           },
           {
-            "$ref": "#/components/schemas/_types.analysis:IcuTokenizer"
-          },
-          {
             "$ref": "#/components/schemas/_types.analysis:IcuCollationTokenFilter"
           },
           {
@@ -43912,39 +43909,6 @@
           }
         ]
       },
-      "_types.analysis:IcuTokenizer": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "icu_tokenizer"
-                ]
-              },
-              "rule_files": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "rule_files"
-            ]
-          }
-        ]
-      },
-      "_types.analysis:TokenizerBase": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        }
-      },
       "_types.analysis:IcuCollationTokenFilter": {
         "allOf": [
           {
@@ -44380,6 +44344,14 @@
           }
         ]
       },
+      "_types.analysis:TokenizerBase": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        }
+      },
       "_types.analysis:EdgeNGramTokenizer": {
         "allOf": [
           {
@@ -44752,6 +44724,31 @@
             },
             "required": [
               "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis:IcuTokenizer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:TokenizerBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "icu_tokenizer"
+                ]
+              },
+              "rule_files": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "rule_files"
             ]
           }
         ]
