@@ -26,6 +26,8 @@ import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -169,8 +171,12 @@ export class NodeInfoRepositoriesUrl {
   allowed_urls: string
 }
 
-export class NodeInfoDiscover {
-  seed_hosts?: string
+export class NodeInfoDiscover
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  seed_hosts?: string[]
+  type?: string
+  seed_providers?: string[]
 }
 
 export class NodeInfoAction {
