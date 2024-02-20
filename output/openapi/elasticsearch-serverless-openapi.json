@@ -39380,6 +39380,9 @@
           "similarity": {
             "description": "The minimum similarity for a vector to be considered a match",
             "type": "number"
+          },
+          "inner_hits": {
+            "$ref": "#/components/schemas/_global.search._types:InnerHits"
           }
         },
         "required": [
