@@ -2141,6 +2141,13 @@ export interface ElasticsearchVersionInfo {
   number: string
 }
 
+export interface ElasticsearchVersionMinInfo {
+  build_flavor: string
+  minimum_index_compatibility_version: VersionString
+  minimum_wire_compatibility_version: VersionString
+  number: string
+}
+
 export interface EmptyObject {
   [key: string]: never
 }
@@ -10982,6 +10989,22 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
 }
 
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
+
+export interface IndicesResolveClusterRequest extends RequestBase {
+  name: Names
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+}
+
+export interface IndicesResolveClusterResponse {
+  connected: boolean
+  skip_unavailable: boolean
+  matching_indices?: boolean
+  error?: string
+  version?: ElasticsearchVersionMinInfo
+}
 
 export interface IndicesResolveIndexRequest extends RequestBase {
   name: Names
