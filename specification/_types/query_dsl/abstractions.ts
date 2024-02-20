@@ -94,6 +94,7 @@ import {
   WildcardQuery
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
+import { KnnQuery } from '@_types/Knn'
 
 /**
  * @variants container
@@ -189,6 +190,13 @@ export class QueryContainer {
    * @doc_id query-dsl-intervals-query
    */
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  /**
+   * Finds the k nearest vectors to a query vector, as measured by a similarity
+   * metric. knn query finds nearest vectors through approximate search on indexed
+   * dense_vectors.
+   * @doc_id query-dsl-knn-query
+   */
+  knn?: KnnQuery
   /**
    * Returns documents that match a provided text, number, date or boolean value.
    * The provided text is analyzed before matching.

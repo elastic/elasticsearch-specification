@@ -333,6 +333,7 @@ query-dsl-has-child-query,https://www.elastic.co/guide/en/elasticsearch/referenc
 query-dsl-has-parent-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-has-parent-query.html
 query-dsl-ids-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-ids-query.html
 query-dsl-intervals-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-intervals-query.html
+query-dsl-knn-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-knn-query.html
 query-dsl-match-all-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-all-query.html
 query-dsl-match-bool-prefix-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-bool-prefix-query.html
 query-dsl-match-none-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-all-query.html#query-dsl-match-none-query
