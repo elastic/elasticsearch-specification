@@ -26,7 +26,6 @@ import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class NodeInfo {
