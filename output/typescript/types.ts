@@ -2471,7 +2471,7 @@ export interface QueryCacheStats {
   memory_size?: ByteSize
   memory_size_in_bytes: long
   miss_count: integer
-  total_count: integer
+  total_count: long
 }
 
 export type QueryVector = float[]
