@@ -64,6 +64,16 @@ export class ElasticsearchVersionInfo {
 }
 
 /**
+ * Reduced (minimal) info ElasticsearchVersion
+ */
+export class ElasticsearchVersionMinInfo {
+  build_flavor: string
+  minimum_index_compatibility_version: VersionString
+  minimum_wire_compatibility_version: VersionString
+  number: string
+}
+
+/**
  * The response returned by Elasticsearch when request execution did not succeed.
  */
 export class ErrorResponseBase {
