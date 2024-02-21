@@ -17,14 +17,38 @@
  * under the License.
  */
 
+import { ClusterAlias } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ElasticsearchVersionMinInfo } from '@_types/Base'
 
 export class Response {
-  body: {
-    connected: boolean
-    skip_unavailable: boolean
-    matching_indices?: boolean
-    error?: string
-    version?: ElasticsearchVersionMinInfo
-  }
+  body: Dictionary<ClusterAlias, ResolveClusterInfo>
+}
+
+/**
+ * Provides information about each cluster request relevant to doing a cross-cluster search.
+ */
+export class ResolveClusterInfo {
+  /**
+   * Whether the remote cluster is connected to the local (querying) cluster.
+   */
+  connected: boolean
+  /**
+   * The skip_unavailable setting for a remote cluster.
+   */
+  skip_unavailable: boolean
+  /**
+   * Whether the index expression provided in the request matches any indices, aliases or data streams
+   * on the cluster.
+   */
+  matching_indices?: boolean
+  /**
+   * Provides error messages that are likely to occur if you do a search with this index expression
+   * on the specified cluster (e.g., lack of security privileges to query an index).
+   */
+  error?: string
+  /**
+   * Provides version information about the cluster.
+   */
+  version?: ElasticsearchVersionMinInfo
 }

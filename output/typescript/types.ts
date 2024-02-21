@@ -10998,13 +10998,15 @@ export interface IndicesResolveClusterRequest extends RequestBase {
   ignore_unavailable?: boolean
 }
 
-export interface IndicesResolveClusterResponse {
+export interface IndicesResolveClusterResolveClusterInfo {
   connected: boolean
   skip_unavailable: boolean
   matching_indices?: boolean
   error?: string
   version?: ElasticsearchVersionMinInfo
 }
+
+export type IndicesResolveClusterResponse = Record<ClusterAlias, IndicesResolveClusterResolveClusterInfo>
 
 export interface IndicesResolveIndexRequest extends RequestBase {
   name: Names
