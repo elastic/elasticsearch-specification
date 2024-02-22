@@ -11534,15 +11534,15 @@ export interface InferenceTextEmbeddingResult {
 }
 
 export interface InferenceDeleteModelRequest extends RequestBase {
-  task_type: InferenceTaskType
-  model_id: Id
+  task_type?: InferenceTaskType
+  inference_id: Id
 }
 
 export type InferenceDeleteModelResponse = AcknowledgedResponseBase
 
 export interface InferenceGetModelRequest extends RequestBase {
-  task_type: InferenceTaskType
-  model_id: Id
+  task_type?: InferenceTaskType
+  inference_id: Id
 }
 
 export interface InferenceGetModelResponse {
@@ -11550,8 +11550,8 @@ export interface InferenceGetModelResponse {
 }
 
 export interface InferenceInferenceRequest extends RequestBase {
-  task_type: InferenceTaskType
-  model_id: Id
+  task_type?: InferenceTaskType
+  inference_id: Id
   body?: {
     input: string | string[]
     task_settings?: InferenceTaskSettings
@@ -11561,8 +11561,8 @@ export interface InferenceInferenceRequest extends RequestBase {
 export type InferenceInferenceResponse = InferenceInferenceResult
 
 export interface InferencePutModelRequest extends RequestBase {
-  task_type: InferenceTaskType
-  model_id: Id
+  task_type?: InferenceTaskType
+  inference_id: Id
   body?: InferenceModelConfig
 }
 
