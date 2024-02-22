@@ -7551,7 +7551,7 @@
         }
       }
     },
-    "/_inference/{task_type}/{model_id}": {
+    "/_inference/{inference_id}": {
       "get": {
         "tags": [
           "inference.get_model"
@@ -7564,49 +7564,12 @@
         "operationId": "inference-get-model",
         "parameters": [
           {
-            "in": "path",
-            "name": "task_type",
-            "description": "The model task type",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference._types:TaskType"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "path",
-            "name": "model_id",
-            "description": "The unique identifier of the inference model.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/inference.get_model#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "models": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
-                      }
-                    }
-                  },
-                  "required": [
-                    "models"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/inference.get_model#200"
           }
         }
       },
@@ -7622,47 +7585,15 @@
         "operationId": "inference-put-model",
         "parameters": [
           {
-            "in": "path",
-            "name": "task_type",
-            "description": "The model task type",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference._types:TaskType"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "path",
-            "name": "model_id",
-            "description": "The unique identifier of the inference model.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/inference.put_model#inference_id"
           }
         ],
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/inference._types:ModelConfig"
-              }
-            }
-          }
+          "$ref": "#/components/requestBodies/inference.put_model"
         },
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
-                }
-              }
-            }
+            "$ref": "#/components/responses/inference.put_model#200"
           }
         }
       },
@@ -7678,69 +7609,15 @@
         "operationId": "inference-inference",
         "parameters": [
           {
-            "in": "path",
-            "name": "task_type",
-            "description": "The model task type",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference._types:TaskType"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "path",
-            "name": "model_id",
-            "description": "The unique identifier of the inference model.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/inference.inference#inference_id"
           }
         ],
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "input": {
-                    "description": "Text input to the model.\nEither a string or an array of strings.",
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    ]
-                  },
-                  "task_settings": {
-                    "$ref": "#/components/schemas/inference._types:TaskSettings"
-                  }
-                },
-                "required": [
-                  "input"
-                ]
-              }
-            }
-          }
+          "$ref": "#/components/requestBodies/inference.inference"
         },
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inference._types:InferenceResult"
-                }
-              }
-            }
+            "$ref": "#/components/responses/inference.inference#200"
           }
         }
       },
@@ -7756,38 +7633,116 @@
         "operationId": "inference-delete-model",
         "parameters": [
           {
-            "in": "path",
-            "name": "task_type",
-            "description": "The model task type",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference._types:TaskType"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "path",
-            "name": "model_id",
-            "description": "The unique identifier of the inference model.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/inference.delete_model#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
+            "$ref": "#/components/responses/inference.delete_model#200"
+          }
+        }
+      }
+    },
+    "/_inference/{task_type}/{inference_id}": {
+      "get": {
+        "tags": [
+          "inference.get_model"
+        ],
+        "summary": "Get a model in the Inference API",
+        "description": "Get a model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
+        },
+        "operationId": "inference-get-model-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.get_model#task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.get_model#inference_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.get_model#200"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "inference.put_model"
+        ],
+        "summary": "Configure a model for use in the Inference API",
+        "description": "Configure a model for use in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html"
+        },
+        "operationId": "inference-put-model-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.put_model#task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put_model#inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.put_model"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.put_model#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "inference.inference"
+        ],
+        "summary": "Perform inference on a model",
+        "description": "Perform inference on a model",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html"
+        },
+        "operationId": "inference-inference-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.inference#task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.inference#inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.inference"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.inference#200"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "inference.delete_model"
+        ],
+        "summary": "Delete model in the Inference API",
+        "description": "Delete model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html"
+        },
+        "operationId": "inference-delete-model-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.delete_model#task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete_model#inference_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.delete_model#200"
           }
         }
       }
@@ -19555,6 +19510,57 @@
           }
         }
       },
+      "inference.delete_model#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+            }
+          }
+        }
+      },
+      "inference.get_model#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "models": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+                  }
+                }
+              },
+              "required": [
+                "models"
+              ]
+            }
+          }
+        }
+      },
+      "inference.inference#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:InferenceResult"
+            }
+          }
+        }
+      },
+      "inference.put_model#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+            }
+          }
+        }
+      },
       "ingest.get_pipeline#200": {
         "description": "",
         "content": {
@@ -23331,6 +23337,94 @@
         },
         "style": "form"
       },
+      "inference.delete_model#task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The task type",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types:TaskType"
+        },
+        "style": "simple"
+      },
+      "inference.delete_model#inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The inference Id",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
+      },
+      "inference.get_model#task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The task type",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types:TaskType"
+        },
+        "style": "simple"
+      },
+      "inference.get_model#inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The inference Id",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
+      },
+      "inference.inference#task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The task type",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types:TaskType"
+        },
+        "style": "simple"
+      },
+      "inference.inference#inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The inference Id",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
+      },
+      "inference.put_model#task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The task type",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types:TaskType"
+        },
+        "style": "simple"
+      },
+      "inference.put_model#inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The inference Id",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
+      },
       "ingest.get_pipeline#id": {
         "in": "path",
         "name": "id",
@@ -26222,6 +26316,46 @@
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 }
               }
+            }
+          }
+        }
+      },
+      "inference.inference": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "input": {
+                  "description": "Text input to the model.\nEither a string or an array of strings.",
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                },
+                "task_settings": {
+                  "$ref": "#/components/schemas/inference._types:TaskSettings"
+                }
+              },
+              "required": [
+                "input"
+              ]
+            }
+          }
+        }
+      },
+      "inference.put_model": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types:ModelConfig"
             }
           }
         }
