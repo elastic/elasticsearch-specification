@@ -2470,7 +2470,7 @@ export interface QueryCacheStats {
   memory_size?: ByteSize
   memory_size_in_bytes: long
   miss_count: integer
-  total_count: integer
+  total_count: long
 }
 
 export type QueryVector = float[]
@@ -5823,6 +5823,7 @@ export interface QueryDslQueryContainer {
   has_parent?: QueryDslHasParentQuery
   ids?: QueryDslIdsQuery
   intervals?: Partial<Record<Field, QueryDslIntervalsQuery>>
+  knn?: KnnQuery
   match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
   match_all?: QueryDslMatchAllQuery
   match_bool_prefix?: Partial<Record<Field, QueryDslMatchBoolPrefixQuery | string>>
