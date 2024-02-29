@@ -67,18 +67,6 @@ export class SourceOnlyRepository extends RepositoryBase {
   settings: SourceOnlyRepositorySettings
 }
 
-/**
- * @variants internal tag='type'
- * @non_exhaustive
- */
-export type RepositorySettings =
-  | AzureRepositorySettings
-  | GcsRepositorySettings
-  | S3RepositorySettings
-  | SharedFileSystemRepositorySettings
-  | ReadOnlyUrlRepositorySettings
-  | SourceOnlyRepositorySettings
-
 export class RepositorySettingsBase {
   chunk_size?: ByteSize
   compress?: boolean
