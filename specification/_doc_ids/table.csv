@@ -114,13 +114,15 @@ dot-expand-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{br
 drop-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/drop-processor.html
 enrich-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-processor.html
 enrich-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/enrich-stats-api.html
-eql-async-search-api, https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
-eql-async-search-status-api, https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html
+eql-async-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html
+eql-async-search-status-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-basic-syntax
 eql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-search-api.html
 eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-sequences
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
+esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
+esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params
 evaluate-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/evaluate-dfanalytics.html
 execute-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/execute-enrich-policy-api.html
 expected-reciprocal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_expected_reciprocal_rank_err
@@ -217,6 +219,7 @@ json-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/
 k-precision,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#k-precision
 k-recall,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#k-recall
 kv-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv-processor.html
+knn-inner-hits,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/knn-search.html#nested-knn-search-inner-hits
 logstash-api-delete-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-delete-pipeline.html
 logstash-api-get-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-get-pipeline.html
 logstash-api-put-pipeline,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/logstash-api-put-pipeline.html
@@ -331,6 +334,7 @@ query-dsl-has-child-query,https://www.elastic.co/guide/en/elasticsearch/referenc
 query-dsl-has-parent-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-has-parent-query.html
 query-dsl-ids-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-ids-query.html
 query-dsl-intervals-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-intervals-query.html
+query-dsl-knn-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-knn-query.html
 query-dsl-match-all-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-all-query.html
 query-dsl-match-bool-prefix-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-bool-prefix-query.html
 query-dsl-match-none-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-match-all-query.html#query-dsl-match-none-query
@@ -377,6 +381,7 @@ realtime,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-g
 regexp-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/regexp-syntax.html
 remove-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remove-processor.html
 rename-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rename-processor.html
+reroute-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reroute-processor.html
 render-search-template-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/render-search-template-api.html
 reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/reset-transform.html
 rollup-delete-job,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/rollup-delete-job.html
@@ -437,7 +442,7 @@ search-aggregations-metrics-max-aggregation,https://www.elastic.co/guide/en/elas
 search-aggregations-pipeline-max-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-max-bucket-aggregation.html
 search-aggregations-metrics-median-absolute-deviation-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-median-absolute-deviation-aggregation.html
 search-aggregations-metrics-min-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-metrics-min-aggregation.html
-,search-aggregations-pipeline-min-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-min-bucket-aggregation.html
+search-aggregations-pipeline-min-bucket-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-min-bucket-aggregation.html
 search-aggregations-bucket-missing-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-missing-aggregation.html
 search-aggregations-pipeline-moving-percentiles-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-moving-percentiles-aggregation.html
 search-aggregations-pipeline-movfn-aggregation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline-movfn-aggregation.html

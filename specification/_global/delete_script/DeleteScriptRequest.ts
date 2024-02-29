@@ -22,16 +22,30 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Deletes a stored script or search template.
  * @rest_spec_name delete_script
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the stored script or search template.
+     */
     id: Id
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

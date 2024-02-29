@@ -65,8 +65,8 @@
         "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
         "Request: query parameter 'scroll' does not exist in the json spec",
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'",
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
+        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'"
       ],
       "response": []
     },
@@ -552,9 +552,27 @@
       ],
       "response": []
     },
+    "esql.query": {
+      "request": [],
+      "response": [
+        "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
+      ]
+    },
     "features.get_features": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "fleet.delete_secret": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "fleet.get_secret": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -577,6 +595,12 @@
       "response": [
         "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
       ]
+    },
+    "fleet.post_secret": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "fleet.search": {
       "request": [
@@ -843,6 +867,12 @@
         "response definition indices.refresh:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
       ]
     },
+    "indices.reload_search_analyzers": {
+      "request": [
+        "Request: missing json spec query parameter 'resource'"
+      ],
+      "response": []
+    },
     "indices.simulate_index_template": {
       "request": [
         "Request: missing json spec query parameter 'cause'"
@@ -860,6 +890,18 @@
       "response": [
         "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "inference.delete_model": {
+      "request": [],
+      "response": [
+        "response definition inference.delete_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
+    "inference.put_model": {
+      "request": [
+        "request definition inference.put_model:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:ModelConfig'"
+      ],
+      "response": []
     },
     "ingest.delete_pipeline": {
       "request": [],
@@ -883,12 +925,6 @@
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'"
-      ],
-      "response": []
-    },
-    "logstash.get_pipeline": {
-      "request": [
-        "Request: path parameter 'id' is optional in the json spec"
       ],
       "response": []
     },
@@ -1034,12 +1070,6 @@
       "response": [
         "response definition ml.set_upgrade_mode:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
-    },
-    "ml.start_trained_model_deployment": {
-      "request": [
-        "Request: missing json spec query parameter 'deployment_id'"
-      ],
-      "response": []
     },
     "ml.stop_datafeed": {
       "request": [
@@ -1228,6 +1258,18 @@
         "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "security.get_api_key": {
+      "request": [
+        "Request: query parameter 'active_only' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "security.get_settings": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.get_user": {
       "request": [],
       "response": [
@@ -1279,6 +1321,12 @@
       ]
     },
     "security.update_cross_cluster_api_key": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.update_settings": {
       "request": [
         "Missing request & response"
       ],
@@ -1406,16 +1454,8 @@
       ],
       "response": []
     },
-    "text_structure.find_structure": {
-      "request": [
-        "Request: missing json spec query parameter 'ecs_compatibility'"
-      ],
-      "response": []
-    },
     "transform.delete_transform": {
-      "request": [
-        "Request: missing json spec query parameter 'delete_dest_index'"
-      ],
+      "request": [],
       "response": [
         "response definition transform.delete_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]

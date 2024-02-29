@@ -41,8 +41,6 @@ export enum SegmentSortMode {
 }
 
 export enum SegmentSortMissing {
-  /** @codegen_name last */
-  '_last',
-  /** @codegen_name first */
-  '_first'
+  last = '_last',
+  first = '_first'
 }

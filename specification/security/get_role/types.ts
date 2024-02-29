@@ -24,7 +24,7 @@ import {
 import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
-import { Script } from '@_types/Scripting'
+import { RoleTemplate } from '@security/_types/RoleTemplate'
 
 export class Role {
   cluster: string[]
@@ -39,15 +39,4 @@ export class Role {
    * @availability serverless
    */
   global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
-}
-
-export enum TemplateFormat {
-  string = 0,
-  json = 1
-}
-
-// ES: TemplateRoleName
-export class RoleTemplate {
-  format?: TemplateFormat
-  template: Script
 }

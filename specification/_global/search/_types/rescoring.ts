@@ -53,22 +53,22 @@ export enum ScoreMode {
   /**
    * Average the original score and the rescore query score.
    */
-  avg = 0,
+  avg,
   /**
    * Take the max of original score and the rescore query score.
    */
-  max = 1,
+  max,
   /**
    * Take the min of the original score and the rescore query score.
    */
-  min = 2,
+  min,
   /**
    * Multiply the original score by the rescore query score.
    * Useful for `function` query rescores.
    */
-  multiply = 3,
+  multiply,
   /**
    * Add the original score and the rescore query score.
    */
-  total = 4
+  total
 }

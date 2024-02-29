@@ -171,15 +171,15 @@ export enum RangeRelation {
   /**
    * Matches documents with a range field value entirely within the query’s range.
    */
-  within = 0,
+  within,
   /**
    * Matches documents with a range field value that entirely contains the query’s range.
    */
-  contains = 1,
+  contains,
   /**
    * Matches documents with a range field value that intersects the query’s range.
    */
-  intersects = 2
+  intersects
 }
 
 /** @shortcut_property value */

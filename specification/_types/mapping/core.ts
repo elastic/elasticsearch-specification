@@ -190,6 +190,10 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+export class SparseVectorProperty extends PropertyBase {
+  type: 'sparse_vector'
+}
+
 export class SearchAsYouTypeProperty extends CorePropertyBase {
   analyzer?: string
   index?: boolean

@@ -50,9 +50,9 @@ export class KuromojiStemmerTokenFilter extends TokenFilterBase {
 }
 
 export enum KuromojiTokenizationMode {
-  normal = 0,
-  search = 1,
-  extended = 2
+  normal,
+  search,
+  extended
 }
 
 export class KuromojiTokenizer extends TokenizerBase {

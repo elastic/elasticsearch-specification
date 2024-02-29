@@ -24,6 +24,7 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name indices.forcemerge
  * @availability stack since=2.1.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

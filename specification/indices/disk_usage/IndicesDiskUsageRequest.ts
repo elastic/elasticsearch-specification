@@ -25,7 +25,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @doc_id indices-disk-usage
  * @rest_spec_name indices.disk_usage
  * @availability stack since=7.15.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -45,12 +45,12 @@ export class NGramTokenizer extends TokenizerBase {
 }
 
 export enum TokenChar {
-  letter = 0,
-  digit = 1,
-  whitespace = 2,
-  punctuation = 3,
-  symbol = 4,
-  custom = 5
+  letter,
+  digit,
+  whitespace,
+  punctuation,
+  symbol,
+  custom
 }
 
 export class CharGroupTokenizer extends TokenizerBase {
@@ -73,9 +73,9 @@ export class LowercaseTokenizer extends TokenizerBase {
 }
 
 export enum NoriDecompoundMode {
-  discard = 0,
-  none = 1,
-  mixed = 2
+  discard,
+  none,
+  mixed
 }
 
 export class NoriTokenizer extends TokenizerBase {
@@ -88,11 +88,11 @@ export class NoriTokenizer extends TokenizerBase {
 
 export class PathHierarchyTokenizer extends TokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: Stringified<integer>
-  delimiter: string
-  replacement: string
-  reverse: Stringified<boolean>
-  skip: Stringified<integer>
+  buffer_size?: Stringified<integer>
+  delimiter?: string
+  replacement?: string
+  reverse?: Stringified<boolean>
+  skip?: Stringified<integer>
 }
 
 export class PatternTokenizer extends TokenizerBase {

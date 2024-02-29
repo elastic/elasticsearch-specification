@@ -30,19 +30,19 @@ export enum BoundaryScanner {
    * The `boundary_max_scan` setting controls how far to scan for boundary characters.
    * Only valid for the `fvh` highlighter.
    */
-  chars = 0,
+  chars,
   /**
    * Break highlighted fragments at the next sentence boundary, as determined by Java’s `BreakIterator`.
    * You can specify the locale to use with `boundary_scanner_locale`.
    * When used with the `unified` highlighter, the `sentence` scanner splits sentences bigger than `fragment_size` at the first word boundary next to fragment_size.
    * You can set `fragment_size` to `0` to never split any sentence.
    */
-  sentence = 1,
+  sentence,
   /**
    * Break highlighted fragments at the next word boundary, as determined by Java’s `BreakIterator`.
    * You can specify the locale to use with `boundary_scanner_locale`.
    */
-  word = 2
+  word
 }
 
 export class HighlightBase {
@@ -156,21 +156,21 @@ export class Highlight extends HighlightBase {
 }
 
 export enum HighlighterEncoder {
-  default = 0,
-  html = 1
+  default,
+  html
 }
 
 export enum HighlighterFragmenter {
-  simple = 0,
-  span = 1
+  simple,
+  span
 }
 
 export enum HighlighterOrder {
-  score = 0
+  score
 }
 
 export enum HighlighterTagsSchema {
-  styled = 0
+  styled
 }
 
 /** @non_exhaustive */
@@ -178,16 +178,16 @@ export enum HighlighterType {
   /**
    * The `plain` highlighter uses the standard Lucene highlighter
    */
-  plain = 0,
+  plain,
   /**
    * The fvh highlighter uses the Lucene Fast Vector highlighter.
    * @codegen_name fast_vector
    */
-  fvh = 1,
+  fvh,
   /**
    * The unified highlighter uses the Lucene Unified Highlighter.
    */
-  unified = 2
+  unified
 }
 
 export class HighlightField extends HighlightBase {

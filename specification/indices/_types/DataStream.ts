@@ -29,11 +29,19 @@ import {
 import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 
+enum ManagedBy {
+  ilm = 'Index Lifecycle Management',
+  // This should have been written with capital letters, it's a known typo and should not be corrected.
+  datastream = 'Data stream lifecycle',
+  unmanaged = 'Unmanaged'
+}
+
 export class DataStream {
   /**
    * Custom metadata for the stream, copied from the `_meta` object of the stream’s matching index template.
    * If empty, the response omits this property.
-   * @doc_id mapping-meta-field */
+   * @doc_id mapping-meta-field
+   */
   _meta?: Metadata
   /**
    *  If `true`, the data stream allows custom routing on write request.
@@ -54,6 +62,14 @@ export class DataStream {
    * NOTE: A data stream’s backing indices may be assigned different lifecycle policies. To retrieve the lifecycle policy for individual backing indices, use the get index settings API.
    */
   ilm_policy?: Name
+  /**
+   * Name of the lifecycle system that'll manage the next generation of the data stream.
+   */
+  next_generation_managed_by: ManagedBy
+  /**
+   * Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.
+   */
+  prefer_ilm: boolean
   /**
    * Array of objects containing information about the data stream’s backing indices.
    * The last item in this array contains information about the stream’s current write index.
@@ -111,6 +127,18 @@ export class DataStreamIndex {
    * Universally unique identifier (UUID) for the index.
    */
   index_uuid: Uuid
+  /**
+   * Name of the current ILM lifecycle policy configured for this backing index.
+   */
+  ilm_policy?: Name
+  /**
+   * Name of the lifecycle system that's currently managing this backing index.
+   */
+  managed_by: ManagedBy
+  /**
+   * Indicates if ILM should take precedence over DSL in case both are configured to manage this index.
+   */
+  prefer_ilm: boolean
 }
 
 export class DataStreamVisibility {

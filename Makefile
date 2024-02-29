@@ -47,10 +47,13 @@ clean-dep:	## Clean npm dependencies
 transform-expand-generics: ## Create a new schema with all generics expanded
 	@npm run transform-expand-generics --prefix compiler
 
+transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
+	@npm run transform-to-openapi --prefix compiler
+
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
-contrib: | generate license-check spec-format-fix 	## Pre contribution target
+contrib: | generate license-check spec-format-fix transform-to-openapi ## Pre contribution target
 
 bump:
 	@echo ">> bumping..."

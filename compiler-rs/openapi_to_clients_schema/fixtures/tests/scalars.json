@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "TestCase": {
+        "additionalProperties": false,
+        "properties": {
+          "array_of_scalars": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "array_or_scalar": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "integer": {
+            "type": "integer"
+          },
+          "number": {
+            "type": "number"
+          },
+          "string": {
+            "type": "string"
+          },
+          "union_of_scalars": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "required": [
+          "string",
+          "integer",
+          "number",
+          "boolean",
+          "array_of_scalars",
+          "union_of_scalars",
+          "array_or_scalar"
+        ],
+        "type": "object"
+      }
+    }
+  }
+}

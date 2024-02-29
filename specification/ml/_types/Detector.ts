@@ -125,8 +125,8 @@ export class DetectorRead implements OverloadOf<Detector> {
 }
 
 export enum ExcludeFrequent {
-  all = 0,
-  none = 1,
-  by = 2,
-  over = 3
+  all,
+  none,
+  by,
+  over
 }

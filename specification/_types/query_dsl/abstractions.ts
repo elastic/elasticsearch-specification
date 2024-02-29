@@ -94,6 +94,8 @@ import {
   WildcardQuery
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
+import { WeightedTokensQuery } from './WeightedTokensQuery'
+import { KnnQuery } from '@_types/Knn'
 
 /**
  * @variants container
@@ -189,6 +191,13 @@ export class QueryContainer {
    * @doc_id query-dsl-intervals-query
    */
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  /**
+   * Finds the k nearest vectors to a query vector, as measured by a similarity
+   * metric. knn query finds nearest vectors through approximate search on indexed
+   * dense_vectors.
+   * @doc_id query-dsl-knn-query
+   */
+  knn?: KnnQuery
   /**
    * Returns documents that match a provided text, number, date or boolean value.
    * The provided text is analyzed before matching.
@@ -367,12 +376,19 @@ export class QueryContainer {
    */
   terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
   /**
-   * Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a rank features field.
+   * Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.
    * @availability stack since=8.8.0
    * @availability serverless
    * @doc_id query-dsl-text-expansion-query
    */
   text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
+  /**
+   * Supports returning text_expansion query results by sending in precomputed tokens with the query.
+   * @availability stack since=8.13.0
+   * @availability serverless
+   * @doc_id query-dsl-weighted-tokens-query
+   */
+  weighted_tokens?: SingleKeyDictionary<Field, WeightedTokensQuery>
   /**
    * Returns documents that contain terms matching a wildcard pattern.
    * @doc_id query-dsl-wildcard-query

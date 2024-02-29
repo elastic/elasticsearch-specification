@@ -48,6 +48,7 @@ import {
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
   ShortNumberProperty,
+  SparseVectorProperty,
   TextProperty,
   UnsignedLongNumberProperty,
   VersionProperty,
@@ -117,6 +118,7 @@ export type Property =
   // complex
   | AggregateMetricDoubleProperty
   | DenseVectorProperty
+  | SparseVectorProperty
   | FlattenedProperty
   | NestedProperty
   | ObjectProperty
@@ -197,6 +199,7 @@ export enum FieldType {
   constant_keyword,
   aggregate_metric_double,
   dense_vector,
+  sparse_vector,
   match_only_text
 }
 
