@@ -9115,7 +9115,7 @@ export interface EnrichExecutePolicyRequest extends RequestBase {
 }
 
 export interface EnrichExecutePolicyResponse {
-  status: EnrichExecutePolicyExecuteEnrichPolicyStatus
+  status?: EnrichExecutePolicyExecuteEnrichPolicyStatus
   task_id?: TaskId
 }
 

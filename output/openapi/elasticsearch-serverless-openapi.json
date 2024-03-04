@@ -3461,10 +3461,7 @@
                     "task_id": {
                       "$ref": "#/components/schemas/_types:TaskId"
                     }
-                  },
-                  "required": [
-                    "status"
-                  ]
+                  }
                 }
               }
             }
