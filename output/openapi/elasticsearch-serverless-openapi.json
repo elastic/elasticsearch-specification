@@ -46796,6 +46796,15 @@
               "null_value": {
                 "$ref": "#/components/schemas/_types:GeoLocation"
               },
+              "index": {
+                "type": "boolean"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
               "type": {
                 "type": "string",
                 "enum": [
