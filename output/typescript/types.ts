@@ -16241,7 +16241,7 @@ export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | Secu
 export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityTransientMetadataConfig {
-  enabled: boolean
+  enabled?: boolean
 }
 
 export interface SecurityUser {
@@ -16569,7 +16569,7 @@ export interface SecurityGetRoleRole {
   indices: SecurityIndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: SecurityTransientMetadataConfig
+  transient_metadata?: SecurityTransientMetadataConfig
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityRoleTemplate[]
   global?: Record<string, Record<string, Record<string, string[]>>>

@@ -18,5 +18,5 @@
  */
 
 export class TransientMetadataConfig {
-  enabled: boolean
+  enabled?: boolean
 }

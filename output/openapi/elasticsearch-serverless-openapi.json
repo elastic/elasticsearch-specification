@@ -57187,10 +57187,7 @@
           "enabled": {
             "type": "boolean"
           }
-        },
-        "required": [
-          "enabled"
-        ]
+        }
       },
       "security._types:RealmInfo": {
         "type": "object",
