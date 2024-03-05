@@ -49735,10 +49735,7 @@
           "_meta": {
             "$ref": "#/components/schemas/_types:Metadata"
           }
-        },
-        "required": [
-          "_meta"
-        ]
+        }
       },
       "ingest._types:ProcessorContainer": {
         "type": "object",
