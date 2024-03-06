@@ -39974,8 +39974,7 @@
           }
         },
         "required": [
-          "found",
-          "_source"
+          "found"
         ]
       },
       "_types:Names": {
@@ -48332,8 +48331,7 @@
           }
         },
         "required": [
-          "found",
-          "_source"
+          "found"
         ]
       },
       "_global.field_caps:FieldCapability": {
