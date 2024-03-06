@@ -75,7 +75,6 @@ export class RepositorySettingsBase {
 }
 
 export class AzureRepositorySettings extends RepositorySettingsBase {
-  type: 'azure'
   client?: string
   container?: string
   base_path?: string
@@ -87,7 +86,6 @@ export class AzureRepositorySettings extends RepositorySettingsBase {
 }
 
 export class GcsRepositorySettings extends RepositorySettingsBase {
-  type: 'gcs'
   bucket: string
   client?: string
   base_path?: string
@@ -99,7 +97,6 @@ export class GcsRepositorySettings extends RepositorySettingsBase {
 }
 
 export class S3RepositorySettings extends RepositorySettingsBase {
-  type: 's3'
   bucket: string
   client?: string
   base_path?: string
@@ -114,7 +111,6 @@ export class S3RepositorySettings extends RepositorySettingsBase {
 }
 
 export class SharedFileSystemRepositorySettings extends RepositorySettingsBase {
-  type: 'fs'
   location: string
   max_number_of_snapshots?: integer
   /**
@@ -124,7 +120,6 @@ export class SharedFileSystemRepositorySettings extends RepositorySettingsBase {
 }
 
 export class ReadOnlyUrlRepositorySettings extends RepositorySettingsBase {
-  type: 'url'
   http_max_retries?: integer
   http_socket_timeout?: Duration
   max_number_of_snapshots?: integer
@@ -132,7 +127,6 @@ export class ReadOnlyUrlRepositorySettings extends RepositorySettingsBase {
 }
 
 export class SourceOnlyRepositorySettings extends RepositorySettingsBase {
-  type: 'source'
   delegate_type?: string
   max_number_of_snapshots?: integer
   /**

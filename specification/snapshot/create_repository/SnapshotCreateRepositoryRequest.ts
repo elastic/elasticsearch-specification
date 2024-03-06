@@ -37,6 +37,6 @@ export interface Request extends RequestBase {
     timeout?: Duration
     verify?: boolean
   }
-  /** @codegen_name snapshot_repository */
+  /** @codegen_name repository */
   body: Repository
 }
