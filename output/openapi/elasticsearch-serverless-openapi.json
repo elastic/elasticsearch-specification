@@ -3461,10 +3461,7 @@
                     "task_id": {
                       "$ref": "#/components/schemas/_types:TaskId"
                     }
-                  },
-                  "required": [
-                    "status"
-                  ]
+                  }
                 }
               }
             }
@@ -33591,7 +33588,7 @@
           "_source": {
             "$ref": "#/components/schemas/_global.search._types:SourceConfig"
           },
-          "stored_field": {
+          "stored_fields": {
             "$ref": "#/components/schemas/_types:Fields"
           },
           "track_scores": {
@@ -39977,8 +39974,7 @@
           }
         },
         "required": [
-          "found",
-          "_source"
+          "found"
         ]
       },
       "_types:Names": {
@@ -46066,6 +46062,9 @@
           {
             "type": "object",
             "properties": {
+              "positive_score_impact": {
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -46398,8 +46397,7 @@
               }
             },
             "required": [
-              "type",
-              "dims"
+              "type"
             ]
           }
         ]
@@ -46801,6 +46799,15 @@
               },
               "null_value": {
                 "$ref": "#/components/schemas/_types:GeoLocation"
+              },
+              "index": {
+                "type": "boolean"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
               },
               "type": {
                 "type": "string",
@@ -48329,8 +48336,7 @@
           }
         },
         "required": [
-          "found",
-          "_source"
+          "found"
         ]
       },
       "_global.field_caps:FieldCapability": {
@@ -56986,7 +56992,10 @@
             }
           },
           "transient_metadata": {
-            "$ref": "#/components/schemas/security._types:TransientMetadataConfig"
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         }
       },
@@ -57185,17 +57194,6 @@
           "application",
           "privileges",
           "resources"
-        ]
-      },
-      "security._types:TransientMetadataConfig": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "enabled"
         ]
       },
       "security._types:RealmInfo": {
