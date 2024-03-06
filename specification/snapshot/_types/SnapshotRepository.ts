@@ -78,10 +78,7 @@ export class AzureRepositorySettings extends RepositorySettingsBase {
   client?: string
   container?: string
   base_path?: string
-  /**
-   * @aliases readonly
-   */
-  read_only?: boolean
+  readonly?: boolean
   location_mode?: string
 }
 
@@ -89,10 +86,7 @@ export class GcsRepositorySettings extends RepositorySettingsBase {
   bucket: string
   client?: string
   base_path?: string
-  /**
-   * @aliases readonly
-   */
-  read_only?: boolean
+  readonly?: boolean
   application_name?: string
 }
 
@@ -100,10 +94,7 @@ export class S3RepositorySettings extends RepositorySettingsBase {
   bucket: string
   client?: string
   base_path?: string
-  /**
-   * @aliases readonly
-   */
-  read_only?: boolean
+  readonly?: boolean
   server_side_encryption?: boolean
   buffer_size?: ByteSize
   canned_acl?: string
@@ -113,10 +104,7 @@ export class S3RepositorySettings extends RepositorySettingsBase {
 export class SharedFileSystemRepositorySettings extends RepositorySettingsBase {
   location: string
   max_number_of_snapshots?: integer
-  /**
-   * @aliases readonly
-   */
-  read_only?: boolean
+  readonly?: boolean
 }
 
 export class ReadOnlyUrlRepositorySettings extends RepositorySettingsBase {

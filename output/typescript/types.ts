@@ -17229,7 +17229,6 @@ export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySetti
   client?: string
   container?: string
   base_path?: string
-  read_only?: boolean
   readonly?: boolean
   location_mode?: string
 }
@@ -17248,7 +17247,6 @@ export interface SnapshotGcsRepositorySettings extends SnapshotRepositorySetting
   bucket: string
   client?: string
   base_path?: string
-  read_only?: boolean
   readonly?: boolean
   application_name?: string
 }
@@ -17299,7 +17297,6 @@ export interface SnapshotS3RepositorySettings extends SnapshotRepositorySettings
   bucket: string
   client?: string
   base_path?: string
-  read_only?: boolean
   readonly?: boolean
   server_side_encryption?: boolean
   buffer_size?: ByteSize
@@ -17339,7 +17336,6 @@ export interface SnapshotSharedFileSystemRepository extends SnapshotRepositoryBa
 export interface SnapshotSharedFileSystemRepositorySettings extends SnapshotRepositorySettingsBase {
   location: string
   max_number_of_snapshots?: integer
-  read_only?: boolean
   readonly?: boolean
 }
 
