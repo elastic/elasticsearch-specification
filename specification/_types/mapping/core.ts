@@ -187,6 +187,7 @@ export class RankFeatureProperty extends PropertyBase {
 }
 
 export class RankFeaturesProperty extends PropertyBase {
+  positive_score_impact?: boolean
   type: 'rank_features'
 }
 

@@ -46059,6 +46059,9 @@
           {
             "type": "object",
             "properties": {
+              "positive_score_impact": {
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
