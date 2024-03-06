@@ -33588,7 +33588,7 @@
           "_source": {
             "$ref": "#/components/schemas/_global.search._types:SourceConfig"
           },
-          "stored_field": {
+          "stored_fields": {
             "$ref": "#/components/schemas/_types:Fields"
           },
           "track_scores": {
