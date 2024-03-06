@@ -292,7 +292,7 @@ export class InlineGet<TDocument>
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
-  _source: TDocument
+  _source?: TDocument
 }
 
 /**

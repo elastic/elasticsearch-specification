@@ -29,11 +29,11 @@ export class Role {
   indices: IndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: TransientMetadata
+  transient_metadata?: TransientMetadata
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]
 }
 
 export class TransientMetadata {
-  enabled: boolean
+  enabled?: boolean
 }

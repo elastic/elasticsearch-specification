@@ -27,7 +27,7 @@ export class Response {
     backing_indices: integer
     data_stream_count: integer
     total_store_sizes?: ByteSize
-    total_store_size_bytes: integer
+    total_store_size_bytes: long
     data_streams: DataStreamsStatsItem[]
   }
 }
@@ -36,6 +36,6 @@ export class DataStreamsStatsItem {
   backing_indices: integer
   data_stream: Name
   store_size?: ByteSize
-  store_size_bytes: integer
+  store_size_bytes: long
   maximum_timestamp: long
 }

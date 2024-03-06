@@ -1316,7 +1316,7 @@ export interface SearchInnerHits {
   fields?: Fields
   sort?: Sort
   _source?: SearchSourceConfig
-  stored_field?: Fields
+  stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
 }
@@ -2103,7 +2103,7 @@ export interface InlineGetKeys<TDocument = unknown> {
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
-  _source: TDocument
+  _source?: TDocument
 }
 export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
   & { [property: string]: any }
@@ -4517,7 +4517,7 @@ export interface MappingDenseVectorIndexOptions {
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
-  dims: integer
+  dims?: integer
   similarity?: string
   index?: boolean
   index_options?: MappingDenseVectorIndexOptions
@@ -4619,6 +4619,9 @@ export interface MappingGeoPointProperty extends MappingDocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: GeoLocation
+  index?: boolean
+  on_script_error?: MappingOnScriptError
+  script?: Script
   type: 'geo_point'
 }
 
@@ -4765,6 +4768,7 @@ export interface MappingRankFeatureProperty extends MappingPropertyBase {
 }
 
 export interface MappingRankFeaturesProperty extends MappingPropertyBase {
+  positive_score_impact?: boolean
   type: 'rank_features'
 }
 
@@ -8590,7 +8594,7 @@ export interface EnrichExecutePolicyRequest extends RequestBase {
 }
 
 export interface EnrichExecutePolicyResponse {
-  status: EnrichExecutePolicyExecuteEnrichPolicyStatus
+  status?: EnrichExecutePolicyExecuteEnrichPolicyStatus
   task_id?: TaskId
 }
 
@@ -9473,7 +9477,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
   data_stream: Name
   store_size?: ByteSize
-  store_size_bytes: integer
+  store_size_bytes: long
   maximum_timestamp: long
 }
 
@@ -9487,7 +9491,7 @@ export interface IndicesDataStreamsStatsResponse {
   backing_indices: integer
   data_stream_count: integer
   total_store_sizes?: ByteSize
-  total_store_size_bytes: integer
+  total_store_size_bytes: long
   data_streams: IndicesDataStreamsStatsDataStreamsStatsItem[]
 }
 
@@ -14783,13 +14787,13 @@ export interface SecurityGetRoleRole {
   indices: SecurityIndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: SecurityGetRoleTransientMetadata
+  transient_metadata?: SecurityGetRoleTransientMetadata
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityRoleTemplate[]
 }
 
 export interface SecurityGetRoleTransientMetadata {
-  enabled: boolean
+  enabled?: boolean
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
