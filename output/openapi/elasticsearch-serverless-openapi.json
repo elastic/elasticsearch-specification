@@ -56989,7 +56989,10 @@
             }
           },
           "transient_metadata": {
-            "$ref": "#/components/schemas/security._types:TransientMetadataConfig"
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         }
       },
@@ -57189,14 +57192,6 @@
           "privileges",
           "resources"
         ]
-      },
-      "security._types:TransientMetadataConfig": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean"
-          }
-        }
       },
       "security._types:RealmInfo": {
         "type": "object",

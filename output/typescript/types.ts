@@ -16194,7 +16194,7 @@ export interface SecurityRoleDescriptor {
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
-  transient_metadata?: SecurityTransientMetadataConfig
+  transient_metadata?: Record<string, any>
 }
 
 export interface SecurityRoleDescriptorRead {
@@ -16205,7 +16205,7 @@ export interface SecurityRoleDescriptorRead {
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
-  transient_metadata?: SecurityTransientMetadataConfig
+  transient_metadata?: Record<string, any>
 }
 
 export interface SecurityRoleMapping {
@@ -16243,10 +16243,6 @@ export interface SecurityRoleTemplateQuery {
 export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | StoredScriptId
 
 export type SecurityTemplateFormat = 'string' | 'json'
-
-export interface SecurityTransientMetadataConfig {
-  enabled?: boolean
-}
 
 export interface SecurityUser {
   email?: string | null
@@ -16573,7 +16569,7 @@ export interface SecurityGetRoleRole {
   indices: SecurityIndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata?: SecurityTransientMetadataConfig
+  transient_metadata?: Record<string, any>
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityRoleTemplate[]
   global?: Record<string, Record<string, Record<string, string[]>>>
@@ -16837,7 +16833,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     indices?: SecurityIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
-    transient_metadata?: SecurityTransientMetadataConfig
+    transient_metadata?: Record<string, any>
   }
 }
 
