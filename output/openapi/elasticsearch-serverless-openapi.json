@@ -46394,8 +46394,7 @@
               }
             },
             "required": [
-              "type",
-              "dims"
+              "type"
             ]
           }
         ]
