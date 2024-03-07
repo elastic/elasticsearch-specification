@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Status } from '@tasks/_types/TaskStatus'
 import { HttpHeaders, Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
