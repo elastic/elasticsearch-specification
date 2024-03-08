@@ -2235,7 +2235,7 @@ export interface QueryCacheStats {
   evictions: integer
   hit_count: integer
   memory_size?: ByteSize
-  memory_size_in_bytes: integer
+  memory_size_in_bytes: long
   miss_count: integer
   total_count: integer
 }
@@ -2341,28 +2341,28 @@ export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 export interface SegmentsStats {
   count: integer
   doc_values_memory?: ByteSize
-  doc_values_memory_in_bytes: integer
+  doc_values_memory_in_bytes: long
   file_sizes: Record<string, IndicesStatsShardFileSizeInfo>
   fixed_bit_set?: ByteSize
-  fixed_bit_set_memory_in_bytes: integer
+  fixed_bit_set_memory_in_bytes: long
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: integer
-  index_writer_memory_in_bytes: integer
+  index_writer_max_memory_in_bytes?: long
+  index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
-  memory_in_bytes: integer
+  memory_in_bytes: long
   norms_memory?: ByteSize
-  norms_memory_in_bytes: integer
+  norms_memory_in_bytes: long
   points_memory?: ByteSize
-  points_memory_in_bytes: integer
+  points_memory_in_bytes: long
   stored_memory?: ByteSize
-  stored_fields_memory_in_bytes: integer
-  terms_memory_in_bytes: integer
+  stored_fields_memory_in_bytes: long
+  terms_memory_in_bytes: long
   terms_memory?: ByteSize
   term_vectory_memory?: ByteSize
-  term_vectors_memory_in_bytes: integer
+  term_vectors_memory_in_bytes: long
   version_map_memory?: ByteSize
-  version_map_memory_in_bytes: integer
+  version_map_memory_in_bytes: long
 }
 
 export type SequenceNumber = long
@@ -2420,11 +2420,11 @@ export type SortResults = FieldValue[]
 
 export interface StoreStats {
   size?: ByteSize
-  size_in_bytes: integer
+  size_in_bytes: long
   reserved?: ByteSize
-  reserved_in_bytes: integer
+  reserved_in_bytes: long
   total_data_set_size?: ByteSize
-  total_data_set_size_in_bytes?: integer
+  total_data_set_size_in_bytes?: long
 }
 
 export interface StoredScript {
@@ -2773,11 +2773,20 @@ export interface AggregationsCompositeAggregation extends AggregationsBucketAggr
   sources?: Record<string, AggregationsCompositeAggregationSource>[]
 }
 
+export interface AggregationsCompositeAggregationBase {
+  field?: Field
+  missing_bucket?: boolean
+  missing_order?: AggregationsMissingOrder
+  script?: Script
+  value_type?: AggregationsValueType
+  order?: SortOrder
+}
+
 export interface AggregationsCompositeAggregationSource {
-  terms?: AggregationsTermsAggregation
-  histogram?: AggregationsHistogramAggregation
-  date_histogram?: AggregationsDateHistogramAggregation
-  geotile_grid?: AggregationsGeoTileGridAggregation
+  terms?: AggregationsCompositeTermsAggregation
+  histogram?: AggregationsCompositeHistogramAggregation
+  date_histogram?: AggregationsCompositeDateHistogramAggregation
+  geotile_grid?: AggregationsCompositeGeoTileGridAggregation
 }
 
 export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucketBase {
@@ -2785,6 +2794,26 @@ export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucket
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
   & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
+
+export interface AggregationsCompositeDateHistogramAggregation extends AggregationsCompositeAggregationBase {
+  format?: string
+  calendar_interval?: DateMathTime
+  fixed_interval?: DateMathTime
+  offset?: Time
+  time_zone?: TimeZone
+}
+
+export interface AggregationsCompositeGeoTileGridAggregation extends AggregationsCompositeAggregationBase {
+  precision?: integer
+  bounds?: GeoBounds
+}
+
+export interface AggregationsCompositeHistogramAggregation extends AggregationsCompositeAggregationBase {
+  interval: double
+}
+
+export interface AggregationsCompositeTermsAggregation extends AggregationsCompositeAggregationBase {
+}
 
 export interface AggregationsCumulativeCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -4203,9 +4232,9 @@ export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBa
 
 export interface AnalysisPatternTokenizer extends AnalysisTokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export type AnalysisPhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'

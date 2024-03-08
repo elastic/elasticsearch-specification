@@ -18,46 +18,17 @@
  */
 
 import { integer, long } from './Numeric'
-
-export class DateMathTimeParsed {
-  factor: integer
-  interval: DateMathTimeUnit
-}
-
 export type DateString = string
 export type Timestamp = string
 export type TimeSpan = string
 export type EpochMillis = string | long
 export type DateMath = string
-export type DateMathExpression = string
 export type DateMathTime = string
 
 export type TimeZone = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html */
 export type DateFormat = string
-
-export enum DateMathOperation {
-  '+' = 0,
-  '-' = 1
-}
-
-export enum DateMathTimeUnit {
-  /** @codegen_name seconds */
-  s = 0,
-  /** @codegen_name minutes */
-  m = 1,
-  /** @codegen_name hours */
-  h = 2,
-  /** @codegen_name days */
-  d = 3,
-  /** @codegen_name weeks */
-  w = 4,
-  /** @codegen_name months */
-  M = 5,
-  /** @codegen_name years */
-  y = 6
-}
 
 /**
  * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
