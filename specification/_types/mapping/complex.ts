@@ -45,6 +45,7 @@ export class NestedProperty extends CorePropertyBase {
 
 export class ObjectProperty extends CorePropertyBase {
   enabled?: boolean
+  subobjects?: boolean
   type?: 'object'
 }
 

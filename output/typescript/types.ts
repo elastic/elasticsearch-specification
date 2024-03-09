@@ -5164,6 +5164,7 @@ export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase 
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
   enabled?: boolean
+  subobjects?: boolean
   type?: 'object'
 }
 
@@ -5338,6 +5339,7 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
+  subobjects?: boolean
   _data_stream_timestamp?: MappingDataStreamTimestamp
 }
 
