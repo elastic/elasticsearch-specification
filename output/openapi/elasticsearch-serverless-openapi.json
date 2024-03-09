@@ -44912,6 +44912,9 @@
           "enabled": {
             "type": "boolean"
           },
+          "subobjects": {
+            "type": "boolean"
+          },
           "_data_stream_timestamp": {
             "$ref": "#/components/schemas/_types.mapping:DataStreamTimestamp"
           }
@@ -46072,6 +46075,9 @@
             "type": "object",
             "properties": {
               "enabled": {
+                "type": "boolean"
+              },
+              "subobjects": {
                 "type": "boolean"
               },
               "type": {
