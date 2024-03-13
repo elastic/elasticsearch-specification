@@ -13391,8 +13391,8 @@ export interface MlTrainedModelLocationIndex {
 }
 
 export interface MlTrainedModelPrefixStrings {
-  ingest: string
-  search: string
+  ingest?: string
+  search?: string
 }
 
 export interface MlTrainedModelSizeStats {
@@ -14415,6 +14415,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     model_size_bytes?: long
     platform_architecture?: string
     tags?: string[]
+    prefix_strings?: MlTrainedModelPrefixStrings
   }
 }
 
