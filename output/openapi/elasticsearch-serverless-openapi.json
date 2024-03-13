@@ -10027,6 +10027,9 @@
                     "items": {
                       "type": "string"
                     }
+                  },
+                  "prefix_strings": {
+                    "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
                   }
                 }
               }
@@ -54358,11 +54361,7 @@
             "description": "String prepended to input at search",
             "type": "string"
           }
-        },
-        "required": [
-          "ingest",
-          "search"
-        ]
+        }
       },
       "ml._types:TrainedModelStats": {
         "type": "object",

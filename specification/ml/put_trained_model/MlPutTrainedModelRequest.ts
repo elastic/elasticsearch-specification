@@ -22,6 +22,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Definition, Input } from './types'
+import { TrainedModelPrefixStrings } from '../_types/TrainedModel'
 import { TrainedModelType } from '../_types/TrainedModel'
 import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 
@@ -102,5 +103,11 @@ export interface Request extends RequestBase {
      * An array of tags to organize the model.
      */
     tags?: string[]
+    /**
+     * Optional prefix strings applied at inference
+     * @availability stack since=8.12.0
+     * @availability serverless since=8.12.0
+     */
+    prefix_strings?: TrainedModelPrefixStrings
   }
 }
