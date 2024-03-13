@@ -106,7 +106,7 @@ export interface Request extends RequestBase {
     /**
      * Optional prefix strings applied at inference
      * @availability stack since=8.12.0
-     * @availability serverless since=8.12.0
+     * @availability serverless
      */
     prefix_strings?: TrainedModelPrefixStrings
   }
