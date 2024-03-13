@@ -1,0 +1,8 @@
+{
+  "summary": "A successful response when opening an anomaly detection job.",
+  "value":
+  {
+    "opened" : true,
+    "node" : "node-1"
+  }
+}

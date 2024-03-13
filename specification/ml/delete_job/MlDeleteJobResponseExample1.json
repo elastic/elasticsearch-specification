@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response when deleting an anomaly detection job.",
+  "value":
+  {
+    "acknowledged": true
+  }
+}
