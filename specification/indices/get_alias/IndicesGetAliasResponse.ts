@@ -24,6 +24,7 @@ import { ErrorResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
 export class Response {
+  /** @codegen_name aliases */
   body: Dictionary<IndexName, IndexAliases>
   exceptions: [
     {

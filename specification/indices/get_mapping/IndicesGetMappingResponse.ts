@@ -22,6 +22,7 @@ import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class Response {
+  /** @codegen_name index_mappings */
   body: Dictionary<IndexName, IndexMappingRecord>
 }
 
