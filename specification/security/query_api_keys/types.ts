@@ -32,6 +32,21 @@ import {
   CardinalityAggregation,
   ValueCountAggregation,
 } from '@_types/aggregations/metric'
+import {
+  CardinalityAggregate,
+  ValueCountAggregate,
+  StringTermsAggregate,
+  LongTermsAggregate,
+  DoubleTermsAggregate,
+  UnmappedTermsAggregate,
+  MultiTermsAggregate,
+  MissingAggregate,
+  FilterAggregate,
+  RangeAggregate,
+  DateRangeAggregate,
+  FiltersAggregate,
+  CompositeAggregate,
+} from '@_types/aggregations/Aggregate'
 
 /**
  * @variants container
@@ -91,3 +106,22 @@ export class APIKeyAggregationContainer {
    */
   value_count?: ValueCountAggregation
 }
+
+/**
+ * @variants external
+ * @non_exhaustive
+ */
+export type APIKeyAggregate =
+  | CardinalityAggregate
+  | ValueCountAggregate
+  | StringTermsAggregate
+  | LongTermsAggregate
+  | DoubleTermsAggregate
+  | UnmappedTermsAggregate
+  | MultiTermsAggregate
+  | MissingAggregate
+  | FilterAggregate
+  | FiltersAggregate
+  | RangeAggregate
+  | DateRangeAggregate
+  | CompositeAggregate

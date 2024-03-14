@@ -18,11 +18,10 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { APIKeyAggregationContainer } from 'APIKeyAggregationContainer'
+import { APIKeyAggregationContainer } from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Sort, SortResults } from '@_types/sort'
 import { Sort, SortResults } from '@_types/sort'
 
 /**
@@ -35,7 +34,7 @@ import { Sort, SortResults } from '@_types/sort'
 export interface Request extends RequestBase {
   query_parameters: {
     /**
-     * Return the snapshot of the owner user's role descriptors associated with the API key. 
+     * Return the snapshot of the owner user's role descriptors associated with the API key.
      * An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.
      * @availability stack since=8.5.0
      * @availability serverless
