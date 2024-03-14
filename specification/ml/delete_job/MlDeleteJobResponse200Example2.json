@@ -1,8 +1,7 @@
 {
   "summary": "A successful response when deleting an anomaly detection job asynchronously.",
   "description": "When the `wait_for_completion` query parameter is set to `false`, the response contains an identifier for the job deletion task.",
-  "value":
-  {
+  "value": {
     "task": "oTUltX4IQMOUUVeiohTt8A:39"
   }
 }
