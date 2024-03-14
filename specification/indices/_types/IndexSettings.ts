@@ -30,7 +30,7 @@ import {
   Uuid,
   VersionString
 } from '@_types/common'
-import { double, float, integer, long } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
