@@ -41879,7 +41879,11 @@
             "$ref": "#/components/schemas/indices._types:Queries"
           },
           "similarity": {
-            "$ref": "#/components/schemas/indices._types:SettingsSimilarity"
+            "description": "Configure custom similarity settings to customize how search results are scored.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types:SettingsSimilarity"
+            }
           },
           "mapping": {
             "$ref": "#/components/schemas/indices._types:MappingLimitSettings"
@@ -44923,36 +44927,45 @@
         ]
       },
       "indices._types:SettingsSimilarity": {
-        "type": "object",
-        "properties": {
-          "bm25": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityBm25"
           },
-          "dfi": {
+          {
+            "$ref": "#/components/schemas/indices._types:SettingsSimilarityBoolean"
+          },
+          {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityDfi"
           },
-          "dfr": {
+          {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityDfr"
           },
-          "ib": {
+          {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityIb"
           },
-          "lmd": {
+          {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityLmd"
           },
-          "lmj": {
+          {
             "$ref": "#/components/schemas/indices._types:SettingsSimilarityLmj"
           },
-          "scripted_tfidf": {
-            "$ref": "#/components/schemas/indices._types:SettingsSimilarityScriptedTfidf"
+          {
+            "$ref": "#/components/schemas/indices._types:SettingsSimilarityScripted"
           }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
+        ]
       },
       "indices._types:SettingsSimilarityBm25": {
         "type": "object",
         "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "BM25"
+            ]
+          },
           "b": {
             "type": "number"
           },
@@ -44961,37 +44974,42 @@
           },
           "k1": {
             "type": "number"
-          },
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "indices._types:SettingsSimilarityBoolean": {
+        "type": "object",
+        "properties": {
           "type": {
             "type": "string",
             "enum": [
-              "BM25"
+              "boolean"
             ]
           }
         },
         "required": [
-          "b",
-          "discount_overlaps",
-          "k1",
           "type"
         ]
       },
       "indices._types:SettingsSimilarityDfi": {
         "type": "object",
         "properties": {
-          "independence_measure": {
-            "$ref": "#/components/schemas/_types:DFIIndependenceMeasure"
-          },
           "type": {
             "type": "string",
             "enum": [
               "DFI"
             ]
+          },
+          "independence_measure": {
+            "$ref": "#/components/schemas/_types:DFIIndependenceMeasure"
           }
         },
         "required": [
-          "independence_measure",
-          "type"
+          "type",
+          "independence_measure"
         ]
       },
       "_types:DFIIndependenceMeasure": {
@@ -45005,6 +45023,12 @@
       "indices._types:SettingsSimilarityDfr": {
         "type": "object",
         "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "DFR"
+            ]
+          },
           "after_effect": {
             "$ref": "#/components/schemas/_types:DFRAfterEffect"
           },
@@ -45013,19 +45037,13 @@
           },
           "normalization": {
             "$ref": "#/components/schemas/_types:Normalization"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "DFR"
-            ]
           }
         },
         "required": [
+          "type",
           "after_effect",
           "basic_model",
-          "normalization",
-          "type"
+          "normalization"
         ]
       },
       "_types:DFRAfterEffect": {
@@ -45061,6 +45079,12 @@
       "indices._types:SettingsSimilarityIb": {
         "type": "object",
         "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "IB"
+            ]
+          },
           "distribution": {
             "$ref": "#/components/schemas/_types:IBDistribution"
           },
@@ -45069,19 +45093,13 @@
           },
           "normalization": {
             "$ref": "#/components/schemas/_types:Normalization"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "IB"
-            ]
           }
         },
         "required": [
+          "type",
           "distribution",
           "lambda",
-          "normalization",
-          "type"
+          "normalization"
         ]
       },
       "_types:IBDistribution": {
@@ -45101,55 +45119,56 @@
       "indices._types:SettingsSimilarityLmd": {
         "type": "object",
         "properties": {
-          "mu": {
-            "type": "number"
-          },
           "type": {
             "type": "string",
             "enum": [
               "LMDirichlet"
             ]
+          },
+          "mu": {
+            "type": "number"
           }
         },
         "required": [
-          "mu",
           "type"
         ]
       },
       "indices._types:SettingsSimilarityLmj": {
         "type": "object",
         "properties": {
-          "lambda": {
-            "type": "number"
-          },
           "type": {
             "type": "string",
             "enum": [
               "LMJelinekMercer"
             ]
+          },
+          "lambda": {
+            "type": "number"
           }
         },
         "required": [
-          "lambda",
           "type"
         ]
       },
-      "indices._types:SettingsSimilarityScriptedTfidf": {
+      "indices._types:SettingsSimilarityScripted": {
         "type": "object",
         "properties": {
-          "script": {
-            "$ref": "#/components/schemas/_types:Script"
-          },
           "type": {
             "type": "string",
             "enum": [
               "scripted"
             ]
+          },
+          "script": {
+            "$ref": "#/components/schemas/_types:Script"
+          },
+          "weight_script": {
+            "$ref": "#/components/schemas/_types:Script"
           }
         },
         "required": [
-          "script",
-          "type"
+          "type",
+          "script"
         ]
       },
       "indices._types:MappingLimitSettings": {

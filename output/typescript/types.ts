@@ -9883,7 +9883,7 @@ export interface IndicesIndexSettingsKeys {
   settings?: IndicesIndexSettings
   time_series?: IndicesIndexSettingsTimeSeries
   queries?: IndicesQueries
-  similarity?: IndicesSettingsSimilarity
+  similarity?: Record<string, IndicesSettingsSimilarity>
   mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesIndexingSlowlogSettings
   indexing_pressure?: IndicesIndexingPressure
@@ -10061,55 +10061,52 @@ export interface IndicesSettingsSearch {
   slowlog?: IndicesSlowlogSettings
 }
 
-export interface IndicesSettingsSimilarity {
-  bm25?: IndicesSettingsSimilarityBm25
-  dfi?: IndicesSettingsSimilarityDfi
-  dfr?: IndicesSettingsSimilarityDfr
-  ib?: IndicesSettingsSimilarityIb
-  lmd?: IndicesSettingsSimilarityLmd
-  lmj?: IndicesSettingsSimilarityLmj
-  scripted_tfidf?: IndicesSettingsSimilarityScriptedTfidf
-}
+export type IndicesSettingsSimilarity = IndicesSettingsSimilarityBm25 | IndicesSettingsSimilarityBoolean | IndicesSettingsSimilarityDfi | IndicesSettingsSimilarityDfr | IndicesSettingsSimilarityIb | IndicesSettingsSimilarityLmd | IndicesSettingsSimilarityLmj | IndicesSettingsSimilarityScripted
 
 export interface IndicesSettingsSimilarityBm25 {
-  b: double
-  discount_overlaps: boolean
-  k1: double
   type: 'BM25'
+  b?: double
+  discount_overlaps?: boolean
+  k1?: double
+}
+
+export interface IndicesSettingsSimilarityBoolean {
+  type: 'boolean'
 }
 
 export interface IndicesSettingsSimilarityDfi {
-  independence_measure: DFIIndependenceMeasure
   type: 'DFI'
+  independence_measure: DFIIndependenceMeasure
 }
 
 export interface IndicesSettingsSimilarityDfr {
+  type: 'DFR'
   after_effect: DFRAfterEffect
   basic_model: DFRBasicModel
   normalization: Normalization
-  type: 'DFR'
 }
 
 export interface IndicesSettingsSimilarityIb {
+  type: 'IB'
   distribution: IBDistribution
   lambda: IBLambda
   normalization: Normalization
-  type: 'IB'
 }
 
 export interface IndicesSettingsSimilarityLmd {
-  mu: integer
   type: 'LMDirichlet'
+  mu?: double
 }
 
 export interface IndicesSettingsSimilarityLmj {
-  lambda: double
   type: 'LMJelinekMercer'
+  lambda?: double
 }
 
-export interface IndicesSettingsSimilarityScriptedTfidf {
-  script: Script
+export interface IndicesSettingsSimilarityScripted {
   type: 'scripted'
+  script: Script
+  weight_script?: Script
 }
 
 export interface IndicesSlowlogSettings {
