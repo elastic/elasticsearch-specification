@@ -18,10 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import {
-  APIKeyAggregationContainer,
-  APIKeyQueryContainer
-} from './types'
+import { APIKeyAggregationContainer, APIKeyQueryContainer } from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'

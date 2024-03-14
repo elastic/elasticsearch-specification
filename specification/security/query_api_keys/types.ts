@@ -19,10 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
-import {
-  Metadata,
-  Field
-} from '@_types/common'
+import { Metadata, Field } from '@_types/common'
 import { BoolQuery } from '@_types/query_dsl/compound'
 import {
   ExistsQuery,
@@ -33,10 +30,7 @@ import {
   TermsQuery,
   WildcardQuery
 } from '@_types/query_dsl/term'
-import {
-  MatchQuery,
-  SimpleQueryStringQuery
-} from '@_types/query_dsl/fulltext'
+import { MatchQuery, SimpleQueryStringQuery } from '@_types/query_dsl/fulltext'
 import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
 import {
   BucketAggregationBase,
@@ -232,4 +226,3 @@ export class APIKeyFiltersAggregation extends BucketAggregationBase {
    */
   keyed?: boolean
 }
-
