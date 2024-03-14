@@ -1892,6 +1892,12 @@ export interface CoordsGeoBounds {
   right: double
 }
 
+export type DFIIndependenceMeasure = 'standardized' | 'saturated' | 'chisquared'
+
+export type DFRAfterEffect = 'no' | 'b' | 'l'
+
+export type DFRBasicModel = 'be' | 'd' | 'g' | 'if' | 'in' | 'ine' | 'p'
+
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
@@ -2055,6 +2061,10 @@ export type Host = string
 
 export type HttpHeaders = Record<string, string | string[]>
 
+export type IBDistribution = 'll' | 'spl'
+
+export type IBLambda = 'df' | 'ttf'
+
 export type Id = string | number
 
 export type Ids = Id | Id[]
@@ -2205,6 +2215,8 @@ export interface NodeStatistics {
   successful: integer
   failed: integer
 }
+
+export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
 
 export type OpType = 'index' | 'create'
 
@@ -9171,6 +9183,7 @@ export interface IndicesIndexSettingsKeys {
   top_metrics_max_size?: integer
   analysis?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
+  similarity?: Record<string, IndicesSettingsSimilarity>
   mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesSlowlogSettings
   indexing_pressure?: IndicesIndexingPressure
@@ -9275,6 +9288,54 @@ export type IndicesSegmentSortMissing = '_last' | '_first'
 export type IndicesSegmentSortMode = 'min' | 'max'
 
 export type IndicesSegmentSortOrder = 'asc' | 'desc'
+
+export type IndicesSettingsSimilarity = IndicesSettingsSimilarityBm25 | IndicesSettingsSimilarityBoolean | IndicesSettingsSimilarityDfi | IndicesSettingsSimilarityDfr | IndicesSettingsSimilarityIb | IndicesSettingsSimilarityLmd | IndicesSettingsSimilarityLmj | IndicesSettingsSimilarityScripted
+
+export interface IndicesSettingsSimilarityBm25 {
+  type: 'BM25'
+  b?: double
+  discount_overlaps?: boolean
+  k1?: double
+}
+
+export interface IndicesSettingsSimilarityBoolean {
+  type: 'boolean'
+}
+
+export interface IndicesSettingsSimilarityDfi {
+  type: 'DFI'
+  independence_measure: DFIIndependenceMeasure
+}
+
+export interface IndicesSettingsSimilarityDfr {
+  type: 'DFR'
+  after_effect: DFRAfterEffect
+  basic_model: DFRBasicModel
+  normalization: Normalization
+}
+
+export interface IndicesSettingsSimilarityIb {
+  type: 'IB'
+  distribution: IBDistribution
+  lambda: IBLambda
+  normalization: Normalization
+}
+
+export interface IndicesSettingsSimilarityLmd {
+  type: 'LMDirichlet'
+  mu?: double
+}
+
+export interface IndicesSettingsSimilarityLmj {
+  type: 'LMJelinekMercer'
+  lambda?: double
+}
+
+export interface IndicesSettingsSimilarityScripted {
+  type: 'scripted'
+  script: Script
+  weight_script?: Script
+}
 
 export interface IndicesSlowlogSettings {
   level?: string
