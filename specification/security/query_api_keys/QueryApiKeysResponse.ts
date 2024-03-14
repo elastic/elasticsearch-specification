@@ -20,8 +20,22 @@
 import { ApiKey } from '@security/_types/ApiKey'
 import { integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Aggregate } from '@_types/aggregations/Aggregate'
-import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import { AggregateName } from '@_types/common'
+import {
+  CardinalityAggregate,
+  ValueCountAggregate,
+  StringTermsAggregate,
+  LongTermsAggregate,
+  DoubleTermsAggregate,
+  UnmappedTermsAggregate,
+  MultiTermsAggregate,
+  MissingAggregate,
+  FilterAggregate,
+  RangeAggregate,
+  DateRangeAggregate,
+  FiltersAggregate,
+  CompositeAggregate,
+} from '@_types/aggregations/Aggregate'
 
 export class Response {
   body: {
@@ -40,6 +54,26 @@ export class Response {
     /**
      * The aggregations result, if requested.
      */
-    aggregations?: Dictionary<AggregateName, Aggregate>
+    aggregations?: Dictionary<AggregateName, APIKeyAggregate>
   }
 }
+
+/**
+ * @variants external
+ * @non_exhaustive
+ */
+export type APIKeyAggregate =
+  | CardinalityAggregate
+  | ValueCountAggregate
+  | StringTermsAggregate
+  | LongTermsAggregate
+  | DoubleTermsAggregate
+  | UnmappedTermsAggregate
+  | MultiTermsAggregate
+  | MissingAggregate
+  | FilterAggregate
+  | FiltersAggregate
+  | RangeAggregate
+  | DateRangeAggregate
+  | CompositeAggregate
+
