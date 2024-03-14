@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -42,9 +44,20 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
+     * Any aggregations to run over the corpus of returned API keys.
+     * Aggregations and queries work together. Aggregations are computed only on the API keys that match the query.
+     * This supports only a subset of aggregation types, namely: `terms`, `range`, `date_range`, `missing`,
+     * `cardinality`, `value_count`, `composite`, `filter`, and `filters`.
+     * Additionally, aggregations only run over the same subset of fields that query works with.
+     * @aliases aggs */
+    aggregations?: Dictionary<string, AggregationContainer>
+		/**
      * A query to filter which API keys to return.
-     * The query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `ids`, `prefix`, `wildcard`, and `range`.
-     * You can query all public information associated with an API key.
+     * If the query parameter is missing, it is equivalent to a `match_all` query.
+     * The query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,
+     * `ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.
+     * You can query the following public information associated with an API key: `id`, `type`, `name`,
+     * `creation`, `expiration`, `invalidated`, `invalidation`, `username`, `realm`, and `metadata`.
      */
     query?: QueryContainer
     /**
