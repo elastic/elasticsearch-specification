@@ -26,11 +26,11 @@ import {
   FiltersAggregation,
   MissingAggregation,
   RangeAggregation,
-  TermsAggregation,
+  TermsAggregation
 } from '@_types/aggregations/bucket'
 import {
   CardinalityAggregation,
-  ValueCountAggregation,
+  ValueCountAggregation
 } from '@_types/aggregations/metric'
 import {
   CardinalityAggregate,
@@ -45,7 +45,7 @@ import {
   RangeAggregate,
   DateRangeAggregate,
   FiltersAggregate,
-  CompositeAggregate,
+  CompositeAggregate
 } from '@_types/aggregations/Aggregate'
 
 /**

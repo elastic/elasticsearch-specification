@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
      * Additionally, aggregations only run over the same subset of fields that query works with.
      * @aliases aggs */
     aggregations?: Dictionary<string, APIKeyAggregationContainer>
-		/**
+    /**
      * A query to filter which API keys to return.
      * If the query parameter is missing, it is equivalent to a `match_all` query.
      * The query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,
