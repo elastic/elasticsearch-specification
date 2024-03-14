@@ -145,6 +145,10 @@ export type APIKeyAggregate =
   | DateRangeAggregate
   | CompositeAggregate
 
+/**
+ * @variants container
+ * @non_exhaustive
+ */
 export class APIKeyQueryContainer {
   /**
    * matches documents matching boolean combinations of other queries.
