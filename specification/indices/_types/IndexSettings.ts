@@ -30,7 +30,7 @@ import {
   Uuid,
   VersionString
 } from '@_types/common'
-import { double, integer, long } from '@_types/Numeric'
+import { double, float, integer, long } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
@@ -150,7 +150,7 @@ export class IndexSettings
   /**
    * Configure custom similarity settings to customize how search results are scored.
    */
-  similarity?: SettingsSimilarity
+  similarity?: Dictionary<string, SettingsSimilarity>
   /**
    * Enable or disable dynamic mapping for an index.
    */
@@ -167,58 +167,62 @@ export class IndexSettings
 }
 
 /**
- * @variants container
- * @non_exhaustive
+ * @variants internal tag='type'
  */
-export class SettingsSimilarity {
-  bm25?: SettingsSimilarityBm25
-  dfi?: SettingsSimilarityDfi
-  dfr?: SettingsSimilarityDfr
-  ib?: SettingsSimilarityIb
-  lmd?: SettingsSimilarityLmd
-  lmj?: SettingsSimilarityLmj
-  scripted_tfidf?: SettingsSimilarityScriptedTfidf
+export type SettingsSimilarity =
+  | SettingsSimilarityBm25
+  | SettingsSimilarityBoolean
+  | SettingsSimilarityDfi
+  | SettingsSimilarityDfr
+  | SettingsSimilarityIb
+  | SettingsSimilarityLmd
+  | SettingsSimilarityLmj
+  | SettingsSimilarityScripted
+
+export class SettingsSimilarityBoolean {
+  type: 'boolean'
 }
 
 export class SettingsSimilarityBm25 {
-  b: double
-  discount_overlaps: boolean
-  k1: double
   type: 'BM25'
+  b?: double
+  discount_overlaps?: boolean
+  k1?: double
 }
 
 export class SettingsSimilarityDfi {
-  independence_measure: DFIIndependenceMeasure
   type: 'DFI'
+  independence_measure: DFIIndependenceMeasure
 }
 
 export class SettingsSimilarityDfr {
+  type: 'DFR'
   after_effect: DFRAfterEffect
   basic_model: DFRBasicModel
   normalization: Normalization
-  type: 'DFR'
 }
 
 export class SettingsSimilarityIb {
+  type: 'IB'
   distribution: IBDistribution
   lambda: IBLambda
   normalization: Normalization
-  type: 'IB'
 }
 
 export class SettingsSimilarityLmd {
-  mu: integer
   type: 'LMDirichlet'
+  mu?: double
 }
 
 export class SettingsSimilarityLmj {
-  lambda: double
   type: 'LMJelinekMercer'
+  lambda?: double
 }
 
-export class SettingsSimilarityScriptedTfidf {
-  script: Script
+export class SettingsSimilarityScripted {
   type: 'scripted'
+  script: Script
+  weight_script?: Script
 }
 
 export class SettingsHighlight {
