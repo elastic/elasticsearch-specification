@@ -18,10 +18,12 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { APIKeyAggregationContainer } from './types'
+import {
+  APIKeyAggregationContainer,
+  APIKeyQueryContainer
+} from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Sort, SortResults } from '@_types/sort'
 
 /**
@@ -59,7 +61,7 @@ export interface Request extends RequestBase {
      * You can query the following public information associated with an API key: `id`, `type`, `name`,
      * `creation`, `expiration`, `invalidated`, `invalidation`, `username`, `realm`, and `metadata`.
      */
-    query?: QueryContainer
+    query?: APIKeyQueryContainer
     /**
      * Starting document offset.
      * By default, you cannot page through more than 10,000 hits using the from and size parameters.

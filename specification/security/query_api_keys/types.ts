@@ -18,12 +18,30 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Metadata } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
+  Metadata,
+  Field
+} from '@_types/common'
+import { BoolQuery } from '@_types/query_dsl/compound'
+import {
+  ExistsQuery,
+  IdsQuery,
+  PrefixQuery,
+  RangeQuery,
+  TermQuery,
+  TermsQuery,
+  WildcardQuery
+} from '@_types/query_dsl/term'
+import {
+  MatchQuery,
+  SimpleQueryStringQuery
+} from '@_types/query_dsl/fulltext'
+import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
+import {
+  BucketAggregationBase,
   CompositeAggregation,
   DateRangeAggregation,
-  FiltersAggregation,
   MissingAggregation,
   RangeAggregation,
   TermsAggregation
@@ -33,6 +51,7 @@ import {
   ValueCountAggregation
 } from '@_types/aggregations/metric'
 import {
+  Buckets,
   CardinalityAggregate,
   ValueCountAggregate,
   StringTermsAggregate,
@@ -83,12 +102,12 @@ export class APIKeyAggregationContainer {
    * A single bucket aggregation that narrows the set of documents to those that match a query.
    * @doc_id search-aggregations-bucket-filter-aggregation
    */
-  filter?: QueryContainer
+  filter?: APIKeyQueryContainer
   /**
    * A multi-bucket aggregation where each bucket contains the documents that match a query.
    * @doc_id search-aggregations-bucket-filters-aggregation
    */
-  filters?: FiltersAggregation
+  filters?: APIKeyFiltersAggregation
   missing?: MissingAggregation
   /**
    * A multi-bucket value source based aggregation that enables the user to define a set of ranges - each representing a bucket.
@@ -125,3 +144,88 @@ export type APIKeyAggregate =
   | RangeAggregate
   | DateRangeAggregate
   | CompositeAggregate
+
+export class APIKeyQueryContainer {
+  /**
+   * matches documents matching boolean combinations of other queries.
+   * @doc_id query-dsl-bool-query
+   */
+  bool?: BoolQuery
+  /**
+   * Returns documents that contain an indexed value for a field.
+   * @doc_id query-dsl-exists-query
+   */
+  exists?: ExistsQuery
+  /**
+   * Returns documents based on their IDs.
+   * This query uses document IDs stored in the `_id` field.
+   * @doc_id query-dsl-ids-query
+   */
+  ids?: IdsQuery
+  /**
+   * Returns documents that match a provided text, number, date or boolean value.
+   * The provided text is analyzed before matching.
+   * @doc_id query-dsl-match-query
+   */
+  match?: SingleKeyDictionary<Field, MatchQuery>
+  /**
+   * Matches all documents, giving them all a `_score` of 1.0.
+   * @doc_id query-dsl-match-all-query
+   */
+  match_all?: MatchAllQuery
+  /**
+   * Returns documents that contain a specific prefix in a provided field.
+   * @doc_id query-dsl-prefix-query
+   */
+  prefix?: SingleKeyDictionary<Field, PrefixQuery>
+  /**
+   * Returns documents that contain terms within a provided range.
+   * @doc_id query-dsl-range-query
+   */
+  range?: SingleKeyDictionary<Field, RangeQuery>
+  /**
+   * Returns documents based on a provided query string, using a parser with a limited but fault-tolerant syntax.
+   * @doc_id query-dsl-simple-query-string-query
+   */
+  simple_query_string?: SimpleQueryStringQuery
+  /**
+   * Returns documents that contain an exact term in a provided field.
+   * To return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.
+   * @doc_id query-dsl-term-query
+   */
+  term?: SingleKeyDictionary<Field, TermQuery>
+  /**
+   * Returns documents that contain one or more exact terms in a provided field.
+   * To return a document, one or more terms must exactly match a field value, including whitespace and capitalization.
+   * @doc_id query-dsl-terms-query
+   */
+  terms?: TermsQuery
+  /**
+   * Returns documents that contain terms matching a wildcard pattern.
+   * @doc_id query-dsl-wildcard-query
+   */
+  wildcard?: SingleKeyDictionary<Field, WildcardQuery>
+}
+
+export class APIKeyFiltersAggregation extends BucketAggregationBase {
+  /**
+   * Collection of queries from which to build buckets.
+   */
+  filters?: Buckets<APIKeyQueryContainer>
+  /**
+   * Set to `true` to add a bucket to the response which will contain all documents that do not match any of the given filters.
+   */
+  other_bucket?: boolean
+  /**
+   * The key with which the other bucket is returned.
+   * @server_default _other_
+   */
+  other_bucket_key?: string
+  /**
+   * By default, the named filters aggregation returns the buckets as an object.
+   * Set to `false` to return the buckets as an array of objects.
+   * @server_default true
+   */
+  keyed?: boolean
+}
+
