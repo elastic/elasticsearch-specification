@@ -28,12 +28,15 @@ import { Duration } from '@_types/Time'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 
 /**
- * Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.
+ * If you include a `datafeed_config`, you must have read index privileges on the source index.
+ * You must use Kibana or this API to create an anomaly detection job. Do not put a job directly to the `.ml-config` index using the Elasticsearch index API.
+ * If Elasticsearch security features are enabled, do not give users write privileges on the `.ml-config` index.
  * @rest_spec_name ml.put_job
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
+ * @doc_summary Create an anomaly detection job. 
  */
 export interface Request extends RequestBase {
   path_parts: {

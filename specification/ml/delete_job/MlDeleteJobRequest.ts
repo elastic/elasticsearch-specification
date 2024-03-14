@@ -21,18 +21,19 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an anomaly detection job.
- *
+ * Before you can delete a job, you must close it (unless you specify the `force` query parameter).
  * All job configuration, model state and results are deleted.
- * It is not currently possible to delete multiple jobs using wildcards or a
- * comma separated list. If you delete a job that has a datafeed, the request
- * first tries to delete the datafeed. This behavior is equivalent to calling
- * the delete datafeed API with the same timeout and force parameters as the
- * delete job request.
+ * Deleting an anomaly detection job must be done via this API only.
+ * Do not delete the job directly from the `.ml-*` indices using the Elasticsearch delete document API.
+ * When Elasticsearch security features are enabled, make sure no write privileges are granted to anyone over the `.ml-*` indices.
+ * It is not currently possible to delete multiple jobs using wildcards or a comma separated list.
+ * If you delete a job that has a datafeed, the request first tries to delete the datafeed.
+ * This behavior is equivalent to calling the delete datafeed API with the same timeout and force parameters as the delete job request.
  * @rest_spec_name ml.delete_job
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_summary Delete an anomaly detection job.
  */
 export interface Request extends RequestBase {
   path_parts: {
