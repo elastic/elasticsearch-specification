@@ -9822,6 +9822,9 @@
                     "items": {
                       "type": "string"
                     }
+                  },
+                  "prefix_strings": {
+                    "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
                   }
                 }
               }
@@ -53240,6 +53243,9 @@
           },
           "location": {
             "$ref": "#/components/schemas/ml._types:TrainedModelLocation"
+          },
+          "prefix_strings": {
+            "$ref": "#/components/schemas/ml._types:TrainedModelPrefixStrings"
           }
         },
         "required": [
@@ -53711,6 +53717,19 @@
         "required": [
           "name"
         ]
+      },
+      "ml._types:TrainedModelPrefixStrings": {
+        "type": "object",
+        "properties": {
+          "ingest": {
+            "description": "String prepended to input at ingest",
+            "type": "string"
+          },
+          "search": {
+            "description": "String prepended to input at search",
+            "type": "string"
+          }
+        }
       },
       "ml._types:TrainedModelStats": {
         "type": "object",

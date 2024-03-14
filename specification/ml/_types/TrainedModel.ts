@@ -196,6 +196,7 @@ export class TrainedModelConfig {
   metadata?: TrainedModelConfigMetadata
   model_size_bytes?: ByteSize
   location?: TrainedModelLocation
+  prefix_strings?: TrainedModelPrefixStrings
 }
 
 export class TrainedModelConfigInput {
@@ -422,4 +423,15 @@ export class TrainedModelLocation {
 
 export class TrainedModelLocationIndex {
   name: IndexName
+}
+
+export class TrainedModelPrefixStrings {
+  /**
+   * String prepended to input at ingest
+   */
+  ingest?: string
+  /**
+   * String prepended to input at search
+   */
+  search?: string
 }
