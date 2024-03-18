@@ -16878,10 +16878,50 @@ export interface SecurityPutUserResponse {
   created: boolean
 }
 
+export type SecurityQueryApiKeysAPIKeyAggregate = AggregationsCardinalityAggregate | AggregationsValueCountAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsFilterAggregate | AggregationsFiltersAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsCompositeAggregate
+
+export interface SecurityQueryApiKeysAPIKeyAggregationContainer {
+  aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+  aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+  meta?: Metadata
+  cardinality?: AggregationsCardinalityAggregation
+  composite?: AggregationsCompositeAggregation
+  date_range?: AggregationsDateRangeAggregation
+  filter?: SecurityQueryApiKeysAPIKeyQueryContainer
+  filters?: SecurityQueryApiKeysAPIKeyFiltersAggregation
+  missing?: AggregationsMissingAggregation
+  range?: AggregationsRangeAggregation
+  terms?: AggregationsTermsAggregation
+  value_count?: AggregationsValueCountAggregation
+}
+
+export interface SecurityQueryApiKeysAPIKeyFiltersAggregation extends AggregationsBucketAggregationBase {
+  filters?: AggregationsBuckets<SecurityQueryApiKeysAPIKeyQueryContainer>
+  other_bucket?: boolean
+  other_bucket_key?: string
+  keyed?: boolean
+}
+
+export interface SecurityQueryApiKeysAPIKeyQueryContainer {
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  ids?: QueryDslIdsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
+}
+
 export interface SecurityQueryApiKeysRequest extends RequestBase {
   with_limited_by?: boolean
   body?: {
-    query?: QueryDslQueryContainer
+    aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+    aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+    query?: SecurityQueryApiKeysAPIKeyQueryContainer
     from?: integer
     sort?: Sort
     size?: integer
@@ -16893,6 +16933,7 @@ export interface SecurityQueryApiKeysResponse {
   total: integer
   count: integer
   api_keys: SecurityApiKey[]
+  aggregations?: Record<AggregateName, SecurityQueryApiKeysAPIKeyAggregate>
 }
 
 export interface SecuritySamlAuthenticateRequest extends RequestBase {

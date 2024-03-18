@@ -20315,6 +20315,13 @@
                   "items": {
                     "$ref": "#/components/schemas/security._types:ApiKey"
                   }
+                },
+                "aggregations": {
+                  "description": "The aggregations result, if requested.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/security.query_api_keys:APIKeyAggregate"
+                  }
                 }
               },
               "required": [
@@ -25360,7 +25367,7 @@
       "security.query_api_keys#with_limited_by": {
         "in": "query",
         "name": "with_limited_by",
-        "description": "Return the snapshot of the owner user's role descriptors associated with the API key. \nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.",
+        "description": "Return the snapshot of the owner user's role descriptors associated with the API key.\nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -27036,8 +27043,15 @@
             "schema": {
               "type": "object",
               "properties": {
+                "aggregations": {
+                  "description": "Any aggregations to run over the corpus of returned API keys.\nAggregations and queries work together. Aggregations are computed only on the API keys that match the query.\nThis supports only a subset of aggregation types, namely: `terms`, `range`, `date_range`, `missing`,\n`cardinality`, `value_count`, `composite`, `filter`, and `filters`.\nAdditionally, aggregations only run over the same subset of fields that query works with.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/security.query_api_keys:APIKeyAggregationContainer"
+                  }
+                },
                 "query": {
-                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
                 },
                 "from": {
                   "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
@@ -57356,6 +57370,231 @@
         "additionalProperties": {
           "type": "boolean"
         }
+      },
+      "security.query_api_keys:APIKeyAggregationContainer": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "aggregations": {
+                "description": "Sub-aggregations for this aggregation.\nOnly applies to bucket aggregations.",
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/security.query_api_keys:APIKeyAggregationContainer"
+                }
+              },
+              "meta": {
+                "$ref": "#/components/schemas/_types:Metadata"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "cardinality": {
+                "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregation"
+              },
+              "composite": {
+                "$ref": "#/components/schemas/_types.aggregations:CompositeAggregation"
+              },
+              "date_range": {
+                "$ref": "#/components/schemas/_types.aggregations:DateRangeAggregation"
+              },
+              "filter": {
+                "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+              },
+              "filters": {
+                "$ref": "#/components/schemas/security.query_api_keys:APIKeyFiltersAggregation"
+              },
+              "missing": {
+                "$ref": "#/components/schemas/_types.aggregations:MissingAggregation"
+              },
+              "range": {
+                "$ref": "#/components/schemas/_types.aggregations:RangeAggregation"
+              },
+              "terms": {
+                "$ref": "#/components/schemas/_types.aggregations:TermsAggregation"
+              },
+              "value_count": {
+                "$ref": "#/components/schemas/_types.aggregations:ValueCountAggregation"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        ]
+      },
+      "security.query_api_keys:APIKeyQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
+            "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
+            "description": "Returns documents that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
+            "description": "Returns documents that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
+            "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
+            "description": "Returns documents that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_api_keys:APIKeyFiltersAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:BucketAggregationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "filters": {
+                "$ref": "#/components/schemas/_types.aggregations:BucketsAPIKeyQueryContainer"
+              },
+              "other_bucket": {
+                "description": "Set to `true` to add a bucket to the response which will contain all documents that do not match any of the given filters.",
+                "type": "boolean"
+              },
+              "other_bucket_key": {
+                "description": "The key with which the other bucket is returned.",
+                "type": "string"
+              },
+              "keyed": {
+                "description": "By default, the named filters aggregation returns the buckets as an object.\nSet to `false` to return the buckets as an array of objects.",
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "_types.aggregations:BucketsAPIKeyQueryContainer": {
+        "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+            }
+          }
+        ]
+      },
+      "security.query_api_keys:APIKeyAggregate": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:ValueCountAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:StringTermsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:LongTermsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:DoubleTermsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:UnmappedTermsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:MultiTermsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:MissingAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:FilterAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:FiltersAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:RangeAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:DateRangeAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:CompositeAggregate"
+          }
+        ]
       },
       "sql:Column": {
         "type": "object",
