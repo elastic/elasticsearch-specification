@@ -35,6 +35,12 @@ type GenericArgs = Vec<ValueOf>;
 /// Mapping from generic arguments to values
 type GenericMapping = HashMap<TypeName, ValueOf>;
 
+// Special behavior cases
+const QUERY_PARAMETERS_BEHAVIORS: [&str;2] = [
+    "CommonQueryParameters",
+    "CommonCatQueryParameters"
+];
+
 /// Expand all generics by creating new concrete types for every instanciation of a generic type.
 ///
 /// The resulting model has no generics anymore. Top-level generic parameters (e.g. SearchRequest's TDocument) are
@@ -159,12 +165,33 @@ pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
             req.inherits = Some(expand_inherits(inherit, &mappings, model, ctx)?);
         }
 
+        // This handles the specifics for attached_behaviors whom properties
+        // should be part of query parameters inside the request.
+        expand_attached_behaviors(&mut req.query, req.attached_behaviors.clone(), model)?;
+
         expand_behaviors(&mut req.behaviors, &mappings, model, ctx)?;
         expand_properties(&mut req.path, &mappings, model, ctx)?;
         expand_properties(&mut req.query, &mappings, model, ctx)?;
         expand_body(&mut req.body, &mappings, model, ctx)?;
 
         Ok(req.into())
+    }
+
+    fn expand_attached_behaviors(query: &mut Vec<Property>, behaviors: Vec<String>, model: &IndexedModel) -> anyhow::Result<()> {
+        for behavior in &behaviors {
+            if QUERY_PARAMETERS_BEHAVIORS.contains(&behavior.as_str()) {
+                let new_type_name = TypeName {
+                    namespace: "_spec_utils".into(),
+                    name: behavior.into(),
+                };
+                if let Ok(def) = model.get_interface(&new_type_name) {
+                    for property in def.properties.clone() {
+                        query.push(property);
+                    }
+                }
+            }
+        }
+        Ok(())
     }
 
     fn expand_response(
