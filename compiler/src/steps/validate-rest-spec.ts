@@ -124,7 +124,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       }
 
       if (spec.body != null && spec.body.required === true && spec.body.required !== endpoint.requestBodyRequired) {
-        errors.addEndpointError(endpoint.name, 'request', `: should not be an optional body definition`)
+        errors.addEndpointError(endpoint.name, 'request', ': should not be an optional body definition')
       }
     }
   }

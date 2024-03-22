@@ -285,7 +285,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       // validate body
       // the body can either be a value (eg Array<string> or an object with properties)
       if (bodyValue != null) {
-
         // Propagate required body value nature based on TS question token being present.
         // Overrides the value set by spec files.
         mapping.requestBodyRequired = !(bodyMember as PropertySignature).hasQuestionToken()
