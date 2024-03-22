@@ -22,6 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ElasticsearchVersionMinInfo } from '@_types/Base'
 
 export class Response {
+  /** @codegen_name infos */
   body: Dictionary<ClusterAlias, ResolveClusterInfo>
 }
 
