@@ -97,7 +97,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   // This declaration captures action_and_meta_data (OperationContainer) and the two kinds of sources
   // that can follow: an update action for update operations and anything for index or create operations.
   // /!\ must be kept in sync with BulkMonitoringRequest
-  body?: Array<
+  body: Array<
     OperationContainer | UpdateAction<TDocument, TPartialDocument> | TDocument
   >
 }

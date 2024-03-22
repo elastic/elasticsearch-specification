@@ -91,5 +91,5 @@ export interface Request<TDocument> extends RequestBase {
   /**
    * Request body contains the JSON source for the document data.
    * @codegen_name document */
-  body?: TDocument
+  body: TDocument
 }
