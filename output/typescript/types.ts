@@ -16878,11 +16878,11 @@ export interface SecurityPutUserResponse {
   created: boolean
 }
 
-export type SecurityQueryApiKeysAPIKeyAggregate = AggregationsCardinalityAggregate | AggregationsValueCountAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsFilterAggregate | AggregationsFiltersAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsCompositeAggregate
+export type SecurityQueryApiKeysApiKeyAggregate = AggregationsCardinalityAggregate | AggregationsValueCountAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsFilterAggregate | AggregationsFiltersAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsCompositeAggregate
 
-export interface SecurityQueryApiKeysAPIKeyAggregationContainer {
-  aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
-  aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+export interface SecurityQueryApiKeysApiKeyAggregationContainer {
+  aggregations?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
+  aggs?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
   meta?: Metadata
   cardinality?: AggregationsCardinalityAggregation
   composite?: AggregationsCompositeAggregation
@@ -16919,8 +16919,8 @@ export interface SecurityQueryApiKeysApiKeyQueryContainer {
 export interface SecurityQueryApiKeysRequest extends RequestBase {
   with_limited_by?: boolean
   body?: {
-    aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
-    aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+    aggregations?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
+    aggs?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
     query?: SecurityQueryApiKeysApiKeyQueryContainer
     from?: integer
     sort?: Sort
@@ -16933,7 +16933,7 @@ export interface SecurityQueryApiKeysResponse {
   total: integer
   count: integer
   api_keys: SecurityApiKey[]
-  aggregations?: Record<AggregateName, SecurityQueryApiKeysAPIKeyAggregate>
+  aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
 }
 
 export interface SecuritySamlAuthenticateRequest extends RequestBase {

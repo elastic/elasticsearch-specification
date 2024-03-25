@@ -20320,7 +20320,7 @@
                   "description": "The aggregations result, if requested.",
                   "type": "object",
                   "additionalProperties": {
-                    "$ref": "#/components/schemas/security.query_api_keys:APIKeyAggregate"
+                    "$ref": "#/components/schemas/security.query_api_keys:ApiKeyAggregate"
                   }
                 }
               },
@@ -27048,7 +27048,7 @@
                   "description": "Any aggregations to run over the corpus of returned API keys.\nAggregations and queries work together. Aggregations are computed only on the API keys that match the query.\nThis supports only a subset of aggregation types, namely: `terms`, `range`, `date_range`, `missing`,\n`cardinality`, `value_count`, `composite`, `filter`, and `filters`.\nAdditionally, aggregations only run over the same subset of fields that query works with.",
                   "type": "object",
                   "additionalProperties": {
-                    "$ref": "#/components/schemas/security.query_api_keys:APIKeyAggregationContainer"
+                    "$ref": "#/components/schemas/security.query_api_keys:ApiKeyAggregationContainer"
                   }
                 },
                 "query": {
@@ -57372,7 +57372,7 @@
           "type": "boolean"
         }
       },
-      "security.query_api_keys:APIKeyAggregationContainer": {
+      "security.query_api_keys:ApiKeyAggregationContainer": {
         "allOf": [
           {
             "type": "object",
@@ -57381,7 +57381,7 @@
                 "description": "Sub-aggregations for this aggregation.\nOnly applies to bucket aggregations.",
                 "type": "object",
                 "additionalProperties": {
-                  "$ref": "#/components/schemas/security.query_api_keys:APIKeyAggregationContainer"
+                  "$ref": "#/components/schemas/security.query_api_keys:ApiKeyAggregationContainer"
                 }
               },
               "meta": {
@@ -57554,7 +57554,7 @@
           }
         ]
       },
-      "security.query_api_keys:APIKeyAggregate": {
+      "security.query_api_keys:ApiKeyAggregate": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:CardinalityAggregate"

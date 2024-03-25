@@ -65,14 +65,14 @@ import {
  * @variants container
  * @non_exhaustive
  */
-export class APIKeyAggregationContainer {
+export class ApiKeyAggregationContainer {
   /**
    * Sub-aggregations for this aggregation.
    * Only applies to bucket aggregations.
    * @variant container_property
    * @aliases aggs
    */
-  aggregations?: Dictionary<string, APIKeyAggregationContainer>
+  aggregations?: Dictionary<string, ApiKeyAggregationContainer>
   /**
    * @variant container_property
    */
@@ -124,7 +124,7 @@ export class APIKeyAggregationContainer {
  * @variants external
  * @non_exhaustive
  */
-export type APIKeyAggregate =
+export type ApiKeyAggregate =
   | CardinalityAggregate
   | ValueCountAggregate
   | StringTermsAggregate
