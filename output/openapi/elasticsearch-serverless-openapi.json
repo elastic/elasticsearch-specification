@@ -27052,7 +27052,7 @@
                   }
                 },
                 "query": {
-                  "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+                  "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
                 },
                 "from": {
                   "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
@@ -57402,10 +57402,10 @@
                 "$ref": "#/components/schemas/_types.aggregations:DateRangeAggregation"
               },
               "filter": {
-                "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+                "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
               },
               "filters": {
-                "$ref": "#/components/schemas/security.query_api_keys:APIKeyFiltersAggregation"
+                "$ref": "#/components/schemas/security.query_api_keys:ApiKeyFiltersAggregation"
               },
               "missing": {
                 "$ref": "#/components/schemas/_types.aggregations:MissingAggregation"
@@ -57425,7 +57425,7 @@
           }
         ]
       },
-      "security.query_api_keys:APIKeyQueryContainer": {
+      "security.query_api_keys:ApiKeyQueryContainer": {
         "type": "object",
         "properties": {
           "bool": {
@@ -57510,7 +57510,7 @@
         "minProperties": 1,
         "maxProperties": 1
       },
-      "security.query_api_keys:APIKeyFiltersAggregation": {
+      "security.query_api_keys:ApiKeyFiltersAggregation": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:BucketAggregationBase"
@@ -57519,7 +57519,7 @@
             "type": "object",
             "properties": {
               "filters": {
-                "$ref": "#/components/schemas/_types.aggregations:BucketsAPIKeyQueryContainer"
+                "$ref": "#/components/schemas/_types.aggregations:BucketsApiKeyQueryContainer"
               },
               "other_bucket": {
                 "description": "Set to `true` to add a bucket to the response which will contain all documents that do not match any of the given filters.",
@@ -57537,19 +57537,19 @@
           }
         ]
       },
-      "_types.aggregations:BucketsAPIKeyQueryContainer": {
+      "_types.aggregations:BucketsApiKeyQueryContainer": {
         "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
         "oneOf": [
           {
             "type": "object",
             "additionalProperties": {
-              "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+              "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
             }
           },
           {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/security.query_api_keys:APIKeyQueryContainer"
+              "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
             }
           }
         ]

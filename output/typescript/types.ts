@@ -16887,22 +16887,22 @@ export interface SecurityQueryApiKeysAPIKeyAggregationContainer {
   cardinality?: AggregationsCardinalityAggregation
   composite?: AggregationsCompositeAggregation
   date_range?: AggregationsDateRangeAggregation
-  filter?: SecurityQueryApiKeysAPIKeyQueryContainer
-  filters?: SecurityQueryApiKeysAPIKeyFiltersAggregation
+  filter?: SecurityQueryApiKeysApiKeyQueryContainer
+  filters?: SecurityQueryApiKeysApiKeyFiltersAggregation
   missing?: AggregationsMissingAggregation
   range?: AggregationsRangeAggregation
   terms?: AggregationsTermsAggregation
   value_count?: AggregationsValueCountAggregation
 }
 
-export interface SecurityQueryApiKeysAPIKeyFiltersAggregation extends AggregationsBucketAggregationBase {
-  filters?: AggregationsBuckets<SecurityQueryApiKeysAPIKeyQueryContainer>
+export interface SecurityQueryApiKeysApiKeyFiltersAggregation extends AggregationsBucketAggregationBase {
+  filters?: AggregationsBuckets<SecurityQueryApiKeysApiKeyQueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
   keyed?: boolean
 }
 
-export interface SecurityQueryApiKeysAPIKeyQueryContainer {
+export interface SecurityQueryApiKeysApiKeyQueryContainer {
   bool?: QueryDslBoolQuery
   exists?: QueryDslExistsQuery
   ids?: QueryDslIdsQuery
@@ -16921,7 +16921,7 @@ export interface SecurityQueryApiKeysRequest extends RequestBase {
   body?: {
     aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
     aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
-    query?: SecurityQueryApiKeysAPIKeyQueryContainer
+    query?: SecurityQueryApiKeysApiKeyQueryContainer
     from?: integer
     sort?: Sort
     size?: integer
