@@ -285,6 +285,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       // validate body
       // the body can either be a value (eg Array<string> or an object with properties)
       if (bodyValue != null) {
+        // Propagate required body value nature based on TS question token being present.
+        // Overrides the value set by spec files.
+        mapping.requestBodyRequired = !(bodyMember as PropertySignature).hasQuestionToken()
+
         if (bodyValue.kind === 'instance_of' && bodyValue.type.name === 'Void') {
           assert(bodyMember as Node, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
         } else {
@@ -299,6 +303,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             !type.path.map(p => p.codegenName ?? p.name).concat(type.query.map(p => p.codegenName ?? p.name)).includes(tags.codegen_name),
             `The codegen_name '${tags.codegen_name}' already exists as a property in the path or query.`
           )
+
           type.body = {
             kind: 'value',
             value: bodyValue,
