@@ -26365,7 +26365,8 @@
               "$ref": "#/components/schemas/inference._types:ModelConfig"
             }
           }
-        }
+        },
+        "required": true
       },
       "ingest.simulate": {
         "content": {
