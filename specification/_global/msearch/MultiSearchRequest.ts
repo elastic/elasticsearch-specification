@@ -92,5 +92,5 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   /** @codegen_name searches */
-  body?: Array<RequestItem>
+  body: Array<RequestItem>
 }
