@@ -1035,12 +1035,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'wait_for_completion'"
-      ],
-      "response": []
-    },
     "ml.put_trained_model_alias": {
       "request": [],
       "response": [
