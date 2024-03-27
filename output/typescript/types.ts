@@ -15667,7 +15667,7 @@ export interface SnapshotRestoreRequest extends RequestBase {
     ignore_unavailable?: boolean
     include_aliases?: boolean
     include_global_state?: boolean
-    index_settings?: IndicesPutSettingsRequest
+    index_settings?: IndicesIndexSettings
     indices?: Indices
     partial?: boolean
     rename_pattern?: string
@@ -16506,8 +16506,16 @@ export interface WatcherSearchInputRequestDefinition {
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
-  template?: SearchTemplateRequest
+  template?: WatcherSearchTemplateRequestBody
   rest_total_hits_as_int?: boolean
+}
+
+export interface WatcherSearchTemplateRequestBody {
+  explain?: boolean
+  id?: Id
+  params?: Record<string, any>
+  profile?: boolean
+  source?: string
 }
 
 export interface WatcherSimulatedActions {
