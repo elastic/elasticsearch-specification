@@ -42,10 +42,21 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * If set to `true` and a `compressed_definition` is provided,
+     * the request defers definition decompression and skips relevant
+     * validations.
      * @availability stack since=8.0.0
      * @availability serverless
      */
     defer_definition_decompression?: boolean
+
+    /**
+     * Whether to wait for all child operations (e.g. model download)
+     * to complete.
+     * @availability stack since=8.8.0
+     * @availability serverless
+     */
+    wait_for_completion?: boolean
   }
   body: {
     /**
