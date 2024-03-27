@@ -9770,7 +9770,17 @@
           {
             "in": "query",
             "name": "defer_definition_decompression",
-            "description": "If set to `true` and a `compressed_definition` is provided, the request defers definition decompression and skips relevant validations.",
+            "description": "If set to `true` and a `compressed_definition` is provided, \nthe request defers definition decompression and skips relevant \nvalidations.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "Whether to wait for all child operations (e.g. model download) \nto complete.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
