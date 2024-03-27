@@ -21,7 +21,7 @@ import { ApiKey } from '@security/_types/ApiKey'
 import { integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregateName } from '@_types/common'
-import { APIKeyAggregate } from './types'
+import { ApiKeyAggregate } from './types'
 
 export class Response {
   body: {
@@ -40,6 +40,6 @@ export class Response {
     /**
      * The aggregations result, if requested.
      */
-    aggregations?: Dictionary<AggregateName, APIKeyAggregate>
+    aggregations?: Dictionary<AggregateName, ApiKeyAggregate>
   }
 }

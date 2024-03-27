@@ -1311,7 +1311,7 @@
     "security.query_api_keys": {
       "request": [],
       "response": [
-        "type_alias definition security.query_api_keys:APIKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
+        "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
       ]
     },
     "security.suggest_user_profiles": {
