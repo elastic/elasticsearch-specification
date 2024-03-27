@@ -1,0 +1,7 @@
+{
+  "summary": "A request to open anomaly detection jobs.",
+  "description": "The timeout specifies to wait 35 minutes for the job to open.",
+  "value": {
+    "timeout": "35m"
+  }
+}
