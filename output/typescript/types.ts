@@ -16879,31 +16879,31 @@ export interface SecurityPutUserResponse {
   created: boolean
 }
 
-export type SecurityQueryApiKeysAPIKeyAggregate = AggregationsCardinalityAggregate | AggregationsValueCountAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsFilterAggregate | AggregationsFiltersAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsCompositeAggregate
+export type SecurityQueryApiKeysApiKeyAggregate = AggregationsCardinalityAggregate | AggregationsValueCountAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsFilterAggregate | AggregationsFiltersAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsCompositeAggregate
 
-export interface SecurityQueryApiKeysAPIKeyAggregationContainer {
-  aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
-  aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
+export interface SecurityQueryApiKeysApiKeyAggregationContainer {
+  aggregations?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
+  aggs?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
   meta?: Metadata
   cardinality?: AggregationsCardinalityAggregation
   composite?: AggregationsCompositeAggregation
   date_range?: AggregationsDateRangeAggregation
-  filter?: SecurityQueryApiKeysAPIKeyQueryContainer
-  filters?: SecurityQueryApiKeysAPIKeyFiltersAggregation
+  filter?: SecurityQueryApiKeysApiKeyQueryContainer
+  filters?: SecurityQueryApiKeysApiKeyFiltersAggregation
   missing?: AggregationsMissingAggregation
   range?: AggregationsRangeAggregation
   terms?: AggregationsTermsAggregation
   value_count?: AggregationsValueCountAggregation
 }
 
-export interface SecurityQueryApiKeysAPIKeyFiltersAggregation extends AggregationsBucketAggregationBase {
-  filters?: AggregationsBuckets<SecurityQueryApiKeysAPIKeyQueryContainer>
+export interface SecurityQueryApiKeysApiKeyFiltersAggregation extends AggregationsBucketAggregationBase {
+  filters?: AggregationsBuckets<SecurityQueryApiKeysApiKeyQueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
   keyed?: boolean
 }
 
-export interface SecurityQueryApiKeysAPIKeyQueryContainer {
+export interface SecurityQueryApiKeysApiKeyQueryContainer {
   bool?: QueryDslBoolQuery
   exists?: QueryDslExistsQuery
   ids?: QueryDslIdsQuery
@@ -16920,9 +16920,9 @@ export interface SecurityQueryApiKeysAPIKeyQueryContainer {
 export interface SecurityQueryApiKeysRequest extends RequestBase {
   with_limited_by?: boolean
   body?: {
-    aggregations?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
-    aggs?: Record<string, SecurityQueryApiKeysAPIKeyAggregationContainer>
-    query?: SecurityQueryApiKeysAPIKeyQueryContainer
+    aggregations?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
+    aggs?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
+    query?: SecurityQueryApiKeysApiKeyQueryContainer
     from?: integer
     sort?: Sort
     size?: integer
@@ -16934,7 +16934,7 @@ export interface SecurityQueryApiKeysResponse {
   total: integer
   count: integer
   api_keys: SecurityApiKey[]
-  aggregations?: Record<AggregateName, SecurityQueryApiKeysAPIKeyAggregate>
+  aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
 }
 
 export interface SecuritySamlAuthenticateRequest extends RequestBase {

@@ -65,14 +65,14 @@ import {
  * @variants container
  * @non_exhaustive
  */
-export class APIKeyAggregationContainer {
+export class ApiKeyAggregationContainer {
   /**
    * Sub-aggregations for this aggregation.
    * Only applies to bucket aggregations.
    * @variant container_property
    * @aliases aggs
    */
-  aggregations?: Dictionary<string, APIKeyAggregationContainer>
+  aggregations?: Dictionary<string, ApiKeyAggregationContainer>
   /**
    * @variant container_property
    */
@@ -96,12 +96,12 @@ export class APIKeyAggregationContainer {
    * A single bucket aggregation that narrows the set of documents to those that match a query.
    * @doc_id search-aggregations-bucket-filter-aggregation
    */
-  filter?: APIKeyQueryContainer
+  filter?: ApiKeyQueryContainer
   /**
    * A multi-bucket aggregation where each bucket contains the documents that match a query.
    * @doc_id search-aggregations-bucket-filters-aggregation
    */
-  filters?: APIKeyFiltersAggregation
+  filters?: ApiKeyFiltersAggregation
   missing?: MissingAggregation
   /**
    * A multi-bucket value source based aggregation that enables the user to define a set of ranges - each representing a bucket.
@@ -124,7 +124,7 @@ export class APIKeyAggregationContainer {
  * @variants external
  * @non_exhaustive
  */
-export type APIKeyAggregate =
+export type ApiKeyAggregate =
   | CardinalityAggregate
   | ValueCountAggregate
   | StringTermsAggregate
@@ -143,7 +143,7 @@ export type APIKeyAggregate =
  * @variants container
  * @non_exhaustive
  */
-export class APIKeyQueryContainer {
+export class ApiKeyQueryContainer {
   /**
    * matches documents matching boolean combinations of other queries.
    * @doc_id query-dsl-bool-query
@@ -205,11 +205,11 @@ export class APIKeyQueryContainer {
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
 }
 
-export class APIKeyFiltersAggregation extends BucketAggregationBase {
+export class ApiKeyFiltersAggregation extends BucketAggregationBase {
   /**
    * Collection of queries from which to build buckets.
    */
-  filters?: Buckets<APIKeyQueryContainer>
+  filters?: Buckets<ApiKeyQueryContainer>
   /**
    * Set to `true` to add a bucket to the response which will contain all documents that do not match any of the given filters.
    */
