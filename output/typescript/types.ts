@@ -9056,6 +9056,349 @@ export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
   timestamp: long
 }
 
+export interface ConnectorConnector {
+  api_key_id?: string
+  configuration: ConnectorConnectorConfiguration
+  custom_scheduling: ConnectorConnectorCustomScheduling
+  description?: string
+  error: string | null
+  features: ConnectorConnectorFeatures
+  filtering: ConnectorFilteringConfig[]
+  id?: Id
+  index_name: string
+  is_native: boolean
+  language?: string
+  last_access_control_sync_error?: string | null
+  last_access_control_sync_scheduled_at?: string | null
+  last_access_control_sync_status?: ConnectorSyncStatus | null
+  last_deleted_document_count?: long | null
+  last_incremental_sync_scheduled_at?: string | null
+  last_indexed_document_count?: long | null
+  last_seen?: string | null
+  last_sync_error?: string | null
+  last_sync_scheduled_at?: string | null
+  last_sync_status?: ConnectorSyncStatus | null
+  last_synced?: string | null
+  name?: string
+  pipeline?: ConnectorIngestPipelineParams
+  scheduling: ConnectorSchedulingConfiguration
+  service_type: string
+  status: ConnectorConnectorStatus
+  sync_now: boolean
+}
+
+export interface ConnectorConnectorConfigProperties {
+  category?: string
+  default_value: ScalarValue
+  depends_on: ConnectorDependency[]
+  display: ConnectorDisplayType
+  label: string
+  options: ConnectorSelectOption[]
+  order?: integer
+  placeholder?: string
+  required: boolean
+  sensitive: boolean
+  tooltip?: string
+  type: ConnectorConnectorFieldType
+  ui_restrictions: string[]
+  validations: ConnectorValidation[]
+  value: ScalarValue
+}
+
+export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties>
+
+export type ConnectorConnectorCustomScheduling = Record<string, ConnectorCustomScheduling>
+
+export interface ConnectorConnectorFeatures {
+  document_level_security?: ConnectorFeatureEnabled
+  filtering_advanced_config?: boolean
+  filtering_rules?: boolean
+  incremental_sync?: ConnectorFeatureEnabled
+  sync_rules?: ConnectorSyncRulesFeature
+}
+
+export type ConnectorConnectorFieldType = 'str' | 'int' | 'list' | 'bool'
+
+export interface ConnectorConnectorScheduling {
+  enabled: boolean
+  interval: string
+}
+
+export type ConnectorConnectorStatus = 'created' | 'needs_configuration' | 'configured' | 'connected' | 'error'
+
+export interface ConnectorCustomScheduling {
+  configuration_overrides: ConnectorCustomSchedulingConfigurationOverrides
+  enabled: boolean
+  interval: string
+  last_synced?: string
+  name: string
+}
+
+export interface ConnectorCustomSchedulingConfigurationOverrides {
+  max_crawl_depth?: integer
+  sitemap_discovery_disabled?: boolean
+  domain_allowlist?: string[]
+  sitemap_urls?: string[]
+  seed_urls?: string[]
+}
+
+export interface ConnectorDependency {
+  field: string
+  value: ScalarValue
+}
+
+export type ConnectorDisplayType = 'textbox' | 'textarea' | 'numeric' | 'toggle' | 'dropdown'
+
+export interface ConnectorFeatureEnabled {
+  enabled: boolean
+}
+
+export interface ConnectorFilteringAdvancedSnippet {
+  created_at: string
+  updated_at: string
+  value: Record<string, any>
+}
+
+export interface ConnectorFilteringConfig {
+  active: ConnectorFilteringRules
+  domain: string
+  draft: ConnectorFilteringRules
+}
+
+export type ConnectorFilteringPolicy = 'exclude' | 'include'
+
+export interface ConnectorFilteringRule {
+  created_at: string
+  field: string
+  id: string
+  order: integer
+  policy: ConnectorFilteringPolicy
+  rule: ConnectorFilteringRuleRule
+  updated_at: string
+  value: string
+}
+
+export type ConnectorFilteringRuleRule = 'contains' | 'ends_with' | 'equals' | 'regex' | 'starts_with' | '>' | '<'
+
+export interface ConnectorFilteringRules {
+  advanced_snippet: ConnectorFilteringAdvancedSnippet
+  rules: ConnectorFilteringRule[]
+  validation: ConnectorFilteringRulesValidation
+}
+
+export interface ConnectorFilteringRulesValidation {
+  errors: ConnectorFilteringValidation[]
+  state: ConnectorFilteringValidationState
+}
+
+export interface ConnectorFilteringValidation {
+  ids: string[]
+  messages: string[]
+}
+
+export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
+
+export interface ConnectorGreaterThanValidation {
+  type: 'greater_than'
+  constraint: double
+}
+
+export interface ConnectorIncludedInValidation {
+  type: 'included_in'
+  constraint: string
+}
+
+export interface ConnectorIngestPipelineParams {
+  extract_binary_content: boolean
+  name: string
+  reduce_whitespace: boolean
+  run_ml_inference: boolean
+}
+
+export interface ConnectorLessThanValidation {
+  type: 'less_than'
+  constraint: double
+}
+
+export interface ConnectorListTypeValidation {
+  type: 'list_type'
+  constraint: ScalarValue[]
+}
+
+export interface ConnectorRegexValidation {
+  type: 'regex'
+  constraint: string
+}
+
+export interface ConnectorSchedulingConfiguration {
+  access_control: ConnectorConnectorScheduling
+  full: ConnectorConnectorScheduling
+  incremental: ConnectorConnectorScheduling
+}
+
+export interface ConnectorSelectOption {
+  label: string
+  value: string
+}
+
+export interface ConnectorSyncRulesFeature {
+  advanced?: ConnectorFeatureEnabled
+  basic?: ConnectorFeatureEnabled
+}
+
+export type ConnectorSyncStatus = 'canceling' | 'canceled' | 'completed' | 'error' | 'in_progress' | 'pending' | 'suspended'
+
+export type ConnectorValidation = ConnectorLessThanValidation | ConnectorGreaterThanValidation | ConnectorListTypeValidation | ConnectorIncludedInValidation | ConnectorRegexValidation
+
+export interface ConnectorCheckInRequest extends RequestBase {
+  connector_id: Id
+}
+
+export interface ConnectorCheckInResponse {
+  result: Result
+}
+
+export interface ConnectorDeleteRequest extends RequestBase {
+  connector_id: Id
+}
+
+export type ConnectorDeleteResponse = AcknowledgedResponseBase
+
+export interface ConnectorGetRequest extends RequestBase {
+  connector_id: Id
+}
+
+export type ConnectorGetResponse = ConnectorConnector
+
+export interface ConnectorLastSyncRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    last_access_control_sync_error: string | null
+    last_access_control_sync_scheduled_at: string | null
+    last_access_control_sync_status: ConnectorSyncStatus | null
+    last_deleted_document_count: number | null
+    last_incremental_sync_scheduled_at: string | null
+    last_indexed_document_count: number | null
+    last_seen: string | null
+    last_sync_error: string | null
+    last_sync_scheduled_at: string | null
+    last_sync_status: ConnectorSyncStatus | null
+    last_synced: string | null
+  }
+}
+
+export interface ConnectorLastSyncResponse {
+  result: Result
+}
+
+export interface ConnectorListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+}
+
+export interface ConnectorListResponse {
+  count: long
+  results: ConnectorConnector[]
+}
+
+export interface ConnectorPostRequest extends RequestBase {
+  body?: {
+    description?: string
+    index_name: string
+    is_native?: boolean
+    language?: string
+    name?: string
+    service_type?: string
+  }
+}
+
+export interface ConnectorPostResponse {
+  id: Id
+}
+
+export interface ConnectorPutRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    description?: string
+    index_name: string
+    is_native?: boolean
+    language?: string
+    name?: string
+    service_type?: string
+  }
+}
+
+export interface ConnectorPutResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateConfigurationRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    configuration: ConnectorConnectorConfiguration
+  }
+}
+
+export interface ConnectorUpdateConfigurationResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateErrorRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    error: string | null
+  }
+}
+
+export interface ConnectorUpdateErrorResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateFilteringRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    filtering: ConnectorFilteringConfig[]
+  }
+}
+
+export interface ConnectorUpdateFilteringResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateNameRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    name: string
+    description?: string
+  }
+}
+
+export interface ConnectorUpdateNameResponse {
+  result: Result
+}
+
+export interface ConnectorUpdatePipelineRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    pipeline: ConnectorIngestPipelineParams
+  }
+}
+
+export interface ConnectorUpdatePipelineResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateSchedulingRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    scheduling: ConnectorSchedulingConfiguration
+  }
+}
+
+export interface ConnectorUpdateSchedulingResponse {
+  result: Result
+}
+
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {
   index_uuid: Uuid
   accept_data_loss: boolean
