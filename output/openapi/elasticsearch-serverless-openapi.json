@@ -49665,6 +49665,12 @@
             "items": {
               "$ref": "#/components/schemas/inference._types:SparseEmbeddingResult"
             }
+          },
+          "completion": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:CompletionResult"
+            }
           }
         },
         "minProperties": 1,
@@ -49723,6 +49729,17 @@
         "additionalProperties": {
           "type": "number"
         }
+      },
+      "inference._types:CompletionResult": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ]
       },
       "_types:ElasticsearchVersionInfo": {
         "type": "object",
