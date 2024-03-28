@@ -650,12 +650,6 @@
       ],
       "response": []
     },
-    "get": {
-      "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
-      ],
-      "response": []
-    },
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"
@@ -929,9 +923,7 @@
       "response": []
     },
     "mget": {
-      "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
-      ],
+      "request": [],
       "response": [
         "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget:TDocument'"
       ]
@@ -1171,7 +1163,6 @@
     },
     "search": {
       "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'",
         "Request: missing json spec query parameter 'include_named_queries_score'",
         "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],

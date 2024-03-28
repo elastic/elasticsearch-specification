@@ -37,6 +37,13 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Should this request force synthetic _source?
+     * Use this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.
+     * Fetches with this enabled will be slower the enabling synthetic source natively in the index.
+     * @availability stack since=8.4.0 visibility=feature_flag feature_flag=es.index_mode_feature_flag_registered
+     */
+    force_synthetic_source?: boolean
+    /**
      * Specifies the node or shard the operation should be performed on. Random by default.
      */
     preference?: string
