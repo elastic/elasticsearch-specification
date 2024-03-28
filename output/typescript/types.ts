@@ -11495,6 +11495,10 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export interface InferenceCompletionResult {
+  result: string
+}
+
 export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
@@ -11503,6 +11507,7 @@ export interface InferenceInferenceResult {
   text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
   text_embedding?: InferenceTextEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
+  completion?: InferenceCompletionResult[]
 }
 
 export interface InferenceModelConfig {

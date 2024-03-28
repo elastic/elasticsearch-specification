@@ -57,6 +57,13 @@ export class TextEmbeddingResult {
 }
 
 /**
+ * The completion result object
+ */
+export class CompletionResult {
+  result: string
+}
+
+/**
  * InferenceResult is an aggregation of mutually exclusive variants
  * @variants container
  */
@@ -64,4 +71,5 @@ export class InferenceResult {
   text_embedding_bytes?: Array<TextEmbeddingByteResult>
   text_embedding?: Array<TextEmbeddingResult>
   sparse_embedding?: Array<SparseEmbeddingResult>
+  completion?: Array<CompletionResult>
 }
