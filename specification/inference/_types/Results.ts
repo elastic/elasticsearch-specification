@@ -60,7 +60,7 @@ export class TextEmbeddingResult {
  * The completion result object
  */
 export class CompletionResult {
-  result: string;
+  result: string
 }
 
 /**
