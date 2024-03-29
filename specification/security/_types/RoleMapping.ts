@@ -25,7 +25,9 @@ import { RoleTemplate } from './RoleTemplate'
 export class RoleMapping {
   enabled: boolean
   metadata: Metadata
+  // Exactly one of roles or role_templates should be set
   roles?: string[]
-  rules: RoleMappingRule
+  // Exactly one of roles or role_templates should be set
   role_templates?: RoleTemplate[]
+  rules: RoleMappingRule
 }
