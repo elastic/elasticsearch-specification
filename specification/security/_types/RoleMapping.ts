@@ -25,7 +25,7 @@ import { RoleTemplate } from './RoleTemplate'
 export class RoleMapping {
   enabled: boolean
   metadata: Metadata
-  roles: string[]
+  roles?: string[]
   rules: RoleMappingRule
   role_templates?: RoleTemplate[]
 }
