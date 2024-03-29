@@ -75,5 +75,12 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     active_only?: boolean
+     /**
+      * Determines whether to also retrieve the profile uid, for the API key owner principal, if it exists.
+      * @server_default false
+      * @availability stack since=8.14.0
+      * @availability serverless
+      */
+    with_profile_uid?: boolean
   }
 }
