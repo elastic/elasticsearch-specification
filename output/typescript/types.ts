@@ -16217,9 +16217,9 @@ export interface SecurityRoleDescriptorRead {
 export interface SecurityRoleMapping {
   enabled: boolean
   metadata: Metadata
-  roles: string[]
-  rules: SecurityRoleMappingRule
+  roles?: string[]
   role_templates?: SecurityRoleTemplate[]
+  rules: SecurityRoleMappingRule
 }
 
 export interface SecurityRoleMappingRule {
