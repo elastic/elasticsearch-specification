@@ -3247,8 +3247,8 @@ export interface AggregationsEwmaMovingAverageAggregation extends AggregationsMo
 }
 
 export interface AggregationsExtendedBounds<T = unknown> {
-  max: T
-  min: T
+  max?: T
+  min?: T
 }
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
@@ -10791,6 +10791,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   body?: {
+    allow_auto_create?: boolean
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping

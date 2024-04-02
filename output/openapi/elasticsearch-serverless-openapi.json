@@ -26119,6 +26119,10 @@
             "schema": {
               "type": "object",
               "properties": {
+                "allow_auto_create": {
+                  "description": "This setting overrides the value of the `action.auto_create_index` cluster setting.\nIf set to `true` in a template, then indices can be automatically created using that template even if auto-creation of indices is disabled via `actions.auto_create_index`.\nIf set to `false`, then indices or data streams matching the template must always be explicitly created, and may never be automatically created.",
+                  "type": "boolean"
+                },
                 "index_patterns": {
                   "$ref": "#/components/schemas/_types:Indices"
                 },
@@ -37445,11 +37449,7 @@
           "min": {
             "$ref": "#/components/schemas/_types.aggregations:FieldDateMath"
           }
-        },
-        "required": [
-          "max",
-          "min"
-        ]
+        }
       },
       "_types.aggregations:FieldDateMath": {
         "description": "A date range limit, represented either as a DateMath expression or a number expressed\naccording to the target field's precision.",
@@ -38080,11 +38080,7 @@
             "description": "Minimum value for the bound.",
             "type": "number"
           }
-        },
-        "required": [
-          "max",
-          "min"
-        ]
+        }
       },
       "_types.aggregations:IpRangeAggregation": {
         "allOf": [

@@ -47,6 +47,12 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
+     * This setting overrides the value of the `action.auto_create_index` cluster setting.
+     * If set to `true` in a template, then indices can be automatically created using that template even if auto-creation of indices is disabled via `actions.auto_create_index`.
+     * If set to `false`, then indices or data streams matching the template must always be explicitly created, and may never be automatically created.
+     */
+    allow_auto_create?: boolean
+    /**
      * Name of the index template to create.
      */
     index_patterns?: Indices
