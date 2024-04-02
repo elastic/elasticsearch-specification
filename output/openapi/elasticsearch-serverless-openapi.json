@@ -39596,6 +39596,9 @@
           "initial_buffer": {
             "description": "Specifies the number of individual documents that will be stored in memory on a shard before the initial bucketing algorithm is run.\nDefaults to `min(10 * shard_size, 50000)`.",
             "type": "number"
+          },
+          "script": {
+            "$ref": "#/components/schemas/_types:Script"
           }
         }
       },
@@ -42461,6 +42464,12 @@
                 "enum": [
                   "html_strip"
                 ]
+              },
+              "escaped_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
@@ -45819,7 +45828,7 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "{dynamic_property}"
+                  "{dynamic_type}"
                 ]
               },
               "enabled": {
@@ -47978,7 +47987,6 @@
         "required": [
           "_id",
           "_index",
-          "_primary_term",
           "result",
           "_seq_no",
           "_shards",
