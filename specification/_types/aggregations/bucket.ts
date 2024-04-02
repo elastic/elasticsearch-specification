@@ -488,11 +488,11 @@ export class ExtendedBounds<T> {
   /**
    * Maximum value for the bound.
    */
-  max: T
+  max?: T
   /**
    * Minimum value for the bound.
    */
-  min: T
+  min?: T
 }
 
 export class HistogramAggregation extends BucketAggregationBase {
