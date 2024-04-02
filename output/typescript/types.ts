@@ -5730,7 +5730,6 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   min_term_freq?: integer
   min_word_length?: integer
-  per_field_analyzer?: Record<Field, string>
   routing?: Routing
   stop_words?: AnalysisStopWords
   unlike?: QueryDslLike | QueryDslLike[]
