@@ -39729,6 +39729,7 @@
         "type": "string",
         "enum": [
           "boolean",
+          "composite",
           "date",
           "double",
           "geo_point",
