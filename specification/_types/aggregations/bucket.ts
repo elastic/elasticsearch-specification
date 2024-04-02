@@ -30,7 +30,7 @@ import {
   GeoLocation,
   GeoBounds
 } from '@_types/Geo'
-import { integer, float, long, double } from '@_types/Numeric'
+import { integer, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import {
@@ -40,11 +40,9 @@ import {
   TimeZone,
   DurationLarge
 } from '@_types/Time'
-import { Buckets, TermsAggregateBase } from './Aggregate'
+import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
-import { OverloadOf } from '@spec_utils/behaviors'
-import { Term } from '@global/termvectors/types'
 import { ValueType } from '@_types/aggregations/metric'
 
 /**
@@ -1032,6 +1030,7 @@ export class VariableWidthHistogramAggregation {
    * Defaults to `min(10 * shard_size, 50000)`.
    */
   initial_buffer?: integer
+  script?: Script
 }
 
 /**
