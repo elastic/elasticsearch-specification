@@ -1,12 +1,23 @@
-# Elasticsearch Specification
+# Elasticsearch API Specification
 
-This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside [`/specification`](./specification).
-The [`/compiler`](./compiler) folder contains a TypeScript program that compiles the entire definition
-in a JSON representation that can be used for generating language clients.
+The **Elasticsearch API Specification** provides the contract for communication between client and server components within the Elasticsearch stack.
+With almost 500 API endpoints and around 3000 data types across the entire API surface, this project is vitally important for sustaining our engineering efforts at scale.
+
+The repository has the following structure:
+
+| Path | Description |
+| -------- | ------- |
+| [`api-design-guidelines/`](api-design-guidelines/) | Knowledge base of best practices for API design. |
+| [`compiler/`](compiler/) | TypeScript compiler for specification definition to JSON. |
+| [`compiler-rs/`](compiler-rs/) | |
+| [`docs/`](docs/) | |
+| [`output/`](output/) | |
+| [`specification/`](specification/) | Elasticsearch request/response definitions in TypeScript. |
+| [`typescript-generator/`](typescript-generator/) | |
 
 This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/src/model/metamodel.ts)
 that also explains the various properties and their values.
+
 
 ## Prepare the environment
 
