@@ -11531,7 +11531,7 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -11561,6 +11561,7 @@ export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
   body?: {
+    query?: string
     input: string | string[]
     task_settings?: InferenceTaskSettings
   }
