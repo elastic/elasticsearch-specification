@@ -26343,6 +26343,10 @@
             "schema": {
               "type": "object",
               "properties": {
+                "query": {
+                  "description": "Query input, required for rerank task.\nNot required for other tasks.",
+                  "type": "string"
+                },
                 "input": {
                   "description": "Text input to the model.\nEither a string or an array of strings.",
                   "oneOf": [
@@ -49592,7 +49596,9 @@
         "type": "string",
         "enum": [
           "sparse_embedding",
-          "text_embedding"
+          "text_embedding",
+          "rerank",
+          "completion"
         ]
       },
       "inference._types:ModelConfigContainer": {
@@ -49671,6 +49677,12 @@
             "items": {
               "$ref": "#/components/schemas/inference._types:CompletionResult"
             }
+          },
+          "rerank": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types:RankedDocument"
+            }
           }
         },
         "minProperties": 1,
@@ -49739,6 +49751,24 @@
         },
         "required": [
           "result"
+        ]
+      },
+      "inference._types:RankedDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "score": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "score"
         ]
       },
       "_types:ElasticsearchVersionInfo": {

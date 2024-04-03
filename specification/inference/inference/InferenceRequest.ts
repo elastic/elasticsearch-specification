@@ -41,6 +41,11 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
+     * Query input, required for rerank task.
+     * Not required for other tasks.
+     */
+    query?: string
+    /**
      * Text input to the model.
      * Either a string or an array of strings.
      */

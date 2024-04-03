@@ -11508,6 +11508,7 @@ export interface InferenceInferenceResult {
   text_embedding?: InferenceTextEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
   completion?: InferenceCompletionResult[]
+  rerank?: InferenceRankedDocument[]
 }
 
 export interface InferenceModelConfig {
@@ -11521,6 +11522,12 @@ export interface InferenceModelConfigContainer extends InferenceModelConfig {
   task_type: InferenceTaskType
 }
 
+export interface InferenceRankedDocument {
+  id: string
+  score: string
+  text?: string
+}
+
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingResult {
@@ -11531,7 +11538,7 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -11561,6 +11568,7 @@ export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
   body?: {
+    query?: string
     input: string | string[]
     task_settings?: InferenceTaskSettings
   }

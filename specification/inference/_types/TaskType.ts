@@ -22,5 +22,7 @@
  */
 export enum TaskType {
   sparse_embedding,
-  text_embedding
+  text_embedding,
+  rerank,
+  completion
 }
