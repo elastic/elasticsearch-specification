@@ -39,7 +39,7 @@ import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTempl
 export interface Request extends RequestBase {
   path_parts: {
     /** Index or template name to simulate */
-    name: Name
+    name?: Name
   }
   query_parameters: {
     /**

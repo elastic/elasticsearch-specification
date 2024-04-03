@@ -870,6 +870,7 @@
     },
     "indices.simulate_index_template": {
       "request": [
+        "Request: path parameter 'name' is required in the json spec",
         "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
