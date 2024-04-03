@@ -54,7 +54,7 @@ Some programming languages place special meaning on underscore prefixes and suff
 
 See the below example with a JSON object with two properties `nodes` and `_nodes`:
 
-```json
+```yaml
 {
   "nodes": {...},
   "_nodes": {...}
@@ -63,7 +63,7 @@ See the below example with a JSON object with two properties `nodes` and `_nodes
 
 For this API the generated structure in some programming languages would have a clash between the names of the two properties which would require inventing a name for one of the properties. Diversions from the API as it is on the wire are likely to cause confusion for users and should be avoided if possible. Instead these properties could be named more semantically as follows:
 
-```json
+```yaml
 {
   "nodes": {...},
   "node_info": {...}

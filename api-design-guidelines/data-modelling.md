@@ -8,7 +8,7 @@ JSON objects must be conceptually treated as **unordered**. Maintaining order of
 
 If preservation of order is important, such ordering information should be represented separately. The examples below shows a plain (unordered) object alongside three alternative representations which also provide ordering detail.
 
-```json
+```yaml
 // Plain object (unordered)
 {
   "one": "eins",
@@ -49,15 +49,15 @@ JSON objects and query string parameters must not use duplicate keys. The behavi
 Nulls are sometimes used to mark a value as "missing" or "not available". Instead of returning `null` as a value in JSON prefer to omit the field in the response. Empty strings (`""`) should similarly not be used to denote a missing string value as they can be confused for an explicit value of the empty string. It is fine to accept `null` in the request if they have special semantics such as unsetting a value. Otherwise fields that would have null or empty string values should also be omitted in the request.
 
 - DON'T:
-  ```json
+  ```yaml
   {"key1": 1, "key2": null} 
   ```
 - DON'T:
-  ```json
+  ```yaml
   {"key1": 1, "key2": ""}
   ```
 - DO:
-  ```json
+  ```yaml
   {"key1": 1}
   ```
 
@@ -107,20 +107,20 @@ Modelling objects that are a mix between static and dynamic keys is more complex
 
 An example of mixed static and dynamic keys can be seen in the `indices.field_usage_stats` endpoint response:
 
-```json
+```yaml
 {
   "_shards": {
     "total": 1,
     "successful": 1,
     "failed": 0
   },
-  "my-index": { ... }
+  "my-index": {...}
 }
 ```
 
 The key `"my-index"` is user-defined wheras `"_shards"` is static. This API would be easier to model by keeping all dynamic keys in their own object:
 
-```json
+```yaml
 {
   "_shards": {
     "total": 1,
@@ -128,14 +128,14 @@ The key `"my-index"` is user-defined wheras `"_shards"` is static. This API woul
     "failed": 0
   },
   "indices": {
-     "my-index": { ... }
+     "my-index": {...}
   }
 }
 ```
 
 Or better yet, to completely avoid using dynamic keys the user-defined value can be a property value within the object itself:
 
-```json
+```yaml
 {
   "_shards": {
     "total": 1,
@@ -152,7 +152,7 @@ Or better yet, to completely avoid using dynamic keys the user-defined value can
 
 Sometimes an API accepts an object but the keys are determined by what "kind/variant" of the object is intended. An example of this is aggregations, queries, and pipeline steps. There are two ways the Elasticsearch API handles this situation. The first method is using an **internal variant type** property like "type" with analyzers:
 
-```json
+```yaml
 {
   "type": "snowball",
   "stopwords": ["if", "and", "but"]
@@ -161,7 +161,7 @@ Sometimes an API accepts an object but the keys are determined by what "kind/var
 
 The second is using **external variants** where the inner object is wrapped with an object with a single key containing the kind of the inner object. This example changes the analyzer from above to use an external variant:
 
-```json
+```yaml
 {
   "snowball": {
     "stopwords": ["if", "and", "but"]
@@ -254,7 +254,7 @@ Many of our APIs support users supplying values in multiple different formats. F
 
 For the sake of user experience we should accept values in different formats. For values that accept multiple formats the format should be explicitly set by users so Elasticsearch can interpret and validate the value based on the given format. For example:
 
-```json
+```yaml
 {"type": "date", "format": "yyyy-MM-dd HH:mm:ss"}
 ```
 
