@@ -70,7 +70,7 @@ export class CompletionResult {
  * text: Optional, the text of the document, if requested
  */
 export class RankedDocument {
-  id: string
+  index: string
   score: string
   text?: string
 }
