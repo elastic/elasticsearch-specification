@@ -19,14 +19,13 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
+import { Id, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { double, integer, long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import {
   Duration,
-  DateTime,
   DurationValue,
   UnitMillis,
   UnitFloatMillis

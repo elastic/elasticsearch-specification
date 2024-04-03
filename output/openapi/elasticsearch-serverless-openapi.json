@@ -7169,7 +7169,21 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "overlapping": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.simulate_template:Overlapping"
+                      }
+                    },
+                    "template": {
+                      "$ref": "#/components/schemas/indices.simulate_template:Template"
+                    }
+                  },
+                  "required": [
+                    "template"
+                  ]
                 }
               }
             }
@@ -36684,15 +36698,7 @@
         ]
       },
       "_types.aggregations:Aggregation": {
-        "type": "object",
-        "properties": {
-          "meta": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
+        "type": "object"
       },
       "_types.aggregations:AutoDateHistogramAggregation": {
         "allOf": [

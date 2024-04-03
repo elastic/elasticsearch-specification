@@ -2853,8 +2853,7 @@ export interface AggregationsAggregateBase {
 export type AggregationsAggregateOrder = Partial<Record<Field, SortOrder>> | Partial<Record<Field, SortOrder>>[]
 
 export interface AggregationsAggregation {
-  meta?: Metadata
-  name?: string
+  [key: string]: never
 }
 
 export interface AggregationsAggregationContainer {
@@ -2997,7 +2996,8 @@ export interface AggregationsBoxplotAggregation extends AggregationsMetricAggreg
   compression?: double
 }
 
-export interface AggregationsBucketAggregationBase extends AggregationsAggregation {
+export interface AggregationsBucketAggregationBase {
+  [key: string]: never
 }
 
 export interface AggregationsBucketCorrelationAggregation extends AggregationsBucketPathAggregation {
@@ -3028,7 +3028,7 @@ export interface AggregationsBucketMetricValueAggregate extends AggregationsSing
   keys: string[]
 }
 
-export interface AggregationsBucketPathAggregation extends AggregationsAggregation {
+export interface AggregationsBucketPathAggregation {
   buckets_path?: AggregationsBucketsPath
 }
 
@@ -3040,7 +3040,7 @@ export interface AggregationsBucketSelectorAggregation extends AggregationsPipel
   script?: Script
 }
 
-export interface AggregationsBucketSortAggregation extends AggregationsAggregation {
+export interface AggregationsBucketSortAggregation {
   from?: integer
   gap_policy?: AggregationsGapPolicy
   size?: integer
@@ -3065,7 +3065,7 @@ export interface AggregationsCardinalityAggregation extends AggregationsMetricAg
 
 export type AggregationsCardinalityExecutionMode = 'global_ordinals' | 'segment_ordinals' | 'direct' | 'save_memory_heuristic' | 'save_time_heuristic'
 
-export interface AggregationsCategorizeTextAggregation extends AggregationsAggregation {
+export interface AggregationsCategorizeTextAggregation {
   field: Field
   max_unique_tokens?: integer
   max_matched_tokens?: integer
@@ -3615,7 +3615,7 @@ export interface AggregationsLongTermsBucketKeys extends AggregationsTermsBucket
 export type AggregationsLongTermsBucket = AggregationsLongTermsBucketKeys
   & { [property: string]: AggregationsAggregate | long | string }
 
-export interface AggregationsMatrixAggregation extends AggregationsAggregation {
+export interface AggregationsMatrixAggregation {
   fields?: Fields
   missing?: Record<Field, double>
 }
@@ -4072,7 +4072,7 @@ export interface AggregationsTTestAggregate extends AggregationsAggregateBase {
   value_as_string?: string
 }
 
-export interface AggregationsTTestAggregation extends AggregationsAggregation {
+export interface AggregationsTTestAggregation {
   a?: AggregationsTestPopulation
   b?: AggregationsTestPopulation
   type?: AggregationsTTestType
@@ -4209,7 +4209,7 @@ export interface AggregationsVariableWidthHistogramBucketKeys extends Aggregatio
 export type AggregationsVariableWidthHistogramBucket = AggregationsVariableWidthHistogramBucketKeys
   & { [property: string]: AggregationsAggregate | double | string | long }
 
-export interface AggregationsWeightedAverageAggregation extends AggregationsAggregation {
+export interface AggregationsWeightedAverageAggregation {
   format?: string
   value?: AggregationsWeightedAverageValue
   value_type?: AggregationsValueType
@@ -11212,6 +11212,8 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
 }
 
 export interface IndicesSimulateIndexTemplateResponse {
+  overlapping?: IndicesSimulateTemplateOverlapping[]
+  template: IndicesSimulateTemplateTemplate
 }
 
 export interface IndicesSimulateTemplateOverlapping {
