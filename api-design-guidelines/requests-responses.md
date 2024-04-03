@@ -111,7 +111,7 @@ This principle allows for simpler consumer code that neither has to remember sta
 
 An example of this is the datafeeds API which accepts either a string or list of strings for indices but always returns a list of strings:
 
-```json
+```yaml
 PUT /_ml/datafeeds/feed-id
 {
   "indices": "index-name", // Input is a string.
@@ -139,7 +139,7 @@ The `name` of the function is typically restricted to alphanumeric characters an
 
 Functions also only allow a single return / response type which is the "nominal successful response". Error responses can vary based on status code but at a minimum should match the following structure:
 
-```json
+```yaml
 {
   "type": "error type",
   "reason": "<human readable message>",
