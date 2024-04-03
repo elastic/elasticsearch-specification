@@ -19,13 +19,7 @@
 
 import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
-import {
-  IndexName,
-  Indices,
-  Metadata,
-  Name,
-  VersionNumber
-} from '@_types/common'
+import { Indices, Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { integer } from '@_types/Numeric'
 import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTemplateRequest'

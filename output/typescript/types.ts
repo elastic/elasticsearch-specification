@@ -1505,6 +1505,11 @@ export interface SearchLaplaceSmoothingModel {
   alpha: double
 }
 
+export interface SearchLearningToRank {
+  model_id?: string
+  params?: Record<string, any>
+}
+
 export interface SearchLinearInterpolationSmoothingModel {
   bigram_lambda: double
   trigram_lambda: double
@@ -1604,8 +1609,9 @@ export interface SearchRegexOptions {
 }
 
 export interface SearchRescore {
-  query: SearchRescoreQuery
   window_size?: integer
+  query?: SearchRescoreQuery
+  learning_to_rank?: SearchLearningToRank
 }
 
 export interface SearchRescoreQuery {

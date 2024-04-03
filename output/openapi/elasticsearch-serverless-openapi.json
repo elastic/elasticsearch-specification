@@ -39588,17 +39588,28 @@
         }
       },
       "_global.search._types:Rescore": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "$ref": "#/components/schemas/_global.search._types:RescoreQuery"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "window_size": {
+                "type": "number"
+              }
+            }
           },
-          "window_size": {
-            "type": "number"
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "$ref": "#/components/schemas/_global.search._types:RescoreQuery"
+              },
+              "learning_to_rank": {
+                "$ref": "#/components/schemas/_global.search._types:LearningToRank"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        },
-        "required": [
-          "query"
         ]
       },
       "_global.search._types:RescoreQuery": {
@@ -39632,6 +39643,22 @@
           "multiply",
           "total"
         ]
+      },
+      "_global.search._types:LearningToRank": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "The unique identifier of the trained model uploaded to Elasticsearch",
+            "type": "string"
+          },
+          "params": {
+            "description": "Named parameters to be passed to the query templates used for feature",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
       },
       "_types:SlicedScroll": {
         "type": "object",
