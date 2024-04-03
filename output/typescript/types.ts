@@ -11508,6 +11508,7 @@ export interface InferenceInferenceResult {
   text_embedding?: InferenceTextEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
   completion?: InferenceCompletionResult[]
+  rerank?: InferenceRankedDocument[]
 }
 
 export interface InferenceModelConfig {
@@ -11519,6 +11520,12 @@ export interface InferenceModelConfig {
 export interface InferenceModelConfigContainer extends InferenceModelConfig {
   model_id: string
   task_type: InferenceTaskType
+}
+
+export interface InferenceRankedDocument {
+  id: string
+  score: string
+  text?: string
 }
 
 export type InferenceServiceSettings = any
