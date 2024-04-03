@@ -49756,7 +49756,7 @@
       "inference._types:RankedDocument": {
         "type": "object",
         "properties": {
-          "id": {
+          "index": {
             "type": "string"
           },
           "score": {
@@ -49767,7 +49767,7 @@
           }
         },
         "required": [
-          "id",
+          "index",
           "score"
         ]
       },

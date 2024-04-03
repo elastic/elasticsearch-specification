@@ -11523,7 +11523,7 @@ export interface InferenceModelConfigContainer extends InferenceModelConfig {
 }
 
 export interface InferenceRankedDocument {
-  id: string
+  index: string
   score: string
   text?: string
 }
