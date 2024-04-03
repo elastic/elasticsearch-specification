@@ -1,12 +1,4 @@
----
-id: esTmApiGuidelinesNaming
-slug: /elasticsearch-team/api-guidelines/naming
-title: Naming
-image: https://source.unsplash.com/400x175/?Nature
-description: API guidelines - Naming
-date: 2022-06-26
-tags: ['elasticsearch','internal docs']
----
+# API guidelines - Naming
 
 Names are everywhere when designing an API. This section applies to:
 

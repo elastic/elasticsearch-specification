@@ -1,12 +1,4 @@
----
-id: esTmApiGuidelinesDataModelling
-slug: /elasticsearch-team/api-guidelines/data-modelling
-title: Data modelling
-image: https://source.unsplash.com/400x175/?Nature
-description: API guidelines - Data modelling
-date: 2022-06-26
-tags: ['elasticsearch','internal docs']
----
+# API guidelines - Data modelling
 
 Request and response bodies are typically encoded in JSON. The full JSON specification is defined in [RFC 8259](https://datatracker.ietf.org/doc/html/rfc8259).
 

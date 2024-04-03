@@ -1,7 +1,7 @@
 # Elasticsearch API Specification
 
 The **Elasticsearch API Specification** provides the contract for communication between client and server components within the Elasticsearch stack.
-With almost 500 API endpoints and around 3000 data types across the entire API surface, this project is vitally important for sustaining our engineering efforts at scale.
+With almost 500 API endpoints and around 3000 data types across the entire API surface, this project is a vitally important part of sustaining our engineering efforts at scale.
 
 The repository has the following structure:
 
