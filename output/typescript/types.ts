@@ -11202,19 +11202,6 @@ export interface IndicesShrinkResponse {
 
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   name?: Name
-  create?: boolean
-  master_timeout?: Duration
-  include_defaults?: boolean
-  body?: {
-    allow_auto_create?: boolean
-    index_patterns?: Indices
-    composed_of?: Name[]
-    template?: IndicesPutIndexTemplateIndexTemplateMapping
-    data_stream?: IndicesDataStreamVisibility
-    priority?: integer
-    version?: VersionNumber
-    _meta?: Metadata
-  }
 }
 
 export interface IndicesSimulateIndexTemplateResponse {
@@ -11232,7 +11219,17 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
   create?: boolean
   master_timeout?: Duration
   include_defaults?: boolean
-  body?: IndicesIndexTemplate
+  body?: {
+    allow_auto_create?: boolean
+    index_patterns?: Indices
+    composed_of?: Name[]
+    template?: IndicesPutIndexTemplateIndexTemplateMapping
+    data_stream?: IndicesDataStreamVisibility
+    priority?: integer
+    version?: VersionNumber
+    _meta?: Metadata
+    ignore_missing_component_templates?: string[]
+  }
 }
 
 export interface IndicesSimulateTemplateResponse {
