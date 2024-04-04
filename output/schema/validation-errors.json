@@ -1245,7 +1245,8 @@
     },
     "security.get_api_key": {
       "request": [
-        "Request: query parameter 'active_only' does not exist in the json spec"
+        "Request: query parameter 'active_only' does not exist in the json spec",
+        "Request: query parameter 'with_profile_uid' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1300,7 +1301,10 @@
       "response": []
     },
     "security.query_api_keys": {
-      "request": [],
+      "request": [
+        "Request: query parameter 'with_profile_uid' does not exist in the json spec",
+        "Request: query parameter 'typed_keys' does not exist in the json spec"
+      ],
       "response": [
         "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
       ]
