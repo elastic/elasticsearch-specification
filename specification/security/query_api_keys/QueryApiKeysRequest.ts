@@ -37,9 +37,22 @@ export interface Request extends RequestBase {
      * An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.
      * @availability stack since=8.5.0
      * @availability serverless
-
      */
     with_limited_by?: boolean
+    /**
+     * Determines whether to also retrieve the profile uid, for the API key owner principal, if it exists.
+     * @server_default false
+     * @availability stack since=8.14.0
+     * @availability serverless
+     */
+    with_profile_uid?: boolean
+    /**
+     * Determines whether aggregation names are prefixed by their respective types in the response.
+     * @server_default false
+     * @availability stack since=8.14.0
+     * @availability serverless
+     */
+    typed_keys?: boolean
   }
   body: {
     /**

@@ -16138,7 +16138,9 @@ export interface SecurityApiKey {
   invalidated?: boolean
   name: Name
   realm?: string
+  realm_type?: string
   username?: Username
+  profile_uid?: string
   metadata?: Metadata
   role_descriptors?: Record<string, SecurityRoleDescriptor>
   limited_by?: Record<string, SecurityRoleDescriptor>[]
@@ -16554,6 +16556,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
   username?: Username
   with_limited_by?: boolean
   active_only?: boolean
+  with_profile_uid?: boolean
 }
 
 export interface SecurityGetApiKeyResponse {
@@ -16935,6 +16938,8 @@ export interface SecurityQueryApiKeysApiKeyQueryContainer {
 
 export interface SecurityQueryApiKeysRequest extends RequestBase {
   with_limited_by?: boolean
+  with_profile_uid?: boolean
+  typed_keys?: boolean
   body?: {
     aggregations?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
     aggs?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>

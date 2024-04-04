@@ -15833,6 +15833,16 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "with_profile_uid",
+            "description": "Determines whether to also retrieve the profile uid, for the API key owner principal, if it exists.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -16099,6 +16109,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/security.query_api_keys#with_limited_by"
+          },
+          {
+            "$ref": "#/components/parameters/security.query_api_keys#with_profile_uid"
+          },
+          {
+            "$ref": "#/components/parameters/security.query_api_keys#typed_keys"
           }
         ],
         "requestBody": {
@@ -16123,6 +16139,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/security.query_api_keys#with_limited_by"
+          },
+          {
+            "$ref": "#/components/parameters/security.query_api_keys#with_profile_uid"
+          },
+          {
+            "$ref": "#/components/parameters/security.query_api_keys#typed_keys"
           }
         ],
         "requestBody": {
@@ -25378,6 +25400,26 @@
         "in": "query",
         "name": "with_limited_by",
         "description": "Return the snapshot of the owner user's role descriptors associated with the API key.\nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "security.query_api_keys#with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "Determines whether to also retrieve the profile uid, for the API key owner principal, if it exists.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "security.query_api_keys#typed_keys": {
+        "in": "query",
+        "name": "typed_keys",
+        "description": "Determines whether aggregation names are prefixed by their respective types in the response.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -57001,8 +57043,16 @@
             "description": "Realm name of the principal for which this API key was created.",
             "type": "string"
           },
+          "realm_type": {
+            "description": "Realm type of the principal for which this API key was created",
+            "type": "string"
+          },
           "username": {
             "$ref": "#/components/schemas/_types:Username"
+          },
+          "profile_uid": {
+            "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "type": "string"
           },
           "metadata": {
             "$ref": "#/components/schemas/_types:Metadata"
