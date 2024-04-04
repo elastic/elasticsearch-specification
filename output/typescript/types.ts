@@ -376,6 +376,7 @@ export interface GetGetResult<TDocument = unknown> {
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
+  force_synthetic_source?: boolean
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -691,6 +692,7 @@ export interface MgetOperation {
 
 export interface MgetRequest extends RequestBase {
   index?: IndexName
+  force_synthetic_source?: boolean
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -1184,6 +1186,7 @@ export interface SearchRequest extends RequestBase {
   size?: integer
   from?: integer
   sort?: string | string[]
+  force_synthetic_source?: boolean
   body?: {
     aggregations?: Record<string, AggregationsAggregationContainer>
     aggs?: Record<string, AggregationsAggregationContainer>
