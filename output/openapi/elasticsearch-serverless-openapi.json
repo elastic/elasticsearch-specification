@@ -7083,13 +7083,33 @@
           {
             "in": "path",
             "name": "name",
-            "description": "Index or template name to simulate",
+            "description": "Name of the index to simulate",
             "required": true,
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:Name"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_defaults",
+            "description": "If true, returns all relevant default configurations for the index template.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {

@@ -11201,7 +11201,9 @@ export interface IndicesShrinkResponse {
 }
 
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
-  name?: Name
+  name: Name
+  master_timeout?: Duration
+  include_defaults?: boolean
 }
 
 export interface IndicesSimulateIndexTemplateResponse {

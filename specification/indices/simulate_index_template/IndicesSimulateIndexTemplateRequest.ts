@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  *
@@ -28,7 +29,21 @@ import { Name } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Index or template name to simulate */
-    name?: Name
+    /** Name of the index to simulate */
+    name: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    include_defaults?: boolean
   }
 }
