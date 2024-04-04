@@ -37439,11 +37439,7 @@
           "min": {
             "$ref": "#/components/schemas/_types.aggregations:FieldDateMath"
           }
-        },
-        "required": [
-          "max",
-          "min"
-        ]
+        }
       },
       "_types.aggregations:FieldDateMath": {
         "description": "A date range limit, represented either as a DateMath expression or a number expressed\naccording to the target field's precision.",
@@ -38074,11 +38070,7 @@
             "description": "Minimum value for the bound.",
             "type": "number"
           }
-        },
-        "required": [
-          "max",
-          "min"
-        ]
+        }
       },
       "_types.aggregations:IpRangeAggregation": {
         "allOf": [
