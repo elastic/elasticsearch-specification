@@ -16922,6 +16922,7 @@ export interface SecurityQueryApiKeysApiKeyQueryContainer {
 
 export interface SecurityQueryApiKeysRequest extends RequestBase {
   with_limited_by?: boolean
+  typed_keys?: boolean
   body?: {
     aggregations?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>
     aggs?: Record<string, SecurityQueryApiKeysApiKeyAggregationContainer>

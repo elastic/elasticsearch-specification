@@ -1300,7 +1300,9 @@
       "response": []
     },
     "security.query_api_keys": {
-      "request": [],
+      "request": [
+        "Request: query parameter 'typed_keys' does not exist in the json spec"
+      ],
       "response": [
         "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
       ]
