@@ -1506,7 +1506,7 @@ export interface SearchLaplaceSmoothingModel {
 }
 
 export interface SearchLearningToRank {
-  model_id?: string
+  model_id: string
   params?: Record<string, any>
 }
 
