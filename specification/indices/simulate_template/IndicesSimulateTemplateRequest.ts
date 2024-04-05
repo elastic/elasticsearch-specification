@@ -110,5 +110,10 @@ export interface Request extends RequestBase {
      * references a component template that might not exist
      */
     ignore_missing_component_templates?: string[]
+    /**
+     * Marks this index template as deprecated. When creating or updating a non-deprecated index template
+     * that uses deprecated components, Elasticsearch will emit a deprecation warning.
+     */
+    deprecated?: boolean
   }
 }

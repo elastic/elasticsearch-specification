@@ -1567,6 +1567,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1597,6 +1600,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -5814,6 +5820,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.put_index_template#create"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#cause"
           }
         ],
         "requestBody": {
@@ -5841,6 +5853,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.put_index_template#create"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#cause"
           }
         ],
         "requestBody": {
@@ -6737,16 +6755,13 @@
             "$ref": "#/components/parameters/indices.put_template#create"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#flat_settings"
-          },
-          {
             "$ref": "#/components/parameters/indices.put_template#master_timeout"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#timeout"
+            "$ref": "#/components/parameters/indices.put_template#order"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#order"
+            "$ref": "#/components/parameters/indices.put_template#cause"
           }
         ],
         "requestBody": {
@@ -6776,16 +6791,13 @@
             "$ref": "#/components/parameters/indices.put_template#create"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#flat_settings"
-          },
-          {
             "$ref": "#/components/parameters/indices.put_template#master_timeout"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#timeout"
+            "$ref": "#/components/parameters/indices.put_template#order"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#order"
+            "$ref": "#/components/parameters/indices.put_template#cause"
           }
         ],
         "requestBody": {
@@ -21633,6 +21645,15 @@
         },
         "style": "form"
       },
+      "cluster.put_component_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "count#index": {
         "in": "path",
         "name": "index",
@@ -22851,6 +22872,26 @@
         },
         "style": "form"
       },
+      "indices.put_index_template#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "indices.put_index_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "description": "User defined reason for creating/updating the index template",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "indices.put_mapping#index": {
         "in": "path",
         "name": "index",
@@ -23024,30 +23065,10 @@
         },
         "style": "form"
       },
-      "indices.put_template#flat_settings": {
-        "in": "query",
-        "name": "flat_settings",
-        "description": "If `true`, returns settings in flat format.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "indices.put_template#master_timeout": {
         "in": "query",
         "name": "master_timeout",
         "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
-      "indices.put_template#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -23061,6 +23082,15 @@
         "deprecated": false,
         "schema": {
           "type": "number"
+        },
+        "style": "form"
+      },
+      "indices.put_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
         },
         "style": "form"
       },
@@ -25826,10 +25856,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "allow_auto_create": {
-                  "description": "This setting overrides the value of the `action.auto_create_index` cluster setting.\nIf set to `true` in a template, then indices can be automatically created using that\ntemplate even if auto-creation of indices is disabled via `actions.auto_create_index`.\nIf set to `false` then data streams matching the template must always be explicitly created.",
-                  "type": "boolean"
-                },
                 "template": {
                   "$ref": "#/components/schemas/indices._types:IndexState"
                 },
@@ -26149,6 +26175,21 @@
                 },
                 "_meta": {
                   "$ref": "#/components/schemas/_types:Metadata"
+                },
+                "allow_auto_create": {
+                  "description": "This setting overrides the value of the `action.auto_create_index` cluster setting.\nIf set to `true` in a template, then indices can be automatically created using that template even if auto-creation of indices is disabled via `actions.auto_create_index`.\nIf set to `false`, then indices or data streams matching the template must always be explicitly created, and may never be automatically created.",
+                  "type": "boolean"
+                },
+                "ignore_missing_component_templates": {
+                  "description": "The configuration option ignore_missing_component_templates can be used when an index template\nreferences a component template that might not exist",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "deprecated": {
+                  "description": "Marks this index template as deprecated. When creating or updating a non-deprecated index template\nthat uses deprecated components, Elasticsearch will emit a deprecation warning.",
+                  "type": "boolean"
                 }
               }
             }
@@ -26361,6 +26402,10 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "deprecated": {
+                  "description": "Marks this index template as deprecated. When creating or updating a non-deprecated index template\nthat uses deprecated components, Elasticsearch will emit a deprecation warning.",
+                  "type": "boolean"
                 }
               }
             }
