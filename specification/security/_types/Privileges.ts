@@ -62,6 +62,9 @@ export enum ClusterPrivilege {
    */
   manage_ilm,
   manage_index_templates,
+  /**
+   * @availability stack
+   */
   manage_ingest_pipelines,
   manage_logstash_pipelines,
   manage_ml,
@@ -71,7 +74,13 @@ export enum ClusterPrivilege {
   manage_oidc,
   manage_own_api_key,
   manage_pipeline,
+  /**
+   * @availability stack
+   */
   manage_rollup,
+  /**
+   * @availability stack
+   */
   manage_saml,
   manage_security,
   /**
@@ -97,7 +106,13 @@ export enum ClusterPrivilege {
   manage_watcher,
   monitor,
   monitor_ml,
+  /**
+   * @availability stack
+   */
   monitor_rollup,
+  /**
+   * @availability stack
+   */
   monitor_snapshot,
   monitor_text_structure,
   monitor_transform,
