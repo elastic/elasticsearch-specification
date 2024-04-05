@@ -18,7 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata } from '@_types/common'
 import { integer, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
