@@ -36,7 +36,7 @@ export class RequestBase implements CommonQueryParameters {}
 export class WriteResponseBase {
   _id: Id
   _index: IndexName
-  _primary_term?: long
+  _primary_term: long
   result: Result
   _seq_no: SequenceNumber
   _shards: ShardStatistics
