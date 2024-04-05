@@ -89,7 +89,7 @@ export class LearningToRank {
   /**
    * The unique identifier of the trained model uploaded to Elasticsearch
    */
-  model_id?: string
+  model_id: string
   /**
    * Named parameters to be passed to the query templates used for feature
    */
