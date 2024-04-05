@@ -87,5 +87,10 @@ export interface Request extends RequestBase {
      * To unset `_meta`, replace the template without specifying this information.
      */
     _meta?: Metadata
+    /**
+     * Marks this index template as deprecated. When creating or updating a non-deprecated index template
+     * that uses deprecated components, Elasticsearch will emit a deprecation warning.
+     */
+    deprecated?: boolean
   }
 }
