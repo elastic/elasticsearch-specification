@@ -47980,6 +47980,7 @@
         "required": [
           "_id",
           "_index",
+          "_primary_term",
           "result",
           "_seq_no",
           "_shards",
