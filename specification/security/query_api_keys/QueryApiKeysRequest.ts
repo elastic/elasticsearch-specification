@@ -40,6 +40,13 @@ export interface Request extends RequestBase {
 
      */
     with_limited_by?: boolean
+    /**
+     * Determines whether aggregation names are prefixed by their respective types in the response.
+     * @server_default false
+     * @availability stack since=8.13.2
+     * @availability serverless
+     */
+    typed_keys?: boolean
   }
   body: {
     /**
