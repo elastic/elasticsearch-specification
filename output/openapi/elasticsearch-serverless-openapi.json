@@ -37462,11 +37462,7 @@
           "min": {
             "$ref": "#/components/schemas/_types.aggregations:FieldDateMath"
           }
-        },
-        "required": [
-          "max",
-          "min"
-        ]
+        }
       },
       "_types.aggregations:FieldDateMath": {
         "description": "A date range limit, represented either as a DateMath expression or a number expressed\naccording to the target field's precision.",
@@ -38097,11 +38093,7 @@
             "description": "Minimum value for the bound.",
             "type": "number"
           }
-        },
-        "required": [
-          "max",
-          "min"
-        ]
+        }
       },
       "_types.aggregations:IpRangeAggregation": {
         "allOf": [
@@ -39596,6 +39588,9 @@
           "initial_buffer": {
             "description": "Specifies the number of individual documents that will be stored in memory on a shard before the initial bucketing algorithm is run.\nDefaults to `min(10 * shard_size, 50000)`.",
             "type": "number"
+          },
+          "script": {
+            "$ref": "#/components/schemas/_types:Script"
           }
         }
       },
@@ -39747,6 +39742,7 @@
         "type": "string",
         "enum": [
           "boolean",
+          "composite",
           "date",
           "double",
           "geo_point",
@@ -42461,6 +42457,12 @@
                 "enum": [
                   "html_strip"
                 ]
+              },
+              "escaped_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
@@ -45819,7 +45821,7 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "{dynamic_property}"
+                  "{dynamic_type}"
                 ]
               },
               "enabled": {

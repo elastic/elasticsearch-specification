@@ -3247,8 +3247,8 @@ export interface AggregationsEwmaMovingAverageAggregation extends AggregationsMo
 }
 
 export interface AggregationsExtendedBounds<T = unknown> {
-  max: T
-  min: T
+  max?: T
+  min?: T
 }
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
@@ -4195,6 +4195,7 @@ export interface AggregationsVariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
+  script?: Script
 }
 
 export interface AggregationsVariableWidthHistogramBucketKeys extends AggregationsMultiBucketBase {
@@ -4344,6 +4345,7 @@ export interface AnalysisFingerprintTokenFilter extends AnalysisTokenFilterBase 
 
 export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
   type: 'html_strip'
+  escaped_tags?: string[]
 }
 
 export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
@@ -4970,7 +4972,7 @@ export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
 export type MappingDynamicMapping = boolean | 'strict' | 'runtime' | 'true' | 'false'
 
 export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
-  type: '{dynamic_property}'
+  type: '{dynamic_type}'
   enabled?: boolean
   null_value?: FieldValue
   boost?: double
@@ -5229,7 +5231,7 @@ export interface MappingRuntimeFieldFetchFields {
   format?: string
 }
 
-export type MappingRuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long' | 'lookup'
+export type MappingRuntimeFieldType = 'boolean' | 'composite' | 'date' | 'double' | 'geo_point' | 'ip' | 'keyword' | 'long' | 'lookup'
 
 export type MappingRuntimeFields = Record<Field, MappingRuntimeField>
 
@@ -9646,7 +9648,7 @@ export interface IlmMoveToStepStepKey {
 }
 
 export interface IlmPutLifecycleRequest extends RequestBase {
-  name: Name
+  name?: Name
   master_timeout?: Duration
   timeout?: Duration
   body?: {
