@@ -19,12 +19,13 @@
 
 import { IndexRouting } from '@indices/_types/IndexRouting'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ByteSize, Name, VersionString } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -67,7 +68,7 @@ export class NodeInfo {
 export class NodeInfoSettings {
   cluster: NodeInfoSettingsCluster
   node: NodeInfoSettingsNode
-  path: NodeInfoPath
+  path?: NodeInfoPath
   repositories?: NodeInfoRepositories
   discovery?: NodeInfoDiscover
   action?: NodeInfoAction
@@ -131,7 +132,7 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  initial_master_nodes?: string
+  initial_master_nodes?: string[]
   /** @since 7.16.0 */
   deprecation_indexing?: DeprecationIndexing
 }
@@ -151,9 +152,9 @@ export class NodeInfoSettingsNode {
 }
 
 export class NodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
@@ -165,8 +166,12 @@ export class NodeInfoRepositoriesUrl {
   allowed_urls: string
 }
 
-export class NodeInfoDiscover {
-  seed_hosts: string
+export class NodeInfoDiscover
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  seed_hosts?: string[]
+  type?: string
+  seed_providers?: string[]
 }
 
 export class NodeInfoAction {

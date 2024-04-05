@@ -33,10 +33,17 @@ import {
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
-import { DateString, Time, DateMath } from '@_types/Time'
+import {
+  DateString,
+  Time,
+  DateMath,
+  TimeZone,
+  DateMathTime
+} from '@_types/Time'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
+import { ValueType } from '@_types/aggregations/metric'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -84,10 +91,42 @@ export class CompositeAggregation extends BucketAggregationBase {
 }
 
 export class CompositeAggregationSource {
-  terms?: TermsAggregation
-  histogram?: HistogramAggregation
-  date_histogram?: DateHistogramAggregation
-  geotile_grid?: GeoTileGridAggregation
+  terms?: CompositeTermsAggregation
+  histogram?: CompositeHistogramAggregation
+  date_histogram?: CompositeDateHistogramAggregation
+  geotile_grid?: CompositeGeoTileGridAggregation
+}
+
+export class CompositeAggregationBase {
+  /** Either `field` or `script` must be present */
+  field?: Field
+  missing_bucket?: boolean
+  missing_order?: MissingOrder
+  /** Either `field` or `script` must be present */
+  script?: Script
+  value_type?: ValueType
+  order?: SortOrder
+}
+
+export class CompositeTermsAggregation extends CompositeAggregationBase {}
+
+export class CompositeHistogramAggregation extends CompositeAggregationBase {
+  interval: double
+}
+
+export class CompositeDateHistogramAggregation extends CompositeAggregationBase {
+  format?: string
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  calendar_interval?: DateMathTime
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  fixed_interval?: DateMathTime
+  offset?: Time
+  time_zone?: TimeZone
+}
+
+export class CompositeGeoTileGridAggregation extends CompositeAggregationBase {
+  precision?: integer
+  bounds?: GeoBounds
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {

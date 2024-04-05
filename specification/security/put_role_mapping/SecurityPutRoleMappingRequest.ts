@@ -37,7 +37,9 @@ export interface Request extends RequestBase {
   body: {
     enabled?: boolean
     metadata?: Metadata
+    // Exactly one of roles or role_templates must be specified
     roles?: string[]
+    // Exactly one of roles or role_templates must be specified
     role_templates?: RoleTemplate[]
     rules?: RoleMappingRule
     run_as?: string[]

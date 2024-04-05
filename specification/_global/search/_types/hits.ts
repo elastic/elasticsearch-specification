@@ -122,7 +122,7 @@ export class InnerHits {
   fields?: Fields
   sort?: Sort
   _source?: SourceConfig
-  stored_field?: Fields
+  stored_fields?: Fields
   /** @server_default false */
   track_scores?: boolean
   version?: boolean
