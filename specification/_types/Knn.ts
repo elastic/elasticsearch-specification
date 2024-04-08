@@ -24,6 +24,33 @@ import { InnerHits } from '@global/search/_types/hits'
 
 export type QueryVector = float[]
 
+/* KnnSearch (used in kNN search) and KnnQuery (ued in kNN queries) are close
+ * but different enough to require different classes */
+
+export interface KnnSearch {
+  /** The name of the vector field to search against */
+  field: Field
+  /** The query vector */
+  query_vector?: QueryVector
+  /** The query vector builder. You must provide a query_vector_builder or query_vector, but not both. */
+  query_vector_builder?: QueryVectorBuilder
+  /** The final number of nearest neighbors to return as top hits */
+  k?: long
+  /** The number of nearest neighbor candidates to consider per shard */
+  num_candidates?: long
+  /** Boost value to apply to kNN scores */
+  boost?: float
+  /** Filters for the kNN search query */
+  filter?: QueryContainer | QueryContainer[]
+  /** The minimum similarity for a vector to be considered a match */
+  similarity?: float
+  /**
+   * If defined, each search hit will contain inner hits.
+   * @doc_id knn-inner-hits
+   */
+  inner_hits?: InnerHits
+}
+
 export interface KnnQuery {
   /** The name of the vector field to search against */
   field: Field

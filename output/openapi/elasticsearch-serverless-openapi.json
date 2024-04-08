@@ -25673,12 +25673,12 @@
                   "description": "Defines the approximate kNN search to run.",
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/_types:KnnQuery"
+                      "$ref": "#/components/schemas/_types:KnnSearch"
                     },
                     {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types:KnnQuery"
+                        "$ref": "#/components/schemas/_types:KnnSearch"
                       }
                     }
                   ]
@@ -26804,12 +26804,12 @@
                   "description": "Defines the approximate kNN search to run.",
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/_types:KnnQuery"
+                      "$ref": "#/components/schemas/_types:KnnSearch"
                     },
                     {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types:KnnQuery"
+                        "$ref": "#/components/schemas/_types:KnnSearch"
                       }
                     }
                   ]
@@ -39612,6 +39612,56 @@
             "$ref": "#/components/schemas/_types:Script"
           }
         }
+      },
+      "_types:KnnSearch": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "query_vector": {
+            "$ref": "#/components/schemas/_types:QueryVector"
+          },
+          "query_vector_builder": {
+            "$ref": "#/components/schemas/_types:QueryVectorBuilder"
+          },
+          "k": {
+            "description": "The final number of nearest neighbors to return as top hits",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard",
+            "type": "number"
+          },
+          "boost": {
+            "description": "Boost value to apply to kNN scores",
+            "type": "number"
+          },
+          "filter": {
+            "description": "Filters for the kNN search query",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                }
+              }
+            ]
+          },
+          "similarity": {
+            "description": "The minimum similarity for a vector to be considered a match",
+            "type": "number"
+          },
+          "inner_hits": {
+            "$ref": "#/components/schemas/_global.search._types:InnerHits"
+          }
+        },
+        "required": [
+          "field"
+        ]
       },
       "_global.search._types:Rescore": {
         "allOf": [
@@ -55878,12 +55928,12 @@
             "description": "Defines the approximate kNN search to run.",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/_types:KnnQuery"
+                "$ref": "#/components/schemas/_types:KnnSearch"
               },
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types:KnnQuery"
+                  "$ref": "#/components/schemas/_types:KnnSearch"
                 }
               }
             ]
