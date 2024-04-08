@@ -42,100 +42,40 @@ export class ApplicationPrivileges {
 export enum ClusterPrivilege {
   all,
   cancel_task,
-  /**
-   * @availability stack
-   */
   create_snapshot,
-  /**
-   * @availability stack
-   */
   grant_api_key,
   manage,
   manage_api_key,
-  /**
-   * @availability stack
-   */
   manage_ccr,
   manage_enrich,
-  /**
-   * @availability stack
-   */
   manage_ilm,
   manage_index_templates,
-  /**
-   * @availability stack
-   */
   manage_ingest_pipelines,
   manage_logstash_pipelines,
   manage_ml,
-  /**
-   * @availability stack
-   */
   manage_oidc,
   manage_own_api_key,
   manage_pipeline,
-  /**
-   * @availability stack
-   */
   manage_rollup,
-  /**
-   * @availability stack
-   */
   manage_saml,
   manage_security,
-  /**
-   * @availability stack
-   */
   manage_service_account,
-  /**
-   * @availability stack
-   */
   manage_slm,
-  /**
-   * @availability stack
-   */
   manage_token,
   manage_transform,
-  /**
-   * @availability stack
-   */
   manage_user_profile,
-  /**
-   * @availability stack
-   */
   manage_watcher,
   monitor,
   monitor_ml,
-  /**
-   * @availability stack
-   */
   monitor_rollup,
-  /**
-   * @availability stack
-   */
   monitor_snapshot,
   monitor_text_structure,
   monitor_transform,
-  /**
-   * @availability stack
-   */
   monitor_watcher,
-  /**
-   * @availability stack
-   */
   read_ccr,
-  /**
-   * @availability stack
-   */
   read_ilm,
   read_pipeline,
-  /**
-   * @availability stack
-   */
   read_slm,
-  /**
-   * @availability stack
-   */
   transport_client
 }
 
@@ -160,7 +100,6 @@ export class IndicesPrivileges {
   /**
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    * @server_default false
-   * @availability stack
    */
   allow_restricted_indices?: boolean
 }
@@ -237,23 +176,11 @@ export enum IndexPrivilege {
   index,
   maintenance,
   manage,
-  /**
-   * @availability stack
-   */
   manage_follow_index,
-  /**
-   * @availability stack
-   */
   manage_ilm,
-  /**
-   * @availability stack
-   */
   manage_leader_index,
   monitor,
   read,
-  /**
-   * @availability stack
-   */
   read_cross_cluster,
   view_index_metadata,
   write
