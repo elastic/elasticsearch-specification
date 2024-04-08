@@ -143,10 +143,7 @@ export class MoreLikeThisQuery extends QueryBase {
    * @server_default 0
    */
   min_word_length?: integer
-  /**
-   * Overrides the default analyzer.
-   */
-  per_field_analyzer?: Dictionary<Field, string>
+
   routing?: Routing
   /**
    * An array of stop words.
@@ -176,6 +173,9 @@ export class LikeDocument {
    * Index of a document.
    */
   _index?: IndexName
+  /**
+   * Overrides the default analyzer.
+   */
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
   version?: VersionNumber
