@@ -496,9 +496,6 @@
     },
     "connector.list": {
       "request": [
-        "Request: missing json spec query parameter 'index_name'",
-        "Request: missing json spec query parameter 'connector_name'",
-        "Request: missing json spec query parameter 'service_type'",
         "Request: missing json spec query parameter 'query'"
       ],
       "response": []

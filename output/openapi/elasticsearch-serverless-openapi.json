@@ -2129,6 +2129,36 @@
               "type": "number"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "index_name",
+            "description": "A comma-separated list of connector index names to fetch connector documents for",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Fields"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "connector_name",
+            "description": "A comma-separated list of connector names to fetch connector documents for",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Fields"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "service_type",
+            "description": "A comma-separated list of connector service types to fetch connector documents for",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Fields"
+            },
+            "style": "form"
           }
         ],
         "responses": {

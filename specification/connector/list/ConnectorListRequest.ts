@@ -17,6 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
+import { Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -36,5 +37,17 @@ export interface Request extends RequestBase {
      * Specifies a max number of results to get
      */
     size?: integer
+    /**
+     * A comma-separated list of connector index names to fetch connector documents for
+     */
+    index_name?: Fields
+    /**
+     * A comma-separated list of connector names to fetch connector documents for
+     */
+    connector_name?: Fields
+    /**
+     * A comma-separated list of connector service types to fetch connector documents for
+     */
+    service_type?: Fields
   }
 }

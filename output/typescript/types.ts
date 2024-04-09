@@ -9308,6 +9308,9 @@ export interface ConnectorLastSyncResponse {
 export interface ConnectorListRequest extends RequestBase {
   from?: integer
   size?: integer
+  index_name?: Fields
+  connector_name?: Fields
+  service_type?: Fields
 }
 
 export interface ConnectorListResponse {
