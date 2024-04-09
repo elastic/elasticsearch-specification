@@ -2027,6 +2027,8 @@ export interface SpecUtilsBaseNode {
   transport_address: TransportAddress
 }
 
+export type SpecUtilsNullValue = null
+
 export type SpecUtilsPipeSeparatedFlags<T = unknown> = T | string
 
 export type SpecUtilsStringified<T = unknown> = T | string
@@ -9071,24 +9073,24 @@ export interface ConnectorConnector {
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
   description?: string
-  error: string | null
+  error: ConnectorNullable<string>
   features: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
-  index_name: string
+  index_name: ConnectorNullable<string>
   is_native: boolean
   language?: string
-  last_access_control_sync_error?: string | null
-  last_access_control_sync_scheduled_at?: string | null
-  last_access_control_sync_status?: ConnectorSyncStatus | null
-  last_deleted_document_count?: long | null
-  last_incremental_sync_scheduled_at?: string | null
-  last_indexed_document_count?: long | null
-  last_seen?: string | null
-  last_sync_error?: string | null
-  last_sync_scheduled_at?: string | null
-  last_sync_status?: ConnectorSyncStatus | null
-  last_synced?: string | null
+  last_access_control_sync_error?: ConnectorNullable<string>
+  last_access_control_sync_scheduled_at?: ConnectorNullable<string>
+  last_access_control_sync_status?: ConnectorNullable<ConnectorSyncStatus>
+  last_deleted_document_count?: long
+  last_incremental_sync_scheduled_at?: ConnectorNullable<string>
+  last_indexed_document_count?: long
+  last_seen?: ConnectorNullable<string>
+  last_sync_error?: ConnectorNullable<string>
+  last_sync_scheduled_at?: ConnectorNullable<string>
+  last_sync_status?: ConnectorNullable<ConnectorSyncStatus>
+  last_synced?: ConnectorNullable<string>
   name?: string
   pipeline?: ConnectorIngestPipelineParams
   scheduling: ConnectorSchedulingConfiguration
@@ -9209,12 +9211,12 @@ export interface ConnectorFilteringValidation {
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorGreaterThanValidation {
-  type: 'greater_than'
+  type: '"greater_than"'
   constraint: double
 }
 
 export interface ConnectorIncludedInValidation {
-  type: 'included_in'
+  type: '"included_in"'
   constraint: string
 }
 
@@ -9226,24 +9228,26 @@ export interface ConnectorIngestPipelineParams {
 }
 
 export interface ConnectorLessThanValidation {
-  type: 'less_than'
+  type: '"less_than"'
   constraint: double
 }
 
 export interface ConnectorListTypeValidation {
-  type: 'list_type'
+  type: '"list_type"'
   constraint: ScalarValue[]
 }
 
+export type ConnectorNullable<T = unknown> = T | SpecUtilsNullValue
+
 export interface ConnectorRegexValidation {
-  type: 'regex'
+  type: '"regex"'
   constraint: string
 }
 
 export interface ConnectorSchedulingConfiguration {
-  access_control: ConnectorConnectorScheduling
-  full: ConnectorConnectorScheduling
-  incremental: ConnectorConnectorScheduling
+  access_control?: ConnectorConnectorScheduling
+  full?: ConnectorConnectorScheduling
+  incremental?: ConnectorConnectorScheduling
 }
 
 export interface ConnectorSelectOption {

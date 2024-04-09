@@ -7,14 +7,20 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": ["application/json"],
-      "content_type": ["application/json"]
+      "accept": [
+        "application/json"
+      ],
+      "content_type": [
+        "application/json"
+      ]
     },
     "url": {
       "paths": [
         {
           "path": "/_connector/{connector_id}/_last_sync",
-          "methods": ["PUT"],
+          "methods": [
+            "PUT"
+          ],
           "parts": {
             "connector_id": {
               "type": "string",

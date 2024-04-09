@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Stringified } from '@spec_utils/Stringified'
+import { Stringified } from "@spec_utils/Stringified";
 
 /**
  * A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent
  * to a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset
  * it to its default value.
  */
-type NullValue = null
+type NullValue = null;
 
 /**
  * Settings in Elasticsearch are values that can be reset to their default by setting them to the `null` value.
@@ -32,4 +32,4 @@ type NullValue = null
  * @es_quirk Because of how they are implemented internally, settings are always returned as strings, even
  *           if their value has been set using a primitive type.
  */
-type Setting<T> = Stringified<T> | NullValue
+type Setting<T> = Stringified<T> | NullValue;
