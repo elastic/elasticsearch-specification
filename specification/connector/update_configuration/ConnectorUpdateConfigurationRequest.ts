@@ -19,6 +19,8 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { ConnectorConfiguration } from '../_types/Connector'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Updates the configuration field in the connector document
@@ -39,6 +41,7 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name configuration */
   body: {
-    configuration: ConnectorConfiguration
+    configuration?: ConnectorConfiguration
+    values?: Dictionary<string, UserDefinedValue>
   }
 }

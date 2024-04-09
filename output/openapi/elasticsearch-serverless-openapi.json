@@ -1926,7 +1926,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2038,140 +2038,39 @@
                 "type": "object",
                 "properties": {
                   "last_access_control_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_access_control_sync_scheduled_at": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_access_control_sync_status": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/connector._types:SyncStatus"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/connector._types:SyncStatus"
                   },
                   "last_deleted_document_count": {
-                    "oneOf": [
-                      {
-                        "type": "number"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "type": "number"
                   },
                   "last_incremental_sync_scheduled_at": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_indexed_document_count": {
-                    "oneOf": [
-                      {
-                        "type": "number"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "type": "number"
                   },
                   "last_seen": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_sync_scheduled_at": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_sync_status": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/connector._types:SyncStatus"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/connector._types:SyncStatus"
                   },
                   "last_synced": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "last_access_control_sync_error",
-                  "last_access_control_sync_scheduled_at",
-                  "last_access_control_sync_status",
-                  "last_deleted_document_count",
-                  "last_incremental_sync_scheduled_at",
-                  "last_indexed_document_count",
-                  "last_seen",
-                  "last_sync_error",
-                  "last_sync_scheduled_at",
-                  "last_sync_status",
-                  "last_synced"
-                ]
+                }
               }
             }
           },
@@ -2280,7 +2179,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2325,6 +2224,70 @@
         }
       }
     },
+    "/_connector/{connector_id}/_api_key_id": {
+      "put": {
+        "tags": [
+          "connector.update_api_key_id"
+        ],
+        "summary": "Updates the API key id and/or API key secret id fields in the connector document.",
+        "description": "Updates the API key id and/or API key secret id fields in the connector document.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-api-key-id-api.html"
+        },
+        "operationId": "connector-update-api-key-id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api_key_id": {
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                  },
+                  "api_key_secret_id": {
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_connector/{connector_id}/_configuration": {
       "put": {
         "tags": [
@@ -2357,11 +2320,14 @@
                 "properties": {
                   "configuration": {
                     "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
+                  },
+                  "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
                   }
-                },
-                "required": [
-                  "configuration"
-                ]
+                }
               }
             }
           },
@@ -2420,15 +2386,7 @@
                 "type": "object",
                 "properties": {
                   "error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "nullable": true,
-                        "type": "string"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   }
                 },
                 "required": [
@@ -2528,6 +2486,70 @@
         }
       }
     },
+    "/_connector/{connector_id}/_index_name": {
+      "put": {
+        "tags": [
+          "connector.update_index_name"
+        ],
+        "summary": "Updates the index name of the connector.",
+        "description": "Updates the index name of the connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-index-name-api.html"
+        },
+        "operationId": "connector-update-index-name",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "index_name": {
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                  }
+                },
+                "required": [
+                  "index_name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_connector/{connector_id}/_name": {
       "put": {
         "tags": [
@@ -2567,6 +2589,70 @@
                 },
                 "required": [
                   "name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_native": {
+      "put": {
+        "tags": [
+          "connector.update_native"
+        ],
+        "summary": "Updates the is_native flag of the connector.",
+        "description": "Updates the is_native flag of the connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-native-api.html"
+        },
+        "operationId": "connector-update-native",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "is_native": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "is_native"
                 ]
               }
             }
@@ -2695,6 +2781,134 @@
                 },
                 "required": [
                   "scheduling"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_service_type": {
+      "put": {
+        "tags": [
+          "connector.update_service_type"
+        ],
+        "summary": "Updates the service type of the connector.",
+        "description": "Updates the service type of the connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-service-type-api.html"
+        },
+        "operationId": "connector-update-service-type",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "service_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "service_type"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_status": {
+      "put": {
+        "tags": [
+          "connector.update_status"
+        ],
+        "summary": "Updates the status of the connector.",
+        "description": "Updates the status of the connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-status-api.html"
+        },
+        "operationId": "connector-update-status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "$ref": "#/components/schemas/connector._types:ConnectorStatus"
+                  }
+                },
+                "required": [
+                  "status"
                 ]
               }
             }
@@ -48934,15 +49148,7 @@
             "type": "string"
           },
           "error": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
           },
           "features": {
             "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
@@ -48957,7 +49163,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
           },
           "is_native": {
             "type": "boolean"
@@ -48966,125 +49172,37 @@
             "type": "string"
           },
           "last_access_control_sync_error": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
           },
           "last_access_control_sync_scheduled_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "last_access_control_sync_status": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/connector._types:SyncStatus"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/connector._types:SyncStatus"
           },
           "last_deleted_document_count": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           },
           "last_incremental_sync_scheduled_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "last_indexed_document_count": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           },
           "last_seen": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
           },
           "last_sync_error": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
           },
           "last_sync_scheduled_at": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "last_sync_status": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/connector._types:SyncStatus"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "$ref": "#/components/schemas/connector._types:SyncStatus"
           },
           "last_synced": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "name": {
             "type": "string"
@@ -49446,6 +49564,22 @@
           }
         }
       },
+      "_spec_utils:WithNullValuestring": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
+      },
       "connector._types:ConnectorFeatures": {
         "type": "object",
         "properties": {
@@ -49703,12 +49837,7 @@
           "incremental": {
             "$ref": "#/components/schemas/connector._types:ConnectorScheduling"
           }
-        },
-        "required": [
-          "access_control",
-          "full",
-          "incremental"
-        ]
+        }
       },
       "connector._types:ConnectorScheduling": {
         "type": "object",

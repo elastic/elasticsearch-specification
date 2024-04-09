@@ -2035,6 +2035,8 @@ export type SpecUtilsStringified<T = unknown> = T | string
 
 export type SpecUtilsVoid = void
 
+export type SpecUtilsWithNullValue<T = unknown> = T | SpecUtilsNullValue
+
 export interface AcknowledgedResponseBase {
   acknowledged: boolean
 }
@@ -9073,24 +9075,24 @@ export interface ConnectorConnector {
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
   description?: string
-  error: ConnectorNullable<string>
+  error: SpecUtilsWithNullValue<string>
   features: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
-  index_name: ConnectorNullable<string>
+  index_name: SpecUtilsWithNullValue<string>
   is_native: boolean
   language?: string
-  last_access_control_sync_error?: ConnectorNullable<string>
-  last_access_control_sync_scheduled_at?: ConnectorNullable<string>
-  last_access_control_sync_status?: ConnectorNullable<ConnectorSyncStatus>
+  last_access_control_sync_error?: SpecUtilsWithNullValue<string>
+  last_access_control_sync_scheduled_at?: string
+  last_access_control_sync_status?: ConnectorSyncStatus
   last_deleted_document_count?: long
-  last_incremental_sync_scheduled_at?: ConnectorNullable<string>
+  last_incremental_sync_scheduled_at?: string
   last_indexed_document_count?: long
-  last_seen?: ConnectorNullable<string>
-  last_sync_error?: ConnectorNullable<string>
-  last_sync_scheduled_at?: ConnectorNullable<string>
-  last_sync_status?: ConnectorNullable<ConnectorSyncStatus>
-  last_synced?: ConnectorNullable<string>
+  last_seen?: SpecUtilsWithNullValue<string>
+  last_sync_error?: SpecUtilsWithNullValue<string>
+  last_sync_scheduled_at?: string
+  last_sync_status?: ConnectorSyncStatus
+  last_synced?: string
   name?: string
   pipeline?: ConnectorIngestPipelineParams
   scheduling: ConnectorSchedulingConfiguration
@@ -9211,12 +9213,12 @@ export interface ConnectorFilteringValidation {
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorGreaterThanValidation {
-  type: '"greater_than"'
+  type: 'greater_than'
   constraint: double
 }
 
 export interface ConnectorIncludedInValidation {
-  type: '"included_in"'
+  type: 'included_in'
   constraint: string
 }
 
@@ -9228,19 +9230,17 @@ export interface ConnectorIngestPipelineParams {
 }
 
 export interface ConnectorLessThanValidation {
-  type: '"less_than"'
+  type: 'less_than'
   constraint: double
 }
 
 export interface ConnectorListTypeValidation {
-  type: '"list_type"'
+  type: 'list_type'
   constraint: ScalarValue[]
 }
 
-export type ConnectorNullable<T = unknown> = T | SpecUtilsNullValue
-
 export interface ConnectorRegexValidation {
-  type: '"regex"'
+  type: 'regex'
   constraint: string
 }
 
@@ -9287,17 +9287,17 @@ export type ConnectorGetResponse = ConnectorConnector
 export interface ConnectorLastSyncRequest extends RequestBase {
   connector_id: Id
   body?: {
-    last_access_control_sync_error: string | null
-    last_access_control_sync_scheduled_at: string | null
-    last_access_control_sync_status: ConnectorSyncStatus | null
-    last_deleted_document_count: number | null
-    last_incremental_sync_scheduled_at: string | null
-    last_indexed_document_count: number | null
-    last_seen: string | null
-    last_sync_error: string | null
-    last_sync_scheduled_at: string | null
-    last_sync_status: ConnectorSyncStatus | null
-    last_synced: string | null
+    last_access_control_sync_error?: SpecUtilsWithNullValue<string>
+    last_access_control_sync_scheduled_at?: string
+    last_access_control_sync_status?: ConnectorSyncStatus
+    last_deleted_document_count?: long
+    last_incremental_sync_scheduled_at?: string
+    last_indexed_document_count?: long
+    last_seen?: SpecUtilsWithNullValue<string>
+    last_sync_error?: SpecUtilsWithNullValue<string>
+    last_sync_scheduled_at?: string
+    last_sync_status?: ConnectorSyncStatus
+    last_synced?: string
   }
 }
 
@@ -9318,7 +9318,7 @@ export interface ConnectorListResponse {
 export interface ConnectorPostRequest extends RequestBase {
   body?: {
     description?: string
-    index_name: string
+    index_name: SpecUtilsWithNullValue<string>
     is_native?: boolean
     language?: string
     name?: string
@@ -9334,7 +9334,7 @@ export interface ConnectorPutRequest extends RequestBase {
   connector_id: Id
   body?: {
     description?: string
-    index_name: string
+    index_name: SpecUtilsWithNullValue<string>
     is_native?: boolean
     language?: string
     name?: string
@@ -9346,10 +9346,23 @@ export interface ConnectorPutResponse {
   result: Result
 }
 
+export interface ConnectorUpdateApiKeyIdRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    api_key_id?: SpecUtilsWithNullValue<string>
+    api_key_secret_id?: SpecUtilsWithNullValue<string>
+  }
+}
+
+export interface ConnectorUpdateApiKeyIdResponse {
+  result: Result
+}
+
 export interface ConnectorUpdateConfigurationRequest extends RequestBase {
   connector_id: Id
   body?: {
-    configuration: ConnectorConnectorConfiguration
+    configuration?: ConnectorConnectorConfiguration
+    values?: Record<string, any>
   }
 }
 
@@ -9360,7 +9373,7 @@ export interface ConnectorUpdateConfigurationResponse {
 export interface ConnectorUpdateErrorRequest extends RequestBase {
   connector_id: Id
   body?: {
-    error: string | null
+    error: SpecUtilsWithNullValue<string>
   }
 }
 
@@ -9379,6 +9392,17 @@ export interface ConnectorUpdateFilteringResponse {
   result: Result
 }
 
+export interface ConnectorUpdateIndexNameRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    index_name: SpecUtilsWithNullValue<string>
+  }
+}
+
+export interface ConnectorUpdateIndexNameResponse {
+  result: Result
+}
+
 export interface ConnectorUpdateNameRequest extends RequestBase {
   connector_id: Id
   body?: {
@@ -9388,6 +9412,17 @@ export interface ConnectorUpdateNameRequest extends RequestBase {
 }
 
 export interface ConnectorUpdateNameResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateNativeRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    is_native: boolean
+  }
+}
+
+export interface ConnectorUpdateNativeResponse {
   result: Result
 }
 
@@ -9410,6 +9445,28 @@ export interface ConnectorUpdateSchedulingRequest extends RequestBase {
 }
 
 export interface ConnectorUpdateSchedulingResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateServiceTypeRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    service_type: string
+  }
+}
+
+export interface ConnectorUpdateServiceTypeResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateStatusRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    status: ConnectorConnectorStatus
+  }
+}
+
+export interface ConnectorUpdateStatusResponse {
   result: Result
 }
 

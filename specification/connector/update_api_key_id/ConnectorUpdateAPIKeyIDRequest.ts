@@ -18,16 +18,14 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SyncStatus } from '../_types/Connector'
-import { long } from '@_types/Numeric'
 import { WithNullValue } from '@spec_utils/utils'
 
 /**
- * Updates last sync stats in the connector document
- * @rest_spec_name connector.last_sync
+ * Updates the API key id in the connector document
+ * @rest_spec_name connector.update_api_key_id
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
- * @doc_id connector-last-sync
+ * @doc_id connector-update-api-key-id
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -37,19 +35,10 @@ export interface Request extends RequestBase {
     connector_id: Id
   }
   /**
-   * Connector last sync stats
+   * The connector api key request body
    */
   body: {
-    last_access_control_sync_error?: WithNullValue<string>
-    last_access_control_sync_scheduled_at?: string
-    last_access_control_sync_status?: SyncStatus
-    last_deleted_document_count?: long
-    last_incremental_sync_scheduled_at?: string
-    last_indexed_document_count?: long
-    last_seen?: WithNullValue<string>
-    last_sync_error?: WithNullValue<string>
-    last_sync_scheduled_at?: string
-    last_sync_status?: SyncStatus
-    last_synced?: string
+    api_key_id?: WithNullValue<string>
+    api_key_secret_id?: WithNullValue<string>
   }
 }

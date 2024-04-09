@@ -491,7 +491,7 @@
     "connector.get": {
       "request": [],
       "response": [
-        "type_alias definition connector._types:Nullable / union_of / instance_of - No type definition for 'connector._types:T'"
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
       ]
     },
     "connector.list": {
@@ -500,36 +500,6 @@
         "Request: missing json spec query parameter 'connector_name'",
         "Request: missing json spec query parameter 'service_type'",
         "Request: missing json spec query parameter 'query'"
-      ],
-      "response": []
-    },
-    "connector.update_api_key_id": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.update_index_name": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.update_native": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.update_service_type": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.update_status": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

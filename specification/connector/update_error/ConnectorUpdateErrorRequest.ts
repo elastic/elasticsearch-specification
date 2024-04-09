@@ -18,6 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { WithNullValue } from '@spec_utils/utils'
 
 /**
  * Updates the filtering field in the connector document
@@ -38,6 +39,6 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name error */
   body: {
-    error: string | null
+    error: WithNullValue<string>
   }
 }

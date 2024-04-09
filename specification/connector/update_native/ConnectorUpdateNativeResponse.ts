@@ -16,34 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
 
-/**
- * Creates or updates a connector.
- * @rest_spec_name connector.put
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- * @doc_id connector-put
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The unique identifier of the connector to be created or updated
-     */
-    connector_id: Id
-  }
-  /**
-   * The connector document to be created
-   */
-  /** @codegen_name connector */
+import { Result } from '@_types/Result'
+
+export class Response {
   body: {
-    description?: string
-    index_name: WithNullValue<string>
-    is_native?: boolean
-    language?: string
-    name?: string
-    service_type?: string
+    result: Result
   }
 }

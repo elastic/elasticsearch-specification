@@ -20,7 +20,7 @@ import { Id, ScalarValue } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { NullValue } from '@spec_utils/utils'
+import { WithNullValue } from '@spec_utils/utils'
 
 interface SelectOption {
   label: string
@@ -127,7 +127,7 @@ interface CustomScheduling {
 
 export type ConnectorCustomScheduling = Dictionary<string, CustomScheduling>
 
-enum ConnectorStatus {
+export enum ConnectorStatus {
   created,
   needs_configuration,
   configured,
@@ -235,31 +235,29 @@ export interface SchedulingConfiguration {
   incremental?: ConnectorScheduling
 }
 
-type Nullable<T> = T | NullValue
-
 export interface Connector {
   api_key_id?: string
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
   description?: string
-  error: Nullable<string>
+  error: WithNullValue<string>
   features: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
-  index_name: Nullable<string>
+  index_name: WithNullValue<string>
   is_native: boolean
   language?: string
-  last_access_control_sync_error?: Nullable<string>
-  last_access_control_sync_scheduled_at?: Nullable<string>
-  last_access_control_sync_status?: Nullable<SyncStatus>
+  last_access_control_sync_error?: WithNullValue<string>
+  last_access_control_sync_scheduled_at?: string
+  last_access_control_sync_status?: SyncStatus
   last_deleted_document_count?: long
-  last_incremental_sync_scheduled_at?: Nullable<string>
+  last_incremental_sync_scheduled_at?: string
   last_indexed_document_count?: long
-  last_seen?: Nullable<string>
-  last_sync_error?: Nullable<string>
-  last_sync_scheduled_at?: Nullable<string>
-  last_sync_status?: Nullable<SyncStatus>
-  last_synced?: Nullable<string>
+  last_seen?: WithNullValue<string>
+  last_sync_error?: WithNullValue<string>
+  last_sync_scheduled_at?: string
+  last_sync_status?: SyncStatus
+  last_synced?: string
   name?: string
   pipeline?: IngestPipelineParams
   scheduling: SchedulingConfiguration

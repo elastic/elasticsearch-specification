@@ -25,7 +25,7 @@ import { SchedulingConfiguration } from '../_types/Connector'
  * @rest_spec_name connector.update_scheduling
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
- * @doc_id connector-scheduling
+ * @doc_id connector-update-scheduling
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -17,6 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
+import { WithNullValue } from '@spec_utils/utils'
 
 /**
  * Creates a connector.
@@ -32,7 +33,7 @@ export interface Request extends RequestBase {
   /** @codegen_name connector */
   body: {
     description?: string
-    index_name: string
+    index_name: WithNullValue<string>
     is_native?: boolean
     language?: string
     name?: string
