@@ -7,17 +7,13 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": [
-        "application/json"
-      ]
+      "accept": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_connector/{connector_id}",
-          "methods": [
-            "GET"
-          ],
+          "methods": ["GET"],
           "parts": {
             "connector_id": {
               "type": "string",

@@ -17,14 +17,20 @@
  * under the License.
  */
 
-import { Stringified } from "@spec_utils/Stringified";
+import { Stringified } from '@spec_utils/Stringified'
 
 /**
  * A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent
  * to a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset
  * it to its default value.
  */
-export type NullValue = null;
+export type NullValue = null
+
+/**
+ * `WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an
+ * actual value.
+ */
+export type WithNullValue<T> = T | NullValue
 
 /**
  * Settings in Elasticsearch are values that can be reset to their default by setting them to the `null` value.
@@ -32,4 +38,4 @@ export type NullValue = null;
  * @es_quirk Because of how they are implemented internally, settings are always returned as strings, even
  *           if their value has been set using a primitive type.
  */
-export type Setting<T> = Stringified<T> | NullValue;
+export type Setting<T> = Stringified<T> | NullValue

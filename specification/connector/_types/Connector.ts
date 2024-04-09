@@ -16,20 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Id, ScalarValue } from "@_types/common";
-import { double, integer, long } from "@_types/Numeric";
-import { Dictionary } from "@spec_utils/Dictionary";
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue";
-import { NullValue } from "@spec_utils/utils";
+import { Id, ScalarValue } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { NullValue } from '@spec_utils/utils'
 
 interface SelectOption {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }
 
 interface Dependency {
-  field: string;
-  value: ScalarValue;
+  field: string
+  value: ScalarValue
 }
 
 enum DisplayType {
@@ -37,14 +37,14 @@ enum DisplayType {
   textarea,
   numeric,
   toggle,
-  dropdown,
+  dropdown
 }
 
 enum ConnectorFieldType {
   str,
   int,
   list,
-  bool,
+  bool
 }
 
 /** @variants internal tag='type' */
@@ -53,86 +53,86 @@ type Validation =
   | GreaterThanValidation
   | ListTypeValidation
   | IncludedInValidation
-  | RegexValidation;
+  | RegexValidation
 
 export interface LessThanValidation {
-  type: "less_than";
-  constraint: double;
+  type: 'less_than'
+  constraint: double
 }
 
 export interface GreaterThanValidation {
-  type: "greater_than";
-  constraint: double;
+  type: 'greater_than'
+  constraint: double
 }
 
 export interface ListTypeValidation {
-  type: "list_type";
-  constraint: ScalarValue[];
+  type: 'list_type'
+  constraint: ScalarValue[]
 }
 
 export interface IncludedInValidation {
-  type: "included_in";
-  constraint: string;
+  type: 'included_in'
+  constraint: string
 }
 
 export interface RegexValidation {
-  type: "regex";
-  constraint: string;
+  type: 'regex'
+  constraint: string
 }
 
 export interface ConnectorConfigProperties {
-  category?: string;
-  default_value: ScalarValue;
-  depends_on: Dependency[];
-  display: DisplayType;
-  label: string;
-  options: SelectOption[];
-  order?: integer;
-  placeholder?: string;
-  required: boolean;
-  sensitive: boolean;
-  tooltip?: string;
-  type: ConnectorFieldType;
-  ui_restrictions: string[];
-  validations: Validation[];
-  value: ScalarValue;
+  category?: string
+  default_value: ScalarValue
+  depends_on: Dependency[]
+  display: DisplayType
+  label: string
+  options: SelectOption[]
+  order?: integer
+  placeholder?: string
+  required: boolean
+  sensitive: boolean
+  tooltip?: string
+  type: ConnectorFieldType
+  ui_restrictions: string[]
+  validations: Validation[]
+  value: ScalarValue
 }
 
 export type ConnectorConfiguration = Dictionary<
   string,
   ConnectorConfigProperties
->;
+>
 
 export interface ConnectorScheduling {
-  enabled: boolean;
+  enabled: boolean
   /** The interval is expressed using the crontab syntax */
-  interval: string;
+  interval: string
 }
 
 interface CustomSchedulingConfigurationOverrides {
-  max_crawl_depth?: integer;
-  sitemap_discovery_disabled?: boolean;
-  domain_allowlist?: string[];
-  sitemap_urls?: string[];
-  seed_urls?: string[];
+  max_crawl_depth?: integer
+  sitemap_discovery_disabled?: boolean
+  domain_allowlist?: string[]
+  sitemap_urls?: string[]
+  seed_urls?: string[]
 }
 
 interface CustomScheduling {
-  configuration_overrides: CustomSchedulingConfigurationOverrides;
-  enabled: boolean;
-  interval: string;
-  last_synced?: string;
-  name: string;
+  configuration_overrides: CustomSchedulingConfigurationOverrides
+  enabled: boolean
+  interval: string
+  last_synced?: string
+  name: string
 }
 
-export type ConnectorCustomScheduling = Dictionary<string, CustomScheduling>;
+export type ConnectorCustomScheduling = Dictionary<string, CustomScheduling>
 
 enum ConnectorStatus {
   created,
   needs_configuration,
   configured,
   connected,
-  error,
+  error
 }
 
 export enum SyncStatus {
@@ -142,19 +142,19 @@ export enum SyncStatus {
   error,
   in_progress,
   pending,
-  suspended,
+  suspended
 }
 
 export interface IngestPipelineParams {
-  extract_binary_content: boolean;
-  name: string;
-  reduce_whitespace: boolean;
-  run_ml_inference: boolean;
+  extract_binary_content: boolean
+  name: string
+  reduce_whitespace: boolean
+  run_ml_inference: boolean
 }
 
 enum FilteringPolicy {
   exclude,
-  include,
+  include
 }
 
 enum FilteringRuleRule {
@@ -163,107 +163,107 @@ enum FilteringRuleRule {
   equals,
   regex,
   starts_with,
-  greater_than = ">",
-  less_than = "<",
+  greater_than = '>',
+  less_than = '<'
 }
 
 interface FilteringRule {
-  created_at: string;
-  field: string;
-  id: string;
-  order: integer;
-  policy: FilteringPolicy;
-  rule: FilteringRuleRule;
-  updated_at: string;
-  value: string;
+  created_at: string
+  field: string
+  id: string
+  order: integer
+  policy: FilteringPolicy
+  rule: FilteringRuleRule
+  updated_at: string
+  value: string
 }
 
 interface FilteringValidation {
-  ids: string[];
-  messages: string[];
+  ids: string[]
+  messages: string[]
 }
 
 enum FilteringValidationState {
   edited,
   invalid,
-  valid,
+  valid
 }
 
 interface FilteringAdvancedSnippet {
-  created_at: string;
-  updated_at: string;
-  value: Dictionary<string, UserDefinedValue>;
+  created_at: string
+  updated_at: string
+  value: Dictionary<string, UserDefinedValue>
 }
 
 interface FilteringRulesValidation {
-  errors: FilteringValidation[];
-  state: FilteringValidationState;
+  errors: FilteringValidation[]
+  state: FilteringValidationState
 }
 
 interface FilteringRules {
-  advanced_snippet: FilteringAdvancedSnippet;
-  rules: FilteringRule[];
-  validation: FilteringRulesValidation;
+  advanced_snippet: FilteringAdvancedSnippet
+  rules: FilteringRule[]
+  validation: FilteringRulesValidation
 }
 
 export interface FilteringConfig {
-  active: FilteringRules;
-  domain: string;
-  draft: FilteringRules;
+  active: FilteringRules
+  domain: string
+  draft: FilteringRules
 }
 
 interface FeatureEnabled {
-  enabled: boolean;
+  enabled: boolean
 }
 
 interface SyncRulesFeature {
-  advanced?: FeatureEnabled;
-  basic?: FeatureEnabled;
+  advanced?: FeatureEnabled
+  basic?: FeatureEnabled
 }
 
 export interface ConnectorFeatures {
-  document_level_security?: FeatureEnabled;
-  filtering_advanced_config?: boolean;
-  filtering_rules?: boolean;
-  incremental_sync?: FeatureEnabled;
-  sync_rules?: SyncRulesFeature;
+  document_level_security?: FeatureEnabled
+  filtering_advanced_config?: boolean
+  filtering_rules?: boolean
+  incremental_sync?: FeatureEnabled
+  sync_rules?: SyncRulesFeature
 }
 
 export interface SchedulingConfiguration {
-  access_control?: ConnectorScheduling;
-  full?: ConnectorScheduling;
-  incremental?: ConnectorScheduling;
+  access_control?: ConnectorScheduling
+  full?: ConnectorScheduling
+  incremental?: ConnectorScheduling
 }
 
-type Nullable<T> = T | NullValue;
+type Nullable<T> = T | NullValue
 
 export interface Connector {
-  api_key_id?: string;
-  configuration: ConnectorConfiguration;
-  custom_scheduling: ConnectorCustomScheduling;
-  description?: string;
-  error: Nullable<string>;
-  features: ConnectorFeatures;
-  filtering: FilteringConfig[];
-  id?: Id;
-  index_name: Nullable<string>;
-  is_native: boolean;
-  language?: string;
-  last_access_control_sync_error?: Nullable<string>;
-  last_access_control_sync_scheduled_at?: Nullable<string>;
-  last_access_control_sync_status?: Nullable<SyncStatus>;
-  last_deleted_document_count?: long;
-  last_incremental_sync_scheduled_at?: Nullable<string>;
-  last_indexed_document_count?: long;
-  last_seen?: Nullable<string>;
-  last_sync_error?: Nullable<string>;
-  last_sync_scheduled_at?: Nullable<string>;
-  last_sync_status?: Nullable<SyncStatus>;
-  last_synced?: Nullable<string>;
-  name?: string;
-  pipeline?: IngestPipelineParams;
-  scheduling: SchedulingConfiguration;
-  service_type: string;
-  status: ConnectorStatus;
-  sync_now: boolean;
+  api_key_id?: string
+  configuration: ConnectorConfiguration
+  custom_scheduling: ConnectorCustomScheduling
+  description?: string
+  error: Nullable<string>
+  features: ConnectorFeatures
+  filtering: FilteringConfig[]
+  id?: Id
+  index_name: Nullable<string>
+  is_native: boolean
+  language?: string
+  last_access_control_sync_error?: Nullable<string>
+  last_access_control_sync_scheduled_at?: Nullable<string>
+  last_access_control_sync_status?: Nullable<SyncStatus>
+  last_deleted_document_count?: long
+  last_incremental_sync_scheduled_at?: Nullable<string>
+  last_indexed_document_count?: long
+  last_seen?: Nullable<string>
+  last_sync_error?: Nullable<string>
+  last_sync_scheduled_at?: Nullable<string>
+  last_sync_status?: Nullable<SyncStatus>
+  last_synced?: Nullable<string>
+  name?: string
+  pipeline?: IngestPipelineParams
+  scheduling: SchedulingConfiguration
+  service_type: string
+  status: ConnectorStatus
+  sync_now: boolean
 }
