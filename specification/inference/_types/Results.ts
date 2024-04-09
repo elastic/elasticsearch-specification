@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@_types/Numeric'
+import { float, byte } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -37,6 +37,19 @@ export class SparseEmbeddingResult {
 }
 
 /**
+ * Text Embedding results containing bytes are represented as Dense
+ * Vectors of bytes.
+ */
+export type DenseByteVector = Array<byte>
+
+/**
+ * The text embedding result object for byte representation
+ */
+export class TextEmbeddingByteResult {
+  embedding: DenseByteVector
+}
+
+/**
  * The text embedding result object
  */
 export class TextEmbeddingResult {
@@ -44,10 +57,31 @@ export class TextEmbeddingResult {
 }
 
 /**
+ * The completion result object
+ */
+export class CompletionResult {
+  result: string
+}
+
+/**
+ * The rerank result object representing a single ranked document
+ * id: the original index of the document in the request
+ * score: the score of the document relative to the query
+ * text: Optional, the text of the document, if requested
+ */
+export class RankedDocument {
+  index: string
+  score: string
+  text?: string
+}
+/**
  * InferenceResult is an aggregation of mutually exclusive variants
  * @variants container
  */
 export class InferenceResult {
+  text_embedding_bytes?: Array<TextEmbeddingByteResult>
   text_embedding?: Array<TextEmbeddingResult>
   sparse_embedding?: Array<SparseEmbeddingResult>
+  completion?: Array<CompletionResult>
+  rerank?: Array<RankedDocument>
 }

@@ -53,7 +53,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   /** @codegen_name operations */
   // BulkMonitoringRequest accepts a body request that has the same format as the BulkRequest
   // See BulkRequest for additional notes.
-  body?: Array<
+  body: Array<
     OperationContainer | UpdateAction<TDocument, TPartialDocument> | TDocument
   >
 }

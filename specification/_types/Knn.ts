@@ -20,6 +20,7 @@
 import { Field } from '@_types/common'
 import { long, float } from '@_types/Numeric'
 import { QueryContainer } from './query_dsl/abstractions'
+import { InnerHits } from '@global/search/_types/hits'
 
 export type QueryVector = float[]
 
@@ -40,6 +41,11 @@ export interface KnnQuery {
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float
+  /**
+   * If defined, each search hit will contain inner hits.
+   * @doc_id knn-inner-hits
+   */
+  inner_hits?: InnerHits
 }
 
 /** @variants container */

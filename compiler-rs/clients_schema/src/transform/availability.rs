@@ -16,8 +16,9 @@
 // under the License.
 
 use std::cell::RefCell;
-use crate::{Availabilities, Body, IndexedModel, Inherits, Property, TypeDefinition, TypeName, ValueOf};
+
 use crate::transform::Worksheet;
+use crate::{Availabilities, Body, IndexedModel, Inherits, Property, TypeDefinition, TypeName, ValueOf};
 
 pub struct Availability {
     #[allow(clippy::type_complexity)]
@@ -28,7 +29,10 @@ pub struct Availability {
 }
 
 impl Availability {
-    pub fn filter (mut model: IndexedModel, avail_filter: fn(&Option<Availabilities>) -> bool) -> anyhow::Result<IndexedModel> {
+    pub fn filter(
+        mut model: IndexedModel,
+        avail_filter: fn(&Option<Availabilities>) -> bool,
+    ) -> anyhow::Result<IndexedModel> {
         let filter = Availability {
             avail_filter: Box::new(avail_filter),
             worksheet: Worksheet::default().into(),
@@ -76,16 +80,16 @@ impl Availability {
                 itf.inherits.iter().for_each(|i| self.filter_inherits(i));
                 itf.behaviors.iter().for_each(|i| self.filter_behaviors(i));
                 self.filter_properties(&mut itf.properties);
-            },
+            }
 
             TypeDefinition::Enum(ref mut enm) => {
                 enm.members.retain(|member| self.is_available(&member.availability));
-            },
+            }
 
             TypeDefinition::TypeAlias(ref alias) => {
                 self.filter_value_of(&alias.typ);
                 alias.generics.iter().for_each(|g| self.filter_type(g));
-            },
+            }
 
             TypeDefinition::Request(ref mut request) => {
                 request.inherits.iter().for_each(|i| self.filter_inherits(i));
@@ -93,12 +97,12 @@ impl Availability {
                 self.filter_properties(&mut request.path);
                 self.filter_properties(&mut request.query);
                 self.filter_body(&mut request.body);
-            },
+            }
 
             TypeDefinition::Response(ref mut response) => {
                 response.behaviors.iter().for_each(|i| self.filter_behaviors(i));
                 self.filter_body(&mut response.body);
-            },
+            }
         }
     }
 

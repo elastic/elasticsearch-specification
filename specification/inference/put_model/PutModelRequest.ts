@@ -26,18 +26,18 @@ import { TaskType } from '@inference/_types/TaskType'
  * Create an inference service model
  * @rest_spec_name inference.put_model
  * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=private
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The model task type
+     * The task type
      */
-    task_type: TaskType
+    task_type?: TaskType
     /**
-     * The unique identifier of the inference model.
+     * The inference Id
      */
-    model_id: Id
+    inference_id: Id
   }
   /** @codegen_name model_config */
   body: ModelConfig

@@ -38,7 +38,7 @@ export class Response {
      */
     total_store_sizes?: ByteSize
     /** Total size, in bytes, of all shards for the selected data streams. */
-    total_store_size_bytes: integer
+    total_store_size_bytes: long
   }
 }
 
@@ -61,5 +61,5 @@ export class DataStreamsStatsItem {
    */
   store_size?: ByteSize
   /** Total size, in bytes, of all shards for the data stream’s backing indices. */
-  store_size_bytes: integer
+  store_size_bytes: long
 }

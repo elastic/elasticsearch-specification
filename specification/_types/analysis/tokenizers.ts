@@ -88,11 +88,11 @@ export class NoriTokenizer extends TokenizerBase {
 
 export class PathHierarchyTokenizer extends TokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: Stringified<integer>
-  delimiter: string
+  buffer_size?: Stringified<integer>
+  delimiter?: string
   replacement?: string
-  reverse: Stringified<boolean>
-  skip: Stringified<integer>
+  reverse?: Stringified<boolean>
+  skip?: Stringified<integer>
 }
 
 export class PatternTokenizer extends TokenizerBase {

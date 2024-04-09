@@ -429,9 +429,9 @@ export class TrainedModelPrefixStrings {
   /**
    * String prepended to input at ingest
    */
-  ingest: string
+  ingest?: string
   /**
    * String prepended to input at search
    */
-  search: string
+  search?: string
 }

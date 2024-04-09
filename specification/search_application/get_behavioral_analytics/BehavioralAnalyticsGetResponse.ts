@@ -22,5 +22,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 
 export class Response {
+  /** @codegen_name analytics */
   body: Dictionary<Name, AnalyticsCollection>
 }

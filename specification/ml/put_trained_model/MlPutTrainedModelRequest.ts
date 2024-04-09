@@ -22,6 +22,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Definition, Input } from './types'
+import { TrainedModelPrefixStrings } from '../_types/TrainedModel'
 import { TrainedModelType } from '../_types/TrainedModel'
 import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 
@@ -41,10 +42,21 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * If set to `true` and a `compressed_definition` is provided,
+     * the request defers definition decompression and skips relevant
+     * validations.
      * @availability stack since=8.0.0
      * @availability serverless
      */
     defer_definition_decompression?: boolean
+
+    /**
+     * Whether to wait for all child operations (e.g. model download)
+     * to complete.
+     * @availability stack since=8.8.0
+     * @availability serverless
+     */
+    wait_for_completion?: boolean
   }
   body: {
     /**
@@ -102,5 +114,11 @@ export interface Request extends RequestBase {
      * An array of tags to organize the model.
      */
     tags?: string[]
+    /**
+     * Optional prefix strings applied at inference
+     * @availability stack since=8.12.0
+     * @availability serverless
+     */
+    prefix_strings?: TrainedModelPrefixStrings
   }
 }

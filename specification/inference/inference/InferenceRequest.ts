@@ -26,20 +26,25 @@ import { TaskSettings } from '@inference/_types/Services'
  * Perform inference on the service
  * @rest_spec_name inference.inference
  * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=private
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The model task type
+     * The task type
      */
-    task_type: TaskType
+    task_type?: TaskType
     /**
-     * The unique identifier of the inference model.
+     * The inference Id
      */
-    model_id: Id
+    inference_id: Id
   }
   body: {
+    /**
+     * Query input, required for rerank task.
+     * Not required for other tasks.
+     */
+    query?: string
     /**
      * Text input to the model.
      * Either a string or an array of strings.

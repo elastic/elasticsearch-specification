@@ -41,7 +41,6 @@ import { Rescore } from '@global/search/_types/rescoring'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { ScriptField } from '@_types/Scripting'
-import { SlicedScroll } from '@_types/SlicedScroll'
 import { KnnQuery } from '@_types/Knn'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

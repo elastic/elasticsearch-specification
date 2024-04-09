@@ -65,8 +65,8 @@
         "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
         "Request: query parameter 'scroll' does not exist in the json spec",
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'",
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
+        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'"
       ],
       "response": []
     },
@@ -656,12 +656,6 @@
       ],
       "response": []
     },
-    "get": {
-      "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
-      ],
-      "response": []
-    },
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"
@@ -699,6 +693,7 @@
     },
     "ilm.put_lifecycle": {
       "request": [
+        "Request: path parameter 'policy' is required in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
@@ -881,6 +876,7 @@
     },
     "indices.simulate_index_template": {
       "request": [
+        "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
@@ -935,9 +931,7 @@
       "response": []
     },
     "mget": {
-      "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
-      ],
+      "request": [],
       "response": [
         "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget:TDocument'"
       ]
@@ -1038,12 +1032,6 @@
         "Request: missing json spec query parameter 'allow_no_indices'",
         "Request: missing json spec query parameter 'ignore_throttled'",
         "Request: missing json spec query parameter 'expand_wildcards'"
-      ],
-      "response": []
-    },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'wait_for_completion'"
       ],
       "response": []
     },
@@ -1183,7 +1171,6 @@
     },
     "search": {
       "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'",
         "Request: missing json spec query parameter 'include_named_queries_score'",
         "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
@@ -1266,7 +1253,8 @@
     },
     "security.get_api_key": {
       "request": [
-        "Request: query parameter 'active_only' does not exist in the json spec"
+        "Request: query parameter 'active_only' does not exist in the json spec",
+        "Request: query parameter 'with_profile_uid' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1319,6 +1307,15 @@
         "Url path '/_security/privilege/' has a trailing slash"
       ],
       "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Request: query parameter 'with_profile_uid' does not exist in the json spec",
+        "Request: query parameter 'typed_keys' does not exist in the json spec"
+      ],
+      "response": [
+        "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
+      ]
     },
     "security.suggest_user_profiles": {
       "request": [],
@@ -1457,12 +1454,6 @@
         "Request: query parameter 'node_id' does not exist in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'nodes'"
-      ],
-      "response": []
-    },
-    "text_structure.find_structure": {
-      "request": [
-        "Request: missing json spec query parameter 'ecs_compatibility'"
       ],
       "response": []
     },

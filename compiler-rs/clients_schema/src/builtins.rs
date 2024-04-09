@@ -15,21 +15,22 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use crate::TypeName;
 use once_cell::sync::Lazy;
 
-pub static STRING:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "string"));
+use crate::TypeName;
+
+pub static STRING: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "string"));
 pub static BOOLEAN: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "boolean"));
-pub static OBJECT:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "object"));
-pub static BINARY:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "binary"));
-pub static VOID:    Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "void"));
-pub static NUMBER:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "number"));
-pub static BYTE:    Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "byte"));
+pub static OBJECT: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "object"));
+pub static BINARY: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "binary"));
+pub static VOID: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "void"));
+pub static NUMBER: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "number"));
+pub static BYTE: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "byte"));
 pub static INTEGER: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "integer"));
-pub static LONG:    Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "long"));
-pub static FLOAT:   Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "float"));
-pub static DOUBLE:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "double"));
-pub static NULL:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "null"));
+pub static LONG: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "long"));
+pub static FLOAT: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "float"));
+pub static DOUBLE: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "double"));
+pub static NULL: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "null"));
 pub static DICTIONARY: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "Dictionary"));
 pub static USER_DEFINED: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "UserDefined"));
 

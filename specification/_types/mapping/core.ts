@@ -187,6 +187,7 @@ export class RankFeatureProperty extends PropertyBase {
 }
 
 export class RankFeaturesProperty extends PropertyBase {
+  positive_score_impact?: boolean
   type: 'rank_features'
 }
 
@@ -283,7 +284,7 @@ export class WildcardProperty extends DocValuesPropertyBase {
 }
 
 export class DynamicProperty extends DocValuesPropertyBase {
-  type: '{dynamic_property}'
+  type: '{dynamic_type}'
 
   enabled?: boolean
   null_value?: FieldValue
