@@ -20,7 +20,7 @@ Once you have added a new endpoint definition, the next step is to add its type 
 First of all, you should find the most approariate place inside [`/specification`](../specification)
 where to put the new definition. The content of [`/specification`](../specification)
 tryied to mimic the Elasticsearch online documentation, so you can use it as inspiration.
-For example, the index document defintion can be found in [`/specification/__global/index`](../specification/__global/index).
+For example, the index document defintion can be found in [`/specification/_global/index`](../specification/_global/index).
 
 Once you have found the best place for the new definition, you should create a new file for it.
 The filename should be the same of the type definition you are writing, for example:
@@ -98,7 +98,7 @@ interface Request<Generic> extends RequestBase {
 }
 ```
 And the generic will be used somewhere inside the definition.
-There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/__global/index/IndexRequest.ts).
+There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/_global/index/IndexRequest.ts).
 
 ### Add the endpoint response definition
 
