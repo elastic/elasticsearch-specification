@@ -34914,55 +34914,53 @@
         ]
       },
       "_types:KnnQuery": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "$ref": "#/components/schemas/_types:Field"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
-          "query_vector": {
-            "$ref": "#/components/schemas/_types:QueryVector"
-          },
-          "query_vector_builder": {
-            "$ref": "#/components/schemas/_types:QueryVectorBuilder"
-          },
-          "k": {
-            "description": "The final number of nearest neighbors to return as top hits",
-            "type": "number"
-          },
-          "num_candidates": {
-            "description": "The number of nearest neighbor candidates to consider per shard",
-            "type": "number"
-          },
-          "boost": {
-            "description": "Boost value to apply to kNN scores",
-            "type": "number"
-          },
-          "filter": {
-            "description": "Filters for the kNN search query",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
               },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-                }
+              "query_vector": {
+                "$ref": "#/components/schemas/_types:QueryVector"
+              },
+              "query_vector_builder": {
+                "$ref": "#/components/schemas/_types:QueryVectorBuilder"
+              },
+              "num_candidates": {
+                "description": "The number of nearest neighbor candidates to consider per shard",
+                "type": "number"
+              },
+              "boost": {
+                "description": "Boost value to apply to kNN scores",
+                "type": "number"
+              },
+              "filter": {
+                "description": "Filters for the kNN search query",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                    }
+                  }
+                ]
+              },
+              "similarity": {
+                "description": "The minimum similarity for a vector to be considered a match",
+                "type": "number"
               }
+            },
+            "required": [
+              "field"
             ]
-          },
-          "similarity": {
-            "description": "The minimum similarity for a vector to be considered a match",
-            "type": "number"
-          },
-          "inner_hits": {
-            "$ref": "#/components/schemas/_global.search._types:InnerHits"
           }
-        },
-        "required": [
-          "field",
-          "k",
-          "num_candidates"
         ]
       },
       "_types:QueryVector": {

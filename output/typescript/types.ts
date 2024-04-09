@@ -2353,16 +2353,14 @@ export interface InlineScript extends ScriptBase {
 
 export type Ip = string
 
-export interface KnnQuery {
+export interface KnnQuery extends QueryDslQueryBase {
   field: Field
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
-  k: long
-  num_candidates: long
+  num_candidates?: long
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
-  inner_hits?: SearchInnerHits
 }
 
 export interface KnnSearch {
