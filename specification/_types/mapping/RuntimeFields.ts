@@ -55,6 +55,7 @@ export class RuntimeFieldFetchFields {
 
 export enum RuntimeFieldType {
   boolean,
+  composite,
   date,
   double,
   geo_point,
