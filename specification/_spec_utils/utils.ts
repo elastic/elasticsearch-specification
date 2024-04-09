@@ -27,9 +27,15 @@ import { Stringified } from '@spec_utils/Stringified'
 export type NullValue = null
 
 /**
+ * `WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an
+ * actual value.
+ */
+export type WithNullValue<T> = T | NullValue
+
+/**
  * Settings in Elasticsearch are values that can be reset to their default by setting them to the `null` value.
  *
  * @es_quirk Because of how they are implemented internally, settings are always returned as strings, even
  *           if their value has been set using a primitive type.
  */
-export type Setting<T> = Stringified<T> | NullValue
+export type Setting<T> = WithNullValue<Stringified<T>>
