@@ -49,5 +49,9 @@ export interface Request extends RequestBase {
      * A comma-separated list of connector service types to fetch connector documents for
      */
     service_type?: Fields
+    /**
+     * A wildcard query string that filters connectors with matching name, description or index name
+     */
+    query?: string
   }
 }

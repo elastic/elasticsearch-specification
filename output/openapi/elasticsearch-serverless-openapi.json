@@ -2159,6 +2159,16 @@
               "$ref": "#/components/schemas/_types:Fields"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "query",
+            "description": "A wildcard query string that filters connectors with matching name, description or index name",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
           }
         ],
         "responses": {

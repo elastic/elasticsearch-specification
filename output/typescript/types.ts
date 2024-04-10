@@ -9311,6 +9311,7 @@ export interface ConnectorListRequest extends RequestBase {
   index_name?: Fields
   connector_name?: Fields
   service_type?: Fields
+  query?: string
 }
 
 export interface ConnectorListResponse {
