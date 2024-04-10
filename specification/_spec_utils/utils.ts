@@ -38,4 +38,4 @@ export type WithNullValue<T> = T | NullValue
  * @es_quirk Because of how they are implemented internally, settings are always returned as strings, even
  *           if their value has been set using a primitive type.
  */
-export type Setting<T> = Stringified<T> | NullValue
+export type Setting<T> = WithNullValue<Stringified<T>>
