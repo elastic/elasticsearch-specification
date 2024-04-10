@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, byte } from '@_types/Numeric'
+import { float, byte, integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -70,8 +70,8 @@ export class CompletionResult {
  * text: Optional, the text of the document, if requested
  */
 export class RankedDocument {
-  index: string
-  score: string
+  index: integer
+  score: float
   text?: string
 }
 /**
