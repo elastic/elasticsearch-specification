@@ -1,0 +1,53 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+import { RequestBase } from '@_types/Base'
+import { Fields, Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
+
+/**
+ * Lists connector sync jobs.
+ * @rest_spec_name connector_sync_job.list
+ * @availability stack since=8.12.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-sync-job-list
+ */
+export interface Request extends RequestBase {
+  query_parameters: {
+    /**
+     * Starting offset (default: 0)
+     */
+    from?: integer
+    /**
+     * Specifies a max number of results to get
+     */
+    size?: integer
+    /**
+     * A sync job status to fetch connector sync jobs for
+     */
+    status?: string
+    /**
+     * A connector id to fetch connector sync jobs for
+     */
+    connector_id?: Id
+    /**
+     * A comma-separated list of job types to fetch the sync jobs for
+     */
+    job_type?: Fields
+  }
+}

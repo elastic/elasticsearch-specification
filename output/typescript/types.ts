@@ -2027,11 +2027,15 @@ export interface SpecUtilsBaseNode {
   transport_address: TransportAddress
 }
 
+export type SpecUtilsNullValue = null
+
 export type SpecUtilsPipeSeparatedFlags<T = unknown> = T | string
 
 export type SpecUtilsStringified<T = unknown> = T | string
 
 export type SpecUtilsVoid = void
+
+export type SpecUtilsWithNullValue<T = unknown> = T | SpecUtilsNullValue
 
 export interface AcknowledgedResponseBase {
   acknowledged: boolean
@@ -9064,6 +9068,201 @@ export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
   nodes: ClusterStatsClusterNodes
   status: HealthStatus
   timestamp: long
+}
+
+export interface ConnectorConnectorConfigProperties {
+  category?: string
+  default_value: ScalarValue
+  depends_on: ConnectorDependency[]
+  display: ConnectorDisplayType
+  label: string
+  options: ConnectorSelectOption[]
+  order?: integer
+  placeholder?: string
+  required: boolean
+  sensitive: boolean
+  tooltip?: string
+  type: ConnectorConnectorFieldType
+  ui_restrictions: string[]
+  validations: ConnectorValidation[]
+  value: ScalarValue
+}
+
+export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties>
+
+export type ConnectorConnectorFieldType = 'str' | 'int' | 'list' | 'bool'
+
+export interface ConnectorDependency {
+  field: string
+  value: ScalarValue
+}
+
+export type ConnectorDisplayType = 'textbox' | 'textarea' | 'numeric' | 'toggle' | 'dropdown'
+
+export interface ConnectorFilteringAdvancedSnippet {
+  created_at: string
+  updated_at: string
+  value: Record<string, any>
+}
+
+export interface ConnectorFilteringConfig {
+  active: ConnectorFilteringRules
+  domain: string
+  draft: ConnectorFilteringRules
+}
+
+export type ConnectorFilteringPolicy = 'exclude' | 'include'
+
+export interface ConnectorFilteringRule {
+  created_at: string
+  field: string
+  id: string
+  order: integer
+  policy: ConnectorFilteringPolicy
+  rule: ConnectorFilteringRuleRule
+  updated_at: string
+  value: string
+}
+
+export type ConnectorFilteringRuleRule = 'contains' | 'ends_with' | 'equals' | 'regex' | 'starts_with' | '>' | '<'
+
+export interface ConnectorFilteringRules {
+  advanced_snippet: ConnectorFilteringAdvancedSnippet
+  rules: ConnectorFilteringRule[]
+  validation: ConnectorFilteringRulesValidation
+}
+
+export interface ConnectorFilteringRulesValidation {
+  errors: ConnectorFilteringValidation[]
+  state: ConnectorFilteringValidationState
+}
+
+export interface ConnectorFilteringValidation {
+  ids: string[]
+  messages: string[]
+}
+
+export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
+
+export interface ConnectorGreaterThanValidation {
+  type: 'greater_than'
+  constraint: double
+}
+
+export interface ConnectorIncludedInValidation {
+  type: 'included_in'
+  constraint: string
+}
+
+export interface ConnectorIngestPipelineParams {
+  extract_binary_content: boolean
+  name: string
+  reduce_whitespace: boolean
+  run_ml_inference: boolean
+}
+
+export interface ConnectorLessThanValidation {
+  type: 'less_than'
+  constraint: double
+}
+
+export interface ConnectorListTypeValidation {
+  type: 'list_type'
+  constraint: ScalarValue[]
+}
+
+export interface ConnectorRegexValidation {
+  type: 'regex'
+  constraint: string
+}
+
+export interface ConnectorSelectOption {
+  label: string
+  value: string
+}
+
+export type ConnectorSyncStatus = 'canceling' | 'canceled' | 'completed' | 'error' | 'in_progress' | 'pending' | 'suspended'
+
+export type ConnectorValidation = ConnectorLessThanValidation | ConnectorGreaterThanValidation | ConnectorListTypeValidation | ConnectorIncludedInValidation | ConnectorRegexValidation
+
+export interface ConnectorSyncJobConnectorSyncJob {
+  cancelation_requested_at?: string
+  canceled_at?: string
+  completed_at?: string
+  connector: ConnectorSyncJobSyncJobConnectorReference
+  created_at: string
+  deleted_document_count: long
+  error: SpecUtilsWithNullValue<string>
+  id: Id
+  indexed_document_count: long
+  indexed_document_volume: long
+  job_type: ConnectorSyncJobSyncJobType
+  last_seen?: string
+  metadata: Record<string, any>
+  started_at?: string
+  status: ConnectorSyncStatus
+  total_document_count?: long
+  trigger_method: ConnectorSyncJobTriggerMethod
+  worker_hostname?: string
+}
+
+export interface ConnectorSyncJobSyncJobConnectorReference {
+  configuration: ConnectorConnectorConfiguration
+  filtering: ConnectorFilteringConfig
+  id: Id
+  index_name: string
+  language?: string
+  pipeline: ConnectorIngestPipelineParams
+  service_type: string
+}
+
+export type ConnectorSyncJobSyncJobType = 'full' | 'incremental' | 'access_control'
+
+export type ConnectorSyncJobTriggerMethod = 'on_demand' | 'scheduled'
+
+export interface ConnectorSyncJobCancelRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export interface ConnectorSyncJobCancelResponse {
+  result: Result
+}
+
+export interface ConnectorSyncJobDeleteRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export type ConnectorSyncJobDeleteResponse = AcknowledgedResponseBase
+
+export interface ConnectorSyncJobGetRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export type ConnectorSyncJobGetResponse = ConnectorSyncJobConnectorSyncJob
+
+export interface ConnectorSyncJobListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+  status?: string
+  connector_id?: Id
+  job_type?: Fields
+}
+
+export interface ConnectorSyncJobListResponse {
+  count: long
+  results: ConnectorSyncJobConnectorSyncJob[]
+}
+
+export interface ConnectorSyncJobPostRequest extends RequestBase {
+  body?: {
+    id: Id
+    job_type?: string
+    trigger_method?: string
+  }
+}
+
+export interface ConnectorSyncJobPostResponse {
+  id: Id
 }
 
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {

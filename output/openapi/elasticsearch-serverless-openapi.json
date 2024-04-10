@@ -1810,6 +1810,273 @@
         }
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
+      "put": {
+        "tags": [
+          "connector_sync_job.cancel"
+        ],
+        "summary": "Cancels a connector sync job.",
+        "description": "Cancels a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cancel-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-cancel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}": {
+      "get": {
+        "tags": [
+          "connector_sync_job.get"
+        ],
+        "summary": "Returns the details about a connector sync job.",
+        "description": "Returns the details about a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connector_sync_job._types:ConnectorSyncJob"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "connector_sync_job.delete"
+        ],
+        "summary": "Deletes a connector sync job.",
+        "description": "Deletes a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be deleted",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/_sync_job": {
+      "get": {
+        "tags": [
+          "connector_sync_job.list"
+        ],
+        "summary": "Lists all connector sync jobs.",
+        "description": "Lists all connector sync jobs.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/{list}/list-connector-sync-jobs-api.html"
+        },
+        "operationId": "connector-sync-job-list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Starting offset (default: 0)",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "description": "Specifies a max number of results to get",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "A sync job status to fetch connector sync jobs for",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "connector_id",
+            "description": "A connector id to fetch connector sync jobs for",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "job_type",
+            "description": "A comma-separated list of job types to fetch the sync jobs for",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Fields"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/connector_sync_job._types:ConnectorSyncJob"
+                      }
+                    }
+                  },
+                  "required": [
+                    "count",
+                    "results"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "connector_sync_job.post"
+        ],
+        "summary": "Creates a connector sync job.",
+        "description": "Creates a connector sync job.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/create-connector-sync-job-api.html"
+        },
+        "operationId": "connector-sync-job-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "$ref": "#/components/schemas/_types:Id"
+                  },
+                  "job_type": {
+                    "type": "string"
+                  },
+                  "trigger_method": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "$ref": "#/components/schemas/_types:Id"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_count": {
       "get": {
         "tags": [
@@ -47995,6 +48262,625 @@
           }
         }
       },
+      "_types:Result": {
+        "type": "string",
+        "enum": [
+          "created",
+          "updated",
+          "deleted",
+          "not_found",
+          "noop"
+        ]
+      },
+      "connector_sync_job._types:ConnectorSyncJob": {
+        "type": "object",
+        "properties": {
+          "cancelation_requested_at": {
+            "type": "string"
+          },
+          "canceled_at": {
+            "type": "string"
+          },
+          "completed_at": {
+            "type": "string"
+          },
+          "connector": {
+            "$ref": "#/components/schemas/connector_sync_job._types:SyncJobConnectorReference"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "deleted_document_count": {
+            "type": "number"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "indexed_document_count": {
+            "type": "number"
+          },
+          "indexed_document_volume": {
+            "type": "number"
+          },
+          "job_type": {
+            "$ref": "#/components/schemas/connector_sync_job._types:SyncJobType"
+          },
+          "last_seen": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "started_at": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/connector._types:SyncStatus"
+          },
+          "total_document_count": {
+            "type": "number"
+          },
+          "trigger_method": {
+            "$ref": "#/components/schemas/connector_sync_job._types:TriggerMethod"
+          },
+          "worker_hostname": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "connector",
+          "created_at",
+          "deleted_document_count",
+          "error",
+          "id",
+          "indexed_document_count",
+          "indexed_document_volume",
+          "job_type",
+          "metadata",
+          "status",
+          "trigger_method"
+        ]
+      },
+      "connector_sync_job._types:SyncJobConnectorReference": {
+        "type": "object",
+        "properties": {
+          "configuration": {
+            "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
+          },
+          "filtering": {
+            "$ref": "#/components/schemas/connector._types:FilteringConfig"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "index_name": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "pipeline": {
+            "$ref": "#/components/schemas/connector._types:IngestPipelineParams"
+          },
+          "service_type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "configuration",
+          "filtering",
+          "id",
+          "index_name",
+          "pipeline",
+          "service_type"
+        ]
+      },
+      "connector._types:ConnectorConfiguration": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/connector._types:ConnectorConfigProperties"
+        }
+      },
+      "connector._types:ConnectorConfigProperties": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "default_value": {
+            "$ref": "#/components/schemas/_types:ScalarValue"
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:Dependency"
+            }
+          },
+          "display": {
+            "$ref": "#/components/schemas/connector._types:DisplayType"
+          },
+          "label": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:SelectOption"
+            }
+          },
+          "order": {
+            "type": "number"
+          },
+          "placeholder": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sensitive": {
+            "type": "boolean"
+          },
+          "tooltip": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
+          },
+          "ui_restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "validations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:Validation"
+            }
+          },
+          "value": {
+            "$ref": "#/components/schemas/_types:ScalarValue"
+          }
+        },
+        "required": [
+          "default_value",
+          "depends_on",
+          "display",
+          "label",
+          "options",
+          "required",
+          "sensitive",
+          "type",
+          "ui_restrictions",
+          "validations",
+          "value"
+        ]
+      },
+      "_types:ScalarValue": {
+        "description": "A scalar value.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "nullable": true,
+            "type": "string"
+          }
+        ]
+      },
+      "connector._types:Dependency": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/_types:ScalarValue"
+          }
+        },
+        "required": [
+          "field",
+          "value"
+        ]
+      },
+      "connector._types:DisplayType": {
+        "type": "string",
+        "enum": [
+          "textbox",
+          "textarea",
+          "numeric",
+          "toggle",
+          "dropdown"
+        ]
+      },
+      "connector._types:SelectOption": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "connector._types:ConnectorFieldType": {
+        "type": "string",
+        "enum": [
+          "str",
+          "int",
+          "list",
+          "bool"
+        ]
+      },
+      "connector._types:Validation": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/connector._types:LessThanValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:GreaterThanValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:ListTypeValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:IncludedInValidation"
+          },
+          {
+            "$ref": "#/components/schemas/connector._types:RegexValidation"
+          }
+        ]
+      },
+      "connector._types:LessThanValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "less_than"
+            ]
+          },
+          "constraint": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:GreaterThanValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "greater_than"
+            ]
+          },
+          "constraint": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:ListTypeValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "list_type"
+            ]
+          },
+          "constraint": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ScalarValue"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:IncludedInValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "included_in"
+            ]
+          },
+          "constraint": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:RegexValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "regex"
+            ]
+          },
+          "constraint": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:FilteringConfig": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "$ref": "#/components/schemas/connector._types:FilteringRules"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "draft": {
+            "$ref": "#/components/schemas/connector._types:FilteringRules"
+          }
+        },
+        "required": [
+          "active",
+          "domain",
+          "draft"
+        ]
+      },
+      "connector._types:FilteringRules": {
+        "type": "object",
+        "properties": {
+          "advanced_snippet": {
+            "$ref": "#/components/schemas/connector._types:FilteringAdvancedSnippet"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:FilteringRule"
+            }
+          },
+          "validation": {
+            "$ref": "#/components/schemas/connector._types:FilteringRulesValidation"
+          }
+        },
+        "required": [
+          "advanced_snippet",
+          "rules",
+          "validation"
+        ]
+      },
+      "connector._types:FilteringAdvancedSnippet": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "value": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "created_at",
+          "updated_at",
+          "value"
+        ]
+      },
+      "connector._types:FilteringRule": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/connector._types:FilteringPolicy"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/connector._types:FilteringRuleRule"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "created_at",
+          "field",
+          "id",
+          "order",
+          "policy",
+          "rule",
+          "updated_at",
+          "value"
+        ]
+      },
+      "connector._types:FilteringPolicy": {
+        "type": "string",
+        "enum": [
+          "exclude",
+          "include"
+        ]
+      },
+      "connector._types:FilteringRuleRule": {
+        "type": "string",
+        "enum": [
+          "contains",
+          "ends_with",
+          "equals",
+          "regex",
+          "starts_with",
+          ">",
+          "<"
+        ]
+      },
+      "connector._types:FilteringRulesValidation": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connector._types:FilteringValidation"
+            }
+          },
+          "state": {
+            "$ref": "#/components/schemas/connector._types:FilteringValidationState"
+          }
+        },
+        "required": [
+          "errors",
+          "state"
+        ]
+      },
+      "connector._types:FilteringValidation": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "ids",
+          "messages"
+        ]
+      },
+      "connector._types:FilteringValidationState": {
+        "type": "string",
+        "enum": [
+          "edited",
+          "invalid",
+          "valid"
+        ]
+      },
+      "connector._types:IngestPipelineParams": {
+        "type": "object",
+        "properties": {
+          "extract_binary_content": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reduce_whitespace": {
+            "type": "boolean"
+          },
+          "run_ml_inference": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "extract_binary_content",
+          "name",
+          "reduce_whitespace",
+          "run_ml_inference"
+        ]
+      },
+      "_spec_utils:WithNullValuestring": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
+      },
+      "connector_sync_job._types:SyncJobType": {
+        "type": "string",
+        "enum": [
+          "full",
+          "incremental",
+          "access_control"
+        ]
+      },
+      "connector._types:SyncStatus": {
+        "type": "string",
+        "enum": [
+          "canceling",
+          "canceled",
+          "completed",
+          "error",
+          "in_progress",
+          "pending",
+          "suspended"
+        ]
+      },
+      "connector_sync_job._types:TriggerMethod": {
+        "type": "string",
+        "enum": [
+          "on_demand",
+          "scheduled"
+        ]
+      },
       "_types:WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -48030,16 +48916,6 @@
           "_seq_no",
           "_shards",
           "_version"
-        ]
-      },
-      "_types:Result": {
-        "type": "string",
-        "enum": [
-          "created",
-          "updated",
-          "deleted",
-          "not_found",
-          "noop"
         ]
       },
       "_types:Conflicts": {

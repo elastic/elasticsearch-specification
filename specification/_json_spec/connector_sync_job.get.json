@@ -7,17 +7,13 @@
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": [
-        "application/json"
-      ]
+      "accept": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_connector/_sync_job/{connector_sync_job_id}",
-          "methods": [
-            "GET"
-          ],
+          "methods": ["GET"],
           "parts": {
             "connector_sync_job_id": {
               "type": "string",
