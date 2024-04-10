@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
      * Identifier for the policy.
      * @codegen_name name
      */
-    policy?: Name
+    policy: Name
   }
   query_parameters: {
     /**
