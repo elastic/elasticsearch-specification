@@ -9648,7 +9648,7 @@ export interface IlmMoveToStepStepKey {
 }
 
 export interface IlmPutLifecycleRequest extends RequestBase {
-  name?: Name
+  name: Name
   master_timeout?: Duration
   timeout?: Duration
   body?: {
@@ -9906,7 +9906,7 @@ export interface IndicesIndexSettingsAnalysis {
 }
 
 export interface IndicesIndexSettingsLifecycle {
-  name: Name
+  name?: Name
   indexing_complete?: SpecUtilsStringified<boolean>
   origination_date?: long
   parse_origination_date?: boolean

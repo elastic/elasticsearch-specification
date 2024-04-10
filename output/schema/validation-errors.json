@@ -687,7 +687,6 @@
     },
     "ilm.put_lifecycle": {
       "request": [
-        "Request: path parameter 'policy' is required in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
