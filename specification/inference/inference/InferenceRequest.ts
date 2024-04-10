@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+ 
+import { Duration } from '@_types/Time'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
@@ -38,6 +39,13 @@ export interface Request extends RequestBase {
      * The inference Id
      */
     inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference request to complete.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     /**
