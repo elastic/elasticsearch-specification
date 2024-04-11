@@ -11986,6 +11986,7 @@ export interface InferenceGetModelResponse {
 export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  timeout?: Duration
   body?: {
     query?: string
     input: string | string[]
