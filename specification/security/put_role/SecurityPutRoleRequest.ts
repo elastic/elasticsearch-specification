@@ -68,7 +68,7 @@ export interface Request extends RequestBase {
      */
     metadata?: Metadata
     /**
-     * A list of users that the owners of this role can impersonate.
+     * A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
      * @doc_id run-as-privilege
      */
     run_as?: string[]
