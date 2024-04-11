@@ -9075,21 +9075,21 @@ export interface ConnectorConnector {
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
   description?: string
-  error: SpecUtilsWithNullValue<string>
+  error?: string
   features: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
-  index_name: SpecUtilsWithNullValue<string>
+  index_name?: string
   is_native: boolean
   language?: string
-  last_access_control_sync_error?: SpecUtilsWithNullValue<string>
+  last_access_control_sync_error?: string
   last_access_control_sync_scheduled_at?: string
   last_access_control_sync_status?: ConnectorSyncStatus
   last_deleted_document_count?: long
   last_incremental_sync_scheduled_at?: string
   last_indexed_document_count?: long
-  last_seen?: SpecUtilsWithNullValue<string>
-  last_sync_error?: SpecUtilsWithNullValue<string>
+  last_seen?: string
+  last_sync_error?: string
   last_sync_scheduled_at?: string
   last_sync_status?: ConnectorSyncStatus
   last_synced?: string
@@ -9213,12 +9213,12 @@ export interface ConnectorFilteringValidation {
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorGreaterThanValidation {
-  type: 'greater_than'
+  type: '"greater_than"'
   constraint: double
 }
 
 export interface ConnectorIncludedInValidation {
-  type: 'included_in'
+  type: '"included_in"'
   constraint: string
 }
 
@@ -9230,17 +9230,17 @@ export interface ConnectorIngestPipelineParams {
 }
 
 export interface ConnectorLessThanValidation {
-  type: 'less_than'
+  type: '"less_than"'
   constraint: double
 }
 
 export interface ConnectorListTypeValidation {
-  type: 'list_type'
+  type: '"list_type"'
   constraint: ScalarValue[]
 }
 
 export interface ConnectorRegexValidation {
-  type: 'regex'
+  type: '"regex"'
   constraint: string
 }
 
@@ -9308,9 +9308,9 @@ export interface ConnectorLastSyncResponse {
 export interface ConnectorListRequest extends RequestBase {
   from?: integer
   size?: integer
-  index_name?: Fields
-  connector_name?: Fields
-  service_type?: Fields
+  index_name?: Indices
+  connector_name?: Names
+  service_type?: Names
   query?: string
 }
 

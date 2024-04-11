@@ -2136,7 +2136,7 @@
             "description": "A comma-separated list of connector index names to fetch connector documents for",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Fields"
+              "$ref": "#/components/schemas/_types:Indices"
             },
             "style": "form"
           },
@@ -2146,7 +2146,7 @@
             "description": "A comma-separated list of connector names to fetch connector documents for",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Fields"
+              "$ref": "#/components/schemas/_types:Names"
             },
             "style": "form"
           },
@@ -2156,7 +2156,7 @@
             "description": "A comma-separated list of connector service types to fetch connector documents for",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Fields"
+              "$ref": "#/components/schemas/_types:Names"
             },
             "style": "form"
           },
@@ -49188,7 +49188,7 @@
             "type": "string"
           },
           "error": {
-            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+            "type": "string"
           },
           "features": {
             "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
@@ -49203,7 +49203,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+            "type": "string"
           },
           "is_native": {
             "type": "boolean"
@@ -49212,7 +49212,7 @@
             "type": "string"
           },
           "last_access_control_sync_error": {
-            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+            "type": "string"
           },
           "last_access_control_sync_scheduled_at": {
             "type": "string"
@@ -49230,10 +49230,10 @@
             "type": "number"
           },
           "last_seen": {
-            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+            "type": "string"
           },
           "last_sync_error": {
-            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+            "type": "string"
           },
           "last_sync_scheduled_at": {
             "type": "string"
@@ -49266,10 +49266,8 @@
         "required": [
           "configuration",
           "custom_scheduling",
-          "error",
           "features",
           "filtering",
-          "index_name",
           "is_native",
           "scheduling",
           "service_type",
@@ -49456,7 +49454,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "less_than"
+              "\"less_than\""
             ]
           },
           "constraint": {
@@ -49474,7 +49472,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "greater_than"
+              "\"greater_than\""
             ]
           },
           "constraint": {
@@ -49492,7 +49490,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "list_type"
+              "\"list_type\""
             ]
           },
           "constraint": {
@@ -49513,7 +49511,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "included_in"
+              "\"included_in\""
             ]
           },
           "constraint": {
@@ -49531,7 +49529,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "regex"
+              "\"regex\""
             ]
           },
           "constraint": {
@@ -49603,22 +49601,6 @@
             }
           }
         }
-      },
-      "_spec_utils:WithNullValuestring": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
       },
       "connector._types:ConnectorFeatures": {
         "type": "object",
@@ -49904,6 +49886,22 @@
           "connected",
           "error"
         ]
+      },
+      "_spec_utils:WithNullValuestring": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",

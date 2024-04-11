@@ -488,11 +488,11 @@
         "response definition connector.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "connector.get": {
-      "request": [],
-      "response": [
+    "connector.last_sync": {
+      "request": [
         "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
-      ]
+      ],
+      "response": []
     },
     "create": {
       "request": [],

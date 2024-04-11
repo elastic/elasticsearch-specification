@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Fields } from '@_types/common'
+import { Names, Indices } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -40,15 +40,15 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of connector index names to fetch connector documents for
      */
-    index_name?: Fields
+    index_name?: Indices
     /**
      * A comma-separated list of connector names to fetch connector documents for
      */
-    connector_name?: Fields
+    connector_name?: Names
     /**
      * A comma-separated list of connector service types to fetch connector documents for
      */
-    service_type?: Fields
+    service_type?: Names
     /**
      * A wildcard query string that filters connectors with matching name, description or index name
      */

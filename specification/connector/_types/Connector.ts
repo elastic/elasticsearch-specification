@@ -20,7 +20,6 @@ import { Id, ScalarValue } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { WithNullValue } from '@spec_utils/utils'
 
 interface SelectOption {
   label: string
@@ -240,21 +239,21 @@ export interface Connector {
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
   description?: string
-  error: WithNullValue<string>
+  error?: string
   features: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
-  index_name: WithNullValue<string>
+  index_name?: string
   is_native: boolean
   language?: string
-  last_access_control_sync_error?: WithNullValue<string>
+  last_access_control_sync_error?: string
   last_access_control_sync_scheduled_at?: string
   last_access_control_sync_status?: SyncStatus
   last_deleted_document_count?: long
   last_incremental_sync_scheduled_at?: string
   last_indexed_document_count?: long
-  last_seen?: WithNullValue<string>
-  last_sync_error?: WithNullValue<string>
+  last_seen?: string
+  last_sync_error?: string
   last_sync_scheduled_at?: string
   last_sync_status?: SyncStatus
   last_synced?: string
