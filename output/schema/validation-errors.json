@@ -482,6 +482,18 @@
         "response definition cluster.put_component_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "connector.delete": {
+      "request": [],
+      "response": [
+        "response definition connector.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
+    "connector.last_sync": {
+      "request": [
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
+      ],
+      "response": []
+    },
     "create": {
       "request": [],
       "response": [
