@@ -50026,10 +50026,10 @@
         "type": "object",
         "properties": {
           "index": {
-            "type": "string"
+            "type": "number"
           },
           "score": {
-            "type": "string"
+            "type": "number"
           },
           "text": {
             "type": "string"
