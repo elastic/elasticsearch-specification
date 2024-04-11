@@ -51,11 +51,10 @@ export class ExpansionConfig {
  * @return a new model with generics expanded
  */
 export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Model {
-
   const typesToUnwrap = new Set<string>()
   const typesToInline: Set<string> = new Set<string>()
 
-  for (const name of config?.unwrappedTypes || []) {
+  for (const name of config?.unwrappedTypes ?? []) {
     if (typeof name === 'string') {
       typesToUnwrap.add(name)
     } else {
@@ -63,7 +62,7 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
     }
   }
 
-  for (const name of config?.inlinedTypes || []) {
+  for (const name of config?.inlinedTypes ?? []) {
     if (typeof name === 'string') {
       typesToInline.add(name)
     } else {
@@ -336,28 +335,29 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
 
         // If this is a type that has to be unwrapped, return its generic parameter's type
         if (typesToUnwrap.has(valueOfType)) {
-          // @ts-ignore
-          return expandValueOf(value.generics[0], mappings)
+          // @ts-expect-error
+          const x = value.generics[0]
+          return expandValueOf(x, mappings)
         }
 
         // If this is a type that has to be inlined
         if (typesToInline.has(valueOfType)) {
           // It has to be an alias (e.g. Stringified or WithNullValue
           const inlinedTypeDef = inputTypeByName.get(valueOfType)
-          if (!inlinedTypeDef || inlinedTypeDef.kind !== 'type_alias') {
+          if (inlinedTypeDef?.kind !== 'type_alias') {
             throw Error(`Inlined type ${valueOfType} should be an alias definition`)
           }
 
           const inlineMappings = new Map<string, ValueOf>()
-          for (let i = 0; i < (inlinedTypeDef.generics?.length || 0); i++) {
-            // @ts-ignore
+          for (let i = 0; i < (inlinedTypeDef.generics?.length ?? 0); i++) {
+            // @ts-expect-error
             const source = inlinedTypeDef.generics[i]
-            // @ts-ignore
-            const dest = value.generics[i];
+            // @ts-expect-error
+            const dest = value.generics[i]
             inlineMappings.set(nameKey(source), dest)
           }
 
-          return expandValueOf(inlinedTypeDef.type, inlineMappings);
+          return expandValueOf(inlinedTypeDef.type, inlineMappings)
         }
 
         // If this is a generic parameter, return its mapping
@@ -486,7 +486,7 @@ async function expandGenericsFromFile (inPath: string, outPath: string): Promise
   const inputModel = JSON.parse(inputText)
   const outputModel = expandGenerics(inputModel, {
     // unwrappedTypes: ["_spec_utils:Stringified"],
-    inlinedTypes: ["_spec_utils:WithNullValue"]
+    inlinedTypes: ['_spec_utils:WithNullValue']
   })
 
   await writeFile(
