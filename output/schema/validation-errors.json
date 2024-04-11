@@ -482,16 +482,22 @@
         "response definition cluster.put_component_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "connector.delete": {
+      "request": [],
+      "response": [
+        "response definition connector.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
+    "connector.last_sync": {
+      "request": [
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
+      ],
+      "response": []
+    },
     "connector_sync_job.delete": {
       "request": [],
       "response": [
         "response definition connector_sync_job.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "connector_sync_job.get": {
-      "request": [],
-      "response": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
       ]
     },
     "create": {
@@ -699,7 +705,6 @@
     },
     "ilm.put_lifecycle": {
       "request": [
-        "Request: path parameter 'policy' is required in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
