@@ -17,8 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
+import { Id, Name } from '@_types/common'
 
 /**
  * Creates a connector sync job.
@@ -33,8 +32,11 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name sync_job */
   body: {
+    /**
+     * The id of the associated connector
+     */
     id: Id
-    job_type?: string
-    trigger_method?: string
+    job_type?: Name
+    trigger_method?: Name
   }
 }

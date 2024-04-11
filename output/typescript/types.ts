@@ -9481,7 +9481,7 @@ export interface ConnectorSyncJobConnectorSyncJob {
   connector: ConnectorSyncJobSyncJobConnectorReference
   created_at: string
   deleted_document_count: long
-  error: SpecUtilsWithNullValue<string>
+  error?: string
   id: Id
   indexed_document_count: long
   indexed_document_volume: long
@@ -9532,9 +9532,9 @@ export type ConnectorSyncJobGetResponse = ConnectorSyncJobConnectorSyncJob
 export interface ConnectorSyncJobListRequest extends RequestBase {
   from?: integer
   size?: integer
-  status?: string
+  status?: Name
   connector_id?: Id
-  job_type?: Fields
+  job_type?: Names
 }
 
 export interface ConnectorSyncJobListResponse {
@@ -9545,8 +9545,8 @@ export interface ConnectorSyncJobListResponse {
 export interface ConnectorSyncJobPostRequest extends RequestBase {
   body?: {
     id: Id
-    job_type?: string
-    trigger_method?: string
+    job_type?: Name
+    trigger_method?: Name
   }
 }
 

@@ -20,7 +20,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a sync job.
+ * Deletes a connector sync job.
  * @rest_spec_name connector_sync_job.delete
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public

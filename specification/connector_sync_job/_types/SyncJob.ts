@@ -20,7 +20,6 @@ import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { WithNullValue } from '@spec_utils/utils'
 import {
   ConnectorConfiguration,
   FilteringConfig,
@@ -56,7 +55,7 @@ export interface ConnectorSyncJob {
   connector: SyncJobConnectorReference
   created_at: string
   deleted_document_count: long
-  error: WithNullValue<string>
+  error?: string
   id: Id
   indexed_document_count: long
   indexed_document_volume: long

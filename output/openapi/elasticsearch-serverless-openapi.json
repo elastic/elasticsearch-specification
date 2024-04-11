@@ -3135,7 +3135,7 @@
             "description": "A sync job status to fetch connector sync jobs for",
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:Name"
             },
             "style": "form"
           },
@@ -3155,7 +3155,7 @@
             "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Fields"
+              "$ref": "#/components/schemas/_types:Names"
             },
             "style": "form"
           }
@@ -3208,10 +3208,10 @@
                     "$ref": "#/components/schemas/_types:Id"
                   },
                   "job_type": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:Name"
                   },
                   "trigger_method": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:Name"
                   }
                 },
                 "required": [
@@ -50189,7 +50189,7 @@
             "type": "number"
           },
           "error": {
-            "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+            "type": "string"
           },
           "id": {
             "$ref": "#/components/schemas/_types:Id"
@@ -50232,7 +50232,6 @@
           "connector",
           "created_at",
           "deleted_document_count",
-          "error",
           "id",
           "indexed_document_count",
           "indexed_document_volume",
