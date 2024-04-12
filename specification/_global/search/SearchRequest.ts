@@ -46,7 +46,7 @@ import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
 import { Sort, SortResults } from '@_types/sort'
-import { KnnQuery } from '@_types/Knn'
+import { KnnSearch } from '@_types/Knn'
 import { RankContainer } from '@_types/Rank'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -384,7 +384,7 @@ export interface Request extends RequestBase {
      * @availability stack since=8.4.0
      * @availability serverless
      */
-    knn?: KnnQuery | KnnQuery[]
+    knn?: KnnSearch | KnnSearch[]
     /**
      * Defines the Reciprocal Rank Fusion (RRF) to use.
      * @availability stack since=8.8.0
