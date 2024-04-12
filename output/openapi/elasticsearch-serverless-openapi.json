@@ -59681,7 +59681,6 @@
           "manage_transform",
           "monitor",
           "monitor_ml",
-          "monitor_text_structure",
           "monitor_transform",
           "read_pipeline"
         ]
