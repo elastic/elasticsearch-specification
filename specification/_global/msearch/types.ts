@@ -41,7 +41,7 @@ import { Rescore } from '@global/search/_types/rescoring'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { ScriptField } from '@_types/Scripting'
-import { KnnQuery } from '@_types/Knn'
+import { KnnSearch } from '@_types/Knn'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -101,7 +101,7 @@ export class MultisearchBody {
    * @availability stack since=8.4.0
    * @availability serverless
    */
-  knn?: KnnQuery | KnnQuery[]
+  knn?: KnnSearch | KnnSearch[]
   /**
    * Starting document offset. By default, you cannot page through more than 10,000
    * hits using the from and size parameters. To page through more hits, use the
