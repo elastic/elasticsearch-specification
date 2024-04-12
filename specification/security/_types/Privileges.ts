@@ -114,6 +114,9 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   monitor_snapshot,
+  /**
+   * @availability stack
+   */
   monitor_text_structure,
   monitor_transform,
   /**
