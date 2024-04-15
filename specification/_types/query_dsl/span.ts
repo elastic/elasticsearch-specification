@@ -128,7 +128,10 @@ export class SpanWithinQuery extends QueryBase {
   little: SpanQuery
 }
 
-/** @variants container */
+/**
+ * @variants container
+ * @non_exhaustive
+ */
 export class SpanQuery {
   /**
    * Accepts a list of span queries, but only returns those spans which also match a second span query.
