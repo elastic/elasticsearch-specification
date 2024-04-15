@@ -34901,10 +34901,6 @@
                 "description": "The number of nearest neighbor candidates to consider per shard",
                 "type": "number"
               },
-              "boost": {
-                "description": "Boost value to apply to kNN scores",
-                "type": "number"
-              },
               "filter": {
                 "description": "Filters for the kNN search query",
                 "oneOf": [
