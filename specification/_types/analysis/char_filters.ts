@@ -42,6 +42,7 @@ export type CharFilterDefinition =
 
 export class HtmlStripCharFilter extends CharFilterBase {
   type: 'html_strip'
+  escaped_tags?: string[]
 }
 
 export class MappingCharFilter extends CharFilterBase {

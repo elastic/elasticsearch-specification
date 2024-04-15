@@ -311,7 +311,7 @@ export class WildcardProperty extends DocValuesPropertyBase {
 }
 
 export class DynamicProperty extends DocValuesPropertyBase {
-  type: '{dynamic_property}'
+  type: '{dynamic_type}'
 
   enabled?: boolean
   null_value?: FieldValue

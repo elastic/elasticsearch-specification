@@ -30,7 +30,7 @@ import {
   GeoLocation,
   GeoBounds
 } from '@_types/Geo'
-import { integer, float, long, double } from '@_types/Numeric'
+import { integer, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import {
@@ -238,8 +238,14 @@ export class GeoTileGridAggregation extends BucketAggregationBase {
 export class GlobalAggregation extends BucketAggregationBase {}
 
 export class ExtendedBounds<T> {
-  max: T
-  min: T
+  /**
+   * Maximum value for the bound.
+   */
+  max?: T
+  /**
+   * Minimum value for the bound.
+   */
+  min?: T
 }
 
 export class HistogramAggregation extends BucketAggregationBase {
@@ -438,4 +444,5 @@ export class VariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
+  script?: Script
 }
