@@ -8679,8 +8679,8 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   master_timeout?: Duration
+  cause?: string
   body?: {
-    allow_auto_create?: boolean
     template: IndicesIndexState
     version?: VersionNumber
     _meta?: Metadata
@@ -11213,6 +11213,8 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
+  master_timeout?: Duration
+  cause?: string
   body?: {
     index_patterns?: Indices
     composed_of?: Name[]
@@ -11221,6 +11223,9 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
     priority?: integer
     version?: VersionNumber
     _meta?: Metadata
+    allow_auto_create?: boolean
+    ignore_missing_component_templates?: string[]
+    deprecated?: boolean
   }
 }
 
@@ -11268,10 +11273,9 @@ export type IndicesPutSettingsResponse = AcknowledgedResponseBase
 export interface IndicesPutTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
-  flat_settings?: boolean
   master_timeout?: Duration
-  timeout?: Duration
   order?: integer
+  cause?: string
   body?: {
     aliases?: Record<IndexName, IndicesAlias>
     index_patterns?: string | string[]
@@ -11647,6 +11651,7 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
     version?: VersionNumber
     _meta?: Metadata
     ignore_missing_component_templates?: string[]
+    deprecated?: boolean
   }
 }
 
