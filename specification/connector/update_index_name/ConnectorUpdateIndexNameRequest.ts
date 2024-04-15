@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, IndexName } from '@_types/common'
 import { WithNullValue } from '@spec_utils/utils'
 
 /**
@@ -38,6 +38,6 @@ export interface Request extends RequestBase {
    * The connector index name
    */
   body: {
-    index_name: WithNullValue<string>
+    index_name: WithNullValue<IndexName>
   }
 }
