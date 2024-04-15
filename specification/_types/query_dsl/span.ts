@@ -76,7 +76,10 @@ export class SpanWithinQuery extends QueryBase {
   little: SpanQuery
 }
 
-/** @variants container */
+/**
+ * @variants container
+ * @non_exhaustive
+ */
 export class SpanQuery {
   span_containing?: SpanContainingQuery
   field_masking_span?: SpanFieldMaskingQuery
