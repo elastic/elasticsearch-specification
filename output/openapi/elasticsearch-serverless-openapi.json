@@ -27047,6 +27047,10 @@
                 },
                 "_meta": {
                   "$ref": "#/components/schemas/_types:Metadata"
+                },
+                "deprecated": {
+                  "description": "Marks this index template as deprecated. When creating or updating a non-deprecated index template\nthat uses deprecated components, Elasticsearch will emit a deprecation warning.",
+                  "type": "boolean"
                 }
               },
               "required": [

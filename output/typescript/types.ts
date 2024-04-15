@@ -8684,6 +8684,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
     template: IndicesIndexState
     version?: VersionNumber
     _meta?: Metadata
+    deprecated?: boolean
   }
 }
 
@@ -11220,7 +11221,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
     data_stream?: IndicesDataStreamVisibility
-    priority?: integer
+    priority?: long
     version?: VersionNumber
     _meta?: Metadata
     allow_auto_create?: boolean
@@ -11647,7 +11648,7 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
     data_stream?: IndicesDataStreamVisibility
-    priority?: integer
+    priority?: long
     version?: VersionNumber
     _meta?: Metadata
     ignore_missing_component_templates?: string[]
