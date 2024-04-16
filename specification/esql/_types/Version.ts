@@ -20,15 +20,12 @@
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
+/**
+ * The version of the ES|QL language in which the "query" field was written.
+ */
 export enum Version {
     /**
-     * Run against the first version of ESQL.
+     * Run against the first version of ES|QL.
      */
     '2024.04.01',
-    /**
-     * Run against the unreleased version of the ESQL language. This will
-     * contain any changes staged for release that have yet to be included
-     * in a version.
-     */
-    snapshot
 }

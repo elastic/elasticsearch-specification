@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      */
     query: string,
     /**
-     * The version of the ES|QL language in which the "query" field uses was written.
+     * The version of the ES|QL language in which the "query" field was written.
      */
     version: Version
   }
