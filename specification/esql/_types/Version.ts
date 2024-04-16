@@ -24,8 +24,8 @@ import { Duration } from '@_types/Time'
  * The version of the ES|QL language in which the "query" field was written.
  */
 export enum Version {
-    /**
-     * Run against the first version of ES|QL.
-     */
-    '2024.04.01',
+  /**
+   * Run against the first version of ES|QL.
+   */
+  '2024.04.01'
 }

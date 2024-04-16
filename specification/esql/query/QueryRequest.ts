@@ -60,7 +60,7 @@ export interface Request extends RequestBase {
     /**
      * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
      */
-    query: string,
+    query: string
     /**
      * The version of the ES|QL language in which the "query" field was written.
      */
