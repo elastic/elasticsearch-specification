@@ -36,6 +36,6 @@ export interface Request extends RequestBase {
     /**
      * The inference Id
      */
-    inference_id: Id
+    inference_id?: Id
   }
 }

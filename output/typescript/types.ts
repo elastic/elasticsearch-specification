@@ -11993,7 +11993,7 @@ export type InferenceDeleteModelResponse = AcknowledgedResponseBase
 
 export interface InferenceGetModelRequest extends RequestBase {
   task_type?: InferenceTaskType
-  inference_id: Id
+  inference_id?: Id
 }
 
 export interface InferenceGetModelResponse {
