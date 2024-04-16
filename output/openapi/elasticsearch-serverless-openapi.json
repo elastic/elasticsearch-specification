@@ -45045,6 +45045,9 @@
               "synonyms_path": {
                 "type": "string"
               },
+              "synonyms_set": {
+                "type": "string"
+              },
               "tokenizer": {
                 "type": "string"
               },
@@ -45095,6 +45098,9 @@
                 }
               },
               "synonyms_path": {
+                "type": "string"
+              },
+              "synonyms_set": {
                 "type": "string"
               },
               "tokenizer": {
