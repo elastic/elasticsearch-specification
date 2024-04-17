@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from "@_types/Base";
-import { Id, Name } from "@_types/common";
+import { RequestBase } from '@_types/Base'
+import { Id, Name } from '@_types/common'
 
 /**
  * Creates a connector sync job.
@@ -35,8 +35,8 @@ export interface Request extends RequestBase {
     /**
      * The id of the associated connector
      */
-    id: Id;
-    job_type?: Name;
-    trigger_method?: Name;
-  };
+    id: Id
+    job_type?: Name
+    trigger_method?: Name
+  }
 }

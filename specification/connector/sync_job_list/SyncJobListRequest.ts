@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from "@_types/Base";
-import { Names, Id, Name } from "@_types/common";
-import { integer } from "@_types/Numeric";
+import { RequestBase } from '@_types/Base'
+import { Names, Id, Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * Lists connector sync jobs.
@@ -32,22 +32,22 @@ export interface Request extends RequestBase {
     /**
      * Starting offset (default: 0)
      */
-    from?: integer;
+    from?: integer
     /**
      * Specifies a max number of results to get
      */
-    size?: integer;
+    size?: integer
     /**
      * A sync job status to fetch connector sync jobs for
      */
-    status?: Name;
+    status?: Name
     /**
      * A connector id to fetch connector sync jobs for
      */
-    connector_id?: Id;
+    connector_id?: Id
     /**
      * A comma-separated list of job types to fetch the sync jobs for
      */
-    job_type?: Names;
-  };
+    job_type?: Names
+  }
 }

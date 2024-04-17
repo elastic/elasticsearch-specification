@@ -9141,22 +9141,22 @@ export interface ConnectorConnectorScheduling {
 export type ConnectorConnectorStatus = 'created' | 'needs_configuration' | 'configured' | 'connected' | 'error'
 
 export interface ConnectorConnectorSyncJob {
-  cancelation_requested_at?: string
-  canceled_at?: string
-  completed_at?: string
+  cancelation_requested_at?: DateTime
+  canceled_at?: DateTime
+  completed_at?: DateTime
   connector: ConnectorSyncJobConnectorReference
-  created_at: string
+  created_at: DateTime
   deleted_document_count: long
   error?: string
   id: Id
   indexed_document_count: long
   indexed_document_volume: long
   job_type: ConnectorSyncJobType
-  last_seen?: string
+  last_seen?: DateTime
   metadata: Record<string, any>
-  started_at?: string
+  started_at?: DateTime
   status: ConnectorSyncStatus
-  total_document_count?: long
+  total_document_count: long
   trigger_method: ConnectorTriggerMethod
   worker_hostname?: string
 }
@@ -9282,7 +9282,7 @@ export interface ConnectorSyncJobConnectorReference {
   id: Id
   index_name: string
   language?: string
-  pipeline: ConnectorIngestPipelineParams
+  pipeline?: ConnectorIngestPipelineParams
   service_type: string
 }
 

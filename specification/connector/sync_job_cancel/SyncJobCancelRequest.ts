@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from "@_types/Base";
-import { Id } from "@_types/common";
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 /**
  * Cancels a connector sync job.
@@ -31,6 +31,6 @@ export interface Request extends RequestBase {
     /**
      * The unique identifier of the connector sync job
      */
-    connector_sync_job_id: Id;
-  };
+    connector_sync_job_id: Id
+  }
 }

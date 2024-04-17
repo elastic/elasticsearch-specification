@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ConnectorSyncJob } from "../_types/SyncJob";
+import { ConnectorSyncJob } from '../_types/SyncJob'
 
 export class Response {
-  body: ConnectorSyncJob;
+  body: ConnectorSyncJob
 }

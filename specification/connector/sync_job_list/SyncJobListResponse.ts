@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { long } from "@_types/Numeric";
-import { ConnectorSyncJob } from "../_types/SyncJob";
+import { long } from '@_types/Numeric'
+import { ConnectorSyncJob } from '../_types/SyncJob'
 
 export class Response {
   body: {
-    count: long;
-    results: ConnectorSyncJob[];
-  };
+    count: long
+    results: ConnectorSyncJob[]
+  }
 }

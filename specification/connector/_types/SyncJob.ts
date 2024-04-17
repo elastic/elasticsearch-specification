@@ -16,55 +16,56 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Id } from "@_types/common";
-import { long } from "@_types/Numeric";
-import { Dictionary } from "@spec_utils/Dictionary";
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue";
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { DateTime } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ConnectorConfiguration,
   FilteringConfig,
   IngestPipelineParams,
-  SyncStatus,
-} from "./Connector";
+  SyncStatus
+} from './Connector'
 
 interface SyncJobConnectorReference {
-  configuration: ConnectorConfiguration;
-  filtering: FilteringConfig;
-  id: Id;
-  index_name: string;
-  language?: string;
-  pipeline: IngestPipelineParams;
-  service_type: string;
+  configuration: ConnectorConfiguration
+  filtering: FilteringConfig
+  id: Id
+  index_name: string
+  language?: string
+  pipeline?: IngestPipelineParams
+  service_type: string
 }
 
 enum SyncJobType {
   full,
   incremental,
-  access_control,
+  access_control
 }
 
 enum TriggerMethod {
   on_demand,
-  scheduled,
+  scheduled
 }
 
 export interface ConnectorSyncJob {
-  cancelation_requested_at?: string;
-  canceled_at?: string;
-  completed_at?: string;
-  connector: SyncJobConnectorReference;
-  created_at: string;
-  deleted_document_count: long;
-  error?: string;
-  id: Id;
-  indexed_document_count: long;
-  indexed_document_volume: long;
-  job_type: SyncJobType;
-  last_seen?: string;
-  metadata: Dictionary<string, UserDefinedValue>;
-  started_at?: string;
-  status: SyncStatus;
-  total_document_count?: long;
-  trigger_method: TriggerMethod;
-  worker_hostname?: string;
+  cancelation_requested_at?: DateTime
+  canceled_at?: DateTime
+  completed_at?: DateTime
+  connector: SyncJobConnectorReference
+  created_at: DateTime
+  deleted_document_count: long
+  error?: string
+  id: Id
+  indexed_document_count: long
+  indexed_document_volume: long
+  job_type: SyncJobType
+  last_seen?: DateTime
+  metadata: Dictionary<string, UserDefinedValue>
+  started_at?: DateTime
+  status: SyncStatus
+  total_document_count: long
+  trigger_method: TriggerMethod
+  worker_hostname?: string
 }
