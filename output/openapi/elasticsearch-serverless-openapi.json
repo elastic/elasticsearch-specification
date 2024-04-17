@@ -1932,7 +1932,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2047,7 +2047,7 @@
                     "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_access_control_sync_scheduled_at": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_access_control_sync_status": {
                     "$ref": "#/components/schemas/connector._types:SyncStatus"
@@ -2056,25 +2056,25 @@
                     "type": "number"
                   },
                   "last_incremental_sync_scheduled_at": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_indexed_document_count": {
                     "type": "number"
                   },
                   "last_seen": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueDateTime"
                   },
                   "last_sync_error": {
                     "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_sync_scheduled_at": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_sync_status": {
                     "$ref": "#/components/schemas/connector._types:SyncStatus"
                   },
                   "last_synced": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   }
                 }
               }
@@ -2225,7 +2225,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2563,7 +2563,7 @@
                 "type": "object",
                 "properties": {
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
                   }
                 },
                 "required": [
@@ -49315,7 +49315,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:IndexName"
           },
           "is_native": {
             "type": "boolean"
@@ -49327,7 +49327,7 @@
             "type": "string"
           },
           "last_access_control_sync_scheduled_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_access_control_sync_status": {
             "$ref": "#/components/schemas/connector._types:SyncStatus"
@@ -49336,25 +49336,25 @@
             "type": "number"
           },
           "last_incremental_sync_scheduled_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_indexed_document_count": {
             "type": "number"
           },
           "last_seen": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_sync_error": {
             "type": "string"
           },
           "last_sync_scheduled_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_sync_status": {
             "$ref": "#/components/schemas/connector._types:SyncStatus"
           },
           "last_synced": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "name": {
             "type": "string"
@@ -49672,7 +49672,7 @@
             "type": "string"
           },
           "last_synced": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "name": {
             "type": "string"
@@ -49801,10 +49801,10 @@
         "type": "object",
         "properties": {
           "created_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "updated_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "value": {
             "type": "object",
@@ -49823,13 +49823,13 @@
         "type": "object",
         "properties": {
           "created_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "field": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Field"
           },
           "id": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Id"
           },
           "order": {
             "type": "number"
@@ -49841,7 +49841,7 @@
             "$ref": "#/components/schemas/connector._types:FilteringRuleRule"
           },
           "updated_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "value": {
             "type": "string"
@@ -49901,7 +49901,7 @@
           "ids": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:Id"
             }
           },
           "messages": {
@@ -50014,6 +50014,28 @@
         "nullable": true,
         "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
         "type": "string"
+      },
+      "_spec_utils:WithNullValueDateTime": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types:DateTime"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
+      },
+      "_spec_utils:WithNullValueIndexName": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
       },
       "_types:WriteResponseBase": {
         "type": "object",

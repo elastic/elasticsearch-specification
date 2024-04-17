@@ -9091,20 +9091,20 @@ export interface ConnectorConnector {
   features: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
-  index_name?: string
+  index_name?: IndexName
   is_native: boolean
   language?: string
   last_access_control_sync_error?: string
-  last_access_control_sync_scheduled_at?: string
+  last_access_control_sync_scheduled_at?: DateTime
   last_access_control_sync_status?: ConnectorSyncStatus
   last_deleted_document_count?: long
-  last_incremental_sync_scheduled_at?: string
+  last_incremental_sync_scheduled_at?: DateTime
   last_indexed_document_count?: long
-  last_seen?: string
+  last_seen?: DateTime
   last_sync_error?: string
-  last_sync_scheduled_at?: string
+  last_sync_scheduled_at?: DateTime
   last_sync_status?: ConnectorSyncStatus
-  last_synced?: string
+  last_synced?: DateTime
   name?: string
   pipeline?: ConnectorIngestPipelineParams
   scheduling: ConnectorSchedulingConfiguration
@@ -9156,7 +9156,7 @@ export interface ConnectorCustomScheduling {
   configuration_overrides: ConnectorCustomSchedulingConfigurationOverrides
   enabled: boolean
   interval: string
-  last_synced?: string
+  last_synced?: DateTime
   name: string
 }
 
@@ -9180,8 +9180,8 @@ export interface ConnectorFeatureEnabled {
 }
 
 export interface ConnectorFilteringAdvancedSnippet {
-  created_at: string
-  updated_at: string
+  created_at: DateTime
+  updated_at: DateTime
   value: Record<string, any>
 }
 
@@ -9194,13 +9194,13 @@ export interface ConnectorFilteringConfig {
 export type ConnectorFilteringPolicy = 'exclude' | 'include'
 
 export interface ConnectorFilteringRule {
-  created_at: string
-  field: string
-  id: string
+  created_at: DateTime
+  field: Field
+  id: Id
   order: integer
   policy: ConnectorFilteringPolicy
   rule: ConnectorFilteringRuleRule
-  updated_at: string
+  updated_at: DateTime
   value: string
 }
 
@@ -9218,7 +9218,7 @@ export interface ConnectorFilteringRulesValidation {
 }
 
 export interface ConnectorFilteringValidation {
-  ids: string[]
+  ids: Id[]
   messages: string[]
 }
 
@@ -9300,16 +9300,16 @@ export interface ConnectorLastSyncRequest extends RequestBase {
   connector_id: Id
   body?: {
     last_access_control_sync_error?: SpecUtilsWithNullValue<string>
-    last_access_control_sync_scheduled_at?: string
+    last_access_control_sync_scheduled_at?: DateTime
     last_access_control_sync_status?: ConnectorSyncStatus
     last_deleted_document_count?: long
-    last_incremental_sync_scheduled_at?: string
+    last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
-    last_seen?: SpecUtilsWithNullValue<string>
+    last_seen?: SpecUtilsWithNullValue<DateTime>
     last_sync_error?: SpecUtilsWithNullValue<string>
-    last_sync_scheduled_at?: string
+    last_sync_scheduled_at?: DateTime
     last_sync_status?: ConnectorSyncStatus
-    last_synced?: string
+    last_synced?: DateTime
   }
 }
 
@@ -9334,7 +9334,7 @@ export interface ConnectorListResponse {
 export interface ConnectorPostRequest extends RequestBase {
   body?: {
     description?: string
-    index_name: SpecUtilsWithNullValue<string>
+    index_name: SpecUtilsWithNullValue<IndexName>
     is_native?: boolean
     language?: string
     name?: string
@@ -9350,7 +9350,7 @@ export interface ConnectorPutRequest extends RequestBase {
   connector_id: Id
   body?: {
     description?: string
-    index_name: SpecUtilsWithNullValue<string>
+    index_name: SpecUtilsWithNullValue<IndexName>
     is_native?: boolean
     language?: string
     name?: string
@@ -9411,7 +9411,7 @@ export interface ConnectorUpdateFilteringResponse {
 export interface ConnectorUpdateIndexNameRequest extends RequestBase {
   connector_id: Id
   body?: {
-    index_name: SpecUtilsWithNullValue<string>
+    index_name: SpecUtilsWithNullValue<IndexName>
   }
 }
 
