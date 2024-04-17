@@ -8700,7 +8700,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model",
+        "operationId": "inference-get-model-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.get_model#inference_id"
@@ -8795,7 +8795,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-1",
+        "operationId": "inference-get-model-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.get_model#task_type"
@@ -8888,6 +8888,24 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/inference.delete_model#200"
+          }
+        }
+      }
+    },
+    "/_inference": {
+      "get": {
+        "tags": [
+          "inference.get_model"
+        ],
+        "summary": "Get a model in the Inference API",
+        "description": "Get a model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
+        },
+        "operationId": "inference-get-model",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.get_model#200"
           }
         }
       }
