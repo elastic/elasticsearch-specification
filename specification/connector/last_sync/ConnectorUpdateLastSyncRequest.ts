@@ -21,6 +21,7 @@ import { Id } from '@_types/common'
 import { SyncStatus } from '../_types/Connector'
 import { long } from '@_types/Numeric'
 import { WithNullValue } from '@spec_utils/utils'
+import { DateTime } from '@_types/Time'
 
 /**
  * Updates last sync stats in the connector document
@@ -41,15 +42,15 @@ export interface Request extends RequestBase {
    */
   body: {
     last_access_control_sync_error?: WithNullValue<string>
-    last_access_control_sync_scheduled_at?: string
+    last_access_control_sync_scheduled_at?: DateTime
     last_access_control_sync_status?: SyncStatus
     last_deleted_document_count?: long
-    last_incremental_sync_scheduled_at?: string
+    last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
-    last_seen?: WithNullValue<string>
+    last_seen?: WithNullValue<DateTime>
     last_sync_error?: WithNullValue<string>
-    last_sync_scheduled_at?: string
+    last_sync_scheduled_at?: DateTime
     last_sync_status?: SyncStatus
-    last_synced?: string
+    last_synced?: DateTime
   }
 }
