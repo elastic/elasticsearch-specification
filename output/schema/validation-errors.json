@@ -494,10 +494,10 @@
       ],
       "response": []
     },
-    "connector_sync_job.delete": {
+    "connector.sync_job_delete": {
       "request": [],
       "response": [
-        "response definition connector_sync_job.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+        "response definition connector.sync_job_delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "create": {

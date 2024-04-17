@@ -16,21 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { RequestBase } from "@_types/Base";
+import { Id, Name } from "@_types/common";
 
 /**
- * Cancels a connector sync job.
- * @rest_spec_name connector_sync_job.cancel
+ * Creates a connector sync job.
+ * @rest_spec_name connector.sync_job_post
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
- * @doc_id connector-sync-job-cancel
+ * @doc_id connector-sync-job-post
  */
 export interface Request extends RequestBase {
-  path_parts: {
+  /**
+   * The sync job to be created
+   */
+  /** @codegen_name sync_job */
+  body: {
     /**
-     * The unique identifier of the connector sync job
+     * The id of the associated connector
      */
-    connector_sync_job_id: Id
-  }
+    id: Id;
+    job_type?: Name;
+    trigger_method?: Name;
+  };
 }

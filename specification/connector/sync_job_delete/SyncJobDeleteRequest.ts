@@ -16,13 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from "@_types/Base";
+import { Id } from "@_types/common";
 
-import { long } from '@_types/Numeric'
-import { ConnectorSyncJob } from '../_types/SyncJob'
-
-export class Response {
-  body: {
-    count: long
-    results: ConnectorSyncJob[]
-  }
+/**
+ * Deletes a connector sync job.
+ * @rest_spec_name connector.sync_job_delete
+ * @availability stack since=8.12.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-sync-job-delete
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The unique identifier of the connector sync job to be deleted
+     */
+    connector_sync_job_id: Id;
+  };
 }

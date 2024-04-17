@@ -16,21 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { RequestBase } from "@_types/Base";
+import { Id } from "@_types/common";
 
 /**
- * Deletes a connector sync job.
- * @rest_spec_name connector_sync_job.delete
+ * Cancels a connector sync job.
+ * @rest_spec_name connector.sync_job_cancel
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
- * @doc_id connector-sync-job-delete
+ * @doc_id connector-sync-job-cancel
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier of the connector sync job to be deleted
+     * The unique identifier of the connector sync job
      */
-    connector_sync_job_id: Id
-  }
+    connector_sync_job_id: Id;
+  };
 }

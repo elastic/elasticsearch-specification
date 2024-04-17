@@ -16,27 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
 
-/**
- * Creates a connector sync job.
- * @rest_spec_name connector_sync_job.post
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
- * @doc_id connector-sync-job-post
- */
-export interface Request extends RequestBase {
-  /**
-   * The sync job to be created
-   */
-  /** @codegen_name sync_job */
-  body: {
-    /**
-     * The id of the associated connector
-     */
-    id: Id
-    job_type?: Name
-    trigger_method?: Name
-  }
+import { ConnectorSyncJob } from "../_types/SyncJob";
+
+export class Response {
+  body: ConnectorSyncJob;
 }

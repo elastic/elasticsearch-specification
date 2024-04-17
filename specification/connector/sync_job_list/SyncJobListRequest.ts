@@ -16,21 +16,38 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { RequestBase } from "@_types/Base";
+import { Names, Id, Name } from "@_types/common";
+import { integer } from "@_types/Numeric";
 
 /**
- * Retrieves a connector sync job.
- * @rest_spec_name connector_sync_job.get
+ * Lists connector sync jobs.
+ * @rest_spec_name connector.sync_job_list
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
- * @doc_id connector-sync-job-get
+ * @doc_id connector-sync-job-list
  */
 export interface Request extends RequestBase {
-  path_parts: {
+  query_parameters: {
     /**
-     * The unique identifier of the connector sync job
+     * Starting offset (default: 0)
      */
-    connector_sync_job_id: Id
-  }
+    from?: integer;
+    /**
+     * Specifies a max number of results to get
+     */
+    size?: integer;
+    /**
+     * A sync job status to fetch connector sync jobs for
+     */
+    status?: Name;
+    /**
+     * A connector id to fetch connector sync jobs for
+     */
+    connector_id?: Id;
+    /**
+     * A comma-separated list of job types to fetch the sync jobs for
+     */
+    job_type?: Names;
+  };
 }
