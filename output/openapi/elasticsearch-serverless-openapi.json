@@ -2495,10 +2495,10 @@
                     "$ref": "#/components/schemas/_types:Id"
                   },
                   "job_type": {
-                    "$ref": "#/components/schemas/_types:Name"
+                    "$ref": "#/components/schemas/connector._types:SyncJobType"
                   },
                   "trigger_method": {
-                    "$ref": "#/components/schemas/_types:Name"
+                    "$ref": "#/components/schemas/connector._types:SyncJobTriggerMethod"
                   }
                 },
                 "required": [
@@ -50222,7 +50222,7 @@
             "type": "number"
           },
           "trigger_method": {
-            "$ref": "#/components/schemas/connector._types:TriggerMethod"
+            "$ref": "#/components/schemas/connector._types:SyncJobTriggerMethod"
           },
           "worker_hostname": {
             "type": "string"
@@ -50283,7 +50283,7 @@
           "access_control"
         ]
       },
-      "connector._types:TriggerMethod": {
+      "connector._types:SyncJobTriggerMethod": {
         "type": "string",
         "enum": [
           "on_demand",

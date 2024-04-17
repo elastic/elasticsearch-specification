@@ -17,7 +17,8 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id } from '@_types/common'
+import { SyncJobType, SyncJobTriggerMethod } from '../_types/SyncJob'
 
 /**
  * Creates a connector sync job.
@@ -36,7 +37,7 @@ export interface Request extends RequestBase {
      * The id of the associated connector
      */
     id: Id
-    job_type?: Name
-    trigger_method?: Name
+    job_type?: SyncJobType
+    trigger_method?: SyncJobTriggerMethod
   }
 }

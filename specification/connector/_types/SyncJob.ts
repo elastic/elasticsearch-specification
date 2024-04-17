@@ -38,13 +38,13 @@ interface SyncJobConnectorReference {
   service_type: string
 }
 
-enum SyncJobType {
+export enum SyncJobType {
   full,
   incremental,
   access_control
 }
 
-enum TriggerMethod {
+export enum SyncJobTriggerMethod {
   on_demand,
   scheduled
 }
@@ -66,6 +66,6 @@ export interface ConnectorSyncJob {
   started_at?: DateTime
   status: SyncStatus
   total_document_count: long
-  trigger_method: TriggerMethod
+  trigger_method: SyncJobTriggerMethod
   worker_hostname?: string
 }

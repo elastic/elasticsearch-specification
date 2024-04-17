@@ -9157,7 +9157,7 @@ export interface ConnectorConnectorSyncJob {
   started_at?: DateTime
   status: ConnectorSyncStatus
   total_document_count: long
-  trigger_method: ConnectorTriggerMethod
+  trigger_method: ConnectorSyncJobTriggerMethod
   worker_hostname?: string
 }
 
@@ -9286,6 +9286,8 @@ export interface ConnectorSyncJobConnectorReference {
   service_type: string
 }
 
+export type ConnectorSyncJobTriggerMethod = 'on_demand' | 'scheduled'
+
 export type ConnectorSyncJobType = 'full' | 'incremental' | 'access_control'
 
 export interface ConnectorSyncRulesFeature {
@@ -9294,8 +9296,6 @@ export interface ConnectorSyncRulesFeature {
 }
 
 export type ConnectorSyncStatus = 'canceling' | 'canceled' | 'completed' | 'error' | 'in_progress' | 'pending' | 'suspended'
-
-export type ConnectorTriggerMethod = 'on_demand' | 'scheduled'
 
 export type ConnectorValidation = ConnectorLessThanValidation | ConnectorGreaterThanValidation | ConnectorListTypeValidation | ConnectorIncludedInValidation | ConnectorRegexValidation
 
@@ -9421,8 +9421,8 @@ export interface ConnectorSyncJobListResponse {
 export interface ConnectorSyncJobPostRequest extends RequestBase {
   body?: {
     id: Id
-    job_type?: Name
-    trigger_method?: Name
+    job_type?: ConnectorSyncJobType
+    trigger_method?: ConnectorSyncJobTriggerMethod
   }
 }
 
