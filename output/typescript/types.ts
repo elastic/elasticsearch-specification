@@ -9686,7 +9686,7 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
-export type EsqlVersion = '2024.04.01' | 'snapshot'
+export type EsqlVersion = '2024.04.01'
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
