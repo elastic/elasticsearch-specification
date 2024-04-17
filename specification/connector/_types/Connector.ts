@@ -16,8 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Id, ScalarValue } from '@_types/common'
+import { Field, Id, IndexName, ScalarValue } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
+import { DateTime } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -120,7 +121,7 @@ interface CustomScheduling {
   configuration_overrides: CustomSchedulingConfigurationOverrides
   enabled: boolean
   interval: string
-  last_synced?: string
+  last_synced?: DateTime
   name: string
 }
 
@@ -167,18 +168,18 @@ enum FilteringRuleRule {
 }
 
 interface FilteringRule {
-  created_at: string
-  field: string
-  id: string
+  created_at: DateTime
+  field: Field
+  id: Id
   order: integer
   policy: FilteringPolicy
   rule: FilteringRuleRule
-  updated_at: string
+  updated_at: DateTime
   value: string
 }
 
 interface FilteringValidation {
-  ids: string[]
+  ids: Id[]
   messages: string[]
 }
 
@@ -189,8 +190,8 @@ enum FilteringValidationState {
 }
 
 interface FilteringAdvancedSnippet {
-  created_at: string
-  updated_at: string
+  created_at: DateTime
+  updated_at: DateTime
   value: Dictionary<string, UserDefinedValue>
 }
 
@@ -243,20 +244,20 @@ export interface Connector {
   features: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
-  index_name?: string
+  index_name?: IndexName
   is_native: boolean
   language?: string
   last_access_control_sync_error?: string
-  last_access_control_sync_scheduled_at?: string
+  last_access_control_sync_scheduled_at?: DateTime
   last_access_control_sync_status?: SyncStatus
   last_deleted_document_count?: long
-  last_incremental_sync_scheduled_at?: string
+  last_incremental_sync_scheduled_at?: DateTime
   last_indexed_document_count?: long
-  last_seen?: string
+  last_seen?: DateTime
   last_sync_error?: string
-  last_sync_scheduled_at?: string
+  last_sync_scheduled_at?: DateTime
   last_sync_status?: SyncStatus
-  last_synced?: string
+  last_synced?: DateTime
   name?: string
   pipeline?: IngestPipelineParams
   scheduling: SchedulingConfiguration
