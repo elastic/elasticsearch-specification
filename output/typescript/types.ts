@@ -9420,9 +9420,9 @@ export type ConnectorSyncJobGetResponse = ConnectorConnectorSyncJob
 export interface ConnectorSyncJobListRequest extends RequestBase {
   from?: integer
   size?: integer
-  status?: Name
+  status?: ConnectorSyncStatus
   connector_id?: Id
-  job_type?: Names
+  job_type?: ConnectorSyncJobType[]
 }
 
 export interface ConnectorSyncJobListResponse {

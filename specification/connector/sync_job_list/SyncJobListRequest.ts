@@ -17,8 +17,10 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Names, Id, Name } from '@_types/common'
+import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { SyncJobType } from '../_types/SyncJob'
+import { SyncStatus } from '../_types/Connector'
 
 /**
  * Lists connector sync jobs.
@@ -40,7 +42,7 @@ export interface Request extends RequestBase {
     /**
      * A sync job status to fetch connector sync jobs for
      */
-    status?: Name
+    status?: SyncStatus
     /**
      * A connector id to fetch connector sync jobs for
      */
@@ -48,6 +50,6 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of job types to fetch the sync jobs for
      */
-    job_type?: Names
+    job_type?: SyncJobType[]
   }
 }

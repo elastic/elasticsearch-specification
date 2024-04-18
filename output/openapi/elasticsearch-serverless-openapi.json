@@ -2428,7 +2428,7 @@
             "description": "A sync job status to fetch connector sync jobs for",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Name"
+              "$ref": "#/components/schemas/connector._types:SyncStatus"
             },
             "style": "form"
           },
@@ -2448,7 +2448,10 @@
             "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Names"
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/connector._types:SyncJobType"
+              }
             },
             "style": "form"
           }
