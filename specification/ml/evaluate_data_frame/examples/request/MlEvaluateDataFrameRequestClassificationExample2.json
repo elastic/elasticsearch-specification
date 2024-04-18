@@ -4,11 +4,11 @@
   "value": {
     "index": "animal_classification",
     "evaluation": {
-      "classification": { 
-        "actual_field": "animal_class", 
+      "classification": {
+        "actual_field": "animal_class",
         "metrics": {
-          "auc_roc" : { 
-            "class_name": "dog" 
+          "auc_roc": {
+            "class_name": "dog"
           }
         }
       }
