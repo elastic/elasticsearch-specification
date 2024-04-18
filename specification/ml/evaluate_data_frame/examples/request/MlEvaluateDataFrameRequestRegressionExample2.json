@@ -1,0 +1,26 @@
+{
+  "summary": "A request for evaluating the training error of a regression job for an annotated index.",
+  "description": "The term query in the body limits evaluation to be performed on the training split only. The `actual_field` contains the ground truth for house prices. The `predicted_field` contains the house price calculated by the regression analysis.",
+  "value": {
+    "index": "house_price_predictions", 
+    "query": {
+      "term":  { 
+        "ml.is_training": { 
+          "value": true 
+        }
+      }
+    },
+    "evaluation": {
+      "regression": {
+        "actual_field": "price", 
+        "predicted_field": "ml.price_prediction", 
+        "metrics": {
+          "r_squared": {},
+          "mse": {},
+          "msle": {},
+          "huber": {}
+        }
+      }
+    }
+  }
+}
