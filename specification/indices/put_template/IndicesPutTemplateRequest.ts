@@ -44,23 +44,11 @@ export interface Request extends RequestBase {
      */
     create?: boolean
     /**
-     * If `true`, returns settings in flat format.
-     * @server_default false
-     *
-     */
-    flat_settings?: boolean
-    /**
      * Period to wait for a connection to the master node. If no response is
      * received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * Period to wait for a response.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: Duration
     /**
      * Order in which Elasticsearch applies this template if index
      * matches multiple templates.
@@ -69,6 +57,8 @@ export interface Request extends RequestBase {
      * 'order' values are merged later, overriding templates with lower values.
      */
     order?: integer
+
+    cause?: string
   }
   body: {
     /**

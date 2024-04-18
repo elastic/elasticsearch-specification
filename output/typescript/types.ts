@@ -732,7 +732,7 @@ export interface MsearchMultisearchBody {
   ext?: Record<string, any>
   stored_fields?: Fields
   docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-  knn?: KnnQuery | KnnQuery[]
+  knn?: KnnSearch | KnnSearch[]
   from?: integer
   highlight?: SearchHighlight
   indices_boost?: Record<IndexName, double>[]
@@ -1199,7 +1199,7 @@ export interface SearchRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    knn?: KnnQuery | KnnQuery[]
+    knn?: KnnSearch | KnnSearch[]
     rank?: RankContainer
     min_score?: double
     post_filter?: QueryDslQueryContainer
@@ -2357,12 +2357,21 @@ export interface InlineScript extends ScriptBase {
 
 export type Ip = string
 
-export interface KnnQuery {
+export interface KnnQuery extends QueryDslQueryBase {
   field: Field
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
-  k: long
-  num_candidates: long
+  num_candidates?: long
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  similarity?: float
+}
+
+export interface KnnSearch {
+  field: Field
+  query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
+  k?: long
+  num_candidates?: long
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2485,14 +2494,14 @@ export interface PluginStats {
 export type PropertyName = string
 
 export interface QueryCacheStats {
-  cache_count: integer
-  cache_size: integer
-  evictions: integer
-  hit_count: integer
+  cache_count: long
+  cache_size: long
+  evictions: long
+  hit_count: long
   memory_size?: ByteSize
   memory_size_in_bytes: long
-  miss_count: integer
-  total_count: integer
+  miss_count: long
+  total_count: long
 }
 
 export type QueryVector = float[]
@@ -4761,6 +4770,7 @@ export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -4772,6 +4782,7 @@ export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -6265,7 +6276,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
-    knn?: KnnQuery | KnnQuery[]
+    knn?: KnnSearch | KnnSearch[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
@@ -8670,11 +8681,12 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   master_timeout?: Duration
+  cause?: string
   body?: {
-    allow_auto_create?: boolean
     template: IndicesIndexState
     version?: VersionNumber
     _meta?: Metadata
+    deprecated?: boolean
   }
 }
 
@@ -9079,20 +9091,20 @@ export interface ConnectorConnector {
   features: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
-  index_name?: string
+  index_name?: IndexName
   is_native: boolean
   language?: string
   last_access_control_sync_error?: string
-  last_access_control_sync_scheduled_at?: string
+  last_access_control_sync_scheduled_at?: DateTime
   last_access_control_sync_status?: ConnectorSyncStatus
   last_deleted_document_count?: long
-  last_incremental_sync_scheduled_at?: string
+  last_incremental_sync_scheduled_at?: DateTime
   last_indexed_document_count?: long
-  last_seen?: string
+  last_seen?: DateTime
   last_sync_error?: string
-  last_sync_scheduled_at?: string
+  last_sync_scheduled_at?: DateTime
   last_sync_status?: ConnectorSyncStatus
-  last_synced?: string
+  last_synced?: DateTime
   name?: string
   pipeline?: ConnectorIngestPipelineParams
   scheduling: ConnectorSchedulingConfiguration
@@ -9165,7 +9177,7 @@ export interface ConnectorCustomScheduling {
   configuration_overrides: ConnectorCustomSchedulingConfigurationOverrides
   enabled: boolean
   interval: string
-  last_synced?: string
+  last_synced?: DateTime
   name: string
 }
 
@@ -9189,8 +9201,8 @@ export interface ConnectorFeatureEnabled {
 }
 
 export interface ConnectorFilteringAdvancedSnippet {
-  created_at: string
-  updated_at: string
+  created_at: DateTime
+  updated_at: DateTime
   value: Record<string, any>
 }
 
@@ -9203,13 +9215,13 @@ export interface ConnectorFilteringConfig {
 export type ConnectorFilteringPolicy = 'exclude' | 'include'
 
 export interface ConnectorFilteringRule {
-  created_at: string
-  field: string
-  id: string
+  created_at: DateTime
+  field: Field
+  id: Id
   order: integer
   policy: ConnectorFilteringPolicy
   rule: ConnectorFilteringRuleRule
-  updated_at: string
+  updated_at: DateTime
   value: string
 }
 
@@ -9227,7 +9239,7 @@ export interface ConnectorFilteringRulesValidation {
 }
 
 export interface ConnectorFilteringValidation {
-  ids: string[]
+  ids: Id[]
   messages: string[]
 }
 
@@ -9323,16 +9335,16 @@ export interface ConnectorLastSyncRequest extends RequestBase {
   connector_id: Id
   body?: {
     last_access_control_sync_error?: SpecUtilsWithNullValue<string>
-    last_access_control_sync_scheduled_at?: string
+    last_access_control_sync_scheduled_at?: DateTime
     last_access_control_sync_status?: ConnectorSyncStatus
     last_deleted_document_count?: long
-    last_incremental_sync_scheduled_at?: string
+    last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
-    last_seen?: SpecUtilsWithNullValue<string>
+    last_seen?: SpecUtilsWithNullValue<DateTime>
     last_sync_error?: SpecUtilsWithNullValue<string>
-    last_sync_scheduled_at?: string
+    last_sync_scheduled_at?: DateTime
     last_sync_status?: ConnectorSyncStatus
-    last_synced?: string
+    last_synced?: DateTime
   }
 }
 
@@ -9357,7 +9369,7 @@ export interface ConnectorListResponse {
 export interface ConnectorPostRequest extends RequestBase {
   body?: {
     description?: string
-    index_name: SpecUtilsWithNullValue<string>
+    index_name: SpecUtilsWithNullValue<IndexName>
     is_native?: boolean
     language?: string
     name?: string
@@ -9373,7 +9385,7 @@ export interface ConnectorPutRequest extends RequestBase {
   connector_id: Id
   body?: {
     description?: string
-    index_name: SpecUtilsWithNullValue<string>
+    index_name: SpecUtilsWithNullValue<IndexName>
     is_native?: boolean
     language?: string
     name?: string
@@ -9479,7 +9491,7 @@ export interface ConnectorUpdateFilteringResponse {
 export interface ConnectorUpdateIndexNameRequest extends RequestBase {
   connector_id: Id
   body?: {
-    index_name: SpecUtilsWithNullValue<string>
+    index_name: SpecUtilsWithNullValue<IndexName>
   }
 }
 
@@ -9756,6 +9768,8 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export type EsqlVersion = '2024.04.01'
+
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
   delimiter?: string
@@ -9765,6 +9779,7 @@ export interface EsqlQueryRequest extends RequestBase {
     locale?: string
     params?: ScalarValue[]
     query: string
+    version: EsqlVersion
   }
 }
 
@@ -11284,14 +11299,19 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
+  master_timeout?: Duration
+  cause?: string
   body?: {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
     data_stream?: IndicesDataStreamVisibility
-    priority?: integer
+    priority?: long
     version?: VersionNumber
     _meta?: Metadata
+    allow_auto_create?: boolean
+    ignore_missing_component_templates?: string[]
+    deprecated?: boolean
   }
 }
 
@@ -11339,10 +11359,9 @@ export type IndicesPutSettingsResponse = AcknowledgedResponseBase
 export interface IndicesPutTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
-  flat_settings?: boolean
   master_timeout?: Duration
-  timeout?: Duration
   order?: integer
+  cause?: string
   body?: {
     aliases?: Record<IndexName, IndicesAlias>
     index_patterns?: string | string[]
@@ -11714,10 +11733,11 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
     data_stream?: IndicesDataStreamVisibility
-    priority?: integer
+    priority?: long
     version?: VersionNumber
     _meta?: Metadata
     ignore_missing_component_templates?: string[]
+    deprecated?: boolean
   }
 }
 
@@ -12056,7 +12076,7 @@ export type InferenceDeleteModelResponse = AcknowledgedResponseBase
 
 export interface InferenceGetModelRequest extends RequestBase {
   task_type?: InferenceTaskType
-  inference_id: Id
+  inference_id?: Id
 }
 
 export interface InferenceGetModelResponse {
@@ -12066,6 +12086,7 @@ export interface InferenceGetModelResponse {
 export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  timeout?: Duration
   body?: {
     query?: string
     input: string | string[]
@@ -16657,7 +16678,7 @@ export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'| string
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_connector_secrets' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -16680,7 +16701,7 @@ export interface SecurityGlobalPrivilege {
 
 export type SecurityGrantType = 'password' | 'access_token'
 
-export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'| string
+export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'cross_cluster_replication' | 'cross_cluster_replication_internal' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_data_stream_lifecycle' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'none' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'| string
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity

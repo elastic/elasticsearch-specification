@@ -475,6 +475,7 @@
     },
     "cluster.put_component_template": {
       "request": [
+        "Request: query parameter 'cause' does not exist in the json spec",
         "Request: missing json spec query parameter 'timeout'",
         "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ],
@@ -850,10 +851,7 @@
       ]
     },
     "indices.put_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
+      "request": [],
       "response": [
         "response definition indices.put_index_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -866,8 +864,7 @@
     },
     "indices.put_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
+        "Request: query parameter 'cause' does not exist in the json spec"
       ],
       "response": [
         "response definition indices.put_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"

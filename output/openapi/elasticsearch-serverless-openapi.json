@@ -1567,6 +1567,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1597,6 +1600,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1926,7 +1932,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2041,7 +2047,7 @@
                     "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_access_control_sync_scheduled_at": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_access_control_sync_status": {
                     "$ref": "#/components/schemas/connector._types:SyncStatus"
@@ -2050,25 +2056,25 @@
                     "type": "number"
                   },
                   "last_incremental_sync_scheduled_at": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_indexed_document_count": {
                     "type": "number"
                   },
                   "last_seen": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueDateTime"
                   },
                   "last_sync_error": {
                     "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
                   },
                   "last_sync_scheduled_at": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_sync_status": {
                     "$ref": "#/components/schemas/connector._types:SyncStatus"
                   },
                   "last_synced": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/_types:DateTime"
                   }
                 }
               }
@@ -2219,7 +2225,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2824,7 +2830,7 @@
                 "type": "object",
                 "properties": {
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
                   }
                 },
                 "required": [
@@ -7248,6 +7254,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.put_index_template#create"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#cause"
           }
         ],
         "requestBody": {
@@ -7275,6 +7287,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.put_index_template#create"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.put_index_template#cause"
           }
         ],
         "requestBody": {
@@ -8171,16 +8189,13 @@
             "$ref": "#/components/parameters/indices.put_template#create"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#flat_settings"
-          },
-          {
             "$ref": "#/components/parameters/indices.put_template#master_timeout"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#timeout"
+            "$ref": "#/components/parameters/indices.put_template#order"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#order"
+            "$ref": "#/components/parameters/indices.put_template#cause"
           }
         ],
         "requestBody": {
@@ -8210,16 +8225,13 @@
             "$ref": "#/components/parameters/indices.put_template#create"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#flat_settings"
-          },
-          {
             "$ref": "#/components/parameters/indices.put_template#master_timeout"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#timeout"
+            "$ref": "#/components/parameters/indices.put_template#order"
           },
           {
-            "$ref": "#/components/parameters/indices.put_template#order"
+            "$ref": "#/components/parameters/indices.put_template#cause"
           }
         ],
         "requestBody": {
@@ -8955,7 +8967,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model",
+        "operationId": "inference-get-model-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.get_model#inference_id"
@@ -9004,6 +9016,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.inference#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.inference#timeout"
           }
         ],
         "requestBody": {
@@ -9047,7 +9062,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-1",
+        "operationId": "inference-get-model-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.get_model#task_type"
@@ -9105,6 +9120,9 @@
           },
           {
             "$ref": "#/components/parameters/inference.inference#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.inference#timeout"
           }
         ],
         "requestBody": {
@@ -9137,6 +9155,24 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/inference.delete_model#200"
+          }
+        }
+      }
+    },
+    "/_inference": {
+      "get": {
+        "tags": [
+          "inference.get_model"
+        ],
+        "summary": "Get a model in the Inference API",
+        "description": "Get a model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
+        },
+        "operationId": "inference-get-model",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.get_model#200"
           }
         }
       }
@@ -23067,6 +23103,15 @@
         },
         "style": "form"
       },
+      "cluster.put_component_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "count#index": {
         "in": "path",
         "name": "index",
@@ -24285,6 +24330,26 @@
         },
         "style": "form"
       },
+      "indices.put_index_template#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "indices.put_index_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "description": "User defined reason for creating/updating the index template",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "indices.put_mapping#index": {
         "in": "path",
         "name": "index",
@@ -24458,30 +24523,10 @@
         },
         "style": "form"
       },
-      "indices.put_template#flat_settings": {
-        "in": "query",
-        "name": "flat_settings",
-        "description": "If `true`, returns settings in flat format.",
-        "deprecated": false,
-        "schema": {
-          "type": "boolean"
-        },
-        "style": "form"
-      },
       "indices.put_template#master_timeout": {
         "in": "query",
         "name": "master_timeout",
         "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an error.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
-      "indices.put_template#timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
@@ -24495,6 +24540,15 @@
         "deprecated": false,
         "schema": {
           "type": "number"
+        },
+        "style": "form"
+      },
+      "indices.put_template#cause": {
+        "in": "query",
+        "name": "cause",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
         },
         "style": "form"
       },
@@ -24838,6 +24892,16 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
+      },
+      "inference.inference#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Specifies the amount of time to wait for the inference request to complete.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "inference.put_model#task_type": {
         "in": "path",
@@ -27107,12 +27171,12 @@
                   "description": "Defines the approximate kNN search to run.",
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/_types:KnnQuery"
+                      "$ref": "#/components/schemas/_types:KnnSearch"
                     },
                     {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types:KnnQuery"
+                        "$ref": "#/components/schemas/_types:KnnSearch"
                       }
                     }
                   ]
@@ -27260,10 +27324,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "allow_auto_create": {
-                  "description": "This setting overrides the value of the `action.auto_create_index` cluster setting.\nIf set to `true` in a template, then indices can be automatically created using that\ntemplate even if auto-creation of indices is disabled via `actions.auto_create_index`.\nIf set to `false` then data streams matching the template must always be explicitly created.",
-                  "type": "boolean"
-                },
                 "template": {
                   "$ref": "#/components/schemas/indices._types:IndexState"
                 },
@@ -27272,6 +27332,10 @@
                 },
                 "_meta": {
                   "$ref": "#/components/schemas/_types:Metadata"
+                },
+                "deprecated": {
+                  "description": "Marks this index template as deprecated. When creating or updating a non-deprecated index template\nthat uses deprecated components, Elasticsearch will emit a deprecation warning.",
+                  "type": "boolean"
                 }
               },
               "required": [
@@ -27583,6 +27647,21 @@
                 },
                 "_meta": {
                   "$ref": "#/components/schemas/_types:Metadata"
+                },
+                "allow_auto_create": {
+                  "description": "This setting overrides the value of the `action.auto_create_index` cluster setting.\nIf set to `true` in a template, then indices can be automatically created using that template even if auto-creation of indices is disabled via `actions.auto_create_index`.\nIf set to `false`, then indices or data streams matching the template must always be explicitly created, and may never be automatically created.",
+                  "type": "boolean"
+                },
+                "ignore_missing_component_templates": {
+                  "description": "The configuration option ignore_missing_component_templates can be used when an index template\nreferences a component template that might not exist",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "deprecated": {
+                  "description": "Marks this index template as deprecated. When creating or updating a non-deprecated index template\nthat uses deprecated components, Elasticsearch will emit a deprecation warning.",
+                  "type": "boolean"
                 }
               }
             }
@@ -27795,6 +27874,10 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "deprecated": {
+                  "description": "Marks this index template as deprecated. When creating or updating a non-deprecated index template\nthat uses deprecated components, Elasticsearch will emit a deprecation warning.",
+                  "type": "boolean"
                 }
               }
             }
@@ -28238,12 +28321,12 @@
                   "description": "Defines the approximate kNN search to run.",
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/_types:KnnQuery"
+                      "$ref": "#/components/schemas/_types:KnnSearch"
                     },
                     {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types:KnnQuery"
+                        "$ref": "#/components/schemas/_types:KnnSearch"
                       }
                     }
                   ]
@@ -36348,55 +36431,49 @@
         ]
       },
       "_types:KnnQuery": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "$ref": "#/components/schemas/_types:Field"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
-          "query_vector": {
-            "$ref": "#/components/schemas/_types:QueryVector"
-          },
-          "query_vector_builder": {
-            "$ref": "#/components/schemas/_types:QueryVectorBuilder"
-          },
-          "k": {
-            "description": "The final number of nearest neighbors to return as top hits",
-            "type": "number"
-          },
-          "num_candidates": {
-            "description": "The number of nearest neighbor candidates to consider per shard",
-            "type": "number"
-          },
-          "boost": {
-            "description": "Boost value to apply to kNN scores",
-            "type": "number"
-          },
-          "filter": {
-            "description": "Filters for the kNN search query",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
               },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-                }
+              "query_vector": {
+                "$ref": "#/components/schemas/_types:QueryVector"
+              },
+              "query_vector_builder": {
+                "$ref": "#/components/schemas/_types:QueryVectorBuilder"
+              },
+              "num_candidates": {
+                "description": "The number of nearest neighbor candidates to consider per shard",
+                "type": "number"
+              },
+              "filter": {
+                "description": "Filters for the kNN search query",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                    }
+                  }
+                ]
+              },
+              "similarity": {
+                "description": "The minimum similarity for a vector to be considered a match",
+                "type": "number"
               }
+            },
+            "required": [
+              "field"
             ]
-          },
-          "similarity": {
-            "description": "The minimum similarity for a vector to be considered a match",
-            "type": "number"
-          },
-          "inner_hits": {
-            "$ref": "#/components/schemas/_global.search._types:InnerHits"
           }
-        },
-        "required": [
-          "field",
-          "k",
-          "num_candidates"
         ]
       },
       "_types:QueryVector": {
@@ -41047,6 +41124,56 @@
           }
         }
       },
+      "_types:KnnSearch": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "query_vector": {
+            "$ref": "#/components/schemas/_types:QueryVector"
+          },
+          "query_vector_builder": {
+            "$ref": "#/components/schemas/_types:QueryVectorBuilder"
+          },
+          "k": {
+            "description": "The final number of nearest neighbors to return as top hits",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard",
+            "type": "number"
+          },
+          "boost": {
+            "description": "Boost value to apply to kNN scores",
+            "type": "number"
+          },
+          "filter": {
+            "description": "Filters for the kNN search query",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                }
+              }
+            ]
+          },
+          "similarity": {
+            "description": "The minimum similarity for a vector to be considered a match",
+            "type": "number"
+          },
+          "inner_hits": {
+            "$ref": "#/components/schemas/_global.search._types:InnerHits"
+          }
+        },
+        "required": [
+          "field"
+        ]
+      },
       "_global.search._types:Rescore": {
         "allOf": [
           {
@@ -45203,6 +45330,9 @@
               "synonyms_path": {
                 "type": "string"
               },
+              "synonyms_set": {
+                "type": "string"
+              },
               "tokenizer": {
                 "type": "string"
               },
@@ -45253,6 +45383,9 @@
                 }
               },
               "synonyms_path": {
+                "type": "string"
+              },
+              "synonyms_set": {
                 "type": "string"
               },
               "tokenizer": {
@@ -49467,7 +49600,7 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:IndexName"
           },
           "is_native": {
             "type": "boolean"
@@ -49479,7 +49612,7 @@
             "type": "string"
           },
           "last_access_control_sync_scheduled_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_access_control_sync_status": {
             "$ref": "#/components/schemas/connector._types:SyncStatus"
@@ -49488,25 +49621,25 @@
             "type": "number"
           },
           "last_incremental_sync_scheduled_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_indexed_document_count": {
             "type": "number"
           },
           "last_seen": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_sync_error": {
             "type": "string"
           },
           "last_sync_scheduled_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "last_sync_status": {
             "$ref": "#/components/schemas/connector._types:SyncStatus"
           },
           "last_synced": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "name": {
             "type": "string"
@@ -49824,7 +49957,7 @@
             "type": "string"
           },
           "last_synced": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "name": {
             "type": "string"
@@ -49953,10 +50086,10 @@
         "type": "object",
         "properties": {
           "created_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "updated_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "value": {
             "type": "object",
@@ -49975,13 +50108,13 @@
         "type": "object",
         "properties": {
           "created_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "field": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Field"
           },
           "id": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:Id"
           },
           "order": {
             "type": "number"
@@ -49993,7 +50126,7 @@
             "$ref": "#/components/schemas/connector._types:FilteringRuleRule"
           },
           "updated_at": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:DateTime"
           },
           "value": {
             "type": "string"
@@ -50053,7 +50186,7 @@
           "ids": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:Id"
             }
           },
           "messages": {
@@ -50166,6 +50299,28 @@
         "nullable": true,
         "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
         "type": "string"
+      },
+      "_spec_utils:WithNullValueDateTime": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types:DateTime"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
+      },
+      "_spec_utils:WithNullValueIndexName": {
+        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          {
+            "$ref": "#/components/schemas/_spec_utils:NullValue"
+          }
+        ]
       },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
@@ -58163,12 +58318,12 @@
             "description": "Defines the approximate kNN search to run.",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/_types:KnnQuery"
+                "$ref": "#/components/schemas/_types:KnnSearch"
               },
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types:KnnQuery"
+                  "$ref": "#/components/schemas/_types:KnnSearch"
                 }
               }
             ]
@@ -59489,21 +59644,24 @@
       "security._types:IndexPrivilege": {
         "type": "string",
         "enum": [
-          "none",
           "all",
           "auto_configure",
           "create",
           "create_doc",
           "create_index",
+          "cross_cluster_replication",
+          "cross_cluster_replication_internal",
           "delete",
           "delete_index",
           "index",
           "maintenance",
           "manage",
+          "manage_data_stream_lifecycle",
           "manage_follow_index",
           "manage_ilm",
           "manage_leader_index",
           "monitor",
+          "none",
           "read",
           "read_cross_cluster",
           "view_index_metadata",
@@ -59706,13 +59864,21 @@
           "all",
           "cancel_task",
           "create_snapshot",
+          "cross_cluster_replication",
+          "cross_cluster_search",
+          "delegate_pki",
           "grant_api_key",
           "manage",
           "manage_api_key",
+          "manage_autoscaling",
+          "manage_behavioral_analytics",
           "manage_ccr",
+          "manage_data_frame_transforms",
+          "manage_data_stream_global_retention",
           "manage_enrich",
           "manage_ilm",
           "manage_index_templates",
+          "manage_inference",
           "manage_ingest_pipelines",
           "manage_logstash_pipelines",
           "manage_ml",
@@ -59721,6 +59887,9 @@
           "manage_pipeline",
           "manage_rollup",
           "manage_saml",
+          "manage_search_application",
+          "manage_search_query_rules",
+          "manage_search_synonyms",
           "manage_security",
           "manage_service_account",
           "manage_slm",
@@ -59729,17 +59898,28 @@
           "manage_user_profile",
           "manage_watcher",
           "monitor",
+          "monitor_data_frame_transforms",
+          "monitor_data_stream_global_retention",
+          "monitor_enrich",
+          "monitor_inference",
           "monitor_ml",
           "monitor_rollup",
           "monitor_snapshot",
           "monitor_text_structure",
           "monitor_transform",
           "monitor_watcher",
+          "none",
+          "post_behavioral_analytics_event",
           "read_ccr",
+          "read_connector_secrets",
+          "read_fleet_secrets",
           "read_ilm",
           "read_pipeline",
+          "read_security",
           "read_slm",
-          "transport_client"
+          "transport_client",
+          "write_connector_secrets",
+          "write_fleet_secrets"
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {
