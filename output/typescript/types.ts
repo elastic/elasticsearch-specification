@@ -9152,6 +9152,27 @@ export interface ConnectorConnectorScheduling {
 
 export type ConnectorConnectorStatus = 'created' | 'needs_configuration' | 'configured' | 'connected' | 'error'
 
+export interface ConnectorConnectorSyncJob {
+  cancelation_requested_at?: DateTime
+  canceled_at?: DateTime
+  completed_at?: DateTime
+  connector: ConnectorSyncJobConnectorReference
+  created_at: DateTime
+  deleted_document_count: long
+  error?: string
+  id: Id
+  indexed_document_count: long
+  indexed_document_volume: long
+  job_type: ConnectorSyncJobType
+  last_seen?: DateTime
+  metadata: Record<string, any>
+  started_at?: DateTime
+  status: ConnectorSyncStatus
+  total_document_count: long
+  trigger_method: ConnectorSyncJobTriggerMethod
+  worker_hostname?: string
+}
+
 export interface ConnectorCustomScheduling {
   configuration_overrides: ConnectorCustomSchedulingConfigurationOverrides
   enabled: boolean
@@ -9267,6 +9288,20 @@ export interface ConnectorSelectOption {
   value: string
 }
 
+export interface ConnectorSyncJobConnectorReference {
+  configuration: ConnectorConnectorConfiguration
+  filtering: ConnectorFilteringConfig
+  id: Id
+  index_name: string
+  language?: string
+  pipeline?: ConnectorIngestPipelineParams
+  service_type: string
+}
+
+export type ConnectorSyncJobTriggerMethod = 'on_demand' | 'scheduled'
+
+export type ConnectorSyncJobType = 'full' | 'incremental' | 'access_control'
+
 export interface ConnectorSyncRulesFeature {
   advanced?: ConnectorFeatureEnabled
   basic?: ConnectorFeatureEnabled
@@ -9360,6 +9395,51 @@ export interface ConnectorPutRequest extends RequestBase {
 
 export interface ConnectorPutResponse {
   result: Result
+}
+
+export interface ConnectorSyncJobCancelRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export interface ConnectorSyncJobCancelResponse {
+  result: Result
+}
+
+export interface ConnectorSyncJobDeleteRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export type ConnectorSyncJobDeleteResponse = AcknowledgedResponseBase
+
+export interface ConnectorSyncJobGetRequest extends RequestBase {
+  connector_sync_job_id: Id
+}
+
+export type ConnectorSyncJobGetResponse = ConnectorConnectorSyncJob
+
+export interface ConnectorSyncJobListRequest extends RequestBase {
+  from?: integer
+  size?: integer
+  status?: ConnectorSyncStatus
+  connector_id?: Id
+  job_type?: ConnectorSyncJobType[]
+}
+
+export interface ConnectorSyncJobListResponse {
+  count: long
+  results: ConnectorConnectorSyncJob[]
+}
+
+export interface ConnectorSyncJobPostRequest extends RequestBase {
+  body?: {
+    id: Id
+    job_type?: ConnectorSyncJobType
+    trigger_method?: ConnectorSyncJobTriggerMethod
+  }
+}
+
+export interface ConnectorSyncJobPostResponse {
+  id: Id
 }
 
 export interface ConnectorUpdateApiKeyIdRequest extends RequestBase {
