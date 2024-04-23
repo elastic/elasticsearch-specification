@@ -50285,28 +50285,6 @@
         "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
         "type": "string"
       },
-      "_spec_utils:WithNullValueDateTime": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:DateTime"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
-      "_spec_utils:WithNullValueIndexName": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
         "properties": {
