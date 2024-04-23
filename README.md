@@ -275,8 +275,8 @@ git pull
 
 ### Where do I find the generated test?
 
-Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
-You can find them in `clients-flight-recorder/scripts/types-validator/workbench`.
+Everytime you run `make validate` script, a series of test will be generated and dumped on disk.
+You can find the failed tests in `clients-flight-recorder/scripts/types-validator/workbench`.
 The content of this folder is a series of recorded responses from Elasticsearch wrapped inside an helper
 that verifies if the type definiton is correct.
 
@@ -298,19 +298,6 @@ If you are using MacOS, run the following command to fix the issue:
 ```sh
 brew install coreutils
 ```
-
-### The `recordings` folder contains a zip file and not the `tmp-*` folders
-
-Very likely your system does not have the `zip` command installed.
-```sh
-# on mac
-brew install zip
-
-# on linux
-apt-get install -y zip
-```
-
-Then remove the content of `recordings-dev/elasticsearch/*` and run `PULL_LATEST=true ./run-validations.sh` again.
 
 ### I need to modify che compiler, help!
 
