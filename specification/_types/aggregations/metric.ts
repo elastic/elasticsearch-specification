@@ -348,7 +348,7 @@ export class TopHitsAggregation extends MetricAggregationBase {
    * Array of wildcard (*) patterns. The request returns values for field names
    * matching these patterns in the hits.fields property of the response.
    */
-  fields?: (FieldAndFormat | Field)[]
+  fields?: FieldAndFormat[]
   /**
    * Starting document offset.
    * @server_default 0
