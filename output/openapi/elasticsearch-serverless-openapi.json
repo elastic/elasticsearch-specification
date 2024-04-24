@@ -49981,7 +49981,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"less_than\""
+              "less_than"
             ]
           },
           "constraint": {
@@ -49999,7 +49999,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"greater_than\""
+              "greater_than"
             ]
           },
           "constraint": {
@@ -50017,7 +50017,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"list_type\""
+              "list_type"
             ]
           },
           "constraint": {
@@ -50038,7 +50038,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"included_in\""
+              "included_in"
             ]
           },
           "constraint": {
@@ -50056,7 +50056,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"regex\""
+              "regex"
             ]
           },
           "constraint": {
