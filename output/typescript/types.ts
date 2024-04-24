@@ -9768,6 +9768,8 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export type EsqlVersion = '2024.04.01'
+
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
   delimiter?: string
@@ -9777,6 +9779,7 @@ export interface EsqlQueryRequest extends RequestBase {
     locale?: string
     params?: ScalarValue[]
     query: string
+    version: EsqlVersion
   }
 }
 
