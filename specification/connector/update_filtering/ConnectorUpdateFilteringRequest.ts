@@ -18,7 +18,11 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { FilteringConfig } from '../_types/Connector'
+import {
+  FilteringAdvancedSnippet,
+  FilteringConfig,
+  FilteringRule
+} from '../_types/Connector'
 
 /**
  * Updates the filtering field in the connector document
@@ -35,10 +39,12 @@ export interface Request extends RequestBase {
     connector_id: Id
   }
   /**
-   * The connector filtering configuration
+   * The connector draft filtering configuration
    */
   /** @codegen_name filtering */
   body: {
-    filtering: FilteringConfig[]
+    filtering?: FilteringConfig[]
+    rules?: FilteringRule[]
+    advanced_snippet?: FilteringAdvancedSnippet
   }
 }
