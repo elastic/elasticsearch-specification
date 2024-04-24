@@ -41027,11 +41027,22 @@
             "type": "object",
             "properties": {
               "docvalue_fields": {
-                "$ref": "#/components/schemas/_types:Fields"
+                "description": "Fields for which to return doc values.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                }
               },
               "explain": {
                 "description": "If `true`, returns detailed information about score computation as part of a hit.",
                 "type": "boolean"
+              },
+              "fields": {
+                "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:FieldAndFormat"
+                }
               },
               "from": {
                 "description": "Starting document offset.",
