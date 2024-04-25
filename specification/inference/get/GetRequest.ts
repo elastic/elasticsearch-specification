@@ -19,12 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { ModelConfig } from '@inference/_types/Services'
 import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Create an inference service model
- * @rest_spec_name inference.put_model
+ * Get an inference endpoint
+ * @rest_spec_name inference.get
  * @availability stack since=8.11.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
  */
@@ -37,8 +36,6 @@ export interface Request extends RequestBase {
     /**
      * The inference Id
      */
-    inference_id: Id
+    inference_id?: Id
   }
-  /** @codegen_name model_config */
-  body: ModelConfig
 }

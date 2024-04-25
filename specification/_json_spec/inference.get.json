@@ -1,8 +1,8 @@
 {
-  "inference.delete_model": {
+  "inference.get": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html",
-      "description": "Delete model in the Inference API"
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html",
+      "description": "Get an inference endpoint"
     },
     "stability": "experimental",
     "visibility": "public",
@@ -12,8 +12,12 @@
     "url": {
       "paths": [
         {
+          "path": "/_inference",
+          "methods": ["GET"]
+        },
+        {
           "path": "/_inference/{inference_id}",
-          "methods": ["DELETE"],
+          "methods": ["GET"],
           "parts": {
             "inference_id": {
               "type": "string",
@@ -23,7 +27,7 @@
         },
         {
           "path": "/_inference/{task_type}/{inference_id}",
-          "methods": ["DELETE"],
+          "methods": ["GET"],
           "parts": {
             "task_type": {
               "type": "string",
@@ -31,7 +35,7 @@
             },
             "inference_id": {
               "type": "string",
-              "description": "The model Id"
+              "description": "The inference Id"
             }
           }
         }

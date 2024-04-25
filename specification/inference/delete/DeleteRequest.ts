@@ -22,8 +22,8 @@ import { Id } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Delete an inference service model
- * @rest_spec_name inference.delete_model
+ * Delete an inference endpoint
+ * @rest_spec_name inference.delete
  * @availability stack since=8.11.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
  */

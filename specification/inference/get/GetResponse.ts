@@ -17,25 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { TaskType } from '@inference/_types/TaskType'
+import { InferenceEndpointContainer } from '@inference/_types/Services'
 
-/**
- * Get an inference service model
- * @rest_spec_name inference.get_model
- * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The task type
-     */
-    task_type?: TaskType
-    /**
-     * The inference Id
-     */
-    inference_id?: Id
+export class Response {
+  body: {
+    models?: Array<InferenceEndpointContainer>
+    endpoints?: Array<InferenceEndpointContainer>
   }
 }

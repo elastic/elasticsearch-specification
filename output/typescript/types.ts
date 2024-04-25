@@ -12023,23 +12023,23 @@ export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
 
+export interface InferenceInferenceEndpoint {
+  service: string
+  service_settings: InferenceServiceSettings
+  task_settings: InferenceTaskSettings
+}
+
+export interface InferenceInferenceEndpointContainer extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskType
+}
+
 export interface InferenceInferenceResult {
   text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
   text_embedding?: InferenceTextEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
   completion?: InferenceCompletionResult[]
   rerank?: InferenceRankedDocument[]
-}
-
-export interface InferenceModelConfig {
-  service: string
-  service_settings: InferenceServiceSettings
-  task_settings: InferenceTaskSettings
-}
-
-export interface InferenceModelConfigContainer extends InferenceModelConfig {
-  model_id: string
-  task_type: InferenceTaskType
 }
 
 export interface InferenceRankedDocument {
@@ -12068,20 +12068,21 @@ export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
 }
 
-export interface InferenceDeleteModelRequest extends RequestBase {
+export interface InferenceDeleteRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
 }
 
-export type InferenceDeleteModelResponse = AcknowledgedResponseBase
+export type InferenceDeleteResponse = AcknowledgedResponseBase
 
-export interface InferenceGetModelRequest extends RequestBase {
+export interface InferenceGetRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id?: Id
 }
 
-export interface InferenceGetModelResponse {
-  models: InferenceModelConfigContainer[]
+export interface InferenceGetResponse {
+  models?: InferenceInferenceEndpointContainer[]
+  endpoints?: InferenceInferenceEndpointContainer[]
 }
 
 export interface InferenceInferenceRequest extends RequestBase {
@@ -12097,13 +12098,13 @@ export interface InferenceInferenceRequest extends RequestBase {
 
 export type InferenceInferenceResponse = InferenceInferenceResult
 
-export interface InferencePutModelRequest extends RequestBase {
+export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
-  body?: InferenceModelConfig
+  body?: InferenceInferenceEndpoint
 }
 
-export type InferencePutModelResponse = InferenceModelConfigContainer
+export type InferencePutResponse = InferenceInferenceEndpointContainer
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
