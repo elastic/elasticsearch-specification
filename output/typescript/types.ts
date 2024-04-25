@@ -12081,8 +12081,8 @@ export interface InferenceGetRequest extends RequestBase {
 }
 
 export interface InferenceGetResponse {
-  models?: InferenceInferenceEndpointContainer[]
-  endpoints?: InferenceInferenceEndpointContainer[]
+  endpoints: InferenceInferenceEndpointContainer[]
+    models: InferenceInferenceEndpointContainer[]
 }
 
 export interface InferenceInferenceRequest extends RequestBase {

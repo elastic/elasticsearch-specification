@@ -21,7 +21,7 @@ import { InferenceEndpointContainer } from '@inference/_types/Services'
 
 export class Response {
   body: {
-    models?: Array<InferenceEndpointContainer>
-    endpoints?: Array<InferenceEndpointContainer>
+    /** @aliases models */
+    endpoints: Array<InferenceEndpointContainer>
   }
 }
