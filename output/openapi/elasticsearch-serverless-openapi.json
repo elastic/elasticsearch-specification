@@ -1932,7 +1932,14 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2044,7 +2051,14 @@
                 "type": "object",
                 "properties": {
                   "last_access_control_sync_error": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "last_access_control_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -2062,10 +2076,24 @@
                     "type": "number"
                   },
                   "last_seen": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueDateTime"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:DateTime"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "last_sync_error": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "last_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -2225,7 +2253,14 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2571,10 +2606,24 @@
                 "type": "object",
                 "properties": {
                   "api_key_id": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "api_key_secret_id": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   }
                 }
               }
@@ -2702,7 +2751,14 @@
                 "type": "object",
                 "properties": {
                   "error": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -2833,7 +2889,14 @@
                 "type": "object",
                 "properties": {
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -50298,43 +50361,10 @@
           "error"
         ]
       },
-      "_spec_utils:WithNullValuestring": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
       "_spec_utils:NullValue": {
         "nullable": true,
         "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
         "type": "string"
-      },
-      "_spec_utils:WithNullValueDateTime": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:DateTime"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
-      "_spec_utils:WithNullValueIndexName": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
       },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
