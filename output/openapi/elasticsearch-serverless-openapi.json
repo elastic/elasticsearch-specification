@@ -37299,6 +37299,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.query_dsl:NumberRangeQuery"
+          },
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsRangeQuery"
           }
         ]
       },
@@ -37422,6 +37425,56 @@
                 "oneOf": [
                   {
                     "type": "number"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl:TermsRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "gt": {
+                "description": "Greater than.",
+                "type": "string"
+              },
+              "gte": {
+                "description": "Greater than or equal to.",
+                "type": "string"
+              },
+              "lt": {
+                "description": "Less than.",
+                "type": "string"
+              },
+              "lte": {
+                "description": "Less than or equal to.",
+                "type": "string"
+              },
+              "from": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  {
+                    "type": "string"
                   },
                   {
                     "nullable": true,
