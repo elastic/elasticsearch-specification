@@ -2398,7 +2398,7 @@
         "summary": "Lists all connector sync jobs.",
         "description": "Lists all connector sync jobs.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/{list}/list-connector-sync-jobs-api.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/list-connector-sync-jobs-api.html"
         },
         "operationId": "connector-sync-job-list",
         "parameters": [
