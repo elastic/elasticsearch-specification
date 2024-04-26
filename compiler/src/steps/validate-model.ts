@@ -21,7 +21,7 @@ import * as model from '../model/metamodel'
 import { ValidationErrors } from '../validation-errors'
 import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
-import {TypeName} from "../model/metamodel";
+import { TypeName } from '../model/metamodel'
 
 // Superclasses (i.e. non-leaf types, who are inherited or implemented) that are ok to be used as field types because
 // they're used as definition reuse and not as polymorphic types.
