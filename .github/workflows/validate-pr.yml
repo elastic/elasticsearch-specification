@@ -18,7 +18,7 @@ jobs:
     if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
     env:
-      STACK_VERSION: 8.13-SNAPSHOT
+      SNAPSHOT_BRANCH: main
 
     steps:
       - uses: actions/checkout@v2
@@ -54,7 +54,7 @@ jobs:
         working-directory: ./clients-flight-recorder
         run: |
           node scripts/upload-recording/download.js --branch latest
-          node scripts/clone-elasticsearch/index.js --version ${{ env.STACK_VERSION }}
+          node scripts/clone-elasticsearch/index.js --branch ${{ env.SNAPSHOT_BRANCH }}
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
@@ -69,4 +69,4 @@ jobs:
 
       - name: Run validation
         working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }} --version ${{ env.STACK_VERSION }}
+        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}

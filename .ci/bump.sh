@@ -10,4 +10,4 @@ if [[ ${VERSION} =~ [0-9]+\.[0-9]+\.[0-9]+ ]]; then
   VERSION=${VERSION%.*}
 fi
 
-sed -i "s/\(STACK_VERSION:\s\)\([0-9.]\+\)\(-SNAPSHOT\)/\1$VERSION\3/" .github/workflows/validate-pr.yml
+sed -r -i "s/(SNAPSHOT_BRANCH:\s)([0-9.]+|main)/\1$VERSION/" .github/workflows/validate-pr.yml
