@@ -200,7 +200,7 @@ export interface FilteringRulesValidation {
   state: FilteringValidationState
 }
 
-interface FilteringRules {
+export interface FilteringRules {
   advanced_snippet: FilteringAdvancedSnippet
   rules: FilteringRule[]
   validation: FilteringRulesValidation
@@ -241,7 +241,7 @@ export interface Connector {
   custom_scheduling: ConnectorCustomScheduling
   description?: string
   error?: string
-  features: ConnectorFeatures
+  features?: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
   index_name?: IndexName

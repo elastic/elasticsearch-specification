@@ -9089,7 +9089,7 @@ export interface ConnectorConnector {
   custom_scheduling: ConnectorConnectorCustomScheduling
   description?: string
   error?: string
-  features: ConnectorConnectorFeatures
+  features?: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
   index_name?: IndexName
@@ -9247,12 +9247,12 @@ export interface ConnectorFilteringValidation {
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorGreaterThanValidation {
-  type: 'greater_than'
+  type: '"greater_than"'
   constraint: double
 }
 
 export interface ConnectorIncludedInValidation {
-  type: 'included_in'
+  type: '"included_in"'
   constraint: string
 }
 
@@ -9264,17 +9264,17 @@ export interface ConnectorIngestPipelineParams {
 }
 
 export interface ConnectorLessThanValidation {
-  type: 'less_than'
+  type: '"less_than"'
   constraint: double
 }
 
 export interface ConnectorListTypeValidation {
-  type: 'list_type'
+  type: '"list_type"'
   constraint: ScalarValue[]
 }
 
 export interface ConnectorRegexValidation {
-  type: 'regex'
+  type: '"regex"'
   constraint: string
 }
 
@@ -9291,7 +9291,7 @@ export interface ConnectorSelectOption {
 
 export interface ConnectorSyncJobConnectorReference {
   configuration: ConnectorConnectorConfiguration
-  filtering: ConnectorFilteringConfig
+  filtering: ConnectorFilteringRules
   id: Id
   index_name: string
   language?: string
