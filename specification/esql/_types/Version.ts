@@ -17,15 +17,13 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
-
 /**
  * The version of the ES|QL language in which the "query" field was written.
  */
 export enum Version {
   /**
    * Run against the first version of ES|QL.
+   * @codegen_name V2024_04_01
    */
   '2024.04.01'
 }

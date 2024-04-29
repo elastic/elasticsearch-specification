@@ -5939,7 +5939,7 @@ export interface QueryDslRandomScoreFunction {
   seed?: long | string
 }
 
-export type QueryDslRangeQuery = QueryDslDateRangeQuery | QueryDslNumberRangeQuery
+export type QueryDslRangeQuery = QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermsRangeQuery
 
 export interface QueryDslRangeQueryBase extends QueryDslQueryBase {
   relation?: QueryDslRangeRelation
@@ -6115,6 +6115,15 @@ export type QueryDslTermsQuery = QueryDslTermsQueryKeys
   & { [property: string]: QueryDslTermsQueryField | float | string }
 
 export type QueryDslTermsQueryField = FieldValue[] | QueryDslTermsLookup
+
+export interface QueryDslTermsRangeQuery extends QueryDslRangeQueryBase {
+  gt?: string
+  gte?: string
+  lt?: string
+  lte?: string
+  from?: string | null
+  to?: string | null
+}
 
 export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
