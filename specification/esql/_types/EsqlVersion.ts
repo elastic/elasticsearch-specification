@@ -20,10 +20,29 @@
 /**
  * The version of the ES|QL language in which the "query" field was written.
  */
-export enum Version {
+export enum EsqlVersion {
   /**
    * Run against the first version of ES|QL.
    * @codegen_name V2024_04_01
    */
   '2024.04.01'
 }
+
+// Note: ideally this should be a constant of type EsqlVersion, but the schema.json model doesn't
+// has support for this. So define a new type that is just a literal value, to be used by code generators.
+
+/**
+ * Version of the ES|QL language that should be used by default in stateful client libraries.
+ *
+ * This value is guaranteed to be stable within a major version of the Elastic Stack, even if newer versions
+ * of the ES|QL language are added within that major version.
+ */
+export type BaseStatefulEsqlVersion = '2024.04.01'
+
+/**
+ * Version of the ES|QL language that should be used by default in serverless client libraries.
+ *
+ * This value is guaranteed to be stable for a given value of the Serverless API version, even if newer versions
+ * of the ES|QL language are added within that API version.
+ */
+export type BaseServerlessEsqlVersion = '2024.04.01'
