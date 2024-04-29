@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScalarValue } from '@_types/common'
-import { Version } from '@esql/_types/Version'
+import { EsqlVersion } from '@esql/_types/EsqlVersion'
 
 /**
  * Executes an ES|QL request
@@ -64,6 +64,6 @@ export interface Request extends RequestBase {
     /**
      * The version of the ES|QL language in which the "query" field was written.
      */
-    version: Version
+    version: EsqlVersion
   }
 }
