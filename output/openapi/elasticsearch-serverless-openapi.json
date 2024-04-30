@@ -6448,7 +6448,7 @@
           {
             "in": "query",
             "name": "wait_for_active_shards",
-            "description": "The number of shard copies that must be active before proceeding with the operation. \nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).",
+            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:WaitForActiveShards"
