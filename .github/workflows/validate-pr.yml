@@ -17,8 +17,6 @@ jobs:
     name: build
     if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
-    env:
-      SNAPSHOT_BRANCH: main
 
     steps:
       - uses: actions/checkout@v2
@@ -53,8 +51,13 @@ jobs:
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
+          if [[ -n "${GITHUB_BASE_REF+x}" ]; then
+            branch=$GITHUB_BASE_REF
+          else
+            branch=$GITHUB_REF_NAME
+          fi
           node scripts/upload-recording/download.js --branch latest
-          node scripts/clone-elasticsearch/index.js --branch ${{ env.SNAPSHOT_BRANCH }}
+          node scripts/clone-elasticsearch/index.js --branch $branch
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
