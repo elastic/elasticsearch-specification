@@ -400,7 +400,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               )
               const jsDocs = child.getJsDocs()
               if (jsDocs.length > 0) {
-                exception.description = jsDocs[0].getDescription()
+                exception.description = jsDocs[0].getDescription().replace(/\r/g, '')
               }
               if (child.getName() === 'statusCodes') {
                 const value = child.getTypeNode()
