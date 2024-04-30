@@ -51,7 +51,7 @@ jobs:
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
-          if [[ -n "${GITHUB_BASE_REF+x}" ]; then
+          if [[ -n "${GITHUB_BASE_REF+x}" ]]; then
             branch=$GITHUB_BASE_REF
           else
             branch=$GITHUB_REF_NAME
