@@ -167,14 +167,14 @@ enum FilteringRuleRule {
   less_than = '<'
 }
 
-interface FilteringRule {
-  created_at: DateTime
+export interface FilteringRule {
+  created_at?: DateTime
   field: Field
   id: Id
   order: integer
   policy: FilteringPolicy
   rule: FilteringRuleRule
-  updated_at: DateTime
+  updated_at?: DateTime
   value: string
 }
 
@@ -189,18 +189,18 @@ enum FilteringValidationState {
   valid
 }
 
-interface FilteringAdvancedSnippet {
-  created_at: DateTime
-  updated_at: DateTime
+export interface FilteringAdvancedSnippet {
+  created_at?: DateTime
+  updated_at?: DateTime
   value: Dictionary<string, UserDefinedValue>
 }
 
-interface FilteringRulesValidation {
+export interface FilteringRulesValidation {
   errors: FilteringValidation[]
   state: FilteringValidationState
 }
 
-interface FilteringRules {
+export interface FilteringRules {
   advanced_snippet: FilteringAdvancedSnippet
   rules: FilteringRule[]
   validation: FilteringRulesValidation
@@ -241,7 +241,7 @@ export interface Connector {
   custom_scheduling: ConnectorCustomScheduling
   description?: string
   error?: string
-  features: ConnectorFeatures
+  features?: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
   index_name?: IndexName

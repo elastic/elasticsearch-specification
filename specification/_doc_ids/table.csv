@@ -94,6 +94,7 @@ connector-configuration,https://www.elastic.co/guide/en/elasticsearch/reference/
 connector-update-api-key-id,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-api-key-id-api.html
 connector-update-error,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-error-api.html
 connector-update-filtering,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html
+connector-update-filtering-validation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-validation-api.html
 connector-update-index-name,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-index-name-api.html
 connector-update-name,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-name-description-api.html
 connector-update-native,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-native-api.html

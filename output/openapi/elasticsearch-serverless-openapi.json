@@ -1997,6 +1997,17 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "delete_sync_jobs",
+            "description": "Determines whether associated sync jobs are also deleted.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2540,6 +2551,52 @@
         }
       }
     },
+    "/_connector/{connector_id}/_filtering/_activate": {
+      "put": {
+        "tags": [
+          "connector.update_active_filtering"
+        ],
+        "summary": "Activates the draft filtering rules if they are in a validated state.",
+        "description": "Activates the draft filtering rules if they are in a validated state.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-filtering-api.html"
+        },
+        "operationId": "connector-update-active-filtering",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_connector/{connector_id}/_api_key_id": {
       "put": {
         "tags": [
@@ -2770,10 +2827,80 @@
                     "items": {
                       "$ref": "#/components/schemas/connector._types:FilteringConfig"
                     }
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/connector._types:FilteringRule"
+                    }
+                  },
+                  "advanced_snippet": {
+                    "$ref": "#/components/schemas/connector._types:FilteringAdvancedSnippet"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_filtering/_validation": {
+      "put": {
+        "tags": [
+          "connector.update_filtering_validation"
+        ],
+        "summary": "Updates the validation info of the draft filtering rules.",
+        "description": "Updates the validation info of the draft filtering rules.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-filtering-validation-api.html"
+        },
+        "operationId": "connector-update-filtering-validation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "validation": {
+                    "$ref": "#/components/schemas/connector._types:FilteringRulesValidation"
                   }
                 },
                 "required": [
-                  "filtering"
+                  "validation"
                 ]
               }
             }
@@ -49730,7 +49857,6 @@
         "required": [
           "configuration",
           "custom_scheduling",
-          "features",
           "filtering",
           "is_native",
           "scheduling",
@@ -50166,8 +50292,6 @@
           }
         },
         "required": [
-          "created_at",
-          "updated_at",
           "value"
         ]
       },
@@ -50200,13 +50324,11 @@
           }
         },
         "required": [
-          "created_at",
           "field",
           "id",
           "order",
           "policy",
           "rule",
-          "updated_at",
           "value"
         ]
       },
@@ -50471,7 +50593,7 @@
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
           },
           "filtering": {
-            "$ref": "#/components/schemas/connector._types:FilteringConfig"
+            "$ref": "#/components/schemas/connector._types:FilteringRules"
           },
           "id": {
             "$ref": "#/components/schemas/_types:Id"

@@ -9098,7 +9098,7 @@ export interface ConnectorConnector {
   custom_scheduling: ConnectorConnectorCustomScheduling
   description?: string
   error?: string
-  features: ConnectorConnectorFeatures
+  features?: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
   index_name?: IndexName
@@ -9211,8 +9211,8 @@ export interface ConnectorFeatureEnabled {
 }
 
 export interface ConnectorFilteringAdvancedSnippet {
-  created_at: DateTime
-  updated_at: DateTime
+  created_at?: DateTime
+  updated_at?: DateTime
   value: Record<string, any>
 }
 
@@ -9225,13 +9225,13 @@ export interface ConnectorFilteringConfig {
 export type ConnectorFilteringPolicy = 'exclude' | 'include'
 
 export interface ConnectorFilteringRule {
-  created_at: DateTime
+  created_at?: DateTime
   field: Field
   id: Id
   order: integer
   policy: ConnectorFilteringPolicy
   rule: ConnectorFilteringRuleRule
-  updated_at: DateTime
+  updated_at?: DateTime
   value: string
 }
 
@@ -9300,7 +9300,7 @@ export interface ConnectorSelectOption {
 
 export interface ConnectorSyncJobConnectorReference {
   configuration: ConnectorConnectorConfiguration
-  filtering: ConnectorFilteringConfig
+  filtering: ConnectorFilteringRules
   id: Id
   index_name: string
   language?: string
@@ -9331,6 +9331,7 @@ export interface ConnectorCheckInResponse {
 
 export interface ConnectorDeleteRequest extends RequestBase {
   connector_id: Id
+  delete_sync_jobs: boolean
 }
 
 export type ConnectorDeleteResponse = AcknowledgedResponseBase
@@ -9452,6 +9453,14 @@ export interface ConnectorSyncJobPostResponse {
   id: Id
 }
 
+export interface ConnectorUpdateActiveFilteringRequest extends RequestBase {
+  connector_id: Id
+}
+
+export interface ConnectorUpdateActiveFilteringResponse {
+  result: Result
+}
+
 export interface ConnectorUpdateApiKeyIdRequest extends RequestBase {
   connector_id: Id
   body?: {
@@ -9490,11 +9499,24 @@ export interface ConnectorUpdateErrorResponse {
 export interface ConnectorUpdateFilteringRequest extends RequestBase {
   connector_id: Id
   body?: {
-    filtering: ConnectorFilteringConfig[]
+    filtering?: ConnectorFilteringConfig[]
+    rules?: ConnectorFilteringRule[]
+    advanced_snippet?: ConnectorFilteringAdvancedSnippet
   }
 }
 
 export interface ConnectorUpdateFilteringResponse {
+  result: Result
+}
+
+export interface ConnectorUpdateFilteringValidationRequest extends RequestBase {
+  connector_id: Id
+  body?: {
+    validation: ConnectorFilteringRulesValidation
+  }
+}
+
+export interface ConnectorUpdateFilteringValidationResponse {
   result: Result
 }
 
