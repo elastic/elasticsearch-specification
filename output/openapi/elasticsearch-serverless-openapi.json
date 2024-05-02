@@ -2004,6 +2004,17 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "delete_sync_jobs",
+            "description": "Determines whether associated sync jobs are also deleted.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -2433,7 +2444,7 @@
         "summary": "Lists all connector sync jobs.",
         "description": "Lists all connector sync jobs.",
         "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/{list}/list-connector-sync-jobs-api.html"
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/list-connector-sync-jobs-api.html"
         },
         "operationId": "connector-sync-job-list",
         "parameters": [
@@ -2567,6 +2578,52 @@
                   },
                   "required": [
                     "id"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_filtering/_activate": {
+      "put": {
+        "tags": [
+          "connector.update_active_filtering"
+        ],
+        "summary": "Activates the draft filtering rules if they are in a validated state.",
+        "description": "Activates the draft filtering rules if they are in a validated state.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-filtering-api.html"
+        },
+        "operationId": "connector-update-active-filtering",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
                   ]
                 }
               }
@@ -2826,10 +2883,80 @@
                     "items": {
                       "$ref": "#/components/schemas/connector._types:FilteringConfig"
                     }
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/connector._types:FilteringRule"
+                    }
+                  },
+                  "advanced_snippet": {
+                    "$ref": "#/components/schemas/connector._types:FilteringAdvancedSnippet"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_connector/{connector_id}/_filtering/_validation": {
+      "put": {
+        "tags": [
+          "connector.update_filtering_validation"
+        ],
+        "summary": "Updates the validation info of the draft filtering rules.",
+        "description": "Updates the validation info of the draft filtering rules.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-filtering-validation-api.html"
+        },
+        "operationId": "connector-update-filtering-validation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "validation": {
+                    "$ref": "#/components/schemas/connector._types:FilteringRulesValidation"
                   }
                 },
                 "required": [
-                  "filtering"
+                  "validation"
                 ]
               }
             }
@@ -6384,7 +6511,7 @@
           {
             "in": "query",
             "name": "wait_for_active_shards",
-            "description": "The number of shard copies that must be active before proceeding with the operation. \nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).",
+            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:WaitForActiveShards"
@@ -9026,46 +9153,46 @@
     "/_inference/{inference_id}": {
       "get": {
         "tags": [
-          "inference.get_model"
+          "inference.get"
         ],
-        "summary": "Get a model in the Inference API",
-        "description": "Get a model in the Inference API",
+        "summary": "Get an inference endpoint",
+        "description": "Get an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-1",
+        "operationId": "inference-get-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.get_model#inference_id"
+            "$ref": "#/components/parameters/inference.get#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.get_model#200"
+            "$ref": "#/components/responses/inference.get#200"
           }
         }
       },
       "put": {
         "tags": [
-          "inference.put_model"
+          "inference.put"
         ],
-        "summary": "Configure a model for use in the Inference API",
-        "description": "Configure a model for use in the Inference API",
+        "summary": "Configure an inference endpoint for use in the Inference API",
+        "description": "Configure an inference endpoint for use in the Inference API",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html"
         },
-        "operationId": "inference-put-model",
+        "operationId": "inference-put",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.put_model#inference_id"
+            "$ref": "#/components/parameters/inference.put#inference_id"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/inference.put_model"
+          "$ref": "#/components/requestBodies/inference.put"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.put_model#200"
+            "$ref": "#/components/responses/inference.put#200"
           }
         }
       },
@@ -9073,8 +9200,8 @@
         "tags": [
           "inference.inference"
         ],
-        "summary": "Perform inference on a model",
-        "description": "Perform inference on a model",
+        "summary": "Perform inference",
+        "description": "Perform inference",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html"
         },
@@ -9098,22 +9225,22 @@
       },
       "delete": {
         "tags": [
-          "inference.delete_model"
+          "inference.delete"
         ],
-        "summary": "Delete model in the Inference API",
-        "description": "Delete model in the Inference API",
+        "summary": "Delete an inference endpoint",
+        "description": "Delete an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html"
         },
-        "operationId": "inference-delete-model",
+        "operationId": "inference-delete",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.delete_model#inference_id"
+            "$ref": "#/components/parameters/inference.delete#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.delete_model#200"
+            "$ref": "#/components/responses/inference.delete#200"
           }
         }
       }
@@ -9121,52 +9248,52 @@
     "/_inference/{task_type}/{inference_id}": {
       "get": {
         "tags": [
-          "inference.get_model"
+          "inference.get"
         ],
-        "summary": "Get a model in the Inference API",
-        "description": "Get a model in the Inference API",
+        "summary": "Get an inference endpoint",
+        "description": "Get an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-2",
+        "operationId": "inference-get-2",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.get_model#task_type"
+            "$ref": "#/components/parameters/inference.get#task_type"
           },
           {
-            "$ref": "#/components/parameters/inference.get_model#inference_id"
+            "$ref": "#/components/parameters/inference.get#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.get_model#200"
+            "$ref": "#/components/responses/inference.get#200"
           }
         }
       },
       "put": {
         "tags": [
-          "inference.put_model"
+          "inference.put"
         ],
-        "summary": "Configure a model for use in the Inference API",
-        "description": "Configure a model for use in the Inference API",
+        "summary": "Configure an inference endpoint for use in the Inference API",
+        "description": "Configure an inference endpoint for use in the Inference API",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html"
         },
-        "operationId": "inference-put-model-1",
+        "operationId": "inference-put-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.put_model#task_type"
+            "$ref": "#/components/parameters/inference.put#task_type"
           },
           {
-            "$ref": "#/components/parameters/inference.put_model#inference_id"
+            "$ref": "#/components/parameters/inference.put#inference_id"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/inference.put_model"
+          "$ref": "#/components/requestBodies/inference.put"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.put_model#200"
+            "$ref": "#/components/responses/inference.put#200"
           }
         }
       },
@@ -9174,8 +9301,8 @@
         "tags": [
           "inference.inference"
         ],
-        "summary": "Perform inference on a model",
-        "description": "Perform inference on a model",
+        "summary": "Perform inference",
+        "description": "Perform inference",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html"
         },
@@ -9202,25 +9329,25 @@
       },
       "delete": {
         "tags": [
-          "inference.delete_model"
+          "inference.delete"
         ],
-        "summary": "Delete model in the Inference API",
-        "description": "Delete model in the Inference API",
+        "summary": "Delete an inference endpoint",
+        "description": "Delete an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html"
         },
-        "operationId": "inference-delete-model-1",
+        "operationId": "inference-delete-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.delete_model#task_type"
+            "$ref": "#/components/parameters/inference.delete#task_type"
           },
           {
-            "$ref": "#/components/parameters/inference.delete_model#inference_id"
+            "$ref": "#/components/parameters/inference.delete#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.delete_model#200"
+            "$ref": "#/components/responses/inference.delete#200"
           }
         }
       }
@@ -9228,17 +9355,17 @@
     "/_inference": {
       "get": {
         "tags": [
-          "inference.get_model"
+          "inference.get"
         ],
-        "summary": "Get a model in the Inference API",
-        "description": "Get a model in the Inference API",
+        "summary": "Get an inference endpoint",
+        "description": "Get an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model",
+        "operationId": "inference-get",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.get_model#200"
+            "$ref": "#/components/responses/inference.get#200"
           }
         }
       }
@@ -21041,7 +21168,7 @@
           }
         }
       },
-      "inference.delete_model#200": {
+      "inference.delete#200": {
         "description": "",
         "content": {
           "application/json": {
@@ -21051,22 +21178,22 @@
           }
         }
       },
-      "inference.get_model#200": {
+      "inference.get#200": {
         "description": "",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "models": {
+                "endpoints": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+                    "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
                   }
                 }
               },
               "required": [
-                "models"
+                "endpoints"
               ]
             }
           }
@@ -21082,12 +21209,12 @@
           }
         }
       },
-      "inference.put_model#200": {
+      "inference.put#200": {
         "description": "",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+              "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
             }
           }
         }
@@ -24893,7 +25020,7 @@
         },
         "style": "form"
       },
-      "inference.delete_model#task_type": {
+      "inference.delete#task_type": {
         "in": "path",
         "name": "task_type",
         "description": "The task type",
@@ -24904,7 +25031,7 @@
         },
         "style": "simple"
       },
-      "inference.delete_model#inference_id": {
+      "inference.delete#inference_id": {
         "in": "path",
         "name": "inference_id",
         "description": "The inference Id",
@@ -24915,7 +25042,7 @@
         },
         "style": "simple"
       },
-      "inference.get_model#task_type": {
+      "inference.get#task_type": {
         "in": "path",
         "name": "task_type",
         "description": "The task type",
@@ -24926,7 +25053,7 @@
         },
         "style": "simple"
       },
-      "inference.get_model#inference_id": {
+      "inference.get#inference_id": {
         "in": "path",
         "name": "inference_id",
         "description": "The inference Id",
@@ -24969,7 +25096,7 @@
         },
         "style": "form"
       },
-      "inference.put_model#task_type": {
+      "inference.put#task_type": {
         "in": "path",
         "name": "task_type",
         "description": "The task type",
@@ -24980,7 +25107,7 @@
         },
         "style": "simple"
       },
-      "inference.put_model#inference_id": {
+      "inference.put#inference_id": {
         "in": "path",
         "name": "inference_id",
         "description": "The inference Id",
@@ -27975,7 +28102,7 @@
                   "type": "string"
                 },
                 "input": {
-                  "description": "Text input to the model.\nEither a string or an array of strings.",
+                  "description": "Inference input.\nEither a string or an array of strings.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -27999,11 +28126,11 @@
           }
         }
       },
-      "inference.put_model": {
+      "inference.put": {
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:ModelConfig"
+              "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
             }
           }
         },
@@ -37362,6 +37489,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.query_dsl:NumberRangeQuery"
+          },
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsRangeQuery"
           }
         ]
       },
@@ -37485,6 +37615,56 @@
                 "oneOf": [
                   {
                     "type": "number"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl:TermsRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "gt": {
+                "description": "Greater than.",
+                "type": "string"
+              },
+              "gte": {
+                "description": "Greater than or equal to.",
+                "type": "string"
+              },
+              "lt": {
+                "description": "Less than.",
+                "type": "string"
+              },
+              "lte": {
+                "description": "Less than or equal to.",
+                "type": "string"
+              },
+              "from": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  {
+                    "type": "string"
                   },
                   {
                     "nullable": true,
@@ -49740,7 +49920,6 @@
         "required": [
           "configuration",
           "custom_scheduling",
-          "features",
           "filtering",
           "is_native",
           "scheduling",
@@ -50176,8 +50355,6 @@
           }
         },
         "required": [
-          "created_at",
-          "updated_at",
           "value"
         ]
       },
@@ -50210,13 +50387,11 @@
           }
         },
         "required": [
-          "created_at",
           "field",
           "id",
           "order",
           "policy",
           "rule",
-          "updated_at",
           "value"
         ]
       },
@@ -50448,7 +50623,7 @@
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
           },
           "filtering": {
-            "$ref": "#/components/schemas/connector._types:FilteringConfig"
+            "$ref": "#/components/schemas/connector._types:FilteringRules"
           },
           "id": {
             "$ref": "#/components/schemas/_types:Id"
@@ -52146,16 +52321,16 @@
           "completion"
         ]
       },
-      "inference._types:ModelConfigContainer": {
+      "inference._types:InferenceEndpointContainer": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/inference._types:ModelConfig"
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
           },
           {
             "type": "object",
             "properties": {
-              "model_id": {
-                "description": "The model Id",
+              "inference_id": {
+                "description": "The inference Id",
                 "type": "string"
               },
               "task_type": {
@@ -52163,13 +52338,13 @@
               }
             },
             "required": [
-              "model_id",
+              "inference_id",
               "task_type"
             ]
           }
         ]
       },
-      "inference._types:ModelConfig": {
+      "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
           "service": {

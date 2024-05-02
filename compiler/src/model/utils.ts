@@ -589,7 +589,7 @@ export function hoistRequestAnnotations (
 
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) request.description = description.trim()
+    if (description.length > 0) request.description = description.trim().replace(/\r/g, '')
   }
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
@@ -639,7 +639,7 @@ export function hoistRequestAnnotations (
       endpoint.docId = value.trim()
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
-      endpoint.docUrl = docUrl[1]
+      endpoint.docUrl = docUrl[1].replace(/\r/g, '')
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse
@@ -685,7 +685,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) type.description = description.trim()
+    if (description.length > 0) type.description = description.trim().replace(/\r/g, '')
   }
 
   setTags(jsDocs, type, tags, validTags, (tags, tag, value) => {
@@ -703,13 +703,13 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       assert(jsDocs, typeof tags.variants === 'string', '@non_exhaustive only applies to enums and @variants')
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
-      type.docUrl = value
+      type.docUrl = value.replace(/\r/g, '')
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Type ${type.name.namespace}.${type.name.name}'s @doc_id cannot be empty`)
       type.docId = value.trim()
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
-      type.docUrl = docUrl[1]
+      type.docUrl = docUrl[1].replace(/\r/g, '')
     } else if (tag === 'codegen_names') {
       type.codegenNames = parseCommaSeparated(value)
       assert(jsDocs,
@@ -736,7 +736,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) property.description = description.trim()
+    if (description.length > 0) property.description = description.trim().replace(/\r/g, '')
   }
 
   if (tags.doc_id != null) {
@@ -755,7 +755,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.codegenName = value
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
-      property.docUrl = value
+      property.docUrl = value.replace(/\r/g, '')
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse
@@ -784,7 +784,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.docId = value
       const docUrl = docIds.find(entry => entry[0] === value)
       if (docUrl != null) {
-        property.docUrl = docUrl[1]
+        property.docUrl = docUrl[1].replace(/\r/g, '')
       }
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
@@ -859,7 +859,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) member.description = description.trim()
+    if (description.length > 0) member.description = description.trim().replace(/\r/g, '')
   }
 
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
@@ -1298,7 +1298,7 @@ export function verifyUniqueness (project: Project): void {
     if (path.startsWith('_types')) continue
     if (!path.includes('_types')) continue
 
-    const namespace = path.startsWith('_global') ? `_global${sep}${path.split(sep)[1]}` : path.split(sep)[0]
+    const namespace = path.startsWith('_global') ? `_global${'/'}${path.split('/')[1]}` : path.split('/')[0]
     const names = types.get(namespace) ?? []
 
     for (const declaration of sourceFile.getClasses()) {
@@ -1339,7 +1339,7 @@ export function verifyUniqueness (project: Project): void {
     const path = dirname(sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, ''))
     if (path.includes('_types')) continue
 
-    const namespace = path.startsWith('_global') ? `_global${sep}${path.split(sep)[1]}` : path.split(sep)[0]
+    const namespace = path.startsWith('_global') ? `_global${'/'}${path.split('/')[1]}` : path.split('/')[0]
     const names = types.get(path) ?? []
     const localTypes = types.get(namespace) ?? []
 
@@ -1407,7 +1407,7 @@ export function deepEqual (a: any, b: any): boolean {
   }
 }
 
-const basePath = join(__dirname, '..', '..', '..', 'specification') + '/'
+const basePath = (join(__dirname, '..', '..', '..', 'specification') + sep).replace(/\\/g, '/')
 
 export function sourceLocation (node: Node): string {
   const sourceFile = node.getSourceFile()

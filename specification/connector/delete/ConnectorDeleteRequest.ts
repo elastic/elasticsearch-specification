@@ -33,4 +33,7 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  query_parameters: {
+    delete_sync_jobs: boolean
+  }
 }

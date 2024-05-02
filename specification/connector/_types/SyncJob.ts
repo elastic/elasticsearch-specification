@@ -23,14 +23,14 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ConnectorConfiguration,
-  FilteringConfig,
+  FilteringRules,
   IngestPipelineParams,
   SyncStatus
 } from './Connector'
 
 interface SyncJobConnectorReference {
   configuration: ConnectorConfiguration
-  filtering: FilteringConfig
+  filtering: FilteringRules
   id: Id
   index_name: string
   language?: string
