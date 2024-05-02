@@ -1,19 +1,20 @@
 {
-  "inference.delete_model": {
+  "inference.put": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html",
-      "description": "Delete model in the Inference API"
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html",
+      "description": "Configure an inference endpoint for use in the Inference API"
     },
     "stability": "experimental",
     "visibility": "public",
     "headers": {
-      "accept": ["application/json"]
+      "accept": ["application/json"],
+      "content_type": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_inference/{inference_id}",
-          "methods": ["DELETE"],
+          "methods": ["PUT"],
           "parts": {
             "inference_id": {
               "type": "string",
@@ -23,7 +24,7 @@
         },
         {
           "path": "/_inference/{task_type}/{inference_id}",
-          "methods": ["DELETE"],
+          "methods": ["PUT"],
           "parts": {
             "task_type": {
               "type": "string",
@@ -31,11 +32,14 @@
             },
             "inference_id": {
               "type": "string",
-              "description": "The model Id"
+              "description": "The inference Id"
             }
           }
         }
       ]
+    },
+    "body": {
+      "description": "The inference endpoint's task and service settings"
     }
   }
 }

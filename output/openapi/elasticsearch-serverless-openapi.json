@@ -9090,46 +9090,46 @@
     "/_inference/{inference_id}": {
       "get": {
         "tags": [
-          "inference.get_model"
+          "inference.get"
         ],
-        "summary": "Get a model in the Inference API",
-        "description": "Get a model in the Inference API",
+        "summary": "Get an inference endpoint",
+        "description": "Get an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-1",
+        "operationId": "inference-get-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.get_model#inference_id"
+            "$ref": "#/components/parameters/inference.get#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.get_model#200"
+            "$ref": "#/components/responses/inference.get#200"
           }
         }
       },
       "put": {
         "tags": [
-          "inference.put_model"
+          "inference.put"
         ],
-        "summary": "Configure a model for use in the Inference API",
-        "description": "Configure a model for use in the Inference API",
+        "summary": "Configure an inference endpoint for use in the Inference API",
+        "description": "Configure an inference endpoint for use in the Inference API",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html"
         },
-        "operationId": "inference-put-model",
+        "operationId": "inference-put",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.put_model#inference_id"
+            "$ref": "#/components/parameters/inference.put#inference_id"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/inference.put_model"
+          "$ref": "#/components/requestBodies/inference.put"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.put_model#200"
+            "$ref": "#/components/responses/inference.put#200"
           }
         }
       },
@@ -9137,8 +9137,8 @@
         "tags": [
           "inference.inference"
         ],
-        "summary": "Perform inference on a model",
-        "description": "Perform inference on a model",
+        "summary": "Perform inference",
+        "description": "Perform inference",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html"
         },
@@ -9162,22 +9162,22 @@
       },
       "delete": {
         "tags": [
-          "inference.delete_model"
+          "inference.delete"
         ],
-        "summary": "Delete model in the Inference API",
-        "description": "Delete model in the Inference API",
+        "summary": "Delete an inference endpoint",
+        "description": "Delete an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html"
         },
-        "operationId": "inference-delete-model",
+        "operationId": "inference-delete",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.delete_model#inference_id"
+            "$ref": "#/components/parameters/inference.delete#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.delete_model#200"
+            "$ref": "#/components/responses/inference.delete#200"
           }
         }
       }
@@ -9185,52 +9185,52 @@
     "/_inference/{task_type}/{inference_id}": {
       "get": {
         "tags": [
-          "inference.get_model"
+          "inference.get"
         ],
-        "summary": "Get a model in the Inference API",
-        "description": "Get a model in the Inference API",
+        "summary": "Get an inference endpoint",
+        "description": "Get an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-2",
+        "operationId": "inference-get-2",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.get_model#task_type"
+            "$ref": "#/components/parameters/inference.get#task_type"
           },
           {
-            "$ref": "#/components/parameters/inference.get_model#inference_id"
+            "$ref": "#/components/parameters/inference.get#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.get_model#200"
+            "$ref": "#/components/responses/inference.get#200"
           }
         }
       },
       "put": {
         "tags": [
-          "inference.put_model"
+          "inference.put"
         ],
-        "summary": "Configure a model for use in the Inference API",
-        "description": "Configure a model for use in the Inference API",
+        "summary": "Configure an inference endpoint for use in the Inference API",
+        "description": "Configure an inference endpoint for use in the Inference API",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html"
         },
-        "operationId": "inference-put-model-1",
+        "operationId": "inference-put-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.put_model#task_type"
+            "$ref": "#/components/parameters/inference.put#task_type"
           },
           {
-            "$ref": "#/components/parameters/inference.put_model#inference_id"
+            "$ref": "#/components/parameters/inference.put#inference_id"
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/inference.put_model"
+          "$ref": "#/components/requestBodies/inference.put"
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.put_model#200"
+            "$ref": "#/components/responses/inference.put#200"
           }
         }
       },
@@ -9238,8 +9238,8 @@
         "tags": [
           "inference.inference"
         ],
-        "summary": "Perform inference on a model",
-        "description": "Perform inference on a model",
+        "summary": "Perform inference",
+        "description": "Perform inference",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html"
         },
@@ -9266,25 +9266,25 @@
       },
       "delete": {
         "tags": [
-          "inference.delete_model"
+          "inference.delete"
         ],
-        "summary": "Delete model in the Inference API",
-        "description": "Delete model in the Inference API",
+        "summary": "Delete an inference endpoint",
+        "description": "Delete an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html"
         },
-        "operationId": "inference-delete-model-1",
+        "operationId": "inference-delete-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/inference.delete_model#task_type"
+            "$ref": "#/components/parameters/inference.delete#task_type"
           },
           {
-            "$ref": "#/components/parameters/inference.delete_model#inference_id"
+            "$ref": "#/components/parameters/inference.delete#inference_id"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.delete_model#200"
+            "$ref": "#/components/responses/inference.delete#200"
           }
         }
       }
@@ -9292,17 +9292,17 @@
     "/_inference": {
       "get": {
         "tags": [
-          "inference.get_model"
+          "inference.get"
         ],
-        "summary": "Get a model in the Inference API",
-        "description": "Get a model in the Inference API",
+        "summary": "Get an inference endpoint",
+        "description": "Get an inference endpoint",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model",
+        "operationId": "inference-get",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/inference.get_model#200"
+            "$ref": "#/components/responses/inference.get#200"
           }
         }
       }
@@ -21105,7 +21105,7 @@
           }
         }
       },
-      "inference.delete_model#200": {
+      "inference.delete#200": {
         "description": "",
         "content": {
           "application/json": {
@@ -21115,22 +21115,22 @@
           }
         }
       },
-      "inference.get_model#200": {
+      "inference.get#200": {
         "description": "",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "models": {
+                "endpoints": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+                    "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
                   }
                 }
               },
               "required": [
-                "models"
+                "endpoints"
               ]
             }
           }
@@ -21146,12 +21146,12 @@
           }
         }
       },
-      "inference.put_model#200": {
+      "inference.put#200": {
         "description": "",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:ModelConfigContainer"
+              "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
             }
           }
         }
@@ -24957,7 +24957,7 @@
         },
         "style": "form"
       },
-      "inference.delete_model#task_type": {
+      "inference.delete#task_type": {
         "in": "path",
         "name": "task_type",
         "description": "The task type",
@@ -24968,7 +24968,7 @@
         },
         "style": "simple"
       },
-      "inference.delete_model#inference_id": {
+      "inference.delete#inference_id": {
         "in": "path",
         "name": "inference_id",
         "description": "The inference Id",
@@ -24979,7 +24979,7 @@
         },
         "style": "simple"
       },
-      "inference.get_model#task_type": {
+      "inference.get#task_type": {
         "in": "path",
         "name": "task_type",
         "description": "The task type",
@@ -24990,7 +24990,7 @@
         },
         "style": "simple"
       },
-      "inference.get_model#inference_id": {
+      "inference.get#inference_id": {
         "in": "path",
         "name": "inference_id",
         "description": "The inference Id",
@@ -25033,7 +25033,7 @@
         },
         "style": "form"
       },
-      "inference.put_model#task_type": {
+      "inference.put#task_type": {
         "in": "path",
         "name": "task_type",
         "description": "The task type",
@@ -25044,7 +25044,7 @@
         },
         "style": "simple"
       },
-      "inference.put_model#inference_id": {
+      "inference.put#inference_id": {
         "in": "path",
         "name": "inference_id",
         "description": "The inference Id",
@@ -28039,7 +28039,7 @@
                   "type": "string"
                 },
                 "input": {
-                  "description": "Text input to the model.\nEither a string or an array of strings.",
+                  "description": "Inference input.\nEither a string or an array of strings.",
                   "oneOf": [
                     {
                       "type": "string"
@@ -28063,11 +28063,11 @@
           }
         }
       },
-      "inference.put_model": {
+      "inference.put": {
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:ModelConfig"
+              "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
             }
           }
         },
@@ -52291,16 +52291,16 @@
           "completion"
         ]
       },
-      "inference._types:ModelConfigContainer": {
+      "inference._types:InferenceEndpointContainer": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/inference._types:ModelConfig"
+            "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
           },
           {
             "type": "object",
             "properties": {
-              "model_id": {
-                "description": "The model Id",
+              "inference_id": {
+                "description": "The inference Id",
                 "type": "string"
               },
               "task_type": {
@@ -52308,13 +52308,13 @@
               }
             },
             "required": [
-              "model_id",
+              "inference_id",
               "task_type"
             ]
           }
         ]
       },
-      "inference._types:ModelConfig": {
+      "inference._types:InferenceEndpoint": {
         "type": "object",
         "properties": {
           "service": {

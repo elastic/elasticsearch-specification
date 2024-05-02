@@ -1,8 +1,8 @@
 {
-  "inference.get_model": {
+  "inference.get": {
     "documentation": {
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html",
-      "description": "Get a model in the Inference API"
+      "description": "Get an inference endpoint"
     },
     "stability": "experimental",
     "visibility": "public",
