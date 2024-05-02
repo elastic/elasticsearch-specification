@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
      */
     query?: string
     /**
-     * Inference input
+     * Inference input.
      * Either a string or an array of strings.
      */
     input: string | Array<string>
