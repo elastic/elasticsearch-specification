@@ -901,15 +901,15 @@
         "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "inference.delete_model": {
+    "inference.delete": {
       "request": [],
       "response": [
-        "response definition inference.delete_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+        "response definition inference.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "inference.put_model": {
+    "inference.put": {
       "request": [
-        "request definition inference.put_model:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:ModelConfig'"
+        "request definition inference.put:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:InferenceEndpoint'"
       ],
       "response": []
     },
