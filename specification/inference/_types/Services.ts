@@ -39,7 +39,7 @@ export class InferenceEndpoint {
 }
 
 /**
- * Represents a infenence endpoint as returned by the GET API
+ * Represents an inference endpoint as returned by the GET API
  */
 export class InferenceEndpointContainer extends InferenceEndpoint {
   /**
