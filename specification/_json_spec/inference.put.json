@@ -39,7 +39,7 @@
       ]
     },
     "body": {
-      "description": "The endpoint's task and service settings"
+      "description": "The inference endpoint's task and service settings"
     }
   }
 }
