@@ -138,16 +138,18 @@ export function expandGenerics (inputModel: Model): Model {
    * Add dangling types like CommonQueryParameters & BaseEsqlVersion to the generic less schema.
    * @param type the type definition
    */
-  function addDanglingTypeIfNotSeen(type: TypeDefinition) {
+  function addDanglingTypeIfNotSeen (type: TypeDefinition): void {
     switch (type.kind) {
-      case "type_alias":
+      case 'type_alias':
         if (type.generics !== undefined && type.generics.length > 0) {
-          return;
+          return
         }
-      case "interface":
+        break
+      case 'interface':
         if (type.generics !== undefined && type.generics.length > 0) {
-          return;
+          return
         }
+        break
     }
     addIfNotSeen(type.name, () => type)
   }
@@ -380,7 +382,7 @@ export function expandGenerics (inputModel: Model): Model {
   }
 
   for (const type of inputModel.types) {
-    addDanglingTypeIfNotSeen(type);
+    addDanglingTypeIfNotSeen(type)
   }
 
   sortTypeDefinitions(types)
