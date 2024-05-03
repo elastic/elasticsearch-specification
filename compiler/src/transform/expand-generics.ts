@@ -135,6 +135,24 @@ export function expandGenerics (inputModel: Model): Model {
   }
 
   /**
+   * Add dangling types like CommonQueryParameters & BaseEsqlVersion to the generic less schema.
+   * @param type the type definition
+   */
+  function addDanglingTypeIfNotSeen(type: TypeDefinition) {
+    switch (type.kind) {
+      case "type_alias":
+        if (type.generics !== undefined && type.generics.length > 0) {
+          return;
+        }
+      case "interface":
+        if (type.generics !== undefined && type.generics.length > 0) {
+          return;
+        }
+    }
+    addIfNotSeen(type.name, () => type)
+  }
+
+  /**
    * Expand an interface definition.
    *
    * @param type the type definition
@@ -359,6 +377,10 @@ export function expandGenerics (inputModel: Model): Model {
   for (const endpoint of inputModel.endpoints) {
     expandRootType(endpoint.request)
     expandRootType(endpoint.response)
+  }
+
+  for (const type of inputModel.types) {
+    addDanglingTypeIfNotSeen(type);
   }
 
   sortTypeDefinitions(types)
