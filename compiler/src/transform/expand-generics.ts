@@ -168,6 +168,18 @@ export function expandGenerics (inputModel: Model): Model {
 
       result.inherits = expandInherits(result.inherits, mappings)
 
+      // We add to the schema the non generics behaviors
+      // CommonQueryParameters
+      // CommonCatQueryParameters
+      if (result.behaviors != null) {
+        result.behaviors.forEach(b => {
+          if (b.generics == null) {
+            var type = getType(b.type)
+            addIfNotSeen(b.type, () => type)
+          }
+        })
+      }
+
       if (result.behaviors != null) {
         // We keep the generic parameters, but expand their value
         result.behaviors = result.behaviors.map(b => {
@@ -381,6 +393,7 @@ export function expandGenerics (inputModel: Model): Model {
     expandRootType(endpoint.response)
   }
 
+  // Allows to retrieve EsqlBase*EsqlVersion
   for (const type of inputModel.types) {
     addDanglingTypeIfNotSeen(type)
   }
