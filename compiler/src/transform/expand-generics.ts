@@ -174,7 +174,7 @@ export function expandGenerics (inputModel: Model): Model {
       if (result.behaviors != null) {
         result.behaviors.forEach(b => {
           if (b.generics == null) {
-            var type = getType(b.type)
+            const type = getType(b.type)
             addIfNotSeen(b.type, () => type)
           }
         })
