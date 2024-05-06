@@ -41,7 +41,7 @@ export class InferenceEndpoint {
 /**
  * Represents an inference endpoint as returned by the GET API
  */
-export class InferenceEndpointContainer extends InferenceEndpoint {
+export class InferenceEndpointInfo extends InferenceEndpoint {
   /**
    * The inference Id
    */

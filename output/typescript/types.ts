@@ -12064,7 +12064,7 @@ export interface InferenceInferenceEndpoint {
   task_settings: InferenceTaskSettings
 }
 
-export interface InferenceInferenceEndpointContainer extends InferenceInferenceEndpoint {
+export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskType
 }
@@ -12116,7 +12116,7 @@ export interface InferenceGetRequest extends RequestBase {
 }
 
 export interface InferenceGetResponse {
-  endpoints: InferenceInferenceEndpointContainer[]
+  endpoints: InferenceInferenceEndpointInfo[]
 }
 
 export interface InferenceInferenceRequest extends RequestBase {
@@ -12138,7 +12138,7 @@ export interface InferencePutRequest extends RequestBase {
   body?: InferenceInferenceEndpoint
 }
 
-export type InferencePutResponse = InferenceInferenceEndpointContainer
+export type InferencePutResponse = InferenceInferenceEndpointInfo
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
