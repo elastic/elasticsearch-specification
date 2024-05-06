@@ -21125,7 +21125,7 @@
                 "endpoints": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
+                    "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
                   }
                 }
               },
@@ -21151,7 +21151,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
+              "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
             }
           }
         }
@@ -52291,7 +52291,7 @@
           "completion"
         ]
       },
-      "inference._types:InferenceEndpointContainer": {
+      "inference._types:InferenceEndpointInfo": {
         "allOf": [
           {
             "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
