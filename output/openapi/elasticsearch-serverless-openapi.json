@@ -17030,6 +17030,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.search#name"
+          },
+          {
+            "$ref": "#/components/parameters/search_application.search#typed_keys"
           }
         ],
         "requestBody": {
@@ -17054,6 +17057,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.search#name"
+          },
+          {
+            "$ref": "#/components/parameters/search_application.search#typed_keys"
           }
         ],
         "requestBody": {
@@ -26895,6 +26901,16 @@
           "$ref": "#/components/schemas/_types:Name"
         },
         "style": "simple"
+      },
+      "search_application.search#typed_keys": {
+        "in": "query",
+        "name": "typed_keys",
+        "description": "Determines whether aggregation names are prefixed by their respective types in the response.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "search_mvt#index": {
         "in": "path",
