@@ -32,7 +32,7 @@ import { Metadata, Name, Refresh } from '@_types/common'
  * The create or update roles API cannot update roles that are defined in roles files.
  * @rest_spec_name security.put_role
  * @availability stack since=0.0.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
@@ -56,6 +56,7 @@ export interface Request extends RequestBase {
     cluster?: ClusterPrivilege[]
     /**
      * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+     * @availability stack
      */
     global?: Dictionary<string, UserDefinedValue>
     /**
@@ -67,7 +68,7 @@ export interface Request extends RequestBase {
      */
     metadata?: Metadata
     /**
-     * A list of users that the owners of this role can impersonate.
+     * A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
      * @doc_id run-as-privilege
      */
     run_as?: string[]
