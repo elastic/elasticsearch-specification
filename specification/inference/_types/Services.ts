@@ -21,9 +21,9 @@ import { TaskType } from '../_types/TaskType'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Configuration options when storing the model config
+ * Configuration options when storing the inference endpoint
  */
-export class ModelConfig {
+export class InferenceEndpoint {
   /**
    * The service type
    */
@@ -33,21 +33,21 @@ export class ModelConfig {
    */
   service_settings: ServiceSettings
   /**
-   * Task settings specific to the service and model
+   * Task settings specific to the service and task type
    */
   task_settings: TaskSettings
 }
 
 /**
- * Represents a model as returned by the GET API
+ * Represents an inference endpoint as returned by the GET API
  */
-export class ModelConfigContainer extends ModelConfig {
+export class InferenceEndpointInfo extends InferenceEndpoint {
   /**
-   * The model Id
+   * The inference Id
    */
-  model_id: string
+  inference_id: string
   /**
-   * The model's task type
+   * The task type
    */
   task_type: TaskType
 }

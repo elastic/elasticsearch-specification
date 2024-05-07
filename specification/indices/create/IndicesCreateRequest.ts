@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
     /**
-     The number of shard copies that must be active before proceeding with the operation. 
+     The number of shard copies that must be active before proceeding with the operation.
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
      */

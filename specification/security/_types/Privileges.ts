@@ -50,12 +50,31 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   grant_api_key,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication,
+  /**
+   * @availability stack
+   */
+  cross_cluster_search,
+  /**
+   * @availability stack
+   */
+  delegate_pki,
   manage,
   manage_api_key,
   /**
    * @availability stack
    */
+  manage_autoscaling,
+  manage_behavioral_analytics,
+  /**
+   * @availability stack
+   */
   manage_ccr,
+  manage_data_frame_transforms,
+  manage_data_stream_global_retention,
   manage_enrich,
   /**
    * @availability stack
@@ -65,6 +84,7 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
+  manage_inference,
   manage_ingest_pipelines,
   manage_logstash_pipelines,
   manage_ml,
@@ -82,6 +102,9 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   manage_saml,
+  manage_search_application,
+  manage_search_query_rules,
+  manage_search_synonyms,
   manage_security,
   /**
    * @availability stack
@@ -105,6 +128,10 @@ export enum ClusterPrivilege {
    */
   manage_watcher,
   monitor,
+  monitor_data_frame_transforms,
+  monitor_data_stream_global_retention,
+  monitor_enrich,
+  monitor_inference,
   monitor_ml,
   /**
    * @availability stack
@@ -139,7 +166,15 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
-  transport_client
+  transport_client,
+  none,
+  post_behavioral_analytics_event,
+  read_pipeline,
+  read_security,
+  read_slm,
+  transport_client,
+  write_connector_secrets,
+  write_fleet_secrets
 }
 
 export class IndicesPrivileges {
@@ -229,17 +264,19 @@ export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
 
 /** @non_exhaustive */
 export enum IndexPrivilege {
-  none,
   all,
   auto_configure,
   create,
   create_doc,
   create_index,
+  cross_cluster_replication,
+  cross_cluster_replication_internal,
   delete,
   delete_index,
   index,
   maintenance,
   manage,
+  manage_data_stream_lifecycle,
   /**
    * @availability stack
    */
@@ -253,6 +290,7 @@ export enum IndexPrivilege {
    */
   manage_leader_index,
   monitor,
+  none,
   read,
   /**
    * @availability stack

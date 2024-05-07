@@ -17,8 +17,25 @@
  * under the License.
  */
 
-import { ModelConfigContainer } from '@inference/_types/Services'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { TaskType } from '@inference/_types/TaskType'
 
-export class Response {
-  body: ModelConfigContainer
+/**
+ * Delete an inference endpoint
+ * @rest_spec_name inference.delete
+ * @availability stack since=8.11.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The task type
+     */
+    task_type?: TaskType
+    /**
+     * The inference Id
+     */
+    inference_id: Id
+  }
 }

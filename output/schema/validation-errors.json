@@ -66,7 +66,6 @@
         "Request: query parameter 'scroll' does not exist in the json spec",
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
-        "interface definition _types:KnnQuery - Property 'boost' is already defined in an ancestor class",
         "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'"
       ],
       "response": []
@@ -476,6 +475,7 @@
     },
     "cluster.put_component_template": {
       "request": [
+        "Request: query parameter 'cause' does not exist in the json spec",
         "Request: missing json spec query parameter 'timeout'",
         "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ],
@@ -494,6 +494,12 @@
         "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
       ],
       "response": []
+    },
+    "connector.sync_job_delete": {
+      "request": [],
+      "response": [
+        "response definition connector.sync_job_delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
     },
     "create": {
       "request": [],
@@ -845,10 +851,7 @@
       ]
     },
     "indices.put_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
+      "request": [],
       "response": [
         "response definition indices.put_index_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -861,8 +864,7 @@
     },
     "indices.put_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
+        "Request: query parameter 'cause' does not exist in the json spec"
       ],
       "response": [
         "response definition indices.put_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
@@ -899,15 +901,15 @@
         "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "inference.delete_model": {
+    "inference.delete": {
       "request": [],
       "response": [
-        "response definition inference.delete_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+        "response definition inference.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "inference.put_model": {
+    "inference.put": {
       "request": [
-        "request definition inference.put_model:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:ModelConfig'"
+        "request definition inference.put:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:InferenceEndpoint'"
       ],
       "response": []
     },
@@ -1287,6 +1289,17 @@
     "security.grant_api_key": {
       "request": [
         "Request: missing json spec query parameter 'refresh'"
+      ],
+      "response": []
+    },
+    "security.has_privileges": {
+      "request": [
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member codegen_name 'read_pipeline'",
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'read_pipeline'",
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member codegen_name 'read_slm'",
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'read_slm'",
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member codegen_name 'transport_client'",
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'transport_client'"
       ],
       "response": []
     },

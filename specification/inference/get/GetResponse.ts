@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ModelConfigContainer } from '@inference/_types/Services'
+import { InferenceEndpointInfo } from '@inference/_types/Services'
 
 export class Response {
   body: {
-    models: Array<ModelConfigContainer>
+    endpoints: Array<InferenceEndpointInfo>
   }
 }

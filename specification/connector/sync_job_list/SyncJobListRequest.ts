@@ -16,26 +16,40 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TaskType } from '@inference/_types/TaskType'
+import { integer } from '@_types/Numeric'
+import { SyncJobType } from '../_types/SyncJob'
+import { SyncStatus } from '../_types/Connector'
 
 /**
- * Delete an inference service model
- * @rest_spec_name inference.delete_model
- * @availability stack since=8.11.0 stability=experimental visibility=public
+ * Lists connector sync jobs.
+ * @rest_spec_name connector.sync_job_list
+ * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-sync-job-list
  */
 export interface Request extends RequestBase {
-  path_parts: {
+  query_parameters: {
     /**
-     * The task type
+     * Starting offset (default: 0)
      */
-    task_type?: TaskType
+    from?: integer
     /**
-     * The inference Id
+     * Specifies a max number of results to get
      */
-    inference_id: Id
+    size?: integer
+    /**
+     * A sync job status to fetch connector sync jobs for
+     */
+    status?: SyncStatus
+    /**
+     * A connector id to fetch connector sync jobs for
+     */
+    connector_id?: Id
+    /**
+     * A comma-separated list of job types to fetch the sync jobs for
+     */
+    job_type?: SyncJobType[]
   }
 }

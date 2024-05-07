@@ -16,26 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Get an inference service model
- * @rest_spec_name inference.get_model
- * @availability stack since=8.11.0 stability=experimental visibility=public
+ * Deletes a connector sync job.
+ * @rest_spec_name connector.sync_job_delete
+ * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-sync-job-delete
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The task type
+     * The unique identifier of the connector sync job to be deleted
      */
-    task_type?: TaskType
-    /**
-     * The inference Id
-     */
-    inference_id: Id
+    connector_sync_job_id: Id
   }
 }

@@ -24,7 +24,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script, ScriptField } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 import { Missing } from './AggregationContainer'
@@ -338,12 +338,17 @@ export class TopHitsAggregation extends MetricAggregationBase {
   /**
    * Fields for which to return doc values.
    */
-  docvalue_fields?: Fields
+  docvalue_fields?: FieldAndFormat[]
   /**
    * If `true`, returns detailed information about score computation as part of a hit.
    * @server_default false
    */
   explain?: boolean
+  /**
+   * Array of wildcard (*) patterns. The request returns values for field names
+   * matching these patterns in the hits.fields property of the response.
+   */
+  fields?: FieldAndFormat[]
   /**
    * Starting document offset.
    * @server_default 0

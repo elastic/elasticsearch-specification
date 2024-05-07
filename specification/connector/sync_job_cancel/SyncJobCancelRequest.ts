@@ -16,29 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { ModelConfig } from '@inference/_types/Services'
-import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Create an inference service model
- * @rest_spec_name inference.put_model
- * @availability stack since=8.11.0 stability=experimental visibility=public
+ * Cancels a connector sync job.
+ * @rest_spec_name connector.sync_job_cancel
+ * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_id connector-sync-job-cancel
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The task type
+     * The unique identifier of the connector sync job
      */
-    task_type?: TaskType
-    /**
-     * The inference Id
-     */
-    inference_id: Id
+    connector_sync_job_id: Id
   }
-  /** @codegen_name model_config */
-  body: ModelConfig
 }

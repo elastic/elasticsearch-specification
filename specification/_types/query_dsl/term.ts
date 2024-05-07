@@ -163,9 +163,30 @@ export class NumberRangeQuery extends RangeQueryBase {
   to?: double | null
 }
 
-/** @codegen_names date, number */
+export class TermsRangeQuery extends RangeQueryBase {
+  /**
+   * Greater than.
+   */
+  gt?: string
+  /**
+   * Greater than or equal to.
+   */
+  gte?: string
+  /**
+   * Less than.
+   */
+  lt?: string
+  /**
+   * Less than or equal to.
+   */
+  lte?: string
+  from?: string | null
+  to?: string | null
+}
+
+/** @codegen_names date, number, terms */
 // Note: deserialization depends on value types
-export type RangeQuery = DateRangeQuery | NumberRangeQuery
+export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermsRangeQuery
 
 export enum RangeRelation {
   /**
