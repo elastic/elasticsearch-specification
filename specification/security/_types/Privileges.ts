@@ -49,10 +49,6 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
-  grant_api_key,
-  /**
-   * @availability stack
-   */
   cross_cluster_replication,
   /**
    * @availability stack
@@ -62,6 +58,10 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   delegate_pki,
+  /**
+   * @availability stack
+   */
+  grant_api_key,
   manage,
   manage_api_key,
   /**
@@ -73,7 +73,13 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   manage_ccr,
+  /**
+   * @availability stack
+   */
   manage_data_frame_transforms,
+  /**
+   * @availability stack
+   */
   manage_data_stream_global_retention,
   manage_enrich,
   /**
@@ -128,9 +134,18 @@ export enum ClusterPrivilege {
    */
   manage_watcher,
   monitor,
+  /**
+   * @availability stack
+   */
   monitor_data_frame_transforms,
+  /**
+   * @availability stack
+   */
   monitor_data_stream_global_retention,
   monitor_enrich,
+  /**
+   * @availability stack
+   */
   monitor_inference,
   monitor_ml,
   /**
@@ -150,6 +165,8 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   monitor_watcher,
+  none,
+  post_behavioral_analytics_event,
   /**
    * @availability stack
    */
@@ -158,22 +175,27 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   read_ilm,
-  read_pipeline,
   /**
    * @availability stack
    */
   read_slm,
-  /**
-   * @availability stack
-   */
-  transport_client,
-  none,
-  post_behavioral_analytics_event,
   read_pipeline,
   read_security,
+  /**
+   * @availability stack
+   */
   read_slm,
+  /**
+   * @availability stack
+   */
   transport_client,
+  /**
+   * @availability stack
+   */
   write_connector_secrets,
+  /**
+   * @availability stack
+   */
   write_fleet_secrets
 }
 
@@ -269,7 +291,13 @@ export enum IndexPrivilege {
   create,
   create_doc,
   create_index,
+  /**
+   * @availability stack
+   */
   cross_cluster_replication,
+  /**
+   * @availability stack
+   */
   cross_cluster_replication_internal,
   delete,
   delete_index,

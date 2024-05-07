@@ -1294,12 +1294,8 @@
     },
     "security.has_privileges": {
       "request": [
-        "enum definition security._types:ClusterPrivilege - Duplicate enum member codegen_name 'read_pipeline'",
-        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'read_pipeline'",
         "enum definition security._types:ClusterPrivilege - Duplicate enum member codegen_name 'read_slm'",
-        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'read_slm'",
-        "enum definition security._types:ClusterPrivilege - Duplicate enum member codegen_name 'transport_client'",
-        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'transport_client'"
+        "enum definition security._types:ClusterPrivilege - Duplicate enum member name 'read_slm'"
       ],
       "response": []
     },
