@@ -25,7 +25,7 @@ import { Names } from '@_types/common'
  * The get roles API cannot retrieve roles that are defined in roles files.
  * @rest_spec_name security.get_role
  * @availability stack since=0.0.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
