@@ -1567,9 +1567,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1600,9 +1597,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -23233,15 +23227,6 @@
         },
         "style": "form"
       },
-      "cluster.put_component_template#cause": {
-        "in": "query",
-        "name": "cause",
-        "deprecated": false,
-        "schema": {
-          "type": "string"
-        },
-        "style": "form"
-      },
       "count#index": {
         "in": "path",
         "name": "index",
@@ -34060,6 +34045,10 @@
                 "additionalProperties": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 }
+              },
+              "separator": {
+                "description": "Separator used to concatenate filter names. Defaults to &.",
+                "type": "string"
               }
             }
           }
@@ -48254,6 +48243,9 @@
                   "dense_vector"
                 ]
               },
+              "element_type": {
+                "type": "string"
+              },
               "dims": {
                 "type": "number"
               },
@@ -50666,7 +50658,6 @@
           "_id",
           "_index",
           "result",
-          "_seq_no",
           "_shards",
           "_version"
         ]
@@ -53365,6 +53356,9 @@
             "type": "object",
             "properties": {
               "field": {
+                "$ref": "#/components/schemas/_types:Fields"
+              },
+              "keep": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
               "ignore_missing": {
