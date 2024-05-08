@@ -2855,6 +2855,7 @@ export interface AggregationsAdjacencyMatrixAggregate extends AggregationsMultiB
 
 export interface AggregationsAdjacencyMatrixAggregation extends AggregationsBucketAggregationBase {
   filters?: Record<string, QueryDslQueryContainer>
+  separator?: string
 }
 
 export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMultiBucketBase {

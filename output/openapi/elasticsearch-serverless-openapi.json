@@ -34045,6 +34045,10 @@
                 "additionalProperties": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 }
+              },
+              "separator": {
+                "description": "Separator used to concatenate filter names. Defaults to &.",
+                "type": "string"
               }
             }
           }
