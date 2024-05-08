@@ -48243,6 +48243,9 @@
                   "dense_vector"
                 ]
               },
+              "element_type": {
+                "type": "string"
+              },
               "dims": {
                 "type": "number"
               },

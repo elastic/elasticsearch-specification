@@ -4973,6 +4973,7 @@ export interface MappingDenseVectorIndexOptions {
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
+  element_type?: string
   dims?: integer
   similarity?: string
   index?: boolean
