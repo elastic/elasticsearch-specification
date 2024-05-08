@@ -944,6 +944,10 @@ export class RemoveProcessor extends ProcessorBase {
    */
   field: Fields
   /**
+   * Fields to be kept. When set, all fields other than those specified are removed.
+   */
+  keep?: Fields
+  /**
    * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
    * @server_default false
    */

@@ -53351,6 +53351,9 @@
               "field": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
+              "keep": {
+                "$ref": "#/components/schemas/_types:Fields"
+              },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
                 "type": "boolean"

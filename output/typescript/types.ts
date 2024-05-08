@@ -12395,6 +12395,7 @@ export interface IngestProcessorContainer {
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
   field: Fields
+  keep?: Fields
   ignore_missing?: boolean
 }
 
