@@ -65,12 +65,6 @@ export interface Request extends RequestBase {
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
     master_timeout?: Duration
-
-    /**
-     * Only used for logging, to determine if a component template is from the API (default) or file-based settings.
-     * Should not be documented or exposed.
-     cause?: string
-     */
   }
   body: {
     /**
