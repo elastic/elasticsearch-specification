@@ -38,7 +38,7 @@ export class WriteResponseBase {
   _index: IndexName
   _primary_term?: long
   result: Result
-  _seq_no: SequenceNumber
+  _seq_no?: SequenceNumber
   _shards: ShardStatistics
   _version: VersionNumber
   forced_refresh?: boolean

@@ -50651,7 +50651,6 @@
           "_id",
           "_index",
           "result",
-          "_seq_no",
           "_shards",
           "_version"
         ]
