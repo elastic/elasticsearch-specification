@@ -536,8 +536,8 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     if (variants != null) {
       assert(
         declaration.getJsDocs(),
-        variants.kind === 'internal_tag' || variants.kind === 'external_tag',
-        'Type Aliases can only have internal or external variants'
+        variants.kind === 'internal_tag' || variants.kind === 'external_tag' || variants.kind === 'untagged',
+        'Type Aliases can only have internal, external or untagged variants'
       )
       typeAlias.variants = variants
     }
@@ -1106,6 +1106,13 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   if (type === 'container') {
     return {
       kind: 'container',
+      nonExhaustive: nonExhaustive
+    }
+  }
+
+  if (type === 'untagged') {
+    return {
+      kind: 'untagged',
       nonExhaustive: nonExhaustive
     }
   }

@@ -105,33 +105,30 @@ export class PrefixQuery extends QueryBase {
   case_insensitive?: boolean
 }
 
-export class RangeQueryBase extends QueryBase {
+export class RangeQueryBase<T> extends QueryBase {
   /**
    * Indicates how the range query matches values for `range` fields.
    * @server_default intersects
    */
   relation?: RangeRelation
-}
-
-export class DateRangeQuery extends RangeQueryBase {
   /**
    * Greater than.
    */
-  gt?: DateMath
+  gt?: T
   /**
    * Greater than or equal to.
    */
-  gte?: DateMath
+  gte?: T
   /**
    * Less than.
    */
-  lt?: DateMath
+  lt?: T
   /**
    * Less than or equal to.
    */
-  lte?: DateMath
-  from?: DateMath | null
-  to?: DateMath | null
+  lte?: T
+  from?: T | null
+  to?: T | null
   /**
    * Date format used to convert `date` values in the query.
    */
@@ -142,51 +139,18 @@ export class DateRangeQuery extends RangeQueryBase {
   time_zone?: TimeZone
 }
 
-export class NumberRangeQuery extends RangeQueryBase {
-  /**
-   * Greater than.
-   */
-  gt?: double
-  /**
-   * Greater than or equal to.
-   */
-  gte?: double
-  /**
-   * Less than.
-   */
-  lt?: double
-  /**
-   * Less than or equal to.
-   */
-  lte?: double
-  from?: double | null
-  to?: double | null
-}
+export class DateRangeQuery extends RangeQueryBase<DateMath> {}
 
-export class TermsRangeQuery extends RangeQueryBase {
-  /**
-   * Greater than.
-   */
-  gt?: string
-  /**
-   * Greater than or equal to.
-   */
-  gte?: string
-  /**
-   * Less than.
-   */
-  lt?: string
-  /**
-   * Less than or equal to.
-   */
-  lte?: string
-  from?: string | null
-  to?: string | null
-}
+export class NumberRangeQuery extends RangeQueryBase<double> {}
 
-/** @codegen_names date, number, terms */
+export class TermRangeQuery extends RangeQueryBase<string> {}
+
+/**
+ * @codegen_names date, number, term
+ * @variants untagged
+ */
 // Note: deserialization depends on value types
-export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermsRangeQuery
+export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermRangeQuery
 
 export enum RangeRelation {
   /**

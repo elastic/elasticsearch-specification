@@ -566,7 +566,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
   }
 
-  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag): void {
+  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged): void {
     if (variants.kind === 'external_tag') {
       // All items must have a 'variant' attribute
       const items = flattenUnionMembers(valueOf)
@@ -610,6 +610,53 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
 
       validateValueOf(valueOf, new Set())
+    } else if (variants.kind === 'untagged') {
+      const items = flattenUnionMembers(valueOf)
+
+      const baseTypes = new Set<string>()
+
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          modelError('Items of type untagged unions must be type references')
+        } else {
+          validateTypeRef(item.type, undefined, new Set<string>())
+          const type = getTypeDef(item.type)
+          if (type == null) {
+            modelError(`Type ${fqn(item.type)} not found`)
+          } else {
+            if (type.kind !== 'interface') {
+              modelError(`Type ${fqn(item.type)} must be an interface to be used in an untagged union`)
+              continue
+            }
+
+            if (type.inherits == null) {
+              modelError(`Type ${fqn(item.type)} must derive from a base type to be used in an untagged union`)
+              continue
+            }
+
+            baseTypes.add(fqn(type.inherits.type))
+
+            const baseType = getTypeDef(type.inherits.type)
+            if (baseType == null) {
+              modelError(`Type ${fqn(type.inherits.type)} not found`)
+              continue
+            }
+
+            if (baseType.kind !== 'interface') {
+              modelError(`Type ${fqn(type.inherits.type)} must be an interface to be used as the base class of another interface`)
+              continue
+            }
+
+            if (baseType.generics == null || baseType.generics.length === 0) {
+              modelError('The common base type of an untagged union must accept at least one generic type argument')
+            }
+          }
+        }
+      }
+
+      if (baseTypes.size !== 1) {
+        modelError('All items of an untagged union must derive from the same common base type')
+      }
     }
   }
 

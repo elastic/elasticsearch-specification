@@ -180,7 +180,7 @@ export abstract class BaseType {
   specLocation: string
 }
 
-export type Variants = ExternalTag | InternalTag | Container
+export type Variants = ExternalTag | InternalTag | Container | Untagged
 
 export class VariantBase {
   /**
@@ -205,6 +205,10 @@ export class InternalTag extends VariantBase {
 
 export class Container extends VariantBase {
   kind: 'container'
+}
+
+export class Untagged extends VariantBase {
+  kind: 'untagged'
 }
 
 /**
@@ -364,8 +368,11 @@ export class TypeAlias extends BaseType {
   type: ValueOf
   /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: TypeName[]
-  /** Only applicable to `union_of` aliases: identify typed_key unions (external) and variant inventories (internal) */
-  variants?: InternalTag | ExternalTag
+  /**
+   * Only applicable to `union_of` aliases: identify typed_key unions (external), variant inventories (internal)
+   * and untagged variants
+   */
+  variants?: InternalTag | ExternalTag | Untagged
 }
 
 // ------------------------------------------------------------------------------------------------

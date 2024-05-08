@@ -69,7 +69,10 @@ export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
   Duration
 > {}
 
-/** @codegen_names geo, date */
+/**
+ * @codegen_names geo, date
+ * @variants untagged
+ */
 // Note: deserialization depends on value types
 export type DistanceFeatureQuery =
   | GeoDistanceFeatureQuery
