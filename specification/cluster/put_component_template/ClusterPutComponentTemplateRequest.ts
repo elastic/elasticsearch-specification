@@ -21,7 +21,6 @@ import { IndexState } from '@indices/_types/IndexState'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { ErrorCause } from '@_types/Errors'
 
 /**
  * Creates or updates a component template.
@@ -67,7 +66,11 @@ export interface Request extends RequestBase {
      * @server_default 30s */
     master_timeout?: Duration
 
-    cause?: string
+    /**
+     * Only used for logging, to determine if a component template is from the API (default) or file-based settings.
+     * Should not be documented or exposed.
+     cause?: string
+     */
   }
   body: {
     /**
