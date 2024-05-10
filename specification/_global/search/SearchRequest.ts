@@ -420,8 +420,8 @@ export interface Request extends RequestBase {
     /**
      * A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.
      * @availability stack since=8.14.0
-     * @availability serverless 
-    */
+     * @availability serverless
+     */
     retriever?: RetrieverContainer
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.

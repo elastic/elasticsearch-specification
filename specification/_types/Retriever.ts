@@ -27,55 +27,55 @@ import { FieldCollapse } from '@global/search/_types/FieldCollapse'
  * @variants container
  */
 export class RetrieverContainer {
-    /** A retriever that replaces the functionality of a traditional query. */
-    standard?: StandardRetriever
-    /** A retriever that replaces the functionality  of a knn search. */
-    knn?: KnnRetriever
-    /** A retriever that produces top documents from reciprocal rank fusion (RRF). */
-    rrf?: RRFRetriever
+  /** A retriever that replaces the functionality of a traditional query. */
+  standard?: StandardRetriever
+  /** A retriever that replaces the functionality  of a knn search. */
+  knn?: KnnRetriever
+  /** A retriever that produces top documents from reciprocal rank fusion (RRF). */
+  rrf?: RRFRetriever
 }
 
-export class RetrieverBase { }
+export class RetrieverBase {}
 
 export class StandardRetriever extends RetrieverBase {
-    /** Defines a query to retrieve a set of top documents. */
-    query?: QueryContainer
-    /** Applies a boolean query filter to this retriever where all documents must match this query but do not contribute to the score. */
-    filter?: QueryContainer | QueryContainer[]
-    /** Defines a search after object parameter used for pagination. */
-    search_after?: SortResults
-    /** Maximum number of documents to collect for each shard. */
-    terminate_after?: integer
-    /** A sort object that that specifies the order of matching documents. */
-    sort?: Sort
-    /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
-    min_score?: float
-    /** Collapses the top documents by a specified key into a single top document per key. */
-    collapse?: FieldCollapse
+  /** Defines a query to retrieve a set of top documents. */
+  query?: QueryContainer
+  /** Applies a boolean query filter to this retriever where all documents must match this query but do not contribute to the score. */
+  filter?: QueryContainer | QueryContainer[]
+  /** Defines a search after object parameter used for pagination. */
+  search_after?: SortResults
+  /** Maximum number of documents to collect for each shard. */
+  terminate_after?: integer
+  /** A sort object that that specifies the order of matching documents. */
+  sort?: Sort
+  /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
+  min_score?: float
+  /** Collapses the top documents by a specified key into a single top document per key. */
+  collapse?: FieldCollapse
 }
 
 export class KnnRetriever extends RetrieverBase {
-    /** The name of the vector field to search against. */
-    field: String
-    /** Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both. */
-    query_vector?: float[]
-    /** Defines a model to build a query vector. */
-    query_vector_builder?: QueryVectorBuilder
-    /** Number of nearest neighbors to return as top hits. */
-    k: integer
-    /** Number of nearest neighbor candidates to consider per shard. */
-    num_candidates: integer
-    /** Query to filter the documents that can match. The kNN search will return the top k documents that also match this filter. */
-    filter?: QueryContainer | QueryContainer[]
-    /** The minimum similarity required for a document to be considered a match.  */
-    similarity?: float
+  /** The name of the vector field to search against. */
+  field: String
+  /** Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both. */
+  query_vector?: float[]
+  /** Defines a model to build a query vector. */
+  query_vector_builder?: QueryVectorBuilder
+  /** Number of nearest neighbors to return as top hits. */
+  k: integer
+  /** Number of nearest neighbor candidates to consider per shard. */
+  num_candidates: integer
+  /** Query to filter the documents that can match. The kNN search will return the top k documents that also match this filter. */
+  filter?: QueryContainer | QueryContainer[]
+  /** The minimum similarity required for a document to be considered a match.  */
+  similarity?: float
 }
 
 export class RRFRetriever extends RetrieverBase {
-    /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
-    retrievers: RetrieverContainer[]
-    /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
-    rank_constant?: integer
-    /** This value determines the size of the individual result sets per query.  */
-    window_size?: integer
+  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
+  retrievers: RetrieverContainer[]
+  /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
+  rank_constant?: integer
+  /** This value determines the size of the individual result sets per query.  */
+  window_size?: integer
 }
