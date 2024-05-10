@@ -48,6 +48,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 import { Sort, SortResults } from '@_types/sort'
 import { KnnSearch } from '@_types/Knn'
 import { RankContainer } from '@_types/Rank'
+import { RetrieverContainer } from '@_types/Retriever'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -416,6 +417,12 @@ export interface Request extends RequestBase {
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
      */
     rescore?: Rescore | Rescore[]
+    /**
+     * A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.
+     * @availability stack since=8.14.0
+     * @availability serverless 
+    */
+    retriever?: RetrieverContainer
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.
      */
