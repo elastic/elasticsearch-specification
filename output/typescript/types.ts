@@ -5023,12 +5023,14 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
 
 export interface MappingDynamicTemplate {
   mapping?: MappingProperty
-  match?: string
-  match_mapping_type?: string
+  runtime?: MappingProperty
+  match?: string | string[]
+  path_match?: string | string[]
+  unmatch?: string | string[]
+  path_unmatch?: string | string[]
+  match_mapping_type?: string | string[]
+  unmatch_mapping_type?: string | string[]
   match_pattern?: MappingMatchType
-  path_match?: string
-  path_unmatch?: string
-  unmatch?: string
 }
 
 export interface MappingFieldAliasProperty extends MappingPropertyBase {
