@@ -5143,6 +5143,8 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: MappingIndexOptions
+  script?: Script
+  on_script_error?: MappingOnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
