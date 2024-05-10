@@ -54,6 +54,10 @@ export class BucketAggregationBase extends Aggregation {}
 
 export class AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Dictionary<string, QueryContainer>
+  /**
+   * Separator used to concatenate filter names. Defaults to &.
+   */
+  separator?: string
 }
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
