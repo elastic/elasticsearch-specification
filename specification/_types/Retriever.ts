@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { float, integer } from '@_types/Numeric'
+import { float, integer, long } from '@_types/Numeric'
 import { QueryContainer } from './query_dsl/abstractions'
-import { QueryVectorBuilder } from './Knn'
-import { Sort, SortResults } from './sort'
+import { QueryVector, QueryVectorBuilder } from '@_types/Knn'
+import { Sort, SortResults } from '@_types/sort'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 
 /**
  * @variants container
+ * @non_exhaustive
  */
 export class RetrieverContainer {
   /** A retriever that replaces the functionality of a traditional query. */
@@ -58,13 +59,13 @@ export class KnnRetriever extends RetrieverBase {
   /** The name of the vector field to search against. */
   field: String
   /** Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both. */
-  query_vector?: float[]
+  query_vector?: QueryVector
   /** Defines a model to build a query vector. */
   query_vector_builder?: QueryVectorBuilder
   /** Number of nearest neighbors to return as top hits. */
-  k: integer
+  k: long
   /** Number of nearest neighbor candidates to consider per shard. */
-  num_candidates: integer
+  num_candidates: long
   /** Query to filter the documents that can match. The kNN search will return the top k documents that also match this filter. */
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity required for a document to be considered a match.  */
@@ -75,7 +76,7 @@ export class RRFRetriever extends RetrieverBase {
   /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
   retrievers: RetrieverContainer[]
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
-  rank_constant?: integer
+  rank_constant?: long
   /** This value determines the size of the individual result sets per query.  */
-  window_size?: integer
+  window_size?: long
 }
