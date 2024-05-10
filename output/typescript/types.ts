@@ -1206,6 +1206,7 @@ export interface SearchRequest extends RequestBase {
     profile?: boolean
     query?: QueryDslQueryContainer
     rescore?: SearchRescore | SearchRescore[]
+    retriever?: RetrieverContainer
     script_fields?: Record<string, ScriptField>
     search_after?: SortResults
     size?: integer
@@ -2366,6 +2367,16 @@ export interface KnnQuery extends QueryDslQueryBase {
   similarity?: float
 }
 
+export interface KnnRetriever {
+  field: string
+  query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
+  k: long
+  num_candidates: long
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  similarity?: float
+}
+
 export interface KnnSearch {
   field: Field
   query_vector?: QueryVector
@@ -2510,6 +2521,12 @@ export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
 }
 
+export interface RRFRetriever {
+  retrievers: RetrieverContainer[]
+  rank_constant?: long
+  window_size?: long
+}
+
 export interface RankBase {
   [key: string]: never
 }
@@ -2558,6 +2575,16 @@ export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
 export interface Retries {
   bulk: long
   search: long
+}
+
+export interface RetrieverBase {
+  [key: string]: never
+}
+
+export interface RetrieverContainer {
+  standard?: StandardRetriever
+  knn?: KnnRetriever
+  rrf?: RRFRetriever
 }
 
 export type Routing = string
@@ -2714,6 +2741,16 @@ export type SortOptions = SortOptionsKeys
 export type SortOrder = 'asc' | 'desc'
 
 export type SortResults = FieldValue[]
+
+export interface StandardRetriever {
+  query?: QueryDslQueryContainer
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  search_after?: SortResults
+  terminate_after?: integer
+  sort?: Sort
+  min_score?: float
+  collapse?: SearchFieldCollapse
+}
 
 export interface StoreStats {
   size?: ByteSize

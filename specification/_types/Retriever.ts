@@ -25,7 +25,6 @@ import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 
 /**
  * @variants container
- * @non_exhaustive
  */
 export class RetrieverContainer {
   /** A retriever that replaces the functionality of a traditional query. */
@@ -57,7 +56,7 @@ export class StandardRetriever extends RetrieverBase {
 
 export class KnnRetriever extends RetrieverBase {
   /** The name of the vector field to search against. */
-  field: String
+  field: string
   /** Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both. */
   query_vector?: QueryVector
   /** Defines a model to build a query vector. */
