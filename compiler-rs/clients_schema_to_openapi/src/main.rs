@@ -87,8 +87,10 @@ impl Cli {
                     },
                 };
 
-                model = clients_schema::transform::expand_generics(model)?;
-                model = clients_schema::transform::filter_availability(model, filter)?;
+                use clients_schema::transform::*;
+
+                model = expand_generics(model, ExpandConfig::default())?;
+                model = filter_availability(model, filter)?;
             }
         }
 
