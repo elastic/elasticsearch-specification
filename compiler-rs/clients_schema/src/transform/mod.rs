@@ -17,13 +17,12 @@
 
 //! Utilities to transform API models and common transformations:
 //! * filtering according to availability
+//! * expand generic types so that the model doesn't contain generic types anymore
 
 mod availability;
 mod expand_generics;
 
 use std::collections::HashSet;
-
-use availability::Availability;
 
 use crate::{Availabilities, IndexedModel, TypeName};
 
@@ -67,6 +66,7 @@ impl Iterator for Worksheet {
     }
 }
 
+pub use availability::Availability;
 /// Transform a model to only keep the endpoints and types that match a predicate on the `availability`
 /// properties.
 pub fn filter_availability(
@@ -76,6 +76,8 @@ pub fn filter_availability(
     Availability::filter(model, avail_filter)
 }
 
-pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
-    expand_generics::expand_generics(model)
+
+pub use expand_generics::ExpandConfig;
+pub fn expand_generics(model: IndexedModel, config: ExpandConfig) -> anyhow::Result<IndexedModel> {
+    expand_generics::expand(model, config)
 }
