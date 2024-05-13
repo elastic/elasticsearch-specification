@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { InferenceEndpointContainer } from '@inference/_types/Services'
+import { InferenceEndpointInfo } from '@inference/_types/Services'
 
 export class Response {
-  body: InferenceEndpointContainer
+  body: InferenceEndpointInfo
 }

@@ -21,7 +21,6 @@ import { IndexState } from '@indices/_types/IndexState'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { ErrorCause } from '@_types/Errors'
 
 /**
  * Creates or updates a component template.
@@ -66,8 +65,6 @@ export interface Request extends RequestBase {
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
     master_timeout?: Duration
-
-    cause?: string
   }
   body: {
     /**

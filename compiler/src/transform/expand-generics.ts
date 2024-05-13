@@ -160,6 +160,26 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
   }
 
   /**
+   * Add dangling types like CommonQueryParameters & BaseEsqlVersion to the generic less schema.
+   * @param type the type definition
+   */
+  function addDanglingTypeIfNotSeen (type: TypeDefinition): void {
+    switch (type.kind) {
+      case 'type_alias':
+        if (type.generics !== undefined && type.generics.length > 0) {
+          return
+        }
+        break
+      case 'interface':
+        if (type.generics !== undefined && type.generics.length > 0) {
+          return
+        }
+        break
+    }
+    addIfNotSeen(type.name, () => type)
+  }
+
+  /**
    * Expand an interface definition.
    *
    * @param type the type definition
@@ -172,6 +192,18 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
       const mappings = genericParamMapping(type.generics, params)
 
       result.inherits = expandInherits(result.inherits, mappings)
+
+      // We add to the schema the non generics behaviors
+      // CommonQueryParameters
+      // CommonCatQueryParameters
+      if (result.behaviors != null) {
+        result.behaviors.forEach(b => {
+          if (b.generics == null) {
+            const type = getType(b.type)
+            addIfNotSeen(b.type, () => type)
+          }
+        })
+      }
 
       if (result.behaviors != null) {
         // We keep the generic parameters, but expand their value
@@ -413,6 +445,11 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
   for (const endpoint of inputModel.endpoints) {
     expandRootType(endpoint.request)
     expandRootType(endpoint.response)
+  }
+
+  // Allows to retrieve EsqlBase*EsqlVersion
+  for (const type of inputModel.types) {
+    addDanglingTypeIfNotSeen(type)
   }
 
   sortTypeDefinitions(types)

@@ -1567,9 +1567,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1600,9 +1597,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -21188,7 +21182,7 @@
                 "endpoints": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
+                    "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
                   }
                 }
               },
@@ -21214,7 +21208,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/inference._types:InferenceEndpointContainer"
+              "$ref": "#/components/schemas/inference._types:InferenceEndpointInfo"
             }
           }
         }
@@ -23293,15 +23287,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
-      "cluster.put_component_template#cause": {
-        "in": "query",
-        "name": "cause",
-        "deprecated": false,
-        "schema": {
-          "type": "string"
         },
         "style": "form"
       },
@@ -34123,6 +34108,10 @@
                 "additionalProperties": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 }
+              },
+              "separator": {
+                "description": "Separator used to concatenate filter names. Defaults to &.",
+                "type": "string"
               }
             }
           }
@@ -48317,6 +48306,9 @@
                   "dense_vector"
                 ]
               },
+              "element_type": {
+                "type": "string"
+              },
               "dims": {
                 "type": "number"
               },
@@ -50696,7 +50688,6 @@
           "_id",
           "_index",
           "result",
-          "_seq_no",
           "_shards",
           "_version"
         ]
@@ -52321,7 +52312,7 @@
           "completion"
         ]
       },
-      "inference._types:InferenceEndpointContainer": {
+      "inference._types:InferenceEndpointInfo": {
         "allOf": [
           {
             "$ref": "#/components/schemas/inference._types:InferenceEndpoint"
@@ -53395,6 +53386,9 @@
             "type": "object",
             "properties": {
               "field": {
+                "$ref": "#/components/schemas/_types:Fields"
+              },
+              "keep": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
               "ignore_missing": {
