@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@_types/common'
-import { long, float } from '@_types/Numeric'
+import { float, integer } from '@_types/Numeric'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
 import { InnerHits } from '@global/search/_types/hits'
 
@@ -35,9 +35,9 @@ export interface KnnSearch {
   /** The query vector builder. You must provide a query_vector_builder or query_vector, but not both. */
   query_vector_builder?: QueryVectorBuilder
   /** The final number of nearest neighbors to return as top hits */
-  k?: long
+  k?: integer
   /** The number of nearest neighbor candidates to consider per shard */
-  num_candidates?: long
+  num_candidates?: integer
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
@@ -59,7 +59,7 @@ export interface KnnQuery extends QueryBase {
   /** The query vector builder. You must provide a query_vector_builder or query_vector, but not both. */
   query_vector_builder?: QueryVectorBuilder
   /** The number of nearest neighbor candidates to consider per shard */
-  num_candidates?: long
+  num_candidates?: integer
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
