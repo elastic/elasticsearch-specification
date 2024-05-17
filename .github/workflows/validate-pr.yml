@@ -19,11 +19,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: ./elasticsearch-specification
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
