@@ -5412,6 +5412,96 @@
         }
       }
     },
+    "/_query": {
+      "post": {
+        "tags": [
+          "esql.query"
+        ],
+        "summary": "Executes an ESQL request",
+        "description": "Executes an ESQL request",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html"
+        },
+        "operationId": "esql-query",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": "A short version of the Accept header, e.g. json, yaml.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "delimiter",
+            "description": "The character to use between values within a CSV row. Only valid for the CSV format.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "columnar": {
+                    "description": "By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the JSON, YAML, CBOR and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.",
+                    "type": "boolean"
+                  },
+                  "filter": {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  },
+                  "locale": {
+                    "type": "string"
+                  },
+                  "params": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html#esql-rest-params"
+                    },
+                    "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types:ScalarValue"
+                    }
+                  },
+                  "query": {
+                    "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
+                    "type": "string"
+                  },
+                  "version": {
+                    "$ref": "#/components/schemas/esql._types:EsqlVersion"
+                  }
+                },
+                "required": [
+                  "query",
+                  "version"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:EsqlColumns"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/{index}/_source/{id}": {
       "get": {
         "tags": [
@@ -28540,6 +28630,9 @@
                     }
                   ]
                 },
+                "retriever": {
+                  "$ref": "#/components/schemas/_types:RetrieverContainer"
+                },
                 "script_fields": {
                   "description": "Retrieve a script evaluation (based on different fields) for each hit.",
                   "type": "object",
@@ -51075,6 +51168,15 @@
           "head"
         ]
       },
+      "esql._types:EsqlVersion": {
+        "type": "string",
+        "enum": [
+          "2024.04.01"
+        ]
+      },
+      "_types:EsqlColumns": {
+        "type": "object"
+      },
       "_types:InlineGet": {
         "type": "object",
         "properties": {
@@ -59559,6 +59661,142 @@
       },
       "_types:RankBase": {
         "type": "object"
+      },
+      "_types:RetrieverContainer": {
+        "type": "object",
+        "properties": {
+          "standard": {
+            "$ref": "#/components/schemas/_types:StandardRetriever"
+          },
+          "knn": {
+            "$ref": "#/components/schemas/_types:KnnRetriever"
+          },
+          "rrf": {
+            "$ref": "#/components/schemas/_types:RRFRetriever"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types:StandardRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              "search_after": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "terminate_after": {
+                "description": "Maximum number of documents to collect for each shard.",
+                "type": "number"
+              },
+              "sort": {
+                "$ref": "#/components/schemas/_types:Sort"
+              },
+              "min_score": {
+                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+                "type": "number"
+              },
+              "collapse": {
+                "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
+              }
+            }
+          }
+        ]
+      },
+      "_types:RetrieverBase": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "description": "Query to filter the documents that can match.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "_types:KnnRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the vector field to search against.",
+                "type": "string"
+              },
+              "query_vector": {
+                "$ref": "#/components/schemas/_types:QueryVector"
+              },
+              "query_vector_builder": {
+                "$ref": "#/components/schemas/_types:QueryVectorBuilder"
+              },
+              "k": {
+                "description": "Number of nearest neighbors to return as top hits.",
+                "type": "number"
+              },
+              "num_candidates": {
+                "description": "Number of nearest neighbor candidates to consider per shard.",
+                "type": "number"
+              },
+              "similarity": {
+                "description": "The minimum similarity required for a document to be considered a match.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "field",
+              "k",
+              "num_candidates"
+            ]
+          }
+        ]
+      },
+      "_types:RRFRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:RetrieverContainer"
+                }
+              },
+              "rank_constant": {
+                "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result sets per query.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "retrievers"
+            ]
+          }
+        ]
       },
       "search_application._types:SearchApplication": {
         "type": "object",
