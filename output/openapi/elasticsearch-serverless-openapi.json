@@ -59590,20 +59590,6 @@
               "query": {
                 "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
               },
-              "filter": {
-                "description": "Applies a boolean query filter to this retriever where all documents must match this query but do not contribute to the score.",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-                    }
-                  }
-                ]
-              },
               "search_after": {
                 "$ref": "#/components/schemas/_types:SortResults"
               },
@@ -59626,7 +59612,23 @@
         ]
       },
       "_types:RetrieverBase": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "filter": {
+            "description": "Query to filter the documents that can match.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                }
+              }
+            ]
+          }
+        }
       },
       "_types:KnnRetriever": {
         "allOf": [
@@ -59653,20 +59655,6 @@
               "num_candidates": {
                 "description": "Number of nearest neighbor candidates to consider per shard.",
                 "type": "number"
-              },
-              "filter": {
-                "description": "Query to filter the documents that can match. The kNN search will return the top k documents that also match this filter.",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-                    }
-                  }
-                ]
               },
               "similarity": {
                 "description": "The minimum similarity required for a document to be considered a match.",

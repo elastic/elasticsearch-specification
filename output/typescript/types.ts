@@ -2367,13 +2367,12 @@ export interface KnnQuery extends QueryDslQueryBase {
   similarity?: float
 }
 
-export interface KnnRetriever {
+export interface KnnRetriever extends RetrieverBase {
   field: string
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
-  k: long
-  num_candidates: long
-  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  k: integer
+  num_candidates: integer
   similarity?: float
 }
 
@@ -2521,10 +2520,10 @@ export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
 }
 
-export interface RRFRetriever {
+export interface RRFRetriever extends RetrieverBase {
   retrievers: RetrieverContainer[]
-  rank_constant?: long
-  window_size?: long
+  rank_constant?: integer
+  window_size?: integer
 }
 
 export interface RankBase {
@@ -2578,7 +2577,7 @@ export interface Retries {
 }
 
 export interface RetrieverBase {
-  [key: string]: never
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
 }
 
 export interface RetrieverContainer {
@@ -2742,9 +2741,8 @@ export type SortOrder = 'asc' | 'desc'
 
 export type SortResults = FieldValue[]
 
-export interface StandardRetriever {
+export interface StandardRetriever extends RetrieverBase {
   query?: QueryDslQueryContainer
-  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   search_after?: SortResults
   terminate_after?: integer
   sort?: Sort

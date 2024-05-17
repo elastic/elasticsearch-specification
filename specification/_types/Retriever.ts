@@ -35,13 +35,14 @@ export class RetrieverContainer {
   rrf?: RRFRetriever
 }
 
-export class RetrieverBase {}
+export class RetrieverBase {
+  /** Query to filter the documents that can match. */
+  filter?: QueryContainer | QueryContainer[]
+}
 
 export class StandardRetriever extends RetrieverBase {
   /** Defines a query to retrieve a set of top documents. */
   query?: QueryContainer
-  /** Applies a boolean query filter to this retriever where all documents must match this query but do not contribute to the score. */
-  filter?: QueryContainer | QueryContainer[]
   /** Defines a search after object parameter used for pagination. */
   search_after?: SortResults
   /** Maximum number of documents to collect for each shard. */
@@ -62,11 +63,9 @@ export class KnnRetriever extends RetrieverBase {
   /** Defines a model to build a query vector. */
   query_vector_builder?: QueryVectorBuilder
   /** Number of nearest neighbors to return as top hits. */
-  k: long
+  k: integer
   /** Number of nearest neighbor candidates to consider per shard. */
-  num_candidates: long
-  /** Query to filter the documents that can match. The kNN search will return the top k documents that also match this filter. */
-  filter?: QueryContainer | QueryContainer[]
+  num_candidates: integer
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
 }
@@ -75,7 +74,7 @@ export class RRFRetriever extends RetrieverBase {
   /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
   retrievers: RetrieverContainer[]
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
-  rank_constant?: long
+  rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */
-  window_size?: long
+  window_size?: integer
 }
