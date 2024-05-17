@@ -671,8 +671,8 @@ export interface KnnSearchResponse<TDocument = unknown> {
 export interface KnnSearchQuery {
   field: Field
   query_vector: QueryVector
-  k: long
-  num_candidates: long
+  k: integer
+  num_candidates: integer
 }
 
 export interface MgetMultiGetError {
@@ -2362,7 +2362,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   field: Field
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
-  num_candidates?: long
+  num_candidates?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
 }
@@ -2380,8 +2380,8 @@ export interface KnnSearch {
   field: Field
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
-  k?: long
-  num_candidates?: long
+  k?: integer
+  num_candidates?: integer
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2523,7 +2523,7 @@ export interface QueryVectorBuilder {
 export interface RRFRetriever extends RetrieverBase {
   retrievers: RetrieverContainer[]
   rank_constant?: integer
-  rank_window_size?: integer
+  window_size?: integer
 }
 
 export interface RankBase {
