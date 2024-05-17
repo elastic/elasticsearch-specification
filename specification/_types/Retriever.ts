@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, integer, long } from '@_types/Numeric'
+import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from './query_dsl/abstractions'
 import { QueryVector, QueryVectorBuilder } from '@_types/Knn'
 import { Sort, SortResults } from '@_types/sort'
