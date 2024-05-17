@@ -2523,7 +2523,7 @@ export interface QueryVectorBuilder {
 export interface RRFRetriever extends RetrieverBase {
   retrievers: RetrieverContainer[]
   rank_constant?: integer
-  window_size?: integer
+  rank_window_size?: integer
 }
 
 export interface RankBase {

@@ -76,5 +76,5 @@ export class RRFRetriever extends RetrieverBase {
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
   rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */
-  window_size?: integer
+  rank_window_size?: integer
 }
