@@ -59688,7 +59688,7 @@
                 "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
                 "type": "number"
               },
-              "window_size": {
+              "rank_window_size": {
                 "description": "This value determines the size of the individual result sets per query.",
                 "type": "number"
               }
