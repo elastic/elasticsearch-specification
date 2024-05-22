@@ -174,9 +174,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const additionalRoots: TypeName[] = [
     // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
     { namespace: '_types', name: 'ErrorResponseBase' },
-    // ESQL base versions are pseudo-constants
-    { namespace: 'esql._types', name: 'BaseStatefulEsqlVersion' },
-    { namespace: 'esql._types', name: 'BaseServerlessEsqlVersion' }
   ]
   additionalRoots.forEach(t => validateTypeRef(t, undefined, new Set()))
 
