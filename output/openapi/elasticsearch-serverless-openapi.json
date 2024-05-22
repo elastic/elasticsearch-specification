@@ -47406,7 +47406,6 @@
             "type": "string",
             "enum": [
               "fs",
-              "",
               "niofs",
               "mmapfs",
               "hybridfs"
