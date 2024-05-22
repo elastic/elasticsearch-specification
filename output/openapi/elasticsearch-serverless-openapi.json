@@ -5474,14 +5474,10 @@
                   "query": {
                     "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
                     "type": "string"
-                  },
-                  "version": {
-                    "$ref": "#/components/schemas/esql._types:EsqlVersion"
                   }
                 },
                 "required": [
-                  "query",
-                  "version"
+                  "query"
                 ]
               }
             }
@@ -51432,12 +51428,6 @@
         "enum": [
           "tail",
           "head"
-        ]
-      },
-      "esql._types:EsqlVersion": {
-        "type": "string",
-        "enum": [
-          "2024.04.01"
         ]
       },
       "_types:EsqlColumns": {
