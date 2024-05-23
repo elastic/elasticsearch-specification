@@ -513,8 +513,6 @@ export enum StorageType {
   /**
    * Default file system implementation. This will pick the best implementation depending on the operating environment, which
    * is currently hybridfs on all supported systems but is subject to change.
-   *
-   * @aliases ''
    */
   fs,
   /**

@@ -20,7 +20,6 @@
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScalarValue } from '@_types/common'
-import { EsqlVersion } from '@esql/_types/EsqlVersion'
 
 /**
  * Executes an ES|QL request
@@ -62,9 +61,5 @@ export interface Request extends RequestBase {
      * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
      */
     query: string
-    /**
-     * The version of the ES|QL language in which the "query" field was written.
-     */
-    version: EsqlVersion
   }
 }

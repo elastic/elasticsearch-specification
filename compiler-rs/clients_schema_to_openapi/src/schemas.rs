@@ -25,6 +25,7 @@ use openapiv3::{
     AdditionalProperties, ArrayType, Discriminator, ExternalDocumentation, NumberType, ObjectType, ReferenceOr, Schema,
     SchemaData, SchemaKind, StringType, Type,
 };
+use openapiv3::SchemaKind::AnyOf;
 
 use crate::components::TypesAndComponents;
 use crate::utils::{IntoSchema, ReferenceOrBoxed, SchemaName};
@@ -401,18 +402,39 @@ impl<'a> TypesAndComponents<'a> {
 
     /// Register an enumeration and return the schema reference.
     fn convert_enum(&mut self, enumm: &Enum) -> anyhow::Result<Schema> {
-        // TODO: enum.is_open
 
-        let enum_values = enumm.members.iter().map(|m| Some(m.name.clone())).collect::<Vec<_>>();
+        // Collect all members and their aliases
+        let enum_values = enumm.members.iter()
+            .flat_map(|m|
+                std::iter::once(m.name.clone())
+                .chain(m.aliases.iter().cloned())
+            )
+            .map(Some) // enumeration below is a Vec<Option<String>>
+            .collect::<Vec<_>>();
 
-        Ok(StringType {
+        let result = StringType {
             format: Default::default(),
             pattern: None,
             enumeration: enum_values,
             min_length: None,
             max_length: None,
-        }
-        .into_schema_with_base(self, &enumm.base))
+        };
+
+        // Open enumeration: keep the value list for reference and also allow any string
+        let mut schema = if enumm.is_open {
+            AnyOf {
+                any_of: vec![
+                    result.into_schema_ref(),
+                    StringType::default().into_schema_ref(),
+                ]
+            }.into_schema()
+        } else {
+            result.into_schema()
+        };
+
+        self.fill_data_with_base(&mut schema.schema_data, &enumm.base);
+
+        Ok(schema)
     }
 
     fn fill_schema_with_base(&self, schema: &mut Schema, base: &clients_schema::BaseType) {
