@@ -14558,6 +14558,68 @@
         }
       }
     },
+    "/_ml/trained_models/{model_id}/deployment/_update": {
+      "post": {
+        "tags": [
+          "ml.update_trained_model_deployment"
+        ],
+        "summary": "Updates certain properties of trained model deployment.",
+        "description": "Updates certain properties of trained model deployment.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html"
+        },
+        "operationId": "ml-update-trained-model-deployment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the trained model. Currently, only PyTorch models are supported.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "number_of_allocations": {
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "assignment": {
+                      "$ref": "#/components/schemas/ml._types:TrainedModelAssignment"
+                    }
+                  },
+                  "required": [
+                    "assignment"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_msearch": {
       "get": {
         "tags": [
