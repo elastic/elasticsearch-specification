@@ -56,6 +56,7 @@ report
 output/schema/import-*
 output/schema/schema-no-generics.json
 output/schema/routes.go
+output/schema/schema
 .github/**/package-lock.json
 
 # Editor lockfiles
