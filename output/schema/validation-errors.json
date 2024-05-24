@@ -1078,12 +1078,6 @@
       ],
       "response": []
     },
-    "ml.update_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.validate": {
       "request": [],
       "response": [
