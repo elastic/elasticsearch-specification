@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     number_of_allocations?: integer
-  },
+  }
   body: {
     /**
      * The number of model allocations on each node where the model is deployed.
