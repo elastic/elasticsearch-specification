@@ -11432,7 +11432,7 @@ export interface IndicesPutTemplateRequest extends RequestBase {
     index_patterns?: string | string[]
     mappings?: MappingTypeMapping
     order?: integer
-    settings?: Record<string, any>
+    settings?: IndicesIndexSettings
     version?: VersionNumber
   }
 }

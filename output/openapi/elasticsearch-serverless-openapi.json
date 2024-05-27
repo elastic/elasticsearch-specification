@@ -28112,11 +28112,7 @@
                   "type": "number"
                 },
                 "settings": {
-                  "description": "Configuration options for the index.",
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
+                  "$ref": "#/components/schemas/indices._types:IndexSettings"
                 },
                 "version": {
                   "$ref": "#/components/schemas/_types:VersionNumber"
