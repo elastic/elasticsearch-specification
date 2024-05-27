@@ -34381,7 +34381,7 @@
           "span_containing": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanContainingQuery"
           },
-          "field_masking_span": {
+          "span_field_masking": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanFieldMaskingQuery"
           },
           "span_first": {
@@ -38037,7 +38037,7 @@
           "span_containing": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanContainingQuery"
           },
-          "field_masking_span": {
+          "span_field_masking": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanFieldMaskingQuery"
           },
           "span_first": {
