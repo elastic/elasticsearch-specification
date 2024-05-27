@@ -140,7 +140,7 @@ export class SpanQuery {
   /**
    * Allows queries like `span_near` or `span_or` across different fields.
    */
-  field_masking_span?: SpanFieldMaskingQuery
+  span_field_masking?: SpanFieldMaskingQuery
   /**
    * Accepts another span query whose matches must appear within the first N positions of the field.
    */

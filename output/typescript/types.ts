@@ -5925,7 +5925,7 @@ export interface QueryDslQueryContainer {
   shape?: QueryDslShapeQuery
   simple_query_string?: QueryDslSimpleQueryStringQuery
   span_containing?: QueryDslSpanContainingQuery
-  field_masking_span?: QueryDslSpanFieldMaskingQuery
+  span_field_masking?: QueryDslSpanFieldMaskingQuery
   span_first?: QueryDslSpanFirstQuery
   span_multi?: QueryDslSpanMultiTermQuery
   span_near?: QueryDslSpanNearQuery
@@ -6114,7 +6114,7 @@ export interface QueryDslSpanOrQuery extends QueryDslQueryBase {
 
 export interface QueryDslSpanQuery {
   span_containing?: QueryDslSpanContainingQuery
-  field_masking_span?: QueryDslSpanFieldMaskingQuery
+  span_field_masking?: QueryDslSpanFieldMaskingQuery
   span_first?: QueryDslSpanFirstQuery
   span_gap?: QueryDslSpanGapQuery
   span_multi?: QueryDslSpanMultiTermQuery
