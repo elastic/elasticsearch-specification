@@ -46119,6 +46119,12 @@
               "index_options": {
                 "$ref": "#/components/schemas/_types.mapping:IndexOptions"
               },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
+              },
               "normalizer": {
                 "type": "string"
               },
