@@ -19,14 +19,26 @@
 
 import { Property } from './Property'
 
+/**
+ * @variants container
+ */
 export class DynamicTemplate {
   mapping?: Property
-  match?: string
-  match_mapping_type?: string
+  runtime?: Property
+  /** @variant container_property */
+  match?: string | string[]
+  /** @variant container_property */
+  path_match?: string | string[]
+  /** @variant container_property */
+  unmatch?: string | string[]
+  /** @variant container_property */
+  path_unmatch?: string | string[]
+  /** @variant container_property */
+  match_mapping_type?: string | string[]
+  /** @variant container_property */
+  unmatch_mapping_type?: string | string[]
+  /** @variant container_property */
   match_pattern?: MatchType
-  path_match?: string
-  path_unmatch?: string
-  unmatch?: string
 }
 
 export enum MatchType {

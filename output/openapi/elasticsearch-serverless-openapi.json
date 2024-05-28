@@ -39614,18 +39614,7 @@
         "properties": {
           "from": {
             "description": "Start of the range (inclusive).",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           },
           "key": {
             "description": "Custom key to return the range with.",
@@ -39633,18 +39622,7 @@
           },
           "to": {
             "description": "End of the range (exclusive).",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           }
         }
       },
@@ -47602,30 +47580,107 @@
         ]
       },
       "_types.mapping:DynamicTemplate": {
-        "type": "object",
-        "properties": {
-          "mapping": {
-            "$ref": "#/components/schemas/_types.mapping:Property"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "match": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "path_match": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "unmatch": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "path_unmatch": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "match_mapping_type": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "unmatch_mapping_type": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "match_pattern": {
+                "$ref": "#/components/schemas/_types.mapping:MatchType"
+              }
+            }
           },
-          "match": {
-            "type": "string"
-          },
-          "match_mapping_type": {
-            "type": "string"
-          },
-          "match_pattern": {
-            "$ref": "#/components/schemas/_types.mapping:MatchType"
-          },
-          "path_match": {
-            "type": "string"
-          },
-          "path_unmatch": {
-            "type": "string"
-          },
-          "unmatch": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "mapping": {
+                "$ref": "#/components/schemas/_types.mapping:Property"
+              },
+              "runtime": {
+                "$ref": "#/components/schemas/_types.mapping:Property"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        }
+        ]
       },
       "_types.mapping:Property": {
         "discriminator": {
@@ -48115,6 +48170,12 @@
               },
               "index_options": {
                 "$ref": "#/components/schemas/_types.mapping:IndexOptions"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
               },
               "normalizer": {
                 "type": "string"

@@ -91,6 +91,8 @@ export class KeywordProperty extends DocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: IndexOptions
+  script?: Script
+  on_script_error?: OnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
