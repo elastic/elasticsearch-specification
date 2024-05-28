@@ -2994,9 +2994,9 @@ export interface AggregationsAggregationContainer {
 }
 
 export interface AggregationsAggregationRange {
-  from?: double | string | null
+  from?: double
   key?: string
-  to?: double | string | null
+  to?: double
 }
 
 export interface AggregationsArrayPercentilesItem {
@@ -5058,12 +5058,14 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
 
 export interface MappingDynamicTemplate {
   mapping?: MappingProperty
-  match?: string
-  match_mapping_type?: string
+  runtime?: MappingProperty
+  match?: string | string[]
+  path_match?: string | string[]
+  unmatch?: string | string[]
+  path_unmatch?: string | string[]
+  match_mapping_type?: string | string[]
+  unmatch_mapping_type?: string | string[]
   match_pattern?: MappingMatchType
-  path_match?: string
-  path_unmatch?: string
-  unmatch?: string
 }
 
 export interface MappingFieldAliasProperty extends MappingPropertyBase {
@@ -5080,7 +5082,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'sparse_vector' | 'match_only_text'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'sparse_vector' | 'match_only_text'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -5178,6 +5180,8 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: MappingIndexOptions
+  script?: Script
+  on_script_error?: MappingOnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
