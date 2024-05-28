@@ -18491,7 +18491,7 @@
                       "$ref": "#/components/schemas/_types:Result"
                     },
                     "reload_analyzers_details": {
-                      "$ref": "#/components/schemas/indices.reload_search_analyzers:ReloadDetails"
+                      "$ref": "#/components/schemas/indices.reload_search_analyzers:ReloadResult"
                     }
                   },
                   "required": [
