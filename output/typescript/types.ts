@@ -10561,11 +10561,11 @@ export interface IndicesMappingLimitSettings {
 }
 
 export interface IndicesMappingLimitSettingsDepth {
-  limit?: integer
+  limit?: long
 }
 
 export interface IndicesMappingLimitSettingsDimensionFields {
-  limit?: integer
+  limit?: long
 }
 
 export interface IndicesMappingLimitSettingsFieldNameLength {
@@ -10573,15 +10573,15 @@ export interface IndicesMappingLimitSettingsFieldNameLength {
 }
 
 export interface IndicesMappingLimitSettingsNestedFields {
-  limit?: integer
+  limit?: long
 }
 
 export interface IndicesMappingLimitSettingsNestedObjects {
-  limit?: integer
+  limit?: long
 }
 
 export interface IndicesMappingLimitSettingsTotalFields {
-  limit?: integer
+  limit?: long
 }
 
 export interface IndicesMerge {
