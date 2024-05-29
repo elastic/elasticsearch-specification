@@ -428,7 +428,7 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsDepth {
@@ -437,7 +437,7 @@ export class MappingLimitSettingsDepth {
    * at the root object level, then the depth is 1. If there is one object mapping, then the depth is 2, etc.
    * @server_default 20
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsNestedFields {
@@ -447,7 +447,7 @@ export class MappingLimitSettingsNestedFields {
    * setting limits the number of unique nested types per index.
    * @server_default 50
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsNestedObjects {
@@ -456,7 +456,7 @@ export class MappingLimitSettingsNestedObjects {
    * to prevent out of memory errors when a document contains too many nested objects.
    * @server_default 10000
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsFieldNameLength {
@@ -473,7 +473,7 @@ export class MappingLimitSettingsDimensionFields {
    * [preview] This functionality is in technical preview and may be changed or removed in a future release.
    * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
-  limit?: integer
+  limit?: long
 }
 
 export class SlowlogSettings {
