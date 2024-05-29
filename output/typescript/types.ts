@@ -4705,7 +4705,7 @@ export type AnalysisPhoneticRuleType = 'approx' | 'exact'
 export interface AnalysisPhoneticTokenFilter extends AnalysisTokenFilterBase {
   type: 'phonetic'
   encoder: AnalysisPhoneticEncoder
-  languageset: AnalysisPhoneticLanguage[]
+  languageset: AnalysisPhoneticLanguage | AnalysisPhoneticLanguage[]
   max_code_len?: integer
   name_type: AnalysisPhoneticNameType
   replace?: boolean
