@@ -46522,10 +46522,17 @@
                 "$ref": "#/components/schemas/_types.analysis:PhoneticEncoder"
               },
               "languageset": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.analysis:PhoneticLanguage"
-                }
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.analysis:PhoneticLanguage"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.analysis:PhoneticLanguage"
+                    }
+                  }
+                ]
               },
               "max_code_len": {
                 "type": "number"
