@@ -1452,7 +1452,7 @@ export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
-  _id: Id
+  _id?: Id
   _score?: double | null
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
