@@ -16651,6 +16651,7 @@ export type SearchApplicationPutBehavioralAnalyticsResponse = SearchApplicationP
 
 export interface SearchApplicationSearchRequest extends RequestBase {
   name: Name
+  typed_keys?: boolean
   body?: {
     params?: Record<string, any>
   }
