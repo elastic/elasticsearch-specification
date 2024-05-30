@@ -703,7 +703,7 @@ export class StringStatsAggregate extends AggregateBase {
   avg_length_as_string?: string
 }
 
-/** @variant name=box_plot */
+/** @variant name=boxplot */
 export class BoxPlotAggregate extends AggregateBase {
   min: double
   max: double
