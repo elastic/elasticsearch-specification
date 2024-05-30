@@ -1276,7 +1276,7 @@ export type SearchHighlighterType = SearchBuiltinHighlighterType | string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
-  _id: Id
+  _id?: Id
   _score?: double
   _type?: Type
   _explanation?: ExplainExplanation
