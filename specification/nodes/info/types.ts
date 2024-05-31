@@ -73,7 +73,7 @@ export class NodeInfoSettings {
   repositories?: NodeInfoRepositories
   discovery?: NodeInfoDiscover
   action?: NodeInfoAction
-  client: NodeInfoClient
+  client?: NodeInfoClient
   http: NodeInfoSettingsHttp
   bootstrap?: NodeInfoBootstrap
   transport: NodeInfoSettingsTransport
@@ -218,7 +218,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  host: Host
+  host?: Host
 }
 
 export class NodeInfoIngest {
@@ -280,7 +280,7 @@ export class NodeInfoXpackLicenseType {
 
 export class NodeInfoScript {
   allowed_types: string
-  disable_max_compilations_rate: string
+  disable_max_compilations_rate?: string
 }
 
 export class NodeInfoSearch {
