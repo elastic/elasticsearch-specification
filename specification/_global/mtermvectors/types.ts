@@ -36,7 +36,7 @@ export class Operation {
   /**
    * The ID of the document.
    */
-  _id: Id
+  _id?: Id
   /**
    * The index of the document.
    */
