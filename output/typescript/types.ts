@@ -818,7 +818,7 @@ export interface MsearchTemplateTemplateConfig {
 }
 
 export interface MtermvectorsOperation {
-  _id: Id
+  _id?: Id
   _index?: IndexName
   doc?: any
   fields?: Fields
@@ -4164,7 +4164,7 @@ export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_f
 export type AggregationsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 
 export interface AggregationsTermsBucketBase extends AggregationsMultiBucketBase {
-  doc_count_error?: long
+  doc_count_error_upper_bound?: long
 }
 
 export type AggregationsTermsExclude = string | string[]
@@ -16031,7 +16031,7 @@ export interface NodesInfoNodeInfoRepositoriesUrl {
 
 export interface NodesInfoNodeInfoScript {
   allowed_types: string
-  disable_max_compilations_rate: string
+  disable_max_compilations_rate?: string
 }
 
 export interface NodesInfoNodeInfoSearch {
@@ -16049,7 +16049,7 @@ export interface NodesInfoNodeInfoSettings {
   repositories?: NodesInfoNodeInfoRepositories
   discovery?: NodesInfoNodeInfoDiscover
   action?: NodesInfoNodeInfoAction
-  client: NodesInfoNodeInfoClient
+  client?: NodesInfoNodeInfoClient
   http: NodesInfoNodeInfoSettingsHttp
   bootstrap?: NodesInfoNodeInfoBootstrap
   transport: NodesInfoNodeInfoSettingsTransport
@@ -16121,7 +16121,7 @@ export interface NodesInfoNodeInfoSettingsIngest {
 }
 
 export interface NodesInfoNodeInfoSettingsNetwork {
-  host: Host
+  host?: Host
 }
 
 export interface NodesInfoNodeInfoSettingsNode {
