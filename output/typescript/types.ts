@@ -4164,7 +4164,7 @@ export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_f
 export type AggregationsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 
 export interface AggregationsTermsBucketBase extends AggregationsMultiBucketBase {
-  doc_count_error?: long
+  doc_count_error_upper_bound?: long
 }
 
 export type AggregationsTermsExclude = string | string[]

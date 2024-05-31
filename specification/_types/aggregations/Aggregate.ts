@@ -389,7 +389,7 @@ export class TermsAggregateBase<
 export class StringTermsAggregate extends TermsAggregateBase<StringTermsBucket> {}
 
 export class TermsBucketBase extends MultiBucketBase {
-  doc_count_error?: long
+  doc_count_error_upper_bound?: long
 }
 
 export class StringTermsBucket extends TermsBucketBase {

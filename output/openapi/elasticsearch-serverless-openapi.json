@@ -30689,7 +30689,7 @@
           {
             "type": "object",
             "properties": {
-              "doc_count_error": {
+              "doc_count_error_upper_bound": {
                 "type": "number"
               }
             }
