@@ -818,7 +818,7 @@ export interface MsearchTemplateTemplateConfig {
 }
 
 export interface MtermvectorsOperation {
-  _id: Id
+  _id?: Id
   _index?: IndexName
   doc?: any
   fields?: Fields

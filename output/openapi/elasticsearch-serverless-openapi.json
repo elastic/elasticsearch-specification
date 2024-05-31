@@ -59356,10 +59356,7 @@
           "version_type": {
             "$ref": "#/components/schemas/_types:VersionType"
           }
-        },
-        "required": [
-          "_id"
-        ]
+        }
       },
       "_global.termvectors:Filter": {
         "type": "object",
