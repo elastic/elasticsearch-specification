@@ -1905,75 +1905,15 @@
         "operationId": "connector-put",
         "parameters": [
           {
-            "in": "path",
-            "name": "connector_id",
-            "description": "The unique identifier of the connector to be created or updated",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/connector.put#connector_id"
           }
         ],
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "type": "string"
-                  },
-                  "index_name": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:IndexName"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
-                  },
-                  "is_native": {
-                    "type": "boolean"
-                  },
-                  "language": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "service_type": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "index_name"
-                ]
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/connector.put"
         },
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "$ref": "#/components/schemas/_types:Result"
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/connector.put#200"
           }
         }
       },
@@ -2238,6 +2178,25 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "connector.put"
+        ],
+        "summary": "Creates or updates a connector.",
+        "description": "Creates or updates a connector.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/create-connector-api.html"
+        },
+        "operationId": "connector-put-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/connector.put"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/connector.put#200"
+          }
+        }
+      },
       "post": {
         "tags": [
           "connector.post"
@@ -2285,8 +2244,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -14595,8 +14553,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20180,8 +20137,8 @@
         "tags": [
           "update_by_query"
         ],
-        "summary": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
-        "description": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "summary": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "description": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
         },
@@ -20815,6 +20772,24 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+            }
+          }
+        }
+      },
+      "connector.put#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/components/schemas/_types:Result"
+                }
+              },
+              "required": [
+                "result"
+              ]
             }
           }
         }
@@ -23443,6 +23418,17 @@
           "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
+      },
+      "connector.put#connector_id": {
+        "in": "path",
+        "name": "connector_id",
+        "description": "The unique identifier of the connector to be created or updated",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
       },
       "count#index": {
         "in": "path",
@@ -27687,6 +27673,45 @@
           }
         },
         "required": true
+      },
+      "connector.put": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "index_name": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_types:IndexName"
+                    },
+                    {
+                      "$ref": "#/components/schemas/_spec_utils:NullValue"
+                    }
+                  ]
+                },
+                "is_native": {
+                  "type": "boolean"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "service_type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "index_name"
+              ]
+            }
+          }
+        }
       },
       "count": {
         "content": {
