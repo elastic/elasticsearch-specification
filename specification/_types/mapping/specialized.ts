@@ -93,6 +93,8 @@ export class TokenCountProperty extends DocValuesPropertyBase {
 
 export class IcuCollationProperty extends DocValuesPropertyBase {
   type: 'icu_collation_keyword'
+  norms?: boolean
+  index_options?: IndexOptions
   /**
    * Should the field be searchable?
    */
