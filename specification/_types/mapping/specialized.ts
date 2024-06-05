@@ -23,7 +23,7 @@ import { double, integer } from '@_types/Numeric'
 import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
 import { Script } from '@_types/Scripting'
-import { 
+import {
   IcuCollationAlternate,
   IcuCollationCaseFirst,
   IcuCollationDecomposition,
@@ -105,7 +105,6 @@ export class IcuCollationProperty extends DocValuesPropertyBase {
    * Whether the field value should be stored and retrievable separately from the `_source` field. 
    */
   store?: boolean
-
   rules?: string
   language?: string
   country?: string
