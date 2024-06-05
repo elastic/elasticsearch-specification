@@ -23,6 +23,12 @@ import { double, integer } from '@_types/Numeric'
 import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
 import { Script } from '@_types/Scripting'
+import { 
+  IcuCollationAlternate,
+  IcuCollationCaseFirst,
+  IcuCollationDecomposition,
+  IcuCollationStrength
+} from '@_types/analysis/icu-plugin'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -83,4 +89,33 @@ export class TokenCountProperty extends DocValuesPropertyBase {
   null_value?: double
   enable_position_increments?: boolean
   type: 'token_count'
+}
+
+export class IcuCollationProperty extends DocValuesPropertyBase {
+  type: 'icu_collation_keyword'
+  /**
+   * Should the field be searchable?
+   */
+  index?: boolean
+  /**
+   * Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing. 
+   */
+  null_value?: string
+  /**
+   * Whether the field value should be stored and retrievable separately from the `_source` field. 
+   */
+  store?: boolean
+
+  rules?: string
+  language?: string
+  country?: string
+  variant?: string
+  strength?: IcuCollationStrength
+  decomposition?: IcuCollationDecomposition
+  alternate?: IcuCollationAlternate
+  case_level?: boolean
+  case_first?: IcuCollationCaseFirst
+  numeric?: boolean
+  variable_top?: string
+  hiragana_quaternary_mode?: boolean
 }
