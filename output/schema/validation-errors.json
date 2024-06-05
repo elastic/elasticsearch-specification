@@ -465,7 +465,9 @@
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec"
       ],
-      "response": []
+      "response": [
+        "interface definition _types.mapping:IcuCollationProperty - Property 'store' is already defined in an ancestor class"
+      ]
     },
     "cluster.post_voting_config_exclusions": {
       "request": [

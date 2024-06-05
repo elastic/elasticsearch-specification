@@ -100,11 +100,11 @@ export class IcuCollationProperty extends DocValuesPropertyBase {
    */
   index?: boolean
   /**
-   * Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing. 
+   * Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing.
    */
   null_value?: string
   /**
-   * Whether the field value should be stored and retrievable separately from the `_source` field. 
+   * Whether the field value should be stored and retrievable separately from the `_source` field.
    */
   store?: boolean
   rules?: string
