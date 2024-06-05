@@ -60,6 +60,7 @@ import {
   ConstantKeywordProperty,
   FieldAliasProperty,
   HistogramProperty,
+  IcuCollationProperty,
   IpProperty,
   Murmur3HashProperty,
   TokenCountProperty
@@ -157,6 +158,9 @@ export type Property =
   | IpRangeProperty
   | LongRangeProperty
 
+  // plugins
+  | IcuCollationProperty
+
 export enum FieldType {
   none,
   geo_point,
@@ -201,7 +205,8 @@ export enum FieldType {
   aggregate_metric_double,
   dense_vector,
   sparse_vector,
-  match_only_text
+  match_only_text,
+  icu_collation_keyword
 }
 
 export class PropertyWithClrOrigin {}
