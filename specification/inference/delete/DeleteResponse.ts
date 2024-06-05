@@ -17,8 +17,7 @@
  * under the License.
  */
 
-
-import {DeleteInferenceEndpointResult} from "@inference/_types/Results";
+import { DeleteInferenceEndpointResult } from '@inference/_types/Results'
 
 export class Response {
   body: {

@@ -19,7 +19,7 @@
 
 import { float, byte, integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
-import {AcknowledgedResponseBase} from "@_types/Base";
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -92,5 +92,5 @@ export class InferenceResult {
  * Acknowledged response. For dry_run, contains the list of ingest processors which reference the inference endpoint
  */
 export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
-    ingest_processors: Array<string>
+  ingest_processors: Array<string>
 }
