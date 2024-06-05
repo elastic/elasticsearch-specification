@@ -51,16 +51,16 @@ export class IcuFoldingTokenFilter extends TokenFilterBase {
 export class IcuCollationTokenFilter extends TokenFilterBase {
   type: 'icu_collation'
   alternate?: IcuCollationAlternate
-  caseFirst?: IcuCollationCaseFirst
-  caseLevel?: boolean
+  case_first?: IcuCollationCaseFirst
+  case_level?: boolean
   country?: string
   decomposition?: IcuCollationDecomposition
-  hiraganaQuaternaryMode?: boolean
+  hiragana_quaternary_mode?: boolean
   language?: string
   numeric?: boolean
   rules?: string
   strength?: IcuCollationStrength
-  variableTop?: string
+  variable_top?: string
   variant?: string
 }
 

@@ -46206,10 +46206,10 @@
               "alternate": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationAlternate"
               },
-              "caseFirst": {
+              "case_first": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationCaseFirst"
               },
-              "caseLevel": {
+              "case_level": {
                 "type": "boolean"
               },
               "country": {
@@ -46218,7 +46218,7 @@
               "decomposition": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationDecomposition"
               },
-              "hiraganaQuaternaryMode": {
+              "hiragana_quaternary_mode": {
                 "type": "boolean"
               },
               "language": {
@@ -46233,7 +46233,7 @@
               "strength": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationStrength"
               },
-              "variableTop": {
+              "variable_top": {
                 "type": "string"
               },
               "variant": {
@@ -47849,6 +47849,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping:LongRangeProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping:IcuCollationProperty"
           }
         ]
       },
@@ -49610,6 +49613,81 @@
                 "enum": [
                   "long_range"
                 ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping:IcuCollationProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:DocValuesPropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "icu_collation_keyword"
+                ]
+              },
+              "norms": {
+                "type": "boolean"
+              },
+              "index_options": {
+                "$ref": "#/components/schemas/_types.mapping:IndexOptions"
+              },
+              "index": {
+                "description": "Should the field be searchable?",
+                "type": "boolean"
+              },
+              "null_value": {
+                "description": "Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing.",
+                "type": "string"
+              },
+              "store": {
+                "description": "Whether the field value should be stored and retrievable separately from the `_source` field.",
+                "type": "boolean"
+              },
+              "rules": {
+                "type": "string"
+              },
+              "language": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "variant": {
+                "type": "string"
+              },
+              "strength": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationStrength"
+              },
+              "decomposition": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationDecomposition"
+              },
+              "alternate": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationAlternate"
+              },
+              "case_level": {
+                "type": "boolean"
+              },
+              "case_first": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationCaseFirst"
+              },
+              "numeric": {
+                "type": "boolean"
+              },
+              "variable_top": {
+                "type": "string"
+              },
+              "hiragana_quaternary_mode": {
+                "type": "boolean"
               }
             },
             "required": [
