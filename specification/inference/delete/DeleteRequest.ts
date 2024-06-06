@@ -38,7 +38,8 @@ export interface Request extends RequestBase {
      * The inference Id
      */
     inference_id: Id
-query_parameters: {
+  }
+  query_parameters: {
     /**
      * When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned
      * @server_default false
