@@ -5145,7 +5145,6 @@ export interface MappingIcuCollationProperty extends MappingDocValuesPropertyBas
   index_options?: MappingIndexOptions
   index?: boolean
   null_value?: string
-  store?: boolean
   rules?: string
   language?: string
   country?: string
