@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { DeleteInferenceEndpointResult } from '@inference/_types/Results'
 
 export class Response {
-  body: AcknowledgedResponseBase
+  body: DeleteInferenceEndpointResult
 }

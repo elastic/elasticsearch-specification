@@ -33,9 +33,23 @@ export interface Request extends RequestBase {
      * The task type
      */
     task_type?: TaskType
+
     /**
      * The inference Id
      */
     inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned
+     * @server_default false
+     */
+    dry_run?: Boolean
+
+    /**
+     * When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields
+     * @server_default false
+     */
+    force?: Boolean
   }
 }
