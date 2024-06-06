@@ -191,11 +191,13 @@ pub fn add_endpoint(
 
         parameters.append(&mut query_params.clone());
 
+        let sum_desc = split_summary_desc(endpoint.description.clone());
+
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
             tags: vec![endpoint.name.clone()],
-            summary: Some(get_first_line(endpoint.description.clone())),
-            description: Some(endpoint.description.clone()),
+            summary: Some(sum_desc.summary),
+            description: Some(sum_desc.description),
             external_docs: tac.convert_external_docs(endpoint),
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
@@ -311,13 +313,29 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
     result
 }
 
-fn get_first_line(desc: String) -> String {
+fn split_summary_desc(desc: String) -> SplitDesc{
     let mut parts = desc.split(['.','\n',':']);
     if parts.clone().count() == 1{
-        return String::from(parts.next().unwrap())
+        return SplitDesc {
+            summary: String::from(parts.next().unwrap()),
+            description: String::new()
+        }
     }
-    let first = parts.next().unwrap_or_else(|| "");
-    String::from(first) + "."
+    let first_line = parts.next().unwrap_or_else(|| "");
+    let new_desc = desc.replace(first_line,"");
+    let trim = new_desc.trim();
+    let remove_period = trim.strip_prefix('.').unwrap_or_else(|| trim);
+    let remove_column = remove_period.strip_prefix(':').unwrap_or_else(|| remove_period);
+    SplitDesc {
+        summary: String::from(first_line.trim()),
+        description: String::from(remove_column.trim())
+    }
+
+}
+
+struct SplitDesc {
+    summary: String,
+    description: String
 }
 
 #[cfg(test)]

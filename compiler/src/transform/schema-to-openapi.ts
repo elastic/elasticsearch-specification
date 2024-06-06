@@ -24,6 +24,7 @@ import { readFileSync, writeFileSync } from 'fs'
 
 const inputPath = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'openapi', 'elasticsearch-serverless-openapi.json')
+const outputPathStack = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'openapi', 'elasticsearch-openapi.json')
 
 const inputText = readFileSync(
   inputPath,
@@ -31,9 +32,16 @@ const inputText = readFileSync(
 )
 
 const output = convert_schema_to_openapi(inputText, 'serverless')
+const outputStack = convert_schema_to_openapi(inputText, 'stack')
 
 writeFileSync(
   outputPath,
   output,
   'utf8'
+)
+
+writeFileSync(
+    outputPathStack,
+    outputStack,
+    'utf8'
 )
