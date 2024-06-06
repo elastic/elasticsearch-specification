@@ -89,8 +89,8 @@ export class InferenceResult {
 }
 
 /**
- * Acknowledged response. For dry_run, contains the list of ingest processors which reference the inference endpoint
+ * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
  */
 export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
-  ingest_processors: Array<string>
+  pipelines: Array<string>
 }

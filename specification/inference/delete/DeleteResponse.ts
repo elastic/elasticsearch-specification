@@ -20,7 +20,5 @@
 import { DeleteInferenceEndpointResult } from '@inference/_types/Results'
 
 export class Response {
-  body: {
-    dryRunResult: DeleteInferenceEndpointResult
-  }
+  body: DeleteInferenceEndpointResult
 }
