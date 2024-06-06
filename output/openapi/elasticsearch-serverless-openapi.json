@@ -80,7 +80,7 @@
         "tags": [
           "async_search.delete"
         ],
-        "summary": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
+        "summary": "Deletes an async search by ID.",
         "description": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
@@ -842,7 +842,7 @@
         "tags": [
           "cat.indices"
         ],
-        "summary": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
+        "summary": "Returns information about indices.",
         "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
@@ -880,7 +880,7 @@
         "tags": [
           "cat.indices"
         ],
-        "summary": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
+        "summary": "Returns information about indices.",
         "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
@@ -3704,7 +3704,7 @@
         "tags": [
           "create"
         ],
-        "summary": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
+        "summary": "Creates a new document in the index.",
         "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -3752,7 +3752,7 @@
         "tags": [
           "create"
         ],
-        "summary": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
+        "summary": "Creates a new document in the index.",
         "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -5227,7 +5227,7 @@
         "tags": [
           "eql.delete"
         ],
-        "summary": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
+        "summary": "Deletes an async EQL search by ID.",
         "description": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html"
@@ -8713,7 +8713,7 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
+        "summary": "Updates an alias to point to a new index when the existing index.",
         "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
@@ -8751,7 +8751,7 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
+        "summary": "Updates an alias to point to a new index when the existing index.",
         "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
@@ -10238,7 +10238,7 @@
         "tags": [
           "ml.close_job"
         ],
-        "summary": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
+        "summary": "Closes one or more anomaly detection jobs.",
         "description": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html"
@@ -15763,7 +15763,7 @@
         "tags": [
           "reindex"
         ],
-        "summary": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+        "summary": "Allows to copy documents from one index to another, optionally filtering the source.",
         "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html"
@@ -17077,7 +17077,7 @@
         "tags": [
           "search_mvt"
         ],
-        "summary": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+        "summary": "Searches a vector tile for geospatial values.",
         "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
@@ -17134,7 +17134,7 @@
         "tags": [
           "search_mvt"
         ],
-        "summary": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+        "summary": "Searches a vector tile for geospatial values.",
         "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
@@ -18062,7 +18062,7 @@
         "tags": [
           "sql.delete_async"
         ],
-        "summary": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
+        "summary": "Deletes an async SQL search or a stored synchronous SQL search.",
         "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-async-sql-search-api.html"
@@ -18851,7 +18851,7 @@
         "tags": [
           "terms_enum"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string.",
         "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html"
@@ -18875,7 +18875,7 @@
         "tags": [
           "terms_enum"
         ],
-        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
+        "summary": "The terms enum API  can be used to discover terms in the index that begin with the provided string.",
         "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html"
@@ -20180,7 +20180,7 @@
         "tags": [
           "update_by_query"
         ],
-        "summary": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "summary": "Updates documents that match the specified query.",
         "description": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"

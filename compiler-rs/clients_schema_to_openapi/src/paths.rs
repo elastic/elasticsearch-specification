@@ -194,7 +194,7 @@ pub fn add_endpoint(
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
             tags: vec![endpoint.name.clone()],
-            summary: Some(endpoint.description.clone()),
+            summary: Some(get_first_line(endpoint.description.clone())),
             description: Some(endpoint.description.clone()),
             external_docs: tac.convert_external_docs(endpoint),
             operation_id: None, // set in clone_operation below with operation_counter
@@ -309,6 +309,15 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
         }
     }
     result
+}
+
+fn get_first_line(desc: String) -> String {
+    let mut parts = desc.split(['.','\n',':']);
+    if parts.clone().count() == 1{
+        return String::from(parts.next().unwrap())
+    }
+    let first = parts.next().unwrap_or_else(|| "");
+    String::from(first) + "."
 }
 
 #[cfg(test)]
