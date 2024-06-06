@@ -475,7 +475,7 @@ export class InferenceResponseResult {
    * For regression models, its a numerical value
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
-  predicted_value?: PredictedValue[]
+  predicted_value?: PredictedValue | PredictedValue[]
   /**
    * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
    * value.
