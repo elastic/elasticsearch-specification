@@ -49806,10 +49806,6 @@
                 "description": "Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing.",
                 "type": "string"
               },
-              "store": {
-                "description": "Whether the field value should be stored and retrievable separately from the `_source` field.",
-                "type": "boolean"
-              },
               "rules": {
                 "type": "string"
               },
@@ -58242,10 +58238,17 @@
           },
           "predicted_value": {
             "description": "If the model is trained for a text classification or zero shot classification task, the response is the\npredicted class.\nFor named entity recognition (NER) tasks, it contains the annotated text output.\nFor fill mask tasks, it contains the top prediction for replacing the mask token.\nFor text embedding tasks, it contains the raw numerical text embedding values.\nFor regression models, its a numerical value\nFor classification models, it may be an integer, double, boolean or string depending on prediction type",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ml._types:PredictedValue"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:PredictedValue"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ml._types:PredictedValue"
+                }
+              }
+            ]
           },
           "predicted_value_sequence": {
             "description": "For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted\nvalue.\nAdditionally",

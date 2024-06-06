@@ -5145,7 +5145,6 @@ export interface MappingIcuCollationProperty extends MappingDocValuesPropertyBas
   index_options?: MappingIndexOptions
   index?: boolean
   null_value?: string
-  store?: boolean
   rules?: string
   language?: string
   country?: string
@@ -13512,7 +13511,7 @@ export interface MlInferenceConfigUpdateContainer {
 export interface MlInferenceResponseResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
-  predicted_value?: MlPredictedValue[]
+  predicted_value?: MlPredictedValue | MlPredictedValue[]
   predicted_value_sequence?: string
   prediction_probability?: double
   prediction_score?: double
