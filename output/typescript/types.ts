@@ -13502,7 +13502,7 @@ export interface MlInferenceConfigUpdateContainer {
 export interface MlInferenceResponseResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
-  predicted_value?: MlPredictedValue[]
+  predicted_value?: MlPredictedValue | MlPredictedValue[]
   predicted_value_sequence?: string
   prediction_probability?: double
   prediction_score?: double
