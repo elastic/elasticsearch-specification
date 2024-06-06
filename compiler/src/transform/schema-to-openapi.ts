@@ -41,7 +41,7 @@ writeFileSync(
 )
 
 writeFileSync(
-    outputPathStack,
-    outputStack,
-    'utf8'
+  outputPathStack,
+  outputStack,
+  'utf8'
 )
