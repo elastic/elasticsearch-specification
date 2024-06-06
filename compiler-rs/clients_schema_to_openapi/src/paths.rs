@@ -315,13 +315,8 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
 
 fn split_summary_desc(desc: String) -> SplitDesc{
     let mut parts = desc.split(['.','\n',':']);
-    if parts.clone().count() == 1{
-        return SplitDesc {
-            summary: String::from(parts.next().unwrap()),
-            description: String::new()
-        }
-    }
     let first_line = parts.next().unwrap_or_else(|| "");
+    
     let new_desc = desc.replace(first_line,"");
     let trim = new_desc.trim();
     let remove_period = trim.strip_prefix('.').unwrap_or_else(|| trim);
@@ -330,7 +325,6 @@ fn split_summary_desc(desc: String) -> SplitDesc{
         summary: String::from(first_line.trim()),
         description: String::from(remove_column.trim())
     }
-
 }
 
 struct SplitDesc {
