@@ -12107,6 +12107,10 @@ export interface InferenceCompletionResult {
   result: string
 }
 
+export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResponseBase {
+  pipelines: string[]
+}
+
 export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
@@ -12159,9 +12163,11 @@ export interface InferenceTextEmbeddingResult {
 export interface InferenceDeleteRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  dry_run?: boolean
+  force?: boolean
 }
 
-export type InferenceDeleteResponse = AcknowledgedResponseBase
+export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
 
 export interface InferenceGetRequest extends RequestBase {
   task_type?: InferenceTaskType

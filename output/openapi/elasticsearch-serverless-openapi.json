@@ -9316,6 +9316,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.delete#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#dry_run"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#force"
           }
         ],
         "responses": {
@@ -9423,6 +9429,12 @@
           },
           {
             "$ref": "#/components/parameters/inference.delete#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#dry_run"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#force"
           }
         ],
         "responses": {
@@ -21321,7 +21333,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/inference._types:DeleteInferenceEndpointResult"
             }
           }
         }
@@ -25180,6 +25192,26 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
+      },
+      "inference.delete#dry_run": {
+        "in": "query",
+        "name": "dry_run",
+        "description": "When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "inference.delete#force": {
+        "in": "query",
+        "name": "force",
+        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "inference.get#task_type": {
         "in": "path",
@@ -52883,6 +52915,27 @@
           "text_embedding",
           "rerank",
           "completion"
+        ]
+      },
+      "inference._types:DeleteInferenceEndpointResult": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "pipelines": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "pipelines"
+            ]
+          }
         ]
       },
       "inference._types:InferenceEndpointInfo": {

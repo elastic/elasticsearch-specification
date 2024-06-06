@@ -44,12 +44,12 @@ export interface Request extends RequestBase {
      * When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned
      * @server_default false
      */
-    dry_run?: Boolean
+    dry_run?: boolean
 
     /**
      * When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields
      * @server_default false
      */
-    force?: Boolean
+    force?: boolean
   }
 }
