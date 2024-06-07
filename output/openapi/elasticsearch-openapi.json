@@ -3800,8 +3800,7 @@
         "tags": [
           "cluster.pending_tasks"
         ],
-        "summary": "Returns a list of any cluster-level changes (e.g. create index, update mapping,\n",
-        "description": "allocate or fail shard) which have not yet been executed.",
+        "summary": "Returns a list of any cluster-level changes (e.g. create index, update mapping, allocate or fail shard) which have not yet been executed",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-pending.html"
         },
@@ -14021,8 +14020,7 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Updates an alias to point to a new index when the existing index\n",
-        "description": "is considered to be too large or too old.",
+        "summary": "Updates an alias to point to a new index when the existing index is considered to be too large or too old",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
@@ -14059,8 +14057,7 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Updates an alias to point to a new index when the existing index\n",
-        "description": "is considered to be too large or too old.",
+        "summary": "Updates an alias to point to a new index when the existing index is considered to be too large or too old",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
@@ -24716,8 +24713,7 @@
         "tags": [
           "reindex"
         ],
-        "summary": "Allows to copy documents from one index to another, optionally filtering the source\n",
-        "description": "documents by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+        "summary": "Allows to copy documents from one index to another, optionally filtering the source documents by a query, changing the destination index settings, or fetching the documents from a remote cluster",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html"
         },
@@ -34733,7 +34729,7 @@
           "update_by_query"
         ],
         "summary": "Updates documents that match the specified query",
-        "description": "If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "description": "If no query is specified,  performs an update on every document in the index without changing the source, for example to pick up a mapping change.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
         },

@@ -317,8 +317,10 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
 fn split_summary_desc(desc: &str) -> SplitDesc{
     let segmenter = SentenceSegmenter::new();
 
+    let desc_no_newlines = desc.replace('\n'," ");
+
     let breakpoints: Vec<usize> = segmenter
-        .segment_str(desc)
+        .segment_str(&desc_no_newlines)
         .collect();
 
     if breakpoints.len()<2{
@@ -327,15 +329,16 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
             description: None
         }
     }
-    let first_line = &desc[breakpoints[0]..breakpoints[1]];
-    let rest = &desc[breakpoints[1]..breakpoints[breakpoints.len()-1]];
+    let first_line = &desc_no_newlines[breakpoints[0]..breakpoints[1]];
+    let rest = &desc_no_newlines[breakpoints[1]..breakpoints[breakpoints.len()-1]];
 
     SplitDesc {
-        summary:  Option::from(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
-        description: if !rest.is_empty() {Option::from(String::from(rest.trim()))} else {None}
+        summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
+        description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
     }
 }
 
+#[derive(PartialEq,Debug)]
 struct SplitDesc {
     summary: Option<String>,
     description: Option<String>
@@ -354,5 +357,29 @@ mod tests {
         // Should normally not happen as we expect the model to be correct. Just make sure we don't crash.
         assert_eq!(get_path_parameters("{index}{id/"), vec! {"index"});
         assert_eq!(get_path_parameters("{index{id}/"), vec! {"index{id"});
+    }
+
+    #[test]
+    fn test_split_summary_desc() {
+        assert_eq!(split_summary_desc("One sentence."),
+                   SplitDesc{
+                       summary: Some(String::from("One sentence")),
+                       description: None
+                   });
+        assert_eq!(split_summary_desc("This is\nstill one. sentence: all; together"),
+                   SplitDesc{
+                       summary: Some(String::from("This is still one. sentence: all; together")),
+                       description: None
+                   });
+        assert_eq!(split_summary_desc("These are two totally. Separate sentences!"),
+                   SplitDesc{
+                       summary: Some(String::from("These are two totally")),
+                       description: Some(String::from("Separate sentences!"))
+                   });
+        assert_eq!(split_summary_desc(""),
+                   SplitDesc{
+                       summary: None,
+                       description: None
+                   });
     }
 }
