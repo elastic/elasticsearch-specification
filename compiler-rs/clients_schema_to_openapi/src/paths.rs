@@ -314,6 +314,9 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
     result
 }
 
+// Splits the original endpoint description into OpenAPI summary and description, where summary
+// is the first sentence of the original description with no trailing `.`, and description contains
+// the remaining sentences, if there are any left. 
 fn split_summary_desc(desc: &str) -> SplitDesc{
     let segmenter = SentenceSegmenter::new();
 
