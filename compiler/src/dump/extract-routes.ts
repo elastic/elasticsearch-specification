@@ -25,8 +25,9 @@ import {
 } from '../model/metamodel'
 
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'routes.go')
-const V8 = join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
-const V7 = 'https://raw.githubusercontent.com/elastic/elasticsearch-specification/7.17/output/schema/schema.json'
+const V8SchemaUrl = join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
+const V7SchemaUrl = 'https://raw.githubusercontent.com/elastic/elasticsearch-specification/7.17/output/schema/schema.json'
+const serverlessSchemaUrl = join(__dirname, '..', '..', '..', 'output', 'schema', 'schema-serverless.json')
 
 export class Node {
   path: string
@@ -69,7 +70,7 @@ export class Trees {
 }
 
 export class Forest {
-  byVersion: Map<number, Trees>
+  byVersion: Map<string, Trees>
 
   constructor () {
     this.byVersion = new Map()
@@ -279,16 +280,22 @@ function extractRoutes (inputModel: Model): Trees {
 
 async function extractRoutesFromFiles (outPath: string): Promise<void> {
   const v8Spec = await readFile(
-    V8,
+    V8SchemaUrl,
     { encoding: 'utf8' }
   )
 
-  const data = await fetch(V7)
-  const v7Spec = await data.text()
+  const v7Schema = await fetch(V7SchemaUrl)
+  const v7Spec = await v7Schema.text()
 
-  const versions = new Map<number, string>()
-  versions.set(7, v7Spec)
-  versions.set(8, v8Spec)
+  const serverlessSpec = await readFile(
+      serverlessSchemaUrl,
+      { encoding: 'utf8' }
+  )
+
+  const versions = new Map<string, string>()
+  versions.set("7", v7Spec)
+  versions.set("8", v8Spec)
+  versions.set("serverless", serverlessSpec)
 
   const forest = new Forest()
 
@@ -297,7 +304,7 @@ async function extractRoutesFromFiles (outPath: string): Promise<void> {
     const routes = extractRoutes(inputModel)
     forest.byVersion.set(version, routes)
   })
-  forest.byVersion.set(0, defaultRoutes())
+  forest.byVersion.set("0", defaultRoutes())
 
   const str = serializeForest(forest)
 
