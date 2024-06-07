@@ -24,6 +24,8 @@ import {
   Model
 } from '../model/metamodel'
 
+// use npm run dump-routes --prefix compiler -- --debug to print the Go debug map
+const debugTestRoutes = argv.debug ?? false
 const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'routes.go')
 const V8SchemaUrl = join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
 const V7SchemaUrl = 'https://raw.githubusercontent.com/elastic/elasticsearch-specification/7.17/output/schema/schema.json'
@@ -301,6 +303,9 @@ async function extractRoutesFromFiles (outPath: string): Promise<void> {
 
   versions.forEach(function (spec, version) {
     const inputModel = JSON.parse(spec)
+    if (debugTestRoutes) {
+        debug_test_routes(version, inputModel)
+    }
     const routes = extractRoutes(inputModel)
     forest.byVersion.set(version, routes)
   })
@@ -555,4 +560,32 @@ function defaultRoutes (): Trees {
   }
 
   return t
+}
+
+function debug_test_routes(version: string, inputModel: Model) {
+    console.log(version);
+
+    let output = new Map<string, Map<string, string>[]>();
+
+    for (const endpoint of inputModel.endpoints) {
+        for (const url of endpoint.urls) {
+            for (const method of url.methods) {
+                if (!output.has(method)) {
+                    output.set(method, [])
+                }
+                let newPath = url.path.replace(new RegExp("\{|\}", 'g'), "")
+                output.get(method)?.push(new Map<string, string>([[newPath, endpoint.name]]));
+            }
+        }
+    }
+
+    output.forEach((urls, method) => {
+        console.log('"%s": {', method)
+        urls.forEach((path) => {
+            path.forEach((name, path) => {
+                console.log('{"%s", "%s"},', path, name)
+            })
+        })
+        console.log("},")
+    })
 }
