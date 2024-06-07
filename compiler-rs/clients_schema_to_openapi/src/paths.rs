@@ -21,6 +21,7 @@ use std::fmt::Write;
 use anyhow::{anyhow, bail};
 use clients_schema::Property;
 use indexmap::indexmap;
+use icu_segmenter::SentenceSegmenter;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode,
@@ -191,13 +192,13 @@ pub fn add_endpoint(
 
         parameters.append(&mut query_params.clone());
 
-        let sum_desc = split_summary_desc(endpoint.description.clone());
+        let sum_desc = split_summary_desc(&endpoint.description);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
             tags: vec![endpoint.name.clone()],
-            summary: Some(sum_desc.summary),
-            description: Some(sum_desc.description),
+            summary: sum_desc.summary,
+            description: sum_desc.description,
             external_docs: tac.convert_external_docs(endpoint),
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
@@ -313,23 +314,31 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
     result
 }
 
-fn split_summary_desc(desc: String) -> SplitDesc{
-    let mut parts = desc.split(['.','\n',':']);
-    let first_line = parts.next().unwrap_or_else(|| "");
-    
-    let new_desc = desc.replace(first_line,"");
-    let trim = new_desc.trim();
-    let remove_period = trim.strip_prefix('.').unwrap_or_else(|| trim);
-    let remove_column = remove_period.strip_prefix(':').unwrap_or_else(|| remove_period);
+fn split_summary_desc(desc: &str) -> SplitDesc{
+    let segmenter = SentenceSegmenter::new();
+
+    let breakpoints: Vec<usize> = segmenter
+        .segment_str(desc)
+        .collect();
+
+    if breakpoints.len()<2{
+        return SplitDesc {
+            summary: None,
+            description: None
+        }
+    }
+    let first_line = &desc[breakpoints[0]..breakpoints[1]];
+    let rest = &desc[breakpoints[1]..breakpoints[breakpoints.len()-1]];
+
     SplitDesc {
-        summary: String::from(first_line.trim()),
-        description: String::from(remove_column.trim())
+        summary:  Option::from(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
+        description: if !rest.is_empty() {Option::from(String::from(rest.trim()))} else {None}
     }
 }
 
 struct SplitDesc {
-    summary: String,
-    description: String
+    summary: Option<String>,
+    description: Option<String>
 }
 
 #[cfg(test)]
