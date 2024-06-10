@@ -7750,7 +7750,7 @@
         "name": "Request",
         "namespace": "ml.update_trained_model_deployment"
       },
-      "requestBodyRequired": true,
+      "requestBodyRequired": false,
       "requestMediaType": [
         "application/json"
       ],
@@ -34408,8 +34408,22 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "ml/update_trained_model_deployment/MlUpdateTrainedModelDeploymentRequest.ts#L24-L50"
+      "query": [
+        {
+          "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+          "name": "number_of_allocations",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ml/update_trained_model_deployment/MlUpdateTrainedModelDeploymentRequest.ts#L24-L62"
     },
     {
       "body": {
