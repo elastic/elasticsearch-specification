@@ -73,6 +73,17 @@ impl TypeName {
     }
 }
 
+/// Creates a constant `TypeName` from static strings
+#[macro_export]
+macro_rules! type_name {
+    ($namespace:expr,$name:expr) => {
+        TypeName {
+            namespace: arcstr::literal!($namespace),
+            name: arcstr::literal!($name),
+        }
+    };
+}
+
 impl Display for TypeName {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}:{}", self.namespace, self.name)
@@ -91,12 +102,6 @@ pub enum ValueOf {
     DictionaryOf(DictionaryOf),
     UserDefinedValue(UserDefinedValue),
     LiteralValue(LiteralValue),
-}
-
-impl ValueOf {
-    pub fn instance_of(name: TypeName) -> ValueOf {
-        ValueOf::InstanceOf(InstanceOf::new(name))
-    }
 }
 
 impl From<TypeName> for ValueOf {

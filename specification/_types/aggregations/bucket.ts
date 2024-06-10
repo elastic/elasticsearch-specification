@@ -58,6 +58,10 @@ export class AdjacencyMatrixAggregation extends BucketAggregationBase {
    * At least one filter is required.
    */
   filters?: Dictionary<string, QueryContainer>
+  /**
+   * Separator used to concatenate filter names. Defaults to &.
+   */
+  separator?: string
 }
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
@@ -671,7 +675,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double | string | null
+  from?: double
   /**
    * Custom key to return the range with.
    */
@@ -679,7 +683,7 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double | string | null
+  to?: double
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {

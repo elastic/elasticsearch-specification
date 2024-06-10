@@ -320,7 +320,7 @@ export class QueryContainer {
    * Wrapper to allow span queries to participate in composite single-field span queries by _lying_ about their search field.
    * @doc_id query-dsl-span-field-masking-query
    */
-  field_masking_span?: SpanFieldMaskingQuery
+  span_field_masking?: SpanFieldMaskingQuery
   /**
    * Matches spans near the beginning of a field.
    * @doc_id query-dsl-span-first-query

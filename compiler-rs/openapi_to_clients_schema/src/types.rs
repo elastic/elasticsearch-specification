@@ -360,7 +360,7 @@ fn generate_dictionary_def(
         typ: ValueOf::InstanceOf(InstanceOf {
             typ: builtins::DICTIONARY.clone(),
             generics: vec![
-                ValueOf::instance_of(builtins::STRING.clone()),
+                ValueOf::from(builtins::STRING.clone()),
                 match value {
                     AdditionalProperties::Any(_) => (&builtins::USER_DEFINED).into(),
 

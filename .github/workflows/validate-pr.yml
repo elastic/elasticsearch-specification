@@ -15,15 +15,18 @@ on:
 jobs:
   validate-pr:
     name: build
-    if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check pull request was opened from branch
+        if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
+        run: echo "Validation is not supported from forks"; exit 1
+        
+      - uses: actions/checkout@v4
         with:
           path: ./elasticsearch-specification
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder

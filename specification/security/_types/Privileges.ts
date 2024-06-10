@@ -87,9 +87,6 @@ export enum ClusterPrivilege {
    */
   manage_ilm,
   manage_index_templates,
-  /**
-   * @availability stack
-   */
   manage_inference,
   manage_ingest_pipelines,
   manage_logstash_pipelines,
@@ -143,9 +140,6 @@ export enum ClusterPrivilege {
    */
   monitor_data_stream_global_retention,
   monitor_enrich,
-  /**
-   * @availability stack
-   */
   monitor_inference,
   monitor_ml,
   /**

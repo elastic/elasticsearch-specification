@@ -1567,9 +1567,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1600,9 +1597,6 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template#master_timeout"
-          },
-          {
-            "$ref": "#/components/parameters/cluster.put_component_template#cause"
           }
         ],
         "requestBody": {
@@ -1932,7 +1926,14 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2055,7 +2056,14 @@
                 "type": "object",
                 "properties": {
                   "last_access_control_sync_error": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "last_access_control_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -2073,10 +2081,24 @@
                     "type": "number"
                   },
                   "last_seen": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueDateTime"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:DateTime"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "last_sync_error": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "last_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -2236,7 +2258,14 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2628,10 +2657,24 @@
                 "type": "object",
                 "properties": {
                   "api_key_id": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   },
                   "api_key_secret_id": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   }
                 }
               }
@@ -2759,7 +2802,14 @@
                 "type": "object",
                 "properties": {
                   "error": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValuestring"
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -2960,7 +3010,14 @@
                 "type": "object",
                 "properties": {
                   "index_name": {
-                    "$ref": "#/components/schemas/_spec_utils:WithNullValueIndexName"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/_types:IndexName"
+                      },
+                      {
+                        "$ref": "#/components/schemas/_spec_utils:NullValue"
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -5351,6 +5408,92 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/eql.search#200"
+          }
+        }
+      }
+    },
+    "/_query": {
+      "post": {
+        "tags": [
+          "esql.query"
+        ],
+        "summary": "Executes an ESQL request",
+        "description": "Executes an ESQL request",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html"
+        },
+        "operationId": "esql-query",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "description": "A short version of the Accept header, e.g. json, yaml.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "delimiter",
+            "description": "The character to use between values within a CSV row. Only valid for the CSV format.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "columnar": {
+                    "description": "By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the JSON, YAML, CBOR and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.",
+                    "type": "boolean"
+                  },
+                  "filter": {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  },
+                  "locale": {
+                    "type": "string"
+                  },
+                  "params": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html#esql-rest-params"
+                    },
+                    "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types:ScalarValue"
+                    }
+                  },
+                  "query": {
+                    "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:EsqlColumns"
+                }
+              }
+            }
           }
         }
       }
@@ -9173,6 +9316,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.delete#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#dry_run"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#force"
           }
         ],
         "responses": {
@@ -9280,6 +9429,12 @@
           },
           {
             "$ref": "#/components/parameters/inference.delete#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#dry_run"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#force"
           }
         ],
         "responses": {
@@ -14415,6 +14570,68 @@
         }
       }
     },
+    "/_ml/trained_models/{model_id}/deployment/_update": {
+      "post": {
+        "tags": [
+          "ml.update_trained_model_deployment"
+        ],
+        "summary": "Updates certain properties of trained model deployment.",
+        "description": "Updates certain properties of trained model deployment.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html"
+        },
+        "operationId": "ml-update-trained-model-deployment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model_id",
+            "description": "The unique identifier of the trained model. Currently, only PyTorch models are supported.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "number_of_allocations": {
+                    "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "assignment": {
+                      "$ref": "#/components/schemas/ml._types:TrainedModelAssignment"
+                    }
+                  },
+                  "required": [
+                    "assignment"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_msearch": {
       "get": {
         "tags": [
@@ -16825,6 +17042,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.search#name"
+          },
+          {
+            "$ref": "#/components/parameters/search_application.search#typed_keys"
           }
         ],
         "requestBody": {
@@ -16849,6 +17069,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/search_application.search#name"
+          },
+          {
+            "$ref": "#/components/parameters/search_application.search#typed_keys"
           }
         ],
         "requestBody": {
@@ -17564,101 +17787,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/_security/role/{name}": {
-      "get": {
-        "tags": [
-          "security.get_role"
-        ],
-        "summary": "Retrieves roles in the native realm.",
-        "description": "Retrieves roles in the native realm.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
-        },
-        "operationId": "security-get-role",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/security.get_role#name"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.get_role#200"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "security.put_role"
-        ],
-        "summary": "Adds and updates roles in the native realm.",
-        "description": "Adds and updates roles in the native realm.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
-        },
-        "operationId": "security-put-role",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/security.put_role#name"
-          },
-          {
-            "$ref": "#/components/parameters/security.put_role#refresh"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/security.put_role"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.put_role#200"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "security.put_role"
-        ],
-        "summary": "Adds and updates roles in the native realm.",
-        "description": "Adds and updates roles in the native realm.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
-        },
-        "operationId": "security-put-role-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/security.put_role#name"
-          },
-          {
-            "$ref": "#/components/parameters/security.put_role#refresh"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/security.put_role"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.put_role#200"
-          }
-        }
-      }
-    },
-    "/_security/role": {
-      "get": {
-        "tags": [
-          "security.get_role"
-        ],
-        "summary": "Retrieves roles in the native realm.",
-        "description": "Retrieves roles in the native realm.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
-        },
-        "operationId": "security-get-role-1",
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.get_role#200"
           }
         }
       }
@@ -18381,7 +18509,7 @@
                       "$ref": "#/components/schemas/_types:Result"
                     },
                     "reload_analyzers_details": {
-                      "$ref": "#/components/schemas/indices.reload_search_analyzers:ReloadDetails"
+                      "$ref": "#/components/schemas/indices.reload_search_analyzers:ReloadResult"
                     }
                   },
                   "required": [
@@ -21205,7 +21333,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/inference._types:DeleteInferenceEndpointResult"
             }
           }
         }
@@ -21944,19 +22072,6 @@
           }
         }
       },
-      "security.get_role#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/components/schemas/security.get_role:Role"
-              }
-            }
-          }
-        }
-      },
       "security.has_privileges#200": {
         "description": "",
         "content": {
@@ -21992,24 +22107,6 @@
                 "has_all_requested",
                 "index",
                 "username"
-              ]
-            }
-          }
-        }
-      },
-      "security.put_role#200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "role": {
-                  "$ref": "#/components/schemas/security._types:CreatedStatus"
-                }
-              },
-              "required": [
-                "role"
               ]
             }
           }
@@ -23356,15 +23453,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
-        },
-        "style": "form"
-      },
-      "cluster.put_component_template#cause": {
-        "in": "query",
-        "name": "cause",
-        "deprecated": false,
-        "schema": {
-          "type": "string"
         },
         "style": "form"
       },
@@ -25105,6 +25193,26 @@
         },
         "style": "simple"
       },
+      "inference.delete#dry_run": {
+        "in": "query",
+        "name": "dry_run",
+        "description": "When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "inference.delete#force": {
+        "in": "query",
+        "name": "force",
+        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "inference.get#task_type": {
         "in": "path",
         "name": "task_type",
@@ -26826,6 +26934,16 @@
         },
         "style": "simple"
       },
+      "search_application.search#typed_keys": {
+        "in": "query",
+        "name": "typed_keys",
+        "description": "Determines whether aggregation names are prefixed by their respective types in the response.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "search_mvt#index": {
         "in": "path",
         "name": "index",
@@ -27102,17 +27220,6 @@
         },
         "style": "form"
       },
-      "security.get_role#name": {
-        "in": "path",
-        "name": "name",
-        "description": "The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Names"
-        },
-        "style": "simple"
-      },
       "security.has_privileges#user": {
         "in": "path",
         "name": "user",
@@ -27123,27 +27230,6 @@
           "$ref": "#/components/schemas/_types:Name"
         },
         "style": "simple"
-      },
-      "security.put_role#name": {
-        "in": "path",
-        "name": "name",
-        "description": "The name of the role.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Name"
-        },
-        "style": "simple"
-      },
-      "security.put_role#refresh": {
-        "in": "query",
-        "name": "refresh",
-        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types:Refresh"
-        },
-        "style": "form"
       },
       "security.query_api_keys#with_limited_by": {
         "in": "query",
@@ -28074,11 +28160,7 @@
                   "type": "number"
                 },
                 "settings": {
-                  "description": "Configuration options for the index.",
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
-                  }
+                  "$ref": "#/components/schemas/indices._types:IndexSettings"
                 },
                 "version": {
                   "$ref": "#/components/schemas/_types:VersionNumber"
@@ -28650,6 +28732,9 @@
                     }
                   ]
                 },
+                "retriever": {
+                  "$ref": "#/components/schemas/_types:RetrieverContainer"
+                },
                 "script_fields": {
                   "description": "Retrieve a script evaluation (based on different fields) for each hit.",
                   "type": "object",
@@ -28893,59 +28978,6 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security.has_privileges:IndexPrivilegesCheck"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "required": true
-      },
-      "security.put_role": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "applications": {
-                  "description": "A list of application privilege entries.",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/security._types:ApplicationPrivileges"
-                  }
-                },
-                "cluster": {
-                  "description": "A list of cluster privileges. These privileges define the cluster-level actions for users with this role.",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/security._types:ClusterPrivilege"
-                  }
-                },
-                "indices": {
-                  "description": "A list of indices permissions entries.",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/security._types:IndicesPrivileges"
-                  }
-                },
-                "metadata": {
-                  "$ref": "#/components/schemas/_types:Metadata"
-                },
-                "run_as": {
-                  "externalDocs": {
-                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
-                  },
-                  "description": "A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "transient_metadata": {
-                  "description": "Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.",
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
                   }
                 }
               }
@@ -30689,7 +30721,7 @@
           {
             "type": "object",
             "properties": {
-              "doc_count_error": {
+              "doc_count_error_upper_bound": {
                 "type": "number"
               }
             }
@@ -32366,8 +32398,7 @@
           }
         },
         "required": [
-          "_index",
-          "_id"
+          "_index"
         ]
       },
       "_types:IndexName": {
@@ -33924,7 +33955,9 @@
         "type": "string",
         "enum": [
           "and",
-          "or"
+          "AND",
+          "or",
+          "OR"
         ]
       },
       "_types:Fields": {
@@ -34271,6 +34304,10 @@
                 "additionalProperties": {
                   "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
                 }
+              },
+              "separator": {
+                "description": "Separator used to concatenate filter names. Defaults to &.",
+                "type": "string"
               }
             }
           }
@@ -34495,7 +34532,7 @@
           "span_containing": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanContainingQuery"
           },
-          "field_masking_span": {
+          "span_field_masking": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanFieldMaskingQuery"
           },
           "span_first": {
@@ -35211,12 +35248,19 @@
         ]
       },
       "_types:ScriptLanguage": {
-        "type": "string",
-        "enum": [
-          "painless",
-          "expression",
-          "mustache",
-          "java"
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "painless",
+              "expression",
+              "mustache",
+              "java"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "_types:ScriptBase": {
@@ -36230,11 +36274,18 @@
         }
       },
       "_global.search._types:HighlighterType": {
-        "type": "string",
-        "enum": [
-          "plain",
-          "fvh",
-          "unified"
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "plain",
+              "fvh",
+              "unified"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "_global.search._types:BoundaryScanner": {
@@ -38190,7 +38241,7 @@
           "span_containing": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanContainingQuery"
           },
-          "field_masking_span": {
+          "span_field_masking": {
             "$ref": "#/components/schemas/_types.query_dsl:SpanFieldMaskingQuery"
           },
           "span_first": {
@@ -39368,13 +39419,21 @@
         "type": "string",
         "enum": [
           "second",
+          "1s",
           "minute",
+          "1m",
           "hour",
+          "1h",
           "day",
+          "1d",
           "week",
+          "1w",
           "month",
+          "1M",
           "quarter",
-          "year"
+          "1q",
+          "year",
+          "1Y"
         ]
       },
       "_types.aggregations:ExtendedBoundsFieldDateMath": {
@@ -39759,18 +39818,7 @@
         "properties": {
           "from": {
             "description": "Start of the range (inclusive).",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           },
           "key": {
             "description": "Custom key to return the range with.",
@@ -39778,18 +39826,7 @@
           },
           "to": {
             "description": "End of the range (exclusive).",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "type": "number"
           }
         }
       },
@@ -42174,8 +42211,11 @@
         "type": "string",
         "enum": [
           "green",
+          "GREEN",
           "yellow",
-          "red"
+          "YELLOW",
+          "red",
+          "RED"
         ]
       },
       "_types:TimeUnit": {
@@ -42808,21 +42848,45 @@
         "type": "string",
         "enum": [
           "assignment_explanation",
+          "ae",
           "create_time",
+          "ct",
+          "createTime",
           "description",
+          "d",
           "dest_index",
+          "di",
+          "destIndex",
           "failure_reason",
+          "fr",
+          "failureReason",
           "id",
           "model_memory_limit",
+          "mml",
+          "modelMemoryLimit",
           "node.address",
+          "na",
+          "nodeAddress",
           "node.ephemeral_id",
+          "ne",
+          "nodeEphemeralId",
           "node.id",
+          "ni",
+          "nodeId",
           "node.name",
+          "nn",
+          "nodeName",
           "progress",
+          "p",
           "source_index",
+          "si",
+          "sourceIndex",
           "state",
+          "s",
           "type",
-          "version"
+          "t",
+          "version",
+          "v"
         ]
       },
       "cat.ml_data_frame_analytics:DataFrameAnalyticsRecord": {
@@ -42904,17 +42968,37 @@
         "type": "string",
         "enum": [
           "ae",
+          "assignment_explanation",
           "bc",
+          "buckets.count",
+          "bucketsCount",
           "id",
           "na",
+          "node.address",
+          "nodeAddress",
           "ne",
+          "node.ephemeral_id",
+          "nodeEphemeralId",
           "ni",
+          "node.id",
+          "nodeId",
           "nn",
+          "node.name",
+          "nodeName",
           "sba",
+          "search.bucket_avg",
+          "searchBucketAvg",
           "sc",
+          "search.count",
+          "searchCount",
           "seah",
+          "search.exp_avg_hour",
+          "searchExpAvgHour",
           "st",
-          "s"
+          "search.time",
+          "searchTime",
+          "s",
+          "state"
         ]
       },
       "cat.ml_datafeeds:DatafeedsRecord": {
@@ -42995,65 +43079,180 @@
         "type": "string",
         "enum": [
           "assignment_explanation",
+          "ae",
           "buckets.count",
+          "bc",
+          "bucketsCount",
           "buckets.time.exp_avg",
+          "btea",
+          "bucketsTimeExpAvg",
           "buckets.time.exp_avg_hour",
+          "bteah",
+          "bucketsTimeExpAvgHour",
           "buckets.time.max",
+          "btmax",
+          "bucketsTimeMax",
           "buckets.time.min",
+          "btmin",
+          "bucketsTimeMin",
           "buckets.time.total",
+          "btt",
+          "bucketsTimeTotal",
           "data.buckets",
+          "db",
+          "dataBuckets",
           "data.earliest_record",
+          "der",
+          "dataEarliestRecord",
           "data.empty_buckets",
+          "deb",
+          "dataEmptyBuckets",
           "data.input_bytes",
+          "dib",
+          "dataInputBytes",
           "data.input_fields",
+          "dif",
+          "dataInputFields",
           "data.input_records",
+          "dir",
+          "dataInputRecords",
           "data.invalid_dates",
+          "did",
+          "dataInvalidDates",
           "data.last",
+          "dl",
+          "dataLast",
           "data.last_empty_bucket",
+          "dleb",
+          "dataLastEmptyBucket",
           "data.last_sparse_bucket",
+          "dlsb",
+          "dataLastSparseBucket",
           "data.latest_record",
+          "dlr",
+          "dataLatestRecord",
           "data.missing_fields",
+          "dmf",
+          "dataMissingFields",
           "data.out_of_order_timestamps",
+          "doot",
+          "dataOutOfOrderTimestamps",
           "data.processed_fields",
+          "dpf",
+          "dataProcessedFields",
           "data.processed_records",
+          "dpr",
+          "dataProcessedRecords",
           "data.sparse_buckets",
+          "dsb",
+          "dataSparseBuckets",
           "forecasts.memory.avg",
+          "fmavg",
+          "forecastsMemoryAvg",
           "forecasts.memory.max",
+          "fmmax",
+          "forecastsMemoryMax",
           "forecasts.memory.min",
+          "fmmin",
+          "forecastsMemoryMin",
           "forecasts.memory.total",
+          "fmt",
+          "forecastsMemoryTotal",
           "forecasts.records.avg",
+          "fravg",
+          "forecastsRecordsAvg",
           "forecasts.records.max",
+          "frmax",
+          "forecastsRecordsMax",
           "forecasts.records.min",
+          "frmin",
+          "forecastsRecordsMin",
           "forecasts.records.total",
+          "frt",
+          "forecastsRecordsTotal",
           "forecasts.time.avg",
+          "ftavg",
+          "forecastsTimeAvg",
           "forecasts.time.max",
+          "ftmax",
+          "forecastsTimeMax",
           "forecasts.time.min",
+          "ftmin",
+          "forecastsTimeMin",
           "forecasts.time.total",
+          "ftt",
+          "forecastsTimeTotal",
           "forecasts.total",
+          "ft",
+          "forecastsTotal",
           "id",
           "model.bucket_allocation_failures",
+          "mbaf",
+          "modelBucketAllocationFailures",
           "model.by_fields",
+          "mbf",
+          "modelByFields",
           "model.bytes",
+          "mb",
+          "modelBytes",
           "model.bytes_exceeded",
+          "mbe",
+          "modelBytesExceeded",
           "model.categorization_status",
+          "mcs",
+          "modelCategorizationStatus",
           "model.categorized_doc_count",
+          "mcdc",
+          "modelCategorizedDocCount",
           "model.dead_category_count",
+          "mdcc",
+          "modelDeadCategoryCount",
           "model.failed_category_count",
+          "mdcc",
+          "modelFailedCategoryCount",
           "model.frequent_category_count",
+          "mfcc",
+          "modelFrequentCategoryCount",
           "model.log_time",
+          "mlt",
+          "modelLogTime",
           "model.memory_limit",
+          "mml",
+          "modelMemoryLimit",
           "model.memory_status",
+          "mms",
+          "modelMemoryStatus",
           "model.over_fields",
+          "mof",
+          "modelOverFields",
           "model.partition_fields",
+          "mpf",
+          "modelPartitionFields",
           "model.rare_category_count",
+          "mrcc",
+          "modelRareCategoryCount",
           "model.timestamp",
+          "mt",
+          "modelTimestamp",
           "model.total_category_count",
+          "mtcc",
+          "modelTotalCategoryCount",
           "node.address",
+          "na",
+          "nodeAddress",
           "node.ephemeral_id",
+          "ne",
+          "nodeEphemeralId",
           "node.id",
+          "ni",
+          "nodeId",
           "node.name",
+          "nn",
+          "nodeName",
           "opened_time",
-          "state"
+          "ot",
+          "state",
+          "s"
         ]
       },
       "cat.ml_jobs:JobsRecord": {
@@ -43350,19 +43549,42 @@
         "type": "string",
         "enum": [
           "create_time",
+          "ct",
           "created_by",
+          "c",
+          "createdBy",
           "data_frame_analytics_id",
+          "df",
+          "dataFrameAnalytics",
+          "dfid",
           "description",
+          "d",
           "heap_size",
+          "hs",
+          "modelHeapSize",
           "id",
           "ingest.count",
+          "ic",
+          "ingestCount",
           "ingest.current",
+          "icurr",
+          "ingestCurrent",
           "ingest.failed",
+          "if",
+          "ingestFailed",
           "ingest.pipelines",
+          "ip",
+          "ingestPipelines",
           "ingest.time",
+          "it",
+          "ingestTime",
           "license",
+          "l",
           "operations",
-          "version"
+          "o",
+          "modelOperations",
+          "version",
+          "v"
         ]
       },
       "cat.ml_trained_models:TrainedModelsRecord": {
@@ -43454,38 +43676,76 @@
         "type": "string",
         "enum": [
           "changes_last_detection_time",
+          "cldt",
           "checkpoint",
+          "cp",
           "checkpoint_duration_time_exp_avg",
+          "cdtea",
+          "checkpointTimeExpAvg",
           "checkpoint_progress",
+          "c",
+          "checkpointProgress",
           "create_time",
+          "ct",
+          "createTime",
           "delete_time",
+          "dtime",
           "description",
+          "d",
           "dest_index",
+          "di",
+          "destIndex",
           "documents_deleted",
+          "docd",
           "documents_indexed",
+          "doci",
           "docs_per_second",
+          "dps",
           "documents_processed",
+          "docp",
           "frequency",
+          "f",
           "id",
           "index_failure",
+          "if",
           "index_time",
+          "itime",
           "index_total",
+          "it",
           "indexed_documents_exp_avg",
+          "idea",
           "last_search_time",
+          "lst",
+          "lastSearchTime",
           "max_page_search_size",
+          "mpsz",
           "pages_processed",
+          "pp",
           "pipeline",
+          "p",
           "processed_documents_exp_avg",
+          "pdea",
           "processing_time",
+          "pt",
           "reason",
+          "r",
           "search_failure",
+          "sf",
           "search_time",
+          "stime",
           "search_total",
+          "st",
           "source_index",
+          "si",
+          "sourceIndex",
           "state",
+          "s",
           "transform_type",
+          "tt",
           "trigger_count",
-          "version"
+          "tc",
+          "version",
+          "v"
         ]
       },
       "cat.transforms:TransformsRecord": {
@@ -44024,14 +44284,18 @@
         "type": "string",
         "enum": [
           "asc",
-          "desc"
+          "ASC",
+          "desc",
+          "DESC"
         ]
       },
       "indices._types:SegmentSortMode": {
         "type": "string",
         "enum": [
           "min",
-          "max"
+          "MIN",
+          "max",
+          "MAX"
         ]
       },
       "indices._types:SegmentSortMissing": {
@@ -44364,7 +44628,9 @@
         "type": "string",
         "enum": [
           "request",
-          "async"
+          "REQUEST",
+          "async",
+          "ASYNC"
         ]
       },
       "indices._types:TranslogRetention": {
@@ -46129,10 +46395,10 @@
               "alternate": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationAlternate"
               },
-              "caseFirst": {
+              "case_first": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationCaseFirst"
               },
-              "caseLevel": {
+              "case_level": {
                 "type": "boolean"
               },
               "country": {
@@ -46141,7 +46407,7 @@
               "decomposition": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationDecomposition"
               },
-              "hiraganaQuaternaryMode": {
+              "hiragana_quaternary_mode": {
                 "type": "boolean"
               },
               "language": {
@@ -46156,7 +46422,7 @@
               "strength": {
                 "$ref": "#/components/schemas/_types.analysis:IcuCollationStrength"
               },
-              "variableTop": {
+              "variable_top": {
                 "type": "string"
               },
               "variant": {
@@ -46303,10 +46569,17 @@
                 "$ref": "#/components/schemas/_types.analysis:PhoneticEncoder"
               },
               "languageset": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.analysis:PhoneticLanguage"
-                }
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.analysis:PhoneticLanguage"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.analysis:PhoneticLanguage"
+                    }
+                  }
+                ]
               },
               "max_code_len": {
                 "type": "number"
@@ -47375,12 +47648,19 @@
         ]
       },
       "indices._types:StorageType": {
-        "type": "string",
-        "enum": [
-          "fs",
-          "niofs",
-          "mmapfs",
-          "hybridfs"
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "fs",
+              "niofs",
+              "mmapfs",
+              "hybridfs"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "_types.mapping:TypeMapping": {
@@ -47511,30 +47791,107 @@
         ]
       },
       "_types.mapping:DynamicTemplate": {
-        "type": "object",
-        "properties": {
-          "mapping": {
-            "$ref": "#/components/schemas/_types.mapping:Property"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "match": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "path_match": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "unmatch": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "path_unmatch": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "match_mapping_type": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "unmatch_mapping_type": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "match_pattern": {
+                "$ref": "#/components/schemas/_types.mapping:MatchType"
+              }
+            }
           },
-          "match": {
-            "type": "string"
-          },
-          "match_mapping_type": {
-            "type": "string"
-          },
-          "match_pattern": {
-            "$ref": "#/components/schemas/_types.mapping:MatchType"
-          },
-          "path_match": {
-            "type": "string"
-          },
-          "path_unmatch": {
-            "type": "string"
-          },
-          "unmatch": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "mapping": {
+                "$ref": "#/components/schemas/_types.mapping:Property"
+              },
+              "runtime": {
+                "$ref": "#/components/schemas/_types.mapping:Property"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        }
+        ]
       },
       "_types.mapping:Property": {
         "discriminator": {
@@ -47681,6 +48038,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping:LongRangeProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping:IcuCollationProperty"
           }
         ]
       },
@@ -48024,6 +48384,12 @@
               },
               "index_options": {
                 "$ref": "#/components/schemas/_types.mapping:IndexOptions"
+              },
+              "script": {
+                "$ref": "#/components/schemas/_types:Script"
+              },
+              "on_script_error": {
+                "$ref": "#/components/schemas/_types.mapping:OnScriptError"
               },
               "normalizer": {
                 "type": "string"
@@ -48464,6 +48830,9 @@
                 "enum": [
                   "dense_vector"
                 ]
+              },
+              "element_type": {
+                "type": "string"
               },
               "dims": {
                 "type": "number"
@@ -48947,7 +49316,13 @@
         "type": "string",
         "enum": [
           "right",
-          "left"
+          "RIGHT",
+          "counterclockwise",
+          "ccw",
+          "left",
+          "LEFT",
+          "clockwise",
+          "cw"
         ]
       },
       "_types.mapping:GeoStrategy": {
@@ -49427,6 +49802,77 @@
                 "enum": [
                   "long_range"
                 ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping:IcuCollationProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:DocValuesPropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "icu_collation_keyword"
+                ]
+              },
+              "norms": {
+                "type": "boolean"
+              },
+              "index_options": {
+                "$ref": "#/components/schemas/_types.mapping:IndexOptions"
+              },
+              "index": {
+                "description": "Should the field be searchable?",
+                "type": "boolean"
+              },
+              "null_value": {
+                "description": "Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing.",
+                "type": "string"
+              },
+              "rules": {
+                "type": "string"
+              },
+              "language": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "variant": {
+                "type": "string"
+              },
+              "strength": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationStrength"
+              },
+              "decomposition": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationDecomposition"
+              },
+              "alternate": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationAlternate"
+              },
+              "case_level": {
+                "type": "boolean"
+              },
+              "case_first": {
+                "$ref": "#/components/schemas/_types.analysis:IcuCollationCaseFirst"
+              },
+              "numeric": {
+                "type": "boolean"
+              },
+              "variable_top": {
+                "type": "string"
+              },
+              "hiragana_quaternary_mode": {
+                "type": "boolean"
               }
             },
             "required": [
@@ -50684,43 +51130,10 @@
           "error"
         ]
       },
-      "_spec_utils:WithNullValuestring": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
       "_spec_utils:NullValue": {
         "nullable": true,
         "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
         "type": "string"
-      },
-      "_spec_utils:WithNullValueDateTime": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:DateTime"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
-      },
-      "_spec_utils:WithNullValueIndexName": {
-        "description": "`WithNullValue<T>` allows for explicit null assignments in contexts where `null` should be interpreted as an\nactual value.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:IndexName"
-          },
-          {
-            "$ref": "#/components/schemas/_spec_utils:NullValue"
-          }
-        ]
       },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
@@ -50877,7 +51290,6 @@
           "_id",
           "_index",
           "result",
-          "_seq_no",
           "_shards",
           "_version"
         ]
@@ -51264,6 +51676,9 @@
           "tail",
           "head"
         ]
+      },
+      "_types:EsqlColumns": {
+        "type": "object"
       },
       "_types:InlineGet": {
         "type": "object",
@@ -52502,6 +52917,27 @@
           "completion"
         ]
       },
+      "inference._types:DeleteInferenceEndpointResult": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "pipelines": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "pipelines"
+            ]
+          }
+        ]
+      },
       "inference._types:InferenceEndpointInfo": {
         "allOf": [
           {
@@ -53576,6 +54012,9 @@
             "type": "object",
             "properties": {
               "field": {
+                "$ref": "#/components/schemas/_types:Fields"
+              },
+              "keep": {
                 "$ref": "#/components/schemas/_types:Fields"
               },
               "ignore_missing": {
@@ -57852,10 +58291,17 @@
           },
           "predicted_value": {
             "description": "If the model is trained for a text classification or zero shot classification task, the response is the\npredicted class.\nFor named entity recognition (NER) tasks, it contains the annotated text output.\nFor fill mask tasks, it contains the top prediction for replacing the mask token.\nFor text embedding tasks, it contains the raw numerical text embedding values.\nFor regression models, its a numerical value\nFor classification models, it may be an integer, double, boolean or string depending on prediction type",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ml._types:PredictedValue"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:PredictedValue"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ml._types:PredictedValue"
+                }
+              }
+            ]
           },
           "predicted_value_sequence": {
             "description": "For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted\nvalue.\nAdditionally",
@@ -59044,10 +59490,7 @@
           "version_type": {
             "$ref": "#/components/schemas/_types:VersionType"
           }
-        },
-        "required": [
-          "_id"
-        ]
+        }
       },
       "_global.termvectors:Filter": {
         "type": "object",
@@ -59747,6 +60190,142 @@
       "_types:RankBase": {
         "type": "object"
       },
+      "_types:RetrieverContainer": {
+        "type": "object",
+        "properties": {
+          "standard": {
+            "$ref": "#/components/schemas/_types:StandardRetriever"
+          },
+          "knn": {
+            "$ref": "#/components/schemas/_types:KnnRetriever"
+          },
+          "rrf": {
+            "$ref": "#/components/schemas/_types:RRFRetriever"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types:StandardRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              "search_after": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "terminate_after": {
+                "description": "Maximum number of documents to collect for each shard.",
+                "type": "number"
+              },
+              "sort": {
+                "$ref": "#/components/schemas/_types:Sort"
+              },
+              "min_score": {
+                "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+                "type": "number"
+              },
+              "collapse": {
+                "$ref": "#/components/schemas/_global.search._types:FieldCollapse"
+              }
+            }
+          }
+        ]
+      },
+      "_types:RetrieverBase": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "description": "Query to filter the documents that can match.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "_types:KnnRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the vector field to search against.",
+                "type": "string"
+              },
+              "query_vector": {
+                "$ref": "#/components/schemas/_types:QueryVector"
+              },
+              "query_vector_builder": {
+                "$ref": "#/components/schemas/_types:QueryVectorBuilder"
+              },
+              "k": {
+                "description": "Number of nearest neighbors to return as top hits.",
+                "type": "number"
+              },
+              "num_candidates": {
+                "description": "Number of nearest neighbor candidates to consider per shard.",
+                "type": "number"
+              },
+              "similarity": {
+                "description": "The minimum similarity required for a document to be considered a match.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "field",
+              "k",
+              "num_candidates"
+            ]
+          }
+        ]
+      },
+      "_types:RRFRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:RetrieverContainer"
+                }
+              },
+              "rank_constant": {
+                "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result sets per query.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "retrievers"
+            ]
+          }
+        ]
+      },
       "search_application._types:SearchApplication": {
         "type": "object",
         "properties": {
@@ -60038,24 +60617,31 @@
         }
       },
       "security._types:IndexPrivilege": {
-        "type": "string",
-        "enum": [
-          "all",
-          "auto_configure",
-          "create",
-          "create_doc",
-          "create_index",
-          "delete",
-          "delete_index",
-          "index",
-          "maintenance",
-          "manage",
-          "manage_data_stream_lifecycle",
-          "monitor",
-          "none",
-          "read",
-          "view_index_metadata",
-          "write"
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "auto_configure",
+              "create",
+              "create_doc",
+              "create_index",
+              "delete",
+              "delete_index",
+              "index",
+              "maintenance",
+              "manage",
+              "manage_data_stream_lifecycle",
+              "monitor",
+              "none",
+              "read",
+              "view_index_metadata",
+              "write"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "security._types:IndicesPrivilegesQuery": {
@@ -60220,93 +60806,6 @@
           "name"
         ]
       },
-      "security.get_role:Role": {
-        "type": "object",
-        "properties": {
-          "cluster": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "indices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:IndicesPrivileges"
-            }
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/_types:Metadata"
-          },
-          "run_as": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "transient_metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          },
-          "applications": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:ApplicationPrivileges"
-            }
-          },
-          "role_templates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types:RoleTemplate"
-            }
-          },
-          "global": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "required": [
-          "cluster",
-          "indices",
-          "metadata",
-          "run_as",
-          "applications"
-        ]
-      },
-      "security._types:RoleTemplate": {
-        "type": "object",
-        "properties": {
-          "format": {
-            "$ref": "#/components/schemas/security._types:TemplateFormat"
-          },
-          "template": {
-            "$ref": "#/components/schemas/_types:Script"
-          }
-        },
-        "required": [
-          "template"
-        ]
-      },
-      "security._types:TemplateFormat": {
-        "type": "string",
-        "enum": [
-          "string",
-          "json"
-        ]
-      },
       "security.has_privileges:ApplicationPrivilegesCheck": {
         "type": "object",
         "properties": {
@@ -60336,33 +60835,42 @@
         ]
       },
       "security._types:ClusterPrivilege": {
-        "type": "string",
-        "enum": [
-          "all",
-          "cancel_task",
-          "manage",
-          "manage_api_key",
-          "manage_behavioral_analytics",
-          "manage_enrich",
-          "manage_index_templates",
-          "manage_ingest_pipelines",
-          "manage_logstash_pipelines",
-          "manage_ml",
-          "manage_own_api_key",
-          "manage_pipeline",
-          "manage_search_application",
-          "manage_search_query_rules",
-          "manage_search_synonyms",
-          "manage_security",
-          "manage_transform",
-          "monitor",
-          "monitor_enrich",
-          "monitor_ml",
-          "monitor_transform",
-          "none",
-          "post_behavioral_analytics_event",
-          "read_pipeline",
-          "read_security"
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "cancel_task",
+              "manage",
+              "manage_api_key",
+              "manage_behavioral_analytics",
+              "manage_enrich",
+              "manage_index_templates",
+              "manage_inference",
+              "manage_ingest_pipelines",
+              "manage_logstash_pipelines",
+              "manage_ml",
+              "manage_own_api_key",
+              "manage_pipeline",
+              "manage_search_application",
+              "manage_search_query_rules",
+              "manage_search_synonyms",
+              "manage_security",
+              "manage_transform",
+              "monitor",
+              "monitor_enrich",
+              "monitor_inference",
+              "monitor_ml",
+              "monitor_transform",
+              "none",
+              "post_behavioral_analytics_event",
+              "read_pipeline",
+              "read_security"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {
@@ -60405,17 +60913,6 @@
         "additionalProperties": {
           "type": "boolean"
         }
-      },
-      "security._types:CreatedStatus": {
-        "type": "object",
-        "properties": {
-          "created": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "created"
-        ]
       },
       "security.query_api_keys:ApiKeyAggregationContainer": {
         "allOf": [
