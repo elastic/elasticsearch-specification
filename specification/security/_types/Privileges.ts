@@ -177,10 +177,6 @@ export enum ClusterPrivilege {
    * @availability stack
    */
   read_ilm,
-  /**
-   * @availability stack
-   */
-  read_slm,
   read_pipeline,
   read_security,
   /**
