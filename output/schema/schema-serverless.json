@@ -98771,46 +98771,16 @@
           "name": "cancel_task"
         },
         {
-          "name": "create_snapshot"
-        },
-        {
-          "name": "cross_cluster_replication"
-        },
-        {
-          "name": "cross_cluster_search"
-        },
-        {
-          "name": "delegate_pki"
-        },
-        {
-          "name": "grant_api_key"
-        },
-        {
           "name": "manage"
         },
         {
           "name": "manage_api_key"
         },
         {
-          "name": "manage_autoscaling"
-        },
-        {
           "name": "manage_behavioral_analytics"
         },
         {
-          "name": "manage_ccr"
-        },
-        {
-          "name": "manage_data_frame_transforms"
-        },
-        {
-          "name": "manage_data_stream_global_retention"
-        },
-        {
           "name": "manage_enrich"
-        },
-        {
-          "name": "manage_ilm"
         },
         {
           "name": "manage_index_templates"
@@ -98828,19 +98798,10 @@
           "name": "manage_ml"
         },
         {
-          "name": "manage_oidc"
-        },
-        {
           "name": "manage_own_api_key"
         },
         {
           "name": "manage_pipeline"
-        },
-        {
-          "name": "manage_rollup"
-        },
-        {
-          "name": "manage_saml"
         },
         {
           "name": "manage_search_application"
@@ -98855,31 +98816,10 @@
           "name": "manage_security"
         },
         {
-          "name": "manage_service_account"
-        },
-        {
-          "name": "manage_slm"
-        },
-        {
-          "name": "manage_token"
-        },
-        {
           "name": "manage_transform"
         },
         {
-          "name": "manage_user_profile"
-        },
-        {
-          "name": "manage_watcher"
-        },
-        {
           "name": "monitor"
-        },
-        {
-          "name": "monitor_data_frame_transforms"
-        },
-        {
-          "name": "monitor_data_stream_global_retention"
         },
         {
           "name": "monitor_enrich"
@@ -98891,19 +98831,7 @@
           "name": "monitor_ml"
         },
         {
-          "name": "monitor_rollup"
-        },
-        {
-          "name": "monitor_snapshot"
-        },
-        {
-          "name": "monitor_text_structure"
-        },
-        {
           "name": "monitor_transform"
-        },
-        {
-          "name": "monitor_watcher"
         },
         {
           "name": "none"
@@ -98912,41 +98840,17 @@
           "name": "post_behavioral_analytics_event"
         },
         {
-          "name": "read_ccr"
-        },
-        {
-          "name": "read_connector_secrets"
-        },
-        {
-          "name": "read_fleet_secrets"
-        },
-        {
-          "name": "read_ilm"
-        },
-        {
           "name": "read_pipeline"
         },
         {
           "name": "read_security"
-        },
-        {
-          "name": "read_slm"
-        },
-        {
-          "name": "transport_client"
-        },
-        {
-          "name": "write_connector_secrets"
-        },
-        {
-          "name": "write_fleet_secrets"
         }
       ],
       "name": {
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L41-L102"
+      "specLocation": "security/_types/Privileges.ts#L41-L198"
     },
     {
       "kind": "enum",
@@ -98986,12 +98890,6 @@
           "name": "create_index"
         },
         {
-          "name": "cross_cluster_replication"
-        },
-        {
-          "name": "cross_cluster_replication_internal"
-        },
-        {
           "name": "delete"
         },
         {
@@ -99010,15 +98908,6 @@
           "name": "manage_data_stream_lifecycle"
         },
         {
-          "name": "manage_follow_index"
-        },
-        {
-          "name": "manage_ilm"
-        },
-        {
-          "name": "manage_leader_index"
-        },
-        {
           "name": "monitor"
         },
         {
@@ -99026,9 +98915,6 @@
         },
         {
           "name": "read"
-        },
-        {
-          "name": "read_cross_cluster"
         },
         {
           "name": "view_index_metadata"
@@ -99041,7 +98927,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L188-L212"
+      "specLocation": "security/_types/Privileges.ts#L285-L327"
     },
     {
       "codegenNames": [
@@ -99055,7 +98941,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L153-L161",
+      "specLocation": "security/_types/Privileges.ts#L250-L258",
       "type": {
         "items": [
           {
@@ -99105,7 +98991,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L163-L173"
+      "specLocation": "security/_types/Privileges.ts#L260-L270"
     },
     {
       "codegenNames": [
@@ -99117,7 +99003,7 @@
         "name": "RoleTemplateScript",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L185-L186",
+      "specLocation": "security/_types/Privileges.ts#L282-L283",
       "type": {
         "items": [
           {
@@ -99197,7 +99083,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L175-L180"
+      "specLocation": "security/_types/Privileges.ts#L272-L277"
     },
     {
       "codegenNames": [
@@ -99209,7 +99095,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L182-L183",
+      "specLocation": "security/_types/Privileges.ts#L279-L280",
       "type": {
         "items": [
           {
@@ -134285,22 +134171,9 @@
               "namespace": "security._types"
             }
           }
-        },
-        {
-          "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
-          "name": "allow_restricted_indices",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L104-L127"
+      "specLocation": "security/_types/Privileges.ts#L200-L224"
     },
     {
       "kind": "interface",
@@ -134353,7 +134226,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L214-L216"
+      "specLocation": "security/_types/Privileges.ts#L329-L331"
     },
     {
       "kind": "interface",
@@ -134374,7 +134247,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L218-L220"
+      "specLocation": "security/_types/Privileges.ts#L333-L335"
     },
     {
       "kind": "interface",
@@ -134398,7 +134271,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L222-L224"
+      "specLocation": "security/_types/Privileges.ts#L337-L339"
     },
     {
       "kind": "interface",
