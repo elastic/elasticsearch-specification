@@ -196,7 +196,7 @@ function buildInterface (type: M.Interface): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
   const inherits = buildInherits(type, openGenerics)
   let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${inherits} {\n`
-  if (type.properties.length === 0 && type.attachedBehaviors == null && inherits.length === 0 && !type.name.name.endsWith("Base")) {
+  if (type.properties.length === 0 && type.attachedBehaviors == null && inherits.length === 0 && !type.name.name.endsWith('Base')) {
     if (process.env.KIBANA == null) {
       code += '  [key: string]: never\n'
     }
