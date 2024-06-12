@@ -2527,7 +2527,6 @@ export interface RRFRetriever extends RetrieverBase {
 }
 
 export interface RankBase {
-  [key: string]: never
 }
 
 export interface RankContainer {
@@ -3052,7 +3051,6 @@ export interface AggregationsBoxplotAggregation extends AggregationsMetricAggreg
 }
 
 export interface AggregationsBucketAggregationBase {
-  [key: string]: never
 }
 
 export interface AggregationsBucketCorrelationAggregation extends AggregationsBucketPathAggregation {
