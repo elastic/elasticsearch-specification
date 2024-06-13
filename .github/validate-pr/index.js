@@ -107,7 +107,7 @@ async function run () {
     return 0
   })
 
-  if (table.length >= 0) {
+  if (table.length > 0) {
     let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
     comment += '| API | Status | Request | Response |\n'
     comment += '| --- | --- | --- | --- |\n'
