@@ -15364,6 +15364,7 @@ export interface MlUpdateModelSnapshotResponse {
 
 export interface MlUpdateTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
+  number_of_allocations?: integer
   body?: {
     number_of_allocations?: integer
   }

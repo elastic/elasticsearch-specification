@@ -35,6 +35,18 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  query_parameters: {
+    /**
+     * The number of model allocations on each node where the model is deployed.
+     * All allocations on a node share the same copy of the model in memory but use
+     * a separate set of threads to evaluate the model.
+     * Increasing this value generally increases the throughput.
+     * If this setting is greater than the number of hardware threads
+     * it will automatically be changed to a value less than the number of hardware threads.
+     * @server_default 1
+     */
+    number_of_allocations?: integer
+  }
   body: {
     /**
      * The number of model allocations on each node where the model is deployed.
