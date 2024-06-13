@@ -51,6 +51,11 @@ jobs:
           npm install --prefix .github/validate-pr
           make setup
 
+      - name: Generate specification and check generated types
+        working-directory: ./elasticsearch-specification
+        run: |
+          make generate
+
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
