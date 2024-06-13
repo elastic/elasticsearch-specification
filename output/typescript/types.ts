@@ -5492,28 +5492,20 @@ export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
   filter: QueryDslQueryContainer
 }
 
-export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {
+export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase<DateMath, Duration> {
 }
 export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<DateMath, Duration> | QueryDslMultiValueMode }
+  & { [property: string]: QueryDslDecayPlacement<QueryDslTOrigin, QueryDslTScale> | QueryDslMultiValueMode }
 
 export interface QueryDslDateDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<DateMath, Duration> {
 }
 
-export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase {
-  gt?: DateMath
-  gte?: DateMath
-  lt?: DateMath
-  lte?: DateMath
-  from?: DateMath | null
-  to?: DateMath | null
-  format?: DateFormat
-  time_zone?: TimeZone
+export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase<DateMath> {
 }
 
 export type QueryDslDecayFunction = QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
 
-export interface QueryDslDecayFunctionBase {
+export interface QueryDslDecayFunctionBase<TOrigin = unknown, TScale = unknown> {
   multi_value_mode?: QueryDslMultiValueMode
 }
 
@@ -5604,10 +5596,10 @@ export interface QueryDslGeoBoundingBoxQueryKeys extends QueryDslQueryBase {
 export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys
   & { [property: string]: GeoBounds | QueryDslGeoExecution | QueryDslGeoValidationMethod | boolean | float | string }
 
-export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase {
+export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase<GeoLocation, Distance> {
 }
 export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<GeoLocation, Distance> | QueryDslMultiValueMode }
+  & { [property: string]: QueryDslDecayPlacement<QueryDslTOrigin, QueryDslTScale> | QueryDslMultiValueMode }
 
 export interface QueryDslGeoDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<GeoLocation, Distance> {
 }
@@ -5855,19 +5847,13 @@ export interface QueryDslNestedQuery extends QueryDslQueryBase {
   score_mode?: QueryDslChildScoreMode
 }
 
-export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
-  gt?: double
-  gte?: double
-  lt?: double
-  lte?: double
-  from?: double | null
-  to?: double | null
+export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase<double> {
 }
 
-export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
+export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase<double, double> {
 }
 export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode }
+  & { [property: string]: QueryDslDecayPlacement<QueryDslTOrigin, QueryDslTScale> | QueryDslMultiValueMode }
 
 export type QueryDslOperator = 'and' | 'AND' | 'or' | 'OR'
 
@@ -6007,10 +5993,18 @@ export interface QueryDslRandomScoreFunction {
   seed?: long | string
 }
 
-export type QueryDslRangeQuery = QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermsRangeQuery
+export type QueryDslRangeQuery = QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermRangeQuery
 
-export interface QueryDslRangeQueryBase extends QueryDslQueryBase {
+export interface QueryDslRangeQueryBase<T = unknown> extends QueryDslQueryBase {
   relation?: QueryDslRangeRelation
+  gt?: T
+  gte?: T
+  lt?: T
+  lte?: T
+  from?: T | null
+  to?: T | null
+  format?: DateFormat
+  time_zone?: TimeZone
 }
 
 export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'
@@ -6184,6 +6178,9 @@ export interface QueryDslTermQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
 }
 
+export interface QueryDslTermRangeQuery extends QueryDslRangeQueryBase<string> {
+}
+
 export interface QueryDslTermsLookup {
   index: IndexName
   id: Id
@@ -6197,15 +6194,6 @@ export type QueryDslTermsQuery = QueryDslTermsQueryKeys
   & { [property: string]: QueryDslTermsQueryField | float | string }
 
 export type QueryDslTermsQueryField = FieldValue[] | QueryDslTermsLookup
-
-export interface QueryDslTermsRangeQuery extends QueryDslRangeQueryBase {
-  gt?: string
-  gte?: string
-  lt?: string
-  lte?: string
-  from?: string | null
-  to?: string | null
-}
 
 export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
