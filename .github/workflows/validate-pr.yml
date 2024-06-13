@@ -2,13 +2,6 @@ name: Validate APIs
 
 on:
   pull_request:
-    paths:
-      - 'specification/**'
-      - '!specification/_types/**'
-      - '!specification/_spec_utils/**'
-      - '!specification/_doc_ids/**'
-      - '!specification/_json_spec/**'
-
     branches:
       - main
 
@@ -50,6 +43,11 @@ jobs:
         run: |
           npm install --prefix .github/validate-pr
           make setup
+
+      - name: Generate specification and check generated types
+        working-directory: ./elasticsearch-specification
+        run: |
+          make generate
 
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
