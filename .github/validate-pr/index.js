@@ -107,20 +107,22 @@ async function run () {
     return 0
   })
 
-  let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
-  comment += '| API | Status | Request | Response |\n'
-  comment += '| --- | --- | --- | --- |\n'
-  for (const line of [...new Set(table)]) {
-    comment += line
-  }
-  comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
+  if (table.length >= 0) {
+    let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
+    comment += '| API | Status | Request | Response |\n'
+    comment += '| --- | --- | --- | --- |\n'
+    for (const line of [...new Set(table)]) {
+      comment += line
+    }
+    comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
-  await octokit.rest.issues.createComment({
-    owner: 'elastic',
-    repo: 'elasticsearch-specification',
-    issue_number: context.payload.pull_request.number,
-    body: comment
-  })
+    await octokit.rest.issues.createComment({
+      owner: 'elastic',
+      repo: 'elasticsearch-specification',
+      issue_number: context.payload.pull_request.number,
+      body: comment
+    })
+  }
 
   core.info('Done!')
 }
