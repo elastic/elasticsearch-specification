@@ -2,13 +2,6 @@ name: Validate APIs
 
 on:
   pull_request:
-    paths:
-      - 'specification/**'
-      - '!specification/_types/**'
-      - '!specification/_spec_utils/**'
-      - '!specification/_doc_ids/**'
-      - '!specification/_json_spec/**'
-
     branches:
       - main
 
