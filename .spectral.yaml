@@ -69,7 +69,7 @@ rules:
     given: $.paths[*].[get,put,post,delete,options,head,patch,trace]
     then:
       field: summary
-      function: defined   
+      function: defined
   operation-summary-length:
     description: Operation summary should be between 5 and 45 characters
     given: "$.paths[*].[get,put,post,delete,options,head,patch,trace]"
