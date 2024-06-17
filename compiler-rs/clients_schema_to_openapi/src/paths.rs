@@ -320,7 +320,7 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
 fn split_summary_desc(desc: &str) -> SplitDesc{
     let segmenter = SentenceSegmenter::new();
 
-    let desc_no_newlines = desc.replace('\n'," ");
+    let desc_no_newlines = desc.replace("\n\n",".\n").replace('\n'," ");
 
     let breakpoints: Vec<usize> = segmenter
         .segment_str(&desc_no_newlines)
@@ -378,6 +378,11 @@ mod tests {
                    SplitDesc{
                        summary: Some(String::from("These are two totally")),
                        description: Some(String::from("Separate sentences!"))
+                   });
+        assert_eq!(split_summary_desc("Such a weird way to separate sentences\n\nRight?"),
+                   SplitDesc{
+                       summary: Some(String::from("Such a weird way to separate sentences")),
+                       description: Some(String::from("Right?"))
                    });
         assert_eq!(split_summary_desc(""),
                    SplitDesc{
