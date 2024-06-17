@@ -19,7 +19,7 @@ Following you can find the rules enforced inside [`/specification`](../specifica
 }
 ```
 
-You can automatically apply them by running `make format-code`.
+You can automatically apply them by running `make spec-format-fix`.
 Those rules are enforced in CI, if you don't follow them, the build will fail.
 
 ## Merge definitions

@@ -9144,6 +9144,12 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.delete#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#dry_run"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#force"
           }
         ],
         "responses": {
@@ -9247,6 +9253,12 @@
           },
           {
             "$ref": "#/components/parameters/inference.delete#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#dry_run"
+          },
+          {
+            "$ref": "#/components/parameters/inference.delete#force"
           }
         ],
         "responses": {
@@ -14312,6 +14324,16 @@
               "$ref": "#/components/schemas/_types:Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "number_of_allocations",
+            "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -14327,8 +14349,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20959,7 +20980,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/inference._types:DeleteInferenceEndpointResult"
             }
           }
         }
@@ -24818,6 +24839,26 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
+      },
+      "inference.delete#dry_run": {
+        "in": "query",
+        "name": "dry_run",
+        "description": "When true, the endpoint is not deleted, and a list of ingest processors which reference this endpoint is returned",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "inference.delete#force": {
+        "in": "query",
+        "name": "force",
+        "description": "When true, the inference endpoint is forcefully deleted even if it is still being used by ingest processors or semantic text fields",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
       },
       "inference.get#task_type": {
         "in": "path",
@@ -52523,6 +52564,27 @@
           "completion"
         ]
       },
+      "inference._types:DeleteInferenceEndpointResult": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "pipelines": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "pipelines"
+            ]
+          }
+        ]
+      },
       "inference._types:InferenceEndpointInfo": {
         "allOf": [
           {
@@ -57876,10 +57938,17 @@
           },
           "predicted_value": {
             "description": "If the model is trained for a text classification or zero shot classification task, the response is the\npredicted class.\nFor named entity recognition (NER) tasks, it contains the annotated text output.\nFor fill mask tasks, it contains the top prediction for replacing the mask token.\nFor text embedding tasks, it contains the raw numerical text embedding values.\nFor regression models, its a numerical value\nFor classification models, it may be an integer, double, boolean or string depending on prediction type",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ml._types:PredictedValue"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:PredictedValue"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ml._types:PredictedValue"
+                }
+              }
+            ]
           },
           "predicted_value_sequence": {
             "description": "For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted\nvalue.\nAdditionally",
@@ -60176,10 +60245,6 @@
           },
           "query": {
             "$ref": "#/components/schemas/security._types:IndicesPrivilegesQuery"
-          },
-          "allow_restricted_indices": {
-            "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
-            "type": "boolean"
           }
         },
         "required": [
@@ -60208,21 +60273,15 @@
               "create",
               "create_doc",
               "create_index",
-              "cross_cluster_replication",
-              "cross_cluster_replication_internal",
               "delete",
               "delete_index",
               "index",
               "maintenance",
               "manage",
               "manage_data_stream_lifecycle",
-              "manage_follow_index",
-              "manage_ilm",
-              "manage_leader_index",
               "monitor",
               "none",
               "read",
-              "read_cross_cluster",
               "view_index_metadata",
               "write"
             ]
@@ -60429,63 +60488,31 @@
             "enum": [
               "all",
               "cancel_task",
-              "create_snapshot",
-              "cross_cluster_replication",
-              "cross_cluster_search",
-              "delegate_pki",
-              "grant_api_key",
               "manage",
               "manage_api_key",
-              "manage_autoscaling",
               "manage_behavioral_analytics",
-              "manage_ccr",
-              "manage_data_frame_transforms",
-              "manage_data_stream_global_retention",
               "manage_enrich",
-              "manage_ilm",
               "manage_index_templates",
               "manage_inference",
               "manage_ingest_pipelines",
               "manage_logstash_pipelines",
               "manage_ml",
-              "manage_oidc",
               "manage_own_api_key",
               "manage_pipeline",
-              "manage_rollup",
-              "manage_saml",
               "manage_search_application",
               "manage_search_query_rules",
               "manage_search_synonyms",
               "manage_security",
-              "manage_service_account",
-              "manage_slm",
-              "manage_token",
               "manage_transform",
-              "manage_user_profile",
-              "manage_watcher",
               "monitor",
-              "monitor_data_frame_transforms",
-              "monitor_data_stream_global_retention",
               "monitor_enrich",
               "monitor_inference",
               "monitor_ml",
-              "monitor_rollup",
-              "monitor_snapshot",
-              "monitor_text_structure",
               "monitor_transform",
-              "monitor_watcher",
               "none",
               "post_behavioral_analytics_event",
-              "read_ccr",
-              "read_connector_secrets",
-              "read_fleet_secrets",
-              "read_ilm",
               "read_pipeline",
-              "read_security",
-              "read_slm",
-              "transport_client",
-              "write_connector_secrets",
-              "write_fleet_secrets"
+              "read_security"
             ]
           },
           {

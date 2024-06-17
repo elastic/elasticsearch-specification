@@ -50,6 +50,7 @@ jobs:
         make compile
         make generate
         make transform-to-openapi
+        make filter-for-serverless
 
     - name: Check for Changed Files
       id: changes

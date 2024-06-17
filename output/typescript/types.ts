@@ -2527,7 +2527,6 @@ export interface RRFRetriever extends RetrieverBase {
 }
 
 export interface RankBase {
-  [key: string]: never
 }
 
 export interface RankContainer {
@@ -3052,7 +3051,6 @@ export interface AggregationsBoxplotAggregation extends AggregationsMetricAggreg
 }
 
 export interface AggregationsBucketAggregationBase {
-  [key: string]: never
 }
 
 export interface AggregationsBucketCorrelationAggregation extends AggregationsBucketPathAggregation {
@@ -12107,6 +12105,10 @@ export interface InferenceCompletionResult {
   result: string
 }
 
+export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResponseBase {
+  pipelines: string[]
+}
+
 export type InferenceDenseByteVector = byte[]
 
 export type InferenceDenseVector = float[]
@@ -12159,9 +12161,11 @@ export interface InferenceTextEmbeddingResult {
 export interface InferenceDeleteRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  dry_run?: boolean
+  force?: boolean
 }
 
-export type InferenceDeleteResponse = AcknowledgedResponseBase
+export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
 
 export interface InferenceGetRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -13511,7 +13515,7 @@ export interface MlInferenceConfigUpdateContainer {
 export interface MlInferenceResponseResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
-  predicted_value?: MlPredictedValue[]
+  predicted_value?: MlPredictedValue | MlPredictedValue[]
   predicted_value_sequence?: string
   prediction_probability?: double
   prediction_score?: double
@@ -15360,6 +15364,7 @@ export interface MlUpdateModelSnapshotResponse {
 
 export interface MlUpdateTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
+  number_of_allocations?: integer
   body?: {
     number_of_allocations?: integer
   }
