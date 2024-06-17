@@ -66,7 +66,7 @@ rules:
     message: "Each operation should have a summary"
     severity: error
     recommended: true
-    given: $.paths[*].[get,put,post,delete,options,head,patch,trace]
+    given: $.paths[*][*]
     then:
       field: summary
       function: defined
