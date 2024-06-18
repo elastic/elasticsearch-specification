@@ -288,7 +288,7 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
 
   const parent = model.types.find(t => t.name.name === type.inherits?.type.name)
   if (parent != null && parent.kind === 'interface' && parent.generics != null && parent.generics.length === type.inherits?.generics?.length) {
-    const map = new Map<M.TypeName, M.ValueOf>();
+    const map = new Map<M.TypeName, M.ValueOf>()
     for (let i = 0; i < parent.generics.length; i++) {
       map.set(parent.generics[i], type.inherits.generics[i])
     }
@@ -338,7 +338,7 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
   }
 }
 
-function replaceGenerics(value: M.ValueOf, map: Map<M.TypeName, M.ValueOf>): M.ValueOf {
+function replaceGenerics (value: M.ValueOf, map: Map<M.TypeName, M.ValueOf>): M.ValueOf {
   if (value.kind !== 'instance_of') {
     return value
   }
