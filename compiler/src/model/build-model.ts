@@ -444,7 +444,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat({
         name: modelGenerics(typeParameter),
-        namespace: type.name.namespace
+        namespace: type.name.namespace + '.' + type.name.name 
       })
     }
 
@@ -532,7 +532,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat({
         name: modelGenerics(typeParameter),
-        namespace: type.name.namespace
+        namespace: type.name.namespace + '.' + type.name.name 
       })
     }
 
