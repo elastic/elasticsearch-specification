@@ -20,7 +20,13 @@
 import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
 import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Fields, FieldValue, PropertyName, RelationName } from '@_types/common'
+import {
+  Fields,
+  FieldValue,
+  Id,
+  PropertyName,
+  RelationName
+} from '@_types/common'
 import {
   byte,
   double,
@@ -195,6 +201,13 @@ export class RankFeaturesProperty extends PropertyBase {
 
 export class SparseVectorProperty extends PropertyBase {
   type: 'sparse_vector'
+}
+
+export class SemanticTextProperty {
+  type: 'semantic_text'
+  meta?: Dictionary<string, string>
+  inference_id: Id
+  copy_to?: Fields
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
