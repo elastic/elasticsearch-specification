@@ -343,20 +343,20 @@ export function modelType (node: Node): model.ValueOf {
               namespace: getNameSpace(node)
             }
           }
-          
+
           if (Node.isTypeParameterDeclaration(declaration)) {
-            const parent = declaration.getParent();
+            const parent = declaration.getParent()
             assert(
-                parent,
-                Node.isClassDeclaration(parent) ||
-                Node.isInterfaceDeclaration(parent) ||
-                Node.isTypeAliasDeclaration(parent),
-                'It should be a class, interface, enum, type alias, or type parameter declaration'
+              parent,
+              Node.isClassDeclaration(parent) ||
+              Node.isInterfaceDeclaration(parent) ||
+              Node.isTypeAliasDeclaration(parent),
+              'It should be a class, interface, enum, type alias, or type parameter declaration'
             )
-            
-            type.type.namespace += '.' + parent.getName() as string;
+
+            type.type.namespace = `${type.type.namespace}.${parent.getName() as string}`
           }
-          
+
           return type
         }
       }
@@ -489,10 +489,9 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
 export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAlias {
   const type = declaration.getTypeNode()
   assert(declaration, type != null, 'Type alias without a referenced type')
-  
   const generics = declaration.getTypeParameters().map(typeParameter => ({
     name: modelGenerics(typeParameter),
-    namespace: getNameSpace(typeParameter) + '.' + declaration.getName() as string
+    namespace: getNameSpace(typeParameter) + '.' + declaration.getName()
   }))
 
   const alias = modelType(type)
