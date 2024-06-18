@@ -5495,7 +5495,7 @@ export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
 export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase<DateMath, Duration> {
 }
 export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<QueryDslTOrigin, QueryDslTScale> | QueryDslMultiValueMode }
+  & { [property: string]: QueryDslDecayPlacement<DateMath, Duration> | QueryDslMultiValueMode }
 
 export interface QueryDslDateDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<DateMath, Duration> {
 }
@@ -5599,7 +5599,7 @@ export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys
 export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase<GeoLocation, Distance> {
 }
 export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<QueryDslTOrigin, QueryDslTScale> | QueryDslMultiValueMode }
+  & { [property: string]: QueryDslDecayPlacement<GeoLocation, Distance> | QueryDslMultiValueMode }
 
 export interface QueryDslGeoDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<GeoLocation, Distance> {
 }
@@ -5853,7 +5853,7 @@ export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase<double>
 export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase<double, double> {
 }
 export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys
-  & { [property: string]: QueryDslDecayPlacement<QueryDslTOrigin, QueryDslTScale> | QueryDslMultiValueMode }
+  & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode }
 
 export type QueryDslOperator = 'and' | 'AND' | 'or' | 'OR'
 
