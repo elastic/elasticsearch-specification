@@ -351,7 +351,7 @@ export function modelType (node: Node): model.ValueOf {
               Node.isClassDeclaration(parent) ||
               Node.isInterfaceDeclaration(parent) ||
               Node.isTypeAliasDeclaration(parent),
-              'It should be a class, interface, enum, type alias, or type parameter declaration'
+              'It should be a class, interface, or type alias declaration'
             )
 
             type.type.namespace = `${type.type.namespace}.${parent.getName() as string}`
