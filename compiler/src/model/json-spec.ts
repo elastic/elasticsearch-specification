@@ -67,12 +67,13 @@ export default function buildJsonSpec (): Map<string, JsonSpec> {
   const files = readdirSync(jsonSpecPath)
     .filter(file => file.endsWith('.json'))
 
-  const map = new Map()
+  const map: Map<string, JsonSpec> = new Map()
   for (const file of files) {
     const json = require(join(jsonSpecPath, file))
     const name = Object.keys(json)[0]
     map.set(name, json[name])
   }
 
-  return map
+  // Ensure deterministic ordering
+  return new Map([...map.entries()].sort((a, b) => a[0].localeCompare(b[0])))
 }

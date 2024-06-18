@@ -731,7 +731,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
         '@codegen_names must have the number of items as the union definition'
       )
     } else if (tag === 'es_quirk') {
-      type.esQuirk = value
+      type.esQuirk = value.replace(/\r/g, '')
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
     }
