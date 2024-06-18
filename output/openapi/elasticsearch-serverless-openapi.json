@@ -3634,7 +3634,7 @@
         "tags": [
           "create"
         ],
-        "summary": "Creates a new document in the index",
+        "summary": "Creates a new document in the index.",
         "description": "Returns a 409 response when a document with a same ID already exists in the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
@@ -3682,7 +3682,7 @@
         "tags": [
           "create"
         ],
-        "summary": "Creates a new document in the index",
+        "summary": "Creates a new document in the index.",
         "description": "Returns a 409 response when a document with a same ID already exists in the index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
