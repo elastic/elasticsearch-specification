@@ -39,6 +39,7 @@ setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
+	@npm install @stoplight/spectral-cli
 
 clean-dep:	## Clean npm dependencies
 	@rm -rf compiler/node_modules
@@ -57,6 +58,9 @@ dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
 contrib: | generate license-check spec-format-fix transform-to-openapi ## Pre contribution target
+
+lint-docs: ## Lint the OpenAPI documents
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.json
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
