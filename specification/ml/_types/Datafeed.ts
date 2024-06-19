@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { Id, IndicesOptions } from '@_types/common'
+import { Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -82,7 +82,7 @@ export class DatafeedConfig {
    * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
    * @aliases indexes
    */
-  indices?: string[]
+  indices?: Indices
   /**
    * Specifies index expansion options that are used during search.
    */

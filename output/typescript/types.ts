@@ -13088,8 +13088,8 @@ export interface MlDatafeedConfig {
   datafeed_id?: Id
   delayed_data_check_config?: MlDelayedDataCheckConfig
   frequency?: Duration
-  indices?: string[]
-  indexes?: string[]
+  indices?: Indices
+  indexes?: Indices
   indices_options?: IndicesOptions
   job_id?: Id
   max_empty_searches?: integer
@@ -14669,14 +14669,14 @@ export interface MlGetRecordsResponse {
 }
 
 export interface MlGetTrainedModelsRequest extends RequestBase {
-  model_id?: Id
+  model_id?: Ids
   allow_no_match?: boolean
   decompress_definition?: boolean
   exclude_generated?: boolean
   from?: integer
   include?: MlInclude
   size?: integer
-  tags?: string
+  tags?: string | string[]
 }
 
 export interface MlGetTrainedModelsResponse {
@@ -14843,7 +14843,7 @@ export interface MlPutCalendarResponse {
 
 export interface MlPutCalendarJobRequest extends RequestBase {
   calendar_id: Id
-  job_id: Id
+  job_id: Ids
 }
 
 export interface MlPutCalendarJobResponse {
@@ -14941,7 +14941,7 @@ export interface MlPutFilterResponse {
 }
 
 export interface MlPutJobRequest extends RequestBase {
-  job_id: Id
+  job_id: Ids
   body?: {
     allow_lazy_open?: boolean
     analysis_config: MlAnalysisConfig
