@@ -56761,6 +56761,9 @@
           "script_score": {
             "$ref": "#/components/schemas/_types.query_dsl:ScriptScoreQuery"
           },
+          "semantic": {
+            "$ref": "#/components/schemas/_types.query_dsl:SemanticQuery"
+          },
           "shape": {
             "$ref": "#/components/schemas/_types.query_dsl:ShapeQuery"
           },
@@ -60321,6 +60324,30 @@
             "required": [
               "query",
               "script"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl:SemanticQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field to query, which must be a semantic_text field type",
+                "type": "string"
+              },
+              "query": {
+                "description": "The query text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "query"
             ]
           }
         ]
@@ -72504,9 +72531,6 @@
             "$ref": "#/components/schemas/_types.mapping:DenseVectorProperty"
           },
           {
-            "$ref": "#/components/schemas/_types.mapping:SparseVectorProperty"
-          },
-          {
             "$ref": "#/components/schemas/_types.mapping:FlattenedProperty"
           },
           {
@@ -72514,6 +72538,12 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping:ObjectProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping:SemanticTextProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping:SparseVectorProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping:CompletionProperty"
@@ -73426,27 +73456,6 @@
           "ef_construction"
         ]
       },
-      "_types.mapping:SparseVectorProperty": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "sparse_vector"
-                ]
-              }
-            },
-            "required": [
-              "type"
-            ]
-          }
-        ]
-      },
       "_types.mapping:FlattenedProperty": {
         "allOf": [
           {
@@ -73546,6 +73555,51 @@
                 ]
               }
             }
+          }
+        ]
+      },
+      "_types.mapping:SemanticTextProperty": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "semantic_text"
+            ]
+          },
+          "meta": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "inference_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "type",
+          "inference_id"
+        ]
+      },
+      "_types.mapping:SparseVectorProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping:PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "sparse_vector"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
           }
         ]
       },

@@ -48143,6 +48143,25 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0"
+            }
+          },
+          "description": "A semantic query to semantic_text field types",
+          "name": "semantic",
+          "required": false,
+          "since": "8.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SemanticQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "Queries documents that contain fields indexed using the `shape` type.",
           "docId": "query-dsl-shape-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-shape-query.html",
@@ -48489,7 +48508,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L100-L407",
+      "specLocation": "_types/query_dsl/abstractions.ts#L101-L414",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48666,7 +48685,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L432-L443"
+      "specLocation": "_types/query_dsl/abstractions.ts#L439-L450"
     },
     {
       "kind": "type_alias",
@@ -49010,7 +49029,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L445-L479"
+      "specLocation": "_types/query_dsl/abstractions.ts#L452-L486"
     },
     {
       "kind": "enum",
@@ -49026,7 +49045,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L489-L492"
+      "specLocation": "_types/query_dsl/abstractions.ts#L496-L499"
     },
     {
       "kind": "enum",
@@ -49044,7 +49063,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L494-L503"
+      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
     },
     {
       "inherits": {
@@ -51262,7 +51281,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L409-L426"
+      "specLocation": "_types/query_dsl/abstractions.ts#L416-L433"
     },
     {
       "kind": "enum",
@@ -51733,7 +51752,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L505-L519"
+      "specLocation": "_types/query_dsl/abstractions.ts#L512-L526"
     },
     {
       "inherits": {
@@ -53925,6 +53944,9 @@
           "name": "dense_vector"
         },
         {
+          "name": "semantic_text"
+        },
+        {
           "name": "sparse_vector"
         },
         {
@@ -53938,7 +53960,7 @@
         "name": "FieldType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/Property.ts#L164-L210"
+      "specLocation": "_types/mapping/Property.ts#L166-L213"
     },
     {
       "kind": "enum",
@@ -58237,6 +58259,46 @@
       "specLocation": "_types/query_dsl/specialized.ts#L326-L340"
     },
     {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SemanticQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The field to query, which must be a semantic_text field type",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The query text",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/SemanticQuery.ts#L22-L27"
+    },
+    {
       "attachedBehaviors": [
         "AdditionalProperty"
       ],
@@ -59690,7 +59752,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L481-L487"
+      "specLocation": "_types/query_dsl/abstractions.ts#L488-L494"
     },
     {
       "inherits": {
@@ -82569,7 +82631,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L245-L250"
+      "specLocation": "_types/mapping/core.ts#L257-L262"
     },
     {
       "kind": "enum",
@@ -82601,7 +82663,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L131-L134"
+      "specLocation": "_types/mapping/core.ts#L137-L140"
     },
     {
       "kind": "type_alias",
@@ -82609,7 +82671,7 @@
         "name": "Property",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/Property.ts#L95-L162",
+      "specLocation": "_types/mapping/Property.ts#L96-L164",
       "type": {
         "items": [
           {
@@ -82734,13 +82796,6 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "SparseVectorProperty",
-              "namespace": "_types.mapping"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
               "name": "FlattenedProperty",
               "namespace": "_types.mapping"
             }
@@ -82756,6 +82811,20 @@
             "kind": "instance_of",
             "type": {
               "name": "ObjectProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SemanticTextProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorProperty",
               "namespace": "_types.mapping"
             }
           },
@@ -82980,7 +83049,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L49-L51"
+      "specLocation": "_types/mapping/core.ts#L55-L57"
     },
     {
       "inherits": {
@@ -83007,7 +83076,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L45-L47"
+      "specLocation": "_types/mapping/core.ts#L51-L53"
     },
     {
       "inherits": {
@@ -83056,7 +83125,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L39-L43"
+      "specLocation": "_types/mapping/core.ts#L45-L49"
     },
     {
       "kind": "interface",
@@ -83157,7 +83226,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/Property.ts#L83-L93"
+      "specLocation": "_types/mapping/Property.ts#L84-L94"
     },
     {
       "inherits": {
@@ -83225,7 +83294,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L59"
+      "specLocation": "_types/mapping/core.ts#L59-L65"
     },
     {
       "kind": "interface",
@@ -83528,7 +83597,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L288-L319"
+      "specLocation": "_types/mapping/core.ts#L300-L331"
     },
     {
       "kind": "enum",
@@ -83585,7 +83654,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L252-L255"
+      "specLocation": "_types/mapping/core.ts#L264-L267"
     },
     {
       "kind": "enum",
@@ -83688,7 +83757,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L83-L87"
+      "specLocation": "_types/mapping/core.ts#L89-L93"
     },
     {
       "inherits": {
@@ -83843,7 +83912,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L89-L107"
+      "specLocation": "_types/mapping/core.ts#L95-L113"
     },
     {
       "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
@@ -83924,7 +83993,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L218-L243"
+      "specLocation": "_types/mapping/core.ts#L230-L255"
     },
     {
       "inherits": {
@@ -83948,7 +84017,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L182-L184"
+      "specLocation": "_types/mapping/core.ts#L188-L190"
     },
     {
       "inherits": {
@@ -83983,7 +84052,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L186-L189"
+      "specLocation": "_types/mapping/core.ts#L192-L195"
     },
     {
       "inherits": {
@@ -84018,7 +84087,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L191-L194"
+      "specLocation": "_types/mapping/core.ts#L197-L200"
     },
     {
       "inherits": {
@@ -84130,7 +84199,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L200-L210"
+      "specLocation": "_types/mapping/core.ts#L212-L222"
     },
     {
       "inherits": {
@@ -84308,7 +84377,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L257-L273"
+      "specLocation": "_types/mapping/core.ts#L269-L285"
     },
     {
       "kind": "interface",
@@ -84375,7 +84444,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L275-L277"
+      "specLocation": "_types/mapping/core.ts#L287-L289"
     },
     {
       "inherits": {
@@ -84417,7 +84486,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L279-L286"
+      "specLocation": "_types/mapping/core.ts#L291-L298"
     },
     {
       "inherits": {
@@ -84507,7 +84576,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L73-L81"
+      "specLocation": "_types/mapping/core.ts#L79-L87"
     },
     {
       "inherits": {
@@ -84619,7 +84688,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L61-L71"
+      "specLocation": "_types/mapping/core.ts#L67-L77"
     },
     {
       "inherits": {
@@ -84802,30 +84871,6 @@
         }
       ],
       "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L26"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "PropertyBase",
-          "namespace": "_types.mapping"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SparseVectorProperty",
-        "namespace": "_types.mapping"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "sparse_vector"
-          }
-        }
-      ],
-      "specLocation": "_types/mapping/core.ts#L196-L198"
     },
     {
       "inherits": {
@@ -85052,6 +85097,81 @@
         }
       ],
       "specLocation": "_types/mapping/complex.ts#L46-L50"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SemanticTextProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "semantic_text"
+          }
+        },
+        {
+          "name": "meta",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/mapping/core.ts#L206-L210"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SparseVectorProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "sparse_vector"
+          }
+        }
+      ],
+      "specLocation": "_types/mapping/core.ts#L202-L204"
     },
     {
       "inherits": {
@@ -85860,7 +85980,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L166-L169"
+      "specLocation": "_types/mapping/core.ts#L172-L175"
     },
     {
       "inherits": {
@@ -85985,7 +86105,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L109-L129"
+      "specLocation": "_types/mapping/core.ts#L115-L135"
     },
     {
       "inherits": {
@@ -86020,7 +86140,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L146-L149"
+      "specLocation": "_types/mapping/core.ts#L152-L155"
     },
     {
       "inherits": {
@@ -86055,7 +86175,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L136-L139"
+      "specLocation": "_types/mapping/core.ts#L142-L145"
     },
     {
       "inherits": {
@@ -86090,7 +86210,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L141-L144"
+      "specLocation": "_types/mapping/core.ts#L147-L150"
     },
     {
       "inherits": {
@@ -86125,7 +86245,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L151-L154"
+      "specLocation": "_types/mapping/core.ts#L157-L160"
     },
     {
       "inherits": {
@@ -86160,7 +86280,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L156-L159"
+      "specLocation": "_types/mapping/core.ts#L162-L165"
     },
     {
       "inherits": {
@@ -86206,7 +86326,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L176-L180"
+      "specLocation": "_types/mapping/core.ts#L182-L186"
     },
     {
       "inherits": {
@@ -86241,7 +86361,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L161-L164"
+      "specLocation": "_types/mapping/core.ts#L167-L170"
     },
     {
       "inherits": {
@@ -86276,7 +86396,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L171-L174"
+      "specLocation": "_types/mapping/core.ts#L177-L180"
     },
     {
       "inherits": {
