@@ -5338,7 +5338,6 @@ export interface MappingSemanticTextProperty {
   type: 'semantic_text'
   meta?: Record<string, string>
   inference_id: Id
-  copy_to?: Fields
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {

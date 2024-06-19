@@ -207,7 +207,6 @@ export class SemanticTextProperty {
   type: 'semantic_text'
   meta?: Dictionary<string, string>
   inference_id: Id
-  copy_to?: Fields
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
