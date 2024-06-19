@@ -10582,7 +10582,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "async_search.get"
+                "namespace": "async_search.get.Response"
               }
             }
           ],
@@ -10596,7 +10596,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search.get"
+          "namespace": "async_search.get.Response"
         }
       ],
       "kind": "response",
@@ -11756,7 +11756,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "async_search.submit"
+                "namespace": "async_search.submit.Response"
               }
             }
           ],
@@ -11770,7 +11770,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search.submit"
+          "namespace": "async_search.submit.Response"
         }
       ],
       "kind": "response",
@@ -11804,14 +11804,14 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.bulk"
+                      "namespace": "_global.bulk.Request"
                     }
                   },
                   {
                     "kind": "instance_of",
                     "type": {
                       "name": "TPartialDocument",
-                      "namespace": "_global.bulk"
+                      "namespace": "_global.bulk.Request"
                     }
                   }
                 ],
@@ -11825,7 +11825,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.bulk"
+                  "namespace": "_global.bulk.Request"
                 }
               }
             ],
@@ -11837,11 +11837,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.Request"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.Request"
         }
       ],
       "inherits": {
@@ -16264,7 +16264,7 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "_global.create"
+            "namespace": "_global.create.Request"
           }
         }
       },
@@ -16272,7 +16272,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.create"
+          "namespace": "_global.create.Request"
         }
       ],
       "inherits": {
@@ -17865,7 +17865,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TEvent",
-                "namespace": "eql.get"
+                "namespace": "eql.get.Response"
               }
             }
           ],
@@ -17879,7 +17879,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql.get"
+          "namespace": "eql.get.Response"
         }
       ],
       "kind": "response",
@@ -18359,7 +18359,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TEvent",
-                "namespace": "eql.search"
+                "namespace": "eql.search.Response"
               }
             }
           ],
@@ -18373,7 +18373,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql.search"
+          "namespace": "eql.search.Response"
         }
       ],
       "kind": "response",
@@ -19142,7 +19142,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "_global.explain"
+                    "namespace": "_global.explain.Response"
                   }
                 }
               ],
@@ -19158,7 +19158,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.explain"
+          "namespace": "_global.explain.Response"
         }
       ],
       "kind": "response",
@@ -19625,7 +19625,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.get"
+                "namespace": "_global.get.Response"
               }
             }
           ],
@@ -19648,7 +19648,7 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "_global.get"
+                        "namespace": "_global.get.Response"
                       }
                     }
                   ],
@@ -19677,7 +19677,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.get"
+          "namespace": "_global.get.Response"
         }
       ],
       "kind": "response",
@@ -19962,14 +19962,14 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "_global.get_source"
+            "namespace": "_global.get_source.Response"
           }
         }
       },
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.get_source"
+          "namespace": "_global.get_source.Response"
         }
       ],
       "kind": "response",
@@ -20181,7 +20181,7 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "_global.index"
+            "namespace": "_global.index.Request"
           }
         }
       },
@@ -20189,7 +20189,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.index"
+          "namespace": "_global.index.Request"
         }
       ],
       "inherits": {
@@ -26787,7 +26787,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.mget"
+                      "namespace": "_global.mget.Response"
                     }
                   }
                 ],
@@ -26804,7 +26804,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.mget"
+          "namespace": "_global.mget.Response"
         }
       ],
       "kind": "response",
@@ -30034,7 +30034,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "ml.preview_datafeed"
+              "namespace": "ml.preview_datafeed.Response"
             }
           }
         }
@@ -30042,7 +30042,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "ml.preview_datafeed"
+          "namespace": "ml.preview_datafeed.Response"
         }
       ],
       "kind": "response",
@@ -34657,7 +34657,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.msearch"
+                "namespace": "_global.msearch.Response"
               }
             }
           ],
@@ -34671,7 +34671,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.Response"
         }
       ],
       "kind": "response",
@@ -34801,7 +34801,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.msearch_template"
+                "namespace": "_global.msearch_template.Response"
               }
             }
           ],
@@ -34815,7 +34815,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch_template"
+          "namespace": "_global.msearch_template.Response"
         }
       ],
       "kind": "response",
@@ -36396,7 +36396,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TResult",
-                "namespace": "_global.scripts_painless_execute"
+                "namespace": "_global.scripts_painless_execute.Response"
               }
             }
           }
@@ -36405,7 +36405,7 @@
       "generics": [
         {
           "name": "TResult",
-          "namespace": "_global.scripts_painless_execute"
+          "namespace": "_global.scripts_painless_execute.Response"
         }
       ],
       "kind": "response",
@@ -36538,7 +36538,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.scroll"
+                "namespace": "_global.scroll.Response"
               }
             }
           ],
@@ -36552,7 +36552,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.scroll"
+          "namespace": "_global.scroll.Response"
         }
       ],
       "kind": "response",
@@ -37695,7 +37695,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.search"
+                "namespace": "_global.search.Response"
               }
             }
           ],
@@ -37709,7 +37709,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search"
+          "namespace": "_global.search.Response"
         }
       ],
       "kind": "response",
@@ -38271,7 +38271,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "search_application.search"
+                "namespace": "search_application.search.Response"
               }
             }
           ],
@@ -38285,7 +38285,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "search_application.search"
+          "namespace": "search_application.search.Response"
         }
       ],
       "kind": "response",
@@ -39000,7 +39000,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "_global.search_template"
+                    "namespace": "_global.search_template.Response"
                   }
                 }
               ],
@@ -39138,7 +39138,7 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "_global.search_template"
+                        "namespace": "_global.search_template.Response"
                       }
                     }
                   ],
@@ -39167,7 +39167,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search_template"
+          "namespace": "_global.search_template.Response"
         }
       ],
       "kind": "response",
@@ -42219,7 +42219,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.termvectors"
+                "namespace": "_global.termvectors.Request"
               }
             }
           },
@@ -42264,7 +42264,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.termvectors"
+          "namespace": "_global.termvectors.Request"
         }
       ],
       "inherits": {
@@ -43070,7 +43070,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TTransform",
-                  "namespace": "transform.preview_transform"
+                  "namespace": "transform.preview_transform.Response"
                 }
               }
             }
@@ -43080,7 +43080,7 @@
       "generics": [
         {
           "name": "TTransform",
-          "namespace": "transform.preview_transform"
+          "namespace": "transform.preview_transform.Response"
         }
       ],
       "kind": "response",
@@ -43998,7 +43998,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TPartialDocument",
-                "namespace": "_global.update"
+                "namespace": "_global.update.Request"
               }
             }
           },
@@ -44061,7 +44061,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.update"
+                "namespace": "_global.update.Request"
               }
             }
           }
@@ -44071,11 +44071,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.Request"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.Request"
         }
       ],
       "inherits": {
@@ -44279,7 +44279,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.update"
+                "namespace": "_global.update.Response"
               }
             }
           ],
@@ -44293,7 +44293,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.Response"
         }
       ],
       "kind": "response",
@@ -45075,7 +45075,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.mget"
+          "namespace": "_global.mget.ResponseItem"
         }
       ],
       "kind": "type_alias",
@@ -45092,7 +45092,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.mget"
+                  "namespace": "_global.mget.ResponseItem"
                 }
               }
             ],
@@ -45117,7 +45117,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.get"
+          "namespace": "_global.get.GetResult"
         }
       ],
       "kind": "interface",
@@ -45217,7 +45217,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.get"
+              "namespace": "_global.get.GetResult"
             }
           }
         },
@@ -45467,11 +45467,11 @@
       "generics": [
         {
           "name": "TKey",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperties"
         },
         {
           "name": "TValue",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperties"
         }
       ],
       "kind": "interface",
@@ -49184,11 +49184,11 @@
       "generics": [
         {
           "name": "TOrigin",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
         },
         {
           "name": "TDistance",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
         }
       ],
       "inherits": {
@@ -49211,7 +49211,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TOrigin",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
             }
           }
         },
@@ -49223,7 +49223,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDistance",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
             }
           }
         },
@@ -49640,11 +49640,11 @@
       "generics": [
         {
           "name": "TKey",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperty"
         },
         {
           "name": "TValue",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperty"
         }
       ],
       "kind": "interface",
@@ -49659,11 +49659,11 @@
       "generics": [
         {
           "name": "TOrigin",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DecayPlacement"
         },
         {
           "name": "TScale",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DecayPlacement"
         }
       ],
       "kind": "interface",
@@ -49694,7 +49694,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TScale",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DecayPlacement"
             }
           }
         },
@@ -49706,7 +49706,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TScale",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DecayPlacement"
             }
           }
         },
@@ -49718,7 +49718,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TOrigin",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DecayPlacement"
             }
           }
         }
@@ -58555,7 +58555,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.PipeSeparatedFlags"
         }
       ],
       "kind": "type_alias",
@@ -58570,7 +58570,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_spec_utils"
+              "namespace": "_spec_utils.PipeSeparatedFlags"
             }
           },
           {
@@ -59918,7 +59918,7 @@
       "generics": [
         {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.EpochTime"
         }
       ],
       "kind": "type_alias",
@@ -59931,7 +59931,7 @@
         "kind": "instance_of",
         "type": {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.EpochTime"
         }
       }
     },
@@ -61659,7 +61659,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.ExtendedBounds"
         }
       ],
       "kind": "interface",
@@ -61676,7 +61676,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.ExtendedBounds"
             }
           }
         },
@@ -61688,7 +61688,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.ExtendedBounds"
             }
           }
         }
@@ -62402,7 +62402,7 @@
       "generics": [
         {
           "name": "TBucket",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.Buckets"
         }
       ],
       "kind": "type_alias",
@@ -62427,7 +62427,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TBucket",
-                "namespace": "_types.aggregations"
+                "namespace": "_types.aggregations.Buckets"
               }
             }
           },
@@ -62437,7 +62437,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TBucket",
-                "namespace": "_types.aggregations"
+                "namespace": "_types.aggregations.Buckets"
               }
             }
           }
@@ -68694,7 +68694,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.ResponseItem"
         }
       ],
       "kind": "type_alias",
@@ -68711,7 +68711,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.msearch"
+                  "namespace": "_global.msearch.ResponseItem"
                 }
               }
             ],
@@ -68736,7 +68736,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.MultiSearchItem"
         }
       ],
       "inherits": {
@@ -68745,7 +68745,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.msearch"
+              "namespace": "_global.msearch.MultiSearchItem"
             }
           }
         ],
@@ -68778,7 +68778,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search"
+          "namespace": "_global.search.ResponseBody"
         }
       ],
       "kind": "interface",
@@ -68829,7 +68829,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.search"
+                  "namespace": "_global.search.ResponseBody"
                 }
               }
             ],
@@ -68967,7 +68967,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.search"
+                      "namespace": "_global.search.ResponseBody"
                     }
                   }
                 ],
@@ -69148,7 +69148,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.HitsMetadata"
         }
       ],
       "kind": "interface",
@@ -69192,7 +69192,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "T",
-                    "namespace": "_global.search._types"
+                    "namespace": "_global.search._types.HitsMetadata"
                   }
                 }
               ],
@@ -69284,7 +69284,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.Hit"
         }
       ],
       "kind": "interface",
@@ -69519,7 +69519,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.search._types"
+              "namespace": "_global.search._types.Hit"
             }
           }
         },
@@ -71549,7 +71549,7 @@
       "generics": [
         {
           "name": "TBucket",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.MultiBucketAggregateBase"
         }
       ],
       "inherits": {
@@ -71573,7 +71573,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TBucket",
-                  "namespace": "_types.aggregations"
+                  "namespace": "_types.aggregations.MultiBucketAggregateBase"
                 }
               }
             ],
@@ -71704,7 +71704,7 @@
       "generics": [
         {
           "name": "TBucket",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.TermsAggregateBase"
         }
       ],
       "inherits": {
@@ -71713,7 +71713,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TBucket",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.TermsAggregateBase"
             }
           }
         ],
@@ -72423,7 +72423,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.SignificantTermsAggregateBase"
         }
       ],
       "inherits": {
@@ -72432,7 +72432,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.SignificantTermsAggregateBase"
             }
           }
         ],
@@ -73921,7 +73921,7 @@
       "generics": [
         {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.DurationValue"
         }
       ],
       "kind": "type_alias",
@@ -73934,7 +73934,7 @@
         "kind": "instance_of",
         "type": {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.DurationValue"
         }
       }
     },
@@ -75286,7 +75286,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.Suggest"
         }
       ],
       "kind": "type_alias",
@@ -75303,7 +75303,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.search._types"
+                  "namespace": "_global.search._types.Suggest"
                 }
               }
             ],
@@ -75338,7 +75338,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.CompletionSuggest"
         }
       ],
       "inherits": {
@@ -75364,7 +75364,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.search._types"
+                      "namespace": "_global.search._types.CompletionSuggest"
                     }
                   }
                 ],
@@ -75382,7 +75382,7 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "_global.search._types"
+                        "namespace": "_global.search._types.CompletionSuggest"
                       }
                     }
                   ],
@@ -75448,7 +75448,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.CompletionSuggestOption"
         }
       ],
       "kind": "interface",
@@ -75562,7 +75562,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.search._types"
+              "namespace": "_global.search._types.CompletionSuggestOption"
             }
           }
         },
@@ -76064,7 +76064,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.Stringified"
         }
       ],
       "kind": "type_alias",
@@ -76079,7 +76079,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_spec_utils"
+              "namespace": "_spec_utils.Stringified"
             }
           },
           {
@@ -76114,7 +76114,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.WithNullValue"
         }
       ],
       "kind": "type_alias",
@@ -76129,7 +76129,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_spec_utils"
+              "namespace": "_spec_utils.WithNullValue"
             }
           },
           {
@@ -101479,7 +101479,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search._types"
+          "namespace": "async_search._types.AsyncSearchDocumentResponseBase"
         }
       ],
       "inherits": {
@@ -101503,7 +101503,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "async_search._types"
+                  "namespace": "async_search._types.AsyncSearchDocumentResponseBase"
                 }
               }
             ],
@@ -101661,7 +101661,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search._types"
+          "namespace": "async_search._types.AsyncSearch"
         }
       ],
       "kind": "interface",
@@ -101731,7 +101731,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "async_search._types"
+                  "namespace": "async_search._types.AsyncSearch"
                 }
               }
             ],
@@ -101831,7 +101831,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "async_search._types"
+                      "namespace": "async_search._types.AsyncSearch"
                     }
                   }
                 ],
@@ -102279,11 +102279,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.UpdateAction"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.UpdateAction"
         }
       ],
       "kind": "interface",
@@ -102313,7 +102313,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TPartialDocument",
-              "namespace": "_global.bulk"
+              "namespace": "_global.bulk.UpdateAction"
             }
           }
         },
@@ -102376,7 +102376,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.bulk"
+              "namespace": "_global.bulk.UpdateAction"
             }
           }
         }
@@ -102578,7 +102578,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_types"
+          "namespace": "_types.InlineGet"
         }
       ],
       "kind": "interface",
@@ -102656,7 +102656,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_types"
+              "namespace": "_types.InlineGet"
             }
           }
         }
@@ -112993,7 +112993,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.EqlSearchResponseBase"
         }
       ],
       "kind": "interface",
@@ -113081,7 +113081,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TEvent",
-                  "namespace": "eql._types"
+                  "namespace": "eql._types.EqlSearchResponseBase"
                 }
               }
             ],
@@ -113099,7 +113099,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.EqlHits"
         }
       ],
       "kind": "interface",
@@ -113132,7 +113132,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TEvent",
-                    "namespace": "eql._types"
+                    "namespace": "eql._types.EqlHits"
                   }
                 }
               ],
@@ -113158,7 +113158,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TEvent",
-                    "namespace": "eql._types"
+                    "namespace": "eql._types.EqlHits"
                   }
                 }
               ],
@@ -113177,7 +113177,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.HitsEvent"
         }
       ],
       "kind": "interface",
@@ -113218,7 +113218,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TEvent",
-              "namespace": "eql._types"
+              "namespace": "eql._types.HitsEvent"
             }
           }
         },
@@ -113250,7 +113250,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.HitsSequence"
         }
       ],
       "kind": "interface",
@@ -113271,7 +113271,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TEvent",
-                    "namespace": "eql._types"
+                    "namespace": "eql._types.HitsSequence"
                   }
                 }
               ],
@@ -130362,7 +130362,7 @@
       "generics": [
         {
           "name": "TDefinition",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.OverloadOf"
         }
       ],
       "kind": "interface",
@@ -131379,7 +131379,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.MultiSearchResult"
         }
       ],
       "kind": "interface",
@@ -131410,7 +131410,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "_global.msearch"
+                    "namespace": "_global.msearch.MultiSearchResult"
                   }
                 }
               ],
@@ -136504,7 +136504,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.UpdateWriteResponseBase"
         }
       ],
       "inherits": {
@@ -136528,7 +136528,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.update"
+                  "namespace": "_global.update.UpdateWriteResponseBase"
                 }
               }
             ],
