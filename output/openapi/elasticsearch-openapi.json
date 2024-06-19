@@ -16967,7 +16967,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types:Id"
+              "$ref": "#/components/schemas/_types:Ids"
             },
             "style": "simple"
           }
@@ -45564,11 +45564,11 @@
       "ml.get_trained_models#model_id": {
         "in": "path",
         "name": "model_id",
-        "description": "The unique identifier of the trained model.",
+        "description": "The unique identifier of the trained model or a model alias.\n\nYou can get information for multiple trained models in a single API\nrequest by using a comma-separated list of model IDs or a wildcard\nexpression.",
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types:Id"
+          "$ref": "#/components/schemas/_types:Ids"
         },
         "style": "simple"
       },
@@ -45638,7 +45638,17 @@
         "description": "A comma delimited string of tags. A trained model can have many tags, or\nnone. When supplied, only trained models that contain all the supplied\ntags are returned.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "style": "form"
       },
@@ -89109,11 +89119,7 @@
             "$ref": "#/components/schemas/_types:Duration"
           },
           "indices": {
-            "description": "An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/components/schemas/_types:Indices"
           },
           "indices_options": {
             "$ref": "#/components/schemas/_types:IndicesOptions"

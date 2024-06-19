@@ -14953,7 +14953,7 @@ export interface MlPutFilterResponse {
 }
 
 export interface MlPutJobRequest extends RequestBase {
-  job_id: Ids
+  job_id: Id
   body?: {
     allow_lazy_open?: boolean
     analysis_config: MlAnalysisConfig

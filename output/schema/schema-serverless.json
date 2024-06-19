@@ -29293,13 +29293,13 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the trained model.",
+          "description": "The unique identifier of the trained model or a model alias.\n\nYou can get information for multiple trained models in a single API\nrequest by using a comma-separated list of model IDs or a wildcard\nexpression.",
           "name": "model_id",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -29388,15 +29388,30 @@
           "name": "tags",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
-      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L87"
+      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L91"
     },
     {
       "body": {
@@ -30205,7 +30220,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -129961,13 +129976,10 @@
           "name": "indices",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
             }
           }
         },
