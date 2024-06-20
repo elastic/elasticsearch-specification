@@ -21,87 +21,177 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Analyzer } from '@_types/analysis/analyzers'
 
 export enum BoundaryScanner {
-  chars = 0,
-  sentence = 1,
-  word = 2
+  /**
+   * Use the characters specified by `boundary_chars` as highlighting boundaries.
+   * The `boundary_max_scan` setting controls how far to scan for boundary characters.
+   * Only valid for the `fvh` highlighter.
+   */
+  chars,
+  /**
+   * Break highlighted fragments at the next sentence boundary, as determined by Java’s `BreakIterator`.
+   * You can specify the locale to use with `boundary_scanner_locale`.
+   * When used with the `unified` highlighter, the `sentence` scanner splits sentences bigger than `fragment_size` at the first word boundary next to fragment_size.
+   * You can set `fragment_size` to `0` to never split any sentence.
+   */
+  sentence,
+  /**
+   * Break highlighted fragments at the next word boundary, as determined by Java’s `BreakIterator`.
+   * You can specify the locale to use with `boundary_scanner_locale`.
+   */
+  word
 }
 
-export class Highlight {
-  fields: Dictionary<Field, HighlightField>
-
+export class HighlightBase {
   type?: HighlighterType
+  /**
+   * A string that contains each boundary character.
+   * @server_default .,!? \t\n
+   */
   boundary_chars?: string
+  /**
+   * How far to scan for boundary characters.
+   * @server_default 20
+   */
   boundary_max_scan?: integer
+  /**
+   * Specifies how to break the highlighted fragments: chars, sentence, or word.
+   * Only valid for the unified and fvh highlighters.
+   * Defaults to `sentence` for the `unified` highlighter. Defaults to `chars` for the `fvh` highlighter.
+   */
   boundary_scanner?: BoundaryScanner
+  /**
+   * Controls which locale is used to search for sentence and word boundaries.
+   * This parameter takes a form of a language tag, for example: `"en-US"`, `"fr-FR"`, `"ja-JP"`.
+   * @server_default Locale.ROOT
+   */
   boundary_scanner_locale?: string
-  encoder?: HighlighterEncoder
+  /**
+   * @deprecated 8.8.0
+   */
+  force_source?: boolean
+  /**
+   * Specifies how text should be broken up in highlight snippets: `simple` or `span`.
+   * Only valid for the `plain` highlighter.
+   * @server_default span
+   */
   fragmenter?: HighlighterFragmenter
-  fragment_offset?: integer
+  /**
+   * The size of the highlighted fragment in characters.
+   * @server_default 100
+   */
   fragment_size?: integer
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: HighlighterOrder
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: HighlighterTagsSchema
+  highlight_filter?: boolean
+  /**
+   * Highlight matches for a query other than the search query.
+   * This is especially useful if you use a rescore query because those are not taken into account by highlighting by default.
+   */
   highlight_query?: QueryContainer
-  // TODO this is too lenient! test reports "20" is accepted
-  max_analyzed_offset?: string | integer
+  max_fragment_length?: integer
+  /**
+   * If set to a non-negative value, highlighting stops at this defined maximum limit.
+   * The rest of the text is not processed, thus not highlighted and no error is returned
+   * The `max_analyzed_offset` query setting does not override the `index.highlight.max_analyzed_offset` setting, which prevails when it’s set to lower value than the query setting.
+   */
+  max_analyzed_offset?: integer
+  /**
+   * The amount of text you want to return from the beginning of the field if there are no matching fragments to highlight.
+   * @server_default 0
+   */
+  no_match_size?: integer
+  /**
+   * The maximum number of fragments to return.
+   * If the number of fragments is set to `0`, no fragments are returned.
+   * Instead, the entire field contents are highlighted and returned.
+   * This can be handy when you need to highlight short texts such as a title or address, but fragmentation is not required.
+   * If `number_of_fragments` is `0`, `fragment_size` is ignored.
+   * @server_default 5
+   */
+  number_of_fragments?: integer
+  options?: Dictionary<string, UserDefinedValue>
+  /**
+   * Sorts highlighted fragments by score when set to `score`.
+   * By default, fragments will be output in the order they appear in the field (order: `none`).
+   * Setting this option to `score` will output the most relevant fragments first.
+   * Each highlighter applies its own logic to compute relevancy scores.
+   * @server_default none
+   */
+  order?: HighlighterOrder
+  /**
+   * Controls the number of matching phrases in a document that are considered.
+   * Prevents the `fvh` highlighter from analyzing too many phrases and consuming too much memory.
+   * When using `matched_fields`, `phrase_limit` phrases per matched field are considered. Raising the limit increases query time and consumes more memory.
+   * Only supported by the `fvh` highlighter.
+   * @server_default 256
+   */
+  phrase_limit?: integer
+  /**
+   * Use in conjunction with `pre_tags` to define the HTML tags to use for the highlighted text.
+   * By default, highlighted text is wrapped in `<em>` and `</em>` tags.
+   */
+  post_tags?: string[]
+  /**
+   * Use in conjunction with `post_tags` to define the HTML tags to use for the highlighted text.
+   * By default, highlighted text is wrapped in `<em>` and `</em>` tags.
+   */
+  pre_tags?: string[]
+  /**
+   * By default, only fields that contains a query match are highlighted.
+   * Set to `false` to highlight all fields.
+   * @server_default true
+   */
+  require_field_match?: boolean
+  /**
+   * Set to `styled` to use the built-in tag schema.
+   */
+  tags_schema?: HighlighterTagsSchema
+}
+
+export class Highlight extends HighlightBase {
+  encoder?: HighlighterEncoder
+  fields: Dictionary<Field, HighlightField>
 }
 
 export enum HighlighterEncoder {
-  default = 0,
-  html = 1
+  default,
+  html
 }
 
 export enum HighlighterFragmenter {
-  simple = 0,
-  span = 1
+  simple,
+  span
 }
 
 export enum HighlighterOrder {
-  score = 0
+  score
 }
 
 export enum HighlighterTagsSchema {
-  styled = 0
+  styled
 }
 
-/** @codegen_names builtin, custom */
-export type HighlighterType = BuiltinHighlighterType | string
-
-export enum BuiltinHighlighterType {
-  plain = 0,
-  /** @codegen_name fast_vector */
-  fvh = 1,
-  unified = 2
+/** @non_exhaustive */
+export enum HighlighterType {
+  /**
+   * The `plain` highlighter uses the standard Lucene highlighter
+   */
+  plain,
+  /**
+   * The fvh highlighter uses the Lucene Fast Vector highlighter.
+   * @codegen_name fast_vector
+   */
+  fvh,
+  /**
+   * The unified highlighter uses the Lucene Unified Highlighter.
+   */
+  unified
 }
 
-export class HighlightField {
-  boundary_chars?: string
-  boundary_max_scan?: integer
-  boundary_scanner?: BoundaryScanner
-  boundary_scanner_locale?: string
-  //TODO I THINK this field does not exist
-  field?: Field
-  force_source?: boolean
-  fragmenter?: HighlighterFragmenter
+export class HighlightField extends HighlightBase {
   fragment_offset?: integer
-  fragment_size?: integer
-  highlight_query?: QueryContainer
   matched_fields?: Fields
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: HighlighterOrder
-  phrase_limit?: integer
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: HighlighterTagsSchema
-  type?: HighlighterType
+  analyzer?: Analyzer
 }

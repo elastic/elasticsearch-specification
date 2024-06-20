@@ -17,21 +17,31 @@
  * under the License.
  */
 
-import { Status } from '@tasks/_types/TaskStatus'
-import { HttpHeaders, Id } from '@_types/common'
+import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class Info {
+export class TaskInfo {
   action: string
+  cancelled?: boolean
   cancellable: boolean
-  children?: Info[]
   description?: string
-  headers: HttpHeaders
+  headers: Dictionary<string, string>
   id: long
-  node: string
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: Status
+  node: NodeId
+  running_time?: Duration
+  running_time_in_nanos: DurationValue<UnitNanos>
+  start_time_in_millis: EpochTime<UnitMillis>
+  /** Task status information can vary wildly from task to task. */
+  status?: UserDefinedValue
   type: string
-  parent_task_id?: Id
+  parent_task_id?: TaskId
 }

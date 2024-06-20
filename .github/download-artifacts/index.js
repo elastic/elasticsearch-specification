@@ -29,7 +29,7 @@ const rimraf = require('rimraf')
 const fetch = require('node-fetch')
 const crossZip = require('cross-zip')
 
-const { mkdir, rename, readdir } = promises
+const { mkdir, rename, readdir, unlink } = promises
 const pipeline = promisify(stream.pipeline)
 const unzip = promisify(crossZip.unzip)
 const rm = promisify(rimraf)
@@ -46,7 +46,7 @@ async function downloadArtifacts (opts) {
 
   core.info('Checking out spec and test')
 
-  core.info('Resolving versions')
+  core.info('Resolving version')
   let resolved
   try {
     resolved = await resolve(opts.version || fromBranch(opts.branch), opts.hash)
@@ -85,10 +85,28 @@ async function downloadArtifacts (opts) {
     await rename(join(downloadedSpec, file), join(specFolder, file))
   }
 
+  /** Delete files that weren't in the zip file */
+  const specFiles = await readdir(specFolder)
+  for (const file of specFiles) {
+    if (!files.includes(file)) {
+      await unlink(join(specFolder, file))
+    }
+  }
+
   core.info('Done')
 }
 
 async function resolve (version, hash) {
+  if (version === 'latest') {
+    const response = await fetch('https://artifacts-api.elastic.co/v1/versions')
+    if (!response.ok) {
+      throw new Error(`unexpected response ${response.statusText}`)
+    }
+    const { versions } = await response.json()
+    version = versions.pop()
+  }
+
+  core.info(`Resolving version ${version}`)
   const response = await fetch(`https://artifacts-api.elastic.co/v1/versions/${version}`)
   if (!response.ok) {
     throw new Error(`unexpected response ${response.statusText}`)
@@ -139,10 +157,10 @@ async function resolve (version, hash) {
 
 function fromBranch (branch) {
   if (branch === 'main') {
-    return '8.1.0-SNAPSHOT'
+    return 'latest'
   } else if (branch === '7.x') {
     return '7.x-SNAPSHOT'
-  } else if (branch.startsWith('7.') && !isNaN(Number(branch.split('.')[1]))) {
+  } else if ((branch.startsWith('7.') || branch.startsWith('8.')) && !isNaN(Number(branch.split('.')[1]))) {
     return `${branch}-SNAPSHOT`
   } else {
     throw new Error(`Cannot derive version from branch '${branch}'`)

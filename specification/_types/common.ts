@@ -24,10 +24,23 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 
 /**
  * A field value.
- * @codegen_names long, double, string, boolean
+ * @codegen_names long, double, string, boolean, null, any
  */
-// FIXME: representation of geopoints and ip addresses?
-export type FieldValue = long | double | string | boolean
+// Note: the ending `UserDefinedValue` includes all other union members, but we keep them explicit so that
+// code generators can provide direct access to scalar values, which are the most common use case.
+export type FieldValue =
+  | long
+  | double
+  | string
+  | boolean
+  | null
+  | UserDefinedValue
+
+/**
+ * A scalar value.
+ * @codegen_names long, double, string, boolean, null
+ */
+export type ScalarValue = long | double | string | boolean | null
 
 export class UrlParameter {}
 
@@ -40,7 +53,7 @@ export type Uri = string
 // TODO clean up Id and Name variants and make sure all API's use one purposefully
 // Id includes numeric support, Name does not
 export type ScrollId = string
-export type ScrollIds = string // TODO: array of ScrollIds
+export type ScrollIds = ScrollId | ScrollId[]
 
 export type CategoryId = string
 export type ActionIds = string // TODO: check if this should be an array of ActionId
@@ -62,6 +75,8 @@ export type LongId = string
 export type IndexMetrics = string
 export type Metrics = string | string[]
 
+export type ClusterAlias = string
+
 export type Name = string
 export type Names = Name | Name[]
 
@@ -70,15 +85,15 @@ export type Service = string
 
 export type PipelineName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */
+/** @doc_id modules-node */
 export type NodeName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
+/** @doc_id data-stream-path-param  */
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
+/** @doc_id byte-units */
 export type ByteSize = long | string
 
 export type Metadata = Dictionary<string, UserDefinedValue>
@@ -89,10 +104,21 @@ export type VersionNumbers = VersionNumber[]
 export type VersionString = string
 export type VersionStrings = VersionString[]
 export enum VersionType {
-  internal = 0,
-  external = 1,
-  external_gte = 2,
-  force = 3
+  /**
+   * Use internal versioning that starts at 1 and increments with each update or delete.
+   */
+  internal,
+  /**
+   * Only index the document if the given version is strictly higher than the version of the stored document or if there is no existing document.
+   */
+  external,
+  /**
+   * Only index the document if the given version is equal or higher than the version of the stored document or if there is no existing document.
+   * Note: the external_gte version type is meant for special use cases and should be used with care.
+   * If used incorrectly, it can result in loss of data.
+   */
+  external_gte,
+  force
 }
 
 // TODO: replace all uuid's with this type
@@ -104,8 +130,9 @@ export type SequenceNumber = long
 export type PropertyName = string
 export type RelationName = string
 export type TaskId = string | integer
+/** @doc_id fuzziness */
 export type Fuzziness = string | integer
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-term-rewrite.html */
+/** @doc_id query-dsl-multi-term-rewrite */
 export type MultiTermQueryRewrite = string
 
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */
@@ -135,33 +162,33 @@ export class EmptyObject {}
 
 /**
  * The minimum number of terms that should match as integer, percentage or range
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html
+ * @doc_id query-dsl-minimum-should-match
  */
 export type MinimumShouldMatch = integer | string
 
 /**
  * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
  *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
+ * @doc_id byte-units
  */
 export enum Bytes {
-  /** @codegen_name bytes */
-  b,
-  /** @codegen_name kilo_bytes */
-  kb,
-  /** @codegen_name mega_bytes */
-  mb,
-  /** @codegen_name giga_bytes */
-  gb,
-  /** @codegen_name tera_bytes */
-  tb,
-  /** @codegen_name peta_bytes */
-  pb
+  bytes = 'b',
+  kilo_bytes = 'kb',
+  mega_bytes = 'mb',
+  giga_bytes = 'gb',
+  tera_bytes = 'tb',
+  peta_bytes = 'pb'
 }
 
 export enum Conflicts {
-  abort = 0,
-  proceed = 1
+  /**
+   * Stop reindexing if there are conflicts.
+   */
+  abort,
+  /**
+   * Continue reindexing even if there are conflicts.
+   */
+  proceed
 }
 
 export type Username = string
@@ -176,15 +203,15 @@ export class ElasticsearchUrlFormatter {}
  */
 export enum ExpandWildcard {
   /** Match any data stream or index, including hidden ones. */
-  all = 0,
+  all,
   /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
-  open = 1,
+  open,
   /** Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed. */
-  closed = 2,
+  closed,
   /** Match hidden data streams and hidden indices. Must be combined with open, closed, or both. */
-  hidden = 3,
+  hidden,
   /** Wildcard expressions are not accepted. */
-  none = 4
+  none
 }
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -198,39 +225,47 @@ export enum HealthStatus {
    * All shards are assigned.
    * @aliases GREEN
    */
-  green = 0,
+  green,
   /**
    * All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.
    * @aliases YELLOW
    */
-  yellow = 1,
+  yellow,
   /**
    * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
    * @aliases RED
    */
-  red = 2
+  red
 }
 
 export enum HttpMethod {
-  GET = 0,
-  POST = 1,
-  PUT = 2,
-  DELETE = 3,
-  HEAD = 4
+  GET,
+  POST,
+  PUT,
+  DELETE,
+  HEAD
 }
 
 export enum Level {
-  cluster = 0,
-  indices = 1,
-  shards = 2
+  cluster,
+  indices,
+  shards
 }
 
 export enum OpType {
-  index = 0,
-  create = 1
+  /**
+   * Overwrite any documents that already exist.
+   */
+  index,
+  /**
+   * Only index documents that do not already exist.
+   */
+  create
 }
 
-// Note: ES also accepts plain booleans for true and false. The TS generator implements this leniency rule.
+/**
+ * @es_quirk This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.
+ */
 export enum Refresh {
   true,
   false,
@@ -239,35 +274,47 @@ export enum Refresh {
 
 export enum SearchType {
   /** Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate. */
-  query_then_fetch = 0,
+  query_then_fetch,
   /** Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate. */
-  dfs_query_then_fetch = 1
+  dfs_query_then_fetch
 }
 
 export enum SuggestMode {
-  missing = 0,
-  popular = 1,
-  always = 2
+  /**
+   * Only generate suggestions for terms that are not in the shard.
+   */
+  missing,
+  /**
+   * Only suggest terms that occur in more docs on the shard than the original term.
+   */
+  popular,
+  /**
+   * Suggest any matching suggestions based on terms in the suggest text.
+   */
+  always
 }
 
 export enum ThreadType {
-  cpu = 0,
-  wait = 1,
-  block = 2
+  cpu,
+  wait,
+  block,
+  gpu,
+  mem
 }
 
-// TODO: @see WaitForActiveShards & https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
+/** @doc_id cluster-health */
 export enum WaitForActiveShardOptions {
-  'all' = 0
+  'all',
+  'index-setting'
 }
 
 export enum WaitForEvents {
-  immediate = 0,
-  urgent = 1,
-  high = 2,
-  normal = 3,
-  low = 4,
-  languid = 5
+  immediate,
+  urgent,
+  high,
+  normal,
+  low,
+  languid
 }
 
 // Additional properties are the meta fields
@@ -279,7 +326,7 @@ export class InlineGet<TDocument>
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
-  _source: TDocument
+  _source?: TDocument
 }
 
 /**
@@ -310,3 +357,30 @@ export class IndicesOptions {
    */
   ignore_throttled?: boolean
 }
+
+/**
+ * Slices configuration used to parallelize a process.
+ *
+ * @codegen_names value, computed
+ */
+export type Slices = integer | SlicesCalculation
+
+/**
+ * Named computations to calculate the number of slices
+ */
+export enum SlicesCalculation {
+  /**
+   * Let Elasticsearch choose a reasonable number for most data streams and indices.
+   */
+  auto
+}
+
+export enum ClusterInfoTarget {
+  _all,
+  http,
+  ingest,
+  thread_pool,
+  script
+}
+
+export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]

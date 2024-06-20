@@ -19,26 +19,36 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
+import { Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { double, integer, long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
-import { Time, Timestamp } from '@_types/Time'
+import {
+  Duration,
+  DurationValue,
+  UnitMillis,
+  UnitFloatMillis
+} from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
 
 export class Datafeed {
   /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * The security privileges that the datafeed uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the datafeed, this property is omitted.
+   */
+  authorization?: DatafeedAuthorization
   chunking_config?: ChunkingConfig
   datafeed_id: Id
-  frequency?: Timestamp
+  frequency?: Duration
   indices: string[]
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
   query: QueryContainer
-  query_delay?: Timestamp
+  query_delay?: Duration
   script_fields?: Dictionary<string, ScriptField>
   scroll_size?: integer
   delayed_data_check_config: DelayedDataCheckConfig
@@ -67,12 +77,12 @@ export class DatafeedConfig {
   /**
    * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
-  frequency?: Timestamp
-  indexes?: string[]
+  frequency?: Duration
   /**
    * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
+   * @aliases indexes
    */
-  indices: string[]
+  indices?: Indices
   /**
    * Specifies index expansion options that are used during search.
    */
@@ -85,11 +95,11 @@ export class DatafeedConfig {
   /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
    */
-  query: QueryContainer
+  query?: QueryContainer
   /**
    * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.
    */
-  query_delay?: Timestamp
+  query_delay?: Duration
   /**
    * Specifies runtime fields for the datafeed search.
    */
@@ -111,7 +121,7 @@ export class DelayedDataCheckConfig {
    * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
    * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
-  check_window?: Time // default: null
+  check_window?: Duration // default: null
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */
@@ -120,33 +130,109 @@ export class DelayedDataCheckConfig {
 
 // Identical to WatcherState, but kept separate as they're different enums in ES
 export enum DatafeedState {
-  started = 0,
-  stopped = 1,
-  starting = 2,
-  stopping = 3
+  started,
+  stopped,
+  starting,
+  stopping
 }
 
 export class DatafeedStats {
-  assignment_explanation: string
+  /**
+   * For started datafeeds only, contains messages relating to the selection of a node.
+   */
+  assignment_explanation?: string
+  /**
+   * A numerical character string that uniquely identifies the datafeed.
+   * This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores.
+   * It must start and end with alphanumeric characters.
+   */
   datafeed_id: Id
-  node: DiscoveryNode
+  /**
+   * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
+   * @availability stack
+   */
+  node?: DiscoveryNode
+  /**
+   * The status of the datafeed, which can be one of the following values: `starting`, `started`, `stopping`, `stopped`.
+   */
   state: DatafeedState
+  /**
+   * An object that provides statistical information about timing aspect of this datafeed.
+   */
   timing_stats: DatafeedTimingStats
+  /**
+   * An object containing the running state for this datafeed.
+   * It is only provided if the datafeed is started.
+   */
+  running_state?: DatafeedRunningState
 }
 
 export class DatafeedTimingStats {
+  /**
+   * The number of buckets processed.
+   */
   bucket_count: long
-  exponential_average_search_time_per_hour_ms: double
+  /**
+   * The exponential average search time per hour, in milliseconds.
+   */
+  exponential_average_search_time_per_hour_ms: DurationValue<UnitFloatMillis>
+  /**
+   * Identifier for the anomaly detection job.
+   */
   job_id: Id
+  /**
+   * The number of searches run by the datafeed.
+   */
   search_count: long
-  total_search_time_ms: double
-  average_search_time_per_bucket_ms: number
+  /**
+   * The total time the datafeed spent searching, in milliseconds.
+   */
+  total_search_time_ms: DurationValue<UnitFloatMillis>
+  /**
+   * The average search time per bucket, in milliseconds.
+   */
+  average_search_time_per_bucket_ms?: DurationValue<UnitFloatMillis>
+}
+
+export class DatafeedRunningState {
+  /**
+   * Indicates if the datafeed is "real-time"; meaning that the datafeed has no configured `end` time.
+   */
+  real_time_configured: boolean
+  /**
+   * Indicates whether the datafeed has finished running on the available past data.
+   * For datafeeds without a configured `end` time, this means that the datafeed is now running on "real-time" data.
+   */
+  real_time_running: boolean
+  /**
+   * Provides the latest time interval the datafeed has searched.
+   */
+  search_interval?: RunningStateSearchInterval
+}
+
+export class RunningStateSearchInterval {
+  /**
+   * The end time.
+   */
+  end?: Duration
+  /**
+   * The end time as an epoch in milliseconds.
+   */
+  end_ms: DurationValue<UnitMillis>
+  /**
+   * The start time.
+   */
+  start?: Duration
+  /**
+   * The start time as an epoch in milliseconds.
+   */
+  start_ms: DurationValue<UnitMillis>
 }
 
 export enum ChunkingMode {
-  auto = 0,
-  manual = 1,
-  off = 2
+  auto,
+  manual,
+  off
 }
 
 export class ChunkingConfig {
@@ -159,6 +245,7 @@ export class ChunkingConfig {
   mode: ChunkingMode
   /**
    * The time span that each search will be querying. This setting is applicable only when the `mode` is set to `manual`.
-   * @server_default 3h */
-  time_span?: Time
+   * @server_default 3h
+   */
+  time_span?: Duration
 }

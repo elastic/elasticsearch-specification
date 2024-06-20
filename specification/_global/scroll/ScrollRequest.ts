@@ -19,12 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { ScrollId } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name scroll
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -34,10 +34,10 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Period to retain the search context for scrolling.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+     * @doc_id scroll-search-results
      * @server_default 1d
      */
-    scroll?: Time
+    scroll?: Duration
     /** @deprecated 7.0.0 */
     scroll_id?: ScrollId
     /**
@@ -49,10 +49,10 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Period to retain the search context for scrolling.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+     * @doc_id scroll-search-results
      * @server_default 1d
      */
-    scroll?: Time
+    scroll?: Duration
     /** Scroll ID of the search. */
     scroll_id: ScrollId
   }

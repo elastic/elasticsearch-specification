@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName } from './common'
+import { Id, IndexName, NodeId } from './common'
 import { integer, long } from './Numeric'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AdditionalProperties } from '@spec_utils/behaviors'
@@ -36,7 +36,7 @@ export class ErrorCause
   /**
    * A human-readable explanation of the error, in english
    */
-  reason: string
+  reason?: string
   /**
    * The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.
    */
@@ -61,4 +61,11 @@ export class BulkIndexByScrollFailure {
   index: IndexName
   status: integer
   type: string
+}
+
+export class TaskFailure {
+  task_id: long
+  node_id: NodeId
+  status: string
+  reason: ErrorCause
 }

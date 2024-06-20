@@ -23,8 +23,7 @@ import { StepKey } from './types'
 
 /**
  * @rest_spec_name ilm.move_to_step
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

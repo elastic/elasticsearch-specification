@@ -1,12 +1,23 @@
-# Elasticsearch Specification
+# Elasticsearch API Specification
 
-This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside [`/specification`](./specification).
-The [`/compiler`](./compiler) folder contains a TypeScript program that compiles the entire definition
-in a JSON representation that can be used for generating language clients.
+The **Elasticsearch API Specification** provides the contract for communication between client and server components within the Elasticsearch stack.
+With almost 500 API endpoints and around 3000 data types across the entire API surface, this project is a vitally important part of sustaining our engineering efforts at scale.
 
-This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/model/metamodel.ts)
+The repository has the following structure:
+
+| Path | Description |
+| -------- | ------- |
+| [`api-design-guidelines/`](api-design-guidelines/) | Knowledge base of best practices for API design. |
+| [`compiler/`](compiler/) | TypeScript compiler for specification definition to JSON. |
+| [`compiler-rs/`](compiler-rs/) | |
+| [`docs/`](docs/) | |
+| [`output/`](output/) | |
+| [`specification/`](specification/) | Elasticsearch request/response definitions in TypeScript. |
+| [`typescript-generator/`](typescript-generator/) | |
+
+This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/src/model/metamodel.ts)
 that also explains the various properties and their values.
+
 
 ## Prepare the environment
 
@@ -16,13 +27,14 @@ to install and configure Node.js in your development environment.
 You can install Node.js with [`nvm`](https://github.com/nvm-sh/nvm):
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
-Once the installation is completed, install Node.js v14:
+Once the installation is completed, install Node.js with `nvm`:
 
 ```sh
-nvm install 14
+# this command will install the version configured in .nvmrc
+nvm install
 ```
 
 ## How to generate the JSON representation
@@ -32,10 +44,10 @@ nvm install 14
 $ git clone https://github.com/elastic/elasticsearch-specification.git
 
 # install the dependencies
-$ make setup-env
+$ make setup
 
 # generate the JSON representation
-$ make spec-generate
+$ make generate
 
 # the generated output can be found in ./output/schema/schema.json
 $ cat output/schema/schema.json
@@ -46,27 +58,24 @@ $ cat output/schema/schema.json
 ```
 Usage:
   make <target>
-  validation-all   Run Validation on all Endpoints
-  validation-all-fresh  Run Validation on all Endpoints with a fresh setup
-  validation-api   Validate Endpoint with param: api=<api-name>
-  validation-api-request  Validate request of Endpoint with param: api=<api-name>
-  validation-api-response  Validate response of Endpoint with param: api=<api-name>
+  validate         Validate a given endpoint request or response
+  validate-no-cache  Validate a given endpoint request or response without local cache
+  generate         Generate the output spec
+  compile          Compile the specification
   license-check    Add the license headers to the files
   license-add      Add the license headers to the files
   spec-format-check  Check specification formatting rules
   spec-format-fix  Format/fix the specification according to the formatting rules
-  spec-generate    Generate the output spec
-  spec-compile     Compile the specification
-  spec-imports-fix  Fix the TypeScript imports
   spec-dangling-types  Generate the dangling types rreport
-  setup-env        Install dependencies for contrib target
+  setup            Install dependencies for contrib target
+  clean-dep        Clean npm dependencies
   contrib          Pre contribution target
   help             Display help
 ```
 
 ### Structure of the JSON representation
 
-The JSON representation is [formally defined as TypeScript definitions](./compiler/model/metamodel.ts).
+The JSON representation is [formally defined as TypeScript definitions](./compiler/src/model/metamodel.ts).
 Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
@@ -165,7 +174,7 @@ the `request` and `response` value will be `null`.
 ## How to validate the specification
 
 The specification is validated daily by the [client-flight-recorder](https://github.com/elastic/clients-flight-recorder) project.
-The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/dev/recordings/types-validation/types-validation.md).
+The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/main/recordings/types-validation/types-validation.md).
 
 ### Validate the specification in your machine
 
@@ -189,39 +198,20 @@ git clone https://github.com/elastic/elasticsearch-specification.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
 cd elasticsearch-specification
-STACK_VERSION=... ./run-validations.sh
+# this will validate the xpack.info request type against the 8.1.0 stack version
+make validate api=xpack.info type=request stack-version=8.1.0-SNAPSHOT
+
+# this will validate the xpack.info request and response types against the 8.1.0 stack version
+make validate api=xpack.info stack-version=8.1.0-SNAPSHOT
 ```
 
 The last command above will install all the dependencies and run, download
 the test recordings and finally validate the specification.
-If you need to download the recordings again, run `STACK_VERSION=... PULL_LATEST=true ./run-validations.sh`.
-
-You can validate a specific API with the `--api` option, same goes for `--request` and `--response`.
-For example, the following command validates the index request api:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api index --request
-```
-The following command validates the index response api:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api index --response
-```
-The following command validates the index request and response api:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api index --request --response
-```
+If you need to download the recordings again, run `make validate-no-cache api=xpack.info type=request stack-version=8.1.0-SNAPSHOT`.
 
 Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.
 Finally open a pull request with your changes.
-
-Namespaced APIs can be validated in the same way, for example:
-
-```js
-STACK_VERSION=... ./run-validations.sh --api cat.health --request
-```
 
 ## Documentation
 
@@ -231,11 +221,16 @@ STACK_VERSION=... ./run-validations.sh --api cat.health --request
 - [Documenting the API specification](./docs/doc-comments-guide.md)
 - [Known issues](./docs/known-issues.md)
 - [Modeling Guide](./docs/modeling-guide.md)
+- [Schema structure](./docs/schema-structure.md)
 - [Specification structure](./docs/specification-structure.md)
 - [Style Guide](./docs/style-guide.md)
 - [Fixing a defintion, a complete story](./docs/validation-example.md)
 
 ## FAQ
+
+### I want to see a report of how types and namespaces are being used.
+
+You can find a report of the `main` branch [here](https://elastic.github.io/elasticsearch-specification/report.html).
 
 ### A specific property is not always present, how do I define it?
 
@@ -269,12 +264,7 @@ You should copy from there the updated endpoint defintion and change it here.
 
 ### The validation in broken on GitHub but works on my machine!
 
-Very likely the recordings on your machine are stale, you can download
-the latest version with:
-
-```sh
-STACK_VERSION=... PULL_LATEST=true ./run-validations.sh
-```
+Very likely the recordings on your machine are stale, rerun the validation with the `validate-no-cache` make target.
 
 You should pull the latest change from the `client-flight-recorder` as well.
 
@@ -285,8 +275,8 @@ git pull
 
 ### Where do I find the generated test?
 
-Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
-You can find them in `clients-flight-recorder/scripts/types-validator/workbench`.
+Everytime you run `make validate` script, a series of test will be generated and dumped on disk.
+You can find the failed tests in `clients-flight-recorder/scripts/types-validator/workbench`.
 The content of this folder is a series of recorded responses from Elasticsearch wrapped inside an helper
 that verifies if the type definiton is correct.
 
@@ -308,19 +298,6 @@ If you are using MacOS, run the following command to fix the issue:
 ```sh
 brew install coreutils
 ```
-
-### The `recordings-dev` folder contains a zip file and not the `tmp-*` folders
-
-Very likely your system does not have the `zip` command installed.
-```sh
-# on mac
-brew install zip
-
-# on linux
-apt-get install -y zip
-```
-
-Then remove the content of `recordings-dev/elasticsearch/*` and run `PULL_LATEST=true ./run-validations.sh` again.
 
 ### I need to modify che compiler, help!
 

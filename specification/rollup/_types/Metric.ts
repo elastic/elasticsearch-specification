@@ -20,14 +20,16 @@
 import { Field } from '@_types/common'
 
 export enum Metric {
-  min = 0,
-  max = 1,
-  sum = 2,
-  avg = 3,
-  value_count = 4
+  min,
+  max,
+  sum,
+  avg,
+  value_count
 }
 
 export class FieldMetric {
+  /** The field to collect metrics for. This must be a numeric of some kind. */
   field: Field
+  /** An array of metrics to collect for the field. At least one metric must be configured. */
   metrics: Metric[]
 }

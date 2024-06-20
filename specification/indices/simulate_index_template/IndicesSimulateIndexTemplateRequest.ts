@@ -17,55 +17,33 @@
  * under the License.
  */
 
-import { DataStream } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
-import {
-  IndexName,
-  Indices,
-  Metadata,
-  Name,
-  VersionNumber
-} from '@_types/common'
-import { Time } from '@_types/Time'
-import { integer } from '@_types/Numeric'
-import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTemplateRequest'
+import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ *
  * @rest_spec_name indices.simulate_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Index or template name to simulate */
+    /** Name of the index to simulate */
     name: Name
   }
   query_parameters: {
     /**
-     * If `true`, the template passed in the body is only used if no existing
-     * templates match the same index patterns. If `false`, the simulation uses
-     * the template with the highest priority. Note that the template is not
-     * permanently added or updated in either case; it is only used for the
-     * simulation.
-     * @server_default false
-     * */
-    create?: boolean
-    /**
-     * Period to wait for a connection to the master node. If no response is received
-     * before the timeout expires, the request fails and returns an error.
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
-  }
-  body: {
-    allow_auto_create?: boolean
-    index_patterns?: Indices
-    composed_of?: Name[]
-    template?: IndexTemplateMapping
-    data_stream?: DataStream
-    priority?: integer
-    version?: VersionNumber
-    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
-    _meta?: Metadata
+    master_timeout?: Duration
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    include_defaults?: boolean
   }
 }

@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Upgrades an anomaly detection model snapshot to the latest major version.
@@ -32,8 +32,8 @@ import { Time } from '@_types/Time'
  * upgraded snapshot cannot be the current snapshot of the anomaly detection
  * job.
  * @rest_spec_name ml.upgrade_job_snapshot
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -58,6 +58,6 @@ export interface Request extends RequestBase {
      * Controls the time to wait for the request to complete.
      * @server_default 30m
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

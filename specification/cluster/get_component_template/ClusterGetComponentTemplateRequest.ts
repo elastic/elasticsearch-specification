@@ -19,23 +19,47 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Retrieves information about component templates.
  * @rest_spec_name cluster.get_component_template
- * @since 7.8.0
- * @stability stable
+ * @availability stack since=7.8.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_index_templates
+ * @doc_id indices-component-template
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of component template names used to limit the request.
+     * Wildcard (`*`) expressions are supported.
+     */
     name?: Name
   }
   query_parameters: {
-    /** @server_default false */
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
-    /** @server_default false */
+    /**
+     * @server_default false
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    include_defaults?: boolean
+    /**
+     * If `true`, the request retrieves information from the local node only.
+     * If `false`, information is retrieved from the master node.
+     * @server_default false
+     */
     local?: boolean
-    /** @server_default 30s */
-    master_timeout?: Time
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

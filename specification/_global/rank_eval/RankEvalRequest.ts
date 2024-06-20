@@ -24,8 +24,8 @@ import { RankEvalMetric, RankEvalRequestItem } from './types'
 /**
  * Enables you to evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
- * @since 6.2.0
- * @stability stable
+ * @availability stack since=6.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  */
 export interface Request extends RequestBase {
@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.
      * To target all data streams and indices in a cluster, omit this parameter or use `_all` or `*`.
      */
-    index: Indices
+    index?: Indices
   }
   query_parameters: {
     /**

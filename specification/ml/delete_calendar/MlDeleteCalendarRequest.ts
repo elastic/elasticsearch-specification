@@ -23,9 +23,10 @@ import { Id } from '@_types/common'
 /**
  * Removes all scheduled events from a calendar, then deletes it.
  * @rest_spec_name ml.delete_calendar
- * @since 6.2.0
- * @stability stable
+ * @availability stack since=6.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_id ml-delete-calendar
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -18,12 +18,10 @@
  */
 
 import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { EqlHits } from './EqlHits'
+import { DurationValue, UnitMillis } from '@_types/Time'
 
-/**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html#eql-search-api-response-body
- */
 export class EqlSearchResponseBase<TEvent> {
   /**
    *  Identifier for the search.
@@ -40,7 +38,7 @@ export class EqlSearchResponseBase<TEvent> {
   /**
    * Milliseconds it took Elasticsearch to execute the request.
    */
-  took?: integer
+  took?: DurationValue<UnitMillis>
   /**
    * If true, the request timed out before completion.
    */

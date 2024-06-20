@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Name, Id } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { long, double, integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class AllocationDecision {
   decider: string
@@ -30,10 +30,10 @@ export class AllocationDecision {
 }
 
 export enum AllocationExplainDecision {
-  NO = 0,
-  YES = 1,
-  THROTTLE = 2,
-  ALWAYS = 3
+  NO,
+  YES,
+  THROTTLE,
+  ALWAYS
 }
 
 export class AllocationStore {
@@ -84,14 +84,14 @@ export class CurrentNode {
 }
 
 export enum Decision {
-  yes = 0,
-  no = 1,
-  worse_balance = 2,
-  throttled = 3,
-  awaiting_info = 4,
-  allocation_delayed = 5,
-  no_valid_shard_copy = 6,
-  no_attempt = 7
+  yes,
+  no,
+  worse_balance,
+  throttled,
+  awaiting_info,
+  allocation_delayed,
+  no_valid_shard_copy,
+  no_attempt
 }
 
 export class NodeAllocationExplanation {
@@ -106,16 +106,16 @@ export class NodeAllocationExplanation {
 }
 
 export enum StoreCopy {
-  NONE = 0,
-  AVAILABLE = 1,
-  CORRUPT = 2,
-  IO_ERROR = 3,
-  STALE = 4,
-  UNKNOWN = 5
+  NONE,
+  AVAILABLE,
+  CORRUPT,
+  IO_ERROR,
+  STALE,
+  UNKNOWN
 }
 
 export class UnassignedInformation {
-  at: DateString
+  at: DateTime
   last_allocation_status?: string
   reason: UnassignedInformationReason
   details?: string
@@ -125,22 +125,22 @@ export class UnassignedInformation {
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html#cat-shards-query-params
+ * @doc_id cat-shards
  */
 export enum UnassignedInformationReason {
-  INDEX_CREATED = 0,
-  CLUSTER_RECOVERED = 1,
-  INDEX_REOPENED = 2,
-  DANGLING_INDEX_IMPORTED = 3,
-  NEW_INDEX_RESTORED = 4,
-  EXISTING_INDEX_RESTORED = 5,
-  REPLICA_ADDED = 6,
-  ALLOCATION_FAILED = 7,
-  NODE_LEFT = 8,
-  REROUTE_CANCELLED = 9,
-  REINITIALIZED = 10,
-  REALLOCATED_REPLICA = 11,
-  PRIMARY_FAILED = 12,
-  FORCED_EMPTY_PRIMARY = 13,
-  MANUAL_ALLOCATION = 14
+  INDEX_CREATED,
+  CLUSTER_RECOVERED,
+  INDEX_REOPENED,
+  DANGLING_INDEX_IMPORTED,
+  NEW_INDEX_RESTORED,
+  EXISTING_INDEX_RESTORED,
+  REPLICA_ADDED,
+  ALLOCATION_FAILED,
+  NODE_LEFT,
+  REROUTE_CANCELLED,
+  REINITIALIZED,
+  REALLOCATED_REPLICA,
+  PRIMARY_FAILED,
+  FORCED_EMPTY_PRIMARY,
+  MANUAL_ALLOCATION
 }

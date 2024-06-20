@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Request as SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
-  ExpandWildcards,
+  Id,
   IndexName,
   IndicesOptions,
   Password,
@@ -31,19 +30,18 @@ import {
 import { Host } from '@_types/Networking'
 import { uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class ChainInput {
-  inputs: InputContainer[]
+  inputs: Array<SingleKeyDictionary<string, InputContainer>>
 }
 
 export enum ConnectionScheme {
-  http = 0,
-  https = 1
+  http,
+  https
 }
 
 export class HttpInput {
-  http?: HttpInput
   extract?: string[]
   request?: HttpInputRequestDefinition
   response_content_type?: ResponseContentType
@@ -59,11 +57,11 @@ export class HttpInputBasicAuthentication {
 }
 
 export enum HttpInputMethod {
-  head = 0,
-  get = 1,
-  post = 2,
-  put = 3,
-  delete = 4
+  head,
+  get,
+  post,
+  put,
+  delete
 }
 
 export class HttpInputProxy {
@@ -74,7 +72,7 @@ export class HttpInputProxy {
 export class HttpInputRequestDefinition {
   auth?: HttpInputAuthentication
   body?: string
-  connection_timeout?: Time
+  connection_timeout?: Duration
   headers?: Dictionary<string, string>
   host?: Host
   method?: HttpInputMethod
@@ -82,7 +80,7 @@ export class HttpInputRequestDefinition {
   path?: string
   port?: uint
   proxy?: HttpInputProxy
-  read_timeout?: Time
+  read_timeout?: Duration
   scheme?: ConnectionScheme
   url?: string
 }
@@ -100,21 +98,21 @@ export class InputContainer {
 }
 
 export enum InputType {
-  http = 0,
-  search = 1,
-  simple = 2
+  http,
+  search,
+  simple
 }
 
 export enum ResponseContentType {
-  json = 0,
-  yaml = 1,
-  text = 2
+  json,
+  yaml,
+  text
 }
 
 export class SearchInput {
   extract?: string[]
   request: SearchInputRequestDefinition
-  timeout?: Time
+  timeout?: Duration
 }
 
 export class SearchInputRequestDefinition {
@@ -122,8 +120,28 @@ export class SearchInputRequestDefinition {
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
-  template?: SearchTemplateRequest
+  template?: SearchTemplateRequestBody
   rest_total_hits_as_int?: boolean
+}
+
+// Should be kept in sync with _global/search_template/SearchTemplateRequest.body
+export class SearchTemplateRequestBody {
+  /** @server_default false */
+  explain?: boolean
+  /**
+   * ID of the search template to use. If no source is specified,
+   * this parameter is required.
+   */
+  id?: Id
+  params?: Dictionary<string, UserDefinedValue>
+  /** @server_default false */
+  profile?: boolean
+  /**
+   * An inline search template. Supports the same parameters as the search API's
+   * request body. Also supports Mustache variables. If no id is specified, this
+   * parameter is required.
+   */
+  source?: string
 }
 
 export class SearchInputRequestBody {

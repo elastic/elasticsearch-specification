@@ -18,22 +18,37 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Deletes component templates.
+ * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  * @rest_spec_name cluster.delete_component_template
- * @since 7.8.0
- * @stability stable
+ * @availability stack since=7.8.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id indices-component-template
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
   path_parts: {
-    name: Name
+    /**
+     * Comma-separated list or wildcard expression of component template names used to limit the request.
+     */
+    name: Names
   }
   query_parameters: {
-    /** @server_default 30s */
-    master_timeout?: Time
-    /** @server_default 30s */
-    timeout?: Time
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

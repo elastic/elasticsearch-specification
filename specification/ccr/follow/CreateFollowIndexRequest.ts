@@ -20,12 +20,12 @@
 import { RequestBase } from '@_types/Base'
 import { IndexName, WaitForActiveShards } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name ccr.follow
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
+ * @doc_id ccr-put-follow
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -40,12 +40,12 @@ export interface Request extends RequestBase {
     max_outstanding_write_requests?: long
     max_read_request_operation_count?: long
     max_read_request_size?: string
-    max_retry_delay?: Time
+    max_retry_delay?: Duration
     max_write_buffer_count?: long
     max_write_buffer_size?: string
     max_write_request_operation_count?: long
     max_write_request_size?: string
-    read_poll_timeout?: Time
+    read_poll_timeout?: Duration
     remote_cluster?: string
   }
 }

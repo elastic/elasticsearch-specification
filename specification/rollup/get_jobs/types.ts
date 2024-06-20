@@ -23,7 +23,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class RollupJob {
   config: RollupJobConfiguration
@@ -39,21 +39,21 @@ export class RollupJobConfiguration {
   metrics: FieldMetric[]
   page_size: long
   rollup_index: IndexName
-  timeout: Time
+  timeout: Duration
 }
 
 export class RollupJobStats {
   documents_processed: long
   index_failures: long
-  index_time_in_ms: long
+  index_time_in_ms: DurationValue<UnitMillis>
   index_total: long
   pages_processed: long
   rollups_indexed: long
   search_failures: long
-  search_time_in_ms: long
+  search_time_in_ms: DurationValue<UnitMillis>
   search_total: long
   trigger_count: long
-  processing_time_in_ms: long
+  processing_time_in_ms: DurationValue<UnitMillis>
   processing_total: long
 }
 
@@ -64,9 +64,9 @@ export class RollupJobStatus {
 }
 
 export enum IndexingJobState {
-  started = 0,
-  indexing = 1,
-  stopping = 2,
-  stopped = 3,
-  aborting = 4
+  started,
+  indexing,
+  stopping,
+  stopped,
+  aborting
 }

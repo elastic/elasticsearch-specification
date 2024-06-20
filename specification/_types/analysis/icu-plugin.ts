@@ -23,7 +23,7 @@ import { TokenFilterBase } from './token_filters'
 
 export class IcuTransformTokenFilter extends TokenFilterBase {
   type: 'icu_transform'
-  dir: IcuTransformDirection
+  dir?: IcuTransformDirection
   id: string
 }
 
@@ -50,17 +50,18 @@ export class IcuFoldingTokenFilter extends TokenFilterBase {
 
 export class IcuCollationTokenFilter extends TokenFilterBase {
   type: 'icu_collation'
-  alternate: IcuCollationAlternate
-  caseFirst: IcuCollationCaseFirst
-  caseLevel: boolean
-  country: string
-  decomposition: IcuCollationDecomposition
-  hiraganaQuaternaryMode: boolean
-  language: string
-  numeric: boolean
-  strength: IcuCollationStrength
-  variableTop?: string
-  variant: string
+  alternate?: IcuCollationAlternate
+  case_first?: IcuCollationCaseFirst
+  case_level?: boolean
+  country?: string
+  decomposition?: IcuCollationDecomposition
+  hiragana_quaternary_mode?: boolean
+  language?: string
+  numeric?: boolean
+  rules?: string
+  strength?: IcuCollationStrength
+  variable_top?: string
+  variant?: string
 }
 
 export class IcuAnalyzer {
@@ -70,40 +71,40 @@ export class IcuAnalyzer {
 }
 
 export enum IcuTransformDirection {
-  forward = 0,
-  reverse = 1
+  forward,
+  reverse
 }
 
 export enum IcuNormalizationMode {
-  decompose = 0,
-  compose = 1
+  decompose,
+  compose
 }
 
 export enum IcuNormalizationType {
-  nfc = 0,
-  nfkc = 1,
-  nfkc_cf = 2
+  nfc,
+  nfkc,
+  nfkc_cf
 }
 
 export enum IcuCollationAlternate {
-  shifted = 0,
-  'non-ignorable' = 1
+  shifted,
+  'non-ignorable'
 }
 
 export enum IcuCollationCaseFirst {
-  lower = 0,
-  upper = 1
+  lower,
+  upper
 }
 
 export enum IcuCollationDecomposition {
-  no = 0,
-  identical = 1
+  no,
+  identical
 }
 
 export enum IcuCollationStrength {
-  primary = 0,
-  secondary = 1,
-  tertiary = 2,
-  quaternary = 3,
-  identical = 4
+  primary,
+  secondary,
+  tertiary,
+  quaternary,
+  identical
 }

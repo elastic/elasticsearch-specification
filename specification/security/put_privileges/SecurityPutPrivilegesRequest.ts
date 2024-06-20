@@ -24,14 +24,14 @@ import { Actions } from './types'
 
 /**
  * @rest_spec_name security.put_privileges
- * @since 6.4.0
+ * @availability stack since=6.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  *
- * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters: {
     refresh?: Refresh
   }
   /** @codegen_name privileges */
-  body?: Dictionary<string, Dictionary<string, Actions>>
+  body: Dictionary<string, Dictionary<string, Actions>>
 }

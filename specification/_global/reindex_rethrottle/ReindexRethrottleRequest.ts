@@ -19,18 +19,25 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { float } from '@_types/Numeric'
 
 /**
+ * Copies documents from a source to a destination.
  * @rest_spec_name reindex_rethrottle
- * @since 2.4.0
- * @stability stable
+ * @availability stack since=2.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the task.
+     */
     task_id: Id
   }
   query_parameters: {
-    requests_per_second?: long
+    /**
+     * The throttle for this request in sub-requests per second.
+     */
+    requests_per_second?: float
   }
 }

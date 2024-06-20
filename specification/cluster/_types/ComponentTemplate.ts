@@ -22,6 +22,10 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import {
+  DataStreamLifecycle,
+  DataStreamLifecycleWithRollover
+} from '@indices/_types/DataStreamLifecycle'
 
 export class ComponentTemplate {
   name: Name
@@ -31,15 +35,20 @@ export class ComponentTemplate {
 export class ComponentTemplateNode {
   template: ComponentTemplateSummary
   version?: VersionNumber
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
 }
 
 export class ComponentTemplateSummary {
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
   version?: VersionNumber
-  settings: Dictionary<IndexName, IndexSettings>
+  settings?: Dictionary<IndexName, IndexSettings>
   mappings?: TypeMapping
   aliases?: Dictionary<string, AliasDefinition>
+  /**
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  lifecycle?: DataStreamLifecycleWithRollover
 }

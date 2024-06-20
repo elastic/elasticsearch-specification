@@ -29,7 +29,7 @@ import { Field, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class Destination {
   /**
@@ -82,7 +82,7 @@ export class PivotGroupByContainer {
  */
 export class RetentionPolicyContainer {
   /** Specifies that the transform uses a time field to set the retention policy. */
-  time: RetentionPolicy
+  time?: RetentionPolicy
 }
 
 export class RetentionPolicy {
@@ -92,7 +92,7 @@ export class RetentionPolicy {
    * Specifies the maximum age of a document in the destination index. Documents that are older than the configured
    * value are removed from the destination index.
    */
-  max_age: Time
+  max_age: Duration
 }
 
 /**
@@ -114,6 +114,11 @@ export class Settings {
    */
   dates_as_epoch_millis?: boolean
   /**
+   * Specifies whether the transform should deduce the destination index mappings from the transform configuration.
+   * @server_default true
+   */
+  deduce_mappings?: boolean
+  /**
    * Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a
    * wait time between search requests. The default value is null, which disables throttling.
    */
@@ -125,6 +130,17 @@ export class Settings {
    * @server_default 500
    */
   max_page_search_size?: integer
+
+  /**
+   * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case
+   * of an error which means the transform never fails. Setting the number of retries other than infinite fails in
+   * validation.
+   *
+   * @server_default false
+   * @availability stack since=8.5.0
+   * @availability serverless
+   */
+  unattended?: boolean
 }
 
 export class Source {
@@ -142,7 +158,8 @@ export class Source {
   /**
    * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data
    * nodes, including remote nodes, must be 7.12 or later.
-   * @since 7.12.0
+   * @availability stack since=7.12.0
+   * @availability serverless
    */
   runtime_mappings?: RuntimeFields
 }
@@ -154,7 +171,7 @@ export class Sync {}
  */
 export class SyncContainer {
   /** Specifies that the transform uses a time field to synchronize the source and destination indices. */
-  time: TimeSync
+  time?: TimeSync
 }
 
 export class TimeSync {
@@ -162,7 +179,7 @@ export class TimeSync {
    * The time delay between the current time and the latest input data time.
    * @server_default 60s
    */
-  delay?: Time
+  delay?: Duration
   /**
    * The date field that is used to identify new documents in the source. In general, it’s a good idea to use a field
    * that contains the ingest timestamp. If you use a different field, you might need to set the delay such that it

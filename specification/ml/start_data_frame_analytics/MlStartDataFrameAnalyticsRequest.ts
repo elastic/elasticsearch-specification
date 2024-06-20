@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Starts a data frame analytics job.
@@ -35,8 +35,8 @@ import { Time } from '@_types/Time'
  * If the destination index exists, it is used as is. You can therefore set up
  * the destination index in advance with custom settings and mappings.
  * @rest_spec_name ml.start_data_frame_analytics
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
  */
@@ -55,6 +55,6 @@ export interface Request extends RequestBase {
      * starts.
      * @server_default 20s
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

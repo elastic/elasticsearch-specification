@@ -19,10 +19,10 @@
 
 import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { VersionString } from '@_types/common'
-import { DateString, EpochMillis } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 
 export class BuildInformation {
-  date: DateString
+  date: DateTime
   hash: string
 }
 
@@ -32,7 +32,7 @@ export class NativeCodeInformation {
 }
 
 export class MinimalLicenseInformation {
-  expiry_date_in_millis: EpochMillis
+  expiry_date_in_millis: EpochTime<UnitMillis>
   mode: LicenseType
   status: LicenseStatus
   type: LicenseType
@@ -67,6 +67,11 @@ export class Features {
   vectors?: Feature
   voting_only: Feature
   watcher: Feature
+  /**
+   * @availability stack since=8.2.0
+   * @availability serverless
+   */
+  archive: Feature
 }
 
 export class Feature {

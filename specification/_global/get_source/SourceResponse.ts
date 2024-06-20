@@ -18,5 +18,6 @@
  */
 
 export class Response<TDocument> {
+  /** @codegen_name source */
   body: TDocument
 }

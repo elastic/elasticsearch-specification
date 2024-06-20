@@ -21,12 +21,22 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Indices } from '@_types/common'
 
 /**
+ * Provides quick access to a document count for a data stream, an index, or an entire cluster.
+ * NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
+ * They are not intended for use by applications. For application consumption, use the count API.
  * @rest_spec_name cat.count
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id cat-count
+ * @index_privileges read
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
+     * Supports wildcards (`*`). To target all data streams and indices, omit this parameter or use `*` or `_all`.
+     */
     index?: Indices
   }
 }

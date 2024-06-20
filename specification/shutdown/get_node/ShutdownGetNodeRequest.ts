@@ -19,14 +19,26 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * @rest_spec_name shutdown.get_node
- * @since 7.13.0
- * @stability stable
+ * @availability stack since=7.13.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     node_id?: NodeIds
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: TimeUnit
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: TimeUnit
   }
 }

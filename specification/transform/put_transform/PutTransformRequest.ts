@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { Destination, Source } from '@global/reindex/types'
 import {
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  SyncContainer
+  SyncContainer,
+  Destination,
+  Source
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Id, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Creates a transform.
@@ -54,8 +54,8 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * give users any privileges on `.data-frame-internal*` indices.
  *
  * @rest_spec_name transform.put_transform
- * @since 7.2.0
- * @stability stable
+ * @availability stack since=7.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges create_index, read, index, view_index_metadata
  */
@@ -80,7 +80,7 @@ export interface Request extends RequestBase {
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /** The destination for the transform. */
@@ -93,7 +93,7 @@ export interface Request extends RequestBase {
      * The minimum value is `1s` and the maximum is `1h`.
      * @server_default 1m
      */
-    frequency?: Time
+    frequency?: Duration
     /**
      * The latest method transforms the data by finding the latest document for each unique key.
      */
@@ -101,7 +101,7 @@ export interface Request extends RequestBase {
     /**
      * Defines optional transform metadata.
      */
-    _meta?: Dictionary<string, string>
+    _meta?: Metadata
     /**
      * The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields
      * and the aggregation to reduce the data.

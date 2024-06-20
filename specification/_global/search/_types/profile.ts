@@ -18,6 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
+import { DurationValue, UnitNanos } from '@_types/Time'
 
 export class AggregationBreakdown {
   build_aggregation: long
@@ -34,6 +35,7 @@ export class AggregationBreakdown {
   reduce_count: long
 }
 
+// This is a Map<String, Object> in ES. Below are the known fields.
 export class AggregationProfileDebug {
   segments_with_multi_valued_ords?: integer
   collection_strategy?: string
@@ -43,7 +45,7 @@ export class AggregationProfileDebug {
   result_strategy?: string
   has_filter?: boolean
   delegate?: string
-  delegate_debug?: AggregationProfileDelegateDebug
+  delegate_debug?: AggregationProfileDebug
   chars_fetched?: integer
   extract_count?: integer
   extract_ns?: integer
@@ -57,26 +59,25 @@ export class AggregationProfileDebug {
   numeric_collectors_used?: integer
   empty_collectors_used?: integer
   deferred_aggregators?: string[]
-}
-
-export class AggregationProfileDelegateDebug {
   segments_with_doc_count_field?: integer
   segments_with_deleted_docs?: integer
   filters?: AggregationProfileDelegateDebugFilter[]
   segments_counted?: integer
   segments_collected?: integer
+  map_reducer?: string
 }
 
 export class AggregationProfileDelegateDebugFilter {
   results_from_metadata?: integer
   query?: string
   specialized_for?: string
+  segments_counted_in_constant_time?: integer
 }
 
 export class AggregationProfile {
   breakdown: AggregationBreakdown
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   type: string
   debug?: AggregationProfileDebug
   children?: AggregationProfile[]
@@ -85,7 +86,7 @@ export class AggregationProfile {
 export class Collector {
   name: string
   reason: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   children?: Collector[]
 }
 
@@ -117,7 +118,7 @@ export class QueryBreakdown {
 export class QueryProfile {
   breakdown: QueryBreakdown
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   type: string
   children?: QueryProfile[]
 }
@@ -138,13 +139,15 @@ export class ShardProfile {
 export class FetchProfile {
   type: string
   description: string
-  time_in_nanos: long
+  time_in_nanos: DurationValue<UnitNanos>
   breakdown: FetchProfileBreakdown
   debug?: FetchProfileDebug
   children?: FetchProfile[]
 }
 
 export class FetchProfileBreakdown {
+  load_source?: integer
+  load_source_count?: integer
   load_stored_fields?: integer
   load_stored_fields_count?: integer
   next_reader?: integer

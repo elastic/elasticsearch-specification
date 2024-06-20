@@ -18,15 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TimeSpan } from '@_types/Time'
-import { OperationContainer } from '@global/bulk/types'
+import { Duration } from '@_types/Time'
+import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
 /**
  * @rest_spec_name monitoring.bulk
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
  */
-export interface Request<TSource> extends RequestBase {
+export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
     /**
      * @deprecated 7.0.0
@@ -48,10 +47,13 @@ export interface Request<TSource> extends RequestBase {
     /**
      * Collection interval (e.g., '10s' or '10000ms') of the payload
      */
-    interval: TimeSpan
+    interval: Duration
   }
 
   /** @codegen_name operations */
-  // MonitoringBulkRequest accepts a body request that has the same format as the BulkRequest
-  body?: Array<OperationContainer | TSource>
+  // BulkMonitoringRequest accepts a body request that has the same format as the BulkRequest
+  // See BulkRequest for additional notes.
+  body: Array<
+    OperationContainer | UpdateAction<TDocument, TPartialDocument> | TDocument
+  >
 }

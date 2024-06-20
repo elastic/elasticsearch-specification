@@ -30,8 +30,8 @@ import { Id } from '@_types/common'
  * the delete datafeed API with the same timeout and force parameters as the
  * delete job request.
  * @rest_spec_name ml.delete_job
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -47,6 +47,13 @@ export interface Request extends RequestBase {
      * closing and deleting the job.
      */
     force?: boolean
+    /**
+     * Specifies whether annotations that have been added by the
+     * user should be deleted along with any auto-generated annotations when the job is
+     * reset.
+     * @server_default false
+     */
+    delete_user_annotations?: boolean
     /**
      * Specifies whether the request should return immediately or wait until the
      * job deletion completes.

@@ -16,7 +16,7 @@ The example assumes that you have already performed the necessary steps to run a
 if not, take a look at the [README](./README.md).
 
 ```sh
-STACK_VERSION=... ./run-validations --api index --request
+make validate api=index type=request stack-version=8.1.0-SNAPSHOT
 ```
 
 You will see an output like the following:
@@ -69,7 +69,7 @@ open it with your favourite editor and perform the fix
      pipeline?: string;
      refresh?: Refresh;
      routing?: Routing;
-     timeout?: Time;
+     timeout?: Duration;
      version?: long;
      version_type?: VersionType;
      wait_for_active_shards?: string;
@@ -82,7 +82,7 @@ open it with your favourite editor and perform the fix
 Finally run the validation again:
 
 ```sh
-STACK_VERSION=... ./run-validations --api index --request
+make validate api=index type=request stack-version=8.1.0-SNAPSHOT
 ```
 
 If there are no more errors, open a pr with the fix.

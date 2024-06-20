@@ -26,9 +26,8 @@ import { long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.validate
- * @since 6.3.0
- * @stability stable
- * @visibility private
+ * @availability stack since=6.3.0 stability=stable visibility=private
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   body: {
@@ -38,6 +37,7 @@ export interface Request extends RequestBase {
     data_description?: DataDescription
     description?: string
     model_plot?: ModelPlotConfig
+    model_snapshot_id?: Id
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
   }

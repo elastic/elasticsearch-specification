@@ -39,7 +39,11 @@ import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName
-  _id: Id
+  /**
+   * @es_quirk '_id' is not available when using 'stored_fields: _none_'
+   * on a search request. Otherwise the field is always present on hits.
+   */
+  _id?: Id
   _score: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
@@ -48,7 +52,7 @@ export class Hit<TDocument> {
   matched_queries?: string[]
   _nested?: NestedIdentity
   _ignored?: string[]
-
+  ignored_field_values?: Dictionary<string, string[]>
   _shard?: string
   _node?: string
   _routing?: string
@@ -94,14 +98,26 @@ export class TotalHits {
 
 export enum TotalHitsRelation {
   /** Accurate */
-  eq = 0,
+  eq,
   /** Lower bound, including returned events or sequences */
-  gte = 1
+  gte
 }
 
 export class InnerHits {
+  /**
+   * The name for the particular inner hit definition in the response.
+   * Useful when a search request contains multiple inner hits.
+   */
   name?: Name
+  /**
+   * The maximum number of hits to return per `inner_hits`.
+   * @server_default 3
+   */
   size?: integer
+  /**
+   * Inner hit starting document offset.
+   * @server_default 0
+   */
   from?: integer
   collapse?: FieldCollapse
   docvalue_fields?: FieldAndFormat[]
@@ -111,9 +127,13 @@ export class InnerHits {
   script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
   fields?: Fields
+  /**
+   * How the inner hits should be sorted per `inner_hits`.
+   * By default, inner hits are sorted by score.
+   */
   sort?: Sort
   _source?: SourceConfig
-  stored_field?: Fields
+  stored_fields?: Fields
   /** @server_default false */
   track_scores?: boolean
   version?: boolean

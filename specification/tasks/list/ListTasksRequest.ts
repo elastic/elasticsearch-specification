@@ -19,22 +19,54 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
+ * The task management API returns information about tasks currently executing on one or more nodes in the cluster.
  * @rest_spec_name tasks.list
- * @since 2.3.0
- * @stability experimental
+ * @availability stack since=2.3.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
+ * @cluster_privileges monitor, manage
+ * @doc_id tasks
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * Comma-separated list or wildcard expression of actions used to limit the request.
+     */
     actions?: string | string[]
+    /**
+     * If `true`, the response includes detailed information about shard recoveries.
+     * @server_default false
+     */
     detailed?: boolean
+    /**
+     * Key used to group tasks in the response.
+     */
     group_by?: GroupBy
-    nodes?: string[]
+    /**
+     * Comma-separated list of node IDs or names used to limit returned information.
+     */
+    node_id?: string[]
+    /**
+     * Parent task ID used to limit returned information. To return all tasks, omit this parameter or use a value of `-1`.
+     */
     parent_task_id?: Id
-    timeout?: Time
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+    /**
+     * If `true`, the request blocks until the operation is complete.
+     * @server_default false
+     */
     wait_for_completion?: boolean
   }
 }

@@ -19,6 +19,7 @@
 
 import {
   Analytics,
+  Archive,
   Base,
   Ccr,
   DataStreams,
@@ -26,6 +27,7 @@ import {
   Eql,
   Flattened,
   FrozenIndices,
+  HealthStatistics,
   Ilm,
   MachineLearning,
   Monitoring,
@@ -42,6 +44,11 @@ export class Response {
   body: {
     aggregate_metric: Base
     analytics: Analytics
+    /**
+     * @availability stack since=8.2.0
+     * @availability serverless
+     */
+    archive: Archive
     watcher: Watcher
     ccr: Ccr
     data_frame?: Base
@@ -53,6 +60,7 @@ export class Response {
     flattened?: Flattened
     frozen_indices: FrozenIndices
     graph: Base
+    health_api?: HealthStatistics
     ilm: Ilm
     logstash: Base
     ml: MachineLearning

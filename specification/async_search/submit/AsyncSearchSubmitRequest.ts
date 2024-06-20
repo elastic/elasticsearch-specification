@@ -36,7 +36,7 @@ import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
@@ -49,11 +49,19 @@ import {
 import { Suggester } from '@global/search/_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
+import { KnnSearch } from '@_types/Knn'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
+ * Runs a search request asynchronously.
+ * When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.
+ * Warning: Async search does not support scroll nor search requests that only include the suggest section.
+ * By default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.
+ * The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.
  * @rest_spec_name async_search.submit
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id async-search
  */
 // NOTE: this is a SearchRequest with 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
 export interface Request extends RequestBase {
@@ -61,17 +69,37 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
-    /** @server_default 1s */
-    wait_for_completion_timeout?: Time
-    /** @server_default false */
+    /**
+     * Blocks and waits until the search is completed up to a certain timeout.
+     * When the async search completes within the timeout, the response won’t include the ID as the results are not stored in the cluster.
+     * @server_default 1s
+     */
+    wait_for_completion_timeout?: Duration
+    /**
+     * If `true`, results are stored for later retrieval when the search completes within the `wait_for_completion_timeout`.
+     * @server_default false
+     */
     keep_on_completion?: boolean
-    /** @server_default 5d */
-    keep_alive?: Time
+    /**
+     * Specifies how long the async search needs to be available.
+     * Ongoing async searches and any saved search results are deleted after this period.
+     * @server_default 5d
+     */
+    keep_alive?: Duration
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
+    /**
+     * Affects how often partial results become available, which happens whenever shard results are reduced.
+     * A partial reduction is performed every time the coordinating node has received a certain number of new shard responses (5 by default).
+     * @server_default 5
+     */
     batched_reduce_size?: long
+    /**
+     * The default value is the only supported value.
+     * @server_default false
+     */
     ccs_minimize_roundtrips?: boolean
     default_operator?: Operator
     df?: string
@@ -84,10 +112,15 @@ export interface Request extends RequestBase {
     max_concurrent_shard_requests?: long
     min_compatible_shard_node?: VersionString
     preference?: string
+    /**
+     * The default value cannot be changed, which enforces the execution of a pre-filter roundtrip to retrieve statistics from each shard so that the ones that surely don’t hold any document matching the query get skipped.
+     * @server_default 1
+     */
     pre_filter_shard_size?: long
+    /** @server_default true */
     request_cache?: boolean
     routing?: Routing
-    scroll?: Time
+    scroll?: Duration
     search_type?: SearchType
     stats?: string[]
     stored_fields?: Fields
@@ -102,7 +135,7 @@ export interface Request extends RequestBase {
      */
     suggest_text?: string
     terminate_after?: long
-    timeout?: Time
+    timeout?: Duration
     track_total_hits?: TrackHits
     track_scores?: boolean
     typed_keys?: boolean
@@ -126,6 +159,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     explain?: boolean
+    /**
+     * Configuration of search extensions defined by Elasticsearch plugins.
+     */
+    ext?: Dictionary<string, UserDefinedValue>
     /**
      * Starting document offset. By default, you cannot page through more than 10,000
      * hits using the from and size parameters. To page through more hits, use the
@@ -151,6 +188,12 @@ export interface Request extends RequestBase {
      */
     docvalue_fields?: FieldAndFormat[]
     /**
+     * Defines the approximate kNN search to run.
+     * @availability stack since=8.4.0
+     * @availability serverless
+     */
+    knn?: KnnSearch | KnnSearch[]
+    /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.
      */
@@ -175,7 +218,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
     slice?: SlicedScroll
-    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html */
+    /** @doc_id sort-search-results */
     sort?: Sort
     /**
      * Indicates which source fields are returned for matching documents. These

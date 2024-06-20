@@ -20,17 +20,35 @@
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { TimeZone } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.translate
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   body: {
+    /**
+     * The maximum number of rows (or entries) to return in one response.
+     * @server_default 1000
+     */
     fetch_size?: integer
+    /**
+     * Elasticsearch query DSL for additional filtering.
+     * @doc_id sql-rest-filtering
+     * @server_default none
+     */
     filter?: QueryContainer
+    /**
+     * SQL query to run.
+     */
     query: string
-    time_zone?: string
+    /**
+     * ISO-8601 time zone ID for the search.
+     * @doc_url https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
+     * @server_default Z
+     */
+    time_zone?: TimeZone
   }
 }

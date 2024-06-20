@@ -18,7 +18,10 @@
  */
 
 export enum GroupBy {
-  nodes = 0,
-  parents = 1,
-  none = 2
+  /** Node ID */
+  nodes,
+  /** Parent task ID */
+  parents,
+  /** Do not group tasks. */
+  none
 }

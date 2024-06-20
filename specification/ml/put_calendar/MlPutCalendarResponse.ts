@@ -24,7 +24,7 @@ export class Response {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id
     /** A description of the calendar. */
-    description: string
+    description?: string
     /** A list of anomaly detection job identifiers or group names. */
     job_ids: Ids
   }

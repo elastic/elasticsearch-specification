@@ -19,4 +19,6 @@
 
 import { WriteResponseBase } from '@_types/Base'
 
-export class Response extends WriteResponseBase {}
+export class Response {
+  body: WriteResponseBase
+}

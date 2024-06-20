@@ -18,12 +18,27 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
+import { ErrorResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<IndexName, IndexAliases> {}
+export class Response {
+  /** @codegen_name aliases */
+  body: Dictionary<IndexName, IndexAliases>
+  exceptions: [
+    {
+      statusCodes: [404]
+      body: NotFoundAliases | ErrorResponseBase
+    }
+  ]
+}
 
 export class IndexAliases {
   aliases: Dictionary<string, AliasDefinition>
+}
+
+class NotFoundAliases implements AdditionalProperties<string, IndexAliases> {
+  error: string
+  status: number
 }

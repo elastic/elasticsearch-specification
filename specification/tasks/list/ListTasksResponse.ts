@@ -17,15 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Info } from '@tasks/_types/TaskInfo'
-import { ErrorCause } from '@_types/Errors'
-import { TaskExecutingNode } from '../_types/TaskExecutingNode'
+import { TaskListResponseBase } from '@tasks/_types/TaskListResponseBase'
 
 export class Response {
-  body: {
-    node_failures?: ErrorCause[]
-    nodes?: Dictionary<string, TaskExecutingNode>
-    tasks?: Dictionary<string, Info>
-  }
+  body: TaskListResponseBase
 }

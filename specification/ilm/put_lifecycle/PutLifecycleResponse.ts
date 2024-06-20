@@ -19,4 +19,6 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response extends AcknowledgedResponseBase {}
+export class Response {
+  body: AcknowledgedResponseBase
+}

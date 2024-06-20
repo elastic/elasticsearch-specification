@@ -20,12 +20,15 @@
 import { ProcessorContainer } from '@ingest/_types/Processors'
 import { RequestBase } from '@_types/Base'
 import { Id, VersionNumber, Metadata } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Creates or updates an ingest pipeline.
+ * Changes made using this API take effect immediately.
+ * @doc_id ingest
  * @rest_spec_name ingest.put_pipeline
- * @since 5.0.0
- * @stability stable
+ * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -39,11 +42,15 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
-    timeout?: Time
+    timeout?: Duration
+    /**
+     * Required version for optimistic concurrency control for pipeline updates
+     */
+    if_version?: VersionNumber
   }
   body: {
     /**

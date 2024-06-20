@@ -17,9 +17,10 @@
  * under the License.
  */
 
+import { ApiKey } from '@security/_types/ApiKey'
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Metadata, Name, Username } from '@_types/common'
-import { ApiKey, Token } from './types'
+import { Token } from './types'
 
 export class Response {
   body: {
@@ -33,7 +34,10 @@ export class Response {
     username: Username
     enabled: boolean
     authentication_type: string
-    /** @since 7.14.0 */
+    /**
+     * @availability stack since=7.14.0
+     * @availability serverless
+     */
     token?: Token
   }
 }

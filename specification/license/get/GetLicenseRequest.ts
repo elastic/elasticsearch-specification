@@ -20,17 +20,25 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * This API returns information about the type of license, when it was issued, and when it expires, for example.
+ * For more information about the different types of licenses, see https://www.elastic.co/subscriptions.
  * @rest_spec_name license.get
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
     /**
+     * If `true`, this parameter returns enterprise for Enterprise license types. If `false`, this parameter returns platinum for both platinum and enterprise license types. This behavior is maintained for backwards compatibility.
+     * This parameter is deprecated and will always be set to true in 8.x.
      * @deprecated 7.6.0
      * @server_default true
      */
     accept_enterprise?: boolean
+    /**
+     * Specifies whether to retrieve local information. The default value is `false`, which means the information is retrieved from the master node.
+     * @server_default false
+     */
     local?: boolean
   }
 }

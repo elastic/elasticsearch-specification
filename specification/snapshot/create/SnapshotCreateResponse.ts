@@ -21,8 +21,15 @@ import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 
 export class Response {
   body: {
-    /** @since 7.15.0 */
+    /**
+     * Equals `true` if the snapshot was accepted. Present when the request had `wait_for_completion` set to `false`
+     * @availability stack since=7.15.0
+     * @availability serverless
+     */
     accepted?: boolean
-    snapshot: SnapshotInfo
+    /**
+     * Snapshot information. Present when the request had `wait_for_completion` set to `true`
+     */
+    snapshot?: SnapshotInfo
   }
 }

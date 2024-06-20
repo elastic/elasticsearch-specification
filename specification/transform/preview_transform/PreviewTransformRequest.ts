@@ -17,17 +17,18 @@
  * under the License.
  */
 
-import { Destination, Source } from '@global/reindex/types'
 import {
+  Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  SyncContainer
+  SyncContainer,
+  Source
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Previews a transform.
@@ -36,8 +37,8 @@ import { Time } from '@_types/Time'
  * generates a list of mappings and settings for the destination index. These values are determined based on the field
  * types of the source index and the transform aggregations.
  * @rest_spec_name transform.preview_transform
- * @since 7.2.0
- * @stability stable
+ * @availability stack since=7.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, view_index_metadata
  */
@@ -55,7 +56,7 @@ export interface Request extends RequestBase {
      * timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /**
@@ -73,7 +74,7 @@ export interface Request extends RequestBase {
      * indexing. The minimum value is 1s and the maximum is 1h.
      * @server_default 1m
      */
-    frequency?: Time
+    frequency?: Duration
     /**
      * The pivot method transforms the data by aggregating and grouping it.
      * These objects define the group by fields and the aggregation to reduce

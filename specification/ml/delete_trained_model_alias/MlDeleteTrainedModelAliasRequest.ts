@@ -26,8 +26,8 @@ import { Id, Name } from '@_types/common'
  * the model alias is missing or refers to a model other than the one identified
  * by the `model_id`, this API returns an error.
  * @rest_spec_name ml.delete_trained_model_alias
- * @since 7.13.0
- * @stability stable
+ * @availability stack since=7.13.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

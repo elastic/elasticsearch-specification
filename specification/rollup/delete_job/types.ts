@@ -17,16 +17,6 @@
  * under the License.
  */
 
-import { Id, TaskId } from '@_types/common'
-
-export class TaskFailure {
-  task_id: TaskId
-  node_id: Id
-  status: string
-  reason: TaskFailureReason
-}
-
-export class TaskFailureReason {
-  type: string
-  reason: string
-}
+import { Id } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
+import { long } from '@_types/Numeric'

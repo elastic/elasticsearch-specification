@@ -24,7 +24,7 @@ import {
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { HttpHeaders, Id, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -32,10 +32,11 @@ import { integer } from '@_types/Numeric'
  * This API creates a data frame analytics job that performs an analysis on the
  * source indices and stores the outcome in a destination index.
  * @rest_spec_name ml.put_data_frame_analytics
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
+ * @doc_id put-dfanalytics
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -50,14 +51,14 @@ export interface Request extends RequestBase {
     /**
      * Specifies whether this job can start when there is insufficient machine
      * learning node capacity for it to be immediately assigned to a node. If
-     * set to false and a machine learning node with capacity to run the job
-     * cannot be immediately found, the API returns an error. If set to true,
+     * set to `false` and a machine learning node with capacity to run the job
+     * cannot be immediately found, the API returns an error. If set to `true`,
      * the API does not return an error; the job waits in the `starting` state
      * until sufficient machine learning node capacity is available. This
      * behavior is also affected by the cluster-wide
      * `xpack.ml.max_lazy_ml_nodes` setting.
      * @server_default false
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings
+     * @doc_id ml-settings
      */
     allow_lazy_start?: boolean
     /**
@@ -126,5 +127,15 @@ export interface Request extends RequestBase {
      * The configuration of how to source the analysis data.
      */
     source: DataframeAnalyticsSource
+    /**
+     * @availability stack since=8.0.0
+     * @availability serverless
+     */
+    headers?: HttpHeaders
+    /**
+     * @availability stack since=7.16.0
+     * @availability serverless
+     */
+    version?: VersionString
   }
 }

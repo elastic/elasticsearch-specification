@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name features.get_features
- * @since 7.12.0
- * @stability stable
+ * @availability stack since=7.12.0 stability=stable
  */
 export interface Request extends RequestBase {}

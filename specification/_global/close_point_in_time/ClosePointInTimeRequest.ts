@@ -21,12 +21,17 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Closes a point-in-time.
  * @rest_spec_name close_point_in_time
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id point-in-time-api
  */
 export interface Request extends RequestBase {
   body: {
+    /**
+     * The ID of the point-in-time.
+     */
     id: Id
   }
 }

@@ -19,21 +19,37 @@
 
 import { Property } from './Property'
 
+/**
+ * @variants container
+ */
 export class DynamicTemplate {
   mapping?: Property
-  match?: string
-  match_mapping_type?: string
+  runtime?: Property
+  /** @variant container_property */
+  match?: string | string[]
+  /** @variant container_property */
+  path_match?: string | string[]
+  /** @variant container_property */
+  unmatch?: string | string[]
+  /** @variant container_property */
+  path_unmatch?: string | string[]
+  /** @variant container_property */
+  match_mapping_type?: string | string[]
+  /** @variant container_property */
+  unmatch_mapping_type?: string | string[]
+  /** @variant container_property */
   match_pattern?: MatchType
-  path_match?: string
-  path_unmatch?: string
-  unmatch?: string
 }
 
 export enum MatchType {
-  simple = 0,
-  regex = 1
+  simple,
+  regex
 }
 
+/**
+ * @es_quirk This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and
+ *   true and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)
+ */
 export enum DynamicMapping {
   strict,
   runtime,

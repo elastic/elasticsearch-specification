@@ -19,12 +19,16 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Returns cluster statistics.
+ * It returns basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).
  * @rest_spec_name cluster.stats
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor
+ * @doc_id cluster-stats
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -32,8 +36,15 @@ export interface Request extends RequestBase {
     node_id?: NodeIds
   }
   query_parameters: {
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
-    /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response’s _nodes.failed property. Defaults to no timeout. */
-    timeout?: Time
+    /**
+     * Period to wait for each node to respond.
+     * If a node does not respond before its timeout expires, the response does not include its stats.
+     * However, timed out nodes are included in the response’s `_nodes.failed` property. Defaults to no timeout. */
+    timeout?: Duration
   }
 }

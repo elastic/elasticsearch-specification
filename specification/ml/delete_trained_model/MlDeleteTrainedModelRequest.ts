@@ -24,8 +24,8 @@ import { Id } from '@_types/common'
  * Deletes an existing trained inference model that is currently not referenced
  * by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -34,5 +34,9 @@ export interface Request extends RequestBase {
      * The unique identifier of the trained model.
      */
     model_id: Id
+  }
+  query_parameters: {
+    /** Forcefully deletes a trained model that is referenced by ingest pipelines or has a started deployment. **/
+    force?: boolean
   }
 }

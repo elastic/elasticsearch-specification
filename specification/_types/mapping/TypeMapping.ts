@@ -36,12 +36,10 @@ export class TypeMapping {
   date_detection?: boolean
   dynamic?: DynamicMapping
   dynamic_date_formats?: string[]
-  dynamic_templates?:
-    | Dictionary<string, DynamicTemplate>
-    | Dictionary<string, DynamicTemplate>[]
+  dynamic_templates?: Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  /** @doc_id mapping-meta-field */
   _meta?: Metadata
   numeric_detection?: boolean
   properties?: Dictionary<PropertyName, Property>
@@ -50,4 +48,14 @@ export class TypeMapping {
   _source?: SourceField
   runtime?: Dictionary<string, RuntimeField>
   enabled?: boolean
+  subobjects?: boolean
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
+  _data_stream_timestamp?: DataStreamTimestamp
+}
+
+export class DataStreamTimestamp {
+  enabled: boolean
 }

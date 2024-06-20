@@ -19,15 +19,33 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Deletes the specified lifecycle policy definition. You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
+ *
  * @rest_spec_name ilm.delete_lifecycle
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
+ * @cluster_privileges manage_ilm
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * Identifier for the policy.
+     * @codegen_name name
+     */
     policy: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

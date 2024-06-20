@@ -18,14 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Names } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
  * Retrieves usage information for transforms.
  * @rest_spec_name transform.get_transform_stats
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_transform
  * @index_privileges read, view_index_metadata
  */
@@ -37,7 +38,7 @@ export interface Request extends RequestBase {
      * `_all`, by specifying `*` as the `<transform_id>`, or by omitting the
      * `<transform_id>`.
      */
-    transform_id: Name
+    transform_id: Names
   }
   query_parameters: {
     /**
@@ -62,5 +63,6 @@ export interface Request extends RequestBase {
      * @server_default 100
      */
     size?: long
+    timeout?: Duration
   }
 }

@@ -21,12 +21,18 @@ import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
+import {
+  ExpandWildcards,
+  HttpHeaders,
+  Id,
+  Indices,
+  IndicesOptions
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Instantiates a datafeed.
@@ -40,8 +46,8 @@ import { Time } from '@_types/Time'
  * You must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed
  * directly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.
  * @rest_spec_name ml.put_datafeed
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
  */
@@ -106,13 +112,13 @@ export interface Request extends RequestBase {
      * (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses
      * aggregations, this value must be divisible by the interval of the date histogram aggregation.
      */
-    frequency?: Time
+    frequency?: Duration
     /**
      * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
      * learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
-    indices?: string[]
+    indices?: Indices
     /**
      * Specifies index expansion options that are used during search
      */
@@ -141,7 +147,7 @@ export interface Request extends RequestBase {
      * value is randomly selected between `60s` and `120s`. This randomness improves the query performance
      * when there are multiple jobs running on the same node.
      */
-    query_delay?: Time
+    query_delay?: Duration
     /**
      * Specifies runtime fields for the datafeed search.
      */
@@ -157,5 +163,10 @@ export interface Request extends RequestBase {
      * @server_default 1000
      */
     scroll_size?: integer
+    /**
+     * @availability stack since=8.0.0
+     * @availability serverless
+     */
+    headers?: HttpHeaders
   }
 }

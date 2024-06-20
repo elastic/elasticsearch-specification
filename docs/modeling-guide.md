@@ -75,17 +75,44 @@ property: Dictionary<string, string | long>
 
 ### Enum
 
-Represents a set of allowed values:
+Represents a set of allowed values.
+
 
 ```ts
 enum MyEnum {
-  first = 0,
-  second = 1,
-  third = 2
+  first,
+  second,
+  third
 }
 
 property: MyEnum
 ```
+
+Note that you don't have to provide both identifiers and values as is common in TypeScript. When there's only an identifier, the API specification compiler will use it for both the identifier and the value of enum members.
+
+Also do not use identifiers and values for the sole purpose of providing upper-case identifiers (e.g. `FOO = 'foo'`). Each language generator will use the identifier casing that is expected by that language.
+
+Some enumerations contain values that aren't identifiers, or that are not explicit enough. In that case you can either assign values to enum members or use the `@codegen_name` jsdoc tag to define the identifier that will be used by code generators:
+
+```ts
+enum MyEnum {
+    percent_of_sum,
+    mean,
+    /** @codegen_name z_score */
+    'z-score',
+    softmax
+}
+
+export enum IntervalUnit {
+    second = 's',
+    minute = 'm',
+    hour = 'h',
+    day = 'd',
+    week = 'w'
+}
+```
+
+**Use custom identifiers for enum members sparingly**: we want to keep identifiers as close as possible to their value in JSON payloads to that usesr can easily map values found in the Elasticsearch reference documentation to code identifiers in the client libraries. 
 
 Some enumerations accept alternate values for some of their members. The `@aliases` jsdoc tac can be used to capture these values:
 
@@ -95,6 +122,19 @@ enum Orientation {
   right,
   /** @aliases clockwise, cw */
   left
+}
+```
+
+Some enumerations can accept arbitrary values other than the ones defined. The `@non_exhaustive` jsdoc tag can be used to describe this behavior.
+By default, an enum is to be considered exhaustive.
+
+```ts
+/** @non_exhaustive */
+export enum ScriptLanguage {
+  painless,
+  expression,
+  mustache,
+  java
 }
 ```
 
@@ -138,19 +178,21 @@ type Indices = string | string[]
 ...
 ```
 
-You can find the full list [here](https://github.com/elastic/elasticsearch-specification/blob/update-docs/specification/specs/common.ts),
+You can find the full list [here](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts),
 feel free to add more if it feels appropriate!
 
 ### Dates
 
-The `Date` type in TypeScript refers to the JavaScript `Date` object,
-since Elasticsearch needs a string or a numeric value, there are aliases also for date types:
+Elasticsearch uses a lot of dates, times and durations. There are various types available to capture the variety of types and representations in the specification:
 
-```ts
-type Timestamp = string
-type TimeSpan = string
-type DateString = string
-```
+* for date and time: `DateTime` for formatted dates, `EpochTime<UnitMillis>`, `EpochTime<UnitSeconds>`, etc. for number values
+* for intervals: `Duration` for formatted values, `DurationValue<UnitMillis>`, `DurationValue<UnitSeconds>`, etc. for number values
+* for time of day: `TimeOfDay
+
+See [`specification/_types/Time.ts`](../specification/_types/Time.ts) for additional details.
+
+Since code generators may choose to use a platform builtin type to represent time-related data, make sure to choose the appropriate representation and **never** use a primitive value such as `string` or `long`.
+
 
 ### Binary
 
@@ -217,10 +259,40 @@ class Response {
 }
 ```
 
+### Stringified values
+
+Elasticsearch sometimes uses string-only representations in the JSON it outputs, even for numbers and booleans. This is notably seen in `cat` request and index and cluster settings.
+
+To keep the semantic soundness of the specification and avoid adding ` | string` to handle these cases, the `Stringified` behaviour should be used for these cases. Also, this problem only affects output: data should be sent in its original format (i.e. number, boolean, etc).
+
+Instead of:
+```ts
+export class IndexSettings {
+  // DO NOT DO THAT
+  number_of_shards?: integer | string
+  number_of_replicas?: integer | string
+  hidden?: boolean | string
+}
+```
+
+Use the `Stringified` behavior:
+```
+export class IndexSettings {
+  number_of_shards?: Stringified<integer>
+  number_of_replicas?: Stringified<integer>
+  hidden?: Stringified<boolean>
+}
+```
+
 ### Variants
 
 Variants is a special syntax that can be used by language generators to understand
 which type they will need to build based on the variant configuration.
+
+If the list of variants is not exhaustive (e.g. for types where new variants can be added by
+Elasticsearch plugins), you can add the `@non_exhaustive` js doc tag to indicate that additional
+variants can exist and should be accepted.
+
 There are three type of variants:
 
 #### Internal
@@ -381,26 +453,77 @@ export class TermQuery extends QueryBase {
 }
 ```
 
+### Tracking Elasticsearch quirks
+
+There are a few places where Elasticsearch has an uncommon behavior that does not deserve a specific feature in the API specification metamodel. These quirks still have to be captured so that code generators can act on them. The `eq_quirk` jsdoc tag is meant for that, and can be used on type definitions and properties.
+
+```ts
+/**
+ * @es_quirk This enum is a boolean that evolved into a tri-state enum. True and False have
+ *   to be (de)serialized as JSON booleans.
+ */
+enum Foo { true, false, bar }
+```
+
+Code generators should track the `es_quirk` they implement and fail if a new unhandled quirk is present on a type or a property. This behavior allows code generators to be updated whenever a new quirk is identified in the API specification.
+
 ### Additional information
 
 If needed, you can specify additional information on each type with the approariate JSDoc tag.
 Following you can find a list of the supported tags:
 
-#### `@since`
+#### `@availability`
 
-Every API already has a `@since` tag, which describes when an API was added.
-You can specify an additional `@since` tag for every property that has been added afterwards.
+Every API already has a `@availability <name> ...` annotation, which describes when an API was added.
+You can specify an additional `since=` value for every property that has been added afterwards.
 If the tag is not defined, it's assumed that the property has been added with the API the first time
 
 ```ts
 /**
- * @since 7.10.0
+ * @availability stack since=7.10.0
+ * @availability serverless
  */
 class FooRequest {
   bar: string
-  /** @since 7.11.0 */
+  /**
+   * @availability stack since=7.11.0
+   * @availability serverless
+   */
   baz: string
   faz: string
+}
+```
+
+If you'd like an API or property to be available for only Stack or Serverless Elasticsearch
+the annotation with the desired flavor should be used without specifying the other. If the property
+is available in both flavors either the `@availability` annotation can either be omitted entirely
+or both flavors can be specified.
+
+```ts
+export class Example {
+  /**
+   * This field is available in both (default when there aren't any annotations).
+   */
+  fieldBoth1: integer
+
+  /**
+   * This field is available in both flavors and is explicitly annotated.
+   * @availability stack
+   * @availability serverless
+   */ 
+  fieldBoth2: integer
+
+  /**
+   * This field is only available on Serverless Elasticsearch.
+   * @availability serverless
+   */
+  fieldServerlessOnly: integer
+
+  /**
+   * This field is only available on Stack Elasticsearch.
+   * @availability stack
+   */
+  fieldStackOnly: integer
 }
 ```
 
@@ -444,7 +567,8 @@ class Foo {
 
 #### `@doc_url`
 
-The documentation url for the parameter.
+The documentation url for the parameter or definition.
+If possible, use `@doc_id`.
 
 ```ts
 class Foo {
@@ -458,7 +582,7 @@ class Foo {
 #### `@doc_id`
 
 The documentation id that can be used for generating the doc url.
-See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) for context.
+You must add the id/url pair in `specification/_doc_ids/table.csv`.
 
 ```ts
 /**
@@ -468,6 +592,10 @@ See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) fo
 class Request {
   ...
 }
+```
+
+```csv
+foobar,/guide/en/example
 ```
 
 #### `@codegen_name`
@@ -514,8 +642,7 @@ If an endpoint has some index security prerequisites to satisfy, you can specify
 ```ts
 /**
  * @rest_spec_name indices.create
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @index_privileges create_index, manage
  */
 export interface Request extends RequestBase {
@@ -530,8 +657,7 @@ If an endpoint has some cluster security prerequisites to satisfy, you can speci
 ```ts
 /**
  * @rest_spec_name cluster.state
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {
@@ -563,30 +689,6 @@ class Foo {
 }
 ```
 
-#### `@stability`
+#### `@stability` and `@visibility`
 
-You can mark a class or property of a type as stable/beta/experimental with this tag (the default is stable).
-
-```ts
-class Foo {
-  bar: string
-  /** @stability experimental */
-  baz?: string
-  faz: string
-}
-```
-
-#### `@visibility`
-
-You can mark a request as `public`/`feature_flag`/`private` with this tag (the default is `public`).
-
-```ts
-/**
- * @rest_spec_name namespace.api
- * @since 7.5.0
- * @visibility private
- */
-export interface Request extends RequestBase {
- ...
-}
-```
+These annotations have been removed, use `@availability` instead.

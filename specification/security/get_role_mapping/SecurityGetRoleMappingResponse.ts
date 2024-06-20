@@ -18,6 +18,9 @@
  */
 
 import { RoleMapping } from '@security/_types/RoleMapping'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
-export class Response extends DictionaryResponseBase<string, RoleMapping> {}
+export class Response {
+  /** @codegen_name role_mappings */
+  body: Dictionary<string, RoleMapping>
+}

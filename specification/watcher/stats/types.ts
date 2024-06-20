@@ -20,14 +20,14 @@
 import { ExecutionPhase, ExecutionThreadPool } from '@watcher/_types/Execution'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 // Identical to DatafeedState, but kept separate as they're different enums in ES
 export enum WatcherState {
-  stopped = 0,
-  starting = 1,
-  started = 2,
-  stopping = 3
+  stopped,
+  starting,
+  started,
+  stopping
 }
 
 export class WatcherNodeStats {
@@ -41,19 +41,19 @@ export class WatcherNodeStats {
 
 export enum WatcherMetric {
   /** @aliases all */
-  '_all' = 0,
-  'queued_watches' = 1,
-  'current_watches' = 2,
-  'pending_watches' = 3
+  '_all',
+  'queued_watches',
+  'current_watches',
+  'pending_watches'
 }
 
 export class WatchRecordQueuedStats {
-  execution_time: DateString
+  execution_time: DateTime
 }
 
 export class WatchRecordStats extends WatchRecordQueuedStats {
   execution_phase: ExecutionPhase
-  triggered_time: DateString
+  triggered_time: DateTime
   executed_actions?: Array<string>
   watch_id: Id
   watch_record_id: Id

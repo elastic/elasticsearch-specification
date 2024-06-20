@@ -18,34 +18,84 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Conflicts, WaitForActiveShards } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { Conflicts, Slices, WaitForActiveShards } from '@_types/common'
+import { float, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { Destination, Source } from './types'
 
 /**
  * @rest_spec_name reindex
- * @since 2.3.0
- * @stability stable
+ * @availability stack since=2.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * If `true`, the request refreshes affected shards to make this operation visible to search.
+     * @server_default false
+     */
     refresh?: boolean
-    requests_per_second?: long
-    scroll?: Time
-    slices?: long
-    timeout?: Time
+    /**
+     * The throttle for this request in sub-requests per second.
+     * Defaults to no throttle.
+     * @server_default -1
+     */
+    requests_per_second?: float
+    /**
+     * Specifies how long a consistent view of the index should be maintained for scrolled search.
+     */
+    scroll?: Duration
+    /**
+     * The number of slices this task should be divided into.
+     * Defaults to 1 slice, meaning the task isn’t sliced into subtasks.
+     * @server_default 1
+     */
+    slices?: Slices
+    /**
+     * Period each indexing waits for automatic index creation, dynamic mapping updates, and waiting for active shards.
+     * @server_default 1m
+     */
+    timeout?: Duration
+    /**
+     * The number of shard copies that must be active before proceeding with the operation.
+     * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * @server_default 1
+     */
     wait_for_active_shards?: WaitForActiveShards
+    /**
+     * If `true`, the request blocks until the operation is complete.
+     * @server_default true
+     */
     wait_for_completion?: boolean
+    /**
+     * If `true`, the destination must be an index alias.
+     * @server_default false
+     */
     require_alias?: boolean
   }
   body: {
+    /**
+     * Set to proceed to continue reindexing even if there are conflicts.
+     * @server_default abort
+     */
     conflicts?: Conflicts
-    dest?: Destination
+    /**
+     * The destination you are copying to.
+     */
+    dest: Destination
+    /**
+     * The maximum number of documents to reindex.
+     */
     max_docs?: long
+    /**
+     * The script to run to update the document source or metadata when reindexing.
+     */
     script?: Script
     size?: long
-    source?: Source
+    /**
+     * The source you are copying from.
+     */
+    source: Source
   }
 }

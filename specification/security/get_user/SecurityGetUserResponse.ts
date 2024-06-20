@@ -18,6 +18,9 @@
  */
 
 import { User } from '@security/_types/User'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
-export class Response extends DictionaryResponseBase<string, User> {}
+export class Response {
+  /** @codegen_name users */
+  body: Dictionary<string, User>
+}

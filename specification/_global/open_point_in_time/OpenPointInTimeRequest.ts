@@ -18,19 +18,51 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
-import { Time } from '@_types/Time'
+import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * A search request by default executes against the most recent visible data of the target indices,
+ * which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the
+ * state of the data as it existed when initiated. In some cases, it’s preferred to perform multiple
+ * search requests using the same point in time. For example, if refreshes happen between
+ * `search_after` requests, then the results of those requests might not be consistent as changes happening
+ * between searches are only visible to the more recent point in time.
  * @rest_spec_name open_point_in_time
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id point-in-time-api
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
     index: Indices
   }
   query_parameters: {
-    keep_alive: Time
+    /**
+     * Extends the time to live of the corresponding point in time.
+     */
+    keep_alive: Duration
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
+    /**
+     * Specifies the node or shard the operation should be performed on.
+     * Random by default.
+     */
+    preference?: string
+    /**
+     * Custom value used to route operations to a specific shard.
+     */
+    routing?: Routing
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`. Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
   }
 }

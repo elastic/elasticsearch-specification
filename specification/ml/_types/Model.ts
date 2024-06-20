@@ -19,7 +19,8 @@
 
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration, DateTime } from '@_types/Time'
+import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
 
 export class ModelSnapshot {
   /** An optional description of the job. */
@@ -27,13 +28,13 @@ export class ModelSnapshot {
   /** A numerical character string that uniquely identifies the job that the snapshot was created for. */
   job_id: Id
   /** The timestamp of the latest processed record. */
-  latest_record_time_stamp: integer
+  latest_record_time_stamp?: integer
   /** The timestamp of the latest bucket result. */
-  latest_result_time_stamp: integer
+  latest_result_time_stamp?: integer
   /** The minimum version required to be able to restore the model snapshot. */
   min_version: VersionString
   /** Summary information describing the model. */
-  model_size_stats: ModelSizeStats
+  model_size_stats?: ModelSizeStats
   /**  If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false. */
   retain: boolean
   /** For internal use only. */
@@ -41,13 +42,24 @@ export class ModelSnapshot {
   /** A numerical character string that uniquely identifies the model snapshot. */
   snapshot_id: Id
   /** The creation timestamp for the snapshot. */
-  timestamp: integer
+  timestamp: long
+}
+
+export class ModelSnapshotUpgrade {
+  job_id: Id
+  snapshot_id: Id
+  state: SnapshotUpgradeState
+  /**
+   * @availability stack
+   */
+  node: DiscoveryNode
+  assignment_explanation: string
 }
 
 export class ModelSizeStats {
   bucket_allocation_failures_count: long
   job_id: Id
-  log_time: Time
+  log_time: DateTime
   memory_status: MemoryStatus
   model_bytes: ByteSize
   model_bytes_exceeded?: ByteSize
@@ -69,12 +81,19 @@ export class ModelSizeStats {
 }
 
 export enum CategorizationStatus {
-  ok = 0,
-  warn = 1
+  ok,
+  warn
 }
 
 export enum MemoryStatus {
-  ok = 0,
-  soft_limit = 1,
-  hard_limit = 2
+  ok,
+  soft_limit,
+  hard_limit
+}
+
+export enum SnapshotUpgradeState {
+  loading_old_state,
+  saving_new_state,
+  stopped,
+  failed
 }

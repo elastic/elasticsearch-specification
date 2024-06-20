@@ -22,8 +22,8 @@ import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_user_privileges
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   query_parameters: {
@@ -31,5 +31,6 @@ export interface Request extends RequestBase {
     application?: Name
     /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
     priviledge?: Name
+    username?: Name | null
   }
 }

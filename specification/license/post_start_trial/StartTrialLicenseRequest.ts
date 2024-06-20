@@ -20,9 +20,10 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * The start trial API enables you to start a 30-day trial, which gives access to all subscription features.
  * @rest_spec_name license.post_start_trial
- * @since 6.1.0
- * @stability stable
+ * @availability stack since=6.1.0 stability=stable
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   query_parameters: {

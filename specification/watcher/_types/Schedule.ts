@@ -18,30 +18,30 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 // TODO remove
 // export class Schedule {}
 // export class ScheduleBase {}
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cron-expressions.html
+ * @doc_id cron-expressions
  */
 export type CronExpression = string
 //export class CronExpression extends ScheduleBase {}
 
 export class DailySchedule {
-  at: TimeOfDay[]
+  at: ScheduleTimeOfDay[]
 }
 
 export enum Day {
-  sunday = 0,
-  monday = 1,
-  tuesday = 2,
-  wednesday = 3,
-  thursday = 4,
-  friday = 5,
-  saturday = 6
+  sunday,
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday
 }
 
 export class HourlySchedule {
@@ -55,31 +55,26 @@ export class Interval {
 }
 
 export enum IntervalUnit {
-  /** @codegen_name second */
-  s = 0,
-  /** @codegen_name minute */
-  m = 1,
-  /** @codegen_name hour */
-  h = 2,
-  /** @codegen_name day */
-  d = 3,
-  /** @codegen_name week */
-  w = 4
+  second = 's',
+  minute = 'm',
+  hour = 'h',
+  day = 'd',
+  week = 'w'
 }
 
 export enum Month {
-  january = 0,
-  february = 1,
-  march = 2,
-  april = 3,
-  may = 4,
-  june = 5,
-  july = 6,
-  august = 7,
-  september = 8,
-  october = 9,
-  november = 10,
-  december = 11
+  january,
+  february,
+  march,
+  april,
+  may,
+  june,
+  july,
+  august,
+  september,
+  october,
+  november,
+  december
 }
 
 /**
@@ -89,19 +84,23 @@ export class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Time
-  monthly?: TimeOfMonth[]
-  weekly?: TimeOfWeek[]
-  yearly?: TimeOfYear[]
+  interval?: Duration
+  monthly?: TimeOfMonth | TimeOfMonth[]
+  weekly?: TimeOfWeek | TimeOfWeek[]
+  yearly?: TimeOfYear | TimeOfYear[]
 }
 
 export class ScheduleTriggerEvent {
-  scheduled_time: DateString
-  triggered_time?: DateString
+  scheduled_time: DateTime
+  triggered_time?: DateTime
 }
 
-/** @codegen_names text, hour_minute */
-export type TimeOfDay = string | HourAndMinute
+/**
+ * A time of day, expressed either as `hh:mm`, `noon`, `midnight`, or an hour/minutes structure.
+ * @codegen_names text, hour_minute
+ */
+// See ES DayTimes
+export type ScheduleTimeOfDay = string | HourAndMinute
 
 export class HourAndMinute {
   hour: integer[]

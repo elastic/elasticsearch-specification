@@ -38,6 +38,7 @@
           "blocks",
           "metadata",
           "nodes",
+          "none",
           "routing_table",
           "master_node",
           "version"

@@ -34,5 +34,15 @@ There is nothing that can be done here, it's a security limitation imposed by Gi
 
 #### Current solution
 
-Eitgher performa cherry-pick once merged or create a branch directly in this repository.
+Either perform a cherry-pick once merged or create a branch directly in this repository.
 Nit: if you do the latter, name the branch like this: `{username}/{feature_name}`
+
+## Boolean in specific enum shouldn't be sent as string
+
+[DynamicMapping](../specification/_types/mapping/dynamic-template.ts#L37-L42) enum if not populated as a boolean in Elasticsearch breaks Kibana which expects a true json boolean.
+
+[elasticsearch-java #139](https://github.com/elastic/elasticsearch-java/issues/139)
+
+#### Current solution
+
+Handle the enum `true` and `false` to be serialized as booleans and not string. These enums have an `es_quirk` annotation.

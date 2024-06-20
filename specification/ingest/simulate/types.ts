@@ -20,11 +20,13 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
-import { Id, IndexName, Name } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
+import { DateTime } from '@_types/Time'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class Ingest {
-  timestamp: DateString
+  timestamp: DateTime
   pipeline?: Name
 }
 
@@ -37,16 +39,47 @@ export class PipelineSimulation {
 }
 
 export class Document {
+  /**
+   * Unique identifier for the document.
+   * This ID must be unique within the `_index`.
+   */
   _id?: Id
+  /**
+   * Name of the index containing the document.
+   */
   _index?: IndexName
+  /**
+   * JSON body for the document.
+   */
   _source: UserDefinedValue
 }
 
-export class DocumentSimulation {
+/**
+ * The simulated document, with optional metadata.
+ */
+export class DocumentSimulation
+  implements AdditionalProperties<string, string>
+{
+  /**
+   * Unique identifier for the document. This ID must be unique within the `_index`.
+   */
   _id: Id
+  /**
+   * Name of the index containing the document.
+   */
   _index: IndexName
   _ingest: Ingest
-  _parent?: string
+  /**
+   * Value used to send the document to a specific primary shard.
+   */
   _routing?: string
+  /**
+   * JSON body for the document.
+   */
   _source: Dictionary<string, UserDefinedValue>
+  /**
+   *
+   */
+  _version?: Stringified<VersionNumber>
+  _version_type?: VersionType
 }

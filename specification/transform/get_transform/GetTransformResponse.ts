@@ -18,8 +18,8 @@
  */
 
 import { long } from '@_types/Numeric'
-import { Transform } from '@_types/Transform'
+import { TransformSummary } from './types'
 
 export class Response {
-  body: { count: long; transforms: Transform[] }
+  body: { count: long; transforms: TransformSummary[] }
 }

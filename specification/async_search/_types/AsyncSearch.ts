@@ -23,20 +23,31 @@ import { Suggest } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { AggregateName, Id, SuggestionName } from '@_types/common'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
 export class AsyncSearch<TDocument> {
+  /**
+   * Partial aggregations results, coming from the shards that have already completed the execution of the query.
+   */
   aggregations?: Dictionary<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   fields?: Dictionary<string, UserDefinedValue>
   hits: HitsMetadata<TDocument>
   max_score?: double
+  /**
+   * Indicates how many reductions of the results have been performed.
+   * If this number increases compared to the last retrieved results for a get asynch search request, you can expect additional results included in the search response.
+   */
   num_reduce_phases?: long
   profile?: Profile
   pit_id?: Id
-  _scroll_id?: Id
+  _scroll_id?: ScrollId
+  /**
+   * Indicates how many shards have run the query.
+   * Note that in order for shard results to be included in the search response, they need to be reduced first.
+   */
   _shards: ShardStatistics
   suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean

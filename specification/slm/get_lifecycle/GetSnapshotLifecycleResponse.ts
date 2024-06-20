@@ -18,7 +18,10 @@
  */
 
 import { SnapshotLifecycle } from '@slm/_types/SnapshotLifecycle'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Id } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<Id, SnapshotLifecycle> {}
+export class Response {
+  /** @codegen_name lifecycles */
+  body: Dictionary<Id, SnapshotLifecycle>
+}

@@ -17,19 +17,28 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RolloverConditions } from '@indices/rollover/types'
+import { integer, long } from '@_types/Numeric'
 
 export class Phase {
   actions?: Actions
-  min_age?: Time
+  /**
+   * @es_quirk output as a millis number in XPack usage stats, which cannot roundtrip with a Duration as it requires a unit.
+   */
+  min_age?: Duration | long
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
+  configurations?: Configurations
 }
 
 export class Phases {
   cold?: Phase
   delete?: Phase
+  frozen?: Phase
   hot?: Phase
   warm?: Phase
 }
@@ -37,3 +46,17 @@ export class Phases {
 // TODO. This is a variants container.
 // See https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html#ilm-phase-actions
 export type Actions = UserDefinedValue
+
+export class Configurations {
+  rollover?: RolloverConditions
+  forcemerge?: ForceMergeConfiguration
+  shrink?: ShrinkConfiguration
+}
+
+export class ForceMergeConfiguration {
+  max_num_segments: integer
+}
+
+export class ShrinkConfiguration {
+  number_of_shards: integer
+}

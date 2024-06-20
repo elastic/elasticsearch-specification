@@ -28,8 +28,8 @@ import { long } from '@_types/Numeric'
  * It is based on analysis configuration details for the job and cardinality
  * estimates for the fields it references.
  * @rest_spec_name ml.estimate_model_memory
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

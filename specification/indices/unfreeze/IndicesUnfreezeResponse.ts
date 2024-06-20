@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
-
-export class Response extends AcknowledgedResponseBase {
+export class Response {
   body: {
+    acknowledged: boolean
     shards_acknowledged: boolean
   }
 }

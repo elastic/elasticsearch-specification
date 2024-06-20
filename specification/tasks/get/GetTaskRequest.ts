@@ -19,19 +19,32 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name tasks.get
- * @since 5.0.0
- * @stability experimental
+ * @availability stack since=5.0.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
+ * @doc_id tasks
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * ID of the task.
+     */
     task_id: Id
   }
   query_parameters: {
-    timeout?: Time
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+    /**
+     * If `true`, the request blocks until the task has completed.
+     * @server_default false
+     */
     wait_for_completion?: boolean
   }
 }

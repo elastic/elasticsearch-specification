@@ -20,14 +20,21 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field } from '@_types/common'
+import { Duration, TimeZone } from '@_types/Time'
 
 export class RollupCapabilities {
   rollup_jobs: RollupCapabilitySummary[]
 }
 
 export class RollupCapabilitySummary {
-  fields: Dictionary<Field, Dictionary<string, UserDefinedValue>>
+  fields: Dictionary<Field, RollupFieldSummary[]>
   index_pattern: string
   job_id: string
   rollup_index: string
+}
+
+export class RollupFieldSummary {
+  agg: string
+  calendar_interval?: Duration
+  time_zone?: TimeZone
 }

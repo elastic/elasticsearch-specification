@@ -18,7 +18,8 @@
  */
 
 import { Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
+import { DurationValue, UnitMillis } from '@_types/Time'
 
 export class GeoIpDownloadStatistics {
   /** Total number of successful database downloads. */
@@ -26,7 +27,7 @@ export class GeoIpDownloadStatistics {
   /** Total number of failed database downloads. */
   failed_downloads: integer
   /** Total milliseconds spent downloading databases. */
-  total_download_time: integer
+  total_download_time: DurationValue<UnitMillis>
   /** Current number of databases available for use. */
   database_count: integer
   /** Total number of database updates skipped. */

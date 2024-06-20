@@ -18,6 +18,7 @@
  */
 
 import { Destination, Source } from '@global/reindex/types'
+import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
   Latest,
   Pivot,
@@ -25,17 +26,18 @@ import {
   Settings,
   SyncContainer
 } from '@transform/_types/Transform'
-import { Id, VersionString } from '@_types/common'
+import { Id, Metadata, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 export class Response {
   body: {
+    authorization?: TransformAuthorization
     create_time: long
-    //  create_time_date_time?: DateString
+    //  create_time_date_time?: DateTime
     description: string
     dest: Destination
-    frequency: Time
+    frequency?: Duration
     id: Id
     latest?: Latest
     pivot?: Pivot
@@ -44,5 +46,6 @@ export class Response {
     source: Source
     sync?: SyncContainer
     version: VersionString
+    _meta?: Metadata
   }
 }

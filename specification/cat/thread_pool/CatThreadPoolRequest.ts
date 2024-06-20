@@ -19,24 +19,30 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { TimeUnit } from '@_types/Time'
 
 /**
+ * Returns thread pool statistics for each node in a cluster.
+ * Returned information includes all built-in thread pools and custom thread pools.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.thread_pool
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
+ * @doc_id cat-thread-pool
+ * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
   path_parts: {
     /**
-     * List of thread pool names used to limit the request. Accepts wildcard expressions.
+     * A comma-separated list of thread pool names used to limit the request.
+     * Accepts wildcard expressions.
      */
     thread_pool_patterns?: Names
   }
   query_parameters: {
     /**
-     * Unit used to display time values.
+     * The unit used to display time values.
      */
-    time?: Time
+    time?: TimeUnit
   }
 }

@@ -18,14 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, SearchType } from '@_types/common'
+import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { MultisearchBody, MultisearchHeader, RequestItem } from './types'
+import { RequestItem } from './types'
 
 /**
  * @rest_spec_name msearch
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -42,7 +43,7 @@ export interface Request extends RequestBase {
     /**
      * If true, network roundtrips between the coordinating node and remote clusters are minimized for cross-cluster search requests.
      * @server_default true
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#ccs-network-delays
+     * @doc_id ccs-network-delays
      */
     ccs_minimize_roundtrips?: boolean
     /**
@@ -73,19 +74,23 @@ export interface Request extends RequestBase {
      */
     pre_filter_shard_size?: long
     /**
-     * Indicates whether global term and document frequencies should be used when scoring returned documents.
-     */
-    search_type?: SearchType
-    /**
      * If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.
      * @server_default false
      */
     rest_total_hits_as_int?: boolean
+    /**
+     * Custom routing value used to route search operations to a specific shard.
+     */
+    routing?: Routing
+    /**
+     * Indicates whether global term and document frequencies should be used when scoring returned documents.
+     */
+    search_type?: SearchType
     /**
      * Specifies whether aggregation and suggester names should be prefixed by their respective types in the response.
      */
     typed_keys?: boolean
   }
   /** @codegen_name searches */
-  body?: Array<RequestItem>
+  body: Array<RequestItem>
 }

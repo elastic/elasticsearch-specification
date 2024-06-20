@@ -12,17 +12,17 @@ jobs:
 
     strategy:
       matrix:
-        branch: ['main', '7.16']
+        branch: ['main', '8.8', '8.7', '7.17']
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 20.x
 
       - name: Install deps
         run: |

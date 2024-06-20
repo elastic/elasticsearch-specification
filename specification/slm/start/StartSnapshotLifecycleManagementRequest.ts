@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name slm.start
- * @since 7.6.0
- * @stability stable
+ * @availability stack since=7.6.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {}

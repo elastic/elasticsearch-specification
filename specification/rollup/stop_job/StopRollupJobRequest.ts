@@ -19,19 +19,32 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Stops an existing, started rollup job.
  * @rest_spec_name rollup.stop_job
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the rollup job.
+     */
     id: Id
   }
   query_parameters: {
-    timeout?: Time
+    /**
+     * If `wait_for_completion` is `true`, the API blocks for (at maximum) the specified duration while waiting for the job to stop.
+     * If more than `timeout` time has passed, the API throws a timeout exception.
+     * @server_default 30s
+     */
+    timeout?: Duration
+    /**
+     * If set to `true`, causes the API to block until the indexer state completely stops.
+     * If set to `false`, the API returns immediately and the indexer is stopped asynchronously in the background.
+     * @server_default false
+     */
     wait_for_completion?: boolean
   }
 }

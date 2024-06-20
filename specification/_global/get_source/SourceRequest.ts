@@ -30,10 +30,10 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name get_source
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
-export interface Request {
+export interface Request extends RequestBase {
   path_parts: {
     /** Unique identifier of the document. */
     id: Id
@@ -48,7 +48,7 @@ export interface Request {
     /**
      *  Boolean) If true, the request is real-time as opposed to near-real-time.
      * @server_default true
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
+     * @doc_id realtiime
      */
     realtime?: boolean
     /**
@@ -58,7 +58,7 @@ export interface Request {
     refresh?: boolean
     /**
      * Target the specified primary shard.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing
+     * @doc_id routing
      */
     routing?: Routing
     /**

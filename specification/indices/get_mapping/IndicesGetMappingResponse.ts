@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
-export class Response extends DictionaryResponseBase<
-  IndexName,
-  IndexMappingRecord
-> {}
+export class Response {
+  /** @codegen_name mappings */
+  body: Dictionary<IndexName, IndexMappingRecord>
+}
 
 export class IndexMappingRecord {
   item?: TypeMapping

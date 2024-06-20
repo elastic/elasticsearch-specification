@@ -17,13 +17,17 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from './core'
+import { DocValuesPropertyBase, OnScriptError } from './core'
 import { GeoLocation } from '@_types/Geo'
+import { Script } from '@_types/Scripting'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: GeoLocation
+  index?: boolean
+  on_script_error?: OnScriptError
+  script?: Script
   type: 'geo_point'
 }
 
@@ -38,7 +42,7 @@ export enum GeoOrientation {
  * The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles
  * and polygons.
  *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html
+ * @doc_id geo-shape
  */
 export class GeoShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean
@@ -50,13 +54,13 @@ export class GeoShapeProperty extends DocValuesPropertyBase {
 }
 
 export enum GeoStrategy {
-  recursive = 0,
-  term = 1
+  recursive,
+  term
 }
 
 export enum GeoTree {
-  geohash = 0,
-  quadtree = 1
+  geohash,
+  quadtree
 }
 
 export class PointProperty extends DocValuesPropertyBase {
@@ -70,7 +74,7 @@ export class PointProperty extends DocValuesPropertyBase {
  * The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as
  * rectangles and polygons.
  *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/shape.html
+ * @doc_id shape
  */
 export class ShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Sets a cluster wide upgrade_mode setting that prepares machine learning
@@ -34,8 +34,8 @@ import { Time } from '@_types/Time'
  * You can see the current value for the upgrade_mode setting by using the get
  * machine learning info API.
  * @rest_spec_name ml.set_upgrade_mode
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -51,6 +51,6 @@ export interface Request extends RequestBase {
      * The time to wait for the request to be completed.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

@@ -18,6 +18,9 @@
  */
 
 import { TemplateMapping } from '@indices/_types/TemplateMapping'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 
-export class Response extends DictionaryResponseBase<string, TemplateMapping> {}
+export class Response {
+  /** @codegen_name templates */
+  body: Dictionary<string, TemplateMapping>
+}

@@ -27,33 +27,67 @@ import {
   VersionString
 } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
-import { EpochMillis, Time } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  DurationValue,
+  UnitMillis,
+  EpochTime
+} from '@_types/Time'
 import { IndexDetails } from './SnapshotIndexDetails'
 import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
   data_streams: Array<string>
-  duration?: Time
-  duration_in_millis?: EpochMillis
-  end_time?: Time
-  end_time_in_millis?: EpochMillis
+  duration?: Duration
+  duration_in_millis?: DurationValue<UnitMillis>
+  end_time?: DateTime
+  end_time_in_millis?: EpochTime<UnitMillis>
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
-  indices: IndexName[]
-  /** @since 7.13.0 */
+  indices?: IndexName[]
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   index_details?: Dictionary<IndexName, IndexDetails>
   metadata?: Metadata
   reason?: string
-  /** @since 7.14.0 */
+  /**
+   * @availability stack since=7.14.0
+   * @availability serverless
+   */
   repository?: Name
   snapshot: Name
   shards?: ShardStatistics
-  start_time?: Time
-  start_time_in_millis?: EpochMillis
+  start_time?: DateTime
+  start_time_in_millis?: EpochTime<UnitMillis>
   state?: string
   uuid: Uuid
   version?: VersionString
   version_id?: VersionNumber
   feature_states?: InfoFeatureState[]
+}
+
+export enum SnapshotSort {
+  start_time,
+  duration,
+  name,
+  index_count,
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
+  repository,
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
+  shard_count,
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
+  failed_shard_count
 }

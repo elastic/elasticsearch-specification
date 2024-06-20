@@ -19,4 +19,6 @@
 
 import { ShardsOperationResponseBase } from '@_types/Base'
 
-export class Response extends ShardsOperationResponseBase {}
+export class Response {
+  body: ShardsOperationResponseBase
+}

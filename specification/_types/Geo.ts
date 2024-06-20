@@ -28,29 +28,26 @@ export class DistanceParsed {
 export type Distance = string
 
 export enum DistanceUnit {
-  /** @codegen_name inches */
-  in = 0,
-  /** @codegen_name feet */
-  ft = 1,
-  /** @codegen_name yards */
-  yd = 2,
-  /** @codegen_name miles */
-  mi = 3,
-  /** @codegen_name nautic_miles */
-  nmi = 4,
-  /** @codegen_name kilometers */
-  km = 5,
-  /** @codegen_name meters */
-  m = 6,
-  /** @codegen_name centimeters */
-  cm = 7,
-  /** @codegen_name millimeters */
-  mm = 8
+  inches = 'in',
+  'feet' = 'ft',
+  'yards' = 'yd',
+  miles = 'mi',
+  nautic_miles = 'nmi',
+  kilometers = 'km',
+  meters = 'm',
+  centimeters = 'cm',
+  millimeters = 'mm'
 }
 
 export enum GeoDistanceType {
-  arc = 0,
-  plane = 1
+  /**
+   * The `arc` calculation is the most accurate.
+   */
+  arc,
+  /**
+   * The `plane` calculation is faster but less accurate.
+   */
+  plane
 }
 
 /** A GeoJson shape, that can also use Elasticsearch's `envelope` extension. */
@@ -65,10 +62,23 @@ export class GeoLine {
 }
 
 export enum GeoShapeRelation {
-  intersects = 0,
-  disjoint = 1,
-  within = 2,
-  contains = 3
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field intersects the query geometry.
+   */
+  intersects,
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field has nothing in common with the query geometry.
+   */
+  disjoint,
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field is within the query geometry.
+   * Line geometries are not supported.
+   */
+  within,
+  /**
+   * Return all documents whose `geo_shape` or `geo_point` field contains the query geometry.
+   */
+  contains
 }
 
 export type GeoTilePrecision = number
@@ -82,6 +92,9 @@ export type GeoHash = string
 
 /** A map tile reference, represented as `{zoom}/{x}/{y}` */
 export type GeoTile = string
+
+/** A map hex cell (H3) reference */
+export type GeoHexCell = string
 
 export class LatLon {
   lat: double
@@ -105,7 +118,13 @@ export type GeoLocation =
   | string
 
 export class LatLonGeoLocation {
+  /**
+   * Latitude
+   */
   lat: double
+  /**
+   * Longitude
+   */
   lon: double
 }
 

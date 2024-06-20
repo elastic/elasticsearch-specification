@@ -20,13 +20,14 @@
 import { RequestBase } from '@_types/Base'
 import { Fields, Indices, Routing } from '@_types/common'
 import { Query } from './_types/Knn'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name knn_search
- * @since 8.0.0
- * @stability experimental
+ * @availability stack since=8.0.0 stability=experimental
+ * @deprecated 8.4.0
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -65,6 +66,14 @@ export interface Request extends RequestBase {
      * in the hits.fields property of the response. Accepts wildcard (*) patterns.
      */
     fields?: Fields
+    /**
+     * Query to filter the documents that can match. The kNN search will return the top
+     * `k` documents that also match this filter. The value can be a single query or a
+     * list of queries. If `filter` isn't provided, all documents are allowed to match.
+     * @availability stack since=8.2.0
+     * @availability serverless
+     */
+    filter?: QueryContainer | QueryContainer[]
     /** kNN query to execute */
     knn: Query
   }

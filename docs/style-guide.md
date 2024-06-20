@@ -19,7 +19,7 @@ Following you can find the rules enforced inside [`/specification`](../specifica
 }
 ```
 
-You can automatically apply them by running `make format-code`.
+You can automatically apply them by running `make spec-format-fix`.
 Those rules are enforced in CI, if you don't follow them, the build will fail.
 
 ## Merge definitions
@@ -56,13 +56,13 @@ represented in the specification.
 ## Where to store files
 
 The content of [`/specification`](../specification) follows the rest-api-spec structure.
-Every folder represents the namespace, while every subfolder represente the API name.
+Every folder represents the namespace, while every subfolder represent the API name.
 For top level APIs, you must use the `_global` namespace.
 
 ## Using unions
 
-Using unions direclty in definitions is considereded code smell, it's recommended to create
-a type alias that describes the union. These alises do not need to live in common files
+Using unions directly in definitions is considered code smell, it's recommended to create
+a type alias that describes the union. These aliases do not need to live in common files
 unless those are truly commonly used throughout the specification.
 
 ```ts
@@ -81,7 +81,7 @@ type Id = string | number
 ## Arrays
 
 It's fine to use the short TypeScript array notation, unless the type
-becomes more comples (eg: array of unions), in such case prefer the full definition.
+becomes more complex (eg: array of unions), in such case prefer the full definition.
 
 ```ts
 class Foo {

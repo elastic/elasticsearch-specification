@@ -21,12 +21,15 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Starts an existing, stopped rollup job.
  * @rest_spec_name rollup.start_job
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the rollup job.
+     */
     id: Id
   }
 }

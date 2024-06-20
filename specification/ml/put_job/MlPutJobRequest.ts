@@ -24,14 +24,14 @@ import { CustomSettings } from '@ml/_types/Settings'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 
 /**
  * Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.
  * @rest_spec_name ml.put_job
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
  */
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
     /**
      * Advanced configuration option. The time between each periodic persistence of the model. The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour. For very large models (several GB), persistence could take 10-20 minutes, so do not set the `background_persist_interval` value too low.
      */
-    background_persist_interval: Time
+    background_persist_interval?: Duration
     /**
      *  Advanced configuration option. Contains custom meta data about the job.
      */

@@ -21,15 +21,24 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Creates the enrich index for an existing enrich policy.
+ * @doc_id execute-enrich-policy-api
  * @rest_spec_name enrich.execute_policy
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Enrich policy to execute.
+     */
     name: Name
   }
   query_parameters: {
+    /**
+     * If `true`, the request blocks other enrich policy execution requests until complete.
+     * @server_default true
+     */
     wait_for_completion?: boolean
   }
 }

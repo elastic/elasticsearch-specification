@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
+import { DateTime } from '@_types/Time'
 
 /**
  * Previews a datafeed.
@@ -33,8 +34,8 @@ import { JobConfig } from '@ml/_types/Job'
  * datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.
  * You can also use secondary authorization headers to supply the credentials.
  * @rest_spec_name ml.preview_datafeed
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
  */
@@ -47,6 +48,10 @@ export interface Request extends RequestBase {
      * configuration details in the request body.
      */
     datafeed_id?: Id
+  }
+  query_parameters: {
+    start?: DateTime
+    end?: DateTime
   }
   body: {
     /**

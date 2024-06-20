@@ -23,88 +23,193 @@ import { integer } from '@_types/Numeric'
 import {
   AggregateMetricDoubleProperty,
   DenseVectorProperty,
-  FlattenedProperty
+  FlattenedProperty,
+  NestedProperty,
+  ObjectProperty
 } from './complex'
 import {
-  CoreProperty,
+  BinaryProperty,
+  BooleanProperty,
+  ByteNumberProperty,
+  DateNanosProperty,
+  DateProperty,
+  DoubleNumberProperty,
+  DynamicProperty,
+  FloatNumberProperty,
+  HalfFloatNumberProperty,
+  IntegerNumberProperty,
   JoinProperty,
+  KeywordProperty,
+  LongNumberProperty,
+  MatchOnlyTextProperty,
   PercolatorProperty,
   RankFeatureProperty,
-  RankFeaturesProperty
+  RankFeaturesProperty,
+  ScaledFloatNumberProperty,
+  SearchAsYouTypeProperty,
+  ShortNumberProperty,
+  SemanticTextProperty,
+  SparseVectorProperty,
+  TextProperty,
+  UnsignedLongNumberProperty,
+  VersionProperty,
+  WildcardProperty
 } from './core'
 import { DynamicMapping } from './dynamic-template'
 import {
+  CompletionProperty,
   ConstantKeywordProperty,
   FieldAliasProperty,
-  HistogramProperty
+  HistogramProperty,
+  IcuCollationProperty,
+  IpProperty,
+  Murmur3HashProperty,
+  TokenCountProperty
 } from './specialized'
+import {
+  DateRangeProperty,
+  DoubleRangeProperty,
+  FloatRangeProperty,
+  IntegerRangeProperty,
+  IpRangeProperty,
+  LongRangeProperty
+} from '@_types/mapping/range'
+import {
+  GeoPointProperty,
+  GeoShapeProperty,
+  PointProperty,
+  ShapeProperty
+} from '@_types/mapping/geo'
 
 export class PropertyBase {
-  local_metadata?: Metadata
+  /**
+   * Metadata about the field.
+   * @doc_id mapping-meta-field
+   */
   meta?: Dictionary<string, string>
-  name?: PropertyName
   properties?: Dictionary<PropertyName, Property>
   ignore_above?: integer
   dynamic?: DynamicMapping
   fields?: Dictionary<PropertyName, Property>
 }
 
-/** @variants internal tag='type' */
+/**
+ * @variants internal tag='type' default='object'
+ * @non_exhaustive
+ */
 export type Property =
-  | FlattenedProperty
+  // common
+  | BinaryProperty
+  | BooleanProperty
+  | DynamicProperty
   | JoinProperty
+  | KeywordProperty
+  | MatchOnlyTextProperty
   | PercolatorProperty
   | RankFeatureProperty
   | RankFeaturesProperty
+  | SearchAsYouTypeProperty
+  | TextProperty
+  | VersionProperty
+  | WildcardProperty
+
+  // dates
+  | DateNanosProperty
+  | DateProperty
+
+  // complex
+  | AggregateMetricDoubleProperty
+  | DenseVectorProperty
+  | FlattenedProperty
+  | NestedProperty
+  | ObjectProperty
+  | SemanticTextProperty
+  | SparseVectorProperty
+
+  // structured
+  | CompletionProperty
   | ConstantKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
-  | DenseVectorProperty
-  | AggregateMetricDoubleProperty
-  | CoreProperty
+  | IpProperty
+  | Murmur3HashProperty
+  | TokenCountProperty
+
+  // spatial
+  | GeoPointProperty
+  | GeoShapeProperty
+  | PointProperty
+  | ShapeProperty
+
+  // numbers
+  | ByteNumberProperty
+  | DoubleNumberProperty
+  | FloatNumberProperty
+  | HalfFloatNumberProperty
+  | IntegerNumberProperty
+  | LongNumberProperty
+  | ScaledFloatNumberProperty
+  | ShortNumberProperty
+  | UnsignedLongNumberProperty
+
+  // RangeProperty
+  | DateRangeProperty
+  | DoubleRangeProperty
+  | FloatRangeProperty
+  | IntegerRangeProperty
+  | IpRangeProperty
+  | LongRangeProperty
+
+  // plugins
+  | IcuCollationProperty
 
 export enum FieldType {
-  none = 0,
-  geo_point = 1,
-  geo_shape = 2,
-  ip = 3,
-  binary = 4,
-  keyword = 5,
-  text = 6,
-  search_as_you_type = 7,
-  date = 8,
-  date_nanos = 9,
-  boolean = 10,
-  completion = 11,
-  nested = 12,
-  object = 13,
-  murmur3 = 14,
-  token_count = 15,
-  percolator = 16,
-  integer = 17,
-  long = 18,
-  short = 19,
-  byte = 20,
-  float = 21,
-  half_float = 22,
-  scaled_float = 23,
-  double = 24,
-  integer_range = 25,
-  float_range = 26,
-  long_range = 27,
-  double_range = 28,
-  date_range = 29,
-  ip_range = 30,
-  alias = 31,
-  join = 32,
-  rank_feature = 33,
-  rank_features = 34,
-  flattened = 35,
-  shape = 36,
-  histogram = 37,
-  constant_keyword = 38,
-  aggregate_metric_double = 39,
-  dense_vector = 40
+  none,
+  geo_point,
+  geo_shape,
+  ip,
+  binary,
+  keyword,
+  text,
+  search_as_you_type,
+  date,
+  date_nanos,
+  boolean,
+  completion,
+  nested,
+  object,
+  version,
+  murmur3,
+  token_count,
+  percolator,
+  integer,
+  long,
+  short,
+  byte,
+  float,
+  half_float,
+  scaled_float,
+  double,
+  integer_range,
+  float_range,
+  long_range,
+  double_range,
+  date_range,
+  ip_range,
+  alias,
+  join,
+  rank_feature,
+  rank_features,
+  flattened,
+  shape,
+  histogram,
+  constant_keyword,
+  aggregate_metric_double,
+  dense_vector,
+  semantic_text,
+  sparse_vector,
+  match_only_text,
+  icu_collation_keyword
 }
 
 export class PropertyWithClrOrigin {}

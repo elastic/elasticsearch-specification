@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Opens one or more anomaly detection jobs.
@@ -31,8 +31,8 @@ import { Time } from '@_types/Time'
  * loaded. The job is ready to resume its analysis from where it left off, once
  * new data is received.
  * @rest_spec_name ml.open_job
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -47,13 +47,13 @@ export interface Request extends RequestBase {
      * Controls the time to wait until a job has opened.
      * @server_default 30m
      */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 30m
      */
-    timeout?: Time
+    timeout?: Duration
   }
 }

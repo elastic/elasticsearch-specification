@@ -20,8 +20,9 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Returns enrich coordinator statistics and information about enrich policies that are currently executing.
  * @rest_spec_name enrich.stats
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {}

@@ -18,7 +18,15 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Uuid, Id, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Uuid,
+  Id,
+  SequenceNumber,
+  VersionNumber,
+  HealthStatus,
+  IndexName,
+  ByteSize
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
   BulkStats,
@@ -39,6 +47,7 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class IndexStats {
   /** Contains statistics about completions across all shards assigned to the node. */
@@ -76,7 +85,10 @@ export class IndexStats {
   /** Contains statistics about index warming operations for the node. */
   warmer?: WarmerStats
   bulk?: BulkStats
-  /** @since 7.15.0 */
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
   shard_stats?: ShardsTotalStats
 }
 
@@ -85,6 +97,16 @@ export class IndicesStats {
   shards?: Dictionary<string, ShardStats[]>
   total?: IndexStats
   uuid?: Uuid
+  /**
+   * @availability stack since=8.1.0
+   * @availability serverless
+   */
+  health?: HealthStatus
+  /**
+   * @availability stack since=8.1.0
+   * @availability serverless
+   */
+  status?: IndexMetadataState
 }
 
 export class ShardCommit {
@@ -140,15 +162,15 @@ export class ShardRetentionLeases {
 export class ShardRouting {
   node: string
   primary: boolean
-  relocating_node?: string
+  relocating_node?: string | null
   state: ShardRoutingState
 }
 
 export enum ShardRoutingState {
-  UNASSIGNED = 0,
-  INITIALIZING = 1,
-  STARTED = 2,
-  RELOCATING = 3
+  UNASSIGNED,
+  INITIALIZING,
+  STARTED,
+  RELOCATING
 }
 
 export class ShardSequenceNumber {
@@ -161,6 +183,12 @@ export class ShardsTotalStats {
   total_count: long
 }
 
+export class MappingStats {
+  total_count: long
+  total_estimated_overhead?: ByteSize
+  total_estimated_overhead_in_bytes: long
+}
+
 export class ShardStats {
   commit?: ShardCommit
   completion?: CompletionStats
@@ -169,6 +197,7 @@ export class ShardStats {
   flush?: FlushStats
   get?: GetStats
   indexing?: IndexingStats
+  mappings?: MappingStats
   merges?: MergesStats
   shard_path?: ShardPath
   query_cache?: ShardQueryCache
@@ -184,8 +213,20 @@ export class ShardStats {
   translog?: TranslogStats
   warmer?: WarmerStats
   bulk?: BulkStats
-  /** @since 7.15.0 */
-  shards?: ShardsTotalStats
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
+  shards?: Dictionary<IndexName, UserDefinedValue>
   shard_stats?: ShardsTotalStats
   indices?: IndicesStats
+}
+
+/**
+ * @availability stack since=8.1.0
+ * @availability serverless
+ */
+export enum IndexMetadataState {
+  open,
+  close
 }

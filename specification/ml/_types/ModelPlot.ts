@@ -20,14 +20,12 @@
 import { OverloadOf } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 
-/**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
- */
 export class ModelPlotConfig {
   /**
    * If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.
-   * @since 7.9.0
    * @server_default true
+   * @availability stack since=7.9.0
+   * @availability serverless
    */
   annotations_enabled?: boolean
   /**
@@ -37,8 +35,8 @@ export class ModelPlotConfig {
   enabled?: boolean
   /**
    * Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.
-   * @since 7.9.0
-   * @stability experimental
+   * @availability stack since=7.9.0
+   * @availability serverless
    */
   terms?: Field
 }

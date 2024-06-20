@@ -21,15 +21,28 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { long } from '@_types/Numeric'
 
 /**
+ * Returns information about tasks currently executing in the cluster.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.
  * @rest_spec_name cat.tasks
- * @since 5.0.0
- * @stability experimental
+ * @availability stack since=5.0.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
+ * @doc_id tasks
+ * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
   query_parameters: {
+    /**
+     * The task action names, which are used to limit the response.
+     */
     actions?: string[]
+    /**
+     * If `true`, the response includes detailed information about shard recoveries.
+     * @server_default false
+     */
     detailed?: boolean
+    /** Unique node identifiers, which are used to limit the response. */
     node_id?: string[]
-    parent_task?: long
+    /** The parent task identifier, which is used to limit the response. */
+    parent_task_id?: string
   }
 }

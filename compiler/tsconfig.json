@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "isolatedModules": false,
     "jsx": "react",
-    "outDir": "lib/src",
+    "outDir": "lib",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strictNullChecks": true,
@@ -15,7 +15,7 @@
     "removeComments": true,
     "noLib": false,
     "preserveConstEnums": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "suppressImplicitAnyIndexErrors": true,
     "strictPropertyInitialization": false
   },
@@ -26,6 +26,6 @@
     "lib"
   ],
   "include": [
-    "."
+    "./src"
   ]
 }

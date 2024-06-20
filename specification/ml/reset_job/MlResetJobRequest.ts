@@ -27,8 +27,8 @@ import { Id } from '@_types/common'
  * It is not currently possible to reset multiple jobs using wildcards or a
  * comma separated list.
  * @rest_spec_name ml.reset_job
- * @since 7.14.0
- * @stability stable
+ * @availability stack since=7.14.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -45,5 +45,13 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     wait_for_completion?: boolean
+
+    /**
+     * Specifies whether annotations that have been added by the
+     * user should be deleted along with any auto-generated annotations when the job is
+     * reset.
+     * @server_default false
+     */
+    delete_user_annotations?: boolean
   }
 }

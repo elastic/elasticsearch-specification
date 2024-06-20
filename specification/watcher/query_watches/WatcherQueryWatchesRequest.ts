@@ -24,8 +24,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name watcher.query_watches
- * @since 7.11.0
- * @stability stable
+ * @availability stack since=7.11.0 stability=stable
  */
 export interface Request extends RequestBase {
   body: {

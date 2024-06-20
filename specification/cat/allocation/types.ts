@@ -23,46 +23,52 @@ import { Percentage } from '@_types/Numeric'
 
 export class AllocationRecord {
   /**
-   * number of shards on node
+   * Number of primary and replica shards assigned to the node.
    * @aliases s
    */
   shards?: string
   /**
-   * disk used by ES indices
+   * Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards.
+   * IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index.
    * @aliases di,diskIndices
    */
-  'disk.indices'?: ByteSize
+  'disk.indices'?: ByteSize | null
   /**
-   * disk used (total, not just ES)
+   * Total disk space in use.
+   * Elasticsearch retrieves this metric from the node’s operating system (OS).
+   * The metric includes disk space for: Elasticsearch, including the translog and unassigned shards; the node’s operating system; any other applications or files on the node.
+   * Unlike `disk.indices`, this metric does not double-count disk space for hard-linked files.
    * @aliases du,diskUsed
    */
-  'disk.used'?: ByteSize
+  'disk.used'?: ByteSize | null
   /**
-   * disk available
+   * Free disk space available to Elasticsearch.
+   * Elasticsearch retrieves this metric from the node’s operating system.
+   * Disk-based shard allocation uses this metric to assign shards to nodes based on available disk space.
    * @aliases da,diskAvail
    */
-  'disk.avail'?: ByteSize
+  'disk.avail'?: ByteSize | null
   /**
-   * total capacity of all volumes
+   * Total disk space for the node, including in-use and available space.
    * @aliases dt,diskTotal
    */
-  'disk.total'?: ByteSize
+  'disk.total'?: ByteSize | null
   /**
-   * percent disk used
+   * Total percentage of disk space in use. Calculated as `disk.used / disk.total`.
    * @aliases dp,diskPercent
    */
-  'disk.percent'?: Percentage
+  'disk.percent'?: Percentage | null
   /**
-   * host of node
+   * Network host for the node. Set using the `network.host` setting.
    * @aliases h
    */
-  host?: Host
+  host?: Host | null
   /**
-   * ip of node
+   * IP address and port for the node.
    */
-  ip?: Ip
+  ip?: Ip | null
   /**
-   * name of node
+   * Name for the node. Set using the `node.name` setting.
    * @aliases n
    */
   node?: string

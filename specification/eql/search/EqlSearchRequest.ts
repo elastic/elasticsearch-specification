@@ -18,20 +18,21 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, IndexName } from '@_types/common'
-import { float, uint } from '@_types/Numeric'
+import { ExpandWildcards, Field, IndexName, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
+import { uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { ResultPosition } from './types'
 
 /**
  * @rest_spec_name eql.search
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index: IndexName
+    index: Indices
   }
   query_parameters: {
     /**
@@ -51,7 +52,7 @@ export interface Request extends RequestBase {
      * Period for which the search and its results are stored on the cluster.
      * @server_default 5d
      */
-    keep_alive?: Time
+    keep_alive?: Duration
     /**
      * If true, the search and its results are stored on the cluster.
      * @server_default false
@@ -60,12 +61,12 @@ export interface Request extends RequestBase {
     /**
      * Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.
      */
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: Duration
   }
   body: {
     /**
      * EQL query you wish to run.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html
+     * @doc_id eql-syntax
      */
     query: string
     case_sensitive?: boolean
@@ -76,7 +77,7 @@ export interface Request extends RequestBase {
     event_category_field?: Field
     /**
      * Field used to sort hits with the same timestamp in ascending order
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html#eql-search-specify-a-sort-tiebreaker
+     * @doc_id sort-tiebreaker
      */
     tiebreaker_field?: Field
     /**
@@ -92,21 +93,26 @@ export interface Request extends RequestBase {
      * Query, written in Query DSL, used to filter the events on which the EQL query runs.
      */
     filter?: QueryContainer | QueryContainer[]
-    keep_alive?: Time
+    keep_alive?: Duration
     keep_on_completion?: boolean
-    wait_for_completion_timeout?: Time
+    wait_for_completion_timeout?: Duration
     /**
      * For basic queries, the maximum number of matching events to return. Defaults to 10
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax
+     * @doc_id eql-basic-syntax
      */
     size?: uint // doc says "integer of float" but it's really an int
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-    fields?: FieldAndFormat
+    fields?: FieldAndFormat | FieldAndFormat[]
     /**
      * @server_default tail
      */
     result_position?: ResultPosition
+    /**
+     * @availability stack since=8.0.0
+     * @availability serverless
+     */
+    runtime_mappings?: RuntimeFields
   }
 }

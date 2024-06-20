@@ -18,16 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name ilm.stop
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  */
 export interface Request extends RequestBase {
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
   }
 }

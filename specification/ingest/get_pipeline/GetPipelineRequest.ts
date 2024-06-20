@@ -19,21 +19,32 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Returns information about one or more ingest pipelines.
+ * This API returns a local reference of the pipeline.
  * @rest_spec_name ingest.get_pipeline
- * @since 5.0.0
- * @stability stable
+ * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of pipeline IDs to retrieve.
+     * Wildcard (`*`) expressions are supported.
+     * To get all ingest pipelines, omit this parameter or use `*`.
+     */
     id?: Id
   }
   query_parameters: {
-    /** @server_default 30s */
-    master_timeout?: Time
-    /** @server_default false */
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    master_timeout?: Duration
+    /**
+     * @server_default false */
     summary?: boolean
   }
 }

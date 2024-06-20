@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { TaskFailure } from './types'
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { TaskFailure } from '@_types/Errors'
 
-export class Response extends AcknowledgedResponseBase {
+export class Response {
   body: {
+    acknowledged: boolean
     task_failures?: TaskFailure[]
   }
 }

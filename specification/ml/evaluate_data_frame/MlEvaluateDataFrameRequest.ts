@@ -29,24 +29,23 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * created by data frame analytics. Evaluation requires both a ground truth
  * field and an analytics result field to be present.
  * @rest_spec_name ml.evaluate_data_frame
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   body: {
     /**
      * Defines the type of evaluation you want to perform.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html#ml-evaluate-dfanalytics-resources
      */
     evaluation: DataframeEvaluationContainer
     /**
-     * Defines the index in which the evaluation will be performed.
+     * Defines the `index` in which the evaluation will be performed.
      */
     index: IndexName
     /**
      * A query clause that retrieves a subset of data from the source index.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+     * @doc_id query-dsl
      */
     query?: QueryContainer
   }

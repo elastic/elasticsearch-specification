@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name features.reset_features
- * @since 7.12.0
- * @stability experimental
+ * @availability stack since=7.12.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {}

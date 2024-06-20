@@ -18,15 +18,19 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Names } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_role_mapping
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
   path_parts: {
-    name?: Name
+    /**
+     * The distinct name that identifies the role mapping. The name is used solely as an identifier to facilitate interaction via the API; it does not affect the behavior of the mapping in any way. You can specify multiple mapping names as a comma-separated list. If you do not specify this parameter, the API returns information about all role mappings.
+     */
+    name?: Names
   }
 }

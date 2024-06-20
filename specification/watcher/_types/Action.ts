@@ -19,11 +19,23 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
-import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import {
+  DateTime,
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis
+} from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
-import { Index, Logging } from './Actions'
+import {
+  IndexAction,
+  LoggingAction,
+  WebhookAction,
+  EmailAction,
+  PagerDutyAction,
+  SlackAction
+} from './Actions'
 import { ConditionContainer } from './Conditions'
 
 export class Action {
@@ -32,37 +44,53 @@ export class Action {
   foreach?: string
   max_iterations?: integer
   name?: Name
-  throttle_period?: Time
-  throttle_period_in_millis?: EpochMillis
+  throttle_period?: Duration
+  throttle_period_in_millis?: DurationValue<UnitMillis>
   transform?: TransformContainer
-  index?: Index
-  logging?: Logging
-  /** @since 7.14.0 */
-  webhook?: ActionWebhook
-}
-
-export class ActionWebhook {
-  host: Host
-  port: integer
+  index?: IndexAction
+  logging?: LoggingAction
+  email?: EmailAction
+  pagerduty?: PagerDutyAction
+  slack?: SlackAction
+  /**
+   * @availability stack since=7.14.0
+   * @availability serverless
+   */
+  webhook?: WebhookAction
 }
 
 export type Actions = Dictionary<IndexName, ActionStatus>
 
 export enum ActionType {
-  email = 0,
-  webhook = 1,
-  index = 2,
-  logging = 3,
-  slack = 4,
-  pagerduty = 5
+  email,
+  webhook,
+  index,
+  logging,
+  slack,
+  pagerduty
 }
 
 export enum ActionExecutionMode {
-  simulate = 0,
-  force_simulate = 1,
-  execute = 2,
-  force_execute = 3,
-  skip = 4
+  /**
+   * The action execution is simulated. Each action type defines its own simulation operation mode. For example, the email action creates the email that would have been sent but does not actually send it. In this mode, the action might be throttled if the current state of the watch indicates it should be.
+   */
+  simulate,
+  /**
+   * Similar to the `simulate` mode, except the action is not throttled even if the current state of the watch indicates it should be.
+   */
+  force_simulate,
+  /**
+   * Executes the action as it would have been executed if the watch had been triggered by its own trigger. The execution might be throttled if the current state of the watch indicates it should be.
+   */
+  execute,
+  /**
+   * Similar to the `execute` mode, except the action is not throttled even if the current state of the watch indicates it should be.
+   */
+  force_execute,
+  /**
+   * The action is skipped and is not executed or simulated. Effectively forces the action to be throttled.
+   */
+  skip
 }
 
 export class SimulatedActions {
@@ -72,31 +100,32 @@ export class SimulatedActions {
 }
 
 export enum ActionStatusOptions {
-  success = 0,
-  failure = 1,
-  simulated = 2,
-  throttled = 3
+  success,
+  failure,
+  simulated,
+  throttled
 }
 
 export enum AcknowledgementOptions {
-  awaits_successful_execution = 0,
-  ackable = 1,
-  acked = 2
+  awaits_successful_execution,
+  ackable,
+  acked
 }
 
 export class AcknowledgeState {
   state: AcknowledgementOptions
-  timestamp: DateString
+  timestamp: DateTime
 }
 
 export class ExecutionState {
   successful: boolean
-  timestamp: DateString
+  timestamp: DateTime
+  reason?: string
 }
 
 export class ThrottleState {
   reason: string
-  timestamp: DateString
+  timestamp: DateTime
 }
 
 export class ActionStatus {

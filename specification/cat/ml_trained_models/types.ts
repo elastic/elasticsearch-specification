@@ -18,94 +18,98 @@
  */
 
 import { ByteSize, Id, VersionString } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 export class TrainedModelsRecord {
   /**
-   * the trained model id
+   * The model identifier.
    */
   'id'?: Id
   /**
-   * who created the model
+   * Information about the creator of the model.
    * @aliases c, createdBy
    */
   'created_by'?: string
   /**
-   * the estimated heap size to keep the model in memory
+   * The estimated heap size to keep the model in memory.
    * @aliases hs,modelHeapSize
    */
   'heap_size'?: ByteSize
   /**
-   * the estimated number of operations to use the model
+   * The estimated number of operations to use the model.
+   * This number helps to measure the computational complexity of the model.
    * @aliases o, modelOperations
    */
   'operations'?: string
   /**
-   * The license level of the model
+   * The license level of the model.
    * @aliases l
    */
   'license'?: string
   /**
-   * The time the model was created
+   * The time the model was created.
    * @aliases ct
    */
-  'create_time'?: DateString
+  'create_time'?: DateTime
   /**
-   * The version of Elasticsearch when the model was created
+   * The version of Elasticsearch when the model was created.
    * @aliases v
    */
   'version'?: VersionString
   /**
-   * The model description
+   * A description of the model.
    * @aliases d
    */
   'description'?: string
   /**
-   * The number of pipelines referencing the model
+   * The number of pipelines that are referencing the model.
    * @aliases ip, ingestPipelines
    */
   'ingest.pipelines'?: string
   /**
-   * The total number of docs processed by the model
+   * The total number of documents that are processed by the model.
    * @aliases ic, ingestCount
    */
   'ingest.count'?: string
   /**
-   * The total time spent processing docs with this model
+   * The total time spent processing documents with thie model.
    * @aliases it, ingestTime
    */
   'ingest.time'?: string
   /**
-   * The total documents currently being handled by the model
+   * The total number of documents that are currently being handled by the model.
    * @aliases icurr, ingestCurrent
    */
   'ingest.current'?: string
   /**
-   * The total count of failed ingest attempts with this model
+   * The total number of failed ingest attempts with the model.
    * @aliases if, ingestFailed
    */
   'ingest.failed'?: string
-
   /**
-   * The data frame analytics config id that created the model (if still available)
+   * The identifier for the data frame analytics job that created the model.
+   * Only displayed if the job is still available.
    * @aliases dfid, dataFrameAnalytics
    */
   'data_frame.id'?: string
   /**
-   * The time the data frame analytics config was created
+   * The time the data frame analytics job was created.
    * @aliases dft, dataFrameAnalyticsTime
    */
   'data_frame.create_time'?: string
   /**
-   * The source index used to train in the data frame analysis
+   * The source index used to train in the data frame analysis.
    * @aliases dfsi, dataFrameAnalyticsSrcIndex
    */
   'data_frame.source_index'?: string
   /**
-   * The analysis used by the data frame to build the model
+   * The analysis used by the data frame to build the model.
    * @aliases dfa, dataFrameAnalyticsAnalysis
    */
   'data_frame.analysis'?: string
-  /** @since 8.0.0 */
+  /**
+   * @availability stack since=8.0.0
+   * @availability serverless
+   */
   type?: string
 }

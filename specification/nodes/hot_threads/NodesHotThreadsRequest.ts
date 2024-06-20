@@ -20,12 +20,16 @@
 import { RequestBase } from '@_types/Base'
 import { NodeIds, ThreadType } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * This API yields a breakdown of the hot threads on each selected node in the cluster.
+ * The output is plain text with a breakdown of each node’s top hot threads.
  * @rest_spec_name nodes.hot_threads
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor,manage
+ * @doc_id cluster-nodes-hot-threads
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -45,7 +49,7 @@ export interface Request extends RequestBase {
      * The interval to do the second sampling of threads.
      * @server_default 500ms
      */
-    interval?: Time
+    interval?: Duration
     /**
      * Number of samples of thread stacktrace.
      * @server_default 10
@@ -57,7 +61,7 @@ export interface Request extends RequestBase {
      * returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      * Specifies the number of hot threads to provide information for.
      * @server_default 3
@@ -68,11 +72,12 @@ export interface Request extends RequestBase {
      * before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
     /**
      * The type to sample.
      * @server_default cpu
      */
     type?: ThreadType
+    sort?: ThreadType
   }
 }

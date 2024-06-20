@@ -19,12 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.clone
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -33,8 +33,8 @@ export interface Request extends RequestBase {
     target_snapshot: Name
   }
   query_parameters: {
-    master_timeout?: Time
-    timeout?: Time
+    master_timeout?: Duration
+    timeout?: Duration
   }
   body: {
     indices: string

@@ -18,8 +18,8 @@
  */
 
 /**
- * @variants internal tag='type'
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html
+ * @variants internal tag='type' default='custom'
+ * @doc_id analysis-normalizers
  */
 export type Normalizer = LowercaseNormalizer | CustomNormalizer
 

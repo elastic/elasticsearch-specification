@@ -19,12 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.get_repository
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -33,6 +33,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     local?: boolean
-    master_timeout?: Time
+    master_timeout?: Duration
   }
 }

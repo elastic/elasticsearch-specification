@@ -18,25 +18,24 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves usage information for trained models.
- * You can get usage information for multiple trained models in a single API
- * request by using a comma-separated list of model IDs or a wildcard
- * expression.
+ * Retrieves usage information for trained models. You can get usage information for multiple trained
+ * models in a single API request by using a comma-separated list of model IDs or a wildcard expression.
  * @rest_spec_name ml.get_trained_models_stats
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier of the trained model or a model alias.
+     * The unique identifier of the trained model or a model alias. It can be a
+     * comma-separated list or a wildcard expression.
      */
-    model_id?: Id
+    model_id?: Ids
   }
   query_parameters: {
     /**

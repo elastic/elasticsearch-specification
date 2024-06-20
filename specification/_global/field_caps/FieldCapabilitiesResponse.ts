@@ -21,6 +21,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Indices } from '@_types/common'
 import { FieldCapability } from './types'
 
+/**
+ * The types used in the response describe _families_ of field types.
+ * Normally a type family is the same as the field type declared in the mapping, but to
+ * simplify matters certain field types that behave identically are described using a type family.
+ * For example, `keyword`, `constant_keyword` and `wildcard` field types are all described as the `keyword` type family.
+ */
 export class Response {
   body: {
     indices: Indices

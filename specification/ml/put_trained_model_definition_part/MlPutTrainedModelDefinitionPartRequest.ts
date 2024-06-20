@@ -24,8 +24,8 @@ import { Id } from '@_types/common'
 /**
  * Creates part of a trained model definition.
  * @rest_spec_name ml.put_trained_model_definition_part
- * @since 8.0.0
- * @stability experimental
+ * @availability stack since=8.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

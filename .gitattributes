@@ -1,4 +1,244 @@
+### Header #########################################################################################
+
+# The filename patterns in '.gitattributes' are case-sensitive!
+
+### Line Endings ###################################################################################
+
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Force batch scripts to always use CRLF line endings
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+*.ps1      text eol=crlf
+
+# Force bash scripts to always use LF line endings
+*.bash     text eol=lf
+*.fish     text eol=lf
+*.sh       text eol=lf
+*.zsh      text eol=lf
+
+# Text files where line endings should be preserved
+*.patch    -text
+
+### Common #########################################################################################
+
+# Configs
+.editorconfig     text
+.gitattributes    text export-ignore
+.gitignore        text export-ignore
+.gitkeep          text export-ignore
+*.json            text
+*.toml            text
+*.xml             text
+*.yaml            text
+*.yml             text
+*.cnf             text
+*.conf            text
+*.config          text
+*.ini             text
+
+# Documents
+*.markdown        text diff=markdown
+*.md              text diff=markdown
+*.mdwn            text diff=markdown
+*.mdown           text diff=markdown
+*.mkd             text diff=markdown
+*.mkdn            text diff=markdown
+*.mdtxt           text
+*.mdtext          text
+*.txt             text
+*.tex             text diff=tex
+*.adoc            text
+*.textile         text
+*.mustache        text
+*.csv             text eol=crlf
+*.tab             text
+*.tsv             text
+*.sql             text
+*.epub            diff=astextplain
+*.bibtex          text diff=bibtex
+*.doc             diff=astextplain
+*.docx            diff=astextplain
+*.dot             diff=astextplain
+*.pdf             diff=astextplain
+*.rtf             diff=astextplain
+
+# Documentation
+AUTHORS           text
+CHANGELOG         text
+CHANGES           text
+CONTRIBUTING      text
+COPYING           text
+copyright         text
+*COPYRIGHT*       text
+INSTALL           text
+license           text
+LICENSE           text
+NEWS              text
+readme            text
+*README*          text
+TODO              text
+
+# Graphics
+*.ai              binary
+*.bmp             binary
+*.eps             binary
+*.gif             binary
+*.gifv            binary
+*.ico             binary
+*.jng             binary
+*.jp2             binary
+*.jpg             binary
+*.jpeg            binary
+*.jpx             binary
+*.jxr             binary
+*.pdf             binary
+*.png             binary
+*.psb             binary
+*.psd             binary
+*.svg             text
+*.svgz            binary
+*.tif             binary
+*.tiff            binary
+*.wbmp            binary
+*.webp            binary
+
+# Audio
+*.kar             binary
+*.m4a             binary
+*.mid             binary
+*.midi            binary
+*.mp3             binary
+*.ogg             binary
+*.ra              binary
+
+# Video
+*.3gpp            binary
+*.3gp             binary
+*.as              binary
+*.asf             binary
+*.asx             binary
+*.avi             binary
+*.fla             binary
+*.flv             binary
+*.m4v             binary
+*.mng             binary
+*.mov             binary
+*.mp4             binary
+*.mpeg            binary
+*.mpg             binary
+*.ogv             binary
+*.swc             binary
+*.swf             binary
+*.webm            binary
+
+# Archives
+*.7z              binary
+*.gz              binary
+*.jar             binary
+*.rar             binary
+*.tar             binary
+*.zip             binary
+
+# Executables
+*.exe             binary
+*.pyc             binary
+
+# Misc
+Makefile          text
+Dockerfile        text
+
+### Web ############################################################################################
+
+# Source code
+*.coffee          text
+*.css             text diff=css
+*.htm             text diff=html
+*.html            text diff=html
+*.inc             text
+*.js              text
+*.mjs             text
+*.cjs             text
+*.jsx             text
+*.less            text
+*.ls              text
+*.map             text -diff
+*.od              text
+*.onlydata        text
+*.php             text diff=php
+*.pl              text
+*.py              text diff=python
+*.rb              text diff=ruby
+*.sass            text
+*.scm             text
+*.scss            text diff=css
+*.sh              text eol=lf
+.husky/*          text eol=lf
+*.styl            text
+*.tag             text
+*.ts              text
+*.tsx             text
+*.xml             text
+*.xhtml           text diff=html
+
+# Configs
+.env              text
+.htaccess         text
+*.lock            text -diff
+package.json      text eol=lf
+package-lock.json text eol=lf -diff
+pnpm-lock.yaml    text eol=lf -diff
+.prettierrc       text
+yarn.lock         text -diff
+browserslist      text
+# Fixes syntax highlighting on GitHub to allow comments
+tsconfig.json     linguist-language=JSON-with-Comments
+
+# Templates
+*.dot             text
+*.ejs             text
+*.erb             text
+*.haml            text
+*.handlebars      text
+*.hbs             text
+*.hbt             text
+*.jade            text
+*.latte           text
+*.mustache        text
+*.njk             text
+*.phtml           text
+*.svelte          text
+*.tmpl            text
+*.tpl             text
+*.twig            text
+*.vue             text
+
+# Fonts
+*.ttf             binary
+*.eot             binary
+*.otf             binary
+*.woff            binary
+*.woff2           binary
+
+# RC files (like .babelrc or .eslintrc)
+*.*rc             text
+
+# Ignore files (like .npmignore or .gitignore)
+*.*ignore         text
+
+# Prevents massive diffs from built files
+dist/*            binary
+
+### Linguist Overrides #############################################################################
+
 output/dangling-types/dangling.csv linguist-generated=true
 output/schema/schema.json linguist-generated=true
+output/openapi/elasticsearch-serverless-openapi.json linguist-generated=true
+output/schema/import-type-graph.json linguist-generated=true
+output/schema/import-namespace-graph-compact.json linguist-generated=true
+output/schema/import-namespace-graph-expanded.json linguist-generated=true
 output/schema/validation-errors.json linguist-generated=true
 output/typescript/types.ts linguist-generated=true
+
+####################################################################################################

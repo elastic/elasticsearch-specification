@@ -18,136 +18,137 @@
  */
 
 import { IndexName } from '@_types/common'
-import { Percentage } from '@_types/Numeric'
+import { long, Percentage } from '@_types/Numeric'
+import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RecoveryRecord {
   /**
-   * index name
+   * The index name.
    * @aliases i,idx
    */
   'index'?: IndexName
   /**
-   * shard name
+   * The shard name.
    * @aliases s,sh
    */
   'shard'?: string
   /**
-   * recovery start time
+   * The recovery start time.
    * @aliases start
    */
-  'start_time'?: string
+  'start_time'?: DateTime
   /**
-   * recovery start time in epoch milliseconds
+   * The recovery start time in epoch milliseconds.
    * @aliases start_millis
    */
-  'start_time_millis'?: string
+  'start_time_millis'?: EpochTime<UnitMillis>
   /**
-   * recovery stop time
+   * The recovery stop time.
    * @aliases stop
    */
-  'stop_time'?: string
+  'stop_time'?: DateTime
   /**
-   * recovery stop time in epoch milliseconds
+   * The recovery stop time in epoch milliseconds.
    * @aliases stop_millis
    */
-  'stop_time_millis'?: string
+  'stop_time_millis'?: EpochTime<UnitMillis>
   /**
-   * recovery time
+   * The recovery time.
    * @aliases t,ti
    */
-  'time'?: string
+  'time'?: Duration
   /**
-   * recovery type
+   * The recovery type.
    * @aliases ty
    */
   'type'?: string
   /**
-   * recovery stage
+   * The recovery stage.
    * @aliases st
    */
   'stage'?: string
   /**
-   * source host
+   * The source host.
    * @aliases shost
    */
   'source_host'?: string
   /**
-   * source node name
+   * The source node name.
    * @aliases snode
    */
   'source_node'?: string
   /**
-   * target host
+   * The target host.
    * @aliases thost
    */
   'target_host'?: string
   /**
-   * target node name
+   * The target node name.
    * @aliases tnode
    */
   'target_node'?: string
   /**
-   * repository
+   * The repository name.
    * @aliases rep
    */
   'repository'?: string
   /**
-   * snapshot
+   * The snapshot name.
    * @aliases snap
    */
   'snapshot'?: string
   /**
-   * number of files to recover
+   * The number of files to recover.
    * @aliases f
    */
   'files'?: string
   /**
-   * files recovered
+   * The files recovered.
    * @aliases fr
    */
   'files_recovered'?: string
   /**
-   * percent of files recovered
+   * The ratio of files recovered.
    * @aliases fp
    */
   'files_percent'?: Percentage
   /**
-   * total number of files
+   * The total number of files.
    * @aliases tf
    */
   'files_total'?: string
   /**
-   * number of bytes to recover
+   * The number of bytes to recover.
    * @aliases b
    */
   'bytes'?: string
   /**
-   * bytes recovered
+   * The bytes recovered.
    * @aliases br
    */
   'bytes_recovered'?: string
   /**
-   * percent of bytes recovered
+   * The ratio of bytes recovered.
    * @aliases bp
    */
   'bytes_percent'?: Percentage
   /**
-   * total number of bytes
+   * The total number of bytes.
    * @aliases tb
    */
   'bytes_total'?: string
   /**
-   * number of translog ops to recover
+   * The number of translog operations to recover.
    * @aliases to
    */
   'translog_ops'?: string
   /**
-   * translog ops recovered
+   * The translog operations recovered.
    * @aliases tor
    */
   'translog_ops_recovered'?: string
   /**
-   * percent of translog ops recovered
+   * The ratio of translog operations recovered.
    * @aliases top
    */
   'translog_ops_percent'?: Percentage

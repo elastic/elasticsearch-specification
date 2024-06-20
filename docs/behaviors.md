@@ -48,8 +48,9 @@ class CatRequestBase extends RequestBase implements CommonCatQueryParameters {}
 ## OverloadOf
 
 Defines a class that is the "overload" version of a definition used when writing a property.
-A class that implements `OverloadOf` should have the exact same properties with the same types.
-It can change if a property is required or not. There is no need to port the descriptions
+A class that implements `OverloadOf` should have the exact same properties of the overloaded type.
+You can change if a property is required or not and its type, as long as it's either an Overloaded type
+or is part of the parent union type. There is no need to port the descriptions
 and js doc tags, the compiler will do that for you.
 
 ```ts
@@ -59,5 +60,37 @@ export class Foo {
 
 export class FooRead implements OverloadOf<Foo> {
   bar: string
+}
+```
+
+```ts
+// if the original property type is an union (of type and type[]),
+// the overloaded property type should be either the same type or an element of the union
+export class Foo {
+  bar: string | string[]
+}
+
+export class FooRead implements OverloadOf<Foo> {
+  bar: string[]
+}
+```
+
+```ts
+// if the overloaded property has a different type,
+// this type should be an overload of the original property type
+export class Foo {
+  bar?: string
+}
+
+export class FooRead implements OverloadOf<Foo> {
+  bar: string
+}
+
+export class Config {
+  foo: Foo
+}
+
+export class ConfigRead implements<Config> {
+  foo: FooRead
 }
 ```

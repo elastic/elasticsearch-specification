@@ -19,14 +19,15 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { double } from '@_types/Numeric'
 
 /**
  * Creates a trained model vocabulary.
  * This API is supported only for natural language processing (NLP) models.
  * The vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.
  * @rest_spec_name ml.put_trained_model_vocabulary
- * @since 8.0.0
- * @stability experimental
+ * @availability stack since=8.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -41,5 +42,19 @@ export interface Request extends RequestBase {
      * The model vocabulary, which must not be empty.
      */
     vocabulary: string[]
+
+    /**
+     * The optional model merges if required by the tokenizer.
+     * @availability stack since=8.2.0
+     * @availability serverless
+     */
+    merges?: string[]
+
+    /**
+     * The optional vocabulary value scores if required by the tokenizer.
+     * @availability stack since=8.9.0
+     * @availability serverless
+     */
+    scores?: double[]
   }
 }

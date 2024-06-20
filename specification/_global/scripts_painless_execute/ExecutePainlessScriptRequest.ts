@@ -22,14 +22,25 @@ import { InlineScript } from '@_types/Scripting'
 import { PainlessContextSetup } from './types'
 
 /**
+ * Runs a script and returns a result.
  * @rest_spec_name scripts_painless_execute
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   body: {
+    /**
+     * The context that the script should run in.
+     * @server_default painless_test
+     */
     context?: string
+    /**
+     * Additional parameters for the `context`.
+     */
     context_setup?: PainlessContextSetup
+    /**
+     * The Painless script to execute.
+     */
     script?: InlineScript
   }
 }

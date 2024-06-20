@@ -22,9 +22,12 @@ import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
-import { Id, IndexName, Name, NodeName } from './common'
+import { Id, IndexName, NodeId, NodeName } from './common'
 import { TransportAddress } from './Networking'
 
+/**
+ * Contains statistics about the number of nodes selected by the request.
+ */
 export class NodeStatistics {
   failures?: ErrorCause[]
   /** Total number of nodes selected by the request. */
@@ -41,12 +44,17 @@ export class NodeAttributes {
   /** The ephemeral ID of the node. */
   ephemeral_id: Id
   /** The unique identifier of the node. */
-  id?: Id
+  id?: NodeId
   /** The unique identifier of the node. */
   name: NodeName
   /** The host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
   roles?: NodeRoles
+  /**
+   * @availability stack since=8.3.0
+   * @availability serverless
+   */
+  external_id?: string
 }
 
 export class NodeShard {
@@ -58,29 +66,35 @@ export class NodeShard {
   allocation_id?: Dictionary<string, Id>
   recovery_source?: Dictionary<string, Id>
   unassigned_info?: UnassignedInformation
+  relocating_node?: NodeId | null
+  relocation_failure_info?: RelocationFailureInfo
+}
+
+export class RelocationFailureInfo {
+  failed_attempts: integer
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+ * @doc_id node-roles
  */
 export enum NodeRole {
-  master = 0,
-  data = 1,
-  data_cold = 2,
-  data_content = 3,
-  data_frozen = 4,
-  data_hot = 5,
-  data_warm = 6,
-  client = 7,
-  ingest = 8,
-  ml = 9,
-  voting_only = 10,
-  transform = 11,
-  remote_cluster_client = 12,
-  coordinating_only = 13
+  master,
+  data,
+  data_cold,
+  data_content,
+  data_frozen,
+  data_hot,
+  data_warm,
+  client,
+  ingest,
+  ml,
+  voting_only,
+  transform,
+  remote_cluster_client,
+  coordinating_only
 }
 
 /**
- * * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+ * * @doc_id node-roles
  */
 export type NodeRoles = NodeRole[]

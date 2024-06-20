@@ -19,12 +19,13 @@
 
 import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.exists_component_template
- * @since 7.8.0
- * @stability stable
+ * @availability stack since=7.8.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id indices-component-template
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -41,7 +42,7 @@ export interface Request extends RequestBase {
      * error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      * If true, the request retrieves information from the local node only.
      * Defaults to false, which means information is retrieved from the master node.

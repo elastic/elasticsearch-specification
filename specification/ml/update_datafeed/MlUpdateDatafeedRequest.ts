@@ -22,7 +22,7 @@ import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -35,8 +35,8 @@ import { ScriptField } from '@_types/Scripting'
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,
  * those credentials are used instead.
  * @rest_spec_name ml.update_datafeed
- * @since 6.4.0
- * @stability stable
+ * @availability stack since=6.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -106,7 +106,7 @@ export interface Request extends RequestBase {
      * written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value
      * must be divisible by the interval of the date histogram aggregation.
      */
-    frequency?: Time
+    frequency?: Duration
     /**
      * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
      * learning nodes must have the `remote_cluster_client` role.
@@ -117,6 +117,7 @@ export interface Request extends RequestBase {
      * Specifies index expansion options that are used during search.
      */
     indices_options?: IndicesOptions
+    job_id?: Id
     /**
      * If a real-time datafeed has never seen any data (including during any initial training period), it automatically
      * stops and closes the associated job after this many real-time searches return no documents. In other words,
@@ -141,7 +142,7 @@ export interface Request extends RequestBase {
      * value is randomly selected between `60s` and `120s`. This randomness improves the query performance
      * when there are multiple jobs running on the same node.
      */
-    query_delay?: Time
+    query_delay?: Duration
     /**
      * Specifies runtime fields for the datafeed search.
      */

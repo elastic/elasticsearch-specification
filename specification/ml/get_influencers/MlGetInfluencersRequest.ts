@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Retrieves anomaly detection job results for one or more influencers.
@@ -29,8 +29,8 @@ import { DateString } from '@_types/Time'
  * the anomalies. Influencer results are available only if an
  * `influencer_field_name` is specified in the job configuration.
  * @rest_spec_name ml.get_influencers
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      * specific timestamps.
      * @server_default -1
      */
-    end?: DateString
+    end?: DateTime
     /**
      * If true, the output excludes interim results. By default, interim results
      * are included.
@@ -85,9 +85,13 @@ export interface Request extends RequestBase {
      * means it is unset and results are not limited to specific timestamps.
      * @server_default -1
      */
-    start?: DateString
+    start?: DateTime
   }
   body: {
+    /**
+     * Configures pagination.
+     * This parameter has the `from` and `size` properties.
+     */
     page?: Page
   }
 }

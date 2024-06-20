@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Sends data to an anomaly detection job for analysis.
@@ -27,8 +27,7 @@ import { DateString } from '@_types/Time'
  * IMPORTANT: For each job, data can be accepted from only a single connection at a time.
  * It is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.
  * @rest_spec_name ml.post_data
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
  * @deprecated 7.11.0 Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.
  * @cluster_privileges manage_ml
  */
@@ -43,11 +42,11 @@ export interface Request<TData> extends RequestBase {
     /**
      * Specifies the end of the bucket resetting range.
      */
-    reset_end?: DateString
+    reset_end?: DateTime
     /**
      * Specifies the start of the bucket resetting range.
      */
-    reset_start?: DateString
+    reset_start?: DateTime
   }
   /**
    * A sequence of one or more JSON documents containing the data to be analyzed.

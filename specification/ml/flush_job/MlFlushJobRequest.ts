@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Forces any buffered data to be processed by the job.
@@ -32,8 +32,8 @@ import { DateString } from '@_types/Time'
  * persists the model state to disk and the job must be opened again before
  * analyzing further data.
  * @rest_spec_name ml.flush_job
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -48,7 +48,8 @@ export interface Request extends RequestBase {
      * Specifies to advance to a particular time value. Results are generated
      * and the model is updated for data from the specified time interval.
      */
-    advance_time?: DateString
+    // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
+    advance_time?: DateTime
     /**
      * If true, calculates the interim results for the most recent bucket or all
      * buckets within the latency period.
@@ -58,23 +59,26 @@ export interface Request extends RequestBase {
      * When used in conjunction with `calc_interim` and `start`, specifies the
      * range of buckets on which to calculate interim results.
      */
-    end?: DateString
+    // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
+    end?: DateTime
     /**
      * Specifies to skip to a particular time value. Results are not generated
      * and the model is not updated for data from the specified time interval.
      */
-    skip_time?: string
+    // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
+    skip_time?: DateTime
     /**
      * When used in conjunction with `calc_interim`, specifies the range of
      * buckets on which to calculate interim results.
      */
-    start?: DateString
+    // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
+    start?: DateTime
   }
   body: {
     /**
      * Refer to the description for the `advance_time` query parameter.
      */
-    advance_time?: DateString
+    advance_time?: DateTime
     /**
      * Refer to the description for the `calc_interim` query parameter.
      */
@@ -82,14 +86,14 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `end` query parameter.
      */
-    end?: DateString
+    end?: DateTime
     /**
      * Refer to the description for the `skip_time` query parameter.
      */
-    skip_time?: string
+    skip_time?: DateTime
     /**
      * Refer to the description for the `start` query parameter.
      */
-    start?: DateString
+    start?: DateTime
   }
 }

@@ -22,22 +22,65 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Name, TaskId } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from '@_types/Time'
 
 export class ReindexNode extends BaseNode {
   tasks: Dictionary<TaskId, ReindexTask>
 }
 
 export class ReindexStatus {
+  /**
+   * The number of scroll responses pulled back by the reindex.
+   */
   batches: long
+  /**
+   * The number of documents that were successfully created.
+   */
   created: long
+  /**
+   * The number of documents that were successfully deleted.
+   */
   deleted: long
+  /**
+   * The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.
+   */
   noops: long
+  /**
+   * The number of requests per second effectively executed during the reindex.
+   */
   requests_per_second: float
+  /**
+   * The number of retries attempted by reindex. `bulk` is the number of bulk actions retried and `search` is the number of search actions retried.
+   */
   retries: Retries
-  throttled_millis: long
-  throttled_until_millis: long
+  throttled?: Duration
+  /**
+   * Number of milliseconds the request slept to conform to `requests_per_second`.
+   */
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  /**
+   * This field should always be equal to zero in a `_reindex` response.
+   * It only has meaning when using the Task API, where it indicates the next time (in milliseconds since epoch) a throttled request will be executed again in order to conform to `requests_per_second`.
+   */
+  throttled_until_millis: DurationValue<UnitMillis>
+  /**
+   * The number of documents that were successfully processed.
+   */
   total: long
+  /**
+   * The number of documents that were successfully updated, for example, a document with same ID already existed prior to reindex updating it.
+   */
   updated: long
+  /**
+   * The number of version conflicts that reindex hits.
+   */
   version_conflicts: long
 }
 
@@ -47,8 +90,8 @@ export class ReindexTask {
   description: string
   id: long
   node: Name
-  running_time_in_nanos: long
-  start_time_in_millis: long
+  running_time_in_nanos: DurationValue<UnitNanos>
+  start_time_in_millis: EpochTime<UnitMillis>
   status: ReindexStatus
   type: string
   headers: HttpHeaders

@@ -19,15 +19,15 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Stops one or more datafeeds.
  * A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped
  * multiple times throughout its lifecycle.
  * @rest_spec_name ml.stop_datafeed
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
     /**
      * Specifies the amount of time to wait until a datafeed stops.
      *  @server_default 20s */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /**
@@ -73,6 +73,6 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `timeout` query parameter.
      *  @server_default 20s */
-    timeout?: Time
+    timeout?: Duration
   }
 }

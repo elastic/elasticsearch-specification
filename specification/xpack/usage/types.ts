@@ -22,8 +22,10 @@ import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
-import { integer, long, uint, ulong } from '@_types/Numeric'
+import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Base {
   available: boolean
@@ -37,6 +39,14 @@ export class Counter {
 
 export class FeatureToggle {
   enabled: boolean
+}
+
+export class Invocations {
+  total: long
+}
+
+export class Archive extends Base {
+  indices_count: long
 }
 
 export class AlertingExecution {
@@ -127,8 +137,8 @@ export class EqlFeaturesSequences {
 }
 
 export class ExecutionAction {
-  total: long
-  total_in_ms: long
+  total: Duration
+  total_in_ms: DurationValue<UnitMillis>
 }
 
 export class ForecastStatistics {
@@ -138,6 +148,10 @@ export class ForecastStatistics {
   records: JobStatistics
   status: Dictionary<string, long>
   total: long
+}
+
+export class HealthStatistics extends Base {
+  invocations: Invocations
 }
 
 export class IlmPolicyStatistics {
@@ -163,7 +177,14 @@ export class MlJobForecasts {
 export class MlDataFrameAnalyticsJobs {
   memory_usage?: MlDataFrameAnalyticsJobsMemory
   _all: MlDataFrameAnalyticsJobsCount
-  analysis_counts?: EmptyObject
+  analysis_counts?: MlDataFrameAnalyticsJobsAnalysis
+  stopped?: MlDataFrameAnalyticsJobsCount
+}
+
+export class MlDataFrameAnalyticsJobsAnalysis {
+  classification?: integer
+  outlier_detection?: integer
+  regression?: integer
 }
 
 export class MlDataFrameAnalyticsJobsMemory {
@@ -177,6 +198,11 @@ export class MlDataFrameAnalyticsJobsCount {
 export class MlInference {
   ingest_processors: Dictionary<string, MlInferenceIngestProcessor>
   trained_models: MlInferenceTrainedModels
+  /**
+   * @availability stack since=8.0.0
+   * @availability serverless
+   */
+  deployments?: MlInferenceDeployments
 }
 
 export class MlInferenceIngestProcessor {
@@ -191,6 +217,22 @@ export class MlInferenceTrainedModels {
   estimated_heap_memory_usage_bytes?: JobStatistics
   count?: MlInferenceTrainedModelsCount
   _all: MlCounter
+  /**
+   * @availability stack since=8.0.0
+   * @availability serverless
+   */
+  model_size_bytes?: JobStatistics
+}
+
+export class MlInferenceDeployments {
+  count: integer
+  inference_counts: JobStatistics
+  model_sizes_bytes: JobStatistics
+  time_ms: MlInferenceDeploymentsTimeMs
+}
+
+export class MlInferenceDeploymentsTimeMs {
+  avg: double
 }
 
 export class MlInferenceIngestProcessorCount {
@@ -203,8 +245,11 @@ export class MlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
-  regression: long
-  classification: long
+  pass_through?: long
+  regression?: long
+  classification?: long
+  ner?: long
+  text_embedding?: long
 }
 
 export class MlCounter {
@@ -293,7 +338,10 @@ export class Ccr extends Base {
 
 export class DataTiers extends Base {
   data_warm: DataTierPhaseStatistics
-  /** @since 7.13.0 */
+  /**
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   data_frozen?: DataTierPhaseStatistics
   data_cold: DataTierPhaseStatistics
   data_content: DataTierPhaseStatistics
@@ -313,27 +361,18 @@ export class FrozenIndices extends Base {
   indices_count: long
 }
 
-export class AllJobs {
+export class JobUsage {
   count: integer
-  detectors: Dictionary<string, integer>
-  created_by: Dictionary<string, string>
-  model_size: Dictionary<string, integer>
-  forecasts: Dictionary<string, integer>
-}
-
-// The 'jobs' entry in MachineLearning can either contain a dictionary of
-// individual jobs or a single summary entry under the key '_all'.
-// The layout of the summary varies from that of the individual job,
-// and is specified in the 'AllJobs' class (defined above).
-export class Jobs implements AdditionalProperties<string, Job> {
-  _all?: AllJobs
+  created_by: Dictionary<string, long>
+  detectors: JobStatistics
+  forecasts: MlJobForecasts
+  model_size: JobStatistics
 }
 
 export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
-  // TODO: xPack marks the entire Job definition as optional
-  //       while the MlJob has many required properties.
-  jobs: Jobs
+  /** Job usage statistics. The `_all` entry is always present and gathers statistics for all jobs. */
+  jobs: Dictionary<string, JobUsage>
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
   inference: MlInference
@@ -371,8 +410,8 @@ export class WatcherWatchTrigger {
 }
 
 export class WatcherActionTotals {
-  total: long
-  total_time_in_ms: long
+  total: Duration
+  total_time_in_ms: DurationValue<UnitMillis>
 }
 
 export class Realm extends Base {

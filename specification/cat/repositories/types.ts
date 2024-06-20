@@ -19,12 +19,12 @@
 
 export class RepositoriesRecord {
   /**
-   * unique repository id
+   * The unique repository identifier.
    * @aliases repoId
    */
   'id'?: string
   /**
-   * repository type
+   * The repository type.
    * @aliases t
    */
   'type'?: string

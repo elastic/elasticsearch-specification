@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Lifecycle } from './types'
 
-export class Response extends DictionaryResponseBase<string, Lifecycle> {}
+export class Response {
+  /** @codegen_name lifecycles */
+  body: Dictionary<string, Lifecycle>
+}

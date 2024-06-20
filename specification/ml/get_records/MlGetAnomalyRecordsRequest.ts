@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Retrieves anomaly records for an anomaly detection job.
@@ -36,8 +36,8 @@ import { DateString } from '@_types/Time'
  * bucket, which relates to the number of time series being modeled and the
  * number of detectors.
  * @rest_spec_name ml.get_records
- * @since 5.4.0
- * @stability stable
+ * @availability stack since=5.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
@@ -58,7 +58,7 @@ export interface Request extends RequestBase {
      * means results are not limited to specific timestamps.
      * @server_default -1
      */
-    end?: DateString
+    end?: DateTime
     /**
      * If `true`, the output excludes interim results.
      * @server_default false
@@ -89,7 +89,7 @@ export interface Request extends RequestBase {
      * results are not limited to specific timestamps.
      * @server_default -1
      */
-    start?: DateString
+    start?: DateTime
   }
   body: {
     /**
@@ -101,7 +101,7 @@ export interface Request extends RequestBase {
      * Refer to the description for the `end` query parameter.
      * @server_default -1
      */
-    end?: DateString
+    end?: DateTime
     /**
      * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
@@ -122,6 +122,6 @@ export interface Request extends RequestBase {
      * Refer to the description for the `start` query parameter.
      * @server_default -1
      */
-    start?: DateString
+    start?: DateTime
   }
 }

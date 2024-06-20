@@ -18,7 +18,10 @@
  */
 
 import { IndexState } from '@indices/_types/IndexState'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<IndexName, IndexState> {}
+export class Response {
+  /** @codegen_name indices */
+  body: Dictionary<IndexName, IndexState>
+}

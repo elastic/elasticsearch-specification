@@ -29,7 +29,10 @@ export class CharFilterBase {
 // ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
 export type CharFilter = string | CharFilterDefinition
 
-/** @variants internal tag='type' */
+/**
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
 export type CharFilterDefinition =
   | HtmlStripCharFilter
   | MappingCharFilter
@@ -39,17 +42,18 @@ export type CharFilterDefinition =
 
 export class HtmlStripCharFilter extends CharFilterBase {
   type: 'html_strip'
+  escaped_tags?: string[]
 }
 
 export class MappingCharFilter extends CharFilterBase {
   type: 'mapping'
-  mappings: string[]
+  mappings?: string[]
   mappings_path?: string
 }
 
 export class PatternReplaceCharFilter extends CharFilterBase {
   type: 'pattern_replace'
-  flags: string
+  flags?: string
   pattern: string
-  replacement: string
+  replacement?: string
 }

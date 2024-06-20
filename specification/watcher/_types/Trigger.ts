@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateString } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 import { ScheduleContainer, ScheduleTriggerEvent } from './Schedule'
 
 /**
  * @variants container
  */
 export class TriggerContainer {
-  schedule: ScheduleContainer
+  schedule?: ScheduleContainer
 }
 
 export class TriggerEvent {}
@@ -33,11 +33,11 @@ export class TriggerEvent {}
  * @variants container
  */
 export class TriggerEventContainer {
-  schedule: ScheduleTriggerEvent
+  schedule?: ScheduleTriggerEvent
 }
 
 export class TriggerEventResult {
   manual: TriggerEventContainer
-  triggered_time: DateString
+  triggered_time: DateTime
   type: string
 }

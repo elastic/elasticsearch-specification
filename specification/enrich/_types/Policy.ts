@@ -18,20 +18,24 @@
  */
 
 import { Field, Fields, Indices, Name } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class Summary {
-  config: Configuration
+  config: SingleKeyDictionary<PolicyType, Policy>
 }
 
-export class Configuration {
-  geo_match?: Policy
-  match: Policy
+export enum PolicyType {
+  geo_match,
+  match,
+  range
 }
 
 export class Policy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
-  query?: string
+  query?: QueryContainer
   name?: Name
+  elasticsearch_version?: string
 }

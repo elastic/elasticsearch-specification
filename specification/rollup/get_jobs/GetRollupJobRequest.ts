@@ -21,12 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Retrieves the configuration, stats, and status of rollup jobs.
  * @rest_spec_name rollup.get_jobs
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the rollup job.
+     * If it is `_all` or omitted, the API returns all rollup jobs.
+     */
     id?: Id
   }
 }

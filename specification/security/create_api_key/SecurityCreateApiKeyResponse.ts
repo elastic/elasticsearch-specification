@@ -21,5 +21,30 @@ import { Id, Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { api_key: string; expiration?: long; id: Id; name: Name }
+  body: {
+    /**
+     * Generated API key.
+     */
+    api_key: string
+    /**
+     * Expiration in milliseconds for the API key.
+     */
+    expiration?: long
+    /**
+     * Unique ID for this API key.
+     */
+    id: Id
+    /**
+     * Specifies the name for this API key.
+     */
+    name: Name
+    /**
+     * API key credentials which is the base64-encoding of
+     * the UTF-8 representation of `id` and `api_key` joined
+     * by a colon (`:`).
+     * @availability stack since=7.16.0
+     * @availability serverless
+     */
+    encoded: string
+  }
 }

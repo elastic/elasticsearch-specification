@@ -20,16 +20,34 @@
 import { Policy } from '@ilm/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Creates a lifecycle policy. If the specified policy exists, the policy is replaced and the policy version is incremented.
  * @rest_spec_name ilm.put_lifecycle
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
+ * @cluster_privileges manage_ilm
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * Identifier for the policy.
+     * @codegen_name name
+     */
     policy: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     policy?: Policy

@@ -19,23 +19,59 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, WaitForActiveShards } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Closes an index.
+ * @doc_id indices-close
  * @rest_spec_name indices.close
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list or wildcard expression of index names used to limit the request.
+     */
     index: Indices
   }
   query_parameters: {
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * @server_default true
+     */
     allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
-    master_timeout?: Time
-    timeout?: Time
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+    /**
+     * The number of shard copies that must be active before proceeding with the operation.
+     * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * @server_default 1
+     */
     wait_for_active_shards?: WaitForActiveShards
   }
 }

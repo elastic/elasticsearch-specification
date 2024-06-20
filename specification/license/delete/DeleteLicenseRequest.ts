@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name license.delete
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  */
 export interface Request extends RequestBase {}

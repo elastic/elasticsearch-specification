@@ -20,5 +20,6 @@
 import { MapboxVectorTiles } from '@_types/Binary'
 
 export class Response {
+  /** @codegen_name vector_tiles */
   body: MapboxVectorTiles
 }

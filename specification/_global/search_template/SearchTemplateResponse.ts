@@ -18,14 +18,31 @@
  */
 
 import { HitsMetadata } from '@global/search/_types/hits'
-import { integer } from '@_types/Numeric'
-import { ShardStatistics } from '@_types/Stats'
+import { double, integer, long } from '@_types/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import { Aggregate } from '@_types/aggregations/Aggregate'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Profile } from '@global/search/_types/profile'
+import { Suggest } from '@global/search/_types/suggester'
 
 export class Response<TDocument> {
   body: {
-    _shards: ShardStatistics
+    // Has to be kept in sync with SearchResponse
+    took: long
     timed_out: boolean
-    took: integer
+    _shards: ShardStatistics
     hits: HitsMetadata<TDocument>
+    aggregations?: Dictionary<AggregateName, Aggregate>
+    _clusters?: ClusterStatistics
+    fields?: Dictionary<string, UserDefinedValue>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    pit_id?: Id
+    _scroll_id?: ScrollId
+    suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+    terminated_early?: boolean
   }
 }

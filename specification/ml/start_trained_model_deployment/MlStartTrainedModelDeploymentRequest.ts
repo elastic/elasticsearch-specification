@@ -18,16 +18,19 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
-import { DeploymentState } from '../_types/TrainedModel'
+import { Duration } from '@_types/Time'
+import {
+  DeploymentAllocationState,
+  TrainingPriority
+} from '../_types/TrainedModel'
 
 /**
  * Starts a trained model deployment, which allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
- * @since 8.0.0
- * @stability experimental
+ * @availability stack since=8.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -39,18 +42,27 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Specifies the number of threads that are used by the inference process. If you increase this value, inference
-     * speed generally increases. However, the actual number of threads is limited by the number of available CPU
-     * cores.
-     * @server_default 1
+     * The inference cache size (in memory outside the JVM heap) per node for the model.
+     * The default value is the same size as the `model_size_bytes`. To disable the cache,
+     * `0b` can be provided.
      */
-    inference_threads?: integer
+    cache_size?: ByteSize
     /**
-     * Specifies the number of threads that are used when sending inference requests to the model. If you increase this value,
-     * throughput generally increases.
+     * A unique identifier for the deployment of the model.
+     * @availability stack since=8.8.0
+     */
+    deployment_id?: string
+    /**
+     * The number of model allocations on each node where the model is deployed.
+     * All allocations on a node share the same copy of the model in memory but use
+     * a separate set of threads to evaluate the model.
+     * Increasing this value generally increases the throughput.
+     * If this setting is greater than the number of hardware threads
+     * it will automatically be changed to a value less than the number of hardware threads.
      * @server_default 1
      */
-    model_threads?: integer
+    number_of_allocations?: integer
+    priority?: TrainingPriority
     /**
      * Specifies the number of inference requests that are allowed in the queue. After the number of requests exceeds
      * this value, new requests are rejected with a 429 error.
@@ -58,14 +70,23 @@ export interface Request extends RequestBase {
      */
     queue_capacity?: integer
     /**
+     * Sets the number of threads used by each model allocation during inference. This generally increases
+     * the inference speed. The inference process is a compute-bound process; any number
+     * greater than the number of available hardware threads on the machine does not increase the
+     * inference speed. If this setting is greater than the number of hardware threads
+     * it will automatically be changed to a value less than the number of hardware threads.
+     * @server_default 1
+     */
+    threads_per_allocation?: integer
+    /**
      * Specifies the amount of time to wait for the model to deploy.
      * @server_default 20s
      */
-    timeout?: Time
+    timeout?: Duration
     /**
      * Specifies the allocation status to wait for before returning.
      * @server_default started
      */
-    wait_for?: DeploymentState
+    wait_for?: DeploymentAllocationState
   }
 }

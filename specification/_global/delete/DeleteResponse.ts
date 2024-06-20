@@ -17,6 +17,18 @@
  * under the License.
  */
 
-import { WriteResponseBase } from '@_types/Base'
+import { ErrorResponseBase, WriteResponseBase } from '@_types/Base'
 
-export class Response extends WriteResponseBase {}
+export class Response {
+  body: WriteResponseBase
+  exceptions: [
+    {
+      /**
+       * If the index does exist, but the document does not,
+       * the response is the same as the successful case, but with a 404.
+       */
+      statusCodes: [404]
+      body: WriteResponseBase | ErrorResponseBase
+    }
+  ]
+}

@@ -2,35 +2,56 @@
   "name": "elasticsearch-client-specification",
   "version": "0.0.1",
   "description": "A library that exposes the elasticsearch client specification as a validatable and iteratable source",
-  "main": "compiler/index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "lint": "ts-standard",
-    "lint:fix": "ts-standard --fix",
+    "lint": "ts-standard src",
+    "lint:fix": "ts-standard --fix src",
     "format:check": "prettier --config .prettierrc.json --check ../specification/",
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
-    "imports:fix": "ts-node update-imports.ts",
-    "generate-schema": "ts-node index.ts",
+    "generate-schema": "ts-node src/index.ts",
+    "transform-expand-generics": "ts-node src/transform/expand-generics.ts",
+    "transform-to-openapi": "ts-node src/transform/schema-to-openapi.ts",
+    "filter-by-availability": "ts-node src/transform/filter-by-availability.ts",
+    "dump-routes": "ts-node src/dump/extract-routes.ts",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
-    "generate-dangling": "ts-node dangling-types-report.ts"
+    "build": "rm -rf lib && tsc",
+    "validate-ts-view": "tsc --noEmit ../output/typescript/types.ts",
+    "generate-dangling": "ts-node src dangling-types-report.ts",
+    "test": "TEST_COMPILER=true ava test/**/*test.ts",
+    "test:coverage": "TEST_COMPILER=true c8 --reporter html ava test/**/*test.ts"
   },
   "author": "Elastic",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^16.11.6",
-    "minimist": "^1.2.5",
-    "prettier": "2.4.1",
+    "@types/node": "^17.0.12",
+    "ava": "^4.1.0",
+    "c8": "^7.11.0",
+    "minimist": "^1.2.6",
+    "prettier": "2.5.1",
     "ts-node": "^10.4.0",
-    "ts-standard": "^10.0.0",
-    "typescript": "^4.4.4"
+    "ts-standard": "^11.0.0",
+    "typescript": "^4.5.5"
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "safe-stable-stringify": "^2.2.0",
-    "semver": "^7.3.5",
-    "ts-morph": "^12.2.0"
+    "fastest-levenshtein": "^1.0.12",
+    "ora": "^5.4.1",
+    "safe-stable-stringify": "^2.3.1",
+    "compiler-wasm-lib": "file:../compiler-rs/compiler-wasm-lib/pkg",
+    "semver": "^7.5.2",
+    "ts-morph": "^13.0.3",
+    "zx": "^4.3.0"
   },
   "engines": {
     "node": ">=14"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
   },
   "keywords": []
 }

@@ -17,16 +17,65 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices } from '@_types/common'
+import { IndexName, Indices, Metadata } from '@_types/common'
+import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 
 export class FieldCapability {
+  /**
+   * Whether this field can be aggregated on all indices.
+   */
   aggregatable: boolean
+  /**
+   * The list of indices where this field has the same type family, or null if all indices have the same type family for the field.
+   */
   indices?: Indices
-  meta?: Dictionary<string, string[]>
+  /**
+   * Merged metadata across all indices as a map of string keys to arrays of values. A value length of 1 indicates that all indices had the same value for this key, while a length of 2 or more indicates that not all indices had the same value for this key.
+   */
+  meta?: Metadata
+  /**
+   * The list of indices where this field is not aggregatable, or null if all indices have the same definition for the field.
+   */
   non_aggregatable_indices?: Indices
+  /**
+   * The list of indices where this field is not searchable, or null if all indices have the same definition for the field.
+   */
   non_searchable_indices?: Indices
+  /**
+   * Whether this field is indexed for search on all indices.
+   */
   searchable: boolean
   type: string
+  /**
+   * Whether this field is registered as a metadata field.
+   * @doc_id mapping-metadata
+   */
   metadata_field?: boolean
+  /**
+   * Whether this field is used as a time series dimension.
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
+  /**
+   * Contains metric type if this fields is used as a time series
+   * metrics, absent if the field is not used as metric.
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_metric?: TimeSeriesMetricType
+  /**
+   * If this list is present in response then some indices have the
+   * field marked as a dimension and other indices, the ones in this list, do not.
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  non_dimension_indices?: IndexName[]
+  /**
+   * The list of indices where this field is present if these indices
+   * don’t have the same `time_series_metric` value for this field.
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  metric_conflicts_indices?: IndexName[]
 }

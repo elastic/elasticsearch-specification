@@ -17,15 +17,16 @@
  * under the License.
  */
 
-import { Destination, Source } from '@global/reindex/types'
 import {
   RetentionPolicyContainer,
   Settings,
-  SyncContainer
+  SyncContainer,
+  Destination,
+  Source
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Id, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Updates certain properties of a transform.
@@ -36,8 +37,8 @@ import { Time } from '@_types/Time'
  * Elasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the
  * time of update and runs with those privileges.
  * @rest_spec_name transform.update_transform
- * @since 7.2.0
- * @stability stable
+ * @availability stack since=7.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, index, view_index_metadata
  */
@@ -60,7 +61,7 @@ export interface Request extends RequestBase {
      * timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
   }
   body: {
     /**
@@ -78,7 +79,11 @@ export interface Request extends RequestBase {
      * indexing. The minimum value is 1s and the maximum is 1h.
      * @server_default 1m
      */
-    frequency?: Time
+    frequency?: Duration
+    /**
+     * Defines optional transform metadata.
+     */
+    _meta?: Metadata
     /**
      * The source of the data for the transform.
      */
@@ -95,6 +100,6 @@ export interface Request extends RequestBase {
      * Defines a retention policy for the transform. Data that meets the defined
      * criteria is deleted from the destination index.
      */
-    retention_policy?: RetentionPolicyContainer
+    retention_policy?: RetentionPolicyContainer | null
   }
 }

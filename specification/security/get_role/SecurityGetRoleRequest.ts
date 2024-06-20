@@ -18,15 +18,21 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Names } from '@_types/common'
 
 /**
+ * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
+ * The get roles API cannot retrieve roles that are defined in roles files.
  * @rest_spec_name security.get_role
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
   path_parts: {
-    name?: Name
+    /**
+     * The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.
+     */
+    name?: Names
   }
 }

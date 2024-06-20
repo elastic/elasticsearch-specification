@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { IndexCapabilities } from './types'
 
-export class Response extends DictionaryResponseBase<
-  IndexName,
-  IndexCapabilities
-> {}
+export class Response {
+  /** @codegen_name capabilities */
+  body: Dictionary<IndexName, IndexCapabilities>
+}

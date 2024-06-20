@@ -20,25 +20,27 @@
 import { Fields } from '@_types/common'
 
 export class IndexSegmentSort {
-  field: Fields
-  order: SegmentSortOrder | SegmentSortOrder[]
+  field?: Fields
+  order?: SegmentSortOrder | SegmentSortOrder[]
   mode?: SegmentSortMode | SegmentSortMode[]
   missing?: SegmentSortMissing | SegmentSortMissing[]
 }
 
 export enum SegmentSortOrder {
+  /** @aliases ASC */
   asc,
+  /** @aliases DESC */
   desc
 }
 
 export enum SegmentSortMode {
+  /** @aliases MIN */
   min,
+  /** @aliases MAX */
   max
 }
 
 export enum SegmentSortMissing {
-  /** @codegen_name last */
-  '_last',
-  /** @codegen_name first */
-  '_first'
+  last = '_last',
+  first = '_first'
 }

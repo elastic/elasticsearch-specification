@@ -19,12 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.exists_index_template
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -36,6 +36,6 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
   }
 }

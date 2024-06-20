@@ -17,10 +17,4 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-
-export class Aggregation {
-  meta?: Dictionary<string, UserDefinedValue>
-  name?: string
-}
+export class Aggregation {}

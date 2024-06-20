@@ -18,12 +18,14 @@
  */
 
 import { Metadata, Name, Username } from '@_types/common'
+import { UserProfileId } from './UserProfile'
 
 export class User {
-  email?: string
-  full_name?: Name
+  email?: string | null
+  full_name?: Name | null
   metadata: Metadata
   roles: string[]
   username: Username
   enabled: boolean
+  profile_uid?: UserProfileId
 }

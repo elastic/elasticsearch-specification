@@ -18,36 +18,36 @@
  */
 
 import { long } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export enum LicenseType {
-  missing = 0,
-  trial = 1,
-  basic = 2,
-  standard = 3,
-  dev = 4,
-  silver = 5,
-  gold = 6,
-  platinum = 7,
-  enterprise = 8
+  missing,
+  trial,
+  basic,
+  standard,
+  dev,
+  silver,
+  gold,
+  platinum,
+  enterprise
 }
 
 export enum LicenseStatus {
-  active = 0,
-  valid = 1,
-  invalid = 2,
-  expired = 3
+  active,
+  valid,
+  invalid,
+  expired
 }
 
 export class License {
-  expiry_date_in_millis: EpochMillis
-  issue_date_in_millis: EpochMillis
+  expiry_date_in_millis: EpochTime<UnitMillis>
+  issue_date_in_millis: EpochTime<UnitMillis>
+  start_date_in_millis?: EpochTime<UnitMillis>
   issued_to: string
   issuer: string
-  max_nodes?: long
+  max_nodes?: long | null
   max_resource_units?: long
   signature: string
-  start_date_in_millis: EpochMillis
   type: LicenseType
   uid: string
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { integer, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  ClusterRemoteInfo
-> {}
+export class Response {
+  /** @codegen_name infos */
+  body: Dictionary<string, ClusterRemoteInfo>
+}
 
 /** @variants internal tag='mode' */
 export type ClusterRemoteInfo = ClusterRemoteSniffInfo | ClusterRemoteProxyInfo
@@ -34,7 +34,7 @@ export class ClusterRemoteSniffInfo {
   connected: boolean
   max_connections_per_cluster: integer
   num_nodes_connected: long
-  initial_connect_timeout: Time
+  initial_connect_timeout: Duration
   skip_unavailable: boolean
   seeds: string[]
 }
@@ -42,7 +42,7 @@ export class ClusterRemoteSniffInfo {
 export class ClusterRemoteProxyInfo {
   mode: 'proxy'
   connected: boolean
-  initial_connect_timeout: Time
+  initial_connect_timeout: Duration
   skip_unavailable: boolean
   proxy_address: string
   server_name: string

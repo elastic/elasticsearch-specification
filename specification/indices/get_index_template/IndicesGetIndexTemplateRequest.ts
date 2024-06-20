@@ -19,12 +19,14 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
+ * Returns information about one or more index templates.
  * @rest_spec_name indices.get_index_template
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_index_templates,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -46,6 +48,13 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
+    /**
+     * If true, returns all relevant default configurations for the index template.
+     * @server_default false
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    include_defaults?: boolean
   }
 }

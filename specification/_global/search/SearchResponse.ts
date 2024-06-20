@@ -27,21 +27,28 @@ import { HitsMetadata } from './_types/hits'
 import { Profile } from './_types/profile'
 import { Suggest } from './_types/suggester'
 
+// Keep changes in sync with:
+// - search
+// - fleet.search
+// - scroll
 export class Response<TDocument> {
-  body: {
-    took: long
-    timed_out: boolean
-    _shards: ShardStatistics
-    hits: HitsMetadata<TDocument>
-    aggregations?: Dictionary<AggregateName, Aggregate>
-    _clusters?: ClusterStatistics
-    fields?: Dictionary<string, UserDefinedValue>
-    max_score?: double
-    num_reduce_phases?: long
-    profile?: Profile
-    pit_id?: Id
-    _scroll_id?: ScrollId
-    suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-    terminated_early?: boolean
-  }
+  body: ResponseBody<TDocument>
+}
+
+export class ResponseBody<TDocument> {
+  // Has to be kept in sync with SearchTemplateResponse
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: HitsMetadata<TDocument>
+  aggregations?: Dictionary<AggregateName, Aggregate>
+  _clusters?: ClusterStatistics
+  fields?: Dictionary<string, UserDefinedValue>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: Profile
+  pit_id?: Id
+  _scroll_id?: ScrollId
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+  terminated_early?: boolean
 }

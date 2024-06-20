@@ -17,18 +17,15 @@
  * under the License.
  */
 
-/**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-status-api.html
- */
 export enum ShardsStatsStage {
   /** Number of shards in the snapshot that were successfully stored in the repository. */
-  DONE = 0,
+  DONE,
   /** Number of shards in the snapshot that were not successfully stored in the repository. */
-  FAILURE = 1,
+  FAILURE,
   /** Number of shards in the snapshot that are in the finalizing stage of being stored in the repository. */
-  FINALIZE = 2,
+  FINALIZE,
   /** Number of shards in the snapshot that are in the initializing stage of being stored in the repository. */
-  INIT = 3,
+  INIT,
   /** Number of shards in the snapshot that are in the started stage of being stored in the repository. */
-  STARTED = 4
+  STARTED
 }

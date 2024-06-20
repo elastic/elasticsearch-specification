@@ -26,22 +26,25 @@ import {
   WaitForActiveShards,
   WaitForEvents
 } from '@_types/common'
-import { Time } from '@_types/Time'
+import { integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 /**
+ * The cluster health API returns a simple status on the health of the cluster. You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices.
+ * The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster, yellow means that the primary shard is allocated but replicas are not, and green means that all shards are allocated. The index level status is controlled by the worst shard status. The cluster status is controlled by the worst index status.
  * @rest_spec_name cluster.health
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor, manage
+ * @doc_id cluster-health
  */
 export interface Request extends RequestBase {
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-path-params */
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.
      */
     index?: Indices
   }
-  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-query-params */
   query_parameters: {
     expand_wildcards?: ExpandWildcards
     /**
@@ -58,12 +61,12 @@ export interface Request extends RequestBase {
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: Time
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: Time
+    timeout?: Duration
     /**
      * A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.
      * @server_default 0
@@ -76,7 +79,7 @@ export interface Request extends RequestBase {
     /**
      * The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.
      */
-    wait_for_nodes?: string
+    wait_for_nodes?: string | integer
     /**
      * A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.
      * @server_default false

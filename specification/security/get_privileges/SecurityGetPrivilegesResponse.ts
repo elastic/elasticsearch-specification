@@ -19,9 +19,8 @@
 
 import { Actions } from '@security/put_privileges/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  Dictionary<string, Actions>
-> {}
+export class Response {
+  /** @codegen_name privileges */
+  body: Dictionary<string, Dictionary<string, Actions>>
+}

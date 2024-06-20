@@ -20,8 +20,9 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
+import { DateTime, DurationValue, UnitMillis } from '@_types/Time'
 import { ActionStatusOptions, ActionType } from './Action'
 import {
   EmailResult,
@@ -35,32 +36,32 @@ import { ConditionType } from './Conditions'
 import { InputType } from './Input'
 
 export enum ExecutionStatus {
-  awaits_execution = 0,
-  checking = 1,
-  execution_not_needed = 2,
-  throttled = 3,
-  executed = 4,
-  failed = 5,
-  deleted_while_queued = 6,
-  not_executed_already_queued = 7
+  awaits_execution,
+  checking,
+  execution_not_needed,
+  throttled,
+  executed,
+  failed,
+  deleted_while_queued,
+  not_executed_already_queued
 }
 
 export enum ExecutionPhase {
-  awaits_execution = 0,
-  started = 1,
-  input = 2,
-  condition = 3,
-  actions = 4,
-  watch_transform = 5,
-  aborted = 6,
-  finished = 7
+  awaits_execution,
+  started,
+  input,
+  condition,
+  actions,
+  watch_transform,
+  aborted,
+  finished
 }
 
 export class ExecutionResult {
   actions: ExecutionResultAction[]
   condition: ExecutionResultCondition
-  execution_duration: integer
-  execution_time: DateString
+  execution_duration: DurationValue<UnitMillis>
+  execution_time: DateTime
   input: ExecutionResultInput
 }
 
@@ -81,6 +82,7 @@ export class ExecutionResultAction {
   status: ActionStatusOptions
   type: ActionType
   webhook?: WebhookResult
+  error?: ErrorCause
 }
 
 export class ExecutionResultInput {

@@ -20,7 +20,13 @@
 import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
 import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Fields, RelationName } from '@_types/common'
+import {
+  Fields,
+  FieldValue,
+  Id,
+  PropertyName,
+  RelationName
+} from '@_types/common'
 import {
   byte,
   double,
@@ -30,23 +36,8 @@ import {
   short,
   ulong
 } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
-import { NestedProperty, ObjectProperty } from './complex'
-import {
-  GeoPointProperty,
-  GeoShapeProperty,
-  PointProperty,
-  ShapeProperty
-} from './geo'
-import { PropertyBase } from './Property'
-import { RangeProperty } from './range'
-import {
-  CompletionProperty,
-  GenericProperty,
-  IpProperty,
-  Murmur3HashProperty,
-  TokenCountProperty
-} from './specialized'
+import { DateTime } from '@_types/Time'
+import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
 import { Script } from '@_types/Scripting'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
@@ -57,36 +48,9 @@ export class CorePropertyBase extends PropertyBase {
   store?: boolean
 }
 
-export type CoreProperty =
-  | ObjectProperty
-  | NestedProperty
-  | SearchAsYouTypeProperty
-  | TextProperty
-  | DocValuesProperty
-
 export class DocValuesPropertyBase extends CorePropertyBase {
   doc_values?: boolean
 }
-
-export type DocValuesProperty =
-  | BinaryProperty
-  | BooleanProperty
-  | DateProperty
-  | DateNanosProperty
-  | KeywordProperty
-  | NumberProperty
-  | RangeProperty
-  | GeoPointProperty
-  | GeoShapeProperty
-  | CompletionProperty
-  | GenericProperty
-  | IpProperty
-  | Murmur3HashProperty
-  | ShapeProperty
-  | TokenCountProperty
-  | VersionProperty
-  | WildcardProperty
-  | PointProperty
 
 export class BinaryProperty extends DocValuesPropertyBase {
   type: 'binary'
@@ -106,7 +70,7 @@ export class DateProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
-  null_value?: DateString
+  null_value?: DateTime
   precision_step?: integer
   locale?: string
   type: 'date'
@@ -117,13 +81,14 @@ export class DateNanosProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
-  null_value?: DateString
+  null_value?: DateTime
   precision_step?: integer
   type: 'date_nanos'
 }
 
 export class JoinProperty extends PropertyBase {
   relations?: Dictionary<RelationName, RelationName | RelationName[]>
+  eager_global_ordinals?: boolean
   type: 'join'
 }
 
@@ -132,19 +97,41 @@ export class KeywordProperty extends DocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: IndexOptions
+  script?: Script
+  on_script_error?: OnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
-  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
   time_series_dimension?: boolean
   type: 'keyword'
 }
 
 export class NumberPropertyBase extends DocValuesPropertyBase {
-  index?: boolean
+  boost?: double
+  coerce?: boolean
   ignore_malformed?: boolean
+  index?: boolean
+  on_script_error?: OnScriptError
+  script?: Script
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
   time_series_metric?: TimeSeriesMetricType
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @server_default false
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
 }
 
 export enum OnScriptError {
@@ -152,43 +139,37 @@ export enum OnScriptError {
   continue
 }
 
-export class StandardNumberProperty extends NumberPropertyBase {
-  coerce?: boolean
-  script?: Script
-  on_script_error?: OnScriptError
-}
-
-export class FloatNumberProperty extends StandardNumberProperty {
+export class FloatNumberProperty extends NumberPropertyBase {
   type: 'float'
   null_value?: float
 }
 
-export class HalfFloatNumberProperty extends StandardNumberProperty {
+export class HalfFloatNumberProperty extends NumberPropertyBase {
   type: 'half_float'
   null_value?: float
 }
 
-export class DoubleNumberProperty extends StandardNumberProperty {
+export class DoubleNumberProperty extends NumberPropertyBase {
   type: 'double'
   null_value?: double
 }
 
-export class IntegerNumberProperty extends StandardNumberProperty {
+export class IntegerNumberProperty extends NumberPropertyBase {
   type: 'integer'
   null_value?: integer
 }
 
-export class LongNumberProperty extends StandardNumberProperty {
+export class LongNumberProperty extends NumberPropertyBase {
   type: 'long'
   null_value?: long
 }
 
-export class ShortNumberProperty extends StandardNumberProperty {
+export class ShortNumberProperty extends NumberPropertyBase {
   type: 'short'
   null_value?: short
 }
 
-export class ByteNumberProperty extends StandardNumberProperty {
+export class ByteNumberProperty extends NumberPropertyBase {
   type: 'byte'
   null_value?: byte
 }
@@ -200,21 +181,9 @@ export class UnsignedLongNumberProperty extends NumberPropertyBase {
 
 export class ScaledFloatNumberProperty extends NumberPropertyBase {
   type: 'scaled_float'
-  coerce?: boolean
   null_value?: double
   scaling_factor?: double
 }
-
-export type NumberProperty =
-  | FloatNumberProperty
-  | HalfFloatNumberProperty
-  | DoubleNumberProperty
-  | IntegerNumberProperty
-  | LongNumberProperty
-  | ShortNumberProperty
-  | ByteNumberProperty
-  | UnsignedLongNumberProperty
-  | ScaledFloatNumberProperty
 
 export class PercolatorProperty extends PropertyBase {
   type: 'percolator'
@@ -226,7 +195,18 @@ export class RankFeatureProperty extends PropertyBase {
 }
 
 export class RankFeaturesProperty extends PropertyBase {
+  positive_score_impact?: boolean
   type: 'rank_features'
+}
+
+export class SparseVectorProperty extends PropertyBase {
+  type: 'sparse_vector'
+}
+
+export class SemanticTextProperty {
+  type: 'semantic_text'
+  meta?: Dictionary<string, string>
+  inference_id: Id
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
@@ -241,11 +221,44 @@ export class SearchAsYouTypeProperty extends CorePropertyBase {
   type: 'search_as_you_type'
 }
 
+// MatchOnlyTextProperty is an example of a property which does not derive from PropertyBase.
+// We have checked and this property does not support all properties of the base type.
+// In a future iteration we may remodel properties and identify truely common properties that should form
+// a base type that can be considered a common ancestor for all properties. Some clients will generate
+// a synthetic version of this today.
+
+/**
+ * A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field
+ * effectively stores data the same way as a text field that only indexes documents (index_options: docs) and
+ * disables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries
+ * that need positions such as the match_phrase query perform slower as they need to look at the _source document
+ * to verify whether a phrase matches. All queries return constant scores that are equal to 1.0.
+ */
+export class MatchOnlyTextProperty {
+  type: 'match_only_text'
+  /**
+   * Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one
+   * field for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.
+   * @doc_id multi-fields
+   */
+  fields?: Dictionary<PropertyName, Property>
+  /**
+   * Metadata about the field.
+   * @doc_id mapping-meta-field
+   */
+  meta?: Dictionary<string, string>
+  /**
+   * Allows you to copy the values of multiple fields into a group
+   * field, which can then be queried as a single field.
+   */
+  copy_to?: Fields
+}
+
 export enum IndexOptions {
-  docs = 0,
-  freqs = 1,
-  positions = 2,
-  offsets = 3
+  docs,
+  freqs,
+  positions,
+  offsets
 }
 
 export class TextIndexPrefixes {
@@ -277,6 +290,42 @@ export class VersionProperty extends DocValuesPropertyBase {
 
 export class WildcardProperty extends DocValuesPropertyBase {
   type: 'wildcard'
-  /** @since 7.15.0  */
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
   null_value?: string
+}
+
+export class DynamicProperty extends DocValuesPropertyBase {
+  type: '{dynamic_type}'
+
+  enabled?: boolean
+  null_value?: FieldValue
+  boost?: double
+
+  // NumberPropertyBase & long, double
+  coerce?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  ignore_malformed?: boolean
+  time_series_metric?: TimeSeriesMetricType
+
+  // string
+  analyzer?: string
+  eager_global_ordinals?: boolean
+  index?: boolean
+  index_options?: IndexOptions
+  index_phrases?: boolean
+  index_prefixes?: TextIndexPrefixes
+  norms?: boolean
+  position_increment_gap?: integer
+  search_analyzer?: string
+  search_quote_analyzer?: string
+  term_vector?: TermVectorOption
+
+  // date
+  format?: string
+  precision_step?: integer
+  locale?: string
 }

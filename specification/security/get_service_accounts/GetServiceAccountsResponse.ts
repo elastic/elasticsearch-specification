@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { RoleDescriptorWrapper } from './types'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  RoleDescriptorWrapper
-> {}
+export class Response {
+  /** @codegen_name service_accoutns */
+  body: Dictionary<string, RoleDescriptorWrapper>
+}

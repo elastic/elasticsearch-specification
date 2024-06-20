@@ -23,8 +23,8 @@ import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name autoscaling.put_autoscaling_policy
- * @since 7.11.0
- * @stability stable
+ * @availability stack since=7.11.0 stability=stable
+ * @doc_id autoscaling-put-autoscaling-policy
  */
 export interface Request extends RequestBase {
   path_parts: {

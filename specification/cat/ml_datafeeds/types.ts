@@ -21,62 +21,66 @@ import { DatafeedState } from '@ml/_types/Datafeed'
 
 export class DatafeedsRecord {
   /**
-   * the datafeed_id
+   * The datafeed identifier.
    */
   'id'?: string
   /**
-   * the datafeed state
+   * The status of the datafeed.
    * @aliases s
    */
   'state'?: DatafeedState
   /**
-   * why the datafeed is or is not assigned to a node
+   * For started datafeeds only, contains messages relating to the selection of a node.
    * @aliases ae
    */
   'assignment_explanation'?: string
   /**
-   * bucket count
+   * The number of buckets processed.
    * @aliases bc, bucketsCount
    */
   'buckets.count'?: string
   /**
-   * number of searches ran by the datafeed
+   * The number of searches run by the datafeed.
    * @aliases sc, searchCount
    */
   'search.count'?: string
   /**
-   * the total search time
+   * The total time the datafeed spent searching, in milliseconds.
    * @aliases st, searchTime
    */
   'search.time'?: string
   /**
-   * the average search time per bucket (millisecond)
+   * The average search time per bucket, in milliseconds.
    * @aliases sba, searchBucketAvg
    */
   'search.bucket_avg'?: string
   /**
-   * the exponential average search time per hour (millisecond)
+   * The exponential average search time per hour, in milliseconds.
    * @aliases seah, searchExpAvgHour
    */
   //Node info
   'search.exp_avg_hour'?: string
   /**
-   * id of the assigned node
+   * The unique identifier of the assigned node.
+   * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @aliases ni, nodeId
    */
   'node.id'?: string
   /**
-   * name of the assigned node
+   * The name of the assigned node.
+   * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @aliases nn, nodeName
    */
   'node.name'?: string
   /**
-   * ephemeral id of the assigned node
+   * The ephemeral identifier of the assigned node.
+   * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @aliases ne, nodeEphemeralId
    */
   'node.ephemeral_id'?: string
   /**
-   * network address of the assigned node
+   * The network address of the assigned node.
+   * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @aliases na, nodeAddress
    */
   'node.address'?: string

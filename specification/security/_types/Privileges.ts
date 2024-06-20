@@ -17,9 +17,11 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldSecurity } from './FieldSecurity'
+import { ScriptLanguage, ScriptBase, StoredScriptId } from '@_types/Scripting'
 
 export class ApplicationPrivileges {
   /**
@@ -36,50 +38,171 @@ export class ApplicationPrivileges {
   resources: string[]
 }
 
+/** @non_exhaustive */
 export enum ClusterPrivilege {
   all,
   cancel_task,
+  /**
+   * @availability stack
+   */
   create_snapshot,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication,
+  /**
+   * @availability stack
+   */
+  cross_cluster_search,
+  /**
+   * @availability stack
+   */
+  delegate_pki,
+  /**
+   * @availability stack
+   */
   grant_api_key,
   manage,
   manage_api_key,
+  /**
+   * @availability stack
+   */
+  manage_autoscaling,
+  manage_behavioral_analytics,
+  /**
+   * @availability stack
+   */
   manage_ccr,
+  /**
+   * @availability stack
+   */
+  manage_data_frame_transforms,
+  /**
+   * @availability stack
+   */
+  manage_data_stream_global_retention,
+  manage_enrich,
+  /**
+   * @availability stack
+   */
   manage_ilm,
   manage_index_templates,
+  manage_inference,
   manage_ingest_pipelines,
   manage_logstash_pipelines,
   manage_ml,
+  /**
+   * @availability stack
+   */
   manage_oidc,
   manage_own_api_key,
   manage_pipeline,
+  /**
+   * @availability stack
+   */
   manage_rollup,
+  /**
+   * @availability stack
+   */
   manage_saml,
+  manage_search_application,
+  manage_search_query_rules,
+  manage_search_synonyms,
   manage_security,
+  /**
+   * @availability stack
+   */
   manage_service_account,
+  /**
+   * @availability stack
+   */
   manage_slm,
+  /**
+   * @availability stack
+   */
   manage_token,
   manage_transform,
+  /**
+   * @availability stack
+   */
+  manage_user_profile,
+  /**
+   * @availability stack
+   */
   manage_watcher,
   monitor,
+  /**
+   * @availability stack
+   */
+  monitor_data_frame_transforms,
+  /**
+   * @availability stack
+   */
+  monitor_data_stream_global_retention,
+  monitor_enrich,
+  monitor_inference,
   monitor_ml,
+  /**
+   * @availability stack
+   */
   monitor_rollup,
+  /**
+   * @availability stack
+   */
   monitor_snapshot,
+  /**
+   * @availability stack
+   */
   monitor_text_structure,
   monitor_transform,
+  /**
+   * @availability stack
+   */
   monitor_watcher,
+  none,
+  post_behavioral_analytics_event,
+  /**
+   * @availability stack
+   */
   read_ccr,
+  /**
+   * @availability stack
+   */
+  read_connector_secrets,
+  /**
+   * @availability stack
+   */
+  read_fleet_secrets,
+  /**
+   * @availability stack
+   */
   read_ilm,
   read_pipeline,
+  read_security,
+  /**
+   * @availability stack
+   */
   read_slm,
-  transport_client
+  /**
+   * @availability stack
+   */
+  transport_client,
+  /**
+   * @availability stack
+   */
+  write_connector_secrets,
+  /**
+   * @availability stack
+   */
+  write_fleet_secrets
 }
 
 export class IndicesPrivileges {
   /**
    * The document fields that the owners of the role have read access to.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html
+   * @doc_id field-and-document-access-control
    */
-  field_security?: FieldSecurity | FieldSecurity[]
+  field_security?: FieldSecurity
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
@@ -89,32 +212,115 @@ export class IndicesPrivileges {
    */
   privileges: IndexPrivilege[]
   /**
-   * A search query that defines the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
+   * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */
-  query?: string | string[]
+  query?: IndicesPrivilegesQuery
   /**
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    * @server_default false
+   * @availability stack
    */
   allow_restricted_indices?: boolean
 }
 
+export class UserIndicesPrivileges {
+  /**
+   * The document fields that the owners of the role have read access to.
+   * @doc_id field-and-document-access-control
+   */
+  field_security?: FieldSecurity[]
+  /**
+   * A list of indices (or index name patterns) to which the permissions in this entry apply.
+   */
+  names: Indices
+  /**
+   * The index level privileges that owners of the role have on the specified indices.
+   */
+  privileges: IndexPrivilege[]
+  /**
+   * Search queries that define the documents the user has access to. A document within the specified indices must match these queries for it to be accessible by the owners of the role.
+   */
+  query?: IndicesPrivilegesQuery[]
+  /**
+   * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
+   */
+  allow_restricted_indices: boolean
+}
+
+/**
+ * While creating or updating a role you can provide either a JSON structure or a string to the API.
+ * However, the response provided by Elasticsearch will only be string with a json-as-text content.
+ *
+ * Since this is embedded in `IndicesPrivileges`, the same structure is used for clarity in both contexts.
+ *
+ * @codegen_names json_text, query, template
+ */
+export type IndicesPrivilegesQuery = string | QueryContainer | RoleTemplateQuery
+
+export class RoleTemplateQuery {
+  /**
+   * When you create a role, you can specify a query that defines the document level security permissions. You can optionally
+   * use Mustache templates in the role query to insert the username of the current authenticated user into the role.
+   * Like other places in Elasticsearch that support templating or scripting, you can specify inline, stored, or file-based
+   * templates and define custom parameters. You access the details for the current authenticated user through the _user parameter.
+   *
+   * @doc_id templating-role-query
+   */
+  template?: RoleTemplateScript
+}
+
+/** @shortcut_property source */
+export class RoleTemplateInlineScript extends ScriptBase {
+  lang?: ScriptLanguage
+  options?: Dictionary<string, string>
+  source: RoleTemplateInlineQuery
+}
+
+/** @codegen_names query_string, query_object */
+export type RoleTemplateInlineQuery = string | QueryContainer
+
+/** @codegen_names inline, stored */
+export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
+
+/** @non_exhaustive */
 export enum IndexPrivilege {
   all,
   auto_configure,
   create,
   create_doc,
   create_index,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication_internal,
   delete,
   delete_index,
   index,
   maintenance,
   manage,
+  manage_data_stream_lifecycle,
+  /**
+   * @availability stack
+   */
   manage_follow_index,
+  /**
+   * @availability stack
+   */
   manage_ilm,
+  /**
+   * @availability stack
+   */
   manage_leader_index,
   monitor,
+  none,
   read,
+  /**
+   * @availability stack
+   */
   read_cross_cluster,
   view_index_metadata,
   write

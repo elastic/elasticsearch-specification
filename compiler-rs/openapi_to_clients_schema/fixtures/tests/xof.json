@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "Schema1": {
+        "properties": {
+          "schema1": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Schema2": {
+        "properties": {
+          "schema2": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Schema3": {
+        "properties": {
+          "schema3": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Schema4": {
+        "properties": {
+          "schema4": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "schema4"
+        ],
+        "type": "object"
+      },
+      "Schema5": {
+        "properties": {
+          "schema5": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "schema5"
+        ],
+        "type": "object"
+      },
+      "SchemaCombined1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Schema1"
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Schema2"
+              },
+              {
+                "$ref": "#/components/schemas/Schema3"
+              }
+            ]
+          }
+        ]
+      },
+      "SchemaCombined2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Schema4"
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Schema5"
+              }
+            ]
+          }
+        ]
+      },
+      "TestCase1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Schema1"
+          },
+          {
+            "$ref": "#/components/schemas/Schema2"
+          },
+          {
+            "$ref": "#/components/schemas/Schema4"
+          }
+        ]
+      },
+      "TestCase2": {
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Schema1"
+              },
+              {
+                "$ref": "#/components/schemas/Schema2"
+              },
+              {
+                "$ref": "#/components/schemas/Schema4"
+              }
+            ]
+          },
+          {
+            "$ref": "#/components/schemas/Schema3"
+          },
+          {
+            "$ref": "#/components/schemas/Schema5"
+          }
+        ]
+      },
+      "Testcase3": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SchemaCombined1"
+          },
+          {
+            "$ref": "#/components/schemas/SchemaCombined2"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Info } from '@tasks/_types/TaskInfo'
+import { TaskInfo } from '@tasks/_types/TaskInfo'
 import { Id, Name } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
 export class ExecutingPolicy {
   name: Name
-  task: Info
+  task: TaskInfo
 }
 
 export class CoordinatorStats {

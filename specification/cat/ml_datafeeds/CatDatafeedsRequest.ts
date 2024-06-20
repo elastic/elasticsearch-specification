@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatDatafeedColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
@@ -26,17 +26,21 @@ import { TimeUnit } from '@_types/Time'
  * This API returns a maximum of 10,000 datafeeds.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`
  * cluster privileges to use this API.
+ *
+ * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * console or command line. They are not intended for use by applications. For
+ * application consumption, use the get datafeed statistics API.
+ *
  * @rest_spec_name cat.ml_datafeeds
- * @since 7.7.0
- * @stability stable
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_id cat-datafeeds
  */
 export interface Request extends CatRequestBase {
   path_parts: {
     /**
-     * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase
-     * alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric
-     * characters.
+     * A numerical character string that uniquely identifies the datafeed.
      */
     datafeed_id?: Id
   }
@@ -54,6 +58,13 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
+    /**
+     * Comma-separated list of column names to display.
+     * @server_default ['bc', 'id', 'sc', 's']
+     */
+    h?: CatDatafeedColumns
+    /** Comma-separated list of column names or column aliases used to sort the response. */
+    s?: CatDatafeedColumns
     /**
      * The unit used to display time values.
      */

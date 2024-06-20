@@ -28,13 +28,13 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Updates certain properties of an anomaly detection job.
  * @rest_spec_name ml.update_job
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
      * return an error and the job waits in the opening state until sufficient
      * machine learning node capacity is available.
      * @server_default false
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/ml-settings.html#advanced-ml-settings
+     * @doc_id ml-settings
      */
     allow_lazy_open?: boolean
     analysis_limits?: AnalysisMemoryLimit
@@ -72,7 +72,7 @@ export interface Request extends RequestBase {
      * close the job, then reopen the job and restart the datafeed for the
      * changes to take effect.
      */
-    background_persist_interval?: Time
+    background_persist_interval?: Duration
     /**
      * Advanced configuration option. Contains custom meta data about the job.
      * For example, it can contain custom URL information as shown in Adding
@@ -86,6 +86,7 @@ export interface Request extends RequestBase {
      */
     description?: string
     model_plot_config?: ModelPlotConfig
+    model_prune_window?: Duration
     /**
      * Advanced configuration option, which affects the automatic removal of old
      * model snapshots for this job. It specifies a period of time (in days)
@@ -95,7 +96,7 @@ export interface Request extends RequestBase {
      * before version 7.8.0, the default value matches
      * `model_snapshot_retention_days`.
      * @server_default 1
-     * @doc_url https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html#ml-ad-model-snapshots
+     * @doc_id ml-model-snapshots
      */
     daily_model_snapshot_retention_after_days?: long
     /**
@@ -104,7 +105,7 @@ export interface Request extends RequestBase {
      * days) that snapshots are retained. This period is relative to the
      * timestamp of the most recent snapshot for this job.
      * @server_default 10
-     * @doc_url https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html#ml-ad-model-snapshots
+     * @doc_id ml-model-snapshots
      */
     model_snapshot_retention_days?: long
     /**

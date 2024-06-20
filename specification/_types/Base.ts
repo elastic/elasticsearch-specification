@@ -29,16 +29,16 @@ import { ErrorCause } from './Errors'
 import { integer, long } from './Numeric'
 import { Result } from './Result'
 import { ShardStatistics } from './Stats'
-import { DateString } from './Time'
+import { DateTime } from './Time'
 
 export class RequestBase implements CommonQueryParameters {}
 
 export class WriteResponseBase {
   _id: Id
   _index: IndexName
-  _primary_term: long
+  _primary_term?: long
   result: Result
-  _seq_no: SequenceNumber
+  _seq_no?: SequenceNumber
   _shards: ShardStatistics
   _version: VersionNumber
   forced_refresh?: boolean
@@ -49,17 +49,25 @@ export class AcknowledgedResponseBase {
   acknowledged: boolean
 }
 
-export class DictionaryResponseBase<TKey, TValue> {}
-
 export class DynamicResponseBase {}
 
 export class ElasticsearchVersionInfo {
-  build_date: DateString
+  build_date: DateTime
   build_flavor: string
   build_hash: string
   build_snapshot: boolean
   build_type: string
   lucene_version: VersionString
+  minimum_index_compatibility_version: VersionString
+  minimum_wire_compatibility_version: VersionString
+  number: string
+}
+
+/**
+ * Reduced (minimal) info ElasticsearchVersion
+ */
+export class ElasticsearchVersionMinInfo {
+  build_flavor: string
   minimum_index_compatibility_version: VersionString
   minimum_wire_compatibility_version: VersionString
   number: string

@@ -32,15 +32,16 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { DateString } from '@_types/Time'
+import { UnitMillis, DurationValue, EpochTime } from '@_types/Time'
 import { DataframeState } from './Dataframe'
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 
 export class DataframeAnalyticsSource {
   /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. NOTE: If your source indices contain documents with the same IDs, only the document that is indexed last appears in the destination index.*/
   index: Indices
   /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default, this property has the following value: {"match_all": {}}.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+   * @doc_id query-dsl
    */
   query?: QueryContainer
   /**
@@ -84,17 +85,17 @@ export class DataframeAnalyticsDestination {
 export class DataframeAnalysisContainer {
   /**
    * The configuration information necessary to perform classification.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   * @doc_id ml-classification
    */
   classification?: DataframeAnalysisClassification
   /**
    * The configuration information necessary to perform outlier detection. NOTE: Advanced parameters are for fine-tuning classification analysis. They are set automatically by hyperparameter optimization to give the minimum validation error. It is highly recommended to use the default values unless you fully understand the function of these parameters.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   * @doc_id ml-classification
    */
   outlier_detection?: DataframeAnalysisOutlierDetection
   /**
    * The configuration information necessary to perform regression. NOTE: Advanced parameters are for fine-tuning regression analysis. They are set automatically by hyperparameter optimization to give the minimum validation error. It is highly recommended to use the default values unless you fully understand the function of these parameters.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-regression.html
+   * @doc_id ml-regression
    */
   regression?: DataframeAnalysisRegression
 }
@@ -303,16 +304,20 @@ export class DataframeAnalysisFeatureProcessorTargetMeanEncoding {
 }
 
 export class DataframeAnalyticsSummary {
-  id: Id
-  source: DataframeAnalyticsSource
-  dest: DataframeAnalyticsDestination
-  analysis: DataframeAnalysisContainer
-  description?: string
-  model_memory_limit?: string
-  max_num_threads?: integer
-  analyzed_fields?: DataframeAnalysisAnalyzedFields
   allow_lazy_start?: boolean
-  create_time?: long
+  analysis: DataframeAnalysisContainer
+  analyzed_fields?: DataframeAnalysisAnalyzedFields
+  /**
+   * The security privileges that the job uses to run its queries. If Elastic Stack security features were disabled at the time of the most recent update to the job, this property is omitted.
+   */
+  authorization?: DataframeAnalyticsAuthorization
+  create_time?: EpochTime<UnitMillis>
+  description?: string
+  dest: DataframeAnalyticsDestination
+  id: Id
+  max_num_threads?: integer
+  model_memory_limit?: string
+  source: DataframeAnalyticsSource
   version?: VersionString
 }
 
@@ -327,7 +332,10 @@ export class DataframeAnalytics {
   id: Id
   /** An object describing memory usage of the analytics. It is present only after the job is started and memory usage is reported. */
   memory_usage: DataframeAnalyticsStatsMemoryUsage
-  /** Contains properties for the node that runs the job. This information is available only for running jobs. */
+  /**
+   * Contains properties for the node that runs the job. This information is available only for running jobs.
+   * @availability stack
+   */
   node?: NodeAttributes
   /** The progress report of the data frame analytics job by phase. */
   progress: DataframeAnalyticsStatsProgress[]
@@ -350,7 +358,7 @@ export class DataframeAnalyticsStatsMemoryUsage {
   /** The memory usage status. */
   status: string
   /** The timestamp when memory usage was calculated. */
-  timestamp?: DateString
+  timestamp?: EpochTime<UnitMillis>
 }
 
 export class DataframeAnalyticsStatsDataCounts {
@@ -373,51 +381,190 @@ export class DataframeAnalyticsStatsContainer {
 }
 
 export class DataframeAnalyticsStatsHyperparameters {
+  /**
+   * An object containing the parameters of the classification analysis job.
+   */
   hyperparameters: Hyperparameters
   /** The number of iterations on the analysis. */
   iteration: integer
-  timestamp: DateString
+  /**
+   * The timestamp when the statistics were reported in milliseconds since the epoch.
+   */
+  timestamp: EpochTime<UnitMillis>
+  /**
+   * An object containing time statistics about the data frame analytics job.
+   */
   timing_stats: TimingStats
+  /**
+   * An object containing information about validation loss.
+   */
   validation_loss: ValidationLoss
 }
 
 export class DataframeAnalyticsStatsOutlierDetection {
+  /**
+   * The list of job parameters specified by the user or determined by algorithmic heuristics.
+   */
   parameters: OutlierDetectionParameters
-  timestamp: DateString
+  /**
+   * The timestamp when the statistics were reported in milliseconds since the epoch.
+   */
+  timestamp: EpochTime<UnitMillis>
+  /**
+   * An object containing time statistics about the data frame analytics job.
+   */
   timing_stats: TimingStats
 }
 
 export class Hyperparameters {
+  /**
+   * Advanced configuration option.
+   * Machine learning uses loss guided tree growing, which means that the decision trees grow where the regularized loss decreases most quickly.
+   * This parameter affects loss calculations by acting as a multiplier of the tree depth.
+   * Higher alpha values result in shallower trees and faster training times.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be greater than or equal to zero.
+   */
   alpha?: double
+  /**
+   * Advanced configuration option.
+   * Regularization parameter to prevent overfitting on the training data set.
+   * Multiplies an L2 regularization term which applies to leaf weights of the individual trees in the forest.
+   * A high lambda value causes training to favor small leaf weights.
+   * This behavior makes the prediction function smoother at the expense of potentially not being able to capture relevant relationships between the features and the dependent variable.
+   * A small lambda value results in large individual trees and slower training.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be a nonnegative value.
+   */
   lambda?: double
+  /**
+   * Advanced configuration option.
+   * Regularization parameter to prevent overfitting on the training data set.
+   * Multiplies a linear penalty associated with the size of individual trees in the forest.
+   * A high gamma value causes training to prefer small trees.
+   * A small gamma value results in larger individual trees and slower training.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be a nonnegative value.
+   */
   gamma?: double
+  /**
+   * Advanced configuration option.
+   * The shrinkage applied to the weights.
+   * Smaller values result in larger forests which have a better generalization error.
+   * However, larger forests cause slower training.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be a value between `0.001` and `1`.
+   */
   eta?: double
+  /**
+   * Advanced configuration option.
+   * Specifies the rate at which `eta` increases for each new tree that is added to the forest.
+   * For example, a rate of 1.05 increases `eta` by 5% for each extra tree.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be between `0.5` and `2`.
+   */
   eta_growth_rate_per_tree?: double
+  /**
+   * Advanced configuration option.
+   * Defines the fraction of features that will be used when selecting a random bag for each candidate split.
+   * By default, this value is calculated during hyperparameter optimization.
+   */
   feature_bag_fraction?: double
+  /**
+   * Advanced configuration option.
+   * Controls the fraction of data that is used to compute the derivatives of the loss function for tree training.
+   * A small value results in the use of a small fraction of the data.
+   * If this value is set to be less than 1, accuracy typically improves.
+   * However, too small a value may result in poor convergence for the ensemble and so require more trees.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be greater than zero and less than or equal to 1.
+   */
   downsample_factor?: double
+  /**
+   * If the algorithm fails to determine a non-trivial tree (more than a single leaf), this parameter determines how many of such consecutive failures are tolerated.
+   * Once the number of attempts exceeds the threshold, the forest training stops.
+   */
   max_attempts_to_add_tree?: integer
+  /**
+   * Advanced configuration option.
+   * A multiplier responsible for determining the maximum number of hyperparameter optimization steps in the Bayesian optimization procedure.
+   * The maximum number of steps is determined based on the number of undefined hyperparameters times the maximum optimization rounds per hyperparameter.
+   * By default, this value is calculated during hyperparameter optimization.
+   */
   max_optimization_rounds_per_hyperparameter?: integer
+  /**
+   * Advanced configuration option.
+   * Defines the maximum number of decision trees in the forest.
+   * The maximum value is 2000.
+   * By default, this value is calculated during hyperparameter optimization.
+   */
   max_trees?: integer
+  /**
+   * The maximum number of folds for the cross-validation procedure.
+   */
   num_folds?: integer
+  /**
+   * Determines the maximum number of splits for every feature that can occur in a decision tree when the tree is trained.
+   */
   num_splits_per_feature?: integer
+  /**
+   * Advanced configuration option.
+   * Machine learning uses loss guided tree growing, which means that the decision trees grow where the regularized loss decreases most quickly.
+   * This soft limit combines with the `soft_tree_depth_tolerance` to penalize trees that exceed the specified depth; the regularized loss increases quickly beyond this depth.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be greater than or equal to 0.
+   */
   soft_tree_depth_limit?: integer
+  /**
+   * Advanced configuration option.
+   * This option controls how quickly the regularized loss increases when the tree depth exceeds `soft_tree_depth_limit`.
+   * By default, this value is calculated during hyperparameter optimization.
+   * It must be greater than or equal to 0.01.
+   */
   soft_tree_depth_tolerance?: double
 }
 
 export class OutlierDetectionParameters {
+  /**
+   * Specifies whether the feature influence calculation is enabled.
+   * @server_default true
+   */
   compute_feature_influence?: boolean
+  /**
+   * The minimum outlier score that a document needs to have in order to calculate its feature influence score.
+   * Value range: 0-1
+   * @server_default 0.1
+   */
   feature_influence_threshold?: double
+  /**
+   * The method that outlier detection uses.
+   * Available methods are `lof`, `ldof`, `distance_kth_nn`, `distance_knn`, and `ensemble`.
+   * The default value is ensemble, which means that outlier detection uses an ensemble of different methods and normalises and combines their individual outlier scores to obtain the overall outlier score.
+   */
   method?: string
+  /**
+   * Defines the value for how many nearest neighbors each method of outlier detection uses to calculate its outlier score.
+   * When the value is not set, different values are used for different ensemble members.
+   * This default behavior helps improve the diversity in the ensemble; only override it if you are confident that the value you choose is appropriate for the data set.
+   */
   n_neighbors?: integer
+  /**
+   * The proportion of the data set that is assumed to be outlying prior to outlier detection.
+   * For example, 0.05 means it is assumed that 5% of values are real outliers and 95% are inliers.
+   */
   outlier_fraction?: double
+  /**
+   * If `true`, the following operation is performed on the columns before computing outlier scores: (x_i - mean(x_i)) / sd(x_i).
+   * @server_default true
+   */
   standardization_enabled?: boolean
 }
 
 export class TimingStats {
   /** Runtime of the analysis in milliseconds. */
-  elapsed_time: integer
+  elapsed_time: DurationValue<UnitMillis>
   /** Runtime of the latest iteration of the analysis in milliseconds. */
-  iteration_time?: integer
+  iteration_time?: DurationValue<UnitMillis>
 }
 
 export class ValidationLoss {

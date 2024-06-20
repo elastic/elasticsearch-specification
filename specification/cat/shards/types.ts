@@ -19,377 +19,402 @@
 
 export class ShardsRecord {
   /**
-   * index name
+   * The index name.
    * @aliases i,idx
    */
   'index'?: string
   /**
-   * shard name
+   * The shard name.
    * @aliases s,sh
    */
   'shard'?: string
   /**
-   * primary or replica
+   * The shard type: `primary` or `replica`.
    * @aliases p,pr,primaryOrReplica
    */
   'prirep'?: string
   /**
-   * shard state
+   * The shard state.
+   * Returned values include:
+   * `INITIALIZING`: The shard is recovering from a peer shard or gateway.
+   * `RELOCATING`: The shard is relocating.
+   * `STARTED`: The shard has started.
+   * `UNASSIGNED`: The shard is not assigned to any node.
    * @aliases st
    */
   'state'?: string
   /**
-   * number of docs in shard
+   * The number of documents in the shard.
    * @aliases d,dc
    */
-  'docs'?: string
+  'docs'?: string | null
   /**
-   * store size of shard (how much disk it uses)
+   * The disk space used by the shard.
    * @aliases sto
    */
-  'store'?: string
+  'store'?: string | null
   /**
-   * ip of node where it lives
+   * The IP address of the node.
    */
-  'ip'?: string
+  'ip'?: string | null
   /**
-   * unique id of node where it lives
+   * The unique identifier for the node.
    */
   'id'?: string
   /**
-   * name of node where it lives
+   * The name of node.
    * @aliases n
    */
-  'node'?: string
+  'node'?: string | null
   /**
-   * sync id
+   * The sync identifier.
    */
   'sync_id'?: string
   /**
-   * reason shard is unassigned
+   * The reason for the last change to the state of an unassigned shard.
+   * It does not explain why the shard is currently unassigned; use the cluster allocation explain API for that information.
+   * Returned values include:
+   * `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard.
+   * `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery.
+   * `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index.
+   * `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index.
+   * `FORCED_EMPTY_PRIMARY`: The shard’s allocation was last modified by forcing an empty primary using the cluster reroute API.
+   * `INDEX_CLOSED`: Unassigned because the index was closed.
+   * `INDEX_CREATED`: Unassigned as a result of an API creation of an index.
+   * `INDEX_REOPENED`: Unassigned as a result of opening a closed index.
+   * `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the cluster reroute API.
+   * `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index.
+   * `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster.
+   * `NODE_RESTARTING`: Similar to `NODE_LEFT`, except that the node was registered as restarting using the node shutdown API.
+   * `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed.
+   * `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled.
+   * `REINITIALIZED`: When a shard moves from started back to initializing.
+   * `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica.
+   * `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command.
    * @aliases ur
    */
   'unassigned.reason'?: string
   /**
-   * time shard became unassigned (UTC)
+   * The time at which the shard became unassigned in Coordinated Universal Time (UTC).
    * @aliases ua
    */
   'unassigned.at'?: string
   /**
-   * time has been unassigned
+   * The time at which the shard was requested to be unassigned in Coordinated Universal Time (UTC).
    * @aliases uf
    */
   'unassigned.for'?: string
   /**
-   * additional details as to why the shard became unassigned
+   * Additional details as to why the shard became unassigned.
+   * It does not explain why the shard is not assigned; use the cluster allocation explain API for that information.
    * @aliases ud
    */
   'unassigned.details'?: string
   /**
-   * recovery source type
+   * The type of recovery source.
    * @aliases rs
    */
   'recoverysource.type'?: string
   /**
-   * size of completion
+   * The size of completion.
    * @aliases cs,completionSize
    */
   'completion.size'?: string
   /**
-   * used fielddata cache
+   * The used fielddata cache memory.
    * @aliases fm,fielddataMemory
    */
   'fielddata.memory_size'?: string
   /**
-   * fielddata evictions
+   * The fielddata cache evictions.
    * @aliases fe,fielddataEvictions
    */
   'fielddata.evictions'?: string
   /**
-   * used query cache
+   * The used query cache memory.
    * @aliases qcm,queryCacheMemory
    */
   'query_cache.memory_size'?: string
   /**
-   * query cache evictions
+   * The query cache evictions.
    * @aliases qce,queryCacheEvictions
    */
   'query_cache.evictions'?: string
   /**
-   * number of flushes
+   * The number of flushes.
    * @aliases ft,flushTotal
    */
   'flush.total'?: string
   /**
-   * time spent in flush
+   * The time spent in flush.
    * @aliases ftt,flushTotalTime
    */
   'flush.total_time'?: string
   /**
-   * number of current get ops
+   * The number of current get operations.
    * @aliases gc,getCurrent
    */
   'get.current'?: string
   /**
-   * time spent in get
+   * The time spent in get operations.
    * @aliases gti,getTime
    */
   'get.time'?: string
   /**
-   * number of get ops
+   * The number of get operations.
    * @aliases gto,getTotal
    */
   'get.total'?: string
   /**
-   * time spent in successful gets
+   * The time spent in successful get operations.
    * @aliases geti,getExistsTime
    */
   'get.exists_time'?: string
   /**
-   * number of successful gets
+   * The number of successful get operations.
    * @aliases geto,getExistsTotal
    */
   'get.exists_total'?: string
   /**
-   * time spent in failed gets
+   * The time spent in failed get operations.
    * @aliases gmti,getMissingTime
    */
   'get.missing_time'?: string
   /**
-   * number of failed gets
+   * The number of failed get operations.
    * @aliases gmto,getMissingTotal
    */
   'get.missing_total'?: string
   /**
-   * number of current deletions
+   * The number of current deletion operations.
    * @aliases idc,indexingDeleteCurrent
    */
   'indexing.delete_current'?: string
   /**
-   * time spent in deletions
+   * The time spent in deletion operations.
    * @aliases idti,indexingDeleteTime
    */
   'indexing.delete_time'?: string
   /**
-   * number of delete ops
+   * The number of delete operations.
    * @aliases idto,indexingDeleteTotal
    */
   'indexing.delete_total'?: string
   /**
-   * number of current indexing ops
+   * The number of current indexing operations.
    * @aliases iic,indexingIndexCurrent
    */
   'indexing.index_current'?: string
   /**
-   * time spent in indexing
+   * The time spent in indexing operations.
    * @aliases iiti,indexingIndexTime
    */
   'indexing.index_time'?: string
   /**
-   * number of indexing ops
+   * The number of indexing operations.
    * @aliases iito,indexingIndexTotal
    */
   'indexing.index_total'?: string
   /**
-   * number of failed indexing ops
+   * The number of failed indexing operations.
    * @aliases iif,indexingIndexFailed
    */
   'indexing.index_failed'?: string
   /**
-   * number of current merges
+   * The number of current merge operations.
    * @aliases mc,mergesCurrent
    */
   'merges.current'?: string
   /**
-   * number of current merging docs
+   * The number of current merging documents.
    * @aliases mcd,mergesCurrentDocs
    */
   'merges.current_docs'?: string
   /**
-   * size of current merges
+   * The size of current merge operations.
    * @aliases mcs,mergesCurrentSize
    */
   'merges.current_size'?: string
   /**
-   * number of completed merge ops
+   * The number of completed merge operations.
    * @aliases mt,mergesTotal
    */
   'merges.total'?: string
   /**
-   * docs merged
+   * The nuber of merged documents.
    * @aliases mtd,mergesTotalDocs
    */
   'merges.total_docs'?: string
   /**
-   * size merged
+   * The size of current merges.
    * @aliases mts,mergesTotalSize
    */
   'merges.total_size'?: string
   /**
-   * time spent in merges
+   * The time spent merging documents.
    * @aliases mtt,mergesTotalTime
    */
   'merges.total_time'?: string
   /**
-   * total refreshes
+   * The total number of refreshes.
    */
   'refresh.total'?: string
   /**
-   * time spent in refreshes
+   * The time spent in refreshes.
    */
   'refresh.time'?: string
   /**
-   * total external refreshes
+   * The total nunber of external refreshes.
    * @aliases rto,refreshTotal
    */
   'refresh.external_total'?: string
   /**
-   * time spent in external refreshes
+   * The time spent in external refreshes.
    * @aliases rti,refreshTime
    */
   'refresh.external_time'?: string
   /**
-   * number of pending refresh listeners
+   * The number of pending refresh listeners.
    * @aliases rli,refreshListeners
    */
   'refresh.listeners'?: string
   /**
-   * current fetch phase ops
+   * The current fetch phase operations.
    * @aliases sfc,searchFetchCurrent
    */
   'search.fetch_current'?: string
   /**
-   * time spent in fetch phase
+   * The time spent in fetch phase.
    * @aliases sfti,searchFetchTime
    */
   'search.fetch_time'?: string
   /**
-   * total fetch ops
+   * The total number of fetch operations.
    * @aliases sfto,searchFetchTotal
    */
   'search.fetch_total'?: string
   /**
-   * open search contexts
+   * The number of open search contexts.
    * @aliases so,searchOpenContexts
    */
   'search.open_contexts'?: string
   /**
-   * current query phase ops
+   * The current query phase operations.
    * @aliases sqc,searchQueryCurrent
    */
   'search.query_current'?: string
   /**
-   * time spent in query phase
+   * The time spent in query phase.
    * @aliases sqti,searchQueryTime
    */
   'search.query_time'?: string
   /**
-   * total query phase ops
+   * The total number of query phase operations.
    * @aliases sqto,searchQueryTotal
    */
   'search.query_total'?: string
   /**
-   * open scroll contexts
+   * The open scroll contexts.
    * @aliases scc,searchScrollCurrent
    */
   'search.scroll_current'?: string
   /**
-   * time scroll contexts held open
+   * The time scroll contexts were held open.
    * @aliases scti,searchScrollTime
    */
   'search.scroll_time'?: string
   /**
-   * completed scroll contexts
+   * The number of completed scroll contexts.
    * @aliases scto,searchScrollTotal
    */
   'search.scroll_total'?: string
   /**
-   * number of segments
+   * The number of segments.
    * @aliases sc,segmentsCount
    */
   'segments.count'?: string
   /**
-   * memory used by segments
+   * The memory used by segments.
    * @aliases sm,segmentsMemory
    */
   'segments.memory'?: string
   /**
-   * memory used by index writer
+   * The memory used by the index writer.
    * @aliases siwm,segmentsIndexWriterMemory
    */
   'segments.index_writer_memory'?: string
   /**
-   * memory used by version map
+   * The memory used by the version map.
    * @aliases svmm,segmentsVersionMapMemory
    */
   'segments.version_map_memory'?: string
   /**
-   * memory used by fixed bit sets for nested object field types and export type filters for types referred in _parent fields
+   * The memory used by fixed bit sets for nested object field types and export type filters for types referred in `_parent` fields.
    * @aliases sfbm,fixedBitsetMemory
    */
   'segments.fixed_bitset_memory'?: string
   /**
-   * max sequence number
+   * The maximum sequence number.
    * @aliases sqm,maxSeqNo
    */
   'seq_no.max'?: string
   /**
-   * local checkpoint
+   * The local checkpoint.
    * @aliases sql,localCheckpoint
    */
   'seq_no.local_checkpoint'?: string
   /**
-   * global checkpoint
+   * The global checkpoint.
    * @aliases sqg,globalCheckpoint
    */
   'seq_no.global_checkpoint'?: string
   /**
-   * current warmer ops
+   * The number of current warmer operations.
    * @aliases wc,warmerCurrent
    */
   'warmer.current'?: string
   /**
-   * total warmer ops
+   * The total number of warmer operations.
    * @aliases wto,warmerTotal
    */
   'warmer.total'?: string
   /**
-   * time spent in warmers
+   * The time spent in warmer operations.
    * @aliases wtt,warmerTotalTime
    */
   'warmer.total_time'?: string
   /**
-   * shard data path
+   * The shard data path.
    * @aliases pd,dataPath
    */
   'path.data'?: string
   /**
-   * shard state path
+   * The shard state path.
    * @aliases ps,statsPath
    */
   'path.state'?: string
   /**
-   * number of bulk shard ops
+   * The number of bulk shard operations.
    * @aliases bto,bulkTotalOperations
    */
   'bulk.total_operations'?: string
   /**
-   * time spend in shard bulk
+   * The time spent in shard bulk operations.
    * @aliases btti,bulkTotalTime
    */
   'bulk.total_time'?: string
   /**
-   * total size in bytes of shard bulk
+   * The total size in bytes of shard bulk operations.
    * @aliases btsi,bulkTotalSizeInBytes
    */
   'bulk.total_size_in_bytes'?: string
   /**
-   * average time spend in shard bulk
+   * The average time spent in shard bulk operations.
    * @aliases bati,bulkAvgTime
    */
   'bulk.avg_time'?: string
   /**
-   * avg size in bytes of shard bulk
+   * The average size in bytes of shard bulk operations.
    * @aliases basi,bulkAvgSizeInBytes
    */
   'bulk.avg_size_in_bytes'?: string

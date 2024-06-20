@@ -20,6 +20,14 @@
 export enum GridType {
   grid,
   point,
-  /** @since 7.16.0 */
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   centroid
+}
+
+export enum GridAggregationType {
+  geotile,
+  geohex
 }

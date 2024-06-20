@@ -21,6 +21,7 @@ import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
 import { DenseVectorIndexOptions } from './DenseVectorIndexOptions'
 import { PropertyBase } from './Property'
+import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 
 export class FlattenedProperty extends PropertyBase {
   boost?: double
@@ -44,12 +45,14 @@ export class NestedProperty extends CorePropertyBase {
 
 export class ObjectProperty extends CorePropertyBase {
   enabled?: boolean
+  subobjects?: boolean
   type?: 'object'
 }
 
 export class DenseVectorProperty extends PropertyBase {
   type: 'dense_vector'
-  dims: integer
+  element_type?: string
+  dims?: integer
   similarity?: string
   index?: boolean
   index_options?: DenseVectorIndexOptions
@@ -59,4 +62,5 @@ export class AggregateMetricDoubleProperty extends PropertyBase {
   type: 'aggregate_metric_double'
   default_metric: string
   metrics: string[]
+  time_series_metric?: TimeSeriesMetricType
 }

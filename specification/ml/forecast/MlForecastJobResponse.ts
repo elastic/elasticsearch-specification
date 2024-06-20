@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class Response extends AcknowledgedResponseBase {
+export class Response {
   body: {
+    acknowledged: boolean
     forecast_id: Id
   }
 }

@@ -17,71 +17,79 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { TimeOfDay, Duration, UnitSeconds, EpochTime } from '@_types/Time'
+import { ScheduleTimeOfDay } from '@watcher/_types/Schedule'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class SnapshotsRecord {
   /**
-   * unique snapshot
+   * The unique identifier for the snapshot.
    * @aliases snapshot
    */
   'id'?: string
   /**
-   * repository name
+   * The repository name.
    * @aliases re,repo
    */
   'repository'?: string
   /**
-   * snapshot name
+   * The state of the snapshot process.
+   * Returned values include:
+   * `FAILED`: The snapshot process failed.
+   * `INCOMPATIBLE`: The snapshot process is incompatible with the current cluster version.
+   * `IN_PROGRESS`: The snapshot process started but has not completed.
+   * `PARTIAL`: The snapshot process completed with a partial success.
+   * `SUCCESS`: The snapshot process completed with a full success.
    * @aliases s
    */
   'status'?: string
   /**
-   * start time in seconds since 1970-01-01 00:00:00
+   * The Unix epoch time (seconds since 1970-01-01 00:00:00) at which the snapshot process started.
    * @aliases ste,startEpoch
    */
-  'start_epoch'?: EpochMillis
+  'start_epoch'?: Stringified<EpochTime<UnitSeconds>>
   /**
-   * start time in HH:MM:SS
+   * The time (HH:MM:SS) at which the snapshot process started.
    * @aliases sti,startTime
    */
-  'start_time'?: DateString
+  'start_time'?: ScheduleTimeOfDay
   /**
-   * end time in seconds since 1970-01-01 00:00:00
+   * The Unix epoch time (seconds since 1970-01-01 00:00:00) at which the snapshot process ended.
    * @aliases ete,endEpoch
    */
-  'end_epoch'?: EpochMillis
+  'end_epoch'?: Stringified<EpochTime<UnitSeconds>>
   /**
-   * end time in HH:MM:SS
+   * The time (HH:MM:SS) at which the snapshot process ended.
    * @aliases eti,endTime
    */
-  'end_time'?: DateString
+  'end_time'?: TimeOfDay
   /**
-   * duration
+   * The time it took the snapshot process to complete, in time units.
    * @aliases dur
    */
-  'duration'?: Time
+  'duration'?: Duration
   /**
-   * number of indices
+   * The number of indices in the snapshot.
    * @aliases i
    */
   'indices'?: string
   /**
-   * number of successful shards
+   * The number of successful shards in the snapshot.
    * @aliases ss
    */
   'successful_shards'?: string
   /**
-   * number of failed shards
+   * The number of failed shards in the snapshot.
    * @aliases fs
    */
   'failed_shards'?: string
   /**
-   * number of total shards
+   * The total number of shards in the snapshot.
    * @aliases ts
    */
   'total_shards'?: string
   /**
-   * reason for failures
+   * The reason for any snapshot failures.
    * @aliases r
    */
   'reason'?: string

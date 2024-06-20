@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Status } from '@tasks/_types/TaskStatus'
 import { ErrorCause } from '@_types/Errors'
-import { Info } from '../_types/TaskInfo'
+import { TaskInfo } from '../_types/TaskInfo'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
   body: {
     completed: boolean
-    task: Info
-    response?: Status
+    task: TaskInfo
+    response?: UserDefinedValue
     error?: ErrorCause
   }
 }

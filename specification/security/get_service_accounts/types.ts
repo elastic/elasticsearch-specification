@@ -17,25 +17,8 @@
  * under the License.
  */
 
-import {
-  IndicesPrivileges,
-  GlobalPrivilege,
-  ApplicationPrivileges
-} from '@security/_types/Privileges'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Metadata } from '@_types/common'
+import { RoleDescriptorRead } from '@security/_types/RoleDescriptor'
 
 export class RoleDescriptorWrapper {
-  role_descriptor: RoleDescriptor
-}
-
-export class RoleDescriptor {
-  cluster: string[]
-  indices: IndicesPrivileges[]
-  global?: GlobalPrivilege[] | GlobalPrivilege
-  applications?: ApplicationPrivileges[]
-  metadata?: Metadata
-  run_as?: string[]
-  transient_metadata?: Dictionary<string, UserDefinedValue>
+  role_descriptor: RoleDescriptorRead
 }

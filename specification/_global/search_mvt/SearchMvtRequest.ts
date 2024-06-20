@@ -21,18 +21,19 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Field, Fields, Indices } from '@_types/common'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { GridType } from './_types/GridType'
+import { GridAggregationType, GridType } from './_types/GridType'
 import { Coordinate } from './_types/Coordinate'
 import { Sort } from '@_types/sort'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { ZoomLevel } from './_types/ZoomLevel'
+import { TrackHits } from '@global/search/_types/hits'
 
 /**
  * @rest_spec_name search_mvt
- * @since 7.15.0
- * @stability experimental
+ * @availability stack since=7.15.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -63,6 +64,10 @@ export interface Request extends RequestBase {
      */
     extent?: integer
     /**
+     * Aggregation used to create a grid for `field`.
+     */
+    grid_agg?: GridAggregationType
+    /**
      * Additional zoom levels available through the aggs layer. For example, if <zoom> is 7
      * and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results
      * don’t include the aggs layer.
@@ -83,6 +88,11 @@ export interface Request extends RequestBase {
      * @server_default 10000
      */
     size?: integer
+    /**
+     * If `true`, the hits and aggs layers will contain additional point features representing
+     * suggested label positions for the original features.
+     */
+    with_labels?: boolean
   }
   body: {
     /**
@@ -96,6 +106,12 @@ export interface Request extends RequestBase {
      * - sum
      */
     aggs?: Dictionary<string, AggregationContainer>
+    /**
+     * Size, in pixels, of a clipping buffer outside the tile. This allows renderers
+     * to avoid outline artifacts from geometries that extend past the extent of the tile.
+     * @server_default 5
+     */
+    buffer?: integer
     /**
      * If false, the meta layer’s feature is the bounding box of the tile.
      * If true, the meta layer’s feature is a bounding box resulting from a
@@ -116,6 +132,10 @@ export interface Request extends RequestBase {
      * values may return inconsistent results.
      */
     fields?: Fields
+    /**
+     * Aggregation used to create a grid for the `field`.
+     */
+    grid_agg?: GridAggregationType
     /**
      * Additional zoom levels available through the aggs layer. For example, if <zoom> is 7
      * and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results
@@ -152,5 +172,17 @@ export interface Request extends RequestBase {
      * from longest to shortest.
      */
     sort?: Sort
+    /**
+     * Number of hits matching the query to count accurately. If `true`, the exact number
+     * of hits is returned at the cost of some performance. If `false`, the response does
+     * not include the total number of hits matching the query.
+     * @server_default 10000
+     */
+    track_total_hits?: TrackHits
+    /**
+     * If `true`, the hits and aggs layers will contain additional point features representing
+     * suggested label positions for the original features.
+     */
+    with_labels?: boolean
   }
 }

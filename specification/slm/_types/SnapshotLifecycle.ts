@@ -27,24 +27,30 @@ import {
   VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import {
+  Duration,
+  DateTime,
+  UnitMillis,
+  EpochTime,
+  DurationValue
+} from '@_types/Time'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress
   last_failure?: Invocation
   last_success?: Invocation
-  modified_date?: DateString
-  modified_date_millis: EpochMillis
-  next_execution?: DateString
-  next_execution_millis: EpochMillis
+  modified_date?: DateTime
+  modified_date_millis: EpochTime<UnitMillis>
+  next_execution?: DateTime
+  next_execution_millis: EpochTime<UnitMillis>
   policy: Policy
   version: VersionNumber
   stats: Statistics
 }
 
 export class Statistics {
-  retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
+  retention_deletion_time?: Duration
+  retention_deletion_time_millis?: DurationValue<UnitMillis>
   retention_failed?: long
   retention_runs?: long
   retention_timed_out?: long
@@ -68,10 +74,10 @@ export class Statistics {
 }
 
 export class Policy {
-  config: Configuration
+  config?: Configuration
   name: Name
   repository: string
-  retention: Retention
+  retention?: Retention
   schedule: CronExpression
 }
 
@@ -79,7 +85,7 @@ export class Retention {
   /**
    * Time period after which a snapshot is considered expired and eligible for deletion. SLM deletes expired snapshots based on the slm.retention_schedule.
    */
-  expire_after: Time
+  expire_after: Duration
   /**
    * Maximum number of snapshots to retain, even if the snapshots have not yet expired. If the number of snapshots in the repository exceeds this limit, the policy retains the most recent snapshots and deletes older snapshots.
    */
@@ -100,7 +106,7 @@ export class Configuration {
    * A comma-separated list of data streams and indices to include in the snapshot. Multi-index syntax is supported.
    * By default, a snapshot includes all data streams and indices in the cluster. If this argument is provided, the snapshot only includes the specified data streams and clusters.
    */
-  indices: Indices
+  indices?: Indices
   /**
    * If true, the current global state is included in the snapshot.
    * @server_default true
@@ -124,12 +130,12 @@ export class Configuration {
 
 export class InProgress {
   name: Name
-  start_time_millis: DateString
+  start_time_millis: EpochTime<UnitMillis>
   state: string
   uuid: Uuid
 }
 
 export class Invocation {
   snapshot_name: Name
-  time: DateString
+  time: DateTime
 }

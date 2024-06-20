@@ -18,9 +18,8 @@
  */
 
 import { Field } from '@_types/common'
-import { long, double } from '@_types/Numeric'
-
-export type QueryVector = double[]
+import { integer } from '@_types/Numeric'
+import { QueryVector } from '@_types/Knn'
 
 export interface Query {
   /** The name of the vector field to search against */
@@ -28,7 +27,7 @@ export interface Query {
   /** The query vector */
   query_vector: QueryVector
   /** The final number of nearest neighbors to return as top hits */
-  k: long
+  k: integer
   /** The number of nearest neighbor candidates to consider per shard */
-  num_candidates: long
+  num_candidates: integer
 }

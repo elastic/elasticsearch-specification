@@ -25,7 +25,7 @@ import { Void } from '@spec_utils/VoidValue'
  * remote cluster information. It returns connection and endpoint information
  * keyed by the configured remote cluster alias.
  * @rest_spec_name cluster.remote_info
- * @since 6.1.0
- * @stability stable
+ * @availability stack since=6.1.0 stability=stable
+ * @doc_id cluster-remote-info
  */
 export interface Request extends RequestBase {}

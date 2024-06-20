@@ -18,15 +18,19 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 
 /**
+ * Returns the rollup capabilities of all jobs inside of a rollup index (for example, the index where rollup data is stored).
  * @rest_spec_name rollup.get_rollup_index_caps
- * @since 6.4.0
- * @stability experimental
+ * @availability stack since=6.4.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index: Id
+    /**
+     * Data stream or index to check for rollup capabilities.
+     * Wildcard (`*`) expressions are supported.
+     */
+    index: Ids
   }
 }

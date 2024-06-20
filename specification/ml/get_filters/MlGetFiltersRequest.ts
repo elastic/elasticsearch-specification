@@ -18,15 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
  * Retrieves filters.
  * You can get a single filter or all filters.
  * @rest_spec_name ml.get_filters
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
     /**
      * A string that uniquely identifies a filter.
      */
-    filter_id?: Id
+    filter_id?: Ids
   }
   query_parameters: {
     /**

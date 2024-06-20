@@ -19,12 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, IndexName } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.add_block
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -35,14 +35,14 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean // default: true
     expand_wildcards?: ExpandWildcards // default: open
     ignore_unavailable?: boolean // default: false
-    master_timeout?: Time // default: 30s
-    timeout?: Time // default: 30s
+    master_timeout?: Duration // default: 30s
+    timeout?: Duration // default: 30s
   }
 }
 
 export enum IndicesBlockOptions {
-  metadata = 0,
-  read = 1,
-  read_only = 2,
-  write = 3
+  metadata,
+  read,
+  read_only,
+  write
 }

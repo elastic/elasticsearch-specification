@@ -25,6 +25,8 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
+import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -49,7 +51,7 @@ export class NodeInfo {
   thread_pool?: Dictionary<string, NodeThreadPoolInfo>
   /**
    * Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html
+   * @doc_id indexing-buffer
    */
   total_indexing_buffer?: long
   /** Same as total_indexing_buffer, but expressed in bytes. */
@@ -67,11 +69,11 @@ export class NodeInfo {
 export class NodeInfoSettings {
   cluster: NodeInfoSettingsCluster
   node: NodeInfoSettingsNode
-  path: NodeInfoPath
+  path?: NodeInfoPath
   repositories?: NodeInfoRepositories
   discovery?: NodeInfoDiscover
   action?: NodeInfoAction
-  client: NodeInfoClient
+  client?: NodeInfoClient
   http: NodeInfoSettingsHttp
   bootstrap?: NodeInfoBootstrap
   transport: NodeInfoSettingsTransport
@@ -131,7 +133,16 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  initial_master_nodes?: string
+  initial_master_nodes?: string[]
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
+  deprecation_indexing?: DeprecationIndexing
+}
+
+export class DeprecationIndexing {
+  enabled: boolean | string
 }
 
 export class NodeInfoSettingsClusterElection {
@@ -145,9 +156,9 @@ export class NodeInfoSettingsNode {
 }
 
 export class NodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
@@ -159,8 +170,12 @@ export class NodeInfoRepositoriesUrl {
   allowed_urls: string
 }
 
-export class NodeInfoDiscover {
-  seed_hosts: string
+export class NodeInfoDiscover
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  seed_hosts?: string[]
+  type?: string
+  seed_providers?: string[]
 }
 
 export class NodeInfoAction {
@@ -203,7 +218,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  host: Host
+  host?: Host
 }
 
 export class NodeInfoIngest {
@@ -227,7 +242,7 @@ export class NodeInfoXpack {
 export class NodeInfoXpackSecurity {
   http: NodeInfoXpackSecuritySsl
   enabled: string
-  transport: NodeInfoXpackSecuritySsl
+  transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
 }
 
@@ -265,7 +280,7 @@ export class NodeInfoXpackLicenseType {
 
 export class NodeInfoScript {
   allowed_types: string
-  disable_max_compilations_rate: string
+  disable_max_compilations_rate?: string
 }
 
 export class NodeInfoSearch {
@@ -278,7 +293,7 @@ export class NodeInfoSearchRemote {
 
 export class NodeThreadPoolInfo {
   core?: integer
-  keep_alive?: string
+  keep_alive?: Duration
   max?: integer
   queue_size: integer
   size?: integer
@@ -343,12 +358,12 @@ export class NodeJvmInfo {
   mem: NodeInfoJvmMemory
   memory_pools: string[]
   pid: integer
-  start_time_in_millis: long
+  start_time_in_millis: EpochTime<UnitMillis>
   version: VersionString
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
-  bundled_jdk: boolean
+  /** @aliases bundled_jdk */
   using_bundled_jdk: boolean
   using_compressed_ordinary_object_pointers?: boolean | string
   input_arguments: string[]
@@ -365,7 +380,7 @@ export class NodeOperatingSystemInfo {
   name: Name
   pretty_name: Name
   /** Refresh interval for the OS statistics */
-  refresh_interval_in_millis: integer
+  refresh_interval_in_millis: DurationValue<UnitMillis>
   /** Version of the operating system */
   version: VersionString
   cpu?: NodeInfoOSCPU
@@ -379,5 +394,5 @@ export class NodeProcessInfo {
   /** Indicates if the process address space has been successfully locked in memory */
   mlockall: boolean
   /** Refresh interval for the process statistics */
-  refresh_interval_in_millis: long
+  refresh_interval_in_millis: DurationValue<UnitMillis>
 }

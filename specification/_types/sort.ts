@@ -18,8 +18,9 @@
  */
 
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Missing } from '@_types/aggregations/AggregationContainer'
-import { Field } from '@_types/common'
+import { Field, FieldValue } from '@_types/common'
 import { DistanceUnit, GeoDistanceType, GeoLocation } from '@_types/Geo'
 import { FieldType } from '@_types/mapping/Property'
 import { double, integer, long } from '@_types/Numeric'
@@ -34,10 +35,10 @@ export class NestedSortValue {
 }
 
 export enum FieldSortNumericType {
-  long = 0,
-  double = 1,
-  date = 2,
-  date_nanos = 3
+  long,
+  double,
+  date,
+  date_nanos
 }
 
 /** @shortcut_property order */
@@ -74,11 +75,12 @@ export class ScriptSort {
 
 export enum ScriptSortType {
   string,
-  number
+  number,
+  version
 }
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html
+ * @doc_id sort-search-results
  * @variants container
  */
 export class SortOptions implements AdditionalProperty<Field, FieldSort> {
@@ -96,20 +98,26 @@ export type SortCombinations = Field | SortOptions
 
 export type Sort = SortCombinations | SortCombinations[]
 
-export type SortResults = Array<long | double | string | null>
+export type SortResults = FieldValue[]
 
 /**
  * Defines what values to pick in the case a document contains multiple values for a particular field.
  */
 export enum SortMode {
-  min = 0,
-  max = 1,
-  sum = 2,
-  avg = 3,
-  median = 4
+  min,
+  max,
+  sum,
+  avg,
+  median
 }
 
 export enum SortOrder {
-  asc = 0,
-  desc = 1
+  /**
+   * Ascending (smallest to largest)
+   */
+  asc,
+  /**
+   * Descending (largest to smallest)
+   */
+  desc
 }
