@@ -129,6 +129,7 @@ export class Property {
   since?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
+  availability?: Availabilities
   stability?: Stability
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
@@ -333,6 +334,7 @@ export class EnumMember {
   description?: string
   deprecation?: Deprecation
   since?: string
+  availability?: Availabilities
 }
 
 /**
@@ -369,7 +371,7 @@ export enum Stability {
 }
 export enum Visibility {
   public = 'public',
-  featureFlag = 'feature_flag',
+  feature_flag = 'feature_flag',
   private = 'private'
 }
 
@@ -378,12 +380,25 @@ export class Deprecation {
   description: string
 }
 
+export class Availabilities {
+  stack?: Availability
+  serverless?: Availability
+}
+
+export class Availability {
+  since?: string
+  featureFlag?: string
+  stability?: Stability
+  visibility?: Visibility
+}
+
 export class Endpoint {
   name: string
   description: string
   docUrl: string
   docId?: string
   deprecation?: Deprecation
+  availability: Availabilities
 
   /**
    * If the request value is `null` it means that there is not yet a

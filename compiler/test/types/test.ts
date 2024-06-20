@@ -23,7 +23,8 @@ import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
-const compiler = new Compiler(specsFolder)
+const outputFolder = join(__dirname, 'output')
+const compiler = new Compiler(specsFolder, outputFolder)
 const { model } = compiler.generateModel()
 
 test('interfaces', t => {
@@ -91,7 +92,7 @@ test('type_alias', t => {
 test('request', t => {
   const definition = model.types.find(t => t.kind === 'request') as Model.Request
   t.assert(definition)
-  t.true(definition?.specLocation.endsWith('test/types/specification/_global/info/request.ts#L20-L25'))
+  t.true(definition?.specLocation.endsWith('test/types/specification/_global/info/request.ts#L20-L24'))
   t.deepEqual(definition?.name, {
     name: 'Request',
     namespace: '_global.info'

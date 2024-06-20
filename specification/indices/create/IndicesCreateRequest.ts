@@ -26,31 +26,56 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 
 /**
+ * Creates a new index.
+ * @doc_id indices-create-index
  * @rest_spec_name indices.create
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges create_index, manage
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Name of the index you wish to create.
+     */
     index: IndexName
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
+    /**
+     The number of shard copies that must be active before proceeding with the operation.
+     * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * @server_default 1
+     */
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {
-    /* Aliases for the index. */
+    /**
+     * Aliases for the index.
+     */
     aliases?: Dictionary<Name, Alias>
     /**
      * Mapping for fields in the index. If specified, this mapping can include:
      * - Field names
      * - Field data types
      * - Mapping parameters
+     * @doc_id mapping
      */
     mappings?: TypeMapping
-    /* Configuration options for the index. */
+    /**
+     * Configuration options for the index.
+     */
     settings?: IndexSettings
   }
 }

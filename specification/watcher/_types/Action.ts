@@ -52,19 +52,22 @@ export class Action {
   email?: EmailAction
   pagerduty?: PagerDutyAction
   slack?: SlackAction
-  /** @since 7.14.0 */
+  /**
+   * @availability stack since=7.14.0
+   * @availability serverless
+   */
   webhook?: WebhookAction
 }
 
 export type Actions = Dictionary<IndexName, ActionStatus>
 
 export enum ActionType {
-  email = 0,
-  webhook = 1,
-  index = 2,
-  logging = 3,
-  slack = 4,
-  pagerduty = 5
+  email,
+  webhook,
+  index,
+  logging,
+  slack,
+  pagerduty
 }
 
 export enum ActionExecutionMode {
@@ -97,16 +100,16 @@ export class SimulatedActions {
 }
 
 export enum ActionStatusOptions {
-  success = 0,
-  failure = 1,
-  simulated = 2,
-  throttled = 3
+  success,
+  failure,
+  simulated,
+  throttled
 }
 
 export enum AcknowledgementOptions {
-  awaits_successful_execution = 0,
-  ackable = 1,
-  acked = 2
+  awaits_successful_execution,
+  ackable,
+  acked
 }
 
 export class AcknowledgeState {

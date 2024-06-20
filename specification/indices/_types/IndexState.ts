@@ -22,6 +22,7 @@ import { DataStreamName, IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 
 export class IndexState {
   aliases?: Dictionary<IndexName, Alias>
@@ -30,4 +31,10 @@ export class IndexState {
   /** Default settings, included when the request's `include_default` is `true`. */
   defaults?: IndexSettings
   data_stream?: DataStreamName
+  /**
+   * Data lifecycle applicable if this is a data stream.
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  lifecycle?: DataStreamLifecycle
 }

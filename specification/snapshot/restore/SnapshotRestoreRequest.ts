@@ -24,8 +24,8 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.restore
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -37,6 +37,7 @@ export interface Request extends RequestBase {
     wait_for_completion?: boolean
   }
   body: {
+    feature_states?: string[]
     ignore_index_settings?: string[]
     ignore_unavailable?: boolean
     include_aliases?: boolean

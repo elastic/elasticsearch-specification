@@ -23,9 +23,10 @@ import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
+const outputFolder = join(__dirname, 'output')
 
 test('Wrong namespace for request definition', t => {
-  const compiler = new Compiler(specsFolder)
+  const compiler = new Compiler(specsFolder, outputFolder)
   const error = t.throws(() => compiler.generateModel())
   t.is(error?.message, 'Cannot find url template for _global.foobar, very likely the specification folder does not follow the rest-api-spec')
 })

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { writeFileSync } from 'fs'
+import { mkdirSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { STATUS_CODES } from 'http'
 import {
@@ -68,6 +68,15 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       name: api,
       description: spec.documentation.description,
       docUrl: spec.documentation.url,
+      // Setting these values by default should be removed
+      // when we no longer use rest-api-spec stubs as the
+      // source of truth for stability/visibility.
+      availability: {
+        stack: {
+          stability: spec.stability,
+          visibility: spec.visibility
+        }
+      },
       stability: spec.stability,
       visibility: spec.visibility,
       request: null,
@@ -88,7 +97,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
   return map
 }
 
-export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string): model.Model {
+export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
   const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
 
@@ -123,10 +132,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
     }
   }
 
+  mkdirSync(join(outputFolder, 'dangling-types'), { recursive: true })
   writeFileSync(
-    join(__dirname, '..', '..', '..', 'output', 'dangling-types', 'dangling.csv'),
+    join(outputFolder, 'dangling-types', 'dangling.csv'),
     definedButNeverUsed.join('\n'),
-    'utf8'
+    { encoding: 'utf8', flag: 'w' }
   )
   for (const api of jsonSpec.keys()) {
     model.endpoints.push(endpointMappings[api])
@@ -260,14 +270,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(queryType.type, part.type)) {
             assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @codegen_name.`)
-            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in query_parameters.`)
+            assert(pathMember as Node, !type.query.map(p => p.codegenName ?? p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in query_parameters.`)
           }
         }
         if (bodyProperties.map(p => p.name).includes(part.name)) {
           const bodyType = bodyProperties.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(bodyType.type, part.type)) {
             assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the body with a different type, you should define an @codegen_name.`)
-            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in body.`)
+            assert(pathMember as Node, !bodyProperties.map(p => p.codegenName ?? p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in body.`)
           }
         }
       }
@@ -275,6 +285,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       // validate body
       // the body can either be a value (eg Array<string> or an object with properties)
       if (bodyValue != null) {
+        // Propagate required body value nature based on TS question token being present.
+        // Overrides the value set by spec files.
+        mapping.requestBodyRequired = !(bodyMember as PropertySignature).hasQuestionToken()
+
         if (bodyValue.kind === 'instance_of' && bodyValue.type.name === 'Void') {
           assert(bodyMember as Node, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
         } else {
@@ -286,9 +300,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           )
           assert(
             (bodyMember as PropertySignature).getJsDocs(),
-            !type.path.map(p => p.name).concat(type.query.map(p => p.name)).includes(tags.codegen_name),
+            !type.path.map(p => p.codegenName ?? p.name).concat(type.query.map(p => p.codegenName ?? p.name)).includes(tags.codegen_name),
             `The codegen_name '${tags.codegen_name}' already exists as a property in the path or query.`
           )
+
           type.body = {
             kind: 'value',
             value: bodyValue,
@@ -385,7 +400,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               )
               const jsDocs = child.getJsDocs()
               if (jsDocs.length > 0) {
-                exception.description = jsDocs[0].getDescription()
+                exception.description = jsDocs[0].getDescription().replace(/\r/g, '')
               }
               if (child.getName() === 'statusCodes') {
                 const value = child.getTypeNode()
@@ -429,7 +444,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat({
         name: modelGenerics(typeParameter),
-        namespace: type.name.namespace
+        namespace: type.name.namespace + '.' + type.name.name
       })
     }
 
@@ -517,7 +532,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat({
         name: modelGenerics(typeParameter),
-        namespace: type.name.namespace
+        namespace: type.name.namespace + '.' + type.name.name
       })
     }
 

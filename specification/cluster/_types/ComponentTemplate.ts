@@ -22,6 +22,10 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import {
+  DataStreamLifecycle,
+  DataStreamLifecycleWithRollover
+} from '@indices/_types/DataStreamLifecycle'
 
 export class ComponentTemplate {
   name: Name
@@ -42,4 +46,9 @@ export class ComponentTemplateSummary {
   settings?: Dictionary<IndexName, IndexSettings>
   mappings?: TypeMapping
   aliases?: Dictionary<string, AliasDefinition>
+  /**
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  lifecycle?: DataStreamLifecycleWithRollover
 }

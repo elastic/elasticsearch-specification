@@ -107,6 +107,7 @@ export type Aggregate =
   | SignificantStringTermsAggregate
   | UnmappedSignificantTermsAggregate
   | CompositeAggregate
+  | FrequentItemSetsAggregate
   //
   | ScriptedMetricAggregate
   | TopHitsAggregate
@@ -388,7 +389,7 @@ export class TermsAggregateBase<
 export class StringTermsAggregate extends TermsAggregateBase<StringTermsBucket> {}
 
 export class TermsBucketBase extends MultiBucketBase {
-  doc_count_error?: long
+  doc_count_error_upper_bound?: long
 }
 
 export class StringTermsBucket extends TermsBucketBase {
@@ -635,6 +636,14 @@ export class IpPrefixBucket extends MultiBucketBase {
   netmask?: string
 }
 
+/** @variant name=frequent_item_sets */
+export class FrequentItemSetsAggregate extends MultiBucketAggregateBase<FrequentItemSetsBucket> {}
+
+export class FrequentItemSetsBucket extends MultiBucketBase {
+  key: Dictionary<Field, string[]>
+  support: double
+}
+
 //----- Misc
 
 /** @variant name=scripted_metric */
@@ -694,7 +703,7 @@ export class StringStatsAggregate extends AggregateBase {
   avg_length_as_string?: string
 }
 
-/** @variant name=box_plot */
+/** @variant name=boxplot */
 export class BoxPlotAggregate extends AggregateBase {
   min: double
   max: double

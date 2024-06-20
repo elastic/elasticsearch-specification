@@ -17,19 +17,15 @@
  * under the License.
  */
 
-import {
-  Repository,
-  RepositorySettings
-} from '@snapshot/_types/SnapshotRepository'
+import { Repository } from '@snapshot/_types/SnapshotRepository'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.create_repository
- * @since 0.0.0
- *
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -41,9 +37,6 @@ export interface Request extends RequestBase {
     timeout?: Duration
     verify?: boolean
   }
-  body: {
-    repository?: Repository
-    type: string
-    settings: RepositorySettings
-  }
+  /** @codegen_name repository */
+  body: Repository
 }

@@ -32,8 +32,8 @@ import { integer } from '@_types/Numeric'
  * This API creates a data frame analytics job that performs an analysis on the
  * source indices and stores the outcome in a destination index.
  * @rest_spec_name ml.put_data_frame_analytics
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
  * @doc_id put-dfanalytics
@@ -128,11 +128,13 @@ export interface Request extends RequestBase {
      */
     source: DataframeAnalyticsSource
     /**
-     * @since 8.0.0
+     * @availability stack since=8.0.0
+     * @availability serverless
      */
     headers?: HttpHeaders
     /**
-     * @since 7.16.0
+     * @availability stack since=7.16.0
+     * @availability serverless
      */
     version?: VersionString
   }

@@ -28,8 +28,8 @@ import { Include } from '@ml/_types/Include'
  * As requests are handled by each allocated node, their responses may be cached on that individual node.
  * Calling this API clears the caches without restarting the deployment.
  * @rest_spec_name ml.clear_trained_model_deployment_cache
- * @since 8.5.0
- * @stability stable
+ * @availability stack since=8.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {

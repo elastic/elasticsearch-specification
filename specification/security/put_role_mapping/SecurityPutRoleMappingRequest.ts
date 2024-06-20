@@ -20,11 +20,12 @@
 import { RoleMappingRule } from '@security/_types/RoleMappingRule'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
+import { RoleTemplate } from '@security/_types/RoleTemplate'
 
 /**
  * @rest_spec_name security.put_role_mapping
- * @since 5.5.0
- * @stability stable
+ * @availability stack since=5.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -36,7 +37,10 @@ export interface Request extends RequestBase {
   body: {
     enabled?: boolean
     metadata?: Metadata
+    // Exactly one of roles or role_templates must be specified
     roles?: string[]
+    // Exactly one of roles or role_templates must be specified
+    role_templates?: RoleTemplate[]
     rules?: RoleMappingRule
     run_as?: string[]
   }

@@ -49,6 +49,9 @@ export class ModelSnapshotUpgrade {
   job_id: Id
   snapshot_id: Id
   state: SnapshotUpgradeState
+  /**
+   * @availability stack
+   */
   node: DiscoveryNode
   assignment_explanation: string
 }

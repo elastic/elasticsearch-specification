@@ -22,10 +22,12 @@ import { Fields, Level, Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Returns cluster nodes statistics.
  * @rest_spec_name nodes.stats
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-stats
+ * @cluster_privileges monitor,manage
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -64,6 +66,10 @@ export interface Request extends RequestBase {
     timeout?: Duration
     /** A comma-separated list of document types for the indexing index metric. */
     types?: string[]
+    /**
+     * If `true`, the response includes information from segments that are not loaded into memory.
+     * @server_default false
+     */
     include_unloaded_segments?: boolean
   }
 }

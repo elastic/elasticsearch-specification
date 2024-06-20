@@ -24,8 +24,8 @@ import { Duration } from '@_types/Time'
 /**
  * Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
- * @since 7.4.0
- * @stability stable
+ * @availability stack since=7.4.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {

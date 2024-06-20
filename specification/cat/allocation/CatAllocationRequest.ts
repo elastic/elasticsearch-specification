@@ -21,16 +21,21 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, NodeIds } from '@_types/common'
 
 /**
+ * Provides a snapshot of the number of shards allocated to each data node and their disk space.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
  * @rest_spec_name cat.allocation
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-allocation
+ * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /** Comma-separated list of node identifiers or names used to limit the returned information. */
     node_id?: NodeIds
   }
   query_parameters: {
+    /** The unit used to display byte values. */
     bytes?: Bytes
   }
 }

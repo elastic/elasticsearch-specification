@@ -17,6 +17,14 @@
  * under the License.
  */
 
+import {
+  Overlapping,
+  Template
+} from '@indices/simulate_template/IndicesSimulateTemplateResponse'
+
 export class Response {
-  body: {}
+  body: {
+    overlapping?: Overlapping[]
+    template: Template
+  }
 }

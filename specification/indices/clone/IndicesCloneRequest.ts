@@ -25,22 +25,51 @@ import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Clones an existing index.
  * @rest_spec_name indices.clone
- * @since 7.4.0
- * @stability stable
+ * @availability stack since=7.4.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Name of the source index to clone.
+     */
     index: IndexName
+    /**
+     * Name of the target index to create.
+     * @doc_id indices-clone-index
+     */
     target: Name
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
+    /**
+     * The number of shard copies that must be active before proceeding with the operation.
+     * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * @server_default 1
+     */
     wait_for_active_shards?: WaitForActiveShards
   }
   body: {
+    /**
+     * Aliases for the resulting index.
+     */
     aliases?: Dictionary<IndexName, Alias>
+    /**
+     * Configuration options for the target index.
+     * @doc_id index-modules-settings
+     */
     settings?: Dictionary<string, UserDefinedValue>
   }
 }

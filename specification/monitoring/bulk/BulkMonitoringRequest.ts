@@ -23,8 +23,7 @@ import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
 /**
  * @rest_spec_name monitoring.bulk
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts: {
@@ -54,7 +53,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   /** @codegen_name operations */
   // BulkMonitoringRequest accepts a body request that has the same format as the BulkRequest
   // See BulkRequest for additional notes.
-  body?: Array<
+  body: Array<
     OperationContainer | UpdateAction<TDocument, TPartialDocument> | TDocument
   >
 }

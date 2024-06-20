@@ -31,37 +31,50 @@ export class InferenceConfigCreateContainer {
   classification?: ClassificationInferenceOptions
   /**
    * Text classification configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    * */
   text_classification?: TextClassificationInferenceOptions
   /**
    * Zeroshot classification configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    */
   zero_shot_classification?: ZeroShotClassificationInferenceOptions
   /**
    * Fill mask configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    */
   fill_mask?: FillMaskInferenceOptions
   /**
    * Named entity recognition configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    * */
   ner?: NerInferenceOptions
   /**
    * Pass through configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    */
   pass_through?: PassThroughInferenceOptions
   /**
    * Text embedding configuration for inference.
-   * @since 8.0.0
+   * @availability stack since=8.0.0
+   * @availability serverless
    * */
   text_embedding?: TextEmbeddingInferenceOptions
   /**
+   * Text expansion configuration for inference.
+   * @availability stack since=8.8.0
+   * @availability serverless
+   * */
+  text_expansion?: TextExpansionInferenceOptions
+  /**
    * Question answering configuration for inference.
-   * @since 8.3.0
+   * @availability stack since=8.3.0
+   * @availability serverless
    */
   question_answering?: QuestionAnsweringInferenceOptions
 }
@@ -103,12 +116,14 @@ export class TokenizationConfigContainer {
   bert?: NlpBertTokenizationConfig
   /**
    * Indicates MPNET tokenization and its options
-   * @since 8.1.0
+   * @availability stack since=8.1.0
+   * @availability serverless
    * */
   mpnet?: NlpBertTokenizationConfig
   /**
    * Indicates RoBERTa tokenization and its options
-   * @since 8.2.0
+   * @availability stack since=8.2.0
+   * @availability serverless
    * */
   roberta?: NlpRobertaTokenizationConfig
 }
@@ -221,6 +236,16 @@ export class Vocabulary {
 
 /** Text embedding inference options */
 export class TextEmbeddingInferenceOptions {
+  /** The number of dimensions in the embedding output */
+  embedding_size?: integer
+  /** The tokenization options */
+  tokenization?: TokenizationConfigContainer
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+/** Text expansion inference options */
+export class TextExpansionInferenceOptions {
   /** The tokenization options */
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
@@ -240,6 +265,12 @@ export class NerInferenceOptions {
 
 /** Fill mask inference options */
 export class FillMaskInferenceOptions {
+  /** The string/token which will be removed from incoming documents and replaced with the inference prediction(s).
+   * In a response, this field contains the mask token for the specified model/tokenizer. Each model and tokenizer
+   * has a predefined mask token which cannot be changed. Thus, it is recommended not to set this value in requests.
+   * However, if this field is present in a request, its value must match the predefined value for that model/tokenizer,
+   * otherwise the request will fail. */
+  mask_token?: string
   /** Specifies the number of top class predictions to return. Defaults to 0. */
   num_top_classes?: integer
   /** The tokenization options to update when inferring */
@@ -280,6 +311,8 @@ export class InferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Text expansion configuration for inference. */
+  text_expansion?: TextExpansionInferenceUpdateOptions
   /** Question answering configuration for inference */
   question_answering?: QuestionAnsweringInferenceUpdateOptions
 }
@@ -298,6 +331,8 @@ export class NlpInferenceConfigUpdateContainer {
   pass_through?: PassThroughInferenceUpdateOptions
   /** Text embedding configuration for inference. */
   text_embedding?: TextEmbeddingInferenceUpdateOptions
+  /** Text expansion configuration for inference. */
+  text_expansion?: TextExpansionInferenceUpdateOptions
   /** Question answering configuration for inference */
   question_answering?: QuestionAnsweringInferenceUpdateOptions
 }
@@ -355,6 +390,12 @@ export class PassThroughInferenceUpdateOptions {
 }
 
 export class TextEmbeddingInferenceUpdateOptions {
+  tokenization?: NlpTokenizationUpdateOptions
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+}
+
+export class TextExpansionInferenceUpdateOptions {
   tokenization?: NlpTokenizationUpdateOptions
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
@@ -434,7 +475,7 @@ export class InferenceResponseResult {
    * For regression models, its a numerical value
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
-  predicted_value?: PredictedValue[]
+  predicted_value?: PredictedValue | PredictedValue[]
   /**
    * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
    * value.

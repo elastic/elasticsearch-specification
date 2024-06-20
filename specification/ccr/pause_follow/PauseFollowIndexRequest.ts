@@ -22,8 +22,7 @@ import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.pause_follow
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-post-pause-follow
  */
 export interface Request extends RequestBase {

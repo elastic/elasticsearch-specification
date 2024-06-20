@@ -26,6 +26,7 @@ import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
 import { NodeRoles } from '@_types/Node'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -68,11 +69,11 @@ export class NodeInfo {
 export class NodeInfoSettings {
   cluster: NodeInfoSettingsCluster
   node: NodeInfoSettingsNode
-  path: NodeInfoPath
+  path?: NodeInfoPath
   repositories?: NodeInfoRepositories
   discovery?: NodeInfoDiscover
   action?: NodeInfoAction
-  client: NodeInfoClient
+  client?: NodeInfoClient
   http: NodeInfoSettingsHttp
   bootstrap?: NodeInfoBootstrap
   transport: NodeInfoSettingsTransport
@@ -132,8 +133,11 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  initial_master_nodes?: string
-  /** @since 7.16.0 */
+  initial_master_nodes?: string[]
+  /**
+   * @availability stack since=7.16.0
+   * @availability serverless
+   */
   deprecation_indexing?: DeprecationIndexing
 }
 
@@ -152,9 +156,9 @@ export class NodeInfoSettingsNode {
 }
 
 export class NodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
@@ -166,8 +170,12 @@ export class NodeInfoRepositoriesUrl {
   allowed_urls: string
 }
 
-export class NodeInfoDiscover {
-  seed_hosts: string
+export class NodeInfoDiscover
+  implements AdditionalProperties<string, UserDefinedValue>
+{
+  seed_hosts?: string[]
+  type?: string
+  seed_providers?: string[]
 }
 
 export class NodeInfoAction {
@@ -210,7 +218,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  host: Host
+  host?: Host
 }
 
 export class NodeInfoIngest {
@@ -272,7 +280,7 @@ export class NodeInfoXpackLicenseType {
 
 export class NodeInfoScript {
   allowed_types: string
-  disable_max_compilations_rate: string
+  disable_max_compilations_rate?: string
 }
 
 export class NodeInfoSearch {

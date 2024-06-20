@@ -27,13 +27,13 @@ function check_license_header {
 
 cd "$TOP"
 nErrors=0
-for f in $(git ls-files | grep '\.ts$'); do
+for f in $(git ls-files | grep -v compiler-wasm-lib/pkg | grep '\.ts$'); do
     if ! check_license_header $f; then
         nErrors=$((nErrors+1))
     fi
 done
 
-for f in $(git ls-files | grep '\.js$'); do
+for f in $(git ls-files | grep -v compiler-wasm-lib/pkg |grep '\.js$'); do
     if ! check_license_header $f; then
         nErrors=$((nErrors+1))
     fi

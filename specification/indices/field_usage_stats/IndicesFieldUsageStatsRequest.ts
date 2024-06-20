@@ -27,9 +27,10 @@ import {
 import { Duration } from '@_types/Time'
 
 /**
+ * Returns field usage information for each shard and field of an index.
  * @rest_spec_name indices.field_usage_stats
- * @since 7.15.0
- * @stability experimental
+ * @availability stack since=7.15.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @index_privileges manage
  */
 export interface Request extends RequestBase {
@@ -41,20 +42,19 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If false, the request returns an error if any wildcard expression, index alias, or _all value targets
-     * only missing or closed indices. This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index
-     * starts with `bar`.
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
      */
     allow_no_indices?: boolean
     /**
-     * Type of index that wildcard patterns can match. If the request can target data streams, this argument
-     * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
-     * such as `open,hidden`.
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If true, missing or closed indices are not included in the response.
+     * If `true`, missing or closed indices are not included in the response.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -63,20 +63,20 @@ export interface Request extends RequestBase {
      */
     fields?: Fields
     /**
-     * Period to wait for a connection to the master node. If no response is received before the timeout expires,
-     * the request fails and returns an error.
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails
-     * and returns an error.
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     timeout?: Duration
     /**
-     * The number of shard copies that must be active before proceeding with the operation. Set to all or any
-     * positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * The number of shard copies that must be active before proceeding with the operation.
+     * Set to all or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
      */
     wait_for_active_shards?: WaitForActiveShards

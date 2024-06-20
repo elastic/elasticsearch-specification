@@ -26,6 +26,10 @@ export type RuntimeFields = Dictionary<Field, RuntimeField>
 export class RuntimeField {
   /** For type `lookup` */
   fetch_fields?: RuntimeFieldFetchFields[]
+  /**
+   * A custom format for `date` type runtime fields.
+   * @doc_id mapping-date-format
+   */
   format?: string
   /** For type `lookup` */
   input_field?: Field
@@ -33,7 +37,13 @@ export class RuntimeField {
   target_field?: Field
   /** For type `lookup` */
   target_index?: IndexName
+  /**
+   * Painless script executed at query time.
+   */
   script?: Script
+  /**
+   * Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.
+   */
   type: RuntimeFieldType
 }
 
@@ -44,12 +54,13 @@ export class RuntimeFieldFetchFields {
 }
 
 export enum RuntimeFieldType {
-  boolean = 0,
-  date = 1,
-  double = 2,
-  geo_point = 3,
-  ip = 4,
-  keyword = 5,
-  long = 6,
+  boolean,
+  composite,
+  date,
+  double,
+  geo_point,
+  ip,
+  keyword,
+  long,
   lookup
 }

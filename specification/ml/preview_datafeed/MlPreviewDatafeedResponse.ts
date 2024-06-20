@@ -18,7 +18,6 @@
  */
 
 export class Response<TDocument> {
-  body: {
-    data: TDocument[]
-  }
+  /** @codegen_name documents */
+  body: Array<TDocument>
 }

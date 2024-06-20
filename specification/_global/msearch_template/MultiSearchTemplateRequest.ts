@@ -25,19 +25,44 @@ import { RequestItem } from './types'
 /**
  * Runs multiple templated searches with a single request.
  * @rest_spec_name msearch_template
- * @since 5.0.0
- * @stability stable
+ * @availability stack since=5.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams, indices, and aliases to search.
+     * Supports wildcards (`*`).
+     * To search all data streams and indices, omit this parameter or use `*`.
+     */
     index?: Indices
   }
   query_parameters: {
+    /**
+     * If `true`, network round-trips are minimized for cross-cluster search requests.
+     * @server_default true
+     */
     ccs_minimize_roundtrips?: boolean
+    /**
+     * Maximum number of concurrent searches the API can run.
+     */
     max_concurrent_searches?: long
+    /**
+     * The type of the search operation.
+     * Available options: `query_then_fetch`, `dfs_query_then_fetch`.
+     */
     search_type?: SearchType
+    /**
+     * If `true`, the response returns `hits.total` as an integer.
+     * If `false`, it returns `hits.total` as an object.
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
+    /**
+     * If `true`, the response prefixes aggregation and suggester names with their respective types.
+     * @server_default false
+     */
     typed_keys?: boolean
   }
   /** @codegen_name search_templates */

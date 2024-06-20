@@ -39,8 +39,8 @@ import { Duration } from '@_types/Time'
  * time of creation and uses those same roles. If those roles do not have the required privileges on the source and
  * destination indices, the transform fails when it attempts unauthorized operations.
  * @rest_spec_name transform.start_transform
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, view_index_metadata
  */
@@ -57,5 +57,9 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     timeout?: Duration
+    /**
+     * Restricts the set of transformed entities to those changed after this time. Relative times like now-30d are supported. Only applicable for continuous transforms.
+     */
+    from?: string
   }
 }

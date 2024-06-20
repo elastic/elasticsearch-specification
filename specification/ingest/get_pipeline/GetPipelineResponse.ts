@@ -21,5 +21,6 @@ import { Pipeline } from '@ingest/_types/Pipeline'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
+  /** @codegen_name pipelines */
   body: Dictionary<string, Pipeline>
 }

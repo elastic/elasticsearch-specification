@@ -23,8 +23,8 @@ import { RequestBase } from '@_types/Base'
  * This API returns information about the type of license, when it was issued, and when it expires, for example.
  * For more information about the different types of licenses, see https://www.elastic.co/subscriptions.
  * @rest_spec_name license.get
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {

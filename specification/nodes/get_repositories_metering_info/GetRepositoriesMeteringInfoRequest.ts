@@ -26,8 +26,8 @@ import { NodeIds } from '@_types/common'
  * information needed to compute aggregations over a period of time. Additionally, the information exposed by this
  * API is volatile, meaning that it won’t be present after node restarts.
  * @rest_spec_name nodes.get_repositories_metering_info
- * @since 7.16.0
- * @stability experimental
+ * @availability stack since=7.16.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {

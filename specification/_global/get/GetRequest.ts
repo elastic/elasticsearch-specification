@@ -30,8 +30,8 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name get
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -42,11 +42,18 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Should this request force synthetic _source?
+     * Use this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.
+     * Fetches with this enabled will be slower the enabling synthetic source natively in the index.
+     * @availability stack since=8.4.0 visibility=feature_flag feature_flag=es.index_mode_feature_flag_registered
+     */
+    force_synthetic_source?: boolean
+    /**
      * Specifies the node or shard the operation should be performed on. Random by default.
      */
     preference?: string
     /**
-     *  Boolean) If true, the request is real-time as opposed to near-real-time.
+     * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
      * @doc_id realtime
      */
@@ -73,6 +80,11 @@ export interface Request extends RequestBase {
      * A comma-separated list of source fields to include in the response.
      */
     _source_includes?: Fields
+    /**
+     * List of stored fields to return as part of a hit.
+     * If no fields are specified, no stored fields are included in the response.
+     * If this field is specified, the `_source` parameter defaults to false.
+     */
     stored_fields?: Fields
     /**
      * Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.

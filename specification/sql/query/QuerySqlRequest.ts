@@ -27,12 +27,13 @@ import { Duration, TimeZone } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.query
- * @since 6.3.0
- * @stability stable
+ * @availability stack since=6.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
     /**
+     * Format for the response.
      * @doc_id sql-rest-format
      */
     format?: string
@@ -47,6 +48,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     columnar?: boolean
+    /**
+     * Cursor used to retrieve a set of paginated results.
+     * If you specify a cursor, the API only uses the `columnar` and `time_zone` request body parameters.
+     * It ignores other request body parameters.
+     */
     cursor?: string
     /**
      * The maximum number of rows (or entries) to return in one response
@@ -54,13 +60,13 @@ export interface Request extends RequestBase {
      */
     fetch_size?: integer
     /**
-     * Optional Elasticsearch query DSL for additional filtering.
+     * Elasticsearch query DSL for additional filtering.
      * @doc_id sql-rest-filtering
      * @server_default none
      */
     filter?: QueryContainer
     /**
-     * SQL query to execute
+     * SQL query to run.
      */
     query?: string
     /**
@@ -74,8 +80,9 @@ export interface Request extends RequestBase {
      */
     page_timeout?: Duration
     /**
-     * Time-zone in ISO 8601 used for executing the query on the server. More information available here.
+     * ISO-8601 time zone ID for the search.
      * @doc_url https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
+     * @server_default Z
      */
     time_zone?: TimeZone
     /**

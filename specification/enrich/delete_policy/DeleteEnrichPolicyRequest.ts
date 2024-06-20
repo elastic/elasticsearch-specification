@@ -21,12 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Deletes an existing enrich policy and its enrich index.
  * @rest_spec_name enrich.delete_policy
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Enrich policy to delete.
+     */
     name: Name
   }
 }

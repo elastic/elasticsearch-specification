@@ -51,7 +51,8 @@ export class NodeAttributes {
   transport_address: TransportAddress
   roles?: NodeRoles
   /**
-   * @since 8.3.0
+   * @availability stack since=8.3.0
+   * @availability serverless
    */
   external_id?: string
 }
@@ -77,20 +78,20 @@ export class RelocationFailureInfo {
  * @doc_id node-roles
  */
 export enum NodeRole {
-  master = 0,
-  data = 1,
-  data_cold = 2,
-  data_content = 3,
-  data_frozen = 4,
-  data_hot = 5,
-  data_warm = 6,
-  client = 7,
-  ingest = 8,
-  ml = 9,
-  voting_only = 10,
-  transform = 11,
-  remote_cluster_client = 12,
-  coordinating_only = 13
+  master,
+  data,
+  data_cold,
+  data_content,
+  data_frozen,
+  data_hot,
+  data_warm,
+  client,
+  ingest,
+  ml,
+  voting_only,
+  transform,
+  remote_cluster_client,
+  coordinating_only
 }
 
 /**

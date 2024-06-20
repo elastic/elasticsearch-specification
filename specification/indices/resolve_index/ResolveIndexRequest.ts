@@ -21,15 +21,28 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
+ * Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.
+ * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
- * @since 7.9.0
- * @stability stable
+ * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.
+     * Resources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.
+     */
     name: Names
   }
   query_parameters: {
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
   }
 }

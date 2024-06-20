@@ -21,102 +21,103 @@ import { NodeId } from '@_types/common'
 
 export class ThreadPoolRecord {
   /**
-   * node name
+   * The node name.
    * @aliases nn
    */
   'node_name'?: string
   /**
-   * persistent node id
+   * The persistent node identifier.
    * @aliases id
    */
   'node_id'?: NodeId
   /**
-   * ephemeral node id
+   * The ephemeral node identifier.
    * @aliases eid
    */
   'ephemeral_node_id'?: string
   /**
-   * process id
+   * The process identifier.
    * @aliases p
    */
   'pid'?: string
   /**
-   * host name
+   * The host name for the current node.
    * @aliases h
    */
   'host'?: string
   /**
-   * ip address
+   * The IP address for the current node.
    * @aliases i
    */
   'ip'?: string
   /**
-   * bound transport port
+   * The bound transport port for the current node.
    * @aliases po
    */
   'port'?: string
   /**
-   * thread pool name
+   * The thread pool name.
    * @aliases n
    */
   'name'?: string
   /**
-   * thread pool type
+   * The thread pool type.
+   * Returned values include `fixed`, `fixed_auto_queue_size`, `direct`, and `scaling`.
    * @aliases t
    */
   'type'?: string
   /**
-   * number of active threads
+   * The number of active threads in the current thread pool.
    * @aliases a
    */
   'active'?: string
   /**
-   * number of threads
+   * The number of threads in the current thread pool.
    * @aliases psz
    */
   'pool_size'?: string
   /**
-   * number of tasks currently in queue
+   * The number of tasks currently in queue.
    * @aliases q
    */
   'queue'?: string
   /**
-   * maximum number of tasks permitted in queue
+   * The maximum number of tasks permitted in the queue.
    * @aliases qs
    */
   'queue_size'?: string
   /**
-   * number of rejected tasks
+   * The number of rejected tasks.
    * @aliases r
    */
   'rejected'?: string
   /**
-   * highest number of seen active threads
+   * The highest number of active threads in the current thread pool.
    * @aliases l
    */
   'largest'?: string
   /**
-   * number of completed tasks
+   * The number of completed tasks.
    * @aliases c
    */
   'completed'?: string
   /**
-   * core number of threads in a scaling thread pool
+   * The core number of active threads allowed in a scaling thread pool.
    * @aliases cr
    */
   'core'?: string | null
   /**
-   * maximum number of threads in a scaling thread pool
+   * The maximum number of active threads allowed in a scaling thread pool.
    * @aliases mx
    */
   'max'?: string | null
   /**
-   * number of threads in a fixed thread pool
+   * The number of active threads allowed in a fixed thread pool.
    * @aliases sz
    */
   'size'?: string | null
   /**
-   * thread keep alive time
+   * The thread keep alive time.
    * @aliases ka
    */
   'keep_alive'?: string | null

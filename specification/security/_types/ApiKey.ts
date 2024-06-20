@@ -25,17 +25,65 @@ import { SortResults } from '@_types/sort'
 import { RoleDescriptor } from './RoleDescriptor'
 
 export class ApiKey {
+  /**
+   * Creation time for the API key in milliseconds.
+   */
   creation?: long
+  /**
+   * Expiration time for the API key in milliseconds.
+   */
   expiration?: long
+  /**
+   * Id for the API key
+   */
   id: Id
+  /**
+   * Invalidation status for the API key.
+   * If the key has been invalidated, it has a value of `true`. Otherwise, it is `false`.
+   */
   invalidated?: boolean
+  /**
+   * Name of the API key.
+   */
   name: Name
+  /**
+   * Realm name of the principal for which this API key was created.
+   */
   realm?: string
+  /**
+   * Realm type of the principal for which this API key was created
+   * @availability stack since=8.14.0
+   * @availability serverless
+   */
+  realm_type?: string
+  /**
+   * Principal for which this API key was created
+   */
   username?: Username
-  /** @since 7.13.0 */
+  /**
+   * The profile uid for the API key owner principal, if requested and if it exists
+   * @availability stack since=8.14.0
+   * @availability serverless
+   */
+  profile_uid?: string
+  /**
+   * Metadata of the API key
+   * @availability stack since=7.13.0
+   * @availability serverless
+   */
   metadata?: Metadata
+  /**
+   * The role descriptors assigned to this API key when it was created or last updated.
+   * An empty role descriptor means the API key inherits the owner user’s permissions.
+   */
   role_descriptors?: Dictionary<string, RoleDescriptor>
-  /** @since 8.5.0 */
+  /**
+   * The owner user’s permissions associated with the API key.
+   * It is a point-in-time snapshot captured at creation and subsequent updates.
+   * An API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.
+   * @availability stack since=8.5.0
+   * @availability serverless
+   */
   limited_by?: Array<Dictionary<string, RoleDescriptor>>
   _sort?: SortResults
 }

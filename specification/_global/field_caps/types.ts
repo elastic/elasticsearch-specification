@@ -53,29 +53,29 @@ export class FieldCapability {
   metadata_field?: boolean
   /**
    * Whether this field is used as a time series dimension.
-   * @stability experimental
-   * @since 8.0.0
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
   /**
    * Contains metric type if this fields is used as a time series
    * metrics, absent if the field is not used as metric.
-   * @stability experimental
-   * @since 8.0.0
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_metric?: TimeSeriesMetricType
   /**
    * If this list is present in response then some indices have the
    * field marked as a dimension and other indices, the ones in this list, do not.
-   * @stability experimental
-   * @since 8.0.0
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
    */
   non_dimension_indices?: IndexName[]
   /**
    * The list of indices where this field is present if these indices
    * don’t have the same `time_series_metric` value for this field.
-   * @stability experimental
-   * @since 8.0.0
+   * @availability stack since=8.0.0 stability=experimental
+   * @availability serverless stability=experimental
    */
   metric_conflicts_indices?: IndexName[]
 }

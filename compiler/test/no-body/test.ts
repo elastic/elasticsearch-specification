@@ -23,9 +23,10 @@ import Compiler from '../../src/compiler'
 import * as Model from '../../src/model/metamodel'
 
 const specsFolder = join(__dirname, 'specification')
+const outputFolder = join(__dirname, 'output')
 
 test("Body cannot be defined if the API methods don't allow it", t => {
-  const compiler = new Compiler(specsFolder)
+  const compiler = new Compiler(specsFolder, outputFolder)
   const error = t.throws(() => compiler.generateModel())
   t.is(error?.message, "_global.info.Request can't have a body, allowed methods: GET")
 })

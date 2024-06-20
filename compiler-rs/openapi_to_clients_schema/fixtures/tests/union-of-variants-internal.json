@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "Variant": {
+        "discriminator": {
+          "mapping": {
+            "variant1": "#/components/schemas/Variant1",
+            "variant2": "#/components/schemas/Variant2"
+          },
+          "propertyName": "type"
+        },
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "type": "object"
+      },
+      "Variant1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Variant"
+          },
+          {
+            "properties": {
+              "variant1": {
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "Variant2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Variant"
+          },
+          {
+            "properties": {
+              "variant2": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "variant2"
+            ],
+            "type": "object"
+          }
+        ]
+      }
+    }
+  }
+}

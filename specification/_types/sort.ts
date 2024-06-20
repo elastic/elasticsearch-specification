@@ -35,10 +35,10 @@ export class NestedSortValue {
 }
 
 export enum FieldSortNumericType {
-  long = 0,
-  double = 1,
-  date = 2,
-  date_nanos = 3
+  long,
+  double,
+  date,
+  date_nanos
 }
 
 /** @shortcut_property order */
@@ -104,14 +104,20 @@ export type SortResults = FieldValue[]
  * Defines what values to pick in the case a document contains multiple values for a particular field.
  */
 export enum SortMode {
-  min = 0,
-  max = 1,
-  sum = 2,
-  avg = 3,
-  median = 4
+  min,
+  max,
+  sum,
+  avg,
+  median
 }
 
 export enum SortOrder {
-  asc = 0,
-  desc = 1
+  /**
+   * Ascending (smallest to largest)
+   */
+  asc,
+  /**
+   * Descending (largest to smallest)
+   */
+  desc
 }

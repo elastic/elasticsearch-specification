@@ -20,7 +20,7 @@ Once you have added a new endpoint definition, the next step is to add its type 
 First of all, you should find the most approariate place inside [`/specification`](../specification)
 where to put the new definition. The content of [`/specification`](../specification)
 tryied to mimic the Elasticsearch online documentation, so you can use it as inspiration.
-For example, the index document defintion can be found in [`/specification/__global/index`](../specification/__global/index).
+For example, the index document defintion can be found in [`/specification/_global/index`](../specification/_global/index).
 
 Once you have found the best place for the new definition, you should create a new file for it.
 The filename should be the same of the type definition you are writing, for example:
@@ -51,16 +51,20 @@ A request definition is an interface and should contains three top level keys:
 Furthermore, every request definition **must** contain three JS Doc tags:
 
 - `@rest_spec_name`: the API name (eg: `search`, `indices.create`...).
-- `@since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`)
-- `@stability`: the API stability, one of `experimental`, `beta`, `stable`
+- `@availability` Which flavor of Elasticsearch is this API available for? (eg `stack` or `serverless`)
+  - `stability`: the API stability, one of `experimental`, `beta`, `stable`
+  - `visibility`: the API stability, one of `public` or `private`.
+  - `since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`).
+    This field is only available for `stack`.
+  - `feature_flag`: the feature flag value, only valid if the `visibility` is set to `feature_flag`.
+    This field is only available for `stack`.
 
 Following you can find a template valid for any request definition.
 
 ```ts
  /*
  * @rest_spec_name endpoint.name
- * @since 1.2.3
- * @stability stable | beta | experimental
+ * @availability stack since=1.2.3 stability=stable|beta|experimental
  */
 interface Request extends RequestBase {
   path_parts: {
@@ -79,8 +83,7 @@ In some cases, the request could take one or more generics, in such case the def
 ```ts
  /*
  * @rest_spec_name endpoint.name
- * @since 1.2.3
- * @stability stable | beta | experimental
+ * @availability stack since=1.2.3 stability=stable|beta|experimental
  */
 interface Request<Generic> extends RequestBase {
   path_parts: {
@@ -95,7 +98,7 @@ interface Request<Generic> extends RequestBase {
 }
 ```
 And the generic will be used somewhere inside the definition.
-There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/__global/index/IndexRequest.ts).
+There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/_global/index/IndexRequest.ts).
 
 ### Add the endpoint response definition
 

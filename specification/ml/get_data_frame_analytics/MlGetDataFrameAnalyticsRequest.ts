@@ -27,8 +27,8 @@ import { integer } from '@_types/Numeric'
  * API request by using a comma-separated list of data frame analytics jobs or a
  * wildcard expression.
  * @rest_spec_name ml.get_data_frame_analytics
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {

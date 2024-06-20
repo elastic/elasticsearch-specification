@@ -22,8 +22,7 @@ import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name migration.deprecations
- * @since 6.1.0
- * @stability stable
+ * @availability stack since=6.1.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

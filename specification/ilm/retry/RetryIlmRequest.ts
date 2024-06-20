@@ -22,8 +22,7 @@ import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name ilm.retry
- * @since 6.6.0
- * @stability stable
+ * @availability stack since=6.6.0 stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

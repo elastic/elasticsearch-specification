@@ -67,21 +67,66 @@ export class Detector {
 }
 
 export class DetectorRead implements OverloadOf<Detector> {
+  /**
+   * The field used to split the data.
+   * In particular, this property is used for analyzing the splits with respect to their own history.
+   * It is used for finding unusual values in the context of the split.
+   */
   by_field_name?: Field
+  /**
+   * An array of custom rule objects, which enable you to customize the way detectors operate.
+   * For example, a rule may dictate to the detector conditions under which results should be skipped.
+   * Kibana refers to custom rules as job rules.
+   */
   custom_rules?: DetectionRule[]
+  /**
+   * A description of the detector.
+   */
   detector_description?: string
+  /**
+   * A unique identifier for the detector.
+   * This identifier is based on the order of the detectors in the `analysis_config`, starting at zero.
+   */
   detector_index?: integer
+  /**
+   * Contains one of the following values: `all`, `none`, `by`, or `over`.
+   * If set, frequent entities are excluded from influencing the anomaly results.
+   * Entities can be considered frequent over time or frequent in a population.
+   * If you are working with both over and by fields, then you can set `exclude_frequent` to all for both fields, or to `by` or `over` for those specific fields.
+   */
   exclude_frequent?: ExcludeFrequent
+  /**
+   * The field that the detector uses in the function.
+   * If you use an event rate function such as `count` or `rare`, do not specify this field.
+   */
   field_name?: Field
+  /**
+   * The analysis function that is used.
+   * For example, `count`, `rare`, `mean`, `min`, `max`, and `sum`.
+   * @doc_id ml-functions
+   */
   function: string
+  /**
+   * The field used to split the data.
+   * In particular, this property is used for analyzing the splits with respect to the history of all splits.
+   * It is used for finding unusual values in the population of all splits.
+   */
   over_field_name?: Field
+  /**
+   * The field used to segment the analysis.
+   * When you use this property, you have completely independent baselines for each value of this field.
+   */
   partition_field_name?: Field
+  /**
+   * Defines whether a new series is used as the null series when there is no value for the by or partition fields.
+   * @server_default false
+   */
   use_null?: boolean
 }
 
 export enum ExcludeFrequent {
-  all = 0,
-  none = 1,
-  by = 2,
-  over = 3
+  all,
+  none,
+  by,
+  over
 }

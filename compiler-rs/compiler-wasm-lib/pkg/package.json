@@ -1,0 +1,12 @@
+{
+  "name": "compiler-wasm-lib",
+  "description": "WASM library to manipulate and convert schema.json files",
+  "version": "0.1.0",
+  "files": [
+    "compiler_wasm_lib_bg.wasm",
+    "compiler_wasm_lib.js",
+    "compiler_wasm_lib.d.ts"
+  ],
+  "main": "compiler_wasm_lib.js",
+  "types": "compiler_wasm_lib.d.ts"
+}

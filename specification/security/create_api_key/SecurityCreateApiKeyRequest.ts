@@ -24,9 +24,15 @@ import { Duration } from '@_types/Time'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 
 /**
+ * Creates an API key for access without requiring basic authentication.
+ * A successful request returns a JSON structure that contains the API key, its unique id, and its name.
+ * If applicable, it also returns expiration information for the API key in milliseconds.
+ * NOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.
+ *
  * @rest_spec_name security.create_api_key
- * @since 6.7.0
- * @stability stable
+ * @availability stack since=6.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_own_api_key
  */
 export interface Request extends RequestBase {
   query_parameters: {
@@ -43,8 +49,9 @@ export interface Request extends RequestBase {
      */
     role_descriptors?: Dictionary<string, RoleDescriptor>
     /**
-     * Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with _ are reserved for system usage.
-     * @since 7.13.0
+     * Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with `_` are reserved for system usage.
+     * @availability stack since=7.13.0
+     * @availability serverless
      */
     metadata?: Metadata
   }

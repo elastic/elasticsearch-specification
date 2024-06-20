@@ -20,7 +20,13 @@
 import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
 import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Fields, FieldValue, PropertyName, RelationName } from '@_types/common'
+import {
+  Fields,
+  FieldValue,
+  Id,
+  PropertyName,
+  RelationName
+} from '@_types/common'
 import {
   byte,
   double,
@@ -91,13 +97,16 @@ export class KeywordProperty extends DocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: IndexOptions
+  script?: Script
+  on_script_error?: OnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
   type: 'keyword'
@@ -112,13 +121,15 @@ export class NumberPropertyBase extends DocValuesPropertyBase {
   script?: Script
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_metric?: TimeSeriesMetricType
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
    * @server_default false
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
 }
@@ -184,7 +195,18 @@ export class RankFeatureProperty extends PropertyBase {
 }
 
 export class RankFeaturesProperty extends PropertyBase {
+  positive_score_impact?: boolean
   type: 'rank_features'
+}
+
+export class SparseVectorProperty extends PropertyBase {
+  type: 'sparse_vector'
+}
+
+export class SemanticTextProperty {
+  type: 'semantic_text'
+  meta?: Dictionary<string, string>
+  inference_id: Id
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
@@ -268,12 +290,15 @@ export class VersionProperty extends DocValuesPropertyBase {
 
 export class WildcardProperty extends DocValuesPropertyBase {
   type: 'wildcard'
-  /** @since 7.15.0  */
+  /**
+   * @availability stack since=7.15.0
+   * @availability serverless
+   */
   null_value?: string
 }
 
 export class DynamicProperty extends DocValuesPropertyBase {
-  type: '{dynamic_property}'
+  type: '{dynamic_type}'
 
   enabled?: boolean
   null_value?: FieldValue

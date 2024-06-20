@@ -27,9 +27,11 @@ import {
 } from '@_types/common'
 
 /**
+ * Returns statistics for one or more indices.
+ * For data streams, the API retrieves statistics for the stream’s backing indices.
  * @rest_spec_name indices.stats
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @index_privileges manage, monitor
  */
 export interface Request extends RequestBase {

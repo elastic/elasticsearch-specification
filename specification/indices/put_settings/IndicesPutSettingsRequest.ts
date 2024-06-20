@@ -23,23 +23,70 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Changes a dynamic index setting in real time. For data streams, index setting
+ * changes are applied to all backing indices by default.
  * @rest_spec_name indices.put_settings
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams, indices, and aliases used to limit
+     * the request. Supports wildcards (`*`). To target all data streams and
+     * indices, omit this parameter or use `*` or `_all`.
+     */
     index?: Indices
   }
   query_parameters: {
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index
+     * alias, or `_all` value targets only missing or closed indices. This
+     * behavior applies even if the request targets other open indices. For
+     * example, a request targeting `foo*,bar*` returns an error if an index
+     * starts with `foo` but no index starts with `bar`.
+     * @server_default false
+     */
     allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match. If the request can target
+     * data streams, this argument determines whether wildcard expressions match
+     * hidden data streams. Supports comma-separated values, such as
+     * `open,hidden`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is
+     * received before the timeout expires, the request fails and returns an
+     * error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     *  If `true`, existing index settings remain unchanged.
+     * @server_default false
+     */
     preserve_existing?: boolean
+    /**
+     *  Period to wait for a response. If no response is received before the
+     *  timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
-  /** @codegen_name settings */
+  /** Configuration options for the index.
+   * @codegen_name settings */
   body: IndexSettings
 }

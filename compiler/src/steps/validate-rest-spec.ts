@@ -122,6 +122,10 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       if (requestProperties.body === Body.noBody && spec.body != null && spec.body.required === true) {
         errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: should have a body definition`)
       }
+
+      if (spec.body != null && spec.body.required === true && spec.body.required !== endpoint.requestBodyRequired) {
+        errors.addEndpointError(endpoint.name, 'request', ': should not be an optional body definition')
+      }
     }
   }
 
@@ -153,7 +157,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         query.push(...definition.query)
       }
 
-      if (definition.body != null) {
+      if (definition.body.kind !== 'no_body') {
         body = Body.yesBody
       }
     } else {

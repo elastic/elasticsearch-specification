@@ -24,8 +24,8 @@ import { Hint } from './types'
 /**
  * Get suggestions for user profiles that match specified search criteria.
  * @rest_spec_name security.suggest_user_profiles
- * @since 8.2.0
- * @stability stable
+ * @availability stack since=8.2.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   query_parameters: {

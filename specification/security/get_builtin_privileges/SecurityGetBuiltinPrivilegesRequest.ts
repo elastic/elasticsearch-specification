@@ -21,8 +21,8 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name security.get_builtin_privileges
- * @since 7.3.0
- * @stability stable
+ * @availability stack since=7.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {}

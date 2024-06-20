@@ -22,8 +22,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name license.post
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {

@@ -25,12 +25,15 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
+ * Enables searching rolled-up data using the standard Query DSL.
  * @rest_spec_name rollup.rollup_search
- * @since 6.3.0
- * @stability experimental
+ * @availability stack since=6.3.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Enables searching rolled-up data using the standard Query DSL.
+     */
     index: Indices
   }
   query_parameters: {
@@ -38,10 +41,17 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   body: {
-    /** @aliases aggs */
+    /**
+     * Specifies aggregations.
+     * @aliases aggs */
     aggregations?: Dictionary<string, AggregationContainer>
+    /**
+     * Specifies a DSL query.
+     */
     query?: QueryContainer
-    /** Must be zero if set, as rollups work on pre-aggregated data */
+    /**
+     * Must be zero if set, as rollups work on pre-aggregated data.
+     */
     size?: integer
   }
 }

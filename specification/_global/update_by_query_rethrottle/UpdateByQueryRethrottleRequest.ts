@@ -23,14 +23,21 @@ import { float, long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name update_by_query_rethrottle
- * @since 6.5.0
- * @stability stable
+ * @availability stack since=6.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The ID for the task.
+     */
     task_id: Id
   }
   query_parameters: {
+    /**
+     * The throttle for this request in sub-requests per second.
+     * @server_default -1
+     */
     requests_per_second?: float
   }
 }

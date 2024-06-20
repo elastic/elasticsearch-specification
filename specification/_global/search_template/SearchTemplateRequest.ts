@@ -30,9 +30,10 @@ import {
 import { Duration } from '@_types/Time'
 
 /**
+ * Runs a search with a search template.
  * @rest_spec_name search_template
- * @since 2.0.0
- * @stability stable
+ * @availability stack since=2.0.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -43,19 +44,44 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
-    /** @server_default true */
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * @server_default true
+     */
     allow_no_indices?: boolean
-    /** @server_default false */
+    /**
+     * If `true`, network round-trips are minimized for cross-cluster search requests.
+     * @server_default false */
     ccs_minimize_roundtrips?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     */
     expand_wildcards?: ExpandWildcards
-    /** @server_default false */
+    /**
+     * If `true`, the response includes additional details about score computation as part of a hit.
+     * @server_default false */
     explain?: boolean
-    /** @server_default true */
+    /**
+     * If `true`, specified concrete, expanded, or aliased indices are not included in the response when throttled.
+     * @server_default true */
     ignore_throttled?: boolean
-    /** @server_default false */
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false */
     ignore_unavailable?: boolean
+    /**
+     * Specifies the node or shard the operation should be performed on.
+     * Random by default.
+     */
     preference?: string
-    /** @server_default false */
+    /**
+     * If `true`, the query execution is profiled.
+     * @server_default false */
     profile?: boolean
     /** Custom value used to route operations to a specific shard. */
     routing?: Routing
@@ -68,23 +94,35 @@ export interface Request extends RequestBase {
     search_type?: SearchType
     /**
      * If true, hits.total are rendered as an integer in the response.
-     * @since 7.0.0
      * @server_default false
+     * @availability stack since=7.0.0
+     * @availability serverless
      */
     rest_total_hits_as_int?: boolean
-    /** @server_default false */
+    /**
+     * If `true`, the response prefixes aggregation and suggester names with their respective types.
+     * @server_default false */
     typed_keys?: boolean
   }
   body: {
-    /** @server_default false */
+    /**
+     * If `true`, returns detailed information about score calculation as part of each hit.
+     * @server_default false */
     explain?: boolean
     /**
      * ID of the search template to use. If no source is specified,
      * this parameter is required.
      */
     id?: Id
+    /**
+     * Key-value pairs used to replace Mustache variables in the template.
+     * The key is the variable name.
+     * The value is the variable value.
+     */
     params?: Dictionary<string, UserDefinedValue>
-    /** @server_default false */
+    /**
+     * If `true`, the query execution is profiled.
+     * @server_default false */
     profile?: boolean
     /**
      * An inline search template. Supports the same parameters as the search API's

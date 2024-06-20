@@ -18,13 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, Ids } from '@_types/common'
 
 /**
  * Adds an anomaly detection job to a calendar.
  * @rest_spec_name ml.put_calendar_job
- * @since 6.2.0
- * @stability stable
+ * @availability stack since=6.2.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
@@ -32,6 +32,6 @@ export interface Request extends RequestBase {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id
     /** An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a comma-separated list of jobs or groups. */
-    job_id: Id
+    job_id: Ids
   }
 }

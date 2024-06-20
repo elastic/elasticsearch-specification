@@ -25,8 +25,8 @@ import { Id } from '@_types/common'
  * Before you can reset it, you must stop it; alternatively, use the `force` query parameter.
  * If the destination index was created by the transform, it is deleted.
  * @rest_spec_name transform.reset_transform
- * @since 8.1.0
- * @stability stable
+ * @availability stack since=8.1.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {

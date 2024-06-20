@@ -1,1 +1,10 @@
+# Specification definition owners
 /specification/ml/** @elastic/ml-core @elastic/ml-ui
+
+# Specification tooling owners
+/.github/                   @elastic/clients-team
+/compiler/                  @elastic/clients-team
+/compiler-rs/               @elastic/clients-team
+/typescript-generator/      @elastic/clients-team
+/specification/_json_spec/  @elastic/clients-team
+/specification/_spec_utils/ @elastic/clients-team

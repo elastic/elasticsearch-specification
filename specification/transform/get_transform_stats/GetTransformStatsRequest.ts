@@ -25,8 +25,8 @@ import { Duration } from '@_types/Time'
 /**
  * Retrieves usage information for transforms.
  * @rest_spec_name transform.get_transform_stats
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_transform
  * @index_privileges read, view_index_metadata
  */

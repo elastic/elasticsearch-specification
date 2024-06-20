@@ -22,6 +22,7 @@ import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 export class Response {
+  /** @codegen_name infos */
   body: Dictionary<string, ClusterRemoteInfo>
 }
 

@@ -24,8 +24,8 @@ import { Duration } from '@_types/Time'
 /**
  * Deletes a transform.
  * @rest_spec_name transform.delete_transform
- * @since 7.5.0
- * @stability stable
+ * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  */
 export interface Request extends RequestBase {
@@ -42,6 +42,12 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     force?: boolean
+    /**
+     * If this value is true, the destination index is deleted together with the transform. If false, the destination
+     * index will not be deleted
+     * @server_default false
+     */
+    delete_dest_index?: boolean
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s

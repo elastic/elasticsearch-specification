@@ -21,9 +21,19 @@ import { ExecutingPolicy, CoordinatorStats, CacheStats } from './types'
 
 export class Response {
   body: {
+    /**
+     * Objects containing information about each coordinating ingest node for configured enrich processors.
+     */
     coordinator_stats: CoordinatorStats[]
+    /**
+     * Objects containing information about each enrich policy that is currently executing.
+     */
     executing_policies: ExecutingPolicy[]
-    /** @since 7.16.0 */
+    /**
+     * Objects containing information about the enrich cache stats on each ingest node.
+     * @availability stack since=7.16.0
+     * @availability serverless
+     */
     cache_stats?: CacheStats[]
   }
 }

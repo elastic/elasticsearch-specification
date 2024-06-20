@@ -60,7 +60,7 @@ async function run () {
     }
   }
 
-  const specFiles = files.filter(file => file.includes('specification'))
+  const specFiles = files.filter(file => file.includes('specification') && !file.includes('compiler/test'))
   const table = []
 
   cd(tsValidationPath)
@@ -70,6 +70,7 @@ async function run () {
     if (file.startsWith('specification/_spec_utils')) continue
     if (file.startsWith('specification/_doc_ids')) continue
     if (file.startsWith('specification/_json_spec')) continue
+    if (file === 'specification/tsconfig.json') continue
     if (getApi(file).endsWith('_types')) {
       const apis = specification.endpoints
         .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])
@@ -106,20 +107,22 @@ async function run () {
     return 0
   })
 
-  let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
-  comment += '| API | Status | Request | Response |\n'
-  comment += '| --- | --- | --- | --- |\n'
-  for (const line of [...new Set(table)]) {
-    comment += line
-  }
-  comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
+  if (table.length > 0) {
+    let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
+    comment += '| API | Status | Request | Response |\n'
+    comment += '| --- | --- | --- | --- |\n'
+    for (const line of [...new Set(table)]) {
+      comment += line
+    }
+    comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
-  await octokit.rest.issues.createComment({
-    owner: 'elastic',
-    repo: 'elasticsearch-specification',
-    issue_number: context.payload.pull_request.number,
-    body: comment
-  })
+    await octokit.rest.issues.createComment({
+      owner: 'elastic',
+      repo: 'elasticsearch-specification',
+      issue_number: context.payload.pull_request.number,
+      body: comment
+    })
+  }
 
   core.info('Done!')
 }

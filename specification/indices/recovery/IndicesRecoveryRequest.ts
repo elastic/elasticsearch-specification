@@ -21,16 +21,31 @@ import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
 /**
+ * Returns information about ongoing and completed shard recoveries for one or more indices.
+ * For data streams, the API returns information for the stream’s backing indices.
  * @rest_spec_name indices.recovery
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
+     * Supports wildcards (`*`).
+     * To target all data streams and indices, omit this parameter or use `*` or `_all`.
+     */
     index?: Indices
   }
   query_parameters: {
+    /**
+     * If `true`, the response only includes ongoing shard recoveries.
+     * @server_default false
+     */
     active_only?: boolean
+    /**
+     * If `true`, the response includes detailed information about shard recoveries.
+     * @server_default false
+     */
     detailed?: boolean
   }
 }

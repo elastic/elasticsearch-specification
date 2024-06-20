@@ -8,7 +8,7 @@ validate-no-cache: ## Validate a given endpoint request or response without loca
 
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."
-	@npm run generate-schema --prefix compiler
+	@npm run generate-schema --prefix compiler -- --spec ../specification/ --output ../output/
 	@npm run start --prefix typescript-generator
 
 compile:	## Compile the specification
@@ -39,6 +39,7 @@ setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
+	@npm install @stoplight/spectral-cli
 
 clean-dep:	## Clean npm dependencies
 	@rm -rf compiler/node_modules
@@ -47,14 +48,19 @@ clean-dep:	## Clean npm dependencies
 transform-expand-generics: ## Create a new schema with all generics expanded
 	@npm run transform-expand-generics --prefix compiler
 
+transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
+	@npm run transform-to-openapi --prefix compiler
+
+filter-for-serverless: ## Generate the serverless version from the compiled schema
+	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/schema/schema-serverless.json
+
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
-contrib: | generate license-check spec-format-fix 	## Pre contribution target
+contrib: | generate license-check spec-format-fix transform-to-openapi ## Pre contribution target
 
-bump:
-	@echo ">> bumping..."
-	.ci/bump.sh
+lint-docs: ## Lint the OpenAPI documents
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.json
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)

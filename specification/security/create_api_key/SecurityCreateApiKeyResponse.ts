@@ -42,7 +42,8 @@ export class Response {
      * API key credentials which is the base64-encoding of
      * the UTF-8 representation of `id` and `api_key` joined
      * by a colon (`:`).
-     * @since 7.16.0
+     * @availability stack since=7.16.0
+     * @availability serverless
      */
     encoded: string
   }

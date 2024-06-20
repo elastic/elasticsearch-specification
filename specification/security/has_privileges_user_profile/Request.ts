@@ -23,8 +23,8 @@ import { PrivilegesCheck } from './types'
 
 /**
  * @rest_spec_name security.has_privileges_user_profile
- * @since 8.3.0
- * @stability stable
+ * @availability stack since=8.3.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
  */
 export interface Request extends RequestBase {

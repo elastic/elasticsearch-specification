@@ -23,8 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * @rest_spec_name searchable_snapshots.cache_stats
- * @since 7.13.0
- * @stability experimental
+ * @availability stack since=7.13.0 stability=experimental
  */
 export interface Request extends RequestBase {
   path_parts: {

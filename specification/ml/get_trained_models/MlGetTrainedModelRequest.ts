@@ -18,23 +18,27 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Include } from '@ml/_types/Include'
 
 /**
  * Retrieves configuration information for a trained model.
  * @rest_spec_name ml.get_trained_models
- * @since 7.10.0
- * @stability stable
+ * @availability stack since=7.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier of the trained model.
+     * The unique identifier of the trained model or a model alias.
+     *
+     * You can get information for multiple trained models in a single API
+     * request by using a comma-separated list of model IDs or a wildcard
+     * expression.
      */
-    model_id?: Id
+    model_id?: Ids
   }
   query_parameters: {
     /**
@@ -82,6 +86,6 @@ export interface Request extends RequestBase {
      * none. When supplied, only trained models that contain all the supplied
      * tags are returned.
      */
-    tags?: string
+    tags?: string | string[]
   }
 }
