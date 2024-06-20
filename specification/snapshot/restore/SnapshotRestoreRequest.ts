@@ -21,6 +21,7 @@ import { Request as IndicesPutSettingsRequest } from '@indices/put_settings/Indi
 import { RequestBase } from '@_types/Base'
 import { Indices, Name } from '@_types/common'
 import { Time } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * @rest_spec_name snapshot.restore
@@ -42,7 +43,7 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     include_aliases?: boolean
     include_global_state?: boolean
-    index_settings?: IndicesPutSettingsRequest
+    index_settings?: IndexSettings
     indices?: Indices
     partial?: boolean
     rename_pattern?: string
