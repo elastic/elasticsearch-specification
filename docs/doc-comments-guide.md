@@ -4,12 +4,17 @@ A specification is not only about formalizing data structures, it's also about e
 
 Documentation of the TypeScript specification is made using [JSDoc](https://jsdoc.app/) comments, i.e. multiline comments starting with `/**` above a type or field declaration.
 
+The first phrase is used as the mandatory operation summary in the OpenAPI document.
+Refer to [API documentation guidelines](https://docs.elastic.dev/content-architecture/oas#summaries)
+NOTE: You must add a period at the end of the phrase for it to parse correctly, but the period will be properly omitted from the output OpenAPI document.
+
 Additional lines start with a `*` followed by a space. Long lines are allowed but it's better if text is formatted to a maximum of 120 characters per line.
 
 ## Example
 
 ```ts
 /**
+ * Get ranking evaluation.
  * Enables you to evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
  * @availability stack since=6.2.0 stability=stable
