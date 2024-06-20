@@ -2741,7 +2741,7 @@ export type AggregationsBuckets<TBucket = unknown> = Record<string, TBucket> | T
 
 export type AggregationsBucketsPath = string | string[] | Record<string, string>
 
-export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1Y'
+export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1y'
 
 export interface AggregationsCardinalityAggregate extends AggregationsAggregateBase {
   value: long
