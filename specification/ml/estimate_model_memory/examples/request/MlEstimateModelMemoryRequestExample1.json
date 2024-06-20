@@ -11,10 +11,7 @@
           "partition_field_name": "app"
         }
       ],
-      "influencers": [
-        "source_ip",
-        "dest_ip"
-      ]
+      "influencers": ["source_ip", "dest_ip"]
     },
     "overall_cardinality": {
       "status": 10,
