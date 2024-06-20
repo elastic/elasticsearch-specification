@@ -21,6 +21,7 @@ use std::fmt::Write;
 use anyhow::{anyhow, bail};
 use clients_schema::Property;
 use indexmap::indexmap;
+use icu_segmenter::SentenceSegmenter;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode,
@@ -191,11 +192,13 @@ pub fn add_endpoint(
 
         parameters.append(&mut query_params.clone());
 
+        let sum_desc = split_summary_desc(&endpoint.description);
+
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
             tags: vec![endpoint.name.clone()],
-            summary: Some(endpoint.description.clone()),
-            description: Some(endpoint.description.clone()),
+            summary: sum_desc.summary,
+            description: sum_desc.description,
             external_docs: tac.convert_external_docs(endpoint),
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
@@ -311,6 +314,39 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
     result
 }
 
+// Splits the original endpoint description into OpenAPI summary and description, where summary
+// is the first sentence of the original description with no trailing `.`, and description contains
+// the remaining sentences, if there are any left. 
+fn split_summary_desc(desc: &str) -> SplitDesc{
+    let segmenter = SentenceSegmenter::new();
+
+    let desc_no_newlines = desc.replace("\n\n",".\n").replace('\n'," ");
+
+    let breakpoints: Vec<usize> = segmenter
+        .segment_str(&desc_no_newlines)
+        .collect();
+
+    if breakpoints.len()<2{
+        return SplitDesc {
+            summary: None,
+            description: None
+        }
+    }
+    let first_line = &desc_no_newlines[breakpoints[0]..breakpoints[1]];
+    let rest = &desc_no_newlines[breakpoints[1]..breakpoints[breakpoints.len()-1]];
+
+    SplitDesc {
+        summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
+        description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
+    }
+}
+
+#[derive(PartialEq,Debug)]
+struct SplitDesc {
+    summary: Option<String>,
+    description: Option<String>
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -324,5 +360,34 @@ mod tests {
         // Should normally not happen as we expect the model to be correct. Just make sure we don't crash.
         assert_eq!(get_path_parameters("{index}{id/"), vec! {"index"});
         assert_eq!(get_path_parameters("{index{id}/"), vec! {"index{id"});
+    }
+
+    #[test]
+    fn test_split_summary_desc() {
+        assert_eq!(split_summary_desc("One sentence."),
+                   SplitDesc{
+                       summary: Some(String::from("One sentence")),
+                       description: None
+                   });
+        assert_eq!(split_summary_desc("This is\nstill one. sentence: all; together"),
+                   SplitDesc{
+                       summary: Some(String::from("This is still one. sentence: all; together")),
+                       description: None
+                   });
+        assert_eq!(split_summary_desc("These are two totally. Separate sentences!"),
+                   SplitDesc{
+                       summary: Some(String::from("These are two totally")),
+                       description: Some(String::from("Separate sentences!"))
+                   });
+        assert_eq!(split_summary_desc("Such a weird way to separate sentences\n\nRight?"),
+                   SplitDesc{
+                       summary: Some(String::from("Such a weird way to separate sentences")),
+                       description: Some(String::from("Right?"))
+                   });
+        assert_eq!(split_summary_desc(""),
+                   SplitDesc{
+                       summary: None,
+                       description: None
+                   });
     }
 }

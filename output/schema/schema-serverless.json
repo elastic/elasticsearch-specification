@@ -10582,7 +10582,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "async_search.get"
+                "namespace": "async_search.get.Response"
               }
             }
           ],
@@ -10596,7 +10596,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search.get"
+          "namespace": "async_search.get.Response"
         }
       ],
       "kind": "response",
@@ -10613,7 +10613,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retreives the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+      "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -10640,7 +10640,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L36"
+      "specLocation": "async_search/status/AsyncSearchStatusRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -11756,7 +11756,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "async_search.submit"
+                "namespace": "async_search.submit.Response"
               }
             }
           ],
@@ -11770,7 +11770,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search.submit"
+          "namespace": "async_search.submit.Response"
         }
       ],
       "kind": "response",
@@ -11804,14 +11804,14 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.bulk"
+                      "namespace": "_global.bulk.Request"
                     }
                   },
                   {
                     "kind": "instance_of",
                     "type": {
                       "name": "TPartialDocument",
-                      "namespace": "_global.bulk"
+                      "namespace": "_global.bulk.Request"
                     }
                   }
                 ],
@@ -11825,7 +11825,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.bulk"
+                  "namespace": "_global.bulk.Request"
                 }
               }
             ],
@@ -11837,11 +11837,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.Request"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.Request"
         }
       ],
       "inherits": {
@@ -16264,7 +16264,7 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "_global.create"
+            "namespace": "_global.create.Request"
           }
         }
       },
@@ -16272,7 +16272,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.create"
+          "namespace": "_global.create.Request"
         }
       ],
       "inherits": {
@@ -17865,7 +17865,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TEvent",
-                "namespace": "eql.get"
+                "namespace": "eql.get.Response"
               }
             }
           ],
@@ -17879,7 +17879,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql.get"
+          "namespace": "eql.get.Response"
         }
       ],
       "kind": "response",
@@ -18359,7 +18359,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TEvent",
-                "namespace": "eql.search"
+                "namespace": "eql.search.Response"
               }
             }
           ],
@@ -18373,7 +18373,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql.search"
+          "namespace": "eql.search.Response"
         }
       ],
       "kind": "response",
@@ -19142,7 +19142,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "_global.explain"
+                    "namespace": "_global.explain.Response"
                   }
                 }
               ],
@@ -19158,7 +19158,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.explain"
+          "namespace": "_global.explain.Response"
         }
       ],
       "kind": "response",
@@ -19625,7 +19625,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.get"
+                "namespace": "_global.get.Response"
               }
             }
           ],
@@ -19648,7 +19648,7 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "_global.get"
+                        "namespace": "_global.get.Response"
                       }
                     }
                   ],
@@ -19677,7 +19677,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.get"
+          "namespace": "_global.get.Response"
         }
       ],
       "kind": "response",
@@ -19962,14 +19962,14 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "_global.get_source"
+            "namespace": "_global.get_source.Response"
           }
         }
       },
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.get_source"
+          "namespace": "_global.get_source.Response"
         }
       ],
       "kind": "response",
@@ -20181,7 +20181,7 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "_global.index"
+            "namespace": "_global.index.Request"
           }
         }
       },
@@ -20189,7 +20189,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.index"
+          "namespace": "_global.index.Request"
         }
       ],
       "inherits": {
@@ -26787,7 +26787,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.mget"
+                      "namespace": "_global.mget.Response"
                     }
                   }
                 ],
@@ -26804,7 +26804,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.mget"
+          "namespace": "_global.mget.Response"
         }
       ],
       "kind": "response",
@@ -26862,7 +26862,7 @@
           }
         ]
       },
-      "description": "Closes one or more anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
+      "description": "Close anomaly detection jobs\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29293,13 +29293,13 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the trained model.",
+          "description": "The unique identifier of the trained model or a model alias.\n\nYou can get information for multiple trained models in a single API\nrequest by using a comma-separated list of model IDs or a wildcard\nexpression.",
           "name": "model_id",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -29388,15 +29388,30 @@
           "name": "tags",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
-      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L87"
+      "specLocation": "ml/get_trained_models/MlGetTrainedModelRequest.ts#L25-L91"
     },
     {
       "body": {
@@ -30034,7 +30049,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "ml.preview_datafeed"
+              "namespace": "ml.preview_datafeed.Response"
             }
           }
         }
@@ -30042,7 +30057,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "ml.preview_datafeed"
+          "namespace": "ml.preview_datafeed.Response"
         }
       ],
       "kind": "response",
@@ -30205,7 +30220,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -34657,7 +34672,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.msearch"
+                "namespace": "_global.msearch.Response"
               }
             }
           ],
@@ -34671,7 +34686,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.Response"
         }
       ],
       "kind": "response",
@@ -34801,7 +34816,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.msearch_template"
+                "namespace": "_global.msearch_template.Response"
               }
             }
           ],
@@ -34815,7 +34830,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch_template"
+          "namespace": "_global.msearch_template.Response"
         }
       ],
       "kind": "response",
@@ -36396,7 +36411,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TResult",
-                "namespace": "_global.scripts_painless_execute"
+                "namespace": "_global.scripts_painless_execute.Response"
               }
             }
           }
@@ -36405,7 +36420,7 @@
       "generics": [
         {
           "name": "TResult",
-          "namespace": "_global.scripts_painless_execute"
+          "namespace": "_global.scripts_painless_execute.Response"
         }
       ],
       "kind": "response",
@@ -36538,7 +36553,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.scroll"
+                "namespace": "_global.scroll.Response"
               }
             }
           ],
@@ -36552,7 +36567,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.scroll"
+          "namespace": "_global.scroll.Response"
         }
       ],
       "kind": "response",
@@ -37695,7 +37710,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.search"
+                "namespace": "_global.search.Response"
               }
             }
           ],
@@ -37709,7 +37724,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search"
+          "namespace": "_global.search.Response"
         }
       ],
       "kind": "response",
@@ -38271,7 +38286,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "search_application.search"
+                "namespace": "search_application.search.Response"
               }
             }
           ],
@@ -38285,7 +38300,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "search_application.search"
+          "namespace": "search_application.search.Response"
         }
       ],
       "kind": "response",
@@ -39000,7 +39015,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "_global.search_template"
+                    "namespace": "_global.search_template.Response"
                   }
                 }
               ],
@@ -39138,7 +39153,7 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "_global.search_template"
+                        "namespace": "_global.search_template.Response"
                       }
                     }
                   ],
@@ -39167,7 +39182,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search_template"
+          "namespace": "_global.search_template.Response"
         }
       ],
       "kind": "response",
@@ -42219,7 +42234,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.termvectors"
+                "namespace": "_global.termvectors.Request"
               }
             }
           },
@@ -42264,7 +42279,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.termvectors"
+          "namespace": "_global.termvectors.Request"
         }
       ],
       "inherits": {
@@ -43070,7 +43085,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TTransform",
-                  "namespace": "transform.preview_transform"
+                  "namespace": "transform.preview_transform.Response"
                 }
               }
             }
@@ -43080,7 +43095,7 @@
       "generics": [
         {
           "name": "TTransform",
-          "namespace": "transform.preview_transform"
+          "namespace": "transform.preview_transform.Response"
         }
       ],
       "kind": "response",
@@ -43998,7 +44013,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TPartialDocument",
-                "namespace": "_global.update"
+                "namespace": "_global.update.Request"
               }
             }
           },
@@ -44061,7 +44076,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.update"
+                "namespace": "_global.update.Request"
               }
             }
           }
@@ -44071,11 +44086,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.Request"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.Request"
         }
       ],
       "inherits": {
@@ -44279,7 +44294,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "_global.update"
+                "namespace": "_global.update.Response"
               }
             }
           ],
@@ -44293,7 +44308,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.Response"
         }
       ],
       "kind": "response",
@@ -45075,7 +45090,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.mget"
+          "namespace": "_global.mget.ResponseItem"
         }
       ],
       "kind": "type_alias",
@@ -45092,7 +45107,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.mget"
+                  "namespace": "_global.mget.ResponseItem"
                 }
               }
             ],
@@ -45117,7 +45132,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.get"
+          "namespace": "_global.get.GetResult"
         }
       ],
       "kind": "interface",
@@ -45217,7 +45232,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.get"
+              "namespace": "_global.get.GetResult"
             }
           }
         },
@@ -45467,11 +45482,11 @@
       "generics": [
         {
           "name": "TKey",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperties"
         },
         {
           "name": "TValue",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperties"
         }
       ],
       "kind": "interface",
@@ -48143,6 +48158,25 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0"
+            }
+          },
+          "description": "A semantic query to semantic_text field types",
+          "name": "semantic",
+          "required": false,
+          "since": "8.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SemanticQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "Queries documents that contain fields indexed using the `shape` type.",
           "docId": "query-dsl-shape-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-shape-query.html",
@@ -48489,7 +48523,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L100-L407",
+      "specLocation": "_types/query_dsl/abstractions.ts#L101-L414",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48666,7 +48700,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L432-L443"
+      "specLocation": "_types/query_dsl/abstractions.ts#L439-L450"
     },
     {
       "kind": "type_alias",
@@ -49010,7 +49044,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L445-L479"
+      "specLocation": "_types/query_dsl/abstractions.ts#L452-L486"
     },
     {
       "kind": "enum",
@@ -49026,7 +49060,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L489-L492"
+      "specLocation": "_types/query_dsl/abstractions.ts#L496-L499"
     },
     {
       "kind": "enum",
@@ -49044,7 +49078,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L494-L503"
+      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
     },
     {
       "inherits": {
@@ -49184,11 +49218,11 @@
       "generics": [
         {
           "name": "TOrigin",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
         },
         {
           "name": "TDistance",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
         }
       ],
       "inherits": {
@@ -49211,7 +49245,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TOrigin",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
             }
           }
         },
@@ -49223,7 +49257,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDistance",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DistanceFeatureQueryBase"
             }
           }
         },
@@ -49640,11 +49674,11 @@
       "generics": [
         {
           "name": "TKey",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperty"
         },
         {
           "name": "TValue",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.AdditionalProperty"
         }
       ],
       "kind": "interface",
@@ -49659,11 +49693,11 @@
       "generics": [
         {
           "name": "TOrigin",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DecayPlacement"
         },
         {
           "name": "TScale",
-          "namespace": "_types.query_dsl"
+          "namespace": "_types.query_dsl.DecayPlacement"
         }
       ],
       "kind": "interface",
@@ -49694,7 +49728,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TScale",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DecayPlacement"
             }
           }
         },
@@ -49706,7 +49740,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TScale",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DecayPlacement"
             }
           }
         },
@@ -49718,7 +49752,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TOrigin",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types.query_dsl.DecayPlacement"
             }
           }
         }
@@ -51262,7 +51296,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L409-L426"
+      "specLocation": "_types/query_dsl/abstractions.ts#L416-L433"
     },
     {
       "kind": "enum",
@@ -51733,7 +51767,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L505-L519"
+      "specLocation": "_types/query_dsl/abstractions.ts#L512-L526"
     },
     {
       "inherits": {
@@ -53925,6 +53959,9 @@
           "name": "dense_vector"
         },
         {
+          "name": "semantic_text"
+        },
+        {
           "name": "sparse_vector"
         },
         {
@@ -53938,7 +53975,7 @@
         "name": "FieldType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/Property.ts#L164-L210"
+      "specLocation": "_types/mapping/Property.ts#L166-L213"
     },
     {
       "kind": "enum",
@@ -58237,6 +58274,46 @@
       "specLocation": "_types/query_dsl/specialized.ts#L326-L340"
     },
     {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SemanticQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The field to query, which must be a semantic_text field type",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The query text",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/SemanticQuery.ts#L22-L27"
+    },
+    {
       "attachedBehaviors": [
         "AdditionalProperty"
       ],
@@ -58555,7 +58632,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.PipeSeparatedFlags"
         }
       ],
       "kind": "type_alias",
@@ -58570,7 +58647,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_spec_utils"
+              "namespace": "_spec_utils.PipeSeparatedFlags"
             }
           },
           {
@@ -59690,7 +59767,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L481-L487"
+      "specLocation": "_types/query_dsl/abstractions.ts#L488-L494"
     },
     {
       "inherits": {
@@ -59918,7 +59995,7 @@
       "generics": [
         {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.EpochTime"
         }
       ],
       "kind": "type_alias",
@@ -59931,7 +60008,7 @@
         "kind": "instance_of",
         "type": {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.EpochTime"
         }
       }
     },
@@ -61659,7 +61736,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.ExtendedBounds"
         }
       ],
       "kind": "interface",
@@ -61676,7 +61753,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.ExtendedBounds"
             }
           }
         },
@@ -61688,7 +61765,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.ExtendedBounds"
             }
           }
         }
@@ -62402,7 +62479,7 @@
       "generics": [
         {
           "name": "TBucket",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.Buckets"
         }
       ],
       "kind": "type_alias",
@@ -62427,7 +62504,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TBucket",
-                "namespace": "_types.aggregations"
+                "namespace": "_types.aggregations.Buckets"
               }
             }
           },
@@ -62437,7 +62514,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TBucket",
-                "namespace": "_types.aggregations"
+                "namespace": "_types.aggregations.Buckets"
               }
             }
           }
@@ -68694,7 +68771,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.ResponseItem"
         }
       ],
       "kind": "type_alias",
@@ -68711,7 +68788,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.msearch"
+                  "namespace": "_global.msearch.ResponseItem"
                 }
               }
             ],
@@ -68736,7 +68813,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.MultiSearchItem"
         }
       ],
       "inherits": {
@@ -68745,7 +68822,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.msearch"
+              "namespace": "_global.msearch.MultiSearchItem"
             }
           }
         ],
@@ -68778,7 +68855,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search"
+          "namespace": "_global.search.ResponseBody"
         }
       ],
       "kind": "interface",
@@ -68829,7 +68906,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.search"
+                  "namespace": "_global.search.ResponseBody"
                 }
               }
             ],
@@ -68967,7 +69044,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.search"
+                      "namespace": "_global.search.ResponseBody"
                     }
                   }
                 ],
@@ -69148,7 +69225,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.HitsMetadata"
         }
       ],
       "kind": "interface",
@@ -69192,7 +69269,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "T",
-                    "namespace": "_global.search._types"
+                    "namespace": "_global.search._types.HitsMetadata"
                   }
                 }
               ],
@@ -69284,7 +69361,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.Hit"
         }
       ],
       "kind": "interface",
@@ -69519,7 +69596,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.search._types"
+              "namespace": "_global.search._types.Hit"
             }
           }
         },
@@ -71549,7 +71626,7 @@
       "generics": [
         {
           "name": "TBucket",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.MultiBucketAggregateBase"
         }
       ],
       "inherits": {
@@ -71573,7 +71650,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TBucket",
-                  "namespace": "_types.aggregations"
+                  "namespace": "_types.aggregations.MultiBucketAggregateBase"
                 }
               }
             ],
@@ -71704,7 +71781,7 @@
       "generics": [
         {
           "name": "TBucket",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.TermsAggregateBase"
         }
       ],
       "inherits": {
@@ -71713,7 +71790,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TBucket",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.TermsAggregateBase"
             }
           }
         ],
@@ -72423,7 +72500,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_types.aggregations"
+          "namespace": "_types.aggregations.SignificantTermsAggregateBase"
         }
       ],
       "inherits": {
@@ -72432,7 +72509,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_types.aggregations"
+              "namespace": "_types.aggregations.SignificantTermsAggregateBase"
             }
           }
         ],
@@ -73921,7 +73998,7 @@
       "generics": [
         {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.DurationValue"
         }
       ],
       "kind": "type_alias",
@@ -73934,7 +74011,7 @@
         "kind": "instance_of",
         "type": {
           "name": "Unit",
-          "namespace": "_types"
+          "namespace": "_types.DurationValue"
         }
       }
     },
@@ -75286,7 +75363,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.Suggest"
         }
       ],
       "kind": "type_alias",
@@ -75303,7 +75380,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.search._types"
+                  "namespace": "_global.search._types.Suggest"
                 }
               }
             ],
@@ -75338,7 +75415,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.CompletionSuggest"
         }
       ],
       "inherits": {
@@ -75364,7 +75441,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "_global.search._types"
+                      "namespace": "_global.search._types.CompletionSuggest"
                     }
                   }
                 ],
@@ -75382,7 +75459,7 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "_global.search._types"
+                        "namespace": "_global.search._types.CompletionSuggest"
                       }
                     }
                   ],
@@ -75448,7 +75525,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.search._types"
+          "namespace": "_global.search._types.CompletionSuggestOption"
         }
       ],
       "kind": "interface",
@@ -75562,7 +75639,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.search._types"
+              "namespace": "_global.search._types.CompletionSuggestOption"
             }
           }
         },
@@ -76064,7 +76141,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.Stringified"
         }
       ],
       "kind": "type_alias",
@@ -76079,7 +76156,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_spec_utils"
+              "namespace": "_spec_utils.Stringified"
             }
           },
           {
@@ -76114,7 +76191,7 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.WithNullValue"
         }
       ],
       "kind": "type_alias",
@@ -76129,7 +76206,7 @@
             "kind": "instance_of",
             "type": {
               "name": "T",
-              "namespace": "_spec_utils"
+              "namespace": "_spec_utils.WithNullValue"
             }
           },
           {
@@ -82569,7 +82646,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L245-L250"
+      "specLocation": "_types/mapping/core.ts#L257-L262"
     },
     {
       "kind": "enum",
@@ -82601,7 +82678,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L131-L134"
+      "specLocation": "_types/mapping/core.ts#L137-L140"
     },
     {
       "kind": "type_alias",
@@ -82609,7 +82686,7 @@
         "name": "Property",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/Property.ts#L95-L162",
+      "specLocation": "_types/mapping/Property.ts#L96-L164",
       "type": {
         "items": [
           {
@@ -82734,13 +82811,6 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "SparseVectorProperty",
-              "namespace": "_types.mapping"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
               "name": "FlattenedProperty",
               "namespace": "_types.mapping"
             }
@@ -82756,6 +82826,20 @@
             "kind": "instance_of",
             "type": {
               "name": "ObjectProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SemanticTextProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorProperty",
               "namespace": "_types.mapping"
             }
           },
@@ -82980,7 +83064,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L49-L51"
+      "specLocation": "_types/mapping/core.ts#L55-L57"
     },
     {
       "inherits": {
@@ -83007,7 +83091,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L45-L47"
+      "specLocation": "_types/mapping/core.ts#L51-L53"
     },
     {
       "inherits": {
@@ -83056,7 +83140,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L39-L43"
+      "specLocation": "_types/mapping/core.ts#L45-L49"
     },
     {
       "kind": "interface",
@@ -83157,7 +83241,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/Property.ts#L83-L93"
+      "specLocation": "_types/mapping/Property.ts#L84-L94"
     },
     {
       "inherits": {
@@ -83225,7 +83309,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L59"
+      "specLocation": "_types/mapping/core.ts#L59-L65"
     },
     {
       "kind": "interface",
@@ -83528,7 +83612,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L288-L319"
+      "specLocation": "_types/mapping/core.ts#L300-L331"
     },
     {
       "kind": "enum",
@@ -83585,7 +83669,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L252-L255"
+      "specLocation": "_types/mapping/core.ts#L264-L267"
     },
     {
       "kind": "enum",
@@ -83688,7 +83772,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L83-L87"
+      "specLocation": "_types/mapping/core.ts#L89-L93"
     },
     {
       "inherits": {
@@ -83843,7 +83927,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L89-L107"
+      "specLocation": "_types/mapping/core.ts#L95-L113"
     },
     {
       "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
@@ -83924,7 +84008,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L218-L243"
+      "specLocation": "_types/mapping/core.ts#L230-L255"
     },
     {
       "inherits": {
@@ -83948,7 +84032,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L182-L184"
+      "specLocation": "_types/mapping/core.ts#L188-L190"
     },
     {
       "inherits": {
@@ -83983,7 +84067,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L186-L189"
+      "specLocation": "_types/mapping/core.ts#L192-L195"
     },
     {
       "inherits": {
@@ -84018,7 +84102,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L191-L194"
+      "specLocation": "_types/mapping/core.ts#L197-L200"
     },
     {
       "inherits": {
@@ -84130,7 +84214,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L200-L210"
+      "specLocation": "_types/mapping/core.ts#L212-L222"
     },
     {
       "inherits": {
@@ -84308,7 +84392,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L257-L273"
+      "specLocation": "_types/mapping/core.ts#L269-L285"
     },
     {
       "kind": "interface",
@@ -84375,7 +84459,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L275-L277"
+      "specLocation": "_types/mapping/core.ts#L287-L289"
     },
     {
       "inherits": {
@@ -84417,7 +84501,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L279-L286"
+      "specLocation": "_types/mapping/core.ts#L291-L298"
     },
     {
       "inherits": {
@@ -84507,7 +84591,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L73-L81"
+      "specLocation": "_types/mapping/core.ts#L79-L87"
     },
     {
       "inherits": {
@@ -84619,7 +84703,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L61-L71"
+      "specLocation": "_types/mapping/core.ts#L67-L77"
     },
     {
       "inherits": {
@@ -84802,30 +84886,6 @@
         }
       ],
       "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L26"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "PropertyBase",
-          "namespace": "_types.mapping"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SparseVectorProperty",
-        "namespace": "_types.mapping"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "sparse_vector"
-          }
-        }
-      ],
-      "specLocation": "_types/mapping/core.ts#L196-L198"
     },
     {
       "inherits": {
@@ -85052,6 +85112,81 @@
         }
       ],
       "specLocation": "_types/mapping/complex.ts#L46-L50"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SemanticTextProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "semantic_text"
+          }
+        },
+        {
+          "name": "meta",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/mapping/core.ts#L206-L210"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SparseVectorProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "sparse_vector"
+          }
+        }
+      ],
+      "specLocation": "_types/mapping/core.ts#L202-L204"
     },
     {
       "inherits": {
@@ -85860,7 +85995,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L166-L169"
+      "specLocation": "_types/mapping/core.ts#L172-L175"
     },
     {
       "inherits": {
@@ -85985,7 +86120,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L109-L129"
+      "specLocation": "_types/mapping/core.ts#L115-L135"
     },
     {
       "inherits": {
@@ -86020,7 +86155,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L146-L149"
+      "specLocation": "_types/mapping/core.ts#L152-L155"
     },
     {
       "inherits": {
@@ -86055,7 +86190,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L136-L139"
+      "specLocation": "_types/mapping/core.ts#L142-L145"
     },
     {
       "inherits": {
@@ -86090,7 +86225,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L141-L144"
+      "specLocation": "_types/mapping/core.ts#L147-L150"
     },
     {
       "inherits": {
@@ -86125,7 +86260,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L151-L154"
+      "specLocation": "_types/mapping/core.ts#L157-L160"
     },
     {
       "inherits": {
@@ -86160,7 +86295,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L156-L159"
+      "specLocation": "_types/mapping/core.ts#L162-L165"
     },
     {
       "inherits": {
@@ -86206,7 +86341,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L176-L180"
+      "specLocation": "_types/mapping/core.ts#L182-L186"
     },
     {
       "inherits": {
@@ -86241,7 +86376,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L161-L164"
+      "specLocation": "_types/mapping/core.ts#L167-L170"
     },
     {
       "inherits": {
@@ -86276,7 +86411,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L171-L174"
+      "specLocation": "_types/mapping/core.ts#L177-L180"
     },
     {
       "inherits": {
@@ -101479,7 +101614,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search._types"
+          "namespace": "async_search._types.AsyncSearchDocumentResponseBase"
         }
       ],
       "inherits": {
@@ -101503,7 +101638,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "async_search._types"
+                  "namespace": "async_search._types.AsyncSearchDocumentResponseBase"
                 }
               }
             ],
@@ -101661,7 +101796,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "async_search._types"
+          "namespace": "async_search._types.AsyncSearch"
         }
       ],
       "kind": "interface",
@@ -101731,7 +101866,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "async_search._types"
+                  "namespace": "async_search._types.AsyncSearch"
                 }
               }
             ],
@@ -101831,7 +101966,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "async_search._types"
+                      "namespace": "async_search._types.AsyncSearch"
                     }
                   }
                 ],
@@ -102279,11 +102414,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.UpdateAction"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "_global.bulk"
+          "namespace": "_global.bulk.UpdateAction"
         }
       ],
       "kind": "interface",
@@ -102313,7 +102448,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TPartialDocument",
-              "namespace": "_global.bulk"
+              "namespace": "_global.bulk.UpdateAction"
             }
           }
         },
@@ -102376,7 +102511,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_global.bulk"
+              "namespace": "_global.bulk.UpdateAction"
             }
           }
         }
@@ -102578,7 +102713,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_types"
+          "namespace": "_types.InlineGet"
         }
       ],
       "kind": "interface",
@@ -102656,7 +102791,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "_types"
+              "namespace": "_types.InlineGet"
             }
           }
         }
@@ -112993,7 +113128,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.EqlSearchResponseBase"
         }
       ],
       "kind": "interface",
@@ -113081,7 +113216,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TEvent",
-                  "namespace": "eql._types"
+                  "namespace": "eql._types.EqlSearchResponseBase"
                 }
               }
             ],
@@ -113099,7 +113234,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.EqlHits"
         }
       ],
       "kind": "interface",
@@ -113132,7 +113267,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TEvent",
-                    "namespace": "eql._types"
+                    "namespace": "eql._types.EqlHits"
                   }
                 }
               ],
@@ -113158,7 +113293,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TEvent",
-                    "namespace": "eql._types"
+                    "namespace": "eql._types.EqlHits"
                   }
                 }
               ],
@@ -113177,7 +113312,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.HitsEvent"
         }
       ],
       "kind": "interface",
@@ -113218,7 +113353,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TEvent",
-              "namespace": "eql._types"
+              "namespace": "eql._types.HitsEvent"
             }
           }
         },
@@ -113250,7 +113385,7 @@
       "generics": [
         {
           "name": "TEvent",
-          "namespace": "eql._types"
+          "namespace": "eql._types.HitsSequence"
         }
       ],
       "kind": "interface",
@@ -113271,7 +113406,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TEvent",
-                    "namespace": "eql._types"
+                    "namespace": "eql._types.HitsSequence"
                   }
                 }
               ],
@@ -129841,13 +129976,10 @@
           "name": "indices",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
             }
           }
         },
@@ -130362,7 +130494,7 @@
       "generics": [
         {
           "name": "TDefinition",
-          "namespace": "_spec_utils"
+          "namespace": "_spec_utils.OverloadOf"
         }
       ],
       "kind": "interface",
@@ -131379,7 +131511,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.msearch"
+          "namespace": "_global.msearch.MultiSearchResult"
         }
       ],
       "kind": "interface",
@@ -131410,7 +131542,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "_global.msearch"
+                    "namespace": "_global.msearch.MultiSearchResult"
                   }
                 }
               ],
@@ -136504,7 +136636,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "_global.update"
+          "namespace": "_global.update.UpdateWriteResponseBase"
         }
       ],
       "inherits": {
@@ -136528,7 +136660,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "_global.update"
+                  "namespace": "_global.update.UpdateWriteResponseBase"
                 }
               }
             ],

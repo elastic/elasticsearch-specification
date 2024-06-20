@@ -96,6 +96,7 @@ import {
 import { TextExpansionQuery } from './TextExpansionQuery'
 import { WeightedTokensQuery } from './WeightedTokensQuery'
 import { KnnQuery } from '@_types/Knn'
+import { SemanticQuery } from './SemanticQuery'
 
 /**
  * @variants container
@@ -301,6 +302,12 @@ export class QueryContainer {
    * @doc_id query-dsl-script-score-query
    */
   script_score?: ScriptScoreQuery
+  /**
+   * A semantic query to semantic_text field types
+   * @availability stack since=8.15.0
+   * @availability serverless
+   */
+  semantic?: SemanticQuery
   /**
    * Queries documents that contain fields indexed using the `shape` type.
    * @doc_id query-dsl-shape-query
