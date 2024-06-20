@@ -30,13 +30,20 @@ import {
   GeoLocation,
   GeoBounds
 } from '@_types/Geo'
-import { integer, float, long, double } from '@_types/Numeric'
+import { integer, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
-import { DateString, Time, DateMath } from '@_types/Time'
+import {
+  DateString,
+  Time,
+  DateMath,
+  TimeZone,
+  DateMathTime
+} from '@_types/Time'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
+import { ValueType } from '@_types/aggregations/metric'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -47,6 +54,10 @@ export class BucketAggregationBase extends Aggregation {}
 
 export class AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Dictionary<string, QueryContainer>
+  /**
+   * Separator used to concatenate filter names. Defaults to &.
+   */
+  separator?: string
 }
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
@@ -84,10 +95,42 @@ export class CompositeAggregation extends BucketAggregationBase {
 }
 
 export class CompositeAggregationSource {
-  terms?: TermsAggregation
-  histogram?: HistogramAggregation
-  date_histogram?: DateHistogramAggregation
-  geotile_grid?: GeoTileGridAggregation
+  terms?: CompositeTermsAggregation
+  histogram?: CompositeHistogramAggregation
+  date_histogram?: CompositeDateHistogramAggregation
+  geotile_grid?: CompositeGeoTileGridAggregation
+}
+
+export class CompositeAggregationBase {
+  /** Either `field` or `script` must be present */
+  field?: Field
+  missing_bucket?: boolean
+  missing_order?: MissingOrder
+  /** Either `field` or `script` must be present */
+  script?: Script
+  value_type?: ValueType
+  order?: SortOrder
+}
+
+export class CompositeTermsAggregation extends CompositeAggregationBase {}
+
+export class CompositeHistogramAggregation extends CompositeAggregationBase {
+  interval: double
+}
+
+export class CompositeDateHistogramAggregation extends CompositeAggregationBase {
+  format?: string
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  calendar_interval?: DateMathTime
+  /** Either `calendar_interval` or `fixed_interval` must be present */
+  fixed_interval?: DateMathTime
+  offset?: Time
+  time_zone?: TimeZone
+}
+
+export class CompositeGeoTileGridAggregation extends CompositeAggregationBase {
+  precision?: integer
+  bounds?: GeoBounds
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
@@ -199,8 +242,14 @@ export class GeoTileGridAggregation extends BucketAggregationBase {
 export class GlobalAggregation extends BucketAggregationBase {}
 
 export class ExtendedBounds<T> {
-  max: T
-  min: T
+  /**
+   * Maximum value for the bound.
+   */
+  max?: T
+  /**
+   * Minimum value for the bound.
+   */
+  min?: T
 }
 
 export class HistogramAggregation extends BucketAggregationBase {
@@ -334,7 +383,7 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   field?: Field
   filter_duplicate_text?: boolean
   gnd?: GoogleNormalizedDistanceHeuristic
-  include?: string | string[]
+  include?: TermsInclude
   min_doc_count?: long
   mutual_information?: MutualInformationHeuristic
   percentage?: PercentageScoreHeuristic
@@ -399,4 +448,5 @@ export class VariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
+  script?: Script
 }

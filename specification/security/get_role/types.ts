@@ -22,29 +22,18 @@ import {
   ApplicationPrivileges
 } from '@security/_types/Privileges'
 import { Metadata } from '@_types/common'
-import { Script } from '@_types/Scripting'
+import { RoleTemplate } from '@security/_types/RoleTemplate'
 
 export class Role {
   cluster: string[]
   indices: IndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: TransientMetadata
+  transient_metadata?: TransientMetadata
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]
 }
 
 export class TransientMetadata {
-  enabled: boolean
-}
-
-export enum TemplateFormat {
-  string = 0,
-  json = 1
-}
-
-// ES: TemplateRoleName
-export class RoleTemplate {
-  format?: TemplateFormat
-  template: Script
+  enabled?: boolean
 }

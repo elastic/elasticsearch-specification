@@ -30,7 +30,7 @@ import {
   Uuid,
   VersionString
 } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { IndexSegmentSort } from './IndexSegmentSort'
@@ -299,6 +299,10 @@ export class IndexSettings
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
   /**
+   * Configure custom similarity settings to customize how search results are scored.
+   */
+  similarity?: Dictionary<string, SettingsSimilarity>
+  /**
    * Enable or disable dynamic mapping for an index.
    */
   mapping?: MappingLimitSettings
@@ -311,6 +315,65 @@ export class IndexSettings
    * The store module allows you to control how index data is stored and accessed on disk.
    */
   store?: Storage
+}
+
+/**
+ * @variants internal tag='type'
+ */
+export type SettingsSimilarity =
+  | SettingsSimilarityBm25
+  | SettingsSimilarityBoolean
+  | SettingsSimilarityDfi
+  | SettingsSimilarityDfr
+  | SettingsSimilarityIb
+  | SettingsSimilarityLmd
+  | SettingsSimilarityLmj
+  | SettingsSimilarityScripted
+
+export class SettingsSimilarityBoolean {
+  type: 'boolean'
+}
+
+export class SettingsSimilarityBm25 {
+  type: 'BM25'
+  b?: double
+  discount_overlaps?: boolean
+  k1?: double
+}
+
+export class SettingsSimilarityDfi {
+  type: 'DFI'
+  independence_measure: DFIIndependenceMeasure
+}
+
+export class SettingsSimilarityDfr {
+  type: 'DFR'
+  after_effect: DFRAfterEffect
+  basic_model: DFRBasicModel
+  normalization: Normalization
+}
+
+export class SettingsSimilarityIb {
+  type: 'IB'
+  distribution: IBDistribution
+  lambda: IBLambda
+  normalization: Normalization
+}
+
+export class SettingsSimilarityLmd {
+  type: 'LMDirichlet'
+  mu?: double
+}
+
+export class SettingsSimilarityLmj {
+  type: 'LMJelinekMercer'
+  lambda?: double
+}
+
+export class SettingsSimilarityScripted {
+  type: 'scripted'
+  script: Script
+  weight_script?: Script
 }
 
 export class IndexSettingBlocks {
@@ -338,7 +401,7 @@ export class IndexSettingsLifecycle {
   /**
    * The name of the policy to use to manage the index. For information about how Elasticsearch applies policy changes, see Policy updates.
    */
-  name: Name
+  name?: Name
   /**
    * Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.
    * You can explicitly set it to skip rollover.

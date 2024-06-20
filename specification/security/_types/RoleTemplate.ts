@@ -17,26 +17,15 @@
  * under the License.
  */
 
-import { float, long } from '@_types/Numeric'
-import { Retries } from '@_types/Retries'
-import { Time } from '@_types/Time'
+import { Script } from '@_types/Scripting'
 
-export class Status {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: Retries
-  throttled?: Time
-  throttled_millis: long
-  throttled_until?: Time
-  throttled_until_millis: long
-  timed_out?: boolean
-  took?: long
-  total: long
-  updated: long
-  version_conflicts: long
+export enum TemplateFormat {
+  string = 0,
+  json = 1
+}
+
+// ES: TemplateRoleName
+export class RoleTemplate {
+  format?: TemplateFormat
+  template: Script
 }

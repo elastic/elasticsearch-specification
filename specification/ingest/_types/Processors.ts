@@ -23,7 +23,6 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { Script } from '@_types/Scripting'
 
 /**
  * @variants container
@@ -50,7 +49,7 @@ export class ProcessorContainer {
   lowercase?: LowercaseProcessor
   remove?: RemoveProcessor
   rename?: RenameProcessor
-  script?: Script
+  script?: ScriptProcessor
   set?: SetProcessor
   sort?: SortProcessor
   split?: SplitProcessor
@@ -100,6 +99,7 @@ export class AttachmentProcessor extends ProcessorBase {
   indexed_chars_field?: Field
   properties?: string[]
   target_field?: Field
+  remove_binary?: boolean
   resource_name?: string
 }
 
@@ -297,6 +297,7 @@ export class PipelineProcessor extends ProcessorBase {
 
 export class RemoveProcessor extends ProcessorBase {
   field: Fields
+  keep?: Fields
   ignore_missing?: boolean
 }
 

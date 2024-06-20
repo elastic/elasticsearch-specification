@@ -49,7 +49,8 @@ export class ObjectProperty extends CorePropertyBase {
 
 export class DenseVectorProperty extends PropertyBase {
   type: 'dense_vector'
-  dims: integer
+  element_type?: string
+  dims?: integer
   similarity?: string
   index?: boolean
   index_options?: DenseVectorIndexOptions

@@ -19,7 +19,7 @@
 
 import { HttpHeaders, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Status } from './TaskStatus'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class State {
   action: string
@@ -31,6 +31,6 @@ export class State {
   parent_task_id?: TaskId
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: Status
+  status?: UserDefinedValue
   type: string
 }

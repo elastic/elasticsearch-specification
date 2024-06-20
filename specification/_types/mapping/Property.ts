@@ -85,6 +85,7 @@ export enum FieldType {
   completion,
   nested,
   object,
+  version,
   murmur3,
   token_count,
   percolator,

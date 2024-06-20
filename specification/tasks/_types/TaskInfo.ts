@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Status } from '@tasks/_types/TaskStatus'
 import { HttpHeaders, Id } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Info {
   action: string
@@ -32,7 +32,7 @@ export class Info {
   node: string
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: Status
+  status?: UserDefinedValue
   type: string
   parent_task_id?: Id
 }
