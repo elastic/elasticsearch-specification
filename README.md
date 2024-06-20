@@ -69,7 +69,12 @@ Usage:
   spec-dangling-types  Generate the dangling types rreport
   setup            Install dependencies for contrib target
   clean-dep        Clean npm dependencies
+  transform-expand-generics  Create a new schema with all generics expanded
+  transform-to-openapi  Generate the OpenAPI definition from the compiled schema
+  filter-for-serverless  Generate the serverless version from the compiled schema
+  dump-routes      Create a new schema with all generics expanded
   contrib          Pre contribution target
+  lint-docs        Lint the OpenAPI documents
   help             Display help
 ```
 

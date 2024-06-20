@@ -14355,6 +14355,8 @@
         "tags": [
           "indices.simulate_index_template"
         ],
+        "summary": "Simulate index",
+        "description": "Returns the index configuration that would be applied to the specified index from an existing index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html"
         },

@@ -22,7 +22,8 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- *
+ * Simulate index.
+ * Returns the index configuration that would be applied to the specified index from an existing index template.
  * @rest_spec_name indices.simulate_index_template
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
