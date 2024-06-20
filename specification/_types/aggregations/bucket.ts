@@ -407,6 +407,15 @@ export class TermsAggregation extends BucketAggregationBase {
   value_type?: string
   order?: AggregateOrder
   script?: Script
+  /**
+   * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.
+   * Terms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.
+   */
+  shard_min_doc_count?: long
+  /**
+   * The number of candidate terms produced by each shard.
+   * By default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.
+   */
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
