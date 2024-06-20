@@ -18,7 +18,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
+      "description": "Deletes an async search by identifier.\nIf the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
       "docId": "async-search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.delete",
@@ -57,7 +57,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the results of a previously submitted async search request given its ID.",
+      "description": "Retrieves the results of a previously submitted async search request given its identifier.\nIf the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.",
       "docId": "async-search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.get",
@@ -96,7 +96,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the status of a previously submitted async search request given its ID.",
+      "description": "Get async search status\nRetrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
       "docId": "async-search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.status",
@@ -135,7 +135,7 @@
           "stability": "stable"
         }
       },
-      "description": "Executes a search request asynchronously.",
+      "description": "Runs a search request asynchronously.\nWhen the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
       "docId": "async-search",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/async-search.html",
       "name": "async_search.submit",
@@ -183,7 +183,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to perform multiple index/update/delete operations in a single request.",
+      "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
       "docId": "docs-bulk",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-bulk.html",
       "name": "bulk",
@@ -233,7 +233,7 @@
           "stability": "stable"
         }
       },
-      "description": "Shows information about currently configured aliases to indices including filter and routing infos.",
+      "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html",
       "name": "cat.aliases",
@@ -284,7 +284,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about existing component_templates templates.",
+      "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html",
       "name": "cat.component_templates",
       "privileges": {
@@ -334,7 +334,7 @@
           "stability": "stable"
         }
       },
-      "description": "Provides quick access to the document count of the entire cluster, or individual indices.",
+      "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nNOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
       "docId": "cat-count",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html",
       "name": "cat.count",
@@ -424,7 +424,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
+      "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-indices.html",
       "name": "cat.indices",
@@ -478,7 +478,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets configuration and usage information about data frame analytics jobs.",
+      "description": "Returns configuration and usage information about data frame analytics jobs.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
       "docId": "cat-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-dfanalytics.html",
       "name": "cat.ml_data_frame_analytics",
@@ -529,7 +529,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets configuration and usage information about datafeeds.",
+      "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
       "docId": "cat-datafeeds",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-datafeeds.html",
       "name": "cat.ml_datafeeds",
@@ -580,7 +580,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets configuration and usage information about anomaly detection jobs.",
+      "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
       "docId": "cat-anomaly-detectors",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html",
       "name": "cat.ml_jobs",
@@ -631,7 +631,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets configuration and usage information about inference trained models.",
+      "description": "Returns configuration and usage information about inference trained models.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
       "docId": "cat-trained-model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-trained-model.html",
       "name": "cat.ml_trained_models",
@@ -682,7 +682,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets configuration and usage information about transforms.",
+      "description": "Returns configuration and usage information about transforms.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
       "docId": "cat-transforms",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-transforms.html",
       "name": "cat.transforms",
@@ -733,7 +733,7 @@
           "stability": "stable"
         }
       },
-      "description": "Explicitly clears the search context for a scroll.",
+      "description": "Clears the search context and results for a scrolling search.",
       "docId": "clear-scroll-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/clear-scroll-api.html",
       "name": "clear_scroll",
@@ -786,7 +786,7 @@
           "stability": "stable"
         }
       },
-      "description": "Close a point in time",
+      "description": "Closes a point-in-time.",
       "docId": "point-in-time-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
       "name": "close_point_in_time",
@@ -828,7 +828,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a component template",
+      "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.delete_component_template",
@@ -911,7 +911,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns one or more component templates",
+      "description": "Retrieves information about component templates.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.get_component_template",
@@ -1000,7 +1000,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a component template",
+      "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.put_component_template",
@@ -1048,7 +1048,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the last_seen timestamp in the connector document.",
+      "description": "Updates the last_seen field in the connector, and sets it to current timestamp",
       "docId": "connector-checkin",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/check-in-connector-api.html",
       "name": "connector.check_in",
@@ -1126,7 +1126,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Returns the details about a connector.",
+      "description": "Retrieves a connector.",
       "docId": "connector-get",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-api.html",
       "name": "connector.get",
@@ -1165,7 +1165,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the stats of last sync in the connector document.",
+      "description": "Updates last sync stats in the connector document",
       "docId": "connector-last-sync",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html",
       "name": "connector.last_sync",
@@ -1207,7 +1207,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Lists all connectors.",
+      "description": "Returns existing connectors.",
       "docId": "connector-list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-api.html",
       "name": "connector.list",
@@ -1408,7 +1408,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Returns the details about a connector sync job.",
+      "description": "Retrieves a connector sync job.",
       "docId": "connector-sync-job-get",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-connector-sync-job-api.html",
       "name": "connector.sync_job_get",
@@ -1447,7 +1447,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Lists all connector sync jobs.",
+      "description": "Lists connector sync jobs.",
       "docId": "connector-sync-job-list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/list-connector-sync-jobs-api.html",
       "name": "connector.sync_job_list",
@@ -1528,7 +1528,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Activates the draft filtering rules if they are in a validated state.",
+      "description": "Activates the valid draft filtering for a connector.",
       "docId": "connector-update-filtering",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html",
       "name": "connector.update_active_filtering",
@@ -1570,7 +1570,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the API key id and/or API key secret id fields in the connector document.",
+      "description": "Updates the API key id in the connector document",
       "docId": "connector-update-api-key-id",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-api-key-id-api.html",
       "name": "connector.update_api_key_id",
@@ -1612,7 +1612,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the connector configuration.",
+      "description": "Updates the configuration field in the connector document",
       "docId": "connector-configuration",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-configuration-api.html",
       "name": "connector.update_configuration",
@@ -1654,7 +1654,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the error field in the connector document.",
+      "description": "Updates the filtering field in the connector document",
       "docId": "connector-update-error",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-error-api.html",
       "name": "connector.update_error",
@@ -1696,7 +1696,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the filtering field in the connector document.",
+      "description": "Updates the filtering field in the connector document",
       "docId": "connector-update-filtering",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-api.html",
       "name": "connector.update_filtering",
@@ -1738,7 +1738,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the validation info of the draft filtering rules.",
+      "description": "Updates the draft filtering validation info for a connector.",
       "docId": "connector-update-filtering-validation",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-filtering-validation-api.html",
       "name": "connector.update_filtering_validation",
@@ -1780,7 +1780,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the index name of the connector.",
+      "description": "Updates the index_name in the connector document",
       "docId": "connector-update-index-name",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-index-name-api.html",
       "name": "connector.update_index_name",
@@ -1822,7 +1822,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the name and/or description fields in the connector document.",
+      "description": "Updates the name and description fields in the connector document",
       "docId": "connector-update-name",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-name-description-api.html",
       "name": "connector.update_name",
@@ -1864,7 +1864,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the is_native flag of the connector.",
+      "description": "Updates the is_native flag in the connector document",
       "docId": "connector-update-native",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-native-api.html",
       "name": "connector.update_native",
@@ -1906,7 +1906,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the pipeline field in the connector document.",
+      "description": "Updates the pipeline field in the connector document",
       "docId": "connector-update-pipeline",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-pipeline-api.html",
       "name": "connector.update_pipeline",
@@ -1948,7 +1948,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the scheduling field in the connector document.",
+      "description": "Updates the scheduling field in the connector document",
       "docId": "connector-update-scheduling",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-scheduling-api.html",
       "name": "connector.update_scheduling",
@@ -1990,7 +1990,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the service type of the connector.",
+      "description": "Updates the service type of the connector",
       "docId": "connector-update-service-type",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-service-type-api.html",
       "name": "connector.update_service_type",
@@ -2032,7 +2032,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Updates the status of the connector.",
+      "description": "Updates the status of the connector",
       "docId": "connector-update-status",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-status-api.html",
       "name": "connector.update_status",
@@ -2123,7 +2123,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
+      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "create",
       "request": {
@@ -2165,7 +2165,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes a document from the index.",
+      "description": "Removes a JSON document from the specified index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
       "name": "delete",
       "request": {
@@ -2203,7 +2203,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes documents matching the provided query.",
+      "description": "Deletes documents that match the specified query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html",
       "name": "delete_by_query",
       "request": {
@@ -2244,7 +2244,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a script.",
+      "description": "Deletes a stored script or search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "delete_script",
       "request": {
@@ -2359,7 +2359,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets information about an enrich policy.",
+      "description": "Returns information about an enrich policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
       "request": {
@@ -2403,7 +2403,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new enrich policy.",
+      "description": "Creates an enrich policy.",
       "docId": "put-enrich-policy-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
@@ -2445,7 +2445,7 @@
           "stability": "stable"
         }
       },
-      "description": "Gets enrich coordinator statistics and information about enrich policies that are currently executing.",
+      "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html",
       "name": "enrich.stats",
       "request": {
@@ -2483,7 +2483,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
+      "description": "Deletes an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html",
       "name": "eql.delete",
       "request": {
@@ -2521,7 +2521,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns async results from previously executed Event Query Language (EQL) search",
+      "description": "Returns the current status and available results for an async EQL search or a stored synchronous EQL search.",
       "docId": "eql-async-search-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-search-api.html",
       "name": "eql.get",
@@ -2560,7 +2560,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the status of a previously submitted async or stored Event Query Language (EQL) search",
+      "description": "Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.",
       "docId": "eql-async-search-status-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-eql-status-api.html",
       "name": "eql.get_status",
@@ -2641,7 +2641,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Executes an ESQL request",
+      "description": "Executes an ES|QL request",
       "docId": "esql-query",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html",
       "name": "esql.query",
@@ -2683,7 +2683,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a document exists in an index.",
+      "description": "Checks if a document in an index exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists",
       "request": {
@@ -2721,7 +2721,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a document source exists in an index.",
+      "description": "Checks if a document's `_source` is stored.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists_source",
       "request": {
@@ -2759,7 +2759,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about why a specific matches (or doesn't match) a query.",
+      "description": "Returns information about why a specific document matches (or doesn’t match) a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
       "name": "explain",
       "request": {
@@ -2801,7 +2801,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the information about the capabilities of fields among multiple indices.",
+      "description": "The field capabilities API returns the information about the capabilities of fields among multiple indices.\nThe field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
       "privileges": {
@@ -2895,7 +2895,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns a script.",
+      "description": "Retrieves a stored script or search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "get_script",
       "request": {
@@ -2971,7 +2971,7 @@
           "stability": "stable"
         }
       },
-      "description": "Explore extracted and summarized information about the documents and terms in an index.",
+      "description": "Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.",
       "docId": "graph-explore-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/graph-explore-api.html",
       "name": "graph.explore",
@@ -3014,7 +3014,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a document in an index.",
+      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "index",
       "request": {
@@ -3100,7 +3100,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
+      "description": "Performs analysis on a text string and returns the resulting tokens.",
       "docId": "indices-analyze",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-analyze.html",
       "name": "indices.analyze",
@@ -3150,7 +3150,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates an index with optional settings and mappings.",
+      "description": "Creates a new index.",
       "docId": "indices-create-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html",
       "name": "indices.create",
@@ -3198,7 +3198,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a data stream",
+      "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.create_data_stream",
       "privileges": {
@@ -3241,7 +3241,7 @@
           "stability": "stable"
         }
       },
-      "description": "Provides statistics on operations happening in a data stream.",
+      "description": "Retrieves statistics for one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.data_streams_stats",
       "privileges": {
@@ -3290,7 +3290,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an index.",
+      "description": "Deletes one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
       "name": "indices.delete",
       "request": {
@@ -3328,7 +3328,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an alias.",
+      "description": "Removes a data stream or index from an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.delete_alias",
       "request": {
@@ -3372,7 +3372,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes the data stream lifecycle of the selected data streams.",
+      "description": "Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html",
       "name": "indices.delete_data_lifecycle",
       "request": {
@@ -3410,7 +3410,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a data stream.",
+      "description": "Deletes one or more data streams and their backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
       "privileges": {
@@ -3453,7 +3453,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an index template.",
+      "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html",
       "name": "indices.delete_index_template",
       "privileges": {
@@ -3497,7 +3497,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a particular index exists.",
+      "description": "Checks if a data stream, index, or alias exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
       "name": "indices.exists",
       "request": {
@@ -3535,7 +3535,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a particular alias exists.",
+      "description": "Checks if an alias exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.exists_alias",
       "request": {
@@ -3655,7 +3655,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about one or more indices.",
+      "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html",
       "name": "indices.get",
       "privileges": {
@@ -3699,7 +3699,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns an alias.",
+      "description": "Retrieves information for one or more aliases.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.get_alias",
       "request": {
@@ -3755,7 +3755,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the data stream lifecycle of the selected data streams.",
+      "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
       "request": {
@@ -3793,7 +3793,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns data streams.",
+      "description": "Retrieves information about one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.get_data_stream",
       "privileges": {
@@ -3842,7 +3842,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns an index template.",
+      "description": "Returns information about one or more index templates.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html",
       "name": "indices.get_index_template",
       "privileges": {
@@ -3892,7 +3892,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns mappings for one or more indices.",
+      "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
       "name": "indices.get_mapping",
       "request": {
@@ -3936,7 +3936,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns settings for one or more indices.",
+      "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html",
       "name": "indices.get_settings",
       "privileges": {
@@ -3999,7 +3999,7 @@
           "stability": "stable"
         }
       },
-      "description": "Migrates an alias to a data stream",
+      "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.migrate_to_data_stream",
       "privileges": {
@@ -4042,7 +4042,7 @@
           "stability": "stable"
         }
       },
-      "description": "Modifies a data stream",
+      "description": "Performs one or more data stream modification actions in a single atomic operation.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.modify_data_stream",
       "request": {
@@ -4083,7 +4083,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an alias.",
+      "description": "Adds a data stream or index to an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.put_alias",
       "request": {
@@ -4132,7 +4132,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates the data stream lifecycle of the selected data streams.",
+      "description": "Update the data lifecycle of the specified data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
       "request": {
@@ -4170,7 +4170,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an index template.",
+      "description": "Creates or updates an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html",
       "name": "indices.put_index_template",
       "request": {
@@ -4212,7 +4212,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates the index mappings.",
+      "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html",
       "name": "indices.put_mapping",
       "request": {
@@ -4254,7 +4254,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates the index settings.",
+      "description": "Changes a dynamic index setting in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
       "name": "indices.put_settings",
       "privileges": {
@@ -4306,7 +4306,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an index template.",
+      "description": "Creates or updates an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html",
       "name": "indices.put_template",
       "request": {
@@ -4348,7 +4348,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs the refresh operation in one or more indices.",
+      "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
       "name": "indices.refresh",
       "request": {
@@ -4394,7 +4394,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about any matching indices, aliases, and data streams",
+      "description": "Resolves the specified name(s) and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-resolve-index-api.html",
       "name": "indices.resolve_index",
       "request": {
@@ -4432,7 +4432,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
+      "description": "Creates a new index for a data stream or index alias.",
       "docId": "indices-rollover-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-rollover-index.html",
       "name": "indices.rollover",
@@ -4480,7 +4480,7 @@
           "stability": "stable"
         }
       },
-      "description": "Simulate matching the given index name against the index templates in the system",
+      "description": "",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html",
       "name": "indices.simulate_index_template",
       "request": {
@@ -4521,7 +4521,7 @@
           "stability": "stable"
         }
       },
-      "description": "Simulate resolving the given template name or body",
+      "description": "Returns the index configuration that would be applied by a particular index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html",
       "name": "indices.simulate_template",
       "privileges": {
@@ -4574,7 +4574,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates index aliases.",
+      "description": "Adds a data stream or index to an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.update_aliases",
       "request": {
@@ -4615,7 +4615,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows a user to validate a potentially expensive query without executing it.",
+      "description": "Validates a potentially expensive query without executing it.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html",
       "name": "indices.validate_query",
       "request": {
@@ -4761,7 +4761,7 @@
           "visibility": "public"
         }
       },
-      "description": "Perform inference",
+      "description": "Perform inference on the service",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/post-inference-api.html",
       "name": "inference.inference",
       "request": {
@@ -4809,7 +4809,7 @@
           "visibility": "public"
         }
       },
-      "description": "Configure an inference endpoint for use in the Inference API",
+      "description": "Create an inference endpoint",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html",
       "name": "inference.put",
       "request": {
@@ -4894,7 +4894,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a pipeline.",
+      "description": "Deletes one or more existing ingest pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-pipeline-api.html",
       "name": "ingest.delete_pipeline",
       "request": {
@@ -4932,7 +4932,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns a pipeline.",
+      "description": "Returns information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-pipeline-api.html",
       "name": "ingest.get_pipeline",
       "request": {
@@ -4976,7 +4976,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns a list of the built-in patterns.",
+      "description": "Extracts structured fields out of a single text field within a document.\nYou choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
       "docId": "grok-processor",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/grok-processor.html",
       "name": "ingest.processor_grok",
@@ -5015,7 +5015,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a pipeline.",
+      "description": "Creates or updates an ingest pipeline.\nChanges made using this API take effect immediately.",
       "docId": "ingest",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest.html",
       "name": "ingest.put_pipeline",
@@ -5057,7 +5057,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to simulate a pipeline with example documents.",
+      "description": "Executes an ingest pipeline against a set of provided documents.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/simulate-pipeline-api.html",
       "name": "ingest.simulate",
       "request": {
@@ -5106,7 +5106,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves licensing information for the cluster",
+      "description": "This API returns information about the type of license, when it was issued, and when it expires, for example.\nFor more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html",
       "name": "license.get",
       "request": {
@@ -5144,7 +5144,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes Logstash Pipelines used by Central Management",
+      "description": "Deletes a pipeline used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-delete-pipeline.html",
       "name": "logstash.delete_pipeline",
       "privileges": {
@@ -5187,7 +5187,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves Logstash Pipelines used by Central Management",
+      "description": "Retrieves pipelines used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-get-pipeline.html",
       "name": "logstash.get_pipeline",
       "privileges": {
@@ -5236,7 +5236,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds and updates Logstash Pipelines used for Central Management",
+      "description": "Creates or updates a pipeline used for Logstash Central Management.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/logstash-api-put-pipeline.html",
       "name": "logstash.put_pipeline",
       "privileges": {
@@ -5336,7 +5336,7 @@
           "stability": "stable"
         }
       },
-      "description": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
+      "description": "Close anomaly detection jobs\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "docId": "ml-close-job",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html",
       "name": "ml.close_job",
@@ -5383,7 +5383,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a calendar.",
+      "description": "Removes all scheduled events from a calendar, then deletes it.",
       "docId": "ml-delete-calendar",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar.html",
       "name": "ml.delete_calendar",
@@ -5510,7 +5510,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing data frame analytics job.",
+      "description": "Deletes a data frame analytics job.",
       "docId": "ml-delete-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-dfanalytics.html",
       "name": "ml.delete_data_frame_analytics",
@@ -5598,7 +5598,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a filter.",
+      "description": "Deletes a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html",
       "name": "ml.delete_filter",
       "privileges": {
@@ -5641,7 +5641,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing anomaly detection job.",
+      "description": "Deletes an anomaly detection job.\n\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html",
       "name": "ml.delete_job",
       "privileges": {
@@ -5684,7 +5684,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
+      "description": "Deletes an existing trained inference model that is currently not referenced\nby an ingest pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
       "name": "ml.delete_trained_model",
       "privileges": {
@@ -5727,7 +5727,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a model alias that refers to the trained model",
+      "description": "Deletes a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
       "name": "ml.delete_trained_model_alias",
       "privileges": {
@@ -5773,7 +5773,7 @@
           "stability": "stable"
         }
       },
-      "description": "Estimates the model memory",
+      "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html",
       "name": "ml.estimate_model_memory",
       "privileges": {
@@ -5819,7 +5819,7 @@
           "stability": "stable"
         }
       },
-      "description": "Evaluates the data frame analytics for an annotated index.",
+      "description": "Evaluates the data frame analytics for an annotated index.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
       "name": "ml.evaluate_data_frame",
       "privileges": {
@@ -5865,7 +5865,7 @@
           "stability": "stable"
         }
       },
-      "description": "Forces any buffered data to be processed by the job.",
+      "description": "Forces any buffered data to be processed by the job.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html",
       "name": "ml.flush_job",
       "privileges": {
@@ -6008,7 +6008,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for data frame analytics jobs.",
+      "description": "Retrieves configuration information for data frame analytics jobs.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
       "name": "ml.get_data_frame_analytics",
       "privileges": {
@@ -6106,7 +6106,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for datafeeds.",
+      "description": "Retrieves usage information for datafeeds.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html",
       "name": "ml.get_datafeed_stats",
       "privileges": {
@@ -6155,7 +6155,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for datafeeds.",
+      "description": "Retrieves configuration information for datafeeds.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html",
       "name": "ml.get_datafeeds",
       "privileges": {
@@ -6204,7 +6204,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves filters.",
+      "description": "Retrieves filters.\nYou can get a single filter or all filters.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html",
       "name": "ml.get_filters",
       "privileges": {
@@ -6302,7 +6302,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for anomaly detection jobs.",
+      "description": "Retrieves configuration information for anomaly detection jobs.\nYou can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html",
       "name": "ml.get_jobs",
       "privileges": {
@@ -6351,7 +6351,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
+      "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html",
       "name": "ml.get_overall_buckets",
       "privileges": {
@@ -6398,7 +6398,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for a trained inference model.",
+      "description": "Retrieves configuration information for a trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
       "privileges": {
@@ -6447,7 +6447,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for trained inference models.",
+      "description": "Retrieves usage information for trained models. You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
       "name": "ml.get_trained_models_stats",
       "privileges": {
@@ -6496,7 +6496,7 @@
           "stability": "stable"
         }
       },
-      "description": "Evaluate a trained model.",
+      "description": "Evaluates a trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html",
       "name": "ml.infer_trained_model",
       "request": {
@@ -6547,7 +6547,7 @@
           "stability": "stable"
         }
       },
-      "description": "Opens one or more anomaly detection jobs.",
+      "description": "Opens one or more anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
       "privileges": {
@@ -6593,7 +6593,7 @@
           "stability": "stable"
         }
       },
-      "description": "Posts scheduled events in a calendar.",
+      "description": "Adds scheduled events to a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html",
       "name": "ml.post_calendar_events",
       "privileges": {
@@ -6639,7 +6639,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews that will be analyzed given a data frame analytics config.",
+      "description": "Previews the extracted features used by a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
       "name": "ml.preview_data_frame_analytics",
       "privileges": {
@@ -6693,7 +6693,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews a datafeed.",
+      "description": "Previews a datafeed.\nThis API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
       "privileges": {
@@ -6750,7 +6750,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a calendar.",
+      "description": "Creates a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html",
       "name": "ml.put_calendar",
       "privileges": {
@@ -6839,7 +6839,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a data frame analytics job.",
+      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
       "docId": "put-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html",
       "name": "ml.put_data_frame_analytics",
@@ -6893,7 +6893,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a datafeed.",
+      "description": "Instantiates a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
       "privileges": {
@@ -6942,7 +6942,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a filter.",
+      "description": "Instantiates a filter.\nA filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html",
       "name": "ml.put_filter",
       "privileges": {
@@ -6988,7 +6988,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates an anomaly detection job.",
+      "description": "Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
       "privileges": {
@@ -7037,7 +7037,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates an inference trained model.",
+      "description": "Enables you to supply a trained model that is not created by data frame analytics.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
       "name": "ml.put_trained_model",
       "privileges": {
@@ -7083,7 +7083,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
+      "description": "Creates or updates a trained model alias. A trained model alias is a logical\nname used to reference a single trained model.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
       "name": "ml.put_trained_model_alias",
       "privileges": {
@@ -7129,7 +7129,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates part of a trained model definition",
+      "description": "Creates part of a trained model definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html",
       "name": "ml.put_trained_model_definition_part",
       "privileges": {
@@ -7175,7 +7175,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a trained model vocabulary",
+      "description": "Creates a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html",
       "name": "ml.put_trained_model_vocabulary",
       "privileges": {
@@ -7221,7 +7221,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resets an existing anomaly detection job.",
+      "description": "Resets an anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
       "privileges": {
@@ -7264,7 +7264,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts a data frame analytics job.",
+      "description": "Starts a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
       "name": "ml.start_data_frame_analytics",
       "privileges": {
@@ -7317,7 +7317,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts one or more datafeeds.",
+      "description": "Starts one or more datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
       "privileges": {
@@ -7363,7 +7363,7 @@
           "stability": "stable"
         }
       },
-      "description": "Start a trained model deployment.",
+      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html",
       "name": "ml.start_trained_model_deployment",
       "privileges": {
@@ -7409,7 +7409,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops one or more data frame analytics jobs.",
+      "description": "Stops one or more data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
       "privileges": {
@@ -7455,7 +7455,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops one or more datafeeds.",
+      "description": "Stops one or more datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html",
       "name": "ml.stop_datafeed",
       "privileges": {
@@ -7501,7 +7501,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stop a trained model deployment.",
+      "description": "Stops a trained model deployment.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html",
       "name": "ml.stop_trained_model_deployment",
       "privileges": {
@@ -7547,7 +7547,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of a data frame analytics job.",
+      "description": "Updates an existing data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
       "name": "ml.update_data_frame_analytics",
       "privileges": {
@@ -7600,7 +7600,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of a datafeed.",
+      "description": "Updates the properties of a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html",
       "name": "ml.update_datafeed",
       "privileges": {
@@ -7646,7 +7646,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates the description of a filter, adds items, or removes items.",
+      "description": "Updates the description of a filter, adds items, or removes items from the list.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html",
       "name": "ml.update_filter",
       "privileges": {
@@ -7738,7 +7738,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of trained model deployment.",
+      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html",
       "name": "ml.update_trained_model_deployment",
       "privileges": {
@@ -7838,7 +7838,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to execute several search template operations in one request.",
+      "description": "Runs multiple templated searches with a single request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
       "name": "msearch_template",
       "privileges": {
@@ -7941,7 +7941,7 @@
           "stability": "stable"
         }
       },
-      "description": "Open a point in time that can be used in subsequent searches",
+      "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
       "docId": "point-in-time-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html",
       "name": "open_point_in_time",
@@ -8023,7 +8023,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a script.",
+      "description": "Creates or updates a stored script or search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "put_script",
       "request": {
@@ -8110,7 +8110,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Returns the details about a query ruleset.",
+      "description": "Returns the details about a query ruleset",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html",
       "name": "query_ruleset.get",
       "request": {
@@ -8148,7 +8148,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Lists query rulesets.",
+      "description": "Returns summarized information about existing query rulesets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html",
       "name": "query_ruleset.list",
       "request": {
@@ -8227,7 +8227,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
+      "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
       "privileges": {
@@ -8322,7 +8322,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to use the Mustache language to pre-render a search definition.",
+      "description": "Renders a search template as a search request body.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html",
       "name": "render_search_template",
       "request": {
@@ -8371,7 +8371,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Allows an arbitrary script to be executed and a result to be returned",
+      "description": "Runs a script and returns a result.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html",
       "name": "scripts_painless_execute",
       "request": {
@@ -8466,7 +8466,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns results matching a query.",
+      "description": "Returns search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
       "name": "search",
       "privileges": {
@@ -8596,7 +8596,7 @@
           "stability": "beta"
         }
       },
-      "description": "Returns the details about a search application.",
+      "description": "Returns the details about a search application",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-search-application.html",
       "name": "search_application.get",
       "request": {
@@ -8795,7 +8795,7 @@
           "stability": "beta"
         }
       },
-      "description": "Perform a search against a search application",
+      "description": "Perform a search against a search application.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-search.html",
       "name": "search_application.search",
       "request": {
@@ -8879,7 +8879,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to use the Mustache language to pre-render a search definition.",
+      "description": "Runs a search with a search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html",
       "name": "search_template",
       "request": {
@@ -8928,7 +8928,7 @@
           "stability": "stable"
         }
       },
-      "description": "Enables authentication as a user and retrieve information about the authenticated user.",
+      "description": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html",
       "name": "security.authenticate",
       "request": {
@@ -8966,7 +8966,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates an API key for access without requiring basic authentication.",
+      "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html",
       "name": "security.create_api_key",
       "privileges": {
@@ -9013,7 +9013,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information for one or more API keys.",
+      "description": "Retrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html",
       "name": "security.get_api_key",
       "privileges": {
@@ -9106,7 +9106,7 @@
           "stability": "stable"
         }
       },
-      "description": "Invalidates one or more API keys.",
+      "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html",
       "name": "security.invalidate_api_key",
       "privileges": {
@@ -9153,7 +9153,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information for API keys using a subset of query DSL",
+      "description": "Retrieves information for API keys in a paginated manner. You can optionally filter the results with a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html",
       "name": "security.query_api_keys",
       "privileges": {
@@ -9201,7 +9201,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates attributes of an existing API key.",
+      "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html",
       "name": "security.update_api_key",
       "privileges": {
@@ -9682,7 +9682,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a synonyms set",
+      "description": "Creates or updates a synonym set.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-synonyms-set.html",
       "name": "synonyms.put_synonym",
       "request": {
@@ -9894,7 +9894,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing transform.",
+      "description": "Deletes a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
       "name": "transform.delete_transform",
       "privileges": {
@@ -10033,7 +10033,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews a transform.",
+      "description": "Previews a transform.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
       "name": "transform.preview_transform",
       "privileges": {
@@ -10091,7 +10091,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a transform.",
+      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
       "name": "transform.put_transform",
       "privileges": {
@@ -10143,7 +10143,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resets an existing transform.",
+      "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html",
       "name": "transform.reset_transform",
       "privileges": {
@@ -10186,7 +10186,7 @@
           "stability": "stable"
         }
       },
-      "description": "Schedules now a transform.",
+      "description": "Schedules now a transform.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html",
       "name": "transform.schedule_now_transform",
       "privileges": {
@@ -10232,7 +10232,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts one or more transforms.",
+      "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
       "name": "transform.start_transform",
       "privileges": {
@@ -10322,7 +10322,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of a transform.",
+      "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
       "name": "transform.update_transform",
       "privileges": {
@@ -10414,7 +10414,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+      "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html",
       "name": "update_by_query",
       "request": {
@@ -12251,7 +12251,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns help for the Cat APIs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -13351,7 +13350,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about whether a particular component template exist",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13552,7 +13550,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns different information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16014,7 +16011,6 @@
           }
         ]
       },
-      "description": "Returns number of documents matching a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18245,7 +18241,6 @@
           }
         ]
       },
-      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19448,7 +19443,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19789,7 +19783,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the source of a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20393,7 +20386,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Adds a block to an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21813,7 +21805,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about whether a particular index template exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25775,7 +25766,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26637,7 +26627,6 @@
           }
         ]
       },
-      "description": "Allows to get multiple documents in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34482,7 +34471,6 @@
           }
         }
       },
-      "description": "Allows to execute several search operations in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34879,7 +34867,6 @@
           }
         ]
       },
-      "description": "Returns multiple termvectors in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35221,7 +35208,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns whether the cluster is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35888,7 +35874,6 @@
           }
         ]
       },
-      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -36466,7 +36451,6 @@
           }
         ]
       },
-      "description": "Allows to retrieve a large numbers of results from a single search request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38505,7 +38489,6 @@
           }
         ]
       },
-      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39793,7 +39776,6 @@
           }
         ]
       },
-      "description": "Determines whether the specified user has a specified list of privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40461,7 +40443,6 @@
           }
         ]
       },
-      "description": "Clears the SQL cursor",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40508,7 +40489,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40562,7 +40542,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40739,7 +40718,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41092,7 +41070,6 @@
           }
         ]
       },
-      "description": "Executes a SQL request",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41277,7 +41254,6 @@
           }
         ]
       },
-      "description": "Translates SQL into Elasticsearch queries",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41935,7 +41911,6 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about a task.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42141,7 +42116,6 @@
           }
         ]
       },
-      "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42275,7 +42249,6 @@
           }
         ]
       },
-      "description": "Returns information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -44082,7 +44055,6 @@
           }
         ]
       },
-      "description": "Updates a document with a script or partial document.",
       "generics": [
         {
           "name": "TDocument",
