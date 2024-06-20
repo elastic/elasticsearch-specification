@@ -63779,6 +63779,10 @@
               "script": {
                 "$ref": "#/components/schemas/_types:Script"
               },
+              "shard_min_doc_count": {
+                "description": "Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.\nTerms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.",
+                "type": "number"
+              },
               "shard_size": {
                 "description": "The number of candidate terms produced by each shard.\nBy default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.",
                 "type": "number"
