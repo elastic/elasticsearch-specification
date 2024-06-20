@@ -45,16 +45,16 @@
     "async_search.get": {
       "request": [],
       "response": [
-        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types:Unit'",
+        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types.EpochTime:Unit'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
-        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations:TBucket'",
-        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
+        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
+        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
         "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
-        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types:Unit'",
+        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types.DurationValue:Unit'",
         "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
-        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
+        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
@@ -72,7 +72,7 @@
         "Request: query parameter 'scroll' does not exist in the json spec",
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
         "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'"
+        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
       ],
       "response": []
     },
@@ -168,7 +168,7 @@
         "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": [
-        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils:T'"
+        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
       ]
     },
     "cat.fielddata": {
@@ -579,7 +579,7 @@
     },
     "connector.last_sync": {
       "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils:T'"
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
       ],
       "response": []
     },
@@ -780,7 +780,7 @@
         "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
       ],
       "response": [
-        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
+        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
       ]
     },
     "fleet.post_secret": {
@@ -1080,12 +1080,6 @@
         "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "inference.delete": {
-      "request": [],
-      "response": [
-        "response definition inference.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "inference.put": {
       "request": [
         "request definition inference.put:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:InferenceEndpoint'"
@@ -1139,7 +1133,7 @@
     "mget": {
       "request": [],
       "response": [
-        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget:TDocument'"
+        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
       ]
     },
     "ml.delete_calendar": {
@@ -1274,12 +1268,6 @@
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
-    },
-    "ml.update_trained_model_deployment": {
-      "request": [
-        "Request: missing json spec query parameter 'number_of_allocations'"
       ],
       "response": []
     },

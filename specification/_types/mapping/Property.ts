@@ -48,6 +48,7 @@ import {
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
   ShortNumberProperty,
+  SemanticTextProperty,
   SparseVectorProperty,
   TextProperty,
   UnsignedLongNumberProperty,
@@ -60,6 +61,7 @@ import {
   ConstantKeywordProperty,
   FieldAliasProperty,
   HistogramProperty,
+  IcuCollationProperty,
   IpProperty,
   Murmur3HashProperty,
   TokenCountProperty
@@ -118,10 +120,11 @@ export type Property =
   // complex
   | AggregateMetricDoubleProperty
   | DenseVectorProperty
-  | SparseVectorProperty
   | FlattenedProperty
   | NestedProperty
   | ObjectProperty
+  | SemanticTextProperty
+  | SparseVectorProperty
 
   // structured
   | CompletionProperty
@@ -156,6 +159,9 @@ export type Property =
   | IntegerRangeProperty
   | IpRangeProperty
   | LongRangeProperty
+
+  // plugins
+  | IcuCollationProperty
 
 export enum FieldType {
   none,
@@ -200,8 +206,10 @@ export enum FieldType {
   constant_keyword,
   aggregate_metric_double,
   dense_vector,
+  semantic_text,
   sparse_vector,
-  match_only_text
+  match_only_text,
+  icu_collation_keyword
 }
 
 export class PropertyWithClrOrigin {}
