@@ -21,5 +21,6 @@ import { User } from '@security/_types/User'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
+  /** @codegen_name users */
   body: Dictionary<string, User>
 }

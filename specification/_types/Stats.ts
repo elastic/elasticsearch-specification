@@ -35,11 +35,11 @@ export class ClusterStatistics {
 }
 
 enum ClusterSearchStatus {
-  running = 0,
-  successful = 1,
-  partial = 2,
-  skipped = 3,
-  failed = 4
+  running,
+  successful,
+  partial,
+  skipped,
+  failed
 }
 
 export class ClusterDetails {
@@ -194,19 +194,19 @@ export class QueryCacheStats {
    * Total number of entries added to the query cache across all shards assigned to selected nodes.
    * This number includes current and evicted entries.
    */
-  cache_count: integer
+  cache_count: long
   /**
    * Total number of entries currently in the query cache across all shards assigned to selected nodes.
    */
-  cache_size: integer
+  cache_size: long
   /**
    * Total number of query cache evictions across all shards assigned to selected nodes.
    */
-  evictions: integer
+  evictions: long
   /**
    * Total count of query cache hits across all shards assigned to selected nodes.
    */
-  hit_count: integer
+  hit_count: long
   /**
    * Total amount of memory used for the query cache across all shards assigned to selected nodes.
    */
@@ -218,11 +218,11 @@ export class QueryCacheStats {
   /**
    * Total count of query cache misses across all shards assigned to selected nodes.
    */
-  miss_count: integer
+  miss_count: long
   /**
    * Total count of hits and misses in the query cache across all shards assigned to selected nodes.
    */
-  total_count: integer
+  total_count: long
 }
 
 export class RecoveryStats {

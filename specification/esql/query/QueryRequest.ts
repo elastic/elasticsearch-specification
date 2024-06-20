@@ -25,6 +25,7 @@ import { ScalarValue } from '@_types/common'
  * Executes an ES|QL request
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  * @doc_id esql-query
  */
 export interface Request extends RequestBase {

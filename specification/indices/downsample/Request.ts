@@ -40,5 +40,5 @@ export interface Request extends RequestBase {
     target_index: IndexName
   }
   /** @codegen_name config */
-  body?: DownsampleConfig
+  body: DownsampleConfig
 }

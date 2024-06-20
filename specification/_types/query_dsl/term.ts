@@ -163,23 +163,44 @@ export class NumberRangeQuery extends RangeQueryBase {
   to?: double | null
 }
 
-/** @codegen_names date, number */
+export class TermsRangeQuery extends RangeQueryBase {
+  /**
+   * Greater than.
+   */
+  gt?: string
+  /**
+   * Greater than or equal to.
+   */
+  gte?: string
+  /**
+   * Less than.
+   */
+  lt?: string
+  /**
+   * Less than or equal to.
+   */
+  lte?: string
+  from?: string | null
+  to?: string | null
+}
+
+/** @codegen_names date, number, terms */
 // Note: deserialization depends on value types
-export type RangeQuery = DateRangeQuery | NumberRangeQuery
+export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermsRangeQuery
 
 export enum RangeRelation {
   /**
    * Matches documents with a range field value entirely within the query’s range.
    */
-  within = 0,
+  within,
   /**
    * Matches documents with a range field value that entirely contains the query’s range.
    */
-  contains = 1,
+  contains,
   /**
    * Matches documents with a range field value that intersects the query’s range.
    */
-  intersects = 2
+  intersects
 }
 
 /** @shortcut_property value */

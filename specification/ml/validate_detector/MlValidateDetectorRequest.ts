@@ -27,5 +27,5 @@ import { RequestBase } from '@_types/Base'
  */
 export interface Request extends RequestBase {
   /** @codegen_name detector */
-  body?: Detector
+  body: Detector
 }

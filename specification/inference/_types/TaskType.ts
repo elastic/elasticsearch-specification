@@ -21,6 +21,8 @@
  * Task types used in the API
  */
 export enum TaskType {
-  sparse_embedding = 0,
-  text_embedding = 1
+  sparse_embedding,
+  text_embedding,
+  rerank,
+  completion
 }

@@ -15,12 +15,14 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use clients_schema::*;
-use openapiv3::*;
-use indexmap::IndexMap;
 use std::collections::{BTreeMap, HashSet};
+
 use anyhow::{anyhow, bail};
+use clients_schema::*;
+use indexmap::IndexMap;
+use openapiv3::*;
 use tracing::{error, info};
+
 use crate::openapi;
 use crate::openapi::{OpenAPI, RefOrSchema};
 
@@ -31,7 +33,6 @@ pub struct Types {
 }
 
 impl Types {
-
     pub fn track(&mut self, id: &str) {
         self.tracker.insert(id.to_string());
     }
@@ -41,7 +42,7 @@ impl Types {
     }
 
     pub fn add(&mut self, id: &str, type_def: TypeDefinition) {
-        //info!("Adding type '{id}'");
+        // info!("Adding type '{id}'");
         self.types.insert(id.to_string(), type_def);
     }
 
@@ -67,26 +68,23 @@ impl Types {
     }
 }
 
-///
 /// Generate a top-level type, which can be an alias or a type definition
-///
-pub fn generate_type (
+pub fn generate_type(
     open_api: &OpenAPI,
     id: &str,
     definition: &RefOrSchema,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<TypeName> {
-
-    //info!("Generating type '{id}'");
+    // info!("Generating type '{id}'");
     types.track(id);
     match definition {
         RefOrSchema::Ref(ref_id) => {
             // Type alias
             let type_name = ref_to_typename(id);
-            types.add(id, TypeDefinition::type_alias(
-                type_name.clone(),
-                ref_to_typename(ref_id).into()
-            ));
+            types.add(
+                id,
+                TypeAlias::new(type_name.clone(), ref_to_typename(ref_id).into()).into(),
+            );
             Ok(type_name)
         }
         RefOrSchema::Schema(schema) => {
@@ -96,19 +94,16 @@ pub fn generate_type (
     }
 }
 
-///
 /// Generate a type definition from an OpenAPI component schema.
 /// This can result in several types if the schema contains anonymous nested structures
-///
 fn generate_type_for_schema(
     open_api: &OpenAPI,
     id: &str,
     schema: &Schema,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<TypeName> {
-
     if let Some(typedef) = types.get(id) {
-        //info!("Type '{id}' already generated");
+        // info!("Type '{id}' already generated");
         return Ok(typedef.name().clone());
     }
 
@@ -120,7 +115,10 @@ fn generate_type_for_schema(
     let mut base = BaseType::new(type_name.clone());
     base.description = data.description.clone();
     if data.deprecated {
-        base.deprecation = Some(Deprecation {version: "".into(), description: "".into()})
+        base.deprecation = Some(Deprecation {
+            version: "".into(),
+            description: "".into(),
+        })
     }
     if let Some(ref docs) = data.external_docs {
         base.doc_url = Some(docs.url.clone())
@@ -136,7 +134,10 @@ fn generate_type_for_schema(
     if data.discriminator.is_some() {
         // FIXME: data.discriminator -> internally tagged variant
 
-        bail!("Discriminator in schema {} has to become an internally tagged variant", id);
+        bail!(
+            "Discriminator in schema {} has to become an internally tagged variant",
+            id
+        );
     }
 
     use openapiv3::SchemaKind::*;
@@ -145,16 +146,16 @@ fn generate_type_for_schema(
             // Type alias to a primitive type or enum
             generate_schema_kind_type(open_api, id, t, base, types)?;
         }
-        Not {..} => {
+        Not { .. } => {
             bail!("Unsupported schema kind for '{}' - {:?}", id, schema.schema_kind);
-        },
+        }
         Any(any) => {
             let not_any = Schema {
                 schema_data: data.clone(),
-                schema_kind: openapi::any_to_schema(any.clone())?
+                schema_kind: openapi::any_to_schema(any.clone())?,
             };
             generate_type_for_schema(open_api, id, &not_any, types)?;
-        },
+        }
         // Definitions:
         // - oneOf: validates the value against exactly one of the subschemas
         // - anyOf: validates the value against any (one or more) of the subschemas
@@ -163,11 +164,11 @@ fn generate_type_for_schema(
         // AnyOf sits in between oneOf and allOf and doesn't have a direct equivalence in schema.json
         // We choose to handle it like a oneOf, even if oneOf is more constrained, as allOf is used for
         // composition/inheritance.
-        AllOf {all_of} => {
+        AllOf { all_of } => {
             let merged = open_api.merge_schemas(all_of, data)?;
             generate_type_for_schema(open_api, id, &merged, types)?;
         }
-        AnyOf {any_of: one_of} | OneOf {one_of} => {
+        AnyOf { any_of: one_of } | OneOf { one_of } => {
             generate_schema_kind_one_of(open_api, id, one_of, &data.discriminator, base, types)?;
         }
     }
@@ -175,22 +176,19 @@ fn generate_type_for_schema(
     Ok(type_name)
 }
 
-///
 /// Generate the TypeDefinition for an openapi::SchemaKind::Type
 /// - `id`: name of the enclosing OpenApi type
 /// - `t`: the OpenApi type definition
 /// - `base`: common fields for the type definition
 /// - `types`: the target schema types, where the generated definition will be added, along with any synthetic types
-///    that may be needed to represent nested structures.
-///
+///   that may be needed to represent nested structures.
 fn generate_schema_kind_type(
     open_api: &OpenAPI,
     id: &str,
     t: &openapiv3::Type,
     base: BaseType,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<()> {
-
     fn alias(base: BaseType, name: TypeName) -> TypeDefinition {
         TypeDefinition::TypeAlias(TypeAlias {
             base,
@@ -207,7 +205,9 @@ fn generate_schema_kind_type(
         String(string) if !string.enumeration.is_empty() => {
             // Enumeration
 
-            let members = string.enumeration.iter()
+            let members = string
+                .enumeration
+                .iter()
                 .filter_map(|name| name.as_ref()) // filter empty options. Why are they here?
                 .map(|name| name.as_str().into())
                 .collect();
@@ -215,11 +215,11 @@ fn generate_schema_kind_type(
             let enum_def = TypeDefinition::Enum(clients_schema::Enum {
                 base,
                 members,
-                is_open: false
+                is_open: false,
             });
 
             types.add(id, enum_def);
-        },
+        }
 
         //---------------------------------------------------------------------
         String(_) => types.add(id, alias(base, builtins::STRING.clone())),
@@ -232,7 +232,9 @@ fn generate_schema_kind_type(
         // OpenAPI Integer and Number accept an enumeration, but since it's just a list of valid
         // values with no identifier, we can't produce an enum out of that list.
         // TODO: choose int/long depending on min/max values
-            types.add(id, alias(base, builtins::LONG.clone())),
+        {
+            types.add(id, alias(base, builtins::LONG.clone()))
+        }
 
         //---------------------------------------------------------------------
         Number(_) => {
@@ -244,7 +246,10 @@ fn generate_schema_kind_type(
         Array(array) => {
             // NOTE: array.unique_items indicates a Set. We don't have that in schema.json, and it actually
             // doesn't exist in the JSON data model
-            let items = array.items.as_ref().ok_or(anyhow!("Array type in '{}' has no items", id))?;
+            let items = array
+                .items
+                .as_ref()
+                .ok_or(anyhow!("Array type in '{}' has no items", id))?;
 
             let value = generate_value_of(open_api, items.into(), || format!("{}_arrayitem", id), types)?;
             let alias_def = TypeDefinition::TypeAlias(TypeAlias {
@@ -255,19 +260,26 @@ fn generate_schema_kind_type(
             });
 
             types.add(id, alias_def);
-        },
+        }
 
         //---------------------------------------------------------------------
         Object(obj) => {
             if let (0, Some(ref value)) = (obj.properties.len(), &obj.additional_properties) {
                 // No fixed properties: it's a dictionary
                 generate_dictionary_def(open_api, id, base, value, types)?;
-
             } else {
                 // Regular type
-                generate_interface_def(open_api, id, base, &obj.required, &obj.properties, &obj.additional_properties, types)?;
+                generate_interface_def(
+                    open_api,
+                    id,
+                    base,
+                    &obj.required,
+                    &obj.properties,
+                    &obj.additional_properties,
+                    types,
+                )?;
             }
-        },
+        }
     }
 
     Ok(())
@@ -277,23 +289,18 @@ fn generate_union_of(
     open_api: &OpenAPI,
     id: &str,
     items: &[ReferenceOr<Schema>],
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<UnionOf> {
     // Open API items are ref_or_schema that we turn into a value_of
     // If producing that value_of requires the creation of a synthetic type, it will be
     // named by appending the item number to the type name (e.g. "foo_1")
-    let items = items.iter()
+    let items = items
+        .iter()
         .enumerate()
-        .map(|(idx, item)| generate_value_of(
-            open_api,
-            item.into(), || format!("{}_{}", id, idx),
-            types
-        ))
+        .map(|(idx, item)| generate_value_of(open_api, item.into(), || format!("{}_{}", id, idx), types))
         .collect::<Result<Vec<_>, _>>()?;
 
-    Ok(UnionOf {
-        items,
-    })
+    Ok(UnionOf { items })
 }
 
 fn generate_schema_kind_one_of(
@@ -302,9 +309,8 @@ fn generate_schema_kind_one_of(
     one_of: &[ReferenceOr<Schema>],
     discriminator: &Option<Discriminator>,
     base: BaseType,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<()> {
-
     let filtered = one_of.iter().filter(|s| !open_api.is_not(s)).collect::<Vec<_>>();
     if filtered.len() == 1 {
         return generate_type(open_api, id, &filtered[0].into(), types).map(|_| ());
@@ -345,7 +351,7 @@ fn generate_dictionary_def(
     id: &str,
     base: BaseType,
     value: &AdditionalProperties,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<()> {
     let dict = TypeDefinition::TypeAlias(TypeAlias {
         base,
@@ -354,15 +360,15 @@ fn generate_dictionary_def(
         typ: ValueOf::InstanceOf(InstanceOf {
             typ: builtins::DICTIONARY.clone(),
             generics: vec![
-                ValueOf::instance_of(builtins::STRING.clone()),
+                ValueOf::from(builtins::STRING.clone()),
                 match value {
-                    AdditionalProperties::Any(_) =>
-                        (&builtins::USER_DEFINED).into(),
+                    AdditionalProperties::Any(_) => (&builtins::USER_DEFINED).into(),
 
-                    AdditionalProperties::Schema(schema) =>
+                    AdditionalProperties::Schema(schema) => {
                         generate_value_of(open_api, schema.into(), || format!("{}_value", id), types)?
+                    }
                 },
-            ]
+            ],
         }),
     });
 
@@ -377,7 +383,7 @@ fn generate_interface_def(
     required: &[String],
     properties: &IndexMap<String, ReferenceOr<Box<Schema>>>,
     additional_properties: &Option<AdditionalProperties>,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<()> {
     // Regular type
 
@@ -409,7 +415,7 @@ fn generate_interface_def(
         };
 
         props.push(property);
-    };
+    }
 
     let mut typedef = Interface {
         base,
@@ -426,7 +432,9 @@ fn generate_interface_def(
     if let Some(props) = additional_properties {
         let prop_value: ValueOf = match props {
             AdditionalProperties::Any(_) => (&builtins::USER_DEFINED).into(),
-            AdditionalProperties::Schema(schema) => generate_value_of(open_api, schema.into(), || format!("{id}_props"), types)?,
+            AdditionalProperties::Schema(schema) => {
+                generate_value_of(open_api, schema.into(), || format!("{id}_props"), types)?
+            }
         };
         typedef.behaviors.push(clients_schema::Inherits {
             typ: builtins::ADDITIONAL_PROPERTIES.clone(),
@@ -438,24 +446,17 @@ fn generate_interface_def(
     Ok(())
 }
 
-///
 /// Generate a value_of for a reference or a schema. If the schema doesn't denote one that can be represented as a
 /// value_of, a synthetic type is produced.
-///
 fn generate_value_of(
     open_api: &OpenAPI,
     value: RefOrSchema,
     id_gen: impl Fn() -> String,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<ValueOf> {
-
     match value {
-        RefOrSchema::Ref(reference) => {
-            Ok(ref_to_typename(reference).into())
-        },
-        RefOrSchema::Schema(schema) => {
-            generate_value_for_schema(open_api, schema, id_gen, types)
-        }
+        RefOrSchema::Ref(reference) => Ok(ref_to_typename(reference).into()),
+        RefOrSchema::Schema(schema) => generate_value_for_schema(open_api, schema, id_gen, types),
     }
 }
 
@@ -463,17 +464,14 @@ fn generate_value_for_schema(
     open_api: &OpenAPI,
     schema: &Schema,
     id_gen: impl Fn() -> String,
-    types: &mut Types
+    types: &mut Types,
 ) -> anyhow::Result<ValueOf> {
-
     use openapiv3::SchemaKind::*;
     match &schema.schema_kind {
         Type(typ) => {
             use openapiv3::Type::*;
             match typ {
-                String(string) if string.enumeration.is_empty() => {
-                    Ok((&builtins::STRING).into())
-                }
+                String(string) if string.enumeration.is_empty() => Ok((&builtins::STRING).into()),
                 String(_) => {
                     let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
                     Ok(type_name.into())
@@ -493,15 +491,16 @@ fn generate_value_for_schema(
                     Ok(type_name.into())
                 }
                 Array(array) => {
-                    let item = array.items.as_ref().ok_or(anyhow!("Array type in '{}' has no items", id_gen()))?;
+                    let item = array
+                        .items
+                        .as_ref()
+                        .ok_or(anyhow!("Array type in '{}' has no items", id_gen()))?;
                     let item = generate_value_of(open_api, item.into(), id_gen, types)?;
-                    Ok(ValueOf::ArrayOf(ArrayOf {value: Box::new(item)}))
+                    Ok(ValueOf::ArrayOf(ArrayOf { value: Box::new(item) }))
                 }
-                Boolean { .. } => {
-                    Ok((&builtins::BOOLEAN).into())
-                }
+                Boolean { .. } => Ok((&builtins::BOOLEAN).into()),
             }
-        },
+        }
         // Do not factorize below to keep exhaustiveness, if some specific handling is needed/possible
         OneOf { .. } => {
             let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
@@ -515,12 +514,8 @@ fn generate_value_for_schema(
             let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
             Ok(type_name.into())
         }
-        Not { .. } => {
-            Ok((&builtins::VOID).into())
-        }
-        Any(AnySchema{ typ: Some(typ), .. }) if typ == "null" => {
-            Ok((&builtins::NULL).into())
-        },
+        Not { .. } => Ok((&builtins::VOID).into()),
+        Any(AnySchema { typ: Some(typ), .. }) if typ == "null" => Ok((&builtins::NULL).into()),
         Any(_) => {
             let type_name = generate_type_for_schema(open_api, &id_gen(), schema, types)?;
             Ok(type_name.into())

@@ -34,10 +34,10 @@ jobs:
         token: ${{ secrets.PAT }}
         persist-credentials: true
 
-    - name: Setup Node 16.x
+    - name: Setup Node 20.x
       uses: actions/setup-node@v3
       with:
-        node-version: 16.x
+        node-version: 20.x
         cache: npm
         cache-dependency-path: '**/package-lock.json'
 
@@ -50,6 +50,7 @@ jobs:
         make compile
         make generate
         make transform-to-openapi
+        make filter-for-serverless
 
     - name: Check for Changed Files
       id: changes

@@ -45,16 +45,16 @@
     "async_search.get": {
       "request": [],
       "response": [
-        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types:Unit'",
+        "type_alias definition _types:EpochTime / instance_of - No type definition for '_types.EpochTime:Unit'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
-        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations:TBucket'",
-        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations:TBucket'",
+        "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
+        "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
         "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
         "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
-        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types:Unit'",
+        "type_alias definition _types:DurationValue / instance_of - No type definition for '_types.DurationValue:Unit'",
         "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
-        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'",
+        "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
@@ -65,8 +65,8 @@
         "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
         "Request: query parameter 'scroll' does not exist in the json spec",
         "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
-        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils:T'",
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
+        "type_alias definition _spec_utils:PipeSeparatedFlags / union_of / instance_of - No type definition for '_spec_utils.PipeSeparatedFlags:T'"
       ],
       "response": []
     },
@@ -136,7 +136,7 @@
         "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
       ],
       "response": [
-        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils:T'"
+        "type_alias definition _spec_utils:Stringified / union_of / instance_of - No type definition for '_spec_utils.Stringified:T'"
       ]
     },
     "cat.fielddata": {
@@ -482,6 +482,24 @@
         "response definition cluster.put_component_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "connector.delete": {
+      "request": [],
+      "response": [
+        "response definition connector.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
+    "connector.last_sync": {
+      "request": [
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
+      ],
+      "response": []
+    },
+    "connector.sync_job_delete": {
+      "request": [],
+      "response": [
+        "response definition connector.sync_job_delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
     "create": {
       "request": [],
       "response": [
@@ -593,7 +611,7 @@
         "Request: query parameter 'allow_partial_search_results' does not exist in the json spec"
       ],
       "response": [
-        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
+        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch.ResponseItem:TDocument'"
       ]
     },
     "fleet.post_secret": {
@@ -647,12 +665,6 @@
         "Request: query parameter 'from' does not exist in the json spec",
         "Request: query parameter 'sort' does not exist in the json spec",
         "Request: missing json spec query parameter 'wait_for_checkpoints_timeout'"
-      ],
-      "response": []
-    },
-    "get": {
-      "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
       ],
       "response": []
     },
@@ -838,10 +850,7 @@
       ]
     },
     "indices.put_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
-      ],
+      "request": [],
       "response": [
         "response definition indices.put_index_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -854,8 +863,7 @@
     },
     "indices.put_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
+        "Request: query parameter 'cause' does not exist in the json spec"
       ],
       "response": [
         "response definition indices.put_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
@@ -875,6 +883,7 @@
     },
     "indices.simulate_index_template": {
       "request": [
+        "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
@@ -891,15 +900,9 @@
         "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "inference.delete_model": {
-      "request": [],
-      "response": [
-        "response definition inference.delete_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "inference.put_model": {
+    "inference.put": {
       "request": [
-        "request definition inference.put_model:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:ModelConfig'"
+        "request definition inference.put:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:InferenceEndpoint'"
       ],
       "response": []
     },
@@ -929,11 +932,9 @@
       "response": []
     },
     "mget": {
-      "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'"
-      ],
+      "request": [],
       "response": [
-        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget:TDocument'"
+        "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
       ]
     },
     "ml.delete_calendar": {
@@ -1035,12 +1036,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model": {
-      "request": [
-        "Request: missing json spec query parameter 'wait_for_completion'"
-      ],
-      "response": []
-    },
     "ml.put_trained_model_alias": {
       "request": [],
       "response": [
@@ -1074,12 +1069,6 @@
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
-    },
-    "ml.update_trained_model_deployment": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1177,7 +1166,6 @@
     },
     "search": {
       "request": [
-        "Request: missing json spec query parameter 'force_synthetic_source'",
         "Request: missing json spec query parameter 'include_named_queries_score'",
         "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
@@ -1260,7 +1248,8 @@
     },
     "security.get_api_key": {
       "request": [
-        "Request: query parameter 'active_only' does not exist in the json spec"
+        "Request: query parameter 'active_only' does not exist in the json spec",
+        "Request: query parameter 'with_profile_uid' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1313,6 +1302,15 @@
         "Url path '/_security/privilege/' has a trailing slash"
       ],
       "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Request: query parameter 'with_profile_uid' does not exist in the json spec",
+        "Request: query parameter 'typed_keys' does not exist in the json spec"
+      ],
+      "response": [
+        "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
+      ]
     },
     "security.suggest_user_profiles": {
       "request": [],
@@ -1451,12 +1449,6 @@
         "Request: query parameter 'node_id' does not exist in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'nodes'"
-      ],
-      "response": []
-    },
-    "text_structure.find_structure": {
-      "request": [
-        "Request: missing json spec query parameter 'ecs_compatibility'"
       ],
       "response": []
     },

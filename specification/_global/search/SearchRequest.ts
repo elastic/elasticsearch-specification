@@ -46,8 +46,9 @@ import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
 import { Sort, SortResults } from '@_types/sort'
-import { KnnQuery } from '@_types/Knn'
+import { KnnSearch } from '@_types/Knn'
 import { RankContainer } from '@_types/Rank'
+import { RetrieverContainer } from '@_types/Retriever'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -324,6 +325,13 @@ export interface Request extends RequestBase {
      * @doc_id sort-search-results
      */
     sort?: string | string[]
+    /**
+     * Should this request force synthetic _source?
+     * Use this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.
+     * Fetches with this enabled will be slower the enabling synthetic source natively in the index.
+     * @availability stack since=8.4.0 visibility=feature_flag feature_flag=es.index_mode_feature_flag_registered
+     */
+    force_synthetic_source?: boolean
   }
   // We should keep this in sync with the multi search request body.
   body: {
@@ -377,7 +385,7 @@ export interface Request extends RequestBase {
      * @availability stack since=8.4.0
      * @availability serverless
      */
-    knn?: KnnQuery | KnnQuery[]
+    knn?: KnnSearch | KnnSearch[]
     /**
      * Defines the Reciprocal Rank Fusion (RRF) to use.
      * @availability stack since=8.8.0
@@ -409,6 +417,12 @@ export interface Request extends RequestBase {
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
      */
     rescore?: Rescore | Rescore[]
+    /**
+     * A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.
+     * @availability stack since=8.14.0
+     * @availability serverless
+     */
+    retriever?: RetrieverContainer
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.
      */

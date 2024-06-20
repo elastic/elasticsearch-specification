@@ -60,9 +60,9 @@ export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterB
 }
 
 export enum DelimitedPayloadEncoding {
-  int = 0,
-  float = 1,
-  identity = 2
+  int,
+  float,
+  identity
 }
 
 export class DelimitedPayloadTokenFilter extends TokenFilterBase {
@@ -72,8 +72,8 @@ export class DelimitedPayloadTokenFilter extends TokenFilterBase {
 }
 
 export enum EdgeNGramSide {
-  front = 0,
-  back = 1
+  front,
+  back
 }
 
 export class EdgeNGramTokenFilter extends TokenFilterBase {
@@ -103,8 +103,8 @@ export class StopTokenFilter extends TokenFilterBase {
 }
 
 export enum SynonymFormat {
-  solr = 0,
-  wordnet = 1
+  solr,
+  wordnet
 }
 
 export class SynonymGraphTokenFilter extends TokenFilterBase {
@@ -114,6 +114,7 @@ export class SynonymGraphTokenFilter extends TokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -125,6 +126,7 @@ export class SynonymTokenFilter extends TokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -211,8 +213,8 @@ export class JaStopTokenFilter extends TokenFilterBase {
 }
 
 export enum KeepTypesMode {
-  include = 0,
-  exclude = 1
+  include,
+  exclude
 }
 
 export class KeepTypesTokenFilter extends TokenFilterBase {
@@ -392,7 +394,6 @@ export type TokenFilterDefinition =
   | KuromojiStemmerTokenFilter
   | KuromojiReadingFormTokenFilter
   | KuromojiPartOfSpeechTokenFilter
-  | IcuTokenizer
   | IcuCollationTokenFilter
   | IcuFoldingTokenFilter
   | IcuNormalizationTokenFilter

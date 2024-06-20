@@ -30,7 +30,7 @@ import {
   GeoLocation,
   GeoBounds
 } from '@_types/Geo'
-import { integer, float, long, double } from '@_types/Numeric'
+import { integer, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import {
@@ -40,11 +40,9 @@ import {
   TimeZone,
   DurationLarge
 } from '@_types/Time'
-import { Buckets, TermsAggregateBase } from './Aggregate'
+import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
-import { OverloadOf } from '@spec_utils/behaviors'
-import { Term } from '@global/termvectors/types'
 import { ValueType } from '@_types/aggregations/metric'
 
 /**
@@ -60,6 +58,10 @@ export class AdjacencyMatrixAggregation extends BucketAggregationBase {
    * At least one filter is required.
    */
   filters?: Dictionary<string, QueryContainer>
+  /**
+   * Separator used to concatenate filter names. Defaults to &.
+   */
+  separator?: string
 }
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
@@ -100,12 +102,12 @@ export class AutoDateHistogramAggregation extends BucketAggregationBase {
 }
 
 export enum MinimumInterval {
-  second = 0,
-  minute = 1,
-  hour = 2,
-  day = 3,
-  month = 4,
-  year = 5
+  second,
+  minute,
+  hour,
+  day,
+  month,
+  year
 }
 
 export class ChildrenAggregation extends BucketAggregationBase {
@@ -344,15 +346,15 @@ export enum SamplerAggregationExecutionHint {
   /**
    * Hold field values directly.
    */
-  map = 0,
+  map,
   /**
    * Hold ordinals of the field as determined by the Lucene index.
    */
-  global_ordinals = 1,
+  global_ordinals,
   /**
    * Hold hashes of the field values - with potential for hash collisions.
    */
-  bytes_hash = 2
+  bytes_hash
 }
 
 export class FiltersAggregation extends BucketAggregationBase {
@@ -490,11 +492,11 @@ export class ExtendedBounds<T> {
   /**
    * Maximum value for the bound.
    */
-  max: T
+  max?: T
   /**
    * Minimum value for the bound.
    */
-  min: T
+  min?: T
 }
 
 export class HistogramAggregation extends BucketAggregationBase {
@@ -673,7 +675,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double | string | null
+  from?: double
   /**
    * Custom key to return the range with.
    */
@@ -681,7 +683,7 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double | string | null
+  to?: double
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
@@ -981,18 +983,18 @@ export enum TermsAggregationCollectMode {
   /**
    * Expands all branches of the aggregation tree in one depth-first pass, before any pruning occurs.
    */
-  depth_first = 0,
+  depth_first,
   /**
    * Caches the set of documents that fall into the uppermost buckets for subsequent replay.
    */
-  breadth_first = 1
+  breadth_first
 }
 
 export enum TermsAggregationExecutionHint {
-  map = 0,
-  global_ordinals = 1,
-  global_ordinals_hash = 2,
-  global_ordinals_low_cardinality = 3
+  map,
+  global_ordinals,
+  global_ordinals_hash,
+  global_ordinals_low_cardinality
 }
 
 /** @codegen_names regexp, terms, partition */
@@ -1032,6 +1034,7 @@ export class VariableWidthHistogramAggregation {
    * Defaults to `min(10 * shard_size, 50000)`.
    */
   initial_buffer?: integer
+  script?: Script
 }
 
 /**

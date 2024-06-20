@@ -95,6 +95,8 @@ import {
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
 import { WeightedTokensQuery } from './WeightedTokensQuery'
+import { KnnQuery } from '@_types/Knn'
+import { SemanticQuery } from './SemanticQuery'
 
 /**
  * @variants container
@@ -190,6 +192,13 @@ export class QueryContainer {
    * @doc_id query-dsl-intervals-query
    */
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  /**
+   * Finds the k nearest vectors to a query vector, as measured by a similarity
+   * metric. knn query finds nearest vectors through approximate search on indexed
+   * dense_vectors.
+   * @doc_id query-dsl-knn-query
+   */
+  knn?: KnnQuery
   /**
    * Returns documents that match a provided text, number, date or boolean value.
    * The provided text is analyzed before matching.
@@ -294,6 +303,12 @@ export class QueryContainer {
    */
   script_score?: ScriptScoreQuery
   /**
+   * A semantic query to semantic_text field types
+   * @availability stack since=8.15.0
+   * @availability serverless
+   */
+  semantic?: SemanticQuery
+  /**
    * Queries documents that contain fields indexed using the `shape` type.
    * @doc_id query-dsl-shape-query
    */
@@ -312,7 +327,7 @@ export class QueryContainer {
    * Wrapper to allow span queries to participate in composite single-field span queries by _lying_ about their search field.
    * @doc_id query-dsl-span-field-masking-query
    */
-  field_masking_span?: SpanFieldMaskingQuery
+  span_field_masking?: SpanFieldMaskingQuery
   /**
    * Matches spans near the beginning of a field.
    * @doc_id query-dsl-span-first-query

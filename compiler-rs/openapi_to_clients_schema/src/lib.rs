@@ -15,20 +15,18 @@
 // specific language governing permissions and limitations
 // under the License.
 
+pub mod endpoints;
 pub mod openapi;
 pub mod types;
-pub mod endpoints;
 
 use std::convert::Into;
-use tracing::warn;
+
 use clients_schema::IndexedModel;
 use openapi::OpenAPI;
+use tracing::warn;
 
-///
 /// Generate a schema.json from an OpenAPI schema
-///
 pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::IndexedModel> {
-
     let mut json_schema = clients_schema::IndexedModel::default();
 
     generate_types(open_api, &mut json_schema)?;
@@ -42,14 +40,8 @@ pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::IndexedMod
     Ok(json_schema)
 }
 
-///
 /// Generate all types from OpenAPI components
-///
-fn generate_types(
-    open_api: &OpenAPI,
-    model: &mut IndexedModel
-) -> anyhow::Result<()> {
-
+fn generate_types(open_api: &OpenAPI, model: &mut IndexedModel) -> anyhow::Result<()> {
     if let Some(ref components) = open_api.components {
         let mut types = types::Types::default();
         for (id, schema) in &components.schemas {

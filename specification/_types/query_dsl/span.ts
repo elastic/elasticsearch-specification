@@ -128,7 +128,10 @@ export class SpanWithinQuery extends QueryBase {
   little: SpanQuery
 }
 
-/** @variants container */
+/**
+ * @variants container
+ * @non_exhaustive
+ */
 export class SpanQuery {
   /**
    * Accepts a list of span queries, but only returns those spans which also match a second span query.
@@ -137,7 +140,7 @@ export class SpanQuery {
   /**
    * Allows queries like `span_near` or `span_or` across different fields.
    */
-  field_masking_span?: SpanFieldMaskingQuery
+  span_field_masking?: SpanFieldMaskingQuery
   /**
    * Accepts another span query whose matches must appear within the first N positions of the field.
    */

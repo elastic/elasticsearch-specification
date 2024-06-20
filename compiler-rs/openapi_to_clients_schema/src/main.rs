@@ -16,20 +16,18 @@
 // under the License.
 
 use std::collections::BTreeSet;
-use openapi_to_clients_schema::openapi::OpenAPI;
-use tracing::{Level, info};
-use tracing_subscriber::FmtSubscriber;
 use std::path::PathBuf;
 
-fn main() -> anyhow::Result<()> {
+use openapi_to_clients_schema::openapi::OpenAPI;
+use tracing::{info, Level};
+use tracing_subscriber::FmtSubscriber;
 
-    let subscriber = FmtSubscriber::builder()
-        .with_max_level(Level::TRACE)
-        .finish();
+fn main() -> anyhow::Result<()> {
+    let subscriber = FmtSubscriber::builder().with_max_level(Level::TRACE).finish();
     tracing::subscriber::set_global_default(subscriber)?;
 
-    //let file = "../../ent-search/swagger/v1/enterprise-search.json";
-    //let file = "../../ent-search/swagger/v1/workplace-search.json";
+    // let file = "../../ent-search/swagger/v1/enterprise-search.json";
+    // let file = "../../ent-search/swagger/v1/workplace-search.json";
     let file = "./openapi_to_clients_schema/fixtures/workplace-search.json";
 
     let src = PathBuf::from(file);
@@ -58,4 +56,3 @@ fn main() -> anyhow::Result<()> {
 
     Ok(())
 }
-

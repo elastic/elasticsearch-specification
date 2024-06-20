@@ -51,9 +51,21 @@ export class ApiKey {
    */
   realm?: string
   /**
+   * Realm type of the principal for which this API key was created
+   * @availability stack since=8.14.0
+   * @availability serverless
+   */
+  realm_type?: string
+  /**
    * Principal for which this API key was created
    */
   username?: Username
+  /**
+   * The profile uid for the API key owner principal, if requested and if it exists
+   * @availability stack since=8.14.0
+   * @availability serverless
+   */
+  profile_uid?: string
   /**
    * Metadata of the API key
    * @availability stack since=7.13.0

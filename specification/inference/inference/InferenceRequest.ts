@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Duration } from '@_types/Time'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
@@ -26,22 +27,34 @@ import { TaskSettings } from '@inference/_types/Services'
  * Perform inference on the service
  * @rest_spec_name inference.inference
  * @availability stack since=8.11.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=private
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The model task type
+     * The task type
      */
-    task_type: TaskType
+    task_type?: TaskType
     /**
-     * The unique identifier of the inference model.
+     * The inference Id
      */
-    model_id: Id
+    inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference request to complete.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     /**
-     * Text input to the model.
+     * Query input, required for rerank task.
+     * Not required for other tasks.
+     */
+    query?: string
+    /**
+     * Inference input.
      * Either a string or an array of strings.
      */
     input: string | Array<string>

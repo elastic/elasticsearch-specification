@@ -17,9 +17,4 @@
  * under the License.
  */
 
-import { Metadata } from '@_types/common'
-
-export class Aggregation {
-  meta?: Metadata
-  name?: string
-}
+export class Aggregation {}

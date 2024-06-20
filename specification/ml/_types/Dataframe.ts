@@ -18,9 +18,9 @@
  */
 
 export enum DataframeState {
-  started = 0,
-  stopped = 1,
-  starting = 2,
-  stopping = 3,
-  failed = 4
+  started,
+  stopped,
+  starting,
+  stopping,
+  failed
 }

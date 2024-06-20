@@ -24,5 +24,8 @@ web-sys = { version = "0.3.64", features = ["console"] }
 wasm-bindgen-test = "0.3.37"
 
 [package.metadata.wasm-pack.profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
 wasm-opt = ['-Oz']
 

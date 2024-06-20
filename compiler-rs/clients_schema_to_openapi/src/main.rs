@@ -15,15 +15,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::path::{Path, PathBuf};
+
 use clap::{Parser, ValueEnum};
+use clients_schema::{Availabilities, Visibility};
 use tracing::Level;
 use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::FmtSubscriber;
-use std::path::{Path, PathBuf};
-use clients_schema::{Availabilities, Visibility};
 
 fn main() -> anyhow::Result<()> {
-
     let cli = Cli::parse();
 
     let subscriber = FmtSubscriber::builder()
@@ -64,8 +64,7 @@ fn main() -> anyhow::Result<()> {
 // }
 
 impl Cli {
-    fn run(self) -> anyhow::Result<()>{
-
+    fn run(self) -> anyhow::Result<()> {
         let json = if self.schema == Path::new("-") {
             std::io::read_to_string(std::io::stdin())?
         } else {
@@ -77,9 +76,7 @@ impl Cli {
         if let Some(flavor) = self.flavor {
             if flavor != SchemaFlavor::All {
                 let filter: fn(&Option<Availabilities>) -> bool = match flavor {
-                    SchemaFlavor::All => |_| {
-                        true
-                    },
+                    SchemaFlavor::All => |_| true,
                     SchemaFlavor::Stack => |a| {
                         // Generate public and private items for Stack
                         clients_schema::Flavor::Stack.available(a)
@@ -90,8 +87,10 @@ impl Cli {
                     },
                 };
 
-                model = clients_schema::transform::expand_generics(model)?;
-                model = clients_schema::transform::filter_availability(model, filter)?;
+                use clients_schema::transform::*;
+
+                model = expand_generics(model, ExpandConfig::default())?;
+                model = filter_availability(model, filter)?;
             }
         }
 
@@ -128,7 +127,7 @@ pub struct Cli {
 
     /// Elasticsearch flavor to produce
     #[arg(short, long)]
-    flavor: Option<SchemaFlavor>
+    flavor: Option<SchemaFlavor>,
 }
 
 #[derive(Debug, Clone, PartialEq, ValueEnum)]
@@ -152,8 +151,9 @@ mod tests {
         Cli {
             schema: "../../output/schema/schema-no-generics.json".into(),
             flavor: None,
-            output: Some("../../output/openapi/elasticsearch-openapi.json".into())
-        }.run()
+            output: Some("../../output/openapi/elasticsearch-openapi.json".into()),
+        }
+        .run()
     }
 
     #[test]
@@ -161,8 +161,9 @@ mod tests {
         Cli {
             schema: "../../output/schema/schema-no-generics.json".into(),
             flavor: Some(SchemaFlavor::Serverless),
-            output: Some("../../output/openapi/elasticsearch-serverless-openapi.json".into())
-        }.run()
+            output: Some("../../output/openapi/elasticsearch-serverless-openapi.json".into()),
+        }
+        .run()
     }
 
     #[test]
@@ -170,7 +171,8 @@ mod tests {
         Cli {
             schema: "../../output/schema/schema.json".into(),
             flavor: Some(SchemaFlavor::Serverless),
-            output: Some("../../output/openapi/elasticsearch-serverless-openapi2.json".into())
-        }.run()
+            output: Some("../../output/openapi/elasticsearch-serverless-openapi2.json".into()),
+        }
+        .run()
     }
 }

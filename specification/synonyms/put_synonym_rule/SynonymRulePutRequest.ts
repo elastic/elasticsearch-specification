@@ -42,6 +42,6 @@ export interface Request extends RequestBase {
    * The synonym rule information to update
    */
   body: {
-    synonyms: SynonymString[]
+    synonyms: SynonymString
   }
 }

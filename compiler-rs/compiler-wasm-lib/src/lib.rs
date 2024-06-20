@@ -16,11 +16,11 @@
 // under the License.
 
 use anyhow::bail;
-use wasm_bindgen::prelude::*;
 use clients_schema::{Availabilities, Visibility};
+use wasm_bindgen::prelude::*;
+use clients_schema::transform::ExpandConfig;
 
-
-#[cfg(not(target_arch="wasm32"))]
+#[cfg(all(not(target_arch = "wasm32"), not(feature = "cargo-clippy")))]
 compile_error!("To build this crate use `make compiler-wasm-lib`");
 
 #[wasm_bindgen]
@@ -30,7 +30,6 @@ pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, Str
 }
 
 fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
-
     let filter: Option<fn(&Option<Availabilities>) -> bool> = match flavor {
         "all" => None,
         "stack" => Some(|a| {
@@ -45,7 +44,7 @@ fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
     };
 
     let mut schema = clients_schema::IndexedModel::from_reader(json.as_bytes())?;
-    schema = clients_schema::transform::expand_generics(schema)?;
+    schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
     if let Some(filter) = filter {
         schema = clients_schema::transform::filter_availability(schema, filter)?;
     }

@@ -20,5 +20,6 @@
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
+  /** @codegen_name result */
   body: UserDefinedValue // TODO: This API is experimental and no docs exist describing it. Requires reverse engineering if made stable
 }

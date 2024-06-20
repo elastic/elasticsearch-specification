@@ -15,18 +15,17 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use openapiv3::{ObjectType, ReferenceOr, Schema, SchemaData, SchemaKind, StringType, Type};
 use clients_schema::TypeName;
+use openapiv3::{ObjectType, ReferenceOr, Schema, SchemaData, SchemaKind, StringType, Type};
+
 use crate::components::TypesAndComponents;
 
-///
 /// Extensions to `ReferenceOr` to ease conversion to boxed versions.
-///
 pub trait ReferenceOrBoxed<T> {
     fn boxed(self) -> ReferenceOr<Box<T>>;
 }
 
-impl <T> ReferenceOrBoxed<T> for ReferenceOr<T> {
+impl<T> ReferenceOrBoxed<T> for ReferenceOr<T> {
     fn boxed(self) -> ReferenceOr<Box<T>> {
         match self {
             ReferenceOr::Item(t) => ReferenceOr::Item(Box::new(t)),
@@ -35,9 +34,7 @@ impl <T> ReferenceOrBoxed<T> for ReferenceOr<T> {
     }
 }
 
-///
 /// Extension to `TypeName` to return its name as an OpenAPI schema
-///
 pub trait SchemaName {
     /// Name in the `#/components/schema` section
     fn schema_name(&self) -> String;
@@ -52,17 +49,16 @@ impl SchemaName for TypeName {
 
     fn schema_ref(&self) -> ReferenceOr<Schema> {
         ReferenceOr::Reference {
-            reference: format!("#/components/schemas/{}", self)
+            reference: format!("#/components/schemas/{}", self),
         }
     }
 }
 
-///
 /// Convenience extensions to turn OpenAPI type declarations into a `ReferenceOr<Schema>`.
 /// This avoids a lot of boiler plate when creating schema objects.
-///
 pub trait IntoSchema {
-    fn into_schema_ref(self) -> ReferenceOr<Schema> where Self: Sized{
+    fn into_schema_ref(self) -> ReferenceOr<Schema>
+    where Self: Sized {
         ReferenceOr::Item(self.into_schema())
     }
 
@@ -74,7 +70,8 @@ pub trait IntoSchema {
     //     result
     // }
 
-    fn into_schema_ref_with_data_fn(self, f: fn (&mut SchemaData) -> ()) -> ReferenceOr<Schema> where Self: Sized {
+    fn into_schema_ref_with_data_fn(self, f: fn(&mut SchemaData) -> ()) -> ReferenceOr<Schema>
+    where Self: Sized {
         let mut result = self.into_schema_ref();
         if let ReferenceOr::Item(ref mut schema) = &mut result {
             f(&mut schema.schema_data);
@@ -82,13 +79,15 @@ pub trait IntoSchema {
         result
     }
 
-    fn into_schema_with_base(self, tac: &TypesAndComponents, base: &clients_schema::BaseType) -> Schema where Self: Sized {
+    fn into_schema_with_base(self, tac: &TypesAndComponents, base: &clients_schema::BaseType) -> Schema
+    where Self: Sized {
         let mut schema = self.into_schema();
         tac.fill_data_with_base(&mut schema.schema_data, base);
         schema
     }
 
-    fn into_schema_with_data_fn(self, f: fn (&mut SchemaData) -> ()) -> Schema where Self: Sized {
+    fn into_schema_with_data_fn(self, f: fn(&mut SchemaData) -> ()) -> Schema
+    where Self: Sized {
         let mut schema = self.into_schema();
         f(&mut schema.schema_data);
         schema
@@ -104,16 +103,15 @@ impl IntoSchema for Schema {
 }
 
 impl IntoSchema for ReferenceOr<Schema> {
-    fn into_schema_ref(self) -> ReferenceOr<Schema> where Self: Sized {
+    fn into_schema_ref(self) -> ReferenceOr<Schema>
+    where Self: Sized {
         self
     }
 
     fn into_schema(self) -> Schema {
         match self {
             ReferenceOr::Item(schema) => schema,
-            ReferenceOr::Reference { .. } => SchemaKind::AllOf {
-                all_of: vec![self]
-            }.into_schema()
+            ReferenceOr::Reference { .. } => SchemaKind::AllOf { all_of: vec![self] }.into_schema(),
         }
     }
 }

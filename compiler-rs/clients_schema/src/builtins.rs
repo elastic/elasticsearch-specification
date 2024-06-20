@@ -16,21 +16,29 @@
 // under the License.
 
 use crate::TypeName;
-use once_cell::sync::Lazy;
+use crate::type_name;
 
-pub static STRING:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "string"));
-pub static BOOLEAN: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "boolean"));
-pub static OBJECT:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "object"));
-pub static BINARY:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "binary"));
-pub static VOID:    Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "void"));
-pub static NUMBER:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "number"));
-pub static BYTE:    Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "byte"));
-pub static INTEGER: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "integer"));
-pub static LONG:    Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "long"));
-pub static FLOAT:   Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "float"));
-pub static DOUBLE:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "double"));
-pub static NULL:  Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "null"));
-pub static DICTIONARY: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "Dictionary"));
-pub static USER_DEFINED: Lazy<TypeName> = Lazy::new(|| TypeName::new("_builtins", "UserDefined"));
+macro_rules! declare_type_name {
+    ($id:ident,$namespace:expr,$name:expr) => {
+        pub const $id: TypeName = type_name!($namespace, $name);
+    };
+}
 
-pub static ADDITIONAL_PROPERTIES: Lazy<TypeName> = Lazy::new(|| TypeName::new("_spec_utils", "AdditionalProperties"));
+declare_type_name!(STRING, "_builtins", "string");
+declare_type_name!(BOOLEAN, "_builtins", "boolean");
+declare_type_name!(OBJECT, "_builtins", "object");
+declare_type_name!(BINARY, "_builtins", "binary");
+declare_type_name!(VOID, "_builtins", "void");
+declare_type_name!(NUMBER, "_builtins", "number");
+declare_type_name!(BYTE, "_builtins", "byte");
+declare_type_name!(INTEGER, "_builtins", "integer");
+declare_type_name!(LONG, "_builtins", "long");
+declare_type_name!(FLOAT, "_builtins", "float");
+declare_type_name!(DOUBLE, "_builtins", "double");
+declare_type_name!(NULL, "_builtins", "null");
+declare_type_name!(DICTIONARY, "_builtins", "Dictionary");
+declare_type_name!(USER_DEFINED, "_builtins", "UserDefined");
+
+declare_type_name!(ADDITIONAL_PROPERTIES, "_spec_utils", "AdditionalProperties");
+
+declare_type_name!(WITH_NULL_VALUE, "_spec_utils", "WithNullValue");

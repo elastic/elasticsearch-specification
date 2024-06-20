@@ -59,6 +59,11 @@
       "types": {
         "type": "list",
         "description": "Only return results for fields that have one of the types in the list"
+      },
+      "include_empty_fields": {
+        "type": "boolean",
+        "default": true,
+        "description": "Indicates whether empty fields should be included in the response."
       }
     },
     "body": {

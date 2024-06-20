@@ -16,7 +16,9 @@
 // under the License.
 
 use std::fmt::{Debug, Display, Formatter};
+
 use anyhow::anyhow;
+use derive_more::From;
 use indexmap::IndexMap;
 // Re-export crates whose types we expose publicly
 pub use once_cell;
@@ -26,9 +28,9 @@ pub mod builtins;
 pub mod transform;
 
 use once_cell::sync::Lazy;
-use serde::{Deserialize, Serialize};
 use serde::de::SeqAccess;
 use serde::ser::SerializeSeq;
+use serde::{Deserialize, Serialize};
 
 #[allow(clippy::trivially_copy_pass_by_ref)] // needs to match signature for use in serde attribute
 #[inline]
@@ -44,7 +46,7 @@ const fn is_false(v: &bool) -> bool {
 // TODO: interning at deserialization time to reuse identical values (links from values to types)
 type FastString = arcstr::ArcStr;
 
-pub trait  Documented {
+pub trait Documented {
     fn doc_url(&self) -> Option<&str>;
     fn doc_id(&self) -> Option<&str>;
     fn description(&self) -> Option<&str>;
@@ -71,6 +73,17 @@ impl TypeName {
     }
 }
 
+/// Creates a constant `TypeName` from static strings
+#[macro_export]
+macro_rules! type_name {
+    ($namespace:expr,$name:expr) => {
+        TypeName {
+            namespace: arcstr::literal!($namespace),
+            name: arcstr::literal!($name),
+        }
+    };
+}
+
 impl Display for TypeName {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}:{}", self.namespace, self.name)
@@ -79,48 +92,16 @@ impl Display for TypeName {
 
 //-----------------------------------------------------------------------------
 
-///
 /// Type of a value. Used both for property types and nested type definitions.
-///
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
-#[serde(tag = "kind", rename_all="snake_case")]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd, From)]
+#[serde(tag = "kind", rename_all = "snake_case")]
 pub enum ValueOf {
     InstanceOf(InstanceOf),
     ArrayOf(ArrayOf),
     UnionOf(UnionOf),
     DictionaryOf(DictionaryOf),
     UserDefinedValue(UserDefinedValue),
-    LiteralValue(LiteralValue)
-}
-
-impl ValueOf {
-    pub fn instance_of(name: TypeName) -> ValueOf {
-        ValueOf::InstanceOf(InstanceOf::new(name))
-    }
-}
-
-impl From<InstanceOf> for ValueOf {
-    fn from(value: InstanceOf) -> Self {
-        ValueOf::InstanceOf(value)
-    }
-}
-
-impl From<ArrayOf> for ValueOf {
-    fn from(value: ArrayOf) -> Self {
-        ValueOf::ArrayOf(value)
-    }
-}
-
-impl From<UnionOf> for ValueOf {
-    fn from(value: UnionOf) -> Self {
-        ValueOf::UnionOf(value)
-    }
-}
-
-impl From<DictionaryOf> for ValueOf {
-    fn from(value: DictionaryOf) -> Self {
-        ValueOf::DictionaryOf(value)
-    }
+    LiteralValue(LiteralValue),
 }
 
 impl From<TypeName> for ValueOf {
@@ -143,17 +124,15 @@ impl From<&Lazy<TypeName>> for ValueOf {
 
 //-----------------------------------------------------------------------------
 
-///
 /// A single value
-///
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct InstanceOf {
-    #[serde(rename="type")]
+    #[serde(rename = "type")]
     pub typ: TypeName,
 
     /// generic parameters: either concrete types or open parameters from the enclosing type
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub generics: Vec<ValueOf>
+    pub generics: Vec<ValueOf>,
 }
 
 impl InstanceOf {
@@ -165,28 +144,22 @@ impl InstanceOf {
     }
 }
 
-///
 /// An array
-///
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct ArrayOf {
-    pub value: Box<ValueOf>
+    pub value: Box<ValueOf>,
 }
 
-///
 /// One of several possible types which don't necessarily have a common superclass
-///
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct UnionOf {
-    pub items: Vec<ValueOf>
+    pub items: Vec<ValueOf>,
 }
 
-///
 /// A dictionary (or map).  The key is a string or a number (or a union thereof), possibly through an alias.
 ///
 /// If `singleKey` is true, then this dictionary can only have a single key. This is a common pattern in ES APIs,
 /// used to associate a value to a field name or some other identifier.
-///
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 #[serde(rename_all = "camelCase")]
 pub struct DictionaryOf {
@@ -195,7 +168,6 @@ pub struct DictionaryOf {
     pub single_key: bool,
 }
 
-///
 /// A user defined value. To be used when bubbling a generic parameter up to the top-level class is
 /// inconvenient or impossible (e.g. for lists of user-defined values of possibly different types).
 ///
@@ -204,23 +176,19 @@ pub struct DictionaryOf {
 ///
 /// Think twice before using this as it defeats the purpose of a strongly typed API, and deserialization
 /// will also require to buffer raw JSON data which may have performance implications.
-///
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 #[serde(rename_all = "camelCase")]
-pub struct UserDefinedValue {
-}
+pub struct UserDefinedValue {}
 
-///
 /// A literal value. This is used for tagged unions, where each type member of a union has a 'type'
 /// attribute that defines its kind. This metamodel heavily uses this approach with its 'kind' attributes.
 ///
 /// It may later be used to set a property to a constant value, which is why it accepts not only strings but also
 /// other primitive types.
-///
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, PartialOrd)]
 #[serde(rename_all = "camelCase")]
 pub struct LiteralValue {
-    pub value: LiteralValueValue
+    pub value: LiteralValueValue,
 }
 
 impl Display for LiteralValue {
@@ -234,7 +202,7 @@ impl Display for LiteralValue {
 pub enum LiteralValueValue {
     String(String),
     Number(f64),
-    Boolean(bool)
+    Boolean(bool),
 }
 
 impl Display for LiteralValueValue {
@@ -324,15 +292,13 @@ impl Flavor {
     }
 }
 
-///
 /// An interface or request interface property.
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Property {
     pub name: String,
 
-    #[serde(rename="type")]
+    #[serde(rename = "type")]
     pub typ: ValueOf,
 
     pub required: bool,
@@ -410,7 +376,7 @@ pub enum ServerDefault {
 //--------------------------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case", tag="kind")]
+#[serde(rename_all = "snake_case", tag = "kind")]
 pub enum Variants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
@@ -421,7 +387,7 @@ pub enum Variants {
 #[serde(rename_all = "camelCase")]
 pub struct ExternalTag {
     #[serde(default)]
-    pub non_exhaustive: bool
+    pub non_exhaustive: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -445,21 +411,19 @@ pub struct Container {
     pub non_exhaustive: bool,
 }
 
-///
 /// Inherits clause (aka extends or implements) for an interface or request
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Inherits {
-    #[serde(rename="type")]
+    #[serde(rename = "type")]
     pub typ: TypeName,
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub generics: Vec<ValueOf>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case", tag="kind")]
+#[derive(Debug, Clone, Serialize, Deserialize, From)]
+#[serde(rename_all = "snake_case", tag = "kind")]
 #[allow(clippy::large_enum_variant)]
 pub enum TypeDefinition {
     Interface(Interface),
@@ -467,42 +431,6 @@ pub enum TypeDefinition {
     Response(Response),
     Enum(Enum),
     TypeAlias(TypeAlias),
-}
-
-impl TypeDefinition {
-    pub fn type_alias(name: TypeName, value: ValueOf) -> TypeDefinition {
-        TypeDefinition::TypeAlias(TypeAlias::new(name, value))
-    }
-}
-
-impl From<Interface> for TypeDefinition {
-    fn from(value: Interface) -> Self {
-        TypeDefinition::Interface(value)
-    }
-}
-
-impl From<Request> for TypeDefinition {
-    fn from(value: Request) -> Self {
-        TypeDefinition::Request(value)
-    }
-}
-
-impl From<Response> for TypeDefinition {
-    fn from(value: Response) -> Self {
-        TypeDefinition::Response(value)
-    }
-}
-
-impl From<Enum> for TypeDefinition {
-    fn from(value: Enum) -> Self {
-        TypeDefinition::Enum(value)
-    }
-}
-
-impl From<TypeAlias> for TypeDefinition {
-    fn from(value: TypeAlias) -> Self {
-        TypeDefinition::TypeAlias(value)
-    }
 }
 
 impl TypeDefinition {
@@ -533,9 +461,7 @@ impl TypeDefinition {
     }
 }
 
-///
 /// Common attributes for all type definitions
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct BaseType {
@@ -565,8 +491,7 @@ pub struct BaseType {
     /// Additional identifiers for use by code generators. Usage depends on the actual type:
     /// - on unions (modeled as alias(union_of)), these are identifiers for the union members
     /// - for additional properties, this is the name of the dict that holds these properties
-    /// - for additional property, this is the name of the key and value fields that hold the
-    ///   additional property
+    /// - for additional property, this is the name of the key and value fields that hold the additional property
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub codegen_names: Vec<String>,
 
@@ -586,7 +511,7 @@ impl BaseType {
             es_quirk: None,
             description: None,
             variant_name: None,
-            spec_location: None
+            spec_location: None,
         }
     }
 }
@@ -613,7 +538,7 @@ trait WithBaseType {
     fn base(&self) -> &BaseType;
 }
 
-impl <T: WithBaseType> Documented for T {
+impl<T: WithBaseType> Documented for T {
     fn doc_url(&self) -> Option<&str> {
         self.base().doc_url()
     }
@@ -631,9 +556,7 @@ impl <T: WithBaseType> Documented for T {
     }
 }
 
-///
 /// An interface type
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Interface {
@@ -668,7 +591,7 @@ pub struct Interface {
 
     // Identify containers
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub variants: Option<Container>
+    pub variants: Option<Container>,
 }
 
 impl WithBaseType for Interface {
@@ -677,9 +600,7 @@ impl WithBaseType for Interface {
     }
 }
 
-///
 /// A request type
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 // Note: does not extend Interface as properties are split across path, query and body
@@ -702,9 +623,9 @@ pub struct Request {
     /// Query string properties
     pub query: Vec<Property>,
 
-    /// Body type. Most often a list of properties (that can extend those of the inherited class, see above), except for a
-    /// few specific cases that use other types such as bulk (array) or create (generic parameter). Or NoBody for requests
-    /// that don't have a body.
+    /// Body type. Most often a list of properties (that can extend those of the inherited class, see above), except
+    /// for a few specific cases that use other types such as bulk (array) or create (generic parameter). Or NoBody
+    /// for requests that don't have a body.
     pub body: Body,
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -720,9 +641,7 @@ impl WithBaseType for Request {
     }
 }
 
-///
 /// A response type
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Response {
@@ -758,15 +677,15 @@ pub struct ResponseException {
 
     pub body: Body,
 
-    pub status_codes: Vec<usize>
+    pub status_codes: Vec<usize>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case", tag="kind")]
+#[serde(rename_all = "snake_case", tag = "kind")]
 pub enum Body {
     Value(ValueBody),
     Properties(PropertiesBody),
-    NoBody(NoBody)
+    NoBody(NoBody),
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -786,16 +705,13 @@ pub struct PropertiesBody {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct NoBody {
-}
+pub struct NoBody {}
 
-///
 /// An enumeration member.
 ///
 /// When enumeration members can become ambiguous when translated to an identifier, the `name` property will be a good
 /// identifier name, and `stringValue` will be the string value to use on the wire.
 /// See DateMathTimeUnit for an example of this, which have members for "m" (minute) and "M" (month).
-///
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
 #[serde(rename_all = "camelCase")]
 pub struct EnumMember {
@@ -833,9 +749,7 @@ impl From<&str> for EnumMember {
     }
 }
 
-///
 /// An enumeration
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Enum {
@@ -847,19 +761,17 @@ pub struct Enum {
     #[serde(default)]
     pub is_open: bool,
 
-    pub members: Vec<EnumMember>
+    pub members: Vec<EnumMember>,
 }
 
-///
 /// An alias for an existing type.
-///
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TypeAlias {
     #[serde(flatten)]
     pub base: BaseType,
 
-    #[serde(rename="type")]
+    #[serde(rename = "type")]
     pub typ: ValueOf,
 
     /// generic parameters: either concrete types or open parameters from the enclosing type
@@ -883,7 +795,7 @@ impl TypeAlias {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case", tag="kind")]
+#[serde(rename_all = "snake_case", tag = "kind")]
 pub enum TypeAliasVariants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
@@ -924,7 +836,6 @@ pub struct Endpoint {
 
     /// The version when this endpoint reached its current stability level.
     /// Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-    ///
     #[serde(skip_serializing_if = "Option::is_none")]
     pub since: Option<String>,
 
@@ -972,7 +883,7 @@ pub struct Privileges {
     pub index: Vec<String>,
 
     #[serde(default)]
-    pub cluster: Vec<String>
+    pub cluster: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -1004,7 +915,7 @@ pub struct License {
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
 #[serde(rename_all = "camelCase")]
 pub struct Model {
-    #[serde(rename="_info", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_info", skip_serializing_if = "Option::is_none")]
     pub info: Option<ModelInfo>,
     pub endpoints: Vec<Endpoint>,
     pub types: Vec<TypeDefinition>,
@@ -1020,11 +931,10 @@ impl Model {
 /// An api model with types indexed by their name. This version is much more convenient to use
 /// when traversing the type graph and provides convenience accessors to the various kinds of
 /// types.
-///
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
 #[serde(rename_all = "camelCase")]
 pub struct IndexedModel {
-    #[serde(rename="_info", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_info", skip_serializing_if = "Option::is_none")]
     pub info: Option<ModelInfo>,
 
     pub endpoints: Vec<Endpoint>,
@@ -1100,7 +1010,8 @@ impl IndexedModel {
 // IndexedModel serialization and deserialization
 //-------------------------------------------------------------------------------------------------
 
-fn serialize_types<S> (value: &IndexMap<TypeName, TypeDefinition>, serializer: S) -> Result<S::Ok, S::Error> where S: serde::Serializer {
+fn serialize_types<S>(value: &IndexMap<TypeName, TypeDefinition>, serializer: S) -> Result<S::Ok, S::Error>
+where S: serde::Serializer {
     let mut seq = serializer.serialize_seq(Some(value.len()))?;
     for (_, v) in value {
         seq.serialize_element(v)?;
@@ -1108,7 +1019,8 @@ fn serialize_types<S> (value: &IndexMap<TypeName, TypeDefinition>, serializer: S
     seq.end()
 }
 
-fn deserialize_types<'de, D>(deser: D) -> Result<IndexMap<TypeName, TypeDefinition>, D::Error> where D: serde::Deserializer<'de> {
+fn deserialize_types<'de, D>(deser: D) -> Result<IndexMap<TypeName, TypeDefinition>, D::Error>
+where D: serde::Deserializer<'de> {
     deser.deserialize_seq(IndexMapVisitor)
 }
 
@@ -1121,7 +1033,8 @@ impl<'a> serde::de::Visitor<'a> for IndexMapVisitor {
         write!(formatter, "an array")
     }
 
-    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error> where A: SeqAccess<'a> {
+    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+    where A: SeqAccess<'a> {
         let mut result = IndexMap::with_capacity(seq.size_hint().unwrap_or(0));
 
         while let Some(item) = seq.next_element::<TypeDefinition>()? {
@@ -1172,10 +1085,12 @@ mod tests {
         let jd = &mut serde_json::Deserializer::from_str(&json);
         let result = serde_path_to_error::deserialize::<_, IndexedModel>(jd);
 
-        let result = result.map_err(|e| {
-            println!("Error at path {}", e.path());
-            e.into_inner()
-        }).unwrap();
+        let result = result
+            .map_err(|e| {
+                println!("Error at path {}", e.path());
+                e.into_inner()
+            })
+            .unwrap();
 
         // Simple smoke test
         let search_req = TypeName {
@@ -1187,7 +1102,7 @@ mod tests {
 
         match search_type {
             TypeDefinition::Request(r) => assert!(!r.path.is_empty()),
-            _ => panic!("Expecting a Request")
+            _ => panic!("Expecting a Request"),
         };
     }
 }

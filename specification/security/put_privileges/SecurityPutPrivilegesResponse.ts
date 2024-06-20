@@ -21,5 +21,6 @@ import { CreatedStatus } from '@security/_types/CreatedStatus'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
+  /** @codegen_name result */
   body: Dictionary<string, Dictionary<string, CreatedStatus>>
 }

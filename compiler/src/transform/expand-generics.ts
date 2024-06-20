@@ -35,16 +35,41 @@ import { sortTypeDefinitions } from '../model/utils'
 import { argv } from 'zx'
 import { join } from 'path'
 
+export class ExpansionConfig {
+  unwrappedTypes?: TypeName[] | string[]
+  inlinedTypes?: TypeName[] | string[]
+}
+
 /**
- * Expand all generics by creating new concrete types for every instanciation of a generic type.
+ * Expand all generics by creating new concrete types for every instantiation of a generic type.
  *
  * The resulting model has no generics anymore. Top-level generic parameters (e.g. SearchRequest's TDocument) are
  * replaced by user_defined_data.
  *
  * @param inputModel the input model
+ * @param unwrappedTypes types that should not be expanded but unwrapped as their generic parameter.
  * @return a new model with generics expanded
  */
-export function expandGenerics (inputModel: Model): Model {
+export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Model {
+  const typesToUnwrap = new Set<string>()
+  const typesToInline: Set<string> = new Set<string>()
+
+  for (const name of config?.unwrappedTypes ?? []) {
+    if (typeof name === 'string') {
+      typesToUnwrap.add(name)
+    } else {
+      typesToUnwrap.add(nameKey(name))
+    }
+  }
+
+  for (const name of config?.inlinedTypes ?? []) {
+    if (typeof name === 'string') {
+      typesToInline.add(name)
+    } else {
+      typesToInline.add(nameKey(name))
+    }
+  }
+
   const typesSeen = new Set<string>()
 
   const types = new Array<TypeDefinition>()
@@ -135,6 +160,26 @@ export function expandGenerics (inputModel: Model): Model {
   }
 
   /**
+   * Add dangling types like CommonQueryParameters & BaseEsqlVersion to the generic less schema.
+   * @param type the type definition
+   */
+  function addDanglingTypeIfNotSeen (type: TypeDefinition): void {
+    switch (type.kind) {
+      case 'type_alias':
+        if (type.generics !== undefined && type.generics.length > 0) {
+          return
+        }
+        break
+      case 'interface':
+        if (type.generics !== undefined && type.generics.length > 0) {
+          return
+        }
+        break
+    }
+    addIfNotSeen(type.name, () => type)
+  }
+
+  /**
    * Expand an interface definition.
    *
    * @param type the type definition
@@ -147,6 +192,18 @@ export function expandGenerics (inputModel: Model): Model {
       const mappings = genericParamMapping(type.generics, params)
 
       result.inherits = expandInherits(result.inherits, mappings)
+
+      // We add to the schema the non generics behaviors
+      // CommonQueryParameters
+      // CommonCatQueryParameters
+      if (result.behaviors != null) {
+        result.behaviors.forEach(b => {
+          if (b.generics == null) {
+            const type = getType(b.type)
+            addIfNotSeen(b.type, () => type)
+          }
+        })
+      }
 
       if (result.behaviors != null) {
         // We keep the generic parameters, but expand their value
@@ -306,6 +363,35 @@ export function expandGenerics (inputModel: Model): Model {
         }
 
       case 'instance_of': {
+        const valueOfType = nameKey(value.type)
+
+        // If this is a type that has to be unwrapped, return its generic parameter's type
+        if (typesToUnwrap.has(valueOfType)) {
+          // @ts-expect-error
+          const x = value.generics[0]
+          return expandValueOf(x, mappings)
+        }
+
+        // If this is a type that has to be inlined
+        if (typesToInline.has(valueOfType)) {
+          // It has to be an alias (e.g. Stringified or WithNullValue
+          const inlinedTypeDef = inputTypeByName.get(valueOfType)
+          if (inlinedTypeDef?.kind !== 'type_alias') {
+            throw Error(`Inlined type ${valueOfType} should be an alias definition`)
+          }
+
+          const inlineMappings = new Map<string, ValueOf>()
+          for (let i = 0; i < (inlinedTypeDef.generics?.length ?? 0); i++) {
+            // @ts-expect-error
+            const source = inlinedTypeDef.generics[i]
+            // @ts-expect-error
+            const dest = value.generics[i]
+            inlineMappings.set(nameKey(source), dest)
+          }
+
+          return expandValueOf(inlinedTypeDef.type, inlineMappings)
+        }
+
         // If this is a generic parameter, return its mapping
         const mapping = mappings.get(nameKey(value.type))
         if (mapping !== undefined) {
@@ -359,6 +445,11 @@ export function expandGenerics (inputModel: Model): Model {
   for (const endpoint of inputModel.endpoints) {
     expandRootType(endpoint.request)
     expandRootType(endpoint.response)
+  }
+
+  // Allows to retrieve EsqlBase*EsqlVersion
+  for (const type of inputModel.types) {
+    addDanglingTypeIfNotSeen(type)
   }
 
   sortTypeDefinitions(types)
@@ -430,7 +521,10 @@ async function expandGenericsFromFile (inPath: string, outPath: string): Promise
   )
 
   const inputModel = JSON.parse(inputText)
-  const outputModel = expandGenerics(inputModel)
+  const outputModel = expandGenerics(inputModel, {
+    // unwrappedTypes: ["_spec_utils:Stringified"],
+    inlinedTypes: ['_spec_utils:WithNullValue']
+  })
 
   await writeFile(
     outPath,

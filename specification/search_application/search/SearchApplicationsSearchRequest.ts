@@ -34,6 +34,15 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  query_parameters: {
+    /**
+     * Determines whether aggregation names are prefixed by their respective types in the response.
+     * @server_default false
+     * @availability stack since=8.14.0
+     * @availability serverless
+     */
+    typed_keys?: boolean
+  }
   body: {
     /**
      * Query parameters specific to this request, which will override any defaults specified in the template.

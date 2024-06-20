@@ -22,7 +22,7 @@ import { ExecuteEnrichPolicyStatus } from './types'
 
 export class Response {
   body: {
-    status: ExecuteEnrichPolicyStatus
+    status?: ExecuteEnrichPolicyStatus
     task_id?: TaskId
   }
 }
