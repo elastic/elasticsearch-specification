@@ -3671,6 +3671,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   value_type?: string
   order?: AggregationsAggregateOrder
   script?: Script
+  shard_min_doc_count?: long
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
