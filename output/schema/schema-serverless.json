@@ -12251,6 +12251,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns help for the Cat APIs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -13350,6 +13351,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular component template exist",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13550,6 +13552,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns different information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16011,6 +16014,7 @@
           }
         ]
       },
+      "description": "Returns number of documents matching a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18241,6 +18245,7 @@
           }
         ]
       },
+      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19443,6 +19448,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19783,6 +19789,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the source of a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20386,6 +20393,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Adds a block to an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21805,6 +21813,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular index template exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25766,6 +25775,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26627,6 +26637,7 @@
           }
         ]
       },
+      "description": "Allows to get multiple documents in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34471,6 +34482,7 @@
           }
         }
       },
+      "description": "Allows to execute several search operations in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34867,6 +34879,7 @@
           }
         ]
       },
+      "description": "Returns multiple termvectors in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35208,6 +35221,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns whether the cluster is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35874,6 +35888,7 @@
           }
         ]
       },
+      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -36451,6 +36466,7 @@
           }
         ]
       },
+      "description": "Allows to retrieve a large numbers of results from a single search request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38489,6 +38505,7 @@
           }
         ]
       },
+      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39776,6 +39793,7 @@
           }
         ]
       },
+      "description": "Determines whether the specified user has a specified list of privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40443,6 +40461,7 @@
           }
         ]
       },
+      "description": "Clears the SQL cursor",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40489,6 +40508,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40542,6 +40562,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40718,6 +40739,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41070,6 +41092,7 @@
           }
         ]
       },
+      "description": "Executes a SQL request",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41254,6 +41277,7 @@
           }
         ]
       },
+      "description": "Translates SQL into Elasticsearch queries",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41911,6 +41935,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about a task.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42116,6 +42141,7 @@
           }
         ]
       },
+      "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42249,6 +42275,7 @@
           }
         ]
       },
+      "description": "Returns information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -44055,6 +44082,7 @@
           }
         ]
       },
+      "description": "Updates a document with a script or partial document.",
       "generics": [
         {
           "name": "TDocument",
@@ -61693,7 +61721,7 @@
         },
         {
           "aliases": [
-            "1Y"
+            "1y"
           ],
           "name": "year"
         }

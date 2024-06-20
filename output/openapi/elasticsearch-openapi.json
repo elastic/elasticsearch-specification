@@ -61912,7 +61912,7 @@
           "quarter",
           "1q",
           "year",
-          "1Y"
+          "1y"
         ]
       },
       "_types.aggregations:ExtendedBoundsFieldDateMath": {
