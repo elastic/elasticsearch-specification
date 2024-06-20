@@ -1,0 +1,6 @@
+{
+  "summary": "A successful response when estimating sufficent memory for a model.",
+  "value": {
+    "model_memory_estimate": "21mb"
+  }
+}
