@@ -263,7 +263,7 @@ export enum CalendarInterval {
   month,
   /** @aliases 1q */
   quarter,
-  /** @aliases 1Y */
+  /** @aliases 1y */
   year
 }
 
