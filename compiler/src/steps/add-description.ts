@@ -57,6 +57,7 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
     if (spec.documentation.description != null) {
       requestDefinition.description = requestDefinition.description ?? spec.documentation.description
     }
+
     // An API endpoint is defined by an endpoint object (paths and http methods) and a request
     // type (parameters and structure).
     endpoint.description = requestDefinition.description ?? spec.documentation.description
