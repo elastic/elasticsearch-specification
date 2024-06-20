@@ -43,7 +43,7 @@ export class Hit<TDocument> {
    * @es_quirk '_id' is not available when using 'stored_fields: _none_'
    * on a search request. Otherwise the field is always present on hits.
    */
-  _id: Id
+  _id?: Id
   _score?: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
@@ -98,9 +98,9 @@ export class TotalHits {
 
 export enum TotalHitsRelation {
   /** Accurate */
-  eq = 0,
+  eq,
   /** Lower bound, including returned events or sequences */
-  gte = 1
+  gte
 }
 
 export class InnerHits {
@@ -133,7 +133,7 @@ export class InnerHits {
    */
   sort?: Sort
   _source?: SourceConfig
-  stored_field?: Fields
+  stored_fields?: Fields
   /** @server_default false */
   track_scores?: boolean
   version?: boolean

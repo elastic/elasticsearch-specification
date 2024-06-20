@@ -19,10 +19,22 @@
 
 import { double, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
+/**
+ * @variants container
+ * @non_exhaustive
+ */
 export class Rescore {
-  query: RescoreQuery
+  /**
+   * @variant container_property
+   */
   window_size?: integer
+
+  query?: RescoreQuery
+
+  learning_to_rank?: LearningToRank
 }
 
 export class RescoreQuery {
@@ -53,22 +65,33 @@ export enum ScoreMode {
   /**
    * Average the original score and the rescore query score.
    */
-  avg = 0,
+  avg,
   /**
    * Take the max of original score and the rescore query score.
    */
-  max = 1,
+  max,
   /**
    * Take the min of the original score and the rescore query score.
    */
-  min = 2,
+  min,
   /**
    * Multiply the original score by the rescore query score.
    * Useful for `function` query rescores.
    */
-  multiply = 3,
+  multiply,
   /**
    * Add the original score and the rescore query score.
    */
-  total = 4
+  total
+}
+
+export class LearningToRank {
+  /**
+   * The unique identifier of the trained model uploaded to Elasticsearch
+   */
+  model_id: string
+  /**
+   * Named parameters to be passed to the query templates used for feature
+   */
+  params?: Dictionary<string, UserDefinedValue>
 }

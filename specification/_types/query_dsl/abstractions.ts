@@ -94,6 +94,9 @@ import {
   WildcardQuery
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
+import { WeightedTokensQuery } from './WeightedTokensQuery'
+import { KnnQuery } from '@_types/Knn'
+import { SemanticQuery } from './SemanticQuery'
 
 /**
  * @variants container
@@ -190,6 +193,13 @@ export class QueryContainer {
    */
   intervals?: SingleKeyDictionary<Field, IntervalsQuery>
   /**
+   * Finds the k nearest vectors to a query vector, as measured by a similarity
+   * metric. knn query finds nearest vectors through approximate search on indexed
+   * dense_vectors.
+   * @doc_id query-dsl-knn-query
+   */
+  knn?: KnnQuery
+  /**
    * Returns documents that match a provided text, number, date or boolean value.
    * The provided text is analyzed before matching.
    * @doc_id query-dsl-match-query
@@ -265,32 +275,136 @@ export class QueryContainer {
    * @doc_id query-dsl-query-string-query
    */
   query_string?: QueryStringQuery
+  /**
+   * Returns documents that contain terms within a provided range.
+   * @doc_id query-dsl-range-query
+   */
   range?: SingleKeyDictionary<Field, RangeQuery>
+  /**
+   * Boosts the relevance score of documents based on the numeric value of a `rank_feature` or `rank_features` field.
+   * @doc_id query-dsl-rank-feature-query
+   */
   rank_feature?: RankFeatureQuery
+  /**
+   * Returns documents that contain terms matching a regular expression.
+   * @doc_id query-dsl-regexp-query
+   */
   regexp?: SingleKeyDictionary<Field, RegexpQuery>
   rule_query?: RuleQuery
-  script?: ScriptQuery
-  script_score?: ScriptScoreQuery
-  shape?: ShapeQuery
-  simple_query_string?: SimpleQueryStringQuery
-  span_containing?: SpanContainingQuery
-  field_masking_span?: SpanFieldMaskingQuery
-  span_first?: SpanFirstQuery
-  span_multi?: SpanMultiTermQuery
-  span_near?: SpanNearQuery
-  span_not?: SpanNotQuery
-  span_or?: SpanOrQuery
-  span_term?: SingleKeyDictionary<Field, SpanTermQuery>
-  span_within?: SpanWithinQuery
-  term?: SingleKeyDictionary<Field, TermQuery>
-  terms?: TermsQuery
-  terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
   /**
-   * @availability stack since=8.8.0
+   * Filters documents based on a provided script.
+   * The script query is typically used in a filter context.
+   * @doc_id query-dsl-script-query
+   */
+  script?: ScriptQuery
+  /**
+   * Uses a script to provide a custom score for returned documents.
+   * @doc_id query-dsl-script-score-query
+   */
+  script_score?: ScriptScoreQuery
+  /**
+   * A semantic query to semantic_text field types
+   * @availability stack since=8.15.0
    * @availability serverless
    */
+  semantic?: SemanticQuery
+  /**
+   * Queries documents that contain fields indexed using the `shape` type.
+   * @doc_id query-dsl-shape-query
+   */
+  shape?: ShapeQuery
+  /**
+   * Returns documents based on a provided query string, using a parser with a limited but fault-tolerant syntax.
+   * @doc_id query-dsl-simple-query-string-query
+   */
+  simple_query_string?: SimpleQueryStringQuery
+  /**
+   * Returns matches which enclose another span query.
+   * @doc_id query-dsl-span-containing-query
+   */
+  span_containing?: SpanContainingQuery
+  /**
+   * Wrapper to allow span queries to participate in composite single-field span queries by _lying_ about their search field.
+   * @doc_id query-dsl-span-field-masking-query
+   */
+  span_field_masking?: SpanFieldMaskingQuery
+  /**
+   * Matches spans near the beginning of a field.
+   * @doc_id query-dsl-span-first-query
+   */
+  span_first?: SpanFirstQuery
+  /**
+   * Allows you to wrap a multi term query (one of `wildcard`, `fuzzy`, `prefix`, `range`, or `regexp` query) as a `span` query, so it can be nested.
+   * @doc_id query-dsl-span-multi-term-query
+   */
+  span_multi?: SpanMultiTermQuery
+  /**
+   * Matches spans which are near one another.
+   * You can specify `slop`, the maximum number of intervening unmatched positions, as well as whether matches are required to be in-order.
+   * @doc_id query-dsl-span-near-query
+   */
+  span_near?: SpanNearQuery
+  /**
+   * Removes matches which overlap with another span query or which are within x tokens before (controlled by the parameter `pre`) or y tokens after (controlled by the parameter `post`) another span query.
+   * @doc_id query-dsl-span-not-query
+   */
+  span_not?: SpanNotQuery
+  /**
+   * Matches the union of its span clauses.
+   * @doc_id query-dsl-span-or-query
+   */
+  span_or?: SpanOrQuery
+  /**
+   * Matches spans containing a term.
+   * @doc_id query-dsl-span-term-query
+   */
+  span_term?: SingleKeyDictionary<Field, SpanTermQuery>
+  /**
+   * Returns matches which are enclosed inside another span query.
+   * @doc_id query-dsl-span-within-query
+   */
+  span_within?: SpanWithinQuery
+  /**
+   * Returns documents that contain an exact term in a provided field.
+   * To return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.
+   * @doc_id query-dsl-term-query
+   */
+  term?: SingleKeyDictionary<Field, TermQuery>
+  /**
+   * Returns documents that contain one or more exact terms in a provided field.
+   * To return a document, one or more terms must exactly match a field value, including whitespace and capitalization.
+   * @doc_id query-dsl-terms-query
+   */
+  terms?: TermsQuery
+  /**
+   * Returns documents that contain a minimum number of exact terms in a provided field.
+   * To return a document, a required number of terms must exactly match the field values, including whitespace and capitalization.
+   * @doc_id query-dsl-terms-set-query
+   */
+  terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
+  /**
+   * Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.
+   * @availability stack since=8.8.0
+   * @availability serverless
+   * @doc_id query-dsl-text-expansion-query
+   */
   text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
+  /**
+   * Supports returning text_expansion query results by sending in precomputed tokens with the query.
+   * @availability stack since=8.13.0
+   * @availability serverless
+   * @doc_id query-dsl-weighted-tokens-query
+   */
+  weighted_tokens?: SingleKeyDictionary<Field, WeightedTokensQuery>
+  /**
+   * Returns documents that contain terms matching a wildcard pattern.
+   * @doc_id query-dsl-wildcard-query
+   */
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
+  /**
+   * A query that accepts any other query as base64 encoded string.
+   * @doc_id query-dsl-wrapper-query
+   */
   wrapper?: WrapperQuery
 
   /**
@@ -372,7 +486,10 @@ export class CombinedFieldsQuery extends QueryBase {
 }
 
 export class WrapperQuery extends QueryBase {
-  /** A base64 encoded query. The binary data format can be any of JSON, YAML, CBOR or SMILE encodings */
+  /**
+   * A base64 encoded query.
+   * The binary data format can be any of JSON, YAML, CBOR or SMILE encodings
+   */
   query: string
 }
 

@@ -25,7 +25,7 @@ import { integer } from '@_types/Numeric'
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Starting offset (default: 0)

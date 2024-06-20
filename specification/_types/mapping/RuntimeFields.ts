@@ -54,12 +54,13 @@ export class RuntimeFieldFetchFields {
 }
 
 export enum RuntimeFieldType {
-  boolean = 0,
-  date = 1,
-  double = 2,
-  geo_point = 3,
-  ip = 4,
-  keyword = 5,
-  long = 6,
+  boolean,
+  composite,
+  date,
+  double,
+  geo_point,
+  ip,
+  keyword,
+  long,
   lookup
 }

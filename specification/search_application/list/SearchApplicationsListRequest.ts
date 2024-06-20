@@ -17,7 +17,6 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -26,18 +25,19 @@ import { integer } from '@_types/Numeric'
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters: {
     /**
-     * Query in the Lucene query string syntax"
+     * Query in the Lucene query string syntax.
      */
     q?: string
     /**
-     * Starting offset (default: 0)
+     * Starting offset.
+     * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of results to get
+     * Specifies a max number of results to get.
      */
     size?: integer
   }

@@ -22,6 +22,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Definition, Input } from './types'
+import { TrainedModelPrefixStrings } from '../_types/TrainedModel'
 import { TrainedModelType } from '../_types/TrainedModel'
 import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 
@@ -41,10 +42,21 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * If set to `true` and a `compressed_definition` is provided,
+     * the request defers definition decompression and skips relevant
+     * validations.
      * @availability stack since=8.0.0
      * @availability serverless
      */
     defer_definition_decompression?: boolean
+
+    /**
+     * Whether to wait for all child operations (e.g. model download)
+     * to complete.
+     * @availability stack since=8.8.0
+     * @availability serverless
+     */
+    wait_for_completion?: boolean
   }
   body: {
     /**
@@ -89,8 +101,24 @@ export interface Request extends RequestBase {
      */
     model_size_bytes?: long
     /**
+     * The platform architecture (if applicable) of the trained mode. If the model
+     * only works on one platform, because it is heavily optimized for a particular
+     * processor architecture and OS combination, then this field specifies which.
+     * The format of the string must match the platform identifiers used by Elasticsearch,
+     * so one of, `linux-x86_64`, `linux-aarch64`, `darwin-x86_64`, `darwin-aarch64`,
+     * or `windows-x86_64`. For portable models (those that work independent of processor
+     * architecture or OS features), leave this field unset.
+     */
+    platform_architecture?: string
+    /**
      * An array of tags to organize the model.
      */
     tags?: string[]
+    /**
+     * Optional prefix strings applied at inference
+     * @availability stack since=8.12.0
+     * @availability serverless
+     */
+    prefix_strings?: TrainedModelPrefixStrings
   }
 }

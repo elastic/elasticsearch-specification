@@ -18,7 +18,7 @@
  */
 
 /**
- * @variants internal tag='type'
+ * @variants internal tag='type' default='custom'
  * @doc_id analysis-normalizers
  */
 export type Normalizer = LowercaseNormalizer | CustomNormalizer

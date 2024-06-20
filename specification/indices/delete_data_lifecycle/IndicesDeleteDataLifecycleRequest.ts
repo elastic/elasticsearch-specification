@@ -22,10 +22,10 @@ import { ExpandWildcards, DataStreamNames } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Removes the data lifecycle from a data stream rendering it not managed by DLM
+ * Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle
  * @rest_spec_name indices.delete_data_lifecycle
- * @availability stack since=8.8.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

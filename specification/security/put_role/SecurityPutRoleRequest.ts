@@ -22,7 +22,6 @@ import {
   ClusterPrivilege,
   ApplicationPrivileges
 } from '@security/_types/Privileges'
-import { TransientMetadataConfig } from '@security/_types/TransientMetadataConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
@@ -57,6 +56,7 @@ export interface Request extends RequestBase {
     cluster?: ClusterPrivilege[]
     /**
      * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+     * @availability stack
      */
     global?: Dictionary<string, UserDefinedValue>
     /**
@@ -68,13 +68,13 @@ export interface Request extends RequestBase {
      */
     metadata?: Metadata
     /**
-     * A list of users that the owners of this role can impersonate.
+     * A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
      * @doc_id run-as-privilege
      */
     run_as?: string[]
     /**
      * Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.
      */
-    transient_metadata?: TransientMetadataConfig
+    transient_metadata?: Dictionary<string, UserDefinedValue>
   }
 }

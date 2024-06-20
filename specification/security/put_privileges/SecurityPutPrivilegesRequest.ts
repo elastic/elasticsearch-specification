@@ -33,5 +33,5 @@ export interface Request extends RequestBase {
     refresh?: Refresh
   }
   /** @codegen_name privileges */
-  body?: Dictionary<string, Dictionary<string, Actions>>
+  body: Dictionary<string, Dictionary<string, Actions>>
 }

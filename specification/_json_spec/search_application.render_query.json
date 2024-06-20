@@ -4,7 +4,7 @@
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-application-render-query.html",
       "description": "Renders a query for given search application search parameters"
     },
-    "stability": "beta",
+    "stability": "experimental",
     "visibility": "public",
     "headers": {
       "accept": ["application/json"],

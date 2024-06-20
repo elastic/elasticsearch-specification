@@ -143,10 +143,7 @@ export class MoreLikeThisQuery extends QueryBase {
    * @server_default 0
    */
   min_word_length?: integer
-  /**
-   * Overrides the default analyzer.
-   */
-  per_field_analyzer?: Dictionary<Field, string>
+
   routing?: Routing
   /**
    * An array of stop words.
@@ -176,6 +173,9 @@ export class LikeDocument {
    * Index of a document.
    */
   _index?: IndexName
+  /**
+   * Overrides the default analyzer.
+   */
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
   version?: VersionNumber
@@ -266,35 +266,76 @@ export class RankFeatureFunction {}
 export class RankFeatureFunctionLinear extends RankFeatureFunction {}
 
 export class RankFeatureFunctionLogarithm extends RankFeatureFunction {
+  /**
+   * Configurable scaling factor.
+   */
   scaling_factor: float
 }
 
 export class RankFeatureFunctionSaturation extends RankFeatureFunction {
+  /**
+   * Configurable pivot value so that the result will be less than 0.5.
+   */
   pivot?: float
 }
 
 export class RankFeatureFunctionSigmoid extends RankFeatureFunction {
+  /**
+   * Configurable pivot value so that the result will be less than 0.5.
+   */
   pivot: float
+  /**
+   * Configurable Exponent.
+   */
   exponent: float
 }
 
 export class RankFeatureQuery extends QueryBase {
+  /**
+   * `rank_feature` or `rank_features` field used to boost relevance scores.
+   */
   field: Field
 
   // This is actually an inline optional container: at most one of these fields can exist
+  /**
+   * Saturation function used to boost relevance scores based on the value of the rank feature `field`.
+   */
   saturation?: RankFeatureFunctionSaturation
+  /**
+   * Logarithmic function used to boost relevance scores based on the value of the rank feature `field`.
+   */
   log?: RankFeatureFunctionLogarithm
+  /**
+   * Linear function used to boost relevance scores based on the value of the rank feature `field`.
+   */
   linear?: RankFeatureFunctionLinear
+  /**
+   * Sigmoid function used to boost relevance scores based on the value of the rank feature `field`.
+   */
   sigmoid?: RankFeatureFunctionSigmoid
 }
 
 export class ScriptQuery extends QueryBase {
+  /**
+   * Contains a script to run as a query.
+   * This script must return a boolean value, `true` or `false`.
+   */
   script: Script
 }
 
 export class ScriptScoreQuery extends QueryBase {
+  /**
+   * Documents with a score lower than this floating point number are excluded from the search results.
+   */
   min_score?: float
+  /**
+   * Query used to return documents.
+   */
   query: QueryContainer
+  /**
+   * Script used to compute the score of documents returned by the query.
+   * Important: final relevance scores from the `script_score` query cannot be negative.
+   */
   script: Script
 }
 
@@ -304,12 +345,24 @@ export class ShapeQuery
   extends QueryBase
   implements AdditionalProperty<Field, ShapeFieldQuery>
 {
+  /**
+   * When set to `true` the query ignores an unmapped field and will not match any documents.
+   */
   ignore_unmapped?: boolean
 }
 
 export class ShapeFieldQuery {
+  /**
+   * Queries using a pre-indexed shape.
+   */
   indexed_shape?: FieldLookup
+  /**
+   * Spatial relation between the query shape and the document shape.
+   */
   relation?: GeoShapeRelation
+  /**
+   * Queries using an inline shape definition in GeoJSON or Well Known Text (WKT) format.
+   */
   shape?: GeoShape
 }
 

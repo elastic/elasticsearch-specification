@@ -23,7 +23,15 @@ import { QueryBase, QueryContainer } from './abstractions'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class SpanContainingQuery extends QueryBase {
+  /**
+   * Can be any span query.
+   * Matching spans from `big` that contain matches from `little` are returned.
+   */
   big: SpanQuery
+  /**
+   * Can be any span query.
+   * Matching spans from `big` that contain matches from `little` are returned.
+   */
   little: SpanQuery
 }
 
@@ -33,7 +41,13 @@ export class SpanFieldMaskingQuery extends QueryBase {
 }
 
 export class SpanFirstQuery extends QueryBase {
+  /**
+   * Controls the maximum end position permitted in a match.
+   */
   end: integer
+  /**
+   * Can be any other span type query.
+   */
   match: SpanQuery
 }
 
@@ -42,27 +56,57 @@ export class SpanFirstQuery extends QueryBase {
 export type SpanGapQuery = SingleKeyDictionary<Field, integer>
 
 export class SpanMultiTermQuery extends QueryBase {
-  /** Should be a multi term query (one of wildcard, fuzzy, prefix, range or regexp query) */
+  /**
+   * Should be a multi term query (one of `wildcard`, `fuzzy`, `prefix`, `range`, or `regexp` query).
+   */
   match: QueryContainer
 }
 
 export class SpanNearQuery extends QueryBase {
+  /**
+   * Array of one or more other span type queries.
+   */
   clauses: SpanQuery[]
+  /**
+   * Controls whether matches are required to be in-order.
+   */
   in_order?: boolean
+  /**
+   * Controls the maximum number of intervening unmatched positions permitted.
+   */
   slop?: integer
 }
 
 export class SpanNotQuery extends QueryBase {
+  /**
+   * The number of tokens from within the include span that can’t have overlap with the exclude span.
+   * Equivalent to setting both `pre` and `post`.
+   */
   dist?: integer
+  /**
+   * Span query whose matches must not overlap those returned.
+   */
   exclude: SpanQuery
+  /**
+   * Span query whose matches are filtered.
+   */
   include: SpanQuery
-  /** @server_default 0 */
+  /**
+   * The number of tokens after the include span that can’t have overlap with the exclude span.
+   * @server_default 0
+   */
   post?: integer
-  /** @server_default 0 */
+  /**
+   * The number of tokens before the include span that can’t have overlap with the exclude span.
+   * @server_default 0
+   */
   pre?: integer
 }
 
 export class SpanOrQuery extends QueryBase {
+  /**
+   * Array of one or more other span type queries.
+   */
   clauses: SpanQuery[]
 }
 
@@ -72,21 +116,59 @@ export class SpanTermQuery extends QueryBase {
 }
 
 export class SpanWithinQuery extends QueryBase {
+  /**
+   * Can be any span query.
+   * Matching spans from `little` that are enclosed within `big` are returned.
+   */
   big: SpanQuery
+  /**
+   * Can be any span query.
+   * Matching spans from `little` that are enclosed within `big` are returned.
+   */
   little: SpanQuery
 }
 
-/** @variants container */
+/**
+ * @variants container
+ * @non_exhaustive
+ */
 export class SpanQuery {
+  /**
+   * Accepts a list of span queries, but only returns those spans which also match a second span query.
+   */
   span_containing?: SpanContainingQuery
-  field_masking_span?: SpanFieldMaskingQuery
+  /**
+   * Allows queries like `span_near` or `span_or` across different fields.
+   */
+  span_field_masking?: SpanFieldMaskingQuery
+  /**
+   * Accepts another span query whose matches must appear within the first N positions of the field.
+   */
   span_first?: SpanFirstQuery
   span_gap?: SpanGapQuery
+  /**
+   * Wraps a `term`, `range`, `prefix`, `wildcard`, `regexp`, or `fuzzy` query.
+   */
   span_multi?: SpanMultiTermQuery
+  /**
+   * Accepts multiple span queries whose matches must be within the specified distance of each other, and possibly in the same order.
+   */
   span_near?: SpanNearQuery
+  /**
+   * Wraps another span query, and excludes any documents which match that query.
+   */
   span_not?: SpanNotQuery
+  /**
+   * Combines multiple span queries and returns documents which match any of the specified queries.
+   */
   span_or?: SpanOrQuery
+  /**
+   * The equivalent of the `term` query but for use with other span queries.
+   */
   span_term?: SingleKeyDictionary<Field, SpanTermQuery>
+  /**
+   * The result from a single span query is returned as long is its span falls within the spans returned by a list of other span queries.
+   */
   span_within?: SpanWithinQuery
 }
 

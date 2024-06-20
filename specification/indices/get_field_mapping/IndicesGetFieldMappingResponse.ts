@@ -22,5 +22,6 @@ import { IndexName } from '@_types/common'
 import { TypeFieldMappings } from './types'
 
 export class Response {
+  /** @codegen_name field_mappings */
   body: Dictionary<IndexName, TypeFieldMappings>
 }

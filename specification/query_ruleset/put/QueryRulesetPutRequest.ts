@@ -18,7 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { QueryRuleset } from '../_types/QueryRuleset'
+import { QueryRule } from '../_types/QueryRuleset'
 
 /**
  * Creates or updates a query ruleset.
@@ -26,7 +26,7 @@ import { QueryRuleset } from '../_types/QueryRuleset'
  * @availability stack since=8.10.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  */
-interface Request extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /**
      * The unique identifier of the query ruleset to be created or updated
@@ -34,8 +34,10 @@ interface Request extends RequestBase {
     ruleset_id: Id
   }
   /**
-   * The query ruleset information to update
+   * The query rules in this ruleset
    */
   /** @codegen_name query_ruleset */
-  body: QueryRuleset
+  body: {
+    rules: QueryRule[]
+  }
 }

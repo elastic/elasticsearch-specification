@@ -27,13 +27,21 @@ import {
   Uuid
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DataLifecycleWithRollover } from '@indices/_types/DataLifecycle'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+
+enum ManagedBy {
+  ilm = 'Index Lifecycle Management',
+  // This should have been written with capital letters, it's a known typo and should not be corrected.
+  datastream = 'Data stream lifecycle',
+  unmanaged = 'Unmanaged'
+}
 
 export class DataStream {
   /**
    * Custom metadata for the stream, copied from the `_meta` object of the stream’s matching index template.
    * If empty, the response omits this property.
-   * @doc_id mapping-meta-field */
+   * @doc_id mapping-meta-field
+   */
   _meta?: Metadata
   /**
    *  If `true`, the data stream allows custom routing on write request.
@@ -55,16 +63,24 @@ export class DataStream {
    */
   ilm_policy?: Name
   /**
+   * Name of the lifecycle system that'll manage the next generation of the data stream.
+   */
+  next_generation_managed_by: ManagedBy
+  /**
+   * Indicates if ILM should take precedence over DSL in case both are configured to managed this data stream.
+   */
+  prefer_ilm: boolean
+  /**
    * Array of objects containing information about the data stream’s backing indices.
    * The last item in this array contains information about the stream’s current write index.
    */
   indices: DataStreamIndex[]
   /**
    * Contains the configuration for the data lifecycle management of this data stream.
-   * @availability stack since=8.8.0 stability=experimental
-   * @availability serverless stability=experimental
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable
    */
-  lifecycle?: DataLifecycleWithRollover
+  lifecycle?: DataStreamLifecycleWithRollover
   /**
    * Name of the data stream.
    */
@@ -111,6 +127,18 @@ export class DataStreamIndex {
    * Universally unique identifier (UUID) for the index.
    */
   index_uuid: Uuid
+  /**
+   * Name of the current ILM lifecycle policy configured for this backing index.
+   */
+  ilm_policy?: Name
+  /**
+   * Name of the lifecycle system that's currently managing this backing index.
+   */
+  managed_by: ManagedBy
+  /**
+   * Indicates if ILM should take precedence over DSL in case both are configured to manage this index.
+   */
+  prefer_ilm: boolean
 }
 
 export class DataStreamVisibility {

@@ -22,16 +22,30 @@ import { Duration } from '@_types/Time'
 import { Action } from './types'
 
 /**
+ * Adds a data stream or index to an alias.
  * @rest_spec_name indices.update_aliases
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
   body: {
+    /**
+     * Actions to perform.
+     */
     actions?: Action[]
   }
 }

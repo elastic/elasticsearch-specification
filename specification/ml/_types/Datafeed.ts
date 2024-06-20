@@ -19,14 +19,13 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ExpandWildcards, Id, Indices, IndicesOptions } from '@_types/common'
+import { Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { double, integer, long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import {
   Duration,
-  DateTime,
   DurationValue,
   UnitMillis,
   UnitFloatMillis
@@ -83,7 +82,7 @@ export class DatafeedConfig {
    * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
    * @aliases indexes
    */
-  indices?: string[]
+  indices?: Indices
   /**
    * Specifies index expansion options that are used during search.
    */
@@ -138,33 +137,95 @@ export enum DatafeedState {
 }
 
 export class DatafeedStats {
+  /**
+   * For started datafeeds only, contains messages relating to the selection of a node.
+   */
   assignment_explanation?: string
+  /**
+   * A numerical character string that uniquely identifies the datafeed.
+   * This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores.
+   * It must start and end with alphanumeric characters.
+   */
   datafeed_id: Id
+  /**
+   * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
+   * @availability stack
+   */
   node?: DiscoveryNode
+  /**
+   * The status of the datafeed, which can be one of the following values: `starting`, `started`, `stopping`, `stopped`.
+   */
   state: DatafeedState
+  /**
+   * An object that provides statistical information about timing aspect of this datafeed.
+   */
   timing_stats: DatafeedTimingStats
+  /**
+   * An object containing the running state for this datafeed.
+   * It is only provided if the datafeed is started.
+   */
   running_state?: DatafeedRunningState
 }
 
 export class DatafeedTimingStats {
+  /**
+   * The number of buckets processed.
+   */
   bucket_count: long
+  /**
+   * The exponential average search time per hour, in milliseconds.
+   */
   exponential_average_search_time_per_hour_ms: DurationValue<UnitFloatMillis>
+  /**
+   * Identifier for the anomaly detection job.
+   */
   job_id: Id
+  /**
+   * The number of searches run by the datafeed.
+   */
   search_count: long
+  /**
+   * The total time the datafeed spent searching, in milliseconds.
+   */
   total_search_time_ms: DurationValue<UnitFloatMillis>
+  /**
+   * The average search time per bucket, in milliseconds.
+   */
   average_search_time_per_bucket_ms?: DurationValue<UnitFloatMillis>
 }
 
 export class DatafeedRunningState {
+  /**
+   * Indicates if the datafeed is "real-time"; meaning that the datafeed has no configured `end` time.
+   */
   real_time_configured: boolean
+  /**
+   * Indicates whether the datafeed has finished running on the available past data.
+   * For datafeeds without a configured `end` time, this means that the datafeed is now running on "real-time" data.
+   */
   real_time_running: boolean
+  /**
+   * Provides the latest time interval the datafeed has searched.
+   */
   search_interval?: RunningStateSearchInterval
 }
 
 export class RunningStateSearchInterval {
+  /**
+   * The end time.
+   */
   end?: Duration
+  /**
+   * The end time as an epoch in milliseconds.
+   */
   end_ms: DurationValue<UnitMillis>
+  /**
+   * The start time.
+   */
   start?: Duration
+  /**
+   * The start time as an epoch in milliseconds.
+   */
   start_ms: DurationValue<UnitMillis>
 }
 

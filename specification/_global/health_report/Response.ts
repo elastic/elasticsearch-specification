@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { Indicators } from './types'
+import { Indicators, IndicatorHealthStatus } from './types'
 
 export class Response {
   body: {
     cluster_name: string
     indicators: Indicators
+    status?: IndicatorHealthStatus
   }
 }

@@ -42,11 +42,11 @@ export enum RuleAction {
   /**
    * The result will not be created. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.
    */
-  skip_result = 0,
+  skip_result,
   /**
    * The value for that series will not be used to update the model. Unless you also specify `skip_result`, the results will be created as usual. This action is suitable when certain values are expected to be consistently anomalous and they affect the model in a way that negatively impacts the rest of the results.
    */
-  skip_model_update = 1
+  skip_model_update
 }
 
 export class RuleCondition {
@@ -65,15 +65,15 @@ export class RuleCondition {
 }
 
 export enum AppliesTo {
-  actual = 0,
-  typical = 1,
-  diff_from_typical = 2,
-  time = 3
+  actual,
+  typical,
+  diff_from_typical,
+  time
 }
 
 export enum ConditionOperator {
-  gt = 0,
-  gte = 1,
-  lt = 2,
-  lte = 3
+  gt,
+  gte,
+  lt,
+  lte
 }

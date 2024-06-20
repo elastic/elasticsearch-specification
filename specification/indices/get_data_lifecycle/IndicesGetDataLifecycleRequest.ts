@@ -21,17 +21,32 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
 
 /**
- * Retrieves the data lifecycle configuration of one or more data streams.
+ * Retrieves the data stream lifecycle configuration of one or more data streams.
  * @rest_spec_name indices.get_data_lifecycle
- * @availability stack since=8.8.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams to limit the request.
+     * Supports wildcards (`*`).
+     * To target all data streams, omit this parameter or use `*` or `_all`.
+     */
     name: DataStreamNames
   }
   query_parameters: {
+    /**
+     * Type of data stream that wildcard patterns can match.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `true`, return all default settings in the response.
+     * @server_default false
+     */
     include_defaults?: boolean
   }
 }

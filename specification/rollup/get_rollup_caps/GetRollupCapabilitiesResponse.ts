@@ -22,5 +22,6 @@ import { IndexName } from '@_types/common'
 import { RollupCapabilities } from './types'
 
 export class Response {
+  /** @codegen_name capabilities */
   body: Dictionary<IndexName, RollupCapabilities>
 }

@@ -48,6 +48,7 @@ export class TypeMapping {
   _source?: SourceField
   runtime?: Dictionary<string, RuntimeField>
   enabled?: boolean
+  subobjects?: boolean
   /**
    * @availability stack since=7.16.0
    * @availability serverless

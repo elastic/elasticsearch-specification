@@ -146,17 +146,16 @@ export class IndexSettings
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
   time_series?: IndexSettingsTimeSeries
-  shards?: integer
   queries?: Queries
   /**
    * Configure custom similarity settings to customize how search results are scored.
    */
-  similarity?: SettingsSimilarity
+  similarity?: Dictionary<string, SettingsSimilarity>
   /**
    * Enable or disable dynamic mapping for an index.
    */
   mapping?: MappingLimitSettings
-  'indexing.slowlog'?: SlowlogSettings
+  'indexing.slowlog'?: IndexingSlowlogSettings
   /**
    * Configure indexing back pressure limits.
    */
@@ -167,55 +166,63 @@ export class IndexSettings
   store?: Storage
 }
 
-export class SettingsSimilarity {
-  bm25?: SettingsSimilarityBm25
-  dfi?: SettingsSimilarityDfi
-  dfr?: SettingsSimilarityDfr
-  ib?: SettingsSimilarityIb
-  lmd?: SettingsSimilarityLmd
-  lmj?: SettingsSimilarityLmj
-  scripted_tfidf?: SettingsSimilarityScriptedTfidf
+/**
+ * @variants internal tag='type'
+ */
+export type SettingsSimilarity =
+  | SettingsSimilarityBm25
+  | SettingsSimilarityBoolean
+  | SettingsSimilarityDfi
+  | SettingsSimilarityDfr
+  | SettingsSimilarityIb
+  | SettingsSimilarityLmd
+  | SettingsSimilarityLmj
+  | SettingsSimilarityScripted
+
+export class SettingsSimilarityBoolean {
+  type: 'boolean'
 }
 
 export class SettingsSimilarityBm25 {
-  b: double
-  discount_overlaps: boolean
-  k1: double
   type: 'BM25'
+  b?: double
+  discount_overlaps?: boolean
+  k1?: double
 }
 
 export class SettingsSimilarityDfi {
-  independence_measure: DFIIndependenceMeasure
   type: 'DFI'
+  independence_measure: DFIIndependenceMeasure
 }
 
 export class SettingsSimilarityDfr {
+  type: 'DFR'
   after_effect: DFRAfterEffect
   basic_model: DFRBasicModel
   normalization: Normalization
-  type: 'DFR'
 }
 
 export class SettingsSimilarityIb {
+  type: 'IB'
   distribution: IBDistribution
   lambda: IBLambda
   normalization: Normalization
-  type: 'IB'
 }
 
 export class SettingsSimilarityLmd {
-  mu: integer
   type: 'LMDirichlet'
+  mu?: double
 }
 
 export class SettingsSimilarityLmj {
-  lambda: double
   type: 'LMJelinekMercer'
+  lambda?: double
 }
 
-export class SettingsSimilarityScriptedTfidf {
-  script: Script
+export class SettingsSimilarityScripted {
   type: 'scripted'
+  script: Script
+  weight_script?: Script
 }
 
 export class SettingsHighlight {
@@ -268,7 +275,7 @@ export class IndexSettingsLifecycle {
   /**
    * The name of the policy to use to manage the index. For information about how Elasticsearch applies policy changes, see Policy updates.
    */
-  name: Name
+  name?: Name
   /**
    * Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.
    * You can explicitly set it to skip rollover.
@@ -421,7 +428,7 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsDepth {
@@ -430,7 +437,7 @@ export class MappingLimitSettingsDepth {
    * at the root object level, then the depth is 1. If there is one object mapping, then the depth is 2, etc.
    * @server_default 20
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsNestedFields {
@@ -440,7 +447,7 @@ export class MappingLimitSettingsNestedFields {
    * setting limits the number of unique nested types per index.
    * @server_default 50
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsNestedObjects {
@@ -449,7 +456,7 @@ export class MappingLimitSettingsNestedObjects {
    * to prevent out of memory errors when a document contains too many nested objects.
    * @server_default 10000
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsFieldNameLength {
@@ -463,10 +470,10 @@ export class MappingLimitSettingsFieldNameLength {
 
 export class MappingLimitSettingsDimensionFields {
   /**
-   * [preview] This functionality is in technical preview and may be changed or removed in a future release. Elastic will
-   * apply best effort to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+   * [preview] This functionality is in technical preview and may be changed or removed in a future release.
+   * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
-  limit?: integer
+  limit?: long
 }
 
 export class SlowlogSettings {
@@ -479,12 +486,6 @@ export class SlowlogSettings {
 export class SlowlogTresholds {
   query?: SlowlogTresholdLevels
   fetch?: SlowlogTresholdLevels
-  /**
-   * The indexing slow log, similar in functionality to the search slow log. The log file name ends with `_index_indexing_slowlog.json`.
-   * Log and the thresholds are configured in the same way as the search slowlog.
-   * @doc_id index-modules-slowlog-slowlog
-   */
-  index?: SlowlogTresholdLevels
 }
 
 export class SlowlogTresholdLevels {
@@ -512,8 +513,6 @@ export enum StorageType {
   /**
    * Default file system implementation. This will pick the best implementation depending on the operating environment, which
    * is currently hybridfs on all supported systems but is subject to change.
-   *
-   * @aliases ''
    */
   fs,
   /**
@@ -548,4 +547,20 @@ export class IndexingPressureMemory {
    * the node will reject new replica operations. Defaults to 10% of the heap.
    */
   limit?: integer
+}
+
+export class IndexingSlowlogSettings {
+  level?: string
+  source?: integer
+  reformat?: boolean
+  threshold?: IndexingSlowlogTresholds
+}
+
+export class IndexingSlowlogTresholds {
+  /**
+   * The indexing slow log, similar in functionality to the search slow log. The log file name ends with `_index_indexing_slowlog.json`.
+   * Log and the thresholds are configured in the same way as the search slowlog.
+   * @doc_id index-modules-slowlog-slowlog
+   */
+  index?: SlowlogTresholdLevels
 }

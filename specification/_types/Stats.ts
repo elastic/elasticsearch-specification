@@ -19,7 +19,7 @@
 
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ByteSize, Field, Name, VersionString } from './common'
+import { ByteSize, ClusterAlias, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
@@ -28,6 +28,27 @@ export class ClusterStatistics {
   skipped: integer
   successful: integer
   total: integer
+  running: integer
+  partial: integer
+  failed: integer
+  details?: Dictionary<ClusterAlias, ClusterDetails>
+}
+
+enum ClusterSearchStatus {
+  running,
+  successful,
+  partial,
+  skipped,
+  failed
+}
+
+export class ClusterDetails {
+  status: ClusterSearchStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  timed_out: boolean
+  _shards?: ShardStatistics
+  failures?: ShardFailure[]
 }
 
 export class ShardStatistics {
@@ -173,19 +194,19 @@ export class QueryCacheStats {
    * Total number of entries added to the query cache across all shards assigned to selected nodes.
    * This number includes current and evicted entries.
    */
-  cache_count: integer
+  cache_count: long
   /**
    * Total number of entries currently in the query cache across all shards assigned to selected nodes.
    */
-  cache_size: integer
+  cache_size: long
   /**
    * Total number of query cache evictions across all shards assigned to selected nodes.
    */
-  evictions: integer
+  evictions: long
   /**
    * Total count of query cache hits across all shards assigned to selected nodes.
    */
-  hit_count: integer
+  hit_count: long
   /**
    * Total amount of memory used for the query cache across all shards assigned to selected nodes.
    */
@@ -197,11 +218,11 @@ export class QueryCacheStats {
   /**
    * Total count of query cache misses across all shards assigned to selected nodes.
    */
-  miss_count: integer
+  miss_count: long
   /**
    * Total count of hits and misses in the query cache across all shards assigned to selected nodes.
    */
-  total_count: integer
+  total_count: long
 }
 
 export class RecoveryStats {

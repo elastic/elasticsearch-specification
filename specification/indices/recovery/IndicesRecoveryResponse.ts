@@ -22,5 +22,6 @@ import { IndexName } from '@_types/common'
 import { RecoveryStatus } from './types'
 
 export class Response {
+  /** @codegen_name statuses */
   body: Dictionary<IndexName, RecoveryStatus>
 }

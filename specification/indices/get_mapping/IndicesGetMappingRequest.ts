@@ -22,19 +22,51 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Retrieves mapping definitions for one or more indices.
+ * For data streams, the API retrieves mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_mapping
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
+     * Supports wildcards (`*`).
+     * To target all data streams and indices, omit this parameter or use `*` or `_all`.
+     */
     index?: Indices
   }
   query_parameters: {
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * @server_default true
+     */
     allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
+    /**
+     * If `true`, the request retrieves information from the local node only.
+     * @server_default false
+     */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
   }
 }

@@ -17,12 +17,17 @@
  * under the License.
  */
 
+import { TokenPruningConfig } from './TokenPruningConfig'
 import { QueryBase } from './abstractions'
 
-/** @shortcut_property value */
 export class TextExpansionQuery extends QueryBase {
   /** The text expansion NLP model to use */
   model_id: string
   /** The query text */
   model_text: string
+  /** Token pruning configurations
+   * @availability stack since=8.13.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  pruning_config?: TokenPruningConfig
 }
