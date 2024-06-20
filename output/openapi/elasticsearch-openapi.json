@@ -4342,75 +4342,15 @@
         "operationId": "connector-put",
         "parameters": [
           {
-            "in": "path",
-            "name": "connector_id",
-            "description": "The unique identifier of the connector to be created or updated",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/connector.put#connector_id"
           }
         ],
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "type": "string"
-                  },
-                  "index_name": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:IndexName"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
-                  },
-                  "is_native": {
-                    "type": "boolean"
-                  },
-                  "language": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "service_type": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "index_name"
-                ]
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/connector.put"
         },
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "$ref": "#/components/schemas/_types:Result"
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/connector.put#200"
           }
         }
       },
@@ -4672,6 +4612,24 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "connector.put"
+        ],
+        "summary": "Creates or updates a connector",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/create-connector-api.html"
+        },
+        "operationId": "connector-put-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/connector.put"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/connector.put#200"
+          }
+        }
+      },
       "post": {
         "tags": [
           "connector.post"
@@ -4718,8 +4676,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -36734,6 +36691,24 @@
           }
         }
       },
+      "connector.put#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/components/schemas/_types:Result"
+                }
+              },
+              "required": [
+                "result"
+              ]
+            }
+          }
+        }
+      },
       "count#200": {
         "description": "",
         "content": {
@@ -41351,6 +41326,17 @@
           "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
+      },
+      "connector.put#connector_id": {
+        "in": "path",
+        "name": "connector_id",
+        "description": "The unique identifier of the connector to be created or updated",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Id"
+        },
+        "style": "simple"
       },
       "count#index": {
         "in": "path",
@@ -49149,6 +49135,45 @@
           }
         },
         "required": true
+      },
+      "connector.put": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "index_name": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_types:IndexName"
+                    },
+                    {
+                      "$ref": "#/components/schemas/_spec_utils:NullValue"
+                    }
+                  ]
+                },
+                "is_native": {
+                  "type": "boolean"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "service_type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "index_name"
+              ]
+            }
+          }
+        }
       },
       "count": {
         "content": {

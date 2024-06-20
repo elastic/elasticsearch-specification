@@ -58,6 +58,12 @@
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
+    "async_search.status": {
+      "request": [
+        "Request: missing json spec query parameter 'keep_alive'"
+      ],
+      "response": []
+    },
     "async_search.submit": {
       "request": [
         "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
@@ -71,20 +77,46 @@
       "response": []
     },
     "autoscaling.delete_autoscaling_policy": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
       "response": [
         "response definition autoscaling.delete_autoscaling_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "autoscaling.get_autoscaling_capacity": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "autoscaling.get_autoscaling_policy": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
     "autoscaling.put_autoscaling_policy": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
       "response": [
         "response definition autoscaling.put_autoscaling_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "bulk": {
       "request": [
-        "Request: missing json spec query parameter 'type'"
+        "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'require_data_stream'",
+        "Request: missing json spec query parameter 'list_executed_pipelines'"
+      ],
+      "response": []
+    },
+    "capabilities": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -408,46 +440,103 @@
       "response": []
     },
     "ccr.delete_auto_follow_pattern": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.delete_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "ccr.follow": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "ccr.follow_info": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "ccr.follow_stats": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "ccr.forget_follower": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "ccr.get_auto_follow_pattern": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
     "ccr.pause_auto_follow_pattern": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.pause_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "ccr.pause_follow": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.pause_follow:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "ccr.put_auto_follow_pattern": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.put_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "ccr.resume_auto_follow_pattern": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.resume_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "ccr.resume_follow": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.resume_follow:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "ccr.stats": {
+      "request": [
+        "Request: missing json spec query parameter 'timeout'",
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
     "ccr.unfollow": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition ccr.unfollow:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "cluster.allocation_explain": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
     },
     "cluster.delete_component_template": {
       "request": [],
@@ -494,11 +583,59 @@
       ],
       "response": []
     },
+    "connector.put": {
+      "request": [
+        "Request: path parameter 'connector_id' is optional in the json spec"
+      ],
+      "response": []
+    },
+    "connector.secret_delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.secret_get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.secret_post": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.secret_put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.sync_job_check_in": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "connector.sync_job_delete": {
       "request": [],
       "response": [
         "response definition connector.sync_job_delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "connector.sync_job_error": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.sync_job_update_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "create": {
       "request": [],
@@ -539,19 +676,37 @@
       ]
     },
     "enrich.delete_policy": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition enrich.delete_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "enrich.execute_policy": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "enrich.get_policy": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
     "enrich.put_policy": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition enrich.put_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "enrich.stats": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "interface definition enrich.stats:ExecutingPolicy / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
       ]
@@ -570,8 +725,22 @@
       ],
       "response": []
     },
+    "esql.async_query": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "esql.async_query_get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "esql.query": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'drop_null_columns'"
+      ],
       "response": [
         "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
       ]
@@ -737,7 +906,9 @@
       ]
     },
     "index": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'require_data_stream'"
+      ],
       "response": [
         "response definition _global.index:Response / body / instance_of - Non-leaf type cannot be used here: '_types:WriteResponseBase'"
       ]
@@ -856,7 +1027,9 @@
       ]
     },
     "indices.put_settings": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'reopen'"
+      ],
       "response": [
         "response definition indices.put_settings:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -878,6 +1051,13 @@
     "indices.reload_search_analyzers": {
       "request": [
         "Request: missing json spec query parameter 'resource'"
+      ],
+      "response": []
+    },
+    "indices.rollover": {
+      "request": [
+        "Request: missing json spec query parameter 'lazy'",
+        "Request: missing json spec query parameter 'target_failure_store'"
       ],
       "response": []
     },
@@ -919,15 +1099,34 @@
       ]
     },
     "license.delete": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
       "response": [
         "response definition license.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "license.post": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
+    "license.post_start_basic": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
+      "response": []
+    },
     "license.post_start_trial": {
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'"
+        "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
@@ -1119,6 +1318,30 @@
       ],
       "response": []
     },
+    "profiling.flamegraph": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "profiling.stacktraces": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "profiling.status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "profiling.topn_functions": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "put_script": {
       "request": [
         "Request: missing json spec query parameter 'context'"
@@ -1246,13 +1469,6 @@
         "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "security.get_api_key": {
-      "request": [
-        "Request: query parameter 'active_only' does not exist in the json spec",
-        "Request: query parameter 'with_profile_uid' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
@@ -1304,13 +1520,16 @@
       "response": []
     },
     "security.query_api_keys": {
-      "request": [
-        "Request: query parameter 'with_profile_uid' does not exist in the json spec",
-        "Request: query parameter 'typed_keys' does not exist in the json spec"
-      ],
+      "request": [],
       "response": [
         "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
       ]
+    },
+    "security.query_user": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "security.suggest_user_profiles": {
       "request": [],
@@ -1347,7 +1566,6 @@
     },
     "shutdown.get_node": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
@@ -1360,6 +1578,12 @@
       "response": [
         "response definition shutdown.put_node:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "simulate.ingest": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "slm.delete_lifecycle": {
       "request": [],
@@ -1383,13 +1607,19 @@
       ]
     },
     "slm.start": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
       "response": [
         "response definition slm.start:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
     "slm.stop": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: missing json spec query parameter 'timeout'"
+      ],
       "response": [
         "response definition slm.stop:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -1449,6 +1679,18 @@
         "Request: query parameter 'node_id' does not exist in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'nodes'"
+      ],
+      "response": []
+    },
+    "text_structure.find_field_structure": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "text_structure.find_message_structure": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1535,7 +1777,9 @@
       "response": []
     },
     "watcher.start": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition watcher.start:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -1547,7 +1791,9 @@
       ]
     },
     "watcher.stop": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
       "response": [
         "response definition watcher.stop:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]

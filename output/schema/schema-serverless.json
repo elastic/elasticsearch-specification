@@ -1254,7 +1254,7 @@
         "name": "Request",
         "namespace": "connector.post"
       },
-      "requestBodyRequired": true,
+      "requestBodyRequired": false,
       "requestMediaType": [
         "application/json"
       ],
@@ -1296,7 +1296,7 @@
         "name": "Request",
         "namespace": "connector.put"
       },
-      "requestBodyRequired": true,
+      "requestBodyRequired": false,
       "requestMediaType": [
         "application/json"
       ],
@@ -1315,6 +1315,12 @@
             "PUT"
           ],
           "path": "/_connector/{connector_id}"
+        },
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_connector"
         }
       ],
       "visibility": "public"
@@ -7955,6 +7961,9 @@
         "namespace": "_global.open_point_in_time"
       },
       "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
       "response": {
         "name": "Response",
         "namespace": "_global.open_point_in_time"
