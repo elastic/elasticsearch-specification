@@ -1276,7 +1276,7 @@ export type SearchHighlighterType = SearchBuiltinHighlighterType | string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
-  _id: Id
+  _id?: Id
   _score?: double
   _type?: Type
   _explanation?: ExplainExplanation
@@ -1316,7 +1316,7 @@ export interface SearchInnerHits {
   fields?: Fields
   sort?: Sort
   _source?: SearchSourceConfig
-  stored_field?: Fields
+  stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
 }
@@ -1892,6 +1892,12 @@ export interface CoordsGeoBounds {
   right: double
 }
 
+export type DFIIndependenceMeasure = 'standardized' | 'saturated' | 'chisquared'
+
+export type DFRAfterEffect = 'no' | 'b' | 'l'
+
+export type DFRBasicModel = 'be' | 'd' | 'g' | 'if' | 'in' | 'ine' | 'p'
+
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
@@ -2055,6 +2061,10 @@ export type Host = string
 
 export type HttpHeaders = Record<string, string | string[]>
 
+export type IBDistribution = 'll' | 'spl'
+
+export type IBLambda = 'df' | 'ttf'
+
 export type Id = string | number
 
 export type Ids = Id | Id[]
@@ -2103,7 +2113,7 @@ export interface InlineGetKeys<TDocument = unknown> {
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
-  _source: TDocument
+  _source?: TDocument
 }
 export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
   & { [property: string]: any }
@@ -2206,6 +2216,8 @@ export interface NodeStatistics {
   failed: integer
 }
 
+export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
+
 export type OpType = 'index' | 'create'
 
 export type Password = string
@@ -2235,7 +2247,7 @@ export interface QueryCacheStats {
   evictions: integer
   hit_count: integer
   memory_size?: ByteSize
-  memory_size_in_bytes: integer
+  memory_size_in_bytes: long
   miss_count: integer
   total_count: integer
 }
@@ -2341,28 +2353,28 @@ export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 export interface SegmentsStats {
   count: integer
   doc_values_memory?: ByteSize
-  doc_values_memory_in_bytes: integer
+  doc_values_memory_in_bytes: long
   file_sizes: Record<string, IndicesStatsShardFileSizeInfo>
   fixed_bit_set?: ByteSize
-  fixed_bit_set_memory_in_bytes: integer
+  fixed_bit_set_memory_in_bytes: long
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: integer
-  index_writer_memory_in_bytes: integer
+  index_writer_max_memory_in_bytes?: long
+  index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
-  memory_in_bytes: integer
+  memory_in_bytes: long
   norms_memory?: ByteSize
-  norms_memory_in_bytes: integer
+  norms_memory_in_bytes: long
   points_memory?: ByteSize
-  points_memory_in_bytes: integer
+  points_memory_in_bytes: long
   stored_memory?: ByteSize
-  stored_fields_memory_in_bytes: integer
-  terms_memory_in_bytes: integer
+  stored_fields_memory_in_bytes: long
+  terms_memory_in_bytes: long
   terms_memory?: ByteSize
   term_vectory_memory?: ByteSize
-  term_vectors_memory_in_bytes: integer
+  term_vectors_memory_in_bytes: long
   version_map_memory?: ByteSize
-  version_map_memory_in_bytes: integer
+  version_map_memory_in_bytes: long
 }
 
 export type SequenceNumber = long
@@ -2420,11 +2432,11 @@ export type SortResults = FieldValue[]
 
 export interface StoreStats {
   size?: ByteSize
-  size_in_bytes: integer
+  size_in_bytes: long
   reserved?: ByteSize
-  reserved_in_bytes: integer
+  reserved_in_bytes: long
   total_data_set_size?: ByteSize
-  total_data_set_size_in_bytes?: integer
+  total_data_set_size_in_bytes?: long
 }
 
 export interface StoredScript {
@@ -2547,6 +2559,7 @@ export interface AggregationsAdjacencyMatrixAggregate extends AggregationsMultiB
 
 export interface AggregationsAdjacencyMatrixAggregation extends AggregationsBucketAggregationBase {
   filters?: Record<string, QueryDslQueryContainer>
+  separator?: string
 }
 
 export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMultiBucketBase {
@@ -2728,7 +2741,7 @@ export type AggregationsBuckets<TBucket = unknown> = Record<string, TBucket> | T
 
 export type AggregationsBucketsPath = string | string[] | Record<string, string>
 
-export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1Y'
+export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1y'
 
 export interface AggregationsCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -2773,11 +2786,20 @@ export interface AggregationsCompositeAggregation extends AggregationsBucketAggr
   sources?: Record<string, AggregationsCompositeAggregationSource>[]
 }
 
+export interface AggregationsCompositeAggregationBase {
+  field?: Field
+  missing_bucket?: boolean
+  missing_order?: AggregationsMissingOrder
+  script?: Script
+  value_type?: AggregationsValueType
+  order?: SortOrder
+}
+
 export interface AggregationsCompositeAggregationSource {
-  terms?: AggregationsTermsAggregation
-  histogram?: AggregationsHistogramAggregation
-  date_histogram?: AggregationsDateHistogramAggregation
-  geotile_grid?: AggregationsGeoTileGridAggregation
+  terms?: AggregationsCompositeTermsAggregation
+  histogram?: AggregationsCompositeHistogramAggregation
+  date_histogram?: AggregationsCompositeDateHistogramAggregation
+  geotile_grid?: AggregationsCompositeGeoTileGridAggregation
 }
 
 export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucketBase {
@@ -2785,6 +2807,26 @@ export interface AggregationsCompositeBucketKeys extends AggregationsMultiBucket
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
   & { [property: string]: AggregationsAggregate | AggregationsCompositeAggregateKey | long }
+
+export interface AggregationsCompositeDateHistogramAggregation extends AggregationsCompositeAggregationBase {
+  format?: string
+  calendar_interval?: DateMathTime
+  fixed_interval?: DateMathTime
+  offset?: Time
+  time_zone?: TimeZone
+}
+
+export interface AggregationsCompositeGeoTileGridAggregation extends AggregationsCompositeAggregationBase {
+  precision?: integer
+  bounds?: GeoBounds
+}
+
+export interface AggregationsCompositeHistogramAggregation extends AggregationsCompositeAggregationBase {
+  interval: double
+}
+
+export interface AggregationsCompositeTermsAggregation extends AggregationsCompositeAggregationBase {
+}
 
 export interface AggregationsCumulativeCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -2879,8 +2921,8 @@ export interface AggregationsEwmaMovingAverageAggregation extends AggregationsMo
 }
 
 export interface AggregationsExtendedBounds<T = unknown> {
-  max: T
-  min: T
+  max?: T
+  min?: T
 }
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
@@ -3768,6 +3810,7 @@ export interface AggregationsVariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
+  script?: Script
 }
 
 export interface AggregationsVariableWidthHistogramBucketKeys extends AggregationsMultiBucketBase {
@@ -3917,6 +3960,7 @@ export interface AnalysisFingerprintTokenFilter extends AnalysisTokenFilterBase 
 
 export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
   type: 'html_strip'
+  escaped_tags?: string[]
 }
 
 export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
@@ -4204,9 +4248,9 @@ export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBa
 
 export interface AnalysisPatternTokenizer extends AnalysisTokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export type AnalysisPhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
@@ -4322,6 +4366,7 @@ export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -4333,6 +4378,7 @@ export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -4518,7 +4564,8 @@ export interface MappingDenseVectorIndexOptions {
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
-  dims: integer
+  element_type?: string
+  dims?: integer
   similarity?: string
   index?: boolean
   index_options?: MappingDenseVectorIndexOptions
@@ -4542,7 +4589,7 @@ export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
 export type MappingDynamicMapping = boolean | 'strict' | 'runtime' | 'true' | 'false'
 
 export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
-  type: '{dynamic_property}'
+  type: '{dynamic_type}'
   enabled?: boolean
   null_value?: FieldValue
   boost?: double
@@ -4590,7 +4637,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'match_only_text'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'match_only_text'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -4620,6 +4667,9 @@ export interface MappingGeoPointProperty extends MappingDocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: GeoLocation
+  index?: boolean
+  on_script_error?: MappingOnScriptError
+  script?: Script
   type: 'geo_point'
 }
 
@@ -4681,6 +4731,8 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: MappingIndexOptions
+  script?: Script
+  on_script_error?: MappingOnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
@@ -4766,6 +4818,7 @@ export interface MappingRankFeatureProperty extends MappingPropertyBase {
 }
 
 export interface MappingRankFeaturesProperty extends MappingPropertyBase {
+  positive_score_impact?: boolean
   type: 'rank_features'
 }
 
@@ -5072,9 +5125,10 @@ export interface QueryDslGeoDistanceQueryKeys extends QueryDslQueryBase {
   distance?: Distance
   distance_type?: GeoDistanceType
   validation_method?: QueryDslGeoValidationMethod
+  ignore_unmapped?: boolean
 }
 export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
-  & { [property: string]: GeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | float | string }
+  & { [property: string]: GeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | boolean | float | string }
 
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
@@ -8590,7 +8644,7 @@ export interface EnrichExecutePolicyRequest extends RequestBase {
 }
 
 export interface EnrichExecutePolicyResponse {
-  status: EnrichExecutePolicyExecuteEnrichPolicyStatus
+  status?: EnrichExecutePolicyExecuteEnrichPolicyStatus
   task_id?: TaskId
 }
 
@@ -9138,6 +9192,7 @@ export interface IndicesIndexSettingsKeys {
   top_metrics_max_size?: integer
   analysis?: IndicesIndexSettingsAnalysis
   settings?: IndicesIndexSettings
+  similarity?: Record<string, IndicesSettingsSimilarity>
   mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesSlowlogSettings
   indexing_pressure?: IndicesIndexingPressure
@@ -9155,7 +9210,7 @@ export interface IndicesIndexSettingsAnalysis {
 }
 
 export interface IndicesIndexSettingsLifecycle {
-  name: Name
+  name?: Name
   indexing_complete?: boolean
   origination_date?: long
   parse_origination_date?: boolean
@@ -9242,6 +9297,54 @@ export type IndicesSegmentSortMissing = '_last' | '_first'
 export type IndicesSegmentSortMode = 'min' | 'max'
 
 export type IndicesSegmentSortOrder = 'asc' | 'desc'
+
+export type IndicesSettingsSimilarity = IndicesSettingsSimilarityBm25 | IndicesSettingsSimilarityBoolean | IndicesSettingsSimilarityDfi | IndicesSettingsSimilarityDfr | IndicesSettingsSimilarityIb | IndicesSettingsSimilarityLmd | IndicesSettingsSimilarityLmj | IndicesSettingsSimilarityScripted
+
+export interface IndicesSettingsSimilarityBm25 {
+  type: 'BM25'
+  b?: double
+  discount_overlaps?: boolean
+  k1?: double
+}
+
+export interface IndicesSettingsSimilarityBoolean {
+  type: 'boolean'
+}
+
+export interface IndicesSettingsSimilarityDfi {
+  type: 'DFI'
+  independence_measure: DFIIndependenceMeasure
+}
+
+export interface IndicesSettingsSimilarityDfr {
+  type: 'DFR'
+  after_effect: DFRAfterEffect
+  basic_model: DFRBasicModel
+  normalization: Normalization
+}
+
+export interface IndicesSettingsSimilarityIb {
+  type: 'IB'
+  distribution: IBDistribution
+  lambda: IBLambda
+  normalization: Normalization
+}
+
+export interface IndicesSettingsSimilarityLmd {
+  type: 'LMDirichlet'
+  mu?: double
+}
+
+export interface IndicesSettingsSimilarityLmj {
+  type: 'LMJelinekMercer'
+  lambda?: double
+}
+
+export interface IndicesSettingsSimilarityScripted {
+  type: 'scripted'
+  script: Script
+  weight_script?: Script
+}
 
 export interface IndicesSlowlogSettings {
   level?: string
@@ -9473,7 +9576,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
   data_stream: Name
   store_size?: ByteSize
-  store_size_bytes: integer
+  store_size_bytes: long
   maximum_timestamp: long
 }
 
@@ -9487,7 +9590,7 @@ export interface IndicesDataStreamsStatsResponse {
   backing_indices: integer
   data_stream_count: integer
   total_store_sizes?: ByteSize
-  total_store_size_bytes: integer
+  total_store_size_bytes: long
   data_streams: IndicesDataStreamsStatsDataStreamsStatsItem[]
 }
 
@@ -10571,6 +10674,7 @@ export interface IngestAttachmentProcessor extends IngestProcessorBase {
   indexed_chars_field?: Field
   properties?: string[]
   target_field?: Field
+  remove_binary?: boolean
   resource_name?: string
 }
 
@@ -10783,7 +10887,7 @@ export interface IngestProcessorContainer {
   lowercase?: IngestLowercaseProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
-  script?: Script
+  script?: IngestScriptProcessor
   set?: IngestSetProcessor
   sort?: IngestSortProcessor
   split?: IngestSplitProcessor
@@ -10801,6 +10905,7 @@ export interface IngestProcessorContainer {
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
   field: Fields
+  keep?: Fields
   ignore_missing?: boolean
 }
 
@@ -10808,6 +10913,13 @@ export interface IngestRenameProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field: Field
+}
+
+export interface IngestScriptProcessor extends IngestProcessorBase {
+  id?: Id
+  lang?: string
+  params?: Record<string, any>
+  source?: string
 }
 
 export interface IngestSetProcessor extends IngestProcessorBase {
@@ -13770,9 +13882,13 @@ export interface NodesInfoNodeInfoClient {
   type: string
 }
 
-export interface NodesInfoNodeInfoDiscover {
-  seed_hosts: string
+export interface NodesInfoNodeInfoDiscoverKeys {
+  seed_hosts?: string[]
+  type?: string
+  seed_providers?: string[]
 }
+export type NodesInfoNodeInfoDiscover = NodesInfoNodeInfoDiscoverKeys
+  & { [property: string]: any }
 
 export interface NodesInfoNodeInfoHttp {
   bound_address: string[]
@@ -13838,9 +13954,9 @@ export interface NodesInfoNodeInfoOSCPU {
 }
 
 export interface NodesInfoNodeInfoPath {
-  logs: string
-  home: string
-  repo: string[]
+  logs?: string
+  home?: string
+  repo?: string[]
   data?: string[]
 }
 
@@ -13868,7 +13984,7 @@ export interface NodesInfoNodeInfoSearchRemote {
 export interface NodesInfoNodeInfoSettings {
   cluster: NodesInfoNodeInfoSettingsCluster
   node: NodesInfoNodeInfoSettingsNode
-  path: NodesInfoNodeInfoPath
+  path?: NodesInfoNodeInfoPath
   repositories?: NodesInfoNodeInfoRepositories
   discovery?: NodesInfoNodeInfoDiscover
   action?: NodesInfoNodeInfoAction
@@ -13887,7 +14003,7 @@ export interface NodesInfoNodeInfoSettingsCluster {
   name: Name
   routing?: IndicesIndexRouting
   election: NodesInfoNodeInfoSettingsClusterElection
-  initial_master_nodes?: string
+  initial_master_nodes?: string[]
   deprecation_indexing?: NodesInfoDeprecationIndexing
 }
 
@@ -14424,11 +14540,9 @@ export interface SecurityCreatedStatus {
 }
 
 export interface SecurityFieldRule {
-  username?: Name
+  username?: Names
   dn?: Names
   groups?: Names
-  metadata?: any
-  realm?: SecurityRealm
 }
 
 export interface SecurityFieldSecurity {
@@ -14456,10 +14570,6 @@ export interface SecurityManageUserPrivileges {
   applications: string[]
 }
 
-export interface SecurityRealm {
-  name: Name
-}
-
 export interface SecurityRealmInfo {
   name: Name
   type: string
@@ -14468,9 +14578,9 @@ export interface SecurityRealmInfo {
 export interface SecurityRoleMapping {
   enabled: boolean
   metadata: Metadata
-  roles: string[]
+  roles?: string[]
+  role_templates?: SecurityRoleTemplate[]
   rules: SecurityRoleMappingRule
-  role_templates?: SecurityGetRoleRoleTemplate[]
 }
 
 export interface SecurityRoleMappingRule {
@@ -14478,6 +14588,11 @@ export interface SecurityRoleMappingRule {
   all?: SecurityRoleMappingRule[]
   field?: SecurityFieldRule
   except?: SecurityRoleMappingRule
+}
+
+export interface SecurityRoleTemplate {
+  format?: SecurityTemplateFormat
+  template: Script
 }
 
 export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
@@ -14493,6 +14608,8 @@ export interface SecurityRoleTemplateQuery {
 }
 
 export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | StoredScriptId
+
+export type SecurityTemplateFormat = 'string' | 'json'
 
 export interface SecurityTransientMetadataConfig {
   enabled: boolean
@@ -14770,20 +14887,13 @@ export interface SecurityGetRoleRole {
   indices: SecurityIndicesPrivileges[]
   metadata: Metadata
   run_as: string[]
-  transient_metadata: SecurityGetRoleTransientMetadata
+  transient_metadata?: SecurityGetRoleTransientMetadata
   applications: SecurityApplicationPrivileges[]
-  role_templates?: SecurityGetRoleRoleTemplate[]
+  role_templates?: SecurityRoleTemplate[]
 }
-
-export interface SecurityGetRoleRoleTemplate {
-  format?: SecurityGetRoleTemplateFormat
-  template: Script
-}
-
-export type SecurityGetRoleTemplateFormat = 'string' | 'json'
 
 export interface SecurityGetRoleTransientMetadata {
-  enabled: boolean
+  enabled?: boolean
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
@@ -15022,6 +15132,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
+    role_templates?: SecurityRoleTemplate[]
     rules?: SecurityRoleMappingRule
     run_as?: string[]
   }
@@ -15244,9 +15355,35 @@ export interface SlmStopRequest extends RequestBase {
 export interface SlmStopResponse extends AcknowledgedResponseBase {
 }
 
+export interface SnapshotAzureRepository extends SnapshotRepositoryBase {
+  type: 'azure'
+  settings: SnapshotAzureRepositorySettings
+}
+
+export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySettingsBase {
+  client?: string
+  container?: string
+  base_path?: string
+  readonly?: boolean
+  location_mode?: string
+}
+
 export interface SnapshotFileCountSnapshotStats {
   file_count: integer
   size_in_bytes: long
+}
+
+export interface SnapshotGcsRepository extends SnapshotRepositoryBase {
+  type: 'gcs'
+  settings: SnapshotGcsRepositorySettings
+}
+
+export interface SnapshotGcsRepositorySettings extends SnapshotRepositorySettingsBase {
+  bucket: string
+  client?: string
+  base_path?: string
+  readonly?: boolean
+  application_name?: string
 }
 
 export interface SnapshotIndexDetails {
@@ -15261,19 +15398,45 @@ export interface SnapshotInfoFeatureState {
   indices: Indices
 }
 
-export interface SnapshotRepository {
-  type: string
-  uuid?: Uuid
-  settings: SnapshotRepositorySettings
+export interface SnapshotReadOnlyUrlRepository extends SnapshotRepositoryBase {
+  type: 'url'
+  settings: SnapshotReadOnlyUrlRepositorySettings
 }
 
-export interface SnapshotRepositorySettings {
-  chunk_size?: string
-  compress?: string | boolean
-  concurrent_streams?: string | integer
-  location: string
-  read_only?: string | boolean
-  readonly?: string | boolean
+export interface SnapshotReadOnlyUrlRepositorySettings extends SnapshotRepositorySettingsBase {
+  http_max_retries?: integer
+  http_socket_timeout?: Time
+  max_number_of_snapshots?: integer
+  url: string
+}
+
+export type SnapshotRepository = SnapshotAzureRepository | SnapshotGcsRepository | SnapshotS3Repository | SnapshotSharedFileSystemRepository | SnapshotReadOnlyUrlRepository | SnapshotSourceOnlyRepository
+
+export interface SnapshotRepositoryBase {
+  uuid?: Uuid
+}
+
+export interface SnapshotRepositorySettingsBase {
+  chunk_size?: ByteSize
+  compress?: boolean
+  max_restore_bytes_per_sec?: ByteSize
+  max_snapshot_bytes_per_sec?: ByteSize
+}
+
+export interface SnapshotS3Repository extends SnapshotRepositoryBase {
+  type: 's3'
+  settings: SnapshotS3RepositorySettings
+}
+
+export interface SnapshotS3RepositorySettings extends SnapshotRepositorySettingsBase {
+  bucket: string
+  client?: string
+  base_path?: string
+  readonly?: boolean
+  server_side_encryption?: boolean
+  buffer_size?: ByteSize
+  canned_acl?: string
+  storage_class?: string
 }
 
 export interface SnapshotShardsStats {
@@ -15297,6 +15460,17 @@ export interface SnapshotShardsStatsSummary {
 export interface SnapshotShardsStatsSummaryItem {
   file_count: long
   size_in_bytes: long
+}
+
+export interface SnapshotSharedFileSystemRepository extends SnapshotRepositoryBase {
+  type: 'fs'
+  settings: SnapshotSharedFileSystemRepositorySettings
+}
+
+export interface SnapshotSharedFileSystemRepositorySettings extends SnapshotRepositorySettingsBase {
+  location: string
+  max_number_of_snapshots?: integer
+  readonly?: boolean
 }
 
 export interface SnapshotSnapshotIndexStats {
@@ -15349,6 +15523,18 @@ export interface SnapshotSnapshotStats {
   start_time_in_millis: long
   time_in_millis: long
   total: SnapshotFileCountSnapshotStats
+}
+
+export interface SnapshotSourceOnlyRepository extends SnapshotRepositoryBase {
+  type: 'source'
+  settings: SnapshotSourceOnlyRepositorySettings
+}
+
+export interface SnapshotSourceOnlyRepositorySettings extends SnapshotRepositorySettingsBase {
+  delegate_type?: string
+  max_number_of_snapshots?: integer
+  read_only?: boolean
+  readonly?: boolean
 }
 
 export interface SnapshotStatus {
@@ -15416,11 +15602,7 @@ export interface SnapshotCreateRepositoryRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   verify?: boolean
-  body?: {
-    repository?: SnapshotRepository
-    type: string
-    settings: SnapshotRepositorySettings
-  }
+  body?: SnapshotRepository
 }
 
 export interface SnapshotCreateRepositoryResponse extends AcknowledgedResponseBase {
