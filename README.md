@@ -75,6 +75,7 @@ Usage:
   dump-routes      Create a new schema with all generics expanded
   contrib          Pre contribution target
   lint-docs        Lint the OpenAPI documents
+  lint-docs-serverless  Lint only the serverless OpenAPI document
   help             Display help
 ```
 

@@ -62,6 +62,9 @@ contrib: | generate license-check spec-format-fix transform-to-openapi ## Pre co
 lint-docs: ## Lint the OpenAPI documents
 	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml
 
+lint-docs-serverless: ## Lint only the serverless OpenAPI document
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.json --ruleset .spectral.yaml
+
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 #------------- <https://suva.sh/posts/well-documented-makefiles> --------------
