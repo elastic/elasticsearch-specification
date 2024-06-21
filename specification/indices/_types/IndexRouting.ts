@@ -36,17 +36,17 @@ export class IndexRoutingRebalance {
 }
 
 export enum IndexRoutingAllocationOptions {
-  all = 0,
-  primaries = 1,
-  new_primaries = 2,
-  none = 3
+  all,
+  primaries,
+  new_primaries,
+  none
 }
 
 export enum IndexRoutingRebalanceOptions {
-  all = 0,
-  primaries = 1,
-  replicas = 2,
-  none = 3
+  all,
+  primaries,
+  replicas,
+  none
 }
 
 export class IndexRoutingAllocationInclude {

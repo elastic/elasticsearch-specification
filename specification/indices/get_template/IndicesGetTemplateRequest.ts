@@ -22,17 +22,35 @@ import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Retrieves information about one or more index templates.
  * @rest_spec_name indices.get_template
  * @availability stack since=0.0.0 stability=stable
- * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of index template names used to limit the request.
+     * Wildcard (`*`) expressions are supported.
+     * To return all index templates, omit this parameter or use a value of `_all` or `*`.
+     */
     name?: Names
   }
   query_parameters: {
+    /**
+     * If `true`, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
+    /**
+     * If `true`, the request retrieves information from the local node only.
+     * @server_default false
+     */
     local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
   }
 }

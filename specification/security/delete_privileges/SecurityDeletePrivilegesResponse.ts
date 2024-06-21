@@ -21,5 +21,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { FoundStatus } from './types'
 
 export class Response {
+  /** @codegen_name result */
   body: Dictionary<string, Dictionary<string, FoundStatus>>
 }

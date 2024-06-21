@@ -17,13 +17,17 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from './core'
+import { DocValuesPropertyBase, OnScriptError } from './core'
 import { GeoLocation } from '@_types/Geo'
+import { Script } from '@_types/Scripting'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: GeoLocation
+  index?: boolean
+  on_script_error?: OnScriptError
+  script?: Script
   type: 'geo_point'
 }
 
@@ -50,13 +54,13 @@ export class GeoShapeProperty extends DocValuesPropertyBase {
 }
 
 export enum GeoStrategy {
-  recursive = 0,
-  term = 1
+  recursive,
+  term
 }
 
 export enum GeoTree {
-  geohash = 0,
-  quadtree = 1
+  geohash,
+  quadtree
 }
 
 export class PointProperty extends DocValuesPropertyBase {

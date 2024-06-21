@@ -17,13 +17,9 @@
  * under the License.
  */
 
-import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { IndexState } from '@indices/_types/IndexState'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 
 /**
@@ -72,13 +68,6 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * This setting overrides the value of the `action.auto_create_index` cluster setting.
-     * If set to `true` in a template, then indices can be automatically created using that
-     * template even if auto-creation of indices is disabled via `actions.auto_create_index`.
-     * If set to `false` then data streams matching the template must always be explicitly created.
-     */
-    allow_auto_create?: boolean
-    /**
      * The template to be applied which includes mappings, settings, or aliases configuration.
      */
     template: IndexState
@@ -95,5 +84,10 @@ export interface Request extends RequestBase {
      * To unset `_meta`, replace the template without specifying this information.
      */
     _meta?: Metadata
+    /**
+     * Marks this index template as deprecated. When creating or updating a non-deprecated index template
+     * that uses deprecated components, Elasticsearch will emit a deprecation warning.
+     */
+    deprecated?: boolean
   }
 }

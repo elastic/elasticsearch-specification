@@ -20,9 +20,10 @@
 import { GlobalPrivilege } from './Privileges'
 import { IndicesPrivileges } from './Privileges'
 import { ApplicationPrivileges } from './Privileges'
-import { TransientMetadataConfig } from './TransientMetadataConfig'
 import { Metadata } from '@_types/common'
 import { OverloadOf } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RoleDescriptor {
   /**
@@ -51,7 +52,7 @@ export class RoleDescriptor {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
-  transient_metadata?: TransientMetadataConfig
+  transient_metadata?: Dictionary<string, UserDefinedValue>
 }
 
 export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
@@ -81,5 +82,5 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
-  transient_metadata?: TransientMetadataConfig
+  transient_metadata?: Dictionary<string, UserDefinedValue>
 }

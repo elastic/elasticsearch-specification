@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "TestCase": {
+        "oneOf": [
+          {
+            "properties": {
+              "one": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "one"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "two": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "two"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "three": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "three"
+            ],
+            "type": "object"
+          }
+        ]
+      }
+    }
+  }
+}

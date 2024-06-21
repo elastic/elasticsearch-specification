@@ -19,6 +19,9 @@
 
 import { ApiKey } from '@security/_types/ApiKey'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregateName } from '@_types/common'
+import { ApiKeyAggregate } from './types'
 
 export class Response {
   body: {
@@ -34,5 +37,9 @@ export class Response {
      * A list of API key information.
      */
     api_keys: ApiKey[]
+    /**
+     * The aggregations result, if requested.
+     */
+    aggregations?: Dictionary<AggregateName, ApiKeyAggregate>
   }
 }

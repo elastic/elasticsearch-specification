@@ -1,0 +1,10 @@
+# Configuration for the Spectral OpenAPI linter https://github.com/stoplightio/spectral
+
+extends: ["spectral:oas"]
+
+# Silence some rules
+rules:
+  oas3-api-servers: off      # OpenAPI "servers" must be present and non-empty array.
+  info-contact: off          # Info object must have "contact" object.
+  info-description: off      # Info "description" must be present and non-empty string.
+  operation-tag-defined: off # Operation tags must be defined in global tags.

@@ -22,5 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name slm.execute_retention
  * @availability stack since=7.5.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {}

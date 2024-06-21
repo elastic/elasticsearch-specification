@@ -35,13 +35,13 @@ export class DailySchedule {
 }
 
 export enum Day {
-  sunday = 0,
-  monday = 1,
-  tuesday = 2,
-  wednesday = 3,
-  thursday = 4,
-  friday = 5,
-  saturday = 6
+  sunday,
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday
 }
 
 export class HourlySchedule {
@@ -55,31 +55,26 @@ export class Interval {
 }
 
 export enum IntervalUnit {
-  /** @codegen_name second */
-  s = 0,
-  /** @codegen_name minute */
-  m = 1,
-  /** @codegen_name hour */
-  h = 2,
-  /** @codegen_name day */
-  d = 3,
-  /** @codegen_name week */
-  w = 4
+  second = 's',
+  minute = 'm',
+  hour = 'h',
+  day = 'd',
+  week = 'w'
 }
 
 export enum Month {
-  january = 0,
-  february = 1,
-  march = 2,
-  april = 3,
-  may = 4,
-  june = 5,
-  july = 6,
-  august = 7,
-  september = 8,
-  october = 9,
-  november = 10,
-  december = 11
+  january,
+  february,
+  march,
+  april,
+  may,
+  june,
+  july,
+  august,
+  september,
+  october,
+  november,
+  december
 }
 
 /**

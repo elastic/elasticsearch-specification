@@ -21,5 +21,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Lifecycle } from './types'
 
 export class Response {
+  /** @codegen_name lifecycles */
   body: Dictionary<string, Lifecycle>
 }

@@ -10,6 +10,8 @@
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
     "generate-schema": "ts-node src/index.ts",
     "transform-expand-generics": "ts-node src/transform/expand-generics.ts",
+    "transform-to-openapi": "ts-node src/transform/schema-to-openapi.ts",
+    "filter-by-availability": "ts-node src/transform/filter-by-availability.ts",
     "dump-routes": "ts-node src/dump/extract-routes.ts",
     "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
     "build": "rm -rf lib && tsc",
@@ -35,6 +37,7 @@
     "fastest-levenshtein": "^1.0.12",
     "ora": "^5.4.1",
     "safe-stable-stringify": "^2.3.1",
+    "compiler-wasm-lib": "file:../compiler-rs/compiler-wasm-lib/pkg",
     "semver": "^7.5.2",
     "ts-morph": "^13.0.3",
     "zx": "^4.3.0"

@@ -18,61 +18,61 @@
  */
 
 export enum CountFunction {
-  Count = 0,
-  HighCount = 1,
-  LowCount = 2
+  Count,
+  HighCount,
+  LowCount
 }
 
 export enum DistinctCountFunction {
-  DistinctCount = 0,
-  LowDistinctCount = 1,
-  HighDistinctCount = 2
+  DistinctCount,
+  LowDistinctCount,
+  HighDistinctCount
 }
 
 export enum GeographicFunction {
-  LatLong = 0
+  LatLong
 }
 
 export enum InfoContentFunction {
-  InfoContent = 0,
-  HighInfoContent = 1,
-  LowInfoContent = 2
+  InfoContent,
+  HighInfoContent,
+  LowInfoContent
 }
 
 export enum MetricFunction {
-  Min = 0,
-  Max = 1,
-  Median = 2,
-  HighMedian = 3,
-  LowMedian = 4,
-  Mean = 5,
-  HighMean = 6,
-  LowMean = 7,
-  Metric = 8,
-  Varp = 9,
-  HighVarp = 10,
-  LowVarp = 11
+  Min,
+  Max,
+  Median,
+  HighMedian,
+  LowMedian,
+  Mean,
+  HighMean,
+  LowMean,
+  Metric,
+  Varp,
+  HighVarp,
+  LowVarp
 }
 
 export enum NonNullSumFunction {
-  NonNullSum = 0,
-  HighNonNullSum = 1,
-  LowNonNullSum = 2
+  NonNullSum,
+  HighNonNullSum,
+  LowNonNullSum
 }
 
 export enum NonZeroCountFunction {
-  NonZeroCount = 0,
-  LowNonZeroCount = 1,
-  HighNonZeroCount = 2
+  NonZeroCount,
+  LowNonZeroCount,
+  HighNonZeroCount
 }
 
 export enum RareFunction {
-  Rare = 0,
-  FreqRare = 1
+  Rare,
+  FreqRare
 }
 
 export enum SumFunction {
-  Sum = 0,
-  HighSum = 1,
-  LowSum = 2
+  Sum,
+  HighSum,
+  LowSum
 }
