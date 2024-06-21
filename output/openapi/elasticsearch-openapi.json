@@ -11783,7 +11783,8 @@
         "tags": [
           "indices.get_index_template"
         ],
-        "summary": "Get index templates Returns information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Returns information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
@@ -11815,7 +11816,7 @@
         "tags": [
           "indices.put_index_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html"
@@ -11848,7 +11849,7 @@
         "tags": [
           "indices.put_index_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html"
@@ -11881,8 +11882,8 @@
         "tags": [
           "indices.delete_index_template"
         ],
-        "summary": "The provided <index-template> may contain multiple template names separated by a comma",
-        "description": "If multiple template names are specified then there is no wildcard support and the provided names should match completely with existing templates.",
+        "summary": "Delete an index template",
+        "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template names are specified then there is no wildcard support and the provided names should match completely with existing templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html"
         },
@@ -11980,7 +11981,8 @@
         "tags": [
           "indices.get_template"
         ],
-        "summary": "Retrieves information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Retrieves information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template-v1.html"
         },
@@ -12009,7 +12011,7 @@
         "tags": [
           "indices.put_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html"
@@ -12045,7 +12047,7 @@
         "tags": [
           "indices.put_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html"
@@ -12136,7 +12138,8 @@
         "tags": [
           "indices.exists_template"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check existence of index templates",
+        "description": "Returns information about whether a particular index template exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-template-exists-v1.html"
         },
@@ -12975,7 +12978,8 @@
         "tags": [
           "indices.get_index_template"
         ],
-        "summary": "Get index templates Returns information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Returns information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
@@ -13426,7 +13430,8 @@
         "tags": [
           "indices.get_template"
         ],
-        "summary": "Retrieves information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Retrieves information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template-v1.html"
         },
@@ -14355,7 +14360,7 @@
         "tags": [
           "indices.simulate_index_template"
         ],
-        "summary": "Simulate index",
+        "summary": "Simulate an index",
         "description": "Returns the index configuration that would be applied to the specified index from an existing index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html"
@@ -14427,7 +14432,8 @@
         "tags": [
           "indices.simulate_template"
         ],
-        "summary": "Returns the index configuration that would be applied by a particular index template",
+        "summary": "Simulate an index template",
+        "description": "Returns the index configuration that would be applied by a particular index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html"
         },
@@ -14458,7 +14464,8 @@
         "tags": [
           "indices.simulate_template"
         ],
-        "summary": "Returns the index configuration that would be applied by a particular index template",
+        "summary": "Simulate an index template",
+        "description": "Returns the index configuration that would be applied by a particular index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html"
         },

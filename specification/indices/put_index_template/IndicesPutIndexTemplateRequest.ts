@@ -35,7 +35,7 @@ import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 import { Duration } from '@_types/Time'
 
 /**
- * Creates or updates an index template.
+ * Create or update an index template.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * @rest_spec_name indices.put_index_template
  * @availability stack since=7.9.0 stability=stable
