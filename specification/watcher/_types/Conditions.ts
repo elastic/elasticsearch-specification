@@ -29,6 +29,9 @@ export class ArrayCompareOpParams {
   value: FieldValue
 }
 
+/**
+ * @behavior_meta AdditionalProperty operator, params
+ */
 export class ArrayCompareCondition
   implements AdditionalProperty<ConditionOp, ArrayCompareOpParams>
 {

@@ -29,6 +29,9 @@ import {
 import { FieldLookup, QueryBase } from './abstractions'
 import { Field } from '@_types/common'
 
+/**
+ * @behavior_meta AdditionalProperty field, bounding_box
+ */
 export class GeoBoundingBoxQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoBounds>
@@ -54,6 +57,9 @@ export enum GeoExecution {
   indexed
 }
 
+/**
+ * @behavior_meta AdditionalProperty field, location
+ */
 export class GeoDistanceQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoLocation>
@@ -88,7 +94,10 @@ export class GeoPolygonPoints {
   points: GeoLocation[]
 }
 
-/** @deprecated 7.12.0 Use geo-shape instead. */
+/**
+ * @deprecated 7.12.0 Use geo-shape instead.
+ * @behavior_meta AdditionalProperty field, polygon
+ */
 export class GeoPolygonQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoPolygonPoints>
@@ -116,6 +125,9 @@ export class GeoShapeFieldQuery {
   relation?: GeoShapeRelation
 }
 
+/**
+ * @behavior_meta AdditionalProperty field, shape
+ */
 // GeoShape query doesn't follow the common pattern of having a single field-name property
 // holding also the query base fields (boost and _name)
 export class GeoShapeQuery

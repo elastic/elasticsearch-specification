@@ -29,6 +29,9 @@ export class Response {
   body: FieldsUsageBody
 }
 
+/**
+ * @behavior_meta AdditionalProperties stats, "Per index statistics"
+ */
 export class FieldsUsageBody
   implements AdditionalProperties<IndexName, UsageStatsIndex>
 {

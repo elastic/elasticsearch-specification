@@ -68,6 +68,8 @@ export class RetentionLease {
 
 /**
  * @doc_id index-modules-settings
+ *
+ * @behavior_meta AdditionalProperties other_settings, "Additional settings not covered in this type.
  */
 export class IndexSettings
   implements AdditionalProperties<string, UserDefinedValue>

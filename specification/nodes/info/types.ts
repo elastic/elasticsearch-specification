@@ -170,6 +170,9 @@ export class NodeInfoRepositoriesUrl {
   allowed_urls: string
 }
 
+/**
+ * @behavior_meta AdditionalProperties settings, "Additional or alternative settings"
+ */
 export class NodeInfoDiscover
   implements AdditionalProperties<string, UserDefinedValue>
 {

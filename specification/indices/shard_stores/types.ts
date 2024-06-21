@@ -27,6 +27,9 @@ export class IndicesShardStores {
   shards: Dictionary<string, ShardStoreWrapper>
 }
 
+/**
+ * @behavior_meta AdditionalProperty node_id, node
+ */
 export class ShardStore implements AdditionalProperty<NodeId, ShardStoreNode> {
   allocation: ShardStoreAllocation
   allocation_id?: Id

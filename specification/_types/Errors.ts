@@ -25,6 +25,8 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 /**
  * Cause and details about a request failure. This class defines the properties common to all error types.
  * Additional details are also provided, that depend on the error type.
+ *
+ * @behavior_meta AdditionalProperties metadata, "Additional details about the error"
  */
 export class ErrorCause
   implements AdditionalProperties<string, UserDefinedValue>

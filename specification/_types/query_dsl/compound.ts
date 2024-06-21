@@ -179,14 +179,23 @@ export class DecayFunctionBase {
   multi_value_mode?: MultiValueMode
 }
 
+/**
+ * @behavior_meta AdditionalProperty field, placement
+ */
 export class NumericDecayFunction
   extends DecayFunctionBase
   implements AdditionalProperty<Field, DecayPlacement<double, double>> {}
 
+/**
+ * @behavior_meta AdditionalProperty field, placement
+ */
 export class DateDecayFunction
   extends DecayFunctionBase
   implements AdditionalProperty<Field, DecayPlacement<DateMath, Duration>> {}
 
+/**
+ * @behavior_meta AdditionalProperty field, placement
+ */
 export class GeoDecayFunction
   extends DecayFunctionBase
   implements AdditionalProperty<Field, DecayPlacement<GeoLocation, Distance>> {}

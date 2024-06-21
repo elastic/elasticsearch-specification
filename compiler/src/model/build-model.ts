@@ -459,7 +459,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       properties: new Array<model.Property>()
     }
 
-    hoistTypeAnnotations(type, declaration.getJsDocs())
+    const jsDocs = declaration.getJsDocs()
+    hoistTypeAnnotations(type, jsDocs)
 
     const variant = parseVariantNameTag(declaration.getJsDocs())
     if (typeof variant === 'string') {
@@ -532,7 +533,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     if (Node.isClassDeclaration(declaration)) {
       for (const implement of declaration.getImplements()) {
         if (isKnownBehavior(implement)) {
-          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement))
+          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement, jsDocs))
         } else {
           type.implements = (type.implements ?? []).concat(modelImplements(implement))
         }

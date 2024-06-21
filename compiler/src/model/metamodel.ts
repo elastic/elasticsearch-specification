@@ -213,6 +213,7 @@ export class Container extends VariantBase {
 export class Inherits {
   type: TypeName
   generics?: ValueOf[]
+  meta?: string[]
 }
 
 /**
