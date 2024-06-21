@@ -7350,7 +7350,7 @@
         "tags": [
           "indices.get_index_template"
         ],
-        "summary": "Returns information about one or more index templates",
+        "summary": "Get index templates Returns information about one or more index templates",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
@@ -7771,7 +7771,7 @@
         "tags": [
           "indices.get_index_template"
         ],
-        "summary": "Returns information about one or more index templates",
+        "summary": "Get index templates Returns information about one or more index templates",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },

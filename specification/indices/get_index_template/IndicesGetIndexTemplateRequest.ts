@@ -22,6 +22,7 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get index templates
  * Returns information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable
