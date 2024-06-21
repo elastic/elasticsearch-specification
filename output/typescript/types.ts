@@ -11237,6 +11237,7 @@ export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
   include_defaults?: boolean
+  ignore_unavailable?: boolean
 }
 
 export interface IndicesGetDataStreamResponse {

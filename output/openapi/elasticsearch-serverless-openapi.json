@@ -6733,6 +6733,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#ignore_unavailable"
           }
         ],
         "responses": {
@@ -7757,6 +7760,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#ignore_unavailable"
           }
         ],
         "responses": {
@@ -24156,6 +24162,15 @@
         "in": "query",
         "name": "include_defaults",
         "description": "If true, returns all relevant default configurations for the index template.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.get_data_stream#ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
         "deprecated": false,
         "schema": {
           "type": "boolean"

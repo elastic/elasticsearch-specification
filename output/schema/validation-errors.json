@@ -990,6 +990,12 @@
         "response definition indices.get:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
     },
+    "indices.get_data_stream": {
+      "request": [
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "indices.get_settings": {
       "request": [],
       "response": [

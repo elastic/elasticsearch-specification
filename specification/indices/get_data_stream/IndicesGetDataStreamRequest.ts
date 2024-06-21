@@ -49,6 +49,6 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable
      */
     include_defaults?: boolean
-    ignore_unavailable?: boolean;
+    ignore_unavailable?: boolean
   }
 }
