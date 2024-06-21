@@ -18,7 +18,11 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { QueryRuleType, QueryRuleCriteria, QueryRuleActions } from '../../query_ruleset/_types/QueryRuleset'
+import {
+  QueryRuleType,
+  QueryRuleCriteria,
+  QueryRuleActions
+} from '../../query_ruleset/_types/QueryRuleset'
 
 /**
  * Creates or updates a query rule within a query ruleset.
@@ -31,7 +35,7 @@ export interface Request extends RequestBase {
     /**
      * The unique identifier of the query ruleset containing the rule to be created or updated
      */
-    ruleset_id: Id,
+    ruleset_id: Id
 
     /**
      * The unique identifier of the query rule within the specified ruleset to be created or updated

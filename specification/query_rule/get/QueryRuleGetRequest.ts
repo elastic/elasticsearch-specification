@@ -30,11 +30,11 @@ export interface Request extends RequestBase {
     /**
      * The unique identifier of the query ruleset containing the rule to retrieve
      */
-    ruleset_id: Id,
+    ruleset_id: Id
 
     /**
      * The unique identifier of the query rule within the specified ruleset to retrieve
      */
-    rule_id: Id,
+    rule_id: Id
   }
 }
