@@ -55,7 +55,10 @@ export class Response {
     remaining_delay_in_millis?: DurationValue<UnitMillis>
     shard: integer
     unassigned_info?: UnassignedInformation
-    /** @since 7.14.0 */
+    /**
+     * @availability stack since=7.14.0
+     * @availability serverless
+     */
     note?: string
   }
 }

@@ -49,7 +49,7 @@ import {
 import { Suggester } from '@global/search/_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 import { Operator } from '@_types/query_dsl/Operator'
-import { KnnQuery } from '@_types/Knn'
+import { KnnSearch } from '@_types/Knn'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -189,9 +189,10 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Defines the approximate kNN search to run.
-     * @since 8.4.0
+     * @availability stack since=8.4.0
+     * @availability serverless
      */
-    knn?: KnnQuery | KnnQuery[]
+    knn?: KnnSearch | KnnSearch[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.

@@ -21,5 +21,6 @@ import { RoleMapping } from '@security/_types/RoleMapping'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
+  /** @codegen_name role_mappings */
   body: Dictionary<string, RoleMapping>
 }

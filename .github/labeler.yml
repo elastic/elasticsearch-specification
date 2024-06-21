@@ -9,3 +9,4 @@ generator:typescript:
 
 compiler:
   - 'compiler/**/*'
+  - 'compiler-rs/**/*'

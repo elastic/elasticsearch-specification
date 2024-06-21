@@ -20,6 +20,10 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Extracts structured fields out of a single text field within a document.
+ * You choose which field to extract matched fields from, as well as the grok pattern you expect will match.
+ * A grok pattern is like a regular expression that supports aliased expressions that can be reused.
+ * @doc_id grok-processor
  * @rest_spec_name ingest.processor_grok
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=public

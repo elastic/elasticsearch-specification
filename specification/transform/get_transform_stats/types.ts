@@ -32,6 +32,9 @@ export class TransformStats {
   checkpointing: Checkpointing
   health?: TransformStatsHealth
   id: Id
+  /**
+   * @availability stack
+   */
   node?: NodeAttributes
   reason?: string
   state: string

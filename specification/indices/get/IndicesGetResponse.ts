@@ -22,5 +22,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 
 export class Response {
+  /** @codegen_name indices */
   body: Dictionary<IndexName, IndexState>
 }

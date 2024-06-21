@@ -21,13 +21,18 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { ExpandWildcards, Names } from '@_types/common'
 
 /**
+ * Retrieves the cluster’s index aliases, including filter and routing information.
+ * The API does not return data stream aliases.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.
  * @rest_spec_name cat.aliases
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-alias
+ * @index_privileges view_index_metadata
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /** A comma-separated list of aliases to retrieve. Supports wildcards (`*`).  To retrieve all aliases, omit this parameter or use `*` or `_all`. */
     name?: Names
   }
   query_parameters: {

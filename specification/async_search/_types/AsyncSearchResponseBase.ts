@@ -40,6 +40,12 @@ export class AsyncSearchResponseBase {
   expiration_time_in_millis: EpochTime<UnitMillis>
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
+  /**
+   * Indicates when the async search completed. Only present
+   * when the search has completed.
+   */
+  completion_time?: DateTime
+  completion_time_in_millis?: EpochTime<UnitMillis>
 }
 export class AsyncSearchDocumentResponseBase<
   TDocument

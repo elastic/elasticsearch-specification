@@ -19,7 +19,7 @@
 
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ByteSize, Field, Name, VersionString } from './common'
+import { ByteSize, ClusterAlias, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
@@ -28,6 +28,27 @@ export class ClusterStatistics {
   skipped: integer
   successful: integer
   total: integer
+  running: integer
+  partial: integer
+  failed: integer
+  details?: Dictionary<ClusterAlias, ClusterDetails>
+}
+
+enum ClusterSearchStatus {
+  running,
+  successful,
+  partial,
+  skipped,
+  failed
+}
+
+export class ClusterDetails {
+  status: ClusterSearchStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  timed_out: boolean
+  _shards?: ShardStatistics
+  failures?: ShardFailure[]
 }
 
 export class ShardStatistics {
@@ -57,7 +78,13 @@ export class BulkStats {
 }
 
 export class CompletionStats {
+  /**
+   * Total amount, in bytes, of memory used for completion across all shards assigned to selected nodes.
+   */
   size_in_bytes: long
+  /**
+   * Total amount of memory used for completion across all shards assigned to selected nodes.
+   */
   size?: ByteSize
   fields?: Dictionary<Field, FieldSizeUsage>
 }
@@ -68,7 +95,16 @@ export class FieldSizeUsage {
 }
 
 export class DocStats {
+  /**
+   * Total number of non-deleted documents across all primary shards assigned to selected nodes.
+   * This number is based on documents in Lucene segments and may include documents from nested fields.
+   */
   count: long
+  /**
+   * Total number of deleted documents across all primary shards assigned to selected nodes.
+   * This number is based on documents in Lucene segments.
+   * Elasticsearch reclaims the disk space of deleted Lucene documents when a segment is merged.
+   */
   deleted?: long
 }
 
@@ -154,14 +190,39 @@ export class PluginStats {
 }
 
 export class QueryCacheStats {
-  cache_count: integer
-  cache_size: integer
-  evictions: integer
-  hit_count: integer
+  /**
+   * Total number of entries added to the query cache across all shards assigned to selected nodes.
+   * This number includes current and evicted entries.
+   */
+  cache_count: long
+  /**
+   * Total number of entries currently in the query cache across all shards assigned to selected nodes.
+   */
+  cache_size: long
+  /**
+   * Total number of query cache evictions across all shards assigned to selected nodes.
+   */
+  evictions: long
+  /**
+   * Total count of query cache hits across all shards assigned to selected nodes.
+   */
+  hit_count: long
+  /**
+   * Total amount of memory used for the query cache across all shards assigned to selected nodes.
+   */
   memory_size?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for the query cache across all shards assigned to selected nodes.
+   */
   memory_size_in_bytes: long
-  miss_count: integer
-  total_count: integer
+  /**
+   * Total count of query cache misses across all shards assigned to selected nodes.
+   */
+  miss_count: long
+  /**
+   * Total count of hits and misses in the query cache across all shards assigned to selected nodes.
+   */
+  total_count: long
 }
 
 export class RecoveryStats {
@@ -210,38 +271,126 @@ export class SearchStats {
 }
 
 export class SegmentsStats {
+  /**
+   * Total number of segments across all shards assigned to selected nodes.
+   */
   count: integer
+  /**
+   * Total amount of memory used for doc values across all shards assigned to selected nodes.
+   */
   doc_values_memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for doc values across all shards assigned to selected nodes.
+   */
   doc_values_memory_in_bytes: long
+  /**
+   * This object is not populated by the cluster stats API.
+   * To get information on segment files, use the node stats API.
+   */
   file_sizes: Dictionary<string, ShardFileSizeInfo>
+  /**
+   * Total amount of memory used by fixed bit sets across all shards assigned to selected nodes.
+   * Fixed bit sets are used for nested object field types and type filters for join fields.
+   */
   fixed_bit_set?: ByteSize
+  /**
+   * Total amount of memory, in bytes, used by fixed bit sets across all shards assigned to selected nodes.
+   */
   fixed_bit_set_memory_in_bytes: long
+  /**
+   * Total amount of memory used by all index writers across all shards assigned to selected nodes.
+   */
   index_writer_memory?: ByteSize
   index_writer_max_memory_in_bytes?: long
+  /**
+   * Total amount, in bytes, of memory used by all index writers across all shards assigned to selected nodes.
+   */
   index_writer_memory_in_bytes: long
+  /**
+   * Unix timestamp, in milliseconds, of the most recently retried indexing request.
+   */
   max_unsafe_auto_id_timestamp: long
+  /**
+   * Total amount of memory used for segments across all shards assigned to selected nodes.
+   */
   memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for segments across all shards assigned to selected nodes.
+   */
   memory_in_bytes: long
+  /**
+   * Total amount of memory used for normalization factors across all shards assigned to selected nodes.
+   */
   norms_memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for normalization factors across all shards assigned to selected nodes.
+   */
   norms_memory_in_bytes: long
+  /**
+   * Total amount of memory used for points across all shards assigned to selected nodes.
+   */
   points_memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for points across all shards assigned to selected nodes.
+   */
   points_memory_in_bytes: long
   stored_memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for stored fields across all shards assigned to selected nodes.
+   */
   stored_fields_memory_in_bytes: long
+  /**
+   * Total amount, in bytes, of memory used for terms across all shards assigned to selected nodes.
+   */
   terms_memory_in_bytes: long
+  /**
+   * Total amount of memory used for terms across all shards assigned to selected nodes.
+   */
   terms_memory?: ByteSize
+  /**
+   * Total amount of memory used for term vectors across all shards assigned to selected nodes.
+   */
   term_vectory_memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used for term vectors across all shards assigned to selected nodes.
+   */
   term_vectors_memory_in_bytes: long
+  /**
+   * Total amount of memory used by all version maps across all shards assigned to selected nodes.
+   */
   version_map_memory?: ByteSize
+  /**
+   * Total amount, in bytes, of memory used by all version maps across all shards assigned to selected nodes.
+   */
   version_map_memory_in_bytes: long
 }
 
 export class StoreStats {
+  /**
+   * Total size of all shards assigned to selected nodes.
+   */
   size?: ByteSize
+  /**
+   * Total size, in bytes, of all shards assigned to selected nodes.
+   */
   size_in_bytes: long
+  /**
+   * A prediction of how much larger the shard stores will eventually grow due to ongoing peer recoveries, restoring snapshots, and similar activities.
+   */
   reserved?: ByteSize
+  /**
+   * A prediction, in bytes, of how much larger the shard stores will eventually grow due to ongoing peer recoveries, restoring snapshots, and similar activities.
+   */
   reserved_in_bytes: long
+  /**
+   * Total data set size of all shards assigned to selected nodes.
+   * This includes the size of shards not stored fully on the nodes, such as the cache for partially mounted indices.
+   */
   total_data_set_size?: ByteSize
+  /**
+   * Total data set size, in bytes, of all shards assigned to selected nodes.
+   * This includes the size of shards not stored fully on the nodes, such as the cache for partially mounted indices.
+   */
   total_data_set_size_in_bytes?: long
 }
 

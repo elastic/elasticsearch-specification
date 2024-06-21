@@ -21,181 +21,191 @@ import { Id, VersionString } from '@_types/common'
 
 export class TransformsRecord {
   /**
-   * the id
+   * The transform identifier.
    */
   'id'?: Id
   /**
-   * transform state
+   * The status of the transform.
+   * Returned values include:
+   * `aborting`: The transform is aborting.
+   * `failed: The transform failed. For more information about the failure, check the `reason` field.
+   * `indexing`: The transform is actively processing data and creating new documents.
+   * `started`: The transform is running but not actively indexing data.
+   * `stopped`: The transform is stopped.
+   * `stopping`: The transform is stopping.
    * @aliases s
    */
   'state'?: string
   /**
-   * checkpoint
+   * The sequence number for the checkpoint.
    * @aliases c
    */
   'checkpoint'?: string
   /**
-   * the number of documents read from source indices and processed
+   * The number of documents that have been processed from the source index of the transform.
    * @aliases docp, documentsProcessed
    */
   'documents_processed'?: string
   /**
-   * progress of the checkpoint
+   * The progress of the next checkpoint that is currently in progress.
    * @aliases cp, checkpointProgress
    */
   'checkpoint_progress'?: string | null
   /**
-   * last time transform searched for updates
+   * The timestamp of the last search in the source indices.
+   * This field is shown only if the transform is running.
    * @aliases lst, lastSearchTime
    */
   'last_search_time'?: string | null
   /**
-   * changes last detected time
+   * The timestamp when changes were last detected in the source indices.
    * @aliases cldt
    */
   'changes_last_detection_time'?: string | null
   /**
-   * transform creation time
+   * The time the transform was created.
    * @aliases ct, createTime
    */
   'create_time'?: string
   /**
-   * the version of Elasticsearch when the transform was created
+   * The version of Elasticsearch that existed on the node when the transform was created.
    * @aliases v
    */
   'version'?: VersionString
   /**
-   * source index
+   * The source indices for the transform.
    * @aliases si, sourceIndex
    */
   'source_index'?: string
   /**
-   * destination index
+   * The destination index for the transform.
    * @aliases di, destIndex
    */
   'dest_index'?: string
   /**
-   * transform pipeline
+   * The unique identifier for the ingest pipeline.
    * @aliases p
    */
   'pipeline'?: string
   /**
-   * description
+   * The description of the transform.
    * @aliases d
    */
   'description'?: string
   /**
-   * batch or continuous transform
+   * The type of transform: `batch` or `continuous`.
    * @aliases tt
    */
   'transform_type'?: string
   /**
-   * frequency of transform
+   * The interval between checks for changes in the source indices when the transform is running continuously.
    * @aliases f
    */
   'frequency'?: string
   /**
-   * max page search size
+   * The initial page size that is used for the composite aggregation for each checkpoint.
    * @aliases mpsz
    */
   'max_page_search_size'?: string
   /**
-   * docs per second
+   * The number of input documents per second.
    * @aliases dps
    */
   'docs_per_second'?: string
   /**
-   * reason for the current state
+   * If a transform has a `failed` state, these details describe the reason for failure.
    * @aliases r
    */
   'reason'?: string
   /**
-   * total number of search phases
+   * The total number of search operations on the source index for the transform.
    * @aliases st
    */
   'search_total'?: string
   /**
-   * total number of search failures
+   * The total number of search failures.
    * @aliases sf
    */
   'search_failure'?: string
   /**
-   * total search time
+   * The total amount of search time, in milliseconds.
    * @aliases stime
    */
   'search_time'?: string
   /**
-   * total number of index phases done by the transform
+   * The total number of index operations done by the transform.
    * @aliases it
    */
   'index_total'?: string
   /**
-   * total number of index failures
+   * The total number of indexing failures.
    * @aliases if
    */
   'index_failure'?: string
   /**
-   * total time spent indexing documents
+   * The total time spent indexing documents, in milliseconds.
    * @aliases itime
    */
   'index_time'?: string
   /**
-   * the number of documents written to the destination index
+   * The number of documents that have been indexed into the destination index for the transform.
    * @aliases doci
    */
   'documents_indexed'?: string
   /**
-   * total time spent deleting documents
+   * The total time spent deleting documents, in milliseconds.
    * @aliases dtime
    */
   'delete_time'?: string
   /**
-   * the number of documents deleted from the destination index
+   * The number of documents deleted from the destination index due to the retention policy for the transform.
    * @aliases docd
    */
   'documents_deleted'?: string
   /**
-   * the number of times the transform has been triggered
+   * The number of times the transform has been triggered by the scheduler.
+   * For example, the scheduler triggers the transform indexer to check for updates or ingest new data at an interval specified in the `frequency` property.
    * @aliases tc
    */
   'trigger_count'?: string
   /**
-   * the number of pages processed
+   * The number of search or bulk index operations processed.
+   * Documents are processed in batches instead of individually.
    * @aliases pp
    */
   'pages_processed'?: string
   /**
-   * the total time spent processing documents
+   * The total time spent processing results, in milliseconds.
    * @aliases pt
    */
   'processing_time'?: string
   /**
-   * exponential average checkpoint processing time (milliseconds)
+   * The exponential moving average of the duration of the checkpoint, in milliseconds.
    * @aliases cdtea, checkpointTimeExpAvg
    */
   'checkpoint_duration_time_exp_avg'?: string
   /**
-   * exponential average number of documents indexed
+   * The exponential moving average of the number of new documents that have been indexed.
    * @aliases idea
    */
   'indexed_documents_exp_avg'?: string
   /**
-   * exponential average number of documents processed
+   * The exponential moving average of the number of documents that have been processed.
    * @aliases pdea
    */
   'processed_documents_exp_avg'?: string
 }
 
 export enum TransformState {
-  STARTED = 0,
-  INDEXING = 1,
-  ABORTING = 2,
-  STOPPING = 3,
-  STOPPED = 4,
-  FAILED = 5
+  STARTED,
+  INDEXING,
+  ABORTING,
+  STOPPING,
+  STOPPED,
+  FAILED
 }
 
 export enum TransformType {
-  batch = 0,
-  continuous = 1
+  batch,
+  continuous
 }

@@ -21,81 +21,81 @@ import { Id, IndexName, Name, VersionString } from '@_types/common'
 
 export class DataFrameAnalyticsRecord {
   /**
-   * the id
+   * The identifier for the job.
    */
   'id'?: Id
   /**
-   * analysis type
+   * The type of analysis that the job performs.
    * @aliases t
    */
   'type'?: string
   /**
-   * job creation time
+   * The time when the job was created.
    * @aliases ct, createTime
    */
   'create_time'?: string
   /**
-   * the version of Elasticsearch when the analytics was created
+   * The version of Elasticsearch when the job was created.
    * @aliases v
    */
   'version'?: VersionString
   /**
-   * source index
+   * The name of the source index.
    * @aliases si, sourceIndex
    */
   'source_index'?: IndexName
   /**
-   * destination index
+   * The name of the destination index.
    * @aliases di, destIndex
    */
   'dest_index'?: IndexName
   /**
-   * description
+   * A description of the job.
    * @aliases d
    */
   'description'?: string
   /**
-   * model memory limit
+   * The approximate maximum amount of memory resources that are permitted for the job.
    * @aliases mml, modelMemoryLimit
    */
   'model_memory_limit'?: string
   /**
-   * job state
+   * The current status of the job.
    * @aliases s
    */
   'state'?: string
   /**
-   * failure reason
+   * Messages about the reason why the job failed.
    * @aliases fr, failureReason
    */
   'failure_reason'?: string
   /**
-   * progress
+   * The progress report for the job by phase.
    * @aliases p
    */
   'progress'?: string
   /**
-   * why the job is or is not assigned to a node
+   * Messages related to the selection of a node.
    * @aliases ae, assignmentExplanation
    */
   'assignment_explanation'?: string
   /**
-   * id of the assigned node
+   * The unique identifier of the assigned node.
    * @aliases ni, nodeId
    */
   'node.id'?: Id
   /**
-   * name of the assigned node
+   * The name of the assigned node.
    * @aliases nn, nodeName
    */
   'node.name'?: Name
   /**
-   * ephemeral id of the assigned node
+   * The ephemeral identifier of the assigned node.
    * @aliases ne, nodeEphemeralId
    */
   'node.ephemeral_id'?: Id
   /**
-   * network address of the assigned node
+   * The network address of the assigned node.
    * @aliases na, nodeAddress
    */
   'node.address'?: string

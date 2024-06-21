@@ -23,8 +23,9 @@ import { Field } from '@_types/common'
 export class ModelPlotConfig {
   /**
    * If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.
-   * @since 7.9.0
    * @server_default true
+   * @availability stack since=7.9.0
+   * @availability serverless
    */
   annotations_enabled?: boolean
   /**
@@ -34,7 +35,8 @@ export class ModelPlotConfig {
   enabled?: boolean
   /**
    * Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.
-   * @since 7.9.0
+   * @availability stack since=7.9.0
+   * @availability serverless
    */
   terms?: Field
 }

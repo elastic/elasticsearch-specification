@@ -1,0 +1,30 @@
+[package]
+name = "openapi_to_clients_schema"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clients_schema = {path="../clients_schema"}
+
+serde = {version = "1.0", features=["derive"]}
+serde_json = "1.0"
+serde_path_to_error = "0.1"
+serde_ignored = "0.1"
+openapiv3 = "1.0"
+anyhow = "1.0"
+indexmap = "1.9"
+convert_case = "0.6"
+either_n = "0.2.0"
+
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
+
+# Some json schema implementations
+#boon = "0.3.1"
+#jsonschema-transpiler = "1.10.0"
+#serde_valid = "0.13.0"
+#jsonschema-valid = "0.5.1"
+#jsonschema = { version = "0.16.1", features=[]}

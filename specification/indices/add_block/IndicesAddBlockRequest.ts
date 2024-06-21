@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * @rest_spec_name indices.add_block
  * @availability stack since=7.9.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -40,8 +41,8 @@ export interface Request extends RequestBase {
 }
 
 export enum IndicesBlockOptions {
-  metadata = 0,
-  read = 1,
-  read_only = 2,
-  write = 3
+  metadata,
+  read,
+  read_only,
+  write
 }

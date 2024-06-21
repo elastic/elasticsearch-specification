@@ -21,6 +21,8 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.
+ * A successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.
+ * If the user cannot be authenticated, this API returns a 401 status code.
  * @rest_spec_name security.authenticate
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public

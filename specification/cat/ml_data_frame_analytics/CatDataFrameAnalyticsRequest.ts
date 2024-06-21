@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-dfanalytics
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends CatRequestBase {
   path_parts: {

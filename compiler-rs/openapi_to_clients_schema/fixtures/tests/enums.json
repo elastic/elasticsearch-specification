@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "Test": {
+        "enum": [
+          "one1",
+          "TWO",
+          "Three_and_four"
+        ],
+        "type": "string"
+      }
+    }
+  }
+}

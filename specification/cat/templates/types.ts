@@ -21,27 +21,27 @@ import { Name, VersionString } from '@_types/common'
 
 export class TemplatesRecord {
   /**
-   * template name
+   * The template name.
    * @aliases n
    */
   'name'?: Name
   /**
-   * template index patterns
+   * The template index patterns.
    * @aliases t
    */
   'index_patterns'?: string
   /**
-   * template application order/priority number
+   * The template application order or priority number.
    * @aliases o,p
    */
   'order'?: string
   /**
-   * version
+   * The template version.
    * @aliases v
    */
   'version'?: VersionString | null
   /**
-   * component templates comprising index template
+   * The component templates that comprise the index template.
    * @aliases c
    */
   'composed_of'?: string

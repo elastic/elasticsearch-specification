@@ -26,6 +26,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * The task management API returns information about tasks currently executing on one or more nodes in the cluster.
  * @rest_spec_name tasks.list
  * @availability stack since=2.3.0 stability=experimental
+ * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  * @doc_id tasks
  */

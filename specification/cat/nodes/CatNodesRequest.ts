@@ -21,14 +21,29 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes } from '@_types/common'
 
 /**
+ * Returns information about the nodes in a cluster.
+ * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.nodes
  * @availability stack since=0.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-nodes
+ * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
   query_parameters: {
+    /**
+     * The unit used to display byte values.
+     */
     bytes?: Bytes
+    /**
+     * If `true`, return the full node ID. If `false`, return the shortened node ID.
+     * @server_default false
+     */
     full_id?: boolean | string
+    /**
+     * If true, the response includes information from segments that are not loaded into memory.
+     * @server_default false
+     */
+    include_unloaded_segments?: boolean
   }
 }

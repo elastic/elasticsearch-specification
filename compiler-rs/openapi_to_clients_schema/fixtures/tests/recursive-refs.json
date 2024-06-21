@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json",
+  "components": {
+    "schemas": {
+      "Logic": {
+        "oneOf": [
+          {
+            "properties": {
+              "value": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "and": {
+                "items": {
+                  "$ref": "#/components/schemas/Logic"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "and"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "or": {
+                "items": {
+                  "$ref": "#/components/schemas/Logic"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "or"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "not": {
+                "$ref": "#/components/schemas/Logic"
+              }
+            },
+            "required": [
+              "not"
+            ],
+            "type": "object"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -36,6 +36,12 @@ export type FieldValue =
   | null
   | UserDefinedValue
 
+/**
+ * A scalar value.
+ * @codegen_names long, double, string, boolean, null
+ */
+export type ScalarValue = long | double | string | boolean | null
+
 export class UrlParameter {}
 
 export type Uri = string
@@ -69,6 +75,8 @@ export type LongId = string
 export type IndexMetrics = string
 export type Metrics = string | string[]
 
+export type ClusterAlias = string
+
 export type Name = string
 export type Names = Name | Name[]
 
@@ -96,10 +104,21 @@ export type VersionNumbers = VersionNumber[]
 export type VersionString = string
 export type VersionStrings = VersionString[]
 export enum VersionType {
-  internal = 0,
-  external = 1,
-  external_gte = 2,
-  force = 3
+  /**
+   * Use internal versioning that starts at 1 and increments with each update or delete.
+   */
+  internal,
+  /**
+   * Only index the document if the given version is strictly higher than the version of the stored document or if there is no existing document.
+   */
+  external,
+  /**
+   * Only index the document if the given version is equal or higher than the version of the stored document or if there is no existing document.
+   * Note: the external_gte version type is meant for special use cases and should be used with care.
+   * If used incorrectly, it can result in loss of data.
+   */
+  external_gte,
+  force
 }
 
 // TODO: replace all uuid's with this type
@@ -111,6 +130,7 @@ export type SequenceNumber = long
 export type PropertyName = string
 export type RelationName = string
 export type TaskId = string | integer
+/** @doc_id fuzziness */
 export type Fuzziness = string | integer
 /** @doc_id query-dsl-multi-term-rewrite */
 export type MultiTermQueryRewrite = string
@@ -152,23 +172,23 @@ export type MinimumShouldMatch = integer | string
  * @doc_id byte-units
  */
 export enum Bytes {
-  /** @codegen_name bytes */
-  b,
-  /** @codegen_name kilo_bytes */
-  kb,
-  /** @codegen_name mega_bytes */
-  mb,
-  /** @codegen_name giga_bytes */
-  gb,
-  /** @codegen_name tera_bytes */
-  tb,
-  /** @codegen_name peta_bytes */
-  pb
+  bytes = 'b',
+  kilo_bytes = 'kb',
+  mega_bytes = 'mb',
+  giga_bytes = 'gb',
+  tera_bytes = 'tb',
+  peta_bytes = 'pb'
 }
 
 export enum Conflicts {
-  abort = 0,
-  proceed = 1
+  /**
+   * Stop reindexing if there are conflicts.
+   */
+  abort,
+  /**
+   * Continue reindexing even if there are conflicts.
+   */
+  proceed
 }
 
 export type Username = string
@@ -183,15 +203,15 @@ export class ElasticsearchUrlFormatter {}
  */
 export enum ExpandWildcard {
   /** Match any data stream or index, including hidden ones. */
-  all = 0,
+  all,
   /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
-  open = 1,
+  open,
   /** Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed. */
-  closed = 2,
+  closed,
   /** Match hidden data streams and hidden indices. Must be combined with open, closed, or both. */
-  hidden = 3,
+  hidden,
   /** Wildcard expressions are not accepted. */
-  none = 4
+  none
 }
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -205,36 +225,42 @@ export enum HealthStatus {
    * All shards are assigned.
    * @aliases GREEN
    */
-  green = 0,
+  green,
   /**
    * All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.
    * @aliases YELLOW
    */
-  yellow = 1,
+  yellow,
   /**
    * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
    * @aliases RED
    */
-  red = 2
+  red
 }
 
 export enum HttpMethod {
-  GET = 0,
-  POST = 1,
-  PUT = 2,
-  DELETE = 3,
-  HEAD = 4
+  GET,
+  POST,
+  PUT,
+  DELETE,
+  HEAD
 }
 
 export enum Level {
-  cluster = 0,
-  indices = 1,
-  shards = 2
+  cluster,
+  indices,
+  shards
 }
 
 export enum OpType {
-  index = 0,
-  create = 1
+  /**
+   * Overwrite any documents that already exist.
+   */
+  index,
+  /**
+   * Only index documents that do not already exist.
+   */
+  create
 }
 
 /**
@@ -248,15 +274,24 @@ export enum Refresh {
 
 export enum SearchType {
   /** Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate. */
-  query_then_fetch = 0,
+  query_then_fetch,
   /** Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate. */
-  dfs_query_then_fetch = 1
+  dfs_query_then_fetch
 }
 
 export enum SuggestMode {
-  missing = 0,
-  popular = 1,
-  always = 2
+  /**
+   * Only generate suggestions for terms that are not in the shard.
+   */
+  missing,
+  /**
+   * Only suggest terms that occur in more docs on the shard than the original term.
+   */
+  popular,
+  /**
+   * Suggest any matching suggestions based on terms in the suggest text.
+   */
+  always
 }
 
 export enum ThreadType {
@@ -274,12 +309,12 @@ export enum WaitForActiveShardOptions {
 }
 
 export enum WaitForEvents {
-  immediate = 0,
-  urgent = 1,
-  high = 2,
-  normal = 3,
-  low = 4,
-  languid = 5
+  immediate,
+  urgent,
+  high,
+  normal,
+  low,
+  languid
 }
 
 // Additional properties are the meta fields
@@ -291,7 +326,7 @@ export class InlineGet<TDocument>
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
-  _source: TDocument
+  _source?: TDocument
 }
 
 /**
@@ -339,3 +374,13 @@ export enum SlicesCalculation {
    */
   auto
 }
+
+export enum ClusterInfoTarget {
+  _all,
+  http,
+  ingest,
+  thread_pool,
+  script
+}
+
+export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]

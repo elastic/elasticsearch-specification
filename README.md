@@ -1,12 +1,23 @@
-# Elasticsearch Specification
+# Elasticsearch API Specification
 
-This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside [`/specification`](./specification).
-The [`/compiler`](./compiler) folder contains a TypeScript program that compiles the entire definition
-in a JSON representation that can be used for generating language clients.
+The **Elasticsearch API Specification** provides the contract for communication between client and server components within the Elasticsearch stack.
+With almost 500 API endpoints and around 3000 data types across the entire API surface, this project is a vitally important part of sustaining our engineering efforts at scale.
 
-This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/model/metamodel.ts)
+The repository has the following structure:
+
+| Path | Description |
+| -------- | ------- |
+| [`api-design-guidelines/`](api-design-guidelines/) | Knowledge base of best practices for API design. |
+| [`compiler/`](compiler/) | TypeScript compiler for specification definition to JSON. |
+| [`compiler-rs/`](compiler-rs/) | |
+| [`docs/`](docs/) | |
+| [`output/`](output/) | |
+| [`specification/`](specification/) | Elasticsearch request/response definitions in TypeScript. |
+| [`typescript-generator/`](typescript-generator/) | |
+
+This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/src/model/metamodel.ts)
 that also explains the various properties and their values.
+
 
 ## Prepare the environment
 
@@ -64,7 +75,7 @@ Usage:
 
 ### Structure of the JSON representation
 
-The JSON representation is [formally defined as TypeScript definitions](./compiler/model/metamodel.ts).
+The JSON representation is [formally defined as TypeScript definitions](./compiler/src/model/metamodel.ts).
 Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
@@ -163,7 +174,7 @@ the `request` and `response` value will be `null`.
 ## How to validate the specification
 
 The specification is validated daily by the [client-flight-recorder](https://github.com/elastic/clients-flight-recorder) project.
-The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/dev/recordings/types-validation/types-validation.md).
+The validation result can be found [here](https://github.com/elastic/clients-flight-recorder/blob/main/recordings/types-validation/types-validation.md).
 
 ### Validate the specification in your machine
 
@@ -264,8 +275,8 @@ git pull
 
 ### Where do I find the generated test?
 
-Everytime you run the `run-validations` script, a series of test will be generated and dumped on disk.
-You can find them in `clients-flight-recorder/scripts/types-validator/workbench`.
+Everytime you run `make validate` script, a series of test will be generated and dumped on disk.
+You can find the failed tests in `clients-flight-recorder/scripts/types-validator/workbench`.
 The content of this folder is a series of recorded responses from Elasticsearch wrapped inside an helper
 that verifies if the type definiton is correct.
 
@@ -287,19 +298,6 @@ If you are using MacOS, run the following command to fix the issue:
 ```sh
 brew install coreutils
 ```
-
-### The `recordings` folder contains a zip file and not the `tmp-*` folders
-
-Very likely your system does not have the `zip` command installed.
-```sh
-# on mac
-brew install zip
-
-# on linux
-apt-get install -y zip
-```
-
-Then remove the content of `recordings-dev/elasticsearch/*` and run `PULL_LATEST=true ./run-validations.sh` again.
 
 ### I need to modify che compiler, help!
 

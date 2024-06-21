@@ -22,16 +22,31 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Deletes one or more existing ingest pipeline.
  * @rest_spec_name ingest.delete_pipeline
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Pipeline ID or wildcard expression of pipeline IDs used to limit the request.
+     * To delete all ingest pipelines in a cluster, use a value of `*`.
+     */
     id: Id
   }
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

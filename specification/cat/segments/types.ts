@@ -21,75 +21,86 @@ import { ByteSize, IndexName, NodeId, VersionString } from '@_types/common'
 
 export class SegmentsRecord {
   /**
-   * index name
+   * The index name.
    * @aliases i, idx
    */
   'index'?: IndexName
   /**
-   * shard name
+   * The shard name.
    * @aliases s, sh
    */
   'shard'?: string
   /**
-   * primary or replica
+   * The shard type: `primary` or `replica`.
    * @aliases p,pr,primaryOrReplica
    */
   'prirep'?: string
   /**
-   * ip of node where it lives
+   * The IP address of the node where it lives.
    */
   'ip'?: string
   /**
-   * unique id of node where it lives
+   * The unique identifier of the node where it lives.
    */
   'id'?: NodeId
   /**
-   * segment name
+   * The segment name, which is derived from the segment generation and used internally to create file names in the directory of the shard.
    * @aliases seg
    */
   'segment'?: string
   /**
-   * segment generation
+   * The segment generation number.
+   * Elasticsearch increments this generation number for each segment written then uses this number to derive the segment name.
    * @aliases g,gen
    */
   'generation'?: string
   /**
-   * number of docs in segment
+   * The number of documents in the segment.
+   * This excludes deleted documents and counts any nested documents separately from their parents.
+   * It also excludes documents which were indexed recently and do not yet belong to a segment.
    * @aliases dc,docsCount
    */
   'docs.count'?: string
   /**
-   * number of deleted docs in segment
+   * The number of deleted documents in the segment, which might be higher or lower than the number of delete operations you have performed.
+   * This number excludes deletes that were performed recently and do not yet belong to a segment.
+   * Deleted documents are cleaned up by the automatic merge process if it makes sense to do so.
+   * Also, Elasticsearch creates extra deleted documents to internally track the recent history of operations on a shard.
    * @aliases dd,docsDeleted
    */
   'docs.deleted'?: string
   /**
-   * segment size in bytes
+   * The segment size in bytes.
    * @aliases si
    */
   'size'?: ByteSize
   /**
-   * segment memory in bytes
+   * The segment memory in bytes.
+   * A value of `-1` indicates Elasticsearch was unable to compute this number.
    * @aliases sm,sizeMemory
    */
   'size.memory'?: ByteSize
   /**
-   * is segment committed
+   * If `true`, the segment is synced to disk.
+   * Segments that are synced can survive a hard reboot.
+   * If `false`, the data from uncommitted segments is also stored in the transaction log so that Elasticsearch is able to replay changes on the next start.
    * @aliases ic,isCommitted
    */
   'committed'?: string
   /**
-   * is segment searched
+   * If `true`, the segment is searchable.
+   * If `false`, the segment has most likely been written to disk but needs a refresh to be searchable.
    * @aliases is,isSearchable
    */
   'searchable'?: string
   /**
-   * version
+   * The version of Lucene used to write the segment.
    * @aliases v
    */
   'version'?: VersionString
   /**
-   * is segment compound
+   * If `true`, the segment is stored in a compound file.
+   * This means Lucene merged all files from the segment in a single file to save file descriptors.
    * @aliases ico,isCompound
    */
   'compound'?: string

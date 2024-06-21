@@ -129,6 +129,7 @@ export class Property {
   since?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
+  availability?: Availabilities
   stability?: Stability
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
@@ -333,6 +334,7 @@ export class EnumMember {
   description?: string
   deprecation?: Deprecation
   since?: string
+  availability?: Availabilities
 }
 
 /**

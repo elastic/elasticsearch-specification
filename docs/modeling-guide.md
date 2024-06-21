@@ -75,17 +75,44 @@ property: Dictionary<string, string | long>
 
 ### Enum
 
-Represents a set of allowed values:
+Represents a set of allowed values.
+
 
 ```ts
 enum MyEnum {
-  first = 0,
-  second = 1,
-  third = 2
+  first,
+  second,
+  third
 }
 
 property: MyEnum
 ```
+
+Note that you don't have to provide both identifiers and values as is common in TypeScript. When there's only an identifier, the API specification compiler will use it for both the identifier and the value of enum members.
+
+Also do not use identifiers and values for the sole purpose of providing upper-case identifiers (e.g. `FOO = 'foo'`). Each language generator will use the identifier casing that is expected by that language.
+
+Some enumerations contain values that aren't identifiers, or that are not explicit enough. In that case you can either assign values to enum members or use the `@codegen_name` jsdoc tag to define the identifier that will be used by code generators:
+
+```ts
+enum MyEnum {
+    percent_of_sum,
+    mean,
+    /** @codegen_name z_score */
+    'z-score',
+    softmax
+}
+
+export enum IntervalUnit {
+    second = 's',
+    minute = 'm',
+    hour = 'h',
+    day = 'd',
+    week = 'w'
+}
+```
+
+**Use custom identifiers for enum members sparingly**: we want to keep identifiers as close as possible to their value in JSON payloads to that usesr can easily map values found in the Elasticsearch reference documentation to code identifiers in the client libraries. 
 
 Some enumerations accept alternate values for some of their members. The `@aliases` jsdoc tac can be used to capture these values:
 
@@ -445,21 +472,58 @@ Code generators should track the `es_quirk` they implement and fail if a new unh
 If needed, you can specify additional information on each type with the approariate JSDoc tag.
 Following you can find a list of the supported tags:
 
-#### `@since`
+#### `@availability`
 
-Every API already has a `@since` tag, which describes when an API was added.
-You can specify an additional `@since` tag for every property that has been added afterwards.
+Every API already has a `@availability <name> ...` annotation, which describes when an API was added.
+You can specify an additional `since=` value for every property that has been added afterwards.
 If the tag is not defined, it's assumed that the property has been added with the API the first time
 
 ```ts
 /**
- * @since 7.10.0
+ * @availability stack since=7.10.0
+ * @availability serverless
  */
 class FooRequest {
   bar: string
-  /** @since 7.11.0 */
+  /**
+   * @availability stack since=7.11.0
+   * @availability serverless
+   */
   baz: string
   faz: string
+}
+```
+
+If you'd like an API or property to be available for only Stack or Serverless Elasticsearch
+the annotation with the desired flavor should be used without specifying the other. If the property
+is available in both flavors either the `@availability` annotation can either be omitted entirely
+or both flavors can be specified.
+
+```ts
+export class Example {
+  /**
+   * This field is available in both (default when there aren't any annotations).
+   */
+  fieldBoth1: integer
+
+  /**
+   * This field is available in both flavors and is explicitly annotated.
+   * @availability stack
+   * @availability serverless
+   */ 
+  fieldBoth2: integer
+
+  /**
+   * This field is only available on Serverless Elasticsearch.
+   * @availability serverless
+   */
+  fieldServerlessOnly: integer
+
+  /**
+   * This field is only available on Stack Elasticsearch.
+   * @availability stack
+   */
+  fieldStackOnly: integer
 }
 ```
 
@@ -578,8 +642,7 @@ If an endpoint has some index security prerequisites to satisfy, you can specify
 ```ts
 /**
  * @rest_spec_name indices.create
- * @since 0.0.0
- * @stability stable
+ * @availability stack since=0.0.0 stability=stable
  * @index_privileges create_index, manage
  */
 export interface Request extends RequestBase {
@@ -594,8 +657,7 @@ If an endpoint has some cluster security prerequisites to satisfy, you can speci
 ```ts
 /**
  * @rest_spec_name cluster.state
- * @since 1.3.0
- * @stability stable
+ * @availability stack since=1.3.0 stability=stable
  * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {
@@ -627,30 +689,6 @@ class Foo {
 }
 ```
 
-#### `@stability`
+#### `@stability` and `@visibility`
 
-You can mark a class or property of a type as stable/beta/experimental with this tag (the default is stable).
-
-```ts
-class Foo {
-  bar: string
-  /** @stability experimental */
-  baz?: string
-  faz: string
-}
-```
-
-#### `@visibility`
-
-You can mark a request as `public`/`feature_flag`/`private` with this tag (the default is `public`).
-
-```ts
-/**
- * @rest_spec_name namespace.api
- * @since 7.5.0
- * @visibility private
- */
-export interface Request extends RequestBase {
- ...
-}
-```
+These annotations have been removed, use `@availability` instead.

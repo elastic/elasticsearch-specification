@@ -111,5 +111,5 @@ export interface Request extends RequestBase {
     allow_partial_search_results?: boolean
   }
   /** @codegen_name searches */
-  body?: Array<RequestItem>
+  body: Array<RequestItem>
 }

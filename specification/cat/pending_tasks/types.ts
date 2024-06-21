@@ -19,22 +19,22 @@
 
 export class PendingTasksRecord {
   /**
-   * task insertion order
+   * The task insertion order.
    * @aliases o
    */
   'insertOrder'?: string
   /**
-   * how long task has been in queue
+   * Indicates how long the task has been in queue.
    * @aliases t
    */
   'timeInQueue'?: string
   /**
-   * task priority
+   * The task priority.
    * @aliases p
    */
   'priority'?: string
   /**
-   * task source
+   * The task source.
    * @aliases s
    */
   'source'?: string

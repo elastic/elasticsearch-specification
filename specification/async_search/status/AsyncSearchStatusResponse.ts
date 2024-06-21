@@ -19,11 +19,16 @@
 
 import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 import { integer } from '@_types/Numeric'
-import { ShardStatistics } from '@_types/Stats'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
 export class StatusResponseBase extends AsyncSearchResponseBase {
   /** Indicates how many shards have run the query so far. */
   _shards: ShardStatistics
+  /**
+   * Metadata about clusters involved in the cross-cluster search.
+   * Not shown for local-only searches.
+   */
+  _clusters?: ClusterStatistics
   /**
    * If the async search completed, this field shows the status code of the search.
    * For example, 200 indicates that the async search was successfully completed.

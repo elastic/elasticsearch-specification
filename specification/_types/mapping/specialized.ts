@@ -23,6 +23,12 @@ import { double, integer } from '@_types/Numeric'
 import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
 import { Script } from '@_types/Scripting'
+import {
+  IcuCollationAlternate,
+  IcuCollationCaseFirst,
+  IcuCollationDecomposition,
+  IcuCollationStrength
+} from '@_types/analysis/icu-plugin'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -65,7 +71,8 @@ export class IpProperty extends DocValuesPropertyBase {
   script?: Script
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
-   * @stability experimental
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
    */
   time_series_dimension?: boolean
   type: 'ip'
@@ -82,4 +89,30 @@ export class TokenCountProperty extends DocValuesPropertyBase {
   null_value?: double
   enable_position_increments?: boolean
   type: 'token_count'
+}
+
+export class IcuCollationProperty extends DocValuesPropertyBase {
+  type: 'icu_collation_keyword'
+  norms?: boolean
+  index_options?: IndexOptions
+  /**
+   * Should the field be searchable?
+   */
+  index?: boolean
+  /**
+   * Accepts a string value which is substituted for any explicit null values. Defaults to null, which means the field is treated as missing.
+   */
+  null_value?: string
+  rules?: string
+  language?: string
+  country?: string
+  variant?: string
+  strength?: IcuCollationStrength
+  decomposition?: IcuCollationDecomposition
+  alternate?: IcuCollationAlternate
+  case_level?: boolean
+  case_first?: IcuCollationCaseFirst
+  numeric?: boolean
+  variable_top?: string
+  hiragana_quaternary_mode?: boolean
 }

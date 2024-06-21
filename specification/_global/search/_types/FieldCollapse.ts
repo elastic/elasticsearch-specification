@@ -22,8 +22,17 @@ import { integer } from '@_types/Numeric'
 import { InnerHits } from './hits'
 
 export class FieldCollapse {
+  /**
+   * The field to collapse the result set on
+   */
   field: Field
+  /**
+   * The number of inner hits and their sort order
+   */
   inner_hits?: InnerHits | InnerHits[]
+  /**
+   * The number of concurrent requests allowed to retrieve the inner_hits per group
+   */
   max_concurrent_group_searches?: integer
   collapse?: FieldCollapse
 }

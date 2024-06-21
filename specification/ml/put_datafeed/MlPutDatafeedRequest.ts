@@ -164,7 +164,8 @@ export interface Request extends RequestBase {
      */
     scroll_size?: integer
     /**
-     * @since 8.0.0
+     * @availability stack since=8.0.0
+     * @availability serverless
      */
     headers?: HttpHeaders
   }

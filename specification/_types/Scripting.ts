@@ -26,30 +26,62 @@ import { Id } from './common'
  * @non_exhaustive
  */
 export enum ScriptLanguage {
-  painless = 0,
-  expression = 1,
-  mustache = 2,
-  java = 3
+  /**
+   * Painless scripting language, purpose-built for Elasticsearch.
+   */
+  painless,
+  /**
+   * Lucene’s expressions language, compiles a JavaScript expression to bytecode.
+   */
+  expression,
+  /**
+   * Mustache templated, used for templates.
+   */
+  mustache,
+  /**
+   * Expert Java API
+   */
+  java
 }
 
 export class StoredScript {
+  /**
+   * Specifies the language the script is written in.
+   */
   lang: ScriptLanguage
   options?: Dictionary<string, string>
+  /**
+   * The script source.
+   */
   source: string
 }
 
 export class ScriptBase {
+  /**
+   * Specifies any named parameters that are passed into the script as variables.
+   * Use parameters instead of hard-coded values to decrease compile time.
+   */
   params?: Dictionary<string, UserDefinedValue>
 }
 
 /** @shortcut_property source */
 export class InlineScript extends ScriptBase {
+  /**
+   * Specifies the language the script is written in.
+   * @server_default painless
+   */
   lang?: ScriptLanguage
   options?: Dictionary<string, string>
+  /**
+   * The script source.
+   */
   source: string
 }
 
 export class StoredScriptId extends ScriptBase {
+  /**
+   * The `id` for a stored script.
+   */
   id: Id
 }
 
