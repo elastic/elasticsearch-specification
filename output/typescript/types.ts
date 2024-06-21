@@ -5948,7 +5948,7 @@ export interface QueryDslQueryContainer {
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
-  rule_query?: QueryDslRuleQuery
+  rule?: QueryDslRuleQuery
   script?: QueryDslScriptQuery
   script_score?: QueryDslScriptScoreQuery
   semantic?: QueryDslSemanticQuery
@@ -6053,7 +6053,7 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
 
 export interface QueryDslRuleQuery extends QueryDslQueryBase {
   organic: QueryDslQueryContainer
-  ruleset_id: Id
+  ruleset_ids: Id[]
   match_criteria: any
 }
 

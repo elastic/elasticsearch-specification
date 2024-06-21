@@ -290,7 +290,7 @@ export class QueryContainer {
    * @doc_id query-dsl-regexp-query
    */
   regexp?: SingleKeyDictionary<Field, RegexpQuery>
-  rule_query?: RuleQuery
+  rule?: RuleQuery
   /**
    * Filters documents based on a provided script.
    * The script query is typically used in a filter context.
