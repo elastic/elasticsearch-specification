@@ -16350,6 +16350,34 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface QueryRuleDeleteRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRuleDeleteResponse = AcknowledgedResponseBase
+
+export interface QueryRuleGetRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRuleGetResponse = QueryRulesetQueryRule
+
+export interface QueryRulePutRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+  body?: {
+    type: QueryRulesetQueryRuleType
+    criteria: QueryRulesetQueryRuleCriteria[]
+    actions: QueryRulesetQueryRuleActions
+  }
+}
+
+export interface QueryRulePutResponse {
+  result: Result
+}
+
 export interface QueryRulesetQueryRule {
   rule_id: Id
   type: QueryRulesetQueryRuleType
