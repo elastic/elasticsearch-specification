@@ -479,15 +479,20 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
         'Class and interfaces can only have property declarations or signatures'
       )
-      const property = modelProperty(member)
-      if (type.variants?.kind === 'container' && property.containerProperty == null) {
-        assert(
-          member,
-          !property.required,
-          'All @variants container properties must be optional'
-        )
+      try {
+        const property = modelProperty(member)
+        if (type.variants?.kind === 'container' && property.containerProperty == null) {
+          assert(
+              member,
+              !property.required,
+              'All @variants container properties must be optional'
+          )
+        }
+        type.properties.push(property)
+      } catch(e) {
+        console.log(`failed to parse ${declaration.getName()}, reason:`, e.message)
+        process.exit(1)
       }
-      type.properties.push(property)
     }
 
     // The class or interface is extended, an extended class or interface could

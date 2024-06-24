@@ -532,10 +532,15 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 
   // names that contains `.` or `-` will be wrapped inside single quotes
   const name = declaration.getName().replace(/'/g, '')
-  const property = {
-    name,
-    required: !declaration.hasQuestionToken(),
-    type: modelType(type)
+  let property: model.Property
+  try {
+    property = {
+      name,
+      required: !declaration.hasQuestionToken(),
+      type: modelType(type)
+    }
+  } catch (e) {
+    throw new Error(`cannot determine type of ${name}, got:${type.getFullText()}`)
   }
   hoistPropertyAnnotations(property, declaration.getJsDocs())
   return property
