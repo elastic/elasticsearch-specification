@@ -49,16 +49,16 @@ export class SparseVectorQuery extends QueryBase {
    * The query text you want to use for search.
    * If inference_id is specified, query must also be specified.
    */
-  query?: String
+  query?: string
 
   /**
    * Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.
    * If prune is true but the pruning_config is not specified, pruning will occur but default values will be used.
-   * @default false
+   * Default: false
    * @availability stack since=8.15.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  prune?: Boolean
+  prune?: boolean
 
   /**
    * Optional pruning configuration.
