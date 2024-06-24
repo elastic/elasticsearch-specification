@@ -15869,7 +15869,8 @@
           "200": {
             "$ref": "#/components/responses/knn_search#200"
           }
-        }
+        },
+        "deprecated": true
       },
       "post": {
         "tags": [
@@ -15895,7 +15896,8 @@
           "200": {
             "$ref": "#/components/responses/knn_search#200"
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/_license": {
@@ -20820,7 +20822,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/_ml/data_frame/analytics/_preview": {
