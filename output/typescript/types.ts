@@ -16392,11 +16392,11 @@ export interface QueryRulesetQueryRuleActions {
 
 export interface QueryRulesetQueryRuleCriteria {
   type: QueryRulesetQueryRuleCriteriaType
-  metadata: string
+  metadata?: string
   values?: any[]
 }
 
-export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte'
+export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
 export type QueryRulesetQueryRuleType = 'pinned'
 
@@ -16420,6 +16420,7 @@ export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
 export interface QueryRulesetListQueryRulesetListItem {
   ruleset_id: Id
   rules_count: integer
+  rule_criteria_type_counts: Record<string, string>
 }
 
 export interface QueryRulesetListRequest extends RequestBase {
