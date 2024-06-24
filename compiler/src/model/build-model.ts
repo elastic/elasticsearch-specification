@@ -483,14 +483,19 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         const property = modelProperty(member)
         if (type.variants?.kind === 'container' && property.containerProperty == null) {
           assert(
-              member,
-              !property.required,
-              'All @variants container properties must be optional'
+            member,
+            !property.required,
+            'All @variants container properties must be optional'
           )
         }
         type.properties.push(property)
-      } catch(e) {
-        console.log(`failed to parse ${declaration.getName()}, reason:`, e.message)
+      } catch (e) {
+        const name = declaration.getName()
+        if (name !== undefined) {
+          console.log(`failed to parse ${name}, reason:`, e.message)
+        } else {
+          console.log('failed to parse field, reason:', e.message)
+        }
         process.exit(1)
       }
     }
