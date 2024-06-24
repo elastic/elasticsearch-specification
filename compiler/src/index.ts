@@ -27,6 +27,7 @@ import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
 import addContentType from './steps/add-content-type'
 import readDefinitionValidation from './steps/read-definition-validation'
+import addDeprecation from './steps/add-deprecation'
 
 const nvmrc = readFileSync(join(__dirname, '..', '..', '.nvmrc'), 'utf8')
 const nodejsMajor = process.version.split('.').shift()?.slice(1) ?? ''
@@ -67,6 +68,7 @@ const compiler = new Compiler(specsFolder, outputFolder)
 compiler
   .generateModel()
   .step(addInfo)
+  .step(addDeprecation)
   .step(addContentType)
   .step(readDefinitionValidation)
   .step(validateRestSpec)
