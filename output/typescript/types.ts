@@ -16419,8 +16419,8 @@ export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
 
 export interface QueryRulesetListQueryRulesetListItem {
   ruleset_id: Id
-  rules_count: integer
-  rule_criteria_type_counts: Record<string, string>
+  rule_total_count: integer
+  rule_criteria_types_counts: Record<string, string>
 }
 
 export interface QueryRulesetListRequest extends RequestBase {

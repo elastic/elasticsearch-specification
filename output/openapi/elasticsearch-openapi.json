@@ -93008,11 +93008,11 @@
           "ruleset_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
-          "rules_count": {
+          "rule_total_count": {
             "description": "The number of rules associated with this ruleset",
             "type": "number"
           },
-          "rule_criteria_type_counts": {
+          "rule_criteria_types_counts": {
             "description": "A map of criteria type to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
@@ -93022,8 +93022,8 @@
         },
         "required": [
           "ruleset_id",
-          "rules_count",
-          "rule_criteria_type_counts"
+          "rule_total_count",
+          "rule_criteria_types_counts"
         ]
       },
       "_global.rank_eval:RankEvalRequestItem": {

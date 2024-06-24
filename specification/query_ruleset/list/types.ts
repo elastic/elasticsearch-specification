@@ -28,10 +28,10 @@ export class QueryRulesetListItem {
   /**
    * The number of rules associated with this ruleset
    */
-  rules_count: integer
+  rule_total_count: integer
 
   /**
    * A map of criteria type to the number of rules of that type
    */
-  rule_criteria_type_counts: Dictionary<string, string>
+  rule_criteria_types_counts: Dictionary<string, string>
 }
