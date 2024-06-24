@@ -47707,6 +47707,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "Use geo-shape instead.",
+            "version": "7.12.0"
+          },
           "name": "geo_polygon",
           "required": false,
           "type": {
@@ -48532,7 +48536,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L101-L414",
+      "specLocation": "_types/query_dsl/abstractions.ts#L101-L417",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48709,7 +48713,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L439-L450"
+      "specLocation": "_types/query_dsl/abstractions.ts#L442-L453"
     },
     {
       "kind": "type_alias",
@@ -49053,7 +49057,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L452-L486"
+      "specLocation": "_types/query_dsl/abstractions.ts#L455-L489"
     },
     {
       "kind": "enum",
@@ -49069,7 +49073,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L496-L499"
+      "specLocation": "_types/query_dsl/abstractions.ts#L499-L502"
     },
     {
       "kind": "enum",
@@ -49087,7 +49091,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
+      "specLocation": "_types/query_dsl/abstractions.ts#L504-L513"
     },
     {
       "inherits": {
@@ -51305,7 +51309,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L416-L433"
+      "specLocation": "_types/query_dsl/abstractions.ts#L419-L436"
     },
     {
       "kind": "enum",
@@ -51776,7 +51780,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L512-L526"
+      "specLocation": "_types/query_dsl/abstractions.ts#L515-L529"
     },
     {
       "inherits": {
@@ -59776,7 +59780,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L488-L494"
+      "specLocation": "_types/query_dsl/abstractions.ts#L491-L497"
     },
     {
       "inherits": {
