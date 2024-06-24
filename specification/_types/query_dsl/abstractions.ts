@@ -166,6 +166,9 @@ export class QueryContainer {
    * @doc_id query-dsl-geo-distance-query
    */
   geo_distance?: GeoDistanceQuery
+  /**
+   * @deprecated 7.12.0 Use geo-shape instead.
+   */
   geo_polygon?: GeoPolygonQuery
   /**
    * Filter documents indexed using either the `geo_shape` or the `geo_point` type.
