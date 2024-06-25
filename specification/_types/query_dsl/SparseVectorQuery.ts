@@ -52,6 +52,7 @@ export class SparseVectorQuery extends QueryBase {
   /**
    * The query text you want to use for search.
    * If inference_id is specified, query must also be specified.
+   * @variant container_property
    */
   query?: string
 
@@ -61,6 +62,7 @@ export class SparseVectorQuery extends QueryBase {
    * Default: false
    * @availability stack since=8.15.0 stability=experimental
    * @availability serverless stability=experimental
+   * @variant container_property
    */
   prune?: boolean
 
@@ -71,6 +73,7 @@ export class SparseVectorQuery extends QueryBase {
    * If prune is set to true but pruning_config is not specified, default values will be used.
    * @availability stack since=8.15.0 stability=experimental
    * @availability serverless stability=experimental
+   * @variant container_property
    */
   pruning_config?: TokenPruningConfig
 }
