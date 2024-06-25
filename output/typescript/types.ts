@@ -5948,7 +5948,7 @@ export interface QueryDslQueryContainer {
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
-  rule_query?: QueryDslRuleQuery
+  rule?: QueryDslRuleQuery
   script?: QueryDslScriptQuery
   script_score?: QueryDslScriptScoreQuery
   semantic?: QueryDslSemanticQuery
@@ -6053,7 +6053,7 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
 
 export interface QueryDslRuleQuery extends QueryDslQueryBase {
   organic: QueryDslQueryContainer
-  ruleset_id: Id
+  ruleset_ids: Id[]
   match_criteria: any
 }
 
@@ -16350,6 +16350,34 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface QueryRuleDeleteRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRuleDeleteResponse = AcknowledgedResponseBase
+
+export interface QueryRuleGetRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRuleGetResponse = QueryRulesetQueryRule
+
+export interface QueryRulePutRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+  body?: {
+    type: QueryRulesetQueryRuleType
+    criteria: QueryRulesetQueryRuleCriteria[]
+    actions: QueryRulesetQueryRuleActions
+  }
+}
+
+export interface QueryRulePutResponse {
+  result: Result
+}
+
 export interface QueryRulesetQueryRule {
   rule_id: Id
   type: QueryRulesetQueryRuleType
@@ -16364,11 +16392,11 @@ export interface QueryRulesetQueryRuleActions {
 
 export interface QueryRulesetQueryRuleCriteria {
   type: QueryRulesetQueryRuleCriteriaType
-  metadata: string
+  metadata?: string
   values?: any[]
 }
 
-export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte'
+export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
 export type QueryRulesetQueryRuleType = 'pinned'
 
@@ -16391,7 +16419,8 @@ export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
 
 export interface QueryRulesetListQueryRulesetListItem {
   ruleset_id: Id
-  rules_count: integer
+  rule_total_count: integer
+  rule_criteria_types_counts: Record<string, string>
 }
 
 export interface QueryRulesetListRequest extends RequestBase {
