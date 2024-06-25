@@ -23,10 +23,14 @@ import { float } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TokenPruningConfig } from './TokenPruningConfig'
 
+/**
+ * @variants container
+ */
 export class SparseVectorQuery extends QueryBase {
   /**
    * The name of the field that contains the token-weight pairs to be searched against.
    * This field must be a mapped sparse_vector field.
+   * @variant container_property
    */
   field: Field
 
