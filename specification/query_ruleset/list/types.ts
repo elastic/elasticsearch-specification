@@ -18,6 +18,7 @@
  */
 import { integer } from '@_types/Numeric'
 import { Id } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class QueryRulesetListItem {
   /**
@@ -27,5 +28,10 @@ export class QueryRulesetListItem {
   /**
    * The number of rules associated with this ruleset
    */
-  rules_count: integer
+  rule_total_count: integer
+
+  /**
+   * A map of criteria type to the number of rules of that type
+   */
+  rule_criteria_types_counts: Dictionary<string, string>
 }

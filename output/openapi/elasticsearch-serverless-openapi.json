@@ -15211,6 +15211,183 @@
         }
       }
     },
+    "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
+      "get": {
+        "tags": [
+          "query_rule.get"
+        ],
+        "summary": "Returns the details about a query rule within a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html"
+        },
+        "operationId": "query-rule-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset containing the rule to retrieve",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "rule_id",
+            "description": "The unique identifier of the query rule within the specified ruleset to retrieve",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/query_ruleset._types:QueryRule"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "query_rule.put"
+        ],
+        "summary": "Creates or updates a query rule within a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html"
+        },
+        "operationId": "query-rule-put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "rule_id",
+            "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "$ref": "#/components/schemas/query_ruleset._types:QueryRuleType"
+                  },
+                  "criteria": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/query_ruleset._types:QueryRuleCriteria"
+                    }
+                  },
+                  "actions": {
+                    "$ref": "#/components/schemas/query_ruleset._types:QueryRuleActions"
+                  }
+                },
+                "required": [
+                  "type",
+                  "criteria",
+                  "actions"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "query_rule.delete"
+        ],
+        "summary": "Deletes a query rule within a query ruleset",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html"
+        },
+        "operationId": "query-rule-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ruleset_id",
+            "description": "The unique identifier of the query ruleset containing the rule to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "rule_id",
+            "description": "The unique identifier of the query rule within the specified ruleset to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_query_rules/{ruleset_id}": {
       "get": {
         "tags": [
@@ -34318,7 +34495,7 @@
             "minProperties": 1,
             "maxProperties": 1
           },
-          "rule_query": {
+          "rule": {
             "$ref": "#/components/schemas/_types.query_dsl:RuleQuery"
           },
           "script": {
@@ -37840,8 +38017,11 @@
               "organic": {
                 "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
               },
-              "ruleset_id": {
-                "$ref": "#/components/schemas/_types:Id"
+              "ruleset_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:Id"
+                }
               },
               "match_criteria": {
                 "type": "object"
@@ -37849,7 +38029,7 @@
             },
             "required": [
               "organic",
-              "ruleset_id",
+              "ruleset_ids",
               "match_criteria"
             ]
           }
@@ -59554,25 +59734,6 @@
           "position"
         ]
       },
-      "query_ruleset._types:QueryRuleset": {
-        "type": "object",
-        "properties": {
-          "ruleset_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "rules": {
-            "description": "Rules associated with the query ruleset",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/query_ruleset._types:QueryRule"
-            }
-          }
-        },
-        "required": [
-          "ruleset_id",
-          "rules"
-        ]
-      },
       "query_ruleset._types:QueryRule": {
         "type": "object",
         "properties": {
@@ -59622,8 +59783,7 @@
           }
         },
         "required": [
-          "type",
-          "metadata"
+          "type"
         ]
       },
       "query_ruleset._types:QueryRuleCriteriaType": {
@@ -59638,7 +59798,8 @@
           "lt",
           "lte",
           "gt",
-          "gte"
+          "gte",
+          "always"
         ]
       },
       "query_ruleset._types:QueryRuleActions": {
@@ -59658,20 +59819,47 @@
           }
         }
       },
+      "query_ruleset._types:QueryRuleset": {
+        "type": "object",
+        "properties": {
+          "ruleset_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "rules": {
+            "description": "Rules associated with the query ruleset",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/query_ruleset._types:QueryRule"
+            }
+          }
+        },
+        "required": [
+          "ruleset_id",
+          "rules"
+        ]
+      },
       "query_ruleset.list:QueryRulesetListItem": {
         "type": "object",
         "properties": {
           "ruleset_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
-          "rules_count": {
+          "rule_total_count": {
             "description": "The number of rules associated with this ruleset",
             "type": "number"
+          },
+          "rule_criteria_types_counts": {
+            "description": "A map of criteria type to the number of rules of that type",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
           "ruleset_id",
-          "rules_count"
+          "rule_total_count",
+          "rule_criteria_types_counts"
         ]
       },
       "_global.rank_eval:RankEvalRequestItem": {

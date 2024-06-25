@@ -1350,6 +1350,12 @@
         "response definition _global.put_script:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "query_rule.delete": {
+      "request": [],
+      "response": [
+        "response definition query_rule.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
+      ]
+    },
     "query_ruleset.delete": {
       "request": [],
       "response": [
