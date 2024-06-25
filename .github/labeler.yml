@@ -1,12 +1,15 @@
 documentation:
-  - '*.md'
+- changed-files:
+  - any-glob-to-any-file: '*.md'
 
 specification:
-  - 'specification/**/*'
+- changed-files:
+  - any-glob-to-any-file: 'specification/**/*'
 
 generator:typescript:
-  - 'typescript-generator/**/*'
+- changed-files:
+  - any-glob-to-any-file: 'typescript-generator/**/*'
 
 compiler:
-  - 'compiler/**/*'
-  - 'compiler-rs/**/*'
+- changed-files:
+  - any-glob-to-any-file: ['compiler/**/*', 'compiler-rs/**/*']
