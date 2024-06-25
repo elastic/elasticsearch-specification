@@ -1810,36 +1810,6 @@
         "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
-    },
-    "xpack.usage": {
-      "request": [],
-      "response": [
-        "response definition xpack.usage:Response / body / Property 'aggregate_metric' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "interface definition xpack.usage:WatcherWatch / Property 'input' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatch / Property 'condition' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatch / Property 'action' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatchTriggerSchedule / Property 'cron' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatchTriggerSchedule / Property '_all' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatchTrigger / Property '_all' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:Watcher / Property 'count' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "response definition xpack.usage:Response / body / Property 'data_frame' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'data_science' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'enrich' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'graph' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'logstash' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'rollup' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'spatial' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "interface definition xpack.usage:Security / Property 'api_key_service' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'anonymous' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'fips_140' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Ssl / Property 'http' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Ssl / Property 'transport' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'system_key' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'token_service' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'operator_privileges' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'transform' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'voting_only' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'"
-      ]
     }
   },
   "generalErrors": []
