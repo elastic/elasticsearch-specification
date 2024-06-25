@@ -180,21 +180,21 @@ export class DecayFunctionBase {
 }
 
 /**
- * @behavior_meta AdditionalProperty field, placement
+ * @behavior_meta AdditionalProperty name=field value=placement
  */
 export class NumericDecayFunction
   extends DecayFunctionBase
   implements AdditionalProperty<Field, DecayPlacement<double, double>> {}
 
 /**
- * @behavior_meta AdditionalProperty field, placement
+ * @behavior_meta AdditionalProperty name=field value=placement
  */
 export class DateDecayFunction
   extends DecayFunctionBase
   implements AdditionalProperty<Field, DecayPlacement<DateMath, Duration>> {}
 
 /**
- * @behavior_meta AdditionalProperty field, placement
+ * @behavior_meta AdditionalProperty name=field value=placement
  */
 export class GeoDecayFunction
   extends DecayFunctionBase

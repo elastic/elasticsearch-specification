@@ -171,7 +171,7 @@ export class NodeInfoRepositoriesUrl {
 }
 
 /**
- * @behavior_meta AdditionalProperties settings, "Additional or alternative settings"
+ * @behavior_meta AdditionalProperties name=settings description="Additional or alternative settings"
  */
 export class NodeInfoDiscover
   implements AdditionalProperties<string, UserDefinedValue>

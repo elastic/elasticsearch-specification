@@ -331,7 +331,7 @@ export class MultiBucketAggregateBase<TBucket> extends AggregateBase {
 /**
  * Base type for multi-bucket aggregation results that can hold sub-aggregations results.
  *
- * @behavior_meta AdditionalProperties aggregations, "Nested aggregations"
+ * @behavior_meta AdditionalProperties name=aggregations description="Nested aggregations"
  */
 export class MultiBucketBase
   implements AdditionalProperties<AggregateName, Aggregate>
@@ -475,7 +475,7 @@ export class MultiTermsBucket extends MultiBucketBase {
 /**
  * Base type for single-bucket aggregation results that can hold sub-aggregations results.
  *
- * @behavior_meta AdditionalProperties aggregations, "Nested aggregations"
+ * @behavior_meta AdditionalProperties name=aggregations description="Nested aggregations"
  */
 export class SingleBucketAggregateBase
   extends AggregateBase
@@ -662,7 +662,7 @@ export class TopHitsAggregate extends AggregateBase {
 
 /**
  * @variant name=inference
- * @behavior_meta AdditionalProperties data, "Additional data"
+ * @behavior_meta AdditionalProperties name=data description="Additional data"
  */
 // This is a union with widely different fields, many of them being runtime-defined. We mimic below the few fields
 // present in `ParsedInference` with an additional properties spillover to not loose any data.

@@ -57,7 +57,7 @@ export class ScoreSort {
 }
 
 /**
- * @behavior_meta AdditionalProperty field, location
+ * @behavior_meta AdditionalProperty name=field value=location
  */
 export class GeoDistanceSort
   implements AdditionalProperty<Field, GeoLocation | GeoLocation[]>
@@ -86,7 +86,7 @@ export enum ScriptSortType {
 /**
  * @doc_id sort-search-results
  * @variants container
- * @behavior_meta AdditionalProperty field, sort
+ * @behavior_meta AdditionalProperty name=field value=sort
  */
 export class SortOptions implements AdditionalProperty<Field, FieldSort> {
   _score?: ScoreSort

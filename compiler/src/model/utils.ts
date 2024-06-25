@@ -418,17 +418,25 @@ export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc
   const behaviorName = node.getExpression().getText()
   const generics = node.getTypeArguments().map(node => modelType(node))
 
-  let meta: string[] | undefined
+  let meta: Map<string, string> | undefined
   const tags = parseJsDocTagsAllowDuplicates(jsDocs)
   if (tags.behavior_meta !== undefined) {
-    // Splits a string by comma, but preserves comma in quoted strings
-    const re = /(?<=")[^"]+?(?="(?:\s*?,|\s*?$))|(?<=(?:^|,)\s*?)(?:[^,"\s][^,"]*[^,"\s])|(?:[^,"\s])(?![^"]*?"(?:\s*?,|\s*?$))(?=\s*?(?:,|$))/g
+    // Extracts whitespace/comma-separated key-value-pairs with a "=" delimiter and handles double-quotes
+    const re = /(?<key>[^=\s,]+)=(?<value>"([^"]*)"|([^\s,]+))/g
+
     for (const tag of tags.behavior_meta) {
       const id = tag.split(' ')
       if (id[0].trim() !== behaviorName) {
         continue
       }
-      meta = id.slice(1).join(' ').match(re) as string[]
+      const matches = [...id.slice(1).join(' ').matchAll(re)]
+      meta = new Map<string, string>()
+      for (const match of matches) {
+        if (match.groups == null) {
+          continue
+        }
+        meta.set(match.groups.key, match.groups.value.replace(/^"(.+(?="$))"$/, '$1'))
+      }
       break
     }
   }
@@ -439,7 +447,7 @@ export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc
       namespace: getNameSpace(node)
     },
     ...(generics.length > 0 && { generics }),
-    meta
+    meta: (meta === undefined) ? undefined : Object.fromEntries(meta)
   }
 }
 

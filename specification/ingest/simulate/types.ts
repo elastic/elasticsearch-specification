@@ -57,7 +57,7 @@ export class Document {
 /**
  * The simulated document, with optional metadata.
  *
- * @behavior_meta AdditionalProperties metadata, "Additional metadata"
+ * @behavior_meta AdditionalProperties name=metadata description="Additional metadata"
  */
 export class DocumentSimulation
   implements AdditionalProperties<string, string>

@@ -28,7 +28,7 @@ export class IndicesShardStores {
 }
 
 /**
- * @behavior_meta AdditionalProperty node_id, node
+ * @behavior_meta AdditionalProperty name=node_id value=node
  */
 export class ShardStore implements AdditionalProperty<NodeId, ShardStoreNode> {
   allocation: ShardStoreAllocation
