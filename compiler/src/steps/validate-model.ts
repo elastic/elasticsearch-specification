@@ -23,13 +23,6 @@ import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
 import { TypeName } from '../model/metamodel'
 
-// Superclasses (i.e. non-leaf types, who are inherited or implemented) that are ok to be used as field types because
-// they're used as definition reuse and not as polymorphic types.
-// See also validateIsLeafType() below.
-const allowedSuperclasses = new Set([
-  '_types:ErrorCause'
-])
-
 enum TypeDefKind {
   type,
   behavior
@@ -231,7 +224,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         modelError(`Type ${fqn(endpoint.request)} is not a request definition`)
       } else {
         validateTypeDef(reqType)
-        validateIsLeafType(endpoint.request)
 
         // Request path properties and url template properties should be the same
         const reqProperties = new Set(reqType.path.map(p => p.name))
@@ -276,7 +268,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         modelError(`Type ${fqn(endpoint.response)} not found`)
       } else {
         validateTypeDef(respType)
-        validateIsLeafType(endpoint.response)
       }
     }
   }
@@ -731,44 +722,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
   }
 
-  // Validates that use of non-leaf types (i.e. those who are inherited or implemented) are used either
-  // in contexts that are distinct from that of their children, or are abstract parent classes providing a way
-  // way to identify actual concrete implementations in strongly typed languages.
-  function validateIsLeafType (type: model.TypeName): void {
-    if (parentTypes.has(fqn(type))) {
-      // Aggregations are disambiguated with the 'typed_keys' parameter
-      if (type.namespace === 'aggregations') return
-
-      const fqName = fqn(type)
-
-      switch (fqName) {
-        // Base type also used as property, no polymorphic usage
-        case '_builtins:ErrorCause':
-        case 'x_pack.enrich:EnrichPolicy':
-        case 'x_pack.info.x_pack_usage:XPackUsage':
-        case 'x_pack.info.x_pack_usage:SecurityFeatureToggle':
-        case 'x_pack.watcher.watcher_stats:WatchRecordQueuedStats':
-        case 'x_pack.security.user.get_user:XPackUser':
-        case 'cluster.nodes_stats:MemoryStats':
-        case 'search.search:SearchResponse':
-          return
-
-        // Have a "type" attribute that identifies the variant
-        case 'mapping.types:PropertyBase':
-        case 'analysis.token_filters:TokenFilterBase':
-          return
-
-        // Single subclass with no additional properties, can probably be removed
-        case 'x_pack.watcher.input:HttpInputRequestDefinition':
-          return
-      }
-
-      if (!allowedSuperclasses.has(fqName)) {
-        modelError(`Non-leaf type cannot be used here: '${fqName}'`)
-      }
-    }
-  }
-
   // -----------------------------------------------------------------------------------------------
   // Value_Of validations
 
@@ -777,7 +730,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     switch (valueOf.kind) {
       case 'instance_of':
         validateTypeRef(valueOf.type, valueOf.generics, openGenerics)
-        validateIsLeafType(valueOf.type)
         break
 
       case 'array_of':

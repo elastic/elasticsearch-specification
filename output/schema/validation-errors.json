@@ -36,22 +36,13 @@
       ],
       "response": []
     },
-    "async_search.delete": {
-      "request": [],
-      "response": [
-        "response definition async_search.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "async_search.get": {
       "request": [],
       "response": [
         "type_alias definition _types:EpochTime / instance_of - No type definition for '_types.EpochTime:Unit'",
-        "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
-        "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ExtendedStatsAggregate'",
         "type_alias definition _types.aggregations:Buckets / union_of / dictionary_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
         "type_alias definition _types.aggregations:Buckets / union_of / array_of / instance_of - No type definition for '_types.aggregations.Buckets:TBucket'",
         "type_alias definition _spec_utils:Void / instance_of - No type definition for '_builtins:void'",
-        "type_alias definition _types.aggregations:Aggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'",
         "type_alias definition _types:DurationValue / instance_of - No type definition for '_types.DurationValue:Unit'",
         "type_alias definition _global.search._types:Suggest - A tagged union should not have generic parameters",
         "type_alias definition _global.search._types:Suggest / instance_of / Generics / instance_of - No type definition for '_global.search._types.Suggest:TDocument'",
@@ -81,9 +72,7 @@
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition autoscaling.delete_autoscaling_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "autoscaling.get_autoscaling_capacity": {
       "request": [
@@ -102,9 +91,7 @@
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition autoscaling.put_autoscaling_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "bulk": {
       "request": [
@@ -443,9 +430,7 @@
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.delete_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ccr.follow": {
       "request": [
@@ -481,41 +466,31 @@
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.pause_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ccr.pause_follow": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.pause_follow:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ccr.put_auto_follow_pattern": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.put_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ccr.resume_auto_follow_pattern": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.resume_auto_follow_pattern:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ccr.resume_follow": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.resume_follow:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ccr.stats": {
       "request": [
@@ -528,21 +503,13 @@
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition ccr.unfollow:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "cluster.allocation_explain": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
-    },
-    "cluster.delete_component_template": {
-      "request": [],
-      "response": [
-        "response definition cluster.delete_component_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
     },
     "cluster.delete_voting_config_exclusions": {
       "request": [
@@ -564,18 +531,9 @@
     },
     "cluster.put_component_template": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
-        "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+        "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition cluster.put_component_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "connector.delete": {
-      "request": [],
-      "response": [
-        "response definition connector.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "connector.last_sync": {
       "request": [
@@ -619,12 +577,6 @@
       ],
       "response": []
     },
-    "connector.sync_job_delete": {
-      "request": [],
-      "response": [
-        "response definition connector.sync_job_delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "connector.sync_job_error": {
       "request": [
         "Missing request & response"
@@ -637,51 +589,11 @@
       ],
       "response": []
     },
-    "create": {
-      "request": [],
-      "response": [
-        "response definition _global.create:Response / body / instance_of - Non-leaf type cannot be used here: '_types:WriteResponseBase'"
-      ]
-    },
-    "dangling_indices.delete_dangling_index": {
-      "request": [],
-      "response": [
-        "response definition dangling_indices.delete_dangling_index:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "dangling_indices.import_dangling_index": {
-      "request": [],
-      "response": [
-        "response definition dangling_indices.import_dangling_index:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "delete": {
-      "request": [],
-      "response": [
-        "response definition _global.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:WriteResponseBase'"
-      ]
-    },
-    "delete_by_query_rethrottle": {
-      "request": [],
-      "response": [
-        "interface definition tasks._types:NodeTasks / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
-        "type_alias definition tasks._types:TaskInfos / union_of / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'",
-        "interface definition tasks._types:ParentTaskInfo / Property 'children' / array_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
-      ]
-    },
-    "delete_script": {
-      "request": [],
-      "response": [
-        "response definition _global.delete_script:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "enrich.delete_policy": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition enrich.delete_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "enrich.execute_policy": {
       "request": [
@@ -699,23 +611,13 @@
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition enrich.put_policy:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "enrich.stats": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "interface definition enrich.stats:ExecutingPolicy / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
-      ]
-    },
-    "eql.delete": {
-      "request": [],
-      "response": [
-        "response definition eql.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "eql.search": {
       "request": [
@@ -848,9 +750,7 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition ilm.delete_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ilm.explain_lifecycle": {
       "request": [
@@ -866,52 +766,32 @@
       ],
       "response": []
     },
-    "ilm.move_to_step": {
-      "request": [],
-      "response": [
-        "response definition ilm.move_to_step:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "ilm.put_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition ilm.put_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ilm.retry": {
-      "request": [],
-      "response": [
-        "response definition ilm.retry:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ilm.start": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition ilm.start:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "ilm.stop": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition ilm.stop:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
       ],
-      "response": [
-        "response definition _global.index:Response / body / instance_of - Non-leaf type cannot be used here: '_types:WriteResponseBase'"
-      ]
+      "response": []
     },
     "indices.analyze": {
       "request": [
@@ -923,45 +803,7 @@
       "request": [
         "Request: missing json spec query parameter 'index'"
       ],
-      "response": [
-        "response definition indices.clear_cache:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
-      ]
-    },
-    "indices.create_data_stream": {
-      "request": [],
-      "response": [
-        "response definition indices.create_data_stream:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.delete_alias": {
-      "request": [],
-      "response": [
-        "response definition indices.delete_alias:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.delete_data_lifecycle": {
-      "request": [],
-      "response": [
-        "response definition indices.delete_data_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.delete_data_stream": {
-      "request": [],
-      "response": [
-        "response definition indices.delete_data_stream:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.delete_index_template": {
-      "request": [],
-      "response": [
-        "response definition indices.delete_index_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.delete_template": {
-      "request": [],
-      "response": [
-        "response definition indices.delete_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "indices.exists_index_template": {
       "request": [
@@ -978,75 +820,17 @@
       ],
       "response": []
     },
-    "indices.flush": {
-      "request": [],
-      "response": [
-        "response definition indices.flush:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
-      ]
-    },
-    "indices.get": {
-      "request": [],
-      "response": [
-        "response definition indices.get:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
-      ]
-    },
-    "indices.get_settings": {
-      "request": [],
-      "response": [
-        "response definition indices.get_settings:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
-      ]
-    },
-    "indices.migrate_to_data_stream": {
-      "request": [],
-      "response": [
-        "response definition indices.migrate_to_data_stream:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.modify_data_stream": {
-      "request": [],
-      "response": [
-        "response definition indices.modify_data_stream:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.put_alias": {
-      "request": [],
-      "response": [
-        "response definition indices.put_alias:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.put_data_lifecycle": {
-      "request": [],
-      "response": [
-        "response definition indices.put_data_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.put_index_template": {
-      "request": [],
-      "response": [
-        "response definition indices.put_index_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "indices.put_settings": {
       "request": [
         "Request: missing json spec query parameter 'reopen'"
       ],
-      "response": [
-        "response definition indices.put_settings:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "indices.put_template": {
       "request": [
         "Request: query parameter 'cause' does not exist in the json spec"
       ],
-      "response": [
-        "response definition indices.put_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "indices.refresh": {
-      "request": [],
-      "response": [
-        "response definition indices.refresh:Response / body / instance_of - Non-leaf type cannot be used here: '_types:ShardsOperationResponseBase'"
-      ]
+      "response": []
     },
     "indices.reload_search_analyzers": {
       "request": [
@@ -1074,38 +858,12 @@
       ],
       "response": []
     },
-    "indices.update_aliases": {
-      "request": [],
-      "response": [
-        "response definition indices.update_aliases:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "inference.put": {
-      "request": [
-        "request definition inference.put:Request / body / instance_of - Non-leaf type cannot be used here: 'inference._types:InferenceEndpoint'"
-      ],
-      "response": []
-    },
-    "ingest.delete_pipeline": {
-      "request": [],
-      "response": [
-        "response definition ingest.delete_pipeline:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ingest.put_pipeline": {
-      "request": [],
-      "response": [
-        "response definition ingest.put_pipeline:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "license.delete": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition license.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "license.post": {
       "request": [
@@ -1136,76 +894,11 @@
         "type_alias definition _global.mget:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.mget.ResponseItem:TDocument'"
       ]
     },
-    "ml.delete_calendar": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_calendar:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_calendar_event": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_calendar_event:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_data_frame_analytics": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_data_frame_analytics:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_datafeed": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_datafeed:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_filter": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_filter:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_forecast": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_forecast:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_job": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_job:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_model_snapshot": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_model_snapshot:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "ml.delete_trained_model": {
       "request": [
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition ml.delete_trained_model:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.delete_trained_model_alias": {
-      "request": [],
-      "response": [
-        "response definition ml.delete_trained_model_alias:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.evaluate_data_frame": {
-      "request": [],
-      "response": [
-        "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'huber' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'",
-        "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'mse' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'",
-        "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'msle' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'",
-        "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'r_squared' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'"
-      ]
+      "response": []
     },
     "ml.get_categories": {
       "request": [
@@ -1235,53 +928,11 @@
       ],
       "response": []
     },
-    "ml.put_trained_model_alias": {
-      "request": [],
-      "response": [
-        "response definition ml.put_trained_model_alias:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.put_trained_model_definition_part": {
-      "request": [],
-      "response": [
-        "response definition ml.put_trained_model_definition_part:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.put_trained_model_vocabulary": {
-      "request": [],
-      "response": [
-        "response definition ml.put_trained_model_vocabulary:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.reset_job": {
-      "request": [],
-      "response": [
-        "response definition ml.reset_job:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.set_upgrade_mode": {
-      "request": [],
-      "response": [
-        "response definition ml.set_upgrade_mode:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
       ],
       "response": []
-    },
-    "ml.validate": {
-      "request": [],
-      "response": [
-        "response definition ml.validate:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "ml.validate_detector": {
-      "request": [],
-      "response": [
-        "response definition ml.validate_detector:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
     },
     "msearch": {
       "request": [
@@ -1304,13 +955,6 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
-    },
-    "nodes.reload_secure_settings": {
-      "request": [],
-      "response": [
-        "interface definition nodes._types:OperatingSystem / Property 'swap' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'",
-        "interface definition nodes._types:Process / Property 'mem' / instance_of - Non-leaf type cannot be used here: 'nodes._types:MemoryStats'"
-      ]
     },
     "nodes.stats": {
       "request": [
@@ -1346,21 +990,7 @@
       "request": [
         "Request: missing json spec query parameter 'context'"
       ],
-      "response": [
-        "response definition _global.put_script:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "query_rule.delete": {
-      "request": [],
-      "response": [
-        "response definition query_rule.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "query_ruleset.delete": {
-      "request": [],
-      "response": [
-        "response definition query_ruleset.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "reindex": {
       "request": [
@@ -1381,38 +1011,12 @@
       ],
       "response": []
     },
-    "rollup.put_job": {
-      "request": [],
-      "response": [
-        "response definition rollup.put_job:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "scroll": {
-      "request": [],
-      "response": [
-        "response definition _global.scroll:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
-      ]
-    },
     "search": {
       "request": [
         "Request: missing json spec query parameter 'include_named_queries_score'",
         "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
-      "response": [
-        "response definition _global.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
-      ]
-    },
-    "search_application.delete": {
-      "request": [],
-      "response": [
-        "response definition search_application.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "search_application.delete_behavioral_analytics": {
-      "request": [],
-      "response": [
-        "response definition search_application.delete_behavioral_analytics:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "search_application.post_behavioral_analytics_event": {
       "request": [
@@ -1425,12 +1029,6 @@
         "Missing request & response"
       ],
       "response": []
-    },
-    "search_application.search": {
-      "request": [],
-      "response": [
-        "response definition search_application.search:Response / body / instance_of - Non-leaf type cannot be used here: '_global.search:ResponseBody'"
-      ]
     },
     "search_mvt": {
       "request": [
@@ -1463,29 +1061,11 @@
       ],
       "response": []
     },
-    "security.disable_user_profile": {
-      "request": [],
-      "response": [
-        "response definition security.disable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "security.enable_user_profile": {
-      "request": [],
-      "response": [
-        "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
       ],
       "response": []
-    },
-    "security.get_user": {
-      "request": [],
-      "response": [
-        "response definition security.get_user:Response / body / dictionary_of / instance_of - Non-leaf type cannot be used here: 'security._types:User'"
-      ]
     },
     "security.get_user_privileges": {
       "request": [
@@ -1525,23 +1105,11 @@
       ],
       "response": []
     },
-    "security.query_api_keys": {
-      "request": [],
-      "response": [
-        "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
-      ]
-    },
     "security.query_user": {
       "request": [
         "Missing request & response"
       ],
       "response": []
-    },
-    "security.suggest_user_profiles": {
-      "request": [],
-      "response": [
-        "response definition security.suggest_user_profiles:Response / body / Property 'profiles' / array_of / instance_of - Non-leaf type cannot be used here: 'security._types:UserProfile'"
-      ]
     },
     "security.update_cross_cluster_api_key": {
       "request": [
@@ -1555,20 +1123,12 @@
       ],
       "response": []
     },
-    "security.update_user_profile_data": {
-      "request": [],
-      "response": [
-        "response definition security.update_user_profile_data:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "shutdown.delete_node": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition shutdown.delete_node:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "shutdown.get_node": {
       "request": [
@@ -1581,9 +1141,7 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition shutdown.put_node:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "simulate.ingest": {
       "request": [
@@ -1591,94 +1149,38 @@
       ],
       "response": []
     },
-    "slm.delete_lifecycle": {
-      "request": [],
-      "response": [
-        "response definition slm.delete_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "slm.execute_retention": {
-      "request": [],
-      "response": [
-        "response definition slm.execute_retention:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "slm.put_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition slm.put_lifecycle:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "slm.start": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition slm.start:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "slm.stop": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'",
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition slm.stop:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "snapshot.clone": {
       "request": [
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
-      "response": [
-        "response definition snapshot.clone:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "snapshot.create_repository": {
-      "request": [],
-      "response": [
-        "response definition snapshot.create_repository:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "snapshot.delete": {
-      "request": [],
-      "response": [
-        "response definition snapshot.delete:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "snapshot.delete_repository": {
-      "request": [],
-      "response": [
-        "response definition snapshot.delete_repository:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "snapshot.repository_analyze": {
       "request": [
         "Missing request & response"
       ],
       "response": []
-    },
-    "sql.delete_async": {
-      "request": [],
-      "response": [
-        "response definition sql.delete_async:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "synonyms.delete_synonym": {
-      "request": [],
-      "response": [
-        "response definition synonyms.delete_synonym:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "tasks.get": {
-      "request": [],
-      "response": [
-        "response definition tasks.get:Response / body / Property 'task' / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
-      ]
     },
     "tasks.list": {
       "request": [
@@ -1700,12 +1202,6 @@
       ],
       "response": []
     },
-    "transform.delete_transform": {
-      "request": [],
-      "response": [
-        "response definition transform.delete_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "transform.get_transform": {
       "request": [],
       "response": [
@@ -1713,43 +1209,11 @@
         "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
       ]
     },
-    "transform.preview_transform": {
-      "request": [],
-      "response": [
-        "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
-      ]
-    },
-    "transform.put_transform": {
-      "request": [],
-      "response": [
-        "response definition transform.put_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
     "transform.reset_transform": {
       "request": [
         "Request: missing json spec query parameter 'timeout'"
       ],
-      "response": [
-        "response definition transform.reset_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "transform.schedule_now_transform": {
-      "request": [],
-      "response": [
-        "response definition transform.schedule_now_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "transform.start_transform": {
-      "request": [],
-      "response": [
-        "response definition transform.start_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "transform.stop_transform": {
-      "request": [],
-      "response": [
-        "response definition transform.stop_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "update_by_query": {
       "request": [
@@ -1757,22 +1221,11 @@
       ],
       "response": []
     },
-    "update_by_query_rethrottle": {
-      "request": [],
-      "response": [
-        "interface definition _global.update_by_query_rethrottle:UpdateByQueryRethrottleNode / Property 'tasks' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'tasks._types:TaskInfo'"
-      ]
-    },
     "watcher.execute_watch": {
       "request": [
-        "interface definition watcher._types:HttpEmailAttachment / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
-        "interface definition watcher._types:ReportingEmailAttachment / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
-        "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'",
         "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
       ],
       "response": [
-        "interface definition watcher._types:EmailResult / Property 'message' / instance_of - Non-leaf type cannot be used here: 'watcher._types:Email'",
-        "interface definition watcher._types:PagerDutyResult / Property 'event' / instance_of - Non-leaf type cannot be used here: 'watcher._types:PagerDutyEvent'",
         "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
       ]
     },
@@ -1786,23 +1239,13 @@
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition watcher.start:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
-    },
-    "watcher.stats": {
-      "request": [],
-      "response": [
-        "interface definition watcher.stats:WatcherNodeStats / Property 'queued_watches' / array_of / instance_of - Non-leaf type cannot be used here: 'watcher.stats:WatchRecordQueuedStats'"
-      ]
+      "response": []
     },
     "watcher.stop": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
-      "response": [
-        "response definition watcher.stop:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
-      ]
+      "response": []
     },
     "watcher.update_settings": {
       "request": [
@@ -1816,36 +1259,6 @@
         "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
-    },
-    "xpack.usage": {
-      "request": [],
-      "response": [
-        "response definition xpack.usage:Response / body / Property 'aggregate_metric' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "interface definition xpack.usage:WatcherWatch / Property 'input' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatch / Property 'condition' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatch / Property 'action' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatchTriggerSchedule / Property 'cron' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatchTriggerSchedule / Property '_all' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:WatcherWatchTrigger / Property '_all' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "interface definition xpack.usage:Watcher / Property 'count' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Counter'",
-        "response definition xpack.usage:Response / body / Property 'data_frame' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'data_science' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'enrich' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'graph' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'logstash' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'rollup' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'spatial' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "interface definition xpack.usage:Security / Property 'api_key_service' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'anonymous' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'fips_140' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Ssl / Property 'http' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Ssl / Property 'transport' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'system_key' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'token_service' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:FeatureToggle'",
-        "interface definition xpack.usage:Security / Property 'operator_privileges' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'transform' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'",
-        "response definition xpack.usage:Response / body / Property 'voting_only' / instance_of - Non-leaf type cannot be used here: 'xpack.usage:Base'"
-      ]
     }
   },
   "generalErrors": []
