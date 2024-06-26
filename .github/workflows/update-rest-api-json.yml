@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        branch: ['main', '8.8', '8.7', '7.17']
+        branch: ['main', '8.13', '8.14', '7.17']
 
     steps:
       - uses: actions/checkout@v4
@@ -43,19 +43,19 @@ jobs:
           git status --porcelain
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
           labels: specification
           delete-branch: true
-          team-reviewers: elastic/clients-team
+          team-reviewers: elastic/devtools-team
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
 
       - name: Open an issue if the action fails
         if: ${{ failure() }}
-        uses: nashmaniac/create-issue-action@v1.1
+        uses: nashmaniac/create-issue-action@v1.2
         with:
           title: rest-api-spec update failed
           token: ${{ secrets.GITHUB_TOKEN }}
