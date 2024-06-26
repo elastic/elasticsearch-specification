@@ -17,24 +17,23 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
- * Returns the details about a query rule within a query ruleset
- * @rest_spec_name query_rule.get
+ * Returns summarized information about existing query rulesets.
+ * @rest_spec_name query_rules.query_ruleset.list
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
-  path_parts: {
+  query_parameters: {
     /**
-     * The unique identifier of the query ruleset containing the rule to retrieve
+     * Starting offset (default: 0)
      */
-    ruleset_id: Id
-
+    from?: integer
     /**
-     * The unique identifier of the query rule within the specified ruleset to retrieve
+     * specifies a max number of results to get
      */
-    rule_id: Id
+    size?: integer
   }
 }
