@@ -5963,6 +5963,7 @@ export interface QueryDslQueryContainer {
   span_or?: QueryDslSpanOrQuery
   span_term?: Partial<Record<Field, QueryDslSpanTermQuery | string>>
   span_within?: QueryDslSpanWithinQuery
+  sparse_vector?: QueryDslSparseVectorQuery
   term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
@@ -6167,6 +6168,15 @@ export interface QueryDslSpanTermQuery extends QueryDslQueryBase {
 export interface QueryDslSpanWithinQuery extends QueryDslQueryBase {
   big: QueryDslSpanQuery
   little: QueryDslSpanQuery
+}
+
+export interface QueryDslSparseVectorQuery extends QueryDslQueryBase {
+  field: Field
+  query_vector?: Record<string, float>
+  inference_id?: Id
+  query?: string
+  prune?: boolean
+  pruning_config?: QueryDslTokenPruningConfig
 }
 
 export interface QueryDslTermQuery extends QueryDslQueryBase {
