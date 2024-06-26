@@ -24529,7 +24529,7 @@
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
       "get": {
         "tags": [
-          "query_rules.query_rule.get"
+          "query_rules.query_rule_get"
         ],
         "summary": "Returns the details about a query rule within a query ruleset",
         "externalDocs": {
@@ -24566,7 +24566,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRule"
+                  "$ref": "#/components/schemas/query_rules._types:QueryRule"
                 }
               }
             }
@@ -24575,7 +24575,7 @@
       },
       "put": {
         "tags": [
-          "query_rules.query_rule.put"
+          "query_rules.query_rule_put"
         ],
         "summary": "Creates or updates a query rule within a query ruleset",
         "externalDocs": {
@@ -24613,16 +24613,16 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleType"
+                    "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
                   },
                   "criteria": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleCriteria"
+                      "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
                     }
                   },
                   "actions": {
-                    "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleActions"
+                    "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
                   }
                 },
                 "required": [
@@ -24658,7 +24658,7 @@
       },
       "delete": {
         "tags": [
-          "query_rules.query_rule.delete"
+          "query_rules.query_rule_delete"
         ],
         "summary": "Deletes a query rule within a query ruleset",
         "externalDocs": {
@@ -24706,7 +24706,7 @@
     "/_query_rules/{ruleset_id}": {
       "get": {
         "tags": [
-          "query_rules.query_ruleset.get"
+          "query_rules.query_ruleset_get"
         ],
         "summary": "Returns the details about a query ruleset",
         "externalDocs": {
@@ -24732,7 +24732,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleset"
+                  "$ref": "#/components/schemas/query_rules._types:QueryRuleset"
                 }
               }
             }
@@ -24741,7 +24741,7 @@
       },
       "put": {
         "tags": [
-          "query_rules.query_ruleset.put"
+          "query_rules.query_ruleset_put"
         ],
         "summary": "Creates or updates a query ruleset",
         "externalDocs": {
@@ -24770,7 +24770,7 @@
                   "rules": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRule"
+                      "$ref": "#/components/schemas/query_rules._types:QueryRule"
                     }
                   }
                 },
@@ -24805,7 +24805,7 @@
       },
       "delete": {
         "tags": [
-          "query_rules.query_ruleset.delete"
+          "query_rules.query_ruleset_delete"
         ],
         "summary": "Deletes a query ruleset",
         "externalDocs": {
@@ -24842,7 +24842,7 @@
     "/_query_rules": {
       "get": {
         "tags": [
-          "query_rules.query_ruleset.list"
+          "query_rules.query_ruleset_list"
         ],
         "summary": "Returns summarized information about existing query rulesets",
         "externalDocs": {
@@ -24885,7 +24885,7 @@
                     "results": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/query_rules.query_ruleset.list:QueryRulesetListItem"
+                        "$ref": "#/components/schemas/query_rules.query_ruleset_list:QueryRulesetListItem"
                       }
                     }
                   },
@@ -92960,23 +92960,23 @@
           "aggregations"
         ]
       },
-      "query_rules.query_ruleset._types:QueryRule": {
+      "query_rules._types:QueryRule": {
         "type": "object",
         "properties": {
           "rule_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
           "type": {
-            "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleType"
+            "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
           },
           "criteria": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleCriteria"
+              "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
             }
           },
           "actions": {
-            "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleActions"
+            "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
           }
         },
         "required": [
@@ -92986,17 +92986,17 @@
           "actions"
         ]
       },
-      "query_rules.query_ruleset._types:QueryRuleType": {
+      "query_rules._types:QueryRuleType": {
         "type": "string",
         "enum": [
           "pinned"
         ]
       },
-      "query_rules.query_ruleset._types:QueryRuleCriteria": {
+      "query_rules._types:QueryRuleCriteria": {
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRuleCriteriaType"
+            "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteriaType"
           },
           "metadata": {
             "type": "string"
@@ -93012,7 +93012,7 @@
           "type"
         ]
       },
-      "query_rules.query_ruleset._types:QueryRuleCriteriaType": {
+      "query_rules._types:QueryRuleCriteriaType": {
         "type": "string",
         "enum": [
           "global",
@@ -93028,7 +93028,7 @@
           "always"
         ]
       },
-      "query_rules.query_ruleset._types:QueryRuleActions": {
+      "query_rules._types:QueryRuleActions": {
         "type": "object",
         "properties": {
           "ids": {
@@ -93045,7 +93045,7 @@
           }
         }
       },
-      "query_rules.query_ruleset._types:QueryRuleset": {
+      "query_rules._types:QueryRuleset": {
         "type": "object",
         "properties": {
           "ruleset_id": {
@@ -93055,7 +93055,7 @@
             "description": "Rules associated with the query ruleset",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/query_rules.query_ruleset._types:QueryRule"
+              "$ref": "#/components/schemas/query_rules._types:QueryRule"
             }
           }
         },
@@ -93064,7 +93064,7 @@
           "rules"
         ]
       },
-      "query_rules.query_ruleset.list:QueryRulesetListItem": {
+      "query_rules.query_ruleset_list:QueryRulesetListItem": {
         "type": "object",
         "properties": {
           "ruleset_id": {
