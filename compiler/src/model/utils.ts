@@ -414,7 +414,7 @@ export function modelImplements (node: ExpressionWithTypeArguments): model.Inher
  * A class could have multiple behaviors from multiple classes,
  * which are defined inside the node typeArguments.
  */
-export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc[]): model.Inherits {
+export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc[]): model.Behavior {
   const behaviorName = node.getExpression().getText()
   const generics = node.getTypeArguments().map(node => modelType(node))
 

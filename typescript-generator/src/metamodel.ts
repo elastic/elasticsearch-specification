@@ -213,6 +213,11 @@ export class Container extends VariantBase {
 export class Inherits {
   type: TypeName
   generics?: ValueOf[]
+}
+
+export class Behavior {
+  type: TypeName
+  generics?: ValueOf[]
   meta?: { [p: string]: string }
 }
 
@@ -232,7 +237,7 @@ export class Interface extends BaseType {
   /**
    * Behaviors directly implemented by this interface
    */
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
 
   /**
    * Behaviors attached to this interface, coming from the interface itself (see `behaviors`)
@@ -276,7 +281,7 @@ export class Request extends BaseType {
    * that don't have a body.
    */
   body: Body
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
   attachedBehaviors?: string[]
 }
 
@@ -287,7 +292,7 @@ export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
   body: Body
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
   attachedBehaviors?: string[]
   exceptions?: ResponseException[]
 }
