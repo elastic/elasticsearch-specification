@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
 /**
  * Renders a search template as a search request body.
  * @rest_spec_name render_search_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

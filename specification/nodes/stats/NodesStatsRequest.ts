@@ -24,7 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Returns cluster nodes statistics.
  * @rest_spec_name nodes.stats
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-stats
  * @cluster_privileges monitor,manage

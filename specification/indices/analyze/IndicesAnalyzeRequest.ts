@@ -28,7 +28,7 @@ import { TextToAnalyze } from './types'
  * Performs analysis on a text string and returns the resulting tokens.
  * @doc_id indices-analyze
  * @rest_spec_name indices.analyze
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

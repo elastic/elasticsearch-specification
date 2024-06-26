@@ -24,7 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Retrieves a stored script or search template.
  * @rest_spec_name get_script
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

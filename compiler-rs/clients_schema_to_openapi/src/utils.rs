@@ -86,13 +86,6 @@ pub trait IntoSchema {
         schema
     }
 
-    fn into_schema_with_data_fn(self, f: fn(&mut SchemaData) -> ()) -> Schema
-    where Self: Sized {
-        let mut schema = self.into_schema();
-        f(&mut schema.schema_data);
-        schema
-    }
-
     fn into_schema(self) -> Schema;
 }
 

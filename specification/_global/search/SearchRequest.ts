@@ -56,7 +56,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * You can provide search queries using the `q` query string parameter or the request body.
  * If both are specified, only the query parameter is used.
  * @rest_spec_name search
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  */

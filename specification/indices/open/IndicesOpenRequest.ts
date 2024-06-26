@@ -25,7 +25,7 @@ import { Duration } from '@_types/Time'
  * Opens a closed index.
  * For data streams, the API opens any closed backing indices.
  * @rest_spec_name indices.open
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {

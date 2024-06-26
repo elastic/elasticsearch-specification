@@ -29,7 +29,7 @@ import { VertexDefinition } from '@graph/_types/Vertex'
  * Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.
  * @doc_id graph-explore-api
  * @rest_spec_name graph.explore
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

@@ -29,7 +29,7 @@ import { Duration } from '@_types/Time'
  * Creates a new index.
  * @doc_id indices-create-index
  * @rest_spec_name indices.create
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges create_index, manage
  */

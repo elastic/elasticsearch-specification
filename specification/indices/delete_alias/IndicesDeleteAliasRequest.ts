@@ -24,7 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Removes a data stream or index from an alias.
  * @rest_spec_name indices.delete_alias
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

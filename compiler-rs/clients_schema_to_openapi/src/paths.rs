@@ -211,8 +211,9 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: Default::default(), // FIXME: translate availability?
+            extensions: crate::availability_as_extension(&endpoint.availability),
         };
+
 
         let mut operation_path = url_template.path.clone();
 
