@@ -21,8 +21,8 @@ import { Id } from '@_types/common'
 
 /**
  * Deletes a query rule within a query ruleset.
- * @rest_spec_name query_rules.query_rule.delete
- * @availability stack since=8.10.0 stability=stable
+ * @rest_spec_name query_rules.query_rule_delete
+ * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

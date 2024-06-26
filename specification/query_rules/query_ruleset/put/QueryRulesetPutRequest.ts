@@ -22,7 +22,7 @@ import { QueryRule } from '../_types/QueryRuleset'
 
 /**
  * Creates or updates a query ruleset.
- * @rest_spec_name query_rules.query_ruleset.put
+ * @rest_spec_name query_rules.query_ruleset_put
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */

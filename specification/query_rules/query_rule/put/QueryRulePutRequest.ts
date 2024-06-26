@@ -26,7 +26,7 @@ import {
 
 /**
  * Creates or updates a query rule within a query ruleset.
- * @rest_spec_name query_rules.query_rule.put
+ * @rest_spec_name query_rules.query_rule_put
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */

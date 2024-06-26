@@ -21,7 +21,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Returns summarized information about existing query rulesets.
- * @rest_spec_name query_rules.query_ruleset.list
+ * @rest_spec_name query_rules.query_ruleset_list
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
