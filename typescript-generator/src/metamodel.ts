@@ -235,7 +235,6 @@ export class Interface extends BaseType {
    */
   generics?: TypeName[]
   inherits?: Inherits
-  implements?: Inherits[] // Unused!
 
   /**
    * Behaviors directly implemented by this interface
@@ -266,7 +265,6 @@ export class Request extends BaseType {
   generics?: TypeName[]
   /** The parent defines additional body properties that are added to the body, that has to be a PropertyBody */
   inherits?: Inherits
-  implements?: Inherits[]
   /** URL path properties */
   path: Property[]
   /** Query string properties */
