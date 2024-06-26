@@ -1,6 +1,6 @@
 {
-    "summary": "cluster/update-settings.asciidoc:45",
-    "method_request": "PUT /_cluster/settings",
-    "description": "",
-    "value": "{\n  \"persistent\" : {\n    \"indices.recovery.max_bytes_per_sec\" : \"50mb\"\n  }\n}"
+  "summary": "cluster/update-settings.asciidoc:45",
+  "method_request": "PUT /_cluster/settings",
+  "description": "",
+  "value": "{\n  \"persistent\" : {\n    \"indices.recovery.max_bytes_per_sec\" : \"50mb\"\n  }\n}"
 }

@@ -1,6 +1,6 @@
 {
-    "summary": "ccr/apis/follow/post-forget-follower.asciidoc:133",
-    "method_request": "POST /leader_index/_ccr/forget_follower",
-    "description": "",
-    "value": "{\n  \"follower_cluster\" : \"follower_cluster\",\n  \"follower_index\" : \"follower_index\",\n  \"follower_index_uuid\" : \"vYpnaWPRQB6mNspmoCeYyA\",\n  \"leader_remote_cluster\" : \"leader_cluster\"\n}"
+  "summary": "ccr/apis/follow/post-forget-follower.asciidoc:133",
+  "method_request": "POST /leader_index/_ccr/forget_follower",
+  "description": "",
+  "value": "{\n  \"follower_cluster\" : \"follower_cluster\",\n  \"follower_index\" : \"follower_index\",\n  \"follower_index_uuid\" : \"vYpnaWPRQB6mNspmoCeYyA\",\n  \"leader_remote_cluster\" : \"leader_cluster\"\n}"
 }

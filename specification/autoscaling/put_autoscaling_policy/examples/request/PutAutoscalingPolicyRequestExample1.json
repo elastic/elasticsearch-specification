@@ -1,6 +1,6 @@
 {
-    "summary": "autoscaling/apis/put-autoscaling-policy.asciidoc:16",
-    "method_request": "PUT /_autoscaling/policy/<name>",
-    "description": "",
-    "value": "{\n  \"roles\": [],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
+  "summary": "autoscaling/apis/put-autoscaling-policy.asciidoc:16",
+  "method_request": "PUT /_autoscaling/policy/<name>",
+  "description": "",
+  "value": "{\n  \"roles\": [],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
 }

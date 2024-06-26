@@ -1,5 +1,5 @@
 {
-    "summary": "autoscaling/apis/get-autoscaling-capacity.asciidoc:270",
-    "description": "",
-    "value": "{\n  policies: {}\n}"
+  "summary": "autoscaling/apis/get-autoscaling-capacity.asciidoc:270",
+  "description": "",
+  "value": "{\n  policies: {}\n}"
 }

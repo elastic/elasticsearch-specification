@@ -1,5 +1,5 @@
 {
-    "summary": "ccr/apis/follow/post-unfollow.asciidoc:82",
-    "description": "",
-    "value": "{\n  \"acknowledged\" : true\n}"
+  "summary": "ccr/apis/follow/post-unfollow.asciidoc:82",
+  "description": "",
+  "value": "{\n  \"acknowledged\" : true\n}"
 }

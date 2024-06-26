@@ -1,6 +1,6 @@
 {
-    "summary": "cluster/allocation-explain.asciidoc:10",
-    "method_request": "GET _cluster/allocation/explain",
-    "description": "",
-    "value": "{\n  \"index\": \"my-index-000001\",\n  \"shard\": 0,\n  \"primary\": false,\n  \"current_node\": \"my-node\"\n}"
+  "summary": "cluster/allocation-explain.asciidoc:10",
+  "method_request": "GET _cluster/allocation/explain",
+  "description": "",
+  "value": "{\n  \"index\": \"my-index-000001\",\n  \"shard\": 0,\n  \"primary\": false,\n  \"current_node\": \"my-node\"\n}"
 }

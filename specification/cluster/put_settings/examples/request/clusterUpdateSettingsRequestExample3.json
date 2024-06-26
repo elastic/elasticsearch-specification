@@ -1,6 +1,6 @@
 {
-    "summary": "cluster/update-settings.asciidoc:96",
-    "method_request": "PUT /_cluster/settings",
-    "description": "",
-    "value": "{\n  \"transient\" : {\n    \"indices.recovery.max_bytes_per_sec\" : null\n  }\n}"
+  "summary": "cluster/update-settings.asciidoc:96",
+  "method_request": "PUT /_cluster/settings",
+  "description": "",
+  "value": "{\n  \"transient\" : {\n    \"indices.recovery.max_bytes_per_sec\" : null\n  }\n}"
 }

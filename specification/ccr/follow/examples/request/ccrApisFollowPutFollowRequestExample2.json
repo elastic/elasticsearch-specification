@@ -1,6 +1,6 @@
 {
-    "summary": "ccr/apis/follow/put-follow.asciidoc:85",
-    "method_request": "PUT /.ds-logs-mysql-default_copy-2022-01-01-000001/_ccr/follow",
-    "description": "",
-    "value": "{\n  \"remote_cluster\" : \"remote_cluster\",\n  \"leader_index\" : \".ds-logs-mysql-default-2022-01-01-000001\",\n  \"data_stream_name\": \"logs-mysql-default_copy\"\n}"
+  "summary": "ccr/apis/follow/put-follow.asciidoc:85",
+  "method_request": "PUT /.ds-logs-mysql-default_copy-2022-01-01-000001/_ccr/follow",
+  "description": "",
+  "value": "{\n  \"remote_cluster\" : \"remote_cluster\",\n  \"leader_index\" : \".ds-logs-mysql-default-2022-01-01-000001\",\n  \"data_stream_name\": \"logs-mysql-default_copy\"\n}"
 }

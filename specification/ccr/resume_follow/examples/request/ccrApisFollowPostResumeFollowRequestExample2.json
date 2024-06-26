@@ -1,6 +1,6 @@
 {
-    "summary": "ccr/apis/follow/post-resume-follow.asciidoc:84",
-    "method_request": "POST /follower_index/_ccr/resume_follow",
-    "description": "",
-    "value": "{\n  \"max_read_request_operation_count\" : 1024,\n  \"max_outstanding_read_requests\" : 16,\n  \"max_read_request_size\" : \"1024k\",\n  \"max_write_request_operation_count\" : 32768,\n  \"max_write_request_size\" : \"16k\",\n  \"max_outstanding_write_requests\" : 8,\n  \"max_write_buffer_count\" : 512,\n  \"max_write_buffer_size\" : \"512k\",\n  \"max_retry_delay\" : \"10s\",\n  \"read_poll_timeout\" : \"30s\"\n}"
+  "summary": "ccr/apis/follow/post-resume-follow.asciidoc:84",
+  "method_request": "POST /follower_index/_ccr/resume_follow",
+  "description": "",
+  "value": "{\n  \"max_read_request_operation_count\" : 1024,\n  \"max_outstanding_read_requests\" : 16,\n  \"max_read_request_size\" : \"1024k\",\n  \"max_write_request_operation_count\" : 32768,\n  \"max_write_request_size\" : \"16k\",\n  \"max_outstanding_write_requests\" : 8,\n  \"max_write_buffer_count\" : 512,\n  \"max_write_buffer_size\" : \"512k\",\n  \"max_retry_delay\" : \"10s\",\n  \"read_poll_timeout\" : \"30s\"\n}"
 }

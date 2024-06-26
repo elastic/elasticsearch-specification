@@ -1,5 +1,5 @@
 {
-    "summary": "ccr/apis/follow/post-resume-follow.asciidoc:103",
-    "description": "",
-    "value": "{\n  \"acknowledged\" : true\n}"
+  "summary": "ccr/apis/follow/post-resume-follow.asciidoc:103",
+  "description": "",
+  "value": "{\n  \"acknowledged\" : true\n}"
 }

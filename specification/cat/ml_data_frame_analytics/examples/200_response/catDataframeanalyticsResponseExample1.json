@@ -1,5 +1,5 @@
 {
-    "summary": "cat/dataframeanalytics.asciidoc:137",
-    "description": "",
-    "value": "id               create_time              type             state\nclassifier_job_1 2020-02-12T11:49:09.594Z classification stopped\nclassifier_job_2 2020-02-12T11:49:14.479Z classification stopped\nclassifier_job_3 2020-02-12T11:49:16.928Z classification stopped\nclassifier_job_4 2020-02-12T11:49:19.127Z classification stopped\nclassifier_job_5 2020-02-12T11:49:21.349Z classification stopped"
+  "summary": "cat/dataframeanalytics.asciidoc:137",
+  "description": "",
+  "value": "id               create_time              type             state\nclassifier_job_1 2020-02-12T11:49:09.594Z classification stopped\nclassifier_job_2 2020-02-12T11:49:14.479Z classification stopped\nclassifier_job_3 2020-02-12T11:49:16.928Z classification stopped\nclassifier_job_4 2020-02-12T11:49:19.127Z classification stopped\nclassifier_job_5 2020-02-12T11:49:21.349Z classification stopped"
 }
