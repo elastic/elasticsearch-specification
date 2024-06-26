@@ -90905,7 +90905,7 @@
         "name": "StorageType",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L509-L537"
+      "specLocation": "indices/_types/IndexSettings.ts#L518-L546"
     },
     {
       "kind": "enum",
@@ -109384,7 +109384,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L479-L484"
+      "specLocation": "indices/_types/IndexSettings.ts#L488-L493"
     },
     {
       "kind": "interface",
@@ -109416,7 +109416,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L486-L489"
+      "specLocation": "indices/_types/IndexSettings.ts#L495-L498"
     },
     {
       "kind": "interface",
@@ -109470,7 +109470,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L491-L496"
+      "specLocation": "indices/_types/IndexSettings.ts#L500-L505"
     },
     {
       "kind": "interface",
@@ -110415,9 +110415,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
+          "name": "ignore_dynamic_beyond_limit",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L424-L432"
+      "specLocation": "indices/_types/IndexSettings.ts#L424-L441"
     },
     {
       "kind": "interface",
@@ -110440,7 +110453,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L434-L441"
+      "specLocation": "indices/_types/IndexSettings.ts#L443-L450"
     },
     {
       "kind": "interface",
@@ -110463,7 +110476,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L443-L451"
+      "specLocation": "indices/_types/IndexSettings.ts#L452-L460"
     },
     {
       "kind": "interface",
@@ -110486,7 +110499,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L453-L460"
+      "specLocation": "indices/_types/IndexSettings.ts#L462-L469"
     },
     {
       "kind": "interface",
@@ -110508,7 +110521,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L462-L469"
+      "specLocation": "indices/_types/IndexSettings.ts#L471-L478"
     },
     {
       "kind": "interface",
@@ -110530,7 +110543,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L471-L477"
+      "specLocation": "indices/_types/IndexSettings.ts#L480-L486"
     },
     {
       "kind": "interface",
@@ -110584,7 +110597,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L552-L557"
+      "specLocation": "indices/_types/IndexSettings.ts#L561-L566"
     },
     {
       "kind": "interface",
@@ -110608,7 +110621,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L559-L566"
+      "specLocation": "indices/_types/IndexSettings.ts#L568-L575"
     },
     {
       "kind": "interface",
@@ -110629,7 +110642,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L539-L541"
+      "specLocation": "indices/_types/IndexSettings.ts#L548-L550"
     },
     {
       "kind": "interface",
@@ -110651,7 +110664,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L543-L550"
+      "specLocation": "indices/_types/IndexSettings.ts#L552-L559"
     },
     {
       "kind": "interface",
@@ -110684,7 +110697,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L498-L507"
+      "specLocation": "indices/_types/IndexSettings.ts#L507-L516"
     },
     {
       "kind": "interface",
