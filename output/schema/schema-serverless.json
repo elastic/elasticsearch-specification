@@ -48714,6 +48714,26 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0"
+            }
+          },
+          "description": "Using input query vectors or a natural language processing model to convert a query into a list of token-weight pairs, queries against a sparse vector field.",
+          "docId": "query-dsl-sparse-vector-query",
+          "name": "sparse_vector",
+          "required": false,
+          "since": "8.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
           "docId": "query-dsl-term-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-term-query.html",
@@ -48784,6 +48804,10 @@
               "since": "8.8.0"
             }
           },
+          "deprecation": {
+            "description": "",
+            "version": "8.15.0"
+          },
           "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
           "docId": "query-dsl-text-expansion-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-text-expansion-query.html",
@@ -48815,6 +48839,10 @@
             "stack": {
               "since": "8.13.0"
             }
+          },
+          "deprecation": {
+            "description": "",
+            "version": "8.15.0"
           },
           "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
           "docId": "query-dsl-weighted-tokens-query",
@@ -48895,7 +48923,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L101-L417",
+      "specLocation": "_types/query_dsl/abstractions.ts#L102-L427",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -49072,7 +49100,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L442-L453"
+      "specLocation": "_types/query_dsl/abstractions.ts#L452-L463"
     },
     {
       "kind": "type_alias",
@@ -49416,7 +49444,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L455-L489"
+      "specLocation": "_types/query_dsl/abstractions.ts#L465-L499"
     },
     {
       "kind": "enum",
@@ -49432,7 +49460,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L499-L502"
+      "specLocation": "_types/query_dsl/abstractions.ts#L509-L512"
     },
     {
       "kind": "enum",
@@ -49450,7 +49478,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L504-L513"
+      "specLocation": "_types/query_dsl/abstractions.ts#L514-L523"
     },
     {
       "inherits": {
@@ -51668,7 +51696,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L419-L436"
+      "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
     },
     {
       "kind": "enum",
@@ -52139,7 +52167,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L515-L529"
+      "specLocation": "_types/query_dsl/abstractions.ts#L525-L539"
     },
     {
       "inherits": {
@@ -59594,6 +59622,183 @@
       },
       "kind": "interface",
       "name": {
+        "name": "SparseVectorQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "containerProperty": true,
+          "description": "The name of the field that contains the token-weight pairs to be searched against.\nThis field must be a mapped sparse_vector field.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Dictionary of precomputed sparse vectors and their associated weights.\nOnly one of inference_id or query_vector may be supplied in a request.",
+          "name": "query_vector",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "float",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The inference ID to use to convert the query text into token-weight pairs.\nIt must be the same inference ID that was used to create the tokens from the input text.\nOnly one of inference_id and query_vector is allowed.\nIf inference_id is specified, query must also be specified.\nOnly one of inference_id or query_vector may be supplied in a request.",
+          "name": "inference_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "containerProperty": true,
+          "description": "The query text you want to use for search.\nIf inference_id is specified, query must also be specified.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "experimental"
+            },
+            "stack": {
+              "since": "8.15.0",
+              "stability": "experimental"
+            }
+          },
+          "containerProperty": true,
+          "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+          "name": "prune",
+          "required": false,
+          "since": "8.15.0",
+          "stability": "experimental",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "experimental"
+            },
+            "stack": {
+              "since": "8.15.0",
+              "stability": "experimental"
+            }
+          },
+          "containerProperty": true,
+          "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
+          "name": "pruning_config",
+          "required": false,
+          "since": "8.15.0",
+          "stability": "experimental",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TokenPruningConfig",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/SparseVectorQuery.ts#L26-L79",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TokenPruningConfig",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
+          "name": "tokens_freq_ratio_threshold",
+          "required": false,
+          "serverDefault": 5,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
+          "name": "tokens_weight_threshold",
+          "required": false,
+          "serverDefault": 0.4,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
+          "name": "only_score_pruned_tokens",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/TokenPruningConfig.ts#L22-L35"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
         "name": "TermQuery",
         "namespace": "_types.query_dsl"
       },
@@ -59943,55 +60148,6 @@
       "specLocation": "_types/query_dsl/TextExpansionQuery.ts#L23-L33"
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "TokenPruningConfig",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
-          "name": "tokens_freq_ratio_threshold",
-          "required": false,
-          "serverDefault": 5,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
-          "name": "tokens_weight_threshold",
-          "required": false,
-          "serverDefault": 0.4,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
-          "name": "only_score_pruned_tokens",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/TokenPruningConfig.ts#L22-L35"
-    },
-    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -60142,7 +60298,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L491-L497"
+      "specLocation": "_types/query_dsl/abstractions.ts#L501-L507"
     },
     {
       "inherits": {

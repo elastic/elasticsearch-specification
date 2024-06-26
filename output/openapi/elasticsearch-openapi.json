@@ -61180,6 +61180,17 @@
                 "properties": {
                   "field": {
                     "$ref": "#/components/schemas/_types:Field"
+                  },
+                  "query": {
+                    "description": "The query text you want to use for search.\nIf inference_id is specified, query must also be specified.",
+                    "type": "string"
+                  },
+                  "prune": {
+                    "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+                    "type": "boolean"
+                  },
+                  "pruning_config": {
+                    "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
                   }
                 },
                 "required": [
@@ -61198,17 +61209,6 @@
                   },
                   "inference_id": {
                     "$ref": "#/components/schemas/_types:Id"
-                  },
-                  "query": {
-                    "description": "The query text you want to use for search.\nIf inference_id is specified, query must also be specified.",
-                    "type": "string"
-                  },
-                  "prune": {
-                    "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "type": "boolean"
-                  },
-                  "pruning_config": {
-                    "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
                   }
                 },
                 "minProperties": 1,
