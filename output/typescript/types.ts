@@ -16361,6 +16361,33 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface QueryRulesQueryRule {
+  rule_id: Id
+  type: QueryRulesQueryRuleType
+  criteria: QueryRulesQueryRuleCriteria[]
+  actions: QueryRulesQueryRuleActions
+}
+
+export interface QueryRulesQueryRuleActions {
+  ids?: Id[]
+  docs?: QueryDslPinnedDoc[]
+}
+
+export interface QueryRulesQueryRuleCriteria {
+  type: QueryRulesQueryRuleCriteriaType
+  metadata?: string
+  values?: any[]
+}
+
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+
+export type QueryRulesQueryRuleType = 'pinned'
+
+export interface QueryRulesQueryRuleset {
+  ruleset_id: Id
+  rules: QueryRulesQueryRule[]
+}
+
 export interface QueryRulesQueryRuleDeleteRequest extends RequestBase {
   ruleset_id: Id
   rule_id: Id
@@ -16373,47 +16400,20 @@ export interface QueryRulesQueryRuleGetRequest extends RequestBase {
   rule_id: Id
 }
 
-export type QueryRulesQueryRuleGetResponse = QueryRulesQueryRulesetQueryRule
+export type QueryRulesQueryRuleGetResponse = QueryRulesQueryRule
 
 export interface QueryRulesQueryRulePutRequest extends RequestBase {
   ruleset_id: Id
   rule_id: Id
   body?: {
-    type: QueryRulesQueryRulesetQueryRuleType
-    criteria: QueryRulesQueryRulesetQueryRuleCriteria[]
-    actions: QueryRulesQueryRulesetQueryRuleActions
+    type: QueryRulesQueryRuleType
+    criteria: QueryRulesQueryRuleCriteria[]
+    actions: QueryRulesQueryRuleActions
   }
 }
 
 export interface QueryRulesQueryRulePutResponse {
   result: Result
-}
-
-export interface QueryRulesQueryRulesetQueryRule {
-  rule_id: Id
-  type: QueryRulesQueryRulesetQueryRuleType
-  criteria: QueryRulesQueryRulesetQueryRuleCriteria[]
-  actions: QueryRulesQueryRulesetQueryRuleActions
-}
-
-export interface QueryRulesQueryRulesetQueryRuleActions {
-  ids?: Id[]
-  docs?: QueryDslPinnedDoc[]
-}
-
-export interface QueryRulesQueryRulesetQueryRuleCriteria {
-  type: QueryRulesQueryRulesetQueryRuleCriteriaType
-  metadata?: string
-  values?: any[]
-}
-
-export type QueryRulesQueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
-
-export type QueryRulesQueryRulesetQueryRuleType = 'pinned'
-
-export interface QueryRulesQueryRulesetQueryRuleset {
-  ruleset_id: Id
-  rules: QueryRulesQueryRulesetQueryRule[]
 }
 
 export interface QueryRulesQueryRulesetDeleteRequest extends RequestBase {
@@ -16426,7 +16426,7 @@ export interface QueryRulesQueryRulesetGetRequest extends RequestBase {
   ruleset_id: Id
 }
 
-export type QueryRulesQueryRulesetGetResponse = QueryRulesQueryRulesetQueryRuleset
+export type QueryRulesQueryRulesetGetResponse = QueryRulesQueryRuleset
 
 export interface QueryRulesQueryRulesetListQueryRulesetListItem {
   ruleset_id: Id
@@ -16447,7 +16447,7 @@ export interface QueryRulesQueryRulesetListResponse {
 export interface QueryRulesQueryRulesetPutRequest extends RequestBase {
   ruleset_id: Id
   body?: {
-    rules: QueryRulesQueryRulesetQueryRule[]
+    rules: QueryRulesQueryRule[]
   }
 }
 
