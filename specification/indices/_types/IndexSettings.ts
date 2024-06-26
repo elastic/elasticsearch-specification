@@ -430,10 +430,11 @@ export class MappingLimitSettingsTotalFields {
    */
   limit?: long
   /**
-   * A flag to ignore fields beyond the limit set for the maximum number of fields in an index.
-   * If set to true, fields exceeding the limit will be ignored instead of causing an error.
-   * This can be useful in scenarios where the data is dynamic and, it's acceptable to overlook extra fields.
-   * However, use this setting with caution as ignoring additional fields might lead to loss of data or unexpected search results.
+   * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
+   * to false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail
+   * with the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.
+   * Instead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.
+   * The fields that were not added to the mapping will be added to the _ignored field.
    * @server_default false
    */
   ignore_dynamic_beyond_limit?: boolean
