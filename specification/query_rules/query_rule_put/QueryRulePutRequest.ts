@@ -22,7 +22,7 @@ import {
   QueryRuleType,
   QueryRuleCriteria,
   QueryRuleActions
-} from '../../query_ruleset/_types/QueryRuleset'
+} from '../_types/QueryRuleset'
 
 /**
  * Creates or updates a query rule within a query ruleset.

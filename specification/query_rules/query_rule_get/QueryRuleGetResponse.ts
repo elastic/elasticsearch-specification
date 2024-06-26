@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryRule } from '../../query_ruleset/_types/QueryRuleset'
+import { QueryRule } from '../_types/QueryRuleset'
 
 export class Response {
   body: QueryRule
