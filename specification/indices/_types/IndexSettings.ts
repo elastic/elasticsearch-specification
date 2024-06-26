@@ -429,6 +429,14 @@ export class MappingLimitSettingsTotalFields {
    * @server_default 1000
    */
   limit?: long
+  /**
+   * A flag to ignore fields beyond the limit set for the maximum number of fields in an index.
+   * If set to true, fields exceeding the limit will be ignored instead of causing an error.
+   * This can be useful in scenarios where the data is dynamic and, it's acceptable to overlook extra fields.
+   * However, use this setting with caution as ignoring additional fields might lead to loss of data or unexpected search results.
+   * @server_default false
+   */
+  ignore_dynamic_beyond_limit?: boolean
 }
 
 export class MappingLimitSettingsDepth {

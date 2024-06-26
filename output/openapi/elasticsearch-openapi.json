@@ -72601,6 +72601,10 @@
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
             "type": "number"
+          },
+          "ignore_dynamic_beyond_limit": {
+            "description": "A flag to ignore fields beyond the limit set for the maximum number of fields in an index.\nIf set to true, fields exceeding the limit will be ignored instead of causing an error.\nThis can be useful in scenarios where the data is dynamic and, it's acceptable to overlook extra fields.\nHowever, use this setting with caution as ignoring additional fields might lead to loss of data or unexpected search results.",
+            "type": "boolean"
           }
         }
       },
