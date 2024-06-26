@@ -10602,6 +10602,7 @@ export interface IndicesMappingLimitSettingsNestedObjects {
 
 export interface IndicesMappingLimitSettingsTotalFields {
   limit?: long
+  ignore_dynamic_beyond_limit?: boolean
 }
 
 export interface IndicesMerge {
