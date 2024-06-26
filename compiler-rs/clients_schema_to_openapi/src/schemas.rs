@@ -470,12 +470,11 @@ impl<'a> TypesAndComponents<'a> {
         data.external_docs = self.convert_external_docs(prop);
         data.deprecated = prop.deprecation.is_some();
         data.description = prop.description.clone();
+        data.extensions = crate::availability_as_extension(&prop.availability);
         // TODO: prop.aliases as extensions
         // TODO: prop.server_default as extension
-        // TODO: prop.availability as extension
         // TODO: prop.doc_id as extension (new representation of since and stability)
         // TODO: prop.es_quirk as extension?
         // TODO: prop.codegen_name as extension?
-        // TODO: prop.deprecation as extension
     }
 }

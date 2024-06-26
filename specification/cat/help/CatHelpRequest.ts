@@ -21,7 +21,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * @rest_spec_name cat.help
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat
  */

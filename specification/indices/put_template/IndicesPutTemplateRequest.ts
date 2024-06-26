@@ -30,7 +30,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * Creates or updates an index template.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * @rest_spec_name indices.put_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

@@ -27,7 +27,7 @@ import { long } from '@_types/Numeric'
 /**
  * Returns the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates,manage
  */
