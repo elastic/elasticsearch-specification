@@ -1,0 +1,5 @@
+{
+    "summary": "autoscaling/apis/get-autoscaling-policy.asciidoc:76",
+    "description": "",
+    "value": "{\n   \"roles\": <roles>,\n   \"deciders\": <deciders>\n}"
+}

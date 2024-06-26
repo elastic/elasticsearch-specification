@@ -1,0 +1,5 @@
+{
+    "summary": "ccr/apis/follow/post-pause-follow.asciidoc:75",
+    "description": "",
+    "value": "{\n  \"acknowledged\" : true\n}"
+}

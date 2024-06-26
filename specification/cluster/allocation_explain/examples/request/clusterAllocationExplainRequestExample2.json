@@ -1,0 +1,6 @@
+{
+    "summary": "cluster/allocation-explain.asciidoc:101",
+    "method_request": "GET _cluster/allocation/explain",
+    "description": "",
+    "value": "{\n  \"index\": \"my-index-000001\",\n  \"shard\": 0,\n  \"primary\": true\n}"
+}

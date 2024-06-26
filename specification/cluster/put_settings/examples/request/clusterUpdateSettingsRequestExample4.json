@@ -1,0 +1,6 @@
+{
+    "summary": "cluster/update-settings.asciidoc:123",
+    "method_request": "PUT /_cluster/settings",
+    "description": "",
+    "value": "{\n  \"transient\" : {\n    \"indices.recovery.*\" : null\n  }\n}"
+}

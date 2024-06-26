@@ -1,0 +1,5 @@
+{
+    "summary": "cat/transforms.asciidoc:197",
+    "description": "",
+    "value": "[\n  {\n    \"id\" : \"ecommerce_transform\",\n    \"state\" : \"started\",\n    \"checkpoint\" : \"1\",\n    \"documents_processed\" : \"705\",\n    \"checkpoint_progress\" : \"100.00\",\n    \"changes_last_detection_time\" : null\n  }\n]"
+}

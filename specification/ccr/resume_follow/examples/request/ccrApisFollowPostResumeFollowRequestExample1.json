@@ -1,0 +1,6 @@
+{
+    "summary": "ccr/apis/follow/post-resume-follow.asciidoc:37",
+    "method_request": "POST /<follower_index>/_ccr/resume_follow",
+    "description": "",
+    "value": "{\n}"
+}

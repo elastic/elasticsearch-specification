@@ -1,0 +1,5 @@
+{
+    "summary": "cat/datafeeds.asciidoc:130",
+    "description": "",
+    "value": "id                              state buckets.count search.count\ndatafeed-high_sum_total_sales stopped 743          7\ndatafeed-low_request_rate     stopped 1457         3\ndatafeed-response_code_rates  stopped 1460         18\ndatafeed-url_scanning         stopped 1460         18"
+}

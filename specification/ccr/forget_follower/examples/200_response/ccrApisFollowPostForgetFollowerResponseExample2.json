@@ -1,0 +1,5 @@
+{
+    "summary": "ccr/apis/follow/post-forget-follower.asciidoc:147",
+    "description": "",
+    "value": "{\n  \"_shards\" : {\n    \"total\" : 1,\n    \"successful\" : 1,\n    \"failed\" : 0,\n    \"failures\" : [ ]\n  }\n}"
+}

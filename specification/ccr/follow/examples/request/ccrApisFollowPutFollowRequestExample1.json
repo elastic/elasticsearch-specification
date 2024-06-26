@@ -1,0 +1,6 @@
+{
+    "summary": "ccr/apis/follow/put-follow.asciidoc:24",
+    "method_request": "PUT /<follower_index>/_ccr/follow?wait_for_active_shards=1",
+    "description": "",
+    "value": "{\n  \"remote_cluster\" : \"<remote_cluster>\",\n  \"leader_index\" : \"<leader_index>\"\n}"
+}
