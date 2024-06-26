@@ -126,11 +126,9 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
-  since?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
-  stability?: Stability
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
@@ -237,7 +235,7 @@ export class Interface extends BaseType {
    */
   generics?: TypeName[]
   inherits?: Inherits
-  implements?: Inherits[]
+  implements?: Inherits[] // Unused!
 
   /**
    * Behaviors directly implemented by this interface
@@ -344,7 +342,6 @@ export class EnumMember {
   codegenName?: string
   description?: string
   deprecation?: Deprecation
-  since?: string
   availability?: Availabilities
 }
 
@@ -429,14 +426,6 @@ export class Endpoint {
 
   urls: UrlTemplate[]
 
-  /**
-   * The version when this endpoint reached its current stability level.
-   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-   */
-  since?: string
-  stability?: Stability
-  visibility?: Visibility
-  featureFlag?: string
   requestMediaType?: string[]
   responseMediaType?: string[]
   privileges?: {
