@@ -429,6 +429,15 @@ export class MappingLimitSettingsTotalFields {
    * @server_default 1000
    */
   limit?: long
+  /**
+   * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
+   * to false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail
+   * with the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.
+   * Instead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.
+   * The fields that were not added to the mapping will be added to the _ignored field.
+   * @server_default false
+   */
+  ignore_dynamic_beyond_limit?: boolean
 }
 
 export class MappingLimitSettingsDepth {
