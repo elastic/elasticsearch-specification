@@ -7,7 +7,8 @@ Documentation of the TypeScript specification is made using [JSDoc](https://jsdo
 The first phrase is used as the mandatory operation summary in the OpenAPI document.
 Refer to [API documentation guidelines](https://docs.elastic.dev/content-architecture/oas#summaries).
 
-NOTE: You must add a period at the end of the phrase for it to parse correctly, but the period will be properly omitted from the output OpenAPI document.
+NOTE: You must add a period or `\n` at the end of the phrase for it to parse correctly.
+The period will be properly omitted from the output OpenAPI document.
 
 Additional lines start with a `*` followed by a space. Long lines are allowed but it's better if text is formatted to a maximum of 120 characters per line.
 
