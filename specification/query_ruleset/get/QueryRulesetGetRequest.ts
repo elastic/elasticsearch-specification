@@ -22,8 +22,8 @@ import { Id } from '@_types/common'
 /**
  * Returns the details about a query ruleset
  * @rest_spec_name query_ruleset.get
- * @availability stack since=8.10.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

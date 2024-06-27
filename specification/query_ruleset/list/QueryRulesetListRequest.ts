@@ -22,8 +22,8 @@ import { integer } from '@_types/Numeric'
 /**
  * Returns summarized information about existing query rulesets.
  * @rest_spec_name query_ruleset.list
- * @availability stack since=8.10.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability stack since=8.10.0 stability=experimental
+ * @availability serverless stability=experimental visibility=public
  */
 export interface Request extends RequestBase {
   query_parameters: {
