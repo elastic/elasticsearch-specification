@@ -135,8 +135,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const parentTypes = new Set<string>()
   for (const type of apiModel.types) {
     if (type.kind === 'request' || type.kind === 'interface') {
-      for (const parent of (type.implements ?? []).concat(type.inherits ?? [])) {
-        parentTypes.add(fqn(parent.type))
+      if (type.inherits != null) {
+        parentTypes.add(fqn(type.inherits.type))
       }
     }
   }
@@ -380,7 +380,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const openGenerics = openGenericSet(typeDef)
 
     validateInherits(typeDef.inherits, openGenerics)
-    validateImplements(typeDef.implements, openGenerics)
     validateBehaviors(typeDef, openGenerics)
 
     // Note: we validate codegen_name/name uniqueness independently in the path, query and body as there are some
@@ -495,7 +494,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       if (typeDef.inherits != null) {
         addInherits(typeDef.inherits)
       }
-      typeDef.implements?.forEach(addInherits)
       typeDef.behaviors?.forEach(addInherits)
     }
 
@@ -505,7 +503,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function validateInterface (typeDef: model.Interface): void {
     const openGenerics = openGenericSet(typeDef)
 
-    validateImplements(typeDef.implements, openGenerics)
     validateInherits(typeDef.inherits, openGenerics)
     validateBehaviors(typeDef, openGenerics)
     validateProperties(typeDef.properties, openGenerics, inheritedProperties(typeDef))
@@ -628,16 +625,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
   }
 
-  function validateImplements (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
-    if (parents == null || parents.length === 0) return
-
-    context.push('Implements')
-    for (const parent of parents) {
-      validateTypeRef(parent.type, parent.generics, openGenerics)
-    }
-    context.pop()
-  }
-
   function validateBehaviors (typeDef: model.Request | model.Response | model.Interface, openGenerics: Set<string>): void {
     if (typeDef.kind !== 'response' && typeDef.behaviors != null && typeDef.behaviors.length > 0) {
       context.push('Behaviors')
@@ -673,11 +660,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
 
     // Does a parent have this behavior?
-    const parents = (type.implements ?? []).concat(type.inherits ?? [])
-    for (const parent of parents) {
-      const parentDef = getTypeDef(parent.type)
+    if (type.inherits != null) {
+      const parentDef = getTypeDef(type.inherits.type)
       if (parentDef == null) {
-        modelError(`No type definition for parent '${fqn(parent.type)}'`)
+        modelError(`No type definition for parent '${fqn(type.inherits.type)}'`)
         return false
       }
       if (parentDef.kind === 'request' || parentDef.kind === 'interface') {

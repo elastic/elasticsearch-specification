@@ -669,22 +669,6 @@ export function hoistRequestAnnotations (
       // Apply the availabilities to the Endpoint.
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         endpoint.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on an endpoint.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            endpoint.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            endpoint.stability = availabilityValue.stability
-          }
-          if (availabilityValue.visibility !== undefined) {
-            endpoint.visibility = availabilityValue.visibility
-          }
-          if (availabilityValue.featureFlag !== undefined) {
-            endpoint.featureFlag = availabilityValue.featureFlag
-          }
-        }
       }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
@@ -787,16 +771,6 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.availability = {}
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         property.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on a property.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            property.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            property.stability = availabilityValue.stability
-          }
-        }
       }
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
@@ -898,13 +872,6 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
       member.availability = {}
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         member.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on a property.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            member.since = availabilityValue.since
-          }
-        }
       }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)

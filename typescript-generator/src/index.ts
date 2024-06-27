@@ -160,16 +160,15 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
 
 function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
   const inherits = (type.inherits != null ? [type.inherits] : []).filter(type => !skipBehaviors.includes(type.type.name))
-  const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
-  const extendAll = inherits.concat(interfaces).concat(behaviors)
+  const extendAll = inherits.concat(behaviors)
     // do not extend from empty interfaces
     .filter(inherit => {
       for (const type of model.types) {
         if (inherit.type.name === type.name.name && inherit.type.namespace === type.name.namespace) {
           switch (type.kind) {
             case 'interface':
-              return type.properties.length > 0 || type.inherits != null || type.implements != null || type.behaviors != null || type.generics != null
+              return type.properties.length > 0 || type.inherits != null || type.behaviors != null || type.generics != null
             case 'request':
             case 'response':
               return true
