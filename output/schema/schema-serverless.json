@@ -3459,7 +3459,7 @@
           "stability": "stable"
         }
       },
-      "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
+      "description": "Delete an index template.\nThe provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html",
       "name": "indices.delete_index_template",
       "privileges": {
@@ -3848,7 +3848,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about one or more index templates.",
+      "description": "Get index templates.\nReturns information about one or more index templates.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html",
       "name": "indices.get_index_template",
       "privileges": {
@@ -4176,7 +4176,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html",
       "name": "indices.put_index_template",
       "request": {
@@ -4312,7 +4312,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html",
       "name": "indices.put_template",
       "request": {
@@ -4486,7 +4486,7 @@
           "stability": "stable"
         }
       },
-      "description": "",
+      "description": "Simulate an index.\nReturns the index configuration that would be applied to the specified index from an existing index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html",
       "name": "indices.simulate_index_template",
       "request": {
@@ -4527,7 +4527,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the index configuration that would be applied by a particular index template.",
+      "description": "Simulate an index template.\nReturns the index configuration that would be applied by a particular index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html",
       "name": "indices.simulate_template",
       "privileges": {
@@ -21620,7 +21620,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
+      "description": "Delete an index template.\nThe provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21674,7 +21674,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_index_template/IndicesDeleteIndexTemplateRequest.ts#L24-L52"
+      "specLocation": "indices/delete_index_template/IndicesDeleteIndexTemplateRequest.ts#L24-L53"
     },
     {
       "body": {
@@ -22623,7 +22623,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about one or more index templates.",
+      "description": "Get index templates.\nReturns information about one or more index templates.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22714,7 +22714,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L60"
+      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L61"
     },
     {
       "body": {
@@ -23569,7 +23569,7 @@
           }
         ]
       },
-      "description": "Creates or updates an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24235,7 +24235,7 @@
           }
         ]
       },
-      "description": "Creates or updates an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
+      "description": "Create or update an index template.\nIndex templates define settings, mappings, and aliases that can be applied automatically to new indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24808,7 +24808,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "",
+      "description": "Simulate an index.\nReturns the index configuration that would be applied to the specified index from an existing index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24873,7 +24873,7 @@
           }
         }
       ],
-      "specLocation": "indices/simulate_index_template/IndicesSimulateIndexTemplateRequest.ts#L24-L49"
+      "specLocation": "indices/simulate_index_template/IndicesSimulateIndexTemplateRequest.ts#L24-L50"
     },
     {
       "body": {
@@ -25052,7 +25052,7 @@
           }
         ]
       },
-      "description": "Returns the index configuration that would be applied by a particular index template.",
+      "description": "Simulate an index template.\nReturns the index configuration that would be applied by a particular index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25130,7 +25130,7 @@
           }
         }
       ],
-      "specLocation": "indices/simulate_template/IndicesSimulateTemplateRequest.ts#L27-L119"
+      "specLocation": "indices/simulate_template/IndicesSimulateTemplateRequest.ts#L27-L120"
     },
     {
       "body": {
