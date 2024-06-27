@@ -21,7 +21,7 @@ import { Id } from '@_types/common'
 
 /**
  * Returns the details about a query rule within a query ruleset
- * @rest_spec_name query_rules.query_rule_get
+ * @rest_spec_name query_rules.get_rule
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
