@@ -8073,12 +8073,129 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.10.0",
-          "stability": "experimental"
+          "stability": "stable"
+        }
+      },
+      "description": "Deletes a query rule within a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html",
+      "name": "query_rule.delete",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rule.delete"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "query_rule.delete"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "since": "8.10.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Returns the details about a query rule within a query ruleset",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
+      "name": "query_rule.get",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rule.get"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "query_rule.get"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "since": "8.10.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "8.15.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Creates or updates a query rule within a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
+      "name": "query_rule.put",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rule.put"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rule.put"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "since": "8.15.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
         }
       },
       "description": "Deletes a query ruleset.",
@@ -8097,7 +8214,7 @@
         "application/json"
       ],
       "since": "8.10.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8111,12 +8228,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.10.0",
-          "stability": "experimental"
+          "stability": "stable"
         }
       },
       "description": "Returns the details about a query ruleset",
@@ -8135,7 +8252,7 @@
         "application/json"
       ],
       "since": "8.10.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8149,12 +8266,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.10.0",
-          "stability": "experimental"
+          "stability": "stable"
         }
       },
       "description": "Returns summarized information about existing query rulesets.",
@@ -8173,7 +8290,7 @@
         "application/json"
       ],
       "since": "8.10.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8187,12 +8304,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "8.10.0",
-          "stability": "experimental"
+          "stability": "stable"
         }
       },
       "description": "Creates or updates a query ruleset.",
@@ -8214,7 +8331,7 @@
         "application/json"
       ],
       "since": "8.10.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -35371,6 +35488,248 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a query rule within a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rule.delete"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset containing the rule to delete",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the query rule within the specified ruleset to delete",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rule/delete/QueryRuleDeleteRequest.ts#L22-L40"
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "_types"
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rule.delete"
+      },
+      "specLocation": "query_rule/delete/QueryRuleDeleteResponse.ts#L22-L24"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Returns the details about a query rule within a query ruleset",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rule.get"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset containing the rule to retrieve",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the query rule within the specified ruleset to retrieve",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rule/get/QueryRuleGetRequest.ts#L22-L40"
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "QueryRule",
+            "namespace": "query_ruleset._types"
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rule.get"
+      },
+      "specLocation": "query_rule/get/QueryRuleGetResponse.ts#L22-L24"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryRuleType",
+                "namespace": "query_ruleset._types"
+              }
+            }
+          },
+          {
+            "name": "criteria",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRuleCriteria",
+                  "namespace": "query_ruleset._types"
+                }
+              }
+            }
+          },
+          {
+            "name": "actions",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryRuleActions",
+                "namespace": "query_ruleset._types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates or updates a query rule within a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rule.put"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
+          "name": "rule_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rule/put/QueryRulePutRequest.ts#L27-L54"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rule.put"
+      },
+      "specLocation": "query_rule/put/QueryRulePutResponse.ts#L22-L26"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
       "description": "Deletes a query ruleset.",
       "inherits": {
         "type": {
@@ -47707,6 +48066,10 @@
           }
         },
         {
+          "deprecation": {
+            "description": "Use geo-shape instead.",
+            "version": "7.12.0"
+          },
           "name": "geo_polygon",
           "required": false,
           "type": {
@@ -48128,7 +48491,7 @@
           }
         },
         {
-          "name": "rule_query",
+          "name": "rule",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -48351,6 +48714,26 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0"
+            }
+          },
+          "description": "Using input query vectors or a natural language processing model to convert a query into a list of token-weight pairs, queries against a sparse vector field.",
+          "docId": "query-dsl-sparse-vector-query",
+          "name": "sparse_vector",
+          "required": false,
+          "since": "8.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "Returns documents that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
           "docId": "query-dsl-term-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-term-query.html",
@@ -48421,6 +48804,10 @@
               "since": "8.8.0"
             }
           },
+          "deprecation": {
+            "description": "",
+            "version": "8.15.0"
+          },
           "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
           "docId": "query-dsl-text-expansion-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-text-expansion-query.html",
@@ -48452,6 +48839,10 @@
             "stack": {
               "since": "8.13.0"
             }
+          },
+          "deprecation": {
+            "description": "",
+            "version": "8.15.0"
           },
           "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
           "docId": "query-dsl-weighted-tokens-query",
@@ -48532,7 +48923,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L101-L414",
+      "specLocation": "_types/query_dsl/abstractions.ts#L102-L427",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48709,7 +49100,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L439-L450"
+      "specLocation": "_types/query_dsl/abstractions.ts#L452-L463"
     },
     {
       "kind": "type_alias",
@@ -49053,7 +49444,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L452-L486"
+      "specLocation": "_types/query_dsl/abstractions.ts#L465-L499"
     },
     {
       "kind": "enum",
@@ -49069,7 +49460,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L496-L499"
+      "specLocation": "_types/query_dsl/abstractions.ts#L509-L512"
     },
     {
       "kind": "enum",
@@ -49087,7 +49478,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L501-L510"
+      "specLocation": "_types/query_dsl/abstractions.ts#L514-L523"
     },
     {
       "inherits": {
@@ -51305,7 +51696,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L416-L433"
+      "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
     },
     {
       "kind": "enum",
@@ -51776,7 +52167,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L512-L526"
+      "specLocation": "_types/query_dsl/abstractions.ts#L525-L539"
     },
     {
       "inherits": {
@@ -58182,13 +58573,16 @@
           }
         },
         {
-          "name": "ruleset_id",
+          "name": "ruleset_ids",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -59228,6 +59622,183 @@
       },
       "kind": "interface",
       "name": {
+        "name": "SparseVectorQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "containerProperty": true,
+          "description": "The name of the field that contains the token-weight pairs to be searched against.\nThis field must be a mapped sparse_vector field.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Dictionary of precomputed sparse vectors and their associated weights.\nOnly one of inference_id or query_vector may be supplied in a request.",
+          "name": "query_vector",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "float",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The inference ID to use to convert the query text into token-weight pairs.\nIt must be the same inference ID that was used to create the tokens from the input text.\nOnly one of inference_id and query_vector is allowed.\nIf inference_id is specified, query must also be specified.\nOnly one of inference_id or query_vector may be supplied in a request.",
+          "name": "inference_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "containerProperty": true,
+          "description": "The query text you want to use for search.\nIf inference_id is specified, query must also be specified.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "experimental"
+            },
+            "stack": {
+              "since": "8.15.0",
+              "stability": "experimental"
+            }
+          },
+          "containerProperty": true,
+          "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+          "name": "prune",
+          "required": false,
+          "since": "8.15.0",
+          "stability": "experimental",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "experimental"
+            },
+            "stack": {
+              "since": "8.15.0",
+              "stability": "experimental"
+            }
+          },
+          "containerProperty": true,
+          "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
+          "name": "pruning_config",
+          "required": false,
+          "since": "8.15.0",
+          "stability": "experimental",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TokenPruningConfig",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/SparseVectorQuery.ts#L26-L79",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TokenPruningConfig",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
+          "name": "tokens_freq_ratio_threshold",
+          "required": false,
+          "serverDefault": 5,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
+          "name": "tokens_weight_threshold",
+          "required": false,
+          "serverDefault": 0.4,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
+          "name": "only_score_pruned_tokens",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/TokenPruningConfig.ts#L22-L35"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
         "name": "TermQuery",
         "namespace": "_types.query_dsl"
       },
@@ -59577,55 +60148,6 @@
       "specLocation": "_types/query_dsl/TextExpansionQuery.ts#L23-L33"
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "TokenPruningConfig",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
-          "name": "tokens_freq_ratio_threshold",
-          "required": false,
-          "serverDefault": 5,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
-          "name": "tokens_weight_threshold",
-          "required": false,
-          "serverDefault": 0.4,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
-          "name": "only_score_pruned_tokens",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/TokenPruningConfig.ts#L22-L35"
-    },
-    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -59776,7 +60298,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L488-L494"
+      "specLocation": "_types/query_dsl/abstractions.ts#L501-L507"
     },
     {
       "inherits": {
@@ -90383,7 +90905,7 @@
         "name": "StorageType",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L509-L537"
+      "specLocation": "indices/_types/IndexSettings.ts#L518-L546"
     },
     {
       "kind": "enum",
@@ -98826,13 +99348,16 @@
         },
         {
           "name": "gte"
+        },
+        {
+          "name": "always"
         }
       ],
       "name": {
         "name": "QueryRuleCriteriaType",
         "namespace": "query_ruleset._types"
       },
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L54-L65"
+      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L54-L66"
     },
     {
       "kind": "enum",
@@ -108859,7 +109384,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L479-L484"
+      "specLocation": "indices/_types/IndexSettings.ts#L488-L493"
     },
     {
       "kind": "interface",
@@ -108891,7 +109416,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L486-L489"
+      "specLocation": "indices/_types/IndexSettings.ts#L495-L498"
     },
     {
       "kind": "interface",
@@ -108945,7 +109470,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L491-L496"
+      "specLocation": "indices/_types/IndexSettings.ts#L500-L505"
     },
     {
       "kind": "interface",
@@ -109890,9 +110415,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
+          "name": "ignore_dynamic_beyond_limit",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L424-L432"
+      "specLocation": "indices/_types/IndexSettings.ts#L424-L441"
     },
     {
       "kind": "interface",
@@ -109915,7 +110453,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L434-L441"
+      "specLocation": "indices/_types/IndexSettings.ts#L443-L450"
     },
     {
       "kind": "interface",
@@ -109938,7 +110476,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L443-L451"
+      "specLocation": "indices/_types/IndexSettings.ts#L452-L460"
     },
     {
       "kind": "interface",
@@ -109961,7 +110499,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L453-L460"
+      "specLocation": "indices/_types/IndexSettings.ts#L462-L469"
     },
     {
       "kind": "interface",
@@ -109983,7 +110521,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L462-L469"
+      "specLocation": "indices/_types/IndexSettings.ts#L471-L478"
     },
     {
       "kind": "interface",
@@ -110005,7 +110543,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L471-L477"
+      "specLocation": "indices/_types/IndexSettings.ts#L480-L486"
     },
     {
       "kind": "interface",
@@ -110059,7 +110597,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L552-L557"
+      "specLocation": "indices/_types/IndexSettings.ts#L561-L566"
     },
     {
       "kind": "interface",
@@ -110083,7 +110621,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L559-L566"
+      "specLocation": "indices/_types/IndexSettings.ts#L568-L575"
     },
     {
       "kind": "interface",
@@ -110104,7 +110642,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L539-L541"
+      "specLocation": "indices/_types/IndexSettings.ts#L548-L550"
     },
     {
       "kind": "interface",
@@ -110126,7 +110664,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L543-L550"
+      "specLocation": "indices/_types/IndexSettings.ts#L552-L559"
     },
     {
       "kind": "interface",
@@ -110159,7 +110697,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L498-L507"
+      "specLocation": "indices/_types/IndexSettings.ts#L507-L516"
     },
     {
       "kind": "interface",
@@ -132153,43 +132691,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "QueryRuleset",
-        "namespace": "query_ruleset._types"
-      },
-      "properties": [
-        {
-          "description": "Query Ruleset unique identifier",
-          "name": "ruleset_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Rules associated with the query ruleset",
-          "name": "rules",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRule",
-                "namespace": "query_ruleset._types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L26-L35"
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "QueryRule",
         "namespace": "query_ruleset._types"
       },
@@ -132264,7 +132765,7 @@
         },
         {
           "name": "metadata",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132322,7 +132823,44 @@
           }
         }
       ],
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L67-L70"
+      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L68-L71"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryRuleset",
+        "namespace": "query_ruleset._types"
+      },
+      "properties": [
+        {
+          "description": "Query Ruleset unique identifier",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Rules associated with the query ruleset",
+          "name": "rules",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryRule",
+                "namespace": "query_ruleset._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L26-L35"
     },
     {
       "kind": "interface",
@@ -132345,7 +132883,7 @@
         },
         {
           "description": "The number of rules associated with this ruleset",
-          "name": "rules_count",
+          "name": "rule_total_count",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -132354,9 +132892,32 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "A map of criteria type to the number of rules of that type",
+          "name": "rule_criteria_types_counts",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
         }
       ],
-      "specLocation": "query_ruleset/list/types.ts#L22-L31"
+      "specLocation": "query_ruleset/list/types.ts#L23-L37"
     },
     {
       "kind": "interface",

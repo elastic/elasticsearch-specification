@@ -47,7 +47,7 @@ export enum QueryRuleType {
 
 export class QueryRuleCriteria {
   type: QueryRuleCriteriaType
-  metadata: string
+  metadata?: string
   values?: UserDefinedValue[]
 }
 
@@ -61,7 +61,8 @@ export enum QueryRuleCriteriaType {
   lt,
   lte,
   gt,
-  gte
+  gte,
+  always
 }
 
 export class QueryRuleActions {

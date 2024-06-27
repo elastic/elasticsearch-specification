@@ -23,8 +23,8 @@ import { QueryRule } from '../_types/QueryRuleset'
 /**
  * Creates or updates a query ruleset.
  * @rest_spec_name query_ruleset.put
- * @availability stack since=8.10.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {

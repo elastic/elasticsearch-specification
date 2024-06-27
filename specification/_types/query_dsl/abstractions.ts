@@ -97,6 +97,7 @@ import { TextExpansionQuery } from './TextExpansionQuery'
 import { WeightedTokensQuery } from './WeightedTokensQuery'
 import { KnnQuery } from '@_types/Knn'
 import { SemanticQuery } from './SemanticQuery'
+import { SparseVectorQuery } from './SparseVectorQuery'
 
 /**
  * @variants container
@@ -165,6 +166,9 @@ export class QueryContainer {
    * @doc_id query-dsl-geo-distance-query
    */
   geo_distance?: GeoDistanceQuery
+  /**
+   * @deprecated 7.12.0 Use geo-shape instead.
+   */
   geo_polygon?: GeoPolygonQuery
   /**
    * Filter documents indexed using either the `geo_shape` or the `geo_point` type.
@@ -290,7 +294,7 @@ export class QueryContainer {
    * @doc_id query-dsl-regexp-query
    */
   regexp?: SingleKeyDictionary<Field, RegexpQuery>
-  rule_query?: RuleQuery
+  rule?: RuleQuery
   /**
    * Filters documents based on a provided script.
    * The script query is typically used in a filter context.
@@ -365,6 +369,13 @@ export class QueryContainer {
    */
   span_within?: SpanWithinQuery
   /**
+   * Using input query vectors or a natural language processing model to convert a query into a list of token-weight pairs, queries against a sparse vector field.
+   * @availability stack since=8.15.0
+   * @availability serverless
+   * @doc_id query-dsl-sparse-vector-query
+   */
+  sparse_vector?: SparseVectorQuery
+  /**
    * Returns documents that contain an exact term in a provided field.
    * To return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.
    * @doc_id query-dsl-term-query
@@ -387,6 +398,7 @@ export class QueryContainer {
    * @availability stack since=8.8.0
    * @availability serverless
    * @doc_id query-dsl-text-expansion-query
+   * @deprecated 8.15.0
    */
   text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
   /**
@@ -394,6 +406,7 @@ export class QueryContainer {
    * @availability stack since=8.13.0
    * @availability serverless
    * @doc_id query-dsl-weighted-tokens-query
+   * @deprecated 8.15.0
    */
   weighted_tokens?: SingleKeyDictionary<Field, WeightedTokensQuery>
   /**

@@ -22,7 +22,7 @@
           }
         },
         {
-          "path": "/_rollup/job/",
+          "path": "/_rollup/job",
           "methods": ["GET"]
         }
       ]

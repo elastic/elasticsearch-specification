@@ -368,6 +368,6 @@ export class ShapeFieldQuery {
 
 export class RuleQuery extends QueryBase {
   organic: QueryContainer
-  ruleset_id: Id
+  ruleset_ids: Id[]
   match_criteria: UserDefinedValue
 }
