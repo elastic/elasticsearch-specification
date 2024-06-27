@@ -577,6 +577,12 @@
       ],
       "response": []
     },
+    "connector.sync_job_claim": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "connector.sync_job_error": {
       "request": [
         "Missing request & response"
@@ -584,6 +590,12 @@
       "response": []
     },
     "connector.sync_job_update_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_features": {
       "request": [
         "Missing request & response"
       ],
@@ -648,6 +660,12 @@
       ]
     },
     "features.get_features": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
+    "features.reset_features": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'"
       ],
@@ -900,12 +918,6 @@
       ],
       "response": []
     },
-    "ml.get_categories": {
-      "request": [
-        "Url path '/_ml/anomaly_detectors/{job_id}/results/categories/' has a trailing slash"
-      ],
-      "response": []
-    },
     "ml.get_memory_stats": {
       "request": [
         "Request: query parameter 'human' does not exist in the json spec",
@@ -999,18 +1011,6 @@
       ],
       "response": []
     },
-    "rollup.get_jobs": {
-      "request": [
-        "Url path '/_rollup/job/' has a trailing slash"
-      ],
-      "response": []
-    },
-    "rollup.get_rollup_caps": {
-      "request": [
-        "Url path '/_rollup/data/' has a trailing slash"
-      ],
-      "response": []
-    },
     "search": {
       "request": [
         "Request: missing json spec query parameter 'include_named_queries_score'",
@@ -1099,12 +1099,6 @@
       ],
       "response": []
     },
-    "security.put_privileges": {
-      "request": [
-        "Url path '/_security/privilege/' has a trailing slash"
-      ],
-      "response": []
-    },
     "security.query_user": {
       "request": [
         "Missing request & response"
@@ -1176,6 +1170,12 @@
       ],
       "response": []
     },
+    "snapshot.delete": {
+      "request": [
+        "Request: missing json spec query parameter 'wait_for_completion'"
+      ],
+      "response": []
+    },
     "snapshot.repository_analyze": {
       "request": [
         "Missing request & response"
@@ -1197,6 +1197,12 @@
       "response": []
     },
     "text_structure.find_message_structure": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "transform.get_node_stats": {
       "request": [
         "Missing request & response"
       ],
