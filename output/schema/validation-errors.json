@@ -58,6 +58,12 @@
         "type_alias definition _global.search._types:Suggest - Expected 1 generic parameters but got 0"
       ]
     },
+    "async_search.status": {
+      "request": [
+        "Request: missing json spec query parameter 'keep_alive'"
+      ],
+      "response": []
+    },
     "async_search.submit": {
       "request": [
         "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
@@ -84,7 +90,9 @@
     },
     "bulk": {
       "request": [
-        "Request: missing json spec query parameter 'type'"
+        "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'require_data_stream'",
+        "Request: missing json spec query parameter 'list_executed_pipelines'"
       ],
       "response": []
     },
@@ -482,6 +490,186 @@
         "response definition cluster.put_component_template:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
+    "connector.check_in": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.last_sync": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.list": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.post": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_api_key_id": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_configuration": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_error": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_filtering": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_index_name": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_name": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_native": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_pipeline": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_scheduling": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_service_type": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_secret.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_secret.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_secret.post": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_secret.put": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.cancel": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.check_in": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.delete": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.error": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.list": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.post": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector_sync_job.update_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "create": {
       "request": [],
       "response": [
@@ -552,8 +740,22 @@
       ],
       "response": []
     },
+    "esql.async_query": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "esql.async_query_get": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "esql.query": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'drop_null_columns'"
+      ],
       "response": [
         "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
       ]
@@ -719,7 +921,9 @@
       ]
     },
     "index": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'require_data_stream'"
+      ],
       "response": [
         "response definition _global.index:Response / body / instance_of - Non-leaf type cannot be used here: '_types:WriteResponseBase'"
       ]
@@ -841,7 +1045,9 @@
       ]
     },
     "indices.put_settings": {
-      "request": [],
+      "request": [
+        "Request: missing json spec query parameter 'reopen'"
+      ],
       "response": [
         "response definition indices.put_settings:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
@@ -864,6 +1070,12 @@
     "indices.reload_search_analyzers": {
       "request": [
         "Request: missing json spec query parameter 'resource'"
+      ],
+      "response": []
+    },
+    "indices.rollover": {
+      "request": [
+        "Request: missing json spec query parameter 'lazy'"
       ],
       "response": []
     },
@@ -1110,6 +1322,24 @@
       ],
       "response": []
     },
+    "profiling.flamegraph": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "profiling.stacktraces": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "profiling.status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "put_script": {
       "request": [
         "Request: missing json spec query parameter 'context'"
@@ -1237,12 +1467,6 @@
         "response definition security.enable_user_profile:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "security.get_api_key": {
-      "request": [
-        "Request: query parameter 'active_only' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "security.get_settings": {
       "request": [
         "Missing request & response"
@@ -1294,12 +1518,16 @@
       "response": []
     },
     "security.query_api_keys": {
-      "request": [
-        "Request: query parameter 'typed_keys' does not exist in the json spec"
-      ],
+      "request": [],
       "response": [
         "type_alias definition security.query_api_keys:ApiKeyAggregate / instance_of - Non-leaf type cannot be used here: '_types.aggregations:RangeAggregate'"
       ]
+    },
+    "security.query_user": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "security.suggest_user_profiles": {
       "request": [],
@@ -1349,6 +1577,12 @@
       "response": [
         "response definition shutdown.put_node:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
+    },
+    "simulate.ingest": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
     },
     "slm.delete_lifecycle": {
       "request": [],
