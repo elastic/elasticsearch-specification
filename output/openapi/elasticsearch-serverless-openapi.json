@@ -15220,13 +15220,13 @@
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
       "get": {
         "tags": [
-          "query_rules.query_rule_get"
+          "query_rules.get_rule"
         ],
         "summary": "Returns the details about a query rule within a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html"
         },
-        "operationId": "query-rules-query-rule-get",
+        "operationId": "query-rules-get-rule",
         "parameters": [
           {
             "in": "path",
@@ -15266,13 +15266,13 @@
       },
       "put": {
         "tags": [
-          "query_rules.query_rule_put"
+          "query_rules.put_rule"
         ],
         "summary": "Creates or updates a query rule within a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html"
         },
-        "operationId": "query-rules-query-rule-put",
+        "operationId": "query-rules-put-rule",
         "parameters": [
           {
             "in": "path",
@@ -15349,13 +15349,13 @@
       },
       "delete": {
         "tags": [
-          "query_rules.query_rule_delete"
+          "query_rules.delete_rule"
         ],
         "summary": "Deletes a query rule within a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html"
         },
-        "operationId": "query-rules-query-rule-delete",
+        "operationId": "query-rules-delete-rule",
         "parameters": [
           {
             "in": "path",
@@ -15397,13 +15397,13 @@
     "/_query_rules/{ruleset_id}": {
       "get": {
         "tags": [
-          "query_rules.query_ruleset_get"
+          "query_rules.get_ruleset"
         ],
         "summary": "Returns the details about a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html"
         },
-        "operationId": "query-rules-query-ruleset-get",
+        "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
             "in": "path",
@@ -15432,13 +15432,13 @@
       },
       "put": {
         "tags": [
-          "query_rules.query_ruleset_put"
+          "query_rules.put_ruleset"
         ],
         "summary": "Creates or updates a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html"
         },
-        "operationId": "query-rules-query-ruleset-put",
+        "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
             "in": "path",
@@ -15496,13 +15496,13 @@
       },
       "delete": {
         "tags": [
-          "query_rules.query_ruleset_delete"
+          "query_rules.delete_ruleset"
         ],
         "summary": "Deletes a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html"
         },
-        "operationId": "query-rules-query-ruleset-delete",
+        "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
             "in": "path",
@@ -15533,13 +15533,13 @@
     "/_query_rules": {
       "get": {
         "tags": [
-          "query_rules.query_ruleset_list"
+          "query_rules.list_rulesets"
         ],
         "summary": "Returns summarized information about existing query rulesets",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html"
         },
-        "operationId": "query-rules-query-ruleset-list",
+        "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
             "in": "query",
@@ -15576,7 +15576,7 @@
                     "results": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/query_rules.query_ruleset_list:QueryRulesetListItem"
+                        "$ref": "#/components/schemas/query_rules.list_rulesets:QueryRulesetListItem"
                       }
                     }
                   },
@@ -59848,7 +59848,7 @@
           "rules"
         ]
       },
-      "query_rules.query_ruleset_list:QueryRulesetListItem": {
+      "query_rules.list_rulesets:QueryRulesetListItem": {
         "type": "object",
         "properties": {
           "ruleset_id": {
