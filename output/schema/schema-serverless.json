@@ -45754,6 +45754,10 @@
               "kind": "user_defined_value"
             }
           ],
+          "meta": {
+            "description": "Additional details about the error",
+            "fieldname": "metadata"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -45843,7 +45847,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L25-L48"
+      "specLocation": "_types/Errors.ts#L25-L50"
     },
     {
       "description": "In some places in the specification an object consists of the union of a set of known properties\nand a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose\na set of known keys and possibly. The object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
@@ -49860,7 +49864,7 @@
         "name": "FunctionBoostMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L270-L296"
+      "specLocation": "_types/query_dsl/compound.ts#L279-L305"
     },
     {
       "esQuirk": "this container is valid without a variant. Despite being documented as a function, 'weight'\nis actually a container property that can be combined with a function. Comment in the ES code\n(SearchModule#registerScoreFunctions) says: Weight doesn't have its own parser, so every function\nsupports it out of the box. Can be a single function too when not associated to any other function,\nwhich is why it needs to be registered manually here.",
@@ -49967,7 +49971,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L201-L241",
+      "specLocation": "_types/query_dsl/compound.ts#L210-L250",
       "variants": {
         "kind": "container"
       }
@@ -49983,7 +49987,7 @@
         "name": "DecayFunction",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L194-L199",
+      "specLocation": "_types/query_dsl/compound.ts#L203-L208",
       "type": {
         "items": [
           {
@@ -50049,6 +50053,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "placement"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -50067,7 +50075,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L186-L188"
+      "specLocation": "_types/query_dsl/compound.ts#L189-L194"
     },
     {
       "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
@@ -50206,7 +50214,7 @@
         "name": "MultiValueMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L343-L360"
+      "specLocation": "_types/query_dsl/compound.ts#L352-L369"
     },
     {
       "attachedBehaviors": [
@@ -50246,6 +50254,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "placement"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -50264,7 +50276,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L182-L184"
+      "specLocation": "_types/query_dsl/compound.ts#L182-L187"
     },
     {
       "attachedBehaviors": [
@@ -50304,6 +50316,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "placement"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -50322,7 +50338,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L190-L192"
+      "specLocation": "_types/query_dsl/compound.ts#L196-L201"
     },
     {
       "kind": "interface",
@@ -50431,7 +50447,7 @@
         "name": "FieldValueFactorModifier",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L298-L341"
+      "specLocation": "_types/query_dsl/compound.ts#L307-L350"
     },
     {
       "kind": "interface",
@@ -50710,7 +50726,7 @@
         "name": "FunctionScoreMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L243-L268"
+      "specLocation": "_types/query_dsl/compound.ts#L252-L277"
     },
     {
       "inherits": {
@@ -50896,6 +50912,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "bounding_box"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -50956,7 +50976,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L32-L50"
+      "specLocation": "_types/query_dsl/geo.ts#L32-L53"
     },
     {
       "codegenNames": [
@@ -51280,7 +51300,7 @@
         "name": "GeoExecution",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/geo.ts#L52-L55"
+      "specLocation": "_types/query_dsl/geo.ts#L55-L58"
     },
     {
       "kind": "enum",
@@ -51301,7 +51321,7 @@
         "name": "GeoValidationMethod",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/geo.ts#L147-L157"
+      "specLocation": "_types/query_dsl/geo.ts#L159-L169"
     },
     {
       "attachedBehaviors": [
@@ -51325,6 +51345,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "location"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -51397,7 +51421,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L57-L85"
+      "specLocation": "_types/query_dsl/geo.ts#L60-L91"
     },
     {
       "kind": "type_alias",
@@ -51454,6 +51478,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "polygon"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -51500,7 +51528,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L91-L99"
+      "specLocation": "_types/query_dsl/geo.ts#L97-L108"
     },
     {
       "kind": "interface",
@@ -51524,7 +51552,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L87-L89"
+      "specLocation": "_types/query_dsl/geo.ts#L93-L95"
     },
     {
       "attachedBehaviors": [
@@ -51548,6 +51576,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "shape"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -51580,7 +51612,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L121-L131"
+      "specLocation": "_types/query_dsl/geo.ts#L128-L143"
     },
     {
       "kind": "interface",
@@ -51626,7 +51658,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L106-L117"
+      "specLocation": "_types/query_dsl/geo.ts#L115-L126"
     },
     {
       "description": "A GeoJson shape, that can also use Elasticsearch's `envelope` extension.",
@@ -53862,7 +53894,7 @@
         "name": "Sort",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L99-L99",
+      "specLocation": "_types/sort.ts#L104-L104",
       "type": {
         "items": [
           {
@@ -53896,7 +53928,7 @@
         "name": "SortCombinations",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L93-L97",
+      "specLocation": "_types/sort.ts#L98-L102",
       "type": {
         "items": [
           {
@@ -53939,6 +53971,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "sort"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -53998,7 +54034,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L82-L91",
+      "specLocation": "_types/sort.ts#L86-L96",
       "variants": {
         "kind": "container"
       }
@@ -54155,7 +54191,7 @@
         "name": "SortMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L103-L112"
+      "specLocation": "_types/sort.ts#L108-L117"
     },
     {
       "kind": "interface",
@@ -54227,7 +54263,7 @@
         "name": "SortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L114-L123"
+      "specLocation": "_types/sort.ts#L119-L128"
     },
     {
       "kind": "enum",
@@ -54457,6 +54493,10 @@
               "kind": "union_of"
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "location"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -54525,7 +54565,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L58-L66"
+      "specLocation": "_types/sort.ts#L59-L70"
     },
     {
       "kind": "enum",
@@ -54636,7 +54676,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L68-L74"
+      "specLocation": "_types/sort.ts#L72-L78"
     },
     {
       "kind": "enum",
@@ -54655,7 +54695,7 @@
         "name": "ScriptSortType",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L76-L80"
+      "specLocation": "_types/sort.ts#L80-L84"
     },
     {
       "codegenNames": [
@@ -58594,7 +58634,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L369-L373"
+      "specLocation": "_types/query_dsl/specialized.ts#L372-L376"
     },
     {
       "inherits": {
@@ -58738,6 +58778,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "shape"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -58769,7 +58813,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L344-L352"
+      "specLocation": "_types/query_dsl/specialized.ts#L342-L355"
     },
     {
       "kind": "interface",
@@ -58815,7 +58859,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L354-L367"
+      "specLocation": "_types/query_dsl/specialized.ts#L357-L370"
     },
     {
       "inherits": {
@@ -59921,6 +59965,10 @@
               }
             }
           ],
+          "meta": {
+            "key": "field",
+            "value": "term"
+          },
           "type": {
             "name": "AdditionalProperty",
             "namespace": "_spec_utils"
@@ -59939,7 +59987,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L254-L256"
+      "specLocation": "_types/query_dsl/term.ts#L254-L259"
     },
     {
       "codegenNames": [
@@ -59951,7 +59999,7 @@
         "name": "TermsQueryField",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L258-L261",
+      "specLocation": "_types/query_dsl/term.ts#L261-L264",
       "type": {
         "items": [
           {
@@ -60027,7 +60075,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L263-L268"
+      "specLocation": "_types/query_dsl/term.ts#L266-L271"
     },
     {
       "inherits": {
@@ -60082,7 +60130,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L270-L283"
+      "specLocation": "_types/query_dsl/term.ts#L273-L286"
     },
     {
       "inherits": {
@@ -60270,7 +60318,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L289-L306"
+      "specLocation": "_types/query_dsl/term.ts#L292-L309"
     },
     {
       "inherits": {
@@ -60325,7 +60373,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L285-L287"
+      "specLocation": "_types/query_dsl/term.ts#L288-L290"
     },
     {
       "inherits": {
@@ -67705,7 +67753,7 @@
         "name": "SortResults",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L101-L101",
+      "specLocation": "_types/sort.ts#L106-L106",
       "type": {
         "kind": "array_of",
         "value": {
@@ -67998,6 +68046,10 @@
               }
             }
           ],
+          "meta": {
+            "description": "The named suggesters",
+            "fieldname": "suggesters"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -68023,7 +68075,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L101-L104"
+      "specLocation": "_global/search/_types/suggester.ts#L101-L107"
     },
     {
       "kind": "interface",
@@ -68108,7 +68160,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L106-L139",
+      "specLocation": "_global/search/_types/suggester.ts#L109-L142",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -68203,7 +68255,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L160-L178"
+      "specLocation": "_global/search/_types/suggester.ts#L163-L181"
     },
     {
       "kind": "interface",
@@ -68249,7 +68301,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L141-L156"
+      "specLocation": "_global/search/_types/suggester.ts#L144-L159"
     },
     {
       "kind": "interface",
@@ -68325,7 +68377,7 @@
         }
       ],
       "shortcutProperty": "context",
-      "specLocation": "_global/search/_types/suggester.ts#L232-L261"
+      "specLocation": "_global/search/_types/suggester.ts#L235-L264"
     },
     {
       "codegenNames": [
@@ -68340,7 +68392,7 @@
         "name": "Context",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/suggester.ts#L225-L230",
+      "specLocation": "_global/search/_types/suggester.ts#L228-L233",
       "type": {
         "items": [
           {
@@ -68436,7 +68488,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L193-L221"
+      "specLocation": "_global/search/_types/suggester.ts#L196-L224"
     },
     {
       "kind": "interface",
@@ -68485,7 +68537,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L180-L191"
+      "specLocation": "_global/search/_types/suggester.ts#L183-L194"
     },
     {
       "inherits": {
@@ -68662,7 +68714,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L356-L414"
+      "specLocation": "_global/search/_types/suggester.ts#L359-L417"
     },
     {
       "kind": "interface",
@@ -68715,7 +68767,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L330-L343"
+      "specLocation": "_global/search/_types/suggester.ts#L333-L346"
     },
     {
       "kind": "interface",
@@ -68749,7 +68801,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L345-L354"
+      "specLocation": "_global/search/_types/suggester.ts#L348-L357"
     },
     {
       "kind": "interface",
@@ -68898,7 +68950,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L265-L328"
+      "specLocation": "_global/search/_types/suggester.ts#L268-L331"
     },
     {
       "kind": "enum",
@@ -68954,7 +69006,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L416-L425"
+      "specLocation": "_global/search/_types/suggester.ts#L419-L428"
     },
     {
       "kind": "interface",
@@ -69000,7 +69052,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L442-L458",
+      "specLocation": "_global/search/_types/suggester.ts#L445-L461",
       "variants": {
         "kind": "container"
       }
@@ -69025,7 +69077,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L427-L432"
+      "specLocation": "_global/search/_types/suggester.ts#L430-L435"
     },
     {
       "kind": "interface",
@@ -69068,7 +69120,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L434-L438"
+      "specLocation": "_global/search/_types/suggester.ts#L437-L441"
     },
     {
       "kind": "interface",
@@ -69090,7 +69142,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L460-L465"
+      "specLocation": "_global/search/_types/suggester.ts#L463-L468"
     },
     {
       "inherits": {
@@ -69256,7 +69308,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L503-L565"
+      "specLocation": "_global/search/_types/suggester.ts#L506-L568"
     },
     {
       "kind": "enum",
@@ -69274,7 +69326,7 @@
         "name": "SuggestSort",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/suggester.ts#L492-L501"
+      "specLocation": "_global/search/_types/suggester.ts#L495-L504"
     },
     {
       "kind": "enum",
@@ -69304,7 +69356,7 @@
         "name": "StringDistance",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/suggester.ts#L469-L490"
+      "specLocation": "_global/search/_types/suggester.ts#L472-L493"
     },
     {
       "codegenNames": [
@@ -69762,7 +69814,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L50-L56"
+      "specLocation": "_types/Errors.ts#L52-L58"
     },
     {
       "generics": [
@@ -72162,7 +72214,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L340-L341",
+      "specLocation": "_types/aggregations/Aggregate.ts#L342-L343",
       "variantName": "histogram"
     },
     {
@@ -72229,7 +72281,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L348-L349",
+      "specLocation": "_types/aggregations/Aggregate.ts#L350-L351",
       "variantName": "date_histogram"
     },
     {
@@ -72266,7 +72318,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L356-L360",
+      "specLocation": "_types/aggregations/Aggregate.ts#L358-L362",
       "variantName": "auto_date_histogram"
     },
     {
@@ -72291,7 +72343,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L362-L364",
+      "specLocation": "_types/aggregations/Aggregate.ts#L364-L366",
       "variantName": "variable_width_histogram"
     },
     {
@@ -72317,7 +72369,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L384-L389",
+      "specLocation": "_types/aggregations/Aggregate.ts#L386-L391",
       "variantName": "sterms"
     },
     {
@@ -72371,7 +72423,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L377-L382"
+      "specLocation": "_types/aggregations/Aggregate.ts#L379-L384"
     },
     {
       "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
@@ -72396,7 +72448,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L399-L404",
+      "specLocation": "_types/aggregations/Aggregate.ts#L401-L406",
       "variantName": "lterms"
     },
     {
@@ -72422,7 +72474,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L411-L416",
+      "specLocation": "_types/aggregations/Aggregate.ts#L413-L418",
       "variantName": "dterms"
     },
     {
@@ -72448,7 +72500,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L423-L429",
+      "specLocation": "_types/aggregations/Aggregate.ts#L425-L431",
       "variantName": "umterms"
     },
     {
@@ -72474,7 +72526,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L431-L436",
+      "specLocation": "_types/aggregations/Aggregate.ts#L433-L438",
       "variantName": "lrareterms"
     },
     {
@@ -72500,7 +72552,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L443-L447",
+      "specLocation": "_types/aggregations/Aggregate.ts#L445-L449",
       "variantName": "srareterms"
     },
     {
@@ -72526,7 +72578,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L453-L459",
+      "specLocation": "_types/aggregations/Aggregate.ts#L455-L461",
       "variantName": "umrareterms"
     },
     {
@@ -72551,7 +72603,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L461-L463",
+      "specLocation": "_types/aggregations/Aggregate.ts#L463-L465",
       "variantName": "multi_terms"
     },
     {
@@ -72570,7 +72622,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L483-L484",
+      "specLocation": "_types/aggregations/Aggregate.ts#L487-L488",
       "variantName": "missing"
     },
     {
@@ -72595,6 +72647,10 @@
               }
             }
           ],
+          "meta": {
+            "description": "Nested aggregations",
+            "fieldname": "aggregations"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -72626,7 +72682,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L473-L481"
+      "specLocation": "_types/aggregations/Aggregate.ts#L475-L485"
     },
     {
       "attachedBehaviors": [
@@ -72644,7 +72700,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L486-L487",
+      "specLocation": "_types/aggregations/Aggregate.ts#L490-L491",
       "variantName": "nested"
     },
     {
@@ -72663,7 +72719,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L489-L490",
+      "specLocation": "_types/aggregations/Aggregate.ts#L493-L494",
       "variantName": "reverse_nested"
     },
     {
@@ -72682,7 +72738,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L492-L493",
+      "specLocation": "_types/aggregations/Aggregate.ts#L496-L497",
       "variantName": "global"
     },
     {
@@ -72701,7 +72757,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L495-L496",
+      "specLocation": "_types/aggregations/Aggregate.ts#L499-L500",
       "variantName": "filter"
     },
     {
@@ -72720,7 +72776,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L776-L777",
+      "specLocation": "_types/aggregations/Aggregate.ts#L783-L784",
       "variantName": "children"
     },
     {
@@ -72739,7 +72795,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L779-L780",
+      "specLocation": "_types/aggregations/Aggregate.ts#L786-L787",
       "variantName": "parent"
     },
     {
@@ -72758,7 +72814,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L498-L499",
+      "specLocation": "_types/aggregations/Aggregate.ts#L502-L503",
       "variantName": "sampler"
     },
     {
@@ -72777,7 +72833,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L501-L502",
+      "specLocation": "_types/aggregations/Aggregate.ts#L505-L506",
       "variantName": "unmapped_sampler"
     },
     {
@@ -72802,7 +72858,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L506-L508",
+      "specLocation": "_types/aggregations/Aggregate.ts#L510-L512",
       "variantName": "geohash_grid"
     },
     {
@@ -72827,7 +72883,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L514-L516",
+      "specLocation": "_types/aggregations/Aggregate.ts#L518-L520",
       "variantName": "geotile_grid"
     },
     {
@@ -72852,7 +72908,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L522-L523",
+      "specLocation": "_types/aggregations/Aggregate.ts#L526-L527",
       "variantName": "geohex_grid"
     },
     {
@@ -72877,7 +72933,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L531-L532",
+      "specLocation": "_types/aggregations/Aggregate.ts#L535-L536",
       "variantName": "range"
     },
     {
@@ -72894,7 +72950,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L543-L548",
+      "specLocation": "_types/aggregations/Aggregate.ts#L547-L552",
       "variantName": "date_range"
     },
     {
@@ -72911,7 +72967,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L550-L554",
+      "specLocation": "_types/aggregations/Aggregate.ts#L554-L558",
       "variantName": "geo_distance"
     },
     {
@@ -72936,7 +72992,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L556-L558",
+      "specLocation": "_types/aggregations/Aggregate.ts#L560-L562",
       "variantName": "ip_range"
     },
     {
@@ -72961,7 +73017,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L629-L630",
+      "specLocation": "_types/aggregations/Aggregate.ts#L633-L634",
       "variantName": "ip_prefix"
     },
     {
@@ -72986,7 +73042,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L568-L569",
+      "specLocation": "_types/aggregations/Aggregate.ts#L572-L573",
       "variantName": "filters"
     },
     {
@@ -73011,7 +73067,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L573-L575",
+      "specLocation": "_types/aggregations/Aggregate.ts#L577-L579",
       "variantName": "adjacency_matrix"
     },
     {
@@ -73036,7 +73092,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L588-L590",
+      "specLocation": "_types/aggregations/Aggregate.ts#L592-L594",
       "variantName": "siglterms"
     },
     {
@@ -73090,7 +73146,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L581-L586"
+      "specLocation": "_types/aggregations/Aggregate.ts#L585-L590"
     },
     {
       "inherits": {
@@ -73114,7 +73170,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L602-L604",
+      "specLocation": "_types/aggregations/Aggregate.ts#L606-L608",
       "variantName": "sigsterms"
     },
     {
@@ -73140,7 +73196,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L610-L616",
+      "specLocation": "_types/aggregations/Aggregate.ts#L614-L620",
       "variantName": "umsigterms"
     },
     {
@@ -73177,7 +73233,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L618-L623",
+      "specLocation": "_types/aggregations/Aggregate.ts#L622-L627",
       "variantName": "composite"
     },
     {
@@ -73202,7 +73258,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L639-L640",
+      "specLocation": "_types/aggregations/Aggregate.ts#L643-L644",
       "variantName": "frequent_item_sets"
     },
     {
@@ -73226,7 +73282,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L649-L652",
+      "specLocation": "_types/aggregations/Aggregate.ts#L653-L656",
       "variantName": "scripted_metric"
     },
     {
@@ -73259,7 +73315,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L654-L657",
+      "specLocation": "_types/aggregations/Aggregate.ts#L658-L661",
       "variantName": "top_hits"
     },
     {
@@ -73280,6 +73336,10 @@
               "kind": "user_defined_value"
             }
           ],
+          "meta": {
+            "description": "Additional data",
+            "fieldname": "data"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -73349,7 +73409,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L659-L670",
+      "specLocation": "_types/aggregations/Aggregate.ts#L663-L677",
       "variantName": "inference"
     },
     {
@@ -73396,7 +73456,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L678-L682"
+      "specLocation": "_types/aggregations/Aggregate.ts#L685-L689"
     },
     {
       "kind": "interface",
@@ -73428,7 +73488,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L684-L687"
+      "specLocation": "_types/aggregations/Aggregate.ts#L691-L694"
     },
     {
       "kind": "interface",
@@ -73471,7 +73531,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L672-L676"
+      "specLocation": "_types/aggregations/Aggregate.ts#L679-L683"
     },
     {
       "inherits": {
@@ -73657,7 +73717,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L693-L704",
+      "specLocation": "_types/aggregations/Aggregate.ts#L700-L711",
       "variantName": "string_stats"
     },
     {
@@ -73828,7 +73888,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L706-L722",
+      "specLocation": "_types/aggregations/Aggregate.ts#L713-L729",
       "variantName": "boxplot"
     },
     {
@@ -73859,7 +73919,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L724-L727",
+      "specLocation": "_types/aggregations/Aggregate.ts#L731-L734",
       "variantName": "top_metrics"
     },
     {
@@ -73930,7 +73990,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L729-L733"
+      "specLocation": "_types/aggregations/Aggregate.ts#L736-L740"
     },
     {
       "inherits": {
@@ -73980,7 +74040,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L735-L739",
+      "specLocation": "_types/aggregations/Aggregate.ts#L742-L746",
       "variantName": "t_test"
     },
     {
@@ -74019,7 +74079,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L741-L745",
+      "specLocation": "_types/aggregations/Aggregate.ts#L748-L752",
       "variantName": "rate"
     },
     {
@@ -74059,7 +74119,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L747-L755",
+      "specLocation": "_types/aggregations/Aggregate.ts#L754-L762",
       "variantName": "simple_long_value"
     },
     {
@@ -74101,7 +74161,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L757-L761",
+      "specLocation": "_types/aggregations/Aggregate.ts#L764-L768",
       "variantName": "matrix_stats"
     },
     {
@@ -74222,7 +74282,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L763-L772"
+      "specLocation": "_types/aggregations/Aggregate.ts#L770-L779"
     },
     {
       "inherits": {
@@ -74267,7 +74327,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L784-L791",
+      "specLocation": "_types/aggregations/Aggregate.ts#L791-L798",
       "variantName": "geo_line"
     },
     {
@@ -76864,7 +76924,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L378-L384"
+      "specLocation": "_types/common.ts#L381-L387"
     },
     {
       "kind": "type_alias",
@@ -76872,7 +76932,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L386-L386",
+      "specLocation": "_types/common.ts#L389-L389",
       "type": {
         "items": [
           {
@@ -77793,7 +77853,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L361-L366",
+      "specLocation": "_types/common.ts#L364-L369",
       "type": {
         "items": [
           {
@@ -77826,7 +77886,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L368-L376"
+      "specLocation": "_types/common.ts#L371-L379"
     },
     {
       "kind": "type_alias",
@@ -90379,7 +90439,7 @@
         "name": "IndexCheckOnStartup",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L260-L267"
+      "specLocation": "indices/_types/IndexSettings.ts#L262-L269"
     },
     {
       "kind": "enum",
@@ -90515,7 +90575,7 @@
         "name": "SettingsSimilarity",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L169-L180",
+      "specLocation": "indices/_types/IndexSettings.ts#L171-L182",
       "type": {
         "items": [
           {
@@ -90631,7 +90691,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L186-L191"
+      "specLocation": "indices/_types/IndexSettings.ts#L188-L193"
     },
     {
       "kind": "interface",
@@ -90649,7 +90709,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L182-L184"
+      "specLocation": "indices/_types/IndexSettings.ts#L184-L186"
     },
     {
       "kind": "interface",
@@ -90678,7 +90738,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L193-L196"
+      "specLocation": "indices/_types/IndexSettings.ts#L195-L198"
     },
     {
       "kind": "interface",
@@ -90729,7 +90789,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L198-L203"
+      "specLocation": "indices/_types/IndexSettings.ts#L200-L205"
     },
     {
       "kind": "interface",
@@ -90780,7 +90840,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L205-L210"
+      "specLocation": "indices/_types/IndexSettings.ts#L207-L212"
     },
     {
       "kind": "interface",
@@ -90809,7 +90869,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L212-L215"
+      "specLocation": "indices/_types/IndexSettings.ts#L214-L217"
     },
     {
       "kind": "interface",
@@ -90838,7 +90898,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L217-L220"
+      "specLocation": "indices/_types/IndexSettings.ts#L219-L222"
     },
     {
       "kind": "interface",
@@ -90878,7 +90938,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L222-L226"
+      "specLocation": "indices/_types/IndexSettings.ts#L224-L228"
     },
     {
       "isOpen": true,
@@ -90905,7 +90965,7 @@
         "name": "StorageType",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L518-L546"
+      "specLocation": "indices/_types/IndexSettings.ts#L520-L548"
     },
     {
       "kind": "enum",
@@ -90929,7 +90989,7 @@
         "name": "TranslogDurability",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L363-L378"
+      "specLocation": "indices/_types/IndexSettings.ts#L365-L380"
     },
     {
       "kind": "enum",
@@ -90959,7 +91019,7 @@
         "name": "TextToAnalyze",
         "namespace": "indices.analyze"
       },
-      "specLocation": "indices/analyze/types.ts#L66-L66",
+      "specLocation": "indices/analyze/types.ts#L69-L69",
       "type": {
         "items": [
           {
@@ -91049,7 +91109,7 @@
         "name": "ShardStoreAllocation",
         "namespace": "indices.shard_stores"
       },
-      "specLocation": "indices/shard_stores/types.ts#L45-L49"
+      "specLocation": "indices/shard_stores/types.ts#L48-L52"
     },
     {
       "kind": "enum",
@@ -91075,7 +91135,7 @@
         "name": "ShardStoreStatus",
         "namespace": "indices.shard_stores"
       },
-      "specLocation": "indices/shard_stores/types.ts#L60-L69"
+      "specLocation": "indices/shard_stores/types.ts#L63-L72"
     },
     {
       "kind": "enum",
@@ -101560,7 +101620,7 @@
         "name": "ConditionOp",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Conditions.ts#L38-L45"
+      "specLocation": "watcher/_types/Conditions.ts#L41-L48"
     },
     {
       "kind": "enum",
@@ -101585,7 +101645,7 @@
         "name": "ConditionType",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Conditions.ts#L61-L67"
+      "specLocation": "watcher/_types/Conditions.ts#L64-L70"
     },
     {
       "kind": "enum",
@@ -101899,7 +101959,7 @@
         "name": "Quantifier",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Conditions.ts#L71-L74"
+      "specLocation": "watcher/_types/Conditions.ts#L74-L77"
     },
     {
       "kind": "enum",
@@ -103250,6 +103310,10 @@
               "kind": "user_defined_value"
             }
           ],
+          "meta": {
+            "description": "Document metadata",
+            "fieldname": "metadata"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -103342,7 +103406,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L321-L330"
+      "specLocation": "_types/common.ts#L320-L333"
     },
     {
       "attachedBehaviors": [
@@ -108268,6 +108332,10 @@
               "kind": "user_defined_value"
             }
           ],
+          "meta": {
+            "description": "Additional settings not covered in this type.",
+            "fieldname": "other_settings"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -109050,7 +109118,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L69-L167"
+      "specLocation": "indices/_types/IndexSettings.ts#L69-L169"
     },
     {
       "kind": "interface",
@@ -109226,7 +109294,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L330-L332"
+      "specLocation": "indices/_types/IndexSettings.ts#L332-L334"
     },
     {
       "kind": "interface",
@@ -109276,7 +109344,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L334-L337"
+      "specLocation": "indices/_types/IndexSettings.ts#L336-L339"
     },
     {
       "kind": "interface",
@@ -109308,7 +109376,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L238-L241"
+      "specLocation": "indices/_types/IndexSettings.ts#L240-L243"
     },
     {
       "kind": "interface",
@@ -109330,7 +109398,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L243-L246"
+      "specLocation": "indices/_types/IndexSettings.ts#L245-L248"
     },
     {
       "kind": "interface",
@@ -109384,7 +109452,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L488-L493"
+      "specLocation": "indices/_types/IndexSettings.ts#L490-L495"
     },
     {
       "kind": "interface",
@@ -109416,7 +109484,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L495-L498"
+      "specLocation": "indices/_types/IndexSettings.ts#L497-L500"
     },
     {
       "kind": "interface",
@@ -109470,7 +109538,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L500-L505"
+      "specLocation": "indices/_types/IndexSettings.ts#L502-L507"
     },
     {
       "kind": "interface",
@@ -109580,7 +109648,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L252-L258"
+      "specLocation": "indices/_types/IndexSettings.ts#L254-L260"
     },
     {
       "kind": "interface",
@@ -109611,7 +109679,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L233-L236"
+      "specLocation": "indices/_types/IndexSettings.ts#L235-L238"
     },
     {
       "kind": "interface",
@@ -109633,7 +109701,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L228-L231"
+      "specLocation": "indices/_types/IndexSettings.ts#L230-L233"
     },
     {
       "kind": "interface",
@@ -109919,7 +109987,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L274-L307"
+      "specLocation": "indices/_types/IndexSettings.ts#L276-L309"
     },
     {
       "kind": "interface",
@@ -109941,7 +110009,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L309-L315"
+      "specLocation": "indices/_types/IndexSettings.ts#L311-L317"
     },
     {
       "kind": "interface",
@@ -109973,7 +110041,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L269-L272"
+      "specLocation": "indices/_types/IndexSettings.ts#L271-L274"
     },
     {
       "kind": "interface",
@@ -110033,7 +110101,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L339-L361"
+      "specLocation": "indices/_types/IndexSettings.ts#L341-L363"
     },
     {
       "kind": "interface",
@@ -110069,7 +110137,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L380-L399"
+      "specLocation": "indices/_types/IndexSettings.ts#L382-L401"
     },
     {
       "kind": "interface",
@@ -110099,7 +110167,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L248-L250"
+      "specLocation": "indices/_types/IndexSettings.ts#L250-L252"
     },
     {
       "kind": "interface",
@@ -110219,7 +110287,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L317-L323"
+      "specLocation": "indices/_types/IndexSettings.ts#L319-L325"
     },
     {
       "kind": "interface",
@@ -110251,7 +110319,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L325-L328"
+      "specLocation": "indices/_types/IndexSettings.ts#L327-L330"
     },
     {
       "kind": "interface",
@@ -110272,7 +110340,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L401-L403"
+      "specLocation": "indices/_types/IndexSettings.ts#L403-L405"
     },
     {
       "kind": "interface",
@@ -110293,7 +110361,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L405-L407"
+      "specLocation": "indices/_types/IndexSettings.ts#L407-L409"
     },
     {
       "description": "Mapping Limit Settings",
@@ -110394,7 +110462,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L409-L422"
+      "specLocation": "indices/_types/IndexSettings.ts#L411-L424"
     },
     {
       "kind": "interface",
@@ -110430,7 +110498,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L424-L441"
+      "specLocation": "indices/_types/IndexSettings.ts#L426-L443"
     },
     {
       "kind": "interface",
@@ -110453,7 +110521,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L443-L450"
+      "specLocation": "indices/_types/IndexSettings.ts#L445-L452"
     },
     {
       "kind": "interface",
@@ -110476,7 +110544,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L452-L460"
+      "specLocation": "indices/_types/IndexSettings.ts#L454-L462"
     },
     {
       "kind": "interface",
@@ -110499,7 +110567,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L462-L469"
+      "specLocation": "indices/_types/IndexSettings.ts#L464-L471"
     },
     {
       "kind": "interface",
@@ -110521,7 +110589,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L471-L478"
+      "specLocation": "indices/_types/IndexSettings.ts#L473-L480"
     },
     {
       "kind": "interface",
@@ -110543,7 +110611,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L480-L486"
+      "specLocation": "indices/_types/IndexSettings.ts#L482-L488"
     },
     {
       "kind": "interface",
@@ -110597,7 +110665,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L561-L566"
+      "specLocation": "indices/_types/IndexSettings.ts#L563-L568"
     },
     {
       "kind": "interface",
@@ -110621,7 +110689,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L568-L575"
+      "specLocation": "indices/_types/IndexSettings.ts#L570-L577"
     },
     {
       "kind": "interface",
@@ -110642,7 +110710,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L548-L550"
+      "specLocation": "indices/_types/IndexSettings.ts#L550-L552"
     },
     {
       "kind": "interface",
@@ -110664,7 +110732,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L552-L559"
+      "specLocation": "indices/_types/IndexSettings.ts#L554-L561"
     },
     {
       "kind": "interface",
@@ -110697,7 +110765,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L507-L516"
+      "specLocation": "indices/_types/IndexSettings.ts#L509-L518"
     },
     {
       "kind": "interface",
@@ -113358,7 +113426,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L58-L64"
+      "specLocation": "_types/Errors.ts#L60-L66"
     },
     {
       "kind": "interface",
@@ -114783,6 +114851,10 @@
               "kind": "user_defined_value"
             }
           ],
+          "meta": {
+            "description": "Additional tokenizer-specific attributes",
+            "fieldname": "attributes"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -114895,7 +114967,7 @@
           }
         }
       ],
-      "specLocation": "indices/analyze/types.ts#L52-L64"
+      "specLocation": "indices/analyze/types.ts#L52-L67"
     },
     {
       "kind": "interface",
@@ -114965,7 +115037,7 @@
           }
         }
       ],
-      "specLocation": "indices/analyze/types.ts#L68-L71"
+      "specLocation": "indices/analyze/types.ts#L71-L74"
     },
     {
       "kind": "interface",
@@ -120749,6 +120821,10 @@
               }
             }
           ],
+          "meta": {
+            "description": "Additional metadata",
+            "fieldname": "metadata"
+          },
           "type": {
             "name": "AdditionalProperties",
             "namespace": "_spec_utils"
@@ -120861,7 +120937,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L57-L85"
+      "specLocation": "ingest/simulate/types.ts#L57-L87"
     },
     {
       "kind": "interface",
@@ -125790,7 +125866,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L332-L359"
+      "specLocation": "_types/common.ts#L335-L362"
     },
     {
       "kind": "interface",
