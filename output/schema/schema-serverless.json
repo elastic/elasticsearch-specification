@@ -8077,26 +8077,26 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "8.10.0",
+          "since": "8.15.0",
           "stability": "stable"
         }
       },
       "description": "Deletes a query rule within a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html",
-      "name": "query_rule.delete",
+      "name": "query_rules.delete_rule",
       "request": {
         "name": "Request",
-        "namespace": "query_rule.delete"
+        "namespace": "query_rules.delete_rule"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "query_rule.delete"
+        "namespace": "query_rules.delete_rule"
       },
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
+      "since": "8.15.0",
       "stability": "stable",
       "urls": [
         {
@@ -8119,96 +8119,17 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the details about a query rule within a query ruleset",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
-      "name": "query_rule.get",
-      "request": {
-        "name": "Request",
-        "namespace": "query_rule.get"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "query_rule.get"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "since": "8.10.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "availability": {
-        "serverless": {
-          "stability": "stable",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.15.0",
-          "stability": "stable"
-        }
-      },
-      "description": "Creates or updates a query rule within a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
-      "name": "query_rule.put",
-      "request": {
-        "name": "Request",
-        "namespace": "query_rule.put"
-      },
-      "requestBodyRequired": true,
-      "requestMediaType": [
-        "application/json"
-      ],
-      "response": {
-        "name": "Response",
-        "namespace": "query_rule.put"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "since": "8.15.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "availability": {
-        "serverless": {
-          "stability": "stable",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.10.0",
-          "stability": "stable"
-        }
-      },
       "description": "Deletes a query ruleset.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html",
-      "name": "query_ruleset.delete",
+      "name": "query_rules.delete_ruleset",
       "request": {
         "name": "Request",
-        "namespace": "query_ruleset.delete"
+        "namespace": "query_rules.delete_ruleset"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "query_ruleset.delete"
+        "namespace": "query_rules.delete_ruleset"
       },
       "responseMediaType": [
         "application/json"
@@ -8232,21 +8153,59 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "8.15.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Returns the details about a query rule within a query ruleset",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html",
+      "name": "query_rules.get_rule",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rules.get_rule"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.get_rule"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "since": "8.15.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "8.10.0",
           "stability": "stable"
         }
       },
       "description": "Returns the details about a query ruleset",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html",
-      "name": "query_ruleset.get",
+      "name": "query_rules.get_ruleset",
       "request": {
         "name": "Request",
-        "namespace": "query_ruleset.get"
+        "namespace": "query_rules.get_ruleset"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "query_ruleset.get"
+        "namespace": "query_rules.get_ruleset"
       },
       "responseMediaType": [
         "application/json"
@@ -8276,15 +8235,15 @@
       },
       "description": "Returns summarized information about existing query rulesets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html",
-      "name": "query_ruleset.list",
+      "name": "query_rules.list_rulesets",
       "request": {
         "name": "Request",
-        "namespace": "query_ruleset.list"
+        "namespace": "query_rules.list_rulesets"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "query_ruleset.list"
+        "namespace": "query_rules.list_rulesets"
       },
       "responseMediaType": [
         "application/json"
@@ -8308,16 +8267,16 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "8.10.0",
+          "since": "8.15.0",
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a query ruleset.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html",
-      "name": "query_ruleset.put",
+      "description": "Creates or updates a query rule within a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html",
+      "name": "query_rules.put_rule",
       "request": {
         "name": "Request",
-        "namespace": "query_ruleset.put"
+        "namespace": "query_rules.put_rule"
       },
       "requestBodyRequired": true,
       "requestMediaType": [
@@ -8325,7 +8284,48 @@
       ],
       "response": {
         "name": "Response",
-        "namespace": "query_ruleset.put"
+        "namespace": "query_rules.put_rule"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "since": "8.15.0",
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "8.10.0",
+          "stability": "stable"
+        }
+      },
+      "description": "Creates or updates a query ruleset.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html",
+      "name": "query_rules.put_ruleset",
+      "request": {
+        "name": "Request",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "query_rules.put_ruleset"
       },
       "responseMediaType": [
         "application/json"
@@ -35498,7 +35498,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "query_rule.delete"
+        "namespace": "query_rules.delete_rule"
       },
       "path": [
         {
@@ -35527,7 +35527,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rule/delete/QueryRuleDeleteRequest.ts#L22-L40"
+      "specLocation": "query_rules/delete_rule/QueryRuleDeleteRequest.ts#L22-L40"
     },
     {
       "body": {
@@ -35543,9 +35543,63 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "query_rule.delete"
+        "namespace": "query_rules.delete_rule"
       },
-      "specLocation": "query_rule/delete/QueryRuleDeleteResponse.ts#L22-L24"
+      "specLocation": "query_rules/delete_rule/QueryRuleDeleteResponse.ts#L22-L24"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Deletes a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.delete_ruleset"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to delete",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/delete_ruleset/QueryRulesetDeleteRequest.ts#L22-L35"
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "_types"
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.delete_ruleset"
+      },
+      "specLocation": "query_rules/delete_ruleset/QueryRulesetDeleteResponse.ts#L22-L24"
     },
     {
       "attachedBehaviors": [
@@ -35564,7 +35618,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "query_rule.get"
+        "namespace": "query_rules.get_rule"
       },
       "path": [
         {
@@ -35593,7 +35647,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rule/get/QueryRuleGetRequest.ts#L22-L40"
+      "specLocation": "query_rules/get_rule/QueryRuleGetRequest.ts#L22-L40"
     },
     {
       "body": {
@@ -35602,180 +35656,16 @@
           "kind": "instance_of",
           "type": {
             "name": "QueryRule",
-            "namespace": "query_ruleset._types"
+            "namespace": "query_rules._types"
           }
         }
       },
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "query_rule.get"
+        "namespace": "query_rules.get_rule"
       },
-      "specLocation": "query_rule/get/QueryRuleGetResponse.ts#L22-L24"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "type",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRuleType",
-                "namespace": "query_ruleset._types"
-              }
-            }
-          },
-          {
-            "name": "criteria",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRuleCriteria",
-                  "namespace": "query_ruleset._types"
-                }
-              }
-            }
-          },
-          {
-            "name": "actions",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRuleActions",
-                "namespace": "query_ruleset._types"
-              }
-            }
-          }
-        ]
-      },
-      "description": "Creates or updates a query rule within a query ruleset.",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "query_rule.put"
-      },
-      "path": [
-        {
-          "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
-          "name": "ruleset_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
-          "name": "rule_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [],
-      "specLocation": "query_rule/put/QueryRulePutRequest.ts#L27-L54"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "result",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Result",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "query_rule.put"
-      },
-      "specLocation": "query_rule/put/QueryRulePutResponse.ts#L22-L26"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "description": "Deletes a query ruleset.",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "query_ruleset.delete"
-      },
-      "path": [
-        {
-          "description": "The unique identifier of the query ruleset to delete",
-          "name": "ruleset_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [],
-      "specLocation": "query_ruleset/delete/QueryRulesetDeleteRequest.ts#L22-L35"
-    },
-    {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
-          }
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "query_ruleset.delete"
-      },
-      "specLocation": "query_ruleset/delete/QueryRulesetDeleteResponse.ts#L22-L24"
+      "specLocation": "query_rules/get_rule/QueryRuleGetResponse.ts#L22-L24"
     },
     {
       "attachedBehaviors": [
@@ -35794,7 +35684,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "query_ruleset.get"
+        "namespace": "query_rules.get_ruleset"
       },
       "path": [
         {
@@ -35811,7 +35701,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_ruleset/get/QueryRulesetGetRequest.ts#L22-L35"
+      "specLocation": "query_rules/get_ruleset/QueryRulesetGetRequest.ts#L22-L35"
     },
     {
       "body": {
@@ -35820,16 +35710,16 @@
           "kind": "instance_of",
           "type": {
             "name": "QueryRuleset",
-            "namespace": "query_ruleset._types"
+            "namespace": "query_rules._types"
           }
         }
       },
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "query_ruleset.get"
+        "namespace": "query_rules.get_ruleset"
       },
-      "specLocation": "query_ruleset/get/QueryRulesetGetResponse.ts#L22-L24"
+      "specLocation": "query_rules/get_ruleset/QueryRulesetGetResponse.ts#L22-L24"
     },
     {
       "attachedBehaviors": [
@@ -35848,7 +35738,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "query_ruleset.list"
+        "namespace": "query_rules.list_rulesets"
       },
       "path": [],
       "query": [
@@ -35877,7 +35767,7 @@
           }
         }
       ],
-      "specLocation": "query_ruleset/list/QueryRulesetListRequest.ts#L22-L39"
+      "specLocation": "query_rules/list_rulesets/QueryRulesetListRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -35903,7 +35793,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "QueryRulesetListItem",
-                  "namespace": "query_ruleset.list"
+                  "namespace": "query_rules.list_rulesets"
                 }
               }
             }
@@ -35913,9 +35803,9 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "query_ruleset.list"
+        "namespace": "query_rules.list_rulesets"
       },
-      "specLocation": "query_ruleset/list/QueryRulesetListResponse.ts#L23-L28"
+      "specLocation": "query_rules/list_rulesets/QueryRulesetListResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -35925,22 +35815,44 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "rules",
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryRuleType",
+                "namespace": "query_rules._types"
+              }
+            }
+          },
+          {
+            "name": "criteria",
             "required": true,
             "type": {
               "kind": "array_of",
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "QueryRule",
-                  "namespace": "query_ruleset._types"
+                  "name": "QueryRuleCriteria",
+                  "namespace": "query_rules._types"
                 }
+              }
+            }
+          },
+          {
+            "name": "actions",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryRuleActions",
+                "namespace": "query_rules._types"
               }
             }
           }
         ]
       },
-      "description": "Creates or updates a query ruleset.",
+      "description": "Creates or updates a query rule within a query ruleset.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35950,12 +35862,24 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "query_ruleset.put"
+        "namespace": "query_rules.put_rule"
       },
       "path": [
         {
-          "description": "The unique identifier of the query ruleset to be created or updated",
+          "description": "The unique identifier of the query ruleset containing the rule to be created or updated",
           "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the query rule within the specified ruleset to be created or updated",
+          "name": "rule_id",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -35967,7 +35891,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_ruleset/put/QueryRulesetPutRequest.ts#L23-L43"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L27-L54"
     },
     {
       "body": {
@@ -35989,9 +35913,85 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "query_ruleset.put"
+        "namespace": "query_rules.put_rule"
       },
-      "specLocation": "query_ruleset/put/QueryRulesetPutResponse.ts#L22-L26"
+      "specLocation": "query_rules/put_rule/QueryRulePutResponse.ts#L22-L26"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "rules",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRule",
+                  "namespace": "query_rules._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "description": "Creates or updates a query ruleset.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "path": [
+        {
+          "description": "The unique identifier of the query ruleset to be created or updated",
+          "name": "ruleset_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutRequest.ts#L23-L43"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "query_rules.put_ruleset"
+      },
+      "specLocation": "query_rules/put_ruleset/QueryRulesetPutResponse.ts#L22-L26"
     },
     {
       "attachedBehaviors": [
@@ -99355,9 +99355,9 @@
       ],
       "name": {
         "name": "QueryRuleCriteriaType",
-        "namespace": "query_ruleset._types"
+        "namespace": "query_rules._types"
       },
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L54-L66"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L66"
     },
     {
       "kind": "enum",
@@ -99368,9 +99368,9 @@
       ],
       "name": {
         "name": "QueryRuleType",
-        "namespace": "query_ruleset._types"
+        "namespace": "query_rules._types"
       },
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L44-L46"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
     },
     {
       "kind": "enum",
@@ -132692,7 +132692,7 @@
       "kind": "interface",
       "name": {
         "name": "QueryRule",
-        "namespace": "query_ruleset._types"
+        "namespace": "query_rules._types"
       },
       "properties": [
         {
@@ -132713,7 +132713,7 @@
             "kind": "instance_of",
             "type": {
               "name": "QueryRuleType",
-              "namespace": "query_ruleset._types"
+              "namespace": "query_rules._types"
             }
           }
         },
@@ -132726,7 +132726,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "QueryRuleCriteria",
-                "namespace": "query_ruleset._types"
+                "namespace": "query_rules._types"
               }
             }
           }
@@ -132738,18 +132738,18 @@
             "kind": "instance_of",
             "type": {
               "name": "QueryRuleActions",
-              "namespace": "query_ruleset._types"
+              "namespace": "query_rules._types"
             }
           }
         }
       ],
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L37-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L37-L42"
     },
     {
       "kind": "interface",
       "name": {
         "name": "QueryRuleCriteria",
-        "namespace": "query_ruleset._types"
+        "namespace": "query_rules._types"
       },
       "properties": [
         {
@@ -132759,7 +132759,7 @@
             "kind": "instance_of",
             "type": {
               "name": "QueryRuleCriteriaType",
-              "namespace": "query_ruleset._types"
+              "namespace": "query_rules._types"
             }
           }
         },
@@ -132785,13 +132785,13 @@
           }
         }
       ],
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L48-L52"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
     },
     {
       "kind": "interface",
       "name": {
         "name": "QueryRuleActions",
-        "namespace": "query_ruleset._types"
+        "namespace": "query_rules._types"
       },
       "properties": [
         {
@@ -132823,13 +132823,13 @@
           }
         }
       ],
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L68-L71"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L68-L71"
     },
     {
       "kind": "interface",
       "name": {
         "name": "QueryRuleset",
-        "namespace": "query_ruleset._types"
+        "namespace": "query_rules._types"
       },
       "properties": [
         {
@@ -132854,19 +132854,19 @@
               "kind": "instance_of",
               "type": {
                 "name": "QueryRule",
-                "namespace": "query_ruleset._types"
+                "namespace": "query_rules._types"
               }
             }
           }
         }
       ],
-      "specLocation": "query_ruleset/_types/QueryRuleset.ts#L26-L35"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L26-L35"
     },
     {
       "kind": "interface",
       "name": {
         "name": "QueryRulesetListItem",
-        "namespace": "query_ruleset.list"
+        "namespace": "query_rules.list_rulesets"
       },
       "properties": [
         {
@@ -132917,7 +132917,7 @@
           }
         }
       ],
-      "specLocation": "query_ruleset/list/types.ts#L23-L37"
+      "specLocation": "query_rules/list_rulesets/types.ts#L23-L37"
     },
     {
       "kind": "interface",
