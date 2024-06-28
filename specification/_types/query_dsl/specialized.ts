@@ -59,6 +59,11 @@ export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
   field: Field
 }
 
+export class UntypedDistanceFeatureQuery extends DistanceFeatureQueryBase<
+  UserDefinedValue,
+  UserDefinedValue
+> {}
+
 export class GeoDistanceFeatureQuery extends DistanceFeatureQueryBase<
   GeoLocation,
   Distance
@@ -69,9 +74,13 @@ export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
   Duration
 > {}
 
-/** @codegen_names geo, date */
+/**
+ * @codegen_names untyped, geo, date
+ * @variants untagged untyped=_types.query_dsl.UntypedDistanceFeatureQuery
+ */
 // Note: deserialization depends on value types
 export type DistanceFeatureQuery =
+  | UntypedDistanceFeatureQuery
   | GeoDistanceFeatureQuery
   | DateDistanceFeatureQuery
 

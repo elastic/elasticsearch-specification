@@ -559,14 +559,14 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       if (typeDef.type.kind !== 'union_of') {
         modelError('The "variants" tag only applies to unions')
       } else {
-        validateTaggedUnion(typeDef.type, typeDef.variants)
+        validateTaggedUnion(typeDef.name, typeDef.type, typeDef.variants)
       }
     } else {
       validateValueOf(typeDef.type, openGenerics)
     }
   }
 
-  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag): void {
+  function validateTaggedUnion (parentName: TypeName, valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged): void {
     if (variants.kind === 'external_tag') {
       // All items must have a 'variant' attribute
       const items = flattenUnionMembers(valueOf)
@@ -610,6 +610,72 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
 
       validateValueOf(valueOf, new Set())
+    } else if (variants.kind === 'untagged') {
+      if (fqn(parentName) !== '_types.query_dsl:DecayFunction' &&
+          fqn(parentName) !== '_types.query_dsl:DistanceFeatureQuery' &&
+          fqn(parentName) !== '_types.query_dsl:RangeQuery') {
+        throw new Error(`Please contact the devtools team before adding new untagged variant ${fqn(parentName)}`)
+      }
+
+      const untypedVariant = getTypeDef(variants.untypedVariant.type)
+      if (untypedVariant == null) {
+        modelError(`Type ${fqn(variants.untypedVariant.type)} not found`)
+      }
+
+      const items = flattenUnionMembers(valueOf)
+      const baseTypes = new Set<string>()
+      let foundUntyped = false
+
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          modelError('Items of type untagged unions must be type references')
+        } else {
+          validateTypeRef(item.type, undefined, new Set<string>())
+          const type = getTypeDef(item.type)
+          if (type == null) {
+            modelError(`Type ${fqn(item.type)} not found`)
+          } else {
+            if (type.kind !== 'interface') {
+              modelError(`Type ${fqn(item.type)} must be an interface to be used in an untagged union`)
+              continue
+            }
+
+            if (untypedVariant != null && fqn(item.type) === fqn(untypedVariant.name)) {
+              foundUntyped = true
+            }
+
+            if (type.inherits == null) {
+              modelError(`Type ${fqn(item.type)} must derive from a base type to be used in an untagged union`)
+              continue
+            }
+
+            baseTypes.add(fqn(type.inherits.type))
+
+            const baseType = getTypeDef(type.inherits.type)
+            if (baseType == null) {
+              modelError(`Type ${fqn(type.inherits.type)} not found`)
+              continue
+            }
+
+            if (baseType.kind !== 'interface') {
+              modelError(`Type ${fqn(type.inherits.type)} must be an interface to be used as the base class of another interface`)
+              continue
+            }
+
+            if (baseType.generics == null || baseType.generics.length === 0) {
+              modelError('The common base type of an untagged union must accept at least one generic type argument')
+            }
+          }
+        }
+      }
+
+      if (baseTypes.size !== 1) {
+        modelError('All items of an untagged union must derive from the same common base type')
+      }
+
+      if (!foundUntyped) {
+        modelError('The untyped variant of an untagged variant must be contained in the union items')
+      }
     }
   }
 

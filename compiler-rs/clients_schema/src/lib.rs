@@ -380,6 +380,7 @@ pub enum ServerDefault {
 pub enum Variants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
+    Untagged(Untagged),
     Container(Container),
 }
 
@@ -402,6 +403,13 @@ pub struct InternalTag {
     /// Default value for the variant tag if it's missing
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default_tag: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Untagged {
+    #[serde(default)]
+    pub non_exhaustive: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -799,6 +807,7 @@ impl TypeAlias {
 pub enum TypeAliasVariants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
+    Untagged(Untagged),
 }
 
 //------------------------------------------------------------------------------------------------------------

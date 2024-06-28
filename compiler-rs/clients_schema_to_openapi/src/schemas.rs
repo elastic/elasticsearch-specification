@@ -395,6 +395,8 @@ impl<'a> TypesAndComponents<'a> {
                     extensions: Default::default(),
                 });
             }
+            Some(TypeAliasVariants::Untagged(_tag)) => {
+            }
         };
 
         Ok(schema)

@@ -536,8 +536,8 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     if (variants != null) {
       assert(
         declaration.getJsDocs(),
-        variants.kind === 'internal_tag' || variants.kind === 'external_tag',
-        'Type Aliases can only have internal or external variants'
+        variants.kind === 'internal_tag' || variants.kind === 'external_tag' || variants.kind === 'untagged',
+        'Type Aliases can only have internal, external or untagged variants'
       )
       typeAlias.variants = variants
     }
@@ -1110,17 +1110,34 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     }
   }
 
-  assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-
-  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
-  assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
-
-  return {
-    kind: 'internal_tag',
-    nonExhaustive: nonExhaustive,
-    tag: pairs.tag,
-    defaultTag: pairs.default
+  if (type === 'internal') {
+    const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+    assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
+    return {
+      kind: 'internal_tag',
+      nonExhaustive: nonExhaustive,
+      tag: pairs.tag,
+      defaultTag: pairs.default
+    }
   }
+
+  if (type === 'untagged') {
+    const pairs = parseKeyValues(jsDoc, values, 'untyped')
+    assert(jsDoc, typeof pairs.untyped === 'string', 'Untagged variant requires an untyped definition')
+    const fqn = pairs.untyped.split('.')
+    return {
+      kind: 'untagged',
+      nonExhaustive: nonExhaustive,
+      untypedVariant: {
+        type: {
+          namespace: fqn.slice(0, fqn.length - 1).join('.'),
+          name: fqn[fqn.length - 1]
+        }
+      }
+    }
+  }
+
+  assert(jsDoc, false, `Bad variant type: ${type}`)
 }
 
 /**

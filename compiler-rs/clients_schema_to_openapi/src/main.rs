@@ -16,6 +16,7 @@
 // under the License.
 
 use std::path::{Path, PathBuf};
+use anyhow::bail;
 
 use clap::{Parser, ValueEnum};
 use clients_schema::{Availabilities, Visibility};
@@ -71,7 +72,10 @@ impl Cli {
             std::fs::read_to_string(self.schema)?
         };
 
-        let mut model: clients_schema::IndexedModel = serde_json::from_str(&json)?;
+        let mut model: clients_schema::IndexedModel = match serde_json::from_str(&json) {
+            Ok(indexed_model) => indexed_model,
+            Err(e) => bail!("cannot parse schema json: {}", e)
+        };
 
         if let Some(flavor) = self.flavor {
             if flavor != SchemaFlavor::All {
