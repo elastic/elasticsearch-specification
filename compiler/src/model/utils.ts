@@ -414,14 +414,40 @@ export function modelImplements (node: ExpressionWithTypeArguments): model.Inher
  * A class could have multiple behaviors from multiple classes,
  * which are defined inside the node typeArguments.
  */
-export function modelBehaviors (node: ExpressionWithTypeArguments): model.Inherits {
+export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc[]): model.Behavior {
+  const behaviorName = node.getExpression().getText()
   const generics = node.getTypeArguments().map(node => modelType(node))
+
+  let meta: Map<string, string> | undefined
+  const tags = parseJsDocTagsAllowDuplicates(jsDocs)
+  if (tags.behavior_meta !== undefined) {
+    // Extracts whitespace/comma-separated key-value-pairs with a "=" delimiter and handles double-quotes
+    const re = /(?<key>[^=\s,]+)=(?<value>"([^"]*)"|([^\s,]+))/g
+
+    for (const tag of tags.behavior_meta) {
+      const id = tag.split(' ')
+      if (id[0].trim() !== behaviorName) {
+        continue
+      }
+      const matches = [...id.slice(1).join(' ').matchAll(re)]
+      meta = new Map<string, string>()
+      for (const match of matches) {
+        if (match.groups == null) {
+          continue
+        }
+        meta.set(match.groups.key, match.groups.value.replace(/^"(.+(?="$))"$/, '$1'))
+      }
+      break
+    }
+  }
+
   return {
     type: {
-      name: node.getExpression().getText(),
+      name: behaviorName,
       namespace: getNameSpace(node)
     },
-    ...(generics.length > 0 && { generics })
+    ...(generics.length > 0 && { generics }),
+    meta: (meta === undefined) ? undefined : Object.fromEntries(meta)
   }
 }
 
@@ -579,7 +605,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   )
 
   for (const tag of validTags) {
-    if (tag === 'behavior') continue
+    if (tag === 'behavior' || tag === 'behavior_meta') continue
     if (tags[tag] !== undefined) {
       setter(tags, tag, tags[tag])
     }
@@ -700,7 +726,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
   const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property',
-    'codegen_names', 'non_exhaustive', 'es_quirk']
+    'codegen_names', 'non_exhaustive', 'es_quirk', 'behavior_meta']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()

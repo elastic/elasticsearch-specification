@@ -251,6 +251,9 @@ export class TermQuery extends QueryBase {
   case_insensitive?: boolean
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=term
+ */
 export class TermsQuery
   extends QueryBase
   implements AdditionalProperty<Field, TermsQueryField> {}
