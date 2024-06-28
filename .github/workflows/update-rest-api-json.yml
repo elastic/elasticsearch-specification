@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         branch: ['main', '8.13', '8.14', '7.17']
 
