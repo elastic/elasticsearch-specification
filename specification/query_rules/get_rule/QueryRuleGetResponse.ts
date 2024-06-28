@@ -16,20 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
-/**
- * Returns the details about a query ruleset
- * @rest_spec_name query_ruleset.get
- * @availability stack since=8.10.0 stability=stable
- * @availability serverless stability=stable visibility=public
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    /**
-     * The unique identifier of the query ruleset
-     */
-    ruleset_id: Id
-  }
+import { QueryRule } from '../_types/QueryRuleset'
+
+export class Response {
+  body: QueryRule
 }

@@ -17,23 +17,24 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { Id } from '@_types/common'
 
 /**
- * Returns summarized information about existing query rulesets.
- * @rest_spec_name query_ruleset.list
- * @availability stack since=8.10.0 stability=stable
+ * Deletes a query rule within a query ruleset.
+ * @rest_spec_name query_rules.delete_rule
+ * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
-  query_parameters: {
+  path_parts: {
     /**
-     * Starting offset (default: 0)
+     * The unique identifier of the query ruleset containing the rule to delete
      */
-    from?: integer
+    ruleset_id: Id
+
     /**
-     * specifies a max number of results to get
+     * The unique identifier of the query rule within the specified ruleset to delete
      */
-    size?: integer
+    rule_id: Id
   }
 }

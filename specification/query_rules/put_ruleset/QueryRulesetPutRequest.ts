@@ -16,9 +16,28 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { QueryRule } from '../_types/QueryRuleset'
 
-import { QueryRule } from '../../query_ruleset/_types/QueryRuleset'
-
-export class Response {
-  body: QueryRule
+/**
+ * Creates or updates a query ruleset.
+ * @rest_spec_name query_rules.put_ruleset
+ * @availability stack since=8.10.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    /**
+     * The unique identifier of the query ruleset to be created or updated
+     */
+    ruleset_id: Id
+  }
+  /**
+   * The query rules in this ruleset
+   */
+  /** @codegen_name query_ruleset */
+  body: {
+    rules: QueryRule[]
+  }
 }

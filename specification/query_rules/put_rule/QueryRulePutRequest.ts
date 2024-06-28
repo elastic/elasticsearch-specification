@@ -18,23 +18,37 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import {
+  QueryRuleType,
+  QueryRuleCriteria,
+  QueryRuleActions
+} from '../_types/QueryRuleset'
 
 /**
- * Returns the details about a query rule within a query ruleset
- * @rest_spec_name query_rule.get
- * @availability stack since=8.10.0 stability=stable
+ * Creates or updates a query rule within a query ruleset.
+ * @rest_spec_name query_rules.put_rule
+ * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier of the query ruleset containing the rule to retrieve
+     * The unique identifier of the query ruleset containing the rule to be created or updated
      */
     ruleset_id: Id
 
     /**
-     * The unique identifier of the query rule within the specified ruleset to retrieve
+     * The unique identifier of the query rule within the specified ruleset to be created or updated
      */
     rule_id: Id
+  }
+  /**
+   * The query rule information
+   */
+  /** @codegen_name query_rule */
+  body: {
+    type: QueryRuleType
+    criteria: QueryRuleCriteria[]
+    actions: QueryRuleActions
   }
 }

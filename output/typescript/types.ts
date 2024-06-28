@@ -16361,97 +16361,97 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
-export interface QueryRuleDeleteRequest extends RequestBase {
-  ruleset_id: Id
+export interface QueryRulesQueryRule {
   rule_id: Id
+  type: QueryRulesQueryRuleType
+  criteria: QueryRulesQueryRuleCriteria[]
+  actions: QueryRulesQueryRuleActions
 }
 
-export type QueryRuleDeleteResponse = AcknowledgedResponseBase
-
-export interface QueryRuleGetRequest extends RequestBase {
-  ruleset_id: Id
-  rule_id: Id
-}
-
-export type QueryRuleGetResponse = QueryRulesetQueryRule
-
-export interface QueryRulePutRequest extends RequestBase {
-  ruleset_id: Id
-  rule_id: Id
-  body?: {
-    type: QueryRulesetQueryRuleType
-    criteria: QueryRulesetQueryRuleCriteria[]
-    actions: QueryRulesetQueryRuleActions
-  }
-}
-
-export interface QueryRulePutResponse {
-  result: Result
-}
-
-export interface QueryRulesetQueryRule {
-  rule_id: Id
-  type: QueryRulesetQueryRuleType
-  criteria: QueryRulesetQueryRuleCriteria[]
-  actions: QueryRulesetQueryRuleActions
-}
-
-export interface QueryRulesetQueryRuleActions {
+export interface QueryRulesQueryRuleActions {
   ids?: Id[]
   docs?: QueryDslPinnedDoc[]
 }
 
-export interface QueryRulesetQueryRuleCriteria {
-  type: QueryRulesetQueryRuleCriteriaType
+export interface QueryRulesQueryRuleCriteria {
+  type: QueryRulesQueryRuleCriteriaType
   metadata?: string
   values?: any[]
 }
 
-export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
-export type QueryRulesetQueryRuleType = 'pinned'
+export type QueryRulesQueryRuleType = 'pinned'
 
-export interface QueryRulesetQueryRuleset {
+export interface QueryRulesQueryRuleset {
   ruleset_id: Id
-  rules: QueryRulesetQueryRule[]
+  rules: QueryRulesQueryRule[]
 }
 
-export interface QueryRulesetDeleteRequest extends RequestBase {
+export interface QueryRulesDeleteRuleRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRulesDeleteRuleResponse = AcknowledgedResponseBase
+
+export interface QueryRulesDeleteRulesetRequest extends RequestBase {
   ruleset_id: Id
 }
 
-export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
+export type QueryRulesDeleteRulesetResponse = AcknowledgedResponseBase
 
-export interface QueryRulesetGetRequest extends RequestBase {
+export interface QueryRulesGetRuleRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRulesGetRuleResponse = QueryRulesQueryRule
+
+export interface QueryRulesGetRulesetRequest extends RequestBase {
   ruleset_id: Id
 }
 
-export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
+export type QueryRulesGetRulesetResponse = QueryRulesQueryRuleset
 
-export interface QueryRulesetListQueryRulesetListItem {
+export interface QueryRulesListRulesetsQueryRulesetListItem {
   ruleset_id: Id
   rule_total_count: integer
   rule_criteria_types_counts: Record<string, string>
 }
 
-export interface QueryRulesetListRequest extends RequestBase {
+export interface QueryRulesListRulesetsRequest extends RequestBase {
   from?: integer
   size?: integer
 }
 
-export interface QueryRulesetListResponse {
+export interface QueryRulesListRulesetsResponse {
   count: long
-  results: QueryRulesetListQueryRulesetListItem[]
+  results: QueryRulesListRulesetsQueryRulesetListItem[]
 }
 
-export interface QueryRulesetPutRequest extends RequestBase {
+export interface QueryRulesPutRuleRequest extends RequestBase {
   ruleset_id: Id
+  rule_id: Id
   body?: {
-    rules: QueryRulesetQueryRule[]
+    type: QueryRulesQueryRuleType
+    criteria: QueryRulesQueryRuleCriteria[]
+    actions: QueryRulesQueryRuleActions
   }
 }
 
-export interface QueryRulesetPutResponse {
+export interface QueryRulesPutRuleResponse {
+  result: Result
+}
+
+export interface QueryRulesPutRulesetRequest extends RequestBase {
+  ruleset_id: Id
+  body?: {
+    rules: QueryRulesQueryRule[]
+  }
+}
+
+export interface QueryRulesPutRulesetResponse {
   result: Result
 }
 
