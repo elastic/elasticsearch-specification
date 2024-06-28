@@ -1110,24 +1110,34 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     }
   }
 
-  if (type === 'untagged') {
+  if (type === 'internal') {
+    const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+    assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
     return {
-      kind: 'untagged',
-      nonExhaustive: nonExhaustive
+      kind: 'internal_tag',
+      nonExhaustive: nonExhaustive,
+      tag: pairs.tag,
+      defaultTag: pairs.default
     }
   }
 
-  assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-
-  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
-  assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
-
-  return {
-    kind: 'internal_tag',
-    nonExhaustive: nonExhaustive,
-    tag: pairs.tag,
-    defaultTag: pairs.default
+  if (type === 'untagged') {
+    const pairs = parseKeyValues(jsDoc, values, 'untyped')
+    assert(jsDoc, typeof pairs.untyped === 'string', 'Untagged variant requires an untyped definition')
+    const fqn = pairs.untyped.split('.')
+    return {
+      kind: 'untagged',
+      nonExhaustive: nonExhaustive,
+      untypedVariant: {
+        type: {
+          namespace: fqn.slice(0, fqn.length - 1).join('.'),
+          name: fqn[fqn.length - 1]
+        }
+      }
+    }
   }
+
+  assert(jsDoc, false, `Bad variant type: ${type}`)
 }
 
 /**

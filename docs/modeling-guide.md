@@ -455,16 +455,17 @@ For example:
 ```ts
 export class MyTypeBase<T1, T2, ...> { ... }
 
+export class MyTypeUntyped extends MyTypeBase<UserDefinedValue> {}
 export class MyTypeSpecialized1 extends MyTypeBase<int> {}
 export class MyTypeSpecialized2 extends MyTypeBase<string> {}
 export class MyTypeSpecialized3 extends MyTypeBase<bool> {}
 
 /**
- * @codegen_names mytype1, mytypet2, mytype3 
- * @variant untagged
+ * @codegen_names untyped, mytype1, mytypet2, mytype3 
+ * @variant untagged untyped=_types.MyTypeUntyped
  */
 // Note: deserialization depends on value types
-export type MyType = MyTypeSpecialized1 | MyTypeSpecialized2 | MyTypeSpecialized3 
+export type MyType = MyTypeUntyped | MyTypeSpecialized1 | MyTypeSpecialized2 | MyTypeSpecialized3 
 ```
 
 ### Shortcut properties

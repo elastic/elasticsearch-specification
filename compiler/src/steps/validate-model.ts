@@ -559,14 +559,14 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       if (typeDef.type.kind !== 'union_of') {
         modelError('The "variants" tag only applies to unions')
       } else {
-        validateTaggedUnion(typeDef.type, typeDef.variants)
+        validateTaggedUnion(typeDef.name, typeDef.type, typeDef.variants)
       }
     } else {
       validateValueOf(typeDef.type, openGenerics)
     }
   }
 
-  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged): void {
+  function validateTaggedUnion (parentName: TypeName, valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged): void {
     if (variants.kind === 'external_tag') {
       // All items must have a 'variant' attribute
       const items = flattenUnionMembers(valueOf)
@@ -611,9 +611,20 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
       validateValueOf(valueOf, new Set())
     } else if (variants.kind === 'untagged') {
-      const items = flattenUnionMembers(valueOf)
+      if (fqn(parentName) !== '_types.query_dsl:DecayFunction' &&
+          fqn(parentName) !== '_types.query_dsl:DistanceFeatureQuery' &&
+          fqn(parentName) !== '_types.query_dsl:RangeQuery') {
+        throw new Error(`Please contact the devtools team before adding new untagged variant ${fqn(parentName)}`)
+      }
 
+      const untypedVariant = getTypeDef(variants.untypedVariant.type)
+      if (untypedVariant == null) {
+        modelError(`Type ${fqn(variants.untypedVariant.type)} not found`)
+      }
+
+      const items = flattenUnionMembers(valueOf)
       const baseTypes = new Set<string>()
+      let foundUntyped = false
 
       for (const item of items) {
         if (item.kind !== 'instance_of') {
@@ -627,6 +638,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
             if (type.kind !== 'interface') {
               modelError(`Type ${fqn(item.type)} must be an interface to be used in an untagged union`)
               continue
+            }
+
+            if (untypedVariant != null && fqn(item.type) === fqn(untypedVariant.name)) {
+              foundUntyped = true
             }
 
             if (type.inherits == null) {
@@ -656,6 +671,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
       if (baseTypes.size !== 1) {
         modelError('All items of an untagged union must derive from the same common base type')
+      }
+
+      if (!foundUntyped) {
+        modelError('The untyped variant of an untagged variant must be contained in the union items')
       }
     }
   }

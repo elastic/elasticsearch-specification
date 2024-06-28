@@ -209,6 +209,7 @@ export class Container extends VariantBase {
 
 export class Untagged extends VariantBase {
   kind: 'untagged'
+  untypedVariant: Inherits
 }
 
 /**

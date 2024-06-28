@@ -32,6 +32,7 @@ import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
 import { QueryBase } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ExistsQuery extends QueryBase {
   /**
@@ -129,6 +130,9 @@ export class RangeQueryBase<T> extends QueryBase {
   lte?: T
   from?: T | null
   to?: T | null
+}
+
+export class UntypedRangeQuery extends RangeQueryBase<UserDefinedValue> {
   /**
    * Date format used to convert `date` values in the query.
    */
@@ -139,18 +143,31 @@ export class RangeQueryBase<T> extends QueryBase {
   time_zone?: TimeZone
 }
 
-export class DateRangeQuery extends RangeQueryBase<DateMath> {}
+export class DateRangeQuery extends RangeQueryBase<DateMath> {
+  /**
+   * Date format used to convert `date` values in the query.
+   */
+  format?: DateFormat
+  /**
+   *  Coordinated Universal Time (UTC) offset or IANA time zone used to convert `date` values in the query to UTC.
+   */
+  time_zone?: TimeZone
+}
 
 export class NumberRangeQuery extends RangeQueryBase<double> {}
 
 export class TermRangeQuery extends RangeQueryBase<string> {}
 
 /**
- * @codegen_names date, number, term
- * @variants untagged
+ * @codegen_names untyped, date, number, term
+ * @variants untagged untyped=_types.query_dsl.UntypedRangeQuery
  */
 // Note: deserialization depends on value types
-export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermRangeQuery
+export type RangeQuery =
+  | UntypedRangeQuery
+  | DateRangeQuery
+  | NumberRangeQuery
+  | TermRangeQuery
 
 export enum RangeRelation {
   /**
