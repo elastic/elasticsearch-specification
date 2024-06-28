@@ -30,7 +30,7 @@ export class Response {
 }
 
 /**
- * @behavior_meta AdditionalProperties name=stats description="Per index statistics"
+ * @behavior_meta AdditionalProperties fieldname=stats description="Per index statistics"
  */
 export class FieldsUsageBody
   implements AdditionalProperties<IndexName, UsageStatsIndex>

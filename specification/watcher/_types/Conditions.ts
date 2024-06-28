@@ -30,7 +30,7 @@ export class ArrayCompareOpParams {
 }
 
 /**
- * @behavior_meta AdditionalProperty name=operator value=params
+ * @behavior_meta AdditionalProperty key=operator value=params
  */
 export class ArrayCompareCondition
   implements AdditionalProperty<ConditionOp, ArrayCompareOpParams>

@@ -644,11 +644,11 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       for (const parent of typeDef.behaviors) {
         validateTypeRef(parent.type, parent.generics, openGenerics)
 
-        if (parent.type.name === 'AdditionalProperty' && (parent.meta == null || parent.meta.name == null || parent.meta.value == null)) {
-          modelError(`AdditionalProperty behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with at least 2 arguments (name of name, name of value, description)`)
+        if (parent.type.name === 'AdditionalProperty' && (parent.meta == null || parent.meta.key == null || parent.meta.value == null)) {
+          modelError(`AdditionalProperty behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with at least 2 arguments (key, value)`)
         }
-        if (parent.type.name === 'AdditionalProperties' && (parent.meta == null || parent.meta.name == null || parent.meta.description == null)) {
-          modelError(`AdditionalProperties behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with exactly 2 arguments (name, description)`)
+        if (parent.type.name === 'AdditionalProperties' && (parent.meta == null || parent.meta.fieldname == null || parent.meta.description == null)) {
+          modelError(`AdditionalProperties behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with exactly 2 arguments (fieldname, description)`)
         }
       }
       context.pop()

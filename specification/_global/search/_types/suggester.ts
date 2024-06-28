@@ -99,7 +99,7 @@ export class TermSuggestOption {
 }
 
 /**
- * @behavior_meta AdditionalProperties name=suggesters description="The named suggesters"
+ * @behavior_meta AdditionalProperties fieldname=suggesters description="The named suggesters"
  */
 export class Suggester implements AdditionalProperties<string, FieldSuggester> {
   /** Global suggest text, to avoid repetition when the same text is used in several suggesters */

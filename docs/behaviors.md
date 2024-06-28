@@ -16,7 +16,7 @@ We therefore document the requirement to behave like a dictionary for unknown pr
 
 ```ts
 /**
- * @behavior_meta AdditionalProperties name=sub_aggregations
+ * @behavior_meta AdditionalProperties fieldname=sub_aggregations
  */
 class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
 ```
@@ -25,7 +25,7 @@ There are also many places where we expect only one runtime-defined property, su
 
 ```ts
 /**
- * @behavior_meta AdditionalProperty name=field value=bounding_box
+ * @behavior_meta AdditionalProperty key=field value=bounding_box
  */
 class GeoBoundingBoxQuery extends QueryBase
   implements AdditionalProperty<Field, BoundingBox>

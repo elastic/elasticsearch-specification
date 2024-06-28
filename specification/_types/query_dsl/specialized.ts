@@ -340,7 +340,7 @@ export class ScriptScoreQuery extends QueryBase {
 }
 
 /**
- * @behavior_meta AdditionalProperty name=field value=shape
+ * @behavior_meta AdditionalProperty key=field value=shape
  */
 // Shape query doesn't follow the common pattern of having a single field-name property
 // holding also the query base fields (boost and _name)
