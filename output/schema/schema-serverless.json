@@ -2638,13 +2638,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "experimental",
-          "visibility": "public"
-        },
+        "serverless": {},
         "stack": {
-          "since": "8.11.0",
-          "stability": "experimental"
+          "since": "8.11.0"
         }
       },
       "description": "Executes an ES|QL request",
@@ -2667,7 +2663,7 @@
         "application/json"
       ],
       "since": "8.11.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
