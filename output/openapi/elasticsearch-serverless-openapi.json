@@ -35138,14 +35138,14 @@
       "_types.query_dsl:UntypedDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseField"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBase"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseField": {
+      "_types.query_dsl:DecayFunctionBase": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -35165,14 +35165,14 @@
       "_types.query_dsl:DateDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseFieldDecayPlacementDateMathDuration"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDecayPlacementDateMathDuration"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseFieldDecayPlacementDateMathDuration": {
+      "_types.query_dsl:DecayFunctionBaseDecayPlacementDateMathDuration": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -35183,14 +35183,14 @@
       "_types.query_dsl:NumericDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseFieldDecayPlacementdoubledouble"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDecayPlacementdoubledouble"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseFieldDecayPlacementdoubledouble": {
+      "_types.query_dsl:DecayFunctionBaseDecayPlacementdoubledouble": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -35201,14 +35201,14 @@
       "_types.query_dsl:GeoDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseFieldDecayPlacementGeoLocationDistance"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDecayPlacementGeoLocationDistance"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseFieldDecayPlacementGeoLocationDistance": {
+      "_types.query_dsl:DecayFunctionBaseDecayPlacementGeoLocationDistance": {
         "type": "object",
         "properties": {
           "multi_value_mode": {

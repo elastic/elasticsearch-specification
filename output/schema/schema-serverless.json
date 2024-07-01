@@ -49902,7 +49902,7 @@
         "name": "FunctionBoostMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L285-L311"
+      "specLocation": "_types/query_dsl/compound.ts#L279-L305"
     },
     {
       "esQuirk": "this container is valid without a variant. Despite being documented as a function, 'weight'\nis actually a container property that can be combined with a function. Comment in the ES code\n(SearchModule#registerScoreFunctions) says: Weight doesn't have its own parser, so every function\nsupports it out of the box. Can be a single function too when not associated to any other function,\nwhich is why it needs to be registered manually here.",
@@ -50009,7 +50009,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L216-L256",
+      "specLocation": "_types/query_dsl/compound.ts#L210-L250",
       "variants": {
         "kind": "container"
       }
@@ -50026,7 +50026,7 @@
         "name": "DecayFunction",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L205-L214",
+      "specLocation": "_types/query_dsl/compound.ts#L199-L208",
       "type": {
         "items": [
           {
@@ -50075,13 +50075,6 @@
       "inherits": {
         "generics": [
           {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          },
-          {
             "kind": "user_defined_value"
           }
         ],
@@ -50096,7 +50089,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L188-L191"
+      "specLocation": "_types/query_dsl/compound.ts#L188-L188"
     },
     {
       "attachedBehaviors": [
@@ -50108,14 +50101,14 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "TOrigin",
-                "namespace": "_types.query_dsl.DecayFunctionBase"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
               "kind": "instance_of",
               "type": {
-                "name": "TScale",
+                "name": "TPlacement",
                 "namespace": "_types.query_dsl.DecayFunctionBase"
               }
             }
@@ -50132,11 +50125,7 @@
       ],
       "generics": [
         {
-          "name": "TOrigin",
-          "namespace": "_types.query_dsl.DecayFunctionBase"
-        },
-        {
-          "name": "TScale",
+          "name": "TPlacement",
           "namespace": "_types.query_dsl.DecayFunctionBase"
         }
       ],
@@ -50206,7 +50195,7 @@
         "name": "MultiValueMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L358-L375"
+      "specLocation": "_types/query_dsl/compound.ts#L352-L369"
     },
     {
       "attachedBehaviors": [
@@ -50214,13 +50203,6 @@
       ],
       "inherits": {
         "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          },
           {
             "generics": [
               {
@@ -50256,7 +50238,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L196-L199"
+      "specLocation": "_types/query_dsl/compound.ts#L192-L194"
     },
     {
       "attachedBehaviors": [
@@ -50264,13 +50246,6 @@
       ],
       "inherits": {
         "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          },
           {
             "generics": [
               {
@@ -50306,7 +50281,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L192-L195"
+      "specLocation": "_types/query_dsl/compound.ts#L189-L191"
     },
     {
       "attachedBehaviors": [
@@ -50314,13 +50289,6 @@
       ],
       "inherits": {
         "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          },
           {
             "generics": [
               {
@@ -50356,7 +50324,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L200-L203"
+      "specLocation": "_types/query_dsl/compound.ts#L195-L197"
     },
     {
       "kind": "interface",
@@ -50465,7 +50433,7 @@
         "name": "FieldValueFactorModifier",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L313-L356"
+      "specLocation": "_types/query_dsl/compound.ts#L307-L350"
     },
     {
       "kind": "interface",
@@ -50744,7 +50712,7 @@
         "name": "FunctionScoreMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L258-L283"
+      "specLocation": "_types/query_dsl/compound.ts#L252-L277"
     },
     {
       "inherits": {
