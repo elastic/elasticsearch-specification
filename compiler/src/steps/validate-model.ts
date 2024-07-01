@@ -617,9 +617,9 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         throw new Error(`Please contact the devtools team before adding new untagged variant ${fqn(parentName)}`)
       }
 
-      const untypedVariant = getTypeDef(variants.untypedVariant.type)
+      const untypedVariant = getTypeDef(variants.untypedVariant)
       if (untypedVariant == null) {
-        modelError(`Type ${fqn(variants.untypedVariant.type)} not found`)
+        modelError(`Type ${fqn(variants.untypedVariant)} not found`)
       }
 
       const items = flattenUnionMembers(valueOf)
