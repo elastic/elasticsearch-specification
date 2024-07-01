@@ -50076,6 +50076,9 @@
         "generics": [
           {
             "kind": "user_defined_value"
+          },
+          {
+            "kind": "user_defined_value"
           }
         ],
         "type": {
@@ -50089,7 +50092,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L188-L188"
+      "specLocation": "_types/query_dsl/compound.ts#L188-L191"
     },
     {
       "attachedBehaviors": [
@@ -50106,10 +50109,26 @@
               }
             },
             {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TScale",
+                    "namespace": "_types.query_dsl.DecayFunctionBase"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TOrigin",
+                    "namespace": "_types.query_dsl.DecayFunctionBase"
+                  }
+                }
+              ],
               "kind": "instance_of",
               "type": {
-                "name": "TPlacement",
-                "namespace": "_types.query_dsl.DecayFunctionBase"
+                "name": "DecayPlacement",
+                "namespace": "_types.query_dsl"
               }
             }
           ],
@@ -50125,7 +50144,11 @@
       ],
       "generics": [
         {
-          "name": "TPlacement",
+          "name": "TScale",
+          "namespace": "_types.query_dsl.DecayFunctionBase"
+        },
+        {
+          "name": "TOrigin",
           "namespace": "_types.query_dsl.DecayFunctionBase"
         }
       ],
@@ -50172,6 +50195,76 @@
       "specLocation": "_spec_utils/behaviors.ts#L39-L48"
     },
     {
+      "generics": [
+        {
+          "name": "TOrigin",
+          "namespace": "_types.query_dsl.DecayPlacement"
+        },
+        {
+          "name": "TScale",
+          "namespace": "_types.query_dsl.DecayPlacement"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "DecayPlacement",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Defines how documents are scored at the distance given at scale.",
+          "name": "decay",
+          "required": false,
+          "serverDefault": 0.5,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If defined, the decay function will only compute the decay function for documents with a distance greater than the defined `offset`.",
+          "name": "offset",
+          "required": false,
+          "serverDefault": "0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TScale",
+              "namespace": "_types.query_dsl.DecayPlacement"
+            }
+          }
+        },
+        {
+          "description": "Defines the distance from origin + offset at which the computed score will equal `decay` parameter.",
+          "name": "scale",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TScale",
+              "namespace": "_types.query_dsl.DecayPlacement"
+            }
+          }
+        },
+        {
+          "description": "The point of origin used for calculating distance. Must be given as a number for numeric field, date for date fields and geo point for geo fields.",
+          "name": "origin",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TOrigin",
+              "namespace": "_types.query_dsl.DecayPlacement"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/compound.ts#L154-L173"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -50204,26 +50297,17 @@
       "inherits": {
         "generics": [
           {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Duration",
-                  "namespace": "_types"
-                }
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "DecayPlacement",
-              "namespace": "_types.query_dsl"
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
             }
           }
         ],
@@ -50238,7 +50322,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L192-L194"
+      "specLocation": "_types/query_dsl/compound.ts#L193-L193"
     },
     {
       "attachedBehaviors": [
@@ -50247,26 +50331,17 @@
       "inherits": {
         "generics": [
           {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "DecayPlacement",
-              "namespace": "_types.query_dsl"
+              "name": "double",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
             }
           }
         ],
@@ -50281,7 +50356,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L189-L191"
+      "specLocation": "_types/query_dsl/compound.ts#L192-L192"
     },
     {
       "attachedBehaviors": [
@@ -50290,26 +50365,17 @@
       "inherits": {
         "generics": [
           {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GeoLocation",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Distance",
-                  "namespace": "_types"
-                }
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "DecayPlacement",
-              "namespace": "_types.query_dsl"
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Distance",
+              "namespace": "_types"
             }
           }
         ],
@@ -50324,7 +50390,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L195-L197"
+      "specLocation": "_types/query_dsl/compound.ts#L194-L197"
     },
     {
       "kind": "interface",
