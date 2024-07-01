@@ -57844,14 +57844,14 @@
       "_types.query_dsl:DateDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDecayPlacementDateMathDuration"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDateMathDuration"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseDecayPlacementDateMathDuration": {
+      "_types.query_dsl:DecayFunctionBaseDateMathDuration": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -57862,14 +57862,14 @@
       "_types.query_dsl:NumericDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDecayPlacementdoubledouble"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBasedoubledouble"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseDecayPlacementdoubledouble": {
+      "_types.query_dsl:DecayFunctionBasedoubledouble": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -57880,14 +57880,14 @@
       "_types.query_dsl:GeoDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDecayPlacementGeoLocationDistance"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseGeoLocationDistance"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseDecayPlacementGeoLocationDistance": {
+      "_types.query_dsl:DecayFunctionBaseGeoLocationDistance": {
         "type": "object",
         "properties": {
           "multi_value_mode": {

@@ -175,8 +175,8 @@ export class DecayPlacement<TOrigin, TScale> {
 /**
  * @behavior_meta AdditionalProperty key=field value=placement
  */
-export class DecayFunctionBase<TPlacement>
-  implements AdditionalProperty<Field, TPlacement>
+export class DecayFunctionBase<TOrigin, TScale>
+  implements AdditionalProperty<Field, DecayPlacement<TOrigin, TScale>>
 {
   /**
    * Determines how the distance is calculated when a field used for computing the decay contains multiple values.
@@ -185,15 +185,15 @@ export class DecayFunctionBase<TPlacement>
   multi_value_mode?: MultiValueMode
 }
 
-export class UntypedDecayFunction extends DecayFunctionBase<UserDefinedValue> {}
-export class NumericDecayFunction extends DecayFunctionBase<
-  DecayPlacement<double, double>
+export class UntypedDecayFunction extends DecayFunctionBase<
+  UserDefinedValue,
+  UserDefinedValue
 > {}
-export class DateDecayFunction extends DecayFunctionBase<
-  DecayPlacement<DateMath, Duration>
-> {}
+export class NumericDecayFunction extends DecayFunctionBase<double, double> {}
+export class DateDecayFunction extends DecayFunctionBase<DateMath, Duration> {}
 export class GeoDecayFunction extends DecayFunctionBase<
-  DecayPlacement<GeoLocation, Distance>
+  GeoLocation,
+  Distance
 > {}
 
 /**
