@@ -143,6 +143,7 @@ eql-async-search-status-api,https://www.elastic.co/guide/en/elasticsearch/refere
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-basic-syntax
 eql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-search-api.html
 eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-sequences
+eql-missing-events,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
 esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
