@@ -5492,7 +5492,7 @@ export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
   filter: QueryDslQueryContainer
 }
 
-export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase<DateMath, Duration> {
+export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase<Field, QueryDslDecayPlacement<DateMath, Duration>> {
 }
 export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
   & { [property: string]: QueryDslDecayPlacement<DateMath, Duration> | QueryDslMultiValueMode }
@@ -5501,9 +5501,11 @@ export interface QueryDslDateDistanceFeatureQuery extends QueryDslDistanceFeatur
 }
 
 export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase<DateMath> {
+  format?: DateFormat
+  time_zone?: TimeZone
 }
 
-export type QueryDslDecayFunction = QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
+export type QueryDslDecayFunction = QueryDslUntypedDecayFunction | QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
 
 export interface QueryDslDecayFunctionBase<TOrigin = unknown, TScale = unknown> {
   multi_value_mode?: QueryDslMultiValueMode
@@ -5521,7 +5523,7 @@ export interface QueryDslDisMaxQuery extends QueryDslQueryBase {
   tie_breaker?: double
 }
 
-export type QueryDslDistanceFeatureQuery = QueryDslGeoDistanceFeatureQuery | QueryDslDateDistanceFeatureQuery
+export type QueryDslDistanceFeatureQuery = QueryDslUntypedDistanceFeatureQuery | QueryDslGeoDistanceFeatureQuery | QueryDslDateDistanceFeatureQuery
 
 export interface QueryDslDistanceFeatureQueryBase<TOrigin = unknown, TDistance = unknown> extends QueryDslQueryBase {
   origin: TOrigin
@@ -5596,7 +5598,7 @@ export interface QueryDslGeoBoundingBoxQueryKeys extends QueryDslQueryBase {
 export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys
   & { [property: string]: GeoBounds | QueryDslGeoExecution | QueryDslGeoValidationMethod | boolean | float | string }
 
-export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase<GeoLocation, Distance> {
+export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase<Field, QueryDslDecayPlacement<GeoLocation, Distance>> {
 }
 export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys
   & { [property: string]: QueryDslDecayPlacement<GeoLocation, Distance> | QueryDslMultiValueMode }
@@ -5850,7 +5852,7 @@ export interface QueryDslNestedQuery extends QueryDslQueryBase {
 export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase<double> {
 }
 
-export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase<double, double> {
+export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase<Field, QueryDslDecayPlacement<double, double>> {
 }
 export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys
   & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode }
@@ -5993,7 +5995,7 @@ export interface QueryDslRandomScoreFunction {
   seed?: long | string
 }
 
-export type QueryDslRangeQuery = QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermRangeQuery
+export type QueryDslRangeQuery = QueryDslUntypedRangeQuery | QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermRangeQuery
 
 export interface QueryDslRangeQueryBase<T = unknown> extends QueryDslQueryBase {
   relation?: QueryDslRangeRelation
@@ -6003,8 +6005,6 @@ export interface QueryDslRangeQueryBase<T = unknown> extends QueryDslQueryBase {
   lte?: T
   from?: T | null
   to?: T | null
-  format?: DateFormat
-  time_zone?: TimeZone
 }
 
 export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'
@@ -6217,6 +6217,19 @@ export interface QueryDslTokenPruningConfig {
 
 export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
+}
+
+export interface QueryDslUntypedDecayFunctionKeys extends QueryDslDecayFunctionBase<Field, any> {
+}
+export type QueryDslUntypedDecayFunction = QueryDslUntypedDecayFunctionKeys
+  & { [property: string]: any }
+
+export interface QueryDslUntypedDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<any, any> {
+}
+
+export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
+  format?: DateFormat
+  time_zone?: TimeZone
 }
 
 export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
