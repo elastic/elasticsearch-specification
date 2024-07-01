@@ -1129,10 +1129,8 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
       kind: 'untagged',
       nonExhaustive: nonExhaustive,
       untypedVariant: {
-        type: {
-          namespace: fqn.slice(0, fqn.length - 1).join('.'),
-          name: fqn[fqn.length - 1]
-        }
+        namespace: fqn.slice(0, fqn.length - 1).join('.'),
+        name: fqn[fqn.length - 1]
       }
     }
   }

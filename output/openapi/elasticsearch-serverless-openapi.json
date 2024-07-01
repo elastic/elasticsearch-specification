@@ -34888,10 +34888,51 @@
       "_types.query_dsl:DistanceFeatureQuery": {
         "oneOf": [
           {
+            "$ref": "#/components/schemas/_types.query_dsl:UntypedDistanceFeatureQuery"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl:GeoDistanceFeatureQuery"
           },
           {
             "$ref": "#/components/schemas/_types.query_dsl:DateDistanceFeatureQuery"
+          }
+        ]
+      },
+      "_types.query_dsl:UntypedDistanceFeatureQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:DistanceFeatureQueryBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl:DistanceFeatureQueryBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "origin": {
+                "description": "Date or point of origin used to calculate distances.\nIf the `field` value is a `date` or `date_nanos` field, the `origin` value must be a date.\nDate Math, such as `now-1h`, is supported.\nIf the field value is a `geo_point` field, the `origin` value must be a geopoint.",
+                "type": "object"
+              },
+              "pivot": {
+                "description": "Distance from the `origin` at which relevance scores receive half of the `boost` value.\nIf the `field` value is a `date` or `date_nanos` field, the `pivot` value must be a time unit, such as `1h` or `10d`. If the `field` value is a `geo_point` field, the `pivot` value must be a distance unit, such as `1km` or `12m`.",
+                "type": "object"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "origin",
+              "pivot",
+              "field"
+            ]
           }
         ]
       },
@@ -35081,6 +35122,9 @@
       "_types.query_dsl:DecayFunction": {
         "oneOf": [
           {
+            "$ref": "#/components/schemas/_types.query_dsl:UntypedDecayFunction"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl:DateDecayFunction"
           },
           {
@@ -35091,17 +35135,17 @@
           }
         ]
       },
-      "_types.query_dsl:DateDecayFunction": {
+      "_types.query_dsl:UntypedDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDateMathDuration"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseField"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseDateMathDuration": {
+      "_types.query_dsl:DecayFunctionBaseField": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -35118,17 +35162,35 @@
           "sum"
         ]
       },
-      "_types.query_dsl:NumericDecayFunction": {
+      "_types.query_dsl:DateDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBasedoubledouble"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseFieldDecayPlacementDateMathDuration"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBasedoubledouble": {
+      "_types.query_dsl:DecayFunctionBaseFieldDecayPlacementDateMathDuration": {
+        "type": "object",
+        "properties": {
+          "multi_value_mode": {
+            "$ref": "#/components/schemas/_types.query_dsl:MultiValueMode"
+          }
+        }
+      },
+      "_types.query_dsl:NumericDecayFunction": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseFieldDecayPlacementdoubledouble"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl:DecayFunctionBaseFieldDecayPlacementdoubledouble": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -35139,14 +35201,14 @@
       "_types.query_dsl:GeoDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseGeoLocationDistance"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseFieldDecayPlacementGeoLocationDistance"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:DecayFunctionBaseGeoLocationDistance": {
+      "_types.query_dsl:DecayFunctionBaseFieldDecayPlacementGeoLocationDistance": {
         "type": "object",
         "properties": {
           "multi_value_mode": {
@@ -37695,6 +37757,9 @@
       "_types.query_dsl:RangeQuery": {
         "oneOf": [
           {
+            "$ref": "#/components/schemas/_types.query_dsl:UntypedRangeQuery"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl:DateRangeQuery"
           },
           {
@@ -37705,13 +37770,106 @@
           }
         ]
       },
+      "_types.query_dsl:UntypedRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "format": {
+                "$ref": "#/components/schemas/_types:DateFormat"
+              },
+              "time_zone": {
+                "$ref": "#/components/schemas/_types:TimeZone"
+              }
+            }
+          }
+        ]
+      },
+      "_types:DateFormat": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html"
+        },
+        "type": "string"
+      },
+      "_types.query_dsl:RangeQueryBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "$ref": "#/components/schemas/_types.query_dsl:RangeRelation"
+              },
+              "gt": {
+                "description": "Greater than.",
+                "type": "object"
+              },
+              "gte": {
+                "description": "Greater than or equal to.",
+                "type": "object"
+              },
+              "lt": {
+                "description": "Less than.",
+                "type": "object"
+              },
+              "lte": {
+                "description": "Less than or equal to.",
+                "type": "object"
+              },
+              "from": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl:RangeRelation": {
+        "type": "string",
+        "enum": [
+          "within",
+          "contains",
+          "intersects"
+        ]
+      },
       "_types.query_dsl:DateRangeQuery": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBaseDateMath"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "format": {
+                "$ref": "#/components/schemas/_types:DateFormat"
+              },
+              "time_zone": {
+                "$ref": "#/components/schemas/_types:TimeZone"
+              }
+            }
           }
         ]
       },
@@ -37759,30 +37917,10 @@
                     "type": "string"
                   }
                 ]
-              },
-              "format": {
-                "$ref": "#/components/schemas/_types:DateFormat"
-              },
-              "time_zone": {
-                "$ref": "#/components/schemas/_types:TimeZone"
               }
             }
           }
         ]
-      },
-      "_types.query_dsl:RangeRelation": {
-        "type": "string",
-        "enum": [
-          "within",
-          "contains",
-          "intersects"
-        ]
-      },
-      "_types:DateFormat": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html"
-        },
-        "type": "string"
       },
       "_types.query_dsl:NumberRangeQuery": {
         "allOf": [
@@ -37842,12 +37980,6 @@
                     "type": "string"
                   }
                 ]
-              },
-              "format": {
-                "$ref": "#/components/schemas/_types:DateFormat"
-              },
-              "time_zone": {
-                "$ref": "#/components/schemas/_types:TimeZone"
               }
             }
           }
@@ -37911,12 +38043,6 @@
                     "type": "string"
                   }
                 ]
-              },
-              "format": {
-                "$ref": "#/components/schemas/_types:DateFormat"
-              },
-              "time_zone": {
-                "$ref": "#/components/schemas/_types:TimeZone"
               }
             }
           }
