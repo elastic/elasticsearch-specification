@@ -175,8 +175,8 @@ export class DecayPlacement<TOrigin, TScale> {
 /**
  * @behavior_meta AdditionalProperty key=field value=placement
  */
-export class DecayFunctionBase<TScale, TOrigin>
-  implements AdditionalProperty<Field, DecayPlacement<TScale, TOrigin>>
+export class DecayFunctionBase<TOrigin, TScale>
+  implements AdditionalProperty<Field, DecayPlacement<TOrigin, TScale>>
 {
   /**
    * Determines how the distance is calculated when a field used for computing the decay contains multiple values.

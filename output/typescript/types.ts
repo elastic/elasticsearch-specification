@@ -5507,7 +5507,7 @@ export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase<DateMath>
 
 export type QueryDslDecayFunction = QueryDslUntypedDecayFunction | QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
 
-export interface QueryDslDecayFunctionBase<TScale = unknown, TOrigin = unknown> {
+export interface QueryDslDecayFunctionBase<TOrigin = unknown, TScale = unknown> {
   multi_value_mode?: QueryDslMultiValueMode
 }
 

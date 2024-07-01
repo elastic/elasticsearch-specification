@@ -50113,14 +50113,14 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "TScale",
+                    "name": "TOrigin",
                     "namespace": "_types.query_dsl.DecayFunctionBase"
                   }
                 },
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "TOrigin",
+                    "name": "TScale",
                     "namespace": "_types.query_dsl.DecayFunctionBase"
                   }
                 }
@@ -50144,11 +50144,11 @@
       ],
       "generics": [
         {
-          "name": "TScale",
+          "name": "TOrigin",
           "namespace": "_types.query_dsl.DecayFunctionBase"
         },
         {
-          "name": "TOrigin",
+          "name": "TScale",
           "namespace": "_types.query_dsl.DecayFunctionBase"
         }
       ],
