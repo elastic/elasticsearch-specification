@@ -57,7 +57,7 @@ filter-for-serverless: ## Generate the serverless version from the compiled sche
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
-contrib: | generate license-check spec-format-fix transform-to-openapi ## Pre contribution target
+contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless ## Pre contribution target
 
 lint-docs: ## Lint the OpenAPI documents
 	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml

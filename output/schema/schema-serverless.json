@@ -49069,7 +49069,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L28-L52"
+      "specLocation": "_types/query_dsl/compound.ts#L29-L53"
     },
     {
       "kind": "interface",
@@ -49216,7 +49216,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L54-L67"
+      "specLocation": "_types/query_dsl/compound.ts#L55-L68"
     },
     {
       "kind": "type_alias",
@@ -49510,7 +49510,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L69-L76"
+      "specLocation": "_types/query_dsl/compound.ts#L70-L77"
     },
     {
       "inherits": {
@@ -49554,10 +49554,11 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L78-L90"
+      "specLocation": "_types/query_dsl/compound.ts#L79-L91"
     },
     {
       "codegenNames": [
+        "untyped",
         "geo",
         "date"
       ],
@@ -49566,9 +49567,16 @@
         "name": "DistanceFeatureQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L72-L76",
+      "specLocation": "_types/query_dsl/specialized.ts#L77-L85",
       "type": {
         "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UntypedDistanceFeatureQuery",
+              "namespace": "_types.query_dsl"
+            }
+          },
           {
             "kind": "instance_of",
             "type": {
@@ -49585,24 +49593,23 @@
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "untagged",
+        "untypedVariant": {
+          "name": "UntypedDistanceFeatureQuery",
+          "namespace": "_types.query_dsl"
+        }
       }
     },
     {
       "inherits": {
         "generics": [
           {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLocation",
-              "namespace": "_types"
-            }
+            "kind": "user_defined_value"
           },
           {
-            "kind": "instance_of",
-            "type": {
-              "name": "Distance",
-              "namespace": "_types"
-            }
+            "kind": "user_defined_value"
           }
         ],
         "type": {
@@ -49612,7 +49619,7 @@
       },
       "kind": "interface",
       "name": {
-        "name": "GeoDistanceFeatureQuery",
+        "name": "UntypedDistanceFeatureQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [],
@@ -49686,6 +49693,37 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Distance",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "type": {
+          "name": "DistanceFeatureQueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoDistanceFeatureQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [],
+      "specLocation": "_types/query_dsl/specialized.ts#L67-L70"
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "DateMath",
               "namespace": "_types"
             }
@@ -49709,7 +49747,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L67-L70"
+      "specLocation": "_types/query_dsl/specialized.ts#L72-L75"
     },
     {
       "inherits": {
@@ -49737,7 +49775,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L36-L41"
+      "specLocation": "_types/query_dsl/term.ts#L37-L42"
     },
     {
       "inherits": {
@@ -49830,7 +49868,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L92-L118"
+      "specLocation": "_types/query_dsl/compound.ts#L93-L119"
     },
     {
       "kind": "enum",
@@ -49864,7 +49902,7 @@
         "name": "FunctionBoostMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L279-L305"
+      "specLocation": "_types/query_dsl/compound.ts#L285-L311"
     },
     {
       "esQuirk": "this container is valid without a variant. Despite being documented as a function, 'weight'\nis actually a container property that can be combined with a function. Comment in the ES code\n(SearchModule#registerScoreFunctions) says: Weight doesn't have its own parser, so every function\nsupports it out of the box. Can be a single function too when not associated to any other function,\nwhich is why it needs to be registered manually here.",
@@ -49971,13 +50009,14 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L210-L250",
+      "specLocation": "_types/query_dsl/compound.ts#L216-L256",
       "variants": {
         "kind": "container"
       }
     },
     {
       "codegenNames": [
+        "untyped",
         "date",
         "numeric",
         "geo"
@@ -49987,9 +50026,16 @@
         "name": "DecayFunction",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L203-L208",
+      "specLocation": "_types/query_dsl/compound.ts#L205-L214",
       "type": {
         "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UntypedDecayFunction",
+              "namespace": "_types.query_dsl"
+            }
+          },
           {
             "kind": "instance_of",
             "type": {
@@ -50013,7 +50059,44 @@
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "untagged",
+        "untypedVariant": {
+          "name": "UntypedDecayFunction",
+          "namespace": "_types.query_dsl"
+        }
       }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "user_defined_value"
+          }
+        ],
+        "type": {
+          "name": "DecayFunctionBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UntypedDecayFunction",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [],
+      "specLocation": "_types/query_dsl/compound.ts#L188-L191"
     },
     {
       "attachedBehaviors": [
@@ -50025,31 +50108,15 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "Field",
-                "namespace": "_types"
+                "name": "TOrigin",
+                "namespace": "_types.query_dsl.DecayFunctionBase"
               }
             },
             {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DateMath",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Duration",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "DecayPlacement",
-                "namespace": "_types.query_dsl"
+                "name": "TScale",
+                "namespace": "_types.query_dsl.DecayFunctionBase"
               }
             }
           ],
@@ -50063,111 +50130,16 @@
           }
         }
       ],
-      "inherits": {
-        "type": {
-          "name": "DecayFunctionBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DateDecayFunction",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L189-L194"
-    },
-    {
-      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
-      "generics": [
-        {
-          "name": "TKey",
-          "namespace": "_spec_utils.AdditionalProperty"
-        },
-        {
-          "name": "TValue",
-          "namespace": "_spec_utils.AdditionalProperty"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "AdditionalProperty",
-        "namespace": "_spec_utils"
-      },
-      "properties": [],
-      "specLocation": "_spec_utils/behaviors.ts#L39-L48"
-    },
-    {
       "generics": [
         {
           "name": "TOrigin",
-          "namespace": "_types.query_dsl.DecayPlacement"
+          "namespace": "_types.query_dsl.DecayFunctionBase"
         },
         {
           "name": "TScale",
-          "namespace": "_types.query_dsl.DecayPlacement"
+          "namespace": "_types.query_dsl.DecayFunctionBase"
         }
       ],
-      "kind": "interface",
-      "name": {
-        "name": "DecayPlacement",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "description": "Defines how documents are scored at the distance given at scale.",
-          "name": "decay",
-          "required": false,
-          "serverDefault": 0.5,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "If defined, the decay function will only compute the decay function for documents with a distance greater than the defined `offset`.",
-          "name": "offset",
-          "required": false,
-          "serverDefault": "0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TScale",
-              "namespace": "_types.query_dsl.DecayPlacement"
-            }
-          }
-        },
-        {
-          "description": "Defines the distance from origin + offset at which the computed score will equal `decay` parameter.",
-          "name": "scale",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TScale",
-              "namespace": "_types.query_dsl.DecayPlacement"
-            }
-          }
-        },
-        {
-          "description": "The point of origin used for calculating distance. Must be given as a number for numeric field, date for date fields and geo point for geo fields.",
-          "name": "origin",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TOrigin",
-              "namespace": "_types.query_dsl.DecayPlacement"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/compound.ts#L153-L172"
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "DecayFunctionBase",
@@ -50188,7 +50160,27 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L174-L180"
+      "specLocation": "_types/query_dsl/compound.ts#L175-L186"
+    },
+    {
+      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
+      "generics": [
+        {
+          "name": "TKey",
+          "namespace": "_spec_utils.AdditionalProperty"
+        },
+        {
+          "name": "TValue",
+          "namespace": "_spec_utils.AdditionalProperty"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AdditionalProperty",
+        "namespace": "_spec_utils"
+      },
+      "properties": [],
+      "specLocation": "_spec_utils/behaviors.ts#L39-L48"
     },
     {
       "kind": "enum",
@@ -50214,57 +50206,95 @@
         "name": "MultiValueMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L352-L369"
+      "specLocation": "_types/query_dsl/compound.ts#L358-L375"
     },
     {
       "attachedBehaviors": [
         "AdditionalProperty"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "double",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "double",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "DecayPlacement",
-                "namespace": "_types.query_dsl"
-              }
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
             }
-          ],
-          "meta": {
-            "key": "field",
-            "value": "placement"
           },
-          "type": {
-            "name": "AdditionalProperty",
-            "namespace": "_spec_utils"
+          {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DateMath",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Duration",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DecayPlacement",
+              "namespace": "_types.query_dsl"
+            }
           }
+        ],
+        "type": {
+          "name": "DecayFunctionBase",
+          "namespace": "_types.query_dsl"
         }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateDecayFunction",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [],
+      "specLocation": "_types/query_dsl/compound.ts#L196-L199"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
       ],
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          },
+          {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DecayPlacement",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        ],
         "type": {
           "name": "DecayFunctionBase",
           "namespace": "_types.query_dsl"
@@ -50276,57 +50306,45 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L182-L187"
+      "specLocation": "_types/query_dsl/compound.ts#L192-L195"
     },
     {
       "attachedBehaviors": [
         "AdditionalProperty"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GeoLocation",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Distance",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "DecayPlacement",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          ],
-          "meta": {
-            "key": "field",
-            "value": "placement"
-          },
-          "type": {
-            "name": "AdditionalProperty",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          },
+          {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "GeoLocation",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Distance",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DecayPlacement",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        ],
         "type": {
           "name": "DecayFunctionBase",
           "namespace": "_types.query_dsl"
@@ -50338,7 +50356,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L196-L201"
+      "specLocation": "_types/query_dsl/compound.ts#L200-L203"
     },
     {
       "kind": "interface",
@@ -50397,7 +50415,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L132-L151"
+      "specLocation": "_types/query_dsl/compound.ts#L133-L152"
     },
     {
       "kind": "enum",
@@ -50447,7 +50465,7 @@
         "name": "FieldValueFactorModifier",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L307-L350"
+      "specLocation": "_types/query_dsl/compound.ts#L313-L356"
     },
     {
       "kind": "interface",
@@ -50491,7 +50509,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L127-L130"
+      "specLocation": "_types/query_dsl/compound.ts#L128-L131"
     },
     {
       "kind": "interface",
@@ -50513,7 +50531,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L120-L125"
+      "specLocation": "_types/query_dsl/compound.ts#L121-L126"
     },
     {
       "codegenNames": [
@@ -50726,7 +50744,7 @@
         "name": "FunctionScoreMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L252-L277"
+      "specLocation": "_types/query_dsl/compound.ts#L258-L283"
     },
     {
       "inherits": {
@@ -50842,7 +50860,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L43-L78"
+      "specLocation": "_types/query_dsl/term.ts#L44-L79"
     },
     {
       "docId": "query-dsl-multi-term-rewrite",
@@ -54914,7 +54932,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L80-L85"
+      "specLocation": "_types/query_dsl/term.ts#L81-L86"
     },
     {
       "kind": "type_alias",
@@ -56608,7 +56626,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L78-L160"
+      "specLocation": "_types/query_dsl/specialized.ts#L87-L169"
     },
     {
       "codegenNames": [
@@ -56623,7 +56641,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L186-L191",
+      "specLocation": "_types/query_dsl/specialized.ts#L195-L200",
       "type": {
         "items": [
           {
@@ -56755,7 +56773,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L162-L184"
+      "specLocation": "_types/query_dsl/specialized.ts#L171-L193"
     },
     {
       "kind": "enum",
@@ -57307,7 +57325,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L193-L230"
+      "specLocation": "_types/query_dsl/specialized.ts#L202-L239"
     },
     {
       "inherits": {
@@ -57366,7 +57384,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L232-L251",
+      "specLocation": "_types/query_dsl/specialized.ts#L241-L260",
       "variants": {
         "kind": "container"
       }
@@ -57403,7 +57421,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L253-L262"
+      "specLocation": "_types/query_dsl/specialized.ts#L262-L271"
     },
     {
       "inherits": {
@@ -57466,7 +57484,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L87-L106"
+      "specLocation": "_types/query_dsl/term.ts#L88-L107"
     },
     {
       "inherits": {
@@ -57826,18 +57844,26 @@
     },
     {
       "codegenNames": [
+        "untyped",
         "date",
         "number",
-        "terms"
+        "term"
       ],
       "kind": "type_alias",
       "name": {
         "name": "RangeQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L187-L189",
+      "specLocation": "_types/query_dsl/term.ts#L161-L170",
       "type": {
         "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UntypedRangeQuery",
+              "namespace": "_types.query_dsl"
+            }
+          },
           {
             "kind": "instance_of",
             "type": {
@@ -57855,16 +57881,28 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "TermsRangeQuery",
+              "name": "TermRangeQuery",
               "namespace": "_types.query_dsl"
             }
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "untagged",
+        "untypedVariant": {
+          "name": "UntypedRangeQuery",
+          "namespace": "_types.query_dsl"
+        }
       }
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "user_defined_value"
+          }
+        ],
         "type": {
           "name": "RangeQueryBase",
           "namespace": "_types.query_dsl"
@@ -57872,104 +57910,10 @@
       },
       "kind": "interface",
       "name": {
-        "name": "DateRangeQuery",
+        "name": "UntypedRangeQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
-        {
-          "description": "Greater than.",
-          "name": "gt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateMath",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Greater than or equal to.",
-          "name": "gte",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateMath",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Less than.",
-          "name": "lt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateMath",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Less than or equal to.",
-          "name": "lte",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateMath",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "to",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
         {
           "description": "Date format used to convert `date` values in the query.",
           "name": "format",
@@ -57995,9 +57939,15 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L116-L143"
+      "specLocation": "_types/query_dsl/term.ts#L135-L144"
     },
     {
+      "generics": [
+        {
+          "name": "T",
+          "namespace": "_types.query_dsl.RangeQueryBase"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -58022,9 +57972,103 @@
               "namespace": "_types.query_dsl"
             }
           }
+        },
+        {
+          "description": "Greater than.",
+          "name": "gt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "T",
+              "namespace": "_types.query_dsl.RangeQueryBase"
+            }
+          }
+        },
+        {
+          "description": "Greater than or equal to.",
+          "name": "gte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "T",
+              "namespace": "_types.query_dsl.RangeQueryBase"
+            }
+          }
+        },
+        {
+          "description": "Less than.",
+          "name": "lt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "T",
+              "namespace": "_types.query_dsl.RangeQueryBase"
+            }
+          }
+        },
+        {
+          "description": "Less than or equal to.",
+          "name": "lte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "T",
+              "namespace": "_types.query_dsl.RangeQueryBase"
+            }
+          }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "T",
+                  "namespace": "_types.query_dsl.RangeQueryBase"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "T",
+                  "namespace": "_types.query_dsl.RangeQueryBase"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L108-L114"
+      "specLocation": "_types/query_dsl/term.ts#L109-L133"
     },
     {
       "kind": "enum",
@@ -58046,22 +58090,7 @@
         "name": "RangeRelation",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L191-L204"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "DateMath",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Time.ts#L42-L42",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "_builtins"
-        }
-      }
+      "specLocation": "_types/query_dsl/term.ts#L172-L185"
     },
     {
       "docId": "mapping-date-format",
@@ -58082,6 +58111,64 @@
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "type": {
+          "name": "RangeQueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateRangeQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Date format used to convert `date` values in the query.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateFormat",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Coordinated Universal Time (UTC) offset or IANA time zone used to convert `date` values in the query to UTC.",
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeZone",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/term.ts#L146-L155"
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        ],
         "type": {
           "name": "RangeQueryBase",
           "namespace": "_types.query_dsl"
@@ -58092,106 +58179,20 @@
         "name": "NumberRangeQuery",
         "namespace": "_types.query_dsl"
       },
-      "properties": [
-        {
-          "description": "Greater than.",
-          "name": "gt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Greater than or equal to.",
-          "name": "gte",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Less than.",
-          "name": "lt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Less than or equal to.",
-          "name": "lte",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "to",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/term.ts#L145-L164"
+      "properties": [],
+      "specLocation": "_types/query_dsl/term.ts#L157-L157"
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        ],
         "type": {
           "name": "RangeQueryBase",
           "namespace": "_types.query_dsl"
@@ -58199,106 +58200,11 @@
       },
       "kind": "interface",
       "name": {
-        "name": "TermsRangeQuery",
+        "name": "TermRangeQuery",
         "namespace": "_types.query_dsl"
       },
-      "properties": [
-        {
-          "description": "Greater than.",
-          "name": "gt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Greater than or equal to.",
-          "name": "gte",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Less than.",
-          "name": "lt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Less than or equal to.",
-          "name": "lte",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "to",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/term.ts#L166-L185"
+      "properties": [],
+      "specLocation": "_types/query_dsl/term.ts#L159-L159"
     },
     {
       "inherits": {
@@ -58374,7 +58280,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L293-L316"
+      "specLocation": "_types/query_dsl/specialized.ts#L302-L325"
     },
     {
       "inherits": {
@@ -58402,7 +58308,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L275-L280"
+      "specLocation": "_types/query_dsl/specialized.ts#L284-L289"
     },
     {
       "kind": "interface",
@@ -58411,7 +58317,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L264-L264"
+      "specLocation": "_types/query_dsl/specialized.ts#L273-L273"
     },
     {
       "inherits": {
@@ -58439,7 +58345,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L268-L273"
+      "specLocation": "_types/query_dsl/specialized.ts#L277-L282"
     },
     {
       "inherits": {
@@ -58454,7 +58360,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L266-L266"
+      "specLocation": "_types/query_dsl/specialized.ts#L275-L275"
     },
     {
       "inherits": {
@@ -58494,7 +58400,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L282-L291"
+      "specLocation": "_types/query_dsl/specialized.ts#L291-L300"
     },
     {
       "inherits": {
@@ -58586,7 +58492,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L206-L236"
+      "specLocation": "_types/query_dsl/term.ts#L187-L217"
     },
     {
       "inherits": {
@@ -58634,7 +58540,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L372-L376"
+      "specLocation": "_types/query_dsl/specialized.ts#L381-L385"
     },
     {
       "inherits": {
@@ -58662,7 +58568,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L318-L324"
+      "specLocation": "_types/query_dsl/specialized.ts#L327-L333"
     },
     {
       "inherits": {
@@ -58714,7 +58620,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L326-L340"
+      "specLocation": "_types/query_dsl/specialized.ts#L335-L349"
     },
     {
       "inherits": {
@@ -58813,7 +58719,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L342-L355"
+      "specLocation": "_types/query_dsl/specialized.ts#L351-L364"
     },
     {
       "kind": "interface",
@@ -58859,7 +58765,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L357-L370"
+      "specLocation": "_types/query_dsl/specialized.ts#L366-L379"
     },
     {
       "inherits": {
@@ -59881,7 +59787,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L238-L252"
+      "specLocation": "_types/query_dsl/term.ts#L219-L233"
     },
     {
       "codegenNames": [
@@ -59987,7 +59893,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/term.ts#L254-L259"
+      "specLocation": "_types/query_dsl/term.ts#L235-L240"
     },
     {
       "codegenNames": [
@@ -59999,7 +59905,7 @@
         "name": "TermsQueryField",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/term.ts#L261-L264",
+      "specLocation": "_types/query_dsl/term.ts#L242-L245",
       "type": {
         "items": [
           {
@@ -60075,7 +59981,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L266-L271"
+      "specLocation": "_types/query_dsl/term.ts#L247-L252"
     },
     {
       "inherits": {
@@ -60130,7 +60036,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L273-L286"
+      "specLocation": "_types/query_dsl/term.ts#L254-L267"
     },
     {
       "inherits": {
@@ -60318,7 +60224,7 @@
         }
       ],
       "shortcutProperty": "value",
-      "specLocation": "_types/query_dsl/term.ts#L292-L309"
+      "specLocation": "_types/query_dsl/term.ts#L273-L290"
     },
     {
       "inherits": {
@@ -60373,7 +60279,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/term.ts#L288-L290"
+      "specLocation": "_types/query_dsl/term.ts#L269-L271"
     },
     {
       "inherits": {
@@ -62570,6 +62476,21 @@
           }
         ],
         "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "DateMath",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Time.ts#L42-L42",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
       }
     },
     {

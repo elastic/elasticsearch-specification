@@ -47,7 +47,7 @@ jobs:
       - name: Generate specification and check generated types
         working-directory: ./elasticsearch-specification
         run: |
-          make generate
+          make contrib
 
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
