@@ -113906,6 +113906,20 @@
           }
         },
         {
+          "description": "Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.",
+          "docId": "eql-missing-events",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "fields",
           "required": false,
           "type": {
@@ -113927,7 +113941,7 @@
           }
         }
       ],
-      "specLocation": "eql/_types/EqlHits.ts#L41-L49"
+      "specLocation": "eql/_types/EqlHits.ts#L41-L54"
     },
     {
       "generics": [
@@ -113971,7 +113985,7 @@
           "docId": "eql-sequences",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-sequences",
           "name": "join_keys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -113980,7 +113994,7 @@
           }
         }
       ],
-      "specLocation": "eql/_types/EqlHits.ts#L51-L59"
+      "specLocation": "eql/_types/EqlHits.ts#L56-L64"
     },
     {
       "kind": "interface",

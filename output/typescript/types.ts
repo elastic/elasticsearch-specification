@@ -9817,12 +9817,13 @@ export interface EqlHitsEvent<TEvent = unknown> {
   _index: IndexName
   _id: Id
   _source: TEvent
+  missing?: boolean
   fields?: Record<Field, any[]>
 }
 
 export interface EqlHitsSequence<TEvent = unknown> {
   events: EqlHitsEvent<TEvent>[]
-  join_keys: any[]
+  join_keys?: any[]
 }
 
 export interface EqlDeleteRequest extends RequestBase {
