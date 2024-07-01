@@ -46,9 +46,9 @@ export class HitsEvent<TEvent> {
   /** Original JSON body passed for the event at index time. */
   _source: TEvent
   /**
-  * Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.
-  * @doc_id eql-missing-events
-  */
+   * Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.
+   * @doc_id eql-missing-events
+   */
   missing?: boolean
   fields?: Dictionary<Field, UserDefinedValue[]>
 }
