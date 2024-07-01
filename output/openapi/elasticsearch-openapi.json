@@ -78919,6 +78919,13 @@
             "description": "Original JSON body passed for the event at index time.",
             "type": "object"
           },
+          "missing": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-missing-events"
+            },
+            "description": "Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.",
+            "type": "boolean"
+          },
           "fields": {
             "type": "object",
             "additionalProperties": {
@@ -78957,8 +78964,7 @@
           }
         },
         "required": [
-          "events",
-          "join_keys"
+          "events"
         ]
       },
       "eql.search:ResultPosition": {
