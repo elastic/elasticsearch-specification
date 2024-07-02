@@ -83316,23 +83316,17 @@
       "ingest._types:ProcessorContainer": {
         "type": "object",
         "properties": {
-          "append": {
-            "$ref": "#/components/schemas/ingest._types:AppendProcessor"
-          },
           "attachment": {
             "$ref": "#/components/schemas/ingest._types:AttachmentProcessor"
           },
-          "bytes": {
-            "$ref": "#/components/schemas/ingest._types:BytesProcessor"
-          },
-          "circle": {
-            "$ref": "#/components/schemas/ingest._types:CircleProcessor"
-          },
-          "convert": {
-            "$ref": "#/components/schemas/ingest._types:ConvertProcessor"
+          "append": {
+            "$ref": "#/components/schemas/ingest._types:AppendProcessor"
           },
           "csv": {
             "$ref": "#/components/schemas/ingest._types:CsvProcessor"
+          },
+          "convert": {
+            "$ref": "#/components/schemas/ingest._types:ConvertProcessor"
           },
           "date": {
             "$ref": "#/components/schemas/ingest._types:DateProcessor"
@@ -83340,14 +83334,8 @@
           "date_index_name": {
             "$ref": "#/components/schemas/ingest._types:DateIndexNameProcessor"
           },
-          "dissect": {
-            "$ref": "#/components/schemas/ingest._types:DissectProcessor"
-          },
           "dot_expander": {
             "$ref": "#/components/schemas/ingest._types:DotExpanderProcessor"
-          },
-          "drop": {
-            "$ref": "#/components/schemas/ingest._types:DropProcessor"
           },
           "enrich": {
             "$ref": "#/components/schemas/ingest._types:EnrichProcessor"
@@ -83358,6 +83346,15 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "json": {
+            "$ref": "#/components/schemas/ingest._types:JsonProcessor"
+          },
+          "user_agent": {
+            "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
+          },
+          "kv": {
+            "$ref": "#/components/schemas/ingest._types:KeyValueProcessor"
+          },
           "geoip": {
             "$ref": "#/components/schemas/ingest._types:GeoIpProcessor"
           },
@@ -83367,23 +83364,11 @@
           "gsub": {
             "$ref": "#/components/schemas/ingest._types:GsubProcessor"
           },
-          "inference": {
-            "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
-          },
           "join": {
             "$ref": "#/components/schemas/ingest._types:JoinProcessor"
           },
-          "json": {
-            "$ref": "#/components/schemas/ingest._types:JsonProcessor"
-          },
-          "kv": {
-            "$ref": "#/components/schemas/ingest._types:KeyValueProcessor"
-          },
           "lowercase": {
             "$ref": "#/components/schemas/ingest._types:LowercaseProcessor"
-          },
-          "pipeline": {
-            "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
           },
           "remove": {
             "$ref": "#/components/schemas/ingest._types:RemoveProcessor"
@@ -83400,9 +83385,6 @@
           "set": {
             "$ref": "#/components/schemas/ingest._types:SetProcessor"
           },
-          "set_security_user": {
-            "$ref": "#/components/schemas/ingest._types:SetSecurityUserProcessor"
-          },
           "sort": {
             "$ref": "#/components/schemas/ingest._types:SortProcessor"
           },
@@ -83418,70 +83400,30 @@
           "urldecode": {
             "$ref": "#/components/schemas/ingest._types:UrlDecodeProcessor"
           },
-          "user_agent": {
-            "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
+          "bytes": {
+            "$ref": "#/components/schemas/ingest._types:BytesProcessor"
+          },
+          "dissect": {
+            "$ref": "#/components/schemas/ingest._types:DissectProcessor"
+          },
+          "set_security_user": {
+            "$ref": "#/components/schemas/ingest._types:SetSecurityUserProcessor"
+          },
+          "pipeline": {
+            "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
+          },
+          "drop": {
+            "$ref": "#/components/schemas/ingest._types:DropProcessor"
+          },
+          "circle": {
+            "$ref": "#/components/schemas/ingest._types:CircleProcessor"
+          },
+          "inference": {
+            "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
           }
         },
         "minProperties": 1,
         "maxProperties": 1
-      },
-      "ingest._types:AppendProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "value": {
-                "description": "The value to be appended. Supports template snippets.",
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "allow_duplicates": {
-                "description": "If `false`, the processor does not append values already present in the field.",
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "field",
-              "value"
-            ]
-          }
-        ]
-      },
-      "ingest._types:ProcessorBase": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "description": "Description of the processor.\nUseful for describing the purpose of the processor or its configuration.",
-            "type": "string"
-          },
-          "if": {
-            "description": "Conditionally execute the processor.",
-            "type": "string"
-          },
-          "ignore_failure": {
-            "description": "Ignore failures for the processor.",
-            "type": "boolean"
-          },
-          "on_failure": {
-            "description": "Handle failures for the processor.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ingest._types:ProcessorContainer"
-            }
-          },
-          "tag": {
-            "description": "Identifier for the processor.\nUseful for debugging and metrics.",
-            "type": "string"
-          }
-        }
       },
       "ingest._types:AttachmentProcessor": {
         "allOf": [
@@ -83530,73 +83472,35 @@
           }
         ]
       },
-      "ingest._types:BytesProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+      "ingest._types:ProcessorBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Description of the processor.\nUseful for describing the purpose of the processor or its configuration.",
+            "type": "string"
           },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "field"
-            ]
+          "if": {
+            "description": "Conditionally execute the processor.",
+            "type": "string"
+          },
+          "ignore_failure": {
+            "description": "Ignore failures for the processor.",
+            "type": "boolean"
+          },
+          "on_failure": {
+            "description": "Handle failures for the processor.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ingest._types:ProcessorContainer"
+            }
+          },
+          "tag": {
+            "description": "Identifier for the processor.\nUseful for debugging and metrics.",
+            "type": "string"
           }
-        ]
+        }
       },
-      "ingest._types:CircleProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "error_distance": {
-                "description": "The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).",
-                "type": "number"
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "shape_type": {
-                "$ref": "#/components/schemas/ingest._types:ShapeType"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "error_distance",
-              "field",
-              "shape_type"
-            ]
-          }
-        ]
-      },
-      "ingest._types:ShapeType": {
-        "type": "string",
-        "enum": [
-          "geo_shape",
-          "shape"
-        ]
-      },
-      "ingest._types:ConvertProcessor": {
+      "ingest._types:AppendProcessor": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ingest._types:ProcessorBase"
@@ -83607,34 +83511,23 @@
               "field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+              "value": {
+                "description": "The value to be appended. Supports template snippets.",
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "allow_duplicates": {
+                "description": "If `false`, the processor does not append values already present in the field.",
                 "type": "boolean"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "type": {
-                "$ref": "#/components/schemas/ingest._types:ConvertType"
               }
             },
             "required": [
               "field",
-              "type"
+              "value"
             ]
           }
-        ]
-      },
-      "ingest._types:ConvertType": {
-        "type": "string",
-        "enum": [
-          "integer",
-          "long",
-          "float",
-          "double",
-          "string",
-          "boolean",
-          "auto"
         ]
       },
       "ingest._types:CsvProcessor": {
@@ -83677,6 +83570,47 @@
               "target_fields"
             ]
           }
+        ]
+      },
+      "ingest._types:ConvertProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "type": {
+                "$ref": "#/components/schemas/ingest._types:ConvertType"
+              }
+            },
+            "required": [
+              "field",
+              "type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:ConvertType": {
+        "type": "string",
+        "enum": [
+          "integer",
+          "long",
+          "float",
+          "double",
+          "string",
+          "boolean",
+          "auto"
         ]
       },
       "ingest._types:DateProcessor": {
@@ -83763,37 +83697,6 @@
           }
         ]
       },
-      "ingest._types:DissectProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "append_separator": {
-                "description": "The character(s) that separate the appended fields.",
-                "type": "string"
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "pattern": {
-                "description": "The pattern to apply to the field.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "field",
-              "pattern"
-            ]
-          }
-        ]
-      },
       "ingest._types:DotExpanderProcessor": {
         "allOf": [
           {
@@ -83813,16 +83716,6 @@
             "required": [
               "field"
             ]
-          }
-        ]
-      },
-      "ingest._types:DropProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object"
           }
         ]
       },
@@ -83918,6 +83811,160 @@
             "required": [
               "field",
               "processor"
+            ]
+          }
+        ]
+      },
+      "ingest._types:JsonProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "add_to_root": {
+                "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
+                "type": "boolean"
+              },
+              "add_to_root_conflict_strategy": {
+                "$ref": "#/components/schemas/ingest._types:JsonProcessorConflictStrategy"
+              },
+              "allow_duplicate_keys": {
+                "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
+                "type": "boolean"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:JsonProcessorConflictStrategy": {
+        "type": "string",
+        "enum": [
+          "replace",
+          "merge"
+        ]
+      },
+      "ingest._types:UserAgentProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ingest._types:UserAgentProperty"
+                }
+              },
+              "regex_file": {
+                "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
+                "type": "string"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:UserAgentProperty": {
+        "type": "string",
+        "enum": [
+          "NAME",
+          "MAJOR",
+          "MINOR",
+          "PATCH",
+          "OS",
+          "OS_NAME",
+          "OS_MAJOR",
+          "OS_MINOR",
+          "DEVICE",
+          "BUILD"
+        ]
+      },
+      "ingest._types:KeyValueProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "exclude_keys": {
+                "description": "List of keys to exclude from document.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "field_split": {
+                "description": "Regex pattern to use for splitting key-value pairs.",
+                "type": "string"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "include_keys": {
+                "description": "List of keys to filter and insert into document.\nDefaults to including all keys.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "prefix": {
+                "description": "Prefix to be added to extracted keys.",
+                "type": "string"
+              },
+              "strip_brackets": {
+                "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "trim_key": {
+                "description": "String of characters to trim from extracted keys.",
+                "type": "string"
+              },
+              "trim_value": {
+                "description": "String of characters to trim from extracted values.",
+                "type": "string"
+              },
+              "value_split": {
+                "description": "Regex pattern to use for splitting the key from the value within a key-value pair.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "field_split",
+              "value_split"
             ]
           }
         ]
@@ -84038,85 +84085,6 @@
           }
         ]
       },
-      "ingest._types:InferenceProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "model_id": {
-                "$ref": "#/components/schemas/_types:Id"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "field_map": {
-                "description": "Maps the document field names to the known field names of the model.\nThis mapping takes precedence over any default mappings provided in the model configuration.",
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              },
-              "inference_config": {
-                "$ref": "#/components/schemas/ingest._types:InferenceConfig"
-              }
-            },
-            "required": [
-              "model_id"
-            ]
-          }
-        ]
-      },
-      "ingest._types:InferenceConfig": {
-        "type": "object",
-        "properties": {
-          "regression": {
-            "$ref": "#/components/schemas/ingest._types:InferenceConfigRegression"
-          },
-          "classification": {
-            "$ref": "#/components/schemas/ingest._types:InferenceConfigClassification"
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "ingest._types:InferenceConfigRegression": {
-        "type": "object",
-        "properties": {
-          "results_field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "num_top_feature_importance_values": {
-            "description": "Specifies the maximum number of feature importance values per document.",
-            "type": "number"
-          }
-        }
-      },
-      "ingest._types:InferenceConfigClassification": {
-        "type": "object",
-        "properties": {
-          "num_top_classes": {
-            "description": "Specifies the number of top class predictions to return.",
-            "type": "number"
-          },
-          "num_top_feature_importance_values": {
-            "description": "Specifies the maximum number of feature importance values per document.",
-            "type": "number"
-          },
-          "results_field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "top_classes_results_field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "prediction_field_type": {
-            "description": "Specifies the type of the predicted field to write.\nValid values are: `string`, `number`, `boolean`.",
-            "type": "string"
-          }
-        }
-      },
       "ingest._types:JoinProcessor": {
         "allOf": [
           {
@@ -84143,110 +84111,6 @@
           }
         ]
       },
-      "ingest._types:JsonProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "add_to_root": {
-                "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
-                "type": "boolean"
-              },
-              "add_to_root_conflict_strategy": {
-                "$ref": "#/components/schemas/ingest._types:JsonProcessorConflictStrategy"
-              },
-              "allow_duplicate_keys": {
-                "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
-                "type": "boolean"
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "field"
-            ]
-          }
-        ]
-      },
-      "ingest._types:JsonProcessorConflictStrategy": {
-        "type": "string",
-        "enum": [
-          "replace",
-          "merge"
-        ]
-      },
-      "ingest._types:KeyValueProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "exclude_keys": {
-                "description": "List of keys to exclude from document.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "field_split": {
-                "description": "Regex pattern to use for splitting key-value pairs.",
-                "type": "string"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "include_keys": {
-                "description": "List of keys to filter and insert into document.\nDefaults to including all keys.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "prefix": {
-                "description": "Prefix to be added to extracted keys.",
-                "type": "string"
-              },
-              "strip_brackets": {
-                "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
-                "type": "boolean"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "trim_key": {
-                "description": "String of characters to trim from extracted keys.",
-                "type": "string"
-              },
-              "trim_value": {
-                "description": "String of characters to trim from extracted values.",
-                "type": "string"
-              },
-              "value_split": {
-                "description": "Regex pattern to use for splitting the key from the value within a key-value pair.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "field",
-              "field_split",
-              "value_split"
-            ]
-          }
-        ]
-      },
       "ingest._types:LowercaseProcessor": {
         "allOf": [
           {
@@ -84268,28 +84132,6 @@
             },
             "required": [
               "field"
-            ]
-          }
-        ]
-      },
-      "ingest._types:PipelineProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "name": {
-                "$ref": "#/components/schemas/_types:Name"
-              },
-              "ignore_missing_pipeline": {
-                "description": "Whether to ignore missing pipelines instead of failing.",
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "name"
             ]
           }
         ]
@@ -84456,31 +84298,6 @@
           }
         ]
       },
-      "ingest._types:SetSecurityUserProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "properties": {
-                "description": "Controls what user related properties are added to the field.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": [
-              "field"
-            ]
-          }
-        ]
-      },
       "ingest._types:SortProcessor": {
         "allOf": [
           {
@@ -84614,7 +84431,7 @@
           }
         ]
       },
-      "ingest._types:UserAgentProcessor": {
+      "ingest._types:BytesProcessor": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ingest._types:ProcessorBase"
@@ -84626,18 +84443,8 @@
                 "$ref": "#/components/schemas/_types:Field"
               },
               "ignore_missing": {
-                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
                 "type": "boolean"
-              },
-              "options": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ingest._types:UserAgentProperty"
-                }
-              },
-              "regex_file": {
-                "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
-                "type": "string"
               },
               "target_field": {
                 "$ref": "#/components/schemas/_types:Field"
@@ -84649,20 +84456,213 @@
           }
         ]
       },
-      "ingest._types:UserAgentProperty": {
+      "ingest._types:DissectProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "append_separator": {
+                "description": "The character(s) that separate the appended fields.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "pattern": {
+                "description": "The pattern to apply to the field.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "pattern"
+            ]
+          }
+        ]
+      },
+      "ingest._types:SetSecurityUserProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "properties": {
+                "description": "Controls what user related properties are added to the field.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:PipelineProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              },
+              "ignore_missing_pipeline": {
+                "description": "Whether to ignore missing pipelines instead of failing.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      },
+      "ingest._types:DropProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "ingest._types:CircleProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "error_distance": {
+                "description": "The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).",
+                "type": "number"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "shape_type": {
+                "$ref": "#/components/schemas/ingest._types:ShapeType"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "error_distance",
+              "field",
+              "shape_type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:ShapeType": {
         "type": "string",
         "enum": [
-          "NAME",
-          "MAJOR",
-          "MINOR",
-          "PATCH",
-          "OS",
-          "OS_NAME",
-          "OS_MAJOR",
-          "OS_MINOR",
-          "DEVICE",
-          "BUILD"
+          "geo_shape",
+          "shape"
         ]
+      },
+      "ingest._types:InferenceProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "model_id": {
+                "$ref": "#/components/schemas/_types:Id"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "field_map": {
+                "description": "Maps the document field names to the known field names of the model.\nThis mapping takes precedence over any default mappings provided in the model configuration.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              },
+              "inference_config": {
+                "$ref": "#/components/schemas/ingest._types:InferenceConfig"
+              }
+            },
+            "required": [
+              "model_id"
+            ]
+          }
+        ]
+      },
+      "ingest._types:InferenceConfig": {
+        "type": "object",
+        "properties": {
+          "regression": {
+            "$ref": "#/components/schemas/ingest._types:InferenceConfigRegression"
+          },
+          "classification": {
+            "$ref": "#/components/schemas/ingest._types:InferenceConfigClassification"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "ingest._types:InferenceConfigRegression": {
+        "type": "object",
+        "properties": {
+          "results_field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "num_top_feature_importance_values": {
+            "description": "Specifies the maximum number of feature importance values per document.",
+            "type": "number"
+          }
+        }
+      },
+      "ingest._types:InferenceConfigClassification": {
+        "type": "object",
+        "properties": {
+          "num_top_classes": {
+            "description": "Specifies the number of top class predictions to return.",
+            "type": "number"
+          },
+          "num_top_feature_importance_values": {
+            "description": "Specifies the maximum number of feature importance values per document.",
+            "type": "number"
+          },
+          "results_field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "top_classes_results_field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "prediction_field_type": {
+            "description": "Specifies the type of the predicted field to write.\nValid values are: `string`, `number`, `boolean`.",
+            "type": "string"
+          }
+        }
       },
       "ingest.simulate:Document": {
         "type": "object",

@@ -30,6 +30,11 @@ import { double, integer, long } from '@_types/Numeric'
  */
 export class ProcessorContainer {
   /**
+   * The attachment processor lets Elasticsearch extract file attachments in common formats (such as PPT, XLS, and PDF) by using the Apache text extraction library Tika.
+   * @doc_id attachment
+   */
+  attachment?: AttachmentProcessor
+  /**
    * Appends one or more values to an existing array if the field already exists and it is an array.
    * Converts a scalar to an array and appends one or more values to it if the field exists and it is a scalar.
    * Creates an array containing the provided values if the field doesn’t exist.
@@ -38,35 +43,17 @@ export class ProcessorContainer {
    */
   append?: AppendProcessor
   /**
-   * The attachment processor lets Elasticsearch extract file attachments in common formats (such as PPT, XLS, and PDF) by using the Apache text extraction library Tika.
-   * @doc_id attachment
+   * Extracts fields from CSV line out of a single text field within a document.
+   * Any empty field in CSV will be skipped.
+   * @doc_id csv-processor
    */
-  attachment?: AttachmentProcessor
-  /**
-   * Converts a human readable byte value (for example `1kb`) to its value in bytes (for example `1024`).
-   * If the field is an array of strings, all members of the array will be converted.
-   * Supported human readable units are "b", "kb", "mb", "gb", "tb", "pb" case insensitive.
-   * An error will occur if the field is not a supported format or resultant value exceeds 2^63.
-   * @doc_id bytes-processor
-   */
-  bytes?: BytesProcessor
-  /**
-   * Converts circle definitions of shapes to regular polygons which approximate them.
-   * @doc_id ingest-circle-processor
-   */
-  circle?: CircleProcessor
+  csv?: CsvProcessor
   /**
    * Converts a field in the currently ingested document to a different type, such as converting a string to an integer.
    * If the field value is an array, all members will be converted.
    * @doc_id convert-processor
    */
   convert?: ConvertProcessor
-  /**
-   * Extracts fields from CSV line out of a single text field within a document.
-   * Any empty field in CSV will be skipped.
-   * @doc_id csv-processor
-   */
-  csv?: CsvProcessor
   /**
    * Parses dates from fields, and then uses the date or timestamp as the timestamp for the document.
    * @doc_id data-processor
@@ -78,23 +65,12 @@ export class ProcessorContainer {
    */
   date_index_name?: DateIndexNameProcessor
   /**
-   * Extracts structured fields out of a single text field by matching the text field against a delimiter-based pattern.
-   * @doc_id dissect-processor
-   */
-  dissect?: DissectProcessor
-  /**
    * Expands a field with dots into an object field.
    * This processor allows fields with dots in the name to be accessible by other processors in the pipeline.
    * Otherwise these fields can’t be accessed by any processor.
    * @doc_id dot-expand-processor
    */
   dot_expander?: DotExpanderProcessor
-  /**
-   * Drops the document without raising any errors.
-   * This is useful to prevent the document from getting indexed based on some condition.
-   * @doc_id drop-processor
-   */
-  drop?: DropProcessor
   /**
    * The `enrich` processor can enrich documents with data from another index.
    * @doc_id enrich-processor
@@ -111,6 +87,22 @@ export class ProcessorContainer {
    * @doc_id foreach-processor
    */
   foreach?: ForeachProcessor
+  /**
+   * Converts a JSON string into a structured JSON object.
+   * @doc_id json-processor
+   */
+  json?: JsonProcessor
+  /**
+   * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.
+   * This processor adds this information by default under the `user_agent` field.
+   * @doc_id user-agent-processor
+   */
+  user_agent?: UserAgentProcessor
+  /**
+   * This processor helps automatically parse messages (or specific event fields) which are of the `foo=bar` variety.
+   * @doc_id kv-processor
+   */
+  kv?: KeyValueProcessor
   /**
    * The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.
    * @doc_id geoip-processor
@@ -131,37 +123,17 @@ export class ProcessorContainer {
    */
   gsub?: GsubProcessor
   /**
-   * Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.
-   * @doc_id inference-processor
-   */
-  inference?: InferenceProcessor
-  /**
    * Joins each element of an array into a single string using a separator character between each element.
    * Throws an error when the field is not an array.
    * @doc_id join-processor
    */
   join?: JoinProcessor
   /**
-   * Converts a JSON string into a structured JSON object.
-   * @doc_id json-processor
-   */
-  json?: JsonProcessor
-  /**
-   * This processor helps automatically parse messages (or specific event fields) which are of the `foo=bar` variety.
-   * @doc_id kv-processor
-   */
-  kv?: KeyValueProcessor
-  /**
    * Converts a string to its lowercase equivalent.
    * If the field is an array of strings, all members of the array will be converted.
    * @doc_id lowercase-processor
    */
   lowercase?: LowercaseProcessor
-  /**
-   * Executes another pipeline.
-   * @doc_id pipeline-processor
-   */
-  pipeline?: PipelineProcessor
   /**
    * Removes existing fields.
    * If one field doesn’t exist, an exception will be thrown.
@@ -193,11 +165,6 @@ export class ProcessorContainer {
    * @doc_id set-processor
    */
   set?: SetProcessor
-  /**
-   * Sets user-related details (such as `username`, `roles`, `email`, `full_name`, `metadata`, `api_key`, `realm` and `authentication_type`) from the current authenticated user to the current document by pre-processing the ingest.
-   * @doc_id ingest-node-set-security-user-processor
-   */
-  set_security_user?: SetSecurityUserProcessor
   /**
    * Sorts the elements of an array ascending or descending.
    * Homogeneous arrays of numbers will be sorted numerically, while arrays of strings or heterogeneous arrays of strings + numbers will be sorted lexicographically.
@@ -231,11 +198,44 @@ export class ProcessorContainer {
    */
   urldecode?: UrlDecodeProcessor
   /**
-   * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.
-   * This processor adds this information by default under the `user_agent` field.
-   * @doc_id user-agent-processor
+   * Converts a human readable byte value (for example `1kb`) to its value in bytes (for example `1024`).
+   * If the field is an array of strings, all members of the array will be converted.
+   * Supported human readable units are "b", "kb", "mb", "gb", "tb", "pb" case insensitive.
+   * An error will occur if the field is not a supported format or resultant value exceeds 2^63.
+   * @doc_id bytes-processor
    */
-  user_agent?: UserAgentProcessor
+  bytes?: BytesProcessor
+  /**
+   * Extracts structured fields out of a single text field by matching the text field against a delimiter-based pattern.
+   * @doc_id dissect-processor
+   */
+  dissect?: DissectProcessor
+  /**
+   * Sets user-related details (such as `username`, `roles`, `email`, `full_name`, `metadata`, `api_key`, `realm` and `authentication_type`) from the current authenticated user to the current document by pre-processing the ingest.
+   * @doc_id ingest-node-set-security-user-processor
+   */
+  set_security_user?: SetSecurityUserProcessor
+  /**
+   * Executes another pipeline.
+   * @doc_id pipeline-processor
+   */
+  pipeline?: PipelineProcessor
+  /**
+   * Drops the document without raising any errors.
+   * This is useful to prevent the document from getting indexed based on some condition.
+   * @doc_id drop-processor
+   */
+  drop?: DropProcessor
+  /**
+   * Converts circle definitions of shapes to regular polygons which approximate them.
+   * @doc_id ingest-circle-processor
+   */
+  circle?: CircleProcessor
+  /**
+   * Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.
+   * @doc_id inference-processor
+   */
+  inference?: InferenceProcessor
 }
 
 export class ProcessorBase {

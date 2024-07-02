@@ -117493,20 +117493,6 @@
       },
       "properties": [
         {
-          "description": "Appends one or more values to an existing array if the field already exists and it is an array.\nConverts a scalar to an array and appends one or more values to it if the field exists and it is a scalar.\nCreates an array containing the provided values if the field doesn’t exist.\nAccepts a single value or an array of values.",
-          "docId": "append-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/append-processor.html",
-          "name": "append",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AppendProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
           "description": "The attachment processor lets Elasticsearch extract file attachments in common formats (such as PPT, XLS, and PDF) by using the Apache text extraction library Tika.",
           "docId": "attachment",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/attachment.html",
@@ -117521,43 +117507,15 @@
           }
         },
         {
-          "description": "Converts a human readable byte value (for example `1kb`) to its value in bytes (for example `1024`).\nIf the field is an array of strings, all members of the array will be converted.\nSupported human readable units are \"b\", \"kb\", \"mb\", \"gb\", \"tb\", \"pb\" case insensitive.\nAn error will occur if the field is not a supported format or resultant value exceeds 2^63.",
-          "docId": "bytes-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html",
-          "name": "bytes",
+          "description": "Appends one or more values to an existing array if the field already exists and it is an array.\nConverts a scalar to an array and appends one or more values to it if the field exists and it is a scalar.\nCreates an array containing the provided values if the field doesn’t exist.\nAccepts a single value or an array of values.",
+          "docId": "append-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/append-processor.html",
+          "name": "append",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "BytesProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "Converts circle definitions of shapes to regular polygons which approximate them.",
-          "docId": "ingest-circle-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-circle-processor.html",
-          "name": "circle",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CircleProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "Converts a field in the currently ingested document to a different type, such as converting a string to an integer.\nIf the field value is an array, all members will be converted.",
-          "docId": "convert-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/convert-processor.html",
-          "name": "convert",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ConvertProcessor",
+              "name": "AppendProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -117572,6 +117530,20 @@
             "kind": "instance_of",
             "type": {
               "name": "CsvProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Converts a field in the currently ingested document to a different type, such as converting a string to an integer.\nIf the field value is an array, all members will be converted.",
+          "docId": "convert-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/convert-processor.html",
+          "name": "convert",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ConvertProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -117605,20 +117577,6 @@
           }
         },
         {
-          "description": "Extracts structured fields out of a single text field by matching the text field against a delimiter-based pattern.",
-          "docId": "dissect-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dissect-processor.html",
-          "name": "dissect",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DissectProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
           "description": "Expands a field with dots into an object field.\nThis processor allows fields with dots in the name to be accessible by other processors in the pipeline.\nOtherwise these fields can’t be accessed by any processor.",
           "docId": "dot-expand-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dot-expand-processor.html",
@@ -117628,20 +117586,6 @@
             "kind": "instance_of",
             "type": {
               "name": "DotExpanderProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "Drops the document without raising any errors.\nThis is useful to prevent the document from getting indexed based on some condition.",
-          "docId": "drop-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/drop-processor.html",
-          "name": "drop",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DropProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -117689,6 +117633,48 @@
           }
         },
         {
+          "description": "Converts a JSON string into a structured JSON object.",
+          "docId": "json-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/json-processor.html",
+          "name": "json",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JsonProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.\nThis processor adds this information by default under the `user_agent` field.",
+          "docId": "user-agent-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-agent-processor.html",
+          "name": "user_agent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UserAgentProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "This processor helps automatically parse messages (or specific event fields) which are of the `foo=bar` variety.",
+          "docId": "kv-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv-processor.html",
+          "name": "kv",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KeyValueProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.",
           "docId": "geoip-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html",
@@ -117731,20 +117717,6 @@
           }
         },
         {
-          "description": "Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.",
-          "docId": "inference-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html",
-          "name": "inference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
           "description": "Joins each element of an array into a single string using a separator character between each element.\nThrows an error when the field is not an array.",
           "docId": "join-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/join-processor.html",
@@ -117759,34 +117731,6 @@
           }
         },
         {
-          "description": "Converts a JSON string into a structured JSON object.",
-          "docId": "json-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/json-processor.html",
-          "name": "json",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JsonProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "This processor helps automatically parse messages (or specific event fields) which are of the `foo=bar` variety.",
-          "docId": "kv-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/kv-processor.html",
-          "name": "kv",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "KeyValueProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
           "description": "Converts a string to its lowercase equivalent.\nIf the field is an array of strings, all members of the array will be converted.",
           "docId": "lowercase-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/lowercase-processor.html",
@@ -117796,20 +117740,6 @@
             "kind": "instance_of",
             "type": {
               "name": "LowercaseProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "Executes another pipeline.",
-          "docId": "pipeline-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html",
-          "name": "pipeline",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PipelineProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -117885,20 +117815,6 @@
           }
         },
         {
-          "description": "Sets user-related details (such as `username`, `roles`, `email`, `full_name`, `metadata`, `api_key`, `realm` and `authentication_type`) from the current authenticated user to the current document by pre-processing the ingest.",
-          "docId": "ingest-node-set-security-user-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{banch}/ingest-node-set-security-user-processor.html",
-          "name": "set_security_user",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SetSecurityUserProcessor",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
           "description": "Sorts the elements of an array ascending or descending.\nHomogeneous arrays of numbers will be sorted numerically, while arrays of strings or heterogeneous arrays of strings + numbers will be sorted lexicographically.\nThrows an error when the field is not an array.",
           "docId": "sort-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/sort-processor.html",
@@ -117969,15 +117885,99 @@
           }
         },
         {
-          "description": "The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.\nThis processor adds this information by default under the `user_agent` field.",
-          "docId": "user-agent-processor",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-agent-processor.html",
-          "name": "user_agent",
+          "description": "Converts a human readable byte value (for example `1kb`) to its value in bytes (for example `1024`).\nIf the field is an array of strings, all members of the array will be converted.\nSupported human readable units are \"b\", \"kb\", \"mb\", \"gb\", \"tb\", \"pb\" case insensitive.\nAn error will occur if the field is not a supported format or resultant value exceeds 2^63.",
+          "docId": "bytes-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html",
+          "name": "bytes",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "UserAgentProcessor",
+              "name": "BytesProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Extracts structured fields out of a single text field by matching the text field against a delimiter-based pattern.",
+          "docId": "dissect-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/dissect-processor.html",
+          "name": "dissect",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DissectProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Sets user-related details (such as `username`, `roles`, `email`, `full_name`, `metadata`, `api_key`, `realm` and `authentication_type`) from the current authenticated user to the current document by pre-processing the ingest.",
+          "docId": "ingest-node-set-security-user-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{banch}/ingest-node-set-security-user-processor.html",
+          "name": "set_security_user",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SetSecurityUserProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Executes another pipeline.",
+          "docId": "pipeline-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html",
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Drops the document without raising any errors.\nThis is useful to prevent the document from getting indexed based on some condition.",
+          "docId": "drop-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/drop-processor.html",
+          "name": "drop",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DropProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Converts circle definitions of shapes to regular polygons which approximate them.",
+          "docId": "ingest-circle-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-circle-processor.html",
+          "name": "circle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CircleProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.",
+          "docId": "inference-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html",
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -117988,131 +117988,6 @@
         "kind": "container",
         "nonExhaustive": true
       }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "AppendProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The field to be appended to.\nSupports template snippets.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The value to be appended. Supports template snippets.",
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "description": "If `false`, the processor does not append values already present in the field.",
-          "name": "allow_duplicates",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L279-L294"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ProcessorBase",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "Description of the processor.\nUseful for describing the purpose of the processor or its configuration.",
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Conditionally execute the processor.",
-          "name": "if",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Ignore failures for the processor.",
-          "name": "ignore_failure",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Handle failures for the processor.",
-          "name": "on_failure",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ProcessorContainer",
-                "namespace": "ingest._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Identifier for the processor.\nUseful for debugging and metrics.",
-          "name": "tag",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L241-L264"
     },
     {
       "inherits": {
@@ -118235,35 +118110,40 @@
       "specLocation": "ingest/_types/Processors.ts#L296-L337"
     },
     {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "BytesProcessor",
+        "name": "ProcessorBase",
         "namespace": "ingest._types"
       },
       "properties": [
         {
-          "description": "The field to convert.",
-          "name": "field",
-          "required": true,
+          "description": "Description of the processor.\nUseful for describing the purpose of the processor or its configuration.",
+          "name": "description",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Field",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
         {
-          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-          "name": "ignore_missing",
+          "description": "Conditionally execute the processor.",
+          "name": "if",
           "required": false,
-          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Ignore failures for the processor.",
+          "name": "ignore_failure",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -118273,20 +118153,34 @@
           }
         },
         {
-          "description": "The field to assign the converted value to.\nBy default, the field is updated in-place.",
-          "name": "target_field",
+          "description": "Handle failures for the processor.",
+          "name": "on_failure",
           "required": false,
-          "serverDefault": "field",
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ProcessorContainer",
+                "namespace": "ingest._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Identifier for the processor.\nUseful for debugging and metrics.",
+          "name": "tag",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Field",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L392-L408"
+      "specLocation": "ingest/_types/Processors.ts#L241-L264"
     },
     {
       "inherits": {
@@ -118297,24 +118191,12 @@
       },
       "kind": "interface",
       "name": {
-        "name": "CircleProcessor",
+        "name": "AppendProcessor",
         "namespace": "ingest._types"
       },
       "properties": [
         {
-          "description": "The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).",
-          "name": "error_distance",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The field to interpret as a circle. Either a string in WKT format or a map for GeoJSON.",
+          "description": "The field to be appended to.\nSupports template snippets.",
           "name": "field",
           "required": true,
           "type": {
@@ -118326,10 +118208,21 @@
           }
         },
         {
-          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
-          "name": "ignore_missing",
+          "description": "The value to be appended. Supports template snippets.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the processor does not append values already present in the field.",
+          "name": "allow_duplicates",
           "required": false,
-          "serverDefault": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -118337,99 +118230,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "description": "Which field mapping type is to be used when processing the circle: `geo_shape` or `shape`.",
-          "name": "shape_type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShapeType",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "The field to assign the polygon shape to\nBy default, the field is updated in-place.",
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L410-L433"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "ConvertProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The field whose value is to be converted.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-          "name": "ignore_missing",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The field to assign the converted value to.\nBy default, the `field` is updated in-place.",
-          "name": "target_field",
-          "required": false,
-          "serverDefault": "field",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type to convert the existing value to.",
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ConvertType",
-              "namespace": "ingest._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L445-L465"
+      "specLocation": "ingest/_types/Processors.ts#L279-L294"
     },
     {
       "inherits": {
@@ -118528,6 +118331,72 @@
         }
       ],
       "specLocation": "ingest/_types/Processors.ts#L467-L500"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ConvertProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field whose value is to be converted.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the converted value to.\nBy default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The type to convert the existing value to.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ConvertType",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L445-L465"
     },
     {
       "inherits": {
@@ -118726,72 +118595,6 @@
       },
       "kind": "interface",
       "name": {
-        "name": "DissectProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The character(s) that separate the appended fields.",
-          "name": "append_separator",
-          "required": false,
-          "serverDefault": "\"\"",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The field to dissect.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-          "name": "ignore_missing",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The pattern to apply to the field.",
-          "name": "pattern",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L571-L590"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "DotExpanderProcessor",
         "namespace": "ingest._types"
       },
@@ -118822,21 +118625,6 @@
         }
       ],
       "specLocation": "ingest/_types/Processors.ts#L592-L603"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DropProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L605-L605"
     },
     {
       "inherits": {
@@ -119022,6 +118810,322 @@
         }
       ],
       "specLocation": "ingest/_types/Processors.ts#L656-L670"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "JsonProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
+          "name": "add_to_root",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "When set to `replace`, root fields that conflict with fields from the parsed JSON will be overridden.\nWhen set to `merge`, conflicting fields will be merged.\nOnly applicable `if add_to_root` is set to true.",
+          "name": "add_to_root_conflict_strategy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JsonProcessorConflictStrategy",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
+          "name": "allow_duplicate_keys",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to be parsed.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field that the converted structured object will be written into.\nAny existing content in this field will be overwritten.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L818-L847"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UserAgentProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field containing the user agent string.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "options",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "UserAgentProperty",
+                "namespace": "ingest._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
+          "name": "regex_file",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field that will be filled with the user agent details.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "user_agent",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L370-L390"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KeyValueProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "List of keys to exclude from document.",
+          "name": "exclude_keys",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The field to be parsed.\nSupports template snippets.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Regex pattern to use for splitting key-value pairs.",
+          "name": "field_split",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "List of keys to filter and insert into document.\nDefaults to including all keys.",
+          "name": "include_keys",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "Prefix to be added to extracted keys.",
+          "name": "prefix",
+          "required": false,
+          "serverDefault": "null",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
+          "name": "strip_brackets",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to insert the extracted keys into.\nDefaults to the root of the document.\nSupports template snippets.",
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "String of characters to trim from extracted keys.",
+          "name": "trim_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "String of characters to trim from extracted values.",
+          "name": "trim_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Regex pattern to use for splitting the key from the value within a key-value pair.",
+          "name": "value_split",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L856-L908"
     },
     {
       "inherits": {
@@ -119297,225 +119401,6 @@
       },
       "kind": "interface",
       "name": {
-        "name": "InferenceProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The ID or alias for the trained model, or the ID of the deployment.",
-          "name": "model_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Field added to incoming documents to contain results objects.",
-          "name": "target_field",
-          "required": false,
-          "serverDefault": "ml.inference.<processor_tag>",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Maps the document field names to the known field names of the model.\nThis mapping takes precedence over any default mappings provided in the model configuration.",
-          "name": "field_map",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "description": "Contains the inference type and its options.",
-          "name": "inference_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceConfig",
-              "namespace": "ingest._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L725-L744"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InferenceConfig",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "Regression configuration for inference.",
-          "name": "regression",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceConfigRegression",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "Classification configuration for inference.",
-          "name": "classification",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceConfigClassification",
-              "namespace": "ingest._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L746-L758",
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InferenceConfigRegression",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The field that is added to incoming documents to contain the inference prediction.",
-          "name": "results_field",
-          "required": false,
-          "serverDefault": "<dependent_variable>_prediction",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies the maximum number of feature importance values per document.",
-          "name": "num_top_feature_importance_values",
-          "required": false,
-          "serverDefault": 0,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L760-L771"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InferenceConfigClassification",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "Specifies the number of top class predictions to return.",
-          "name": "num_top_classes",
-          "required": false,
-          "serverDefault": 0,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies the maximum number of feature importance values per document.",
-          "name": "num_top_feature_importance_values",
-          "required": false,
-          "serverDefault": 0,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The field that is added to incoming documents to contain the inference prediction.",
-          "name": "results_field",
-          "required": false,
-          "serverDefault": "<dependent_variable>_prediction",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies the field to which the top classes are written.",
-          "name": "top_classes_results_field",
-          "required": false,
-          "serverDefault": "top_classes",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies the type of the predicted field to write.\nValid values are: `string`, `number`, `boolean`.",
-          "name": "prediction_field_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L773-L799"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "JoinProcessor",
         "namespace": "ingest._types"
       },
@@ -119559,242 +119444,6 @@
         }
       ],
       "specLocation": "ingest/_types/Processors.ts#L801-L816"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "JsonProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
-          "name": "add_to_root",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "When set to `replace`, root fields that conflict with fields from the parsed JSON will be overridden.\nWhen set to `merge`, conflicting fields will be merged.\nOnly applicable `if add_to_root` is set to true.",
-          "name": "add_to_root_conflict_strategy",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JsonProcessorConflictStrategy",
-              "namespace": "ingest._types"
-            }
-          }
-        },
-        {
-          "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
-          "name": "allow_duplicate_keys",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The field to be parsed.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The field that the converted structured object will be written into.\nAny existing content in this field will be overwritten.",
-          "name": "target_field",
-          "required": false,
-          "serverDefault": "field",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L818-L847"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "KeyValueProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "List of keys to exclude from document.",
-          "name": "exclude_keys",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "description": "The field to be parsed.\nSupports template snippets.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Regex pattern to use for splitting key-value pairs.",
-          "name": "field_split",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-          "name": "ignore_missing",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "List of keys to filter and insert into document.\nDefaults to including all keys.",
-          "name": "include_keys",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "description": "Prefix to be added to extracted keys.",
-          "name": "prefix",
-          "required": false,
-          "serverDefault": "null",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
-          "name": "strip_brackets",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The field to insert the extracted keys into.\nDefaults to the root of the document.\nSupports template snippets.",
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "String of characters to trim from extracted keys.",
-          "name": "trim_key",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "String of characters to trim from extracted values.",
-          "name": "trim_value",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Regex pattern to use for splitting the key from the value within a key-value pair.",
-          "name": "value_split",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L856-L908"
     },
     {
       "inherits": {
@@ -119849,47 +119498,6 @@
         }
       ],
       "specLocation": "ingest/_types/Processors.ts#L910-L926"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "PipelineProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The name of the pipeline to execute.\nSupports template snippets.",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether to ignore missing pipelines instead of failing.",
-          "name": "ignore_missing_pipeline",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L928-L939"
     },
     {
       "inherits": {
@@ -120246,49 +119854,6 @@
       },
       "kind": "interface",
       "name": {
-        "name": "SetSecurityUserProcessor",
-        "namespace": "ingest._types"
-      },
-      "properties": [
-        {
-          "description": "The field to store the user information into.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Controls what user related properties are added to the field.",
-          "name": "properties",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "ingest/_types/Processors.ts#L1063-L1072"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "SortProcessor",
         "namespace": "ingest._types"
       },
@@ -120583,12 +120148,243 @@
       },
       "kind": "interface",
       "name": {
-        "name": "UserAgentProcessor",
+        "name": "BytesProcessor",
         "namespace": "ingest._types"
       },
       "properties": [
         {
-          "description": "The field containing the user agent string.",
+          "description": "The field to convert.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the converted value to.\nBy default, the field is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L392-L408"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DissectProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The character(s) that separate the appended fields.",
+          "name": "append_separator",
+          "required": false,
+          "serverDefault": "\"\"",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to dissect.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The pattern to apply to the field.",
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L571-L590"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SetSecurityUserProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field to store the user information into.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Controls what user related properties are added to the field.",
+          "name": "properties",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1063-L1072"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PipelineProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the pipeline to execute.\nSupports template snippets.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Whether to ignore missing pipelines instead of failing.",
+          "name": "ignore_missing_pipeline",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L928-L939"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DropProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [],
+      "specLocation": "ingest/_types/Processors.ts#L605-L605"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CircleProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).",
+          "name": "error_distance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field to interpret as a circle. Either a string in WKT format or a map for GeoJSON.",
           "name": "field",
           "required": true,
           "type": {
@@ -120613,36 +120409,21 @@
           }
         },
         {
-          "name": "options",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "UserAgentProperty",
-                "namespace": "ingest._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
-          "name": "regex_file",
-          "required": false,
+          "description": "Which field mapping type is to be used when processing the circle: `geo_shape` or `shape`.",
+          "name": "shape_type",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "ShapeType",
+              "namespace": "ingest._types"
             }
           }
         },
         {
-          "description": "The field that will be filled with the user agent details.",
+          "description": "The field to assign the polygon shape to\nBy default, the field is updated in-place.",
           "name": "target_field",
           "required": false,
-          "serverDefault": "user_agent",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -120652,7 +120433,226 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L370-L390"
+      "specLocation": "ingest/_types/Processors.ts#L410-L433"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The ID or alias for the trained model, or the ID of the deployment.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field added to incoming documents to contain results objects.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "ml.inference.<processor_tag>",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Maps the document field names to the known field names of the model.\nThis mapping takes precedence over any default mappings provided in the model configuration.",
+          "name": "field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Contains the inference type and its options.",
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfig",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L725-L744"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfig",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Regression configuration for inference.",
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigRegression",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Classification configuration for inference.",
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigClassification",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L746-L758",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfigRegression",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field that is added to incoming documents to contain the inference prediction.",
+          "name": "results_field",
+          "required": false,
+          "serverDefault": "<dependent_variable>_prediction",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of feature importance values per document.",
+          "name": "num_top_feature_importance_values",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L760-L771"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfigClassification",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Specifies the number of top class predictions to return.",
+          "name": "num_top_classes",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of feature importance values per document.",
+          "name": "num_top_feature_importance_values",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field that is added to incoming documents to contain the inference prediction.",
+          "name": "results_field",
+          "required": false,
+          "serverDefault": "<dependent_variable>_prediction",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the field to which the top classes are written.",
+          "name": "top_classes_results_field",
+          "required": false,
+          "serverDefault": "top_classes",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the type of the predicted field to write.\nValid values are: `string`, `number`, `boolean`.",
+          "name": "prediction_field_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L773-L799"
     },
     {
       "kind": "interface",
