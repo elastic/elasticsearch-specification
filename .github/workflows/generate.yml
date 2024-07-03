@@ -34,10 +34,10 @@ jobs:
         token: ${{ secrets.PAT }}
         persist-credentials: true
 
-    - name: Setup Node 16.x
-      uses: actions/setup-node@v3
+    - name: Setup Node 20
+      uses: actions/setup-node@v4
       with:
-        node-version: 16.x
+        node-version: 20
         cache: npm
         cache-dependency-path: '**/package-lock.json'
 
