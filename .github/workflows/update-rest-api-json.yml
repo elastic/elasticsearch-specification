@@ -51,7 +51,7 @@ jobs:
           commit-message: 'Update rest-api-spec'
           labels: specification
           delete-branch: true
-          team-reviewers: elastic/devtools-team
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,srikanthmanvi,swallez,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
 
       - name: Open an issue if the action fails
