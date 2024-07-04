@@ -1,5 +1,5 @@
 {
-  "summary": "ccr/apis/follow/post-forget-follower.asciidoc:133",
+  "summary": "A request to remove the follower retention leases for `follower_index` from `leader_index`.",
   "method_request": "POST /leader_index/_ccr/forget_follower",
   "description": "",
   "value": "{\n  \"follower_cluster\" : \"follower_cluster\",\n  \"follower_index\" : \"follower_index\",\n  \"follower_index_uuid\" : \"vYpnaWPRQB6mNspmoCeYyA\",\n  \"leader_remote_cluster\" : \"leader_cluster\"\n}"
