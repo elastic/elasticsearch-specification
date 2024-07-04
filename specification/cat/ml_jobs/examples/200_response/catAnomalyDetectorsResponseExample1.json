@@ -1,5 +1,5 @@
 {
-  "summary": "cat/anomaly-detectors.asciidoc:287",
+  "summary": "A successful response of retrieving information about anomaly detectors.",
   "description": "",
   "value": "id                        s dpr   mb\nhigh_sum_total_sales closed 14022 1.5mb\nlow_request_rate     closed 1216  40.5kb\nresponse_code_rates  closed 28146 132.7kb\nurl_scanning         closed 28146 501.6kb"
 }

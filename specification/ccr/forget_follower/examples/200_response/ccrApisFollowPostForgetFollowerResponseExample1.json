@@ -1,5 +1,5 @@
 {
-  "summary": "ccr/apis/follow/post-forget-follower.asciidoc:52",
+  "summary": "A successful response of removing the follower retention leases from the leader index.",
   "description": "",
   "value": "{\n  \"_shards\" : {\n    \"total\" : 1,\n    \"successful\" : 1,\n    \"failed\" : 0,\n    \"failures\" : [ ]\n  }\n}"
 }

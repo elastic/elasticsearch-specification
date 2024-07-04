@@ -1,5 +1,5 @@
 {
-  "summary": "cat/trainedmodel.asciidoc:125",
+  "summary": "A successful response of retrieving information about trained models.",
   "description": "",
   "value": "id                           created_by operations license  create_time              version\nddddd-1580216177138              _xpack 196        PLATINUM 2020-01-28T12:56:17.138Z 8.0.0\nflight-regress-1580215685537     _xpack 102        PLATINUM 2020-01-28T12:48:05.537Z 8.0.0\nlang_ident_model_1               _xpack 39629      BASIC    2019-12-05T12:28:34.594Z 7.6.0"
 }

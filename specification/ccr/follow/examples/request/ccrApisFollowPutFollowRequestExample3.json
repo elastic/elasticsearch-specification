@@ -1,5 +1,5 @@
 {
-  "summary": "ccr/apis/follow/put-follow.asciidoc:108",
+  "summary": "A request to create a follower index named `follower_index`.",
   "method_request": "PUT /follower_index/_ccr/follow?wait_for_active_shards=1",
   "description": "",
   "value": "{\n  \"remote_cluster\" : \"remote_cluster\",\n  \"leader_index\" : \"leader_index\",\n  \"settings\": {\n    \"index.number_of_replicas\": 0\n  },\n  \"max_read_request_operation_count\" : 1024,\n  \"max_outstanding_read_requests\" : 16,\n  \"max_read_request_size\" : \"1024k\",\n  \"max_write_request_operation_count\" : 32768,\n  \"max_write_request_size\" : \"16k\",\n  \"max_outstanding_write_requests\" : 8,\n  \"max_write_buffer_count\" : 512,\n  \"max_write_buffer_size\" : \"512k\",\n  \"max_retry_delay\" : \"10s\",\n  \"read_poll_timeout\" : \"30s\"\n}"

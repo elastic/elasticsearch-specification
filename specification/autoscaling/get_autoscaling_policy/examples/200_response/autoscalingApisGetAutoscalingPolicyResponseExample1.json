@@ -1,5 +1,5 @@
 {
-  "summary": "autoscaling/apis/get-autoscaling-policy.asciidoc:76",
+  "summary": "A successful response when retrieving autoscaling policy.",
   "description": "",
   "value": "{\n   \"roles\": <roles>,\n   \"deciders\": <deciders>\n}"
 }

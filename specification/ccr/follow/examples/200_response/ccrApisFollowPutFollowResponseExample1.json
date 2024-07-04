@@ -1,5 +1,5 @@
 {
-  "summary": "ccr/apis/follow/put-follow.asciidoc:133",
+  "summary": "A successful response of creating a follower index.",
   "description": "",
   "value": "{\n  \"follow_index_created\" : true,\n  \"follow_index_shards_acked\" : true,\n  \"index_following_started\" : true\n}"
 }

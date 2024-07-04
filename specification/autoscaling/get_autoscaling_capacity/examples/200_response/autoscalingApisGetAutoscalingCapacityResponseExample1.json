@@ -1,5 +1,5 @@
 {
-  "summary": "autoscaling/apis/get-autoscaling-capacity.asciidoc:270",
+  "summary": "A successful response when retrieving autoscaling capacity.",
   "description": "",
   "value": "{\n  policies: {}\n}"
 }

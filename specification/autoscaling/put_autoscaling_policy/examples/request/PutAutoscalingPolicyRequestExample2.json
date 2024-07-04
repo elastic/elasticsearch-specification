@@ -1,5 +1,5 @@
 {
-  "summary": "autoscaling/apis/put-autoscaling-policy.asciidoc:67",
+  "summary": "A request to create an autoscaling policy named `my_autoscaling_policy` using the fixed autoscaling decider, applying to the set of nodes having only the "data_hot" role.",
   "method_request": "PUT /_autoscaling/policy/my_autoscaling_policy",
   "description": "",
   "value": "{\n  \"roles\" : [ \"data_hot\" ],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"

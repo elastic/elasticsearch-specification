@@ -1,5 +1,5 @@
 {
-  "summary": "autoscaling/apis/delete-autoscaling-policy.asciidoc:70",
+  "summary": "A successful response when deleting autoscaling policy.",
   "description": "",
   "value": "{\n  \"acknowledged\": true\n}"
 }

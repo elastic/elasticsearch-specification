@@ -1,5 +1,5 @@
 {
-  "summary": "autoscaling/apis/put-autoscaling-policy.asciidoc:82",
+  "summary": "A successful response when creating an autoscaling policy.",
   "description": "",
   "value": "{\n  \"acknowledged\": true\n}"
 }

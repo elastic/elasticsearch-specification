@@ -1,5 +1,5 @@
 {
-  "summary": "ccr/apis/follow/put-follow.asciidoc:85",
+  "summary": "A request to create a follower index named `.ds-logs-mysql-default_copy-2022-01-01-000001` which will use the data stream `the data stream logs-mysql-default_copy`.",
   "method_request": "PUT /.ds-logs-mysql-default_copy-2022-01-01-000001/_ccr/follow",
   "description": "",
   "value": "{\n  \"remote_cluster\" : \"remote_cluster\",\n  \"leader_index\" : \".ds-logs-mysql-default-2022-01-01-000001\",\n  \"data_stream_name\": \"logs-mysql-default_copy\"\n}"

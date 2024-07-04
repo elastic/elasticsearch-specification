@@ -1,5 +1,5 @@
 {
-  "summary": "ccr/apis/auto-follow/delete-auto-follow-pattern.asciidoc:77",
+  "summary": "A successful response of deleting a configured collections of auto-follow patterns.",
   "description": "",
   "value": "{\n  \"acknowledged\" : true\n}"
 }
