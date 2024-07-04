@@ -1,0 +1,5 @@
+{
+  "summary": "A successful response when deleting autoscaling policy.",
+  "description": "",
+  "value": "{\n  \"acknowledged\": true\n}"
+}
