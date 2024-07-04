@@ -1047,6 +1047,13 @@
       ],
       "response": []
     },
+    "security.authenticate": {
+      "request": [],
+      "response": [
+        "interface definition security._types:RoleTemplateInlineScript - Property 'lang' is already defined in an ancestor class",
+        "interface definition security._types:RoleTemplateInlineScript - Property 'options' is already defined in an ancestor class"
+      ]
+    },
     "security.bulk_update_api_keys": {
       "request": [
         "Missing request & response"

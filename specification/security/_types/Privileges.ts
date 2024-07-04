@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldSecurity } from './FieldSecurity'
-import { ScriptLanguage, ScriptBase, StoredScriptId } from '@_types/Scripting'
+import { ScriptLanguage, ScriptBase, Script } from '@_types/Scripting'
 
 export class ApplicationPrivileges {
   /**
@@ -276,7 +276,7 @@ export class RoleTemplateInlineScript extends ScriptBase {
 export type RoleTemplateInlineQuery = string | QueryContainer
 
 /** @codegen_names inline, stored */
-export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
+export type RoleTemplateScript = RoleTemplateInlineScript | Script
 
 /** @non_exhaustive */
 export enum IndexPrivilege {

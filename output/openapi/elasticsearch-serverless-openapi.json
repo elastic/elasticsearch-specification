@@ -28623,7 +28623,7 @@
                   "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContextSetup"
                 },
                 "script": {
-                  "$ref": "#/components/schemas/_types:InlineScript"
+                  "$ref": "#/components/schemas/_types:Script"
                 }
               }
             }
@@ -35313,23 +35313,17 @@
         ]
       },
       "_types:Script": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:InlineScript"
-          },
-          {
-            "$ref": "#/components/schemas/_types:StoredScriptId"
-          }
-        ]
-      },
-      "_types:InlineScript": {
         "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
-          },
           {
             "type": "object",
             "properties": {
+              "params": {
+                "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              },
               "lang": {
                 "$ref": "#/components/schemas/_types:ScriptLanguage"
               },
@@ -35338,15 +35332,22 @@
                 "additionalProperties": {
                   "type": "string"
                 }
-              },
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
               "source": {
                 "description": "The script source.",
                 "type": "string"
+              },
+              "id": {
+                "$ref": "#/components/schemas/_types:Id"
               }
             },
-            "required": [
-              "source"
-            ]
+            "minProperties": 1,
+            "maxProperties": 1
           }
         ]
       },
@@ -35363,36 +35364,6 @@
           },
           {
             "type": "string"
-          }
-        ]
-      },
-      "_types:ScriptBase": {
-        "type": "object",
-        "properties": {
-          "params": {
-            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          }
-        }
-      },
-      "_types:StoredScriptId": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "id": {
-                "$ref": "#/components/schemas/_types:Id"
-              }
-            },
-            "required": [
-              "id"
-            ]
           }
         ]
       },
@@ -60695,7 +60666,7 @@
         "type": "object",
         "properties": {
           "script": {
-            "$ref": "#/components/schemas/_types:InlineScript"
+            "$ref": "#/components/schemas/_types:Script"
           }
         },
         "required": [
@@ -61037,7 +61008,7 @@
             "$ref": "#/components/schemas/security._types:RoleTemplateInlineScript"
           },
           {
-            "$ref": "#/components/schemas/_types:StoredScriptId"
+            "$ref": "#/components/schemas/_types:Script"
           }
         ]
       },
@@ -61078,6 +61049,66 @@
           }
         ]
       },
+<<<<<<< HEAD
+=======
+      "_types:ScriptBase": {
+        "type": "object",
+        "properties": {
+          "params": {
+            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "lang": {
+            "$ref": "#/components/schemas/_types:ScriptLanguage"
+          },
+          "options": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "security._types:GlobalPrivilege": {
+        "type": "object",
+        "properties": {
+          "application": {
+            "$ref": "#/components/schemas/security._types:ApplicationGlobalUserPrivileges"
+          }
+        },
+        "required": [
+          "application"
+        ]
+      },
+      "security._types:ApplicationGlobalUserPrivileges": {
+        "type": "object",
+        "properties": {
+          "manage": {
+            "$ref": "#/components/schemas/security._types:ManageUserPrivileges"
+          }
+        },
+        "required": [
+          "manage"
+        ]
+      },
+      "security._types:ManageUserPrivileges": {
+        "type": "object",
+        "properties": {
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "applications"
+        ]
+      },
+>>>>>>> 5459757b6 (transform script union to a container variant)
       "security._types:ApplicationPrivileges": {
         "type": "object",
         "properties": {
