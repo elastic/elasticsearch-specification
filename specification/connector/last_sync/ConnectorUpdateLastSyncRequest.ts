@@ -18,10 +18,12 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SyncStatus } from '../_types/Connector'
 import { long } from '@_types/Numeric'
 import { WithNullValue } from '@spec_utils/utils'
 import { DateTime } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { SyncStatus } from '../_types/Connector'
 
 /**
  * Updates last sync stats in the connector document
@@ -47,10 +49,11 @@ export interface Request extends RequestBase {
     last_deleted_document_count?: long
     last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
-    last_seen?: WithNullValue<DateTime>
+    last_seen?: DateTime
     last_sync_error?: WithNullValue<string>
     last_sync_scheduled_at?: DateTime
     last_sync_status?: SyncStatus
     last_synced?: DateTime
+    sync_cursor?: Dictionary<string, UserDefinedValue>
   }
 }

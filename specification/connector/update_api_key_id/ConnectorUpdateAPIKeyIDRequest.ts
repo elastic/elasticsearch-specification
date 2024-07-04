@@ -38,7 +38,7 @@ export interface Request extends RequestBase {
    * The connector api key request body
    */
   body: {
-    api_key_id?: WithNullValue<string>
-    api_key_secret_id?: WithNullValue<string>
+    api_key_id?: string
+    api_key_secret_id?: string
   }
 }

@@ -223,9 +223,8 @@ interface SyncRulesFeature {
 
 export interface ConnectorFeatures {
   document_level_security?: FeatureEnabled
-  filtering_advanced_config?: boolean
-  filtering_rules?: boolean
   incremental_sync?: FeatureEnabled
+  native_connector_api_keys?: FeatureEnabled
   sync_rules?: SyncRulesFeature
 }
 
@@ -263,5 +262,6 @@ export interface Connector {
   scheduling: SchedulingConfiguration
   service_type: string
   status: ConnectorStatus
+  sync_cursor?: Dictionary<string, UserDefinedValue>
   sync_now: boolean
 }

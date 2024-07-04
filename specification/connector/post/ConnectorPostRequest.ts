@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
   /** @codegen_name connector */
   body: {
     description?: string
-    index_name: WithNullValue<IndexName>
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string

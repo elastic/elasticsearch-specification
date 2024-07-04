@@ -4456,14 +4456,7 @@
                     "type": "number"
                   },
                   "last_seen": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:DateTime"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_sync_error": {
                     "oneOf": [
@@ -4483,6 +4476,12 @@
                   },
                   "last_synced": {
                     "$ref": "#/components/schemas/_types:DateTime"
+                  },
+                  "sync_cursor": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
                   }
                 }
               }
@@ -4649,14 +4648,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:IndexName"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:IndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -4670,10 +4662,7 @@
                   "service_type": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "index_name"
-                ]
+                }
               }
             }
           }
@@ -5040,24 +5029,10 @@
                 "type": "object",
                 "properties": {
                   "api_key_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "api_key_secret_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   }
                 }
               }
@@ -5463,10 +5438,7 @@
                   "description": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               }
             }
           },
@@ -49335,14 +49307,7 @@
                   "type": "string"
                 },
                 "index_name": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/_types:IndexName"
-                    },
-                    {
-                      "$ref": "#/components/schemas/_spec_utils:NullValue"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/_types:IndexName"
                 },
                 "is_native": {
                   "type": "boolean"
@@ -77653,6 +77618,12 @@
           "status": {
             "$ref": "#/components/schemas/connector._types:ConnectorStatus"
           },
+          "sync_cursor": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
           "sync_now": {
             "type": "boolean"
           }
@@ -77847,7 +77818,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "less_than"
+              "\"less_than\""
             ]
           },
           "constraint": {
@@ -77865,7 +77836,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "greater_than"
+              "\"greater_than\""
             ]
           },
           "constraint": {
@@ -77883,7 +77854,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "list_type"
+              "\"list_type\""
             ]
           },
           "constraint": {
@@ -77904,7 +77875,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "included_in"
+              "\"included_in\""
             ]
           },
           "constraint": {
@@ -77922,7 +77893,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "regex"
+              "\"regex\""
             ]
           },
           "constraint": {
@@ -78001,13 +77972,10 @@
           "document_level_security": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
-          "filtering_advanced_config": {
-            "type": "boolean"
-          },
-          "filtering_rules": {
-            "type": "boolean"
-          },
           "incremental_sync": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "native_connector_api_keys": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
           "sync_rules": {
@@ -78379,6 +78347,12 @@
           },
           "service_type": {
             "type": "string"
+          },
+          "sync_cursor": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [

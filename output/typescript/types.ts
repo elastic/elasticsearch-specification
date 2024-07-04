@@ -9202,6 +9202,7 @@ export interface ConnectorConnector {
   scheduling: ConnectorSchedulingConfiguration
   service_type: string
   status: ConnectorConnectorStatus
+  sync_cursor?: Record<string, any>
   sync_now: boolean
 }
 
@@ -9229,9 +9230,8 @@ export type ConnectorConnectorCustomScheduling = Record<string, ConnectorCustomS
 
 export interface ConnectorConnectorFeatures {
   document_level_security?: ConnectorFeatureEnabled
-  filtering_advanced_config?: boolean
-  filtering_rules?: boolean
   incremental_sync?: ConnectorFeatureEnabled
+  native_connector_api_keys?: ConnectorFeatureEnabled
   sync_rules?: ConnectorSyncRulesFeature
 }
 
@@ -9338,12 +9338,12 @@ export interface ConnectorFilteringValidation {
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorGreaterThanValidation {
-  type: 'greater_than'
+  type: '"greater_than"'
   constraint: double
 }
 
 export interface ConnectorIncludedInValidation {
-  type: 'included_in'
+  type: '"included_in"'
   constraint: string
 }
 
@@ -9355,17 +9355,17 @@ export interface ConnectorIngestPipelineParams {
 }
 
 export interface ConnectorLessThanValidation {
-  type: 'less_than'
+  type: '"less_than"'
   constraint: double
 }
 
 export interface ConnectorListTypeValidation {
-  type: 'list_type'
+  type: '"list_type"'
   constraint: ScalarValue[]
 }
 
 export interface ConnectorRegexValidation {
-  type: 'regex'
+  type: '"regex"'
   constraint: string
 }
 
@@ -9388,6 +9388,7 @@ export interface ConnectorSyncJobConnectorReference {
   language?: string
   pipeline?: ConnectorIngestPipelineParams
   service_type: string
+  sync_cursor?: Record<string, any>
 }
 
 export type ConnectorSyncJobTriggerMethod = 'on_demand' | 'scheduled'
@@ -9433,11 +9434,12 @@ export interface ConnectorLastSyncRequest extends RequestBase {
     last_deleted_document_count?: long
     last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
-    last_seen?: SpecUtilsWithNullValue<DateTime>
+    last_seen?: DateTime
     last_sync_error?: SpecUtilsWithNullValue<string>
     last_sync_scheduled_at?: DateTime
     last_sync_status?: ConnectorSyncStatus
     last_synced?: DateTime
+    sync_cursor?: Record<string, any>
   }
 }
 
@@ -9462,7 +9464,7 @@ export interface ConnectorListResponse {
 export interface ConnectorPostRequest extends RequestBase {
   body?: {
     description?: string
-    index_name: SpecUtilsWithNullValue<IndexName>
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string
@@ -9478,7 +9480,7 @@ export interface ConnectorPutRequest extends RequestBase {
   connector_id: Id
   body?: {
     description?: string
-    index_name: SpecUtilsWithNullValue<IndexName>
+    index_name: IndexName
     is_native?: boolean
     language?: string
     name?: string
@@ -9546,8 +9548,8 @@ export interface ConnectorUpdateActiveFilteringResponse {
 export interface ConnectorUpdateApiKeyIdRequest extends RequestBase {
   connector_id: Id
   body?: {
-    api_key_id?: SpecUtilsWithNullValue<string>
-    api_key_secret_id?: SpecUtilsWithNullValue<string>
+    api_key_id?: string
+    api_key_secret_id?: string
   }
 }
 
@@ -9616,7 +9618,7 @@ export interface ConnectorUpdateIndexNameResponse {
 export interface ConnectorUpdateNameRequest extends RequestBase {
   connector_id: Id
   body?: {
-    name: string
+    name?: string
     description?: string
   }
 }
