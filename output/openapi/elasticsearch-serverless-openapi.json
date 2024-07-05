@@ -1926,8 +1926,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "Determines whether associated sync jobs are also deleted.",
-            "required": true,
+            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -2223,11 +2222,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"
                     }
                   },
                   "required": [
+                    "result",
                     "id"
                   ]
                 }
@@ -2411,10 +2414,17 @@
             "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/connector._types:SyncJobType"
-              }
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/connector._types:SyncJobType"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/connector._types:SyncJobType"
+                  }
+                }
+              ]
             },
             "style": "form"
           }
@@ -20721,10 +20731,14 @@
               "properties": {
                 "result": {
                   "$ref": "#/components/schemas/_types:Result"
+                },
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
                 }
               },
               "required": [
-                "result"
+                "result",
+                "id"
               ]
             }
           }
@@ -23358,7 +23372,7 @@
       "connector.put#connector_id": {
         "in": "path",
         "name": "connector_id",
-        "description": "The unique identifier of the connector to be created or updated",
+        "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -27664,10 +27678,7 @@
                 "service_type": {
                   "type": "string"
                 }
-              },
-              "required": [
-                "index_name"
-              ]
+              }
             }
           }
         }
@@ -50842,7 +50853,7 @@
             }
           },
           "value": {
-            "$ref": "#/components/schemas/_types:ScalarValue"
+            "type": "object"
           }
         },
         "required": [
@@ -50912,7 +50923,7 @@
             "type": "string"
           },
           "value": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ScalarValue"
           }
         },
         "required": [
@@ -50957,7 +50968,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"less_than\""
+              "less_than"
             ]
           },
           "constraint": {
@@ -50975,7 +50986,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"greater_than\""
+              "greater_than"
             ]
           },
           "constraint": {
@@ -50993,7 +51004,25 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"list_type\""
+              "list_type"
+            ]
+          },
+          "constraint": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "constraint"
+        ]
+      },
+      "connector._types:IncludedInValidation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "included_in"
             ]
           },
           "constraint": {
@@ -51008,31 +51037,13 @@
           "constraint"
         ]
       },
-      "connector._types:IncludedInValidation": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "\"included_in\""
-            ]
-          },
-          "constraint": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "constraint"
-        ]
-      },
       "connector._types:RegexValidation": {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
             "enum": [
-              "\"regex\""
+              "regex"
             ]
           },
           "constraint": {
@@ -51159,7 +51170,6 @@
         },
         "required": [
           "active",
-          "domain",
           "draft"
         ]
       },

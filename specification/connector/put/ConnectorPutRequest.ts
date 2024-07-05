@@ -29,17 +29,17 @@ import { Id, IndexName } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * The unique identifier of the connector to be created or updated
+     * The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.
      */
-    connector_id: Id
+    connector_id?: Id
   }
   /**
    * The connector document to be created
    */
   /** @codegen_name connector */
-  body: {
+  body?: {
     description?: string
-    index_name: IndexName
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string

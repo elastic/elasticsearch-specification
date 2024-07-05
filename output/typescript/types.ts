@@ -9221,7 +9221,7 @@ export interface ConnectorConnectorConfigProperties {
   type: ConnectorConnectorFieldType
   ui_restrictions: string[]
   validations: ConnectorValidation[]
-  value: ScalarValue
+  value: any
 }
 
 export type ConnectorConnectorConfiguration = Record<string, ConnectorConnectorConfigProperties>
@@ -9300,7 +9300,7 @@ export interface ConnectorFilteringAdvancedSnippet {
 
 export interface ConnectorFilteringConfig {
   active: ConnectorFilteringRules
-  domain: string
+  domain?: string
   draft: ConnectorFilteringRules
 }
 
@@ -9338,13 +9338,13 @@ export interface ConnectorFilteringValidation {
 export type ConnectorFilteringValidationState = 'edited' | 'invalid' | 'valid'
 
 export interface ConnectorGreaterThanValidation {
-  type: '"greater_than"'
+  type: 'greater_than'
   constraint: double
 }
 
 export interface ConnectorIncludedInValidation {
-  type: '"included_in"'
-  constraint: string
+  type: 'included_in'
+  constraint: ScalarValue[]
 }
 
 export interface ConnectorIngestPipelineParams {
@@ -9355,17 +9355,17 @@ export interface ConnectorIngestPipelineParams {
 }
 
 export interface ConnectorLessThanValidation {
-  type: '"less_than"'
+  type: 'less_than'
   constraint: double
 }
 
 export interface ConnectorListTypeValidation {
-  type: '"list_type"'
-  constraint: ScalarValue[]
+  type: 'list_type'
+  constraint: string
 }
 
 export interface ConnectorRegexValidation {
-  type: '"regex"'
+  type: 'regex'
   constraint: string
 }
 
@@ -9377,7 +9377,7 @@ export interface ConnectorSchedulingConfiguration {
 
 export interface ConnectorSelectOption {
   label: string
-  value: string
+  value: ScalarValue
 }
 
 export interface ConnectorSyncJobConnectorReference {
@@ -9414,7 +9414,7 @@ export interface ConnectorCheckInResponse {
 
 export interface ConnectorDeleteRequest extends RequestBase {
   connector_id: Id
-  delete_sync_jobs: boolean
+  delete_sync_jobs?: boolean
 }
 
 export type ConnectorDeleteResponse = AcknowledgedResponseBase
@@ -9473,14 +9473,15 @@ export interface ConnectorPostRequest extends RequestBase {
 }
 
 export interface ConnectorPostResponse {
+  result: Result
   id: Id
 }
 
 export interface ConnectorPutRequest extends RequestBase {
-  connector_id: Id
+  connector_id?: Id
   body?: {
     description?: string
-    index_name: IndexName
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string
@@ -9490,6 +9491,7 @@ export interface ConnectorPutRequest extends RequestBase {
 
 export interface ConnectorPutResponse {
   result: Result
+  id: Id
 }
 
 export interface ConnectorSyncJobCancelRequest extends RequestBase {
@@ -9517,7 +9519,7 @@ export interface ConnectorSyncJobListRequest extends RequestBase {
   size?: integer
   status?: ConnectorSyncStatus
   connector_id?: Id
-  job_type?: ConnectorSyncJobType[]
+  job_type?: ConnectorSyncJobType | ConnectorSyncJobType[]
 }
 
 export interface ConnectorSyncJobListResponse {

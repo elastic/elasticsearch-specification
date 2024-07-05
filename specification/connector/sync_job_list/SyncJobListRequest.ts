@@ -50,6 +50,6 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of job types to fetch the sync jobs for
      */
-    job_type?: SyncJobType[]
+    job_type?: SyncJobType | SyncJobType[]
   }
 }

@@ -24,7 +24,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 interface SelectOption {
   label: string
-  value: string
+  value: ScalarValue
 }
 
 interface Dependency {
@@ -67,12 +67,12 @@ export interface GreaterThanValidation {
 
 export interface ListTypeValidation {
   type: 'list_type'
-  constraint: ScalarValue[]
+  constraint: string
 }
 
 export interface IncludedInValidation {
   type: 'included_in'
-  constraint: string
+  constraint: ScalarValue[]
 }
 
 export interface RegexValidation {
@@ -95,7 +95,7 @@ export interface ConnectorConfigProperties {
   type: ConnectorFieldType
   ui_restrictions: string[]
   validations: Validation[]
-  value: ScalarValue
+  value: UserDefinedValue
 }
 
 export type ConnectorConfiguration = Dictionary<
@@ -208,7 +208,7 @@ export interface FilteringRules {
 
 export interface FilteringConfig {
   active: FilteringRules
-  domain: string
+  domain?: string
   draft: FilteringRules
 }
 

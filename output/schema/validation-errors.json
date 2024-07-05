@@ -541,12 +541,6 @@
       ],
       "response": []
     },
-    "connector.put": {
-      "request": [
-        "Request: path parameter 'connector_id' is optional in the json spec"
-      ],
-      "response": []
-    },
     "connector.secret_delete": {
       "request": [
         "Missing request & response"

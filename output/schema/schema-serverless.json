@@ -14008,9 +14008,9 @@
       ],
       "query": [
         {
-          "description": "Determines whether associated sync jobs are also deleted.",
+          "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
           "name": "delete_sync_jobs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -14020,7 +14020,7 @@
           }
         }
       ],
-      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L39"
+      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -14543,6 +14543,17 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "id",
             "required": true,
             "type": {
@@ -14560,7 +14571,7 @@
         "name": "Response",
         "namespace": "connector.post"
       },
-      "specLocation": "connector/post/ConnectorPostResponse.ts#L22-L26"
+      "specLocation": "connector/post/ConnectorPostResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14582,7 +14593,7 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -14651,9 +14662,9 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the connector to be created or updated",
+          "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
           "name": "connector_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -14680,6 +14691,17 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
           }
         ]
       },
@@ -14688,7 +14710,7 @@
         "name": "Response",
         "namespace": "connector.put"
       },
-      "specLocation": "connector/put/ConnectorPutResponse.ts#L22-L26"
+      "specLocation": "connector/put/ConnectorPutResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14932,14 +14954,26 @@
           "name": "job_type",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncJobType",
-                "namespace": "connector._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SyncJobType",
+                  "namespace": "connector._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SyncJobType",
+                    "namespace": "connector._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -89191,11 +89225,7 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScalarValue",
-              "namespace": "_types"
-            }
+            "kind": "user_defined_value"
           }
         }
       ],
@@ -89282,8 +89312,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "ScalarValue",
+              "namespace": "_types"
             }
           }
         }
@@ -89376,7 +89406,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"less_than\""
+            "value": "less_than"
           }
         },
         {
@@ -89405,7 +89435,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"greater_than\""
+            "value": "greater_than"
           }
         },
         {
@@ -89434,20 +89464,17 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"list_type\""
+            "value": "list_type"
           }
         },
         {
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScalarValue",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         }
@@ -89466,17 +89493,20 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"included_in\""
+            "value": "included_in"
           }
         },
         {
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScalarValue",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -89495,7 +89525,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"regex\""
+            "value": "regex"
           }
         },
         {
@@ -112474,7 +112504,7 @@
         },
         {
           "name": "domain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
