@@ -38,7 +38,7 @@ export class QueryRuleset {
 export class QueryRule {
   rule_id: Id
   type: QueryRuleType
-  criteria: QueryRuleCriteria[]
+  criteria: QueryRuleCriteria | QueryRuleCriteria[]
   actions: QueryRuleActions
   priority?: integer
 }

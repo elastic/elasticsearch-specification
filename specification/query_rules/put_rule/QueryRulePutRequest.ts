@@ -49,7 +49,7 @@ export interface Request extends RequestBase {
   /** @codegen_name query_rule */
   body: {
     type: QueryRuleType
-    criteria: QueryRuleCriteria[]
+    criteria: QueryRuleCriteria | QueryRuleCriteria[]
     actions: QueryRuleActions
     priority?: integer
   }
