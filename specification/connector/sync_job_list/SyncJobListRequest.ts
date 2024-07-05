@@ -25,8 +25,8 @@ import { SyncStatus } from '../_types/Connector'
 /**
  * Lists connector sync jobs.
  * @rest_spec_name connector.sync_job_list
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-list
  */
 export interface Request extends RequestBase {
