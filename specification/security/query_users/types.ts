@@ -32,7 +32,7 @@ import {
 } from '@_types/query_dsl/term'
 import { MatchQuery, SimpleQueryStringQuery } from '@_types/query_dsl/fulltext'
 import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
-import {User} from "@security/_types/User";
+import { User } from '@security/_types/User'
 
 /**
  * @variants container
