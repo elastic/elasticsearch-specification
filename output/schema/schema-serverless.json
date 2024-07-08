@@ -35825,14 +35825,26 @@
             "name": "criteria",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRuleCriteria",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRuleCriteria",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -35843,6 +35855,17 @@
               "type": {
                 "name": "QueryRuleActions",
                 "namespace": "query_rules._types"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -35887,7 +35910,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L27-L54"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L56"
     },
     {
       "body": {
@@ -35924,14 +35947,26 @@
             "name": "rules",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRule",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRule",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRule",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         ]
@@ -99340,6 +99375,9 @@
           "name": "exact_fuzzy"
         },
         {
+          "name": "fuzzy"
+        },
+        {
           "name": "prefix"
         },
         {
@@ -99368,7 +99406,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L66"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L56-L69"
     },
     {
       "kind": "enum",
@@ -99381,7 +99419,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L46-L48"
     },
     {
       "kind": "enum",
@@ -132762,14 +132800,26 @@
           "name": "criteria",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRuleCriteria",
-                "namespace": "query_rules._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRuleCriteria",
+                  "namespace": "query_rules._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -132782,9 +132832,20 @@
               "namespace": "query_rules._types"
             }
           }
+        },
+        {
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L37-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L38-L44"
     },
     {
       "kind": "interface",
@@ -132826,7 +132887,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L50-L54"
     },
     {
       "kind": "interface",
@@ -132864,7 +132925,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L68-L71"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L71-L74"
     },
     {
       "kind": "interface",
@@ -132901,7 +132962,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L26-L35"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L27-L36"
     },
     {
       "kind": "interface",
@@ -132951,8 +133012,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
