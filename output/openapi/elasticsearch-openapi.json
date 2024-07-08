@@ -24625,13 +24625,23 @@
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
                   },
                   "criteria": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                        }
+                      }
+                    ]
                   },
                   "actions": {
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+                  },
+                  "priority": {
+                    "type": "number"
                   }
                 },
                 "required": [
@@ -24777,10 +24787,17 @@
                 "type": "object",
                 "properties": {
                   "rules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_rules._types:QueryRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -93163,13 +93180,23 @@
             "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
           },
           "criteria": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                }
+              }
+            ]
           },
           "actions": {
             "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+          },
+          "priority": {
+            "type": "number"
           }
         },
         "required": [
@@ -93211,6 +93238,7 @@
           "global",
           "exact",
           "exact_fuzzy",
+          "fuzzy",
           "prefix",
           "suffix",
           "contains",
@@ -93271,7 +93299,7 @@
             "description": "A map of criteria type to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "type": "number"
             }
           }
         },
