@@ -22,8 +22,8 @@ import { Id } from '@_types/common'
 /**
  * Updates the name and description fields in the connector document
  * @rest_spec_name connector.update_name
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-name
  */
 export interface Request extends RequestBase {
