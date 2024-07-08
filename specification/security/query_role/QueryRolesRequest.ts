@@ -65,4 +65,3 @@ export interface Request extends RequestBase {
     search_after?: SortResults
   }
 }
-

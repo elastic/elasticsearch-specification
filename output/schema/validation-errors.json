@@ -1111,12 +1111,6 @@
       ],
       "response": []
     },
-    "security.query_role": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.query_user": {
       "request": [
         "Missing request & response"

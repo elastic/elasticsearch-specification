@@ -103,4 +103,3 @@ export class RoleQueryContainer {
 export class QueryRole extends RoleDescriptor {
   _sort?: SortResults
 }
-

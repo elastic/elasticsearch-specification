@@ -60867,6 +60867,9 @@
               "type": "string"
             }
           },
+          "description": {
+            "type": "string"
+          },
           "transient_metadata": {
             "type": "object",
             "additionalProperties": {

@@ -83,5 +83,6 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
+  description?: string
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }
