@@ -23,8 +23,8 @@ import { SyncJobType, SyncJobTriggerMethod } from '../_types/SyncJob'
 /**
  * Creates a connector sync job.
  * @rest_spec_name connector.sync_job_post
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-post
  */
 export interface Request extends RequestBase {

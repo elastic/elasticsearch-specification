@@ -22,8 +22,8 @@ import { Id } from '@_types/common'
 /**
  * Retrieves a connector.
  * @rest_spec_name connector.get
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-get
  */
 export interface Request extends RequestBase {
