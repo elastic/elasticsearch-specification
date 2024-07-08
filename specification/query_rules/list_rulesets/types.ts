@@ -33,5 +33,5 @@ export class QueryRulesetListItem {
   /**
    * A map of criteria type to the number of rules of that type
    */
-  rule_criteria_types_counts: Dictionary<string, string>
+  rule_criteria_types_counts: Dictionary<string, integer>
 }

@@ -38,6 +38,6 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name query_ruleset */
   body: {
-    rules: QueryRule[]
+    rules: QueryRule | QueryRule[]
   }
 }
