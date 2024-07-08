@@ -1568,12 +1568,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the API key id in the connector document",
@@ -1596,7 +1596,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
