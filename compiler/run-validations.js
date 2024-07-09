@@ -165,7 +165,7 @@ async function run () {
 
   spinner.text = 'Running validations'
 
-  const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : argv['stack-version'].slice(0, 3)
+  const branchName = argv['branch'].startsWith('7.') ? '7.x' : argv['branch']
 
   if (noCache || isStale || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
@@ -175,7 +175,7 @@ async function run () {
     await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName}`
 
     spinner.text = 'Fetching artifacts'
-    await $`node ${path.join(cloneEsPath, 'index.js')} --version ${argv['stack-version']}`
+    await $`node ${path.join(cloneEsPath, 'index.js')} --branch ${argv['branch']}`
   }
 
   cd(tsValidationPath)
