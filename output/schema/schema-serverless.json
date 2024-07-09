@@ -1079,12 +1079,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Deletes a connector.",
@@ -1104,7 +1104,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1118,12 +1118,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Retrieves a connector.",
@@ -1143,7 +1143,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1199,12 +1199,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Returns existing connectors.",
@@ -1224,7 +1224,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1238,12 +1238,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Creates a connector.",
@@ -1266,7 +1266,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1280,12 +1280,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Creates or updates a connector.",
@@ -1308,7 +1308,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1328,12 +1328,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Cancels a connector sync job.",
@@ -1353,7 +1353,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1367,12 +1367,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Deletes a connector sync job.",
@@ -1392,7 +1392,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1406,12 +1406,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Retrieves a connector sync job.",
@@ -1431,7 +1431,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1445,12 +1445,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Lists connector sync jobs.",
@@ -1470,7 +1470,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1484,12 +1484,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Creates a connector sync job.",
@@ -1512,7 +1512,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1568,12 +1568,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the API key id in the connector document",
@@ -1596,7 +1596,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1610,12 +1610,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the configuration field in the connector document",
@@ -1638,7 +1638,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1694,12 +1694,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the filtering field in the connector document",
@@ -1722,7 +1722,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1778,12 +1778,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the index_name in the connector document",
@@ -1806,7 +1806,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1820,12 +1820,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the name and description fields in the connector document",
@@ -1848,7 +1848,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1862,12 +1862,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the is_native flag in the connector document",
@@ -1890,7 +1890,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1904,12 +1904,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the pipeline field in the connector document",
@@ -1932,7 +1932,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1946,12 +1946,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the scheduling field in the connector document",
@@ -1974,7 +1974,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1988,12 +1988,12 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the service type of the connector",
@@ -2016,7 +2016,7 @@
         "application/json"
       ],
       "since": "8.12.0",
-      "stability": "experimental",
+      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -5338,7 +5338,7 @@
           "stability": "stable"
         }
       },
-      "description": "Close anomaly detection jobs\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
+      "description": "Close anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "docId": "ml-close-job",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html",
       "name": "ml.close_job",
@@ -5643,7 +5643,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an anomaly detection job.\n\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
+      "description": "Delete an anomaly detection job.\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html",
       "name": "ml.delete_job",
       "privileges": {
@@ -6549,7 +6549,7 @@
           "stability": "stable"
         }
       },
-      "description": "Opens one or more anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
       "privileges": {
@@ -6990,7 +6990,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
       "privileges": {
@@ -26984,7 +26984,7 @@
           }
         ]
       },
-      "description": "Close anomaly detection jobs\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
+      "description": "Close anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27503,7 +27503,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an anomaly detection job.\n\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
+      "description": "Delete an anomaly detection job.\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27569,7 +27569,7 @@
           }
         }
       ],
-      "specLocation": "ml/delete_job/MlDeleteJobRequest.ts#L23-L64"
+      "specLocation": "ml/delete_job/MlDeleteJobRequest.ts#L23-L63"
     },
     {
       "body": {
@@ -29825,7 +29825,7 @@
           }
         ]
       },
-      "description": "Opens one or more anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31538,7 +31538,7 @@
           }
         ]
       },
-      "description": "Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31565,7 +31565,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L111"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L112"
     },
     {
       "body": {
@@ -35825,14 +35825,26 @@
             "name": "criteria",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRuleCriteria",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRuleCriteria",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -35843,6 +35855,17 @@
               "type": {
                 "name": "QueryRuleActions",
                 "namespace": "query_rules._types"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -35887,7 +35910,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L27-L54"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L56"
     },
     {
       "body": {
@@ -35924,14 +35947,26 @@
             "name": "rules",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRule",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRule",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRule",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         ]
@@ -99340,6 +99375,9 @@
           "name": "exact_fuzzy"
         },
         {
+          "name": "fuzzy"
+        },
+        {
           "name": "prefix"
         },
         {
@@ -99368,7 +99406,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L66"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L56-L69"
     },
     {
       "kind": "enum",
@@ -99381,7 +99419,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L46-L48"
     },
     {
       "kind": "enum",
@@ -132762,14 +132800,26 @@
           "name": "criteria",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRuleCriteria",
-                "namespace": "query_rules._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRuleCriteria",
+                  "namespace": "query_rules._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -132782,9 +132832,20 @@
               "namespace": "query_rules._types"
             }
           }
+        },
+        {
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L37-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L38-L44"
     },
     {
       "kind": "interface",
@@ -132826,7 +132887,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L50-L54"
     },
     {
       "kind": "interface",
@@ -132864,7 +132925,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L68-L71"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L71-L74"
     },
     {
       "kind": "interface",
@@ -132901,7 +132962,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L26-L35"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L27-L36"
     },
     {
       "kind": "interface",
@@ -132951,8 +133012,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }

@@ -18,6 +18,7 @@
  */
 
 import { Id, IndexName, Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { EpochTime, UnitMillis } from '@_types/Time'
 import { InlineScript } from '@_types/Scripting'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -37,8 +38,9 @@ export class QueryRuleset {
 export class QueryRule {
   rule_id: Id
   type: QueryRuleType
-  criteria: QueryRuleCriteria[]
+  criteria: QueryRuleCriteria | QueryRuleCriteria[]
   actions: QueryRuleActions
+  priority?: integer
 }
 
 export enum QueryRuleType {
@@ -55,6 +57,7 @@ export enum QueryRuleCriteriaType {
   global,
   exact,
   exact_fuzzy,
+  fuzzy,
   prefix,
   suffix,
   contains,
