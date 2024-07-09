@@ -1049,6 +1049,18 @@
       ],
       "response": []
     },
+    "security.bulk_delete_role": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.bulk_put_role": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.bulk_update_api_keys": {
       "request": [
         "Missing request & response"
@@ -1094,6 +1106,12 @@
       "response": []
     },
     "security.oidc_prepare_authentication": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.query_role": {
       "request": [
         "Missing request & response"
       ],
