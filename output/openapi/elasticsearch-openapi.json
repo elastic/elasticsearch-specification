@@ -96332,8 +96332,15 @@
             "properties": {
               "_sort": {
                 "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "name": {
+                "description": "Name of the role.",
+                "type": "string"
               }
-            }
+            },
+            "required": [
+              "name"
+            ]
           }
         ]
       },

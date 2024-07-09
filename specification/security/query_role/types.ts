@@ -102,4 +102,8 @@ export class RoleQueryContainer {
 
 export class QueryRole extends RoleDescriptor {
   _sort?: SortResults
+  /**
+   * Name of the role.
+   */
+  name: string
 }

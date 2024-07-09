@@ -17641,6 +17641,7 @@ export interface SecurityQueryApiKeysResponse {
 
 export interface SecurityQueryRoleQueryRole extends SecurityRoleDescriptor {
   _sort?: SortResults
+  name: string
 }
 
 export interface SecurityQueryRoleRequest extends RequestBase {
