@@ -166,7 +166,7 @@ async function run () {
 
   spinner.text = 'Running validations'
 
-  const branchArg = argv.branchArg.toString()
+  const branchArg = argv.branch.toString()
   const branchName = branchArg.startsWith('7.') ? '7.x' : branchArg
 
   if (noCache || isStale || metadata.branchName !== branchName) {
