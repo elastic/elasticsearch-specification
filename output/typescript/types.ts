@@ -16894,6 +16894,7 @@ export interface SecurityRoleDescriptor {
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
+  description?: string
   transient_metadata?: Record<string, any>
 }
 
@@ -16905,6 +16906,7 @@ export interface SecurityRoleDescriptorRead {
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
+  description?: string
   transient_metadata?: Record<string, any>
 }
 
@@ -17637,6 +17639,41 @@ export interface SecurityQueryApiKeysResponse {
   count: integer
   api_keys: SecurityApiKey[]
   aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
+}
+
+export interface SecurityQueryRoleQueryRole extends SecurityRoleDescriptor {
+  _sort?: SortResults
+  name: string
+}
+
+export interface SecurityQueryRoleRequest extends RequestBase {
+  body?: {
+    query?: SecurityQueryRoleRoleQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryRoleResponse {
+  total: integer
+  count: integer
+  roles: SecurityQueryRoleQueryRole[]
+}
+
+export interface SecurityQueryRoleRoleQueryContainer {
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  ids?: QueryDslIdsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
 }
 
 export interface SecuritySamlAuthenticateRequest extends RequestBase {
