@@ -134812,8 +134812,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "ClusterPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -134908,6 +134908,7 @@
           }
         },
         {
+          "description": "Optional description of the role descriptor",
           "name": "description",
           "required": false,
           "type": {
@@ -134937,7 +134938,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L28-L57"
+      "specLocation": "security/_types/RoleDescriptor.ts#L28-L60"
     },
     {
       "kind": "interface",
