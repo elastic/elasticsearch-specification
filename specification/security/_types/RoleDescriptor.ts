@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GlobalPrivilege } from './Privileges'
+import { ClusterPrivilege, GlobalPrivilege } from './Privileges'
 import { IndicesPrivileges } from './Privileges'
 import { ApplicationPrivileges } from './Privileges'
 import { Metadata } from '@_types/common'
@@ -29,7 +29,7 @@ export class RoleDescriptor {
   /**
    * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
    */
-  cluster?: string[]
+  cluster?: ClusterPrivilege[]
   /**
    * A list of indices permissions entries.
    * @aliases index

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { BulkError } from '@security/bulk_put_role/types'
+import { BulkError } from '@security/_types/Bulk'
 
 export class Response {
   body: {
