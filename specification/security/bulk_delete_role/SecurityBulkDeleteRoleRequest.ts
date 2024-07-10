@@ -29,7 +29,6 @@ import { Refresh } from '@_types/common'
  * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
-  path_parts: {}
   query_parameters: {
     refresh?: Refresh
   }
