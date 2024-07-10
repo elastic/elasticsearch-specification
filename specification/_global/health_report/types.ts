@@ -150,6 +150,7 @@ export class IlmIndicator extends BaseIndicator {
 export class IlmIndicatorDetails {
   ilm_status: LifecycleOperationMode
   policies: long
+  stagnating_indices: long
 }
 
 /** SLM */

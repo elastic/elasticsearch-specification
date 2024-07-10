@@ -80574,11 +80574,15 @@
           },
           "policies": {
             "type": "number"
+          },
+          "stagnating_indices": {
+            "type": "number"
           }
         },
         "required": [
           "ilm_status",
-          "policies"
+          "policies",
+          "stagnating_indices"
         ]
       },
       "_types:LifecycleOperationMode": {
