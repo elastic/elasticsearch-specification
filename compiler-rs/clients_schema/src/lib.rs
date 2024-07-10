@@ -241,7 +241,7 @@ pub struct Deprecation {
 }
 
 /// An API flavor
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, clap::ValueEnum)]
 #[serde(rename_all = "snake_case")]
 pub enum Flavor {
     Stack,
