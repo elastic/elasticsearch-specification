@@ -24,7 +24,7 @@ import { Sort, SortResults } from '@_types/sort'
 
 /**
  * Retrieves information for Users in a paginated manner. You can optionally filter the results with a query.
- * @rest_spec_name security.query_api_keys
+ * @rest_spec_name security.query_user
  * @availability stack since=8.14.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security
