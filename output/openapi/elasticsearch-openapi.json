@@ -30424,6 +30424,56 @@
         }
       }
     },
+    "/_security/_query/user": {
+      "get": {
+        "tags": [
+          "security.query_user"
+        ],
+        "summary": "Retrieves information for Users in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-user.html"
+        },
+        "operationId": "security-query-user",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_user#with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_user"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_user#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "security.query_user"
+        ],
+        "summary": "Retrieves information for Users in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-user.html"
+        },
+        "operationId": "security-query-user-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_user#with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_user"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_user#200"
+          }
+        }
+      }
+    },
     "/_security/saml/authenticate": {
       "post": {
         "tags": [
@@ -39568,6 +39618,38 @@
           }
         }
       },
+      "security.query_user#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of users found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of users returned in the response.",
+                  "type": "number"
+                },
+                "users": {
+                  "description": "A list of user information.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_user:QueryUser"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "users"
+              ]
+            }
+          }
+        }
+      },
       "security.suggest_user_profiles#200": {
         "description": "",
         "content": {
@@ -48512,6 +48594,16 @@
         },
         "style": "form"
       },
+      "security.query_user#with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "If true will return the User Profile ID for the users in the query result, if any.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "security.suggest_user_profiles#data": {
         "in": "query",
         "name": "data",
@@ -51627,6 +51719,34 @@
               "properties": {
                 "query": {
                   "$ref": "#/components/schemas/security.query_role:RoleQueryContainer"
+                },
+                "from": {
+                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "sort": {
+                  "$ref": "#/components/schemas/_types:Sort"
+                },
+                "size": {
+                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "search_after": {
+                  "$ref": "#/components/schemas/_types:SortResults"
+                }
+              }
+            }
+          }
+        }
+      },
+      "security.query_user": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/security.query_user:UserQueryContainer"
                 },
                 "from": {
                   "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
@@ -96474,6 +96594,106 @@
             "required": [
               "name"
             ]
+          }
+        ]
+      },
+      "security.query_user:UserQueryContainer": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
+            "description": "Returns users that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
+            "description": "Returns users that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
+            "description": "Returns users that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
+            "description": "Returns users that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
+            "description": "Returns users that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_user:QueryUser": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:User"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_sort": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              }
+            }
           }
         ]
       },

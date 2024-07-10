@@ -1105,12 +1105,6 @@
       ],
       "response": []
     },
-    "security.query_user": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.update_cross_cluster_api_key": {
       "request": [
         "Missing request & response"
