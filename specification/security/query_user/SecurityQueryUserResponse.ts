@@ -18,7 +18,7 @@
  */
 
 import { integer } from '@_types/Numeric'
-import { QueryUser } from '@security/query_users/types'
+import { QueryUser } from '@security/query_user/types'
 
 export class Response {
   body: {
