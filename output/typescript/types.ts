@@ -608,7 +608,7 @@ export interface HealthReportSlmIndicator extends HealthReportBaseIndicator {
 export interface HealthReportSlmIndicatorDetails {
   slm_status: LifecycleOperationMode
   policies: long
-  unhealthy_policies: HealthReportSlmIndicatorUnhealthyPolicies
+  unhealthy_policies?: HealthReportSlmIndicatorUnhealthyPolicies
 }
 
 export interface HealthReportSlmIndicatorUnhealthyPolicies {

@@ -160,7 +160,7 @@ export class SlmIndicator extends BaseIndicator {
 export class SlmIndicatorDetails {
   slm_status: LifecycleOperationMode
   policies: long
-  unhealthy_policies: SlmIndicatorUnhealthyPolicies
+  unhealthy_policies?: SlmIndicatorUnhealthyPolicies
 }
 
 export class SlmIndicatorUnhealthyPolicies {

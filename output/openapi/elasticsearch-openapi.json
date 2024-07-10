@@ -80571,8 +80571,7 @@
         },
         "required": [
           "slm_status",
-          "policies",
-          "unhealthy_policies"
+          "policies"
         ]
       },
       "_global.health_report:SlmIndicatorUnhealthyPolicies": {
