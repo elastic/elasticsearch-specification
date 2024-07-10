@@ -27788,6 +27788,107 @@
         }
       }
     },
+    "/_security/role": {
+      "get": {
+        "tags": [
+          "security.get_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
+        },
+        "operationId": "security-get-role-1",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.get_role#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "security.bulk_put_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The bulk create or update roles API cannot update roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-put-role.html"
+        },
+        "operationId": "security-bulk-put-role",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "description": "A dictionary of role name to RoleDescriptor objects to add or update",
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/security._types:RoleDescriptor"
+                    }
+                  }
+                },
+                "required": [
+                  "roles"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "description": "Array of created roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "updated": {
+                      "description": "Array of updated roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "noop": {
+                      "description": "Array of role names without any changes",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/user/{username}/_password": {
       "put": {
         "tags": [
@@ -29502,24 +29603,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/security.get_privileges#200"
-          }
-        }
-      }
-    },
-    "/_security/role": {
-      "get": {
-        "tags": [
-          "security.get_role"
-        ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
-        },
-        "operationId": "security-get-role-1",
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.get_role#200"
           }
         }
       }
@@ -94984,7 +95067,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -95029,6 +95112,7 @@
             }
           },
           "description": {
+            "description": "Optional description of the role descriptor",
             "type": "string"
           },
           "transient_metadata": {
@@ -95038,6 +95122,77 @@
             }
           }
         }
+      },
+      "security._types:ClusterPrivilege": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "cancel_task",
+              "create_snapshot",
+              "cross_cluster_replication",
+              "cross_cluster_search",
+              "delegate_pki",
+              "grant_api_key",
+              "manage",
+              "manage_api_key",
+              "manage_autoscaling",
+              "manage_behavioral_analytics",
+              "manage_ccr",
+              "manage_data_frame_transforms",
+              "manage_data_stream_global_retention",
+              "manage_enrich",
+              "manage_ilm",
+              "manage_index_templates",
+              "manage_inference",
+              "manage_ingest_pipelines",
+              "manage_logstash_pipelines",
+              "manage_ml",
+              "manage_oidc",
+              "manage_own_api_key",
+              "manage_pipeline",
+              "manage_rollup",
+              "manage_saml",
+              "manage_search_application",
+              "manage_search_query_rules",
+              "manage_search_synonyms",
+              "manage_security",
+              "manage_service_account",
+              "manage_slm",
+              "manage_token",
+              "manage_transform",
+              "manage_user_profile",
+              "manage_watcher",
+              "monitor",
+              "monitor_data_frame_transforms",
+              "monitor_data_stream_global_retention",
+              "monitor_enrich",
+              "monitor_inference",
+              "monitor_ml",
+              "monitor_rollup",
+              "monitor_snapshot",
+              "monitor_text_structure",
+              "monitor_transform",
+              "monitor_watcher",
+              "none",
+              "post_behavioral_analytics_event",
+              "read_ccr",
+              "read_connector_secrets",
+              "read_fleet_secrets",
+              "read_ilm",
+              "read_pipeline",
+              "read_security",
+              "read_slm",
+              "transport_client",
+              "write_connector_secrets",
+              "write_fleet_secrets"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "security._types:IndicesPrivileges": {
         "type": "object",
@@ -95273,6 +95428,26 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "security._types:BulkError": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of errors",
+            "type": "number"
+          },
+          "details": {
+            "description": "Details about the errors, keyed by role name",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types:ErrorCause"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "details"
         ]
       },
       "security._types:ClusterNode": {
@@ -95533,7 +95708,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -95578,6 +95753,7 @@
             }
           },
           "description": {
+            "description": "Optional description of the role descriptor",
             "type": "string"
           },
           "transient_metadata": {
@@ -95873,77 +96049,6 @@
           "application",
           "privileges",
           "resources"
-        ]
-      },
-      "security._types:ClusterPrivilege": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "all",
-              "cancel_task",
-              "create_snapshot",
-              "cross_cluster_replication",
-              "cross_cluster_search",
-              "delegate_pki",
-              "grant_api_key",
-              "manage",
-              "manage_api_key",
-              "manage_autoscaling",
-              "manage_behavioral_analytics",
-              "manage_ccr",
-              "manage_data_frame_transforms",
-              "manage_data_stream_global_retention",
-              "manage_enrich",
-              "manage_ilm",
-              "manage_index_templates",
-              "manage_inference",
-              "manage_ingest_pipelines",
-              "manage_logstash_pipelines",
-              "manage_ml",
-              "manage_oidc",
-              "manage_own_api_key",
-              "manage_pipeline",
-              "manage_rollup",
-              "manage_saml",
-              "manage_search_application",
-              "manage_search_query_rules",
-              "manage_search_synonyms",
-              "manage_security",
-              "manage_service_account",
-              "manage_slm",
-              "manage_token",
-              "manage_transform",
-              "manage_user_profile",
-              "manage_watcher",
-              "monitor",
-              "monitor_data_frame_transforms",
-              "monitor_data_stream_global_retention",
-              "monitor_enrich",
-              "monitor_inference",
-              "monitor_ml",
-              "monitor_rollup",
-              "monitor_snapshot",
-              "monitor_text_structure",
-              "monitor_transform",
-              "monitor_watcher",
-              "none",
-              "post_behavioral_analytics_event",
-              "read_ccr",
-              "read_connector_secrets",
-              "read_fleet_secrets",
-              "read_ilm",
-              "read_pipeline",
-              "read_security",
-              "read_slm",
-              "transport_client",
-              "write_connector_secrets",
-              "write_fleet_secrets"
-            ]
-          },
-          {
-            "type": "string"
-          }
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {

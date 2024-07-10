@@ -60851,7 +60851,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -60896,6 +60896,7 @@
             }
           },
           "description": {
+            "description": "Optional description of the role descriptor",
             "type": "string"
           },
           "transient_metadata": {
@@ -60905,6 +60906,45 @@
             }
           }
         }
+      },
+      "security._types:ClusterPrivilege": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "cancel_task",
+              "manage",
+              "manage_api_key",
+              "manage_behavioral_analytics",
+              "manage_enrich",
+              "manage_index_templates",
+              "manage_inference",
+              "manage_ingest_pipelines",
+              "manage_logstash_pipelines",
+              "manage_ml",
+              "manage_own_api_key",
+              "manage_pipeline",
+              "manage_search_application",
+              "manage_search_query_rules",
+              "manage_search_synonyms",
+              "manage_security",
+              "manage_transform",
+              "monitor",
+              "monitor_enrich",
+              "monitor_inference",
+              "monitor_ml",
+              "monitor_transform",
+              "none",
+              "post_behavioral_analytics_event",
+              "read_pipeline",
+              "read_security"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "security._types:IndicesPrivileges": {
         "type": "object",
@@ -61158,45 +61198,6 @@
           "application",
           "privileges",
           "resources"
-        ]
-      },
-      "security._types:ClusterPrivilege": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "all",
-              "cancel_task",
-              "manage",
-              "manage_api_key",
-              "manage_behavioral_analytics",
-              "manage_enrich",
-              "manage_index_templates",
-              "manage_inference",
-              "manage_ingest_pipelines",
-              "manage_logstash_pipelines",
-              "manage_ml",
-              "manage_own_api_key",
-              "manage_pipeline",
-              "manage_search_application",
-              "manage_search_query_rules",
-              "manage_search_synonyms",
-              "manage_security",
-              "manage_transform",
-              "monitor",
-              "monitor_enrich",
-              "monitor_inference",
-              "monitor_ml",
-              "monitor_transform",
-              "none",
-              "post_behavioral_analytics_event",
-              "read_pipeline",
-              "read_security"
-            ]
-          },
-          {
-            "type": "string"
-          }
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {

@@ -16838,6 +16838,11 @@ export interface SecurityApplicationPrivileges {
   resources: string[]
 }
 
+export interface SecurityBulkError {
+  count: integer
+  details: Record<string, ErrorCause>
+}
+
 export interface SecurityClusterNode {
   name: Name
 }
@@ -16887,7 +16892,7 @@ export interface SecurityRealmInfo {
 }
 
 export interface SecurityRoleDescriptor {
-  cluster?: string[]
+  cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
   index?: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
@@ -16899,7 +16904,7 @@ export interface SecurityRoleDescriptor {
 }
 
 export interface SecurityRoleDescriptorRead {
-  cluster: string[]
+  cluster: SecurityClusterPrivilege[]
   indices: SecurityIndicesPrivileges[]
   index: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
@@ -17024,6 +17029,20 @@ export interface SecurityAuthenticateResponse {
 export interface SecurityAuthenticateToken {
   name: Name
   type?: string
+}
+
+export interface SecurityBulkPutRoleRequest extends RequestBase {
+  refresh?: Refresh
+  body?: {
+    roles: Record<string, SecurityRoleDescriptor>
+  }
+}
+
+export interface SecurityBulkPutRoleResponse {
+  created?: string[]
+  updated?: string[]
+  noop?: string[]
+  errors?: SecurityBulkError
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
