@@ -19,7 +19,7 @@
 
 import { ByteSize } from '@_types/common'
 import { Host, Ip } from '@_types/Networking'
-import { Percentage } from '@_types/Numeric'
+import { double, Percentage } from '@_types/Numeric'
 
 export class AllocationRecord {
   /**
@@ -27,6 +27,23 @@ export class AllocationRecord {
    * @aliases s
    */
   shards?: string
+
+  /**
+   * Amount of shards that are scheduled to be moved elsewhere in the cluster or -1 other than desired balance allocator is used
+   */
+  'shards.undesired'?: string | null
+
+  /**
+   * Sum of index write load forecasts
+   * @aliases wlf,writeLoadForecast
+   */
+  'write_load.forecast'?: double | null
+
+  /**
+   * Sum of shard size forecasts
+   * @aliases dif,diskIndicesForecast
+   */
+  'disk.indices.forecast'?: ByteSize | null
   /**
    * Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards.
    * IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index.
@@ -72,4 +89,10 @@ export class AllocationRecord {
    * @aliases n
    */
   node?: string
+
+  /**
+   * Node roles
+   * @aliases r,role,nodeRole
+   */
+  'node.role'?: string | null
 }

@@ -6509,6 +6509,13 @@ export type CatAliasesResponse = CatAliasesAliasesRecord[]
 export interface CatAllocationAllocationRecord {
   shards?: string
   s?: string
+  'shards.undesired'?: string | null
+  'write_load.forecast'?: double | null
+  wlf?: double | null
+  writeLoadForecast?: double | null
+  'disk.indices.forecast'?: ByteSize | null
+  dif?: ByteSize | null
+  diskIndicesForecast?: ByteSize | null
   'disk.indices'?: ByteSize | null
   di?: ByteSize | null
   diskIndices?: ByteSize | null
@@ -6529,6 +6536,10 @@ export interface CatAllocationAllocationRecord {
   ip?: Ip | null
   node?: string
   n?: string
+  'node.role'?: string | null
+  r?: string | null
+  role?: string | null
+  nodeRole?: string | null
 }
 
 export interface CatAllocationRequest extends CatCatRequestBase {
