@@ -61049,8 +61049,6 @@
           }
         ]
       },
-<<<<<<< HEAD
-=======
       "_types:ScriptBase": {
         "type": "object",
         "properties": {
@@ -61072,43 +61070,6 @@
           }
         }
       },
-      "security._types:GlobalPrivilege": {
-        "type": "object",
-        "properties": {
-          "application": {
-            "$ref": "#/components/schemas/security._types:ApplicationGlobalUserPrivileges"
-          }
-        },
-        "required": [
-          "application"
-        ]
-      },
-      "security._types:ApplicationGlobalUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "manage": {
-            "$ref": "#/components/schemas/security._types:ManageUserPrivileges"
-          }
-        },
-        "required": [
-          "manage"
-        ]
-      },
-      "security._types:ManageUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "applications": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "applications"
-        ]
-      },
->>>>>>> 5459757b6 (transform script union to a container variant)
       "security._types:ApplicationPrivileges": {
         "type": "object",
         "properties": {

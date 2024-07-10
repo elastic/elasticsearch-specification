@@ -36059,7 +36059,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "InlineScript",
+                "name": "Script",
                 "namespace": "_types"
               }
             }
@@ -49859,50 +49859,58 @@
       "specLocation": "_types/query_dsl/compound.ts#L121-L126"
     },
     {
-      "codegenNames": [
-        "inline",
-        "stored"
-      ],
-      "kind": "type_alias",
+      "kind": "interface",
       "name": {
         "name": "Script",
         "namespace": "_types"
       },
-      "specLocation": "_types/Scripting.ts#L88-L89",
-      "type": {
-        "items": [
-          {
+      "properties": [
+        {
+          "description": "The script source.",
+          "name": "source",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineScript",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
-          },
-          {
+          }
+        },
+        {
+          "description": "The `id` for a stored script.",
+          "name": "id",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScriptId",
+              "name": "Id",
               "namespace": "_types"
             }
           }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "InlineScript",
-        "namespace": "_types"
-      },
-      "properties": [
+        },
         {
+          "containerProperty": true,
+          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "containerProperty": true,
           "description": "Specifies the language the script is written in.",
           "name": "lang",
           "required": false,
@@ -49916,6 +49924,7 @@
           }
         },
         {
+          "containerProperty": true,
           "name": "options",
           "required": false,
           "type": {
@@ -49936,51 +49945,13 @@
               }
             }
           }
-        },
-        {
-          "description": "The script source.",
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "_types/Scripting.ts#L67-L79"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptBase",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-          "name": "params",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Scripting.ts#L59-L65"
+      "specLocation": "_types/Scripting.ts#L73-L103",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "isOpen": true,
@@ -50008,34 +49979,6 @@
         "namespace": "_types"
       },
       "specLocation": "_types/Scripting.ts#L24-L45"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "StoredScriptId",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The `id` for a stored script.",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Scripting.ts#L81-L86"
     },
     {
       "kind": "enum",
@@ -53229,7 +53172,7 @@
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L91-L94"
+      "specLocation": "_types/Scripting.ts#L105-L108"
     },
     {
       "kind": "type_alias",
@@ -98646,7 +98589,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L56-L69"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L67"
     },
     {
       "kind": "enum",
@@ -98659,7 +98602,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L46-L48"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
     },
     {
       "kind": "enum",
@@ -98986,7 +98929,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScriptId",
+              "name": "Script",
               "namespace": "_types"
             }
           }
@@ -99054,6 +98997,70 @@
       ],
       "shortcutProperty": "source",
       "specLocation": "security/_types/Privileges.ts#L268-L273"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptBase",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Specifies the language the script is written in.",
+          "name": "lang",
+          "required": false,
+          "serverDefault": "painless",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptLanguage",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "options",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Scripting.ts#L59-L71"
     },
     {
       "codegenNames": [
@@ -132047,7 +132054,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L38-L44"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L42"
     },
     {
       "kind": "interface",
@@ -132089,7 +132096,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L50-L54"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
     },
     {
       "kind": "interface",
@@ -132127,7 +132134,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L71-L74"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L69-L72"
     },
     {
       "kind": "interface",
@@ -132164,7 +132171,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L27-L36"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L25-L34"
     },
     {
       "kind": "interface",
@@ -133631,7 +133638,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineScript",
+              "name": "Script",
               "namespace": "_types"
             }
           }
