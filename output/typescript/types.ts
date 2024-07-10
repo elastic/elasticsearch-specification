@@ -17695,6 +17695,41 @@ export interface SecurityQueryRoleRoleQueryContainer {
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
 }
 
+export interface SecurityQueryUserQueryUser extends SecurityUser {
+  _sort?: SortResults
+}
+
+export interface SecurityQueryUserRequest extends RequestBase {
+  with_profile_uid?: boolean
+  body?: {
+    query?: SecurityQueryUserUserQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryUserResponse {
+  total: integer
+  count: integer
+  users: SecurityQueryUserQueryUser[]
+}
+
+export interface SecurityQueryUserUserQueryContainer {
+  ids?: QueryDslIdsQuery
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
+}
+
 export interface SecuritySamlAuthenticateRequest extends RequestBase {
   body?: {
     content: string
