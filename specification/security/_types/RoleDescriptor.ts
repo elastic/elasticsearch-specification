@@ -63,7 +63,7 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
   /**
    * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
    */
-  cluster: string[]
+  cluster: ClusterPrivilege[]
   /**
    * A list of indices permissions entries.
    * @aliases index
