@@ -51645,6 +51645,10 @@
                     "type": "string"
                   }
                 },
+                "description": {
+                  "description": "Optional description of the role descriptor",
+                  "type": "string"
+                },
                 "transient_metadata": {
                   "description": "Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.",
                   "type": "object",
@@ -95301,7 +95305,7 @@
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
             },
-            "description": "A list of users that the API keys can impersonate.",
+            "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
             "items": {
               "type": "string"
