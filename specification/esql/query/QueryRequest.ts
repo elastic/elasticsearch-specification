@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { ScalarValue } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Executes an ES|QL request
@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      * @doc_id esql-query-params
      */
-    params?: Array<ScalarValue>
+    params?: Array<UserDefinedValue>
     profile?: boolean
     /**
      * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
