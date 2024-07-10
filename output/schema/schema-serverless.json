@@ -18556,7 +18556,11 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "kind": "user_defined_value"
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldValue",
+                  "namespace": "_types"
+                }
               }
             }
           },

@@ -9891,7 +9891,7 @@ export interface EsqlQueryRequest extends RequestBase {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: any[]
+    params?: FieldValue[]
     profile?: boolean
     query: string
   }
