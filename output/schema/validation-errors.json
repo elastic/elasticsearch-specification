@@ -1049,12 +1049,6 @@
       ],
       "response": []
     },
-    "security.bulk_delete_role": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "security.bulk_update_api_keys": {
       "request": [
         "Missing request & response"

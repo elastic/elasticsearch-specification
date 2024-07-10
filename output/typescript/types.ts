@@ -17031,6 +17031,19 @@ export interface SecurityAuthenticateToken {
   type?: string
 }
 
+export interface SecurityBulkDeleteRoleRequest extends RequestBase {
+  refresh?: Refresh
+  body?: {
+    names: string[]
+  }
+}
+
+export interface SecurityBulkDeleteRoleResponse {
+  deleted?: string[]
+  not_found?: string[]
+  errors?: SecurityBulkError
+}
+
 export interface SecurityBulkPutRoleRequest extends RequestBase {
   refresh?: Refresh
   body?: {
