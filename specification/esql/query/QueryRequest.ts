@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary,SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
@@ -83,6 +83,9 @@ export interface Request extends RequestBase {
     /**
      * Tables to use with the LOOKUP operation.
      */
-    tables?: Dictionary<string, Dictionary<string, SingleKeyDictionary<TableValuesType, any>>>
+    tables?: Dictionary<
+      string,
+      Dictionary<string, SingleKeyDictionary<TableValuesType, any>>
+    >
   }
 }

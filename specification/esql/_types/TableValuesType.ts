@@ -21,5 +21,5 @@ export enum TableValuesType {
   integer,
   keyword,
   long,
-  double,
+  double
 }
