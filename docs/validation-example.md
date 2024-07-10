@@ -13,7 +13,7 @@ error in the validation [report](https://github.com/elastic/clients-flight-recor
 ## Finding and fixing the error
 
 The example assumes that you have already performed the necessary steps to run a validation,
-if not, take a look at the [README](./README.md).
+if not, take a look at the [README](../README.md).
 
 ```sh
 make validate api=index type=request branch=main
