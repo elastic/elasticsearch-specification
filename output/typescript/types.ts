@@ -16366,8 +16366,9 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType
-  criteria: QueryRulesQueryRuleCriteria[]
+  criteria: QueryRulesQueryRuleCriteria | QueryRulesQueryRuleCriteria[]
   actions: QueryRulesQueryRuleActions
+  priority?: integer
 }
 
 export interface QueryRulesQueryRuleActions {
@@ -16381,7 +16382,7 @@ export interface QueryRulesQueryRuleCriteria {
   values?: any[]
 }
 
-export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
 export type QueryRulesQueryRuleType = 'pinned'
 
@@ -16419,7 +16420,7 @@ export type QueryRulesGetRulesetResponse = QueryRulesQueryRuleset
 export interface QueryRulesListRulesetsQueryRulesetListItem {
   ruleset_id: Id
   rule_total_count: integer
-  rule_criteria_types_counts: Record<string, string>
+  rule_criteria_types_counts: Record<string, integer>
 }
 
 export interface QueryRulesListRulesetsRequest extends RequestBase {
@@ -16437,8 +16438,9 @@ export interface QueryRulesPutRuleRequest extends RequestBase {
   rule_id: Id
   body?: {
     type: QueryRulesQueryRuleType
-    criteria: QueryRulesQueryRuleCriteria[]
+    criteria: QueryRulesQueryRuleCriteria | QueryRulesQueryRuleCriteria[]
     actions: QueryRulesQueryRuleActions
+    priority?: integer
   }
 }
 
@@ -16449,7 +16451,7 @@ export interface QueryRulesPutRuleResponse {
 export interface QueryRulesPutRulesetRequest extends RequestBase {
   ruleset_id: Id
   body?: {
-    rules: QueryRulesQueryRule[]
+    rules: QueryRulesQueryRule | QueryRulesQueryRule[]
   }
 }
 
@@ -16836,11 +16838,16 @@ export interface SecurityApplicationPrivileges {
   resources: string[]
 }
 
+export interface SecurityBulkError {
+  count: integer
+  details: Record<string, ErrorCause>
+}
+
 export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_connector_secrets' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -16885,24 +16892,26 @@ export interface SecurityRealmInfo {
 }
 
 export interface SecurityRoleDescriptor {
-  cluster?: string[]
+  cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
   index?: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
+  description?: string
   transient_metadata?: Record<string, any>
 }
 
 export interface SecurityRoleDescriptorRead {
-  cluster: string[]
+  cluster: SecurityClusterPrivilege[]
   indices: SecurityIndicesPrivileges[]
   index: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
+  description?: string
   transient_metadata?: Record<string, any>
 }
 
@@ -17020,6 +17029,20 @@ export interface SecurityAuthenticateResponse {
 export interface SecurityAuthenticateToken {
   name: Name
   type?: string
+}
+
+export interface SecurityBulkPutRoleRequest extends RequestBase {
+  refresh?: Refresh
+  body?: {
+    roles: Record<string, SecurityRoleDescriptor>
+  }
+}
+
+export interface SecurityBulkPutRoleResponse {
+  created?: string[]
+  updated?: string[]
+  noop?: string[]
+  errors?: SecurityBulkError
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
@@ -17635,6 +17658,41 @@ export interface SecurityQueryApiKeysResponse {
   count: integer
   api_keys: SecurityApiKey[]
   aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
+}
+
+export interface SecurityQueryRoleQueryRole extends SecurityRoleDescriptor {
+  _sort?: SortResults
+  name: string
+}
+
+export interface SecurityQueryRoleRequest extends RequestBase {
+  body?: {
+    query?: SecurityQueryRoleRoleQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryRoleResponse {
+  total: integer
+  count: integer
+  roles: SecurityQueryRoleQueryRole[]
+}
+
+export interface SecurityQueryRoleRoleQueryContainer {
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  ids?: QueryDslIdsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
 }
 
 export interface SecuritySamlAuthenticateRequest extends RequestBase {

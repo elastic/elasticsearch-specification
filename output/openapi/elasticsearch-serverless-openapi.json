@@ -15307,13 +15307,23 @@
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
                   },
                   "criteria": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                        }
+                      }
+                    ]
                   },
                   "actions": {
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+                  },
+                  "priority": {
+                    "type": "number"
                   }
                 },
                 "required": [
@@ -15459,10 +15469,17 @@
                 "type": "object",
                 "properties": {
                   "rules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_rules._types:QueryRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -59938,13 +59955,23 @@
             "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
           },
           "criteria": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                }
+              }
+            ]
           },
           "actions": {
             "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+          },
+          "priority": {
+            "type": "number"
           }
         },
         "required": [
@@ -59986,6 +60013,7 @@
           "global",
           "exact",
           "exact_fuzzy",
+          "fuzzy",
           "prefix",
           "suffix",
           "contains",
@@ -60046,7 +60074,7 @@
             "description": "A map of criteria type to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "type": "number"
             }
           }
         },
@@ -60823,7 +60851,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -60867,6 +60895,10 @@
               "type": "string"
             }
           },
+          "description": {
+            "description": "Optional description of the role descriptor",
+            "type": "string"
+          },
           "transient_metadata": {
             "type": "object",
             "additionalProperties": {
@@ -60874,6 +60906,45 @@
             }
           }
         }
+      },
+      "security._types:ClusterPrivilege": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "cancel_task",
+              "manage",
+              "manage_api_key",
+              "manage_behavioral_analytics",
+              "manage_enrich",
+              "manage_index_templates",
+              "manage_inference",
+              "manage_ingest_pipelines",
+              "manage_logstash_pipelines",
+              "manage_ml",
+              "manage_own_api_key",
+              "manage_pipeline",
+              "manage_search_application",
+              "manage_search_query_rules",
+              "manage_search_synonyms",
+              "manage_security",
+              "manage_transform",
+              "monitor",
+              "monitor_enrich",
+              "monitor_inference",
+              "monitor_ml",
+              "monitor_transform",
+              "none",
+              "post_behavioral_analytics_event",
+              "read_pipeline",
+              "read_security"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "security._types:IndicesPrivileges": {
         "type": "object",
@@ -61127,45 +61198,6 @@
           "application",
           "privileges",
           "resources"
-        ]
-      },
-      "security._types:ClusterPrivilege": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "all",
-              "cancel_task",
-              "manage",
-              "manage_api_key",
-              "manage_behavioral_analytics",
-              "manage_enrich",
-              "manage_index_templates",
-              "manage_inference",
-              "manage_ingest_pipelines",
-              "manage_logstash_pipelines",
-              "manage_ml",
-              "manage_own_api_key",
-              "manage_pipeline",
-              "manage_search_application",
-              "manage_search_query_rules",
-              "manage_search_synonyms",
-              "manage_security",
-              "manage_transform",
-              "monitor",
-              "monitor_enrich",
-              "monitor_inference",
-              "monitor_ml",
-              "monitor_transform",
-              "none",
-              "post_behavioral_analytics_event",
-              "read_pipeline",
-              "read_security"
-            ]
-          },
-          {
-            "type": "string"
-          }
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {

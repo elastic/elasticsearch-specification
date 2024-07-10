@@ -24625,13 +24625,23 @@
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
                   },
                   "criteria": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                        }
+                      }
+                    ]
                   },
                   "actions": {
                     "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+                  },
+                  "priority": {
+                    "type": "number"
                   }
                 },
                 "required": [
@@ -24777,10 +24787,17 @@
                 "type": "object",
                 "properties": {
                   "rules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_rules._types:QueryRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -27771,6 +27788,107 @@
         }
       }
     },
+    "/_security/role": {
+      "get": {
+        "tags": [
+          "security.get_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
+        },
+        "operationId": "security-get-role-1",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.get_role#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "security.bulk_put_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The bulk create or update roles API cannot update roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-put-role.html"
+        },
+        "operationId": "security-bulk-put-role",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "description": "A dictionary of role name to RoleDescriptor objects to add or update",
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/security._types:RoleDescriptor"
+                    }
+                  }
+                },
+                "required": [
+                  "roles"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "description": "Array of created roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "updated": {
+                      "description": "Array of updated roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "noop": {
+                      "description": "Array of role names without any changes",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_security/user/{username}/_password": {
       "put": {
         "tags": [
@@ -29489,24 +29607,6 @@
         }
       }
     },
-    "/_security/role": {
-      "get": {
-        "tags": [
-          "security.get_role"
-        ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
-        },
-        "operationId": "security-get-role-1",
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.get_role#200"
-          }
-        }
-      }
-    },
     "/_security/role_mapping": {
       "get": {
         "tags": [
@@ -30280,6 +30380,46 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/security.query_api_keys#200"
+          }
+        }
+      }
+    },
+    "/_security/_query/role": {
+      "get": {
+        "tags": [
+          "security.query_role"
+        ],
+        "summary": "Retrieves roles in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-role.html"
+        },
+        "operationId": "security-query-role",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "security.query_role"
+        ],
+        "summary": "Retrieves roles in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-role.html"
+        },
+        "operationId": "security-query-role-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
           }
         }
       }
@@ -39391,6 +39531,38 @@
                 "total",
                 "count",
                 "api_keys"
+              ]
+            }
+          }
+        }
+      },
+      "security.query_role#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of roles found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of roles returned in the response.",
+                  "type": "number"
+                },
+                "roles": {
+                  "description": "The list of roles.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_role:QueryRole"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "roles"
               ]
             }
           }
@@ -51427,6 +51599,34 @@
                 },
                 "query": {
                   "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
+                },
+                "from": {
+                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "sort": {
+                  "$ref": "#/components/schemas/_types:Sort"
+                },
+                "size": {
+                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "search_after": {
+                  "$ref": "#/components/schemas/_types:SortResults"
+                }
+              }
+            }
+          }
+        }
+      },
+      "security.query_role": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/security.query_role:RoleQueryContainer"
                 },
                 "from": {
                   "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
@@ -93163,13 +93363,23 @@
             "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
           },
           "criteria": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                }
+              }
+            ]
           },
           "actions": {
             "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+          },
+          "priority": {
+            "type": "number"
           }
         },
         "required": [
@@ -93211,6 +93421,7 @@
           "global",
           "exact",
           "exact_fuzzy",
+          "fuzzy",
           "prefix",
           "suffix",
           "contains",
@@ -93271,7 +93482,7 @@
             "description": "A map of criteria type to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "type": "number"
             }
           }
         },
@@ -94856,7 +95067,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -94900,6 +95111,10 @@
               "type": "string"
             }
           },
+          "description": {
+            "description": "Optional description of the role descriptor",
+            "type": "string"
+          },
           "transient_metadata": {
             "type": "object",
             "additionalProperties": {
@@ -94907,6 +95122,76 @@
             }
           }
         }
+      },
+      "security._types:ClusterPrivilege": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "cancel_task",
+              "create_snapshot",
+              "cross_cluster_replication",
+              "cross_cluster_search",
+              "delegate_pki",
+              "grant_api_key",
+              "manage",
+              "manage_api_key",
+              "manage_autoscaling",
+              "manage_behavioral_analytics",
+              "manage_ccr",
+              "manage_data_frame_transforms",
+              "manage_data_stream_global_retention",
+              "manage_enrich",
+              "manage_ilm",
+              "manage_index_templates",
+              "manage_inference",
+              "manage_ingest_pipelines",
+              "manage_logstash_pipelines",
+              "manage_ml",
+              "manage_oidc",
+              "manage_own_api_key",
+              "manage_pipeline",
+              "manage_rollup",
+              "manage_saml",
+              "manage_search_application",
+              "manage_search_query_rules",
+              "manage_search_synonyms",
+              "manage_security",
+              "manage_service_account",
+              "manage_slm",
+              "manage_token",
+              "manage_transform",
+              "manage_user_profile",
+              "manage_watcher",
+              "monitor",
+              "monitor_data_frame_transforms",
+              "monitor_data_stream_global_retention",
+              "monitor_enrich",
+              "monitor_inference",
+              "monitor_ml",
+              "monitor_rollup",
+              "monitor_snapshot",
+              "monitor_text_structure",
+              "monitor_transform",
+              "monitor_watcher",
+              "none",
+              "post_behavioral_analytics_event",
+              "read_ccr",
+              "read_fleet_secrets",
+              "read_ilm",
+              "read_pipeline",
+              "read_security",
+              "read_slm",
+              "transport_client",
+              "write_connector_secrets",
+              "write_fleet_secrets"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "security._types:IndicesPrivileges": {
         "type": "object",
@@ -95142,6 +95427,26 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "security._types:BulkError": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of errors",
+            "type": "number"
+          },
+          "details": {
+            "description": "Details about the errors, keyed by role name",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types:ErrorCause"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "details"
         ]
       },
       "security._types:ClusterNode": {
@@ -95402,7 +95707,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -95445,6 +95750,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "description": {
+            "description": "Optional description of the role descriptor",
+            "type": "string"
           },
           "transient_metadata": {
             "type": "object",
@@ -95739,77 +96048,6 @@
           "application",
           "privileges",
           "resources"
-        ]
-      },
-      "security._types:ClusterPrivilege": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "all",
-              "cancel_task",
-              "create_snapshot",
-              "cross_cluster_replication",
-              "cross_cluster_search",
-              "delegate_pki",
-              "grant_api_key",
-              "manage",
-              "manage_api_key",
-              "manage_autoscaling",
-              "manage_behavioral_analytics",
-              "manage_ccr",
-              "manage_data_frame_transforms",
-              "manage_data_stream_global_retention",
-              "manage_enrich",
-              "manage_ilm",
-              "manage_index_templates",
-              "manage_inference",
-              "manage_ingest_pipelines",
-              "manage_logstash_pipelines",
-              "manage_ml",
-              "manage_oidc",
-              "manage_own_api_key",
-              "manage_pipeline",
-              "manage_rollup",
-              "manage_saml",
-              "manage_search_application",
-              "manage_search_query_rules",
-              "manage_search_synonyms",
-              "manage_security",
-              "manage_service_account",
-              "manage_slm",
-              "manage_token",
-              "manage_transform",
-              "manage_user_profile",
-              "manage_watcher",
-              "monitor",
-              "monitor_data_frame_transforms",
-              "monitor_data_stream_global_retention",
-              "monitor_enrich",
-              "monitor_inference",
-              "monitor_ml",
-              "monitor_rollup",
-              "monitor_snapshot",
-              "monitor_text_structure",
-              "monitor_transform",
-              "monitor_watcher",
-              "none",
-              "post_behavioral_analytics_event",
-              "read_ccr",
-              "read_connector_secrets",
-              "read_fleet_secrets",
-              "read_ilm",
-              "read_pipeline",
-              "read_security",
-              "read_slm",
-              "transport_client",
-              "write_connector_secrets",
-              "write_fleet_secrets"
-            ]
-          },
-          {
-            "type": "string"
-          }
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {
@@ -96128,6 +96366,113 @@
           },
           {
             "$ref": "#/components/schemas/_types.aggregations:CompositeAggregate"
+          }
+        ]
+      },
+      "security.query_role:RoleQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
+            "description": "Returns roles that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
+            "description": "Returns roles that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
+            "description": "Returns roles that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
+            "description": "Returns roles that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
+            "description": "Returns roles that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_role:QueryRole": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:RoleDescriptor"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_sort": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "name": {
+                "description": "Name of the role.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
           }
         ]
       },

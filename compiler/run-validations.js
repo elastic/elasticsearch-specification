@@ -64,7 +64,7 @@ async function run () {
   const isStale = lastRun.getTime() + DAY < Date.now()
 
   if (typeof argv.api !== 'string') {
-    spinner.fail('You must specify the api, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    spinner.fail('You must specify the api, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
@@ -75,14 +75,15 @@ async function run () {
 
   // if true it's because the make target wasn't configured with a type argument
   if (argv.type !== true && argv.type !== 'request' && argv.type !== 'response') {
-    spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+    spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
-  if (typeof argv['stack-version'] !== 'string') {
-    spinner.fail('You must specify the stack version, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+  if (typeof argv.branch !== 'string' && typeof argv.branch !== 'number') {
+    spinner.fail('You must specify the branch, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
+
 
   const isFlightRecorderCloned = await $`[[ -d ${path.join(__dirname, '..', '..', 'clients-flight-recorder')} ]]`.exitCode === 0
   if (!isFlightRecorderCloned) {
@@ -165,7 +166,8 @@ async function run () {
 
   spinner.text = 'Running validations'
 
-  const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : argv['stack-version'].slice(0, 3)
+  const branchArg = argv.branch.toString()
+  const branchName = branchArg.startsWith('7.') ? '7.x' : branchArg
 
   if (noCache || isStale || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
@@ -175,7 +177,7 @@ async function run () {
     await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName}`
 
     spinner.text = 'Fetching artifacts'
-    await $`node ${path.join(cloneEsPath, 'index.js')} --version ${argv['stack-version']}`
+    await $`node ${path.join(cloneEsPath, 'index.js')} --branch ${argv['branch']}`
   }
 
   cd(tsValidationPath)
@@ -188,7 +190,7 @@ async function run () {
   } else {
     flags.push(`--${argv.type}`)
   }
-  const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} ${flags}`
+  const output = await $`node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} --branch ${branchName} ${flags}`
 
   cd(path.join(compilerPath, '..'))
   if (output.exitCode === 0) {
