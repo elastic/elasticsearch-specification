@@ -136110,7 +136110,7 @@
         },
         {
           "name": "docs_remaining",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136121,7 +136121,7 @@
         },
         {
           "name": "percent_complete",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136132,7 +136132,7 @@
         },
         {
           "name": "total_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
