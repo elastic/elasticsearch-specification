@@ -134837,33 +134837,6 @@
           }
         },
         {
-          "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
-          "name": "global",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GlobalPrivilege",
-                    "namespace": "security._types"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GlobalPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
           "description": "A list of application privilege entries",
           "name": "applications",
           "required": false,
@@ -134891,7 +134864,7 @@
           }
         },
         {
-          "description": "A list of users that the API keys can impersonate.",
+          "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
           "docId": "run-as-privilege",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/run-as-privilege.html",
           "name": "run_as",
@@ -134938,7 +134911,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L28-L60"
+      "specLocation": "security/_types/RoleDescriptor.ts#L28-L61"
     },
     {
       "kind": "interface",
@@ -135034,72 +135007,6 @@
         }
       ],
       "specLocation": "security/_types/FieldSecurity.ts#L22-L25"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "GlobalPrivilege",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ApplicationGlobalUserPrivileges",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L325-L327"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationGlobalUserPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "manage",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ManageUserPrivileges",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L329-L331"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ManageUserPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "applications",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L333-L335"
     },
     {
       "kind": "interface",

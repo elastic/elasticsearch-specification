@@ -60861,20 +60861,6 @@
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
             }
           },
-          "global": {
-            "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/security._types:GlobalPrivilege"
-                }
-              },
-              {
-                "$ref": "#/components/schemas/security._types:GlobalPrivilege"
-              }
-            ]
-          },
           "applications": {
             "description": "A list of application privilege entries",
             "type": "array",
@@ -60889,7 +60875,7 @@
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
             },
-            "description": "A list of users that the API keys can impersonate.",
+            "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
             "items": {
               "type": "string"
@@ -61077,42 +61063,6 @@
           {
             "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
           }
-        ]
-      },
-      "security._types:GlobalPrivilege": {
-        "type": "object",
-        "properties": {
-          "application": {
-            "$ref": "#/components/schemas/security._types:ApplicationGlobalUserPrivileges"
-          }
-        },
-        "required": [
-          "application"
-        ]
-      },
-      "security._types:ApplicationGlobalUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "manage": {
-            "$ref": "#/components/schemas/security._types:ManageUserPrivileges"
-          }
-        },
-        "required": [
-          "manage"
-        ]
-      },
-      "security._types:ManageUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "applications": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "applications"
         ]
       },
       "security._types:ApplicationPrivileges": {
