@@ -17839,9 +17839,20 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ScalarValue",
+                  "name": "FieldValue",
                   "namespace": "_types"
                 }
+              }
+            }
+          },
+          {
+            "name": "profile",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
               }
             }
           },
@@ -17896,9 +17907,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Should columns that are entirely `null` be removed from the `columns` and `values` portion of the results?\nDefaults to `false`. If `true` then the response will include an extra section under the name `all_columns` which has the name of all columns.",
+          "name": "drop_null_columns",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L24-L65"
+      "specLocation": "esql/query/QueryRequest.ts#L24-L76"
     },
     {
       "body": {

@@ -9886,11 +9886,13 @@ export type EqlSearchResultPosition = 'tail' | 'head'
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
   delimiter?: string
+  drop_null_columns?: boolean
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: ScalarValue[]
+    params?: FieldValue[]
+    profile?: boolean
     query: string
   }
 }

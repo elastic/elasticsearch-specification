@@ -8018,6 +8018,16 @@
               "type": "string"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Should columns that are entirely `null` be removed from the `columns` and `values` portion of the results?\nDefaults to `false`. If `true` then the response will include an extra section under the name `all_columns` which has the name of all columns.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -8043,8 +8053,11 @@
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/_types:ScalarValue"
+                      "$ref": "#/components/schemas/_types:FieldValue"
                     }
+                  },
+                  "profile": {
+                    "type": "boolean"
                   },
                   "query": {
                     "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
