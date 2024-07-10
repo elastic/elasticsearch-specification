@@ -35825,14 +35825,26 @@
             "name": "criteria",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRuleCriteria",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRuleCriteria",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -35843,6 +35855,17 @@
               "type": {
                 "name": "QueryRuleActions",
                 "namespace": "query_rules._types"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -35887,7 +35910,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L27-L54"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L56"
     },
     {
       "body": {
@@ -35924,14 +35947,26 @@
             "name": "rules",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRule",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRule",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRule",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         ]
@@ -99340,6 +99375,9 @@
           "name": "exact_fuzzy"
         },
         {
+          "name": "fuzzy"
+        },
+        {
           "name": "prefix"
         },
         {
@@ -99368,7 +99406,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L66"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L56-L69"
     },
     {
       "kind": "enum",
@@ -99381,7 +99419,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L46-L48"
     },
     {
       "kind": "enum",
@@ -99542,7 +99580,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L41-L198"
+      "specLocation": "security/_types/Privileges.ts#L41-L194"
     },
     {
       "kind": "enum",
@@ -99619,7 +99657,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L285-L327"
+      "specLocation": "security/_types/Privileges.ts#L281-L323"
     },
     {
       "codegenNames": [
@@ -99633,7 +99671,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L250-L258",
+      "specLocation": "security/_types/Privileges.ts#L246-L254",
       "type": {
         "items": [
           {
@@ -99683,7 +99721,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L260-L270"
+      "specLocation": "security/_types/Privileges.ts#L256-L266"
     },
     {
       "codegenNames": [
@@ -99695,7 +99733,7 @@
         "name": "RoleTemplateScript",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L282-L283",
+      "specLocation": "security/_types/Privileges.ts#L278-L279",
       "type": {
         "items": [
           {
@@ -99775,7 +99813,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L272-L277"
+      "specLocation": "security/_types/Privileges.ts#L268-L273"
     },
     {
       "codegenNames": [
@@ -99787,7 +99825,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L279-L280",
+      "specLocation": "security/_types/Privileges.ts#L275-L276",
       "type": {
         "items": [
           {
@@ -132762,14 +132800,26 @@
           "name": "criteria",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRuleCriteria",
-                "namespace": "query_rules._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRuleCriteria",
+                  "namespace": "query_rules._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -132782,9 +132832,20 @@
               "namespace": "query_rules._types"
             }
           }
+        },
+        {
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L37-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L38-L44"
     },
     {
       "kind": "interface",
@@ -132826,7 +132887,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L50-L54"
     },
     {
       "kind": "interface",
@@ -132864,7 +132925,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L68-L71"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L71-L74"
     },
     {
       "kind": "interface",
@@ -132901,7 +132962,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L26-L35"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L27-L36"
     },
     {
       "kind": "interface",
@@ -132951,8 +133012,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -134847,6 +134908,17 @@
           }
         },
         {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "transient_metadata",
           "required": false,
           "type": {
@@ -134865,7 +134937,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L28-L56"
+      "specLocation": "security/_types/RoleDescriptor.ts#L28-L57"
     },
     {
       "kind": "interface",
@@ -134928,7 +135000,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L200-L224"
+      "specLocation": "security/_types/Privileges.ts#L196-L220"
     },
     {
       "kind": "interface",
@@ -134981,7 +135053,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L329-L331"
+      "specLocation": "security/_types/Privileges.ts#L325-L327"
     },
     {
       "kind": "interface",
@@ -135002,7 +135074,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L333-L335"
+      "specLocation": "security/_types/Privileges.ts#L329-L331"
     },
     {
       "kind": "interface",
@@ -135026,7 +135098,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L337-L339"
+      "specLocation": "security/_types/Privileges.ts#L333-L335"
     },
     {
       "kind": "interface",

@@ -1,10 +1,10 @@
 SHELL := /bin/bash
 
 validate: ## Validate a given endpoint request or response
-	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version)
+	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
 
 validate-no-cache: ## Validate a given endpoint request or response without local cache
-	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version) --no-cache
+	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch) --no-cache
 
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."

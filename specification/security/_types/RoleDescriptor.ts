@@ -86,9 +86,14 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
+<<<<<<< HEAD
   /**
    * Optional description of the role descriptor
    */
   description?: string
+||||||| 0005d71ae
+=======
+  description?: string
+>>>>>>> upstream/main
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }

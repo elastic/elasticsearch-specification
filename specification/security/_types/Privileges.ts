@@ -168,10 +168,6 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
-  read_connector_secrets,
-  /**
-   * @availability stack
-   */
   read_fleet_secrets,
   /**
    * @availability stack
