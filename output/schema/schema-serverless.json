@@ -34,8 +34,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -43,8 +41,7 @@
           ],
           "path": "/_async_search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -73,8 +70,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -82,8 +77,7 @@
           ],
           "path": "/_async_search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -112,8 +106,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -121,8 +113,7 @@
           ],
           "path": "/_async_search/status/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -154,8 +145,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -169,8 +158,7 @@
           ],
           "path": "/{index}/_async_search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -202,8 +190,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -219,8 +205,7 @@
           ],
           "path": "/{index}/_bulk"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -255,8 +240,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -270,8 +253,7 @@
           ],
           "path": "/_cat/aliases/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -305,8 +287,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "5.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -320,8 +300,7 @@
           ],
           "path": "/_cat/component_templates/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -356,8 +335,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -371,8 +348,7 @@
           ],
           "path": "/_cat/count/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -401,8 +377,6 @@
       "responseMediaType": [
         "text/plain"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -410,8 +384,7 @@
           ],
           "path": "/_cat"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -449,8 +422,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -464,8 +435,7 @@
           ],
           "path": "/_cat/indices/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -500,8 +470,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -515,8 +483,7 @@
           ],
           "path": "/_cat/ml/data_frame/analytics/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -551,8 +518,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -566,8 +531,7 @@
           ],
           "path": "/_cat/ml/datafeeds/{datafeed_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -602,8 +566,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -617,8 +579,7 @@
           ],
           "path": "/_cat/ml/anomaly_detectors/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -653,8 +614,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -668,8 +627,7 @@
           ],
           "path": "/_cat/ml/trained_models/{model_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -704,8 +662,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -719,8 +675,7 @@
           ],
           "path": "/_cat/transforms/{transform_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -753,8 +708,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -772,8 +725,7 @@
           ],
           "path": "/_search/scroll/{scroll_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -805,8 +757,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -814,8 +764,7 @@
           ],
           "path": "/_pit"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -849,8 +798,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -858,8 +805,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -888,8 +834,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -897,8 +841,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -932,8 +875,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -947,8 +888,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -977,8 +917,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -986,8 +924,7 @@
           ],
           "path": "/_info/{target}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1024,8 +961,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -1034,8 +969,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1064,8 +998,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1073,8 +1005,7 @@
           ],
           "path": "/_connector/{connector_id}/_check_in"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1103,8 +1034,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1112,8 +1041,7 @@
           ],
           "path": "/_connector/{connector_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1142,8 +1070,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1151,8 +1077,7 @@
           ],
           "path": "/_connector/{connector_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1184,8 +1109,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1193,8 +1116,7 @@
           ],
           "path": "/_connector/{connector_id}/_last_sync"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1223,8 +1145,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1232,8 +1152,7 @@
           ],
           "path": "/_connector"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1265,8 +1184,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1274,8 +1191,7 @@
           ],
           "path": "/_connector"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1307,8 +1223,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1322,8 +1236,7 @@
           ],
           "path": "/_connector"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1352,8 +1265,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1361,8 +1272,7 @@
           ],
           "path": "/_connector/_sync_job/{connector_sync_job_id}/_cancel"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1391,8 +1301,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1400,8 +1308,7 @@
           ],
           "path": "/_connector/_sync_job/{connector_sync_job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1430,8 +1337,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1439,8 +1344,7 @@
           ],
           "path": "/_connector/_sync_job/{connector_sync_job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1469,8 +1373,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1478,8 +1380,7 @@
           ],
           "path": "/_connector/_sync_job"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1511,8 +1412,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1520,8 +1419,7 @@
           ],
           "path": "/_connector/_sync_job"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1553,8 +1451,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1562,8 +1458,7 @@
           ],
           "path": "/_connector/{connector_id}/_filtering/_activate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1595,8 +1490,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1604,8 +1497,7 @@
           ],
           "path": "/_connector/{connector_id}/_api_key_id"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1637,8 +1529,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1646,8 +1536,7 @@
           ],
           "path": "/_connector/{connector_id}/_configuration"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1679,8 +1568,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1688,8 +1575,7 @@
           ],
           "path": "/_connector/{connector_id}/_error"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1721,8 +1607,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1730,8 +1614,7 @@
           ],
           "path": "/_connector/{connector_id}/_filtering"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1763,8 +1646,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1772,8 +1653,7 @@
           ],
           "path": "/_connector/{connector_id}/_filtering/_validation"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1805,8 +1685,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1814,8 +1692,7 @@
           ],
           "path": "/_connector/{connector_id}/_index_name"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1847,8 +1724,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1856,8 +1731,7 @@
           ],
           "path": "/_connector/{connector_id}/_name"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1889,8 +1763,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1898,8 +1770,7 @@
           ],
           "path": "/_connector/{connector_id}/_native"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1931,8 +1802,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1940,8 +1809,7 @@
           ],
           "path": "/_connector/{connector_id}/_pipeline"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1973,8 +1841,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -1982,8 +1848,7 @@
           ],
           "path": "/_connector/{connector_id}/_scheduling"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2015,8 +1880,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -2024,8 +1887,7 @@
           ],
           "path": "/_connector/{connector_id}/_service_type"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2057,8 +1919,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -2066,8 +1926,7 @@
           ],
           "path": "/_connector/{connector_id}/_status"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2098,8 +1957,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2115,8 +1972,7 @@
           ],
           "path": "/{index}/_count"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2147,8 +2003,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2157,8 +2011,7 @@
           ],
           "path": "/{index}/_create/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2186,8 +2039,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2195,8 +2046,7 @@
           ],
           "path": "/{index}/_doc/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2227,8 +2077,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2236,8 +2084,7 @@
           ],
           "path": "/{index}/_delete_by_query"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2265,8 +2112,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2274,8 +2119,7 @@
           ],
           "path": "/_scripts/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2303,8 +2147,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2312,8 +2154,7 @@
           ],
           "path": "/_enrich/policy/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2342,8 +2183,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2351,8 +2190,7 @@
           ],
           "path": "/_enrich/policy/{name}/_execute"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2380,8 +2218,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2395,8 +2231,7 @@
           ],
           "path": "/_enrich/policy"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2428,8 +2263,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2437,8 +2270,7 @@
           ],
           "path": "/_enrich/policy/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2466,8 +2298,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2475,8 +2305,7 @@
           ],
           "path": "/_enrich/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2504,8 +2333,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2513,8 +2340,7 @@
           ],
           "path": "/_eql/search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2543,8 +2369,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2552,8 +2376,7 @@
           ],
           "path": "/_eql/search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2582,8 +2405,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2591,8 +2412,7 @@
           ],
           "path": "/_eql/search/status/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2623,8 +2443,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2633,8 +2451,7 @@
           ],
           "path": "/{index}/_eql/search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2662,8 +2479,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2671,8 +2486,7 @@
           ],
           "path": "/_query"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2700,8 +2514,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2709,8 +2521,7 @@
           ],
           "path": "/{index}/_doc/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2738,8 +2549,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2747,8 +2556,7 @@
           ],
           "path": "/{index}/_source/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2779,8 +2587,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2789,8 +2595,7 @@
           ],
           "path": "/{index}/_explain/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2828,8 +2633,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2845,8 +2648,7 @@
           ],
           "path": "/{index}/_field_caps"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2874,8 +2676,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2883,8 +2683,7 @@
           ],
           "path": "/{index}/_doc/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2912,8 +2711,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2921,8 +2718,7 @@
           ],
           "path": "/_scripts/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2950,8 +2746,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2959,8 +2753,7 @@
           ],
           "path": "/{index}/_source/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2992,8 +2785,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3002,8 +2793,7 @@
           ],
           "path": "/{index}/_graph/explore"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3034,8 +2824,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3050,8 +2838,7 @@
           ],
           "path": "/{index}/_doc"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3079,8 +2866,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3088,8 +2873,7 @@
           ],
           "path": "/{index}/_block/{block}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3121,8 +2905,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3138,8 +2920,7 @@
           ],
           "path": "/{index}/_analyze"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3177,8 +2958,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3186,8 +2965,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3220,8 +2998,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3229,8 +3005,7 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3263,8 +3038,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3278,8 +3051,7 @@
           ],
           "path": "/_data_stream/{name}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3307,8 +3079,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3316,8 +3086,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3345,8 +3114,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3360,8 +3127,7 @@
           ],
           "path": "/{index}/_aliases/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3389,8 +3155,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3398,8 +3162,7 @@
           ],
           "path": "/_data_stream/{name}/_lifecycle"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3432,8 +3195,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3441,8 +3202,7 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3476,8 +3236,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3485,8 +3243,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3514,8 +3271,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3523,8 +3278,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3552,8 +3306,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3567,8 +3319,7 @@
           ],
           "path": "/{index}/_alias/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3596,8 +3347,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3605,8 +3354,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3634,8 +3382,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3643,8 +3389,7 @@
           ],
           "path": "/{index}/_lifecycle/explain"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3678,8 +3423,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3687,8 +3430,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3716,8 +3458,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3743,8 +3483,7 @@
           ],
           "path": "/{index}/_alias"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3772,8 +3511,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3781,8 +3518,7 @@
           ],
           "path": "/_data_stream/{name}/_lifecycle"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3815,8 +3551,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3830,8 +3564,7 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3865,8 +3598,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3880,8 +3611,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3909,8 +3639,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3924,8 +3652,7 @@
           ],
           "path": "/{index}/_mapping"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3960,8 +3687,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3987,8 +3712,7 @@
           ],
           "path": "/_settings/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4021,8 +3745,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4030,8 +3752,7 @@
           ],
           "path": "/_data_stream/_migrate/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4062,8 +3783,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.16.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4071,8 +3790,7 @@
           ],
           "path": "/_data_stream/_modify"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4103,8 +3821,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4120,8 +3836,7 @@
           ],
           "path": "/{index}/_aliases/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4149,8 +3864,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4158,8 +3871,7 @@
           ],
           "path": "/_data_stream/{name}/_lifecycle"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4190,8 +3902,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4200,8 +3910,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4232,8 +3941,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4242,8 +3949,7 @@
           ],
           "path": "/{index}/_mapping"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4279,8 +3985,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4294,8 +3998,7 @@
           ],
           "path": "/{index}/_settings"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4326,8 +4029,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4336,8 +4037,7 @@
           ],
           "path": "/_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4365,8 +4065,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4382,8 +4080,7 @@
           ],
           "path": "/{index}/_refresh"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4411,8 +4108,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4420,8 +4115,7 @@
           ],
           "path": "/_resolve/index/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4453,8 +4147,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4468,8 +4160,7 @@
           ],
           "path": "/{alias}/_rollover/{new_index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4500,8 +4191,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4509,8 +4198,7 @@
           ],
           "path": "/_index_template/_simulate_index/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4547,8 +4235,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4562,8 +4248,7 @@
           ],
           "path": "/_index_template/_simulate/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4594,8 +4279,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4603,8 +4286,7 @@
           ],
           "path": "/_aliases"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4635,8 +4317,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4652,8 +4332,7 @@
           ],
           "path": "/{index}/_validate/query"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4682,8 +4361,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4697,8 +4374,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4727,8 +4403,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4748,8 +4422,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4781,8 +4454,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4796,8 +4467,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4829,8 +4499,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4844,8 +4512,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4873,8 +4540,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4882,8 +4547,7 @@
           ],
           "path": "/"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4911,8 +4575,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4920,8 +4582,7 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4949,8 +4610,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4964,8 +4623,7 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4994,8 +4652,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5003,8 +4659,7 @@
           ],
           "path": "/_ingest/processor/grok"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5036,8 +4691,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5045,8 +4698,7 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5077,8 +4729,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5094,8 +4744,7 @@
           ],
           "path": "/_ingest/pipeline/{id}/_simulate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5123,8 +4772,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5132,8 +4779,7 @@
           ],
           "path": "/_license"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5166,8 +4812,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.12.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5175,8 +4819,7 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5209,8 +4852,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.12.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5224,8 +4865,7 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5261,8 +4901,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.12.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5270,8 +4908,7 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5307,8 +4944,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5324,8 +4959,7 @@
           ],
           "path": "/{index}/_mget"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5362,8 +4996,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5371,8 +5003,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_close"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5406,8 +5037,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5415,8 +5044,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5445,8 +5073,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5454,8 +5080,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events/{event_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5489,8 +5114,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5498,8 +5121,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5533,8 +5155,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5542,8 +5162,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5577,8 +5196,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5586,8 +5203,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5620,8 +5236,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5629,8 +5243,7 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5663,8 +5276,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5672,8 +5283,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5706,8 +5316,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5715,8 +5323,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5752,8 +5359,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.13.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5761,8 +5366,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5798,8 +5402,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5807,8 +5409,7 @@
           ],
           "path": "/_ml/anomaly_detectors/_estimate_model_memory"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5844,8 +5445,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5853,8 +5452,7 @@
           ],
           "path": "/_ml/data_frame/_evaluate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5890,8 +5488,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5899,8 +5495,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_flush"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5933,8 +5528,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5942,8 +5535,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5979,8 +5571,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5996,8 +5586,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6030,8 +5619,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6045,8 +5632,7 @@
           ],
           "path": "/_ml/data_frame/analytics"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6079,8 +5665,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6094,8 +5678,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6128,8 +5711,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6143,8 +5724,7 @@
           ],
           "path": "/_ml/datafeeds/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6177,8 +5757,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6192,8 +5770,7 @@
           ],
           "path": "/_ml/datafeeds"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6226,8 +5803,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6241,8 +5816,7 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6275,8 +5849,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6290,8 +5862,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6324,8 +5895,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6339,8 +5908,7 @@
           ],
           "path": "/_ml/anomaly_detectors"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6376,8 +5944,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6386,8 +5952,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/overall_buckets"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6420,8 +5985,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6435,8 +5998,7 @@
           ],
           "path": "/_ml/trained_models"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6469,8 +6031,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6484,8 +6044,7 @@
           ],
           "path": "/_ml/trained_models/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6516,8 +6075,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6535,8 +6092,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_infer"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6572,8 +6128,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6581,8 +6135,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_open"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6618,8 +6171,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6627,8 +6178,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6664,8 +6214,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.13.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6681,8 +6229,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_preview"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6721,8 +6268,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6738,8 +6283,7 @@
           ],
           "path": "/_ml/datafeeds/_preview"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6775,8 +6319,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6784,8 +6326,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6818,8 +6359,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6827,8 +6366,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6872,8 +6410,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6881,8 +6417,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6921,8 +6456,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6930,8 +6463,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6967,8 +6499,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6976,8 +6506,7 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7016,8 +6545,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7025,8 +6552,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7062,8 +6588,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7071,8 +6595,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7108,8 +6631,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.13.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7117,8 +6638,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7154,8 +6674,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7163,8 +6681,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/definition/{part}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7200,8 +6717,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7209,8 +6724,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/vocabulary"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7243,8 +6757,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.14.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7252,8 +6764,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_reset"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7296,8 +6807,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7305,8 +6814,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7342,8 +6850,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7351,8 +6857,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7388,8 +6893,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7397,8 +6900,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7434,8 +6936,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7443,8 +6943,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7480,8 +6979,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7489,8 +6986,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7526,8 +7022,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7535,8 +7029,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7579,8 +7072,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7588,8 +7079,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7625,8 +7115,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7634,8 +7122,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7671,8 +7158,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7680,8 +7165,7 @@
           ],
           "path": "/_ml/filters/{filter_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7717,8 +7201,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7726,8 +7208,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7763,8 +7244,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.6.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7772,8 +7251,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7809,8 +7287,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7826,8 +7302,7 @@
           ],
           "path": "/{index}/_msearch"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7863,8 +7338,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7880,8 +7353,7 @@
           ],
           "path": "/{index}/_msearch/template"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7912,8 +7384,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7929,8 +7399,7 @@
           ],
           "path": "/{index}/_mtermvectors"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7967,8 +7436,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7976,8 +7443,7 @@
           ],
           "path": "/{index}/_pit"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8005,8 +7471,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8014,8 +7478,7 @@
           ],
           "path": "/"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8046,8 +7509,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8063,8 +7524,7 @@
           ],
           "path": "/_scripts/{id}/{context}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8092,8 +7552,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8101,8 +7559,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8130,8 +7587,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8139,8 +7594,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8168,8 +7622,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8177,8 +7629,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8206,8 +7657,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8215,8 +7664,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8244,8 +7692,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8253,8 +7699,7 @@
           ],
           "path": "/_query_rules"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8285,8 +7730,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8294,8 +7737,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8326,8 +7768,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8335,8 +7775,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8372,8 +7811,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8389,8 +7826,7 @@
           ],
           "path": "/{index}/_rank_eval"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8421,8 +7857,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "2.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8430,8 +7864,7 @@
           ],
           "path": "/_reindex"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8462,8 +7895,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8479,8 +7910,7 @@
           ],
           "path": "/_render/template/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8511,8 +7941,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8521,8 +7949,7 @@
           ],
           "path": "/_scripts/painless/_execute"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8553,8 +7980,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8574,8 +7999,7 @@
           ],
           "path": "/_search/scroll/{scroll_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8611,8 +8035,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8628,8 +8050,7 @@
           ],
           "path": "/{index}/_search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8657,8 +8078,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8666,8 +8085,7 @@
           ],
           "path": "/_application/search_application/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8695,8 +8113,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8704,8 +8120,7 @@
           ],
           "path": "/_application/analytics/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8733,8 +8148,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8742,8 +8155,7 @@
           ],
           "path": "/_application/search_application/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8771,8 +8183,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8786,8 +8196,7 @@
           ],
           "path": "/_application/analytics/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8815,8 +8224,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8824,8 +8231,7 @@
           ],
           "path": "/_application/search_application"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8856,8 +8262,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8865,8 +8269,7 @@
           ],
           "path": "/_application/search_application/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8894,8 +8297,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8903,8 +8304,7 @@
           ],
           "path": "/_application/analytics/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8935,8 +8335,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8945,8 +8343,7 @@
           ],
           "path": "/_application/search_application/{name}/_search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8977,8 +8374,6 @@
       "responseMediaType": [
         "application/vnd.mapbox-vector-tile"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8987,8 +8382,7 @@
           ],
           "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9019,8 +8413,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "2.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9036,8 +8428,7 @@
           ],
           "path": "/{index}/_search/template"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9065,8 +8456,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9074,8 +8463,7 @@
           ],
           "path": "/_security/_authenticate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9111,8 +8499,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9121,8 +8507,7 @@
           ],
           "path": "/_security/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9156,8 +8541,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9165,8 +8548,7 @@
           ],
           "path": "/_security/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9197,8 +8579,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9214,8 +8594,7 @@
           ],
           "path": "/_security/user/{user}/_has_privileges"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9252,8 +8631,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9261,8 +8638,7 @@
           ],
           "path": "/_security/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9299,8 +8675,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9309,8 +8683,7 @@
           ],
           "path": "/_security/_query/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9346,8 +8719,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9355,8 +8726,7 @@
           ],
           "path": "/_security/api_key/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9387,8 +8757,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9396,8 +8764,7 @@
           ],
           "path": "/_sql/close"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9425,8 +8792,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9434,8 +8799,7 @@
           ],
           "path": "/_sql/async/delete/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9463,8 +8827,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9472,8 +8834,7 @@
           ],
           "path": "/_sql/async/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9501,8 +8862,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9510,8 +8869,7 @@
           ],
           "path": "/_sql/async/status/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9542,8 +8900,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9552,8 +8908,7 @@
           ],
           "path": "/_sql"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9584,8 +8939,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9594,8 +8947,7 @@
           ],
           "path": "/_sql/translate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9623,8 +8975,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9632,8 +8982,7 @@
           ],
           "path": "/_synonyms/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9664,8 +9013,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9673,8 +9020,7 @@
           ],
           "path": "/_synonyms/{set_id}/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9702,8 +9048,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9711,8 +9055,7 @@
           ],
           "path": "/_synonyms/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9743,8 +9086,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9752,8 +9093,7 @@
           ],
           "path": "/_synonyms/{set_id}/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9781,8 +9121,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9790,8 +9128,7 @@
           ],
           "path": "/_synonyms"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9822,8 +9159,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9831,8 +9166,7 @@
           ],
           "path": "/_synonyms/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9863,8 +9197,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9872,8 +9204,7 @@
           ],
           "path": "/_synonyms/{set_id}/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9902,8 +9233,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -9911,8 +9240,7 @@
           ],
           "path": "/_tasks/{task_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9943,8 +9271,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.14.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9953,8 +9279,7 @@
           ],
           "path": "/{index}/_terms_enum"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9985,8 +9310,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10002,8 +9325,7 @@
           ],
           "path": "/{index}/_termvectors"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10036,8 +9358,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10045,8 +9365,7 @@
           ],
           "path": "/_transform/{transform_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10079,8 +9398,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10094,8 +9411,7 @@
           ],
           "path": "/_transform"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10132,8 +9448,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10141,8 +9455,7 @@
           ],
           "path": "/_transform/{transform_id}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10182,8 +9495,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10199,8 +9510,7 @@
           ],
           "path": "/_transform/_preview"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10242,8 +9552,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10251,8 +9559,7 @@
           ],
           "path": "/_transform/{transform_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10285,8 +9592,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10294,8 +9599,7 @@
           ],
           "path": "/_transform/{transform_id}/_reset"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10331,8 +9635,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10340,8 +9642,7 @@
           ],
           "path": "/_transform/{transform_id}/_schedule_now"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10378,8 +9679,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10387,8 +9686,7 @@
           ],
           "path": "/_transform/{transform_id}/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10421,8 +9719,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10430,8 +9726,7 @@
           ],
           "path": "/_transform/{transform_id}/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10472,8 +9767,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10481,8 +9774,7 @@
           ],
           "path": "/_transform/{transform_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10513,8 +9805,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10522,8 +9812,7 @@
           ],
           "path": "/{index}/_update/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10554,8 +9843,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "2.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10563,8 +9850,7 @@
           ],
           "path": "/{index}/_update_by_query"
         }
-      ],
-      "visibility": "public"
+      ]
     }
   ],
   "types": [
@@ -10944,7 +10230,6 @@
             "description": "Defines the approximate kNN search to run.",
             "name": "knn",
             "required": false,
-            "since": "8.4.0",
             "type": {
               "items": [
                 {
@@ -13601,8 +12886,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17842,7 +17125,6 @@
             "description": "Objects containing information about the enrich cache stats on each ingest node.",
             "name": "cache_stats",
             "required": false,
-            "since": "7.16.0",
             "type": {
               "kind": "array_of",
               "value": {
@@ -18356,7 +17638,6 @@
             },
             "name": "runtime_mappings",
             "required": false,
-            "since": "8.0.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -19307,7 +18588,6 @@
             "description": "List of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.",
             "name": "fields",
             "required": false,
-            "since": "8.5.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -19340,7 +18620,6 @@
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html",
             "name": "runtime_mappings",
             "required": false,
-            "since": "7.12.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -19452,7 +18731,6 @@
           "description": "An optional set of filters: can include +metadata,-metadata,-nested,-multifield,-parent",
           "name": "filters",
           "required": false,
-          "since": "8.2.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19471,7 +18749,6 @@
           "description": "Only return results for fields that have one of the types in the list",
           "name": "types",
           "required": false,
-          "since": "8.2.0",
           "type": {
             "kind": "array_of",
             "value": {
@@ -19494,7 +18771,6 @@
           "name": "include_empty_fields",
           "required": false,
           "serverDefault": true,
-          "since": "8.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22221,7 +21497,6 @@
           "name": "features",
           "required": false,
           "serverDefault": "['aliases', 'mappings', 'settings']",
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22572,8 +21847,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22699,8 +21972,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -24858,8 +24129,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -25115,8 +24384,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -30517,7 +29784,6 @@
             },
             "name": "headers",
             "required": false,
-            "since": "8.0.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -30535,7 +29801,6 @@
             },
             "name": "version",
             "required": false,
-            "since": "7.16.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -30928,7 +30193,6 @@
             },
             "name": "headers",
             "required": false,
-            "since": "8.0.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -31940,7 +31204,6 @@
             "description": "Optional prefix strings applied at inference",
             "name": "prefix_strings",
             "required": false,
-            "since": "8.12.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -31988,7 +31251,6 @@
           "description": "If set to `true` and a `compressed_definition` is provided,\nthe request defers definition decompression and skips relevant\nvalidations.",
           "name": "defer_definition_decompression",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -32007,7 +31269,6 @@
           "description": "Whether to wait for all child operations (e.g. model download)\nto complete.",
           "name": "wait_for_completion",
           "required": false,
-          "since": "8.8.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -32253,7 +31514,6 @@
             "description": "The optional model merges if required by the tokenizer.",
             "name": "merges",
             "required": false,
-            "since": "8.2.0",
             "type": {
               "kind": "array_of",
               "value": {
@@ -32275,7 +31535,6 @@
             "description": "The optional vocabulary value scores if required by the tokenizer.",
             "name": "scores",
             "required": false,
-            "since": "8.9.0",
             "type": {
               "kind": "array_of",
               "value": {
@@ -37142,7 +36401,6 @@
             "description": "Defines the approximate kNN search to run.",
             "name": "knn",
             "required": false,
-            "since": "8.4.0",
             "type": {
               "items": [
                 {
@@ -37176,7 +36434,6 @@
             "description": "Defines the Reciprocal Rank Fusion (RRF) to use.",
             "name": "rank",
             "required": false,
-            "since": "8.8.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -37271,7 +36528,6 @@
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
             "name": "retriever",
             "required": false,
-            "since": "8.14.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -38664,7 +37920,6 @@
           "name": "typed_keys",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39343,7 +38598,6 @@
           "name": "rest_total_hits_as_int",
           "required": false,
           "serverDefault": false,
-          "since": "7.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39764,7 +39018,6 @@
             },
             "name": "token",
             "required": false,
-            "since": "7.14.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -39848,7 +39101,6 @@
             "description": "Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with `_` are reserved for system usage.",
             "name": "metadata",
             "required": false,
-            "since": "7.13.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -39950,7 +39202,6 @@
             "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
             "name": "encoded",
             "required": true,
-            "since": "7.16.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -40061,7 +39312,6 @@
           "name": "with_limited_by",
           "required": false,
           "serverDefault": false,
-          "since": "8.5.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40081,7 +39331,6 @@
           "name": "active_only",
           "required": false,
           "serverDefault": false,
-          "since": "8.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40101,7 +39350,6 @@
           "name": "with_profile_uid",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40600,7 +39848,6 @@
           "description": "Return the snapshot of the owner user's role descriptors associated with the API key.\nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.",
           "name": "with_limited_by",
           "required": false,
-          "since": "8.5.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40620,7 +39867,6 @@
           "name": "with_profile_uid",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40640,7 +39886,6 @@
           "name": "typed_keys",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46310,7 +45555,6 @@
           "description": "Defines the approximate kNN search to run.",
           "name": "knn",
           "required": false,
-          "since": "8.4.0",
           "type": {
             "items": [
               {
@@ -46831,7 +46075,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-count-ks-test-aggregation.html",
           "name": "bucket_count_ks_test",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46854,7 +46097,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-correlation-aggregation.html",
           "name": "bucket_correlation",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46891,7 +46133,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-categorize-text-aggregation.html",
           "name": "categorize_text",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47968,7 +47209,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-combined-fields-query.html",
           "name": "combined_fields",
           "required": false,
-          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48574,7 +47814,6 @@
           "description": "A semantic query to semantic_text field types",
           "name": "semantic",
           "required": false,
-          "since": "8.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48759,7 +47998,6 @@
           "docId": "query-dsl-sparse-vector-query",
           "name": "sparse_vector",
           "required": false,
-          "since": "8.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48848,7 +48086,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-text-expansion-query.html",
           "name": "text_expansion",
           "required": false,
-          "since": "8.8.0",
           "type": {
             "key": {
               "kind": "instance_of",
@@ -48883,7 +48120,6 @@
           "docId": "query-dsl-weighted-tokens-query",
           "name": "weighted_tokens",
           "required": false,
-          "since": "8.13.0",
           "type": {
             "key": {
               "kind": "instance_of",
@@ -57538,7 +56774,6 @@
           "name": "case_insensitive",
           "required": false,
           "serverDefault": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58491,7 +57726,6 @@
           "name": "case_insensitive",
           "required": false,
           "serverDefault": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59716,8 +58950,6 @@
           "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
           "name": "prune",
           "required": false,
-          "since": "8.15.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59740,8 +58972,6 @@
           "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
           "name": "pruning_config",
           "required": false,
-          "since": "8.15.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59841,7 +59071,6 @@
           "name": "case_insensitive",
           "required": false,
           "serverDefault": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -60153,8 +59382,6 @@
           "description": "Token pruning configurations",
           "name": "pruning_config",
           "required": false,
-          "since": "8.13.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -60240,7 +59467,6 @@
           "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
           "name": "case_insensitive",
           "required": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -76684,8 +75910,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "centroid",
-          "since": "7.16.0"
+          "name": "centroid"
         }
       ],
       "name": {
@@ -84498,7 +83723,6 @@
           "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
           "name": "time_series_dimension",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85080,7 +84304,6 @@
           },
           "name": "null_value",
           "required": false,
-          "since": "7.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86128,7 +85351,6 @@
           "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
           "name": "time_series_dimension",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86677,7 +85899,6 @@
           "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
           "name": "time_series_metric",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86699,7 +85920,6 @@
           "name": "time_series_dimension",
           "required": false,
           "serverDefault": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -96294,7 +95514,6 @@
           },
           "name": "shards",
           "required": false,
-          "since": "7.15.0",
           "type": {
             "key": {
               "kind": "instance_of",
@@ -98951,7 +98170,6 @@
           },
           "name": "health",
           "required": false,
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98969,7 +98187,6 @@
           },
           "name": "status",
           "required": false,
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99212,7 +98429,6 @@
           },
           "name": "shard_stats",
           "required": false,
-          "since": "7.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100962,8 +100178,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "repository",
-          "since": "7.16.0"
+          "name": "repository"
         },
         {
           "availability": {
@@ -100972,8 +100187,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "shard_count",
-          "since": "7.16.0"
+          "name": "shard_count"
         },
         {
           "availability": {
@@ -100982,8 +100196,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "failed_shard_count",
-          "since": "7.16.0"
+          "name": "failed_shard_count"
         }
       ],
       "name": {
@@ -107558,7 +106771,6 @@
           },
           "name": "type",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108290,8 +107502,6 @@
           },
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110989,7 +110199,6 @@
           },
           "name": "_data_stream_timestamp",
           "required": false,
-          "since": "7.16.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111596,7 +110805,6 @@
           "name": "is_hidden",
           "required": false,
           "serverDefault": false,
-          "since": "7.16.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111943,8 +111151,6 @@
           "description": "Data lifecycle applicable if this is a data stream.",
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114181,8 +113387,6 @@
           "description": "Whether this field is used as a time series dimension.",
           "name": "time_series_dimension",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114204,8 +113408,6 @@
           "description": "Contains metric type if this fields is used as a time series\nmetrics, absent if the field is not used as metric.",
           "name": "time_series_metric",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114227,8 +113429,6 @@
           "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
           "name": "non_dimension_indices",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "array_of",
             "value": {
@@ -114253,8 +113453,6 @@
           "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
           "name": "metric_conflicts_indices",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "array_of",
             "value": {
@@ -115536,8 +114734,6 @@
           "description": "Contains the configuration for the data lifecycle management of this data stream.",
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115592,7 +114788,6 @@
           "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
           "name": "system",
           "required": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115928,8 +115123,6 @@
           },
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116146,8 +115339,6 @@
           },
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127223,7 +126414,6 @@
           "name": "annotations_enabled",
           "required": false,
           "serverDefault": true,
-          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127255,7 +126445,6 @@
           "description": "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.",
           "name": "terms",
           "required": false,
-          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127704,7 +126893,6 @@
           "description": "Text classification configuration for inference.",
           "name": "text_classification",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127723,7 +126911,6 @@
           "description": "Zeroshot classification configuration for inference.",
           "name": "zero_shot_classification",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127742,7 +126929,6 @@
           "description": "Fill mask configuration for inference.",
           "name": "fill_mask",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127761,7 +126947,6 @@
           "description": "Named entity recognition configuration for inference.",
           "name": "ner",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127780,7 +126965,6 @@
           "description": "Pass through configuration for inference.",
           "name": "pass_through",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127799,7 +126983,6 @@
           "description": "Text embedding configuration for inference.",
           "name": "text_embedding",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127818,7 +127001,6 @@
           "description": "Text expansion configuration for inference.",
           "name": "text_expansion",
           "required": false,
-          "since": "8.8.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127837,7 +127019,6 @@
           "description": "Question answering configuration for inference.",
           "name": "question_answering",
           "required": false,
-          "since": "8.3.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127944,7 +127125,6 @@
           "description": "Indicates MPNET tokenization and its options",
           "name": "mpnet",
           "required": false,
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127963,7 +127143,6 @@
           "description": "Indicates RoBERTa tokenization and its options",
           "name": "roberta",
           "required": false,
-          "since": "8.2.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132064,7 +131243,6 @@
           "description": "The size of the trained model cache.",
           "name": "cache_size",
           "required": true,
-          "since": "8.4.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134667,7 +133845,6 @@
           "description": "Realm type of the principal for which this API key was created",
           "name": "realm_type",
           "required": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134698,7 +133875,6 @@
           "description": "The profile uid for the API key owner principal, if requested and if it exists",
           "name": "profile_uid",
           "required": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134717,7 +133893,6 @@
           "description": "Metadata of the API key",
           "name": "metadata",
           "required": false,
-          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134759,7 +133934,6 @@
           "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
           "name": "limited_by",
           "required": false,
-          "since": "8.5.0",
           "type": {
             "kind": "array_of",
             "value": {
@@ -135212,7 +134386,6 @@
           },
           "name": "type",
           "required": false,
-          "since": "7.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136595,7 +135768,6 @@
           "name": "unattended",
           "required": false,
           "serverDefault": false,
-          "since": "8.5.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136648,7 +135820,6 @@
           "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data\nnodes, including remote nodes, must be 7.12 or later.",
           "name": "runtime_mappings",
           "required": false,
-          "since": "7.12.0",
           "type": {
             "kind": "instance_of",
             "type": {
