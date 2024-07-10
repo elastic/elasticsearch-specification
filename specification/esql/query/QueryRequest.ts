@@ -38,6 +38,12 @@ export interface Request extends RequestBase {
      * The character to use between values within a CSV row. Only valid for the CSV format.
      */
     delimiter?: string
+    /**
+     * Should columns that are entirely `null` be removed from the `columns` and `values` portion of the results?
+     * Defaults to `false`. If `true` then the response will include an extra section under the name `all_columns` which has the name of all columns.
+     * @server_default false
+     */
+    drop_null_columns?: boolean
   }
   /**
    * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone and `columnar` to format the answer.
