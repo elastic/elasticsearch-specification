@@ -1,4 +1,4 @@
-# Fixing a defintion, a complete story
+# Fixing a definition, a complete story
 
 This document is an example of how you could interact with the project
 when fixing a definition.
@@ -8,7 +8,7 @@ Let's assume that the index document request definition is broken, how can you f
 ## Detect the error
 
 Very likely you know a definition is no longer valid because you saw a validation
-error in the validation [report](https://github.com/elastic/clients-flight-recorder/blob/dev/recordings/types-validation/types-validation.md).
+error in the validation [report](https://github.com/elastic/clients-flight-recorder/blob/main/recordings/types-validation/types-validation.md).
 
 ## Finding and fixing the error
 
