@@ -63,4 +63,10 @@ export interface Request extends RequestBase {
      */
     search_after?: SortResults
   }
+  query_parameters: {
+    /**
+     * If true will return the User Profile ID for the users in the query result, if any.
+     */
+    with_profile_uid?: boolean
+  }
 }
