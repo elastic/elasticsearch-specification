@@ -36509,6 +36509,9 @@
           },
           "unit": {
             "$ref": "#/components/schemas/_types:DistanceUnit"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
           }
         }
       },
@@ -36534,6 +36537,26 @@
           "m",
           "cm",
           "mm"
+        ]
+      },
+      "_types:NestedSortValue": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          },
+          "max_children": {
+            "type": "number"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
+          },
+          "path": {
+            "$ref": "#/components/schemas/_types:Field"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "_types:ScriptSort": {
@@ -36565,26 +36588,6 @@
           "string",
           "number",
           "version"
-        ]
-      },
-      "_types:NestedSortValue": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "max_children": {
-            "type": "number"
-          },
-          "nested": {
-            "$ref": "#/components/schemas/_types:NestedSortValue"
-          },
-          "path": {
-            "$ref": "#/components/schemas/_types:Field"
-          }
-        },
-        "required": [
-          "path"
         ]
       },
       "_global.search._types:SourceConfig": {

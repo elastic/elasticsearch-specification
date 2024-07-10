@@ -2242,9 +2242,10 @@ export interface GeoDistanceSortKeys {
   ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
+  nested?: NestedSortValue
 }
 export type GeoDistanceSort = GeoDistanceSortKeys
-  & { [property: string]: GeoLocation | GeoLocation[] | SortMode | GeoDistanceType | boolean | SortOrder | DistanceUnit }
+  & { [property: string]: GeoLocation | GeoLocation[] | SortMode | GeoDistanceType | boolean | SortOrder | DistanceUnit | NestedSortValue }
 
 export type GeoDistanceType = 'arc' | 'plane'
 

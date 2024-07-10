@@ -53237,7 +53237,7 @@
         "name": "Sort",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L104-L104",
+      "specLocation": "_types/sort.ts#L105-L105",
       "type": {
         "items": [
           {
@@ -53271,7 +53271,7 @@
         "name": "SortCombinations",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L98-L102",
+      "specLocation": "_types/sort.ts#L99-L103",
       "type": {
         "items": [
           {
@@ -53377,7 +53377,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L86-L96",
+      "specLocation": "_types/sort.ts#L87-L97",
       "variants": {
         "kind": "container"
       }
@@ -53534,7 +53534,7 @@
         "name": "SortMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L108-L117"
+      "specLocation": "_types/sort.ts#L109-L118"
     },
     {
       "kind": "interface",
@@ -53606,7 +53606,7 @@
         "name": "SortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L119-L128"
+      "specLocation": "_types/sort.ts#L120-L129"
     },
     {
       "kind": "enum",
@@ -53906,9 +53906,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/sort.ts#L59-L70"
+      "specLocation": "_types/sort.ts#L59-L71"
     },
     {
       "kind": "enum",
@@ -54019,7 +54030,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L72-L78"
+      "specLocation": "_types/sort.ts#L73-L79"
     },
     {
       "kind": "enum",
@@ -54038,7 +54049,7 @@
         "name": "ScriptSortType",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L80-L84"
+      "specLocation": "_types/sort.ts#L81-L85"
     },
     {
       "codegenNames": [
@@ -66989,7 +67000,7 @@
         "name": "SortResults",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L106-L106",
+      "specLocation": "_types/sort.ts#L107-L107",
       "type": {
         "kind": "array_of",
         "value": {
