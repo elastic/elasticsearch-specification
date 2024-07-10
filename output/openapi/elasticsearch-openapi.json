@@ -27887,6 +27887,82 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "security.bulk_delete_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The bulk delete roles API cannot delete roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-delete-role.html"
+        },
+        "operationId": "security-bulk-delete-role",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "names": {
+                    "description": "An array of role names to delete",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "names"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "description": "Array of deleted roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "not_found": {
+                      "description": "Array of roles that could not be found",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/_security/user/{username}/_password": {
