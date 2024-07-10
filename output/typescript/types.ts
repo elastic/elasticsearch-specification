@@ -17555,6 +17555,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     indices?: SecurityIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
+    description?: string
     transient_metadata?: Record<string, any>
   }
 }
