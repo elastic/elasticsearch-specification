@@ -4754,7 +4754,7 @@ export type AnalysisSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Dani
 
 export interface AnalysisSnowballTokenFilter extends AnalysisTokenFilterBase {
   type: 'snowball'
-  language: AnalysisSnowballLanguage
+  language?: AnalysisSnowballLanguage
 }
 
 export interface AnalysisStandardAnalyzer {

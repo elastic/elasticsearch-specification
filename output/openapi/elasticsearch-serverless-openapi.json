@@ -46160,8 +46160,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]

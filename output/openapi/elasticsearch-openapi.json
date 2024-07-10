@@ -71538,8 +71538,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]
