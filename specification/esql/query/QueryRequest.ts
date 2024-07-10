@@ -17,9 +17,11 @@
  * under the License.
  */
 
+import { Dictionary,SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
+import { TableValuesType } from '@esql/_types/TableValuesType'
 
 /**
  * Executes an ES|QL request
@@ -67,10 +69,20 @@ export interface Request extends RequestBase {
      * @doc_id esql-query-params
      */
     params?: Array<FieldValue>
+    /**
+     * If provided and `true` the response will include an extra `profile` object
+     * with information on how the query was executed. This information is for human debugging
+     * and its format can change at any time but it can give some insight into the performance
+     * of each part of the query.
+     */
     profile?: boolean
     /**
      * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
      */
     query: string
+    /**
+     * Tables to use with the LOOKUP operation.
+     */
+    tables?: Dictionary<string, Dictionary<string, SingleKeyDictionary<TableValuesType, any>>>
   }
 }

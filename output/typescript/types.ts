@@ -9883,6 +9883,8 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export type EsqlTableValuesType = 'integer' | 'keyword' | 'long' | 'double'
+
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
   delimiter?: string
@@ -9894,6 +9896,7 @@ export interface EsqlQueryRequest extends RequestBase {
     params?: FieldValue[]
     profile?: boolean
     query: string
+    tables?: Record<string, Record<string, Partial<Record<EsqlTableValuesType, object>>>>
   }
 }
 
