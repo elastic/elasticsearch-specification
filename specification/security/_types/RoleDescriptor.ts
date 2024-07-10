@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GlobalPrivilege } from './Privileges'
+import { ClusterPrivilege, GlobalPrivilege } from './Privileges'
 import { IndicesPrivileges } from './Privileges'
 import { ApplicationPrivileges } from './Privileges'
 import { Metadata } from '@_types/common'
@@ -29,7 +29,7 @@ export class RoleDescriptor {
   /**
    * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
    */
-  cluster?: string[]
+  cluster?: ClusterPrivilege[]
   /**
    * A list of indices permissions entries.
    * @aliases index
@@ -52,6 +52,9 @@ export class RoleDescriptor {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
+  /**
+   * Optional description of the role descriptor
+   */
   description?: string
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }
@@ -60,7 +63,7 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
   /**
    * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
    */
-  cluster: string[]
+  cluster: ClusterPrivilege[]
   /**
    * A list of indices permissions entries.
    * @aliases index
@@ -83,6 +86,9 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
+  /**
+   * Optional description of the role descriptor
+   */
   description?: string
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }
