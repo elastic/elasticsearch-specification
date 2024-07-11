@@ -24,7 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Deletes one or more indices.
  * @rest_spec_name indices.delete
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

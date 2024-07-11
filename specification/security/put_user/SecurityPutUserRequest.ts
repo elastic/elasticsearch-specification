@@ -22,7 +22,7 @@ import { Metadata, Password, Refresh, Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.put_user
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {
