@@ -25,7 +25,7 @@ import { Duration } from '@_types/Time'
  * Retrieves mapping definitions for one or more indices.
  * For data streams, the API retrieves mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_mapping
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

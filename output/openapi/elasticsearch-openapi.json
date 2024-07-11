@@ -74,7 +74,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       },
       "delete": {
         "tags": [
@@ -110,7 +111,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_async_search/status/{id}": {
@@ -148,7 +150,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       }
     },
     "/_async_search": {
@@ -309,7 +312,8 @@
           "200": {
             "$ref": "#/components/responses/async_search.submit#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/{index}/_async_search": {
@@ -473,7 +477,8 @@
           "200": {
             "$ref": "#/components/responses/async_search.submit#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_autoscaling/policy/{name}": {
@@ -511,7 +516,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       },
       "put": {
         "tags": [
@@ -557,7 +563,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       },
       "delete": {
         "tags": [
@@ -593,7 +600,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       }
     },
     "/_autoscaling/capacity": {
@@ -629,7 +637,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       }
     },
     "/_bulk": {
@@ -947,7 +956,8 @@
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
           }
-        }
+        },
+        "x-available-since": "5.1.0"
       }
     },
     "/_cat/component_templates/{name}": {
@@ -970,7 +980,8 @@
           "200": {
             "$ref": "#/components/responses/cat.component_templates#200"
           }
-        }
+        },
+        "x-available-since": "5.1.0"
       }
     },
     "/_cat/count": {
@@ -1285,7 +1296,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -1323,7 +1335,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/datafeeds": {
@@ -1355,7 +1368,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_datafeeds#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -1390,7 +1404,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_datafeeds#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1425,7 +1440,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_jobs#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1463,7 +1479,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_jobs#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/trained_models": {
@@ -1501,7 +1518,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_trained_models#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1542,7 +1560,8 @@
           "200": {
             "$ref": "#/components/responses/cat.ml_trained_models#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/nodeattrs": {
@@ -1782,7 +1801,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "2.1.0"
       }
     },
     "/_cat/segments": {
@@ -1903,7 +1923,8 @@
           "200": {
             "$ref": "#/components/responses/cat.snapshots#200"
           }
-        }
+        },
+        "x-available-since": "2.1.0"
       }
     },
     "/_cat/snapshots/{repository}": {
@@ -1929,7 +1950,8 @@
           "200": {
             "$ref": "#/components/responses/cat.snapshots#200"
           }
-        }
+        },
+        "x-available-since": "2.1.0"
       }
     },
     "/_cat/tasks": {
@@ -2005,7 +2027,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_cat/templates": {
@@ -2023,7 +2046,8 @@
           "200": {
             "$ref": "#/components/responses/cat.templates#200"
           }
-        }
+        },
+        "x-available-since": "5.2.0"
       }
     },
     "/_cat/templates/{name}": {
@@ -2046,7 +2070,8 @@
           "200": {
             "$ref": "#/components/responses/cat.templates#200"
           }
-        }
+        },
+        "x-available-since": "5.2.0"
       }
     },
     "/_cat/thread_pool": {
@@ -2133,7 +2158,8 @@
           "200": {
             "$ref": "#/components/responses/cat.transforms#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -2174,7 +2200,8 @@
           "200": {
             "$ref": "#/components/responses/cat.transforms#200"
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_ccr/auto_follow/{name}": {
@@ -2197,7 +2224,8 @@
           "200": {
             "$ref": "#/components/responses/ccr.get_auto_follow_pattern#200"
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       },
       "put": {
         "tags": [
@@ -2306,7 +2334,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       },
       "delete": {
         "tags": [
@@ -2341,7 +2370,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/{index}/_ccr/follow": {
@@ -2452,7 +2482,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/{index}/_ccr/info": {
@@ -2500,7 +2531,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       }
     },
     "/{index}/_ccr/stats": {
@@ -2548,7 +2580,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/{index}/_ccr/forget_follower": {
@@ -2617,7 +2650,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       }
     },
     "/_ccr/auto_follow": {
@@ -2635,7 +2669,8 @@
           "200": {
             "$ref": "#/components/responses/ccr.get_auto_follow_pattern#200"
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_ccr/auto_follow/{name}/pause": {
@@ -2672,7 +2707,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/{index}/_ccr/pause_follow": {
@@ -2710,7 +2746,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_ccr/auto_follow/{name}/resume": {
@@ -2747,7 +2784,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/{index}/_ccr/resume_follow": {
@@ -2825,7 +2863,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_ccr/stats": {
@@ -2861,7 +2900,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/{index}/_ccr/unfollow": {
@@ -2898,7 +2938,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_search/scroll": {
@@ -3118,7 +3159,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_cluster/allocation/explain": {
@@ -3146,7 +3188,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.allocation_explain#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -3172,7 +3215,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.allocation_explain#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_component_template/{name}": {
@@ -3206,7 +3250,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.get_component_template#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       },
       "put": {
         "tags": [
@@ -3236,7 +3281,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.put_component_template#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       },
       "post": {
         "tags": [
@@ -3266,7 +3312,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.put_component_template#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       },
       "delete": {
         "tags": [
@@ -3322,7 +3369,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       },
       "head": {
         "tags": [
@@ -3373,7 +3421,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       }
     },
     "/_cluster/voting_config_exclusions": {
@@ -3425,7 +3474,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "7.0.0"
       },
       "delete": {
         "tags": [
@@ -3455,7 +3505,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "7.0.0"
       }
     },
     "/_component_template": {
@@ -3486,7 +3537,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.get_component_template#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       }
     },
     "/_cluster/settings": {
@@ -3730,7 +3782,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.health#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_cluster/health/{index}": {
@@ -3786,7 +3839,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.health#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_info/{target}": {
@@ -3846,7 +3900,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.9.0"
       }
     },
     "/_cluster/pending_tasks": {
@@ -3932,7 +3987,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_cluster/reroute": {
@@ -4054,7 +4110,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_cluster/state": {
@@ -4097,7 +4154,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.state#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_cluster/state/{metric}": {
@@ -4143,7 +4201,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.state#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_cluster/state/{metric}/{index}": {
@@ -4192,7 +4251,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.state#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_cluster/stats": {
@@ -4218,7 +4278,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.stats#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_cluster/stats/nodes/{node_id}": {
@@ -4247,7 +4308,8 @@
           "200": {
             "$ref": "#/components/responses/cluster.stats#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -4292,7 +4354,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}": {
@@ -4329,7 +4392,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       },
       "put": {
         "tags": [
@@ -4352,7 +4416,8 @@
           "200": {
             "$ref": "#/components/responses/connector.put#200"
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       },
       "delete": {
         "tags": [
@@ -4398,7 +4463,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_last_sync": {
@@ -4509,7 +4575,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector": {
@@ -4610,7 +4677,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       },
       "put": {
         "tags": [
@@ -4628,7 +4696,8 @@
           "200": {
             "$ref": "#/components/responses/connector.put#200"
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       },
       "post": {
         "tags": [
@@ -4697,7 +4766,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
@@ -4742,7 +4812,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}": {
@@ -4779,7 +4850,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       },
       "delete": {
         "tags": [
@@ -4814,7 +4886,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/_sync_job": {
@@ -4908,7 +4981,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       },
       "post": {
         "tags": [
@@ -4962,7 +5036,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_filtering/_activate": {
@@ -5007,7 +5082,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_api_key_id": {
@@ -5084,7 +5160,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_configuration": {
@@ -5150,7 +5227,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_error": {
@@ -5220,7 +5298,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_filtering": {
@@ -5292,7 +5371,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_filtering/_validation": {
@@ -5355,7 +5435,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_index_name": {
@@ -5425,7 +5506,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_name": {
@@ -5491,7 +5573,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_native": {
@@ -5554,7 +5637,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_pipeline": {
@@ -5617,7 +5701,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_scheduling": {
@@ -5680,7 +5765,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_service_type": {
@@ -5743,7 +5829,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_connector/{connector_id}/_status": {
@@ -5806,7 +5893,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.12.0"
       }
     },
     "/_count": {
@@ -6114,7 +6202,8 @@
           "200": {
             "$ref": "#/components/responses/create#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -6162,7 +6251,8 @@
           "200": {
             "$ref": "#/components/responses/create#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_dangling/{index_uuid}": {
@@ -6230,7 +6320,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "delete": {
         "tags": [
@@ -6296,7 +6387,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_dangling": {
@@ -6331,7 +6423,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/{index}/_doc/{id}": {
@@ -7285,7 +7378,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_delete_by_query/{task_id}/_rethrottle": {
@@ -7332,7 +7426,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_scripts/{id}": {
@@ -7529,7 +7624,8 @@
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       },
       "put": {
         "tags": [
@@ -7585,7 +7681,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       },
       "delete": {
         "tags": [
@@ -7620,7 +7717,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -7675,7 +7773,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_enrich/policy": {
@@ -7692,7 +7791,8 @@
           "200": {
             "$ref": "#/components/responses/enrich.get_policy#200"
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_enrich/_stats": {
@@ -7729,6 +7829,7 @@
                     },
                     "cache_stats": {
                       "description": "Objects containing information about the enrich cache stats on each ingest node.",
+                      "x-available-since": "7.16.0",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/enrich.stats:CacheStats"
@@ -7743,7 +7844,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_eql/search/{id}": {
@@ -7800,7 +7902,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "delete": {
         "tags": [
@@ -7836,7 +7939,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_eql/search/status/{id}": {
@@ -7901,7 +8005,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/{index}/_eql/search": {
@@ -7944,7 +8049,8 @@
           "200": {
             "$ref": "#/components/responses/eql.search#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "post": {
         "tags": [
@@ -7985,7 +8091,8 @@
           "200": {
             "$ref": "#/components/responses/eql.search#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_query": {
@@ -8107,7 +8214,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       }
     },
     "/{index}/_source/{id}": {
@@ -8386,7 +8494,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/{index}/_explain/{id}": {
@@ -8547,7 +8656,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.12.0"
       }
     },
     "/_features/_reset": {
@@ -8582,7 +8692,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.12.0"
       }
     },
     "/_field_caps": {
@@ -8629,7 +8740,8 @@
           "200": {
             "$ref": "#/components/responses/field_caps#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -8674,7 +8786,8 @@
           "200": {
             "$ref": "#/components/responses/field_caps#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/{index}/_field_caps": {
@@ -8724,7 +8837,8 @@
           "200": {
             "$ref": "#/components/responses/field_caps#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -8772,7 +8886,8 @@
           "200": {
             "$ref": "#/components/responses/field_caps#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/{index}/_fleet/global_checkpoints": {
@@ -8875,7 +8990,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_fleet/_fleet_msearch": {
@@ -8934,7 +9050,8 @@
           "200": {
             "$ref": "#/components/responses/fleet.msearch#200"
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       },
       "post": {
         "tags": [
@@ -8991,7 +9108,8 @@
           "200": {
             "$ref": "#/components/responses/fleet.msearch#200"
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/{index}/_fleet/_fleet_msearch": {
@@ -9053,7 +9171,8 @@
           "200": {
             "$ref": "#/components/responses/fleet.msearch#200"
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       },
       "post": {
         "tags": [
@@ -9113,7 +9232,8 @@
           "200": {
             "$ref": "#/components/responses/fleet.msearch#200"
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/{index}/_fleet/_fleet_search": {
@@ -9267,7 +9387,8 @@
           "200": {
             "$ref": "#/components/responses/fleet.search#200"
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       },
       "post": {
         "tags": [
@@ -9419,7 +9540,8 @@
           "200": {
             "$ref": "#/components/responses/fleet.search#200"
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/_script_context": {
@@ -9584,7 +9706,8 @@
           "200": {
             "$ref": "#/components/responses/health_report#200"
           }
-        }
+        },
+        "x-available-since": "8.7.0"
       }
     },
     "/_health_report/{feature}": {
@@ -9615,7 +9738,8 @@
           "200": {
             "$ref": "#/components/responses/health_report#200"
           }
-        }
+        },
+        "x-available-since": "8.7.0"
       }
     },
     "/_ilm/policy/{policy}": {
@@ -9643,7 +9767,8 @@
           "200": {
             "$ref": "#/components/responses/ilm.get_lifecycle#200"
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       },
       "put": {
         "tags": [
@@ -9713,7 +9838,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       },
       "delete": {
         "tags": [
@@ -9769,7 +9895,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/{index}/_ilm/explain": {
@@ -9858,7 +9985,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/_ilm/policy": {
@@ -9883,7 +10011,8 @@
           "200": {
             "$ref": "#/components/responses/ilm.get_lifecycle#200"
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/_ilm/status": {
@@ -9915,7 +10044,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/_ilm/migrate_to_data_tiers": {
@@ -10013,7 +10143,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.14.0"
       }
     },
     "/_ilm/move/{index}": {
@@ -10067,7 +10198,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/{index}/_ilm/remove": {
@@ -10119,7 +10251,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/{index}/_ilm/retry": {
@@ -10156,7 +10289,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/_ilm/start": {
@@ -10200,7 +10334,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/_ilm/stop": {
@@ -10244,7 +10379,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/{index}/_doc": {
@@ -10420,7 +10556,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_analyze": {
@@ -10628,7 +10765,8 @@
           "200": {
             "$ref": "#/components/responses/indices.clone#200"
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       },
       "post": {
         "tags": [
@@ -10663,7 +10801,8 @@
           "200": {
             "$ref": "#/components/responses/indices.clone#200"
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       }
     },
     "/{index}/_close": {
@@ -11209,7 +11348,8 @@
           "200": {
             "$ref": "#/components/responses/indices.get_data_stream#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "put": {
         "tags": [
@@ -11245,7 +11385,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "delete": {
         "tags": [
@@ -11290,7 +11431,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_data_stream/_stats": {
@@ -11312,7 +11454,8 @@
           "200": {
             "$ref": "#/components/responses/indices.data_streams_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_data_stream/{name}/_stats": {
@@ -11337,7 +11480,8 @@
           "200": {
             "$ref": "#/components/responses/indices.data_streams_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/{index}/_alias/{name}": {
@@ -11665,7 +11809,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "put": {
         "tags": [
@@ -11747,7 +11892,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "delete": {
         "tags": [
@@ -11812,7 +11958,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       }
     },
     "/_index_template/{name}": {
@@ -11847,7 +11994,8 @@
           "200": {
             "$ref": "#/components/responses/indices.get_index_template#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "put": {
         "tags": [
@@ -11880,7 +12028,8 @@
           "200": {
             "$ref": "#/components/responses/indices.put_index_template#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "post": {
         "tags": [
@@ -11913,7 +12062,8 @@
           "200": {
             "$ref": "#/components/responses/indices.put_index_template#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       },
       "delete": {
         "tags": [
@@ -11969,7 +12119,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       },
       "head": {
         "tags": [
@@ -12318,7 +12469,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/{index}/_downsample/{target_index}": {
@@ -12376,7 +12528,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.5.0"
       }
     },
     "/_alias/{name}": {
@@ -12510,7 +12663,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       }
     },
     "/{index}/_field_usage_stats": {
@@ -12617,7 +12771,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/_flush": {
@@ -12795,7 +12950,8 @@
           "200": {
             "$ref": "#/components/responses/indices.forcemerge#200"
           }
-        }
+        },
+        "x-available-since": "2.1.0"
       }
     },
     "/{index}/_forcemerge": {
@@ -12838,7 +12994,8 @@
           "200": {
             "$ref": "#/components/responses/indices.forcemerge#200"
           }
-        }
+        },
+        "x-available-since": "2.1.0"
       }
     },
     "/_alias": {
@@ -12928,7 +13085,8 @@
           "200": {
             "$ref": "#/components/responses/indices.get_data_stream#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_mapping/field/{fields}": {
@@ -13039,7 +13197,8 @@
           "200": {
             "$ref": "#/components/responses/indices.get_index_template#200"
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_mapping": {
@@ -13526,7 +13685,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_data_stream/_modify": {
@@ -13572,7 +13732,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/{index}/_open": {
@@ -13719,7 +13880,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_recovery": {
@@ -13923,7 +14085,8 @@
           "200": {
             "$ref": "#/components/responses/indices.reload_search_analyzers#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       },
       "post": {
         "tags": [
@@ -13952,7 +14115,8 @@
           "200": {
             "$ref": "#/components/responses/indices.reload_search_analyzers#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_resolve/cluster/{name}": {
@@ -14033,7 +14197,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.13.0"
       }
     },
     "/_resolve/index/{name}": {
@@ -14106,7 +14271,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/{alias}/_rollover": {
@@ -14143,7 +14309,8 @@
           "200": {
             "$ref": "#/components/responses/indices.rollover#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -14183,7 +14350,8 @@
           "200": {
             "$ref": "#/components/responses/indices.rollover#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_segments": {
@@ -14354,7 +14522,8 @@
           "200": {
             "$ref": "#/components/responses/indices.shrink#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -14389,7 +14558,8 @@
           "200": {
             "$ref": "#/components/responses/indices.shrink#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -14461,7 +14631,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_index_template/_simulate": {
@@ -14565,7 +14736,8 @@
           "200": {
             "$ref": "#/components/responses/indices.split#200"
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       },
       "post": {
         "tags": [
@@ -14600,7 +14772,8 @@
           "200": {
             "$ref": "#/components/responses/indices.split#200"
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_stats": {
@@ -14647,7 +14820,8 @@
           "200": {
             "$ref": "#/components/responses/indices.stats#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_stats/{metric}": {
@@ -14697,7 +14871,8 @@
           "200": {
             "$ref": "#/components/responses/indices.stats#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/{index}/_stats": {
@@ -14747,7 +14922,8 @@
           "200": {
             "$ref": "#/components/responses/indices.stats#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/{index}/_stats/{metric}": {
@@ -14800,7 +14976,8 @@
           "200": {
             "$ref": "#/components/responses/indices.stats#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/{index}/_unfreeze": {
@@ -14909,7 +15086,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.6.0"
       }
     },
     "/_aliases": {
@@ -14974,7 +15152,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_validate/query": {
@@ -15032,7 +15211,8 @@
           "200": {
             "$ref": "#/components/responses/indices.validate_query#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       },
       "post": {
         "tags": [
@@ -15088,7 +15268,8 @@
           "200": {
             "$ref": "#/components/responses/indices.validate_query#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/{index}/_validate/query": {
@@ -15149,7 +15330,8 @@
           "200": {
             "$ref": "#/components/responses/indices.validate_query#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       },
       "post": {
         "tags": [
@@ -15208,7 +15390,8 @@
           "200": {
             "$ref": "#/components/responses/indices.validate_query#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_inference/{inference_id}": {
@@ -15230,7 +15413,8 @@
           "200": {
             "$ref": "#/components/responses/inference.get#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "put": {
         "tags": [
@@ -15253,7 +15437,8 @@
           "200": {
             "$ref": "#/components/responses/inference.put#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "post": {
         "tags": [
@@ -15279,7 +15464,8 @@
           "200": {
             "$ref": "#/components/responses/inference.inference#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "delete": {
         "tags": [
@@ -15305,7 +15491,8 @@
           "200": {
             "$ref": "#/components/responses/inference.delete#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -15330,7 +15517,8 @@
           "200": {
             "$ref": "#/components/responses/inference.get#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "put": {
         "tags": [
@@ -15356,7 +15544,8 @@
           "200": {
             "$ref": "#/components/responses/inference.put#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "post": {
         "tags": [
@@ -15385,7 +15574,8 @@
           "200": {
             "$ref": "#/components/responses/inference.inference#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       },
       "delete": {
         "tags": [
@@ -15414,7 +15604,8 @@
           "200": {
             "$ref": "#/components/responses/inference.delete#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       }
     },
     "/_inference": {
@@ -15431,7 +15622,8 @@
           "200": {
             "$ref": "#/components/responses/inference.get#200"
           }
-        }
+        },
+        "x-available-since": "8.11.0"
       }
     },
     "/": {
@@ -15526,7 +15718,8 @@
           "200": {
             "$ref": "#/components/responses/ingest.get_pipeline#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "put": {
         "tags": [
@@ -15628,7 +15821,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "delete": {
         "tags": [
@@ -15683,7 +15877,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_ingest/geoip/stats": {
@@ -15723,7 +15918,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_ingest/pipeline": {
@@ -15749,7 +15945,8 @@
           "200": {
             "$ref": "#/components/responses/ingest.get_pipeline#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_ingest/processor/grok": {
@@ -15785,7 +15982,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -15810,7 +16008,8 @@
           "200": {
             "$ref": "#/components/responses/ingest.simulate#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -15833,7 +16032,8 @@
           "200": {
             "$ref": "#/components/responses/ingest.simulate#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -15861,7 +16061,8 @@
           "200": {
             "$ref": "#/components/responses/ingest.simulate#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -15887,7 +16088,8 @@
           "200": {
             "$ref": "#/components/responses/ingest.simulate#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/{index}/_knn_search": {
@@ -15916,7 +16118,8 @@
             "$ref": "#/components/responses/knn_search#200"
           }
         },
-        "deprecated": true
+        "deprecated": true,
+        "x-available-since": "8.0.0"
       },
       "post": {
         "tags": [
@@ -15943,7 +16146,8 @@
             "$ref": "#/components/responses/knn_search#200"
           }
         },
-        "deprecated": true
+        "deprecated": true,
+        "x-available-since": "8.0.0"
       }
     },
     "/_license": {
@@ -16098,7 +16302,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_license/trial_status": {
@@ -16130,7 +16335,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_license/start_basic": {
@@ -16201,7 +16407,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_license/start_trial": {
@@ -16264,7 +16471,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_logstash/pipeline/{id}": {
@@ -16286,7 +16494,8 @@
           "200": {
             "$ref": "#/components/responses/logstash.get_pipeline#200"
           }
-        }
+        },
+        "x-available-since": "7.12.0"
       },
       "put": {
         "tags": [
@@ -16327,7 +16536,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "7.12.0"
       },
       "delete": {
         "tags": [
@@ -16358,7 +16568,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "7.12.0"
       }
     },
     "/_logstash/pipeline": {
@@ -16375,7 +16586,8 @@
           "200": {
             "$ref": "#/components/responses/logstash.get_pipeline#200"
           }
-        }
+        },
+        "x-available-since": "7.12.0"
       }
     },
     "/_mget": {
@@ -16424,7 +16636,8 @@
           "200": {
             "$ref": "#/components/responses/mget#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       },
       "post": {
         "tags": [
@@ -16471,7 +16684,8 @@
           "200": {
             "$ref": "#/components/responses/mget#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/{index}/_mget": {
@@ -16523,7 +16737,8 @@
           "200": {
             "$ref": "#/components/responses/mget#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       },
       "post": {
         "tags": [
@@ -16573,7 +16788,8 @@
           "200": {
             "$ref": "#/components/responses/mget#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_migration/deprecations": {
@@ -16590,7 +16806,8 @@
           "200": {
             "$ref": "#/components/responses/migration.deprecations#200"
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/{index}/_migration/deprecations": {
@@ -16612,7 +16829,8 @@
           "200": {
             "$ref": "#/components/responses/migration.deprecations#200"
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_migration/system_features": {
@@ -16651,7 +16869,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       },
       "post": {
         "tags": [
@@ -16688,7 +16907,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/cache/_clear": {
@@ -16734,7 +16954,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -16832,7 +17053,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -16863,7 +17085,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "put": {
         "tags": [
@@ -16936,7 +17159,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "post": {
         "tags": [
@@ -16965,7 +17189,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "delete": {
         "tags": [
@@ -17000,7 +17225,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -17048,7 +17274,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -17112,7 +17339,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "delete": {
         "tags": [
@@ -17174,7 +17402,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -17209,7 +17438,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       },
       "put": {
         "tags": [
@@ -17348,7 +17578,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       },
       "delete": {
         "tags": [
@@ -17403,7 +17634,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -17432,7 +17664,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_datafeeds#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "put": {
         "tags": [
@@ -17637,7 +17870,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "delete": {
         "tags": [
@@ -17682,7 +17916,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/_delete_expired_data/{job_id}": {
@@ -17714,7 +17949,8 @@
           "200": {
             "$ref": "#/components/responses/ml.delete_expired_data#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/_delete_expired_data": {
@@ -17743,7 +17979,8 @@
           "200": {
             "$ref": "#/components/responses/ml.delete_expired_data#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -17772,7 +18009,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_filters#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "put": {
         "tags": [
@@ -17850,7 +18088,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "delete": {
         "tags": [
@@ -17886,7 +18125,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_forecast": {
@@ -17987,7 +18227,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       },
       "delete": {
         "tags": [
@@ -18014,7 +18255,8 @@
           "200": {
             "$ref": "#/components/responses/ml.delete_forecast#200"
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_forecast/{forecast_id}": {
@@ -18046,7 +18288,8 @@
           "200": {
             "$ref": "#/components/responses/ml.delete_forecast#200"
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -18075,7 +18318,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_jobs#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "put": {
         "tags": [
@@ -18260,7 +18504,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "delete": {
         "tags": [
@@ -18326,7 +18571,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}": {
@@ -18372,7 +18618,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -18416,7 +18663,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "delete": {
         "tags": [
@@ -18463,7 +18711,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -18506,7 +18755,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_trained_models#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       },
       "put": {
         "tags": [
@@ -18615,7 +18865,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       },
       "delete": {
         "tags": [
@@ -18660,7 +18911,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -18719,7 +18971,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       },
       "delete": {
         "tags": [
@@ -18766,7 +19019,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -18828,7 +19082,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.7.0"
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -18889,7 +19144,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/data_frame/analytics/_explain": {
@@ -18910,7 +19166,8 @@
           "200": {
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       },
       "post": {
         "tags": [
@@ -18929,7 +19186,8 @@
           "200": {
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_explain": {
@@ -18955,7 +19213,8 @@
           "200": {
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       },
       "post": {
         "tags": [
@@ -18979,7 +19238,8 @@
           "200": {
             "$ref": "#/components/responses/ml.explain_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -19106,7 +19366,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/buckets/{timestamp}": {
@@ -19162,7 +19423,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -19216,7 +19478,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/buckets": {
@@ -19269,7 +19532,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -19320,7 +19584,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_buckets#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -19422,7 +19687,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "post": {
         "tags": [
@@ -19490,7 +19756,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_ml/calendars": {
@@ -19518,7 +19785,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "post": {
         "tags": [
@@ -19544,7 +19812,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_calendars#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/categories/{category_id}": {
@@ -19581,7 +19850,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_categories#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -19616,7 +19886,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_categories#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/categories": {
@@ -19650,7 +19921,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_categories#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -19682,7 +19954,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_categories#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/data_frame/analytics": {
@@ -19714,7 +19987,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -19745,7 +20019,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -19779,7 +20054,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -19805,7 +20081,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_datafeed_stats#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -19828,7 +20105,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_datafeed_stats#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/datafeeds": {
@@ -19854,7 +20132,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_datafeeds#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/filters": {
@@ -19880,7 +20159,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_filters#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/influencers": {
@@ -19930,7 +20210,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_influencers#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -19978,7 +20259,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_influencers#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -20000,7 +20282,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_job_stats#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -20025,7 +20308,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_job_stats#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/anomaly_detectors": {
@@ -20051,7 +20335,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_jobs#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/memory/_stats": {
@@ -20079,7 +20364,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_memory_stats#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_ml/memory/{node_id}/_stats": {
@@ -20110,7 +20396,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_memory_stats#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade/_stats": {
@@ -20183,7 +20470,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots": {
@@ -20226,7 +20514,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -20267,7 +20556,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_model_snapshots#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -20314,7 +20604,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_overall_buckets#200"
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       },
       "post": {
         "tags": [
@@ -20359,7 +20650,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_overall_buckets#200"
           }
-        }
+        },
+        "x-available-since": "6.1.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/records": {
@@ -20409,7 +20701,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_records#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -20457,7 +20750,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_records#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/trained_models": {
@@ -20497,7 +20791,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_trained_models#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -20529,7 +20824,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_trained_models_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_ml/trained_models/_stats": {
@@ -20558,7 +20854,8 @@
           "200": {
             "$ref": "#/components/responses/ml.get_trained_models_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -20586,7 +20883,8 @@
           "200": {
             "$ref": "#/components/responses/ml.infer_trained_model#200"
           }
-        }
+        },
+        "x-available-since": "8.3.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_infer": {
@@ -20614,7 +20912,8 @@
           "200": {
             "$ref": "#/components/responses/ml.infer_trained_model#200"
           }
-        }
+        },
+        "x-available-since": "8.3.0"
       }
     },
     "/_ml/info": {
@@ -20659,7 +20958,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -20733,7 +21033,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_data": {
@@ -20869,7 +21170,8 @@
             }
           }
         },
-        "deprecated": true
+        "deprecated": true,
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/data_frame/analytics/_preview": {
@@ -20889,7 +21191,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       },
       "post": {
         "tags": [
@@ -20907,7 +21210,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -20932,7 +21236,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       },
       "post": {
         "tags": [
@@ -20955,7 +21260,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_data_frame_analytics#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -20987,7 +21293,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -21017,7 +21324,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -21046,7 +21354,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       },
       "post": {
         "tags": [
@@ -21073,7 +21382,8 @@
           "200": {
             "$ref": "#/components/responses/ml.preview_datafeed#200"
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -21150,7 +21460,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.0.0"
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -21192,6 +21503,7 @@
                   },
                   "merges": {
                     "description": "The optional model merges if required by the tokenizer.",
+                    "x-available-since": "8.2.0",
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -21199,6 +21511,7 @@
                   },
                   "scores": {
                     "description": "The optional vocabulary value scores if required by the tokenizer.",
+                    "x-available-since": "8.9.0",
                     "type": "array",
                     "items": {
                       "type": "number"
@@ -21224,7 +21537,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.0.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -21282,7 +21596,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.14.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_revert": {
@@ -21364,7 +21679,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/set_upgrade_mode": {
@@ -21411,7 +21727,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -21471,7 +21788,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -21572,7 +21890,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -21697,7 +22016,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.0.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -21773,7 +22093,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -21871,7 +22192,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -21936,7 +22258,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.0.0"
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -22056,7 +22379,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -22264,7 +22588,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -22350,7 +22675,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -22558,7 +22884,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_update": {
@@ -22638,7 +22965,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -22708,7 +23036,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.6.0"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade": {
@@ -22790,7 +23119,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_ml/anomaly_detectors/_validate": {
@@ -22853,7 +23183,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_ml/anomaly_detectors/_validate/detector": {
@@ -22887,7 +23218,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.4.0"
       }
     },
     "/_monitoring/bulk": {
@@ -22918,7 +23250,8 @@
           "200": {
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "post": {
         "tags": [
@@ -22947,7 +23280,8 @@
           "200": {
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_monitoring/{type}/bulk": {
@@ -22981,7 +23315,8 @@
           "200": {
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "post": {
         "tags": [
@@ -23013,7 +23348,8 @@
           "200": {
             "$ref": "#/components/responses/monitoring.bulk#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_msearch": {
@@ -23071,7 +23407,8 @@
           "200": {
             "$ref": "#/components/responses/msearch#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       },
       "post": {
         "tags": [
@@ -23127,7 +23464,8 @@
           "200": {
             "$ref": "#/components/responses/msearch#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/{index}/_msearch": {
@@ -23188,7 +23526,8 @@
           "200": {
             "$ref": "#/components/responses/msearch#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       },
       "post": {
         "tags": [
@@ -23247,7 +23586,8 @@
           "200": {
             "$ref": "#/components/responses/msearch#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_msearch/template": {
@@ -23284,7 +23624,8 @@
           "200": {
             "$ref": "#/components/responses/msearch_template#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -23319,7 +23660,8 @@
           "200": {
             "$ref": "#/components/responses/msearch_template#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/{index}/_msearch/template": {
@@ -23359,7 +23701,8 @@
           "200": {
             "$ref": "#/components/responses/msearch_template#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       },
       "post": {
         "tags": [
@@ -23397,7 +23740,8 @@
           "200": {
             "$ref": "#/components/responses/msearch_template#200"
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_mtermvectors": {
@@ -23679,7 +24023,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/_nodes/{node_id}/_repositories_metering": {
@@ -23717,7 +24062,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/_nodes/hot_threads": {
@@ -23836,7 +24182,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.info#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_nodes/{node_id}": {
@@ -23867,7 +24214,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.info#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_nodes/{metric}": {
@@ -23898,7 +24246,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.info#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_nodes/{node_id}/{metric}": {
@@ -23932,7 +24281,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.info#200"
           }
-        }
+        },
+        "x-available-since": "1.3.0"
       }
     },
     "/_nodes/reload_secure_settings": {
@@ -23957,7 +24307,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.reload_secure_settings#200"
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_nodes/{node_id}/reload_secure_settings": {
@@ -23985,7 +24336,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.reload_secure_settings#200"
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_nodes/stats": {
@@ -24328,7 +24680,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.usage#200"
           }
-        }
+        },
+        "x-available-since": "6.0.0"
       }
     },
     "/_nodes/{node_id}/usage": {
@@ -24353,7 +24706,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.usage#200"
           }
-        }
+        },
+        "x-available-since": "6.0.0"
       }
     },
     "/_nodes/usage/{metric}": {
@@ -24378,7 +24732,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.usage#200"
           }
-        }
+        },
+        "x-available-since": "6.0.0"
       }
     },
     "/_nodes/{node_id}/usage/{metric}": {
@@ -24406,7 +24761,8 @@
           "200": {
             "$ref": "#/components/responses/nodes.usage#200"
           }
-        }
+        },
+        "x-available-since": "6.0.0"
       }
     },
     "/{index}/_pit": {
@@ -24503,7 +24859,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_scripts/{id}/{context}": {
@@ -24617,7 +24974,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       },
       "put": {
         "tags": [
@@ -24710,7 +25068,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       },
       "delete": {
         "tags": [
@@ -24756,7 +25115,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -24793,7 +25153,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       },
       "put": {
         "tags": [
@@ -24864,7 +25225,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       },
       "delete": {
         "tags": [
@@ -24899,7 +25261,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       }
     },
     "/_query_rules": {
@@ -24960,7 +25323,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       }
     },
     "/_rank_eval": {
@@ -24994,7 +25358,8 @@
           "200": {
             "$ref": "#/components/responses/rank_eval#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "post": {
         "tags": [
@@ -25026,7 +25391,8 @@
           "200": {
             "$ref": "#/components/responses/rank_eval#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/{index}/_rank_eval": {
@@ -25063,7 +25429,8 @@
           "200": {
             "$ref": "#/components/responses/rank_eval#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       },
       "post": {
         "tags": [
@@ -25098,7 +25465,8 @@
           "200": {
             "$ref": "#/components/responses/rank_eval#200"
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_reindex": {
@@ -25292,7 +25660,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "2.3.0"
       }
     },
     "/_reindex/{task_id}/_rethrottle": {
@@ -25350,7 +25719,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "2.4.0"
       }
     },
     "/_render/template": {
@@ -25458,7 +25828,8 @@
           "200": {
             "$ref": "#/components/responses/rollup.get_jobs#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "put": {
         "tags": [
@@ -25543,7 +25914,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "delete": {
         "tags": [
@@ -25592,7 +25964,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_rollup/job": {
@@ -25609,7 +25982,8 @@
           "200": {
             "$ref": "#/components/responses/rollup.get_jobs#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_rollup/data/{id}": {
@@ -25631,7 +26005,8 @@
           "200": {
             "$ref": "#/components/responses/rollup.get_rollup_caps#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_rollup/data": {
@@ -25648,7 +26023,8 @@
           "200": {
             "$ref": "#/components/responses/rollup.get_rollup_caps#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/{index}/_rollup/data": {
@@ -25688,7 +26064,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/{index}/_rollup_search": {
@@ -25719,7 +26096,8 @@
           "200": {
             "$ref": "#/components/responses/rollup.rollup_search#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "post": {
         "tags": [
@@ -25748,7 +26126,8 @@
           "200": {
             "$ref": "#/components/responses/rollup.rollup_search#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_rollup/job/{id}/_start": {
@@ -25793,7 +26172,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_rollup/job/{id}/_stop": {
@@ -25858,7 +26238,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_scripts/painless/_execute": {
@@ -25878,7 +26259,8 @@
           "200": {
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "post": {
         "tags": [
@@ -25896,7 +26278,8 @@
           "200": {
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_search": {
@@ -26555,7 +26938,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       },
       "put": {
         "tags": [
@@ -26618,7 +27002,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       },
       "delete": {
         "tags": [
@@ -26653,7 +27038,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       }
     },
     "/_application/analytics/{name}": {
@@ -26675,7 +27061,8 @@
           "200": {
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       },
       "put": {
         "tags": [
@@ -26710,7 +27097,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       },
       "delete": {
         "tags": [
@@ -26745,7 +27133,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       }
     },
     "/_application/analytics": {
@@ -26762,7 +27151,8 @@
           "200": {
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       }
     },
     "/_application/search_application": {
@@ -26833,7 +27223,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -26861,7 +27252,8 @@
           "200": {
             "$ref": "#/components/responses/search_application.search#200"
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       },
       "post": {
         "tags": [
@@ -26887,7 +27279,8 @@
           "200": {
             "$ref": "#/components/responses/search_application.search#200"
           }
-        }
+        },
+        "x-available-since": "8.8.0"
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -26946,7 +27339,8 @@
           "200": {
             "$ref": "#/components/responses/search_mvt#200"
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       },
       "post": {
         "tags": [
@@ -27003,7 +27397,8 @@
           "200": {
             "$ref": "#/components/responses/search_mvt#200"
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/_search_shards": {
@@ -27214,7 +27609,8 @@
           "200": {
             "$ref": "#/components/responses/search_template#200"
           }
-        }
+        },
+        "x-available-since": "2.0.0"
       },
       "post": {
         "tags": [
@@ -27273,7 +27669,8 @@
           "200": {
             "$ref": "#/components/responses/search_template#200"
           }
-        }
+        },
+        "x-available-since": "2.0.0"
       }
     },
     "/{index}/_search/template": {
@@ -27337,7 +27734,8 @@
           "200": {
             "$ref": "#/components/responses/search_template#200"
           }
-        }
+        },
+        "x-available-since": "2.0.0"
       },
       "post": {
         "tags": [
@@ -27399,7 +27797,8 @@
           "200": {
             "$ref": "#/components/responses/search_template#200"
           }
-        }
+        },
+        "x-available-since": "2.0.0"
       }
     },
     "/_searchable_snapshots/cache/stats": {
@@ -27421,7 +27820,8 @@
           "200": {
             "$ref": "#/components/responses/searchable_snapshots.cache_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_searchable_snapshots/{node_id}/cache/stats": {
@@ -27446,7 +27846,8 @@
           "200": {
             "$ref": "#/components/responses/searchable_snapshots.cache_stats#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_searchable_snapshots/cache/clear": {
@@ -27480,7 +27881,8 @@
           "200": {
             "$ref": "#/components/responses/searchable_snapshots.clear_cache#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/{index}/_searchable_snapshots/cache/clear": {
@@ -27517,7 +27919,8 @@
           "200": {
             "$ref": "#/components/responses/searchable_snapshots.clear_cache#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_mount": {
@@ -27636,7 +28039,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_searchable_snapshots/stats": {
@@ -27658,7 +28062,8 @@
           "200": {
             "$ref": "#/components/responses/searchable_snapshots.stats#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/{index}/_searchable_snapshots/stats": {
@@ -27683,7 +28088,8 @@
           "200": {
             "$ref": "#/components/responses/searchable_snapshots.stats#200"
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_security/profile/_activate": {
@@ -27734,7 +28140,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_security/_authenticate": {
@@ -27822,7 +28229,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_security/role": {
@@ -27923,7 +28331,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       },
       "delete": {
         "tags": [
@@ -27999,7 +28408,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       }
     },
     "/_security/user/{username}/_password": {
@@ -28158,7 +28568,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_security/privilege/{application}/_clear_cache": {
@@ -28214,7 +28625,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_security/realm/{realms}/_clear_cache": {
@@ -28536,7 +28948,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       },
       "put": {
         "tags": [
@@ -28560,7 +28973,8 @@
           "200": {
             "$ref": "#/components/responses/security.create_api_key#200"
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       },
       "post": {
         "tags": [
@@ -28584,7 +28998,8 @@
           "200": {
             "$ref": "#/components/responses/security.create_api_key#200"
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       },
       "delete": {
         "tags": [
@@ -28671,7 +29086,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.7.0"
       }
     },
     "/_security/service/{namespace}/{service}/credential/token/{name}": {
@@ -28806,7 +29222,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_security/service/{namespace}/{service}/credential/token": {
@@ -28859,7 +29276,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       },
       "delete": {
         "tags": [
@@ -28921,7 +29339,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_security/role/{name}": {
@@ -29073,7 +29492,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_role_mapping#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "put": {
         "tags": [
@@ -29099,7 +29519,8 @@
           "200": {
             "$ref": "#/components/responses/security.put_role_mapping#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "post": {
         "tags": [
@@ -29125,7 +29546,8 @@
           "200": {
             "$ref": "#/components/responses/security.put_role_mapping#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "delete": {
         "tags": [
@@ -29178,7 +29600,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_security/user/{username}": {
@@ -29383,7 +29806,8 @@
           "200": {
             "$ref": "#/components/responses/security.disable_user_profile#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       },
       "post": {
         "tags": [
@@ -29406,7 +29830,8 @@
           "200": {
             "$ref": "#/components/responses/security.disable_user_profile#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_security/user/{username}/_enable": {
@@ -29479,7 +29904,8 @@
           "200": {
             "$ref": "#/components/responses/security.enable_user_profile#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       },
       "post": {
         "tags": [
@@ -29502,7 +29928,8 @@
           "200": {
             "$ref": "#/components/responses/security.enable_user_profile#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_security/enroll/kibana": {
@@ -29538,7 +29965,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.0.0"
       }
     },
     "/_security/enroll/node": {
@@ -29593,7 +30021,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.0.0"
       }
     },
     "/_security/privilege/_builtin": {
@@ -29632,7 +30061,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.3.0"
       }
     },
     "/_security/privilege": {
@@ -29649,7 +30079,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       },
       "put": {
         "tags": [
@@ -29672,7 +30103,8 @@
           "200": {
             "$ref": "#/components/responses/security.put_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       },
       "post": {
         "tags": [
@@ -29695,7 +30127,8 @@
           "200": {
             "$ref": "#/components/responses/security.put_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_security/privilege/{application}": {
@@ -29717,7 +30150,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_security/role_mapping": {
@@ -29734,7 +30168,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_role_mapping#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_security/service/{namespace}/{service}": {
@@ -29759,7 +30194,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_service_accounts#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_security/service/{namespace}": {
@@ -29781,7 +30217,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_service_accounts#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_security/service": {
@@ -29798,7 +30235,8 @@
           "200": {
             "$ref": "#/components/responses/security.get_service_accounts#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_security/service/{namespace}/{service}/credential": {
@@ -29869,7 +30307,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_security/oauth2/token": {
@@ -29952,7 +30391,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       },
       "delete": {
         "tags": [
@@ -30020,7 +30460,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_security/user": {
@@ -30144,7 +30585,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_security/profile/{uid}": {
@@ -30225,7 +30667,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_security/api_key/grant": {
@@ -30308,7 +30751,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.9.0"
       }
     },
     "/_security/user/_has_privileges": {
@@ -30328,7 +30772,8 @@
           "200": {
             "$ref": "#/components/responses/security.has_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       },
       "post": {
         "tags": [
@@ -30346,7 +30791,8 @@
           "200": {
             "$ref": "#/components/responses/security.has_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -30371,7 +30817,8 @@
           "200": {
             "$ref": "#/components/responses/security.has_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       },
       "post": {
         "tags": [
@@ -30394,7 +30841,8 @@
           "200": {
             "$ref": "#/components/responses/security.has_privileges#200"
           }
-        }
+        },
+        "x-available-since": "6.4.0"
       }
     },
     "/_security/profile/_has_privileges": {
@@ -30414,7 +30862,8 @@
           "200": {
             "$ref": "#/components/responses/security.has_privileges_user_profile#200"
           }
-        }
+        },
+        "x-available-since": "8.3.0"
       },
       "post": {
         "tags": [
@@ -30432,7 +30881,8 @@
           "200": {
             "$ref": "#/components/responses/security.has_privileges_user_profile#200"
           }
-        }
+        },
+        "x-available-since": "8.3.0"
       }
     },
     "/_security/_query/api_key": {
@@ -30464,7 +30914,8 @@
           "200": {
             "$ref": "#/components/responses/security.query_api_keys#200"
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       },
       "post": {
         "tags": [
@@ -30494,7 +30945,8 @@
           "200": {
             "$ref": "#/components/responses/security.query_api_keys#200"
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/_security/_query/role": {
@@ -30515,7 +30967,8 @@
           "200": {
             "$ref": "#/components/responses/security.query_role#200"
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       },
       "post": {
         "tags": [
@@ -30534,7 +30987,8 @@
           "200": {
             "$ref": "#/components/responses/security.query_role#200"
           }
-        }
+        },
+        "x-available-since": "8.15.0"
       }
     },
     "/_security/_query/user": {
@@ -30560,7 +31014,8 @@
           "200": {
             "$ref": "#/components/responses/security.query_user#200"
           }
-        }
+        },
+        "x-available-since": "8.14.0"
       },
       "post": {
         "tags": [
@@ -30584,7 +31039,8 @@
           "200": {
             "$ref": "#/components/responses/security.query_user#200"
           }
-        }
+        },
+        "x-available-since": "8.14.0"
       }
     },
     "/_security/saml/authenticate": {
@@ -30659,7 +31115,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_security/saml/complete_logout": {
@@ -30710,7 +31167,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-available-since": "7.14.0"
       }
     },
     "/_security/saml/invalidate": {
@@ -30777,7 +31235,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_security/saml/logout": {
@@ -30832,7 +31291,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_security/saml/prepare": {
@@ -30896,7 +31356,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_security/saml/metadata/{realm_name}": {
@@ -30941,7 +31402,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       }
     },
     "/_security/profile/_suggest": {
@@ -30966,7 +31428,8 @@
           "200": {
             "$ref": "#/components/responses/security.suggest_user_profiles#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       },
       "post": {
         "tags": [
@@ -30989,7 +31452,8 @@
           "200": {
             "$ref": "#/components/responses/security.suggest_user_profiles#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_security/api_key/{id}": {
@@ -31063,7 +31527,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.4.0"
       }
     },
     "/_security/profile/{uid}/_data": {
@@ -31097,7 +31562,8 @@
           "200": {
             "$ref": "#/components/responses/security.update_user_profile_data#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       },
       "post": {
         "tags": [
@@ -31129,7 +31595,8 @@
           "200": {
             "$ref": "#/components/responses/security.update_user_profile_data#200"
           }
-        }
+        },
+        "x-available-since": "8.2.0"
       }
     },
     "/_nodes/{node_id}/shutdown": {
@@ -31158,7 +31625,8 @@
           "200": {
             "$ref": "#/components/responses/shutdown.get_node#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       },
       "put": {
         "tags": [
@@ -31245,7 +31713,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       },
       "delete": {
         "tags": [
@@ -31301,7 +31770,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_nodes/shutdown": {
@@ -31327,7 +31797,8 @@
           "200": {
             "$ref": "#/components/responses/shutdown.get_node#200"
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_slm/policy/{policy_id}": {
@@ -31349,7 +31820,8 @@
           "200": {
             "$ref": "#/components/responses/slm.get_lifecycle#200"
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       },
       "put": {
         "tags": [
@@ -31431,7 +31903,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       },
       "delete": {
         "tags": [
@@ -31466,7 +31939,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       }
     },
     "/_slm/policy/{policy_id}/_execute": {
@@ -31511,7 +31985,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       }
     },
     "/_slm/_execute_retention": {
@@ -31535,7 +32010,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_slm/policy": {
@@ -31552,7 +32028,8 @@
           "200": {
             "$ref": "#/components/responses/slm.get_lifecycle#200"
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       }
     },
     "/_slm/stats": {
@@ -31623,7 +32100,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_slm/status": {
@@ -31655,7 +32133,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.6.0"
       }
     },
     "/_slm/start": {
@@ -31679,7 +32158,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.6.0"
       }
     },
     "/_slm/stop": {
@@ -31703,7 +32183,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.6.0"
       }
     },
     "/_snapshot/{repository}/_cleanup": {
@@ -31768,7 +32249,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.4.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_clone/{target_snapshot}": {
@@ -31864,7 +32346,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.10.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}": {
@@ -32053,10 +32536,12 @@
                     },
                     "total": {
                       "description": "The total number of snapshots that match the request when ignoring size limit or after query parameter.",
+                      "x-available-since": "7.15.0",
                       "type": "number"
                     },
                     "remaining": {
                       "description": "The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the next field value.",
+                      "x-available-since": "7.15.0",
                       "type": "number"
                     }
                   },
@@ -32068,7 +32553,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       },
       "put": {
         "tags": [
@@ -32100,7 +32586,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.create#200"
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       },
       "post": {
         "tags": [
@@ -32132,7 +32619,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.create#200"
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       },
       "delete": {
         "tags": [
@@ -32216,7 +32704,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.get_repository#200"
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       },
       "put": {
         "tags": [
@@ -32248,7 +32737,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.create_repository#200"
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       },
       "post": {
         "tags": [
@@ -32280,7 +32770,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.create_repository#200"
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       },
       "delete": {
         "tags": [
@@ -32335,7 +32826,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       }
     },
     "/_snapshot": {
@@ -32360,7 +32852,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.get_repository#200"
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_restore": {
@@ -32483,7 +32976,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       }
     },
     "/_snapshot/_status": {
@@ -32508,7 +33002,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.status#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       }
     },
     "/_snapshot/{repository}/_status": {
@@ -32536,7 +33031,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.status#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       }
     },
     "/_snapshot/{repository}/{snapshot}/_status": {
@@ -32567,7 +33063,8 @@
           "200": {
             "$ref": "#/components/responses/snapshot.status#200"
           }
-        }
+        },
+        "x-available-since": "7.8.0"
       }
     },
     "/_snapshot/{repository}/_verify": {
@@ -32635,7 +33132,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "0.0.0"
       }
     },
     "/_sql/close": {
@@ -32686,7 +33184,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_sql/async/delete/{id}": {
@@ -32724,7 +33223,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/_sql/async/{id}": {
@@ -32838,7 +33338,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/_sql/async/status/{id}": {
@@ -32905,7 +33406,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.15.0"
       }
     },
     "/_sql": {
@@ -32930,7 +33432,8 @@
           "200": {
             "$ref": "#/components/responses/sql.query#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "post": {
         "tags": [
@@ -32953,7 +33456,8 @@
           "200": {
             "$ref": "#/components/responses/sql.query#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_sql/translate": {
@@ -32973,7 +33477,8 @@
           "200": {
             "$ref": "#/components/responses/sql.translate#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       },
       "post": {
         "tags": [
@@ -32991,7 +33496,8 @@
           "200": {
             "$ref": "#/components/responses/sql.translate#200"
           }
-        }
+        },
+        "x-available-since": "6.3.0"
       }
     },
     "/_ssl/certificates": {
@@ -33018,7 +33524,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.2.0"
       }
     },
     "/_synonyms/{id}": {
@@ -33090,7 +33597,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       },
       "put": {
         "tags": [
@@ -33159,7 +33667,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       },
       "delete": {
         "tags": [
@@ -33194,7 +33703,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -33242,7 +33752,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       },
       "put": {
         "tags": [
@@ -33306,7 +33817,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       },
       "delete": {
         "tags": [
@@ -33352,7 +33864,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       }
     },
     "/_synonyms": {
@@ -33413,7 +33926,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.10.0"
       }
     },
     "/_tasks/_cancel": {
@@ -33444,7 +33958,8 @@
           "200": {
             "$ref": "#/components/responses/tasks.cancel#200"
           }
-        }
+        },
+        "x-available-since": "2.3.0"
       }
     },
     "/_tasks/{task_id}/_cancel": {
@@ -33478,7 +33993,8 @@
           "200": {
             "$ref": "#/components/responses/tasks.cancel#200"
           }
-        }
+        },
+        "x-available-since": "2.3.0"
       }
     },
     "/_tasks/{task_id}": {
@@ -33553,7 +34069,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.0.0"
       }
     },
     "/_tasks": {
@@ -33672,7 +34189,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "2.3.0"
       }
     },
     "/{index}/_terms_enum": {
@@ -33698,7 +34216,8 @@
           "200": {
             "$ref": "#/components/responses/terms_enum#200"
           }
-        }
+        },
+        "x-available-since": "7.14.0"
       },
       "post": {
         "tags": [
@@ -33722,7 +34241,8 @@
           "200": {
             "$ref": "#/components/responses/terms_enum#200"
           }
-        }
+        },
+        "x-available-since": "7.14.0"
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -34241,7 +34761,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.13.0"
       }
     },
     "/_text_structure/test_grok_pattern": {
@@ -34266,7 +34787,8 @@
           "200": {
             "$ref": "#/components/responses/text_structure.test_grok_pattern#200"
           }
-        }
+        },
+        "x-available-since": "8.13.0"
       },
       "post": {
         "tags": [
@@ -34289,7 +34811,8 @@
           "200": {
             "$ref": "#/components/responses/text_structure.test_grok_pattern#200"
           }
-        }
+        },
+        "x-available-since": "8.13.0"
       }
     },
     "/_transform/{transform_id}": {
@@ -34323,7 +34846,8 @@
           "200": {
             "$ref": "#/components/responses/transform.get_transform#200"
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       },
       "put": {
         "tags": [
@@ -34426,7 +34950,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.2.0"
       },
       "delete": {
         "tags": [
@@ -34491,7 +35016,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_transform": {
@@ -34522,7 +35048,8 @@
           "200": {
             "$ref": "#/components/responses/transform.get_transform#200"
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -34614,7 +35141,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -34643,7 +35171,8 @@
           "200": {
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
-        }
+        },
+        "x-available-since": "7.2.0"
       },
       "post": {
         "tags": [
@@ -34670,7 +35199,8 @@
           "200": {
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
-        }
+        },
+        "x-available-since": "7.2.0"
       }
     },
     "/_transform/_preview": {
@@ -34696,7 +35226,8 @@
           "200": {
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
-        }
+        },
+        "x-available-since": "7.2.0"
       },
       "post": {
         "tags": [
@@ -34720,7 +35251,8 @@
           "200": {
             "$ref": "#/components/responses/transform.preview_transform#200"
           }
-        }
+        },
+        "x-available-since": "7.2.0"
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -34768,7 +35300,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.1.0"
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -34816,7 +35349,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "8.7.0"
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -34874,7 +35408,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -34961,7 +35496,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.5.0"
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -35118,7 +35654,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.2.0"
       }
     },
     "/_transform/_upgrade": {
@@ -35184,7 +35721,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "7.16.0"
       }
     },
     "/{index}/_update/{id}": {
@@ -35814,7 +36352,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "2.4.0"
       }
     },
     "/_update_by_query/{task_id}/_rethrottle": {
@@ -35872,7 +36411,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "6.5.0"
       }
     },
     "/_watcher/watch/{watch_id}/_ack": {
@@ -36110,7 +36650,8 @@
               }
             }
           }
-        }
+        },
+        "x-available-since": "5.6.0"
       },
       "put": {
         "tags": [
@@ -36357,7 +36898,8 @@
           "200": {
             "$ref": "#/components/responses/watcher.query_watches#200"
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       },
       "post": {
         "tags": [
@@ -36375,7 +36917,8 @@
           "200": {
             "$ref": "#/components/responses/watcher.query_watches#200"
           }
-        }
+        },
+        "x-available-since": "7.11.0"
       }
     },
     "/_watcher/_start": {
@@ -36424,7 +36967,8 @@
           "200": {
             "$ref": "#/components/responses/watcher.stats#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_watcher/stats/{metric}": {
@@ -36452,7 +36996,8 @@
           "200": {
             "$ref": "#/components/responses/watcher.stats#200"
           }
-        }
+        },
+        "x-available-since": "5.5.0"
       }
     },
     "/_watcher/_stop": {
@@ -37109,6 +37654,7 @@
                   "$ref": "#/components/schemas/cluster.allocation_explain:UnassignedInformation"
                 },
                 "note": {
+                  "x-available-since": "7.14.0",
                   "type": "string"
                 }
               },
@@ -39379,6 +39925,7 @@
                 },
                 "encoded": {
                   "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
+                  "x-available-since": "7.16.0",
                   "type": "string"
                 }
               },
@@ -39845,6 +40392,7 @@
               "properties": {
                 "accepted": {
                   "description": "Equals `true` if the snapshot was accepted. Present when the request had `wait_for_completion` set to `false`",
+                  "x-available-since": "7.15.0",
                   "type": "boolean"
                 },
                 "snapshot": {
@@ -49499,6 +50047,7 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
+                  "x-available-since": "8.4.0",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types:KnnSearch"
@@ -50624,6 +51173,7 @@
                 },
                 "filter": {
                   "description": "Query to filter the documents that can match. The kNN search will return the top\n`k` documents that also match this filter. The value can be a single query or a\nlist of queries. If `filter` isn't provided, all documents are allowed to match.",
+                  "x-available-since": "8.2.0",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
@@ -51277,6 +51827,7 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
+                  "x-available-since": "8.4.0",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types:KnnSearch"
@@ -57707,6 +58258,7 @@
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-text-expansion-query.html"
             },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
+            "x-available-since": "8.8.0",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl:TextExpansionQuery"
@@ -57717,6 +58269,7 @@
           "weighted_tokens": {
             "deprecated": true,
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
+            "x-available-since": "8.13.0",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl:WeightedTokensQuery"
@@ -59595,6 +60148,9 @@
           },
           "unit": {
             "$ref": "#/components/schemas/_types:DistanceUnit"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
           }
         }
       },
@@ -59620,6 +60176,26 @@
           "m",
           "cm",
           "mm"
+        ]
+      },
+      "_types:NestedSortValue": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          },
+          "max_children": {
+            "type": "number"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
+          },
+          "path": {
+            "$ref": "#/components/schemas/_types:Field"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "_types:ScriptSort": {
@@ -59651,26 +60227,6 @@
           "string",
           "number",
           "version"
-        ]
-      },
-      "_types:NestedSortValue": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "max_children": {
-            "type": "number"
-          },
-          "nested": {
-            "$ref": "#/components/schemas/_types:NestedSortValue"
-          },
-          "path": {
-            "$ref": "#/components/schemas/_types:Field"
-          }
-        },
-        "required": [
-          "path"
         ]
       },
       "_global.search._types:SourceConfig": {
@@ -60746,6 +61302,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-available-since": "7.10.0",
                 "type": "boolean"
               }
             },
@@ -61276,6 +61833,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.\nWhen `false`, case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-available-since": "7.10.0",
                 "type": "boolean"
               },
               "flags": {
@@ -61811,6 +62369,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+                    "x-available-since": "8.15.0",
                     "type": "boolean"
                   },
                   "pruning_config": {
@@ -61872,6 +62431,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-available-since": "7.10.0",
                 "type": "boolean"
               }
             },
@@ -61981,6 +62541,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-available-since": "7.10.0",
                 "type": "boolean"
               },
               "rewrite": {
@@ -65628,6 +66189,42 @@
             "description": "Number of primary and replica shards assigned to the node.",
             "type": "string"
           },
+          "shards.undesired": {
+            "description": "Amount of shards that are scheduled to be moved elsewhere in the cluster or -1 other than desired balance allocator is used",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "write_load.forecast": {
+            "description": "Sum of index write load forecasts",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "disk.indices.forecast": {
+            "description": "Sum of shard size forecasts",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:ByteSize"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "disk.indices": {
             "description": "Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards.\nIMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index.",
             "oneOf": [
@@ -65715,8 +66312,35 @@
           "node": {
             "description": "Name for the node. Set using the `node.name` setting.",
             "type": "string"
+          },
+          "node.role": {
+            "description": "Node roles",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
-        }
+        },
+        "required": [
+          "shards",
+          "shards.undesired",
+          "write_load.forecast",
+          "disk.indices.forecast",
+          "disk.indices",
+          "disk.used",
+          "disk.avail",
+          "disk.total",
+          "disk.percent",
+          "host",
+          "ip",
+          "node",
+          "node.role"
+        ]
       },
       "_types:ByteSize": {
         "externalDocs": {
@@ -67375,6 +67999,7 @@
             "type": "string"
           },
           "type": {
+            "x-available-since": "8.0.0",
             "type": "string"
           }
         }
@@ -71562,8 +72187,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]
@@ -74382,6 +75006,7 @@
                 ]
               },
               "null_value": {
+                "x-available-since": "7.15.0",
                 "type": "string"
               }
             },
@@ -75721,6 +76346,7 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
+            "x-available-since": "7.16.0",
             "type": "boolean"
           }
         }
@@ -76828,6 +77454,7 @@
           },
           "script_count": {
             "description": "The number of fields that declare a script.",
+            "x-available-since": "7.13.0",
             "type": "number"
           }
         },
@@ -77425,6 +78052,7 @@
             "type": "number"
           },
           "data_frozen": {
+            "x-available-since": "7.13.0",
             "type": "number"
           },
           "data_hot": {
@@ -77777,6 +78405,7 @@
         "properties": {
           "adjusted_total_in_bytes": {
             "description": "Total amount, in bytes, of memory across all selected nodes, but using the value specified using the `es.total_memory_bytes` system property instead of measured total memory for those nodes where that system property was set.",
+            "x-available-since": "7.16.0",
             "type": "number"
           },
           "free_in_bytes": {
@@ -79601,6 +80230,7 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
+            "x-available-since": "8.0.0",
             "type": "boolean"
           },
           "time_series_metric": {
@@ -79608,6 +80238,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
+            "x-available-since": "8.0.0",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
@@ -79615,6 +80246,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
+            "x-available-since": "8.0.0",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types:IndexName"
@@ -79719,6 +80351,7 @@
           },
           "knn": {
             "description": "Defines the approximate kNN search to run.",
+            "x-available-since": "8.4.0",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/_types:KnnSearch"
@@ -80522,6 +81155,9 @@
           "creating_primaries": {
             "type": "number"
           },
+          "creating_replicas": {
+            "type": "number"
+          },
           "initializing_primaries": {
             "type": "number"
           },
@@ -80549,6 +81185,7 @@
         },
         "required": [
           "creating_primaries",
+          "creating_replicas",
           "initializing_primaries",
           "initializing_replicas",
           "restarting_primaries",
@@ -80656,11 +81293,15 @@
           },
           "policies": {
             "type": "number"
+          },
+          "stagnating_indices": {
+            "type": "number"
           }
         },
         "required": [
           "ilm_status",
-          "policies"
+          "policies",
+          "stagnating_indices"
         ]
       },
       "_types:LifecycleOperationMode": {
@@ -80701,8 +81342,7 @@
         },
         "required": [
           "slm_status",
-          "policies",
-          "unhealthy_policies"
+          "policies"
         ]
       },
       "_global.health_report:SlmIndicatorUnhealthyPolicies": {
@@ -81542,6 +82182,7 @@
           },
           "system": {
             "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
+            "x-available-since": "7.10.0",
             "type": "boolean"
           },
           "template": {
@@ -83164,6 +83805,7 @@
             "$ref": "#/components/schemas/_types:BulkStats"
           },
           "shards": {
+            "x-available-since": "7.15.0",
             "type": "object",
             "additionalProperties": {
               "type": "object"
@@ -87530,6 +88172,7 @@
             "$ref": "#/components/schemas/_types:NodeRoles"
           },
           "external_id": {
+            "x-available-since": "8.3.0",
             "type": "string"
           }
         },
@@ -88417,6 +89060,7 @@
         "properties": {
           "annotations_enabled": {
             "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
+            "x-available-since": "7.9.0",
             "type": "boolean"
           },
           "enabled": {
@@ -95367,6 +96011,7 @@
           },
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
+            "x-available-since": "8.14.0",
             "type": "string"
           },
           "username": {
@@ -95374,6 +96019,7 @@
           },
           "profile_uid": {
             "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "x-available-since": "8.14.0",
             "type": "string"
           },
           "metadata": {
@@ -95388,6 +96034,7 @@
           },
           "limited_by": {
             "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "x-available-since": "8.5.0",
             "type": "array",
             "items": {
               "type": "object",
@@ -95767,6 +96414,7 @@
             "$ref": "#/components/schemas/_types:Name"
           },
           "type": {
+            "x-available-since": "7.14.0",
             "type": "string"
           }
         },
@@ -95918,6 +96566,7 @@
             }
           },
           "global": {
+            "x-available-since": "8.0.0",
             "type": "object",
             "additionalProperties": {
               "type": "object",
@@ -97312,6 +97961,7 @@
             }
           },
           "index_details": {
+            "x-available-since": "7.13.0",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/snapshot._types:IndexDetails"
@@ -98494,6 +99144,7 @@
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
+            "x-available-since": "8.5.0",
             "type": "boolean"
           }
         }
@@ -98644,10 +99295,7 @@
         },
         "required": [
           "docs_indexed",
-          "docs_processed",
-          "docs_remaining",
-          "percent_complete",
-          "total_docs"
+          "docs_processed"
         ]
       },
       "transform.get_transform_stats:TransformStatsHealth": {

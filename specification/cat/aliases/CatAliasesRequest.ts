@@ -25,7 +25,7 @@ import { ExpandWildcards, Names } from '@_types/common'
  * The API does not return data stream aliases.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.
  * @rest_spec_name cat.aliases
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-alias
  * @index_privileges view_index_metadata

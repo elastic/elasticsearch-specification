@@ -25,7 +25,7 @@ import { Duration } from '@_types/Time'
  * Check existence of index templates.
  * Returns information about whether a particular index template exists.
  * @rest_spec_name indices.exists_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

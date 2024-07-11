@@ -23,6 +23,7 @@ mod utils;
 use std::collections::HashSet;
 use std::io::{BufWriter, Write};
 use std::path::Path;
+use indexmap::IndexMap;
 
 use clients_schema::{Availabilities, Endpoint, IndexedModel};
 use openapiv3::{Components, OpenAPI};
@@ -146,4 +147,20 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
         version: "".to_string(), // TODO
         extensions: Default::default(),
     }
+}
+
+pub fn availability_as_extension(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+    let mut result = IndexMap::new();
+
+    if let Some(avails) = availabilities {
+        // We may have several availabilities, but since generally exists only on stateful (stack)
+        for (_, availability) in avails {
+            if let Some(since) = &availability.since {
+                result.insert("x-available-since".to_string(), serde_json::Value::String(since.clone()));
+                break;
+            }
+        }
+    }
+
+    result
 }
