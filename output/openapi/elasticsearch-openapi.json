@@ -59571,6 +59571,9 @@
           },
           "unit": {
             "$ref": "#/components/schemas/_types:DistanceUnit"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
           }
         }
       },
@@ -59596,6 +59599,26 @@
           "m",
           "cm",
           "mm"
+        ]
+      },
+      "_types:NestedSortValue": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          },
+          "max_children": {
+            "type": "number"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
+          },
+          "path": {
+            "$ref": "#/components/schemas/_types:Field"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "_types:ScriptSort": {
@@ -59627,26 +59650,6 @@
           "string",
           "number",
           "version"
-        ]
-      },
-      "_types:NestedSortValue": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "max_children": {
-            "type": "number"
-          },
-          "nested": {
-            "$ref": "#/components/schemas/_types:NestedSortValue"
-          },
-          "path": {
-            "$ref": "#/components/schemas/_types:Field"
-          }
-        },
-        "required": [
-          "path"
         ]
       },
       "_global.search._types:SourceConfig": {
@@ -65604,6 +65607,42 @@
             "description": "Number of primary and replica shards assigned to the node.",
             "type": "string"
           },
+          "shards.undesired": {
+            "description": "Amount of shards that are scheduled to be moved elsewhere in the cluster or -1 other than desired balance allocator is used",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "write_load.forecast": {
+            "description": "Sum of index write load forecasts",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "disk.indices.forecast": {
+            "description": "Sum of shard size forecasts",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:ByteSize"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "disk.indices": {
             "description": "Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards.\nIMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index.",
             "oneOf": [
@@ -65691,8 +65730,35 @@
           "node": {
             "description": "Name for the node. Set using the `node.name` setting.",
             "type": "string"
+          },
+          "node.role": {
+            "description": "Node roles",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
-        }
+        },
+        "required": [
+          "shards",
+          "shards.undesired",
+          "write_load.forecast",
+          "disk.indices.forecast",
+          "disk.indices",
+          "disk.used",
+          "disk.avail",
+          "disk.total",
+          "disk.percent",
+          "host",
+          "ip",
+          "node",
+          "node.role"
+        ]
       },
       "_types:ByteSize": {
         "externalDocs": {
@@ -71538,8 +71604,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]
@@ -80390,6 +80455,9 @@
           "creating_primaries": {
             "type": "number"
           },
+          "creating_replicas": {
+            "type": "number"
+          },
           "initializing_primaries": {
             "type": "number"
           },
@@ -80417,6 +80485,7 @@
         },
         "required": [
           "creating_primaries",
+          "creating_replicas",
           "initializing_primaries",
           "initializing_replicas",
           "restarting_primaries",
@@ -80524,11 +80593,15 @@
           },
           "policies": {
             "type": "number"
+          },
+          "stagnating_indices": {
+            "type": "number"
           }
         },
         "required": [
           "ilm_status",
-          "policies"
+          "policies",
+          "stagnating_indices"
         ]
       },
       "_types:LifecycleOperationMode": {
@@ -80569,8 +80642,7 @@
         },
         "required": [
           "slm_status",
-          "policies",
-          "unhealthy_policies"
+          "policies"
         ]
       },
       "_global.health_report:SlmIndicatorUnhealthyPolicies": {
@@ -98512,10 +98584,7 @@
         },
         "required": [
           "docs_indexed",
-          "docs_processed",
-          "docs_remaining",
-          "percent_complete",
-          "total_docs"
+          "docs_processed"
         ]
       },
       "transform.get_transform_stats:TransformStatsHealth": {
