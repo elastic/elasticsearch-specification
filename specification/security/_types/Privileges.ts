@@ -267,8 +267,6 @@ export class RoleTemplateQuery {
 
 /** @shortcut_property source */
 export class RoleTemplateInlineScript extends ScriptBase {
-  lang?: ScriptLanguage
-  options?: Dictionary<string, string>
   source: RoleTemplateInlineQuery
 }
 
