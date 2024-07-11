@@ -58375,43 +58375,32 @@
         ]
       },
       "_types:Script": {
-        "allOf": [
-          {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The script source.",
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "params": {
+            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
             "type": "object",
-            "properties": {
-              "params": {
-                "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              },
-              "lang": {
-                "$ref": "#/components/schemas/_types:ScriptLanguage"
-              },
-              "options": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              }
+            "additionalProperties": {
+              "type": "object"
             }
           },
-          {
+          "lang": {
+            "$ref": "#/components/schemas/_types:ScriptLanguage"
+          },
+          "options": {
             "type": "object",
-            "properties": {
-              "source": {
-                "description": "The script source.",
-                "type": "string"
-              },
-              "id": {
-                "$ref": "#/components/schemas/_types:Id"
-              }
-            },
-            "minProperties": 1,
-            "maxProperties": 1
+            "additionalProperties": {
+              "type": "string"
+            }
           }
-        ]
+        }
       },
       "_types:ScriptLanguage": {
         "anyOf": [

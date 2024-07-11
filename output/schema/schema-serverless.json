@@ -49890,7 +49890,6 @@
           }
         },
         {
-          "containerProperty": true,
           "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
           "name": "params",
           "required": false,
@@ -49910,7 +49909,6 @@
           }
         },
         {
-          "containerProperty": true,
           "description": "Specifies the language the script is written in.",
           "name": "lang",
           "required": false,
@@ -49924,7 +49922,6 @@
           }
         },
         {
-          "containerProperty": true,
           "name": "options",
           "required": false,
           "type": {
@@ -49948,10 +49945,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "_types/Scripting.ts#L73-L103",
-      "variants": {
-        "kind": "container"
-      }
+      "specLocation": "_types/Scripting.ts#L73-L97"
     },
     {
       "isOpen": true,
@@ -53172,7 +53166,7 @@
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L105-L108"
+      "specLocation": "_types/Scripting.ts#L99-L102"
     },
     {
       "kind": "type_alias",
