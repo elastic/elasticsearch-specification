@@ -310,7 +310,7 @@ export class ReverseTokenFilter extends TokenFilterBase {
 
 export class SnowballTokenFilter extends TokenFilterBase {
   type: 'snowball'
-  language: SnowballLanguage
+  language?: SnowballLanguage
 }
 
 export class StemmerOverrideTokenFilter extends TokenFilterBase {

@@ -32,6 +32,7 @@ import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
 import { QueryBase } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ExistsQuery extends QueryBase {
   /**
@@ -105,33 +106,33 @@ export class PrefixQuery extends QueryBase {
   case_insensitive?: boolean
 }
 
-export class RangeQueryBase extends QueryBase {
+export class RangeQueryBase<T> extends QueryBase {
   /**
    * Indicates how the range query matches values for `range` fields.
    * @server_default intersects
    */
   relation?: RangeRelation
-}
-
-export class DateRangeQuery extends RangeQueryBase {
   /**
    * Greater than.
    */
-  gt?: DateMath
+  gt?: T
   /**
    * Greater than or equal to.
    */
-  gte?: DateMath
+  gte?: T
   /**
    * Less than.
    */
-  lt?: DateMath
+  lt?: T
   /**
    * Less than or equal to.
    */
-  lte?: DateMath
-  from?: DateMath | null
-  to?: DateMath | null
+  lte?: T
+  from?: T | null
+  to?: T | null
+}
+
+export class UntypedRangeQuery extends RangeQueryBase<UserDefinedValue> {
   /**
    * Date format used to convert `date` values in the query.
    */
@@ -142,51 +143,31 @@ export class DateRangeQuery extends RangeQueryBase {
   time_zone?: TimeZone
 }
 
-export class NumberRangeQuery extends RangeQueryBase {
+export class DateRangeQuery extends RangeQueryBase<DateMath> {
   /**
-   * Greater than.
+   * Date format used to convert `date` values in the query.
    */
-  gt?: double
+  format?: DateFormat
   /**
-   * Greater than or equal to.
+   *  Coordinated Universal Time (UTC) offset or IANA time zone used to convert `date` values in the query to UTC.
    */
-  gte?: double
-  /**
-   * Less than.
-   */
-  lt?: double
-  /**
-   * Less than or equal to.
-   */
-  lte?: double
-  from?: double | null
-  to?: double | null
+  time_zone?: TimeZone
 }
 
-export class TermsRangeQuery extends RangeQueryBase {
-  /**
-   * Greater than.
-   */
-  gt?: string
-  /**
-   * Greater than or equal to.
-   */
-  gte?: string
-  /**
-   * Less than.
-   */
-  lt?: string
-  /**
-   * Less than or equal to.
-   */
-  lte?: string
-  from?: string | null
-  to?: string | null
-}
+export class NumberRangeQuery extends RangeQueryBase<double> {}
 
-/** @codegen_names date, number, terms */
+export class TermRangeQuery extends RangeQueryBase<string> {}
+
+/**
+ * @codegen_names untyped, date, number, term
+ * @variants untagged untyped=_types.query_dsl.UntypedRangeQuery
+ */
 // Note: deserialization depends on value types
-export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermsRangeQuery
+export type RangeQuery =
+  | UntypedRangeQuery
+  | DateRangeQuery
+  | NumberRangeQuery
+  | TermRangeQuery
 
 export enum RangeRelation {
   /**
@@ -251,6 +232,9 @@ export class TermQuery extends QueryBase {
   case_insensitive?: boolean
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=term
+ */
 export class TermsQuery
   extends QueryBase
   implements AdditionalProperty<Field, TermsQueryField> {}

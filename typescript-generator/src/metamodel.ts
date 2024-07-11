@@ -126,11 +126,9 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
-  since?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
-  stability?: Stability
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
@@ -180,7 +178,7 @@ export abstract class BaseType {
   specLocation: string
 }
 
-export type Variants = ExternalTag | InternalTag | Container
+export type Variants = ExternalTag | InternalTag | Container | Untagged
 
 export class VariantBase {
   /**
@@ -207,12 +205,23 @@ export class Container extends VariantBase {
   kind: 'container'
 }
 
+export class Untagged extends VariantBase {
+  kind: 'untagged'
+  untypedVariant: TypeName
+}
+
 /**
  * Inherits clause (aka extends or implements) for an interface or request
  */
 export class Inherits {
   type: TypeName
   generics?: ValueOf[]
+}
+
+export class Behavior {
+  type: TypeName
+  generics?: ValueOf[]
+  meta?: Record<string, string>
 }
 
 /**
@@ -226,12 +235,11 @@ export class Interface extends BaseType {
    */
   generics?: TypeName[]
   inherits?: Inherits
-  implements?: Inherits[]
 
   /**
    * Behaviors directly implemented by this interface
    */
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
 
   /**
    * Behaviors attached to this interface, coming from the interface itself (see `behaviors`)
@@ -257,7 +265,6 @@ export class Request extends BaseType {
   generics?: TypeName[]
   /** The parent defines additional body properties that are added to the body, that has to be a PropertyBody */
   inherits?: Inherits
-  implements?: Inherits[]
   /** URL path properties */
   path: Property[]
   /** Query string properties */
@@ -275,7 +282,7 @@ export class Request extends BaseType {
    * that don't have a body.
    */
   body: Body
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
   attachedBehaviors?: string[]
 }
 
@@ -286,7 +293,7 @@ export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
   body: Body
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
   attachedBehaviors?: string[]
   exceptions?: ResponseException[]
 }
@@ -333,7 +340,6 @@ export class EnumMember {
   codegenName?: string
   description?: string
   deprecation?: Deprecation
-  since?: string
   availability?: Availabilities
 }
 
@@ -358,8 +364,11 @@ export class TypeAlias extends BaseType {
   type: ValueOf
   /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: TypeName[]
-  /** Only applicable to `union_of` aliases: identify typed_key unions (external) and variant inventories (internal) */
-  variants?: InternalTag | ExternalTag
+  /**
+   * Only applicable to `union_of` aliases: identify typed_key unions (external), variant inventories (internal)
+   * and untagged variants
+   */
+  variants?: InternalTag | ExternalTag | Untagged
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -415,14 +424,6 @@ export class Endpoint {
 
   urls: UrlTemplate[]
 
-  /**
-   * The version when this endpoint reached its current stability level.
-   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-   */
-  since?: string
-  stability?: Stability
-  visibility?: Visibility
-  featureFlag?: string
   requestMediaType?: string[]
   responseMediaType?: string[]
   privileges?: {

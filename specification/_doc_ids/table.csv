@@ -143,10 +143,12 @@ eql-async-search-status-api,https://www.elastic.co/guide/en/elasticsearch/refere
 eql-basic-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-basic-syntax
 eql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-search-api.html
 eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-sequences
+eql-missing-events,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
 esql-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html
 esql-query-params,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-rest-params
+esql-returning-localized-results,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-rest.html#esql-locale-param
 evaluate-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/evaluate-dfanalytics.html
 execute-enrich-policy-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/execute-enrich-policy-api.html
 expected-reciprocal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-rank-eval.html#_expected_reciprocal_rank_err

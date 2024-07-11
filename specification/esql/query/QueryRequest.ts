@@ -19,13 +19,13 @@
 
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { ScalarValue } from '@_types/common'
+import { FieldValue } from '@_types/common'
 
 /**
  * Executes an ES|QL request
  * @rest_spec_name esql.query
- * @availability stack since=8.11.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.11.0
+ * @availability serverless
  * @doc_id esql-query
  */
 export interface Request extends RequestBase {
@@ -38,6 +38,12 @@ export interface Request extends RequestBase {
      * The character to use between values within a CSV row. Only valid for the CSV format.
      */
     delimiter?: string
+    /**
+     * Should columns that are entirely `null` be removed from the `columns` and `values` portion of the results?
+     * Defaults to `false`. If `true` then the response will include an extra section under the name `all_columns` which has the name of all columns.
+     * @server_default false
+     */
+    drop_null_columns?: boolean
   }
   /**
    * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone and `columnar` to format the answer.
@@ -51,12 +57,17 @@ export interface Request extends RequestBase {
      * Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.
      */
     filter?: QueryContainer
+    /*
+     * Returns results (especially dates) formatted per the conventions of the locale.
+     * @doc_id esql-returning-localized-results
+     */
     locale?: string
     /**
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      * @doc_id esql-query-params
      */
-    params?: Array<ScalarValue>
+    params?: Array<FieldValue>
+    profile?: boolean
     /**
      * The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.
      */

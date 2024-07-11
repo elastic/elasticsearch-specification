@@ -8125,6 +8125,16 @@
               "type": "string"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Should columns that are entirely `null` be removed from the `columns` and `values` portion of the results?\nDefaults to `false`. If `true` then the response will include an extra section under the name `all_columns` which has the name of all columns.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -8150,8 +8160,11 @@
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/_types:ScalarValue"
+                      "$ref": "#/components/schemas/_types:FieldValue"
                     }
+                  },
+                  "profile": {
+                    "type": "boolean"
                   },
                   "query": {
                     "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
@@ -11930,7 +11943,8 @@
         "tags": [
           "indices.get_index_template"
         ],
-        "summary": "Returns information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Returns information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
@@ -11963,7 +11977,7 @@
         "tags": [
           "indices.put_index_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html"
@@ -11997,7 +12011,7 @@
         "tags": [
           "indices.put_index_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-template.html"
@@ -12031,8 +12045,8 @@
         "tags": [
           "indices.delete_index_template"
         ],
-        "summary": "The provided <index-template> may contain multiple template names separated by a comma",
-        "description": "If multiple template names are specified then there is no wildcard support and the provided names should match completely with existing templates.",
+        "summary": "Delete an index template",
+        "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template names are specified then there is no wildcard support and the provided names should match completely with existing templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html"
         },
@@ -12131,7 +12145,8 @@
         "tags": [
           "indices.get_template"
         ],
-        "summary": "Retrieves information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Retrieves information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template-v1.html"
         },
@@ -12160,7 +12175,7 @@
         "tags": [
           "indices.put_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html"
@@ -12196,7 +12211,7 @@
         "tags": [
           "indices.put_template"
         ],
-        "summary": "Creates or updates an index template",
+        "summary": "Create or update an index template",
         "description": "Index templates define settings, mappings, and aliases that can be applied automatically to new indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates-v1.html"
@@ -12287,7 +12302,8 @@
         "tags": [
           "indices.exists_template"
         ],
-        "summary": "Returns information about whether a particular index template exists",
+        "summary": "Check existence of index templates",
+        "description": "Returns information about whether a particular index template exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-template-exists-v1.html"
         },
@@ -13133,7 +13149,8 @@
         "tags": [
           "indices.get_index_template"
         ],
-        "summary": "Returns information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Returns information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html"
         },
@@ -13585,7 +13602,8 @@
         "tags": [
           "indices.get_template"
         ],
-        "summary": "Retrieves information about one or more index templates",
+        "summary": "Get index templates",
+        "description": "Retrieves information about one or more index templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template-v1.html"
         },
@@ -14525,6 +14543,8 @@
         "tags": [
           "indices.simulate_index_template"
         ],
+        "summary": "Simulate an index",
+        "description": "Returns the index configuration that would be applied to the specified index from an existing index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-index.html"
         },
@@ -14596,7 +14616,8 @@
         "tags": [
           "indices.simulate_template"
         ],
-        "summary": "Returns the index configuration that would be applied by a particular index template",
+        "summary": "Simulate an index template",
+        "description": "Returns the index configuration that would be applied by a particular index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html"
         },
@@ -14627,7 +14648,8 @@
         "tags": [
           "indices.simulate_template"
         ],
-        "summary": "Returns the index configuration that would be applied by a particular index template",
+        "summary": "Simulate an index template",
+        "description": "Returns the index configuration that would be applied by a particular index template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-simulate-template.html"
         },
@@ -16917,8 +16939,8 @@
         "tags": [
           "ml.close_job"
         ],
-        "summary": "Close anomaly detection jobs A job can be opened and closed multiple times throughout its lifecycle",
-        "description": "A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results. When you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data. If you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request. When a datafeed that has a specified end date stops, it automatically closes its associated job.",
+        "summary": "Close anomaly detection jobs",
+        "description": "A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results. When you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data. If you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request. When a datafeed that has a specified end date stops, it automatically closes its associated job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html"
         },
@@ -18279,7 +18301,7 @@
         "tags": [
           "ml.put_job"
         ],
-        "summary": "Instantiates an anomaly detection job",
+        "summary": "Create an anomaly detection job",
         "description": "If you include a `datafeed_config`, you must have read index privileges on the source index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html"
@@ -18465,7 +18487,7 @@
         "tags": [
           "ml.delete_job"
         ],
-        "summary": "Deletes an anomaly detection job.",
+        "summary": "Delete an anomaly detection job",
         "description": "All job configuration, model state and results are deleted. It is not currently possible to delete multiple jobs using wildcards or a comma separated list. If you delete a job that has a datafeed, the request first tries to delete the datafeed. This behavior is equivalent to calling the delete datafeed API with the same timeout and force parameters as the delete job request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html"
@@ -20921,7 +20943,7 @@
         "tags": [
           "ml.open_job"
         ],
-        "summary": "Opens one or more anomaly detection jobs",
+        "summary": "Open anomaly detection jobs",
         "description": "An anomaly detection job must be opened in order for it to be ready to receive and analyze data. It can be opened and closed multiple times throughout its lifecycle. When you open a new job, it starts with an empty model. When you open an existing job, the most recent model state is automatically loaded. The job is ready to resume its analysis from where it left off, once new data is received.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html"
@@ -24886,13 +24908,13 @@
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
       "get": {
         "tags": [
-          "query_rule.get"
+          "query_rules.get_rule"
         ],
         "summary": "Returns the details about a query rule within a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-rule.html"
         },
-        "operationId": "query-rule-get",
+        "operationId": "query-rules-get-rule",
         "parameters": [
           {
             "in": "path",
@@ -24923,23 +24945,23 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/query_ruleset._types:QueryRule"
+                  "$ref": "#/components/schemas/query_rules._types:QueryRule"
                 }
               }
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-available-since": "8.15.0"
       },
       "put": {
         "tags": [
-          "query_rule.put"
+          "query_rules.put_rule"
         ],
         "summary": "Creates or updates a query rule within a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-rule.html"
         },
-        "operationId": "query-rule-put",
+        "operationId": "query-rules-put-rule",
         "parameters": [
           {
             "in": "path",
@@ -24971,16 +24993,26 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "$ref": "#/components/schemas/query_ruleset._types:QueryRuleType"
+                    "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
                   },
                   "criteria": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_ruleset._types:QueryRuleCriteria"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                        }
+                      }
+                    ]
                   },
                   "actions": {
-                    "$ref": "#/components/schemas/query_ruleset._types:QueryRuleActions"
+                    "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+                  },
+                  "priority": {
+                    "type": "number"
                   }
                 },
                 "required": [
@@ -25017,13 +25049,13 @@
       },
       "delete": {
         "tags": [
-          "query_rule.delete"
+          "query_rules.delete_rule"
         ],
         "summary": "Deletes a query rule within a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-rule.html"
         },
-        "operationId": "query-rule-delete",
+        "operationId": "query-rules-delete-rule",
         "parameters": [
           {
             "in": "path",
@@ -25060,19 +25092,19 @@
             }
           }
         },
-        "x-available-since": "8.10.0"
+        "x-available-since": "8.15.0"
       }
     },
     "/_query_rules/{ruleset_id}": {
       "get": {
         "tags": [
-          "query_ruleset.get"
+          "query_rules.get_ruleset"
         ],
         "summary": "Returns the details about a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-query-ruleset.html"
         },
-        "operationId": "query-ruleset-get",
+        "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
             "in": "path",
@@ -25092,7 +25124,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/query_ruleset._types:QueryRuleset"
+                  "$ref": "#/components/schemas/query_rules._types:QueryRuleset"
                 }
               }
             }
@@ -25102,13 +25134,13 @@
       },
       "put": {
         "tags": [
-          "query_ruleset.put"
+          "query_rules.put_ruleset"
         ],
         "summary": "Creates or updates a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/put-query-ruleset.html"
         },
-        "operationId": "query-ruleset-put",
+        "operationId": "query-rules-put-ruleset",
         "parameters": [
           {
             "in": "path",
@@ -25129,10 +25161,17 @@
                 "type": "object",
                 "properties": {
                   "rules": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/query_ruleset._types:QueryRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/query_rules._types:QueryRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -25167,13 +25206,13 @@
       },
       "delete": {
         "tags": [
-          "query_ruleset.delete"
+          "query_rules.delete_ruleset"
         ],
         "summary": "Deletes a query ruleset",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-query-ruleset.html"
         },
-        "operationId": "query-ruleset-delete",
+        "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
             "in": "path",
@@ -25205,13 +25244,13 @@
     "/_query_rules": {
       "get": {
         "tags": [
-          "query_ruleset.list"
+          "query_rules.list_rulesets"
         ],
         "summary": "Returns summarized information about existing query rulesets",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/list-query-rulesets.html"
         },
-        "operationId": "query-ruleset-list",
+        "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
             "in": "query",
@@ -25248,7 +25287,7 @@
                     "results": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/query_ruleset.list:QueryRulesetListItem"
+                        "$ref": "#/components/schemas/query_rules.list_rulesets:QueryRulesetListItem"
                       }
                     }
                   },
@@ -28170,6 +28209,185 @@
         "x-available-since": "5.5.0"
       }
     },
+    "/_security/role": {
+      "get": {
+        "tags": [
+          "security.get_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
+        },
+        "operationId": "security-get-role-1",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.get_role#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "security.bulk_put_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The bulk create or update roles API cannot update roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-put-role.html"
+        },
+        "operationId": "security-bulk-put-role",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "description": "A dictionary of role name to RoleDescriptor objects to add or update",
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/security._types:RoleDescriptor"
+                    }
+                  }
+                },
+                "required": [
+                  "roles"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "description": "Array of created roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "updated": {
+                      "description": "Array of updated roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "noop": {
+                      "description": "Array of role names without any changes",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.15.0"
+      },
+      "delete": {
+        "tags": [
+          "security.bulk_delete_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The bulk delete roles API cannot delete roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-delete-role.html"
+        },
+        "operationId": "security-bulk-delete-role",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "names": {
+                    "description": "An array of role names to delete",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "names"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "description": "Array of deleted roles",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "not_found": {
+                      "description": "Array of roles that could not be found",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/security._types:BulkError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.15.0"
+      }
+    },
     "/_security/user/{username}/_password": {
       "put": {
         "tags": [
@@ -29912,24 +30130,6 @@
         "x-available-since": "6.4.0"
       }
     },
-    "/_security/role": {
-      "get": {
-        "tags": [
-          "security.get_role"
-        ],
-        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
-        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
-        },
-        "operationId": "security-get-role-1",
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/security.get_role#200"
-          }
-        }
-      }
-    },
     "/_security/role_mapping": {
       "get": {
         "tags": [
@@ -30723,6 +30923,100 @@
           }
         },
         "x-available-since": "7.15.0"
+      }
+    },
+    "/_security/_query/role": {
+      "get": {
+        "tags": [
+          "security.query_role"
+        ],
+        "summary": "Retrieves roles in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-role.html"
+        },
+        "operationId": "security-query-role",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        },
+        "x-available-since": "8.15.0"
+      },
+      "post": {
+        "tags": [
+          "security.query_role"
+        ],
+        "summary": "Retrieves roles in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-role.html"
+        },
+        "operationId": "security-query-role-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_role#200"
+          }
+        },
+        "x-available-since": "8.15.0"
+      }
+    },
+    "/_security/_query/user": {
+      "get": {
+        "tags": [
+          "security.query_user"
+        ],
+        "summary": "Retrieves information for Users in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-user.html"
+        },
+        "operationId": "security-query-user",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_user#with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_user"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_user#200"
+          }
+        },
+        "x-available-since": "8.14.0"
+      },
+      "post": {
+        "tags": [
+          "security.query_user"
+        ],
+        "summary": "Retrieves information for Users in a paginated manner",
+        "description": "You can optionally filter the results with a query.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-user.html"
+        },
+        "operationId": "security-query-user-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_user#with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_user"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_user#200"
+          }
+        },
+        "x-available-since": "8.14.0"
       }
     },
     "/_security/saml/authenticate": {
@@ -39928,6 +40222,70 @@
           }
         }
       },
+      "security.query_role#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of roles found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of roles returned in the response.",
+                  "type": "number"
+                },
+                "roles": {
+                  "description": "The list of roles.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_role:QueryRole"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "roles"
+              ]
+            }
+          }
+        }
+      },
+      "security.query_user#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of users found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of users returned in the response.",
+                  "type": "number"
+                },
+                "users": {
+                  "description": "A list of user information.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_user:QueryUser"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "users"
+              ]
+            }
+          }
+        }
+      },
       "security.suggest_user_profiles#200": {
         "description": "",
         "content": {
@@ -48873,6 +49231,16 @@
         },
         "style": "form"
       },
+      "security.query_user#with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "If true will return the User Profile ID for the users in the query result, if any.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "security.suggest_user_profiles#data": {
         "in": "query",
         "name": "data",
@@ -51841,6 +52209,10 @@
                     "type": "string"
                   }
                 },
+                "description": {
+                  "description": "Optional description of the role descriptor",
+                  "type": "string"
+                },
                 "transient_metadata": {
                   "description": "Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.",
                   "type": "object",
@@ -51963,6 +52335,62 @@
                 },
                 "query": {
                   "$ref": "#/components/schemas/security.query_api_keys:ApiKeyQueryContainer"
+                },
+                "from": {
+                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "sort": {
+                  "$ref": "#/components/schemas/_types:Sort"
+                },
+                "size": {
+                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "search_after": {
+                  "$ref": "#/components/schemas/_types:SortResults"
+                }
+              }
+            }
+          }
+        }
+      },
+      "security.query_role": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/security.query_role:RoleQueryContainer"
+                },
+                "from": {
+                  "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "sort": {
+                  "$ref": "#/components/schemas/_types:Sort"
+                },
+                "size": {
+                  "description": "The number of hits to return.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "type": "number"
+                },
+                "search_after": {
+                  "$ref": "#/components/schemas/_types:SortResults"
+                }
+              }
+            }
+          }
+        }
+      },
+      "security.query_user": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/security.query_user:UserQueryContainer"
                 },
                 "from": {
                   "description": "Starting document offset.\nBy default, you cannot page through more than 10,000 hits using the from and size parameters.\nTo page through more hits, use the `search_after` parameter.",
@@ -58105,10 +58533,51 @@
       "_types.query_dsl:DistanceFeatureQuery": {
         "oneOf": [
           {
+            "$ref": "#/components/schemas/_types.query_dsl:UntypedDistanceFeatureQuery"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl:GeoDistanceFeatureQuery"
           },
           {
             "$ref": "#/components/schemas/_types.query_dsl:DateDistanceFeatureQuery"
+          }
+        ]
+      },
+      "_types.query_dsl:UntypedDistanceFeatureQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:DistanceFeatureQueryBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl:DistanceFeatureQueryBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "origin": {
+                "description": "Date or point of origin used to calculate distances.\nIf the `field` value is a `date` or `date_nanos` field, the `origin` value must be a date.\nDate Math, such as `now-1h`, is supported.\nIf the field value is a `geo_point` field, the `origin` value must be a geopoint.",
+                "type": "object"
+              },
+              "pivot": {
+                "description": "Distance from the `origin` at which relevance scores receive half of the `boost` value.\nIf the `field` value is a `date` or `date_nanos` field, the `pivot` value must be a time unit, such as `1h` or `10d`. If the `field` value is a `geo_point` field, the `pivot` value must be a distance unit, such as `1km` or `12m`.",
+                "type": "object"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "origin",
+              "pivot",
+              "field"
+            ]
           }
         ]
       },
@@ -58298,6 +58767,9 @@
       "_types.query_dsl:DecayFunction": {
         "oneOf": [
           {
+            "$ref": "#/components/schemas/_types.query_dsl:UntypedDecayFunction"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl:DateDecayFunction"
           },
           {
@@ -58308,7 +58780,7 @@
           }
         ]
       },
-      "_types.query_dsl:DateDecayFunction": {
+      "_types.query_dsl:UntypedDecayFunction": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBase"
@@ -58335,25 +58807,59 @@
           "sum"
         ]
       },
-      "_types.query_dsl:NumericDecayFunction": {
+      "_types.query_dsl:DateDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBase"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseDateMathDuration"
           },
           {
             "type": "object"
           }
         ]
       },
-      "_types.query_dsl:GeoDecayFunction": {
+      "_types.query_dsl:DecayFunctionBaseDateMathDuration": {
+        "type": "object",
+        "properties": {
+          "multi_value_mode": {
+            "$ref": "#/components/schemas/_types.query_dsl:MultiValueMode"
+          }
+        }
+      },
+      "_types.query_dsl:NumericDecayFunction": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBase"
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBasedoubledouble"
           },
           {
             "type": "object"
           }
         ]
+      },
+      "_types.query_dsl:DecayFunctionBasedoubledouble": {
+        "type": "object",
+        "properties": {
+          "multi_value_mode": {
+            "$ref": "#/components/schemas/_types.query_dsl:MultiValueMode"
+          }
+        }
+      },
+      "_types.query_dsl:GeoDecayFunction": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:DecayFunctionBaseGeoLocationDistance"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl:DecayFunctionBaseGeoLocationDistance": {
+        "type": "object",
+        "properties": {
+          "multi_value_mode": {
+            "$ref": "#/components/schemas/_types.query_dsl:MultiValueMode"
+          }
+        }
       },
       "_types.query_dsl:FieldValueFactorScoreFunction": {
         "type": "object",
@@ -59618,6 +60124,9 @@
           },
           "unit": {
             "$ref": "#/components/schemas/_types:DistanceUnit"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
           }
         }
       },
@@ -59643,6 +60152,26 @@
           "m",
           "cm",
           "mm"
+        ]
+      },
+      "_types:NestedSortValue": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          },
+          "max_children": {
+            "type": "number"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
+          },
+          "path": {
+            "$ref": "#/components/schemas/_types:Field"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "_types:ScriptSort": {
@@ -59674,26 +60203,6 @@
           "string",
           "number",
           "version"
-        ]
-      },
-      "_types:NestedSortValue": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "max_children": {
-            "type": "number"
-          },
-          "nested": {
-            "$ref": "#/components/schemas/_types:NestedSortValue"
-          },
-          "path": {
-            "$ref": "#/components/schemas/_types:Field"
-          }
-        },
-        "required": [
-          "path"
         ]
       },
       "_global.search._types:SourceConfig": {
@@ -60897,17 +61406,20 @@
       "_types.query_dsl:RangeQuery": {
         "oneOf": [
           {
+            "$ref": "#/components/schemas/_types.query_dsl:UntypedRangeQuery"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl:DateRangeQuery"
           },
           {
             "$ref": "#/components/schemas/_types.query_dsl:NumberRangeQuery"
           },
           {
-            "$ref": "#/components/schemas/_types.query_dsl:TermsRangeQuery"
+            "$ref": "#/components/schemas/_types.query_dsl:TermRangeQuery"
           }
         ]
       },
-      "_types.query_dsl:DateRangeQuery": {
+      "_types.query_dsl:UntypedRangeQuery": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBase"
@@ -60915,6 +61427,112 @@
           {
             "type": "object",
             "properties": {
+              "format": {
+                "$ref": "#/components/schemas/_types:DateFormat"
+              },
+              "time_zone": {
+                "$ref": "#/components/schemas/_types:TimeZone"
+              }
+            }
+          }
+        ]
+      },
+      "_types:DateFormat": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html"
+        },
+        "type": "string"
+      },
+      "_types.query_dsl:RangeQueryBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "$ref": "#/components/schemas/_types.query_dsl:RangeRelation"
+              },
+              "gt": {
+                "description": "Greater than.",
+                "type": "object"
+              },
+              "gte": {
+                "description": "Greater than or equal to.",
+                "type": "object"
+              },
+              "lt": {
+                "description": "Less than.",
+                "type": "object"
+              },
+              "lte": {
+                "description": "Less than or equal to.",
+                "type": "object"
+              },
+              "from": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl:RangeRelation": {
+        "type": "string",
+        "enum": [
+          "within",
+          "contains",
+          "intersects"
+        ]
+      },
+      "_types.query_dsl:DateRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBaseDateMath"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "format": {
+                "$ref": "#/components/schemas/_types:DateFormat"
+              },
+              "time_zone": {
+                "$ref": "#/components/schemas/_types:TimeZone"
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl:RangeQueryBaseDateMath": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "$ref": "#/components/schemas/_types.query_dsl:RangeRelation"
+              },
               "gt": {
                 "$ref": "#/components/schemas/_types:DateMath"
               },
@@ -60948,24 +61566,22 @@
                     "type": "string"
                   }
                 ]
-              },
-              "format": {
-                "$ref": "#/components/schemas/_types:DateFormat"
-              },
-              "time_zone": {
-                "$ref": "#/components/schemas/_types:TimeZone"
               }
             }
           }
         ]
       },
-      "_types:DateFormat": {
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html"
-        },
-        "type": "string"
+      "_types.query_dsl:NumberRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBasedouble"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
-      "_types.query_dsl:RangeQueryBase": {
+      "_types.query_dsl:RangeQueryBasedouble": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
@@ -60975,27 +61591,7 @@
             "properties": {
               "relation": {
                 "$ref": "#/components/schemas/_types.query_dsl:RangeRelation"
-              }
-            }
-          }
-        ]
-      },
-      "_types.query_dsl:RangeRelation": {
-        "type": "string",
-        "enum": [
-          "within",
-          "contains",
-          "intersects"
-        ]
-      },
-      "_types.query_dsl:NumberRangeQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
+              },
               "gt": {
                 "description": "Greater than.",
                 "type": "number"
@@ -61038,14 +61634,27 @@
           }
         ]
       },
-      "_types.query_dsl:TermsRangeQuery": {
+      "_types.query_dsl:TermRangeQuery": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBase"
+            "$ref": "#/components/schemas/_types.query_dsl:RangeQueryBasestring"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl:RangeQueryBasestring": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
           },
           {
             "type": "object",
             "properties": {
+              "relation": {
+                "$ref": "#/components/schemas/_types.query_dsl:RangeRelation"
+              },
               "gt": {
                 "description": "Greater than.",
                 "type": "string"
@@ -65556,6 +66165,42 @@
             "description": "Number of primary and replica shards assigned to the node.",
             "type": "string"
           },
+          "shards.undesired": {
+            "description": "Amount of shards that are scheduled to be moved elsewhere in the cluster or -1 other than desired balance allocator is used",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "write_load.forecast": {
+            "description": "Sum of index write load forecasts",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "disk.indices.forecast": {
+            "description": "Sum of shard size forecasts",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:ByteSize"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "disk.indices": {
             "description": "Disk space used by the node’s shards. Does not include disk space for the translog or unassigned shards.\nIMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index.",
             "oneOf": [
@@ -65643,8 +66288,35 @@
           "node": {
             "description": "Name for the node. Set using the `node.name` setting.",
             "type": "string"
+          },
+          "node.role": {
+            "description": "Node roles",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
-        }
+        },
+        "required": [
+          "shards",
+          "shards.undesired",
+          "write_load.forecast",
+          "disk.indices.forecast",
+          "disk.indices",
+          "disk.used",
+          "disk.avail",
+          "disk.total",
+          "disk.percent",
+          "host",
+          "ip",
+          "node",
+          "node.role"
+        ]
       },
       "_types:ByteSize": {
         "externalDocs": {
@@ -71491,8 +72163,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]
@@ -79290,6 +79961,13 @@
             "description": "Original JSON body passed for the event at index time.",
             "type": "object"
           },
+          "missing": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-missing-events"
+            },
+            "description": "Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.",
+            "type": "boolean"
+          },
           "fields": {
             "type": "object",
             "additionalProperties": {
@@ -79328,8 +80006,7 @@
           }
         },
         "required": [
-          "events",
-          "join_keys"
+          "events"
         ]
       },
       "eql.search:ResultPosition": {
@@ -80346,6 +81023,9 @@
           "creating_primaries": {
             "type": "number"
           },
+          "creating_replicas": {
+            "type": "number"
+          },
           "initializing_primaries": {
             "type": "number"
           },
@@ -80373,6 +81053,7 @@
         },
         "required": [
           "creating_primaries",
+          "creating_replicas",
           "initializing_primaries",
           "initializing_replicas",
           "restarting_primaries",
@@ -80480,11 +81161,15 @@
           },
           "policies": {
             "type": "number"
+          },
+          "stagnating_indices": {
+            "type": "number"
           }
         },
         "required": [
           "ilm_status",
-          "policies"
+          "policies",
+          "stagnating_indices"
         ]
       },
       "_types:LifecycleOperationMode": {
@@ -80525,8 +81210,7 @@
         },
         "required": [
           "slm_status",
-          "policies",
-          "unhealthy_policies"
+          "policies"
         ]
       },
       "_global.health_report:SlmIndicatorUnhealthyPolicies": {
@@ -83687,17 +84371,23 @@
       "ingest._types:ProcessorContainer": {
         "type": "object",
         "properties": {
-          "attachment": {
-            "$ref": "#/components/schemas/ingest._types:AttachmentProcessor"
-          },
           "append": {
             "$ref": "#/components/schemas/ingest._types:AppendProcessor"
           },
-          "csv": {
-            "$ref": "#/components/schemas/ingest._types:CsvProcessor"
+          "attachment": {
+            "$ref": "#/components/schemas/ingest._types:AttachmentProcessor"
+          },
+          "bytes": {
+            "$ref": "#/components/schemas/ingest._types:BytesProcessor"
+          },
+          "circle": {
+            "$ref": "#/components/schemas/ingest._types:CircleProcessor"
           },
           "convert": {
             "$ref": "#/components/schemas/ingest._types:ConvertProcessor"
+          },
+          "csv": {
+            "$ref": "#/components/schemas/ingest._types:CsvProcessor"
           },
           "date": {
             "$ref": "#/components/schemas/ingest._types:DateProcessor"
@@ -83705,8 +84395,14 @@
           "date_index_name": {
             "$ref": "#/components/schemas/ingest._types:DateIndexNameProcessor"
           },
+          "dissect": {
+            "$ref": "#/components/schemas/ingest._types:DissectProcessor"
+          },
           "dot_expander": {
             "$ref": "#/components/schemas/ingest._types:DotExpanderProcessor"
+          },
+          "drop": {
+            "$ref": "#/components/schemas/ingest._types:DropProcessor"
           },
           "enrich": {
             "$ref": "#/components/schemas/ingest._types:EnrichProcessor"
@@ -83717,15 +84413,6 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
-          "json": {
-            "$ref": "#/components/schemas/ingest._types:JsonProcessor"
-          },
-          "user_agent": {
-            "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
-          },
-          "kv": {
-            "$ref": "#/components/schemas/ingest._types:KeyValueProcessor"
-          },
           "geoip": {
             "$ref": "#/components/schemas/ingest._types:GeoIpProcessor"
           },
@@ -83735,11 +84422,23 @@
           "gsub": {
             "$ref": "#/components/schemas/ingest._types:GsubProcessor"
           },
+          "inference": {
+            "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
+          },
           "join": {
             "$ref": "#/components/schemas/ingest._types:JoinProcessor"
           },
+          "json": {
+            "$ref": "#/components/schemas/ingest._types:JsonProcessor"
+          },
+          "kv": {
+            "$ref": "#/components/schemas/ingest._types:KeyValueProcessor"
+          },
           "lowercase": {
             "$ref": "#/components/schemas/ingest._types:LowercaseProcessor"
+          },
+          "pipeline": {
+            "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
           },
           "remove": {
             "$ref": "#/components/schemas/ingest._types:RemoveProcessor"
@@ -83756,6 +84455,9 @@
           "set": {
             "$ref": "#/components/schemas/ingest._types:SetProcessor"
           },
+          "set_security_user": {
+            "$ref": "#/components/schemas/ingest._types:SetSecurityUserProcessor"
+          },
           "sort": {
             "$ref": "#/components/schemas/ingest._types:SortProcessor"
           },
@@ -83771,30 +84473,70 @@
           "urldecode": {
             "$ref": "#/components/schemas/ingest._types:UrlDecodeProcessor"
           },
-          "bytes": {
-            "$ref": "#/components/schemas/ingest._types:BytesProcessor"
-          },
-          "dissect": {
-            "$ref": "#/components/schemas/ingest._types:DissectProcessor"
-          },
-          "set_security_user": {
-            "$ref": "#/components/schemas/ingest._types:SetSecurityUserProcessor"
-          },
-          "pipeline": {
-            "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
-          },
-          "drop": {
-            "$ref": "#/components/schemas/ingest._types:DropProcessor"
-          },
-          "circle": {
-            "$ref": "#/components/schemas/ingest._types:CircleProcessor"
-          },
-          "inference": {
-            "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
+          "user_agent": {
+            "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
           }
         },
         "minProperties": 1,
         "maxProperties": 1
+      },
+      "ingest._types:AppendProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "value": {
+                "description": "The value to be appended. Supports template snippets.",
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "allow_duplicates": {
+                "description": "If `false`, the processor does not append values already present in the field.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field",
+              "value"
+            ]
+          }
+        ]
+      },
+      "ingest._types:ProcessorBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Description of the processor.\nUseful for describing the purpose of the processor or its configuration.",
+            "type": "string"
+          },
+          "if": {
+            "description": "Conditionally execute the processor.",
+            "type": "string"
+          },
+          "ignore_failure": {
+            "description": "Ignore failures for the processor.",
+            "type": "boolean"
+          },
+          "on_failure": {
+            "description": "Handle failures for the processor.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ingest._types:ProcessorContainer"
+            }
+          },
+          "tag": {
+            "description": "Identifier for the processor.\nUseful for debugging and metrics.",
+            "type": "string"
+          }
+        }
       },
       "ingest._types:AttachmentProcessor": {
         "allOf": [
@@ -83843,35 +84585,7 @@
           }
         ]
       },
-      "ingest._types:ProcessorBase": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "description": "Description of the processor.\nUseful for describing the purpose of the processor or its configuration.",
-            "type": "string"
-          },
-          "if": {
-            "description": "Conditionally execute the processor.",
-            "type": "string"
-          },
-          "ignore_failure": {
-            "description": "Ignore failures for the processor.",
-            "type": "boolean"
-          },
-          "on_failure": {
-            "description": "Handle failures for the processor.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ingest._types:ProcessorContainer"
-            }
-          },
-          "tag": {
-            "description": "Identifier for the processor.\nUseful for debugging and metrics.",
-            "type": "string"
-          }
-        }
-      },
-      "ingest._types:AppendProcessor": {
+      "ingest._types:BytesProcessor": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ingest._types:ProcessorBase"
@@ -83882,23 +84596,100 @@
               "field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
-              "value": {
-                "description": "The value to be appended. Supports template snippets.",
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "allow_duplicates": {
-                "description": "If `false`, the processor does not append values already present in the field.",
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
                 "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:CircleProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "error_distance": {
+                "description": "The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).",
+                "type": "number"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "shape_type": {
+                "$ref": "#/components/schemas/ingest._types:ShapeType"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "error_distance",
+              "field",
+              "shape_type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:ShapeType": {
+        "type": "string",
+        "enum": [
+          "geo_shape",
+          "shape"
+        ]
+      },
+      "ingest._types:ConvertProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "type": {
+                "$ref": "#/components/schemas/ingest._types:ConvertType"
               }
             },
             "required": [
               "field",
-              "value"
+              "type"
             ]
           }
+        ]
+      },
+      "ingest._types:ConvertType": {
+        "type": "string",
+        "enum": [
+          "integer",
+          "long",
+          "float",
+          "double",
+          "string",
+          "boolean",
+          "auto"
         ]
       },
       "ingest._types:CsvProcessor": {
@@ -83941,47 +84732,6 @@
               "target_fields"
             ]
           }
-        ]
-      },
-      "ingest._types:ConvertProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "type": {
-                "$ref": "#/components/schemas/ingest._types:ConvertType"
-              }
-            },
-            "required": [
-              "field",
-              "type"
-            ]
-          }
-        ]
-      },
-      "ingest._types:ConvertType": {
-        "type": "string",
-        "enum": [
-          "integer",
-          "long",
-          "float",
-          "double",
-          "string",
-          "boolean",
-          "auto"
         ]
       },
       "ingest._types:DateProcessor": {
@@ -84068,6 +84818,37 @@
           }
         ]
       },
+      "ingest._types:DissectProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "append_separator": {
+                "description": "The character(s) that separate the appended fields.",
+                "type": "string"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "pattern": {
+                "description": "The pattern to apply to the field.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "pattern"
+            ]
+          }
+        ]
+      },
       "ingest._types:DotExpanderProcessor": {
         "allOf": [
           {
@@ -84087,6 +84868,16 @@
             "required": [
               "field"
             ]
+          }
+        ]
+      },
+      "ingest._types:DropProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object"
           }
         ]
       },
@@ -84182,160 +84973,6 @@
             "required": [
               "field",
               "processor"
-            ]
-          }
-        ]
-      },
-      "ingest._types:JsonProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "add_to_root": {
-                "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
-                "type": "boolean"
-              },
-              "add_to_root_conflict_strategy": {
-                "$ref": "#/components/schemas/ingest._types:JsonProcessorConflictStrategy"
-              },
-              "allow_duplicate_keys": {
-                "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
-                "type": "boolean"
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "field"
-            ]
-          }
-        ]
-      },
-      "ingest._types:JsonProcessorConflictStrategy": {
-        "type": "string",
-        "enum": [
-          "replace",
-          "merge"
-        ]
-      },
-      "ingest._types:UserAgentProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "options": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ingest._types:UserAgentProperty"
-                }
-              },
-              "regex_file": {
-                "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
-                "type": "string"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "field"
-            ]
-          }
-        ]
-      },
-      "ingest._types:UserAgentProperty": {
-        "type": "string",
-        "enum": [
-          "NAME",
-          "MAJOR",
-          "MINOR",
-          "PATCH",
-          "OS",
-          "OS_NAME",
-          "OS_MAJOR",
-          "OS_MINOR",
-          "DEVICE",
-          "BUILD"
-        ]
-      },
-      "ingest._types:KeyValueProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "exclude_keys": {
-                "description": "List of keys to exclude from document.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "field_split": {
-                "description": "Regex pattern to use for splitting key-value pairs.",
-                "type": "string"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "include_keys": {
-                "description": "List of keys to filter and insert into document.\nDefaults to including all keys.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "prefix": {
-                "description": "Prefix to be added to extracted keys.",
-                "type": "string"
-              },
-              "strip_brackets": {
-                "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
-                "type": "boolean"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "trim_key": {
-                "description": "String of characters to trim from extracted keys.",
-                "type": "string"
-              },
-              "trim_value": {
-                "description": "String of characters to trim from extracted values.",
-                "type": "string"
-              },
-              "value_split": {
-                "description": "Regex pattern to use for splitting the key from the value within a key-value pair.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "field",
-              "field_split",
-              "value_split"
             ]
           }
         ]
@@ -84456,6 +85093,85 @@
           }
         ]
       },
+      "ingest._types:InferenceProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "model_id": {
+                "$ref": "#/components/schemas/_types:Id"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "field_map": {
+                "description": "Maps the document field names to the known field names of the model.\nThis mapping takes precedence over any default mappings provided in the model configuration.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              },
+              "inference_config": {
+                "$ref": "#/components/schemas/ingest._types:InferenceConfig"
+              }
+            },
+            "required": [
+              "model_id"
+            ]
+          }
+        ]
+      },
+      "ingest._types:InferenceConfig": {
+        "type": "object",
+        "properties": {
+          "regression": {
+            "$ref": "#/components/schemas/ingest._types:InferenceConfigRegression"
+          },
+          "classification": {
+            "$ref": "#/components/schemas/ingest._types:InferenceConfigClassification"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "ingest._types:InferenceConfigRegression": {
+        "type": "object",
+        "properties": {
+          "results_field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "num_top_feature_importance_values": {
+            "description": "Specifies the maximum number of feature importance values per document.",
+            "type": "number"
+          }
+        }
+      },
+      "ingest._types:InferenceConfigClassification": {
+        "type": "object",
+        "properties": {
+          "num_top_classes": {
+            "description": "Specifies the number of top class predictions to return.",
+            "type": "number"
+          },
+          "num_top_feature_importance_values": {
+            "description": "Specifies the maximum number of feature importance values per document.",
+            "type": "number"
+          },
+          "results_field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "top_classes_results_field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "prediction_field_type": {
+            "description": "Specifies the type of the predicted field to write.\nValid values are: `string`, `number`, `boolean`.",
+            "type": "string"
+          }
+        }
+      },
       "ingest._types:JoinProcessor": {
         "allOf": [
           {
@@ -84482,6 +85198,110 @@
           }
         ]
       },
+      "ingest._types:JsonProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "add_to_root": {
+                "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
+                "type": "boolean"
+              },
+              "add_to_root_conflict_strategy": {
+                "$ref": "#/components/schemas/ingest._types:JsonProcessorConflictStrategy"
+              },
+              "allow_duplicate_keys": {
+                "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
+                "type": "boolean"
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:JsonProcessorConflictStrategy": {
+        "type": "string",
+        "enum": [
+          "replace",
+          "merge"
+        ]
+      },
+      "ingest._types:KeyValueProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "exclude_keys": {
+                "description": "List of keys to exclude from document.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "field_split": {
+                "description": "Regex pattern to use for splitting key-value pairs.",
+                "type": "string"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "include_keys": {
+                "description": "List of keys to filter and insert into document.\nDefaults to including all keys.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "prefix": {
+                "description": "Prefix to be added to extracted keys.",
+                "type": "string"
+              },
+              "strip_brackets": {
+                "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "trim_key": {
+                "description": "String of characters to trim from extracted keys.",
+                "type": "string"
+              },
+              "trim_value": {
+                "description": "String of characters to trim from extracted values.",
+                "type": "string"
+              },
+              "value_split": {
+                "description": "Regex pattern to use for splitting the key from the value within a key-value pair.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "field_split",
+              "value_split"
+            ]
+          }
+        ]
+      },
       "ingest._types:LowercaseProcessor": {
         "allOf": [
           {
@@ -84503,6 +85323,28 @@
             },
             "required": [
               "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:PipelineProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/components/schemas/_types:Name"
+              },
+              "ignore_missing_pipeline": {
+                "description": "Whether to ignore missing pipelines instead of failing.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "name"
             ]
           }
         ]
@@ -84669,6 +85511,31 @@
           }
         ]
       },
+      "ingest._types:SetSecurityUserProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "properties": {
+                "description": "Controls what user related properties are added to the field.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
       "ingest._types:SortProcessor": {
         "allOf": [
           {
@@ -84802,7 +85669,7 @@
           }
         ]
       },
-      "ingest._types:BytesProcessor": {
+      "ingest._types:UserAgentProcessor": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ingest._types:ProcessorBase"
@@ -84810,123 +85677,6 @@
           {
             "type": "object",
             "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "field"
-            ]
-          }
-        ]
-      },
-      "ingest._types:DissectProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "append_separator": {
-                "description": "The character(s) that separate the appended fields.",
-                "type": "string"
-              },
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "ignore_missing": {
-                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
-                "type": "boolean"
-              },
-              "pattern": {
-                "description": "The pattern to apply to the field.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "field",
-              "pattern"
-            ]
-          }
-        ]
-      },
-      "ingest._types:SetSecurityUserProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "properties": {
-                "description": "Controls what user related properties are added to the field.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": [
-              "field"
-            ]
-          }
-        ]
-      },
-      "ingest._types:PipelineProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "name": {
-                "$ref": "#/components/schemas/_types:Name"
-              },
-              "ignore_missing_pipeline": {
-                "description": "Whether to ignore missing pipelines instead of failing.",
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "name"
-            ]
-          }
-        ]
-      },
-      "ingest._types:DropProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object"
-          }
-        ]
-      },
-      "ingest._types:CircleProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "error_distance": {
-                "description": "The difference between the resulting inscribed distance from center to side and the circle’s radius (measured in meters for `geo_shape`, unit-less for `shape`).",
-                "type": "number"
-              },
               "field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
@@ -84934,106 +85684,40 @@
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
                 "type": "boolean"
               },
-              "shape_type": {
-                "$ref": "#/components/schemas/ingest._types:ShapeType"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              }
-            },
-            "required": [
-              "error_distance",
-              "field",
-              "shape_type"
-            ]
-          }
-        ]
-      },
-      "ingest._types:ShapeType": {
-        "type": "string",
-        "enum": [
-          "geo_shape",
-          "shape"
-        ]
-      },
-      "ingest._types:InferenceProcessor": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "model_id": {
-                "$ref": "#/components/schemas/_types:Id"
-              },
-              "target_field": {
-                "$ref": "#/components/schemas/_types:Field"
-              },
-              "field_map": {
-                "description": "Maps the document field names to the known field names of the model.\nThis mapping takes precedence over any default mappings provided in the model configuration.",
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
+              "options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ingest._types:UserAgentProperty"
                 }
               },
-              "inference_config": {
-                "$ref": "#/components/schemas/ingest._types:InferenceConfig"
+              "regex_file": {
+                "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
+                "type": "string"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
               }
             },
             "required": [
-              "model_id"
+              "field"
             ]
           }
         ]
       },
-      "ingest._types:InferenceConfig": {
-        "type": "object",
-        "properties": {
-          "regression": {
-            "$ref": "#/components/schemas/ingest._types:InferenceConfigRegression"
-          },
-          "classification": {
-            "$ref": "#/components/schemas/ingest._types:InferenceConfigClassification"
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "ingest._types:InferenceConfigRegression": {
-        "type": "object",
-        "properties": {
-          "results_field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "num_top_feature_importance_values": {
-            "description": "Specifies the maximum number of feature importance values per document.",
-            "type": "number"
-          }
-        }
-      },
-      "ingest._types:InferenceConfigClassification": {
-        "type": "object",
-        "properties": {
-          "num_top_classes": {
-            "description": "Specifies the number of top class predictions to return.",
-            "type": "number"
-          },
-          "num_top_feature_importance_values": {
-            "description": "Specifies the maximum number of feature importance values per document.",
-            "type": "number"
-          },
-          "results_field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "top_classes_results_field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "prediction_field_type": {
-            "description": "Specifies the type of the predicted field to write.\nValid values are: `string`, `number`, `boolean`.",
-            "type": "string"
-          }
-        }
+      "ingest._types:UserAgentProperty": {
+        "type": "string",
+        "enum": [
+          "NAME",
+          "MAJOR",
+          "MINOR",
+          "PATCH",
+          "OS",
+          "OS_NAME",
+          "OS_MAJOR",
+          "OS_MINOR",
+          "DEVICE",
+          "BUILD"
+        ]
       },
       "ingest.simulate:Document": {
         "type": "object",
@@ -93526,23 +94210,33 @@
           "aggregations"
         ]
       },
-      "query_ruleset._types:QueryRule": {
+      "query_rules._types:QueryRule": {
         "type": "object",
         "properties": {
           "rule_id": {
             "$ref": "#/components/schemas/_types:Id"
           },
           "type": {
-            "$ref": "#/components/schemas/query_ruleset._types:QueryRuleType"
+            "$ref": "#/components/schemas/query_rules._types:QueryRuleType"
           },
           "criteria": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/query_ruleset._types:QueryRuleCriteria"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteria"
+                }
+              }
+            ]
           },
           "actions": {
-            "$ref": "#/components/schemas/query_ruleset._types:QueryRuleActions"
+            "$ref": "#/components/schemas/query_rules._types:QueryRuleActions"
+          },
+          "priority": {
+            "type": "number"
           }
         },
         "required": [
@@ -93552,17 +94246,17 @@
           "actions"
         ]
       },
-      "query_ruleset._types:QueryRuleType": {
+      "query_rules._types:QueryRuleType": {
         "type": "string",
         "enum": [
           "pinned"
         ]
       },
-      "query_ruleset._types:QueryRuleCriteria": {
+      "query_rules._types:QueryRuleCriteria": {
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/query_ruleset._types:QueryRuleCriteriaType"
+            "$ref": "#/components/schemas/query_rules._types:QueryRuleCriteriaType"
           },
           "metadata": {
             "type": "string"
@@ -93578,12 +94272,13 @@
           "type"
         ]
       },
-      "query_ruleset._types:QueryRuleCriteriaType": {
+      "query_rules._types:QueryRuleCriteriaType": {
         "type": "string",
         "enum": [
           "global",
           "exact",
           "exact_fuzzy",
+          "fuzzy",
           "prefix",
           "suffix",
           "contains",
@@ -93594,7 +94289,7 @@
           "always"
         ]
       },
-      "query_ruleset._types:QueryRuleActions": {
+      "query_rules._types:QueryRuleActions": {
         "type": "object",
         "properties": {
           "ids": {
@@ -93611,7 +94306,7 @@
           }
         }
       },
-      "query_ruleset._types:QueryRuleset": {
+      "query_rules._types:QueryRuleset": {
         "type": "object",
         "properties": {
           "ruleset_id": {
@@ -93621,7 +94316,7 @@
             "description": "Rules associated with the query ruleset",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/query_ruleset._types:QueryRule"
+              "$ref": "#/components/schemas/query_rules._types:QueryRule"
             }
           }
         },
@@ -93630,7 +94325,7 @@
           "rules"
         ]
       },
-      "query_ruleset.list:QueryRulesetListItem": {
+      "query_rules.list_rulesets:QueryRulesetListItem": {
         "type": "object",
         "properties": {
           "ruleset_id": {
@@ -93644,7 +94339,7 @@
             "description": "A map of criteria type to the number of rules of that type",
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "type": "number"
             }
           }
         },
@@ -95232,7 +95927,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -95270,11 +95965,15 @@
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
             },
-            "description": "A list of users that the API keys can impersonate.",
+            "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
             "items": {
               "type": "string"
             }
+          },
+          "description": {
+            "description": "Optional description of the role descriptor",
+            "type": "string"
           },
           "transient_metadata": {
             "type": "object",
@@ -95283,6 +95982,76 @@
             }
           }
         }
+      },
+      "security._types:ClusterPrivilege": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "cancel_task",
+              "create_snapshot",
+              "cross_cluster_replication",
+              "cross_cluster_search",
+              "delegate_pki",
+              "grant_api_key",
+              "manage",
+              "manage_api_key",
+              "manage_autoscaling",
+              "manage_behavioral_analytics",
+              "manage_ccr",
+              "manage_data_frame_transforms",
+              "manage_data_stream_global_retention",
+              "manage_enrich",
+              "manage_ilm",
+              "manage_index_templates",
+              "manage_inference",
+              "manage_ingest_pipelines",
+              "manage_logstash_pipelines",
+              "manage_ml",
+              "manage_oidc",
+              "manage_own_api_key",
+              "manage_pipeline",
+              "manage_rollup",
+              "manage_saml",
+              "manage_search_application",
+              "manage_search_query_rules",
+              "manage_search_synonyms",
+              "manage_security",
+              "manage_service_account",
+              "manage_slm",
+              "manage_token",
+              "manage_transform",
+              "manage_user_profile",
+              "manage_watcher",
+              "monitor",
+              "monitor_data_frame_transforms",
+              "monitor_data_stream_global_retention",
+              "monitor_enrich",
+              "monitor_inference",
+              "monitor_ml",
+              "monitor_rollup",
+              "monitor_snapshot",
+              "monitor_text_structure",
+              "monitor_transform",
+              "monitor_watcher",
+              "none",
+              "post_behavioral_analytics_event",
+              "read_ccr",
+              "read_fleet_secrets",
+              "read_ilm",
+              "read_pipeline",
+              "read_security",
+              "read_slm",
+              "transport_client",
+              "write_connector_secrets",
+              "write_fleet_secrets"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "security._types:IndicesPrivileges": {
         "type": "object",
@@ -95519,6 +96288,26 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "security._types:BulkError": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "The number of errors",
+            "type": "number"
+          },
+          "details": {
+            "description": "Details about the errors, keyed by role name",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types:ErrorCause"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "details"
         ]
       },
       "security._types:ClusterNode": {
@@ -95780,7 +96569,7 @@
             "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/security._types:ClusterPrivilege"
             }
           },
           "indices": {
@@ -95823,6 +96612,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "description": {
+            "description": "Optional description of the role descriptor",
+            "type": "string"
           },
           "transient_metadata": {
             "type": "object",
@@ -96117,77 +96910,6 @@
           "application",
           "privileges",
           "resources"
-        ]
-      },
-      "security._types:ClusterPrivilege": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "all",
-              "cancel_task",
-              "create_snapshot",
-              "cross_cluster_replication",
-              "cross_cluster_search",
-              "delegate_pki",
-              "grant_api_key",
-              "manage",
-              "manage_api_key",
-              "manage_autoscaling",
-              "manage_behavioral_analytics",
-              "manage_ccr",
-              "manage_data_frame_transforms",
-              "manage_data_stream_global_retention",
-              "manage_enrich",
-              "manage_ilm",
-              "manage_index_templates",
-              "manage_inference",
-              "manage_ingest_pipelines",
-              "manage_logstash_pipelines",
-              "manage_ml",
-              "manage_oidc",
-              "manage_own_api_key",
-              "manage_pipeline",
-              "manage_rollup",
-              "manage_saml",
-              "manage_search_application",
-              "manage_search_query_rules",
-              "manage_search_synonyms",
-              "manage_security",
-              "manage_service_account",
-              "manage_slm",
-              "manage_token",
-              "manage_transform",
-              "manage_user_profile",
-              "manage_watcher",
-              "monitor",
-              "monitor_data_frame_transforms",
-              "monitor_data_stream_global_retention",
-              "monitor_enrich",
-              "monitor_inference",
-              "monitor_ml",
-              "monitor_rollup",
-              "monitor_snapshot",
-              "monitor_text_structure",
-              "monitor_transform",
-              "monitor_watcher",
-              "none",
-              "post_behavioral_analytics_event",
-              "read_ccr",
-              "read_connector_secrets",
-              "read_fleet_secrets",
-              "read_ilm",
-              "read_pipeline",
-              "read_security",
-              "read_slm",
-              "transport_client",
-              "write_connector_secrets",
-              "write_fleet_secrets"
-            ]
-          },
-          {
-            "type": "string"
-          }
         ]
       },
       "security.has_privileges:IndexPrivilegesCheck": {
@@ -96506,6 +97228,213 @@
           },
           {
             "$ref": "#/components/schemas/_types.aggregations:CompositeAggregate"
+          }
+        ]
+      },
+      "security.query_role:RoleQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
+            "description": "Returns roles that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
+            "description": "Returns roles that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
+            "description": "Returns roles that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
+            "description": "Returns roles that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
+            "description": "Returns roles that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_role:QueryRole": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:RoleDescriptor"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_sort": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              },
+              "name": {
+                "description": "Name of the role.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      },
+      "security.query_user:UserQueryContainer": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "$ref": "#/components/schemas/_types.query_dsl:IdsQuery"
+          },
+          "bool": {
+            "$ref": "#/components/schemas/_types.query_dsl:BoolQuery"
+          },
+          "exists": {
+            "$ref": "#/components/schemas/_types.query_dsl:ExistsQuery"
+          },
+          "match": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"
+            },
+            "description": "Returns users that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "$ref": "#/components/schemas/_types.query_dsl:MatchAllQuery"
+          },
+          "prefix": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html"
+            },
+            "description": "Returns users that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html"
+            },
+            "description": "Returns users that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "$ref": "#/components/schemas/_types.query_dsl:SimpleQueryStringQuery"
+          },
+          "term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html"
+            },
+            "description": "Returns users that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "$ref": "#/components/schemas/_types.query_dsl:TermsQuery"
+          },
+          "wildcard": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
+            },
+            "description": "Returns users that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl:WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_user:QueryUser": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security._types:User"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_sort": {
+                "$ref": "#/components/schemas/_types:SortResults"
+              }
+            }
           }
         ]
       },
@@ -98234,10 +99163,7 @@
         },
         "required": [
           "docs_indexed",
-          "docs_processed",
-          "docs_remaining",
-          "percent_complete",
-          "total_docs"
+          "docs_processed"
         ]
       },
       "transform.get_transform_stats:TransformStatsHealth": {

@@ -69,7 +69,13 @@ Usage:
   spec-dangling-types  Generate the dangling types rreport
   setup            Install dependencies for contrib target
   clean-dep        Clean npm dependencies
+  transform-expand-generics  Create a new schema with all generics expanded
+  transform-to-openapi  Generate the OpenAPI definition from the compiled schema
+  filter-for-serverless  Generate the serverless version from the compiled schema
+  dump-routes      Create a new schema with all generics expanded
   contrib          Pre contribution target
+  lint-docs        Lint the OpenAPI documents
+  lint-docs-serverless  Lint only the serverless OpenAPI document
   help             Display help
 ```
 
@@ -198,16 +204,16 @@ git clone https://github.com/elastic/elasticsearch-specification.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
 cd elasticsearch-specification
-# this will validate the xpack.info request type against the 8.1.0 stack version
-make validate api=xpack.info type=request stack-version=8.1.0-SNAPSHOT
+# this will validate the xpack.info request type against the main branch of Elasticsearch
+make validate api=xpack.info type=request branch=main
 
-# this will validate the xpack.info request and response types against the 8.1.0 stack version
-make validate api=xpack.info stack-version=8.1.0-SNAPSHOT
+# this will validate the xpack.info request and response types against the 8.15 branch
+make validate api=xpack.info branch=8.15
 ```
 
 The last command above will install all the dependencies and run, download
 the test recordings and finally validate the specification.
-If you need to download the recordings again, run `make validate-no-cache api=xpack.info type=request stack-version=8.1.0-SNAPSHOT`.
+If you need to download the recordings again, run `make validate-no-cache api=xpack.info type=request branch=main`.
 
 Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.

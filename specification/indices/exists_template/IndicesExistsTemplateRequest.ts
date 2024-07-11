@@ -22,6 +22,8 @@ import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Check existence of index templates.
+ * Returns information about whether a particular index template exists.
  * @rest_spec_name indices.exists_template
  * @availability stack stability=stable
  */

@@ -26,10 +26,10 @@ jobs:
           token: ${{ secrets.PAT }}
           ref: main
 
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 20
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -47,7 +47,7 @@ jobs:
       - name: Generate specification and check generated types
         working-directory: ./elasticsearch-specification
         run: |
-          make generate
+          make contrib
 
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
@@ -57,7 +57,7 @@ jobs:
           else
             branch=$GITHUB_REF_NAME
           fi
-          node scripts/upload-recording/download.js --branch latest
+          node scripts/upload-recording/download.js --branch $branch
           node scripts/clone-elasticsearch/index.js --branch $branch
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}

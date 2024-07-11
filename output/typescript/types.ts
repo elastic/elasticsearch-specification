@@ -498,6 +498,7 @@ export interface HealthReportIlmIndicator extends HealthReportBaseIndicator {
 export interface HealthReportIlmIndicatorDetails {
   ilm_status: LifecycleOperationMode
   policies: long
+  stagnating_indices: integer
 }
 
 export interface HealthReportImpact {
@@ -577,6 +578,7 @@ export interface HealthReportShardsAvailabilityIndicator extends HealthReportBas
 
 export interface HealthReportShardsAvailabilityIndicatorDetails {
   creating_primaries: long
+  creating_replicas: long
   initializing_primaries: long
   initializing_replicas: long
   restarting_primaries: long
@@ -608,7 +610,7 @@ export interface HealthReportSlmIndicator extends HealthReportBaseIndicator {
 export interface HealthReportSlmIndicatorDetails {
   slm_status: LifecycleOperationMode
   policies: long
-  unhealthy_policies: HealthReportSlmIndicatorUnhealthyPolicies
+  unhealthy_policies?: HealthReportSlmIndicatorUnhealthyPolicies
 }
 
 export interface HealthReportSlmIndicatorUnhealthyPolicies {
@@ -2242,9 +2244,10 @@ export interface GeoDistanceSortKeys {
   ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
+  nested?: NestedSortValue
 }
 export type GeoDistanceSort = GeoDistanceSortKeys
-  & { [property: string]: GeoLocation | GeoLocation[] | SortMode | GeoDistanceType | boolean | SortOrder | DistanceUnit }
+  & { [property: string]: GeoLocation | GeoLocation[] | SortMode | GeoDistanceType | boolean | SortOrder | DistanceUnit | NestedSortValue }
 
 export type GeoDistanceType = 'arc' | 'plane'
 
@@ -4754,7 +4757,7 @@ export type AnalysisSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Dani
 
 export interface AnalysisSnowballTokenFilter extends AnalysisTokenFilterBase {
   type: 'snowball'
-  language: AnalysisSnowballLanguage
+  language?: AnalysisSnowballLanguage
 }
 
 export interface AnalysisStandardAnalyzer {
@@ -5492,7 +5495,7 @@ export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
   filter: QueryDslQueryContainer
 }
 
-export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {
+export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase<DateMath, Duration> {
 }
 export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
   & { [property: string]: QueryDslDecayPlacement<DateMath, Duration> | QueryDslMultiValueMode }
@@ -5500,20 +5503,14 @@ export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
 export interface QueryDslDateDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<DateMath, Duration> {
 }
 
-export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase {
-  gt?: DateMath
-  gte?: DateMath
-  lt?: DateMath
-  lte?: DateMath
-  from?: DateMath | null
-  to?: DateMath | null
+export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase<DateMath> {
   format?: DateFormat
   time_zone?: TimeZone
 }
 
-export type QueryDslDecayFunction = QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
+export type QueryDslDecayFunction = QueryDslUntypedDecayFunction | QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
 
-export interface QueryDslDecayFunctionBase {
+export interface QueryDslDecayFunctionBase<TOrigin = unknown, TScale = unknown> {
   multi_value_mode?: QueryDslMultiValueMode
 }
 
@@ -5529,7 +5526,7 @@ export interface QueryDslDisMaxQuery extends QueryDslQueryBase {
   tie_breaker?: double
 }
 
-export type QueryDslDistanceFeatureQuery = QueryDslGeoDistanceFeatureQuery | QueryDslDateDistanceFeatureQuery
+export type QueryDslDistanceFeatureQuery = QueryDslUntypedDistanceFeatureQuery | QueryDslGeoDistanceFeatureQuery | QueryDslDateDistanceFeatureQuery
 
 export interface QueryDslDistanceFeatureQueryBase<TOrigin = unknown, TDistance = unknown> extends QueryDslQueryBase {
   origin: TOrigin
@@ -5604,7 +5601,7 @@ export interface QueryDslGeoBoundingBoxQueryKeys extends QueryDslQueryBase {
 export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys
   & { [property: string]: GeoBounds | QueryDslGeoExecution | QueryDslGeoValidationMethod | boolean | float | string }
 
-export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase {
+export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase<GeoLocation, Distance> {
 }
 export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys
   & { [property: string]: QueryDslDecayPlacement<GeoLocation, Distance> | QueryDslMultiValueMode }
@@ -5855,16 +5852,10 @@ export interface QueryDslNestedQuery extends QueryDslQueryBase {
   score_mode?: QueryDslChildScoreMode
 }
 
-export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
-  gt?: double
-  gte?: double
-  lt?: double
-  lte?: double
-  from?: double | null
-  to?: double | null
+export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase<double> {
 }
 
-export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
+export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase<double, double> {
 }
 export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys
   & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode }
@@ -6007,10 +5998,16 @@ export interface QueryDslRandomScoreFunction {
   seed?: long | string
 }
 
-export type QueryDslRangeQuery = QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermsRangeQuery
+export type QueryDslRangeQuery = QueryDslUntypedRangeQuery | QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermRangeQuery
 
-export interface QueryDslRangeQueryBase extends QueryDslQueryBase {
+export interface QueryDslRangeQueryBase<T = unknown> extends QueryDslQueryBase {
   relation?: QueryDslRangeRelation
+  gt?: T
+  gte?: T
+  lt?: T
+  lte?: T
+  from?: T | null
+  to?: T | null
 }
 
 export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'
@@ -6184,6 +6181,9 @@ export interface QueryDslTermQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
 }
 
+export interface QueryDslTermRangeQuery extends QueryDslRangeQueryBase<string> {
+}
+
 export interface QueryDslTermsLookup {
   index: IndexName
   id: Id
@@ -6197,15 +6197,6 @@ export type QueryDslTermsQuery = QueryDslTermsQueryKeys
   & { [property: string]: QueryDslTermsQueryField | float | string }
 
 export type QueryDslTermsQueryField = FieldValue[] | QueryDslTermsLookup
-
-export interface QueryDslTermsRangeQuery extends QueryDslRangeQueryBase {
-  gt?: string
-  gte?: string
-  lt?: string
-  lte?: string
-  from?: string | null
-  to?: string | null
-}
 
 export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
@@ -6229,6 +6220,19 @@ export interface QueryDslTokenPruningConfig {
 
 export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
+}
+
+export interface QueryDslUntypedDecayFunctionKeys extends QueryDslDecayFunctionBase<any, any> {
+}
+export type QueryDslUntypedDecayFunction = QueryDslUntypedDecayFunctionKeys
+  & { [property: string]: QueryDslDecayPlacement<any, any> | QueryDslMultiValueMode }
+
+export interface QueryDslUntypedDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<any, any> {
+}
+
+export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
+  format?: DateFormat
+  time_zone?: TimeZone
 }
 
 export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
@@ -6505,28 +6509,39 @@ export interface CatAliasesRequest extends CatCatRequestBase {
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
 
 export interface CatAllocationAllocationRecord {
-  shards?: string
-  s?: string
-  'disk.indices'?: ByteSize | null
-  di?: ByteSize | null
-  diskIndices?: ByteSize | null
-  'disk.used'?: ByteSize | null
-  du?: ByteSize | null
-  diskUsed?: ByteSize | null
-  'disk.avail'?: ByteSize | null
-  da?: ByteSize | null
-  diskAvail?: ByteSize | null
-  'disk.total'?: ByteSize | null
-  dt?: ByteSize | null
-  diskTotal?: ByteSize | null
-  'disk.percent'?: Percentage | null
-  dp?: Percentage | null
-  diskPercent?: Percentage | null
-  host?: Host | null
-  h?: Host | null
-  ip?: Ip | null
-  node?: string
-  n?: string
+  shards: string
+  s: string
+  'shards.undesired': string | null
+  'write_load.forecast': double | null
+  wlf: double | null
+  writeLoadForecast: double | null
+  'disk.indices.forecast': ByteSize | null
+  dif: ByteSize | null
+  diskIndicesForecast: ByteSize | null
+  'disk.indices': ByteSize | null
+  di: ByteSize | null
+  diskIndices: ByteSize | null
+  'disk.used': ByteSize | null
+  du: ByteSize | null
+  diskUsed: ByteSize | null
+  'disk.avail': ByteSize | null
+  da: ByteSize | null
+  diskAvail: ByteSize | null
+  'disk.total': ByteSize | null
+  dt: ByteSize | null
+  diskTotal: ByteSize | null
+  'disk.percent': Percentage | null
+  dp: Percentage | null
+  diskPercent: Percentage | null
+  host: Host | null
+  h: Host | null
+  ip: Ip | null
+  node: string
+  n: string
+  'node.role': string | null
+  r: string | null
+  role: string | null
+  nodeRole: string | null
 }
 
 export interface CatAllocationRequest extends CatCatRequestBase {
@@ -9816,12 +9831,13 @@ export interface EqlHitsEvent<TEvent = unknown> {
   _index: IndexName
   _id: Id
   _source: TEvent
+  missing?: boolean
   fields?: Record<Field, any[]>
 }
 
 export interface EqlHitsSequence<TEvent = unknown> {
   events: EqlHitsEvent<TEvent>[]
-  join_keys: any[]
+  join_keys?: any[]
 }
 
 export interface EqlDeleteRequest extends RequestBase {
@@ -9884,11 +9900,13 @@ export type EqlSearchResultPosition = 'tail' | 'head'
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
   delimiter?: string
+  drop_null_columns?: boolean
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: ScalarValue[]
+    params?: FieldValue[]
+    profile?: boolean
     query: string
   }
 }
@@ -12438,41 +12456,41 @@ export interface IngestProcessorBase {
 }
 
 export interface IngestProcessorContainer {
-  attachment?: IngestAttachmentProcessor
   append?: IngestAppendProcessor
-  csv?: IngestCsvProcessor
+  attachment?: IngestAttachmentProcessor
+  bytes?: IngestBytesProcessor
+  circle?: IngestCircleProcessor
   convert?: IngestConvertProcessor
+  csv?: IngestCsvProcessor
   date?: IngestDateProcessor
   date_index_name?: IngestDateIndexNameProcessor
+  dissect?: IngestDissectProcessor
   dot_expander?: IngestDotExpanderProcessor
+  drop?: IngestDropProcessor
   enrich?: IngestEnrichProcessor
   fail?: IngestFailProcessor
   foreach?: IngestForeachProcessor
-  json?: IngestJsonProcessor
-  user_agent?: IngestUserAgentProcessor
-  kv?: IngestKeyValueProcessor
   geoip?: IngestGeoIpProcessor
   grok?: IngestGrokProcessor
   gsub?: IngestGsubProcessor
+  inference?: IngestInferenceProcessor
   join?: IngestJoinProcessor
+  json?: IngestJsonProcessor
+  kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
+  pipeline?: IngestPipelineProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
   reroute?: IngestRerouteProcessor
   script?: IngestScriptProcessor
   set?: IngestSetProcessor
+  set_security_user?: IngestSetSecurityUserProcessor
   sort?: IngestSortProcessor
   split?: IngestSplitProcessor
   trim?: IngestTrimProcessor
   uppercase?: IngestUppercaseProcessor
   urldecode?: IngestUrlDecodeProcessor
-  bytes?: IngestBytesProcessor
-  dissect?: IngestDissectProcessor
-  set_security_user?: IngestSetSecurityUserProcessor
-  pipeline?: IngestPipelineProcessor
-  drop?: IngestDropProcessor
-  circle?: IngestCircleProcessor
-  inference?: IngestInferenceProcessor
+  user_agent?: IngestUserAgentProcessor
 }
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
@@ -16361,97 +16379,99 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
-export interface QueryRuleDeleteRequest extends RequestBase {
-  ruleset_id: Id
+export interface QueryRulesQueryRule {
   rule_id: Id
+  type: QueryRulesQueryRuleType
+  criteria: QueryRulesQueryRuleCriteria | QueryRulesQueryRuleCriteria[]
+  actions: QueryRulesQueryRuleActions
+  priority?: integer
 }
 
-export type QueryRuleDeleteResponse = AcknowledgedResponseBase
-
-export interface QueryRuleGetRequest extends RequestBase {
-  ruleset_id: Id
-  rule_id: Id
-}
-
-export type QueryRuleGetResponse = QueryRulesetQueryRule
-
-export interface QueryRulePutRequest extends RequestBase {
-  ruleset_id: Id
-  rule_id: Id
-  body?: {
-    type: QueryRulesetQueryRuleType
-    criteria: QueryRulesetQueryRuleCriteria[]
-    actions: QueryRulesetQueryRuleActions
-  }
-}
-
-export interface QueryRulePutResponse {
-  result: Result
-}
-
-export interface QueryRulesetQueryRule {
-  rule_id: Id
-  type: QueryRulesetQueryRuleType
-  criteria: QueryRulesetQueryRuleCriteria[]
-  actions: QueryRulesetQueryRuleActions
-}
-
-export interface QueryRulesetQueryRuleActions {
+export interface QueryRulesQueryRuleActions {
   ids?: Id[]
   docs?: QueryDslPinnedDoc[]
 }
 
-export interface QueryRulesetQueryRuleCriteria {
-  type: QueryRulesetQueryRuleCriteriaType
+export interface QueryRulesQueryRuleCriteria {
+  type: QueryRulesQueryRuleCriteriaType
   metadata?: string
   values?: any[]
 }
 
-export type QueryRulesetQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
-export type QueryRulesetQueryRuleType = 'pinned'
+export type QueryRulesQueryRuleType = 'pinned'
 
-export interface QueryRulesetQueryRuleset {
+export interface QueryRulesQueryRuleset {
   ruleset_id: Id
-  rules: QueryRulesetQueryRule[]
+  rules: QueryRulesQueryRule[]
 }
 
-export interface QueryRulesetDeleteRequest extends RequestBase {
+export interface QueryRulesDeleteRuleRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRulesDeleteRuleResponse = AcknowledgedResponseBase
+
+export interface QueryRulesDeleteRulesetRequest extends RequestBase {
   ruleset_id: Id
 }
 
-export type QueryRulesetDeleteResponse = AcknowledgedResponseBase
+export type QueryRulesDeleteRulesetResponse = AcknowledgedResponseBase
 
-export interface QueryRulesetGetRequest extends RequestBase {
+export interface QueryRulesGetRuleRequest extends RequestBase {
+  ruleset_id: Id
+  rule_id: Id
+}
+
+export type QueryRulesGetRuleResponse = QueryRulesQueryRule
+
+export interface QueryRulesGetRulesetRequest extends RequestBase {
   ruleset_id: Id
 }
 
-export type QueryRulesetGetResponse = QueryRulesetQueryRuleset
+export type QueryRulesGetRulesetResponse = QueryRulesQueryRuleset
 
-export interface QueryRulesetListQueryRulesetListItem {
+export interface QueryRulesListRulesetsQueryRulesetListItem {
   ruleset_id: Id
   rule_total_count: integer
-  rule_criteria_types_counts: Record<string, string>
+  rule_criteria_types_counts: Record<string, integer>
 }
 
-export interface QueryRulesetListRequest extends RequestBase {
+export interface QueryRulesListRulesetsRequest extends RequestBase {
   from?: integer
   size?: integer
 }
 
-export interface QueryRulesetListResponse {
+export interface QueryRulesListRulesetsResponse {
   count: long
-  results: QueryRulesetListQueryRulesetListItem[]
+  results: QueryRulesListRulesetsQueryRulesetListItem[]
 }
 
-export interface QueryRulesetPutRequest extends RequestBase {
+export interface QueryRulesPutRuleRequest extends RequestBase {
   ruleset_id: Id
+  rule_id: Id
   body?: {
-    rules: QueryRulesetQueryRule[]
+    type: QueryRulesQueryRuleType
+    criteria: QueryRulesQueryRuleCriteria | QueryRulesQueryRuleCriteria[]
+    actions: QueryRulesQueryRuleActions
+    priority?: integer
   }
 }
 
-export interface QueryRulesetPutResponse {
+export interface QueryRulesPutRuleResponse {
+  result: Result
+}
+
+export interface QueryRulesPutRulesetRequest extends RequestBase {
+  ruleset_id: Id
+  body?: {
+    rules: QueryRulesQueryRule | QueryRulesQueryRule[]
+  }
+}
+
+export interface QueryRulesPutRulesetResponse {
   result: Result
 }
 
@@ -16834,11 +16854,16 @@ export interface SecurityApplicationPrivileges {
   resources: string[]
 }
 
+export interface SecurityBulkError {
+  count: integer
+  details: Record<string, ErrorCause>
+}
+
 export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_connector_secrets' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -16883,24 +16908,26 @@ export interface SecurityRealmInfo {
 }
 
 export interface SecurityRoleDescriptor {
-  cluster?: string[]
+  cluster?: SecurityClusterPrivilege[]
   indices?: SecurityIndicesPrivileges[]
   index?: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
+  description?: string
   transient_metadata?: Record<string, any>
 }
 
 export interface SecurityRoleDescriptorRead {
-  cluster: string[]
+  cluster: SecurityClusterPrivilege[]
   indices: SecurityIndicesPrivileges[]
   index: SecurityIndicesPrivileges[]
   global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
+  description?: string
   transient_metadata?: Record<string, any>
 }
 
@@ -17018,6 +17045,33 @@ export interface SecurityAuthenticateResponse {
 export interface SecurityAuthenticateToken {
   name: Name
   type?: string
+}
+
+export interface SecurityBulkDeleteRoleRequest extends RequestBase {
+  refresh?: Refresh
+  body?: {
+    names: string[]
+  }
+}
+
+export interface SecurityBulkDeleteRoleResponse {
+  deleted?: string[]
+  not_found?: string[]
+  errors?: SecurityBulkError
+}
+
+export interface SecurityBulkPutRoleRequest extends RequestBase {
+  refresh?: Refresh
+  body?: {
+    roles: Record<string, SecurityRoleDescriptor>
+  }
+}
+
+export interface SecurityBulkPutRoleResponse {
+  created?: string[]
+  updated?: string[]
+  noop?: string[]
+  errors?: SecurityBulkError
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
@@ -17530,6 +17584,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     indices?: SecurityIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
+    description?: string
     transient_metadata?: Record<string, any>
   }
 }
@@ -17633,6 +17688,76 @@ export interface SecurityQueryApiKeysResponse {
   count: integer
   api_keys: SecurityApiKey[]
   aggregations?: Record<AggregateName, SecurityQueryApiKeysApiKeyAggregate>
+}
+
+export interface SecurityQueryRoleQueryRole extends SecurityRoleDescriptor {
+  _sort?: SortResults
+  name: string
+}
+
+export interface SecurityQueryRoleRequest extends RequestBase {
+  body?: {
+    query?: SecurityQueryRoleRoleQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryRoleResponse {
+  total: integer
+  count: integer
+  roles: SecurityQueryRoleQueryRole[]
+}
+
+export interface SecurityQueryRoleRoleQueryContainer {
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  ids?: QueryDslIdsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
+}
+
+export interface SecurityQueryUserQueryUser extends SecurityUser {
+  _sort?: SortResults
+}
+
+export interface SecurityQueryUserRequest extends RequestBase {
+  with_profile_uid?: boolean
+  body?: {
+    query?: SecurityQueryUserUserQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryUserResponse {
+  total: integer
+  count: integer
+  users: SecurityQueryUserQueryUser[]
+}
+
+export interface SecurityQueryUserUserQueryContainer {
+  ids?: QueryDslIdsQuery
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
 }
 
 export interface SecuritySamlAuthenticateRequest extends RequestBase {
@@ -18835,9 +18960,9 @@ export interface TransformGetTransformStatsTransformIndexerStats {
 export interface TransformGetTransformStatsTransformProgress {
   docs_indexed: long
   docs_processed: long
-  docs_remaining: long
-  percent_complete: double
-  total_docs: long
+  docs_remaining?: long
+  percent_complete?: double
+  total_docs?: long
 }
 
 export interface TransformGetTransformStatsTransformStats {

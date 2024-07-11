@@ -27,7 +27,7 @@ import { Duration } from '@_types/Time'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
- * Creates or updates an index template.
+ * Create or update an index template.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * @rest_spec_name indices.put_template
  * @availability stack stability=stable

@@ -24,6 +24,7 @@ import { double, float, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
 import { QueryBase, QueryContainer } from './abstractions'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class BoolQuery extends QueryBase {
   /**
@@ -171,7 +172,12 @@ export class DecayPlacement<TOrigin, TScale> {
   origin?: TOrigin
 }
 
-export class DecayFunctionBase {
+/**
+ * @behavior_meta AdditionalProperty key=field value=placement
+ */
+export class DecayFunctionBase<TOrigin, TScale>
+  implements AdditionalProperty<Field, DecayPlacement<TOrigin, TScale>>
+{
   /**
    * Determines how the distance is calculated when a field used for computing the decay contains multiple values.
    * @server_default min
@@ -179,21 +185,24 @@ export class DecayFunctionBase {
   multi_value_mode?: MultiValueMode
 }
 
-export class NumericDecayFunction
-  extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<double, double>> {}
+export class UntypedDecayFunction extends DecayFunctionBase<
+  UserDefinedValue,
+  UserDefinedValue
+> {}
+export class NumericDecayFunction extends DecayFunctionBase<double, double> {}
+export class DateDecayFunction extends DecayFunctionBase<DateMath, Duration> {}
+export class GeoDecayFunction extends DecayFunctionBase<
+  GeoLocation,
+  Distance
+> {}
 
-export class DateDecayFunction
-  extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<DateMath, Duration>> {}
-
-export class GeoDecayFunction
-  extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<GeoLocation, Distance>> {}
-
-/** @codegen_names date, numeric, geo */
+/**
+ * @codegen_names untyped, date, numeric, geo
+ * @variants untagged untyped=_types.query_dsl.UntypedDecayFunction
+ */
 // Note: deserialization depends on value types
 export type DecayFunction =
+  | UntypedDecayFunction
   | DateDecayFunction
   | NumericDecayFunction
   | GeoDecayFunction

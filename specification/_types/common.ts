@@ -317,6 +317,9 @@ export enum WaitForEvents {
   languid
 }
 
+/**
+ * @behavior_meta AdditionalProperties fieldname=metadata description="Document metadata"
+ */
 // Additional properties are the meta fields
 export class InlineGet<TDocument>
   implements AdditionalProperties<string, UserDefinedValue>

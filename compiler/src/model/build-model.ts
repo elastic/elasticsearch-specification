@@ -44,7 +44,6 @@ import {
   modelBehaviors,
   modelEnumDeclaration,
   modelGenerics,
-  modelImplements,
   modelInherits,
   modelProperty,
   modelType,
@@ -77,8 +76,6 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
           visibility: spec.visibility
         }
       },
-      stability: spec.stability,
-      visibility: spec.visibility,
       request: null,
       requestBodyRequired: Boolean(spec.body?.required),
       response: null,
@@ -91,7 +88,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       })
     }
     if (typeof spec.feature_flag === 'string') {
-      map[api].featureFlag = spec.feature_flag
+      map[api].availability.stack.featureFlag = spec.feature_flag
     }
   }
   return map
@@ -459,7 +456,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       properties: new Array<model.Property>()
     }
 
-    hoistTypeAnnotations(type, declaration.getJsDocs())
+    const jsDocs = declaration.getJsDocs()
+    hoistTypeAnnotations(type, jsDocs)
 
     const variant = parseVariantNameTag(declaration.getJsDocs())
     if (typeof variant === 'string') {
@@ -532,9 +530,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     if (Node.isClassDeclaration(declaration)) {
       for (const implement of declaration.getImplements()) {
         if (isKnownBehavior(implement)) {
-          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement))
-        } else {
-          type.implements = (type.implements ?? []).concat(modelImplements(implement))
+          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement, jsDocs))
         }
       }
     }

@@ -414,14 +414,40 @@ export function modelImplements (node: ExpressionWithTypeArguments): model.Inher
  * A class could have multiple behaviors from multiple classes,
  * which are defined inside the node typeArguments.
  */
-export function modelBehaviors (node: ExpressionWithTypeArguments): model.Inherits {
+export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc[]): model.Behavior {
+  const behaviorName = node.getExpression().getText()
   const generics = node.getTypeArguments().map(node => modelType(node))
+
+  let meta: Map<string, string> | undefined
+  const tags = parseJsDocTagsAllowDuplicates(jsDocs)
+  if (tags.behavior_meta !== undefined) {
+    // Extracts whitespace/comma-separated key-value-pairs with a "=" delimiter and handles double-quotes
+    const re = /(?<key>[^=\s,]+)=(?<value>"([^"]*)"|([^\s,]+))/g
+
+    for (const tag of tags.behavior_meta) {
+      const id = tag.split(' ')
+      if (id[0].trim() !== behaviorName) {
+        continue
+      }
+      const matches = [...id.slice(1).join(' ').matchAll(re)]
+      meta = new Map<string, string>()
+      for (const match of matches) {
+        if (match.groups == null) {
+          continue
+        }
+        meta.set(match.groups.key, match.groups.value.replace(/^"(.+(?="$))"$/, '$1'))
+      }
+      break
+    }
+  }
+
   return {
     type: {
-      name: node.getExpression().getText(),
+      name: behaviorName,
       namespace: getNameSpace(node)
     },
-    ...(generics.length > 0 && { generics })
+    ...(generics.length > 0 && { generics }),
+    meta: (meta === undefined) ? undefined : Object.fromEntries(meta)
   }
 }
 
@@ -510,8 +536,8 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     if (variants != null) {
       assert(
         declaration.getJsDocs(),
-        variants.kind === 'internal_tag' || variants.kind === 'external_tag',
-        'Type Aliases can only have internal or external variants'
+        variants.kind === 'internal_tag' || variants.kind === 'external_tag' || variants.kind === 'untagged',
+        'Type Aliases can only have internal, external or untagged variants'
       )
       typeAlias.variants = variants
     }
@@ -579,7 +605,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   )
 
   for (const tag of validTags) {
-    if (tag === 'behavior') continue
+    if (tag === 'behavior' || tag === 'behavior_meta') continue
     if (tags[tag] !== undefined) {
       setter(tags, tag, tags[tag])
     }
@@ -669,22 +695,6 @@ export function hoistRequestAnnotations (
       // Apply the availabilities to the Endpoint.
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         endpoint.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on an endpoint.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            endpoint.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            endpoint.stability = availabilityValue.stability
-          }
-          if (availabilityValue.visibility !== undefined) {
-            endpoint.visibility = availabilityValue.visibility
-          }
-          if (availabilityValue.featureFlag !== undefined) {
-            endpoint.featureFlag = availabilityValue.featureFlag
-          }
-        }
       }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
@@ -700,7 +710,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
   const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property',
-    'codegen_names', 'non_exhaustive', 'es_quirk']
+    'codegen_names', 'non_exhaustive', 'es_quirk', 'behavior_meta']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -787,16 +797,6 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.availability = {}
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         property.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on a property.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            property.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            property.stability = availabilityValue.stability
-          }
-        }
       }
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
@@ -898,13 +898,6 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
       member.availability = {}
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         member.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on a property.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            member.since = availabilityValue.since
-          }
-        }
       }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
@@ -1084,17 +1077,32 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     }
   }
 
-  assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-
-  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
-  assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
-
-  return {
-    kind: 'internal_tag',
-    nonExhaustive: nonExhaustive,
-    tag: pairs.tag,
-    defaultTag: pairs.default
+  if (type === 'internal') {
+    const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+    assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
+    return {
+      kind: 'internal_tag',
+      nonExhaustive: nonExhaustive,
+      tag: pairs.tag,
+      defaultTag: pairs.default
+    }
   }
+
+  if (type === 'untagged') {
+    const pairs = parseKeyValues(jsDoc, values, 'untyped')
+    assert(jsDoc, typeof pairs.untyped === 'string', 'Untagged variant requires an untyped definition')
+    const fqn = pairs.untyped.split('.')
+    return {
+      kind: 'untagged',
+      nonExhaustive: nonExhaustive,
+      untypedVariant: {
+        namespace: fqn.slice(0, fqn.length - 1).join('.'),
+        name: fqn[fqn.length - 1]
+      }
+    }
+  }
+
+  assert(jsDoc, false, `Bad variant type: ${type}`)
 }
 
 /**

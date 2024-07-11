@@ -160,16 +160,15 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
 
 function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
   const inherits = (type.inherits != null ? [type.inherits] : []).filter(type => !skipBehaviors.includes(type.type.name))
-  const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
-  const extendAll = inherits.concat(interfaces).concat(behaviors)
+  const extendAll = inherits.concat(behaviors)
     // do not extend from empty interfaces
     .filter(inherit => {
       for (const type of model.types) {
         if (inherit.type.name === type.name.name && inherit.type.namespace === type.name.namespace) {
           switch (type.kind) {
             case 'interface':
-              return type.properties.length > 0 || type.inherits != null || type.implements != null || type.behaviors != null || type.generics != null
+              return type.properties.length > 0 || type.inherits != null || type.behaviors != null || type.generics != null
             case 'request':
             case 'response':
               return true
@@ -283,8 +282,21 @@ function buildBehaviorInterface (type: M.Interface): string {
 // The main difference with this approaches comes when you are actually using the types. 1 and 2 are good when
 // you are reading an object of that type, while 3 is good when you are writing an object of that type.
 function serializeAdditionalPropertiesType (type: M.Interface): string {
-  const dictionaryOf = lookupBehavior(type, 'AdditionalProperties') ?? lookupBehavior(type, 'AdditionalProperty')
+  let dictionaryOf = lookupBehavior(type, 'AdditionalProperties') ?? lookupBehavior(type, 'AdditionalProperty')
   if (dictionaryOf == null) throw new Error(`Unknown implements ${type.name.name}`)
+
+  const parent = model.types.find(t => t.name.name === type.inherits?.type.name)
+  if (parent != null && parent.kind === 'interface' && parent.generics != null && parent.generics.length === type.inherits?.generics?.length) {
+    const map = new Map<M.TypeName, M.ValueOf>()
+    for (let i = 0; i < parent.generics.length; i++) {
+      map.set(parent.generics[i], type.inherits.generics[i])
+    }
+    dictionaryOf = {
+      type: dictionaryOf.type,
+      generics: dictionaryOf.generics?.map(x => replaceGenerics(x, map))
+    }
+  }
+
   const extendedPropertyTypes = getAllExtendedPropertyTypes(type.inherits)
   const openGenerics = type.generics?.map(t => t.name) ?? []
   let code = `export interface ${createName(type.name)}Keys${buildGenerics(type.generics)}${buildInherits(type)} {\n`
@@ -322,6 +334,27 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
 
   function required (property: M.Property): string {
     return property.required ? '' : '?'
+  }
+}
+
+function replaceGenerics (value: M.ValueOf, map: Map<M.TypeName, M.ValueOf>): M.ValueOf {
+  if (value.kind !== 'instance_of') {
+    return value
+  }
+
+  if (value.generics == null || value.generics.length === 0) {
+    for (const entry of map) {
+      if (entry[0].namespace === value.type.namespace && entry[0].name === value.type.name) {
+        return entry[1]
+      }
+    }
+    return value
+  }
+
+  return {
+    kind: 'instance_of',
+    type: value.type,
+    generics: value.generics.map(x => replaceGenerics(x, map))
   }
 }
 

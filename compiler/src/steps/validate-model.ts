@@ -135,8 +135,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const parentTypes = new Set<string>()
   for (const type of apiModel.types) {
     if (type.kind === 'request' || type.kind === 'interface') {
-      for (const parent of (type.implements ?? []).concat(type.inherits ?? [])) {
-        parentTypes.add(fqn(parent.type))
+      if (type.inherits != null) {
+        parentTypes.add(fqn(type.inherits.type))
       }
     }
   }
@@ -380,7 +380,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const openGenerics = openGenericSet(typeDef)
 
     validateInherits(typeDef.inherits, openGenerics)
-    validateImplements(typeDef.implements, openGenerics)
     validateBehaviors(typeDef, openGenerics)
 
     // Note: we validate codegen_name/name uniqueness independently in the path, query and body as there are some
@@ -495,7 +494,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       if (typeDef.inherits != null) {
         addInherits(typeDef.inherits)
       }
-      typeDef.implements?.forEach(addInherits)
       typeDef.behaviors?.forEach(addInherits)
     }
 
@@ -505,7 +503,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function validateInterface (typeDef: model.Interface): void {
     const openGenerics = openGenericSet(typeDef)
 
-    validateImplements(typeDef.implements, openGenerics)
     validateInherits(typeDef.inherits, openGenerics)
     validateBehaviors(typeDef, openGenerics)
     validateProperties(typeDef.properties, openGenerics, inheritedProperties(typeDef))
@@ -559,14 +556,14 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       if (typeDef.type.kind !== 'union_of') {
         modelError('The "variants" tag only applies to unions')
       } else {
-        validateTaggedUnion(typeDef.type, typeDef.variants)
+        validateTaggedUnion(typeDef.name, typeDef.type, typeDef.variants)
       }
     } else {
       validateValueOf(typeDef.type, openGenerics)
     }
   }
 
-  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag): void {
+  function validateTaggedUnion (parentName: TypeName, valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged): void {
     if (variants.kind === 'external_tag') {
       // All items must have a 'variant' attribute
       const items = flattenUnionMembers(valueOf)
@@ -610,6 +607,72 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
 
       validateValueOf(valueOf, new Set())
+    } else if (variants.kind === 'untagged') {
+      if (fqn(parentName) !== '_types.query_dsl:DecayFunction' &&
+          fqn(parentName) !== '_types.query_dsl:DistanceFeatureQuery' &&
+          fqn(parentName) !== '_types.query_dsl:RangeQuery') {
+        throw new Error(`Please contact the devtools team before adding new untagged variant ${fqn(parentName)}`)
+      }
+
+      const untypedVariant = getTypeDef(variants.untypedVariant)
+      if (untypedVariant == null) {
+        modelError(`Type ${fqn(variants.untypedVariant)} not found`)
+      }
+
+      const items = flattenUnionMembers(valueOf)
+      const baseTypes = new Set<string>()
+      let foundUntyped = false
+
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          modelError('Items of type untagged unions must be type references')
+        } else {
+          validateTypeRef(item.type, undefined, new Set<string>())
+          const type = getTypeDef(item.type)
+          if (type == null) {
+            modelError(`Type ${fqn(item.type)} not found`)
+          } else {
+            if (type.kind !== 'interface') {
+              modelError(`Type ${fqn(item.type)} must be an interface to be used in an untagged union`)
+              continue
+            }
+
+            if (untypedVariant != null && fqn(item.type) === fqn(untypedVariant.name)) {
+              foundUntyped = true
+            }
+
+            if (type.inherits == null) {
+              modelError(`Type ${fqn(item.type)} must derive from a base type to be used in an untagged union`)
+              continue
+            }
+
+            baseTypes.add(fqn(type.inherits.type))
+
+            const baseType = getTypeDef(type.inherits.type)
+            if (baseType == null) {
+              modelError(`Type ${fqn(type.inherits.type)} not found`)
+              continue
+            }
+
+            if (baseType.kind !== 'interface') {
+              modelError(`Type ${fqn(type.inherits.type)} must be an interface to be used as the base class of another interface`)
+              continue
+            }
+
+            if (baseType.generics == null || baseType.generics.length === 0) {
+              modelError('The common base type of an untagged union must accept at least one generic type argument')
+            }
+          }
+        }
+      }
+
+      if (baseTypes.size !== 1) {
+        modelError('All items of an untagged union must derive from the same common base type')
+      }
+
+      if (!foundUntyped) {
+        modelError('The untyped variant of an untagged variant must be contained in the union items')
+      }
     }
   }
 
@@ -628,21 +691,18 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
   }
 
-  function validateImplements (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
-    if (parents == null || parents.length === 0) return
-
-    context.push('Implements')
-    for (const parent of parents) {
-      validateTypeRef(parent.type, parent.generics, openGenerics)
-    }
-    context.pop()
-  }
-
   function validateBehaviors (typeDef: model.Request | model.Response | model.Interface, openGenerics: Set<string>): void {
     if (typeDef.kind !== 'response' && typeDef.behaviors != null && typeDef.behaviors.length > 0) {
       context.push('Behaviors')
       for (const parent of typeDef.behaviors) {
         validateTypeRef(parent.type, parent.generics, openGenerics)
+
+        if (parent.type.name === 'AdditionalProperty' && (parent.meta == null || parent.meta.key == null || parent.meta.value == null)) {
+          modelError(`AdditionalProperty behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with at least 2 arguments (key, value)`)
+        }
+        if (parent.type.name === 'AdditionalProperties' && (parent.meta == null || parent.meta.fieldname == null || parent.meta.description == null)) {
+          modelError(`AdditionalProperties behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with exactly 2 arguments (fieldname, description)`)
+        }
       }
       context.pop()
     }
@@ -673,11 +733,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
 
     // Does a parent have this behavior?
-    const parents = (type.implements ?? []).concat(type.inherits ?? [])
-    for (const parent of parents) {
-      const parentDef = getTypeDef(parent.type)
+    if (type.inherits != null) {
+      const parentDef = getTypeDef(type.inherits.type)
       if (parentDef == null) {
-        modelError(`No type definition for parent '${fqn(parent.type)}'`)
+        modelError(`No type definition for parent '${fqn(type.inherits.type)}'`)
         return false
       }
       if (parentDef.kind === 'request' || parentDef.kind === 'interface') {

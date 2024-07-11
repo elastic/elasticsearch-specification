@@ -73,6 +73,10 @@ export interface Request extends RequestBase {
      */
     run_as?: string[]
     /**
+     * Optional description of the role descriptor
+     */
+    description?: string
+    /**
      * Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.
      */
     transient_metadata?: Dictionary<string, UserDefinedValue>
