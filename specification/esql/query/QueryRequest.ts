@@ -21,7 +21,10 @@ import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
-import { TableValuesType } from '@esql/_types/TableValuesType'
+import {
+  TableValuesInteger,
+  TableValuesLong
+} from '@esql/_types/TableValuesType'
 
 /**
  * Executes an ES|QL request
@@ -85,7 +88,7 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<
       string,
-      Dictionary<string, SingleKeyDictionary<TableValuesType, any>>
+      Dictionary<string, TableValuesInteger | TableValuesLong>
     >
   }
 }

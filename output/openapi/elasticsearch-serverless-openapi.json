@@ -5379,11 +5379,29 @@
                     }
                   },
                   "profile": {
+                    "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
                     "type": "boolean"
                   },
                   "query": {
                     "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
                     "type": "string"
+                  },
+                  "tables": {
+                    "description": "Tables to use with the LOOKUP operation.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "oneOf": [
+                          {
+                            "$ref": "#/components/schemas/esql._types:TableValuesInteger"
+                          },
+                          {
+                            "$ref": "#/components/schemas/esql._types:TableValuesLong"
+                          }
+                        ]
+                      }
+                    }
                   }
                 },
                 "required": [
@@ -51997,6 +52015,42 @@
           "tail",
           "head"
         ]
+      },
+      "esql._types:TableValuesInteger": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          ]
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "esql._types:TableValuesLong": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          ]
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types:EsqlColumns": {
         "type": "object"

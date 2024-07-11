@@ -17,9 +17,13 @@
  * under the License.
  */
 
-export enum TableValuesType {
-  integer,
-  keyword,
-  long,
-  double
-}
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { double, integer, long } from '@_types/Numeric'
+
+export type TableValuesInteger = SingleKeyDictionary<
+  string,
+  integer | integer[]
+>
+export type TableValuesKeyword = SingleKeyDictionary<string, string | string[]>
+export type TableValuesLong = SingleKeyDictionary<string, long | long[]>
+export type TableValuesDouble = SingleKeyDictionary<string, double | double[]>

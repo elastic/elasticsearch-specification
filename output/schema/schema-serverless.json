@@ -17846,6 +17846,7 @@
             }
           },
           {
+            "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
             "name": "profile",
             "required": false,
             "type": {
@@ -17865,6 +17866,52 @@
               "type": {
                 "name": "string",
                 "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Tables to use with the LOOKUP operation.",
+            "name": "tables",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "items": [
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "TableValuesInteger",
+                        "namespace": "esql._types"
+                      }
+                    },
+                    {
+                      "kind": "instance_of",
+                      "type": {
+                        "name": "TableValuesLong",
+                        "namespace": "esql._types"
+                      }
+                    }
+                  ],
+                  "kind": "union_of"
+                }
               }
             }
           }
@@ -17922,7 +17969,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L24-L76"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L91"
     },
     {
       "body": {
@@ -89200,6 +89247,88 @@
         "namespace": "eql.search"
       },
       "specLocation": "eql/search/types.ts#L20-L32"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesInteger",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesType.ts#L23-L23",
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "_builtins"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": true,
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesLong",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesType.ts#L25-L25",
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "_builtins"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": true,
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "_types"
+                }
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
     },
     {
       "kind": "type_alias",

@@ -652,9 +652,7 @@
       "response": []
     },
     "esql.query": {
-      "request": [
-        "request definition esql.query:Request / body / Property 'tables' / dictionary_of / dictionary_of / dictionary_of / instance_of - No type definition for '_builtins:object'"
-      ],
+      "request": [],
       "response": [
         "type_alias definition _types:EsqlColumns / instance_of - No type definition for '_builtins:binary'"
       ]
