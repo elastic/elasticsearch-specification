@@ -9883,9 +9883,29 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
-export type EsqlTableValuesInteger = Partial<Record<string, integer | integer[]>>
+export interface EsqlTableValuesDouble {
+  double: EsqlTableValuesLongDouble[]
+}
 
-export type EsqlTableValuesLong = Partial<Record<string, long | long[]>>
+export interface EsqlTableValuesInteger {
+  integer: EsqlTableValuesIntegerValue[]
+}
+
+export type EsqlTableValuesIntegerValue = integer | integer[]
+
+export interface EsqlTableValuesKeyword {
+  keyword: EsqlTableValuesKeywordValue[]
+}
+
+export type EsqlTableValuesKeywordValue = string | string[]
+
+export interface EsqlTableValuesLong {
+  long: EsqlTableValuesLongValue[]
+}
+
+export type EsqlTableValuesLongDouble = double | double[]
+
+export type EsqlTableValuesLongValue = long | long[]
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
@@ -9898,7 +9918,7 @@ export interface EsqlQueryRequest extends RequestBase {
     params?: FieldValue[]
     profile?: boolean
     query: string
-    tables?: Record<string, Record<string, EsqlTableValuesInteger | EsqlTableValuesLong>>
+    tables?: Record<string, Record<string, EsqlTableValuesDouble | EsqlTableValuesInteger | EsqlTableValuesLong | EsqlTableValuesKeyword>>
   }
 }
 

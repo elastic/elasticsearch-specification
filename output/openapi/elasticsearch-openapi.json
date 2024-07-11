@@ -8072,10 +8072,16 @@
                       "additionalProperties": {
                         "oneOf": [
                           {
+                            "$ref": "#/components/schemas/esql._types:TableValuesDouble"
+                          },
+                          {
                             "$ref": "#/components/schemas/esql._types:TableValuesInteger"
                           },
                           {
                             "$ref": "#/components/schemas/esql._types:TableValuesLong"
+                          },
+                          {
+                            "$ref": "#/components/schemas/esql._types:TableValuesKeyword"
                           }
                         ]
                       }
@@ -79405,41 +79411,113 @@
           "head"
         ]
       },
+      "esql._types:TableValuesDouble": {
+        "type": "object",
+        "properties": {
+          "double": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongDouble"
+            }
+          }
+        },
+        "required": [
+          "double"
+        ]
+      },
+      "esql._types:TableValuesLongDouble": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      },
       "esql._types:TableValuesInteger": {
         "type": "object",
-        "additionalProperties": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "number"
-              }
+        "properties": {
+          "integer": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesIntegerValue"
             }
-          ]
+          }
         },
-        "minProperties": 1,
-        "maxProperties": 1
+        "required": [
+          "integer"
+        ]
+      },
+      "esql._types:TableValuesIntegerValue": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
       },
       "esql._types:TableValuesLong": {
         "type": "object",
-        "additionalProperties": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "number"
-              }
+        "properties": {
+          "long": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongValue"
             }
-          ]
+          }
         },
-        "minProperties": 1,
-        "maxProperties": 1
+        "required": [
+          "long"
+        ]
+      },
+      "esql._types:TableValuesLongValue": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesKeyword": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesKeywordValue"
+            }
+          }
+        },
+        "required": [
+          "keyword"
+        ]
+      },
+      "esql._types:TableValuesKeywordValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "_types:EsqlColumns": {
         "type": "object"

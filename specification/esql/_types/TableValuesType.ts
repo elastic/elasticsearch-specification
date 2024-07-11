@@ -17,13 +17,21 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { double, integer, long } from '@_types/Numeric'
 
-export type TableValuesInteger = SingleKeyDictionary<
-  string,
-  integer | integer[]
->
-export type TableValuesKeyword = SingleKeyDictionary<string, string | string[]>
-export type TableValuesLong = SingleKeyDictionary<string, long | long[]>
-export type TableValuesDouble = SingleKeyDictionary<string, double | double[]>
+export interface TableValuesInteger {
+  integer: TableValuesIntegerValue[]
+}
+type TableValuesIntegerValue = integer | integer[]
+export interface TableValuesKeyword {
+  keyword: TableValuesKeywordValue[]
+}
+type TableValuesKeywordValue = string | string[]
+export interface TableValuesLong {
+  long: TableValuesLongValue[]
+}
+type TableValuesLongValue = long | long[]
+export interface TableValuesDouble {
+  double: TableValuesLongDouble[]
+}
+type TableValuesLongDouble = double | double[]

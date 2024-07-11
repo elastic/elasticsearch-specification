@@ -17,13 +17,15 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
 import {
+  TableValuesDouble,
   TableValuesInteger,
-  TableValuesLong
+  TableValuesLong,
+  TableValuesKeyword
 } from '@esql/_types/TableValuesType'
 
 /**
@@ -88,7 +90,13 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<
       string,
-      Dictionary<string, TableValuesInteger | TableValuesLong>
+      Dictionary<
+        string,
+        | TableValuesDouble
+        | TableValuesInteger
+        | TableValuesLong
+        | TableValuesKeyword
+      >
     >
   }
 }
