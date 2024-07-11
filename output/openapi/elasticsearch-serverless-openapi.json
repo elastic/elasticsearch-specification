@@ -61449,7 +61449,10 @@
         },
         "required": [
           "docs_indexed",
-          "docs_processed"
+          "docs_processed",
+          "docs_remaining",
+          "percent_complete",
+          "total_docs"
         ]
       },
       "transform.get_transform_stats:TransformStatsHealth": {
