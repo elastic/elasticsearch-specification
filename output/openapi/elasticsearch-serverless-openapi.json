@@ -61009,15 +61009,6 @@
           {
             "type": "object",
             "properties": {
-              "lang": {
-                "$ref": "#/components/schemas/_types:ScriptLanguage"
-              },
-              "options": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              },
               "source": {
                 "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
               }

@@ -16938,8 +16938,6 @@ export interface SecurityRoleTemplate {
 export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
 
 export interface SecurityRoleTemplateInlineScript extends ScriptBase {
-  lang?: ScriptLanguage
-  options?: Record<string, string>
   source: SecurityRoleTemplateInlineQuery
 }
 

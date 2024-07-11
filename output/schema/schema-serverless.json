@@ -98834,7 +98834,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L281-L323"
+      "specLocation": "security/_types/Privileges.ts#L279-L321"
     },
     {
       "codegenNames": [
@@ -98910,7 +98910,7 @@
         "name": "RoleTemplateScript",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L278-L279",
+      "specLocation": "security/_types/Privileges.ts#L276-L277",
       "type": {
         "items": [
           {
@@ -98945,39 +98945,6 @@
       },
       "properties": [
         {
-          "name": "lang",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptLanguage",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "options",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
           "name": "source",
           "required": true,
           "type": {
@@ -98990,7 +98957,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L268-L273"
+      "specLocation": "security/_types/Privileges.ts#L268-L271"
     },
     {
       "kind": "interface",
@@ -99066,7 +99033,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L275-L276",
+      "specLocation": "security/_types/Privileges.ts#L273-L274",
       "type": {
         "items": [
           {
