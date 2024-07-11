@@ -62,6 +62,8 @@ impl Cli {
 #[derive(Debug, Parser)]
 #[command(author, version, about, long_about = None)]
 pub struct Cli {
+    /// input schema file, eg: ../output/schema/schema-no-generics.json
     schema: PathBuf,
+    /// default is stdout
     output: Option<PathBuf>,
 }

@@ -24,8 +24,6 @@ use clients_schema::{Availabilities, Flavor, Visibility};
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
 
-    println!("{:?}", cli.flavor);
-
     cli.run()?;
 
     Ok(())
@@ -72,10 +70,13 @@ impl Cli {
 
 
 #[derive(Debug, Parser)]
-#[command(author, version, about, long_about = None)]
+#[command(author, version, about, long_about)]
 pub struct Cli {
+    /// input schema file, eg: ../output/schema/schema-no-generics.json
     schema: PathBuf,
+    /// filter flavor, eg: stack
     flavor: Flavor,
-
+    /// default is stdout
+    #[arg(long)]
     output: Option<PathBuf>,
 }
