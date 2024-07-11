@@ -71,7 +71,6 @@ export class ScriptBase {
 }
 
 /**
- * @variants container
  * @shortcut_property source
  * */
 export class Script {
@@ -87,18 +86,13 @@ export class Script {
   /**
    * Specifies any named parameters that are passed into the script as variables.
    * Use parameters instead of hard-coded values to decrease compile time.
-   * @variant container_property
    */
   params?: Dictionary<string, UserDefinedValue>
   /**
    * Specifies the language the script is written in.
    * @server_default painless
-   * @variant container_property
    */
   lang?: ScriptLanguage
-  /**
-   * @variant container_property
-   */
   options?: Dictionary<string, string>
 }
 
