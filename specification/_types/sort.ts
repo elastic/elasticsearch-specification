@@ -67,6 +67,7 @@ export class GeoDistanceSort
   ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
+  nested?: NestedSortValue
 }
 
 export class ScriptSort {
