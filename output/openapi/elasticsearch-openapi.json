@@ -65743,7 +65743,22 @@
               }
             ]
           }
-        }
+        },
+        "required": [
+          "shards",
+          "shards.undesired",
+          "write_load.forecast",
+          "disk.indices.forecast",
+          "disk.indices",
+          "disk.used",
+          "disk.avail",
+          "disk.total",
+          "disk.percent",
+          "host",
+          "ip",
+          "node",
+          "node.role"
+        ]
       },
       "_types:ByteSize": {
         "externalDocs": {
@@ -80440,6 +80455,9 @@
           "creating_primaries": {
             "type": "number"
           },
+          "creating_replicas": {
+            "type": "number"
+          },
           "initializing_primaries": {
             "type": "number"
           },
@@ -80467,6 +80485,7 @@
         },
         "required": [
           "creating_primaries",
+          "creating_replicas",
           "initializing_primaries",
           "initializing_replicas",
           "restarting_primaries",

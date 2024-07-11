@@ -108,6 +108,7 @@ export class ShardsAvailabilityIndicator extends BaseIndicator {
 }
 export class ShardsAvailabilityIndicatorDetails {
   creating_primaries: long
+  creating_replicas: long
   initializing_primaries: long
   initializing_replicas: long
   restarting_primaries: long
@@ -150,7 +151,7 @@ export class IlmIndicator extends BaseIndicator {
 export class IlmIndicatorDetails {
   ilm_status: LifecycleOperationMode
   policies: long
-  stagnating_indices: long
+  stagnating_indices: integer
 }
 
 /** SLM */

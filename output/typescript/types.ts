@@ -498,7 +498,7 @@ export interface HealthReportIlmIndicator extends HealthReportBaseIndicator {
 export interface HealthReportIlmIndicatorDetails {
   ilm_status: LifecycleOperationMode
   policies: long
-  stagnating_indices: long
+  stagnating_indices: integer
 }
 
 export interface HealthReportImpact {
@@ -578,6 +578,7 @@ export interface HealthReportShardsAvailabilityIndicator extends HealthReportBas
 
 export interface HealthReportShardsAvailabilityIndicatorDetails {
   creating_primaries: long
+  creating_replicas: long
   initializing_primaries: long
   initializing_replicas: long
   restarting_primaries: long
@@ -6508,39 +6509,39 @@ export interface CatAliasesRequest extends CatCatRequestBase {
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
 
 export interface CatAllocationAllocationRecord {
-  shards?: string
-  s?: string
-  'shards.undesired'?: string | null
-  'write_load.forecast'?: double | null
-  wlf?: double | null
-  writeLoadForecast?: double | null
-  'disk.indices.forecast'?: ByteSize | null
-  dif?: ByteSize | null
-  diskIndicesForecast?: ByteSize | null
-  'disk.indices'?: ByteSize | null
-  di?: ByteSize | null
-  diskIndices?: ByteSize | null
-  'disk.used'?: ByteSize | null
-  du?: ByteSize | null
-  diskUsed?: ByteSize | null
-  'disk.avail'?: ByteSize | null
-  da?: ByteSize | null
-  diskAvail?: ByteSize | null
-  'disk.total'?: ByteSize | null
-  dt?: ByteSize | null
-  diskTotal?: ByteSize | null
-  'disk.percent'?: Percentage | null
-  dp?: Percentage | null
-  diskPercent?: Percentage | null
-  host?: Host | null
-  h?: Host | null
-  ip?: Ip | null
-  node?: string
-  n?: string
-  'node.role'?: string | null
-  r?: string | null
-  role?: string | null
-  nodeRole?: string | null
+  shards: string
+  s: string
+  'shards.undesired': string | null
+  'write_load.forecast': double | null
+  wlf: double | null
+  writeLoadForecast: double | null
+  'disk.indices.forecast': ByteSize | null
+  dif: ByteSize | null
+  diskIndicesForecast: ByteSize | null
+  'disk.indices': ByteSize | null
+  di: ByteSize | null
+  diskIndices: ByteSize | null
+  'disk.used': ByteSize | null
+  du: ByteSize | null
+  diskUsed: ByteSize | null
+  'disk.avail': ByteSize | null
+  da: ByteSize | null
+  diskAvail: ByteSize | null
+  'disk.total': ByteSize | null
+  dt: ByteSize | null
+  diskTotal: ByteSize | null
+  'disk.percent': Percentage | null
+  dp: Percentage | null
+  diskPercent: Percentage | null
+  host: Host | null
+  h: Host | null
+  ip: Ip | null
+  node: string
+  n: string
+  'node.role': string | null
+  r: string | null
+  role: string | null
+  nodeRole: string | null
 }
 
 export interface CatAllocationRequest extends CatCatRequestBase {
