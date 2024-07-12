@@ -18,10 +18,11 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices } from '@_types/common'
+import { Id, Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldSecurity } from './FieldSecurity'
-import { ScriptLanguage, ScriptBase, StoredScriptId } from '@_types/Scripting'
+import { ScriptLanguage, ScriptBase, Script } from '@_types/Scripting'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ApplicationPrivileges {
   /**
@@ -270,17 +271,27 @@ export class RoleTemplateQuery {
 }
 
 /** @shortcut_property source */
-export class RoleTemplateInlineScript extends ScriptBase {
+export class RoleTemplateScript {
+  source?: RoleTemplateInlineQuery
+  /**
+   * The `id` for a stored script.
+   */
+  id?: Id
+  /**
+   * Specifies any named parameters that are passed into the script as variables.
+   * Use parameters instead of hard-coded values to decrease compile time.
+   */
+  params?: Dictionary<string, UserDefinedValue>
+  /**
+   * Specifies the language the script is written in.
+   * @server_default painless
+   */
   lang?: ScriptLanguage
   options?: Dictionary<string, string>
-  source: RoleTemplateInlineQuery
 }
 
 /** @codegen_names query_string, query_object */
 export type RoleTemplateInlineQuery = string | QueryContainer
-
-/** @codegen_names inline, stored */
-export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
 
 /** @non_exhaustive */
 export enum IndexPrivilege {
