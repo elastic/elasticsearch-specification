@@ -16936,7 +16936,7 @@ export interface SecurityRoleTemplateQuery {
 }
 
 export interface SecurityRoleTemplateScript {
-  source: SecurityRoleTemplateInlineQuery
+  source?: SecurityRoleTemplateInlineQuery
   id?: Id
   params?: Record<string, any>
   lang?: ScriptLanguage

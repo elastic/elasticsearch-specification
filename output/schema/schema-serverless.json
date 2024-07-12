@@ -98909,7 +98909,7 @@
       "properties": [
         {
           "name": "source",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

@@ -95487,10 +95487,7 @@
               "type": "string"
             }
           }
-        },
-        "required": [
-          "source"
-        ]
+        }
       },
       "security._types:RoleTemplateInlineQuery": {
         "oneOf": [

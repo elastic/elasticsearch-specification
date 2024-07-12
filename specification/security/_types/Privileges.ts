@@ -268,7 +268,7 @@ export class RoleTemplateQuery {
 
 /** @shortcut_property source */
 export class RoleTemplateScript {
-  source: RoleTemplateInlineQuery
+  source?: RoleTemplateInlineQuery
   /**
    * The `id` for a stored script.
    */
