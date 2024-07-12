@@ -95463,46 +95463,14 @@
         }
       },
       "security._types:RoleTemplateScript": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/security._types:RoleTemplateInlineScript"
-          },
-          {
-            "$ref": "#/components/schemas/_types:Script"
-          }
-        ]
-      },
-      "security._types:RoleTemplateInlineScript": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "source": {
-                "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
-              }
-            },
-            "required": [
-              "source"
-            ]
-          }
-        ]
-      },
-      "security._types:RoleTemplateInlineQuery": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          }
-        ]
-      },
-      "_types:ScriptBase": {
         "type": "object",
         "properties": {
+          "source": {
+            "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
           "params": {
             "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
             "type": "object",
@@ -95519,7 +95487,20 @@
               "type": "string"
             }
           }
-        }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "security._types:RoleTemplateInlineQuery": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          }
+        ]
       },
       "security._types:GlobalPrivilege": {
         "type": "object",

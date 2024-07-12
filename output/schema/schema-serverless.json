@@ -98757,7 +98757,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L41-L194"
+      "specLocation": "security/_types/Privileges.ts#L42-L195"
     },
     {
       "kind": "enum",
@@ -98834,7 +98834,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L279-L321"
+      "specLocation": "security/_types/Privileges.ts#L292-L334"
     },
     {
       "codegenNames": [
@@ -98848,7 +98848,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L246-L254",
+      "specLocation": "security/_types/Privileges.ts#L247-L255",
       "type": {
         "items": [
           {
@@ -98898,49 +98898,12 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L256-L266"
+      "specLocation": "security/_types/Privileges.ts#L257-L267"
     },
     {
-      "codegenNames": [
-        "inline",
-        "stored"
-      ],
-      "kind": "type_alias",
-      "name": {
-        "name": "RoleTemplateScript",
-        "namespace": "security._types"
-      },
-      "specLocation": "security/_types/Privileges.ts#L276-L277",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleTemplateInlineScript",
-              "namespace": "security._types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "Script",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "RoleTemplateInlineScript",
+        "name": "RoleTemplateScript",
         "namespace": "security._types"
       },
       "properties": [
@@ -98954,18 +98917,19 @@
               "namespace": "security._types"
             }
           }
-        }
-      ],
-      "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L268-L271"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptBase",
-        "namespace": "_types"
-      },
-      "properties": [
+        },
+        {
+          "description": "The `id` for a stored script.",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
         {
           "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
           "name": "params",
@@ -99021,7 +98985,8 @@
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L59-L71"
+      "shortcutProperty": "source",
+      "specLocation": "security/_types/Privileges.ts#L269-L287"
     },
     {
       "codegenNames": [
@@ -99033,7 +98998,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L273-L274",
+      "specLocation": "security/_types/Privileges.ts#L289-L290",
       "type": {
         "items": [
           {
@@ -134140,7 +134105,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L196-L220"
+      "specLocation": "security/_types/Privileges.ts#L197-L221"
     },
     {
       "kind": "interface",
@@ -134224,7 +134189,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L26-L39"
+      "specLocation": "security/_types/Privileges.ts#L27-L40"
     },
     {
       "kind": "interface",

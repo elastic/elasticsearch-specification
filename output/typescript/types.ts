@@ -2600,12 +2600,6 @@ export interface Script {
   options?: Record<string, string>
 }
 
-export interface ScriptBase {
-  params?: Record<string, any>
-  lang?: ScriptLanguage
-  options?: Record<string, string>
-}
-
 export interface ScriptField {
   script: Script | string
   ignore_failure?: boolean
@@ -16937,15 +16931,17 @@ export interface SecurityRoleTemplate {
 
 export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
 
-export interface SecurityRoleTemplateInlineScript extends ScriptBase {
-  source: SecurityRoleTemplateInlineQuery
-}
-
 export interface SecurityRoleTemplateQuery {
-  template?: SecurityRoleTemplateScript
+  template?: SecurityRoleTemplateScript | SecurityRoleTemplateInlineQuery
 }
 
-export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | Script | string
+export interface SecurityRoleTemplateScript {
+  source: SecurityRoleTemplateInlineQuery
+  id?: Id
+  params?: Record<string, any>
+  lang?: ScriptLanguage
+  options?: Record<string, string>
+}
 
 export type SecurityTemplateFormat = 'string' | 'json'
 
