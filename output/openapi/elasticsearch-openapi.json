@@ -51720,7 +51720,7 @@
                   "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContextSetup"
                 },
                 "script": {
-                  "$ref": "#/components/schemas/_types:InlineScript"
+                  "$ref": "#/components/schemas/_types:Script"
                 }
               }
             }
@@ -58928,42 +58928,32 @@
         ]
       },
       "_types:Script": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:InlineScript"
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The script source.",
+            "type": "string"
           },
-          {
-            "$ref": "#/components/schemas/_types:StoredScriptId"
-          }
-        ]
-      },
-      "_types:InlineScript": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
           },
-          {
+          "params": {
+            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
             "type": "object",
-            "properties": {
-              "lang": {
-                "$ref": "#/components/schemas/_types:ScriptLanguage"
-              },
-              "options": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              },
-              "source": {
-                "description": "The script source.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "source"
-            ]
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "lang": {
+            "$ref": "#/components/schemas/_types:ScriptLanguage"
+          },
+          "options": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
-        ]
+        }
       },
       "_types:ScriptLanguage": {
         "anyOf": [
@@ -58978,36 +58968,6 @@
           },
           {
             "type": "string"
-          }
-        ]
-      },
-      "_types:ScriptBase": {
-        "type": "object",
-        "properties": {
-          "params": {
-            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          }
-        }
-      },
-      "_types:StoredScriptId": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "id": {
-                "$ref": "#/components/schemas/_types:Id"
-              }
-            },
-            "required": [
-              "id"
-            ]
           }
         ]
       },
@@ -95472,7 +95432,7 @@
         "type": "object",
         "properties": {
           "script": {
-            "$ref": "#/components/schemas/_types:InlineScript"
+            "$ref": "#/components/schemas/_types:Script"
           }
         },
         "required": [
@@ -96150,41 +96110,31 @@
         }
       },
       "security._types:RoleTemplateScript": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/security._types:RoleTemplateInlineScript"
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
           },
-          {
-            "$ref": "#/components/schemas/_types:StoredScriptId"
-          }
-        ]
-      },
-      "security._types:RoleTemplateInlineScript": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
           },
-          {
+          "params": {
+            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
             "type": "object",
-            "properties": {
-              "lang": {
-                "$ref": "#/components/schemas/_types:ScriptLanguage"
-              },
-              "options": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              },
-              "source": {
-                "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
-              }
-            },
-            "required": [
-              "source"
-            ]
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "lang": {
+            "$ref": "#/components/schemas/_types:ScriptLanguage"
+          },
+          "options": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
-        ]
+        }
       },
       "security._types:RoleTemplateInlineQuery": {
         "oneOf": [

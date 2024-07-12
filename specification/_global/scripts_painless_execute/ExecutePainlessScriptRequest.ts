@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { InlineScript } from '@_types/Scripting'
+import { Script } from '@_types/Scripting'
 import { PainlessContextSetup } from './types'
 
 /**
@@ -41,6 +41,6 @@ export interface Request extends RequestBase {
     /**
      * The Painless script to execute.
      */
-    script?: InlineScript
+    script?: Script
   }
 }

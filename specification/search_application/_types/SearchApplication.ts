@@ -19,7 +19,7 @@
 
 import { IndexName, Name } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
-import { InlineScript } from '@_types/Scripting'
+import { Script } from '@_types/Scripting'
 
 export class SearchApplication {
   /**
@@ -48,5 +48,5 @@ export class SearchApplicationTemplate {
   /**
    * The associated mustache template.
    */
-  script: InlineScript
+  script: Script
 }
