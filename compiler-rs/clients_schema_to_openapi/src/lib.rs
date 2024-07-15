@@ -160,13 +160,13 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
             }
             if let Some(stability) = &availability.stability {
                 match stability {
-                    Stability::Stable => {}
                     Stability::Beta => {
                         result.insert("x-beta".to_string(), serde_json::Value::Bool(true));
                     }
                     Stability::Experimental => {
                         result.insert("x-technical-preview".to_string(), serde_json::Value::Bool(true));
                     }
+                    _ => {}
                 }
             }
         }
