@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
 
 /**
+ * Delete data streams.
  * Deletes one or more data streams and their backing indices.
  * @rest_spec_name indices.delete_data_stream
  * @availability stack since=7.9.0 stability=stable
