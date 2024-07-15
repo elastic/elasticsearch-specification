@@ -25,7 +25,7 @@ use std::io::{BufWriter, Write};
 use std::path::Path;
 use indexmap::IndexMap;
 
-use clients_schema::{Availabilities, Endpoint, IndexedModel};
+use clients_schema::{Availabilities, Endpoint, IndexedModel, Stability};
 use openapiv3::{Components, OpenAPI};
 use tracing::warn;
 
@@ -149,7 +149,7 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extension(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
 
     if let Some(avails) = availabilities {
@@ -157,7 +157,17 @@ pub fn availability_as_extension(availabilities: &Option<Availabilities>) -> Ind
         for (_, availability) in avails {
             if let Some(since) = &availability.since {
                 result.insert("x-available-since".to_string(), serde_json::Value::String(since.clone()));
-                break;
+            }
+            if let Some(stability) = &availability.stability {
+                match stability {
+                    Stability::Stable => {}
+                    Stability::Beta => {
+                        result.insert("x-beta".to_string(), serde_json::Value::Bool(true));
+                    }
+                    Stability::Experimental => {
+                        result.insert("x-technical-preview".to_string(), serde_json::Value::Bool(true));
+                    }
+                }
             }
         }
     }
