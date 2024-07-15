@@ -11465,7 +11465,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11500,7 +11501,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11532,7 +11534,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11593,7 +11596,8 @@
         "tags": [
           "indices.exists_alias"
         ],
-        "summary": "Checks if an alias exists",
+        "summary": "Check aliases",
+        "description": "Checks if one or more data stream or index aliases exist.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11630,7 +11634,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11662,7 +11667,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -12513,7 +12519,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -12545,7 +12552,8 @@
         "tags": [
           "indices.exists_alias"
         ],
-        "summary": "Checks if an alias exists",
+        "summary": "Check aliases",
+        "description": "Checks if one or more data stream or index aliases exist.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -12579,7 +12587,8 @@
         "tags": [
           "indices.explain_data_lifecycle"
         ],
-        "summary": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc",
+        "summary": "Get the status for a data stream lifecycle",
+        "description": "Retrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html"
         },
@@ -12979,7 +12988,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -13010,7 +13020,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -13339,8 +13350,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams, returns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13378,8 +13389,8 @@
         "tags": [
           "indices.put_settings"
         ],
-        "summary": "Changes a dynamic index setting in real time",
-        "description": "For data streams, index setting changes are applied to all backing indices by default.",
+        "summary": "Update index settings",
+        "description": "Changes dynamic index settings in real time. For data streams, index setting changes are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
@@ -13422,8 +13433,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams, returns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13464,8 +13475,8 @@
         "tags": [
           "indices.put_settings"
         ],
-        "summary": "Changes a dynamic index setting in real time",
-        "description": "For data streams, index setting changes are applied to all backing indices by default.",
+        "summary": "Update index settings",
+        "description": "Changes dynamic index settings in real time. For data streams, index setting changes are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
@@ -13511,8 +13522,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams, returns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13558,8 +13569,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams, returns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13920,8 +13931,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -13947,8 +13958,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -13976,8 +13987,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -14006,8 +14017,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -14256,7 +14267,8 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Creates a new index for a data stream or index alias",
+        "summary": "Roll over to a new index",
+        "description": "Creates a new index for a data stream or index alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
@@ -14294,7 +14306,8 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Creates a new index for a data stream or index alias",
+        "summary": "Roll over to a new index",
+        "description": "Creates a new index for a data stream or index alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
@@ -15071,7 +15084,8 @@
         "tags": [
           "indices.update_aliases"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -16131,8 +16145,8 @@
         "tags": [
           "license.get"
         ],
-        "summary": "This API returns information about the type of license, when it was issued, and when it expires, for example",
-        "description": "For more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
+        "summary": "Get license information",
+        "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires. For more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html"
         },
@@ -25450,7 +25464,8 @@
         "tags": [
           "reindex"
         ],
-        "summary": "Allows to copy documents from one index to another, optionally filtering the source documents by a query, changing the destination index settings, or fetching the documents from a remote cluster",
+        "summary": "Reindex documents",
+        "description": "Copies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html"
         },
