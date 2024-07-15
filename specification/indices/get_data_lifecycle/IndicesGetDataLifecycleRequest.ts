@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
 
 /**
+ * Get data stream lifecycles.
  * Retrieves the data stream lifecycle configuration of one or more data streams.
  * @rest_spec_name indices.get_data_lifecycle
  * @availability stack since=8.11.0 stability=stable

@@ -11304,7 +11304,8 @@
         "tags": [
           "indices.get_data_stream"
         ],
-        "summary": "Retrieves information about one or more data streams",
+        "summary": "Get data streams",
+        "description": "Retrieves information about one or more data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -11331,8 +11332,8 @@
         "tags": [
           "indices.create_data_stream"
         ],
-        "summary": "Creates a data stream",
-        "description": "You must have a matching index template with data stream enabled.",
+        "summary": "Create a data stream",
+        "description": "Creates a data stream. You must have a matching index template with data stream enabled.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -11368,7 +11369,8 @@
         "tags": [
           "indices.delete_data_stream"
         ],
-        "summary": "Deletes one or more data streams and their backing indices",
+        "summary": "Delete data streams",
+        "description": "Deletes one or more data streams and their backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -11416,7 +11418,8 @@
         "tags": [
           "indices.data_streams_stats"
         ],
-        "summary": "Retrieves statistics for one or more data streams",
+        "summary": "Get data stream stats",
+        "description": "Retrieves statistics for one or more data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -11439,7 +11442,8 @@
         "tags": [
           "indices.data_streams_stats"
         ],
-        "summary": "Retrieves statistics for one or more data streams",
+        "summary": "Get data stream stats",
+        "description": "Retrieves statistics for one or more data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -11725,7 +11729,8 @@
         "tags": [
           "indices.get_data_lifecycle"
         ],
-        "summary": "Retrieves the data stream lifecycle configuration of one or more data streams",
+        "summary": "Get data stream lifecycles",
+        "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html"
         },
@@ -11792,7 +11797,8 @@
         "tags": [
           "indices.put_data_lifecycle"
         ],
-        "summary": "Update the data lifecycle of the specified data streams",
+        "summary": "Update data stream lifecycles",
+        "description": "Update the data stream lifecycle of the specified data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html"
         },
@@ -11875,7 +11881,8 @@
         "tags": [
           "indices.delete_data_lifecycle"
         ],
-        "summary": "Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle",
+        "summary": "Delete data stream lifecycles",
+        "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html"
         },
@@ -13044,7 +13051,8 @@
         "tags": [
           "indices.get_data_stream"
         ],
-        "summary": "Retrieves information about one or more data streams",
+        "summary": "Get data streams",
+        "description": "Retrieves information about one or more data streams.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -13631,8 +13639,8 @@
         "tags": [
           "indices.migrate_to_data_stream"
         ],
-        "summary": "Converts an index alias to a data stream",
-        "description": "You must have a matching index template that is data stream enabled. The alias must meet the following criteria: The alias must have a write index; All indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type; The alias must not have any filters; The alias must not use custom routing. If successful, the request removes the alias and creates a data stream with the same name. The indices for the alias become hidden backing indices for the stream. The write index for the alias becomes the write index for the stream.",
+        "summary": "Convert an index alias to a data stream",
+        "description": "Converts an index alias to a data stream. You must have a matching index template that is data stream enabled. The alias must meet the following criteria: The alias must have a write index; All indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type; The alias must not have any filters; The alias must not use custom routing. If successful, the request removes the alias and creates a data stream with the same name. The indices for the alias become hidden backing indices for the stream. The write index for the alias becomes the write index for the stream.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -13670,7 +13678,8 @@
         "tags": [
           "indices.modify_data_stream"
         ],
-        "summary": "Performs one or more data stream modification actions in a single atomic operation",
+        "summary": "Update data streams",
+        "description": "Performs one or more data stream modification actions in a single atomic operation.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
