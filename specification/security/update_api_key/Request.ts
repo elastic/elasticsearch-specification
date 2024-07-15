@@ -24,6 +24,7 @@ import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Duration } from '@_types/Time'
 
 /**
+ * Update an API key.
  * Updates attributes of an existing API key.
  * Users can only update API keys that they created or that were granted to them.
  * Use this API to update API keys created by the create API Key or grant API Key APIs.

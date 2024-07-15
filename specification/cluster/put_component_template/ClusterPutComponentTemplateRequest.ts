@@ -23,6 +23,7 @@ import { Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create or update a component template.
  * Creates or updates a component template.
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  *
