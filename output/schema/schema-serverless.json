@@ -84605,7 +84605,7 @@
         },
         {
           "name": "m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84616,7 +84616,7 @@
         },
         {
           "name": "ef_construction",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84624,9 +84624,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "confidence_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L26"
+      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L27"
     },
     {
       "inherits": {
