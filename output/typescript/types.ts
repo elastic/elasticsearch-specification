@@ -4996,8 +4996,9 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
 
 export interface MappingDenseVectorIndexOptions {
   type: string
-  m: integer
-  ef_construction: integer
+  m?: integer
+  ef_construction?: integer
+  confidence_interval?: float
 }
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
