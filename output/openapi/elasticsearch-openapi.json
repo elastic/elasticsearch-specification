@@ -56111,6 +56111,9 @@
           "_source": {
             "type": "object"
           },
+          "_rank": {
+            "type": "number"
+          },
           "_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
@@ -95356,7 +95359,7 @@
                 "description": "How much influence documents in individual result sets per query have over the final ranked result set",
                 "type": "number"
               },
-              "window_size": {
+              "rank_window_size": {
                 "description": "Size of the individual result sets per query",
                 "type": "number"
               }

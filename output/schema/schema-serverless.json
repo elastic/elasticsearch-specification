@@ -51302,7 +51302,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L106-L140"
+      "specLocation": "_global/search/_types/hits.ts#L107-L141"
     },
     {
       "kind": "type_alias",
@@ -66917,7 +66917,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L142-L150",
+      "specLocation": "_global/search/_types/hits.ts#L143-L151",
       "type": {
         "items": [
           {
@@ -69041,7 +69041,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L66-L72"
+      "specLocation": "_global/search/_types/hits.ts#L67-L73"
     },
     {
       "kind": "interface",
@@ -69073,7 +69073,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L94-L97"
+      "specLocation": "_global/search/_types/hits.ts#L95-L98"
     },
     {
       "kind": "enum",
@@ -69091,7 +69091,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L99-L104"
+      "specLocation": "_global/search/_types/hits.ts#L100-L105"
     },
     {
       "generics": [
@@ -69337,6 +69337,17 @@
           }
         },
         {
+          "name": "_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "_seq_no",
           "required": false,
           "type": {
@@ -69381,7 +69392,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L64"
+      "specLocation": "_global/search/_types/hits.ts#L40-L65"
     },
     {
       "kind": "interface",
@@ -69499,7 +69510,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L84-L86"
+      "specLocation": "_global/search/_types/hits.ts#L85-L87"
     },
     {
       "kind": "interface",
@@ -69542,7 +69553,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L88-L92"
+      "specLocation": "_global/search/_types/hits.ts#L89-L93"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
@@ -133097,7 +133108,7 @@
         },
         {
           "description": "Size of the individual result sets per query",
-          "name": "window_size",
+          "name": "rank_window_size",
           "required": false,
           "type": {
             "kind": "instance_of",

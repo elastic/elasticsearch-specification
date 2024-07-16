@@ -33,5 +33,5 @@ export class RrfRank extends RankBase {
   /** How much influence documents in individual result sets per query have over the final ranked result set  */
   rank_constant?: long
   /** Size of the individual result sets per query */
-  window_size?: long
+  rank_window_size?: long
 }
