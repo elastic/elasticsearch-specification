@@ -1469,6 +1469,7 @@ export interface SearchHit<TDocument = unknown> {
   _node?: string
   _routing?: string
   _source?: TDocument
+  _rank?: integer
   _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
@@ -2586,7 +2587,7 @@ export type Routing = string
 
 export interface RrfRank {
   rank_constant?: long
-  window_size?: long
+  rank_window_size?: long
 }
 
 export type ScalarValue = long | double | string | boolean | null
