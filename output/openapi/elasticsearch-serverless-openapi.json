@@ -49477,12 +49477,13 @@
           },
           "ef_construction": {
             "type": "number"
+          },
+          "confidence_interval": {
+            "type": "number"
           }
         },
         "required": [
-          "type",
-          "m",
-          "ef_construction"
+          "type"
         ]
       },
       "_types.mapping:FlattenedProperty": {
