@@ -42105,7 +42105,7 @@
           },
           {
             "name": "_id",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -131595,7 +131595,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -131693,7 +131693,7 @@
       "properties": [
         {
           "name": "field_statistics",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

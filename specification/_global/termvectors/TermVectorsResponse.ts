@@ -25,7 +25,7 @@ import { TermVector } from './types'
 export class Response {
   body: {
     found: boolean
-    _id: Id
+    _id?: Id
     _index: IndexName
     term_vectors?: Dictionary<Field, TermVector>
     took: long
