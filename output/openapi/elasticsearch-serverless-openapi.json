@@ -34153,6 +34153,56 @@
         ]
       },
       "_types.aggregations:AggregationRange": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:UntypedAggregationRange"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:NumberAggregationRange"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations:StringAggregationRange"
+          }
+        ]
+      },
+      "_types.aggregations:UntypedAggregationRange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations:AggregationRangeBase": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "description": "Start of the range (inclusive).",
+            "type": "object"
+          },
+          "key": {
+            "description": "Custom key to return the range with.",
+            "type": "string"
+          },
+          "to": {
+            "description": "End of the range (exclusive).",
+            "type": "object"
+          }
+        }
+      },
+      "_types.aggregations:NumberAggregationRange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBasedouble"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations:AggregationRangeBasedouble": {
         "type": "object",
         "properties": {
           "from": {
@@ -34182,6 +34232,33 @@
                 "type": "string"
               }
             ]
+          }
+        }
+      },
+      "_types.aggregations:StringAggregationRange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBasestring"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations:AggregationRangeBasestring": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "description": "Start of the range (inclusive).",
+            "type": "string"
+          },
+          "key": {
+            "description": "Custom key to return the range with.",
+            "type": "string"
+          },
+          "to": {
+            "description": "End of the range (exclusive).",
+            "type": "string"
           }
         }
       },

@@ -688,11 +688,20 @@ export class RangeAggregation extends BucketAggregationBase {
   format?: string
 }
 
-export class AggregationRange {
+/**
+ * @codegen_names untyped, number, string
+ * @variants untagged untyped=_types.aggregations.UntypedAggregationRange
+ */
+export type AggregationRange =
+  | UntypedAggregationRange
+  | NumberAggregationRange
+  | StringAggregationRange
+
+export class AggregationRangeBase<T> {
   /**
    * Start of the range (inclusive).
    */
-  from?: double | null
+  from?: T
   /**
    * Custom key to return the range with.
    */
@@ -700,12 +709,15 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double | null
+  to?: T
 }
 
-/**
- * @ext_doc_id search-aggregations-bucket-rare-terms-aggregation
- */
+export class NumberAggregationRange extends AggregationRangeBase<double> {}
+
+export class StringAggregationRange extends AggregationRangeBase<string> {}
+
+export class UntypedAggregationRange extends AggregationRangeBase<UserDefinedValue> {}
+
 export class RareTermsAggregation extends BucketAggregationBase {
   /**
    * Terms that should be excluded from the aggregation.

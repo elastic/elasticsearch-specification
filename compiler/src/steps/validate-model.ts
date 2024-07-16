@@ -599,6 +599,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     } else if (variants.kind === 'untagged') {
       if (fqn(parentName) !== '_types.query_dsl:DecayFunction' &&
           fqn(parentName) !== '_types.query_dsl:DistanceFeatureQuery' &&
+          fqn(parentName) !== '_types.aggregations:AggregationRange' &&
           fqn(parentName) !== '_types.query_dsl:RangeQuery') {
         throw new Error(`Please contact the devtools team before adding new untagged variant ${fqn(parentName)}`)
       }
