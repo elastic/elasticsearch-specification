@@ -40012,7 +40012,6 @@
               },
               "required": [
                 "found",
-                "_id",
                 "_index",
                 "took",
                 "_version"
@@ -90970,7 +90969,6 @@
           }
         },
         "required": [
-          "_id",
           "_index"
         ]
       },
@@ -90988,7 +90986,6 @@
           }
         },
         "required": [
-          "field_statistics",
           "terms"
         ]
       },

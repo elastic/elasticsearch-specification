@@ -860,7 +860,7 @@ export interface MtermvectorsResponse {
 }
 
 export interface MtermvectorsTermVectorsResult {
-  _id: Id
+  _id?: Id
   _index: IndexName
   _version?: VersionNumber
   took?: long
@@ -1890,7 +1890,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
 
 export interface TermvectorsResponse {
   found: boolean
-  _id: Id
+  _id?: Id
   _index: IndexName
   term_vectors?: Record<Field, TermvectorsTermVector>
   took: long
@@ -1906,7 +1906,7 @@ export interface TermvectorsTerm {
 }
 
 export interface TermvectorsTermVector {
-  field_statistics: TermvectorsFieldStatistics
+  field_statistics?: TermvectorsFieldStatistics
   terms: Record<string, TermvectorsTerm>
 }
 
