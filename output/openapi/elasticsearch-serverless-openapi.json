@@ -5453,7 +5453,7 @@
                     "type": "string"
                   },
                   "tables": {
-                    "description": "Tables to use with the LOOKUP operation.",
+                    "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
                     "type": "object",
                     "additionalProperties": {
                       "type": "object",

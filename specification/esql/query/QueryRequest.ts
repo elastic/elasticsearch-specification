@@ -81,7 +81,8 @@ export interface Request extends RequestBase {
      */
     query: string
     /**
-     * Tables to use with the LOOKUP operation.
+     * Tables to use with the LOOKUP operation. The top level key is the table
+     * name and the next level key is the column name.
      */
     tables?: Dictionary<string, Dictionary<string, TableValues>>
   }

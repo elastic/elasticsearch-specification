@@ -17827,7 +17827,7 @@
             }
           },
           {
-            "description": "Tables to use with the LOOKUP operation.",
+            "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
             "name": "tables",
             "required": false,
             "type": {
@@ -17914,7 +17914,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L26-L92"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L89"
     },
     {
       "body": {
