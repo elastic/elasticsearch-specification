@@ -33842,7 +33842,7 @@
                 "description": "Array of date ranges.",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types.aggregations:DateRangeExpression"
+                  "$ref": "#/components/schemas/_types.aggregations:DateAggregationRange"
                 }
               },
               "time_zone": {
@@ -33856,7 +33856,17 @@
           }
         ]
       },
-      "_types.aggregations:DateRangeExpression": {
+      "_types.aggregations:DateAggregationRange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBaseFieldDateMath"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations:AggregationRangeBaseFieldDateMath": {
         "type": "object",
         "properties": {
           "from": {
@@ -34158,10 +34168,13 @@
             "$ref": "#/components/schemas/_types.aggregations:UntypedAggregationRange"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations:DateAggregationRange"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations:NumberAggregationRange"
           },
           {
-            "$ref": "#/components/schemas/_types.aggregations:StringAggregationRange"
+            "$ref": "#/components/schemas/_types.aggregations:TermAggregationRange"
           }
         ]
       },
@@ -34235,7 +34248,7 @@
           }
         }
       },
-      "_types.aggregations:StringAggregationRange": {
+      "_types.aggregations:TermAggregationRange": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBasestring"
