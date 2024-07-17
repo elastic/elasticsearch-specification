@@ -17851,37 +17851,11 @@
                 "kind": "dictionary_of",
                 "singleKey": false,
                 "value": {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "TableValuesDouble",
-                        "namespace": "esql._types"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "TableValuesInteger",
-                        "namespace": "esql._types"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "TableValuesLong",
-                        "namespace": "esql._types"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "TableValuesKeyword",
-                        "namespace": "esql._types"
-                      }
-                    }
-                  ],
-                  "kind": "union_of"
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TableValues",
+                    "namespace": "esql._types"
+                  }
                 }
               }
             }
@@ -17940,7 +17914,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L31-L102"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L92"
     },
     {
       "body": {
@@ -89236,7 +89210,7 @@
         "name": "TableValuesIntegerValue",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/TableValuesType.ts#L25-L25",
+      "specLocation": "esql/_types/TableValues.ts#L30-L30",
       "type": {
         "items": [
           {
@@ -89266,7 +89240,7 @@
         "name": "TableValuesKeywordValue",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/TableValuesType.ts#L29-L29",
+      "specLocation": "esql/_types/TableValues.ts#L31-L31",
       "type": {
         "items": [
           {
@@ -89296,7 +89270,7 @@
         "name": "TableValuesLongDouble",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/TableValuesType.ts#L37-L37",
+      "specLocation": "esql/_types/TableValues.ts#L33-L33",
       "type": {
         "items": [
           {
@@ -89326,7 +89300,7 @@
         "name": "TableValuesLongValue",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/TableValuesType.ts#L33-L33",
+      "specLocation": "esql/_types/TableValues.ts#L32-L32",
       "type": {
         "items": [
           {
@@ -113446,13 +113420,55 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TableValuesDouble",
+        "name": "TableValues",
         "namespace": "esql._types"
       },
       "properties": [
         {
+          "name": "integer",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesIntegerValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "keyword",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesKeywordValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "long",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesLongValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
           "name": "double",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -113465,79 +113481,10 @@
           }
         }
       ],
-      "specLocation": "esql/_types/TableValuesType.ts#L34-L36"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TableValuesInteger",
-        "namespace": "esql._types"
-      },
-      "properties": [
-        {
-          "name": "integer",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TableValuesIntegerValue",
-                "namespace": "esql._types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "esql/_types/TableValuesType.ts#L22-L24"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TableValuesLong",
-        "namespace": "esql._types"
-      },
-      "properties": [
-        {
-          "name": "long",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TableValuesLongValue",
-                "namespace": "esql._types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "esql/_types/TableValuesType.ts#L30-L32"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TableValuesKeyword",
-        "namespace": "esql._types"
-      },
-      "properties": [
-        {
-          "name": "keyword",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TableValuesKeywordValue",
-                "namespace": "esql._types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "esql/_types/TableValuesType.ts#L26-L28"
+      "specLocation": "esql/_types/TableValues.ts#L22-L28",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",

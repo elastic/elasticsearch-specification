@@ -9897,25 +9897,16 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
-export interface EsqlTableValuesDouble {
-  double: EsqlTableValuesLongDouble[]
-}
-
-export interface EsqlTableValuesInteger {
-  integer: EsqlTableValuesIntegerValue[]
+export interface EsqlTableValues {
+  integer?: EsqlTableValuesIntegerValue[]
+  keyword?: EsqlTableValuesKeywordValue[]
+  long?: EsqlTableValuesLongValue[]
+  double?: EsqlTableValuesLongDouble[]
 }
 
 export type EsqlTableValuesIntegerValue = integer | integer[]
 
-export interface EsqlTableValuesKeyword {
-  keyword: EsqlTableValuesKeywordValue[]
-}
-
 export type EsqlTableValuesKeywordValue = string | string[]
-
-export interface EsqlTableValuesLong {
-  long: EsqlTableValuesLongValue[]
-}
 
 export type EsqlTableValuesLongDouble = double | double[]
 
@@ -9932,7 +9923,7 @@ export interface EsqlQueryRequest extends RequestBase {
     params?: FieldValue[]
     profile?: boolean
     query: string
-    tables?: Record<string, Record<string, EsqlTableValuesDouble | EsqlTableValuesInteger | EsqlTableValuesLong | EsqlTableValuesKeyword>>
+    tables?: Record<string, Record<string, EsqlTableValues>>
   }
 }
 

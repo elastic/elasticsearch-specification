@@ -8177,20 +8177,7 @@
                     "additionalProperties": {
                       "type": "object",
                       "additionalProperties": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/components/schemas/esql._types:TableValuesDouble"
-                          },
-                          {
-                            "$ref": "#/components/schemas/esql._types:TableValuesInteger"
-                          },
-                          {
-                            "$ref": "#/components/schemas/esql._types:TableValuesLong"
-                          },
-                          {
-                            "$ref": "#/components/schemas/esql._types:TableValuesKeyword"
-                          }
-                        ]
+                        "$ref": "#/components/schemas/esql._types:TableValues"
                       }
                     }
                   }
@@ -80040,34 +80027,7 @@
           "head"
         ]
       },
-      "esql._types:TableValuesDouble": {
-        "type": "object",
-        "properties": {
-          "double": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/esql._types:TableValuesLongDouble"
-            }
-          }
-        },
-        "required": [
-          "double"
-        ]
-      },
-      "esql._types:TableValuesLongDouble": {
-        "oneOf": [
-          {
-            "type": "number"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          }
-        ]
-      },
-      "esql._types:TableValuesInteger": {
+      "esql._types:TableValues": {
         "type": "object",
         "properties": {
           "integer": {
@@ -80075,11 +80035,28 @@
             "items": {
               "$ref": "#/components/schemas/esql._types:TableValuesIntegerValue"
             }
+          },
+          "keyword": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesKeywordValue"
+            }
+          },
+          "long": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongValue"
+            }
+          },
+          "double": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongDouble"
+            }
           }
         },
-        "required": [
-          "integer"
-        ]
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "esql._types:TableValuesIntegerValue": {
         "oneOf": [
@@ -80094,18 +80071,17 @@
           }
         ]
       },
-      "esql._types:TableValuesLong": {
-        "type": "object",
-        "properties": {
-          "long": {
+      "esql._types:TableValuesKeywordValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/esql._types:TableValuesLongValue"
+              "type": "string"
             }
           }
-        },
-        "required": [
-          "long"
         ]
       },
       "esql._types:TableValuesLongValue": {
@@ -80121,29 +80097,15 @@
           }
         ]
       },
-      "esql._types:TableValuesKeyword": {
-        "type": "object",
-        "properties": {
-          "keyword": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/esql._types:TableValuesKeywordValue"
-            }
-          }
-        },
-        "required": [
-          "keyword"
-        ]
-      },
-      "esql._types:TableValuesKeywordValue": {
+      "esql._types:TableValuesLongDouble": {
         "oneOf": [
           {
-            "type": "string"
+            "type": "number"
           },
           {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "number"
             }
           }
         ]

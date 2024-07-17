@@ -21,12 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
-import {
-  TableValuesDouble,
-  TableValuesInteger,
-  TableValuesLong,
-  TableValuesKeyword
-} from '@esql/_types/TableValuesType'
+import { TableValues } from '@esql/_types/TableValues'
 
 /**
  * Executes an ES|QL request
@@ -88,15 +83,6 @@ export interface Request extends RequestBase {
     /**
      * Tables to use with the LOOKUP operation.
      */
-    tables?: Dictionary<
-      string,
-      Dictionary<
-        string,
-        | TableValuesDouble
-        | TableValuesInteger
-        | TableValuesLong
-        | TableValuesKeyword
-      >
-    >
+    tables?: Dictionary<string, Dictionary<string, TableValues>>
   }
 }

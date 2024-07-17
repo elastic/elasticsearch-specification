@@ -19,19 +19,15 @@
 
 import { double, integer, long } from '@_types/Numeric'
 
-export interface TableValuesInteger {
-  integer: TableValuesIntegerValue[]
+/** @variants container */
+export interface TableValues {
+  integer?: TableValuesIntegerValue[]
+  keyword?: TableValuesKeywordValue[]
+  long?: TableValuesLongValue[]
+  double?: TableValuesLongDouble[]
 }
+
 type TableValuesIntegerValue = integer | integer[]
-export interface TableValuesKeyword {
-  keyword: TableValuesKeywordValue[]
-}
 type TableValuesKeywordValue = string | string[]
-export interface TableValuesLong {
-  long: TableValuesLongValue[]
-}
 type TableValuesLongValue = long | long[]
-export interface TableValuesDouble {
-  double: TableValuesLongDouble[]
-}
 type TableValuesLongDouble = double | double[]
