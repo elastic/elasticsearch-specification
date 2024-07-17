@@ -82,7 +82,7 @@
           "async_search.delete"
         ],
         "summary": "Deletes an async search by identifier",
-        "description": "If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted. If the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+        "description": "If the search is still running, the search request will be cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
@@ -120,8 +120,8 @@
         "tags": [
           "async_search.status"
         ],
-        "summary": "Get async search status Retrieves the status of a previously submitted async search request given its identifier, without retrieving search results",
-        "description": "If the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
+        "summary": "Get async search status\n",
+        "description": "Retrieves the status of a previously submitted async search request given its identifier, without retrieving search results.\nIf the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
@@ -160,7 +160,7 @@
           "async_search.submit"
         ],
         "summary": "Runs a search request asynchronously",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested. Warning: Async search does not support scroll nor search requests that only include the suggest section. By default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error. The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
@@ -322,7 +322,7 @@
           "async_search.submit"
         ],
         "summary": "Runs a search request asynchronously",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested. Warning: Async search does not support scroll nor search requests that only include the suggest section. By default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error. The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field, hence partial results become available following the sort criteria that was requested.\nWarning: Async search does not support scroll nor search requests that only include the suggest section.\nBy default, Elasticsearch doesn’t allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html"
         },
@@ -689,7 +689,7 @@
           "cat.aliases"
         ],
         "summary": "Retrieves the cluster’s index aliases, including filter and routing information",
-        "description": "The API does not return data stream aliases. IMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+        "description": "The API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
@@ -712,7 +712,7 @@
           "cat.aliases"
         ],
         "summary": "Retrieves the cluster’s index aliases, including filter and routing information",
-        "description": "The API does not return data stream aliases. IMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+        "description": "The API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
@@ -738,7 +738,7 @@
           "cat.component_templates"
         ],
         "summary": "Returns information about component templates in a cluster",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get component template API.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
@@ -757,7 +757,7 @@
           "cat.component_templates"
         ],
         "summary": "Returns information about component templates in a cluster",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get component template API.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
@@ -781,7 +781,7 @@
           "cat.count"
         ],
         "summary": "Provides quick access to a document count for a data stream, an index, or an entire cluster",
-        "description": "NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the count API.",
+        "description": "NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -799,7 +799,7 @@
           "cat.count"
         ],
         "summary": "Provides quick access to a document count for a data stream, an index, or an entire cluster",
-        "description": "NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process. IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the count API.",
+        "description": "NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -849,7 +849,7 @@
           "cat.indices"
         ],
         "summary": "Returns high-level information about indices in a cluster, including backing indices for data streams",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index API. Use the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas. These metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents. To get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
@@ -887,7 +887,7 @@
           "cat.indices"
         ],
         "summary": "Returns high-level information about indices in a cluster, including backing indices for data streams",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index API. Use the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas. These metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents. To get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
@@ -927,8 +927,8 @@
         "tags": [
           "cat.ml_data_frame_analytics"
         ],
-        "summary": "Returns configuration and usage information about data frame analytics jobs.",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get data frame analytics jobs statistics API.",
+        "summary": "Returns configuration and usage information about data frame analytics jobs",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
@@ -963,8 +963,8 @@
         "tags": [
           "cat.ml_data_frame_analytics"
         ],
-        "summary": "Returns configuration and usage information about data frame analytics jobs.",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get data frame analytics jobs statistics API.",
+        "summary": "Returns configuration and usage information about data frame analytics jobs",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
@@ -1003,7 +1003,7 @@
           "cat.ml_datafeeds"
         ],
         "summary": "Returns configuration and usage information about datafeeds",
-        "description": "This API returns a maximum of 10,000 datafeeds. If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.. IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get datafeed statistics API.",
+        "description": "This API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
@@ -1036,7 +1036,7 @@
           "cat.ml_datafeeds"
         ],
         "summary": "Returns configuration and usage information about datafeeds",
-        "description": "This API returns a maximum of 10,000 datafeeds. If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.. IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get datafeed statistics API.",
+        "description": "This API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
@@ -1072,7 +1072,7 @@
           "cat.ml_jobs"
         ],
         "summary": "Returns configuration and usage information for anomaly detection jobs",
-        "description": "This API returns a maximum of 10,000 jobs. If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.. IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get anomaly detection job statistics API.",
+        "description": "This API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
@@ -1108,7 +1108,7 @@
           "cat.ml_jobs"
         ],
         "summary": "Returns configuration and usage information for anomaly detection jobs",
-        "description": "This API returns a maximum of 10,000 jobs. If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.. IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get anomaly detection job statistics API.",
+        "description": "This API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
@@ -1146,8 +1146,8 @@
         "tags": [
           "cat.ml_trained_models"
         ],
-        "summary": "Returns configuration and usage information about inference trained models.",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get trained models statistics API.",
+        "summary": "Returns configuration and usage information about inference trained models",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
@@ -1185,8 +1185,8 @@
         "tags": [
           "cat.ml_trained_models"
         ],
-        "summary": "Returns configuration and usage information about inference trained models.",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get trained models statistics API.",
+        "summary": "Returns configuration and usage information about inference trained models",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
@@ -1227,8 +1227,8 @@
         "tags": [
           "cat.transforms"
         ],
-        "summary": "Returns configuration and usage information about transforms.",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get transform statistics API.",
+        "summary": "Returns configuration and usage information about transforms",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
@@ -1266,8 +1266,8 @@
         "tags": [
           "cat.transforms"
         ],
-        "summary": "Returns configuration and usage information about transforms.",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, use the get transform statistics API.",
+        "summary": "Returns configuration and usage information about transforms",
+        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
@@ -1563,7 +1563,7 @@
           "cluster.put_component_template"
         ],
         "summary": "Creates or updates a component template",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.. An index template can be composed of multiple component templates. To use a component template, specify it in an index template’s `composed_of` list. Component templates are only applied to new data streams and indices as part of a matching index template.. Settings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.. Component templates are only used during index creation. For data streams, this includes data stream creation and the creation of a stream’s backing indices. Changes to component templates do not affect existing indices, including a stream’s backing indices.. You can use C-style `/* *\\/` block comments in component templates. You can include comments anywhere in the request body except before the opening curly bracket.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1594,7 +1594,7 @@
           "cluster.put_component_template"
         ],
         "summary": "Creates or updates a component template",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.. An index template can be composed of multiple component templates. To use a component template, specify it in an index template’s `composed_of` list. Component templates are only applied to new data streams and indices as part of a matching index template.. Settings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.. Component templates are only used during index creation. For data streams, this includes data stream creation and the creation of a stream’s backing indices. Changes to component templates do not affect existing indices, including a stream’s backing indices.. You can use C-style `/* *\\/` block comments in component templates. You can include comments anywhere in the request body except before the opening curly bracket.",
+        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1866,6 +1866,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -1904,6 +1905,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       },
       "put": {
@@ -1928,6 +1930,7 @@
             "$ref": "#/components/responses/connector.put#200"
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       },
       "delete": {
@@ -1975,6 +1978,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2087,6 +2091,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2189,6 +2194,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       },
       "put": {
@@ -2208,6 +2214,7 @@
             "$ref": "#/components/responses/connector.put#200"
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       },
       "post": {
@@ -2278,6 +2285,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2324,6 +2332,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2362,6 +2371,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       },
       "delete": {
@@ -2398,6 +2408,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2493,6 +2504,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       },
       "post": {
@@ -2548,6 +2560,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2594,6 +2607,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2672,6 +2686,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2739,6 +2754,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2810,6 +2826,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2883,6 +2900,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -2947,6 +2965,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3018,6 +3037,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3085,6 +3105,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3149,6 +3170,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3213,6 +3235,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3277,6 +3300,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3341,6 +3365,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -3405,6 +3430,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.12.0"
       }
     },
@@ -5887,7 +5913,7 @@
           "field_caps"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned as any other field that belongs to the `keyword` family.",
+        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
@@ -5933,7 +5959,7 @@
           "field_caps"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned as any other field that belongs to the `keyword` family.",
+        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
@@ -5981,7 +6007,7 @@
           "field_caps"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned as any other field that belongs to the `keyword` family.",
+        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
@@ -6030,7 +6056,7 @@
           "field_caps"
         ],
         "summary": "The field capabilities API returns the information about the capabilities of fields among multiple indices",
-        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type of keyword is returned as any other field that belongs to the `keyword` family.",
+        "description": "The field capabilities API returns runtime fields like any other field. For example, a runtime field with a type\nof keyword is returned as any other field that belongs to the `keyword` family.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
         },
@@ -6404,7 +6430,7 @@
           "indices.get"
         ],
         "summary": "Returns information about one or more indices",
-        "description": "For data streams, the API returns information about the stream’s backing indices.",
+        "description": "For data streams, the API returns information about the\nstream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html"
         },
@@ -6834,7 +6860,7 @@
           "indices.create_data_stream"
         ],
         "summary": "Create a data stream",
-        "description": "Creates a data stream. You must have a matching index template with data stream enabled.",
+        "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -7560,7 +7586,7 @@
           "indices.delete_index_template"
         ],
         "summary": "Delete an index template",
-        "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template names are specified then there is no wildcard support and the provided names should match completely with existing templates.",
+        "description": "The provided <index-template> may contain multiple template names separated by a comma. If multiple template\nnames are specified then there is no wildcard support and the provided names should match completely with\nexisting templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-template.html"
         },
@@ -7996,7 +8022,7 @@
           "indices.put_mapping"
         ],
         "summary": "Adds new fields to an existing data stream or index",
-        "description": "You can also use this API to change the search settings of existing fields. For data streams, these changes are applied to all backing indices by default.",
+        "description": "You can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
         },
@@ -8038,7 +8064,7 @@
           "indices.put_mapping"
         ],
         "summary": "Adds new fields to an existing data stream or index",
-        "description": "You can also use this API to change the search settings of existing fields. For data streams, these changes are applied to all backing indices by default.",
+        "description": "You can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
         },
@@ -8082,7 +8108,7 @@
           "indices.get_settings"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -8121,7 +8147,7 @@
           "indices.put_settings"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time. For data streams, index setting changes are applied to all backing indices by default.",
+        "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
@@ -8165,7 +8191,7 @@
           "indices.get_settings"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -8207,7 +8233,7 @@
           "indices.put_settings"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time. For data streams, index setting changes are applied to all backing indices by default.",
+        "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
@@ -8254,7 +8280,7 @@
           "indices.get_settings"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -8301,7 +8327,7 @@
           "indices.get_settings"
         ],
         "summary": "Get index settings",
-        "description": "Returns setting information for one or more indices. For data streams, returns setting information for the stream’s backing indices.",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -8345,7 +8371,7 @@
           "indices.migrate_to_data_stream"
         ],
         "summary": "Convert an index alias to a data stream",
-        "description": "Converts an index alias to a data stream. You must have a matching index template that is data stream enabled. The alias must meet the following criteria: The alias must have a write index; All indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type; The alias must not have any filters; The alias must not use custom routing. If successful, the request removes the alias and creates a data stream with the same name. The indices for the alias become hidden backing indices for the stream. The write index for the alias becomes the write index for the stream.",
+        "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html"
         },
@@ -8506,7 +8532,7 @@
           "indices.refresh"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -8533,7 +8559,7 @@
           "indices.refresh"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -8562,7 +8588,7 @@
           "indices.refresh"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -8592,7 +8618,7 @@
           "indices.refresh"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search. For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -9238,6 +9264,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       },
       "put": {
@@ -9262,6 +9289,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       },
       "post": {
@@ -9289,6 +9317,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       },
       "delete": {
@@ -9316,6 +9345,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       }
     },
@@ -9342,6 +9372,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       },
       "put": {
@@ -9369,6 +9400,7 @@
             "$ref": "#/components/responses/inference.put#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       },
       "post": {
@@ -9399,6 +9431,7 @@
             "$ref": "#/components/responses/inference.inference#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       },
       "delete": {
@@ -9429,6 +9462,7 @@
             "$ref": "#/components/responses/inference.delete#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       }
     },
@@ -9447,6 +9481,7 @@
             "$ref": "#/components/responses/inference.get#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.11.0"
       }
     },
@@ -9738,7 +9773,7 @@
           "ingest.processor_grok"
         ],
         "summary": "Extracts structured fields out of a single text field within a document",
-        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match. A grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "description": "You choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html"
         },
@@ -9881,7 +9916,7 @@
           "license.get"
         ],
         "summary": "Get license information",
-        "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires. For more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
+        "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html"
         },
@@ -10241,7 +10276,7 @@
           "ml.close_job"
         ],
         "summary": "Close anomaly detection jobs",
-        "description": "A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results. When you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data. If you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request. When a datafeed that has a specified end date stops, it automatically closes its associated job.",
+        "description": "A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html"
         },
@@ -10689,7 +10724,7 @@
           "ml.get_data_frame_analytics"
         ],
         "summary": "Retrieves configuration information for data frame analytics jobs",
-        "description": "You can get information for multiple data frame analytics jobs in a single API request by using a comma-separated list of data frame analytics jobs or a wildcard expression.",
+        "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
         },
@@ -10723,7 +10758,7 @@
           "ml.put_data_frame_analytics"
         ],
         "summary": "Instantiates a data frame analytics job",
-        "description": "This API creates a data frame analytics job that performs an analysis on the source indices and stores the outcome in a destination index.",
+        "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html"
         },
@@ -10921,7 +10956,7 @@
           "ml.get_datafeeds"
         ],
         "summary": "Retrieves configuration information for datafeeds",
-        "description": "You can get information for multiple datafeeds in a single API request by using a comma-separated list of datafeeds or a wildcard expression. You can get information for all datafeeds by using `_all`, by specifying `*` as the `<feed_id>`, or by omitting the `<feed_id>`. This API returns a maximum of 10,000 datafeeds.",
+        "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
         },
@@ -10949,7 +10984,7 @@
           "ml.put_datafeed"
         ],
         "summary": "Instantiates a datafeed",
-        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job. You can associate only one datafeed with each anomaly detection job. The datafeed contains a query that runs at a defined interval (`frequency`). If you are concerned about delayed data, you can add a delay (`query_delay') at each interval. When Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had at the time of creation and runs the query using those same roles. If you provide secondary authorization headers, those credentials are used instead. You must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed directly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+        "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html"
         },
@@ -11231,7 +11266,7 @@
           "ml.put_filter"
         ],
         "summary": "Instantiates a filter",
-        "description": "A filter contains a list of strings. It can be used by one or more anomaly detection jobs. Specifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
+        "description": "A filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html"
         },
@@ -11310,7 +11345,7 @@
           "ml.delete_filter"
         ],
         "summary": "Deletes a filter",
-        "description": "If an anomaly detection job references the filter, you cannot delete the filter. You must update or delete the job before you can delete the filter.",
+        "description": "If an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html"
         },
@@ -11349,7 +11384,7 @@
           "ml.get_jobs"
         ],
         "summary": "Retrieves configuration information for anomaly detection jobs",
-        "description": "You can get information for multiple anomaly detection jobs in a single API request by using a group name, a comma-separated list of jobs, or a wildcard expression. You can get information for all anomaly detection jobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
+        "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
         },
@@ -11563,7 +11598,7 @@
           "ml.delete_job"
         ],
         "summary": "Delete an anomaly detection job",
-        "description": "All job configuration, model state and results are deleted. It is not currently possible to delete multiple jobs using wildcards or a comma separated list. If you delete a job that has a datafeed, the request first tries to delete the datafeed. This behavior is equivalent to calling the delete datafeed API with the same timeout and force parameters as the delete job request.",
+        "description": "All job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html"
         },
@@ -11783,7 +11818,8 @@
         "tags": [
           "ml.delete_trained_model"
         ],
-        "summary": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline",
+        "summary": "Deletes an existing trained inference model that is currently not referenced\n",
+        "description": "by an ingest pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html"
         },
@@ -11832,7 +11868,7 @@
           "ml.put_trained_model_alias"
         ],
         "summary": "Creates or updates a trained model alias",
-        "description": "A trained model alias is a logical name used to reference a single trained model. You can use aliases instead of trained model identifiers to make it easier to reference your models. For example, you can use aliases in inference aggregations and processors. An alias must be unique and refer to only a single trained model. However, you can have multiple aliases for each trained model. If you use this API to update an alias such that it references a different trained model ID and the model uses a different type of data frame analytics, an error occurs. For example, this situation occurs if you have a trained model for regression analysis and a trained model for classification analysis; you cannot reassign an alias from one type of trained model to another. If you use this API to update an alias and there are very few input fields in common between the old and new trained models for the model alias, the API returns a warning.",
+        "description": "A trained model alias is a logical\nname used to reference a single trained model.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html"
         },
@@ -11890,7 +11926,7 @@
           "ml.delete_trained_model_alias"
         ],
         "summary": "Deletes a trained model alias",
-        "description": "This API deletes an existing model alias that refers to a trained model. If the model alias is missing or refers to a model other than the one identified by the `model_id`, this API returns an error.",
+        "description": "This API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html"
         },
@@ -11940,7 +11976,7 @@
           "ml.estimate_model_memory"
         ],
         "summary": "Makes an estimation of the memory usage for an anomaly detection job model",
-        "description": "It is based on analysis configuration details for the job and cardinality estimates for the fields it references.",
+        "description": "It is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html"
         },
@@ -12003,7 +12039,7 @@
           "ml.evaluate_data_frame"
         ],
         "summary": "Evaluates the data frame analytics for an annotated index",
-        "description": "The API packages together commonly used evaluation metrics for various types of machine learning features. This has been designed for use on indexes created by data frame analytics. Evaluation requires both a ground truth field and an analytics result field to be present.",
+        "description": "The API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html"
         },
@@ -12065,7 +12101,7 @@
           "ml.flush_job"
         ],
         "summary": "Forces any buffered data to be processed by the job",
-        "description": "The flush jobs API is only applicable when sending data for analysis using the post data API. Depending on the content of the buffer, then it might additionally calculate new results. Both flush and close operations are similar, however the flush is more efficient if you are expecting to send more data for analysis. When flushing, the job remains open and is available to continue analyzing data. A close operation additionally prunes and persists the model state to disk and the job must be opened again before analyzing further data.",
+        "description": "The flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html"
         },
@@ -12421,7 +12457,7 @@
           "ml.get_data_frame_analytics"
         ],
         "summary": "Retrieves configuration information for data frame analytics jobs",
-        "description": "You can get information for multiple data frame analytics jobs in a single API request by using a comma-separated list of data frame analytics jobs or a wildcard expression.",
+        "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
         },
@@ -12521,7 +12557,7 @@
           "ml.get_datafeed_stats"
         ],
         "summary": "Retrieves usage information for datafeeds",
-        "description": "You can get statistics for multiple datafeeds in a single API request by using a comma-separated list of datafeeds or a wildcard expression. You can get statistics for all datafeeds by using `_all`, by specifying `*` as the `<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the only information you receive is the `datafeed_id` and the `state`. This API returns a maximum of 10,000 datafeeds.",
+        "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
         },
@@ -12548,7 +12584,7 @@
           "ml.get_datafeed_stats"
         ],
         "summary": "Retrieves usage information for datafeeds",
-        "description": "You can get statistics for multiple datafeeds in a single API request by using a comma-separated list of datafeeds or a wildcard expression. You can get statistics for all datafeeds by using `_all`, by specifying `*` as the `<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the only information you receive is the `datafeed_id` and the `state`. This API returns a maximum of 10,000 datafeeds.",
+        "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
         },
@@ -12572,7 +12608,7 @@
           "ml.get_datafeeds"
         ],
         "summary": "Retrieves configuration information for datafeeds",
-        "description": "You can get information for multiple datafeeds in a single API request by using a comma-separated list of datafeeds or a wildcard expression. You can get information for all datafeeds by using `_all`, by specifying `*` as the `<feed_id>`, or by omitting the `<feed_id>`. This API returns a maximum of 10,000 datafeeds.",
+        "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
         },
@@ -12675,7 +12711,7 @@
           "ml.get_jobs"
         ],
         "summary": "Retrieves configuration information for anomaly detection jobs",
-        "description": "You can get information for multiple anomaly detection jobs in a single API request by using a group name, a comma-separated list of jobs, or a wildcard expression. You can get information for all anomaly detection jobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
+        "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
         },
@@ -12701,8 +12737,8 @@
         "tags": [
           "ml.get_overall_buckets"
         ],
-        "summary": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
-        "description": "The `overall_score` is calculated by combining the scores of all the buckets within the overall bucket span. First, the maximum `anomaly_score` per anomaly detection job in the overall bucket is calculated. Then the `top_n` of those scores are averaged to result in the `overall_score`. This means that you can fine-tune the `overall_score` so that it is more or less sensitive to the number of jobs that detect an anomaly at the same time. For example, if you set `top_n` to `1`, the `overall_score` is the maximum bucket score in the overall bucket. Alternatively, if you set `top_n` to the number of jobs, the `overall_score` is high only when all jobs detect anomalies in that overall bucket. If you set the `bucket_span` parameter (to a value greater than its default), the `overall_score` is the maximum `overall_score` of the overall buckets that have a span equal to the jobs' largest bucket span.",
+        "summary": "Retrieves overall bucket results that summarize the bucket results of\n",
+        "description": "multiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
         },
@@ -12747,8 +12783,8 @@
         "tags": [
           "ml.get_overall_buckets"
         ],
-        "summary": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
-        "description": "The `overall_score` is calculated by combining the scores of all the buckets within the overall bucket span. First, the maximum `anomaly_score` per anomaly detection job in the overall bucket is calculated. Then the `top_n` of those scores are averaged to result in the `overall_score`. This means that you can fine-tune the `overall_score` so that it is more or less sensitive to the number of jobs that detect an anomaly at the same time. For example, if you set `top_n` to `1`, the `overall_score` is the maximum bucket score in the overall bucket. Alternatively, if you set `top_n` to the number of jobs, the `overall_score` is high only when all jobs detect anomalies in that overall bucket. If you set the `bucket_span` parameter (to a value greater than its default), the `overall_score` is the maximum `overall_score` of the overall buckets that have a span equal to the jobs' largest bucket span.",
+        "summary": "Retrieves overall bucket results that summarize the bucket results of\n",
+        "description": "multiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
         },
@@ -12837,7 +12873,7 @@
           "ml.get_trained_models_stats"
         ],
         "summary": "Retrieves usage information for trained models",
-        "description": "You can get usage information for multiple trained models in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
+        "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
         },
@@ -12870,7 +12906,7 @@
           "ml.get_trained_models_stats"
         ],
         "summary": "Retrieves usage information for trained models",
-        "description": "You can get usage information for multiple trained models in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
+        "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
         },
@@ -12958,7 +12994,7 @@
           "ml.open_job"
         ],
         "summary": "Open anomaly detection jobs",
-        "description": "An anomaly detection job must be opened in order for it to be ready to receive and analyze data. It can be opened and closed multiple times throughout its lifecycle. When you open a new job, it starts with an empty model. When you open an existing job, the most recent model state is automatically loaded. The job is ready to resume its analysis from where it left off, once new data is received.",
+        "description": "An anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html"
         },
@@ -13123,7 +13159,7 @@
           "ml.preview_datafeed"
         ],
         "summary": "Previews a datafeed",
-        "description": "This API returns the first \"page\" of search results from a datafeed. You can preview an existing datafeed or provide configuration details for a datafeed and anomaly detection job in the API. The preview shows the structure of the data that will be passed to the anomaly detection engine. IMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that called the API. However, when the datafeed starts it uses the roles of the last user that created or updated the datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials. You can also use secondary authorization headers to supply the credentials.",
+        "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
@@ -13154,7 +13190,7 @@
           "ml.preview_datafeed"
         ],
         "summary": "Previews a datafeed",
-        "description": "This API returns the first \"page\" of search results from a datafeed. You can preview an existing datafeed or provide configuration details for a datafeed and anomaly detection job in the API. The preview shows the structure of the data that will be passed to the anomaly detection engine. IMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that called the API. However, when the datafeed starts it uses the roles of the last user that created or updated the datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials. You can also use secondary authorization headers to supply the credentials.",
+        "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
@@ -13187,7 +13223,7 @@
           "ml.preview_datafeed"
         ],
         "summary": "Previews a datafeed",
-        "description": "This API returns the first \"page\" of search results from a datafeed. You can preview an existing datafeed or provide configuration details for a datafeed and anomaly detection job in the API. The preview shows the structure of the data that will be passed to the anomaly detection engine. IMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that called the API. However, when the datafeed starts it uses the roles of the last user that created or updated the datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials. You can also use secondary authorization headers to supply the credentials.",
+        "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
@@ -13215,7 +13251,7 @@
           "ml.preview_datafeed"
         ],
         "summary": "Previews a datafeed",
-        "description": "This API returns the first \"page\" of search results from a datafeed. You can preview an existing datafeed or provide configuration details for a datafeed and anomaly detection job in the API. The preview shows the structure of the data that will be passed to the anomaly detection engine. IMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that called the API. However, when the datafeed starts it uses the roles of the last user that created or updated the datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials. You can also use secondary authorization headers to supply the credentials.",
+        "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
         },
@@ -13323,7 +13359,7 @@
           "ml.put_trained_model_vocabulary"
         ],
         "summary": "Creates a trained model vocabulary",
-        "description": "This API is supported only for natural language processing (NLP) models. The vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
+        "description": "This API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html"
         },
@@ -13400,7 +13436,7 @@
           "ml.reset_job"
         ],
         "summary": "Resets an anomaly detection job",
-        "description": "All model state and results are deleted. The job is ready to start over as if it had just been created. It is not currently possible to reset multiple jobs using wildcards or a comma separated list.",
+        "description": "All model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html"
         },
@@ -13459,7 +13495,7 @@
           "ml.start_data_frame_analytics"
         ],
         "summary": "Starts a data frame analytics job",
-        "description": "A data frame analytics job can be started and stopped multiple times throughout its lifecycle. If the destination index does not exist, it is created automatically the first time you start the data frame analytics job. The `index.number_of_shards` and `index.number_of_replicas` settings for the destination index are copied from the source index. If there are multiple source indices, the destination index copies the highest setting values. The mappings for the destination index are also copied from the source indices. If there are any mapping conflicts, the job fails to start. If the destination index exists, it is used as is. You can therefore set up the destination index in advance with custom settings and mappings.",
+        "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html"
         },
@@ -13519,8 +13555,8 @@
         "tags": [
           "ml.start_datafeed"
         ],
-        "summary": "Starts one or more datafeeds.",
-        "description": "A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped multiple times throughout its lifecycle.. Before you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.. If you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped. If new data was indexed for that exact millisecond between stopping and starting, it will be ignored.. When Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or update it had at the time of creation or update and runs the query using those same roles. If you provided secondary authorization headers when you created or updated the datafeed, those credentials are used instead.",
+        "summary": "Starts one or more datafeeds",
+        "description": "A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html"
         },
@@ -13738,7 +13774,7 @@
           "ml.stop_data_frame_analytics"
         ],
         "summary": "Stops one or more data frame analytics jobs",
-        "description": "A data frame analytics job can be started and stopped multiple times throughout its lifecycle.",
+        "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html"
         },
@@ -13815,7 +13851,7 @@
           "ml.stop_datafeed"
         ],
         "summary": "Stops one or more datafeeds",
-        "description": "A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped multiple times throughout its lifecycle.",
+        "description": "A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html"
         },
@@ -14101,7 +14137,7 @@
           "ml.update_datafeed"
         ],
         "summary": "Updates the properties of a datafeed",
-        "description": "You must stop and start the datafeed for the changes to be applied. When Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at the time of the update and runs the query using those same roles. If you provide secondary authorization headers, those credentials are used instead.",
+        "description": "You must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html"
         },
@@ -14668,6 +14704,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.6.0"
       }
     },
@@ -15302,8 +15339,8 @@
         "tags": [
           "open_point_in_time"
         ],
-        "summary": "A search request by default executes against the most recent visible data of the target indices, which is called point in time",
-        "description": "Elasticsearch pit (point in time) is a lightweight view into the state of the data as it existed when initiated. In some cases, it’s preferred to perform multiple search requests using the same point in time. For example, if refreshes happen between `search_after` requests, then the results of those requests might not be consistent as changes happening between searches are only visible to the more recent point in time.",
+        "summary": "A search request by default executes against the most recent visible data of the target indices,\n",
+        "description": "which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html"
         },
@@ -16301,6 +16338,7 @@
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "6.3.0"
       },
       "post": {
@@ -16320,6 +16358,7 @@
             "$ref": "#/components/responses/scripts_painless_execute#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "6.3.0"
       }
     },
@@ -16329,7 +16368,7 @@
           "search"
         ],
         "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body. If both are specified, only the query parameter is used.",
+        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
@@ -16479,7 +16518,7 @@
           "search"
         ],
         "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body. If both are specified, only the query parameter is used.",
+        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
@@ -16631,7 +16670,7 @@
           "search"
         ],
         "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body. If both are specified, only the query parameter is used.",
+        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
@@ -16784,7 +16823,7 @@
           "search"
         ],
         "summary": "Returns search hits that match the query defined in the request",
-        "description": "You can provide search queries using the `q` query string parameter or the request body. If both are specified, only the query parameter is used.",
+        "description": "You can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
         },
@@ -16968,6 +17007,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.8.0"
       },
       "put": {
@@ -17032,6 +17072,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.8.0"
       },
       "delete": {
@@ -17068,6 +17109,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.8.0"
       }
     },
@@ -17091,6 +17133,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.8.0"
       },
       "put": {
@@ -17127,6 +17170,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.8.0"
       },
       "delete": {
@@ -17163,6 +17207,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.8.0"
       }
     },
@@ -17181,6 +17226,7 @@
             "$ref": "#/components/responses/search_application.get_behavioral_analytics#200"
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "8.8.0"
       }
     },
@@ -17253,6 +17299,7 @@
             }
           }
         },
+        "x-beta": true,
         "x-available-since": "8.8.0"
       }
     },
@@ -17282,6 +17329,7 @@
             "$ref": "#/components/responses/search_application.search#200"
           }
         },
+        "x-beta": true,
         "x-available-since": "8.8.0"
       },
       "post": {
@@ -17309,6 +17357,7 @@
             "$ref": "#/components/responses/search_application.search#200"
           }
         },
+        "x-beta": true,
         "x-available-since": "8.8.0"
       }
     },
@@ -17686,7 +17735,7 @@
           "security.authenticate"
         ],
         "summary": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user",
-        "description": "A successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user. If the user cannot be authenticated, this API returns a 401 status code.",
+        "description": "A successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"
         },
@@ -17775,7 +17824,7 @@
           "security.get_api_key"
         ],
         "summary": "Retrieves information for one or more API keys",
-        "description": "NOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own. If you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
+        "description": "NOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html"
         },
@@ -17892,7 +17941,7 @@
           "security.create_api_key"
         ],
         "summary": "Creates an API key for access without requiring basic authentication",
-        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name. If applicable, it also returns expiration information for the API key in milliseconds. NOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
@@ -17917,7 +17966,7 @@
           "security.create_api_key"
         ],
         "summary": "Creates an API key for access without requiring basic authentication",
-        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name. If applicable, it also returns expiration information for the API key in milliseconds. NOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
@@ -17942,7 +17991,7 @@
           "security.invalidate_api_key"
         ],
         "summary": "Invalidates one or more API keys",
-        "description": "The `manage_api_key` privilege allows deleting any API keys. The `manage_own_api_key` only allows deleting API keys that are owned by the user. In addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats: - Set the parameter `owner=true`. - Or, set both `username` and `realm_name` to match the user’s identity. - Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+        "description": "The `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html"
         },
@@ -18186,7 +18235,7 @@
           "security.update_api_key"
         ],
         "summary": "Updates attributes of an existing API key",
-        "description": "Users can only update API keys that they created or that were granted to them. Use this API to update API keys created by the create API Key or grant API Key APIs. If you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead. It’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key. This API supports updates to an API key’s access scope and metadata. The access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request. The snapshot of the owner’s permissions is updated automatically on every call. If you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope. This change can occur if the owner user’s permissions have changed since the API key was created or last modified. To update another user’s API key, use the `run_as` feature to submit a request on behalf of another user. IMPORTANT: It’s not possible to use an API key as the authentication credential for this API. To update an API key, the owner user’s credentials are required.",
+        "description": "Users can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html"
         },
@@ -19094,6 +19143,7 @@
             }
           }
         },
+        "x-technical-preview": true,
         "x-available-since": "5.0.0"
       }
     },
@@ -19421,8 +19471,8 @@
         "tags": [
           "transform.put_transform"
         ],
-        "summary": "Creates a transform.",
-        "description": "A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as a data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a unique row per entity.. You must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If you choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in the pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values in the latest object.. You must have `create_index`, `index`, and `read` privileges on the destination index and `read` and `view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the transform remembers which roles the user that created it had at the time of creation and uses those same roles. If those roles do not have the required privileges on the source and destination indices, the transform fails when it attempts unauthorized operations.. NOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any `.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do not give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not give users any privileges on `.data-frame-internal*` indices.",
+        "summary": "Creates a transform",
+        "description": "A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html"
         },
@@ -19718,8 +19768,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform.",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also generates a list of mappings and settings for the destination index. These values are determined based on the field types of the source index and the transform aggregations.",
+        "summary": "Previews a transform",
+        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -19746,8 +19796,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform.",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also generates a list of mappings and settings for the destination index. These values are determined based on the field types of the source index and the transform aggregations.",
+        "summary": "Previews a transform",
+        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -19776,8 +19826,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform.",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also generates a list of mappings and settings for the destination index. These values are determined based on the field types of the source index and the transform aggregations.",
+        "summary": "Previews a transform",
+        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -19801,8 +19851,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform.",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also generates a list of mappings and settings for the destination index. These values are determined based on the field types of the source index and the transform aggregations.",
+        "summary": "Previews a transform",
+        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -19829,7 +19879,7 @@
           "transform.reset_transform"
         ],
         "summary": "Resets a transform",
-        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter. If the destination index was created by the transform, it is deleted.",
+        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html"
         },
@@ -19877,8 +19927,8 @@
         "tags": [
           "transform.schedule_now_transform"
         ],
-        "summary": "Schedules now a transform.",
-        "description": "If you _schedule_now a transform, it will process the new data instantly, without waiting for the configured frequency interval. After _schedule_now API is called, the transform will be processed again at now + frequency unless _schedule_now API is called again in the meantime.",
+        "summary": "Schedules now a transform",
+        "description": "If you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html"
         },
@@ -19926,8 +19976,8 @@
         "tags": [
           "transform.start_transform"
         ],
-        "summary": "Starts a transform.",
-        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is set to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping definitions for the destination index from the source indices and the transform aggregations. If fields in the destination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations), the transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce mapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you start the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings in a pivot transform.. When the transform starts, a series of validations occur to ensure its success. If you deferred validation when you created the transform, they occur when you start the transform—​with the exception of privilege checks. When Elasticsearch security features are enabled, the transform remembers which roles the user that created it had at the time of creation and uses those same roles. If those roles do not have the required privileges on the source and destination indices, the transform fails when it attempts unauthorized operations.",
+        "summary": "Starts a transform",
+        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html"
         },
@@ -20073,8 +20123,8 @@
         "tags": [
           "transform.update_transform"
         ],
-        "summary": "Updates certain properties of a transform.",
-        "description": "All updated properties except `description` do not take effect until after the transform starts the next checkpoint, thus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata` privileges for the source indices. You must also have `index` and `read` privileges for the destination index. When Elasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the time of update and runs with those privileges.",
+        "summary": "Updates certain properties of a transform",
+        "description": "All updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html"
         },
@@ -22556,7 +22606,6 @@
               },
               "required": [
                 "found",
-                "_id",
                 "_index",
                 "took",
                 "_version"
@@ -32711,6 +32760,9 @@
           "_source": {
             "type": "object"
           },
+          "_rank": {
+            "type": "number"
+          },
           "_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
           },
@@ -39002,6 +39054,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+                    "x-technical-preview": true,
                     "x-available-since": "8.15.0",
                     "type": "boolean"
                   },
@@ -48976,6 +49029,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
+                "x-technical-preview": true,
                 "type": "boolean"
               },
               "type": {
@@ -49436,12 +49490,13 @@
           },
           "ef_construction": {
             "type": "number"
+          },
+          "confidence_interval": {
+            "type": "number"
           }
         },
         "required": [
-          "type",
-          "m",
-          "ef_construction"
+          "type"
         ]
       },
       "_types.mapping:FlattenedProperty": {
@@ -49761,6 +49816,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
+                "x-technical-preview": true,
                 "type": "boolean"
               },
               "type": {
@@ -50049,6 +50105,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
+                "x-technical-preview": true,
                 "type": "boolean"
               }
             }
@@ -52347,6 +52404,7 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
+            "x-technical-preview": true,
             "x-available-since": "8.0.0",
             "type": "boolean"
           },
@@ -52355,6 +52413,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
+            "x-technical-preview": true,
             "x-available-since": "8.0.0",
             "type": "array",
             "items": {
@@ -52363,6 +52422,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
+            "x-technical-preview": true,
             "x-available-since": "8.0.0",
             "type": "array",
             "items": {
@@ -60159,7 +60219,6 @@
           }
         },
         "required": [
-          "_id",
           "_index"
         ]
       },
@@ -60177,7 +60236,6 @@
           }
         },
         "required": [
-          "field_statistics",
           "terms"
         ]
       },
@@ -60803,7 +60861,7 @@
                 "description": "How much influence documents in individual result sets per query have over the final ranked result set",
                 "type": "number"
               },
-              "window_size": {
+              "rank_window_size": {
                 "description": "Size of the individual result sets per query",
                 "type": "number"
               }

@@ -860,7 +860,7 @@ export interface MtermvectorsResponse {
 }
 
 export interface MtermvectorsTermVectorsResult {
-  _id: Id
+  _id?: Id
   _index: IndexName
   _version?: VersionNumber
   took?: long
@@ -1469,6 +1469,7 @@ export interface SearchHit<TDocument = unknown> {
   _node?: string
   _routing?: string
   _source?: TDocument
+  _rank?: integer
   _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
@@ -1889,7 +1890,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
 
 export interface TermvectorsResponse {
   found: boolean
-  _id: Id
+  _id?: Id
   _index: IndexName
   term_vectors?: Record<Field, TermvectorsTermVector>
   took: long
@@ -1905,7 +1906,7 @@ export interface TermvectorsTerm {
 }
 
 export interface TermvectorsTermVector {
-  field_statistics: TermvectorsFieldStatistics
+  field_statistics?: TermvectorsFieldStatistics
   terms: Record<string, TermvectorsTerm>
 }
 
@@ -2586,7 +2587,7 @@ export type Routing = string
 
 export interface RrfRank {
   rank_constant?: long
-  window_size?: long
+  rank_window_size?: long
 }
 
 export type ScalarValue = long | double | string | boolean | null
@@ -4996,8 +4997,9 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
 
 export interface MappingDenseVectorIndexOptions {
   type: string
-  m: integer
-  ef_construction: integer
+  m?: integer
+  ef_construction?: integer
+  confidence_interval?: float
 }
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {

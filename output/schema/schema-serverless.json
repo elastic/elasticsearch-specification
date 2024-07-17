@@ -2960,7 +2960,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+      "description": "Create a data stream.\nCreates a data stream.\nYou must have a matching index template with data stream enabled.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.create_data_stream",
       "privileges": {
@@ -3000,7 +3000,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves statistics for one or more data streams.",
+      "description": "Get data stream stats.\nRetrieves statistics for one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.data_streams_stats",
       "privileges": {
@@ -3120,7 +3120,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle",
+      "description": "Delete data stream lifecycles.\nRemoves the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html",
       "name": "indices.delete_data_lifecycle",
       "request": {
@@ -3155,7 +3155,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes one or more data streams and their backing indices.",
+      "description": "Delete data streams.\nDeletes one or more data streams and their backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
       "privileges": {
@@ -3471,7 +3471,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+      "description": "Get data stream lifecycles.\nRetrieves the data stream lifecycle configuration of one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
       "request": {
@@ -3506,7 +3506,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information about one or more data streams.",
+      "description": "Get data streams.\nRetrieves information about one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.get_data_stream",
       "privileges": {
@@ -3698,7 +3698,7 @@
           "stability": "stable"
         }
       },
-      "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
+      "description": "Convert an index alias to a data stream.\nConverts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.migrate_to_data_stream",
       "privileges": {
@@ -3738,7 +3738,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs one or more data stream modification actions in a single atomic operation.",
+      "description": "Update data streams.\nPerforms one or more data stream modification actions in a single atomic operation.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.modify_data_stream",
       "request": {
@@ -3821,7 +3821,7 @@
           "stability": "stable"
         }
       },
-      "description": "Update the data lifecycle of the specified data streams.",
+      "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
       "request": {
@@ -20309,7 +20309,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+      "description": "Create a data stream.\nCreates a data stream.\nYou must have a matching index template with data stream enabled.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20336,7 +20336,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L23-L43"
+      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -20363,7 +20363,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves statistics for one or more data streams.",
+      "description": "Get data stream stats.\nRetrieves statistics for one or more data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20404,7 +20404,7 @@
           }
         }
       ],
-      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsRequest.ts#L23-L47"
+      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -20714,7 +20714,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle",
+      "description": "Delete data stream lifecycles.\nRemoves the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20778,7 +20778,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L39"
+      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L40"
     },
     {
       "body": {
@@ -20805,7 +20805,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes one or more data streams and their backing indices.",
+      "description": "Delete data streams.\nDeletes one or more data streams and their backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20846,7 +20846,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L23-L44"
+      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -21684,7 +21684,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+      "description": "Get data stream lifecycles.\nRetrieves the data stream lifecycle configuration of one or more data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21738,7 +21738,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L23-L52"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L23-L53"
     },
     {
       "body": {
@@ -21774,7 +21774,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information about one or more data streams.",
+      "description": "Get data streams.\nRetrieves information about one or more data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21837,7 +21837,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L23-L53"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L23-L54"
     },
     {
       "body": {
@@ -22298,7 +22298,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
+      "description": "Convert an index alias to a data stream.\nConverts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22325,7 +22325,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L23-L44"
+      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -22369,7 +22369,7 @@
           }
         ]
       },
-      "description": "Performs one or more data stream modification actions in a single atomic operation.",
+      "description": "Update data streams.\nPerforms one or more data stream modification actions in a single atomic operation.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22383,7 +22383,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L23-L36"
+      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -22593,7 +22593,7 @@
           }
         ]
       },
-      "description": "Update the data lifecycle of the specified data streams.",
+      "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22660,7 +22660,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L75"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L76"
     },
     {
       "body": {
@@ -42105,7 +42105,7 @@
           },
           {
             "name": "_id",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -51302,7 +51302,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L106-L140"
+      "specLocation": "_global/search/_types/hits.ts#L107-L141"
     },
     {
       "kind": "type_alias",
@@ -66917,7 +66917,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L142-L150",
+      "specLocation": "_global/search/_types/hits.ts#L143-L151",
       "type": {
         "items": [
           {
@@ -69041,7 +69041,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L66-L72"
+      "specLocation": "_global/search/_types/hits.ts#L67-L73"
     },
     {
       "kind": "interface",
@@ -69073,7 +69073,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L94-L97"
+      "specLocation": "_global/search/_types/hits.ts#L95-L98"
     },
     {
       "kind": "enum",
@@ -69091,7 +69091,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L99-L104"
+      "specLocation": "_global/search/_types/hits.ts#L100-L105"
     },
     {
       "generics": [
@@ -69337,6 +69337,17 @@
           }
         },
         {
+          "name": "_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "_seq_no",
           "required": false,
           "type": {
@@ -69381,7 +69392,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L64"
+      "specLocation": "_global/search/_types/hits.ts#L40-L65"
     },
     {
       "kind": "interface",
@@ -69499,7 +69510,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L84-L86"
+      "specLocation": "_global/search/_types/hits.ts#L85-L87"
     },
     {
       "kind": "interface",
@@ -69542,7 +69553,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L88-L92"
+      "specLocation": "_global/search/_types/hits.ts#L89-L93"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
@@ -84605,7 +84616,7 @@
         },
         {
           "name": "m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84616,7 +84627,7 @@
         },
         {
           "name": "ef_construction",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84624,9 +84635,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "confidence_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L26"
+      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L27"
     },
     {
       "inherits": {
@@ -110742,7 +110764,7 @@
       "specLocation": "indices/_types/AliasDefinition.ts#L22-L54"
     },
     {
-      "description": "Data lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+      "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
       "kind": "interface",
       "name": {
         "name": "DataStreamLifecycleWithRollover",
@@ -111073,7 +111095,7 @@
               "stability": "stable"
             }
           },
-          "description": "Data lifecycle applicable if this is a data stream.",
+          "description": "Data stream lifecycle applicable if this is a data stream.",
           "name": "lifecycle",
           "required": false,
           "type": {
@@ -111172,7 +111194,7 @@
       "specLocation": "indices/_types/Alias.ts#L23-L53"
     },
     {
-      "description": "Data lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+      "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
       "kind": "interface",
       "name": {
         "name": "DataStreamLifecycle",
@@ -114656,7 +114678,7 @@
               "stability": "stable"
             }
           },
-          "description": "Contains the configuration for the data lifecycle management of this data stream.",
+          "description": "Contains the configuration for the data stream lifecycle of this data stream.",
           "name": "lifecycle",
           "required": false,
           "type": {
@@ -131573,7 +131595,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -131671,7 +131693,7 @@
       "properties": [
         {
           "name": "field_statistics",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133097,7 +133119,7 @@
         },
         {
           "description": "Size of the individual result sets per query",
-          "name": "window_size",
+          "name": "rank_window_size",
           "required": false,
           "type": {
             "kind": "instance_of",
