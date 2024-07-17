@@ -32733,10 +32733,23 @@
             }
           },
           "matched_queries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            ]
           },
           "_nested": {
             "$ref": "#/components/schemas/_global.search._types:NestedIdentity"
