@@ -1159,6 +1159,7 @@ export interface SearchRequest extends RequestBase {
   explain?: boolean
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
+  include_named_queries_score?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
   min_compatible_shard_node?: VersionString

@@ -36941,6 +36941,18 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)",
+          "name": "include_named_queries_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can only be used when the `q` query string parameter is specified.",
           "name": "lenient",
           "required": false,
@@ -37335,7 +37347,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L520"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L526"
     },
     {
       "body": {

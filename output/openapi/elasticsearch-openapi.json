@@ -26389,6 +26389,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -26540,6 +26543,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -26700,6 +26706,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -26854,6 +26863,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -48157,6 +48169,16 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "search#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
