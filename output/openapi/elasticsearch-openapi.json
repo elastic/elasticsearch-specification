@@ -8164,11 +8164,22 @@
                     }
                   },
                   "profile": {
+                    "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
                     "type": "boolean"
                   },
                   "query": {
                     "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
                     "type": "string"
+                  },
+                  "tables": {
+                    "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/esql._types:TableValuesContainer"
+                      }
+                    }
                   }
                 },
                 "required": [
@@ -80014,6 +80025,89 @@
         "enum": [
           "tail",
           "head"
+        ]
+      },
+      "esql._types:TableValuesContainer": {
+        "type": "object",
+        "properties": {
+          "integer": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesIntegerValue"
+            }
+          },
+          "keyword": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesKeywordValue"
+            }
+          },
+          "long": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongValue"
+            }
+          },
+          "double": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongDouble"
+            }
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "esql._types:TableValuesIntegerValue": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesKeywordValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesLongValue": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesLongDouble": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
         ]
       },
       "_types:EsqlColumns": {
