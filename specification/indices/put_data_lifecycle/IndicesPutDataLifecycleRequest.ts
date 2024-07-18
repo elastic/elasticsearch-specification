@@ -23,7 +23,8 @@ import { Duration } from '@_types/Time'
 import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
- * Update the data lifecycle of the specified data streams.
+ * Update data stream lifecycles.
+ * Update the data stream lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public

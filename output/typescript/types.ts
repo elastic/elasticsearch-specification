@@ -84,7 +84,7 @@ export interface BulkUpdateAction<TDocument = unknown, TPartialDocument = unknow
   detect_noop?: boolean
   doc?: TPartialDocument
   doc_as_upsert?: boolean
-  script?: Script
+  script?: Script | string
   scripted_upsert?: boolean
   _source?: SearchSourceConfig
   upsert?: TDocument
@@ -860,7 +860,7 @@ export interface MtermvectorsResponse {
 }
 
 export interface MtermvectorsTermVectorsResult {
-  _id: Id
+  _id?: Id
   _index: IndexName
   _version?: VersionNumber
   took?: long
@@ -1023,7 +1023,7 @@ export interface ReindexRequest extends RequestBase {
     conflicts?: Conflicts
     dest: ReindexDestination
     max_docs?: long
-    script?: Script
+    script?: Script | string
     size?: long
     source: ReindexSource
   }
@@ -1124,7 +1124,7 @@ export interface ScriptsPainlessExecuteRequest extends RequestBase {
   body?: {
     context?: string
     context_setup?: ScriptsPainlessExecutePainlessContextSetup
-    script?: InlineScript | string
+    script?: Script | string
   }
 }
 
@@ -1469,6 +1469,7 @@ export interface SearchHit<TDocument = unknown> {
   _node?: string
   _routing?: string
   _source?: TDocument
+  _rank?: integer
   _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
@@ -1889,7 +1890,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
 
 export interface TermvectorsResponse {
   found: boolean
-  _id: Id
+  _id?: Id
   _index: IndexName
   term_vectors?: Record<Field, TermvectorsTermVector>
   took: long
@@ -1905,7 +1906,7 @@ export interface TermvectorsTerm {
 }
 
 export interface TermvectorsTermVector {
-  field_statistics: TermvectorsFieldStatistics
+  field_statistics?: TermvectorsFieldStatistics
   terms: Record<string, TermvectorsTerm>
 }
 
@@ -1935,7 +1936,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
     detect_noop?: boolean
     doc?: TPartialDocument
     doc_as_upsert?: boolean
-    script?: Script
+    script?: Script | string
     scripted_upsert?: boolean
     _source?: SearchSourceConfig
     upsert?: TDocument
@@ -1983,7 +1984,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   body?: {
     max_docs?: long
     query?: QueryDslQueryContainer
-    script?: Script
+    script?: Script | string
     slice?: SlicedScroll
     conflicts?: Conflicts
   }
@@ -2353,12 +2354,6 @@ export interface InlineGetKeys<TDocument = unknown> {
 export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
   & { [property: string]: any }
 
-export interface InlineScript extends ScriptBase {
-  lang?: ScriptLanguage
-  options?: Record<string, string>
-  source: string
-}
-
 export type Ip = string
 
 export interface KnnQuery extends QueryDslQueryBase {
@@ -2592,7 +2587,7 @@ export type Routing = string
 
 export interface RrfRank {
   rank_constant?: long
-  window_size?: long
+  rank_window_size?: long
 }
 
 export type ScalarValue = long | double | string | boolean | null
@@ -2601,14 +2596,16 @@ export interface ScoreSort {
   order?: SortOrder
 }
 
-export type Script = InlineScript | string | StoredScriptId
-
-export interface ScriptBase {
+export interface Script {
+  source?: string
+  id?: Id
   params?: Record<string, any>
+  lang?: ScriptLanguage
+  options?: Record<string, string>
 }
 
 export interface ScriptField {
-  script: Script
+  script: Script | string
   ignore_failure?: boolean
 }
 
@@ -2616,7 +2613,7 @@ export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'| st
 
 export interface ScriptSort {
   order?: SortOrder
-  script: Script
+  script: Script | string
   type?: ScriptSortType
   mode?: SortMode
   nested?: NestedSortValue
@@ -2765,10 +2762,6 @@ export interface StoredScript {
   lang: ScriptLanguage
   options?: Record<string, string>
   source: string
-}
-
-export interface StoredScriptId extends ScriptBase {
-  id: Id
 }
 
 export type SuggestMode = 'missing' | 'popular' | 'always'
@@ -3019,7 +3012,7 @@ export interface AggregationsAutoDateHistogramAggregation extends AggregationsBu
   missing?: DateTime
   offset?: string
   params?: Record<string, any>
-  script?: Script
+  script?: Script | string
   time_zone?: TimeZone
 }
 
@@ -3089,11 +3082,11 @@ export interface AggregationsBucketPathAggregation {
 }
 
 export interface AggregationsBucketScriptAggregation extends AggregationsPipelineAggregationBase {
-  script?: Script
+  script?: Script | string
 }
 
 export interface AggregationsBucketSelectorAggregation extends AggregationsPipelineAggregationBase {
-  script?: Script
+  script?: Script | string
 }
 
 export interface AggregationsBucketSortAggregation {
@@ -3166,7 +3159,7 @@ export interface AggregationsCompositeAggregationBase {
   field?: Field
   missing_bucket?: boolean
   missing_order?: AggregationsMissingOrder
-  script?: Script
+  script?: Script | string
   value_type?: AggregationsValueType
   order?: SortOrder
 }
@@ -3237,7 +3230,7 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
   offset?: Duration
   order?: AggregationsAggregateOrder
   params?: Record<string, any>
-  script?: Script
+  script?: Script | string
   time_zone?: TimeZone
   keyed?: boolean
 }
@@ -3278,7 +3271,7 @@ export interface AggregationsDerivativeAggregation extends AggregationsPipelineA
 export interface AggregationsDiversifiedSamplerAggregation extends AggregationsBucketAggregationBase {
   execution_hint?: AggregationsSamplerAggregationExecutionHint
   max_docs_per_value?: integer
-  script?: Script
+  script?: Script | string
   shard_size?: integer
   field?: Field
 }
@@ -3527,7 +3520,7 @@ export interface AggregationsHistogramAggregation extends AggregationsBucketAggr
   missing?: double
   offset?: double
   order?: AggregationsAggregateOrder
-  script?: Script
+  script?: Script | string
   format?: string
   keyed?: boolean
 }
@@ -3715,7 +3708,7 @@ export interface AggregationsMedianAbsoluteDeviationAggregation extends Aggregat
 export interface AggregationsMetricAggregationBase {
   field?: Field
   missing?: AggregationsMissing
-  script?: Script
+  script?: Script | string
 }
 
 export interface AggregationsMinAggregate extends AggregationsSingleMetricAggregateBase {
@@ -3870,7 +3863,7 @@ export interface AggregationsRangeAggregation extends AggregationsBucketAggregat
   field?: Field
   missing?: integer
   ranges?: AggregationsAggregationRange[]
-  script?: Script
+  script?: Script | string
   keyed?: boolean
   format?: string
 }
@@ -3928,7 +3921,7 @@ export interface AggregationsSamplerAggregation extends AggregationsBucketAggreg
 export type AggregationsSamplerAggregationExecutionHint = 'map' | 'global_ordinals' | 'bytes_hash'
 
 export interface AggregationsScriptedHeuristic {
-  script: Script
+  script: Script | string
 }
 
 export interface AggregationsScriptedMetricAggregate extends AggregationsAggregateBase {
@@ -3936,11 +3929,11 @@ export interface AggregationsScriptedMetricAggregate extends AggregationsAggrega
 }
 
 export interface AggregationsScriptedMetricAggregation extends AggregationsMetricAggregationBase {
-  combine_script?: Script
-  init_script?: Script
-  map_script?: Script
+  combine_script?: Script | string
+  init_script?: Script | string
+  map_script?: Script | string
   params?: Record<string, any>
-  reduce_script?: Script
+  reduce_script?: Script | string
 }
 
 export interface AggregationsSerialDifferencingAggregation extends AggregationsPipelineAggregationBase {
@@ -4153,7 +4146,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   missing_bucket?: boolean
   value_type?: string
   order?: AggregationsAggregateOrder
-  script?: Script
+  script?: Script | string
   shard_min_doc_count?: long
   shard_size?: integer
   show_term_doc_count_error?: boolean
@@ -4180,7 +4173,7 @@ export interface AggregationsTermsPartition {
 
 export interface AggregationsTestPopulation {
   field: Field
-  script?: Script
+  script?: Script | string
   filter?: QueryDslQueryContainer
 }
 
@@ -4253,7 +4246,7 @@ export interface AggregationsVariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
-  script?: Script
+  script?: Script | string
 }
 
 export interface AggregationsVariableWidthHistogramBucketKeys extends AggregationsMultiBucketBase {
@@ -4277,7 +4270,7 @@ export interface AggregationsWeightedAverageAggregation {
 export interface AggregationsWeightedAverageValue {
   field?: Field
   missing?: double
-  script?: Script
+  script?: Script | string
 }
 
 export interface AggregationsWeightedAvgAggregate extends AggregationsSingleMetricAggregateBase {
@@ -4325,7 +4318,7 @@ export interface AnalysisCompoundWordTokenFilterBase extends AnalysisTokenFilter
 export interface AnalysisConditionTokenFilter extends AnalysisTokenFilterBase {
   type: 'condition'
   filter: string[]
-  script: Script
+  script: Script | string
 }
 
 export interface AnalysisCustomAnalyzer {
@@ -4720,7 +4713,7 @@ export interface AnalysisPorterStemTokenFilter extends AnalysisTokenFilterBase {
 
 export interface AnalysisPredicateTokenFilter extends AnalysisTokenFilterBase {
   type: 'predicate_token_filter'
-  script: Script
+  script: Script | string
 }
 
 export interface AnalysisRemoveDuplicatesTokenFilter extends AnalysisTokenFilterBase {
@@ -5004,8 +4997,9 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
 
 export interface MappingDenseVectorIndexOptions {
   type: string
-  m: integer
-  ef_construction: integer
+  m?: integer
+  ef_construction?: integer
+  confidence_interval?: float
 }
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
@@ -5038,7 +5032,7 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
   null_value?: FieldValue
   boost?: double
   coerce?: boolean
-  script?: Script
+  script?: Script | string
   on_script_error?: MappingOnScriptError
   ignore_malformed?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
@@ -5116,7 +5110,7 @@ export interface MappingGeoPointProperty extends MappingDocValuesPropertyBase {
   null_value?: GeoLocation
   index?: boolean
   on_script_error?: MappingOnScriptError
-  script?: Script
+  script?: Script | string
   type: 'geo_point'
 }
 
@@ -5182,7 +5176,7 @@ export interface MappingIpProperty extends MappingDocValuesPropertyBase {
   ignore_malformed?: boolean
   null_value?: string
   on_script_error?: MappingOnScriptError
-  script?: Script
+  script?: Script | string
   time_series_dimension?: boolean
   type: 'ip'
 }
@@ -5202,7 +5196,7 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: MappingIndexOptions
-  script?: Script
+  script?: Script | string
   on_script_error?: MappingOnScriptError
   normalizer?: string
   norms?: boolean
@@ -5247,7 +5241,7 @@ export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase 
   ignore_malformed?: boolean
   index?: boolean
   on_script_error?: MappingOnScriptError
-  script?: Script
+  script?: Script | string
   time_series_metric?: MappingTimeSeriesMetricType
   time_series_dimension?: boolean
 }
@@ -5307,7 +5301,7 @@ export interface MappingRuntimeField {
   input_field?: Field
   target_field?: Field
   target_index?: IndexName
-  script?: Script
+  script?: Script | string
   type: MappingRuntimeFieldType
 }
 
@@ -5697,7 +5691,7 @@ export interface QueryDslIntervalsFilter {
   not_containing?: QueryDslIntervalsContainer
   not_overlapping?: QueryDslIntervalsContainer
   overlapping?: QueryDslIntervalsContainer
-  script?: Script
+  script?: Script | string
 }
 
 export interface QueryDslIntervalsFuzzy {
@@ -6056,17 +6050,17 @@ export interface QueryDslRuleQuery extends QueryDslQueryBase {
 }
 
 export interface QueryDslScriptQuery extends QueryDslQueryBase {
-  script: Script
+  script: Script | string
 }
 
 export interface QueryDslScriptScoreFunction {
-  script: Script
+  script: Script | string
 }
 
 export interface QueryDslScriptScoreQuery extends QueryDslQueryBase {
   min_score?: float
   query: QueryDslQueryContainer
-  script: Script
+  script: Script | string
 }
 
 export interface QueryDslSemanticQuery extends QueryDslQueryBase {
@@ -6200,7 +6194,7 @@ export type QueryDslTermsQueryField = FieldValue[] | QueryDslTermsLookup
 
 export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
-  minimum_should_match_script?: Script
+  minimum_should_match_script?: Script | string
   terms: string[]
 }
 
@@ -10763,8 +10757,8 @@ export interface IndicesSettingsSimilarityLmj {
 
 export interface IndicesSettingsSimilarityScripted {
   type: 'scripted'
-  script: Script
-  weight_script?: Script
+  script: Script | string
+  weight_script?: Script | string
 }
 
 export interface IndicesSlowlogSettings {
@@ -16698,7 +16692,7 @@ export interface SearchApplicationSearchApplication {
 }
 
 export interface SearchApplicationSearchApplicationTemplate {
-  script: InlineScript | string
+  script: Script | string
 }
 
 export interface SearchApplicationDeleteRequest extends RequestBase {
@@ -16964,22 +16958,22 @@ export interface SecurityRoleMappingRule {
 
 export interface SecurityRoleTemplate {
   format?: SecurityTemplateFormat
-  template: Script
+  template: Script | string
 }
 
 export type SecurityRoleTemplateInlineQuery = string | QueryDslQueryContainer
 
-export interface SecurityRoleTemplateInlineScript extends ScriptBase {
+export interface SecurityRoleTemplateQuery {
+  template?: SecurityRoleTemplateScript | SecurityRoleTemplateInlineQuery
+}
+
+export interface SecurityRoleTemplateScript {
+  source?: SecurityRoleTemplateInlineQuery
+  id?: Id
+  params?: Record<string, any>
   lang?: ScriptLanguage
   options?: Record<string, string>
-  source: SecurityRoleTemplateInlineQuery
 }
-
-export interface SecurityRoleTemplateQuery {
-  template?: SecurityRoleTemplateScript
-}
-
-export type SecurityRoleTemplateScript = SecurityRoleTemplateInlineScript | SecurityRoleTemplateInlineQuery | StoredScriptId
 
 export type SecurityTemplateFormat = 'string' | 'json'
 

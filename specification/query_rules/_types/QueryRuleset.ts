@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { Id, IndexName, Name } from '@_types/common'
+import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { EpochTime, UnitMillis } from '@_types/Time'
-import { InlineScript } from '@_types/Scripting'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { PinnedDoc } from '../../_types/query_dsl/specialized'
 
