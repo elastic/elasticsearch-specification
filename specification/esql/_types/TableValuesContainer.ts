@@ -20,7 +20,7 @@
 import { double, integer, long } from '@_types/Numeric'
 
 /** @variants container */
-export interface TableValues {
+export interface TableValuesContainer {
   integer?: TableValuesIntegerValue[]
   keyword?: TableValuesKeywordValue[]
   long?: TableValuesLongValue[]

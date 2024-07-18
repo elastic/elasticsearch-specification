@@ -9897,7 +9897,7 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
-export interface EsqlTableValues {
+export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
   keyword?: EsqlTableValuesKeywordValue[]
   long?: EsqlTableValuesLongValue[]
@@ -9923,7 +9923,7 @@ export interface EsqlQueryRequest extends RequestBase {
     params?: FieldValue[]
     profile?: boolean
     query: string
-    tables?: Record<string, Record<string, EsqlTableValues>>
+    tables?: Record<string, Record<string, EsqlTableValuesContainer>>
   }
 }
 

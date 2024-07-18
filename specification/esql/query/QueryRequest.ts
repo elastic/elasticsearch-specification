@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
-import { TableValues } from '@esql/_types/TableValues'
+import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 
 /**
  * Executes an ES|QL request
@@ -84,6 +84,6 @@ export interface Request extends RequestBase {
      * Tables to use with the LOOKUP operation. The top level key is the table
      * name and the next level key is the column name.
      */
-    tables?: Dictionary<string, Dictionary<string, TableValues>>
+    tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
   }
 }
