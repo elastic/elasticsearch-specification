@@ -3176,6 +3176,7 @@ export interface AggregationsAggregationContainer {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export interface AggregationsAggregationRange {
   from?: double | null
   key?: string
@@ -3185,6 +3186,9 @@ export type AggregationsAggregationRange = AggregationsUntypedAggregationRange |
 =======
 export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange | AggregationsTermAggregationRange
 >>>>>>> 07886ab3f (same as range query)
+=======
+export type AggregationsAggregationRange = AggregationsUntypedAggregationRange | AggregationsDateAggregationRange | AggregationsNumberAggregationRange
+>>>>>>> 1f832eff5 (removed term range aggregation)
 
 export interface AggregationsAggregationRangeBase<T = unknown> {
   from?: T
@@ -4333,9 +4337,6 @@ export interface AggregationsTTestAggregation {
 }
 
 export type AggregationsTTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
-
-export interface AggregationsTermAggregationRange extends AggregationsAggregationRangeBase<string> {
-}
 
 export interface AggregationsTermsAggregateBase<TBucket = unknown> extends AggregationsMultiBucketAggregateBase<TBucket> {
   doc_count_error_upper_bound?: long

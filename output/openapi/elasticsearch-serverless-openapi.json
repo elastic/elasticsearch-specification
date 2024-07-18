@@ -34172,9 +34172,6 @@
           },
           {
             "$ref": "#/components/schemas/_types.aggregations:NumberAggregationRange"
-          },
-          {
-            "$ref": "#/components/schemas/_types.aggregations:TermAggregationRange"
           }
         ]
       },
@@ -34245,33 +34242,6 @@
                 "type": "string"
               }
             ]
-          }
-        }
-      },
-      "_types.aggregations:TermAggregationRange": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations:AggregationRangeBasestring"
-          },
-          {
-            "type": "object"
-          }
-        ]
-      },
-      "_types.aggregations:AggregationRangeBasestring": {
-        "type": "object",
-        "properties": {
-          "from": {
-            "description": "Start of the range (inclusive).",
-            "type": "string"
-          },
-          "key": {
-            "description": "Custom key to return the range with.",
-            "type": "string"
-          },
-          "to": {
-            "description": "End of the range (exclusive).",
-            "type": "string"
           }
         }
       },
