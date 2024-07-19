@@ -17803,6 +17803,7 @@
             }
           },
           {
+            "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
             "name": "profile",
             "required": false,
             "type": {
@@ -17822,6 +17823,40 @@
               "type": {
                 "name": "string",
                 "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
+            "name": "tables",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TableValuesContainer",
+                    "namespace": "esql._types"
+                  }
+                }
               }
             }
           }
@@ -17879,7 +17914,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L24-L76"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L89"
     },
     {
       "body": {
@@ -89131,6 +89166,126 @@
     {
       "kind": "type_alias",
       "name": {
+        "name": "TableValuesIntegerValue",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L30-L30",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesKeywordValue",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L31-L31",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesLongDouble",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L33-L33",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesLongValue",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L32-L32",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
         "name": "Checkpoint",
         "namespace": "fleet._types"
       },
@@ -113216,6 +113371,75 @@
         }
       ],
       "specLocation": "eql/_types/EqlHits.ts#L56-L64"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TableValuesContainer",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "name": "integer",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesIntegerValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "keyword",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesKeywordValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "long",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesLongValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "double",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesLongDouble",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/TableValuesContainer.ts#L22-L28",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",

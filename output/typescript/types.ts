@@ -9891,6 +9891,21 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export interface EsqlTableValuesContainer {
+  integer?: EsqlTableValuesIntegerValue[]
+  keyword?: EsqlTableValuesKeywordValue[]
+  long?: EsqlTableValuesLongValue[]
+  double?: EsqlTableValuesLongDouble[]
+}
+
+export type EsqlTableValuesIntegerValue = integer | integer[]
+
+export type EsqlTableValuesKeywordValue = string | string[]
+
+export type EsqlTableValuesLongDouble = double | double[]
+
+export type EsqlTableValuesLongValue = long | long[]
+
 export interface EsqlQueryRequest extends RequestBase {
   format?: string
   delimiter?: string
@@ -9902,6 +9917,7 @@ export interface EsqlQueryRequest extends RequestBase {
     params?: FieldValue[]
     profile?: boolean
     query: string
+    tables?: Record<string, Record<string, EsqlTableValuesContainer>>
   }
 }
 
