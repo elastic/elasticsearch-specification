@@ -29,7 +29,8 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
- * Checks if a document in an index exists.
+ * Check a document.
+ * Checks if a specified document exists.
  * @rest_spec_name exists
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

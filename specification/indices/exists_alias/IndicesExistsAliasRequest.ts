@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
 
 /**
+ * Check aliases.
  * Checks if an alias exists.
  * @rest_spec_name indices.exists_alias
  * @availability stack stability=stable

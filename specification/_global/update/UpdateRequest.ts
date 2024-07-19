@@ -36,6 +36,8 @@ import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
 
 /**
+ * Update a document.
+ * Updates a document by running a script or passing a partial document.
  * @rest_spec_name update
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

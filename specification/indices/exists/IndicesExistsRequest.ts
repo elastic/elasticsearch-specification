@@ -21,7 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
- * Checks if a data stream, index, or alias exists.
+ * Check indices.
+ * Checks if one or more indices, index aliases, or data streams exist.
  * @rest_spec_name indices.exists
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

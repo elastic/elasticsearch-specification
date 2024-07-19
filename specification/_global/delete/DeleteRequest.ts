@@ -32,6 +32,7 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Delete a document.
  * Removes a JSON document from the specified index.
  * @rest_spec_name delete
  * @availability stack stability=stable

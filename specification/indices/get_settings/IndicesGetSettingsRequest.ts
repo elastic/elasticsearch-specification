@@ -22,6 +22,7 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get index settings.
  * Returns setting information for one or more indices. For data streams,
  * returns setting information for the stream’s backing indices.
  * @rest_spec_name indices.get_settings

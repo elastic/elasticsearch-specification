@@ -24,7 +24,8 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
- * Returns information about why a specific document matches (or doesn’t match) a query.
+ * Explain a document match result.
+ * Returns information about why a specific document matches, or doesn’t match, a query.
  * @rest_spec_name explain
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

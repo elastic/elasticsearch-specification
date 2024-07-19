@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
 
 /**
+ * Get alias information.
  * Retrieves information for one or more aliases.
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
