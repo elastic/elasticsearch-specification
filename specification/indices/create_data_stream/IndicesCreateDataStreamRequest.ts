@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { DataStreamName } from '@_types/common'
 
 /**
+ * Create a data stream.
  * Creates a data stream.
  * You must have a matching index template with data stream enabled.
  * @rest_spec_name indices.create_data_stream

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
 
 /**
+ * Get data streams.
  * Retrieves information about one or more data streams.
  * @rest_spec_name indices.get_data_stream
  * @availability stack since=7.9.0 stability=stable
