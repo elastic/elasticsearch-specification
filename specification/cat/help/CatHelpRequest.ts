@@ -20,6 +20,8 @@
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
+ * Get CAT help.
+ * Returns help for the CAT APIs.
  * @rest_spec_name cat.help
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

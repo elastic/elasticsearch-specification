@@ -33,6 +33,7 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Index a document.
  * Adds a JSON document to the specified data stream or index and makes it searchable.
  * If the target is an index and the document already exists, the request updates the document and increments its version.
  * @rest_spec_name index

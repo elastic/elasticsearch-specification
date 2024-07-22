@@ -22,6 +22,7 @@ import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
+ * Get anomaly detection jobs.
  * Returns configuration and usage information for anomaly detection jobs.
  * This API returns a maximum of 10,000 jobs.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`,

@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
+ * Get datafeeds.
  * Returns configuration and usage information about datafeeds.
  * This API returns a maximum of 10,000 datafeeds.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`

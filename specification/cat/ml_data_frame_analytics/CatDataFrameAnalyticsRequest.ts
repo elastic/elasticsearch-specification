@@ -22,6 +22,7 @@ import { Bytes, Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get data frame analytics jobs.
  * Returns configuration and usage information about data frame analytics jobs.
  *
  * IMPORTANT: cat APIs are only intended for human consumption using the Kibana

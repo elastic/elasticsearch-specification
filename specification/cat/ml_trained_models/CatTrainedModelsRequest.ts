@@ -22,6 +22,7 @@ import { Bytes, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Get trained models.
  * Returns configuration and usage information about inference trained models.
  *
  * IMPORTANT: cat APIs are only intended for human consumption using the Kibana

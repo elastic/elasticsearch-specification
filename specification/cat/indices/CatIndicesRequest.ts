@@ -22,6 +22,7 @@ import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
+ * Get index information.
  * Returns high-level information about indices in a cluster, including backing indices for data streams.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the get index API.
