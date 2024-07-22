@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Start a transform.
  * Starts a transform.
  *
  * When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is

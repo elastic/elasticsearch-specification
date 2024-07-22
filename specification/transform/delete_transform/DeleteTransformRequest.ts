@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Delete a transform.
  * Deletes a transform.
  * @rest_spec_name transform.delete_transform
  * @availability stack since=7.5.0 stability=stable

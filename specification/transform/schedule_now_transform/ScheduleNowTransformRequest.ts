@@ -21,7 +21,8 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Schedules now a transform.
+ * Schedule a transform to start now.
+ * Instantly runs a transform to process data.
  *
  * If you _schedule_now a transform, it will process the new data instantly,
  * without waiting for the configured frequency interval. After _schedule_now API is called,

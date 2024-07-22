@@ -29,6 +29,7 @@ import { Id, Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Update a transform.
  * Updates certain properties of a transform.
  *
  * All updated properties except `description` do not take effect until after the transform starts the next checkpoint,

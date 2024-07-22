@@ -22,6 +22,7 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Create an enrich policy.
  * Creates an enrich policy.
  * @doc_id put-enrich-policy-api
  * @rest_spec_name enrich.put_policy
