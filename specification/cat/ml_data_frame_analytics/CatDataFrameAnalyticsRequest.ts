@@ -25,9 +25,10 @@ import { Duration } from '@_types/Time'
  * Get data frame analytics jobs.
  * Returns configuration and usage information about data frame analytics jobs.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * > info
+ * > CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the get data frame analytics jobs statistics API.
+ * application consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).
  *
  * @rest_spec_name cat.ml_data_frame_analytics
  * @availability stack since=7.7.0 stability=stable

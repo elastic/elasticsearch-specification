@@ -28,9 +28,10 @@ import { TimeUnit } from '@_types/Time'
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`
  * cluster privileges to use this API.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * > info
+ * > CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the get datafeed statistics API.
+ * application consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).
  *
  * @rest_spec_name cat.ml_datafeeds
  * @availability stack since=7.7.0 stability=stable

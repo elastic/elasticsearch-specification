@@ -26,9 +26,10 @@ import { Duration, TimeUnit } from '@_types/Time'
  * Get transforms.
  * Returns configuration and usage information about transforms.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * > info
+ * > CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the get transform statistics API.
+ * application consumption, use [the /_transform endpoints](#endpoint-transform).
  *
  * @rest_spec_name cat.transforms
  * @availability stack since=7.7.0 stability=stable
