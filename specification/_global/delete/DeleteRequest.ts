@@ -34,7 +34,7 @@ import { Duration } from '@_types/Time'
 /**
  * Removes a JSON document from the specified index.
  * @rest_spec_name delete
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

@@ -34,8 +34,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -43,8 +41,7 @@
           ],
           "path": "/_async_search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -73,8 +70,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -82,8 +77,7 @@
           ],
           "path": "/_async_search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -112,8 +106,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -121,8 +113,7 @@
           ],
           "path": "/_async_search/status/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -154,8 +145,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -169,8 +158,7 @@
           ],
           "path": "/{index}/_async_search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -179,7 +167,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -202,8 +189,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -219,8 +204,7 @@
           ],
           "path": "/{index}/_bulk"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -229,7 +213,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -255,8 +238,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -270,8 +251,7 @@
           ],
           "path": "/_cat/aliases/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -305,8 +285,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "5.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -320,8 +298,7 @@
           ],
           "path": "/_cat/component_templates/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -330,7 +307,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -356,8 +332,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -371,8 +345,7 @@
           ],
           "path": "/_cat/count/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -381,7 +354,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -401,8 +373,6 @@
       "responseMediaType": [
         "text/plain"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -410,8 +380,7 @@
           ],
           "path": "/_cat"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -420,7 +389,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -449,8 +417,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -464,8 +430,7 @@
           ],
           "path": "/_cat/indices/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -500,8 +465,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -515,8 +478,7 @@
           ],
           "path": "/_cat/ml/data_frame/analytics/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -551,8 +513,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -566,8 +526,7 @@
           ],
           "path": "/_cat/ml/datafeeds/{datafeed_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -602,8 +561,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -617,8 +574,7 @@
           ],
           "path": "/_cat/ml/anomaly_detectors/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -653,8 +609,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -668,8 +622,7 @@
           ],
           "path": "/_cat/ml/trained_models/{model_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -704,8 +657,6 @@
         "text/plain",
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -719,8 +670,7 @@
           ],
           "path": "/_cat/transforms/{transform_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -729,7 +679,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -753,8 +702,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -772,8 +719,7 @@
           ],
           "path": "/_search/scroll/{scroll_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -805,8 +751,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -814,8 +758,7 @@
           ],
           "path": "/_pit"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -849,8 +792,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -858,8 +799,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -888,8 +828,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -897,8 +835,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -932,8 +869,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -947,8 +882,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -977,8 +911,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -986,8 +918,7 @@
           ],
           "path": "/_info/{target}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1024,8 +955,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -1034,8 +963,7 @@
           ],
           "path": "/_component_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1064,8 +992,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1073,18 +999,17 @@
           ],
           "path": "/_connector/{connector_id}/_check_in"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Deletes a connector.",
@@ -1103,8 +1028,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1112,18 +1035,17 @@
           ],
           "path": "/_connector/{connector_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Retrieves a connector.",
@@ -1142,8 +1064,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1151,8 +1071,7 @@
           ],
           "path": "/_connector/{connector_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1184,8 +1103,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1193,18 +1110,17 @@
           ],
           "path": "/_connector/{connector_id}/_last_sync"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Returns existing connectors.",
@@ -1223,8 +1139,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1232,18 +1146,17 @@
           ],
           "path": "/_connector"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Creates a connector.",
@@ -1265,8 +1178,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1274,18 +1185,17 @@
           ],
           "path": "/_connector"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Creates or updates a connector.",
@@ -1307,8 +1217,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1322,18 +1230,17 @@
           ],
           "path": "/_connector"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Cancels a connector sync job.",
@@ -1352,8 +1259,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1361,18 +1266,17 @@
           ],
           "path": "/_connector/_sync_job/{connector_sync_job_id}/_cancel"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Deletes a connector sync job.",
@@ -1391,8 +1295,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1400,18 +1302,17 @@
           ],
           "path": "/_connector/_sync_job/{connector_sync_job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Retrieves a connector sync job.",
@@ -1430,8 +1331,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1439,18 +1338,17 @@
           ],
           "path": "/_connector/_sync_job/{connector_sync_job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Lists connector sync jobs.",
@@ -1469,8 +1367,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1478,18 +1374,17 @@
           ],
           "path": "/_connector/_sync_job"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Creates a connector sync job.",
@@ -1511,8 +1406,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1520,8 +1413,7 @@
           ],
           "path": "/_connector/_sync_job"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1553,8 +1445,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1562,18 +1452,17 @@
           ],
           "path": "/_connector/{connector_id}/_filtering/_activate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the API key id in the connector document",
@@ -1595,8 +1484,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1604,18 +1491,17 @@
           ],
           "path": "/_connector/{connector_id}/_api_key_id"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the configuration field in the connector document",
@@ -1637,8 +1523,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1646,8 +1530,7 @@
           ],
           "path": "/_connector/{connector_id}/_configuration"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1679,8 +1562,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1688,18 +1569,17 @@
           ],
           "path": "/_connector/{connector_id}/_error"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the filtering field in the connector document",
@@ -1721,8 +1601,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1730,8 +1608,7 @@
           ],
           "path": "/_connector/{connector_id}/_filtering"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -1763,8 +1640,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1772,18 +1647,17 @@
           ],
           "path": "/_connector/{connector_id}/_filtering/_validation"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the index_name in the connector document",
@@ -1805,8 +1679,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1814,18 +1686,17 @@
           ],
           "path": "/_connector/{connector_id}/_index_name"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the name and description fields in the connector document",
@@ -1847,8 +1718,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1856,18 +1725,17 @@
           ],
           "path": "/_connector/{connector_id}/_name"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the is_native flag in the connector document",
@@ -1889,8 +1757,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1898,18 +1764,17 @@
           ],
           "path": "/_connector/{connector_id}/_native"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the pipeline field in the connector document",
@@ -1931,8 +1796,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1940,18 +1803,17 @@
           ],
           "path": "/_connector/{connector_id}/_pipeline"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the scheduling field in the connector document",
@@ -1973,8 +1835,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -1982,18 +1842,17 @@
           ],
           "path": "/_connector/{connector_id}/_scheduling"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "beta",
           "visibility": "public"
         },
         "stack": {
           "since": "8.12.0",
-          "stability": "experimental"
+          "stability": "beta"
         }
       },
       "description": "Updates the service type of the connector",
@@ -2015,8 +1874,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -2024,8 +1881,7 @@
           ],
           "path": "/_connector/{connector_id}/_service_type"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2057,8 +1913,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.12.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -2066,8 +1920,7 @@
           ],
           "path": "/_connector/{connector_id}/_status"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2076,7 +1929,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2098,8 +1950,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2115,8 +1965,7 @@
           ],
           "path": "/{index}/_count"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2147,8 +1996,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2157,8 +2004,7 @@
           ],
           "path": "/{index}/_create/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2167,7 +2013,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2186,8 +2031,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2195,8 +2038,7 @@
           ],
           "path": "/{index}/_doc/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2227,8 +2069,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2236,8 +2076,7 @@
           ],
           "path": "/{index}/_delete_by_query"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2246,7 +2085,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2265,8 +2103,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2274,8 +2110,7 @@
           ],
           "path": "/_scripts/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2303,8 +2138,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2312,8 +2145,7 @@
           ],
           "path": "/_enrich/policy/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2342,8 +2174,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2351,8 +2181,7 @@
           ],
           "path": "/_enrich/policy/{name}/_execute"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2380,8 +2209,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2395,8 +2222,7 @@
           ],
           "path": "/_enrich/policy"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2428,8 +2254,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2437,8 +2261,7 @@
           ],
           "path": "/_enrich/policy/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2466,8 +2289,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2475,8 +2296,7 @@
           ],
           "path": "/_enrich/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2504,8 +2324,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2513,8 +2331,7 @@
           ],
           "path": "/_eql/search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2543,8 +2360,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2552,8 +2367,7 @@
           ],
           "path": "/_eql/search/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2582,8 +2396,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2591,8 +2403,7 @@
           ],
           "path": "/_eql/search/status/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2623,8 +2434,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2633,8 +2442,7 @@
           ],
           "path": "/{index}/_eql/search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2662,8 +2470,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2671,8 +2477,7 @@
           ],
           "path": "/_query"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2681,7 +2486,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2700,8 +2504,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2709,8 +2511,7 @@
           ],
           "path": "/{index}/_doc/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2738,8 +2539,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2747,8 +2546,7 @@
           ],
           "path": "/{index}/_source/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2757,7 +2555,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2779,8 +2576,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2789,8 +2584,7 @@
           ],
           "path": "/{index}/_explain/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2828,8 +2622,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2845,8 +2637,7 @@
           ],
           "path": "/{index}/_field_caps"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2855,7 +2646,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2874,8 +2664,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2883,8 +2671,7 @@
           ],
           "path": "/{index}/_doc/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2893,7 +2680,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2912,8 +2698,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2921,8 +2705,7 @@
           ],
           "path": "/_scripts/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2931,7 +2714,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2950,8 +2732,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -2959,8 +2739,7 @@
           ],
           "path": "/{index}/_source/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -2969,7 +2748,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -2992,8 +2770,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3002,8 +2778,7 @@
           ],
           "path": "/{index}/_graph/explore"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3012,7 +2787,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3034,8 +2808,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3050,8 +2822,7 @@
           ],
           "path": "/{index}/_doc"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3079,8 +2850,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3088,8 +2857,7 @@
           ],
           "path": "/{index}/_block/{block}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3098,7 +2866,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3121,8 +2888,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3138,8 +2903,7 @@
           ],
           "path": "/{index}/_analyze"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3148,7 +2912,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3177,8 +2940,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3186,8 +2947,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3200,7 +2960,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+      "description": "Create a data stream.\nCreates a data stream.\nYou must have a matching index template with data stream enabled.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.create_data_stream",
       "privileges": {
@@ -3220,8 +2980,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3229,8 +2987,7 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3243,7 +3000,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves statistics for one or more data streams.",
+      "description": "Get data stream stats.\nRetrieves statistics for one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.data_streams_stats",
       "privileges": {
@@ -3263,8 +3020,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3278,8 +3033,7 @@
           ],
           "path": "/_data_stream/{name}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3288,7 +3042,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3307,8 +3060,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3316,8 +3067,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3326,7 +3076,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3345,8 +3094,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3360,8 +3107,7 @@
           ],
           "path": "/{index}/_aliases/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3374,7 +3120,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle",
+      "description": "Delete data stream lifecycles.\nRemoves the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-delete-lifecycle.html",
       "name": "indices.delete_data_lifecycle",
       "request": {
@@ -3389,8 +3135,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3398,8 +3142,7 @@
           ],
           "path": "/_data_stream/{name}/_lifecycle"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3412,7 +3155,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes one or more data streams and their backing indices.",
+      "description": "Delete data streams.\nDeletes one or more data streams and their backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.delete_data_stream",
       "privileges": {
@@ -3432,8 +3175,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3441,8 +3182,7 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3476,8 +3216,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.8.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3485,8 +3223,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3495,7 +3232,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3514,8 +3250,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3523,8 +3257,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3533,7 +3266,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3552,8 +3284,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3567,8 +3297,7 @@
           ],
           "path": "/{index}/_alias/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3577,7 +3306,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3596,8 +3324,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3605,8 +3331,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3634,8 +3359,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3643,8 +3366,7 @@
           ],
           "path": "/{index}/_lifecycle/explain"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3653,7 +3375,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3678,8 +3399,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3687,8 +3406,7 @@
           ],
           "path": "/{index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3697,7 +3415,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3716,8 +3433,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3743,8 +3458,7 @@
           ],
           "path": "/{index}/_alias"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3757,7 +3471,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+      "description": "Get data stream lifecycles.\nRetrieves the data stream lifecycle configuration of one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
       "request": {
@@ -3772,8 +3486,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3781,8 +3493,7 @@
           ],
           "path": "/_data_stream/{name}/_lifecycle"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3795,7 +3506,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information about one or more data streams.",
+      "description": "Get data streams.\nRetrieves information about one or more data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.get_data_stream",
       "privileges": {
@@ -3815,8 +3526,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3830,8 +3539,7 @@
           ],
           "path": "/_data_stream/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3865,8 +3573,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3880,8 +3586,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3890,7 +3595,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3909,8 +3613,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3924,8 +3626,7 @@
           ],
           "path": "/{index}/_mapping"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -3934,7 +3635,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -3960,8 +3660,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3987,8 +3685,7 @@
           ],
           "path": "/_settings/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4001,7 +3698,7 @@
           "stability": "stable"
         }
       },
-      "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
+      "description": "Convert an index alias to a data stream.\nConverts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.migrate_to_data_stream",
       "privileges": {
@@ -4021,8 +3718,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4030,8 +3725,7 @@
           ],
           "path": "/_data_stream/_migrate/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4044,7 +3738,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs one or more data stream modification actions in a single atomic operation.",
+      "description": "Update data streams.\nPerforms one or more data stream modification actions in a single atomic operation.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
       "name": "indices.modify_data_stream",
       "request": {
@@ -4062,8 +3756,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.16.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4071,8 +3763,7 @@
           ],
           "path": "/_data_stream/_modify"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4081,7 +3772,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4103,8 +3793,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4120,8 +3808,7 @@
           ],
           "path": "/{index}/_aliases/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4134,7 +3821,7 @@
           "stability": "stable"
         }
       },
-      "description": "Update the data lifecycle of the specified data streams.",
+      "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
       "request": {
@@ -4149,8 +3836,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4158,8 +3843,7 @@
           ],
           "path": "/_data_stream/{name}/_lifecycle"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4190,8 +3874,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4200,8 +3882,7 @@
           ],
           "path": "/_index_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4210,7 +3891,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4232,8 +3912,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4242,8 +3920,7 @@
           ],
           "path": "/{index}/_mapping"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4252,7 +3929,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4279,8 +3955,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4294,8 +3968,7 @@
           ],
           "path": "/{index}/_settings"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4304,7 +3977,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4326,8 +3998,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4336,8 +4006,7 @@
           ],
           "path": "/_template/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4346,7 +4015,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4365,8 +4033,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4382,8 +4048,7 @@
           ],
           "path": "/{index}/_refresh"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4411,8 +4076,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4420,8 +4083,7 @@
           ],
           "path": "/_resolve/index/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4453,8 +4115,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4468,8 +4128,7 @@
           ],
           "path": "/{alias}/_rollover/{new_index}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4500,8 +4159,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.9.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4509,8 +4166,7 @@
           ],
           "path": "/_index_template/_simulate_index/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4519,7 +4175,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4547,8 +4202,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4562,8 +4215,7 @@
           ],
           "path": "/_index_template/_simulate/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4594,8 +4246,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4603,8 +4253,7 @@
           ],
           "path": "/_aliases"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4635,8 +4284,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4652,8 +4299,7 @@
           ],
           "path": "/{index}/_validate/query"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4682,8 +4328,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4697,8 +4341,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4727,8 +4370,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4748,8 +4389,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4781,8 +4421,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4796,8 +4434,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4829,8 +4466,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.11.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -4844,8 +4479,7 @@
           ],
           "path": "/_inference/{task_type}/{inference_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4854,7 +4488,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -4873,8 +4506,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4882,8 +4513,7 @@
           ],
           "path": "/"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4911,8 +4541,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4920,8 +4548,7 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4949,8 +4576,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4964,8 +4589,7 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -4994,8 +4618,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5003,8 +4625,7 @@
           ],
           "path": "/_ingest/processor/grok"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5036,8 +4657,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5045,8 +4664,7 @@
           ],
           "path": "/_ingest/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5077,8 +4695,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5094,8 +4710,7 @@
           ],
           "path": "/_ingest/pipeline/{id}/_simulate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5104,7 +4719,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -5123,8 +4737,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5132,8 +4744,7 @@
           ],
           "path": "/_license"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5166,8 +4777,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.12.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5175,8 +4784,7 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5209,8 +4817,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.12.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5224,8 +4830,7 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5261,8 +4866,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.12.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5270,8 +4873,7 @@
           ],
           "path": "/_logstash/pipeline/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5307,8 +4909,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5324,8 +4924,7 @@
           ],
           "path": "/{index}/_mget"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5338,7 +4937,7 @@
           "stability": "stable"
         }
       },
-      "description": "Close anomaly detection jobs\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
+      "description": "Close anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "docId": "ml-close-job",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-close-job.html",
       "name": "ml.close_job",
@@ -5362,8 +4961,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5371,8 +4968,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_close"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5406,8 +5002,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5415,8 +5009,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5445,8 +5038,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5454,8 +5045,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events/{event_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5489,8 +5079,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5498,8 +5086,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5533,8 +5120,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5542,8 +5127,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5577,8 +5161,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5586,8 +5168,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5620,8 +5201,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5629,8 +5208,7 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5643,7 +5221,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an anomaly detection job.\n\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
+      "description": "Delete an anomaly detection job.\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html",
       "name": "ml.delete_job",
       "privileges": {
@@ -5663,8 +5241,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5672,8 +5248,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5706,8 +5281,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5715,8 +5288,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5752,8 +5324,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.13.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5761,8 +5331,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5798,8 +5367,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5807,8 +5374,7 @@
           ],
           "path": "/_ml/anomaly_detectors/_estimate_model_memory"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5844,8 +5410,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5853,8 +5417,7 @@
           ],
           "path": "/_ml/data_frame/_evaluate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5890,8 +5453,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5899,8 +5460,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_flush"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5933,8 +5493,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5942,8 +5500,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -5979,8 +5536,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5996,8 +5551,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6030,8 +5584,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6045,8 +5597,7 @@
           ],
           "path": "/_ml/data_frame/analytics"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6079,8 +5630,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6094,8 +5643,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6128,8 +5676,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6143,8 +5689,7 @@
           ],
           "path": "/_ml/datafeeds/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6177,8 +5722,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6192,8 +5735,7 @@
           ],
           "path": "/_ml/datafeeds"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6226,8 +5768,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6241,8 +5781,7 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6275,8 +5814,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6290,8 +5827,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6324,8 +5860,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6339,8 +5873,7 @@
           ],
           "path": "/_ml/anomaly_detectors"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6376,8 +5909,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6386,8 +5917,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/results/overall_buckets"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6420,8 +5950,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6435,8 +5963,7 @@
           ],
           "path": "/_ml/trained_models"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6469,8 +5996,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6484,8 +6009,7 @@
           ],
           "path": "/_ml/trained_models/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6516,8 +6040,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6535,8 +6057,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_infer"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6549,7 +6070,7 @@
           "stability": "stable"
         }
       },
-      "description": "Opens one or more anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
       "privileges": {
@@ -6572,8 +6093,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6581,8 +6100,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_open"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6618,8 +6136,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6627,8 +6143,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/events"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6664,8 +6179,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.13.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6681,8 +6194,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_preview"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6721,8 +6233,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6738,8 +6248,7 @@
           ],
           "path": "/_ml/datafeeds/_preview"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6775,8 +6284,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6784,8 +6291,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6818,8 +6324,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6827,8 +6331,7 @@
           ],
           "path": "/_ml/calendars/{calendar_id}/jobs/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6872,8 +6375,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6881,8 +6382,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6921,8 +6421,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6930,8 +6428,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6967,8 +6464,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6976,8 +6471,7 @@
           ],
           "path": "/_ml/filters/{filter_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -6990,7 +6484,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
       "privileges": {
@@ -7016,8 +6510,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7025,8 +6517,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7062,8 +6553,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7071,8 +6560,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7108,8 +6596,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.13.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7117,8 +6603,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/model_aliases/{model_alias}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7154,8 +6639,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7163,8 +6646,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/definition/{part}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7200,8 +6682,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7209,8 +6689,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/vocabulary"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7243,8 +6722,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.14.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7252,8 +6729,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_reset"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7296,8 +6772,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7305,8 +6779,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7342,8 +6815,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7351,8 +6822,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7388,8 +6858,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7397,8 +6865,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7434,8 +6901,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7443,8 +6908,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7480,8 +6944,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7489,8 +6951,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7526,8 +6987,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7535,8 +6994,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7579,8 +7037,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7588,8 +7044,7 @@
           ],
           "path": "/_ml/data_frame/analytics/{id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7625,8 +7080,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7634,8 +7087,7 @@
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7671,8 +7123,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7680,8 +7130,7 @@
           ],
           "path": "/_ml/filters/{filter_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7717,8 +7166,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7726,8 +7173,7 @@
           ],
           "path": "/_ml/anomaly_detectors/{job_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7763,8 +7209,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.6.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7772,8 +7216,7 @@
           ],
           "path": "/_ml/trained_models/{model_id}/deployment/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7809,8 +7252,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "1.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7826,8 +7267,7 @@
           ],
           "path": "/{index}/_msearch"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7863,8 +7303,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7880,8 +7318,7 @@
           ],
           "path": "/{index}/_msearch/template"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7890,7 +7327,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -7912,8 +7348,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7929,8 +7363,7 @@
           ],
           "path": "/{index}/_mtermvectors"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7967,8 +7400,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7976,8 +7407,7 @@
           ],
           "path": "/{index}/_pit"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -7986,7 +7416,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -8005,8 +7434,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8014,8 +7441,7 @@
           ],
           "path": "/"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8024,7 +7450,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -8046,8 +7471,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8063,8 +7486,7 @@
           ],
           "path": "/_scripts/{id}/{context}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8092,8 +7514,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8101,8 +7521,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8130,8 +7549,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8139,8 +7556,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8168,8 +7584,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8177,8 +7591,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8206,8 +7619,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8215,8 +7626,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8244,8 +7654,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8253,8 +7661,7 @@
           ],
           "path": "/_query_rules"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8285,8 +7692,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8294,8 +7699,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}/_rule/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8326,8 +7730,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8335,8 +7737,7 @@
           ],
           "path": "/_query_rules/{ruleset_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8372,8 +7773,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8389,8 +7788,7 @@
           ],
           "path": "/{index}/_rank_eval"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8421,8 +7819,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "2.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8430,8 +7826,7 @@
           ],
           "path": "/_reindex"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8440,7 +7835,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -8462,8 +7856,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8479,8 +7871,7 @@
           ],
           "path": "/_render/template/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8511,8 +7902,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8521,8 +7910,7 @@
           ],
           "path": "/_scripts/painless/_execute"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8531,7 +7919,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -8553,8 +7940,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8574,8 +7959,7 @@
           ],
           "path": "/_search/scroll/{scroll_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8584,7 +7968,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -8611,8 +7994,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8628,8 +8009,7 @@
           ],
           "path": "/{index}/_search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8657,8 +8037,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8666,8 +8044,7 @@
           ],
           "path": "/_application/search_application/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8695,8 +8072,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8704,8 +8079,7 @@
           ],
           "path": "/_application/analytics/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8733,8 +8107,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8742,8 +8114,7 @@
           ],
           "path": "/_application/search_application/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8771,8 +8142,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8786,8 +8155,7 @@
           ],
           "path": "/_application/analytics/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8815,8 +8183,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8824,8 +8190,7 @@
           ],
           "path": "/_application/search_application"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8856,8 +8221,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8865,8 +8228,7 @@
           ],
           "path": "/_application/search_application/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8894,8 +8256,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -8903,8 +8263,7 @@
           ],
           "path": "/_application/analytics/{name}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8935,8 +8294,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.8.0",
-      "stability": "beta",
       "urls": [
         {
           "methods": [
@@ -8945,8 +8302,7 @@
           ],
           "path": "/_application/search_application/{name}/_search"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -8977,8 +8333,6 @@
       "responseMediaType": [
         "application/vnd.mapbox-vector-tile"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8987,8 +8341,7 @@
           ],
           "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9019,8 +8372,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "2.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9036,8 +8387,7 @@
           ],
           "path": "/{index}/_search/template"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9065,8 +8415,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9074,8 +8422,7 @@
           ],
           "path": "/_security/_authenticate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9111,8 +8458,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9121,8 +8466,7 @@
           ],
           "path": "/_security/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9156,8 +8500,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9165,8 +8507,7 @@
           ],
           "path": "/_security/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9197,8 +8538,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9214,8 +8553,7 @@
           ],
           "path": "/_security/user/{user}/_has_privileges"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9252,8 +8590,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9261,8 +8597,7 @@
           ],
           "path": "/_security/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9299,8 +8634,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9309,8 +8642,7 @@
           ],
           "path": "/_security/_query/api_key"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9346,8 +8678,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9355,8 +8685,7 @@
           ],
           "path": "/_security/api_key/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9387,8 +8716,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9396,8 +8723,7 @@
           ],
           "path": "/_sql/close"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9425,8 +8751,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9434,8 +8758,7 @@
           ],
           "path": "/_sql/async/delete/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9463,8 +8786,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9472,8 +8793,7 @@
           ],
           "path": "/_sql/async/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9501,8 +8821,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.15.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9510,8 +8828,7 @@
           ],
           "path": "/_sql/async/status/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9542,8 +8859,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9552,8 +8867,7 @@
           ],
           "path": "/_sql"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9584,8 +8898,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "6.3.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9594,8 +8906,7 @@
           ],
           "path": "/_sql/translate"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9623,8 +8934,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9632,8 +8941,7 @@
           ],
           "path": "/_synonyms/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9664,8 +8972,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9673,8 +8979,7 @@
           ],
           "path": "/_synonyms/{set_id}/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9702,8 +9007,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9711,8 +9014,7 @@
           ],
           "path": "/_synonyms/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9743,8 +9045,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9752,8 +9052,7 @@
           ],
           "path": "/_synonyms/{set_id}/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9781,8 +9080,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9790,8 +9087,7 @@
           ],
           "path": "/_synonyms"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9822,8 +9118,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9831,8 +9125,7 @@
           ],
           "path": "/_synonyms/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9863,8 +9156,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.10.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9872,8 +9163,7 @@
           ],
           "path": "/_synonyms/{set_id}/{rule_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9902,8 +9192,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "5.0.0",
-      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -9911,8 +9199,7 @@
           ],
           "path": "/_tasks/{task_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9943,8 +9230,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.14.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9953,8 +9238,7 @@
           ],
           "path": "/{index}/_terms_enum"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -9963,7 +9247,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -9985,8 +9268,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10002,8 +9283,7 @@
           ],
           "path": "/{index}/_termvectors"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10036,8 +9316,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10045,8 +9323,7 @@
           ],
           "path": "/_transform/{transform_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10079,8 +9356,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10094,8 +9369,7 @@
           ],
           "path": "/_transform"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10132,8 +9406,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10141,8 +9413,7 @@
           ],
           "path": "/_transform/{transform_id}/_stats"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10182,8 +9453,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10199,8 +9468,7 @@
           ],
           "path": "/_transform/_preview"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10242,8 +9510,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10251,8 +9517,7 @@
           ],
           "path": "/_transform/{transform_id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10285,8 +9550,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.1.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10294,8 +9557,7 @@
           ],
           "path": "/_transform/{transform_id}/_reset"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10331,8 +9593,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "8.7.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10340,8 +9600,7 @@
           ],
           "path": "/_transform/{transform_id}/_schedule_now"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10378,8 +9637,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10387,8 +9644,7 @@
           ],
           "path": "/_transform/{transform_id}/_start"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10421,8 +9677,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.5.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10430,8 +9684,7 @@
           ],
           "path": "/_transform/{transform_id}/_stop"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10472,8 +9725,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "7.2.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10481,8 +9732,7 @@
           ],
           "path": "/_transform/{transform_id}/_update"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10491,7 +9741,6 @@
           "visibility": "public"
         },
         "stack": {
-          "since": "0.0.0",
           "stability": "stable"
         }
       },
@@ -10513,8 +9762,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "0.0.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10522,8 +9769,7 @@
           ],
           "path": "/{index}/_update/{id}"
         }
-      ],
-      "visibility": "public"
+      ]
     },
     {
       "availability": {
@@ -10554,8 +9800,6 @@
       "responseMediaType": [
         "application/json"
       ],
-      "since": "2.4.0",
-      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10563,8 +9807,7 @@
           ],
           "path": "/{index}/_update_by_query"
         }
-      ],
-      "visibility": "public"
+      ]
     }
   ],
   "types": [
@@ -10944,7 +10187,6 @@
             "description": "Defines the approximate kNN search to run.",
             "name": "knn",
             "required": false,
-            "since": "8.4.0",
             "type": {
               "items": [
                 {
@@ -13601,8 +12843,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17849,7 +17089,6 @@
             "description": "Objects containing information about the enrich cache stats on each ingest node.",
             "name": "cache_stats",
             "required": false,
-            "since": "7.16.0",
             "type": {
               "kind": "array_of",
               "value": {
@@ -18363,7 +17602,6 @@
             },
             "name": "runtime_mappings",
             "required": false,
-            "since": "8.0.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -18565,9 +17803,21 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ScalarValue",
+                  "name": "FieldValue",
                   "namespace": "_types"
                 }
+              }
+            }
+          },
+          {
+            "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
+            "name": "profile",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
               }
             }
           },
@@ -18580,6 +17830,40 @@
               "type": {
                 "name": "string",
                 "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
+            "name": "tables",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TableValuesContainer",
+                    "namespace": "esql._types"
+                  }
+                }
               }
             }
           }
@@ -18622,9 +17906,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Should columns that are entirely `null` be removed from the `columns` and `values` portion of the results?\nDefaults to `false`. If `true` then the response will include an extra section under the name `all_columns` which has the name of all columns.",
+          "name": "drop_null_columns",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L24-L65"
+      "specLocation": "esql/query/QueryRequest.ts#L26-L89"
     },
     {
       "body": {
@@ -19314,7 +18611,6 @@
             "description": "List of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.",
             "name": "fields",
             "required": false,
-            "since": "8.5.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -19347,7 +18643,6 @@
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html",
             "name": "runtime_mappings",
             "required": false,
-            "since": "7.12.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -19459,7 +18754,6 @@
           "description": "An optional set of filters: can include +metadata,-metadata,-nested,-multifield,-parent",
           "name": "filters",
           "required": false,
-          "since": "8.2.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19478,7 +18772,6 @@
           "description": "Only return results for fields that have one of the types in the list",
           "name": "types",
           "required": false,
-          "since": "8.2.0",
           "type": {
             "kind": "array_of",
             "value": {
@@ -19501,7 +18794,6 @@
           "name": "include_empty_fields",
           "required": false,
           "serverDefault": true,
-          "since": "8.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21059,7 +20351,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates a data stream.\nYou must have a matching index template with data stream enabled.",
+      "description": "Create a data stream.\nCreates a data stream.\nYou must have a matching index template with data stream enabled.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21086,7 +20378,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L23-L43"
+      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -21113,7 +20405,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves statistics for one or more data streams.",
+      "description": "Get data stream stats.\nRetrieves statistics for one or more data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21154,7 +20446,7 @@
           }
         }
       ],
-      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsRequest.ts#L23-L47"
+      "specLocation": "indices/data_streams_stats/IndicesDataStreamsStatsRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -21464,7 +20756,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle",
+      "description": "Delete data stream lifecycles.\nRemoves the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21528,7 +20820,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L39"
+      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L40"
     },
     {
       "body": {
@@ -21555,7 +20847,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes one or more data streams and their backing indices.",
+      "description": "Delete data streams.\nDeletes one or more data streams and their backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21596,7 +20888,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L23-L44"
+      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -22228,7 +21520,6 @@
           "name": "features",
           "required": false,
           "serverDefault": "['aliases', 'mappings', 'settings']",
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22435,7 +21726,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves the data stream lifecycle configuration of one or more data streams.",
+      "description": "Get data stream lifecycles.\nRetrieves the data stream lifecycle configuration of one or more data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22489,7 +21780,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L23-L52"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L23-L53"
     },
     {
       "body": {
@@ -22525,7 +21816,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information about one or more data streams.",
+      "description": "Get data streams.\nRetrieves information about one or more data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22579,8 +21870,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22590,7 +21879,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L23-L53"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L23-L54"
     },
     {
       "body": {
@@ -22706,8 +21995,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -23053,7 +22340,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Converts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
+      "description": "Convert an index alias to a data stream.\nConverts an index alias to a data stream.\nYou must have a matching index template that is data stream enabled.\nThe alias must meet the following criteria:\nThe alias must have a write index;\nAll indices for the alias must have a `@timestamp` field mapping of a `date` or `date_nanos` field type;\nThe alias must not have any filters;\nThe alias must not use custom routing.\nIf successful, the request removes the alias and creates a data stream with the same name.\nThe indices for the alias become hidden backing indices for the stream.\nThe write index for the alias becomes the write index for the stream.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23080,7 +22367,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L23-L44"
+      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -23124,7 +22411,7 @@
           }
         ]
       },
-      "description": "Performs one or more data stream modification actions in a single atomic operation.",
+      "description": "Update data streams.\nPerforms one or more data stream modification actions in a single atomic operation.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23138,7 +22425,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L23-L36"
+      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -23348,7 +22635,7 @@
           }
         ]
       },
-      "description": "Update the data lifecycle of the specified data streams.",
+      "description": "Update data stream lifecycles.\nUpdate the data stream lifecycle of the specified data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23415,7 +22702,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L75"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L25-L76"
     },
     {
       "body": {
@@ -24865,8 +24152,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -25122,8 +24407,6 @@
           "name": "include_defaults",
           "required": false,
           "serverDefault": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -26991,7 +26274,7 @@
           }
         ]
       },
-      "description": "Close anomaly detection jobs\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
+      "description": "Close anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27510,7 +26793,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an anomaly detection job.\n\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
+      "description": "Delete an anomaly detection job.\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27576,7 +26859,7 @@
           }
         }
       ],
-      "specLocation": "ml/delete_job/MlDeleteJobRequest.ts#L23-L64"
+      "specLocation": "ml/delete_job/MlDeleteJobRequest.ts#L23-L63"
     },
     {
       "body": {
@@ -29832,7 +29115,7 @@
           }
         ]
       },
-      "description": "Opens one or more anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30524,7 +29807,6 @@
             },
             "name": "headers",
             "required": false,
-            "since": "8.0.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -30542,7 +29824,6 @@
             },
             "name": "version",
             "required": false,
-            "since": "7.16.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -30935,7 +30216,6 @@
             },
             "name": "headers",
             "required": false,
-            "since": "8.0.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -31545,7 +30825,7 @@
           }
         ]
       },
-      "description": "Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.",
+      "description": "Create an anomaly detection job.\nIf you include a `datafeed_config`, you must have read index privileges on the source index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31572,7 +30852,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L111"
+      "specLocation": "ml/put_job/MlPutJobRequest.ts#L30-L112"
     },
     {
       "body": {
@@ -31947,7 +31227,6 @@
             "description": "Optional prefix strings applied at inference",
             "name": "prefix_strings",
             "required": false,
-            "since": "8.12.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -31995,7 +31274,6 @@
           "description": "If set to `true` and a `compressed_definition` is provided,\nthe request defers definition decompression and skips relevant\nvalidations.",
           "name": "defer_definition_decompression",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -32014,7 +31292,6 @@
           "description": "Whether to wait for all child operations (e.g. model download)\nto complete.",
           "name": "wait_for_completion",
           "required": false,
-          "since": "8.8.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -32260,7 +31537,6 @@
             "description": "The optional model merges if required by the tokenizer.",
             "name": "merges",
             "required": false,
-            "since": "8.2.0",
             "type": {
               "kind": "array_of",
               "value": {
@@ -32282,7 +31558,6 @@
             "description": "The optional vocabulary value scores if required by the tokenizer.",
             "name": "scores",
             "required": false,
-            "since": "8.9.0",
             "type": {
               "kind": "array_of",
               "value": {
@@ -35832,14 +35107,26 @@
             "name": "criteria",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRuleCriteria",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRuleCriteria",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           },
           {
@@ -35850,6 +35137,17 @@
               "type": {
                 "name": "QueryRuleActions",
                 "namespace": "query_rules._types"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -35894,7 +35192,7 @@
         }
       ],
       "query": [],
-      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L27-L54"
+      "specLocation": "query_rules/put_rule/QueryRulePutRequest.ts#L28-L56"
     },
     {
       "body": {
@@ -35931,14 +35229,26 @@
             "name": "rules",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryRule",
-                  "namespace": "query_rules._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRule",
+                    "namespace": "query_rules._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "QueryRule",
+                      "namespace": "query_rules._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         ]
@@ -36748,7 +36058,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "InlineScript",
+                "name": "Script",
                 "namespace": "_types"
               }
             }
@@ -37114,7 +36424,6 @@
             "description": "Defines the approximate kNN search to run.",
             "name": "knn",
             "required": false,
-            "since": "8.4.0",
             "type": {
               "items": [
                 {
@@ -37148,7 +36457,6 @@
             "description": "Defines the Reciprocal Rank Fusion (RRF) to use.",
             "name": "rank",
             "required": false,
-            "since": "8.8.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -37243,7 +36551,6 @@
             "description": "A retriever is a specification to describe top documents returned from a search. A retriever replaces other elements of the search API that also return top documents such as query and knn.",
             "name": "retriever",
             "required": false,
-            "since": "8.14.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -38636,7 +37943,6 @@
           "name": "typed_keys",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39315,7 +38621,6 @@
           "name": "rest_total_hits_as_int",
           "required": false,
           "serverDefault": false,
-          "since": "7.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39736,7 +39041,6 @@
             },
             "name": "token",
             "required": false,
-            "since": "7.14.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -39820,7 +39124,6 @@
             "description": "Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with `_` are reserved for system usage.",
             "name": "metadata",
             "required": false,
-            "since": "7.13.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -39922,7 +39225,6 @@
             "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
             "name": "encoded",
             "required": true,
-            "since": "7.16.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -40033,7 +39335,6 @@
           "name": "with_limited_by",
           "required": false,
           "serverDefault": false,
-          "since": "8.5.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40053,7 +39354,6 @@
           "name": "active_only",
           "required": false,
           "serverDefault": false,
-          "since": "8.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40073,7 +39373,6 @@
           "name": "with_profile_uid",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40572,7 +39871,6 @@
           "description": "Return the snapshot of the owner user's role descriptors associated with the API key.\nAn API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.",
           "name": "with_limited_by",
           "required": false,
-          "since": "8.5.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40592,7 +39890,6 @@
           "name": "with_profile_uid",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40612,7 +39909,6 @@
           "name": "typed_keys",
           "required": false,
           "serverDefault": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -42851,7 +42147,7 @@
           },
           {
             "name": "_id",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -46282,7 +45578,6 @@
           "description": "Defines the approximate kNN search to run.",
           "name": "knn",
           "required": false,
-          "since": "8.4.0",
           "type": {
             "items": [
               {
@@ -46803,7 +46098,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-count-ks-test-aggregation.html",
           "name": "bucket_count_ks_test",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46826,7 +46120,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-correlation-aggregation.html",
           "name": "bucket_correlation",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46863,7 +46156,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-categorize-text-aggregation.html",
           "name": "categorize_text",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47940,7 +47232,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-combined-fields-query.html",
           "name": "combined_fields",
           "required": false,
-          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48546,7 +47837,6 @@
           "description": "A semantic query to semantic_text field types",
           "name": "semantic",
           "required": false,
-          "since": "8.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48731,7 +48021,6 @@
           "docId": "query-dsl-sparse-vector-query",
           "name": "sparse_vector",
           "required": false,
-          "since": "8.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48820,7 +48109,6 @@
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-text-expansion-query.html",
           "name": "text_expansion",
           "required": false,
-          "since": "8.8.0",
           "type": {
             "key": {
               "kind": "instance_of",
@@ -48855,7 +48143,6 @@
           "docId": "query-dsl-weighted-tokens-query",
           "name": "weighted_tokens",
           "required": false,
-          "since": "8.13.0",
           "type": {
             "key": {
               "kind": "instance_of",
@@ -50571,49 +49858,55 @@
       "specLocation": "_types/query_dsl/compound.ts#L121-L126"
     },
     {
-      "codegenNames": [
-        "inline",
-        "stored"
-      ],
-      "kind": "type_alias",
+      "kind": "interface",
       "name": {
         "name": "Script",
         "namespace": "_types"
       },
-      "specLocation": "_types/Scripting.ts#L88-L89",
-      "type": {
-        "items": [
-          {
+      "properties": [
+        {
+          "description": "The script source.",
+          "name": "source",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineScript",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
-          },
-          {
+          }
+        },
+        {
+          "description": "The `id` for a stored script.",
+          "name": "id",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScriptId",
+              "name": "Id",
               "namespace": "_types"
             }
           }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "InlineScript",
-        "namespace": "_types"
-      },
-      "properties": [
+        },
+        {
+          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
         {
           "description": "Specifies the language the script is written in.",
           "name": "lang",
@@ -50648,51 +49941,10 @@
               }
             }
           }
-        },
-        {
-          "description": "The script source.",
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "_types/Scripting.ts#L67-L79"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptBase",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-          "name": "params",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Scripting.ts#L59-L65"
+      "specLocation": "_types/Scripting.ts#L73-L97"
     },
     {
       "isOpen": true,
@@ -50720,34 +49972,6 @@
         "namespace": "_types"
       },
       "specLocation": "_types/Scripting.ts#L24-L45"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "StoredScriptId",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The `id` for a stored script.",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Scripting.ts#L81-L86"
     },
     {
       "kind": "enum",
@@ -52120,7 +51344,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L106-L140"
+      "specLocation": "_global/search/_types/hits.ts#L107-L141"
     },
     {
       "kind": "type_alias",
@@ -53941,7 +53165,7 @@
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L91-L94"
+      "specLocation": "_types/Scripting.ts#L99-L102"
     },
     {
       "kind": "type_alias",
@@ -53949,7 +53173,7 @@
         "name": "Sort",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L104-L104",
+      "specLocation": "_types/sort.ts#L105-L105",
       "type": {
         "items": [
           {
@@ -53983,7 +53207,7 @@
         "name": "SortCombinations",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L98-L102",
+      "specLocation": "_types/sort.ts#L99-L103",
       "type": {
         "items": [
           {
@@ -54089,7 +53313,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L86-L96",
+      "specLocation": "_types/sort.ts#L87-L97",
       "variants": {
         "kind": "container"
       }
@@ -54246,7 +53470,7 @@
         "name": "SortMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L108-L117"
+      "specLocation": "_types/sort.ts#L109-L118"
     },
     {
       "kind": "interface",
@@ -54318,7 +53542,7 @@
         "name": "SortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L119-L128"
+      "specLocation": "_types/sort.ts#L120-L129"
     },
     {
       "kind": "enum",
@@ -54618,9 +53842,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/sort.ts#L59-L70"
+      "specLocation": "_types/sort.ts#L59-L71"
     },
     {
       "kind": "enum",
@@ -54731,7 +53966,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L72-L78"
+      "specLocation": "_types/sort.ts#L73-L79"
     },
     {
       "kind": "enum",
@@ -54750,7 +53985,7 @@
         "name": "ScriptSortType",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L80-L84"
+      "specLocation": "_types/sort.ts#L81-L85"
     },
     {
       "codegenNames": [
@@ -57510,7 +56745,6 @@
           "name": "case_insensitive",
           "required": false,
           "serverDefault": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58463,7 +57697,6 @@
           "name": "case_insensitive",
           "required": false,
           "serverDefault": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59688,8 +58921,6 @@
           "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
           "name": "prune",
           "required": false,
-          "since": "8.15.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59712,8 +58943,6 @@
           "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
           "name": "pruning_config",
           "required": false,
-          "since": "8.15.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -59813,7 +59042,6 @@
           "name": "case_insensitive",
           "required": false,
           "serverDefault": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -60125,8 +59353,6 @@
           "description": "Token pruning configurations",
           "name": "pruning_config",
           "required": false,
-          "since": "8.13.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -60212,7 +59438,6 @@
           "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
           "name": "case_insensitive",
           "required": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67711,7 +66936,7 @@
         "name": "SortResults",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L106-L106",
+      "specLocation": "_types/sort.ts#L107-L107",
       "type": {
         "kind": "array_of",
         "value": {
@@ -67734,7 +66959,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L142-L150",
+      "specLocation": "_global/search/_types/hits.ts#L143-L151",
       "type": {
         "items": [
           {
@@ -69858,7 +69083,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L66-L72"
+      "specLocation": "_global/search/_types/hits.ts#L67-L73"
     },
     {
       "kind": "interface",
@@ -69890,7 +69115,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L94-L97"
+      "specLocation": "_global/search/_types/hits.ts#L95-L98"
     },
     {
       "kind": "enum",
@@ -69908,7 +69133,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L99-L104"
+      "specLocation": "_global/search/_types/hits.ts#L100-L105"
     },
     {
       "generics": [
@@ -70154,6 +69379,17 @@
           }
         },
         {
+          "name": "_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "_seq_no",
           "required": false,
           "type": {
@@ -70198,7 +69434,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L64"
+      "specLocation": "_global/search/_types/hits.ts#L40-L65"
     },
     {
       "kind": "interface",
@@ -70316,7 +69552,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L84-L86"
+      "specLocation": "_global/search/_types/hits.ts#L85-L87"
     },
     {
       "kind": "interface",
@@ -70359,7 +69595,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L88-L92"
+      "specLocation": "_global/search/_types/hits.ts#L89-L93"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
@@ -76656,8 +75892,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "centroid",
-          "since": "7.16.0"
+          "name": "centroid"
         }
       ],
       "name": {
@@ -80792,7 +80027,7 @@
         },
         {
           "name": "language",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -84470,7 +83705,6 @@
           "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
           "name": "time_series_dimension",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85052,7 +84286,6 @@
           },
           "name": "null_value",
           "required": false,
-          "since": "7.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85425,7 +84658,7 @@
         },
         {
           "name": "m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85436,7 +84669,7 @@
         },
         {
           "name": "ef_construction",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85444,9 +84677,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "confidence_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L26"
+      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L27"
     },
     {
       "inherits": {
@@ -86100,7 +85344,6 @@
           "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
           "name": "time_series_dimension",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86649,7 +85892,6 @@
           "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
           "name": "time_series_metric",
           "required": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -86671,7 +85913,6 @@
           "name": "time_series_dimension",
           "required": false,
           "serverDefault": false,
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89924,6 +89165,126 @@
         "namespace": "eql.search"
       },
       "specLocation": "eql/search/types.ts#L20-L32"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesIntegerValue",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L30-L30",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesKeywordValue",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L31-L31",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesLongDouble",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L33-L33",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TableValuesLongValue",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/TableValuesContainer.ts#L32-L32",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "type_alias",
@@ -96262,7 +95623,6 @@
           },
           "name": "shards",
           "required": false,
-          "since": "7.15.0",
           "type": {
             "key": {
               "kind": "instance_of",
@@ -98919,7 +98279,6 @@
           },
           "name": "health",
           "required": false,
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98937,7 +98296,6 @@
           },
           "name": "status",
           "required": false,
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99180,7 +98538,6 @@
           },
           "name": "shard_stats",
           "required": false,
-          "since": "7.15.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99343,6 +98700,9 @@
           "name": "exact_fuzzy"
         },
         {
+          "name": "fuzzy"
+        },
+        {
           "name": "prefix"
         },
         {
@@ -99371,7 +98731,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L66"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L67"
     },
     {
       "kind": "enum",
@@ -99545,7 +98905,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L41-L198"
+      "specLocation": "security/_types/Privileges.ts#L42-L195"
     },
     {
       "kind": "enum",
@@ -99622,7 +98982,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L285-L327"
+      "specLocation": "security/_types/Privileges.ts#L292-L334"
     },
     {
       "codegenNames": [
@@ -99636,7 +98996,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L250-L258",
+      "specLocation": "security/_types/Privileges.ts#L247-L255",
       "type": {
         "items": [
           {
@@ -99686,55 +99046,62 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L260-L270"
+      "specLocation": "security/_types/Privileges.ts#L257-L267"
     },
     {
-      "codegenNames": [
-        "inline",
-        "stored"
-      ],
-      "kind": "type_alias",
+      "kind": "interface",
       "name": {
         "name": "RoleTemplateScript",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L282-L283",
-      "type": {
-        "items": [
-          {
+      "properties": [
+        {
+          "name": "source",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RoleTemplateInlineScript",
+              "name": "RoleTemplateInlineQuery",
               "namespace": "security._types"
             }
-          },
-          {
+          }
+        },
+        {
+          "description": "The `id` for a stored script.",
+          "name": "id",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScriptId",
+              "name": "Id",
               "namespace": "_types"
             }
           }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RoleTemplateInlineScript",
-        "namespace": "security._types"
-      },
-      "properties": [
+        },
         {
+          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Specifies the language the script is written in.",
           "name": "lang",
           "required": false,
+          "serverDefault": "painless",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99764,21 +99131,10 @@
               }
             }
           }
-        },
-        {
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleTemplateInlineQuery",
-              "namespace": "security._types"
-            }
-          }
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L272-L277"
+      "specLocation": "security/_types/Privileges.ts#L269-L287"
     },
     {
       "codegenNames": [
@@ -99790,7 +99146,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L279-L280",
+      "specLocation": "security/_types/Privileges.ts#L289-L290",
       "type": {
         "items": [
           {
@@ -100927,8 +100283,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "repository",
-          "since": "7.16.0"
+          "name": "repository"
         },
         {
           "availability": {
@@ -100937,8 +100292,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "shard_count",
-          "since": "7.16.0"
+          "name": "shard_count"
         },
         {
           "availability": {
@@ -100947,8 +100301,7 @@
               "since": "7.16.0"
             }
           },
-          "name": "failed_shard_count",
-          "since": "7.16.0"
+          "name": "failed_shard_count"
         }
       ],
       "name": {
@@ -107523,7 +106876,6 @@
           },
           "name": "type",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108255,8 +107607,6 @@
           },
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110954,7 +110304,6 @@
           },
           "name": "_data_stream_timestamp",
           "required": false,
-          "since": "7.16.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111561,7 +110910,6 @@
           "name": "is_hidden",
           "required": false,
           "serverDefault": false,
-          "since": "7.16.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111574,7 +110922,7 @@
       "specLocation": "indices/_types/AliasDefinition.ts#L22-L54"
     },
     {
-      "description": "Data lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+      "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
       "kind": "interface",
       "name": {
         "name": "DataStreamLifecycleWithRollover",
@@ -111905,11 +111253,9 @@
               "stability": "stable"
             }
           },
-          "description": "Data lifecycle applicable if this is a data stream.",
+          "description": "Data stream lifecycle applicable if this is a data stream.",
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112006,7 +111352,7 @@
       "specLocation": "indices/_types/Alias.ts#L23-L53"
     },
     {
-      "description": "Data lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+      "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
       "kind": "interface",
       "name": {
         "name": "DataStreamLifecycle",
@@ -114057,6 +113403,75 @@
     {
       "kind": "interface",
       "name": {
+        "name": "TableValuesContainer",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "name": "integer",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesIntegerValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "keyword",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesKeywordValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "long",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesLongValue",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "double",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TableValuesLongDouble",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/TableValuesContainer.ts#L22-L28",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FieldCapability",
         "namespace": "_global.field_caps"
       },
@@ -114171,8 +113586,6 @@
           "description": "Whether this field is used as a time series dimension.",
           "name": "time_series_dimension",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114194,8 +113607,6 @@
           "description": "Contains metric type if this fields is used as a time series\nmetrics, absent if the field is not used as metric.",
           "name": "time_series_metric",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114217,8 +113628,6 @@
           "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
           "name": "non_dimension_indices",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "array_of",
             "value": {
@@ -114243,8 +113652,6 @@
           "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
           "name": "metric_conflicts_indices",
           "required": false,
-          "since": "8.0.0",
-          "stability": "experimental",
           "type": {
             "kind": "array_of",
             "value": {
@@ -115523,11 +114930,9 @@
               "stability": "stable"
             }
           },
-          "description": "Contains the configuration for the data lifecycle management of this data stream.",
+          "description": "Contains the configuration for the data stream lifecycle of this data stream.",
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115582,7 +114987,6 @@
           "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
           "name": "system",
           "required": false,
-          "since": "7.10.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115918,8 +115322,6 @@
           },
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116136,8 +115538,6 @@
           },
           "name": "lifecycle",
           "required": false,
-          "since": "8.11.0",
-          "stability": "stable",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127213,7 +126613,6 @@
           "name": "annotations_enabled",
           "required": false,
           "serverDefault": true,
-          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127245,7 +126644,6 @@
           "description": "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.",
           "name": "terms",
           "required": false,
-          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127694,7 +127092,6 @@
           "description": "Text classification configuration for inference.",
           "name": "text_classification",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127713,7 +127110,6 @@
           "description": "Zeroshot classification configuration for inference.",
           "name": "zero_shot_classification",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127732,7 +127128,6 @@
           "description": "Fill mask configuration for inference.",
           "name": "fill_mask",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127751,7 +127146,6 @@
           "description": "Named entity recognition configuration for inference.",
           "name": "ner",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127770,7 +127164,6 @@
           "description": "Pass through configuration for inference.",
           "name": "pass_through",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127789,7 +127182,6 @@
           "description": "Text embedding configuration for inference.",
           "name": "text_embedding",
           "required": false,
-          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127808,7 +127200,6 @@
           "description": "Text expansion configuration for inference.",
           "name": "text_expansion",
           "required": false,
-          "since": "8.8.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127827,7 +127218,6 @@
           "description": "Question answering configuration for inference.",
           "name": "question_answering",
           "required": false,
-          "since": "8.3.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127934,7 +127324,6 @@
           "description": "Indicates MPNET tokenization and its options",
           "name": "mpnet",
           "required": false,
-          "since": "8.1.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127953,7 +127342,6 @@
           "description": "Indicates RoBERTa tokenization and its options",
           "name": "roberta",
           "required": false,
-          "since": "8.2.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132054,7 +131442,6 @@
           "description": "The size of the trained model cache.",
           "name": "cache_size",
           "required": true,
-          "since": "8.4.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132460,7 +131847,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132558,7 +131945,7 @@
       "properties": [
         {
           "name": "field_statistics",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132790,14 +132177,26 @@
           "name": "criteria",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryRuleCriteria",
-                "namespace": "query_rules._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryRuleCriteria",
+                  "namespace": "query_rules._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "QueryRuleCriteria",
+                    "namespace": "query_rules._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -132810,9 +132209,20 @@
               "namespace": "query_rules._types"
             }
           }
+        },
+        {
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L37-L42"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L42"
     },
     {
       "kind": "interface",
@@ -132892,7 +132302,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L68-L71"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L69-L72"
     },
     {
       "kind": "interface",
@@ -132929,7 +132339,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L26-L35"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L25-L34"
     },
     {
       "kind": "interface",
@@ -132979,8 +132389,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -133961,7 +133371,7 @@
         },
         {
           "description": "Size of the individual result sets per query",
-          "name": "window_size",
+          "name": "rank_window_size",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -134396,7 +133806,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineScript",
+              "name": "Script",
               "namespace": "_types"
             }
           }
@@ -134634,7 +134044,6 @@
           "description": "Realm type of the principal for which this API key was created",
           "name": "realm_type",
           "required": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134665,7 +134074,6 @@
           "description": "The profile uid for the API key owner principal, if requested and if it exists",
           "name": "profile_uid",
           "required": false,
-          "since": "8.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134684,7 +134092,6 @@
           "description": "Metadata of the API key",
           "name": "metadata",
           "required": false,
-          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134726,7 +134133,6 @@
           "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
           "name": "limited_by",
           "required": false,
-          "since": "8.5.0",
           "type": {
             "kind": "array_of",
             "value": {
@@ -134779,8 +134185,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "ClusterPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -134801,33 +134207,6 @@
                 "namespace": "security._types"
               }
             }
-          }
-        },
-        {
-          "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
-          "name": "global",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GlobalPrivilege",
-                    "namespace": "security._types"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GlobalPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            ],
-            "kind": "union_of"
           }
         },
         {
@@ -134858,7 +134237,7 @@
           }
         },
         {
-          "description": "A list of users that the API keys can impersonate.",
+          "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
           "docId": "run-as-privilege",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/run-as-privilege.html",
           "name": "run_as",
@@ -134871,6 +134250,18 @@
                 "name": "string",
                 "namespace": "_builtins"
               }
+            }
+          }
+        },
+        {
+          "description": "Optional description of the role descriptor",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
@@ -134893,7 +134284,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L28-L56"
+      "specLocation": "security/_types/RoleDescriptor.ts#L28-L61"
     },
     {
       "kind": "interface",
@@ -134956,7 +134347,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L200-L224"
+      "specLocation": "security/_types/Privileges.ts#L197-L221"
     },
     {
       "kind": "interface",
@@ -134989,72 +134380,6 @@
         }
       ],
       "specLocation": "security/_types/FieldSecurity.ts#L22-L25"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "GlobalPrivilege",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ApplicationGlobalUserPrivileges",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L329-L331"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationGlobalUserPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "manage",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ManageUserPrivileges",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L333-L335"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ManageUserPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "applications",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L337-L339"
     },
     {
       "kind": "interface",
@@ -135106,7 +134431,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L26-L39"
+      "specLocation": "security/_types/Privileges.ts#L27-L40"
     },
     {
       "kind": "interface",
@@ -135167,7 +134492,6 @@
           },
           "name": "type",
           "required": false,
-          "since": "7.14.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136550,7 +135874,6 @@
           "name": "unattended",
           "required": false,
           "serverDefault": false,
-          "since": "8.5.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136603,7 +135926,6 @@
           "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data\nnodes, including remote nodes, must be 7.12 or later.",
           "name": "runtime_mappings",
           "required": false,
-          "since": "7.12.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136952,7 +136274,7 @@
         },
         {
           "name": "docs_remaining",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136963,7 +136285,7 @@
         },
         {
           "name": "percent_complete",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -136974,7 +136296,7 @@
         },
         {
           "name": "total_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

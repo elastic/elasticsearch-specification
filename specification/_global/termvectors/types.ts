@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { double, integer, long } from '@_types/Numeric'
 
 export class TermVector {
-  field_statistics: FieldStatistics
+  field_statistics?: FieldStatistics
   terms: Dictionary<string, Term>
 }
 

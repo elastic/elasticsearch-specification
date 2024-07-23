@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GlobalPrivilege } from './Privileges'
+import { ClusterPrivilege, GlobalPrivilege } from './Privileges'
 import { IndicesPrivileges } from './Privileges'
 import { ApplicationPrivileges } from './Privileges'
 import { Metadata } from '@_types/common'
@@ -29,7 +29,7 @@ export class RoleDescriptor {
   /**
    * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
    */
-  cluster?: string[]
+  cluster?: ClusterPrivilege[]
   /**
    * A list of indices permissions entries.
    * @aliases index
@@ -37,6 +37,7 @@ export class RoleDescriptor {
   indices?: IndicesPrivileges[]
   /**
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+   * @availability stack
    */
   global?: GlobalPrivilege[] | GlobalPrivilege
   /**
@@ -48,10 +49,14 @@ export class RoleDescriptor {
    */
   metadata?: Metadata
   /**
-   * A list of users that the API keys can impersonate.
+   * A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
    * @doc_id run-as-privilege
    */
   run_as?: string[]
+  /**
+   * Optional description of the role descriptor
+   */
+  description?: string
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }
 
@@ -59,7 +64,7 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
   /**
    * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
    */
-  cluster: string[]
+  cluster: ClusterPrivilege[]
   /**
    * A list of indices permissions entries.
    * @aliases index
@@ -82,5 +87,9 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    * @doc_id run-as-privilege
    */
   run_as?: string[]
+  /**
+   * Optional description of the role descriptor
+   */
+  description?: string
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }

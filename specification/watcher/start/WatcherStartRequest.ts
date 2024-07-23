@@ -21,6 +21,6 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name watcher.start
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  */
 export interface Request extends RequestBase {}

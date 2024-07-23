@@ -23,8 +23,8 @@ import { WithNullValue } from '@spec_utils/utils'
 /**
  * Updates the API key id in the connector document
  * @rest_spec_name connector.update_api_key_id
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-api-key-id
  */
 export interface Request extends RequestBase {

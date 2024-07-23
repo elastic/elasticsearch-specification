@@ -18,6 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import {
   QueryRuleType,
   QueryRuleCriteria,
@@ -48,7 +49,8 @@ export interface Request extends RequestBase {
   /** @codegen_name query_rule */
   body: {
     type: QueryRuleType
-    criteria: QueryRuleCriteria[]
+    criteria: QueryRuleCriteria | QueryRuleCriteria[]
     actions: QueryRuleActions
+    priority?: integer
   }
 }

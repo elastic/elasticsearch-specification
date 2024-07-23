@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Opens one or more anomaly detection jobs.
+ * Open anomaly detection jobs.
  * An anomaly detection job must be opened in order for it to be ready to
  * receive and analyze data. It can be opened and closed multiple times
  * throughout its lifecycle.

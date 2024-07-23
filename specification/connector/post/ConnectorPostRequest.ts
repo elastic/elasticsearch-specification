@@ -23,8 +23,8 @@ import { WithNullValue } from '@spec_utils/utils'
 /**
  * Creates a connector.
  * @rest_spec_name connector.post
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-post
  */
 export interface Request extends RequestBase {
