@@ -32,7 +32,6 @@ export interface Request extends RequestBase {
     refresh?: Refresh
   }
   body: {
-    username?: Username
     email?: string | null
     full_name?: string | null
     metadata?: Metadata

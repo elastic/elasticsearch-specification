@@ -17625,7 +17625,6 @@ export interface SecurityPutUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
   body?: {
-    username?: Username
     email?: string | null
     full_name?: string | null
     metadata?: Metadata
