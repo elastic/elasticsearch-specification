@@ -874,6 +874,24 @@
       ],
       "response": []
     },
+    "ingest.delete_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ingest.get_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ingest.put_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "license.delete": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'",
