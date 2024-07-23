@@ -43,14 +43,14 @@ export interface Request extends RequestBase {
    * Connector last sync stats
    */
   body: {
-    last_access_control_sync_error?: WithNullValue<string>
+    last_access_control_sync_error?: string
     last_access_control_sync_scheduled_at?: DateTime
     last_access_control_sync_status?: SyncStatus
     last_deleted_document_count?: long
     last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
     last_seen?: DateTime
-    last_sync_error?: WithNullValue<string>
+    last_sync_error?: string
     last_sync_scheduled_at?: DateTime
     last_sync_status?: SyncStatus
     last_synced?: DateTime

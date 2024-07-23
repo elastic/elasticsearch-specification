@@ -535,12 +535,6 @@
       ],
       "response": []
     },
-    "connector.last_sync": {
-      "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
-      ],
-      "response": []
-    },
     "connector.secret_delete": {
       "request": [
         "Missing request & response"
@@ -586,6 +580,12 @@
     "connector.sync_job_update_stats": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_error": {
+      "request": [
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
       ],
       "response": []
     },

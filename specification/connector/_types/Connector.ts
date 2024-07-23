@@ -91,7 +91,7 @@ export interface ConnectorConfigProperties {
   placeholder?: string
   required: boolean
   sensitive: boolean
-  tooltip?: string
+  tooltip?: string | null
   type: ConnectorFieldType
   ui_restrictions: string[]
   validations: Validation[]
@@ -236,14 +236,15 @@ export interface SchedulingConfiguration {
 
 export interface Connector {
   api_key_id?: string
+  api_key_secret_id?: string
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
   description?: string
-  error?: string
+  error?: string | null
   features?: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
-  index_name?: IndexName
+  index_name?: IndexName | null
   is_native: boolean
   language?: string
   last_access_control_sync_error?: string
@@ -260,7 +261,7 @@ export interface Connector {
   name?: string
   pipeline?: IngestPipelineParams
   scheduling: SchedulingConfiguration
-  service_type: string
+  service_type?: string
   status: ConnectorStatus
   sync_cursor?: Dictionary<string, UserDefinedValue>
   sync_now: boolean

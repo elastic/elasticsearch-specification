@@ -13345,19 +13345,10 @@
             "name": "last_access_control_sync_error",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           },
@@ -13431,19 +13422,10 @@
             "name": "last_sync_error",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           },
@@ -88416,11 +88398,23 @@
           "name": "tooltip",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -88647,7 +88641,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "less_than"
+            "value": "\"less_than\""
           }
         },
         {
@@ -88676,7 +88670,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "greater_than"
+            "value": "\"greater_than\""
           }
         },
         {
@@ -88705,7 +88699,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "list_type"
+            "value": "\"list_type\""
           }
         },
         {
@@ -88734,7 +88728,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "included_in"
+            "value": "\"included_in\""
           }
         },
         {
@@ -88766,7 +88760,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "regex"
+            "value": "\"regex\""
           }
         },
         {
@@ -111403,6 +111397,17 @@
           }
         },
         {
+          "name": "api_key_secret_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "configuration",
           "required": true,
           "type": {
@@ -111439,11 +111444,23 @@
           "name": "error",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -111486,11 +111503,23 @@
           "name": "index_name",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -111671,7 +111700,7 @@
         },
         {
           "name": "service_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111721,7 +111750,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L237-L267"
+      "specLocation": "connector/_types/Connector.ts#L237-L268"
     },
     {
       "kind": "interface",

@@ -9184,14 +9184,15 @@ export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
 
 export interface ConnectorConnector {
   api_key_id?: string
+  api_key_secret_id?: string
   configuration: ConnectorConnectorConfiguration
   custom_scheduling: ConnectorConnectorCustomScheduling
   description?: string
-  error?: string
+  error?: string | null
   features?: ConnectorConnectorFeatures
   filtering: ConnectorFilteringConfig[]
   id?: Id
-  index_name?: IndexName
+  index_name?: IndexName | null
   is_native: boolean
   language?: string
   last_access_control_sync_error?: string
@@ -9208,7 +9209,7 @@ export interface ConnectorConnector {
   name?: string
   pipeline?: ConnectorIngestPipelineParams
   scheduling: ConnectorSchedulingConfiguration
-  service_type: string
+  service_type?: string
   status: ConnectorConnectorStatus
   sync_cursor?: Record<string, any>
   sync_now: boolean
@@ -9225,7 +9226,7 @@ export interface ConnectorConnectorConfigProperties {
   placeholder?: string
   required: boolean
   sensitive: boolean
-  tooltip?: string
+  tooltip?: string | null
   type: ConnectorConnectorFieldType
   ui_restrictions: string[]
   validations: ConnectorValidation[]
@@ -9436,14 +9437,14 @@ export type ConnectorGetResponse = ConnectorConnector
 export interface ConnectorLastSyncRequest extends RequestBase {
   connector_id: Id
   body?: {
-    last_access_control_sync_error?: SpecUtilsWithNullValue<string>
+    last_access_control_sync_error?: string
     last_access_control_sync_scheduled_at?: DateTime
     last_access_control_sync_status?: ConnectorSyncStatus
     last_deleted_document_count?: long
     last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
     last_seen?: DateTime
-    last_sync_error?: SpecUtilsWithNullValue<string>
+    last_sync_error?: string
     last_sync_scheduled_at?: DateTime
     last_sync_status?: ConnectorSyncStatus
     last_synced?: DateTime

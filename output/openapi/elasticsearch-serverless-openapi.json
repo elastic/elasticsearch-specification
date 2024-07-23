@@ -2011,14 +2011,7 @@
                 "type": "object",
                 "properties": {
                   "last_access_control_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_access_control_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -2039,14 +2032,7 @@
                     "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -51053,6 +51039,9 @@
           "api_key_id": {
             "type": "string"
           },
+          "api_key_secret_id": {
+            "type": "string"
+          },
           "configuration": {
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
           },
@@ -51063,7 +51052,15 @@
             "type": "string"
           },
           "error": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "features": {
             "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
@@ -51078,7 +51075,15 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "$ref": "#/components/schemas/_types:IndexName"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "is_native": {
             "type": "boolean"
@@ -51150,7 +51155,6 @@
           "filtering",
           "is_native",
           "scheduling",
-          "service_type",
           "status",
           "sync_now"
         ]
@@ -51201,7 +51205,15 @@
             "type": "boolean"
           },
           "tooltip": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "type": {
             "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
@@ -51334,7 +51346,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "less_than"
+              "\"less_than\""
             ]
           },
           "constraint": {
@@ -51352,7 +51364,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "greater_than"
+              "\"greater_than\""
             ]
           },
           "constraint": {
@@ -51370,7 +51382,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "list_type"
+              "\"list_type\""
             ]
           },
           "constraint": {
@@ -51388,7 +51400,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "included_in"
+              "\"included_in\""
             ]
           },
           "constraint": {
@@ -51409,7 +51421,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "regex"
+              "\"regex\""
             ]
           },
           "constraint": {
@@ -51759,11 +51771,6 @@
           "error"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
         "properties": {
@@ -51892,6 +51899,11 @@
           "on_demand",
           "scheduled"
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",
