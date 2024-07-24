@@ -49151,7 +49151,8 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L93-L119"
+      "shortcutProperty": "functions",
+      "specLocation": "_types/query_dsl/compound.ts#L93-L122"
     },
     {
       "kind": "enum",
@@ -49185,7 +49186,7 @@
         "name": "FunctionBoostMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L279-L305"
+      "specLocation": "_types/query_dsl/compound.ts#L282-L308"
     },
     {
       "esQuirk": "this container is valid without a variant. Despite being documented as a function, 'weight'\nis actually a container property that can be combined with a function. Comment in the ES code\n(SearchModule#registerScoreFunctions) says: Weight doesn't have its own parser, so every function\nsupports it out of the box. Can be a single function too when not associated to any other function,\nwhich is why it needs to be registered manually here.",
@@ -49292,7 +49293,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L210-L250",
+      "specLocation": "_types/query_dsl/compound.ts#L213-L253",
       "variants": {
         "kind": "container"
       }
@@ -49309,7 +49310,7 @@
         "name": "DecayFunction",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L199-L208",
+      "specLocation": "_types/query_dsl/compound.ts#L202-L211",
       "type": {
         "items": [
           {
@@ -49375,7 +49376,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L188-L191"
+      "specLocation": "_types/query_dsl/compound.ts#L191-L194"
     },
     {
       "attachedBehaviors": [
@@ -49455,7 +49456,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L175-L186"
+      "specLocation": "_types/query_dsl/compound.ts#L178-L189"
     },
     {
       "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
@@ -49545,7 +49546,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L154-L173"
+      "specLocation": "_types/query_dsl/compound.ts#L157-L176"
     },
     {
       "kind": "enum",
@@ -49571,7 +49572,7 @@
         "name": "MultiValueMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L352-L369"
+      "specLocation": "_types/query_dsl/compound.ts#L355-L372"
     },
     {
       "attachedBehaviors": [
@@ -49605,7 +49606,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L193-L193"
+      "specLocation": "_types/query_dsl/compound.ts#L196-L196"
     },
     {
       "attachedBehaviors": [
@@ -49639,7 +49640,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L192-L192"
+      "specLocation": "_types/query_dsl/compound.ts#L195-L195"
     },
     {
       "attachedBehaviors": [
@@ -49673,7 +49674,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/compound.ts#L194-L197"
+      "specLocation": "_types/query_dsl/compound.ts#L197-L200"
     },
     {
       "kind": "interface",
@@ -49732,7 +49733,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L133-L152"
+      "specLocation": "_types/query_dsl/compound.ts#L136-L155"
     },
     {
       "kind": "enum",
@@ -49782,7 +49783,7 @@
         "name": "FieldValueFactorModifier",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L307-L350"
+      "specLocation": "_types/query_dsl/compound.ts#L310-L353"
     },
     {
       "kind": "interface",
@@ -49826,7 +49827,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L128-L131"
+      "specLocation": "_types/query_dsl/compound.ts#L131-L134"
     },
     {
       "kind": "interface",
@@ -49848,7 +49849,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/compound.ts#L121-L126"
+      "specLocation": "_types/query_dsl/compound.ts#L124-L129"
     },
     {
       "kind": "interface",
@@ -49998,7 +49999,7 @@
         "name": "FunctionScoreMode",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/compound.ts#L252-L277"
+      "specLocation": "_types/query_dsl/compound.ts#L255-L280"
     },
     {
       "inherits": {
@@ -132480,7 +132481,8 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L111-L114"
+      "shortcutProperty": "query",
+      "specLocation": "_global/rank_eval/types.ts#L111-L117"
     },
     {
       "kind": "interface",
@@ -132526,7 +132528,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L116-L123"
+      "specLocation": "_global/rank_eval/types.ts#L119-L126"
     },
     {
       "kind": "interface",
@@ -132857,7 +132859,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L125-L134"
+      "specLocation": "_global/rank_eval/types.ts#L128-L137"
     },
     {
       "kind": "interface",
@@ -132889,7 +132891,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L147-L150"
+      "specLocation": "_global/rank_eval/types.ts#L150-L153"
     },
     {
       "kind": "interface",
@@ -132933,7 +132935,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L136-L139"
+      "specLocation": "_global/rank_eval/types.ts#L139-L142"
     },
     {
       "kind": "interface",
@@ -132976,7 +132978,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L141-L145"
+      "specLocation": "_global/rank_eval/types.ts#L144-L148"
     },
     {
       "kind": "interface",

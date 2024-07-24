@@ -90,6 +90,9 @@ export class DisMaxQuery extends QueryBase {
   tie_breaker?: double
 }
 
+/**
+ * @shortcut_property functions
+ */
 export class FunctionScoreQuery extends QueryBase {
   /**
    * Defines how he newly computed score is combined with the score of the query
