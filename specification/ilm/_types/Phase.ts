@@ -124,10 +124,6 @@ export class ForceMergeAction {
   index_codec?: string
 }
 
-export class ForceMergeConfiguration {
-  max_num_segments: integer
-}
-
 export class SearchableSnapshotAction {
   snapshot_repository: string
   force_merge_index?: boolean
@@ -153,12 +149,16 @@ export class DeleteAction {
   delete_searchable_snapshot?: boolean
 }
 
+export class ShrinkConfiguration {
+  number_of_shards: integer
+}
+
+export class ForceMergeConfiguration {
+  max_num_segments: integer
+}
+
 export class Configurations {
   rollover?: RolloverConditions
   forcemerge?: ForceMergeConfiguration
   shrink?: ShrinkConfiguration
-}
-
-export class ShrinkConfiguration {
-  number_of_shards: integer
 }
