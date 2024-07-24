@@ -89302,17 +89302,6 @@
     {
       "kind": "type_alias",
       "name": {
-        "name": "Actions",
-        "namespace": "ilm._types"
-      },
-      "specLocation": "ilm/_types/Phase.ts#L48-L48",
-      "type": {
-        "kind": "user_defined_value"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
         "name": "LifecycleExplain",
         "namespace": "ilm.explain_lifecycle"
       },
