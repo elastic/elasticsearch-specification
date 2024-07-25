@@ -18,8 +18,6 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
-
 /**
  * Updates the API key id in the connector document
  * @rest_spec_name connector.update_api_key_id

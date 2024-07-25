@@ -19,7 +19,6 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { WithNullValue } from '@spec_utils/utils'
 import { DateTime } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -29,7 +28,7 @@ import { SyncStatus } from '../_types/Connector'
  * Updates last sync stats in the connector document
  * @rest_spec_name connector.last_sync
  * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=private
  * @doc_id connector-last-sync
  */
 export interface Request extends RequestBase {

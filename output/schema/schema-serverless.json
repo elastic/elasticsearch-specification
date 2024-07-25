@@ -1076,45 +1076,6 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.12.0",
-          "stability": "experimental"
-        }
-      },
-      "description": "Updates last sync stats in the connector document",
-      "docId": "connector-last-sync",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html",
-      "name": "connector.last_sync",
-      "request": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "requestBodyRequired": true,
-      "requestMediaType": [
-        "application/json"
-      ],
-      "response": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_connector/{connector_id}/_last_sync"
-        }
-      ]
-    },
-    {
-      "availability": {
-        "serverless": {
           "stability": "beta",
           "visibility": "public"
         },
@@ -13339,207 +13300,6 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "last_access_control_sync_error",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_deleted_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_incremental_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_indexed_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_seen",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_sync_error",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "name": "last_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_synced",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "sync_cursor",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        ]
-      },
-      "description": "Updates last sync stats in the connector document",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "path": [
-        {
-          "description": "The unique identifier of the connector to be updated",
-          "name": "connector_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [],
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncRequest.ts#L28-L59"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "result",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Result",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncResponse.ts#L22-L26"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
         "kind": "no_body"
       },
       "description": "Returns existing connectors.",
@@ -13758,7 +13518,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/post/ConnectorPostRequest.ts#L23-L43"
+      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -14440,7 +14200,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L23-L44"
+      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L42"
     },
     {
       "body": {
@@ -88641,7 +88401,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"less_than\""
+            "value": "less_than"
           }
         },
         {
@@ -88670,7 +88430,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"greater_than\""
+            "value": "greater_than"
           }
         },
         {
@@ -88699,7 +88459,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"list_type\""
+            "value": "list_type"
           }
         },
         {
@@ -88728,7 +88488,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"included_in\""
+            "value": "included_in"
           }
         },
         {
@@ -88760,7 +88520,7 @@
           "required": true,
           "type": {
             "kind": "literal_value",
-            "value": "\"regex\""
+            "value": "regex"
           }
         },
         {

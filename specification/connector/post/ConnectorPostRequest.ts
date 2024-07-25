@@ -18,7 +18,6 @@
  */
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
 
 /**
  * Creates a connector.

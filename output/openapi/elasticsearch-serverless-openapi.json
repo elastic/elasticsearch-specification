@@ -1981,104 +1981,6 @@
         "x-available-since": "8.12.0"
       }
     },
-    "/_connector/{connector_id}/_last_sync": {
-      "put": {
-        "tags": [
-          "connector.last_sync"
-        ],
-        "summary": "Updates last sync stats in the connector document",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-last-sync-api.html"
-        },
-        "operationId": "connector-last-sync",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "connector_id",
-            "description": "The unique identifier of the connector to be updated",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "last_access_control_sync_error": {
-                    "type": "string"
-                  },
-                  "last_access_control_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_access_control_sync_status": {
-                    "$ref": "#/components/schemas/connector._types:SyncStatus"
-                  },
-                  "last_deleted_document_count": {
-                    "type": "number"
-                  },
-                  "last_incremental_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_indexed_document_count": {
-                    "type": "number"
-                  },
-                  "last_seen": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_sync_error": {
-                    "type": "string"
-                  },
-                  "last_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_sync_status": {
-                    "$ref": "#/components/schemas/connector._types:SyncStatus"
-                  },
-                  "last_synced": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "sync_cursor": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "$ref": "#/components/schemas/_types:Result"
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "x-technical-preview": true,
-        "x-available-since": "8.12.0"
-      }
-    },
     "/_connector": {
       "get": {
         "tags": [
@@ -51346,7 +51248,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"less_than\""
+              "less_than"
             ]
           },
           "constraint": {
@@ -51364,7 +51266,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"greater_than\""
+              "greater_than"
             ]
           },
           "constraint": {
@@ -51382,7 +51284,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"list_type\""
+              "list_type"
             ]
           },
           "constraint": {
@@ -51400,7 +51302,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"included_in\""
+              "included_in"
             ]
           },
           "constraint": {
@@ -51421,7 +51323,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "\"regex\""
+              "regex"
             ]
           },
           "constraint": {
