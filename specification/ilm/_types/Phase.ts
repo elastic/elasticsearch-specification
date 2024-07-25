@@ -112,7 +112,6 @@ export class DownsampleAction {
   wait_timeout?: Duration
 }
 
-//TODO container?
 export class ShrinkAction {
   number_of_shards?: integer
   max_primary_shard_size?: ByteSize
