@@ -83,7 +83,7 @@ export class IndicesPrivileges {
    * The document fields that the owners of the role have read access to.
    * @doc_id field-and-document-access-control
    */
-  field_security?: FieldSecurity | FieldSecurity[]
+  field_security?: FieldSecurity
   /**
    * A list of indices (or index name patterns) to which the permissions in this entry apply.
    */
