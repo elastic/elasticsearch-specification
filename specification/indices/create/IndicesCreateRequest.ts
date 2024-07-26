@@ -26,6 +26,7 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create an index.
  * Creates a new index.
  * @doc_id indices-create-index
  * @rest_spec_name indices.create

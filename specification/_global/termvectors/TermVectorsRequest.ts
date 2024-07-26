@@ -31,6 +31,8 @@ import {
 import { Filter } from './types'
 
 /**
+ * Get term vector information.
+ * Returns information and statistics about terms in the fields of a particular document.
  * @rest_spec_name termvectors
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
