@@ -128731,7 +128731,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
