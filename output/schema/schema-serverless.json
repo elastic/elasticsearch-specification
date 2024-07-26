@@ -216,7 +216,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html",
       "name": "cat.aliases",
@@ -264,7 +264,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html",
       "name": "cat.component_templates",
       "privileges": {
@@ -310,7 +310,7 @@
           "stability": "stable"
         }
       },
-      "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nNOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
       "docId": "cat-count",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html",
       "name": "cat.count",
@@ -357,7 +357,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns help for the Cat APIs.",
+      "description": "Get CAT help.\nReturns help for the CAT APIs.",
       "docId": "cat",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat.html",
       "name": "cat.help",
@@ -392,7 +392,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-indices.html",
       "name": "cat.indices",
@@ -443,7 +443,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about data frame analytics jobs.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
+      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
       "docId": "cat-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-dfanalytics.html",
       "name": "cat.ml_data_frame_analytics",
@@ -491,7 +491,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
+      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
       "docId": "cat-datafeeds",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-datafeeds.html",
       "name": "cat.ml_datafeeds",
@@ -539,7 +539,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
+      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
       "docId": "cat-anomaly-detectors",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html",
       "name": "cat.ml_jobs",
@@ -587,7 +587,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about inference trained models.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
+      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
       "docId": "cat-trained-model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-trained-model.html",
       "name": "cat.ml_trained_models",
@@ -635,7 +635,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about transforms.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
       "docId": "cat-transforms",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-transforms.html",
       "name": "cat.transforms",
@@ -2012,7 +2012,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes documents that match the specified query.",
+      "description": "Delete documents.\nDeletes documents that match the specified query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html",
       "name": "delete_by_query",
       "request": {
@@ -2084,7 +2084,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing enrich policy and its enrich index.",
+      "description": "Delete an enrich policy.\nDeletes an existing enrich policy and its enrich index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html",
       "name": "enrich.delete_policy",
       "request": {
@@ -2155,7 +2155,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about an enrich policy.",
+      "description": "Get an enrich policy.\nReturns information about an enrich policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
       "request": {
@@ -2196,7 +2196,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates an enrich policy.",
+      "description": "Create an enrich policy.\nCreates an enrich policy.",
       "docId": "put-enrich-policy-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
@@ -2235,7 +2235,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
+      "description": "Get enrich stats.\nReturns enrich coordinator statistics and information about enrich policies that are currently executing.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html",
       "name": "enrich.stats",
       "request": {
@@ -3559,7 +3559,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+      "description": "Get mapping definitions.\nRetrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
       "name": "indices.get_mapping",
       "request": {
@@ -3855,7 +3855,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+      "description": "Update field mappings.\nAdds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html",
       "name": "indices.put_mapping",
       "request": {
@@ -4227,7 +4227,7 @@
           "stability": "stable"
         }
       },
-      "description": "Validates a potentially expensive query without executing it.",
+      "description": "Validate a query.\nValidates a query without running it.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html",
       "name": "indices.validate_query",
       "request": {
@@ -9257,7 +9257,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a transform.",
+      "description": "Delete a transform.\nDeletes a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
       "name": "transform.delete_transform",
       "privileges": {
@@ -9297,7 +9297,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for transforms.",
+      "description": "Get transforms.\nRetrieves configuration information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html",
       "name": "transform.get_transform",
       "privileges": {
@@ -9343,7 +9343,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for transforms.",
+      "description": "Get transform stats.\nRetrieves usage information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html",
       "name": "transform.get_transform_stats",
       "privileges": {
@@ -9387,7 +9387,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews a transform.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+      "description": "Preview a transform.\nGenerates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
       "name": "transform.preview_transform",
       "privileges": {
@@ -9442,7 +9442,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
+      "description": "Create a transform.\nCreates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
       "name": "transform.put_transform",
       "privileges": {
@@ -9491,7 +9491,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+      "description": "Reset a transform.\nResets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html",
       "name": "transform.reset_transform",
       "privileges": {
@@ -9531,7 +9531,7 @@
           "stability": "stable"
         }
       },
-      "description": "Schedules now a transform.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+      "description": "Schedule a transform to start now.\nInstantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html",
       "name": "transform.schedule_now_transform",
       "privileges": {
@@ -9574,7 +9574,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+      "description": "Start a transform.\nStarts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
       "name": "transform.start_transform",
       "privileges": {
@@ -9618,7 +9618,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops one or more transforms.",
+      "description": "Stop transforms.\nStops one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html",
       "name": "transform.stop_transform",
       "privileges": {
@@ -9658,7 +9658,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
+      "description": "Update a transform.\nUpdates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
       "name": "transform.update_transform",
       "privileges": {
@@ -9743,7 +9743,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+      "description": "Update documents.\nUpdates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html",
       "name": "update_by_query",
       "request": {
@@ -11389,7 +11389,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11429,7 +11429,7 @@
           }
         }
       ],
-      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L41"
+      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L43"
     },
     {
       "body": {
@@ -11460,7 +11460,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11487,7 +11487,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L37"
+      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -11518,7 +11518,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nNOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11545,7 +11545,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cat/count/CatCountRequest.ts#L23-L42"
+      "specLocation": "cat/count/CatCountRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -11576,7 +11576,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns help for the Cat APIs.",
+      "description": "Get CAT help.\nReturns help for the CAT APIs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11590,7 +11590,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "cat/help/CatHelpRequest.ts#L22-L28"
+      "specLocation": "cat/help/CatHelpRequest.ts#L22-L30"
     },
     {
       "body": {
@@ -11621,7 +11621,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11723,7 +11723,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L68"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L77"
     },
     {
       "body": {
@@ -11754,7 +11754,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about data frame analytics jobs.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
+      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11843,7 +11843,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_data_frame_analytics/CatDataFrameAnalyticsRequest.ts#L24-L58"
+      "specLocation": "cat/ml_data_frame_analytics/CatDataFrameAnalyticsRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -11874,7 +11874,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
+      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11952,7 +11952,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_datafeeds/CatDatafeedsRequest.ts#L24-L73"
+      "specLocation": "cat/ml_datafeeds/CatDatafeedsRequest.ts#L24-L75"
     },
     {
       "body": {
@@ -11983,7 +11983,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
+      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12073,7 +12073,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_jobs/CatJobsRequest.ts#L24-L77"
+      "specLocation": "cat/ml_jobs/CatJobsRequest.ts#L24-L79"
     },
     {
       "body": {
@@ -12104,7 +12104,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about inference trained models.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
+      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12205,7 +12205,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L63"
+      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L65"
     },
     {
       "body": {
@@ -12236,7 +12236,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about transforms.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12340,7 +12340,7 @@
           }
         }
       ],
-      "specLocation": "cat/transforms/CatTransformsRequest.ts#L25-L77"
+      "specLocation": "cat/transforms/CatTransformsRequest.ts#L25-L79"
     },
     {
       "body": {
@@ -15773,7 +15773,7 @@
           }
         ]
       },
-      "description": "Deletes documents that match the specified query.",
+      "description": "Delete documents.\nDeletes documents that match the specified query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16168,7 +16168,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L36-L209"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L36-L210"
     },
     {
       "body": {
@@ -16477,7 +16477,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing enrich policy and its enrich index.",
+      "description": "Delete an enrich policy.\nDeletes an existing enrich policy and its enrich index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16504,7 +16504,7 @@
         }
       ],
       "query": [],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L36"
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -16616,7 +16616,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about an enrich policy.",
+      "description": "Get an enrich policy.\nReturns information about an enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16643,7 +16643,7 @@
         }
       ],
       "query": [],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L37"
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -16717,7 +16717,7 @@
           }
         ]
       },
-      "description": "Creates an enrich policy.",
+      "description": "Create an enrich policy.\nCreates an enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16744,7 +16744,7 @@
         }
       ],
       "query": [],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L52"
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L53"
     },
     {
       "body": {
@@ -16771,7 +16771,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
+      "description": "Get enrich stats.\nReturns enrich coordinator statistics and information about enrich policies that are currently executing.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16785,7 +16785,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L22-L28"
+      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L22-L29"
     },
     {
       "body": {
@@ -21782,7 +21782,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+      "description": "Get mapping definitions.\nRetrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21875,7 +21875,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_mapping/IndicesGetMappingRequest.ts#L24-L72"
+      "specLocation": "indices/get_mapping/IndicesGetMappingRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -22880,7 +22880,7 @@
           }
         ]
       },
-      "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+      "description": "Update field mappings.\nAdds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22986,7 +22986,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L42-L149"
+      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L42-L150"
     },
     {
       "body": {
@@ -24304,7 +24304,7 @@
           }
         ]
       },
-      "description": "Validates a potentially expensive query without executing it.",
+      "description": "Validate a query.\nValidates a query without running it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24485,7 +24485,7 @@
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L111"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L112"
     },
     {
       "body": {
@@ -41969,7 +41969,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a transform.",
+      "description": "Delete a transform.\nDeletes a transform.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42036,7 +42036,7 @@
           }
         }
       ],
-      "specLocation": "transform/delete_transform/DeleteTransformRequest.ts#L24-L57"
+      "specLocation": "transform/delete_transform/DeleteTransformRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -42063,7 +42063,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for transforms.",
+      "description": "Get transforms.\nRetrieves configuration information for transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42143,7 +42143,7 @@
           }
         }
       ],
-      "specLocation": "transform/get_transform/GetTransformRequest.ts#L24-L72"
+      "specLocation": "transform/get_transform/GetTransformRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -42190,7 +42190,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for transforms.",
+      "description": "Get transform stats.\nRetrieves usage information for transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42269,7 +42269,7 @@
           }
         }
       ],
-      "specLocation": "transform/get_transform_stats/GetTransformStatsRequest.ts#L25-L68"
+      "specLocation": "transform/get_transform_stats/GetTransformStatsRequest.ts#L25-L69"
     },
     {
       "body": {
@@ -42427,7 +42427,7 @@
           }
         ]
       },
-      "description": "Previews a transform.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+      "description": "Preview a transform.\nGenerates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42468,7 +42468,7 @@
           }
         }
       ],
-      "specLocation": "transform/preview_transform/PreviewTransformRequest.ts#L33-L107"
+      "specLocation": "transform/preview_transform/PreviewTransformRequest.ts#L33-L108"
     },
     {
       "body": {
@@ -42644,7 +42644,7 @@
           }
         ]
       },
-      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
+      "description": "Create a transform.\nCreates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42698,7 +42698,7 @@
           }
         }
       ],
-      "specLocation": "transform/put_transform/PutTransformRequest.ts#L33-L122"
+      "specLocation": "transform/put_transform/PutTransformRequest.ts#L33-L123"
     },
     {
       "body": {
@@ -42725,7 +42725,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+      "description": "Reset a transform.\nResets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42766,7 +42766,7 @@
           }
         }
       ],
-      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L48"
+      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L49"
     },
     {
       "body": {
@@ -42793,7 +42793,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Schedules now a transform.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+      "description": "Schedule a transform to start now.\nInstantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42834,7 +42834,7 @@
           }
         }
       ],
-      "specLocation": "transform/schedule_now_transform/ScheduleNowTransformRequest.ts#L23-L49"
+      "specLocation": "transform/schedule_now_transform/ScheduleNowTransformRequest.ts#L23-L50"
     },
     {
       "body": {
@@ -42861,7 +42861,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+      "description": "Start a transform.\nStarts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42914,7 +42914,7 @@
           }
         }
       ],
-      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L65"
+      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L66"
     },
     {
       "body": {
@@ -42941,7 +42941,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Stops one or more transforms.",
+      "description": "Stop transforms.\nStops one or more transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43034,7 +43034,7 @@
           }
         }
       ],
-      "specLocation": "transform/stop_transform/StopTransformRequest.ts#L24-L76"
+      "specLocation": "transform/stop_transform/StopTransformRequest.ts#L24-L77"
     },
     {
       "body": {
@@ -43172,7 +43172,7 @@
           }
         ]
       },
-      "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
+      "description": "Update a transform.\nUpdates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43225,7 +43225,7 @@
           }
         }
       ],
-      "specLocation": "transform/update_transform/UpdateTransformRequest.ts#L31-L105"
+      "specLocation": "transform/update_transform/UpdateTransformRequest.ts#L31-L106"
     },
     {
       "body": {
@@ -43797,7 +43797,7 @@
           }
         ]
       },
-      "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+      "description": "Update documents.\nUpdates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -44204,7 +44204,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L221"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L222"
     },
     {
       "body": {
