@@ -18,7 +18,6 @@
  */
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
 
 /**
  * Creates a connector.
@@ -32,9 +31,9 @@ export interface Request extends RequestBase {
    * The connector document to be created
    */
   /** @codegen_name connector */
-  body: {
+  body?: {
     description?: string
-    index_name: WithNullValue<IndexName>
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string

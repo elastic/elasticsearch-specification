@@ -1,0 +1,15 @@
+# overlays.yaml
+overlay: 1.0.0
+info:
+  title: Overlays for the Elasticsearch Serverless OpenAPI document
+  version: 0.0.1
+actions:
+  - target: '$.info'
+    description: Add a document description
+    update:
+      description: >
+        **Technical preview**  
+        This functionality is in technical preview and may be changed or removed in a future release.
+        Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+
+

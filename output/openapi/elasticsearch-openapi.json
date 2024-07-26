@@ -4447,8 +4447,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "Determines whether associated sync jobs are also deleted.",
-            "required": true,
+            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -4502,14 +4501,7 @@
                 "type": "object",
                 "properties": {
                   "last_access_control_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_access_control_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -4527,24 +4519,10 @@
                     "type": "number"
                   },
                   "last_seen": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:DateTime"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -4554,6 +4532,9 @@
                   },
                   "last_synced": {
                     "$ref": "#/components/schemas/_types:DateTime"
+                  },
+                  "sync_cursor": {
+                    "type": "object"
                   }
                 }
               }
@@ -4726,14 +4707,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:IndexName"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:IndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -4747,10 +4721,7 @@
                   "service_type": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "index_name"
-                ]
+                }
               }
             }
           }
@@ -4763,11 +4734,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"
                     }
                   },
                   "required": [
+                    "result",
                     "id"
                   ]
                 }
@@ -4959,10 +4934,17 @@
             "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/connector._types:SyncJobType"
-              }
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/connector._types:SyncJobType"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/connector._types:SyncJobType"
+                  }
+                }
+              ]
             },
             "style": "form"
           }
@@ -5131,24 +5113,10 @@
                 "type": "object",
                 "properties": {
                   "api_key_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "api_key_secret_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   }
                 }
               }
@@ -5566,10 +5534,7 @@
                   "description": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               }
             }
           },
@@ -8191,11 +8156,22 @@
                     }
                   },
                   "profile": {
+                    "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
                     "type": "boolean"
                   },
                   "query": {
                     "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
                     "type": "string"
+                  },
+                  "tables": {
+                    "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/esql._types:TableValuesContainer"
+                      }
+                    }
                   }
                 },
                 "required": [
@@ -37825,10 +37801,14 @@
               "properties": {
                 "result": {
                   "$ref": "#/components/schemas/_types:Result"
+                },
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
                 }
               },
               "required": [
-                "result"
+                "result",
+                "id"
               ]
             }
           }
@@ -42520,7 +42500,7 @@
       "connector.put#connector_id": {
         "in": "path",
         "name": "connector_id",
-        "description": "The unique identifier of the connector to be created or updated",
+        "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -50347,14 +50327,7 @@
                   "type": "string"
                 },
                 "index_name": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/_types:IndexName"
-                    },
-                    {
-                      "$ref": "#/components/schemas/_spec_utils:NullValue"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/_types:IndexName"
                 },
                 "is_native": {
                   "type": "boolean"
@@ -50368,10 +50341,7 @@
                 "service_type": {
                   "type": "string"
                 }
-              },
-              "required": [
-                "index_name"
-              ]
+              }
             }
           }
         }
@@ -78692,6 +78662,9 @@
           "api_key_id": {
             "type": "string"
           },
+          "api_key_secret_id": {
+            "type": "string"
+          },
           "configuration": {
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
           },
@@ -78702,7 +78675,15 @@
             "type": "string"
           },
           "error": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "features": {
             "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
@@ -78717,7 +78698,15 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "$ref": "#/components/schemas/_types:IndexName"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "is_native": {
             "type": "boolean"
@@ -78773,6 +78762,9 @@
           "status": {
             "$ref": "#/components/schemas/connector._types:ConnectorStatus"
           },
+          "sync_cursor": {
+            "type": "object"
+          },
           "sync_now": {
             "type": "boolean"
           }
@@ -78783,7 +78775,6 @@
           "filtering",
           "is_native",
           "scheduling",
-          "service_type",
           "status",
           "sync_now"
         ]
@@ -78834,7 +78825,15 @@
             "type": "boolean"
           },
           "tooltip": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "type": {
             "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
@@ -78852,7 +78851,7 @@
             }
           },
           "value": {
-            "$ref": "#/components/schemas/_types:ScalarValue"
+            "type": "object"
           }
         },
         "required": [
@@ -78922,7 +78921,7 @@
             "type": "string"
           },
           "value": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ScalarValue"
           }
         },
         "required": [
@@ -79007,10 +79006,7 @@
             ]
           },
           "constraint": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:ScalarValue"
-            }
+            "type": "string"
           }
         },
         "required": [
@@ -79028,7 +79024,10 @@
             ]
           },
           "constraint": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ScalarValue"
+            }
           }
         },
         "required": [
@@ -79121,13 +79120,10 @@
           "document_level_security": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
-          "filtering_advanced_config": {
-            "type": "boolean"
-          },
-          "filtering_rules": {
-            "type": "boolean"
-          },
           "incremental_sync": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "native_connector_api_keys": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
           "sync_rules": {
@@ -79172,7 +79168,6 @@
         },
         "required": [
           "active",
-          "domain",
           "draft"
         ]
       },
@@ -79396,11 +79391,6 @@
           "error"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
         "properties": {
@@ -79499,6 +79489,9 @@
           },
           "service_type": {
             "type": "string"
+          },
+          "sync_cursor": {
+            "type": "object"
           }
         },
         "required": [
@@ -79523,6 +79516,11 @@
           "on_demand",
           "scheduled"
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",
@@ -80092,6 +80090,89 @@
         "enum": [
           "tail",
           "head"
+        ]
+      },
+      "esql._types:TableValuesContainer": {
+        "type": "object",
+        "properties": {
+          "integer": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesIntegerValue"
+            }
+          },
+          "keyword": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesKeywordValue"
+            }
+          },
+          "long": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongValue"
+            }
+          },
+          "double": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types:TableValuesLongDouble"
+            }
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "esql._types:TableValuesIntegerValue": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesKeywordValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesLongValue": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "esql._types:TableValuesLongDouble": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
         ]
       },
       "_types:EsqlColumns": {
