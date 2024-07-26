@@ -127,7 +127,7 @@ export class TrainedModelSizeStats {
   /** The size of the model in bytes. */
   model_size_bytes: ByteSize
   /** The amount of memory required to load the model in bytes. */
-  required_native_memory_bytes: integer
+  required_native_memory_bytes: ByteSize
 }
 
 export class TrainedModelDeploymentNodesStats {
