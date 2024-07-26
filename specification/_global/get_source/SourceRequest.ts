@@ -29,6 +29,8 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
+ * Get a document's source.
+ * Returns the source of a document.
  * @rest_spec_name get_source
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

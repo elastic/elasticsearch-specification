@@ -108,6 +108,9 @@ export class RankEvalRequestItem {
   params?: Dictionary<string, UserDefinedValue>
 }
 
+/**
+ * @shortcut_property query
+ */
 export class RankEvalQuery {
   query: QueryContainer
   size?: integer

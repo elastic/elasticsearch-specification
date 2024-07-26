@@ -29,6 +29,7 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
+ * Check for a document source.
  * Checks if a document's `_source` is stored.
  * @rest_spec_name exists_source
  * @availability stack since=5.4.0 stability=stable

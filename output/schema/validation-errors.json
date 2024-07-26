@@ -535,18 +535,6 @@
       ],
       "response": []
     },
-    "connector.last_sync": {
-      "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
-      ],
-      "response": []
-    },
-    "connector.put": {
-      "request": [
-        "Request: path parameter 'connector_id' is optional in the json spec"
-      ],
-      "response": []
-    },
     "connector.secret_delete": {
       "request": [
         "Missing request & response"
@@ -592,6 +580,12 @@
     "connector.sync_job_update_stats": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_error": {
+      "request": [
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
       ],
       "response": []
     },
@@ -871,6 +865,24 @@
     "indices.simulate_template": {
       "request": [
         "Request: missing json spec query parameter 'cause'"
+      ],
+      "response": []
+    },
+    "ingest.delete_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ingest.get_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ingest.put_geoip_database": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
