@@ -58244,8 +58244,7 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "required_native_memory_bytes": {
-            "description": "The amount of memory required to load the model in bytes.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           }
         },
         "required": [
