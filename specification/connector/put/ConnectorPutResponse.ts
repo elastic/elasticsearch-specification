@@ -18,9 +18,11 @@
  */
 
 import { Result } from '@_types/Result'
+import { Id } from '@_types/common'
 
 export class Response {
   body: {
     result: Result
+    id: Id
   }
 }
