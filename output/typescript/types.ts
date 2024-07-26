@@ -9448,7 +9448,7 @@ export interface ConnectorLastSyncRequest extends RequestBase {
     last_sync_scheduled_at?: DateTime
     last_sync_status?: ConnectorSyncStatus
     last_synced?: DateTime
-    sync_cursor?: Record<string, any>
+    sync_cursor?: any
   }
 }
 

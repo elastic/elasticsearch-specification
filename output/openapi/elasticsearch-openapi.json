@@ -4534,10 +4534,7 @@
                     "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "sync_cursor": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
+                    "type": "object"
                   }
                 }
               }

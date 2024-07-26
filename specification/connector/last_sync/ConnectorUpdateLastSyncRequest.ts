@@ -20,7 +20,6 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SyncStatus } from '../_types/Connector'
 
@@ -53,6 +52,6 @@ export interface Request extends RequestBase {
     last_sync_scheduled_at?: DateTime
     last_sync_status?: SyncStatus
     last_synced?: DateTime
-    sync_cursor?: Dictionary<string, UserDefinedValue>
+    sync_cursor?: UserDefinedValue
   }
 }
