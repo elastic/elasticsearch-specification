@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
      */
     metric?: Metrics
     /**
-     * If true, then retries allocation of shards that are ed due to too many subsequent allocation failures.
+     * If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.
      * @server_default false
      */
     retry_failed?: boolean
