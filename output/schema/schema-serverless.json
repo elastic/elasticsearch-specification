@@ -3230,7 +3230,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if an alias exists.",
+      "description": "Check aliases.\nChecks if one or more data stream or index aliases exist.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.exists_alias",
       "request": {
@@ -3305,7 +3305,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc.",
+      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
       "request": {
@@ -3379,7 +3379,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information for one or more aliases.",
+      "description": "Get aliases.\nRetrieves information for one or more data stream or index aliases.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.get_alias",
       "request": {
@@ -3599,7 +3599,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+      "description": "Get index settings.\nReturns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html",
       "name": "indices.get_settings",
       "privileges": {
@@ -3736,7 +3736,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.put_alias",
       "request": {
@@ -3893,7 +3893,7 @@
           "stability": "stable"
         }
       },
-      "description": "Changes a dynamic index setting in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+      "description": "Update index settings.\nChanges dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
       "name": "indices.put_settings",
       "privileges": {
@@ -3979,7 +3979,7 @@
           "stability": "stable"
         }
       },
-      "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
       "name": "indices.refresh",
       "request": {
@@ -4057,7 +4057,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new index for a data stream or index alias.",
+      "description": "Roll over to a new index.\nCreates a new index for a data stream or index alias.",
       "docId": "indices-rollover-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-rollover-index.html",
       "name": "indices.rollover",
@@ -4189,7 +4189,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.update_aliases",
       "request": {
@@ -4683,7 +4683,7 @@
           "stability": "stable"
         }
       },
-      "description": "This API returns information about the type of license, when it was issued, and when it expires, for example.\nFor more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
+      "description": "Get license information.\nReturns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html",
       "name": "license.get",
       "request": {
@@ -7762,7 +7762,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+      "description": "Reindex documents.\nCopies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
       "name": "reindex",
       "request": {
@@ -20864,7 +20864,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if an alias exists.",
+      "description": "Check aliases.\nChecks if one or more data stream or index aliases exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20956,7 +20956,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L67"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L68"
     },
     {
       "body": {
@@ -21037,7 +21037,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc.",
+      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21089,7 +21089,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L38"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L39"
     },
     {
       "body": {
@@ -21309,7 +21309,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information for one or more aliases.",
+      "description": "Get aliases.\nRetrieves information for one or more data stream or index aliases.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21401,7 +21401,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L70"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L71"
     },
     {
       "body": {
@@ -21913,7 +21913,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+      "description": "Get index settings.\nReturns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22044,7 +22044,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_settings/IndicesGetSettingsRequest.ts#L24-L91"
+      "specLocation": "indices/get_settings/IndicesGetSettingsRequest.ts#L24-L92"
     },
     {
       "body": {
@@ -22256,7 +22256,7 @@
           }
         ]
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22324,7 +22324,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L91"
+      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L92"
     },
     {
       "body": {
@@ -23021,7 +23021,7 @@
           }
         }
       },
-      "description": "Changes a dynamic index setting in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+      "description": "Update index settings.\nChanges dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23140,7 +23140,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_settings/IndicesPutSettingsRequest.ts#L25-L92"
+      "specLocation": "indices/put_settings/IndicesPutSettingsRequest.ts#L25-L93"
     },
     {
       "body": {
@@ -23371,7 +23371,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23438,7 +23438,7 @@
           }
         }
       ],
-      "specLocation": "indices/refresh/IndicesRefreshRequest.ts#L23-L60"
+      "specLocation": "indices/refresh/IndicesRefreshRequest.ts#L23-L61"
     },
     {
       "body": {
@@ -23638,7 +23638,7 @@
           }
         ]
       },
-      "description": "Creates a new index for a data stream or index alias.",
+      "description": "Roll over to a new index.\nCreates a new index for a data stream or index alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23730,7 +23730,7 @@
           }
         }
       ],
-      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L29-L99"
+      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L29-L100"
     },
     {
       "body": {
@@ -24222,7 +24222,7 @@
           }
         ]
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24263,7 +24263,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesRequest.ts#L24-L51"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -25517,7 +25517,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "This API returns information about the type of license, when it was issued, and when it expires, for example.\nFor more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
+      "description": "Get license information.\nReturns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25562,7 +25562,7 @@
           }
         }
       ],
-      "specLocation": "license/get/GetLicenseRequest.ts#L22-L44"
+      "specLocation": "license/get/GetLicenseRequest.ts#L22-L45"
     },
     {
       "body": {
@@ -35311,7 +35311,7 @@
           }
         ]
       },
-      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+      "description": "Reindex documents.\nCopies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35429,7 +35429,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/ReindexRequest.ts#L27-L101"
+      "specLocation": "_global/reindex/ReindexRequest.ts#L27-L103"
     },
     {
       "body": {
