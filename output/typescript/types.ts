@@ -14078,7 +14078,7 @@ export interface MlTrainedModelPrefixStrings {
 
 export interface MlTrainedModelSizeStats {
   model_size_bytes: ByteSize
-  required_native_memory_bytes: integer
+  required_native_memory_bytes: ByteSize
 }
 
 export interface MlTrainedModelStats {
