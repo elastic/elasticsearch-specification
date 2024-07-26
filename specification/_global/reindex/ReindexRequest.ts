@@ -25,6 +25,8 @@ import { Duration } from '@_types/Time'
 import { Destination, Source } from './types'
 
 /**
+ * Reindex documents.
+ * Copies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.
  * @rest_spec_name reindex
  * @availability stack since=2.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
