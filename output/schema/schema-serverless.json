@@ -895,7 +895,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns different information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "docId": "cluster-info",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-info.html",
       "name": "cluster.info",
@@ -1939,7 +1939,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "create",
       "request": {
@@ -1977,7 +1977,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes a JSON document from the specified index.",
+      "description": "Delete a document.\nRemoves a JSON document from the specified index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
       "name": "delete",
       "request": {
@@ -2450,7 +2450,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if a document in an index exists.",
+      "description": "Check a document.\nChecks if a specified document exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists",
       "request": {
@@ -2485,7 +2485,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if a document's `_source` is stored.",
+      "description": "Check for a document source.\nChecks if a document's `_source` is stored.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists_source",
       "request": {
@@ -2519,7 +2519,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about why a specific document matches (or doesn’t match) a query.",
+      "description": "Explain a document match result.\nReturns information about why a specific document matches, or doesn’t match, a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
       "name": "explain",
       "request": {
@@ -2610,7 +2610,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns a document.",
+      "description": "Get a document by its ID.\nRetrieves the document with the specified ID from an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get",
       "request": {
@@ -2678,7 +2678,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the source of a document.",
+      "description": "Get a document's source.\nReturns the source of a document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get_source",
       "request": {
@@ -2751,7 +2751,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "index",
       "request": {
@@ -2796,7 +2796,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a block to an index.",
+      "description": "Add an index block.\nLimits the operations allowed on an index by blocking specific operation types.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html",
       "name": "indices.add_block",
       "request": {
@@ -2876,7 +2876,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new index.",
+      "description": "Create an index.\nCreates a new index.",
       "docId": "indices-create-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html",
       "name": "indices.create",
@@ -3006,7 +3006,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes one or more indices.",
+      "description": "Delete indices.\nDeletes one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
       "name": "indices.delete",
       "request": {
@@ -3040,7 +3040,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes a data stream or index from an alias.",
+      "description": "Delete an alias.\nRemoves a data stream or index from an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.delete_alias",
       "request": {
@@ -3196,7 +3196,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if a data stream, index, or alias exists.",
+      "description": "Check indices.\nChecks if one or more indices, index aliases, or data streams exist.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
       "name": "indices.exists",
       "request": {
@@ -3339,7 +3339,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+      "description": "Get index information.\nReturns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html",
       "name": "indices.get",
       "privileges": {
@@ -4452,7 +4452,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns basic information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "info",
       "request": {
@@ -7380,7 +7380,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns whether the cluster is running.",
+      "description": "Ping the cluster.\nReturns whether the cluster is running.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "ping",
       "request": {
@@ -8276,7 +8276,7 @@
           "stability": "stable"
         }
       },
-      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
       "request": {
@@ -9211,7 +9211,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
       "request": {
@@ -9705,7 +9705,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates a document with a script or partial document.",
+      "description": "Update a document.\nUpdates a document by running a script or passing a partial document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html",
       "name": "update",
       "request": {
@@ -12875,7 +12875,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns different information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12902,7 +12902,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L34"
+      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L36"
     },
     {
       "body": {
@@ -15379,7 +15379,7 @@
           }
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "generics": [
         {
           "name": "TDocument",
@@ -15512,7 +15512,7 @@
           }
         }
       ],
-      "specLocation": "_global/create/CreateRequest.ts#L32-L95"
+      "specLocation": "_global/create/CreateRequest.ts#L32-L96"
     },
     {
       "body": {
@@ -15539,7 +15539,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes a JSON document from the specified index.",
+      "description": "Delete a document.\nRemoves a JSON document from the specified index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15678,7 +15678,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L34-L91"
+      "specLocation": "_global/delete/DeleteRequest.ts#L34-L92"
     },
     {
       "body": {
@@ -17690,7 +17690,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if a document in an index exists.",
+      "description": "Check a document.\nChecks if a specified document exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17856,7 +17856,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L31-L99"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L31-L100"
     },
     {
       "body": {
@@ -17876,7 +17876,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if a document's `_source` is stored.",
+      "description": "Check for a document source.\nChecks if a document's `_source` is stored.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18030,7 +18030,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists_source/SourceExistsRequest.ts#L31-L93"
+      "specLocation": "_global/exists_source/SourceExistsRequest.ts#L31-L94"
     },
     {
       "body": {
@@ -18064,7 +18064,7 @@
           }
         ]
       },
-      "description": "Returns information about why a specific document matches (or doesn’t match) a query.",
+      "description": "Explain a document match result.\nReturns information about why a specific document matches, or doesn’t match, a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18251,7 +18251,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L105"
+      "specLocation": "_global/explain/ExplainRequest.ts#L26-L106"
     },
     {
       "body": {
@@ -18611,7 +18611,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns a document.",
+      "description": "Get a document by its ID.\nRetrieves the document with the specified ID from an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18777,7 +18777,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L31-L98"
+      "specLocation": "_global/get/GetRequest.ts#L31-L100"
     },
     {
       "body": {
@@ -18952,7 +18952,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the source of a document.",
+      "description": "Get a document's source.\nReturns the source of a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19116,7 +19116,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_source/SourceRequest.ts#L31-L86"
+      "specLocation": "_global/get_source/SourceRequest.ts#L31-L88"
     },
     {
       "body": {
@@ -19348,7 +19348,7 @@
           }
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "generics": [
         {
           "name": "TDocument",
@@ -19529,7 +19529,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L35-L117"
+      "specLocation": "_global/index/IndexRequest.ts#L35-L118"
     },
     {
       "body": {
@@ -19556,7 +19556,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Adds a block to an index.",
+      "description": "Add an index block.\nLimits the operations allowed on an index by blocking specific operation types.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19656,7 +19656,7 @@
           }
         }
       ],
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L24-L41"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L24-L43"
     },
     {
       "body": {
@@ -19971,7 +19971,7 @@
           }
         ]
       },
-      "description": "Creates a new index.",
+      "description": "Create an index.\nCreates a new index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20038,7 +20038,7 @@
           }
         }
       ],
-      "specLocation": "indices/create/IndicesCreateRequest.ts#L28-L81"
+      "specLocation": "indices/create/IndicesCreateRequest.ts#L28-L82"
     },
     {
       "body": {
@@ -20285,7 +20285,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes one or more indices.",
+      "description": "Delete indices.\nDeletes one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20378,7 +20378,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete/IndicesDeleteRequest.ts#L24-L73"
+      "specLocation": "indices/delete/IndicesDeleteRequest.ts#L24-L74"
     },
     {
       "body": {
@@ -20405,7 +20405,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes a data stream or index from an alias.",
+      "description": "Delete an alias.\nRemoves a data stream or index from an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20471,7 +20471,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasRequest.ts#L24-L57"
+      "specLocation": "indices/delete_alias/IndicesDeleteAliasRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -20738,7 +20738,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if a data stream, index, or alias exists.",
+      "description": "Check indices.\nChecks if one or more indices, index aliases, or data streams exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20844,7 +20844,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L72"
+      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L73"
     },
     {
       "body": {
@@ -21133,7 +21133,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+      "description": "Get index information.\nReturns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21271,7 +21271,7 @@
           }
         }
       ],
-      "specLocation": "indices/get/IndicesGetRequest.ts#L24-L88"
+      "specLocation": "indices/get/IndicesGetRequest.ts#L24-L89"
     },
     {
       "body": {
@@ -24929,7 +24929,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns basic information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24943,7 +24943,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L27"
+      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L29"
     },
     {
       "body": {
@@ -34367,7 +34367,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns whether the cluster is running.",
+      "description": "Ping the cluster.\nReturns whether the cluster is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34381,7 +34381,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/ping/PingRequest.ts#L22-L27"
+      "specLocation": "_global/ping/PingRequest.ts#L22-L29"
     },
     {
       "body": {
@@ -37924,7 +37924,7 @@
           }
         ]
       },
-      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38089,7 +38089,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L188"
+      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L190"
     },
     {
       "body": {
@@ -41684,7 +41684,7 @@
           }
         ]
       },
-      "description": "Returns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -41870,7 +41870,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L118"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L120"
     },
     {
       "body": {
@@ -43491,7 +43491,7 @@
           }
         ]
       },
-      "description": "Updates a document with a script or partial document.",
+      "description": "Update a document.\nUpdates a document by running a script or passing a partial document.",
       "generics": [
         {
           "name": "TDocument",
@@ -43692,7 +43692,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L38-L151"
+      "specLocation": "_global/update/UpdateRequest.ts#L38-L153"
     },
     {
       "body": {
@@ -90081,7 +90081,7 @@
         "name": "IndicesBlockOptions",
         "namespace": "indices.add_block"
       },
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L43-L48"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L45-L50"
     },
     {
       "kind": "type_alias",
@@ -90130,7 +90130,7 @@
         "name": "Feature",
         "namespace": "indices.get"
       },
-      "specLocation": "indices/get/IndicesGetRequest.ts#L90-L94"
+      "specLocation": "indices/get/IndicesGetRequest.ts#L91-L95"
     },
     {
       "kind": "type_alias",
@@ -90138,7 +90138,7 @@
         "name": "Features",
         "namespace": "indices.get"
       },
-      "specLocation": "indices/get/IndicesGetRequest.ts#L95-L95",
+      "specLocation": "indices/get/IndicesGetRequest.ts#L96-L96",
       "type": {
         "items": [
           {
