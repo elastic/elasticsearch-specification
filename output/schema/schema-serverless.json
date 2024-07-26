@@ -111484,18 +111484,7 @@
           "name": "sync_cursor",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
+            "kind": "user_defined_value"
           }
         },
         {
@@ -112362,18 +112351,7 @@
           "name": "sync_cursor",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
+            "kind": "user_defined_value"
           }
         }
       ],

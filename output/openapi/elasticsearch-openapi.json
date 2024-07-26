@@ -78752,10 +78752,7 @@
             "$ref": "#/components/schemas/connector._types:ConnectorStatus"
           },
           "sync_cursor": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+            "type": "object"
           },
           "sync_now": {
             "type": "boolean"
@@ -79483,10 +79480,7 @@
             "type": "string"
           },
           "sync_cursor": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+            "type": "object"
           }
         },
         "required": [

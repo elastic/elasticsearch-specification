@@ -263,6 +263,6 @@ export interface Connector {
   scheduling: SchedulingConfiguration
   service_type?: string
   status: ConnectorStatus
-  sync_cursor?: Dictionary<string, UserDefinedValue>
+  sync_cursor?: UserDefinedValue
   sync_now: boolean
 }

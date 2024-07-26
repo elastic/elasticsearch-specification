@@ -9211,7 +9211,7 @@ export interface ConnectorConnector {
   scheduling: ConnectorSchedulingConfiguration
   service_type?: string
   status: ConnectorConnectorStatus
-  sync_cursor?: Record<string, any>
+  sync_cursor?: any
   sync_now: boolean
 }
 
@@ -9397,7 +9397,7 @@ export interface ConnectorSyncJobConnectorReference {
   language?: string
   pipeline?: ConnectorIngestPipelineParams
   service_type: string
-  sync_cursor?: Record<string, any>
+  sync_cursor?: any
 }
 
 export type ConnectorSyncJobTriggerMethod = 'on_demand' | 'scheduled'
