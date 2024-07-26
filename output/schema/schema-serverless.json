@@ -170,7 +170,7 @@
           "stability": "stable"
         }
       },
-      "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
+      "description": "Bulk index or delete documents.\nPerforms multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
       "docId": "docs-bulk",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/docs-bulk.html",
       "name": "bulk",
@@ -216,7 +216,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html",
       "name": "cat.aliases",
@@ -264,7 +264,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html",
       "name": "cat.component_templates",
       "privileges": {
@@ -310,7 +310,7 @@
           "stability": "stable"
         }
       },
-      "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nNOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
       "docId": "cat-count",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html",
       "name": "cat.count",
@@ -357,7 +357,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns help for the Cat APIs.",
+      "description": "Get CAT help.\nReturns help for the CAT APIs.",
       "docId": "cat",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat.html",
       "name": "cat.help",
@@ -392,7 +392,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-indices.html",
       "name": "cat.indices",
@@ -443,7 +443,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about data frame analytics jobs.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
+      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
       "docId": "cat-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-dfanalytics.html",
       "name": "cat.ml_data_frame_analytics",
@@ -491,7 +491,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
+      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
       "docId": "cat-datafeeds",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-datafeeds.html",
       "name": "cat.ml_datafeeds",
@@ -539,7 +539,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
+      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
       "docId": "cat-anomaly-detectors",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html",
       "name": "cat.ml_jobs",
@@ -587,7 +587,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about inference trained models.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
+      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
       "docId": "cat-trained-model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-trained-model.html",
       "name": "cat.ml_trained_models",
@@ -635,7 +635,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns configuration and usage information about transforms.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
       "docId": "cat-transforms",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-transforms.html",
       "name": "cat.transforms",
@@ -771,7 +771,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+      "description": "Delete component templates.\nDeletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.delete_component_template",
@@ -812,7 +812,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about whether a particular component template exist",
+      "description": "Check component templates.\nReturns information about whether a particular component template exists.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.exists_component_template",
@@ -848,7 +848,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information about component templates.",
+      "description": "Get component templates.\nRetrieves information about component templates.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.get_component_template",
@@ -895,7 +895,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns different information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "docId": "cluster-info",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cluster-info.html",
       "name": "cluster.info",
@@ -931,7 +931,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+      "description": "Create or update a component template.\nCreates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
       "docId": "indices-component-template",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-component-template.html",
       "name": "cluster.put_component_template",
@@ -1070,45 +1070,6 @@
             "GET"
           ],
           "path": "/_connector/{connector_id}"
-        }
-      ]
-    },
-    {
-      "availability": {
-        "serverless": {
-          "stability": "experimental",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.12.0",
-          "stability": "experimental"
-        }
-      },
-      "description": "Updates last sync stats in the connector document",
-      "docId": "connector-last-sync",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html",
-      "name": "connector.last_sync",
-      "request": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "requestBodyRequired": true,
-      "requestMediaType": [
-        "application/json"
-      ],
-      "response": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_connector/{connector_id}/_last_sync"
         }
       ]
     },
@@ -1978,7 +1939,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "create",
       "request": {
@@ -2016,7 +1977,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes a JSON document from the specified index.",
+      "description": "Delete a document.\nRemoves a JSON document from the specified index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
       "name": "delete",
       "request": {
@@ -2051,7 +2012,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes documents that match the specified query.",
+      "description": "Delete documents.\nDeletes documents that match the specified query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html",
       "name": "delete_by_query",
       "request": {
@@ -2088,7 +2049,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a stored script or search template.",
+      "description": "Delete a script or search template.\nDeletes a stored script or search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "delete_script",
       "request": {
@@ -2123,7 +2084,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing enrich policy and its enrich index.",
+      "description": "Delete an enrich policy.\nDeletes an existing enrich policy and its enrich index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html",
       "name": "enrich.delete_policy",
       "request": {
@@ -2194,7 +2155,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about an enrich policy.",
+      "description": "Get an enrich policy.\nReturns information about an enrich policy.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
       "request": {
@@ -2235,7 +2196,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates an enrich policy.",
+      "description": "Create an enrich policy.\nCreates an enrich policy.",
       "docId": "put-enrich-policy-api",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
@@ -2274,7 +2235,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
+      "description": "Get enrich stats.\nReturns enrich coordinator statistics and information about enrich policies that are currently executing.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html",
       "name": "enrich.stats",
       "request": {
@@ -2489,7 +2450,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if a document in an index exists.",
+      "description": "Check a document.\nChecks if a specified document exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists",
       "request": {
@@ -2524,7 +2485,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if a document's `_source` is stored.",
+      "description": "Check for a document source.\nChecks if a document's `_source` is stored.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "exists_source",
       "request": {
@@ -2558,7 +2519,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about why a specific document matches (or doesn’t match) a query.",
+      "description": "Explain a document match result.\nReturns information about why a specific document matches, or doesn’t match, a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
       "name": "explain",
       "request": {
@@ -2649,7 +2610,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns a document.",
+      "description": "Get a document by its ID.\nRetrieves the document with the specified ID from an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get",
       "request": {
@@ -2683,7 +2644,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves a stored script or search template.",
+      "description": "Get a script or search template.\nRetrieves a stored script or search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "get_script",
       "request": {
@@ -2717,7 +2678,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns the source of a document.",
+      "description": "Get a document's source.\nReturns the source of a document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get_source",
       "request": {
@@ -2790,7 +2751,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
       "name": "index",
       "request": {
@@ -2835,7 +2796,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a block to an index.",
+      "description": "Add an index block.\nLimits the operations allowed on an index by blocking specific operation types.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html",
       "name": "indices.add_block",
       "request": {
@@ -2915,7 +2876,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new index.",
+      "description": "Create an index.\nCreates a new index.",
       "docId": "indices-create-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-create-index.html",
       "name": "indices.create",
@@ -3045,7 +3006,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes one or more indices.",
+      "description": "Delete indices.\nDeletes one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
       "name": "indices.delete",
       "request": {
@@ -3079,7 +3040,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes a data stream or index from an alias.",
+      "description": "Delete an alias.\nRemoves a data stream or index from an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.delete_alias",
       "request": {
@@ -3235,7 +3196,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if a data stream, index, or alias exists.",
+      "description": "Check indices.\nChecks if one or more indices, index aliases, or data streams exist.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
       "name": "indices.exists",
       "request": {
@@ -3269,7 +3230,7 @@
           "stability": "stable"
         }
       },
-      "description": "Checks if an alias exists.",
+      "description": "Check aliases.\nChecks if one or more data stream or index aliases exist.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.exists_alias",
       "request": {
@@ -3344,7 +3305,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc.",
+      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
       "request": {
@@ -3378,7 +3339,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+      "description": "Get index information.\nReturns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html",
       "name": "indices.get",
       "privileges": {
@@ -3418,7 +3379,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information for one or more aliases.",
+      "description": "Get aliases.\nRetrieves information for one or more data stream or index aliases.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.get_alias",
       "request": {
@@ -3598,7 +3559,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+      "description": "Get mapping definitions.\nRetrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
       "name": "indices.get_mapping",
       "request": {
@@ -3638,7 +3599,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+      "description": "Get index settings.\nReturns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html",
       "name": "indices.get_settings",
       "privileges": {
@@ -3775,7 +3736,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.put_alias",
       "request": {
@@ -3894,7 +3855,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+      "description": "Update field mappings.\nAdds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html",
       "name": "indices.put_mapping",
       "request": {
@@ -3932,7 +3893,7 @@
           "stability": "stable"
         }
       },
-      "description": "Changes a dynamic index setting in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+      "description": "Update index settings.\nChanges dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
       "name": "indices.put_settings",
       "privileges": {
@@ -4018,7 +3979,7 @@
           "stability": "stable"
         }
       },
-      "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
       "name": "indices.refresh",
       "request": {
@@ -4096,7 +4057,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a new index for a data stream or index alias.",
+      "description": "Roll over to a new index.\nCreates a new index for a data stream or index alias.",
       "docId": "indices-rollover-index",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/indices-rollover-index.html",
       "name": "indices.rollover",
@@ -4228,7 +4189,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
       "name": "indices.update_aliases",
       "request": {
@@ -4266,7 +4227,7 @@
           "stability": "stable"
         }
       },
-      "description": "Validates a potentially expensive query without executing it.",
+      "description": "Validate a query.\nValidates a query without running it.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html",
       "name": "indices.validate_query",
       "request": {
@@ -4491,7 +4452,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns basic information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "info",
       "request": {
@@ -4722,7 +4683,7 @@
           "stability": "stable"
         }
       },
-      "description": "This API returns information about the type of license, when it was issued, and when it expires, for example.\nFor more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
+      "description": "Get license information.\nReturns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html",
       "name": "license.get",
       "request": {
@@ -7419,7 +7380,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns whether the cluster is running.",
+      "description": "Ping the cluster.\nReturns whether the cluster is running.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
       "name": "ping",
       "request": {
@@ -7453,7 +7414,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a stored script or search template.",
+      "description": "Create or update a script or search template.\nCreates or updates a stored script or search template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
       "name": "put_script",
       "request": {
@@ -7801,7 +7762,7 @@
           "stability": "stable"
         }
       },
-      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+      "description": "Reindex documents.\nCopies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html",
       "name": "reindex",
       "request": {
@@ -7884,7 +7845,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Runs a script and returns a result.",
+      "description": "Run a script.\nRuns a script and returns a result.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html",
       "name": "scripts_painless_execute",
       "request": {
@@ -8315,7 +8276,7 @@
           "stability": "stable"
         }
       },
-      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
       "request": {
@@ -8400,7 +8361,7 @@
           "stability": "stable"
         }
       },
-      "description": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
+      "description": "Authenticate a user.\nAuthenticates a user and returns information about the authenticated user.\nInclude the user information in a [basic auth header](https://en.wikipedia.org/wiki/Basic_access_authentication).\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html",
       "name": "security.authenticate",
       "request": {
@@ -8435,7 +8396,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+      "description": "Create an API key.\nCreates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html",
       "name": "security.create_api_key",
       "privileges": {
@@ -8479,7 +8440,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
+      "description": "Get API key information.\nRetrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html",
       "name": "security.get_api_key",
       "privileges": {
@@ -8520,7 +8481,7 @@
           "stability": "stable"
         }
       },
-      "description": "Determines whether the specified user has a specified list of privileges.",
+      "description": "Check user privileges.\nDetermines whether the specified user has a specified list of privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html",
       "name": "security.has_privileges",
       "request": {
@@ -8566,7 +8527,7 @@
           "stability": "stable"
         }
       },
-      "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+      "description": "Invalidate API keys.\nInvalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html",
       "name": "security.invalidate_api_key",
       "privileges": {
@@ -8610,7 +8571,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information for API keys in a paginated manner. You can optionally filter the results with a query.",
+      "description": "Query API keys.\nRetrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html",
       "name": "security.query_api_keys",
       "privileges": {
@@ -8655,7 +8616,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+      "description": "Update an API key.\nUpdates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html",
       "name": "security.update_api_key",
       "privileges": {
@@ -9176,7 +9137,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Returns information about a task.",
+      "description": "Get task information.\nReturns information about the tasks currently executing in the cluster.",
       "docId": "tasks",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.html",
       "name": "tasks.get",
@@ -9250,7 +9211,7 @@
           "stability": "stable"
         }
       },
-      "description": "Returns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
       "request": {
@@ -9296,7 +9257,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a transform.",
+      "description": "Delete a transform.\nDeletes a transform.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
       "name": "transform.delete_transform",
       "privileges": {
@@ -9336,7 +9297,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for transforms.",
+      "description": "Get transforms.\nRetrieves configuration information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html",
       "name": "transform.get_transform",
       "privileges": {
@@ -9382,7 +9343,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for transforms.",
+      "description": "Get transform stats.\nRetrieves usage information for transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html",
       "name": "transform.get_transform_stats",
       "privileges": {
@@ -9426,7 +9387,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews a transform.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+      "description": "Preview a transform.\nGenerates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
       "name": "transform.preview_transform",
       "privileges": {
@@ -9481,7 +9442,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
+      "description": "Create a transform.\nCreates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
       "name": "transform.put_transform",
       "privileges": {
@@ -9530,7 +9491,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+      "description": "Reset a transform.\nResets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html",
       "name": "transform.reset_transform",
       "privileges": {
@@ -9570,7 +9531,7 @@
           "stability": "stable"
         }
       },
-      "description": "Schedules now a transform.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+      "description": "Schedule a transform to start now.\nInstantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html",
       "name": "transform.schedule_now_transform",
       "privileges": {
@@ -9613,7 +9574,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+      "description": "Start a transform.\nStarts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
       "name": "transform.start_transform",
       "privileges": {
@@ -9657,7 +9618,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops one or more transforms.",
+      "description": "Stop transforms.\nStops one or more transforms.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html",
       "name": "transform.stop_transform",
       "privileges": {
@@ -9697,7 +9658,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
+      "description": "Update a transform.\nUpdates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
       "name": "transform.update_transform",
       "privileges": {
@@ -9744,7 +9705,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates a document with a script or partial document.",
+      "description": "Update a document.\nUpdates a document by running a script or passing a partial document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html",
       "name": "update",
       "request": {
@@ -9782,7 +9743,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+      "description": "Update documents.\nUpdates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html",
       "name": "update_by_query",
       "request": {
@@ -11197,7 +11158,7 @@
           }
         }
       },
-      "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
+      "description": "Bulk index or delete documents.\nPerforms multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
       "generics": [
         {
           "name": "TDocument",
@@ -11347,7 +11308,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L32-L103"
+      "specLocation": "_global/bulk/BulkRequest.ts#L32-L104"
     },
     {
       "body": {
@@ -11428,7 +11389,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11468,7 +11429,7 @@
           }
         }
       ],
-      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L41"
+      "specLocation": "cat/aliases/CatAliasesRequest.ts#L23-L43"
     },
     {
       "body": {
@@ -11499,7 +11460,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11526,7 +11487,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L37"
+      "specLocation": "cat/component_templates/CatComponentTemplatesRequest.ts#L22-L39"
     },
     {
       "body": {
@@ -11557,7 +11518,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nNOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11584,7 +11545,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cat/count/CatCountRequest.ts#L23-L42"
+      "specLocation": "cat/count/CatCountRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -11615,7 +11576,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns help for the Cat APIs.",
+      "description": "Get CAT help.\nReturns help for the CAT APIs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11629,7 +11590,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "cat/help/CatHelpRequest.ts#L22-L28"
+      "specLocation": "cat/help/CatHelpRequest.ts#L22-L30"
     },
     {
       "body": {
@@ -11660,7 +11621,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11762,7 +11723,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L68"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L24-L77"
     },
     {
       "body": {
@@ -11793,7 +11754,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about data frame analytics jobs.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
+      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11882,7 +11843,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_data_frame_analytics/CatDataFrameAnalyticsRequest.ts#L24-L58"
+      "specLocation": "cat/ml_data_frame_analytics/CatDataFrameAnalyticsRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -11913,7 +11874,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
+      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11991,7 +11952,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_datafeeds/CatDatafeedsRequest.ts#L24-L73"
+      "specLocation": "cat/ml_datafeeds/CatDatafeedsRequest.ts#L24-L75"
     },
     {
       "body": {
@@ -12022,7 +11983,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
+      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12112,7 +12073,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_jobs/CatJobsRequest.ts#L24-L77"
+      "specLocation": "cat/ml_jobs/CatJobsRequest.ts#L24-L79"
     },
     {
       "body": {
@@ -12143,7 +12104,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about inference trained models.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
+      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12244,7 +12205,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L63"
+      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L65"
     },
     {
       "body": {
@@ -12275,7 +12236,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns configuration and usage information about transforms.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12379,7 +12340,7 @@
           }
         }
       ],
-      "specLocation": "cat/transforms/CatTransformsRequest.ts#L25-L77"
+      "specLocation": "cat/transforms/CatTransformsRequest.ts#L25-L79"
     },
     {
       "body": {
@@ -12634,7 +12595,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+      "description": "Delete component templates.\nDeletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12688,7 +12649,7 @@
           }
         }
       ],
-      "specLocation": "cluster/delete_component_template/ClusterDeleteComponentTemplateRequest.ts#L24-L54"
+      "specLocation": "cluster/delete_component_template/ClusterDeleteComponentTemplateRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -12715,7 +12676,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about whether a particular component template exist",
+      "description": "Check component templates.\nReturns information about whether a particular component template exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12769,7 +12730,7 @@
           }
         }
       ],
-      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L53"
+      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -12789,7 +12750,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information about component templates.",
+      "description": "Get component templates.\nRetrieves information about component templates.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12878,7 +12839,7 @@
           }
         }
       ],
-      "specLocation": "cluster/get_component_template/ClusterGetComponentTemplateRequest.ts#L24-L65"
+      "specLocation": "cluster/get_component_template/ClusterGetComponentTemplateRequest.ts#L24-L66"
     },
     {
       "body": {
@@ -12914,7 +12875,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns different information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -12941,7 +12902,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L34"
+      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L36"
     },
     {
       "body": {
@@ -13079,7 +13040,7 @@
           }
         ]
       },
-      "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+      "description": "Create or update a component template.\nCreates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13133,7 +13094,7 @@
           }
         }
       ],
-      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L93"
+      "specLocation": "cluster/put_component_template/ClusterPutComponentTemplateRequest.ts#L25-L94"
     },
     {
       "body": {
@@ -13248,9 +13209,9 @@
       ],
       "query": [
         {
-          "description": "Determines whether associated sync jobs are also deleted.",
+          "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
           "name": "delete_sync_jobs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13260,7 +13221,7 @@
           }
         }
       ],
-      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L39"
+      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -13333,216 +13294,6 @@
         "namespace": "connector.get"
       },
       "specLocation": "connector/get/ConnectorGetResponse.ts#L22-L24"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "last_access_control_sync_error",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_deleted_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_incremental_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_indexed_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_seen",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DateTime",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_sync_error",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_synced",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "description": "Updates last sync stats in the connector document",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "path": [
-        {
-          "description": "The unique identifier of the connector to be updated",
-          "name": "connector_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [],
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncRequest.ts#L26-L56"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "result",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Result",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncResponse.ts#L22-L26"
     },
     {
       "attachedBehaviors": [
@@ -13698,21 +13449,12 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },
@@ -13776,12 +13518,23 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/post/ConnectorPostRequest.ts#L23-L43"
+      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L42"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          },
           {
             "name": "id",
             "required": true,
@@ -13800,7 +13553,7 @@
         "name": "Response",
         "namespace": "connector.post"
       },
-      "specLocation": "connector/post/ConnectorPostResponse.ts#L22-L26"
+      "specLocation": "connector/post/ConnectorPostResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -13822,21 +13575,12 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },
@@ -13900,9 +13644,9 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the connector to be created or updated",
+          "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
           "name": "connector_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -13913,7 +13657,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/put/ConnectorPutRequest.ts#L23-L49"
+      "specLocation": "connector/put/ConnectorPutRequest.ts#L22-L48"
     },
     {
       "body": {
@@ -13929,6 +13673,17 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
           }
         ]
       },
@@ -13937,7 +13692,7 @@
         "name": "Response",
         "namespace": "connector.put"
       },
-      "specLocation": "connector/put/ConnectorPutResponse.ts#L22-L26"
+      "specLocation": "connector/put/ConnectorPutResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14181,14 +13936,26 @@
           "name": "job_type",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncJobType",
-                "namespace": "connector._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SyncJobType",
+                  "namespace": "connector._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SyncJobType",
+                    "namespace": "connector._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -14386,19 +14153,10 @@
             "name": "api_key_id",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           },
@@ -14406,19 +14164,10 @@
             "name": "api_key_secret_id",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           }
@@ -14451,7 +14200,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L23-L44"
+      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L42"
     },
     {
       "body": {
@@ -14915,7 +14664,7 @@
         "properties": [
           {
             "name": "name",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -15630,7 +15379,7 @@
           }
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "generics": [
         {
           "name": "TDocument",
@@ -15763,7 +15512,7 @@
           }
         }
       ],
-      "specLocation": "_global/create/CreateRequest.ts#L32-L95"
+      "specLocation": "_global/create/CreateRequest.ts#L32-L96"
     },
     {
       "body": {
@@ -15790,7 +15539,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes a JSON document from the specified index.",
+      "description": "Delete a document.\nRemoves a JSON document from the specified index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15929,7 +15678,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L34-L91"
+      "specLocation": "_global/delete/DeleteRequest.ts#L34-L92"
     },
     {
       "body": {
@@ -16024,7 +15773,7 @@
           }
         ]
       },
-      "description": "Deletes documents that match the specified query.",
+      "description": "Delete documents.\nDeletes documents that match the specified query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16419,7 +16168,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L36-L209"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L36-L210"
     },
     {
       "body": {
@@ -16647,7 +16396,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a stored script or search template.",
+      "description": "Delete a script or search template.\nDeletes a stored script or search template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16701,7 +16450,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_script/DeleteScriptRequest.ts#L24-L51"
+      "specLocation": "_global/delete_script/DeleteScriptRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -16728,7 +16477,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing enrich policy and its enrich index.",
+      "description": "Delete an enrich policy.\nDeletes an existing enrich policy and its enrich index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16755,7 +16504,7 @@
         }
       ],
       "query": [],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L36"
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -16867,7 +16616,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about an enrich policy.",
+      "description": "Get an enrich policy.\nReturns information about an enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16894,7 +16643,7 @@
         }
       ],
       "query": [],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L37"
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L23-L38"
     },
     {
       "body": {
@@ -16968,7 +16717,7 @@
           }
         ]
       },
-      "description": "Creates an enrich policy.",
+      "description": "Create an enrich policy.\nCreates an enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16995,7 +16744,7 @@
         }
       ],
       "query": [],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L52"
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L24-L53"
     },
     {
       "body": {
@@ -17022,7 +16771,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
+      "description": "Get enrich stats.\nReturns enrich coordinator statistics and information about enrich policies that are currently executing.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17036,7 +16785,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L22-L28"
+      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L22-L29"
     },
     {
       "body": {
@@ -17941,7 +17690,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if a document in an index exists.",
+      "description": "Check a document.\nChecks if a specified document exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18107,7 +17856,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L31-L99"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L31-L100"
     },
     {
       "body": {
@@ -18127,7 +17876,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if a document's `_source` is stored.",
+      "description": "Check for a document source.\nChecks if a document's `_source` is stored.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18281,7 +18030,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists_source/SourceExistsRequest.ts#L31-L93"
+      "specLocation": "_global/exists_source/SourceExistsRequest.ts#L31-L94"
     },
     {
       "body": {
@@ -18315,7 +18064,7 @@
           }
         ]
       },
-      "description": "Returns information about why a specific document matches (or doesn’t match) a query.",
+      "description": "Explain a document match result.\nReturns information about why a specific document matches, or doesn’t match, a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18502,7 +18251,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L105"
+      "specLocation": "_global/explain/ExplainRequest.ts#L26-L106"
     },
     {
       "body": {
@@ -18862,7 +18611,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns a document.",
+      "description": "Get a document by its ID.\nRetrieves the document with the specified ID from an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19028,7 +18777,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L31-L98"
+      "specLocation": "_global/get/GetRequest.ts#L31-L100"
     },
     {
       "body": {
@@ -19108,7 +18857,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves a stored script or search template.",
+      "description": "Get a script or search template.\nRetrieves a stored script or search template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19148,7 +18897,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_script/GetScriptRequest.ts#L24-L41"
+      "specLocation": "_global/get_script/GetScriptRequest.ts#L24-L42"
     },
     {
       "body": {
@@ -19203,7 +18952,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns the source of a document.",
+      "description": "Get a document's source.\nReturns the source of a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19367,7 +19116,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_source/SourceRequest.ts#L31-L86"
+      "specLocation": "_global/get_source/SourceRequest.ts#L31-L88"
     },
     {
       "body": {
@@ -19599,7 +19348,7 @@
           }
         }
       },
-      "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
+      "description": "Index a document.\nAdds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
       "generics": [
         {
           "name": "TDocument",
@@ -19780,7 +19529,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L35-L117"
+      "specLocation": "_global/index/IndexRequest.ts#L35-L118"
     },
     {
       "body": {
@@ -19807,7 +19556,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Adds a block to an index.",
+      "description": "Add an index block.\nLimits the operations allowed on an index by blocking specific operation types.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19907,7 +19656,7 @@
           }
         }
       ],
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L24-L41"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L24-L43"
     },
     {
       "body": {
@@ -20222,7 +19971,7 @@
           }
         ]
       },
-      "description": "Creates a new index.",
+      "description": "Create an index.\nCreates a new index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20289,7 +20038,7 @@
           }
         }
       ],
-      "specLocation": "indices/create/IndicesCreateRequest.ts#L28-L81"
+      "specLocation": "indices/create/IndicesCreateRequest.ts#L28-L82"
     },
     {
       "body": {
@@ -20536,7 +20285,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes one or more indices.",
+      "description": "Delete indices.\nDeletes one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20629,7 +20378,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete/IndicesDeleteRequest.ts#L24-L73"
+      "specLocation": "indices/delete/IndicesDeleteRequest.ts#L24-L74"
     },
     {
       "body": {
@@ -20656,7 +20405,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes a data stream or index from an alias.",
+      "description": "Delete an alias.\nRemoves a data stream or index from an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20722,7 +20471,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasRequest.ts#L24-L57"
+      "specLocation": "indices/delete_alias/IndicesDeleteAliasRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -20989,7 +20738,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if a data stream, index, or alias exists.",
+      "description": "Check indices.\nChecks if one or more indices, index aliases, or data streams exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21095,7 +20844,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L72"
+      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L73"
     },
     {
       "body": {
@@ -21115,7 +20864,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Checks if an alias exists.",
+      "description": "Check aliases.\nChecks if one or more data stream or index aliases exist.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21207,7 +20956,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L67"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L23-L68"
     },
     {
       "body": {
@@ -21288,7 +21037,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc.",
+      "description": "Get the status for a data stream lifecycle.\nRetrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21340,7 +21089,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L38"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L39"
     },
     {
       "body": {
@@ -21384,7 +21133,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
+      "description": "Get index information.\nReturns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21522,7 +21271,7 @@
           }
         }
       ],
-      "specLocation": "indices/get/IndicesGetRequest.ts#L24-L88"
+      "specLocation": "indices/get/IndicesGetRequest.ts#L24-L89"
     },
     {
       "body": {
@@ -21560,7 +21309,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information for one or more aliases.",
+      "description": "Get aliases.\nRetrieves information for one or more data stream or index aliases.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -21652,7 +21401,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L70"
+      "specLocation": "indices/get_alias/IndicesGetAliasRequest.ts#L23-L71"
     },
     {
       "body": {
@@ -22033,7 +21782,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
+      "description": "Get mapping definitions.\nRetrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22126,7 +21875,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_mapping/IndicesGetMappingRequest.ts#L24-L72"
+      "specLocation": "indices/get_mapping/IndicesGetMappingRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -22164,7 +21913,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
+      "description": "Get index settings.\nReturns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22295,7 +22044,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_settings/IndicesGetSettingsRequest.ts#L24-L91"
+      "specLocation": "indices/get_settings/IndicesGetSettingsRequest.ts#L24-L92"
     },
     {
       "body": {
@@ -22507,7 +22256,7 @@
           }
         ]
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -22575,7 +22324,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L91"
+      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L92"
     },
     {
       "body": {
@@ -23131,7 +22880,7 @@
           }
         ]
       },
-      "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+      "description": "Update field mappings.\nAdds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23237,7 +22986,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L42-L149"
+      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L42-L150"
     },
     {
       "body": {
@@ -23272,7 +23021,7 @@
           }
         }
       },
-      "description": "Changes a dynamic index setting in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
+      "description": "Update index settings.\nChanges dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23391,7 +23140,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_settings/IndicesPutSettingsRequest.ts#L25-L92"
+      "specLocation": "indices/put_settings/IndicesPutSettingsRequest.ts#L25-L93"
     },
     {
       "body": {
@@ -23622,7 +23371,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
+      "description": "Refresh an index.\nA refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23689,7 +23438,7 @@
           }
         }
       ],
-      "specLocation": "indices/refresh/IndicesRefreshRequest.ts#L23-L60"
+      "specLocation": "indices/refresh/IndicesRefreshRequest.ts#L23-L61"
     },
     {
       "body": {
@@ -23889,7 +23638,7 @@
           }
         ]
       },
-      "description": "Creates a new index for a data stream or index alias.",
+      "description": "Roll over to a new index.\nCreates a new index for a data stream or index alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -23981,7 +23730,7 @@
           }
         }
       ],
-      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L29-L99"
+      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L29-L100"
     },
     {
       "body": {
@@ -24473,7 +24222,7 @@
           }
         ]
       },
-      "description": "Adds a data stream or index to an alias.",
+      "description": "Create or update an alias.\nAdds a data stream or index to an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24514,7 +24263,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesRequest.ts#L24-L51"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -24555,7 +24304,7 @@
           }
         ]
       },
-      "description": "Validates a potentially expensive query without executing it.",
+      "description": "Validate a query.\nValidates a query without running it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -24736,7 +24485,7 @@
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L111"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L112"
     },
     {
       "body": {
@@ -25180,7 +24929,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns basic information about the cluster.",
+      "description": "Get cluster info.\nReturns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25194,7 +24943,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L27"
+      "specLocation": "_global/info/RootNodeInfoRequest.ts#L22-L29"
     },
     {
       "body": {
@@ -25768,7 +25517,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "This API returns information about the type of license, when it was issued, and when it expires, for example.\nFor more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
+      "description": "Get license information.\nReturns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -25813,7 +25562,7 @@
           }
         }
       ],
-      "specLocation": "license/get/GetLicenseRequest.ts#L22-L44"
+      "specLocation": "license/get/GetLicenseRequest.ts#L22-L45"
     },
     {
       "body": {
@@ -34618,7 +34367,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns whether the cluster is running.",
+      "description": "Ping the cluster.\nReturns whether the cluster is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34632,7 +34381,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/ping/PingRequest.ts#L22-L27"
+      "specLocation": "_global/ping/PingRequest.ts#L22-L29"
     },
     {
       "body": {
@@ -34666,7 +34415,7 @@
           }
         ]
       },
-      "description": "Creates or updates a stored script or search template.",
+      "description": "Create or update a script or search template.\nCreates or updates a stored script or search template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -34732,7 +34481,7 @@
           }
         }
       ],
-      "specLocation": "_global/put_script/PutScriptRequest.ts#L25-L64"
+      "specLocation": "_global/put_script/PutScriptRequest.ts#L25-L65"
     },
     {
       "body": {
@@ -35562,7 +35311,7 @@
           }
         ]
       },
-      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+      "description": "Reindex documents.\nCopies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -35680,7 +35429,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/ReindexRequest.ts#L27-L101"
+      "specLocation": "_global/reindex/ReindexRequest.ts#L27-L103"
     },
     {
       "body": {
@@ -36058,7 +35807,7 @@
           }
         ]
       },
-      "description": "Runs a script and returns a result.",
+      "description": "Run a script.\nRuns a script and returns a result.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -36072,7 +35821,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/scripts_painless_execute/ExecutePainlessScriptRequest.ts#L24-L46"
+      "specLocation": "_global/scripts_painless_execute/ExecutePainlessScriptRequest.ts#L24-L47"
     },
     {
       "body": {
@@ -38175,7 +37924,7 @@
           }
         ]
       },
-      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "description": "Search a vector tile.\nSearches a vector tile for geospatial values.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38340,7 +38089,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L188"
+      "specLocation": "_global/search_mvt/SearchMvtRequest.ts#L33-L190"
     },
     {
       "body": {
@@ -38868,7 +38617,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
+      "description": "Authenticate a user.\nAuthenticates a user and returns information about the authenticated user.\nInclude the user information in a [basic auth header](https://en.wikipedia.org/wiki/Basic_access_authentication).\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -38882,7 +38631,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "security/authenticate/SecurityAuthenticateRequest.ts#L22-L30"
+      "specLocation": "security/authenticate/SecurityAuthenticateRequest.ts#L22-L32"
     },
     {
       "body": {
@@ -39127,7 +38876,7 @@
           }
         ]
       },
-      "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+      "description": "Create an API key.\nCreates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39154,7 +38903,7 @@
           }
         }
       ],
-      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L58"
+      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L59"
     },
     {
       "body": {
@@ -39242,7 +38991,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
+      "description": "Get API key information.\nRetrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39375,7 +39124,7 @@
           }
         }
       ],
-      "specLocation": "security/get_api_key/SecurityGetApiKeyRequest.ts#L23-L86"
+      "specLocation": "security/get_api_key/SecurityGetApiKeyRequest.ts#L23-L87"
     },
     {
       "body": {
@@ -39456,7 +39205,7 @@
           }
         ]
       },
-      "description": "Determines whether the specified user has a specified list of privileges.",
+      "description": "Check user privileges.\nDetermines whether the specified user has a specified list of privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39483,7 +39232,7 @@
         }
       ],
       "query": [],
-      "specLocation": "security/has_privileges/SecurityHasPrivilegesRequest.ts#L25-L42"
+      "specLocation": "security/has_privileges/SecurityHasPrivilegesRequest.ts#L25-L44"
     },
     {
       "body": {
@@ -39659,7 +39408,7 @@
           }
         ]
       },
-      "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+      "description": "Invalidate API keys.\nInvalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39673,7 +39422,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "security/invalidate_api_key/SecurityInvalidateApiKeyRequest.ts#L23-L66"
+      "specLocation": "security/invalidate_api_key/SecurityInvalidateApiKeyRequest.ts#L23-L67"
     },
     {
       "body": {
@@ -39840,7 +39589,7 @@
           }
         ]
       },
-      "description": "Retrieves information for API keys in a paginated manner. You can optionally filter the results with a query.",
+      "description": "Query API keys.\nRetrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -39911,7 +39660,7 @@
           }
         }
       ],
-      "specLocation": "security/query_api_keys/QueryApiKeysRequest.ts#L26-L99"
+      "specLocation": "security/query_api_keys/QueryApiKeysRequest.ts#L26-L100"
     },
     {
       "body": {
@@ -40046,7 +39795,7 @@
           }
         ]
       },
-      "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+      "description": "Update an API key.\nUpdates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -40073,7 +39822,7 @@
         }
       ],
       "query": [],
-      "specLocation": "security/update_api_key/Request.ts#L26-L65"
+      "specLocation": "security/update_api_key/Request.ts#L26-L66"
     },
     {
       "body": {
@@ -41595,7 +41344,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns information about a task.",
+      "description": "Get task information.\nReturns information about the tasks currently executing in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -41649,7 +41398,7 @@
           }
         }
       ],
-      "specLocation": "tasks/get/GetTaskRequest.ts#L24-L50"
+      "specLocation": "tasks/get/GetTaskRequest.ts#L24-L52"
     },
     {
       "body": {
@@ -41935,7 +41684,7 @@
           }
         ]
       },
-      "description": "Returns information and statistics about terms in the fields of a particular document.",
+      "description": "Get term vector information.\nReturns information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -42121,7 +41870,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L118"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L33-L120"
     },
     {
       "body": {
@@ -42220,7 +41969,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a transform.",
+      "description": "Delete a transform.\nDeletes a transform.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42287,7 +42036,7 @@
           }
         }
       ],
-      "specLocation": "transform/delete_transform/DeleteTransformRequest.ts#L24-L57"
+      "specLocation": "transform/delete_transform/DeleteTransformRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -42314,7 +42063,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for transforms.",
+      "description": "Get transforms.\nRetrieves configuration information for transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42394,7 +42143,7 @@
           }
         }
       ],
-      "specLocation": "transform/get_transform/GetTransformRequest.ts#L24-L72"
+      "specLocation": "transform/get_transform/GetTransformRequest.ts#L24-L73"
     },
     {
       "body": {
@@ -42441,7 +42190,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for transforms.",
+      "description": "Get transform stats.\nRetrieves usage information for transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42520,7 +42269,7 @@
           }
         }
       ],
-      "specLocation": "transform/get_transform_stats/GetTransformStatsRequest.ts#L25-L68"
+      "specLocation": "transform/get_transform_stats/GetTransformStatsRequest.ts#L25-L69"
     },
     {
       "body": {
@@ -42678,7 +42427,7 @@
           }
         ]
       },
-      "description": "Previews a transform.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+      "description": "Preview a transform.\nGenerates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42719,7 +42468,7 @@
           }
         }
       ],
-      "specLocation": "transform/preview_transform/PreviewTransformRequest.ts#L33-L107"
+      "specLocation": "transform/preview_transform/PreviewTransformRequest.ts#L33-L108"
     },
     {
       "body": {
@@ -42895,7 +42644,7 @@
           }
         ]
       },
-      "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
+      "description": "Create a transform.\nCreates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -42949,7 +42698,7 @@
           }
         }
       ],
-      "specLocation": "transform/put_transform/PutTransformRequest.ts#L33-L122"
+      "specLocation": "transform/put_transform/PutTransformRequest.ts#L33-L123"
     },
     {
       "body": {
@@ -42976,7 +42725,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+      "description": "Reset a transform.\nResets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43017,7 +42766,7 @@
           }
         }
       ],
-      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L48"
+      "specLocation": "transform/reset_transform/ResetTransformRequest.ts#L23-L49"
     },
     {
       "body": {
@@ -43044,7 +42793,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Schedules now a transform.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+      "description": "Schedule a transform to start now.\nInstantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43085,7 +42834,7 @@
           }
         }
       ],
-      "specLocation": "transform/schedule_now_transform/ScheduleNowTransformRequest.ts#L23-L49"
+      "specLocation": "transform/schedule_now_transform/ScheduleNowTransformRequest.ts#L23-L50"
     },
     {
       "body": {
@@ -43112,7 +42861,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+      "description": "Start a transform.\nStarts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43165,7 +42914,7 @@
           }
         }
       ],
-      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L65"
+      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L66"
     },
     {
       "body": {
@@ -43192,7 +42941,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Stops one or more transforms.",
+      "description": "Stop transforms.\nStops one or more transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43285,7 +43034,7 @@
           }
         }
       ],
-      "specLocation": "transform/stop_transform/StopTransformRequest.ts#L24-L76"
+      "specLocation": "transform/stop_transform/StopTransformRequest.ts#L24-L77"
     },
     {
       "body": {
@@ -43423,7 +43172,7 @@
           }
         ]
       },
-      "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
+      "description": "Update a transform.\nUpdates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -43476,7 +43225,7 @@
           }
         }
       ],
-      "specLocation": "transform/update_transform/UpdateTransformRequest.ts#L31-L105"
+      "specLocation": "transform/update_transform/UpdateTransformRequest.ts#L31-L106"
     },
     {
       "body": {
@@ -43742,7 +43491,7 @@
           }
         ]
       },
-      "description": "Updates a document with a script or partial document.",
+      "description": "Update a document.\nUpdates a document by running a script or passing a partial document.",
       "generics": [
         {
           "name": "TDocument",
@@ -43943,7 +43692,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L38-L151"
+      "specLocation": "_global/update/UpdateRequest.ts#L38-L153"
     },
     {
       "body": {
@@ -44048,7 +43797,7 @@
           }
         ]
       },
-      "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+      "description": "Update documents.\nUpdates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -44455,7 +44204,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L221"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L222"
     },
     {
       "body": {
@@ -88410,11 +88159,23 @@
           "name": "tooltip",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -88460,11 +88221,7 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScalarValue",
-              "namespace": "_types"
-            }
+            "kind": "user_defined_value"
           }
         }
       ],
@@ -88551,8 +88308,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "ScalarValue",
+              "namespace": "_types"
             }
           }
         }
@@ -88710,13 +88467,10 @@
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScalarValue",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         }
@@ -88742,10 +88496,13 @@
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScalarValue",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -89053,7 +88810,7 @@
         "name": "SyncJobTriggerMethod",
         "namespace": "connector._types"
       },
-      "specLocation": "connector/_types/SyncJob.ts#L47-L50"
+      "specLocation": "connector/_types/SyncJob.ts#L48-L51"
     },
     {
       "kind": "enum",
@@ -89072,7 +88829,7 @@
         "name": "SyncJobType",
         "namespace": "connector._types"
       },
-      "specLocation": "connector/_types/SyncJob.ts#L41-L45"
+      "specLocation": "connector/_types/SyncJob.ts#L42-L46"
     },
     {
       "kind": "enum",
@@ -90324,7 +90081,7 @@
         "name": "IndicesBlockOptions",
         "namespace": "indices.add_block"
       },
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L43-L48"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L45-L50"
     },
     {
       "kind": "type_alias",
@@ -90373,7 +90130,7 @@
         "name": "Feature",
         "namespace": "indices.get"
       },
-      "specLocation": "indices/get/IndicesGetRequest.ts#L90-L94"
+      "specLocation": "indices/get/IndicesGetRequest.ts#L91-L95"
     },
     {
       "kind": "type_alias",
@@ -90381,7 +90138,7 @@
         "name": "Features",
         "namespace": "indices.get"
       },
-      "specLocation": "indices/get/IndicesGetRequest.ts#L95-L95",
+      "specLocation": "indices/get/IndicesGetRequest.ts#L96-L96",
       "type": {
         "items": [
           {
@@ -111401,6 +111158,17 @@
           }
         },
         {
+          "name": "api_key_secret_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "configuration",
           "required": true,
           "type": {
@@ -111437,11 +111205,23 @@
           "name": "error",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -111484,11 +111264,23 @@
           "name": "index_name",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -111669,7 +111461,7 @@
         },
         {
           "name": "service_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111690,6 +111482,13 @@
           }
         },
         {
+          "name": "sync_cursor",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
           "name": "sync_now",
           "required": true,
           "type": {
@@ -111701,7 +111500,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L238-L267"
+      "specLocation": "connector/_types/Connector.ts#L237-L268"
     },
     {
       "kind": "interface",
@@ -111722,29 +111521,18 @@
           }
         },
         {
-          "name": "filtering_advanced_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "filtering_rules",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "name": "incremental_sync",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureEnabled",
+              "namespace": "connector._types"
+            }
+          }
+        },
+        {
+          "name": "native_connector_api_keys",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -111766,7 +111554,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L224-L230"
+      "specLocation": "connector/_types/Connector.ts#L224-L229"
     },
     {
       "kind": "interface",
@@ -111841,7 +111629,7 @@
         },
         {
           "name": "domain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112226,7 +112014,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L232-L236"
+      "specLocation": "connector/_types/Connector.ts#L231-L235"
     },
     {
       "kind": "interface",
@@ -112474,7 +112262,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/SyncJob.ts#L52-L71"
+      "specLocation": "connector/_types/SyncJob.ts#L53-L72"
     },
     {
       "kind": "interface",
@@ -112559,9 +112347,16 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "sync_cursor",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
         }
       ],
-      "specLocation": "connector/_types/SyncJob.ts#L31-L39"
+      "specLocation": "connector/_types/SyncJob.ts#L31-L40"
     },
     {
       "kind": "interface",

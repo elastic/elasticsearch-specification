@@ -646,8 +646,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -694,8 +694,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -744,8 +744,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -795,8 +795,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -848,8 +848,8 @@
         "tags": [
           "cat.aliases"
         ],
-        "summary": "Retrieves the cluster’s index aliases, including filter and routing information",
-        "description": "The API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+        "summary": "Get aliases",
+        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
@@ -871,8 +871,8 @@
         "tags": [
           "cat.aliases"
         ],
-        "summary": "Retrieves the cluster’s index aliases, including filter and routing information",
-        "description": "The API does not return data stream aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+        "summary": "Get aliases",
+        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
@@ -946,8 +946,8 @@
         "tags": [
           "cat.component_templates"
         ],
-        "summary": "Returns information about component templates in a cluster",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+        "summary": "Get component templates",
+        "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
@@ -965,8 +965,8 @@
         "tags": [
           "cat.component_templates"
         ],
-        "summary": "Returns information about component templates in a cluster",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+        "summary": "Get component templates",
+        "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
@@ -989,8 +989,8 @@
         "tags": [
           "cat.count"
         ],
-        "summary": "Provides quick access to a document count for a data stream, an index, or an entire cluster",
-        "description": "NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+        "summary": "Get a document count",
+        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -1007,8 +1007,8 @@
         "tags": [
           "cat.count"
         ],
-        "summary": "Provides quick access to a document count for a data stream, an index, or an entire cluster",
-        "description": "NOTE: The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+        "summary": "Get a document count",
+        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -1135,7 +1135,8 @@
         "tags": [
           "cat.help"
         ],
-        "summary": "Returns help for the Cat APIs",
+        "summary": "Get CAT help",
+        "description": "Returns help for the CAT APIs.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html"
         },
@@ -1162,8 +1163,8 @@
         "tags": [
           "cat.indices"
         ],
-        "summary": "Returns high-level information about indices in a cluster, including backing indices for data streams",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+        "summary": "Get index information",
+        "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
@@ -1200,8 +1201,8 @@
         "tags": [
           "cat.indices"
         ],
-        "summary": "Returns high-level information about indices in a cluster, including backing indices for data streams",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get index API.\nUse the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.",
+        "summary": "Get index information",
+        "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
@@ -1269,8 +1270,8 @@
         "tags": [
           "cat.ml_data_frame_analytics"
         ],
-        "summary": "Returns configuration and usage information about data frame analytics jobs",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
+        "summary": "Get data frame analytics jobs",
+        "description": "Returns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
@@ -1305,8 +1306,8 @@
         "tags": [
           "cat.ml_data_frame_analytics"
         ],
-        "summary": "Returns configuration and usage information about data frame analytics jobs",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
+        "summary": "Get data frame analytics jobs",
+        "description": "Returns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
@@ -1344,8 +1345,8 @@
         "tags": [
           "cat.ml_datafeeds"
         ],
-        "summary": "Returns configuration and usage information about datafeeds",
-        "description": "This API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
+        "summary": "Get datafeeds",
+        "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
@@ -1377,8 +1378,8 @@
         "tags": [
           "cat.ml_datafeeds"
         ],
-        "summary": "Returns configuration and usage information about datafeeds",
-        "description": "This API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
+        "summary": "Get datafeeds",
+        "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
@@ -1413,8 +1414,8 @@
         "tags": [
           "cat.ml_jobs"
         ],
-        "summary": "Returns configuration and usage information for anomaly detection jobs",
-        "description": "This API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
+        "summary": "Get anomaly detection jobs",
+        "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
@@ -1449,8 +1450,8 @@
         "tags": [
           "cat.ml_jobs"
         ],
-        "summary": "Returns configuration and usage information for anomaly detection jobs",
-        "description": "This API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nIMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
+        "summary": "Get anomaly detection jobs",
+        "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
@@ -1488,8 +1489,8 @@
         "tags": [
           "cat.ml_trained_models"
         ],
-        "summary": "Returns configuration and usage information about inference trained models",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
+        "summary": "Get trained models",
+        "description": "Returns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
@@ -1527,8 +1528,8 @@
         "tags": [
           "cat.ml_trained_models"
         ],
-        "summary": "Returns configuration and usage information about inference trained models",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
+        "summary": "Get trained models",
+        "description": "Returns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
@@ -2129,8 +2130,8 @@
         "tags": [
           "cat.transforms"
         ],
-        "summary": "Returns configuration and usage information about transforms",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transforms",
+        "description": "Returns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
@@ -2168,8 +2169,8 @@
         "tags": [
           "cat.transforms"
         ],
-        "summary": "Returns configuration and usage information about transforms",
-        "description": "IMPORTANT: cat APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
+        "summary": "Get transforms",
+        "description": "Returns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
@@ -3225,7 +3226,8 @@
         "tags": [
           "cluster.get_component_template"
         ],
-        "summary": "Retrieves information about component templates",
+        "summary": "Get component templates",
+        "description": "Retrieves information about component templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -3258,8 +3260,8 @@
         "tags": [
           "cluster.put_component_template"
         ],
-        "summary": "Creates or updates a component template",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+        "summary": "Create or update a component template",
+        "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -3289,8 +3291,8 @@
         "tags": [
           "cluster.put_component_template"
         ],
-        "summary": "Creates or updates a component template",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+        "summary": "Create or update a component template",
+        "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -3320,8 +3322,8 @@
         "tags": [
           "cluster.delete_component_template"
         ],
-        "summary": "Deletes component templates",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+        "summary": "Delete component templates",
+        "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -3377,7 +3379,8 @@
         "tags": [
           "cluster.exists_component_template"
         ],
-        "summary": "Returns information about whether a particular component template exist",
+        "summary": "Check component templates",
+        "description": "Returns information about whether a particular component template exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -3515,7 +3518,8 @@
         "tags": [
           "cluster.get_component_template"
         ],
-        "summary": "Retrieves information about component templates",
+        "summary": "Get component templates",
+        "description": "Retrieves information about component templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -3849,7 +3853,8 @@
         "tags": [
           "cluster.info"
         ],
-        "summary": "Returns different information about the cluster",
+        "summary": "Get cluster info",
+        "description": "Returns basic information about the cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-info.html"
         },
@@ -4447,8 +4452,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "Determines whether associated sync jobs are also deleted.",
-            "required": true,
+            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -4502,14 +4506,7 @@
                 "type": "object",
                 "properties": {
                   "last_access_control_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_access_control_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -4527,24 +4524,10 @@
                     "type": "number"
                   },
                   "last_seen": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:DateTime"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:DateTime"
                   },
                   "last_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "last_sync_scheduled_at": {
                     "$ref": "#/components/schemas/_types:DateTime"
@@ -4554,6 +4537,9 @@
                   },
                   "last_synced": {
                     "$ref": "#/components/schemas/_types:DateTime"
+                  },
+                  "sync_cursor": {
+                    "type": "object"
                   }
                 }
               }
@@ -4726,14 +4712,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:IndexName"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:IndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -4747,10 +4726,7 @@
                   "service_type": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "index_name"
-                ]
+                }
               }
             }
           }
@@ -4763,11 +4739,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"
                     }
                   },
                   "required": [
+                    "result",
                     "id"
                   ]
                 }
@@ -4959,10 +4939,17 @@
             "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/connector._types:SyncJobType"
-              }
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/connector._types:SyncJobType"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/connector._types:SyncJobType"
+                  }
+                }
+              ]
             },
             "style": "form"
           }
@@ -5131,24 +5118,10 @@
                 "type": "object",
                 "properties": {
                   "api_key_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "api_key_secret_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   }
                 }
               }
@@ -5566,10 +5539,7 @@
                   "description": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               }
             }
           },
@@ -6187,8 +6157,8 @@
         "tags": [
           "create"
         ],
-        "summary": "Adds a JSON document to the specified data stream or index and makes it searchable",
-        "description": "If the target is an index and the document already exists, the request updates the document and increments its version.",
+        "summary": "Index a document",
+        "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
@@ -6236,8 +6206,8 @@
         "tags": [
           "create"
         ],
-        "summary": "Adds a JSON document to the specified data stream or index and makes it searchable",
-        "description": "If the target is an index and the document already exists, the request updates the document and increments its version.",
+        "summary": "Index a document",
+        "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
@@ -6459,7 +6429,8 @@
         "tags": [
           "get"
         ],
-        "summary": "Returns a document",
+        "summary": "Get a document by its ID",
+        "description": "Retrieves the document with the specified ID from an index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
@@ -6615,8 +6586,8 @@
         "tags": [
           "index"
         ],
-        "summary": "Adds a JSON document to the specified data stream or index and makes it searchable",
-        "description": "If the target is an index and the document already exists, the request updates the document and increments its version.",
+        "summary": "Index a document",
+        "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
@@ -6675,8 +6646,8 @@
         "tags": [
           "index"
         ],
-        "summary": "Adds a JSON document to the specified data stream or index and makes it searchable",
-        "description": "If the target is an index and the document already exists, the request updates the document and increments its version.",
+        "summary": "Index a document",
+        "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
@@ -6735,7 +6706,8 @@
         "tags": [
           "delete"
         ],
-        "summary": "Removes a JSON document from the specified index",
+        "summary": "Delete a document",
+        "description": "Removes a JSON document from the specified index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html"
         },
@@ -6861,7 +6833,8 @@
         "tags": [
           "exists"
         ],
-        "summary": "Checks if a document in an index exists",
+        "summary": "Check a document",
+        "description": "Checks if a specified document exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
@@ -7005,7 +6978,8 @@
         "tags": [
           "delete_by_query"
         ],
-        "summary": "Deletes documents that match the specified query",
+        "summary": "Delete documents",
+        "description": "Deletes documents that match the specified query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html"
         },
@@ -7462,7 +7436,8 @@
         "tags": [
           "get_script"
         ],
-        "summary": "Retrieves a stored script or search template",
+        "summary": "Get a script or search template",
+        "description": "Retrieves a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -7522,7 +7497,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -7551,7 +7527,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -7580,7 +7557,8 @@
         "tags": [
           "delete_script"
         ],
-        "summary": "Deletes a stored script or search template",
+        "summary": "Delete a script or search template",
+        "description": "Deletes a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -7637,7 +7615,8 @@
         "tags": [
           "enrich.get_policy"
         ],
-        "summary": "Returns information about an enrich policy",
+        "summary": "Get an enrich policy",
+        "description": "Returns information about an enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
         },
@@ -7658,7 +7637,8 @@
         "tags": [
           "enrich.put_policy"
         ],
-        "summary": "Creates an enrich policy",
+        "summary": "Create an enrich policy",
+        "description": "Creates an enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-enrich-policy-api.html"
         },
@@ -7715,7 +7695,8 @@
         "tags": [
           "enrich.delete_policy"
         ],
-        "summary": "Deletes an existing enrich policy and its enrich index",
+        "summary": "Delete an enrich policy",
+        "description": "Deletes an existing enrich policy and its enrich index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html"
         },
@@ -7809,7 +7790,8 @@
         "tags": [
           "enrich.get_policy"
         ],
-        "summary": "Returns information about an enrich policy",
+        "summary": "Get an enrich policy",
+        "description": "Returns information about an enrich policy.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-enrich-policy-api.html"
         },
@@ -7827,7 +7809,8 @@
         "tags": [
           "enrich.stats"
         ],
-        "summary": "Returns enrich coordinator statistics and information about enrich policies that are currently executing",
+        "summary": "Get enrich stats",
+        "description": "Returns enrich coordinator statistics and information about enrich policies that are currently executing.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html"
         },
@@ -8237,7 +8220,8 @@
         "tags": [
           "get_source"
         ],
-        "summary": "Returns the source of a document",
+        "summary": "Get a document's source",
+        "description": "Returns the source of a document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
@@ -8382,7 +8366,8 @@
         "tags": [
           "exists_source"
         ],
-        "summary": "Checks if a document's `_source` is stored",
+        "summary": "Check for a document source",
+        "description": "Checks if a document's `_source` is stored.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
         },
@@ -8517,7 +8502,8 @@
         "tags": [
           "explain"
         ],
-        "summary": "Returns information about why a specific document matches (or doesn’t match) a query",
+        "summary": "Explain a document match result",
+        "description": "Returns information about why a specific document matches, or doesn’t match, a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html"
         },
@@ -8579,7 +8565,8 @@
         "tags": [
           "explain"
         ],
-        "summary": "Returns information about why a specific document matches (or doesn’t match) a query",
+        "summary": "Explain a document match result",
+        "description": "Returns information about why a specific document matches, or doesn’t match, a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html"
         },
@@ -10411,8 +10398,8 @@
         "tags": [
           "index"
         ],
-        "summary": "Adds a JSON document to the specified data stream or index and makes it searchable",
-        "description": "If the target is an index and the document already exists, the request updates the document and increments its version.",
+        "summary": "Index a document",
+        "description": "Adds a JSON document to the specified data stream or index and makes it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html"
         },
@@ -10470,7 +10457,8 @@
         "tags": [
           "indices.add_block"
         ],
-        "summary": "Adds a block to an index",
+        "summary": "Add an index block",
+        "description": "Limits the operations allowed on an index by blocking specific operation types.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/index-modules-blocks.html"
         },
@@ -10949,8 +10937,8 @@
         "tags": [
           "indices.get"
         ],
-        "summary": "Returns information about one or more indices",
-        "description": "For data streams, the API returns information about the\nstream’s backing indices.",
+        "summary": "Get index information",
+        "description": "Returns information about one or more indices. For data streams, the API returns information about the\nstream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-index.html"
         },
@@ -11068,7 +11056,8 @@
         "tags": [
           "indices.create"
         ],
-        "summary": "Creates a new index",
+        "summary": "Create an index",
+        "description": "Creates a new index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html"
         },
@@ -11173,7 +11162,8 @@
         "tags": [
           "indices.delete"
         ],
-        "summary": "Deletes one or more indices",
+        "summary": "Delete indices",
+        "description": "Deletes one or more indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html"
         },
@@ -11258,7 +11248,8 @@
         "tags": [
           "indices.exists"
         ],
-        "summary": "Checks if a data stream, index, or alias exists",
+        "summary": "Check indices",
+        "description": "Checks if one or more indices, index aliases, or data streams exist.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html"
         },
@@ -11516,7 +11507,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11551,7 +11543,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11583,7 +11576,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11615,7 +11609,8 @@
         "tags": [
           "indices.delete_alias"
         ],
-        "summary": "Removes a data stream or index from an alias",
+        "summary": "Delete an alias",
+        "description": "Removes a data stream or index from an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11644,7 +11639,8 @@
         "tags": [
           "indices.exists_alias"
         ],
-        "summary": "Checks if an alias exists",
+        "summary": "Check aliases",
+        "description": "Checks if one or more data stream or index aliases exist.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11681,7 +11677,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11713,7 +11710,8 @@
         "tags": [
           "indices.put_alias"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -11745,7 +11743,8 @@
         "tags": [
           "indices.delete_alias"
         ],
-        "summary": "Removes a data stream or index from an alias",
+        "summary": "Delete an alias",
+        "description": "Removes a data stream or index from an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -12569,7 +12568,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -12601,7 +12601,8 @@
         "tags": [
           "indices.exists_alias"
         ],
-        "summary": "Checks if an alias exists",
+        "summary": "Check aliases",
+        "description": "Checks if one or more data stream or index aliases exist.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -12635,7 +12636,8 @@
         "tags": [
           "indices.explain_data_lifecycle"
         ],
-        "summary": "Retrieves information about the index's current data stream lifecycle, such as any potential encountered error, time since creation etc",
+        "summary": "Get the status for a data stream lifecycle",
+        "description": "Retrieves information about an index or data stream’s current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html"
         },
@@ -13036,7 +13038,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -13067,7 +13070,8 @@
         "tags": [
           "indices.get_alias"
         ],
-        "summary": "Retrieves information for one or more aliases",
+        "summary": "Get aliases",
+        "description": "Retrieves information for one or more data stream or index aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -13128,8 +13132,8 @@
         "tags": [
           "indices.get_field_mapping"
         ],
-        "summary": "Retrieves mapping definitions for one or more fields",
-        "description": "For data streams, the API retrieves field mappings for the stream’s backing indices.",
+        "summary": "Get mapping definitions",
+        "description": "Retrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-field-mapping.html"
         },
@@ -13166,8 +13170,8 @@
         "tags": [
           "indices.get_field_mapping"
         ],
-        "summary": "Retrieves mapping definitions for one or more fields",
-        "description": "For data streams, the API retrieves field mappings for the stream’s backing indices.",
+        "summary": "Get mapping definitions",
+        "description": "Retrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-field-mapping.html"
         },
@@ -13240,8 +13244,8 @@
         "tags": [
           "indices.get_mapping"
         ],
-        "summary": "Retrieves mapping definitions for one or more indices",
-        "description": "For data streams, the API retrieves mappings for the stream’s backing indices.",
+        "summary": "Get mapping definitions",
+        "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
         },
@@ -13275,8 +13279,8 @@
         "tags": [
           "indices.get_mapping"
         ],
-        "summary": "Retrieves mapping definitions for one or more indices",
-        "description": "For data streams, the API retrieves mappings for the stream’s backing indices.",
+        "summary": "Get mapping definitions",
+        "description": "Retrieves mapping definitions for one or more indices.\nFor data streams, the API retrieves mappings for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
         },
@@ -13311,8 +13315,8 @@
         "tags": [
           "indices.put_mapping"
         ],
-        "summary": "Adds new fields to an existing data stream or index",
-        "description": "You can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+        "summary": "Update field mappings",
+        "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
         },
@@ -13353,8 +13357,8 @@
         "tags": [
           "indices.put_mapping"
         ],
-        "summary": "Adds new fields to an existing data stream or index",
-        "description": "You can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
+        "summary": "Update field mappings",
+        "description": "Adds new fields to an existing data stream or index.\nYou can also use this API to change the search settings of existing fields.\nFor data streams, these changes are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-put-mapping.html"
         },
@@ -13397,8 +13401,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams,\nreturns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13436,8 +13440,8 @@
         "tags": [
           "indices.put_settings"
         ],
-        "summary": "Changes a dynamic index setting in real time",
-        "description": "For data streams, index setting\nchanges are applied to all backing indices by default.",
+        "summary": "Update index settings",
+        "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
@@ -13480,8 +13484,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams,\nreturns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13522,8 +13526,8 @@
         "tags": [
           "indices.put_settings"
         ],
-        "summary": "Changes a dynamic index setting in real time",
-        "description": "For data streams, index setting\nchanges are applied to all backing indices by default.",
+        "summary": "Update index settings",
+        "description": "Changes dynamic index settings in real time. For data streams, index setting\nchanges are applied to all backing indices by default.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
         },
@@ -13569,8 +13573,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams,\nreturns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13616,8 +13620,8 @@
         "tags": [
           "indices.get_settings"
         ],
-        "summary": "Returns setting information for one or more indices",
-        "description": "For data streams,\nreturns setting information for the stream’s backing indices.",
+        "summary": "Get index settings",
+        "description": "Returns setting information for one or more indices. For data streams,\nreturns setting information for the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-settings.html"
         },
@@ -13979,8 +13983,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -14006,8 +14010,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -14035,8 +14039,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -14065,8 +14069,8 @@
         "tags": [
           "indices.refresh"
         ],
-        "summary": "A refresh makes recent operations performed on one or more indices available for search",
-        "description": "For data streams, the API runs the refresh operation on the stream’s backing indices.",
+        "summary": "Refresh an index",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
         },
@@ -14315,7 +14319,8 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Creates a new index for a data stream or index alias",
+        "summary": "Roll over to a new index",
+        "description": "Creates a new index for a data stream or index alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
@@ -14353,7 +14358,8 @@
         "tags": [
           "indices.rollover"
         ],
-        "summary": "Creates a new index for a data stream or index alias",
+        "summary": "Roll over to a new index",
+        "description": "Creates a new index for a data stream or index alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html"
         },
@@ -15130,7 +15136,8 @@
         "tags": [
           "indices.update_aliases"
         ],
-        "summary": "Adds a data stream or index to an alias",
+        "summary": "Create or update an alias",
+        "description": "Adds a data stream or index to an alias.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
         },
@@ -15196,7 +15203,8 @@
         "tags": [
           "indices.validate_query"
         ],
-        "summary": "Validates a potentially expensive query without executing it",
+        "summary": "Validate a query",
+        "description": "Validates a query without running it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
@@ -15253,7 +15261,8 @@
         "tags": [
           "indices.validate_query"
         ],
-        "summary": "Validates a potentially expensive query without executing it",
+        "summary": "Validate a query",
+        "description": "Validates a query without running it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
@@ -15312,7 +15321,8 @@
         "tags": [
           "indices.validate_query"
         ],
-        "summary": "Validates a potentially expensive query without executing it",
+        "summary": "Validate a query",
+        "description": "Validates a query without running it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
@@ -15372,7 +15382,8 @@
         "tags": [
           "indices.validate_query"
         ],
-        "summary": "Validates a potentially expensive query without executing it",
+        "summary": "Validate a query",
+        "description": "Validates a query without running it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
         },
@@ -15675,7 +15686,8 @@
         "tags": [
           "info"
         ],
-        "summary": "Returns basic information about the cluster",
+        "summary": "Get cluster info",
+        "description": "Returns basic information about the cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
         },
@@ -15721,7 +15733,8 @@
         "tags": [
           "ping"
         ],
-        "summary": "Returns whether the cluster is running",
+        "summary": "Ping the cluster",
+        "description": "Returns whether the cluster is running.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
         },
@@ -16201,8 +16214,8 @@
         "tags": [
           "license.get"
         ],
-        "summary": "This API returns information about the type of license, when it was issued, and when it expires, for example",
-        "description": "For more information about the different types of licenses, see https://www.elastic.co/subscriptions.",
+        "summary": "Get license information",
+        "description": "Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires.\nFor more information about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html"
         },
@@ -24920,7 +24933,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -24952,7 +24966,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -25526,8 +25541,8 @@
         "tags": [
           "reindex"
         ],
-        "summary": "Allows to copy documents from one index to another, optionally filtering the source\n",
-        "description": "documents by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
+        "summary": "Reindex documents",
+        "description": "Copies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html"
         },
@@ -26311,7 +26326,8 @@
         "tags": [
           "scripts_painless_execute"
         ],
-        "summary": "Runs a script and returns a result",
+        "summary": "Run a script",
+        "description": "Runs a script and returns a result.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
         },
@@ -26331,7 +26347,8 @@
         "tags": [
           "scripts_painless_execute"
         ],
-        "summary": "Runs a script and returns a result",
+        "summary": "Run a script",
+        "description": "Runs a script and returns a result.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
         },
@@ -27364,8 +27381,8 @@
         "tags": [
           "search_mvt"
         ],
-        "summary": "Searches a vector tile for geospatial values",
-        "description": "Returns results as a binary Mapbox vector tile.",
+        "summary": "Search a vector tile",
+        "description": "Searches a vector tile for geospatial values.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
         },
@@ -27422,8 +27439,8 @@
         "tags": [
           "search_mvt"
         ],
-        "summary": "Searches a vector tile for geospatial values",
-        "description": "Returns results as a binary Mapbox vector tile.",
+        "summary": "Search a vector tile",
+        "description": "Searches a vector tile for geospatial values.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html"
         },
@@ -28229,8 +28246,8 @@
         "tags": [
           "security.authenticate"
         ],
-        "summary": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user",
-        "description": "A successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
+        "summary": "Authenticate a user",
+        "description": "Authenticates a user and returns information about the authenticated user.\nInclude the user information in a [basic auth header](https://en.wikipedia.org/wiki/Basic_access_authentication).\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"
         },
@@ -28918,8 +28935,8 @@
         "tags": [
           "security.get_api_key"
         ],
-        "summary": "Retrieves information for one or more API keys",
-        "description": "NOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
+        "summary": "Get API key information",
+        "description": "Retrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html"
         },
@@ -29035,8 +29052,8 @@
         "tags": [
           "security.create_api_key"
         ],
-        "summary": "Creates an API key for access without requiring basic authentication",
-        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "summary": "Create an API key",
+        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
@@ -29060,8 +29077,8 @@
         "tags": [
           "security.create_api_key"
         ],
-        "summary": "Creates an API key for access without requiring basic authentication",
-        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "summary": "Create an API key",
+        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
@@ -29085,8 +29102,8 @@
         "tags": [
           "security.invalidate_api_key"
         ],
-        "summary": "Invalidates one or more API keys",
-        "description": "The `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+        "summary": "Invalidate API keys",
+        "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html"
         },
@@ -30840,7 +30857,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -30859,7 +30877,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -30880,7 +30899,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -30904,7 +30924,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -30970,8 +30991,8 @@
         "tags": [
           "security.query_api_keys"
         ],
-        "summary": "Retrieves information for API keys in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Query API keys",
+        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
         },
@@ -31001,8 +31022,8 @@
         "tags": [
           "security.query_api_keys"
         ],
-        "summary": "Retrieves information for API keys in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Query API keys",
+        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
         },
@@ -31541,8 +31562,8 @@
         "tags": [
           "security.update_api_key"
         ],
-        "summary": "Updates attributes of an existing API key",
-        "description": "Users can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+        "summary": "Update an API key",
+        "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html"
         },
@@ -34084,7 +34105,8 @@
         "tags": [
           "tasks.get"
         ],
-        "summary": "Returns information about a task",
+        "summary": "Get task information",
+        "description": "Returns information about the tasks currently executing in the cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html"
         },
@@ -34334,7 +34356,8 @@
         "tags": [
           "termvectors"
         ],
-        "summary": "Returns information and statistics about terms in the fields of a particular document",
+        "summary": "Get term vector information",
+        "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
@@ -34393,7 +34416,8 @@
         "tags": [
           "termvectors"
         ],
-        "summary": "Returns information and statistics about terms in the fields of a particular document",
+        "summary": "Get term vector information",
+        "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
@@ -34454,7 +34478,8 @@
         "tags": [
           "termvectors"
         ],
-        "summary": "Returns information and statistics about terms in the fields of a particular document",
+        "summary": "Get term vector information",
+        "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
@@ -34510,7 +34535,8 @@
         "tags": [
           "termvectors"
         ],
-        "summary": "Returns information and statistics about terms in the fields of a particular document",
+        "summary": "Get term vector information",
+        "description": "Returns information and statistics about terms in the fields of a particular document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
         },
@@ -34904,7 +34930,8 @@
         "tags": [
           "transform.get_transform"
         ],
-        "summary": "Retrieves configuration information for transforms",
+        "summary": "Get transforms",
+        "description": "Retrieves configuration information for transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html"
         },
@@ -34937,8 +34964,8 @@
         "tags": [
           "transform.put_transform"
         ],
-        "summary": "Creates a transform",
-        "description": "A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
+        "summary": "Create a transform",
+        "description": "Creates a transform.\n\nA transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as\na data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a\nunique row per entity.\n\nYou must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If\nyou choose to use the pivot method for your transform, the entities are defined by the set of `group_by` fields in\nthe pivot object. If you choose to use the latest method, the entities are defined by the `unique_key` field values\nin the latest object.\n\nYou must have `create_index`, `index`, and `read` privileges on the destination index and `read` and\n`view_index_metadata` privileges on the source indices. When Elasticsearch security features are enabled, the\ntransform remembers which roles the user that created it had at the time of creation and uses those same roles. If\nthose roles do not have the required privileges on the source and destination indices, the transform fails when it\nattempts unauthorized operations.\n\nNOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any\n`.transform-internal*` indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do\nnot give users any privileges on `.transform-internal*` indices. If you used transforms prior to 7.5, also do not\ngive users any privileges on `.data-frame-internal*` indices.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html"
         },
@@ -35041,7 +35068,8 @@
         "tags": [
           "transform.delete_transform"
         ],
-        "summary": "Deletes a transform",
+        "summary": "Delete a transform",
+        "description": "Deletes a transform.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html"
         },
@@ -35109,7 +35137,8 @@
         "tags": [
           "transform.get_transform"
         ],
-        "summary": "Retrieves configuration information for transforms",
+        "summary": "Get transforms",
+        "description": "Retrieves configuration information for transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html"
         },
@@ -35141,7 +35170,8 @@
         "tags": [
           "transform.get_transform_stats"
         ],
-        "summary": "Retrieves usage information for transforms",
+        "summary": "Get transform stats",
+        "description": "Retrieves usage information for transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html"
         },
@@ -35234,8 +35264,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+        "summary": "Preview a transform",
+        "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -35262,8 +35292,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+        "summary": "Preview a transform",
+        "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -35292,8 +35322,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+        "summary": "Preview a transform",
+        "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -35317,8 +35347,8 @@
         "tags": [
           "transform.preview_transform"
         ],
-        "summary": "Previews a transform",
-        "description": "It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
+        "summary": "Preview a transform",
+        "description": "Generates a preview of the results that you will get when you create a transform with the same configuration.\n\nIt returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also\ngenerates a list of mappings and settings for the destination index. These values are determined based on the field\ntypes of the source index and the transform aggregations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html"
         },
@@ -35344,8 +35374,8 @@
         "tags": [
           "transform.reset_transform"
         ],
-        "summary": "Resets a transform",
-        "description": "Before you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
+        "summary": "Reset a transform",
+        "description": "Resets a transform.\nBefore you can reset it, you must stop it; alternatively, use the `force` query parameter.\nIf the destination index was created by the transform, it is deleted.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html"
         },
@@ -35393,8 +35423,8 @@
         "tags": [
           "transform.schedule_now_transform"
         ],
-        "summary": "Schedules now a transform",
-        "description": "If you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
+        "summary": "Schedule a transform to start now",
+        "description": "Instantly runs a transform to process data.\n\nIf you _schedule_now a transform, it will process the new data instantly,\nwithout waiting for the configured frequency interval. After _schedule_now API is called,\nthe transform will be processed again at now + frequency unless _schedule_now API\nis called again in the meantime.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html"
         },
@@ -35442,8 +35472,8 @@
         "tags": [
           "transform.start_transform"
         ],
-        "summary": "Starts a transform",
-        "description": "When you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
+        "summary": "Start a transform",
+        "description": "Starts a transform.\n\nWhen you start a transform, it creates the destination index if it does not already exist. The `number_of_shards` is\nset to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform, it deduces the mapping\ndefinitions for the destination index from the source indices and the transform aggregations. If fields in the\ndestination index are derived from scripts (as in the case of `scripted_metric` or `bucket_script` aggregations),\nthe transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce\nmapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you\nstart the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings\nin a pivot transform.\n\nWhen the transform starts, a series of validations occur to ensure its success. If you deferred validation when you\ncreated the transform, they occur when you start the transform—​with the exception of privilege checks. When\nElasticsearch security features are enabled, the transform remembers which roles the user that created it had at the\ntime of creation and uses those same roles. If those roles do not have the required privileges on the source and\ndestination indices, the transform fails when it attempts unauthorized operations.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html"
         },
@@ -35501,7 +35531,8 @@
         "tags": [
           "transform.stop_transform"
         ],
-        "summary": "Stops one or more transforms",
+        "summary": "Stop transforms",
+        "description": "Stops one or more transforms.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html"
         },
@@ -35589,8 +35620,8 @@
         "tags": [
           "transform.update_transform"
         ],
-        "summary": "Updates certain properties of a transform",
-        "description": "All updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
+        "summary": "Update a transform",
+        "description": "Updates certain properties of a transform.\n\nAll updated properties except `description` do not take effect until after the transform starts the next checkpoint,\nthus there is data consistency in each checkpoint. To use this API, you must have `read` and `view_index_metadata`\nprivileges for the source indices. You must also have `index` and `read` privileges for the destination index. When\nElasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the\ntime of update and runs with those privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html"
         },
@@ -35814,7 +35845,8 @@
         "tags": [
           "update"
         ],
-        "summary": "Updates a document with a script or partial document",
+        "summary": "Update a document",
+        "description": "Updates a document by running a script or passing a partial document.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html"
         },
@@ -36020,8 +36052,8 @@
         "tags": [
           "update_by_query"
         ],
-        "summary": "Updates documents that match the specified query",
-        "description": "If no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
+        "summary": "Update documents",
+        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
         },
@@ -37822,10 +37854,14 @@
               "properties": {
                 "result": {
                   "$ref": "#/components/schemas/_types:Result"
+                },
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
                 }
               },
               "required": [
-                "result"
+                "result",
+                "id"
               ]
             }
           }
@@ -42517,7 +42553,7 @@
       "connector.put#connector_id": {
         "in": "path",
         "name": "connector_id",
-        "description": "The unique identifier of the connector to be created or updated",
+        "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -50344,14 +50380,7 @@
                   "type": "string"
                 },
                 "index_name": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/_types:IndexName"
-                    },
-                    {
-                      "$ref": "#/components/schemas/_spec_utils:NullValue"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/_types:IndexName"
                 },
                 "is_native": {
                   "type": "boolean"
@@ -50365,10 +50394,7 @@
                 "service_type": {
                   "type": "string"
                 }
-              },
-              "required": [
-                "index_name"
-              ]
+              }
             }
           }
         }
@@ -78689,6 +78715,9 @@
           "api_key_id": {
             "type": "string"
           },
+          "api_key_secret_id": {
+            "type": "string"
+          },
           "configuration": {
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
           },
@@ -78699,7 +78728,15 @@
             "type": "string"
           },
           "error": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "features": {
             "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
@@ -78714,7 +78751,15 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "$ref": "#/components/schemas/_types:IndexName"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "is_native": {
             "type": "boolean"
@@ -78770,6 +78815,9 @@
           "status": {
             "$ref": "#/components/schemas/connector._types:ConnectorStatus"
           },
+          "sync_cursor": {
+            "type": "object"
+          },
           "sync_now": {
             "type": "boolean"
           }
@@ -78780,7 +78828,6 @@
           "filtering",
           "is_native",
           "scheduling",
-          "service_type",
           "status",
           "sync_now"
         ]
@@ -78831,7 +78878,15 @@
             "type": "boolean"
           },
           "tooltip": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "type": {
             "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
@@ -78849,7 +78904,7 @@
             }
           },
           "value": {
-            "$ref": "#/components/schemas/_types:ScalarValue"
+            "type": "object"
           }
         },
         "required": [
@@ -78919,7 +78974,7 @@
             "type": "string"
           },
           "value": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ScalarValue"
           }
         },
         "required": [
@@ -79004,10 +79059,7 @@
             ]
           },
           "constraint": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:ScalarValue"
-            }
+            "type": "string"
           }
         },
         "required": [
@@ -79025,7 +79077,10 @@
             ]
           },
           "constraint": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ScalarValue"
+            }
           }
         },
         "required": [
@@ -79118,13 +79173,10 @@
           "document_level_security": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
-          "filtering_advanced_config": {
-            "type": "boolean"
-          },
-          "filtering_rules": {
-            "type": "boolean"
-          },
           "incremental_sync": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "native_connector_api_keys": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
           "sync_rules": {
@@ -79169,7 +79221,6 @@
         },
         "required": [
           "active",
-          "domain",
           "draft"
         ]
       },
@@ -79393,11 +79444,6 @@
           "error"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
         "properties": {
@@ -79496,6 +79542,9 @@
           },
           "service_type": {
             "type": "string"
+          },
+          "sync_cursor": {
+            "type": "object"
           }
         },
         "required": [
@@ -79520,6 +79569,11 @@
           "on_demand",
           "scheduled"
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",

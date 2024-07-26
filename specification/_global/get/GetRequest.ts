@@ -29,6 +29,8 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
+ * Get a document by its ID.
+ * Retrieves the document with the specified ID from an index.
  * @rest_spec_name get
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

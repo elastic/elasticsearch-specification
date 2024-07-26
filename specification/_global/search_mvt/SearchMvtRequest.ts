@@ -31,6 +31,8 @@ import { ZoomLevel } from './_types/ZoomLevel'
 import { TrackHits } from '@global/search/_types/hits'
 
 /**
+ * Search a vector tile.
+ * Searches a vector tile for geospatial values.
  * @rest_spec_name search_mvt
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public

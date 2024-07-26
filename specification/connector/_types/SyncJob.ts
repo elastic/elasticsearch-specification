@@ -36,6 +36,7 @@ interface SyncJobConnectorReference {
   language?: string
   pipeline?: IngestPipelineParams
   service_type: string
+  sync_cursor?: UserDefinedValue
 }
 
 export enum SyncJobType {
