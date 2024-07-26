@@ -22,14 +22,16 @@ import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
+ * Get anomaly detection jobs.
  * Returns configuration and usage information for anomaly detection jobs.
  * This API returns a maximum of 10,000 jobs.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`,
  * `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * > info
+ * > CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the get anomaly detection job statistics API.
+ * application consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).
  *
  * @rest_spec_name cat.ml_jobs
  * @availability stack since=7.7.0 stability=stable

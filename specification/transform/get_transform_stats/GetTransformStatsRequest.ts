@@ -23,6 +23,7 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get transform stats.
  * Retrieves usage information for transforms.
  * @rest_spec_name transform.get_transform_stats
  * @availability stack since=7.5.0 stability=stable

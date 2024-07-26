@@ -40,6 +40,7 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Duration } from '@_types/Time'
 
 /**
+ * Update field mappings.
  * Adds new fields to an existing data stream or index.
  * You can also use this API to change the search settings of existing fields.
  * For data streams, these changes are applied to all backing indices by default.

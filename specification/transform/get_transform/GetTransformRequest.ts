@@ -22,6 +22,7 @@ import { Name, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Get transforms.
  * Retrieves configuration information for transforms.
  * @rest_spec_name transform.get_transform
  * @availability stack since=7.5.0 stability=stable
