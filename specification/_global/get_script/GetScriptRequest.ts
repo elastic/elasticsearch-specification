@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get a script or search template.
  * Retrieves a stored script or search template.
  * @rest_spec_name get_script
  * @availability stack stability=stable

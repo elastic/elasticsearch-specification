@@ -486,8 +486,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -534,8 +534,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -584,8 +584,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -635,8 +635,8 @@
         "tags": [
           "bulk"
         ],
-        "summary": "Performs multiple indexing or delete operations in a single API call",
-        "description": "This reduces overhead and can greatly increase indexing speed.",
+        "summary": "Bulk index or delete documents",
+        "description": "Performs multiple indexing or delete operations in a single API call.\nThis reduces overhead and can greatly increase indexing speed.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html"
         },
@@ -1529,7 +1529,8 @@
         "tags": [
           "cluster.get_component_template"
         ],
-        "summary": "Retrieves information about component templates",
+        "summary": "Get component templates",
+        "description": "Retrieves information about component templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1562,8 +1563,8 @@
         "tags": [
           "cluster.put_component_template"
         ],
-        "summary": "Creates or updates a component template",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+        "summary": "Create or update a component template",
+        "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1593,8 +1594,8 @@
         "tags": [
           "cluster.put_component_template"
         ],
-        "summary": "Creates or updates a component template",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
+        "summary": "Create or update a component template",
+        "description": "Creates or updates a component template.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nAn index template can be composed of multiple component templates.\nTo use a component template, specify it in an index template’s `composed_of` list.\nComponent templates are only applied to new data streams and indices as part of a matching index template.\n\nSettings and mappings specified directly in the index template or the create index request override any settings or mappings specified in a component template.\n\nComponent templates are only used during index creation.\nFor data streams, this includes data stream creation and the creation of a stream’s backing indices.\nChanges to component templates do not affect existing indices, including a stream’s backing indices.\n\nYou can use C-style `/* *\\/` block comments in component templates.\nYou can include comments anywhere in the request body except before the opening curly bracket.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1624,8 +1625,8 @@
         "tags": [
           "cluster.delete_component_template"
         ],
-        "summary": "Deletes component templates",
-        "description": "Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
+        "summary": "Delete component templates",
+        "description": "Deletes component templates.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1681,7 +1682,8 @@
         "tags": [
           "cluster.exists_component_template"
         ],
-        "summary": "Returns information about whether a particular component template exist",
+        "summary": "Check component templates",
+        "description": "Returns information about whether a particular component template exists.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -1735,7 +1737,8 @@
         "tags": [
           "cluster.get_component_template"
         ],
-        "summary": "Retrieves information about component templates",
+        "summary": "Get component templates",
+        "description": "Retrieves information about component templates.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html"
         },
@@ -4612,7 +4615,8 @@
         "tags": [
           "get_script"
         ],
-        "summary": "Retrieves a stored script or search template",
+        "summary": "Get a script or search template",
+        "description": "Retrieves a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -4672,7 +4676,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -4701,7 +4706,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -4730,7 +4736,8 @@
         "tags": [
           "delete_script"
         ],
-        "summary": "Deletes a stored script or search template",
+        "summary": "Delete a script or search template",
+        "description": "Deletes a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -15318,7 +15325,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -15350,7 +15358,8 @@
         "tags": [
           "put_script"
         ],
-        "summary": "Creates or updates a stored script or search template",
+        "summary": "Create or update a script or search template",
+        "description": "Creates or updates a stored script or search template.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
         },
@@ -16206,7 +16215,8 @@
         "tags": [
           "scripts_painless_execute"
         ],
-        "summary": "Runs a script and returns a result",
+        "summary": "Run a script",
+        "description": "Runs a script and returns a result.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
         },
@@ -16226,7 +16236,8 @@
         "tags": [
           "scripts_painless_execute"
         ],
-        "summary": "Runs a script and returns a result",
+        "summary": "Run a script",
+        "description": "Runs a script and returns a result.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-execute-api.html"
         },
@@ -17615,8 +17626,8 @@
         "tags": [
           "security.authenticate"
         ],
-        "summary": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user",
-        "description": "A successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
+        "summary": "Authenticate a user",
+        "description": "Authenticates a user and returns information about the authenticated user.\nInclude the user information in a [basic auth header](https://en.wikipedia.org/wiki/Basic_access_authentication).\nA successful call returns a JSON structure that shows user information such as their username, the roles that are assigned to the user, any assigned metadata, and information about the realms that authenticated and authorized the user.\nIf the user cannot be authenticated, this API returns a 401 status code.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html"
         },
@@ -17704,8 +17715,8 @@
         "tags": [
           "security.get_api_key"
         ],
-        "summary": "Retrieves information for one or more API keys",
-        "description": "NOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
+        "summary": "Get API key information",
+        "description": "Retrieves information for one or more API keys.\nNOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html"
         },
@@ -17821,8 +17832,8 @@
         "tags": [
           "security.create_api_key"
         ],
-        "summary": "Creates an API key for access without requiring basic authentication",
-        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "summary": "Create an API key",
+        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
@@ -17846,8 +17857,8 @@
         "tags": [
           "security.create_api_key"
         ],
-        "summary": "Creates an API key for access without requiring basic authentication",
-        "description": "A successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
+        "summary": "Create an API key",
+        "description": "Creates an API key for access without requiring basic authentication.\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html"
         },
@@ -17871,8 +17882,8 @@
         "tags": [
           "security.invalidate_api_key"
         ],
-        "summary": "Invalidates one or more API keys",
-        "description": "The `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
+        "summary": "Invalidate API keys",
+        "description": "Invalidates one or more API keys.\nThe `manage_api_key` privilege allows deleting any API keys.\nThe `manage_own_api_key` only allows deleting API keys that are owned by the user.\nIn addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:\n- Set the parameter `owner=true`.\n- Or, set both `username` and `realm_name` to match the user’s identity.\n- Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html"
         },
@@ -17961,7 +17972,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -17980,7 +17992,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -18001,7 +18014,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -18025,7 +18039,8 @@
         "tags": [
           "security.has_privileges"
         ],
-        "summary": "Determines whether the specified user has a specified list of privileges",
+        "summary": "Check user privileges",
+        "description": "Determines whether the specified user has a specified list of privileges.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html"
         },
@@ -18051,8 +18066,8 @@
         "tags": [
           "security.query_api_keys"
         ],
-        "summary": "Retrieves information for API keys in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Query API keys",
+        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
         },
@@ -18082,8 +18097,8 @@
         "tags": [
           "security.query_api_keys"
         ],
-        "summary": "Retrieves information for API keys in a paginated manner",
-        "description": "You can optionally filter the results with a query.",
+        "summary": "Query API keys",
+        "description": "Retrieves a paginated list of API keys and their information. You can optionally filter the results with a query.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html"
         },
@@ -18115,8 +18130,8 @@
         "tags": [
           "security.update_api_key"
         ],
-        "summary": "Updates attributes of an existing API key",
-        "description": "Users can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
+        "summary": "Update an API key",
+        "description": "Updates attributes of an existing API key.\nUsers can only update API keys that they created or that were granted to them.\nUse this API to update API keys created by the create API Key or grant API Key APIs.\nIf you need to apply the same update to many API keys, you can use bulk update API Keys to reduce overhead.\nIt’s not possible to update expired API keys, or API keys that have been invalidated by invalidate API Key.\nThis API supports updates to an API key’s access scope and metadata.\nThe access scope of an API key is derived from the `role_descriptors` you specify in the request, and a snapshot of the owner user’s permissions at the time of the request.\nThe snapshot of the owner’s permissions is updated automatically on every call.\nIf you don’t specify `role_descriptors` in the request, a call to this API might still change the API key’s access scope.\nThis change can occur if the owner user’s permissions have changed since the API key was created or last modified.\nTo update another user’s API key, use the `run_as` feature to submit a request on behalf of another user.\nIMPORTANT: It’s not possible to use an API key as the authentication credential for this API.\nTo update an API key, the owner user’s credentials are required.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html"
         },
@@ -18956,7 +18971,8 @@
         "tags": [
           "tasks.get"
         ],
-        "summary": "Returns information about a task",
+        "summary": "Get task information",
+        "description": "Returns information about the tasks currently executing in the cluster.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html"
         },
