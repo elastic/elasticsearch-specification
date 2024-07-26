@@ -1157,48 +1157,6 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.12.0",
-          "stability": "experimental"
-        }
-      },
-      "description": "Updates last sync stats in the connector document",
-      "docId": "connector-last-sync",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html",
-      "name": "connector.last_sync",
-      "request": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "requestBodyRequired": true,
-      "requestMediaType": [
-        "application/json"
-      ],
-      "response": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "since": "8.12.0",
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_connector/{connector_id}/_last_sync"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "availability": {
-        "serverless": {
           "stability": "beta",
           "visibility": "public"
         },
@@ -14008,9 +13966,9 @@
       ],
       "query": [
         {
-          "description": "Determines whether associated sync jobs are also deleted.",
+          "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
           "name": "delete_sync_jobs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -14020,7 +13978,7 @@
           }
         }
       ],
-      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L39"
+      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -14093,216 +14051,6 @@
         "namespace": "connector.get"
       },
       "specLocation": "connector/get/ConnectorGetResponse.ts#L22-L24"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "last_access_control_sync_error",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_deleted_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_incremental_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_indexed_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_seen",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DateTime",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_sync_error",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_synced",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "description": "Updates last sync stats in the connector document",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "path": [
-        {
-          "description": "The unique identifier of the connector to be updated",
-          "name": "connector_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [],
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncRequest.ts#L26-L56"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "result",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Result",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncResponse.ts#L22-L26"
     },
     {
       "attachedBehaviors": [
@@ -14458,21 +14206,12 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },
@@ -14536,12 +14275,23 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/post/ConnectorPostRequest.ts#L23-L43"
+      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L42"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          },
           {
             "name": "id",
             "required": true,
@@ -14560,7 +14310,7 @@
         "name": "Response",
         "namespace": "connector.post"
       },
-      "specLocation": "connector/post/ConnectorPostResponse.ts#L22-L26"
+      "specLocation": "connector/post/ConnectorPostResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14582,21 +14332,12 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },
@@ -14660,9 +14401,9 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the connector to be created or updated",
+          "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
           "name": "connector_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -14673,7 +14414,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/put/ConnectorPutRequest.ts#L23-L49"
+      "specLocation": "connector/put/ConnectorPutRequest.ts#L22-L48"
     },
     {
       "body": {
@@ -14689,6 +14430,17 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
           }
         ]
       },
@@ -14697,7 +14449,7 @@
         "name": "Response",
         "namespace": "connector.put"
       },
-      "specLocation": "connector/put/ConnectorPutResponse.ts#L22-L26"
+      "specLocation": "connector/put/ConnectorPutResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14941,14 +14693,26 @@
           "name": "job_type",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncJobType",
-                "namespace": "connector._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SyncJobType",
+                  "namespace": "connector._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SyncJobType",
+                    "namespace": "connector._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -15146,19 +14910,10 @@
             "name": "api_key_id",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           },
@@ -15166,19 +14921,10 @@
             "name": "api_key_secret_id",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           }
@@ -15211,7 +14957,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L23-L44"
+      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L42"
     },
     {
       "body": {
@@ -15675,7 +15421,7 @@
         "properties": [
           {
             "name": "name",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -89173,11 +88919,23 @@
           "name": "tooltip",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -89223,11 +88981,7 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScalarValue",
-              "namespace": "_types"
-            }
+            "kind": "user_defined_value"
           }
         }
       ],
@@ -89314,8 +89068,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "ScalarValue",
+              "namespace": "_types"
             }
           }
         }
@@ -89473,13 +89227,10 @@
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScalarValue",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         }
@@ -89505,10 +89256,13 @@
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScalarValue",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -89816,7 +89570,7 @@
         "name": "SyncJobTriggerMethod",
         "namespace": "connector._types"
       },
-      "specLocation": "connector/_types/SyncJob.ts#L47-L50"
+      "specLocation": "connector/_types/SyncJob.ts#L48-L51"
     },
     {
       "kind": "enum",
@@ -89835,7 +89589,7 @@
         "name": "SyncJobType",
         "namespace": "connector._types"
       },
-      "specLocation": "connector/_types/SyncJob.ts#L41-L45"
+      "specLocation": "connector/_types/SyncJob.ts#L42-L46"
     },
     {
       "kind": "enum",
@@ -112058,6 +111812,17 @@
           }
         },
         {
+          "name": "api_key_secret_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "configuration",
           "required": true,
           "type": {
@@ -112094,11 +111859,23 @@
           "name": "error",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -112141,11 +111918,23 @@
           "name": "index_name",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -112326,7 +112115,7 @@
         },
         {
           "name": "service_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112347,6 +112136,13 @@
           }
         },
         {
+          "name": "sync_cursor",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
           "name": "sync_now",
           "required": true,
           "type": {
@@ -112358,7 +112154,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L238-L267"
+      "specLocation": "connector/_types/Connector.ts#L237-L268"
     },
     {
       "kind": "interface",
@@ -112379,29 +112175,18 @@
           }
         },
         {
-          "name": "filtering_advanced_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "filtering_rules",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "name": "incremental_sync",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureEnabled",
+              "namespace": "connector._types"
+            }
+          }
+        },
+        {
+          "name": "native_connector_api_keys",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -112423,7 +112208,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L224-L230"
+      "specLocation": "connector/_types/Connector.ts#L224-L229"
     },
     {
       "kind": "interface",
@@ -112498,7 +112283,7 @@
         },
         {
           "name": "domain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112883,7 +112668,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L232-L236"
+      "specLocation": "connector/_types/Connector.ts#L231-L235"
     },
     {
       "kind": "interface",
@@ -113131,7 +112916,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/SyncJob.ts#L52-L71"
+      "specLocation": "connector/_types/SyncJob.ts#L53-L72"
     },
     {
       "kind": "interface",
@@ -113216,9 +113001,16 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "sync_cursor",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
         }
       ],
-      "specLocation": "connector/_types/SyncJob.ts#L31-L39"
+      "specLocation": "connector/_types/SyncJob.ts#L31-L40"
     },
     {
       "kind": "interface",

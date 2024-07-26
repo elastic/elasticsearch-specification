@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
    * The connector name and description
    */
   body: {
-    name: string
+    name?: string
     description?: string
   }
 }
