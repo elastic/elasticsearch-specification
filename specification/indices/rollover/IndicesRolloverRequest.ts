@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
 import { RolloverConditions } from './types'
 
 /**
+ * Roll over to a new index.
  * Creates a new index for a data stream or index alias.
  * @doc_id indices-rollover-index
  * @rest_spec_name indices.rollover
