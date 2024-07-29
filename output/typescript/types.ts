@@ -9227,9 +9227,9 @@ export interface ConnectorConnectorConfigProperties {
   required: boolean
   sensitive: boolean
   tooltip?: string | null
-  type: ConnectorConnectorFieldType
-  ui_restrictions: string[]
-  validations: ConnectorValidation[]
+  type?: ConnectorConnectorFieldType
+  ui_restrictions?: string[]
+  validations?: ConnectorValidation[]
   value: any
 }
 
