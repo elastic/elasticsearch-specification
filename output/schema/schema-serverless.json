@@ -88180,7 +88180,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88191,7 +88191,7 @@
         },
         {
           "name": "ui_restrictions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -88205,7 +88205,7 @@
         },
         {
           "name": "validations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
