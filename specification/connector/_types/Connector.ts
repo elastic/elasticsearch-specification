@@ -92,9 +92,9 @@ export interface ConnectorConfigProperties {
   required: boolean
   sensitive: boolean
   tooltip?: string | null
-  type: ConnectorFieldType
-  ui_restrictions: string[]
-  validations: Validation[]
+  type?: ConnectorFieldType
+  ui_restrictions?: string[]
+  validations?: Validation[]
   value: UserDefinedValue
 }
 
