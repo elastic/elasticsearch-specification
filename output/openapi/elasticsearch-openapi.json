@@ -78159,9 +78159,6 @@
           "options",
           "required",
           "sensitive",
-          "type",
-          "ui_restrictions",
-          "validations",
           "value"
         ]
       },
