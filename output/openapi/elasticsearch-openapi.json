@@ -19152,7 +19152,7 @@
         "tags": [
           "ml.evaluate_data_frame"
         ],
-        "summary": "Evaluates the data frame analytics for an annotated index",
+        "summary": "Evaluate data frame analytics",
         "description": "The API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html"
