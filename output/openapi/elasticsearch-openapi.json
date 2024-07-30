@@ -16975,8 +16975,8 @@
         "tags": [
           "ml.clear_trained_model_deployment_cache"
         ],
-        "summary": "Clears a trained model deployment cache on all nodes where the trained model is assigned",
-        "description": "A trained model deployment may have an inference cache enabled.\nAs requests are handled by each allocated node, their responses may be cached on that individual node.\nCalling this API clears the caches without restarting the deployment.",
+        "summary": "Clear trained model deployment cache",
+        "description": "Cache will be cleared on all nodes where the trained model is assigned.\nA trained model deployment may have an inference cache enabled.\nAs requests are handled by each allocated node, their responses may be cached on that individual node.\nCalling this API clears the caches without restarting the deployment.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/clear-trained-model-deployment-cache.html"
         },
@@ -17255,7 +17255,8 @@
         "tags": [
           "ml.delete_calendar"
         ],
-        "summary": "Removes all scheduled events from a calendar, then deletes it",
+        "summary": "Delete a calendar",
+        "description": "Removes all scheduled events from a calendar, then deletes it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar.html"
         },
@@ -17293,7 +17294,7 @@
         "tags": [
           "ml.delete_calendar_event"
         ],
-        "summary": "Deletes scheduled events from a calendar",
+        "summary": "Delete events from a calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-event.html"
         },
@@ -17405,7 +17406,7 @@
         "tags": [
           "ml.delete_calendar_job"
         ],
-        "summary": "Deletes anomaly detection jobs from a calendar",
+        "summary": "Delete anomaly jobs from a calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-job.html"
         },
@@ -17644,7 +17645,7 @@
         "tags": [
           "ml.delete_data_frame_analytics"
         ],
-        "summary": "Deletes a data frame analytics job",
+        "summary": "Delete a data frame analytics job",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html"
         },
@@ -17936,7 +17937,7 @@
         "tags": [
           "ml.delete_datafeed"
         ],
-        "summary": "Deletes an existing datafeed",
+        "summary": "Delete a datafeed",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html"
         },
@@ -17984,7 +17985,7 @@
         "tags": [
           "ml.delete_expired_data"
         ],
-        "summary": "Deletes expired and unused machine learning data",
+        "summary": "Delete expired ML data",
         "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-expired-data.html"
@@ -18017,7 +18018,7 @@
         "tags": [
           "ml.delete_expired_data"
         ],
-        "summary": "Deletes expired and unused machine learning data",
+        "summary": "Delete expired ML data",
         "description": "Deletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-expired-data.html"
@@ -18154,7 +18155,7 @@
         "tags": [
           "ml.delete_filter"
         ],
-        "summary": "Deletes a filter",
+        "summary": "Delete a filter",
         "description": "If an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html"
@@ -18293,7 +18294,7 @@
         "tags": [
           "ml.delete_forecast"
         ],
-        "summary": "Deletes forecasts from a machine learning job",
+        "summary": "Delete forecasts from a job",
         "description": "By default, forecasts are retained for 14 days. You can specify a\ndifferent retention period with the `expires_in` parameter in the forecast\njobs API. The delete forecast API enables you to delete one or more\nforecasts before they expire.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-forecast.html"
@@ -18323,7 +18324,7 @@
         "tags": [
           "ml.delete_forecast"
         ],
-        "summary": "Deletes forecasts from a machine learning job",
+        "summary": "Delete forecasts from a job",
         "description": "By default, forecasts are retained for 14 days. You can specify a\ndifferent retention period with the `expires_in` parameter in the forecast\njobs API. The delete forecast API enables you to delete one or more\nforecasts before they expire.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-forecast.html"
@@ -18729,7 +18730,7 @@
         "tags": [
           "ml.delete_model_snapshot"
         ],
-        "summary": "Deletes an existing model snapshot",
+        "summary": "Delete a model snapshot",
         "description": "You cannot delete the active model snapshot. To delete that snapshot, first\nrevert to a different one. To identify the active model snapshot, refer to\nthe `model_snapshot_id` in the results from the get jobs API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html"
@@ -18931,8 +18932,8 @@
         "tags": [
           "ml.delete_trained_model"
         ],
-        "summary": "Deletes an existing trained inference model that is currently not referenced\n",
-        "description": "by an ingest pipeline.",
+        "summary": "Delete an unreferenced trained model",
+        "description": "The request deletes a trained inference model that is not referenced by an ingest pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html"
         },
@@ -19038,7 +19039,7 @@
         "tags": [
           "ml.delete_trained_model_alias"
         ],
-        "summary": "Deletes a trained model alias",
+        "summary": "Delete a trained model alias",
         "description": "This API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html"
@@ -19088,8 +19089,8 @@
         "tags": [
           "ml.estimate_model_memory"
         ],
-        "summary": "Makes an estimation of the memory usage for an anomaly detection job model",
-        "description": "It is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "summary": "Estimate job model memory usage",
+        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html"
         },
@@ -19213,7 +19214,7 @@
         "tags": [
           "ml.explain_data_frame_analytics"
         ],
-        "summary": "Explains a data frame analytics config",
+        "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html"
@@ -19233,7 +19234,7 @@
         "tags": [
           "ml.explain_data_frame_analytics"
         ],
-        "summary": "Explains a data frame analytics config",
+        "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html"
@@ -19255,7 +19256,7 @@
         "tags": [
           "ml.explain_data_frame_analytics"
         ],
-        "summary": "Explains a data frame analytics config",
+        "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html"
@@ -19280,7 +19281,7 @@
         "tags": [
           "ml.explain_data_frame_analytics"
         ],
-        "summary": "Explains a data frame analytics config",
+        "summary": "Explain data frame analytics config",
         "description": "This API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html"
