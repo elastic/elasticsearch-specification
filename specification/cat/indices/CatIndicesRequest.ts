@@ -24,9 +24,6 @@ import { TimeUnit } from '@_types/Time'
 /**
  * Get index information.
  * Returns high-level information about indices in a cluster, including backing indices for data streams.
- * > info
- * > CAT APIs are only intended for human consumption using the command line or Kibana console.
- * They are not intended for use by applications. For application consumption, use an index endpoint.
  *
  * Use this request to get the following information for each index in a cluster:
  * - shard count
@@ -36,7 +33,10 @@ import { TimeUnit } from '@_types/Time'
  * - total store size of all shards, including shard replicas
  *
  * These metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.
- * To get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.
+ * To get an accurate count of Elasticsearch documents, use the /_cat/count or _count endpoints.
+ *
+ * CAT APIs are only intended for human consumption using the command line or Kibana console.
+ * They are not intended for use by applications. For application consumption, use an index endpoint.
  * @rest_spec_name cat.indices
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public

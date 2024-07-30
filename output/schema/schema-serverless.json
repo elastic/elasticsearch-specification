@@ -216,7 +216,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
+      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the /_alias endpoints.",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html",
       "name": "cat.aliases",
@@ -264,7 +264,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
+      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the /_component_template endpoints.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html",
       "name": "cat.component_templates",
       "privileges": {
@@ -310,7 +310,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use /_count endpoints.",
       "docId": "cat-count",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html",
       "name": "cat.count",
@@ -392,7 +392,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
+      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the /_cat/count or _count endpoints.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-indices.html",
       "name": "cat.indices",
@@ -443,7 +443,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
+      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/data_frame/analytics endpoints.",
       "docId": "cat-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-dfanalytics.html",
       "name": "cat.ml_data_frame_analytics",
@@ -491,7 +491,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
+      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/datafeeds endpoints.",
       "docId": "cat-datafeeds",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-datafeeds.html",
       "name": "cat.ml_datafeeds",
@@ -539,7 +539,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
+      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/anomaly_detectors endpoints.",
       "docId": "cat-anomaly-detectors",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html",
       "name": "cat.ml_jobs",
@@ -587,7 +587,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
+      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/trained_models endpoints.",
       "docId": "cat-trained-model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-trained-model.html",
       "name": "cat.ml_trained_models",
@@ -635,7 +635,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
+      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_transform endpoints.",
       "docId": "cat-transforms",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-transforms.html",
       "name": "cat.transforms",
@@ -11389,7 +11389,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).",
+      "description": "Get aliases.\nRetrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the /_alias endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11460,7 +11460,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_component_template endpoints](#endpoint-component-template).",
+      "description": "Get component templates.\nReturns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the /_component_template endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11518,7 +11518,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use [the /_count endpoints](#endpoint-count).",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use /_count endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11621,7 +11621,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n> info\n> CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the [/_cat/count](#operation-cat-count) or [count](#endpoint-count) endpoints.",
+      "description": "Get index information.\nReturns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the /_cat/count or _count endpoints.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11754,7 +11754,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/data_frame/analytics endpoints](#endpoint-ml).",
+      "description": "Get data frame analytics jobs.\nReturns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/data_frame/analytics endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11843,7 +11843,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_data_frame_analytics/CatDataFrameAnalyticsRequest.ts#L24-L60"
+      "specLocation": "cat/ml_data_frame_analytics/CatDataFrameAnalyticsRequest.ts#L24-L59"
     },
     {
       "body": {
@@ -11874,7 +11874,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/datafeeds endpoints](#endpoint-ml).",
+      "description": "Get datafeeds.\nReturns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/datafeeds endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -11952,7 +11952,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_datafeeds/CatDatafeedsRequest.ts#L24-L75"
+      "specLocation": "cat/ml_datafeeds/CatDatafeedsRequest.ts#L24-L74"
     },
     {
       "body": {
@@ -11983,7 +11983,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/anomaly_detectors endpoints](#endpoint-ml).",
+      "description": "Get anomaly detection jobs.\nReturns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/anomaly_detectors endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12073,7 +12073,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_jobs/CatJobsRequest.ts#L24-L79"
+      "specLocation": "cat/ml_jobs/CatJobsRequest.ts#L24-L78"
     },
     {
       "body": {
@@ -12104,7 +12104,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_ml/trained_models endpoints](#endpoint-ml).",
+      "description": "Get trained models.\nReturns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/trained_models endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12205,7 +12205,7 @@
           }
         }
       ],
-      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L65"
+      "specLocation": "cat/ml_trained_models/CatTrainedModelsRequest.ts#L24-L64"
     },
     {
       "body": {
@@ -12236,7 +12236,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\n> info\n> CAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use [the /_transform endpoints](#endpoint-transform).",
+      "description": "Get transforms.\nReturns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_transform endpoints.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -12340,7 +12340,7 @@
           }
         }
       ],
-      "specLocation": "cat/transforms/CatTransformsRequest.ts#L25-L79"
+      "specLocation": "cat/transforms/CatTransformsRequest.ts#L25-L78"
     },
     {
       "body": {
