@@ -24,8 +24,8 @@ import { ExpandWildcards, Names } from '@_types/common'
  * Get aliases.
  * Retrieves the cluster’s index aliases, including filter and routing information.
  * The API does not return data stream aliases.
- * > info
- * > CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use [the /_alias endpoints](#endpoint-alias).
+ *
+ * CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the /_alias endpoints.
  * @rest_spec_name cat.aliases
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
