@@ -34920,17 +34920,6 @@
             "minProperties": 1,
             "maxProperties": 1
           },
-          "weighted_tokens": {
-            "deprecated": true,
-            "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
-            "x-available-since": "8.13.0",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.query_dsl:WeightedTokensQuery"
-            },
-            "minProperties": 1,
-            "maxProperties": 1
-          },
           "wildcard": {
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html"
@@ -39117,31 +39106,6 @@
             "required": [
               "model_id",
               "model_text"
-            ]
-          }
-        ]
-      },
-      "_types.query_dsl:WeightedTokensQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "tokens": {
-                "description": "The tokens representing this query",
-                "type": "object",
-                "additionalProperties": {
-                  "type": "number"
-                }
-              },
-              "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl:TokenPruningConfig"
-              }
-            },
-            "required": [
-              "tokens"
             ]
           }
         ]

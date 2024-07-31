@@ -5953,7 +5953,6 @@ export interface QueryDslQueryContainer {
   terms?: QueryDslTermsQuery
   terms_set?: Partial<Record<Field, QueryDslTermsSetQuery>>
   text_expansion?: Partial<Record<Field, QueryDslTextExpansionQuery>>
-  weighted_tokens?: Partial<Record<Field, QueryDslWeightedTokensQuery>>
   wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
   wrapper?: QueryDslWrapperQuery
   type?: QueryDslTypeQuery
@@ -6227,11 +6226,6 @@ export interface QueryDslUntypedDistanceFeatureQuery extends QueryDslDistanceFea
 export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
   format?: DateFormat
   time_zone?: TimeZone
-}
-
-export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
-  tokens: Record<string, float>
-  pruning_config?: QueryDslTokenPruningConfig
 }
 
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {

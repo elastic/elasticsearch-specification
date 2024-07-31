@@ -47871,40 +47871,6 @@
           }
         },
         {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.13.0"
-            }
-          },
-          "deprecation": {
-            "description": "",
-            "version": "8.15.0"
-          },
-          "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
-          "docId": "query-dsl-weighted-tokens-query",
-          "name": "weighted_tokens",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": true,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "WeightedTokensQuery",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          }
-        },
-        {
           "description": "Returns documents that contain terms matching a wildcard pattern.",
           "docId": "query-dsl-wildcard-query",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/query-dsl-wildcard-query.html",
@@ -47959,7 +47925,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L102-L427",
+      "specLocation": "_types/query_dsl/abstractions.ts#L102-L419",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -48136,7 +48102,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L452-L463"
+      "specLocation": "_types/query_dsl/abstractions.ts#L444-L455"
     },
     {
       "kind": "type_alias",
@@ -48480,7 +48446,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L465-L499"
+      "specLocation": "_types/query_dsl/abstractions.ts#L457-L491"
     },
     {
       "kind": "enum",
@@ -48496,7 +48462,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L509-L512"
+      "specLocation": "_types/query_dsl/abstractions.ts#L501-L504"
     },
     {
       "kind": "enum",
@@ -48514,7 +48480,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L514-L523"
+      "specLocation": "_types/query_dsl/abstractions.ts#L506-L515"
     },
     {
       "inherits": {
@@ -50750,7 +50716,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L429-L446"
+      "specLocation": "_types/query_dsl/abstractions.ts#L421-L438"
     },
     {
       "kind": "enum",
@@ -51221,7 +51187,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L525-L539"
+      "specLocation": "_types/query_dsl/abstractions.ts#L517-L531"
     },
     {
       "inherits": {
@@ -59116,57 +59082,6 @@
       },
       "kind": "interface",
       "name": {
-        "name": "WeightedTokensQuery",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "description": "The tokens representing this query",
-          "name": "tokens",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "float",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Token pruning configurations",
-          "name": "pruning_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TokenPruningConfig",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/WeightedTokensQuery.ts#L27-L32"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "WildcardQuery",
         "namespace": "_types.query_dsl"
       },
@@ -59257,7 +59172,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L501-L507"
+      "specLocation": "_types/query_dsl/abstractions.ts#L493-L499"
     },
     {
       "inherits": {

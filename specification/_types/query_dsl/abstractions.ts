@@ -402,14 +402,6 @@ export class QueryContainer {
    */
   text_expansion?: SingleKeyDictionary<Field, TextExpansionQuery>
   /**
-   * Supports returning text_expansion query results by sending in precomputed tokens with the query.
-   * @availability stack since=8.13.0
-   * @availability serverless
-   * @doc_id query-dsl-weighted-tokens-query
-   * @deprecated 8.15.0
-   */
-  weighted_tokens?: SingleKeyDictionary<Field, WeightedTokensQuery>
-  /**
    * Returns documents that contain terms matching a wildcard pattern.
    * @doc_id query-dsl-wildcard-query
    */
