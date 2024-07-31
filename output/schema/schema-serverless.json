@@ -4942,7 +4942,7 @@
           "stability": "stable"
         }
       },
-      "description": "Removes all scheduled events from a calendar, then deletes it.",
+      "description": "Delete a calendar.\nRemoves all scheduled events from a calendar, then deletes it.",
       "docId": "ml-delete-calendar",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar.html",
       "name": "ml.delete_calendar",
@@ -4983,7 +4983,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes scheduled events from a calendar.",
+      "description": "Delete events from a calendar.",
       "docId": "ml-delete-calendar-event",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar-event.html",
       "name": "ml.delete_calendar_event",
@@ -5019,7 +5019,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes anomaly detection jobs from a calendar.",
+      "description": "Delete anomaly jobs from a calendar.",
       "docId": "ml-delete-calendar-job",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-calendar-job.html",
       "name": "ml.delete_calendar_job",
@@ -5060,7 +5060,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a data frame analytics job.",
+      "description": "Delete a data frame analytics job.",
       "docId": "ml-delete-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/delete-dfanalytics.html",
       "name": "ml.delete_data_frame_analytics",
@@ -5101,7 +5101,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing datafeed.",
+      "description": "Delete a datafeed.",
       "docId": "ml-delete-datafeed",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ml-delete-datafeed.html",
       "name": "ml.delete_datafeed",
@@ -5142,7 +5142,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
+      "description": "Delete a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html",
       "name": "ml.delete_filter",
       "privileges": {
@@ -5222,7 +5222,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes an existing trained inference model that is currently not referenced\nby an ingest pipeline.",
+      "description": "Delete an unreferenced trained model.\nThe request deletes a trained inference model that is not referenced by an ingest pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
       "name": "ml.delete_trained_model",
       "privileges": {
@@ -5262,7 +5262,7 @@
           "stability": "stable"
         }
       },
-      "description": "Deletes a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
+      "description": "Delete a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
       "name": "ml.delete_trained_model_alias",
       "privileges": {
@@ -5305,7 +5305,7 @@
           "stability": "stable"
         }
       },
-      "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+      "description": "Estimate job model memory usage.\nMakes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html",
       "name": "ml.estimate_model_memory",
       "privileges": {
@@ -5348,7 +5348,7 @@
           "stability": "stable"
         }
       },
-      "description": "Evaluates the data frame analytics for an annotated index.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
+      "description": "Evaluate data frame analytics.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
       "name": "ml.evaluate_data_frame",
       "privileges": {
@@ -26116,7 +26116,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes all scheduled events from a calendar, then deletes it.",
+      "description": "Delete a calendar.\nRemoves all scheduled events from a calendar, then deletes it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26143,7 +26143,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar/MlDeleteCalendarRequest.ts#L23-L36"
+      "specLocation": "ml/delete_calendar/MlDeleteCalendarRequest.ts#L23-L37"
     },
     {
       "body": {
@@ -26170,7 +26170,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes scheduled events from a calendar.",
+      "description": "Delete events from a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26236,7 +26236,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes anomaly detection jobs from a calendar.",
+      "description": "Delete anomaly jobs from a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26333,7 +26333,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a data frame analytics job.",
+      "description": "Delete a data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26414,7 +26414,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing datafeed.",
+      "description": "Delete a datafeed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26481,7 +26481,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
+      "description": "Delete a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26628,7 +26628,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing trained inference model that is currently not referenced\nby an ingest pipeline.",
+      "description": "Delete an unreferenced trained model.\nThe request deletes a trained inference model that is not referenced by an ingest pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26695,7 +26695,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
+      "description": "Delete a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26821,7 +26821,7 @@
           }
         ]
       },
-      "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+      "description": "Estimate job model memory usage.\nMakes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26835,7 +26835,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ml/estimate_model_memory/MlEstimateModelMemoryRequest.ts#L26-L61"
+      "specLocation": "ml/estimate_model_memory/MlEstimateModelMemoryRequest.ts#L26-L62"
     },
     {
       "body": {
@@ -26908,7 +26908,7 @@
           }
         ]
       },
-      "description": "Evaluates the data frame analytics for an annotated index.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
+      "description": "Evaluate data frame analytics.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
       "inherits": {
         "type": {
           "name": "RequestBase",
