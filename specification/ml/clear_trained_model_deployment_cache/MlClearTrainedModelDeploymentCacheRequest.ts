@@ -23,7 +23,8 @@ import { integer } from '@_types/Numeric'
 import { Include } from '@ml/_types/Include'
 
 /**
- * Clears a trained model deployment cache on all nodes where the trained model is assigned.
+ * Clear trained model deployment cache.
+ * Cache will be cleared on all nodes where the trained model is assigned.
  * A trained model deployment may have an inference cache enabled.
  * As requests are handled by each allocated node, their responses may be cached on that individual node.
  * Calling this API clears the caches without restarting the deployment.

@@ -10423,7 +10423,8 @@
         "tags": [
           "ml.delete_calendar"
         ],
-        "summary": "Removes all scheduled events from a calendar, then deletes it",
+        "summary": "Delete a calendar",
+        "description": "Removes all scheduled events from a calendar, then deletes it.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar.html"
         },
@@ -10461,7 +10462,7 @@
         "tags": [
           "ml.delete_calendar_event"
         ],
-        "summary": "Deletes scheduled events from a calendar",
+        "summary": "Delete events from a calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-event.html"
         },
@@ -10573,7 +10574,7 @@
         "tags": [
           "ml.delete_calendar_job"
         ],
-        "summary": "Deletes anomaly detection jobs from a calendar",
+        "summary": "Delete anomaly jobs from a calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-calendar-job.html"
         },
@@ -10812,7 +10813,7 @@
         "tags": [
           "ml.delete_data_frame_analytics"
         ],
-        "summary": "Deletes a data frame analytics job",
+        "summary": "Delete a data frame analytics job",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html"
         },
@@ -11104,7 +11105,7 @@
         "tags": [
           "ml.delete_datafeed"
         ],
-        "summary": "Deletes an existing datafeed",
+        "summary": "Delete a datafeed",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html"
         },
@@ -11259,7 +11260,7 @@
         "tags": [
           "ml.delete_filter"
         ],
-        "summary": "Deletes a filter",
+        "summary": "Delete a filter",
         "description": "If an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html"
@@ -11733,8 +11734,8 @@
         "tags": [
           "ml.delete_trained_model"
         ],
-        "summary": "Deletes an existing trained inference model that is currently not referenced\n",
-        "description": "by an ingest pipeline.",
+        "summary": "Delete an unreferenced trained model",
+        "description": "The request deletes a trained inference model that is not referenced by an ingest pipeline.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html"
         },
@@ -11840,7 +11841,7 @@
         "tags": [
           "ml.delete_trained_model_alias"
         ],
-        "summary": "Deletes a trained model alias",
+        "summary": "Delete a trained model alias",
         "description": "This API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html"
@@ -11890,8 +11891,8 @@
         "tags": [
           "ml.estimate_model_memory"
         ],
-        "summary": "Makes an estimation of the memory usage for an anomaly detection job model",
-        "description": "It is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
+        "summary": "Estimate job model memory usage",
+        "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html"
         },
@@ -11953,7 +11954,7 @@
         "tags": [
           "ml.evaluate_data_frame"
         ],
-        "summary": "Evaluates the data frame analytics for an annotated index",
+        "summary": "Evaluate data frame analytics",
         "description": "The API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html"

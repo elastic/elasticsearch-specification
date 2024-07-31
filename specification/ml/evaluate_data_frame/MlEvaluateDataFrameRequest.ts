@@ -23,7 +23,7 @@ import { IndexName } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
- * Evaluates the data frame analytics for an annotated index.
+ * Evaluate data frame analytics.
  * The API packages together commonly used evaluation metrics for various types
  * of machine learning features. This has been designed for use on indexes
  * created by data frame analytics. Evaluation requires both a ground truth

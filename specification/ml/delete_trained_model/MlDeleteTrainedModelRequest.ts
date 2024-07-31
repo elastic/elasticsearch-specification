@@ -21,8 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an existing trained inference model that is currently not referenced
- * by an ingest pipeline.
+ * Delete an unreferenced trained model.
+ * The request deletes a trained inference model that is not referenced by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
