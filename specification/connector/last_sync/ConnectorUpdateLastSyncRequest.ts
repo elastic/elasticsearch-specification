@@ -26,7 +26,7 @@ import { SyncStatus } from '../_types/Connector'
 /**
  * Updates last sync stats in the connector document
  * @rest_spec_name connector.last_sync
- * @availability stack since=8.12.0 stability=experimental
+ * @availability stack since=8.12.0 stability=experimental visibility=private
  * @availability serverless stability=experimental visibility=private
  * @doc_id connector-last-sync
  */
