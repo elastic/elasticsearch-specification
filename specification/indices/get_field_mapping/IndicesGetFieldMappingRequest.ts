@@ -21,10 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
+ * Get mapping definitions.
  * Retrieves mapping definitions for one or more fields.
  * For data streams, the API retrieves field mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_field_mapping
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

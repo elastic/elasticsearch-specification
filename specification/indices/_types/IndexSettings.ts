@@ -68,6 +68,8 @@ export class RetentionLease {
 
 /**
  * @doc_id index-modules-settings
+ *
+ * @behavior_meta AdditionalProperties fieldname=other_settings description="Additional settings not covered in this type."
  */
 export class IndexSettings
   implements AdditionalProperties<string, UserDefinedValue>
@@ -275,7 +277,7 @@ export class IndexSettingsLifecycle {
   /**
    * The name of the policy to use to manage the index. For information about how Elasticsearch applies policy changes, see Policy updates.
    */
-  name: Name
+  name?: Name
   /**
    * Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.
    * You can explicitly set it to skip rollover.
@@ -428,7 +430,16 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
-  limit?: integer
+  limit?: long
+  /**
+   * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
+   * to false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail
+   * with the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.
+   * Instead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.
+   * The fields that were not added to the mapping will be added to the _ignored field.
+   * @server_default false
+   */
+  ignore_dynamic_beyond_limit?: boolean
 }
 
 export class MappingLimitSettingsDepth {
@@ -437,7 +448,7 @@ export class MappingLimitSettingsDepth {
    * at the root object level, then the depth is 1. If there is one object mapping, then the depth is 2, etc.
    * @server_default 20
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsNestedFields {
@@ -447,7 +458,7 @@ export class MappingLimitSettingsNestedFields {
    * setting limits the number of unique nested types per index.
    * @server_default 50
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsNestedObjects {
@@ -456,7 +467,7 @@ export class MappingLimitSettingsNestedObjects {
    * to prevent out of memory errors when a document contains too many nested objects.
    * @server_default 10000
    */
-  limit?: integer
+  limit?: long
 }
 
 export class MappingLimitSettingsFieldNameLength {
@@ -473,7 +484,7 @@ export class MappingLimitSettingsDimensionFields {
    * [preview] This functionality is in technical preview and may be changed or removed in a future release.
    * Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
    */
-  limit?: integer
+  limit?: long
 }
 
 export class SlowlogSettings {
@@ -513,8 +524,6 @@ export enum StorageType {
   /**
    * Default file system implementation. This will pick the best implementation depending on the operating environment, which
    * is currently hybridfs on all supported systems but is subject to change.
-   *
-   * @aliases ''
    */
   fs,
   /**

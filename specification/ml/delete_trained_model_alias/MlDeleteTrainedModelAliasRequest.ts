@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 
 /**
- * Deletes a trained model alias.
+ * Delete a trained model alias.
  * This API deletes an existing model alias that refers to a trained model. If
  * the model alias is missing or refers to a model other than the one identified
  * by the `model_id`, this API returns an error.

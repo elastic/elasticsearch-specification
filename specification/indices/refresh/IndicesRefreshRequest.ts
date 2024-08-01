@@ -21,10 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
+ * Refresh an index.
  * A refresh makes recent operations performed on one or more indices available for search.
  * For data streams, the API runs the refresh operation on the stream’s backing indices.
  * @rest_spec_name indices.refresh
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

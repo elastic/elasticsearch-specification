@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { float, integer } from '@_types/Numeric'
 
 export class DenseVectorIndexOptions {
   type: string
-  m: integer
-  ef_construction: integer
+  m?: integer
+  ef_construction?: integer
+  confidence_interval?: float
 }

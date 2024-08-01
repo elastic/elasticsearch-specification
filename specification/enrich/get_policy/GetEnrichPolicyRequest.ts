@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Get an enrich policy.
  * Returns information about an enrich policy.
  * @rest_spec_name enrich.get_policy
  * @availability stack since=7.5.0 stability=stable

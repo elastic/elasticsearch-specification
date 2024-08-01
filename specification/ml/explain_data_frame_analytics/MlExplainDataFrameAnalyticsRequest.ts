@@ -28,7 +28,7 @@ import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Explains a data frame analytics config.
+ * Explain data frame analytics config.
  * This API provides explanations for a data frame analytics config that either
  * exists already or one that has not been created yet. The following
  * explanations are provided:

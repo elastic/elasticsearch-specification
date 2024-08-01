@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Reset a transform.
  * Resets a transform.
  * Before you can reset it, you must stop it; alternatively, use the `force` query parameter.
  * If the destination index was created by the transform, it is deleted.

@@ -36,7 +36,7 @@ export class Operation {
   /**
    * The ID of the document.
    */
-  _id: Id
+  _id?: Id
   /**
    * The index of the document.
    */
@@ -94,7 +94,7 @@ export class Operation {
 }
 
 export class TermVectorsResult {
-  _id: Id
+  _id?: Id
   _index: IndexName
   _version?: VersionNumber
   took?: long

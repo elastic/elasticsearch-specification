@@ -23,9 +23,10 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create or update an alias.
  * Adds a data stream or index to an alias.
  * @rest_spec_name indices.put_alias
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

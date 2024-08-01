@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use anyhow::bail;
 use indexmap::IndexMap;
@@ -26,22 +26,43 @@ use crate::*;
 struct Ctx {
     new_types: IndexMap<TypeName, TypeDefinition>,
     types_seen: std::collections::HashSet<TypeName>,
+    config: ExpandConfig,
 }
 
 /// Generic parameters of a type
 type GenericParams = Vec<TypeName>;
-/// Generic arguments for an instanciated generic type
+/// Generic arguments for an instantiated generic type
 type GenericArgs = Vec<ValueOf>;
 /// Mapping from generic arguments to values
 type GenericMapping = HashMap<TypeName, ValueOf>;
 
-/// Expand all generics by creating new concrete types for every instanciation of a generic type.
+#[derive(Clone, Debug)]
+pub struct ExpandConfig {
+    /// Generic types that will be inlined by replacing them with their definition, propagating generic arguments.
+    pub unwrap: HashSet<TypeName>,
+    // Generic types that will be unwrapped by replacing them with their (single) generic parameter.
+    pub inline: HashSet<TypeName>,
+}
+
+impl Default for ExpandConfig {
+    fn default() -> Self {
+        ExpandConfig {
+            unwrap: Default::default(),
+            inline: HashSet::from([builtins::WITH_NULL_VALUE])
+        }
+    }
+}
+
+/// Expand all generics by creating new concrete types for every instantiation of a generic type.
 ///
 /// The resulting model has no generics anymore. Top-level generic parameters (e.g. SearchRequest's TDocument) are
 /// replaced by user_defined_data.
-pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
+pub fn expand(model: IndexedModel, config: ExpandConfig) -> anyhow::Result<IndexedModel> {
     let mut model = model;
-    let mut ctx = Ctx::default();
+    let mut ctx = Ctx {
+        config,
+        ..Ctx::default()
+    };
 
     for endpoint in &model.endpoints {
         for name in [&endpoint.request, &endpoint.response].into_iter().flatten() {
@@ -317,6 +338,14 @@ pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
                     return Ok(p.clone());
                 }
 
+                // Inline or unwrap if required by the config
+                if ctx.config.inline.contains(&inst.typ) {
+                    return inline_generic_type(inst, mappings, model, ctx);
+                }
+                if ctx.config.unwrap.contains(&inst.typ) {
+                    return unwrap_generic_type(inst, mappings, model, ctx);
+                }
+
                 // Expand generic parameters, if any
                 let args = inst
                     .generics
@@ -343,6 +372,51 @@ pub fn expand_generics(model: IndexedModel) -> anyhow::Result<IndexedModel> {
             ValueOf::UserDefinedValue(_) => Ok(value.clone()),
 
             ValueOf::LiteralValue(_) => Ok(value.clone()),
+        }
+    }
+
+    /// Inlines a value of a generic type by replacing it with its definition, propagating
+    /// generic arguments.
+    fn inline_generic_type(
+        value: &InstanceOf,
+        _mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<ValueOf> {
+
+        // It has to be an alias (e.g. WithNullValue)
+        if let TypeDefinition::TypeAlias(inline_def) = model.get_type(&value.typ)? {
+            // Create mappings to resolve types in the inlined type's definition
+            let mut inline_mappings = GenericMapping::new();
+            for (source, dest) in inline_def.generics.iter().zip(value.generics.iter()) {
+                inline_mappings.insert(source.clone(), dest.clone());
+            }
+            // and expand the inlined type's alias definition
+            let result = expand_valueof(&inline_def.typ, &inline_mappings, model, ctx)?;
+            return Ok(result);
+        } else {
+            bail!("Expecting inlined type {} to be an alias", &value.typ);
+        }
+    }
+
+    /// Unwraps a value of a generic type by replacing it with its generic parameter
+    fn unwrap_generic_type(
+        value: &InstanceOf,
+        mappings: &GenericMapping,
+        model: &IndexedModel,
+        ctx: &mut Ctx,
+    ) -> anyhow::Result<ValueOf> {
+
+        // It has to be an alias (e.g. Stringified)
+        if let TypeDefinition::TypeAlias(_unwrap_def) = model.get_type(&value.typ)? {
+            // Expand the inlined type's generic argument (there must be exactly one)
+            if value.generics.len() != 1 {
+                bail!("Expecting unwrapped type {} to have exactly one generic parameter", &value.typ);
+            }
+            let result = expand_valueof(&value.generics[0], mappings, model, ctx)?;
+            return Ok(result);
+        } else {
+            bail!("Expecting unwrapped type {} to be an alias", &value.typ);
         }
     }
 
@@ -422,12 +496,12 @@ mod tests {
 
         let schema_json = std::fs::read_to_string("../../output/schema/schema.json")?;
         let model: IndexedModel = serde_json::from_str(&schema_json)?;
-        let model = expand_generics(model)?;
+        let model = expand(model, ExpandConfig::default())?;
 
         let json_no_generics = serde_json::to_string_pretty(&model)?;
 
         if canonical_json != json_no_generics {
-            std::fs::create_dir("test-output")?;
+            std::fs::create_dir_all("test-output")?;
             let mut out = std::fs::File::create("test-output/schema-no-generics-canonical.json")?;
             out.write_all(canonical_json.as_bytes())?;
 

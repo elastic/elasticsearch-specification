@@ -22,11 +22,12 @@ import { Bytes, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Get trained models.
  * Returns configuration and usage information about inference trained models.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the get trained models statistics API.
+ * application consumption, use the /_ml/trained_models endpoints.
  *
  * @rest_spec_name cat.ml_trained_models
  * @availability stack since=7.7.0 stability=stable

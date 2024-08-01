@@ -98,6 +98,9 @@ export class TermSuggestOption {
   collate_match?: boolean
 }
 
+/**
+ * @behavior_meta AdditionalProperties fieldname=suggesters description="The named suggesters"
+ */
 export class Suggester implements AdditionalProperties<string, FieldSuggester> {
   /** Global suggest text, to avoid repetition when the same text is used in several suggesters */
   text?: string

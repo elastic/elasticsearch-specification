@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a filter.
+ * Delete a filter.
  * If an anomaly detection job references the filter, you cannot delete the
  * filter. You must update or delete the job before you can delete the filter.
  * @rest_spec_name ml.delete_filter

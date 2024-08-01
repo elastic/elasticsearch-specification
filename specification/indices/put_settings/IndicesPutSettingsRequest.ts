@@ -23,10 +23,11 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Changes a dynamic index setting in real time. For data streams, index setting
+ * Update index settings.
+ * Changes dynamic index settings in real time. For data streams, index setting
  * changes are applied to all backing indices by default.
  * @rest_spec_name indices.put_settings
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  */

@@ -29,8 +29,10 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
+ * Get a document by its ID.
+ * Retrieves the document with the specified ID from an index.
  * @rest_spec_name get
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
@@ -41,6 +43,13 @@ export interface Request extends RequestBase {
     index: IndexName
   }
   query_parameters: {
+    /**
+     * Should this request force synthetic _source?
+     * Use this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.
+     * Fetches with this enabled will be slower the enabling synthetic source natively in the index.
+     * @availability stack since=8.4.0 visibility=feature_flag feature_flag=es.index_mode_feature_flag_registered
+     */
+    force_synthetic_source?: boolean
     /**
      * Specifies the node or shard the operation should be performed on. Random by default.
      */

@@ -22,9 +22,10 @@ import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get index templates.
  * Retrieves information about one or more index templates.
  * @rest_spec_name indices.get_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  */
 export interface Request extends RequestBase {
   path_parts: {

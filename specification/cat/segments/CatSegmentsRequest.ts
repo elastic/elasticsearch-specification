@@ -25,7 +25,7 @@ import { Bytes, Indices } from '@_types/common'
  * For data streams, the API returns information about the backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.
  * @rest_spec_name cat.segments
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-segments
  * @cluster_privileges monitor

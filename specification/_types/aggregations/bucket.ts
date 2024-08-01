@@ -30,7 +30,7 @@ import {
   GeoLocation,
   GeoBounds
 } from '@_types/Geo'
-import { integer, float, long, double } from '@_types/Numeric'
+import { integer, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import {
@@ -40,11 +40,9 @@ import {
   TimeZone,
   DurationLarge
 } from '@_types/Time'
-import { Buckets, TermsAggregateBase } from './Aggregate'
+import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
-import { OverloadOf } from '@spec_utils/behaviors'
-import { Term } from '@global/termvectors/types'
 import { ValueType } from '@_types/aggregations/metric'
 
 /**
@@ -60,6 +58,10 @@ export class AdjacencyMatrixAggregation extends BucketAggregationBase {
    * At least one filter is required.
    */
   filters?: Dictionary<string, QueryContainer>
+  /**
+   * Separator used to concatenate filter names. Defaults to &.
+   */
+  separator?: string
 }
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
@@ -261,7 +263,7 @@ export enum CalendarInterval {
   month,
   /** @aliases 1q */
   quarter,
-  /** @aliases 1Y */
+  /** @aliases 1y */
   year
 }
 
@@ -490,11 +492,11 @@ export class ExtendedBounds<T> {
   /**
    * Maximum value for the bound.
    */
-  max: T
+  max?: T
   /**
    * Minimum value for the bound.
    */
-  min: T
+  min?: T
 }
 
 export class HistogramAggregation extends BucketAggregationBase {
@@ -673,7 +675,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double | string | null
+  from?: double
   /**
    * Custom key to return the range with.
    */
@@ -681,7 +683,7 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double | string | null
+  to?: double
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
@@ -953,6 +955,11 @@ export class TermsAggregation extends BucketAggregationBase {
   order?: AggregateOrder
   script?: Script
   /**
+   * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.
+   * Terms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.
+   */
+  shard_min_doc_count?: long
+  /**
    * The number of candidate terms produced by each shard.
    * By default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.
    */
@@ -1032,6 +1039,7 @@ export class VariableWidthHistogramAggregation {
    * Defaults to `min(10 * shard_size, 50000)`.
    */
   initial_buffer?: integer
+  script?: Script
 }
 
 /**

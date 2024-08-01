@@ -30,10 +30,11 @@ import { OperationContainer, UpdateAction } from './types'
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
+ * Bulk index or delete documents.
  * Performs multiple indexing or delete operations in a single API call.
  * This reduces overhead and can greatly increase indexing speed.
  * @rest_spec_name bulk
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-bulk
  *

@@ -21,9 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
 
 /**
- * Checks if an alias exists.
+ * Check aliases.
+ * Checks if one or more data stream or index aliases exist.
  * @rest_spec_name indices.exists_alias
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

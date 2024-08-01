@@ -23,7 +23,7 @@ import { Ids, ScrollIds } from '@_types/common'
 /**
  * Clears the search context and results for a scrolling search.
  * @rest_spec_name clear_scroll
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id clear-scroll-api
  */

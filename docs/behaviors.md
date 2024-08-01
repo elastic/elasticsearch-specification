@@ -15,12 +15,18 @@ This puts it into a bin that needs a client specific solution.
 We therefore document the requirement to behave like a dictionary for unknown properties with this interface.
 
 ```ts
+/**
+ * @behavior_meta AdditionalProperties fieldname=sub_aggregations
+ */
 class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
 ```
 
 There are also many places where we expect only one runtime-defined property, such as in field-related queries. To capture that uniqueness constraint, we can use the `AdditionalProperty` (singular) behavior.
 
 ```ts
+/**
+ * @behavior_meta AdditionalProperty key=field value=bounding_box
+ */
 class GeoBoundingBoxQuery extends QueryBase
   implements AdditionalProperty<Field, BoundingBox>
 ```

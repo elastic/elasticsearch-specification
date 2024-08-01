@@ -2,40 +2,34 @@ name: Validate APIs
 
 on:
   pull_request:
-    paths:
-      - 'specification/**'
-      - '!specification/_types/**'
-      - '!specification/_spec_utils/**'
-      - '!specification/_doc_ids/**'
-      - '!specification/_json_spec/**'
-
     branches:
       - main
 
 jobs:
   validate-pr:
     name: build
-    if: github.repository_owner == 'elastic' # this action will fail if executed from a fork
     runs-on: ubuntu-latest
-    env:
-      STACK_VERSION: 8.13-SNAPSHOT
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check pull request was opened from branch
+        if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
+        run: echo "Validation is not supported from forks"; exit 1
+        
+      - uses: actions/checkout@v4
         with:
           path: ./elasticsearch-specification
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
           token: ${{ secrets.PAT }}
           ref: main
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 20
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -50,11 +44,21 @@ jobs:
           npm install --prefix .github/validate-pr
           make setup
 
+      - name: Generate specification and check generated types
+        working-directory: ./elasticsearch-specification
+        run: |
+          make contrib
+
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
-          node scripts/upload-recording/download.js --branch latest
-          node scripts/clone-elasticsearch/index.js --version ${{ env.STACK_VERSION }}
+          if [[ -n "${GITHUB_BASE_REF+x}" ]]; then
+            branch=$GITHUB_BASE_REF
+          else
+            branch=$GITHUB_REF_NAME
+          fi
+          node scripts/upload-recording/download.js --branch $branch
+          node scripts/clone-elasticsearch/index.js --branch $branch
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
@@ -69,4 +73,4 @@ jobs:
 
       - name: Run validation
         working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }} --version ${{ env.STACK_VERSION }}
+        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}

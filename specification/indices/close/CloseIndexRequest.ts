@@ -25,7 +25,7 @@ import { Duration } from '@_types/Time'
  * Closes an index.
  * @doc_id indices-close
  * @rest_spec_name indices.close
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  */
 export interface Request extends RequestBase {

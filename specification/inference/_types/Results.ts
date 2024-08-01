@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { float, byte } from '@_types/Numeric'
+import { float, byte, integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -70,10 +71,11 @@ export class CompletionResult {
  * text: Optional, the text of the document, if requested
  */
 export class RankedDocument {
-  id: string
-  score: string
+  index: integer
+  score: float
   text?: string
 }
+
 /**
  * InferenceResult is an aggregation of mutually exclusive variants
  * @variants container
@@ -84,4 +86,11 @@ export class InferenceResult {
   sparse_embedding?: Array<SparseEmbeddingResult>
   completion?: Array<CompletionResult>
   rerank?: Array<RankedDocument>
+}
+
+/**
+ * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
+ */
+export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
+  pipelines: Array<string>
 }

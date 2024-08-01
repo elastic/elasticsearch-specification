@@ -418,7 +418,7 @@ An annotation allows distinguishing these properties from container variants:
 
 For example:
 
-```
+```ts
 /**
  * @variants container
  */
@@ -433,6 +433,39 @@ class AggregationContainer {
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
   ...
+```
+
+#### Untagged
+
+The untagged variant is used for unions that can only be distinguished by the type of one or more fields.
+
+> [!WARNING]
+> This variant should only be used for legacy types and should otherwise be avoided as far as possible, as it leads to less optimal code generation in the client libraries.
+
+The syntax is:
+
+```ts
+/** @variants untagged */
+```
+
+Untagged variants must exactly follow a defined pattern.
+
+For example:
+
+```ts
+export class MyTypeBase<T1, T2, ...> { ... }
+
+export class MyTypeUntyped extends MyTypeBase<UserDefinedValue> {}
+export class MyTypeSpecialized1 extends MyTypeBase<int> {}
+export class MyTypeSpecialized2 extends MyTypeBase<string> {}
+export class MyTypeSpecialized3 extends MyTypeBase<bool> {}
+
+/**
+ * @codegen_names untyped, mytype1, mytypet2, mytype3 
+ * @variant untagged untyped=_types.MyTypeUntyped
+ */
+// Note: deserialization depends on value types
+export type MyType = MyTypeUntyped | MyTypeSpecialized1 | MyTypeSpecialized2 | MyTypeSpecialized3 
 ```
 
 ### Shortcut properties

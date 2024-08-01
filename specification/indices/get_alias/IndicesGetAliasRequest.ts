@@ -21,9 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
 
 /**
- * Retrieves information for one or more aliases.
+ * Get aliases.
+ * Retrieves information for one or more data stream or index aliases.
  * @rest_spec_name indices.get_alias
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {

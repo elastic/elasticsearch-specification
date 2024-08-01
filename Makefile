@@ -1,10 +1,10 @@
 SHELL := /bin/bash
 
 validate: ## Validate a given endpoint request or response
-	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version)
+	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
 
 validate-no-cache: ## Validate a given endpoint request or response without local cache
-	@node compiler/run-validations.js --api $(api) --type $(type) --stack-version $(stack-version) --no-cache
+	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch) --no-cache
 
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."
@@ -39,6 +39,7 @@ setup:	## Install dependencies for contrib target
 	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
+	@npm install @stoplight/spectral-cli
 
 clean-dep:	## Clean npm dependencies
 	@rm -rf compiler/node_modules
@@ -50,14 +51,22 @@ transform-expand-generics: ## Create a new schema with all generics expanded
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
 	@npm run transform-to-openapi --prefix compiler
 
+filter-for-serverless: ## Generate the serverless version from the compiled schema
+	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/schema/schema-serverless.json
+
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
-contrib: | generate license-check spec-format-fix transform-to-openapi ## Pre contribution target
+contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless ## Pre contribution target
 
-bump:
-	@echo ">> bumping..."
-	.ci/bump.sh
+overlay-docs: ## Apply overlays to OpenAPI documents
+	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.new.json"
+
+lint-docs: ## Lint the OpenAPI documents
+	@npx @stoplight/spectral-cli lint output/openapi/*.json --ruleset .spectral.yaml
+
+lint-docs-serverless: ## Lint only the serverless OpenAPI document
+	@npx @stoplight/spectral-cli lint output/openapi/elasticsearch-serverless-openapi.json --ruleset .spectral.yaml
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)

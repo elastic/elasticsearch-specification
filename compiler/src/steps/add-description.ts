@@ -22,9 +22,8 @@ import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 
 /**
- * Adds the `description` field to every path and query property
- * from the rest-api-spec. If a description for a property
- * does not exists, the `description` key will not be added.
+ * Adds the description from the rest-api-spec to every endpoint, path and query property
+ * if not already present (i.e. missing in the TypeScript definition)
  */
 export default async function addDescription (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
@@ -58,6 +57,10 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
     if (spec.documentation.description != null) {
       requestDefinition.description = requestDefinition.description ?? spec.documentation.description
     }
+
+    // An API endpoint is defined by an endpoint object (paths and http methods) and a request
+    // type (parameters and structure).
+    endpoint.description = requestDefinition.description ?? spec.documentation.description
   }
 
   return model

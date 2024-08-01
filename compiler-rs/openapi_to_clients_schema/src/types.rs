@@ -323,7 +323,7 @@ fn generate_schema_kind_one_of(
     let mut variants: Option<TypeAliasVariants> = None;
 
     // TODO: do we want to allow untagged unions (those that are disambiguated by inspecting property names)?
-
+    
     if let Some(discriminator) = discriminator {
         variants = Some(TypeAliasVariants::InternalTag(InternalTag {
             default_tag: None,
@@ -360,7 +360,7 @@ fn generate_dictionary_def(
         typ: ValueOf::InstanceOf(InstanceOf {
             typ: builtins::DICTIONARY.clone(),
             generics: vec![
-                ValueOf::instance_of(builtins::STRING.clone()),
+                ValueOf::from(builtins::STRING.clone()),
                 match value {
                     AdditionalProperties::Any(_) => (&builtins::USER_DEFINED).into(),
 

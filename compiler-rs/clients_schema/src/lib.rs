@@ -50,7 +50,6 @@ pub trait Documented {
     fn doc_url(&self) -> Option<&str>;
     fn doc_id(&self) -> Option<&str>;
     fn description(&self) -> Option<&str>;
-    fn since(&self) -> Option<&str>;
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -73,6 +72,17 @@ impl TypeName {
     }
 }
 
+/// Creates a constant `TypeName` from static strings
+#[macro_export]
+macro_rules! type_name {
+    ($namespace:expr,$name:expr) => {
+        TypeName {
+            namespace: arcstr::literal!($namespace),
+            name: arcstr::literal!($name),
+        }
+    };
+}
+
 impl Display for TypeName {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}:{}", self.namespace, self.name)
@@ -91,12 +101,6 @@ pub enum ValueOf {
     DictionaryOf(DictionaryOf),
     UserDefinedValue(UserDefinedValue),
     LiteralValue(LiteralValue),
-}
-
-impl ValueOf {
-    pub fn instance_of(name: TypeName) -> ValueOf {
-        ValueOf::InstanceOf(InstanceOf::new(name))
-    }
 }
 
 impl From<TypeName> for ValueOf {
@@ -236,7 +240,7 @@ pub struct Deprecation {
 }
 
 /// An API flavor
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, clap::ValueEnum)]
 #[serde(rename_all = "snake_case")]
 pub enum Flavor {
     Stack,
@@ -247,9 +251,9 @@ pub enum Flavor {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Availability {
-    since: Option<String>,
-    stability: Option<Stability>,
-    visibility: Option<Visibility>,
+    pub since: Option<String>,
+    pub stability: Option<Stability>,
+    pub visibility: Option<Visibility>,
 }
 
 /// The availability of an
@@ -308,9 +312,6 @@ pub struct Property {
     pub doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_default: Option<ServerDefault>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -318,9 +319,6 @@ pub struct Property {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub availability: Option<Availabilities>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<Stability>,
 
     /// If specified takes precedence over `name` when generating code. `name` is always the value
     /// to be sent over the wire
@@ -352,10 +350,6 @@ impl Documented for Property {
     fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
-
-    fn since(&self) -> Option<&str> {
-        self.since.as_deref()
-    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -375,6 +369,7 @@ pub enum ServerDefault {
 pub enum Variants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
+    Untagged(Untagged),
     Container(Container),
 }
 
@@ -397,6 +392,13 @@ pub struct InternalTag {
     /// Default value for the variant tag if it's missing
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default_tag: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Untagged {
+    #[serde(default)]
+    pub non_exhaustive: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -523,10 +525,6 @@ impl Documented for BaseType {
     fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
-
-    fn since(&self) -> Option<&str> {
-        None
-    }
 }
 
 trait WithBaseType {
@@ -544,10 +542,6 @@ impl<T: WithBaseType> Documented for T {
 
     fn description(&self) -> Option<&str> {
         self.base().description()
-    }
-
-    fn since(&self) -> Option<&str> {
-        self.base().since()
     }
 }
 
@@ -794,6 +788,7 @@ impl TypeAlias {
 pub enum TypeAliasVariants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
+    Untagged(Untagged),
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -829,20 +824,6 @@ pub struct Endpoint {
 
     pub urls: Vec<UrlTemplate>,
 
-    /// The version when this endpoint reached its current stability level.
-    /// Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<Stability>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<Visibility>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub feature_flag: Option<String>,
-
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub request_media_type: Vec<String>,
 
@@ -864,10 +845,6 @@ impl Documented for Endpoint {
 
     fn description(&self) -> Option<&str> {
         Some(self.description.as_str())
-    }
-
-    fn since(&self) -> Option<&str> {
-        self.since.as_deref()
     }
 }
 

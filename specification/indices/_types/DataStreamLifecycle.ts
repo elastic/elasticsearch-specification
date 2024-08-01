@@ -23,7 +23,7 @@ import { ByteSize } from '@_types/common'
 import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
- * Data lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
+ * Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
  */
 export class DataStreamLifecycle {
   data_retention?: Duration
@@ -31,7 +31,7 @@ export class DataStreamLifecycle {
 }
 
 /**
- * Data lifecycle with rollover can be used to display the configuration including the default rollover conditions,
+ * Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,
  * if asked.
  */
 export class DataStreamLifecycleWithRollover {

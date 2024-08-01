@@ -26,10 +26,11 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 
 /**
+ * Create an index.
  * Creates a new index.
  * @doc_id indices-create-index
  * @rest_spec_name indices.create
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges create_index, manage
  */
@@ -54,7 +55,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
     /**
-     The number of shard copies that must be active before proceeding with the operation. 
+     The number of shard copies that must be active before proceeding with the operation.
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
      */

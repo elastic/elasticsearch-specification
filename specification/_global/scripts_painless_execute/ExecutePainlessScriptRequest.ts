@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { InlineScript } from '@_types/Scripting'
+import { Script } from '@_types/Scripting'
 import { PainlessContextSetup } from './types'
 
 /**
+ * Run a script.
  * Runs a script and returns a result.
  * @rest_spec_name scripts_painless_execute
  * @availability stack since=6.3.0 stability=experimental
@@ -41,6 +42,6 @@ export interface Request extends RequestBase {
     /**
      * The Painless script to execute.
      */
-    script?: InlineScript
+    script?: Script
   }
 }
