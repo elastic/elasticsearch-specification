@@ -30,7 +30,7 @@ import { TimeUnit } from '@_types/Time'
  *
  * CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the /_ml/anomaly_detectors endpoints.
+ * application consumption, use the get anomaly detection job statistics API.
  *
  * @rest_spec_name cat.ml_jobs
  * @availability stack since=7.7.0 stability=stable
