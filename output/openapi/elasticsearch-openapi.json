@@ -81690,72 +81690,151 @@
                 "type": "number"
               }
             ]
-          },
-          "configurations": {
-            "$ref": "#/components/schemas/ilm._types:Configurations"
           }
         }
       },
       "ilm._types:Actions": {
-        "type": "object"
-      },
-      "ilm._types:Configurations": {
         "type": "object",
         "properties": {
-          "rollover": {
-            "$ref": "#/components/schemas/indices.rollover:RolloverConditions"
+          "allocate": {
+            "$ref": "#/components/schemas/ilm._types:AllocateAction"
+          },
+          "delete": {
+            "$ref": "#/components/schemas/ilm._types:DeleteAction"
+          },
+          "downsample": {
+            "$ref": "#/components/schemas/ilm._types:DownsampleAction"
           },
           "forcemerge": {
-            "$ref": "#/components/schemas/ilm._types:ForceMergeConfiguration"
+            "$ref": "#/components/schemas/ilm._types:ForceMergeAction"
+          },
+          "migrate": {
+            "$ref": "#/components/schemas/ilm._types:MigrateAction"
+          },
+          "readonly": {
+            "$ref": "#/components/schemas/_types:EmptyObject"
+          },
+          "rollover": {
+            "$ref": "#/components/schemas/ilm._types:RolloverAction"
+          },
+          "set_priority": {
+            "$ref": "#/components/schemas/ilm._types:SetPriorityAction"
+          },
+          "searchable_snapshot": {
+            "$ref": "#/components/schemas/ilm._types:SearchableSnapshotAction"
           },
           "shrink": {
-            "$ref": "#/components/schemas/ilm._types:ShrinkConfiguration"
+            "$ref": "#/components/schemas/ilm._types:ShrinkAction"
+          },
+          "unfollow": {
+            "$ref": "#/components/schemas/_types:EmptyObject"
+          },
+          "wait_for_snapshot": {
+            "$ref": "#/components/schemas/ilm._types:WaitForSnapshotAction"
           }
         }
       },
-      "indices.rollover:RolloverConditions": {
+      "ilm._types:AllocateAction": {
         "type": "object",
         "properties": {
-          "min_age": {
+          "number_of_replicas": {
+            "type": "number"
+          },
+          "total_shards_per_node": {
+            "type": "number"
+          },
+          "include": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "exclude": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "require": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ilm._types:DeleteAction": {
+        "type": "object",
+        "properties": {
+          "delete_searchable_snapshot": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ilm._types:DownsampleAction": {
+        "type": "object",
+        "properties": {
+          "fixed_interval": {
+            "$ref": "#/components/schemas/_types:DurationLarge"
+          },
+          "wait_timeout": {
             "$ref": "#/components/schemas/_types:Duration"
+          }
+        },
+        "required": [
+          "fixed_interval"
+        ]
+      },
+      "ilm._types:ForceMergeAction": {
+        "type": "object",
+        "properties": {
+          "max_num_segments": {
+            "type": "number"
+          },
+          "index_codec": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "max_num_segments"
+        ]
+      },
+      "ilm._types:MigrateAction": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ilm._types:RolloverAction": {
+        "type": "object",
+        "properties": {
+          "max_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
           },
           "max_age": {
             "$ref": "#/components/schemas/_types:Duration"
           },
-          "max_age_millis": {
-            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
-          },
-          "min_docs": {
-            "type": "number"
-          },
           "max_docs": {
             "type": "number"
           },
-          "max_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_size_bytes": {
+          "max_primary_shard_docs": {
             "type": "number"
           },
           "min_size": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
-          "min_size_bytes": {
-            "type": "number"
-          },
-          "max_primary_shard_size": {
-            "$ref": "#/components/schemas/_types:ByteSize"
-          },
-          "max_primary_shard_size_bytes": {
-            "type": "number"
-          },
           "min_primary_shard_size": {
             "$ref": "#/components/schemas/_types:ByteSize"
           },
-          "min_primary_shard_size_bytes": {
-            "type": "number"
+          "min_age": {
+            "$ref": "#/components/schemas/_types:Duration"
           },
-          "max_primary_shard_docs": {
+          "min_docs": {
             "type": "number"
           },
           "min_primary_shard_docs": {
@@ -81763,26 +81842,51 @@
           }
         }
       },
-      "ilm._types:ForceMergeConfiguration": {
+      "ilm._types:SetPriorityAction": {
         "type": "object",
         "properties": {
-          "max_num_segments": {
+          "priority": {
             "type": "number"
+          }
+        }
+      },
+      "ilm._types:SearchableSnapshotAction": {
+        "type": "object",
+        "properties": {
+          "snapshot_repository": {
+            "type": "string"
+          },
+          "force_merge_index": {
+            "type": "boolean"
           }
         },
         "required": [
-          "max_num_segments"
+          "snapshot_repository"
         ]
       },
-      "ilm._types:ShrinkConfiguration": {
+      "ilm._types:ShrinkAction": {
         "type": "object",
         "properties": {
           "number_of_shards": {
             "type": "number"
+          },
+          "max_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "allow_write_after_shrink": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ilm._types:WaitForSnapshotAction": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "type": "string"
           }
         },
         "required": [
-          "number_of_shards"
+          "policy"
         ]
       },
       "ilm.move_to_step:StepKey": {
@@ -83034,6 +83138,56 @@
           "timestamp_field",
           "backing_indices"
         ]
+      },
+      "indices.rollover:RolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_age": {
+            "$ref": "#/components/schemas/_types:Duration"
+          },
+          "max_age_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "max_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_size_bytes": {
+            "type": "number"
+          },
+          "min_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_size_bytes": {
+            "type": "number"
+          },
+          "max_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "max_primary_shard_size_bytes": {
+            "type": "number"
+          },
+          "min_primary_shard_size": {
+            "$ref": "#/components/schemas/_types:ByteSize"
+          },
+          "min_primary_shard_size_bytes": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          }
+        }
       },
       "indices.segments:IndexSegment": {
         "type": "object",

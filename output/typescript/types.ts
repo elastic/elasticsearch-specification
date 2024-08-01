@@ -10149,22 +10149,50 @@ export interface GraphExploreResponse {
   vertices: GraphVertex[]
 }
 
-export type IlmActions = any
-
-export interface IlmConfigurations {
-  rollover?: IndicesRolloverRolloverConditions
-  forcemerge?: IlmForceMergeConfiguration
-  shrink?: IlmShrinkConfiguration
+export interface IlmActions {
+  allocate?: IlmAllocateAction
+  delete?: IlmDeleteAction
+  downsample?: IlmDownsampleAction
+  forcemerge?: IlmForceMergeAction
+  migrate?: IlmMigrateAction
+  readonly?: EmptyObject
+  rollover?: IlmRolloverAction
+  set_priority?: IlmSetPriorityAction
+  searchable_snapshot?: IlmSearchableSnapshotAction
+  shrink?: IlmShrinkAction
+  unfollow?: EmptyObject
+  wait_for_snapshot?: IlmWaitForSnapshotAction
 }
 
-export interface IlmForceMergeConfiguration {
+export interface IlmAllocateAction {
+  number_of_replicas?: integer
+  total_shards_per_node?: integer
+  include?: Record<string, string>
+  exclude?: Record<string, string>
+  require?: Record<string, string>
+}
+
+export interface IlmDeleteAction {
+  delete_searchable_snapshot?: boolean
+}
+
+export interface IlmDownsampleAction {
+  fixed_interval: DurationLarge
+  wait_timeout?: Duration
+}
+
+export interface IlmForceMergeAction {
   max_num_segments: integer
+  index_codec?: string
+}
+
+export interface IlmMigrateAction {
+  enabled?: boolean
 }
 
 export interface IlmPhase {
   actions?: IlmActions
   min_age?: Duration | long
-  configurations?: IlmConfigurations
 }
 
 export interface IlmPhases {
@@ -10180,8 +10208,36 @@ export interface IlmPolicy {
   _meta?: Metadata
 }
 
-export interface IlmShrinkConfiguration {
-  number_of_shards: integer
+export interface IlmRolloverAction {
+  max_size?: ByteSize
+  max_primary_shard_size?: ByteSize
+  max_age?: Duration
+  max_docs?: long
+  max_primary_shard_docs?: long
+  min_size?: ByteSize
+  min_primary_shard_size?: ByteSize
+  min_age?: Duration
+  min_docs?: long
+  min_primary_shard_docs?: long
+}
+
+export interface IlmSearchableSnapshotAction {
+  snapshot_repository: string
+  force_merge_index?: boolean
+}
+
+export interface IlmSetPriorityAction {
+  priority?: integer
+}
+
+export interface IlmShrinkAction {
+  number_of_shards?: integer
+  max_primary_shard_size?: ByteSize
+  allow_write_after_shrink?: boolean
+}
+
+export interface IlmWaitForSnapshotAction {
+  policy: string
 }
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
