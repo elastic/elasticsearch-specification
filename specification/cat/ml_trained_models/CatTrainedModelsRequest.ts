@@ -27,7 +27,7 @@ import { integer } from '@_types/Numeric'
  *
  * CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
- * application consumption, use the /_ml/trained_models endpoints.
+ * application consumption, use the get trained models statistics API.
  *
  * @rest_spec_name cat.ml_trained_models
  * @availability stack since=7.7.0 stability=stable
