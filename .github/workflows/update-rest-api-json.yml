@@ -3,7 +3,7 @@ name: Update rest-api-spec
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */3 * * *'  # At minute 0 past every 3rd hour.
+    - cron: '0 4 * * *'  # At 04:00.
 
 jobs:
   update-rest-api:
