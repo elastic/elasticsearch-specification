@@ -24,7 +24,7 @@ import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
 /**
- * Retrieves anomaly detection job results for one or more buckets.
+ * Get anomaly detection job results.
  * The API presents a chronological view of the records, grouped by bucket.
  * @rest_spec_name ml.get_buckets
  * @availability stack since=5.4.0 stability=stable

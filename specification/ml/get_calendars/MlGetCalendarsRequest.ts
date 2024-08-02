@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves configuration information for calendars.
+ * Get config info for calendars.
  * @rest_spec_name ml.get_calendars
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

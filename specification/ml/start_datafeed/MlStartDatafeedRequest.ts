@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration, DateTime } from '@_types/Time'
 
 /**
- * Starts one or more datafeeds.
+ * Start one or more datafeeds.
  *
  * A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped
  * multiple times throughout its lifecycle.

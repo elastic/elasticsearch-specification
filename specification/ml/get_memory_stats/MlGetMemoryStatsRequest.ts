@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get info on machine learning memory usage.
  * Get information about how machine learning jobs and trained models are using memory,
  * on each node, both within the JVM heap, and natively, outside of the JVM.
  * @rest_spec_name ml.get_memory_stats

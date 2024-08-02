@@ -27,7 +27,8 @@ import {
 } from '../_types/TrainedModel'
 
 /**
- * Starts a trained model deployment, which allocates the model to every machine learning node.
+ * Start a trained model deployment. 
+ * It allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public

@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
- * Retrieves configuration information for anomaly detection jobs.
+ * Get config info for anomaly detection jobs.
  * You can get information for multiple anomaly detection jobs in a single API
  * request by using a group name, a comma-separated list of jobs, or a wildcard
  * expression. You can get information for all anomaly detection jobs by using

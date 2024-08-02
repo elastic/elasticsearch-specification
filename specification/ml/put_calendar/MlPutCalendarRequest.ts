@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Creates a calendar.
+ * Create a calendar.
  * @rest_spec_name ml.put_calendar
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

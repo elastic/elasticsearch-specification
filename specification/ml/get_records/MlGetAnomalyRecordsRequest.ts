@@ -24,7 +24,7 @@ import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
 /**
- * Retrieves anomaly records for an anomaly detection job.
+ * Get anomaly records for an anomaly detection job.
  * Records contain the detailed analytical results. They describe the anomalous
  * activity that has been identified in the input data based on the detector
  * configuration.

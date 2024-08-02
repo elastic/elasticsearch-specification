@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
- * Adds scheduled events to a calendar.
+ * Add scheduled events to calendar.
  * @rest_spec_name ml.post_calendar_events
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
