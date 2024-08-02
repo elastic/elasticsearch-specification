@@ -24,7 +24,7 @@ import { Duration, DateTime } from '@_types/Time'
 
 /**
  * Get overall bucket results.
- * 
+ *
  * Retrievs overall bucket results that summarize the bucket results of
  * multiple anomaly detection jobs.
  *
