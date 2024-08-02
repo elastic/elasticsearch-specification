@@ -1,0 +1,6 @@
+{
+  "summary": "A successful response when deleting a trained model alias.",
+  "value": {
+    "acknowledged": true
+  }
+}
