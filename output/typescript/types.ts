@@ -14116,7 +14116,7 @@ export interface MlTrainedModelInferenceStats {
   failure_count: integer
   inference_count: integer
   missing_all_fields_count: integer
-  timestamp: long
+  timestamp: EpochTime<UnitMillis>
 }
 
 export interface MlTrainedModelLocation {

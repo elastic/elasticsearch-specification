@@ -120,7 +120,7 @@ export class TrainedModelInferenceStats {
   /** The number of inference calls where all the training features for the model were missing. */
   missing_all_fields_count: integer
   /** The time when the statistics were last updated. */
-  timestamp: long
+  timestamp: EpochTime<UnitMillis>
 }
 
 export class TrainedModelSizeStats {
