@@ -10135,6 +10135,7 @@ export interface IlmActions {
   allocate?: IlmAllocateAction
   delete?: IlmDeleteAction
   downsample?: IlmDownsampleAction
+  freeze?: EmptyObject
   forcemerge?: IlmForceMergeAction
   migrate?: IlmMigrateAction
   readonly?: EmptyObject
