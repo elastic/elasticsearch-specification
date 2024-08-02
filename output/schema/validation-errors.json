@@ -1049,6 +1049,12 @@
         "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for '_builtins:binary'"
       ]
     },
+    "search_shards": {
+      "request": [
+        "Request: missing json spec query parameter 'master_timeout'"
+      ],
+      "response": []
+    },
     "searchable_snapshots.clear_cache": {
       "request": [
         "Request: query parameter 'pretty' does not exist in the json spec",

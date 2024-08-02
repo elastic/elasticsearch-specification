@@ -1,0 +1,6 @@
+{
+  "summary": "A successful response when the transform is deleted.",
+  "value": {
+    "acknowledged": true
+  }
+}
