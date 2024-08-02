@@ -1,0 +1,26 @@
+name: API Docs feedback
+description: Tell us about your experience with Elastic API documentation.
+title: "[Feedback]: "
+labels: ["Feedback"]
+body:
+  - type: dropdown
+    id: was-this-helpful
+    attributes:
+      label: Was this helpful?
+      options:
+        - Yes
+        - No
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: (Optional) Describe your experience with Elastic API documentation.
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve the Elastic API documentation.
