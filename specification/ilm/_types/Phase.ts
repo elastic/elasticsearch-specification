@@ -52,6 +52,11 @@ export class Actions {
    * Phases allowed: hot, warm, cold.
    */
   downsample?: DownsampleAction
+
+  /**
+   * The freeze action is a noop in 8.x
+   * @deprecated 7.0.0 */
+  freeze?: EmptyObject
   /**
    * Phases allowed: hot, warm.
    */

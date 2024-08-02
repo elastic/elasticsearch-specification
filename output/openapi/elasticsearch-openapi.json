@@ -81705,6 +81705,9 @@
           "downsample": {
             "$ref": "#/components/schemas/ilm._types:DownsampleAction"
           },
+          "freeze": {
+            "$ref": "#/components/schemas/_types:EmptyObject"
+          },
           "forcemerge": {
             "$ref": "#/components/schemas/ilm._types:ForceMergeAction"
           },
