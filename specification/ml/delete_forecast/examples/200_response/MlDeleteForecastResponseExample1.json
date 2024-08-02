@@ -1,0 +1,6 @@
+{
+  "summary": "A successful response when deleting a forecast from an anomaly detection job.",
+  "value": {
+    "acknowledged": true
+  }
+}
