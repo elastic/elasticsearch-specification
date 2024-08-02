@@ -33937,9 +33937,10 @@
           }
         },
         {
-          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)",
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
           "name": "include_named_queries_score",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -34035,7 +34036,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L102"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L106"
     },
     {
       "body": {
@@ -36953,9 +36954,10 @@
           }
         },
         {
-          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)",
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
           "name": "include_named_queries_score",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37359,7 +37361,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L526"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L530"
     },
     {
       "body": {
