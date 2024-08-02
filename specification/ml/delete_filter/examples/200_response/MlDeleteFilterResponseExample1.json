@@ -1,0 +1,6 @@
+{
+  "summary": "A successful response when deleting a filter.",
+  "value": {
+    "acknowledged": true
+  }
+}
