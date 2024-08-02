@@ -950,6 +950,7 @@
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
       ],
       "response": []

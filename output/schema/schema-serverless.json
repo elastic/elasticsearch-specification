@@ -33937,6 +33937,18 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)",
+          "name": "include_named_queries_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Maximum number of concurrent searches the multi search API can execute.",
           "name": "max_concurrent_searches",
           "required": false,
@@ -34023,7 +34035,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L96"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L102"
     },
     {
       "body": {
