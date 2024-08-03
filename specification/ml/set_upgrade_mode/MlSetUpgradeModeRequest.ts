@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
- * Set upgrade_mode that prepares ML indices for upgrade.
+ * Set upgrade_mode for ML indices.
  * Sets a cluster wide upgrade_mode setting that prepares machine learning
  * indices for an upgrade.
  * When upgrading your cluster, in some circumstances you must restart your

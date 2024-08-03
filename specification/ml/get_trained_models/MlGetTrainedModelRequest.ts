@@ -23,7 +23,7 @@ import { integer } from '@_types/Numeric'
 import { Include } from '@ml/_types/Include'
 
 /**
- * Get config info for a trained model.
+ * Get trained model configuration info.
  * @rest_spec_name ml.get_trained_models
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public

@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Get usage info for data frame analytics jobs.
+ * Get data frame analytics jobs usage info.
  * @rest_spec_name ml.get_data_frame_analytics_stats
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public

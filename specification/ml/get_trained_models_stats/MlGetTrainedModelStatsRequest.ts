@@ -22,7 +22,7 @@ import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * get usage info for trained models.
+ * Get trained models usage info.
  * You can get usage information for multiple trained
  * models in a single API request by using a comma-separated list of model IDs or a wildcard expression.
  * @rest_spec_name ml.get_trained_models_stats

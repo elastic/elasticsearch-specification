@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Get usage info for anomaly detection jobs.
+ * Get anomaly detection jobs usage info.
  * @rest_spec_name ml.get_job_stats
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
