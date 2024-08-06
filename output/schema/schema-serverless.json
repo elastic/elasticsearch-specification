@@ -128243,10 +128243,13 @@
           "name": "nodes",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelDeploymentNodesStats",
-              "namespace": "ml._types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelDeploymentNodesStats",
+                "namespace": "ml._types"
+              }
             }
           }
         },
@@ -128684,9 +128687,18 @@
           "name": "timestamp",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "DateTime",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }

@@ -58559,7 +58559,11 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "nodes": {
-            "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            "description": "The deployment stats for each node that currently has the model allocated.\nIn serverless, stats are reported for a single unnamed virtual node.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            }
           },
           "number_of_allocations": {
             "description": "The number of allocations requested.",
@@ -58764,7 +58768,7 @@
             "type": "number"
           },
           "timestamp": {
-            "$ref": "#/components/schemas/_types:DateTime"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           }
         },
         "required": [
