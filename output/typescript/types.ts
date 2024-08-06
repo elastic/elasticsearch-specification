@@ -14064,7 +14064,7 @@ export interface MlTrainedModelDeploymentStats {
   error_count: integer
   inference_count: integer
   model_id: Id
-  nodes: MlTrainedModelDeploymentNodesStats
+  nodes: MlTrainedModelDeploymentNodesStats[]
   number_of_allocations: integer
   queue_capacity: integer
   rejected_execution_count: integer
@@ -14099,7 +14099,7 @@ export interface MlTrainedModelInferenceStats {
   failure_count: integer
   inference_count: integer
   missing_all_fields_count: integer
-  timestamp: DateTime
+  timestamp: EpochTime<UnitMillis>
 }
 
 export interface MlTrainedModelLocation {
