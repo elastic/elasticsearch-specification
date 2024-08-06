@@ -781,6 +781,7 @@ export interface MsearchRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
+  include_named_queries_score?: boolean
   max_concurrent_searches?: long
   max_concurrent_shard_requests?: long
   pre_filter_shard_size?: long
@@ -1159,6 +1160,7 @@ export interface SearchRequest extends RequestBase {
   explain?: boolean
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
+  include_named_queries_score?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
   min_compatible_shard_node?: VersionString
@@ -1461,7 +1463,7 @@ export interface SearchHit<TDocument = unknown> {
   fields?: Record<string, any>
   highlight?: Record<string, string[]>
   inner_hits?: Record<string, SearchInnerHitsResult>
-  matched_queries?: string[]
+  matched_queries?: string[] | Record<string, double[]>
   _nested?: SearchNestedIdentity
   _ignored?: string[]
   ignored_field_values?: Record<string, string[]>
