@@ -33721,6 +33721,19 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+          "name": "include_named_queries_score",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Maximum number of concurrent searches the multi search API can execute.",
           "name": "max_concurrent_searches",
           "required": false,
@@ -33807,7 +33820,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L96"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L106"
     },
     {
       "body": {
@@ -36725,6 +36738,19 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+          "name": "include_named_queries_score",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can only be used when the `q` query string parameter is specified.",
           "name": "lenient",
           "required": false,
@@ -37119,7 +37145,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L520"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L530"
     },
     {
       "body": {
@@ -69017,14 +69043,40 @@
           "name": "matched_queries",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              },
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "double",
+                      "namespace": "_types"
+                    }
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
