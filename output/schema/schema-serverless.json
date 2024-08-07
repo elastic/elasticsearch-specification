@@ -13054,7 +13054,7 @@
       },
       "path": [
         {
-          "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; 'logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
+          "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
           "name": "name",
           "required": true,
           "type": {
