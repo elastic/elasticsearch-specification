@@ -1,6 +1,0 @@
-{
-  "summary": "A successful response when deleting a data frame analytics job.",
-  "value": {
-    "acknowledged": true
-  }
-}
