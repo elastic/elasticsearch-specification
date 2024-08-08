@@ -25,7 +25,7 @@ import { ExpandWildcards, IndexName } from '@_types/common'
  * Retrieves statistics for one or more data streams.
  * @rest_spec_name indices.data_streams_stats
  * @availability stack since=7.9.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability serverless stability=stable visibility=private
  * @index_privileges monitor
  */
 export interface Request extends RequestBase {
