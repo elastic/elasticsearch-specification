@@ -1,5 +1,8 @@
 {
   "summary": "A successful response when creating a transform.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
   "value": {
     "id": "simple-kibana-ecomm-pivot",
     "authorization": {

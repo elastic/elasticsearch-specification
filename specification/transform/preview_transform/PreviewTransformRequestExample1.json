@@ -1,5 +1,8 @@
 {
   "summary": "A request to preview a transform that uses the pivot method.",
+  "method_request": "POST _transform/_preview",
+  "description": "",
+  "type": "request",
   "value": {
     "source": {
       "index": "kibana_sample_data_ecommerce"

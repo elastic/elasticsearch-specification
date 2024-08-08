@@ -1,5 +1,8 @@
 {
   "summary": "A request to create a transform that uses the latest method.",
+  "method_request": "PUT _transform/ecommerce_transform2",
+  "description": "",
+  "type": "request",
   "value": {
     "source": {
       "index": "kibana_sample_data_ecommerce"

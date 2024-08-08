@@ -1,5 +1,8 @@
 {
   "summary": "A successful response contains a preview a transform that uses the pivot method.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
   "value": {
     "preview": [
       {

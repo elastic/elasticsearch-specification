@@ -1,5 +1,8 @@
 {
-  "summary": "A request to create a transform that uses the pivot method.",
+  "summary": "A request to update a transform that uses the pivot method.",
+  "method_request": "POST _transform/simple-kibana-ecomm-pivot/_update",
+  "description": "",
+  "type": "request",
   "value": {
     "source": {
       "index": "kibana_sample_data_ecommerce",
