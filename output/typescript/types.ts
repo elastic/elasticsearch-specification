@@ -11046,6 +11046,8 @@ export interface IndicesCreateResponse {
 
 export interface IndicesCreateDataStreamRequest extends RequestBase {
   name: DataStreamName
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IndicesCreateDataStreamResponse = AcknowledgedResponseBase
@@ -11103,6 +11105,7 @@ export type IndicesDeleteDataLifecycleResponse = AcknowledgedResponseBase
 
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
   name: DataStreamNames
+  master_timeout?: Duration
   expand_wildcards?: ExpandWildcards
 }
 
@@ -11330,6 +11333,7 @@ export interface IndicesGetDataLifecycleRequest extends RequestBase {
   name: DataStreamNames
   expand_wildcards?: ExpandWildcards
   include_defaults?: boolean
+  master_timeout?: Duration
 }
 
 export interface IndicesGetDataLifecycleResponse {
@@ -11340,6 +11344,7 @@ export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
   include_defaults?: boolean
+  master_timeout?: Duration
 }
 
 export interface IndicesGetDataStreamResponse {
@@ -11420,6 +11425,8 @@ export type IndicesGetTemplateResponse = Record<string, IndicesTemplateMapping>
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type IndicesMigrateToDataStreamResponse = AcknowledgedResponseBase
@@ -11459,6 +11466,7 @@ export interface IndicesOpenResponse {
 
 export interface IndicesPromoteDataStreamRequest extends RequestBase {
   name: IndexName
+  master_timeout?: Duration
 }
 
 export type IndicesPromoteDataStreamResponse = any
