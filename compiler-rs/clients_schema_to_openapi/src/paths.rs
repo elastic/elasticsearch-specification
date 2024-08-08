@@ -192,7 +192,9 @@ pub fn add_endpoint(
 
         parameters.append(&mut query_params.clone());
 
-        let sum_desc = split_summary_desc(&endpoint.description);
+        let unescaped_desc = endpoint.description.replace("\\n", "\n");
+
+        let sum_desc = split_summary_desc(&unescaped_desc);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
