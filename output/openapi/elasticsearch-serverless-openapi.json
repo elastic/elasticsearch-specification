@@ -37343,6 +37343,10 @@
                 "description": "The number of nearest neighbor candidates to consider per shard",
                 "type": "number"
               },
+              "k": {
+                "description": "The final number of nearest neighbors to return as top hits",
+                "type": "number"
+              },
               "filter": {
                 "description": "Filters for the kNN search query",
                 "oneOf": [
