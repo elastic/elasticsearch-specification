@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { DataStreamName } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Create a data stream.
@@ -40,5 +41,17 @@ export interface Request extends RequestBase {
      * Cannot be longer than 255 bytes. Multi-byte characters count towards this limit faster.
      */
     name: DataStreamName
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }
