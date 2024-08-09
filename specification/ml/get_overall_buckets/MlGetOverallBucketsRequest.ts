@@ -23,7 +23,9 @@ import { double, integer } from '@_types/Numeric'
 import { Duration, DateTime } from '@_types/Time'
 
 /**
- * Retrieves overall bucket results that summarize the bucket results of
+ * Get overall bucket results.
+ *
+ * Retrievs overall bucket results that summarize the bucket results of
  * multiple anomaly detection jobs.
  *
  * The `overall_score` is calculated by combining the scores of all the

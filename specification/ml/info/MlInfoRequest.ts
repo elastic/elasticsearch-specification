@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Return ML defaults and limits.
  * Returns defaults and limits used by machine learning.
  * This endpoint is designed to be used by a user interface that needs to fully
  * understand machine learning configurations where some options are not

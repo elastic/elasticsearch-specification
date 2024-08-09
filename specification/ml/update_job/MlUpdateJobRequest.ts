@@ -31,6 +31,7 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
+ * Update an anomaly detection job.
  * Updates certain properties of an anomaly detection job.
  * @rest_spec_name ml.update_job
  * @availability stack since=5.5.0 stability=stable
