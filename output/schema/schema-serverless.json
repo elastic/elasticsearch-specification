@@ -20119,8 +20119,35 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L23-L44"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L24-L57"
     },
     {
       "body": {
@@ -20617,6 +20644,19 @@
       ],
       "query": [
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Type of data stream that wildcard patterns can match. Supports comma-separated values,such as `open,hidden`.",
           "name": "expand_wildcards",
           "required": false,
@@ -20630,7 +20670,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L23-L45"
+      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -21520,9 +21560,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L23-L53"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L59"
     },
     {
       "body": {
@@ -21619,9 +21672,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L23-L54"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -22108,8 +22174,35 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L23-L45"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L24-L58"
     },
     {
       "body": {
