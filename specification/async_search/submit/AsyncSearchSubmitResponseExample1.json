@@ -1,7 +1,7 @@
 {
-    "summary": "A successful response when performing search asynchronously.",
-    "description": "",
-    "type": "response",
-    "response_code": 200,
-    "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\", <1>\n  \"is_partial\" : true, <2>\n  \"is_running\" : true, <3>\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"response\" : {\n    \"took\" : 1122,\n    \"timed_out\" : false,\n    \"num_reduce_phases\" : 0,\n    \"_shards\" : {\n      \"total\" : 562, <4>\n      \"successful\" : 3, <5>\n      \"skipped\" : 0,\n      \"failed\" : 0\n    },\n    \"hits\" : {\n      \"total\" : {\n        \"value\" : 157483, <6>\n        \"relation\" : \"gte\"\n      },\n      \"max_score\" : null,\n      \"hits\" : [ ]\n    }\n  }\n}"
+  "summary": "A successful response when performing search asynchronously.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\", <1>\n  \"is_partial\" : true, <2>\n  \"is_running\" : true, <3>\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"response\" : {\n    \"took\" : 1122,\n    \"timed_out\" : false,\n    \"num_reduce_phases\" : 0,\n    \"_shards\" : {\n      \"total\" : 562, <4>\n      \"successful\" : 3, <5>\n      \"skipped\" : 0,\n      \"failed\" : 0\n    },\n    \"hits\" : {\n      \"total\" : {\n        \"value\" : 157483, <6>\n        \"relation\" : \"gte\"\n      },\n      \"max_score\" : null,\n      \"hits\" : [ ]\n    }\n  }\n}"
 }
