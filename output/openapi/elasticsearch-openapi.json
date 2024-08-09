@@ -990,7 +990,7 @@
           "cat.count"
         ],
         "summary": "Get a document count",
-        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -1008,7 +1008,7 @@
           "cat.count"
         ],
         "summary": "Get a document count",
-        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -11357,6 +11357,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
           }
         ],
         "responses": {
@@ -11387,6 +11390,26 @@
               "$ref": "#/components/schemas/_types:DataStreamName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -11424,6 +11447,16 @@
               "$ref": "#/components/schemas/_types:DataStreamNames"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -11810,6 +11843,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -13117,6 +13160,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
           }
         ],
         "responses": {
@@ -13710,6 +13756,26 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -13906,6 +13972,16 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -23452,6 +23528,9 @@
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
           },
           {
@@ -23507,6 +23586,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
@@ -23571,6 +23653,9 @@
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
           },
           {
@@ -23629,6 +23714,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
@@ -26427,6 +26515,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -26578,6 +26669,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -26738,6 +26832,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -26892,6 +26989,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -42271,7 +42371,7 @@
       "cluster.health#index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.",
+        "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (`*`) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or `*`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -42399,7 +42499,7 @@
       "cluster.put_component_template#name": {
         "in": "path",
         "name": "name",
-        "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; 'logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
+        "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -44461,6 +44561,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.get_data_stream#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -47284,6 +47394,16 @@
         },
         "style": "form"
       },
+      "msearch#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "msearch#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
@@ -48214,6 +48334,16 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "search#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -56122,10 +56252,23 @@
             }
           },
           "matched_queries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            ]
           },
           "_nested": {
             "$ref": "#/components/schemas/_global.search._types:NestedIdentity"
@@ -81714,6 +81857,9 @@
           "downsample": {
             "$ref": "#/components/schemas/ilm._types:DownsampleAction"
           },
+          "freeze": {
+            "$ref": "#/components/schemas/_types:EmptyObject"
+          },
           "forcemerge": {
             "$ref": "#/components/schemas/ilm._types:ForceMergeAction"
           },
@@ -90505,7 +90651,11 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "nodes": {
-            "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            "description": "The deployment stats for each node that currently has the model allocated.\nIn serverless, stats are reported for a single unnamed virtual node.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            }
           },
           "number_of_allocations": {
             "description": "The number of allocations requested.",
@@ -90714,7 +90864,7 @@
             "type": "number"
           },
           "timestamp": {
-            "$ref": "#/components/schemas/_types:DateTime"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           }
         },
         "required": [

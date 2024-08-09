@@ -310,7 +310,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
       "docId": "cat-count",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-count.html",
       "name": "cat.count",
@@ -11518,7 +11518,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
+      "description": "Get a document count.\nProvides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -13054,7 +13054,7 @@
       },
       "path": [
         {
-          "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; 'logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
+          "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
           "name": "name",
           "required": true,
           "type": {
@@ -20119,8 +20119,35 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L23-L44"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/create_data_stream/IndicesCreateDataStreamRequest.ts#L24-L57"
     },
     {
       "body": {
@@ -20617,6 +20644,19 @@
       ],
       "query": [
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Type of data stream that wildcard patterns can match. Supports comma-separated values,such as `open,hidden`.",
           "name": "expand_wildcards",
           "required": false,
@@ -20630,7 +20670,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L23-L45"
+      "specLocation": "indices/delete_data_stream/IndicesDeleteDataStreamRequest.ts#L24-L51"
     },
     {
       "body": {
@@ -21520,9 +21560,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L23-L53"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L59"
     },
     {
       "body": {
@@ -21619,9 +21672,22 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L23-L54"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -22108,8 +22174,35 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L23-L45"
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/migrate_to_data_stream/IndicesMigrateToDataStreamRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -33721,6 +33814,19 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+          "name": "include_named_queries_score",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Maximum number of concurrent searches the multi search API can execute.",
           "name": "max_concurrent_searches",
           "required": false,
@@ -33807,7 +33913,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L96"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L106"
     },
     {
       "body": {
@@ -36725,6 +36831,19 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+          "name": "include_named_queries_score",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can only be used when the `q` query string parameter is specified.",
           "name": "lenient",
           "required": false,
@@ -37119,7 +37238,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L520"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L530"
     },
     {
       "body": {
@@ -69017,14 +69136,40 @@
           "name": "matched_queries",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              },
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "double",
+                      "namespace": "_types"
+                    }
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -128243,10 +128388,13 @@
           "name": "nodes",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelDeploymentNodesStats",
-              "namespace": "ml._types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelDeploymentNodesStats",
+                "namespace": "ml._types"
+              }
             }
           }
         },
@@ -128684,9 +128832,18 @@
           "name": "timestamp",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "DateTime",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }

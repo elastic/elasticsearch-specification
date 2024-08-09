@@ -142,6 +142,16 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
+     * Indicates whether hit.matched_queries should be rendered as a map that includes
+     * the name of the matched query associated with its score (true)
+     * or as an array containing the name of the matched queries (false)
+     * This functionality reruns each named query on every hit in a search response.
+     * Typically, this adds a small overhead to a request.
+     * However, using computationally expensive named queries on a large number of hits may add significant overhead.
+     * @server_default false
+     */
+    include_named_queries_score?: boolean
+    /**
      *  If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.
      * This parameter can only be used when the `q` query string parameter is specified.
      * @server_default false

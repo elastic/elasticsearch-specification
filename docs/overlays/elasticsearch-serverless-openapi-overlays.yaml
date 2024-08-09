@@ -11,5 +11,23 @@ actions:
         **Technical preview**  
         This functionality is in technical preview and may be changed or removed in a future release.
         Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-
+  - target: "$.paths['/_transform/{transform_id}']['put']"
+    description: "Update create transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createTransformRequestExample1: 
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.json"
+              createTransformRequestExample2:
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createTransformResponseExample1:
+                  $ref: "../../specification/transform/put_transform/examples/200_response/PutTransformResponseExample1.json"
+               
 
