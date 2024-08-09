@@ -11690,7 +11690,7 @@
         "tags": [
           "ml.put_trained_model"
         ],
-        "summary": "Supply external trained model",
+        "summary": "Create a trained model",
         "description": "Enable you to supply a trained model that is not created by data frame analytics.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html"
@@ -12312,7 +12312,7 @@
         "tags": [
           "ml.post_calendar_events"
         ],
-        "summary": "Add scheduled events to calendar",
+        "summary": "Add scheduled events to the calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html"
         },
@@ -13542,7 +13542,7 @@
         "tags": [
           "ml.start_datafeed"
         ],
-        "summary": "Start one or more datafeeds",
+        "summary": "Start datafeeds",
         "description": "A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html"
@@ -13761,7 +13761,7 @@
         "tags": [
           "ml.stop_data_frame_analytics"
         ],
-        "summary": "Stop one or more data frame analytics jobs",
+        "summary": "Stop data frame analytics jobs",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html"
@@ -13838,7 +13838,7 @@
         "tags": [
           "ml.stop_datafeed"
         ],
-        "summary": "Stop one or more datafeeds",
+        "summary": "Stop datafeeds",
         "description": "A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html"

@@ -5391,7 +5391,7 @@
           "stability": "stable"
         }
       },
-      "description": "Forces any buffered data to be processed by the job.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
+      "description": "Force buffered data to be processed.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html",
       "name": "ml.flush_job",
       "privileges": {
@@ -5434,7 +5434,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves information about the scheduled events in calendars.",
+      "description": "Get info about events in calendars.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html",
       "name": "ml.get_calendar_events",
       "privileges": {
@@ -5474,7 +5474,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for calendars.",
+      "description": "Get calendar configuration info.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html",
       "name": "ml.get_calendars",
       "privileges": {
@@ -5525,7 +5525,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for data frame analytics jobs.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
+      "description": "Get data frame analytics job configuration info.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
       "name": "ml.get_data_frame_analytics",
       "privileges": {
@@ -5571,7 +5571,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for data frame analytics jobs.",
+      "description": "Get data frame analytics jobs usage info.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html",
       "name": "ml.get_data_frame_analytics_stats",
       "privileges": {
@@ -5617,7 +5617,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for datafeeds.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
+      "description": "Get datafeeds usage info.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html",
       "name": "ml.get_datafeed_stats",
       "privileges": {
@@ -5663,7 +5663,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for datafeeds.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
+      "description": "Get datafeeds configuration info.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html",
       "name": "ml.get_datafeeds",
       "privileges": {
@@ -5709,7 +5709,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves filters.\nYou can get a single filter or all filters.",
+      "description": "Get filters.\nYou can get a single filter or all filters.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html",
       "name": "ml.get_filters",
       "privileges": {
@@ -5755,7 +5755,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for anomaly detection jobs.",
+      "description": "Get anomaly detection jobs usage info.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html",
       "name": "ml.get_job_stats",
       "privileges": {
@@ -5801,7 +5801,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for anomaly detection jobs.\nYou can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
+      "description": "Get anomaly detection jobs configuration info.\nYou can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html",
       "name": "ml.get_jobs",
       "privileges": {
@@ -5847,7 +5847,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
+      "description": "Get overall bucket results.\n\nRetrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html",
       "name": "ml.get_overall_buckets",
       "privileges": {
@@ -5891,7 +5891,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves configuration information for a trained model.",
+      "description": "Get trained model configuration info.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
       "privileges": {
@@ -5937,7 +5937,7 @@
           "stability": "stable"
         }
       },
-      "description": "Retrieves usage information for trained models. You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
+      "description": "Get trained models usage info.\nYou can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
       "name": "ml.get_trained_models_stats",
       "privileges": {
@@ -5983,7 +5983,7 @@
           "stability": "stable"
         }
       },
-      "description": "Evaluates a trained model.",
+      "description": "Evaluate a trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html",
       "name": "ml.infer_trained_model",
       "request": {
@@ -6031,7 +6031,7 @@
           "stability": "stable"
         }
       },
-      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened to be ready to receive and analyze\ndata. It can be opened and closed multiple times throughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
       "privileges": {
@@ -6074,7 +6074,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds scheduled events to a calendar.",
+      "description": "Add scheduled events to the calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html",
       "name": "ml.post_calendar_events",
       "privileges": {
@@ -6117,7 +6117,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews the extracted features used by a data frame analytics config.",
+      "description": "Preview features used by data frame analytics.\nPreviews the extracted features used by a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
       "name": "ml.preview_data_frame_analytics",
       "privileges": {
@@ -6168,7 +6168,7 @@
           "stability": "stable"
         }
       },
-      "description": "Previews a datafeed.\nThis API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
+      "description": "Preview a datafeed.\nThis API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
       "privileges": {
@@ -6222,7 +6222,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a calendar.",
+      "description": "Create a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html",
       "name": "ml.put_calendar",
       "privileges": {
@@ -6265,7 +6265,7 @@
           "stability": "stable"
         }
       },
-      "description": "Adds an anomaly detection job to a calendar.",
+      "description": "Add anomaly detection job to calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html",
       "name": "ml.put_calendar_job",
       "privileges": {
@@ -6305,7 +6305,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
       "docId": "put-dfanalytics",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/put-dfanalytics.html",
       "name": "ml.put_data_frame_analytics",
@@ -6356,7 +6356,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html",
       "name": "ml.put_datafeed",
       "privileges": {
@@ -6402,7 +6402,7 @@
           "stability": "stable"
         }
       },
-      "description": "Instantiates a filter.\nA filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
+      "description": "Create a filter.\nA filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html",
       "name": "ml.put_filter",
       "privileges": {
@@ -6491,7 +6491,7 @@
           "stability": "stable"
         }
       },
-      "description": "Enables you to supply a trained model that is not created by data frame analytics.",
+      "description": "Create a trained model.\nEnable you to supply a trained model that is not created by data frame analytics.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
       "name": "ml.put_trained_model",
       "privileges": {
@@ -6534,7 +6534,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates or updates a trained model alias. A trained model alias is a logical\nname used to reference a single trained model.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
+      "description": "Create or update a trained model alias.\nA trained model alias is a logical name used to reference a single trained\nmodel.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
       "name": "ml.put_trained_model_alias",
       "privileges": {
@@ -6577,7 +6577,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates part of a trained model definition.",
+      "description": "Create part of a trained model definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html",
       "name": "ml.put_trained_model_definition_part",
       "privileges": {
@@ -6620,7 +6620,7 @@
           "stability": "stable"
         }
       },
-      "description": "Creates a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
+      "description": "Create a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html",
       "name": "ml.put_trained_model_vocabulary",
       "privileges": {
@@ -6663,7 +6663,7 @@
           "stability": "stable"
         }
       },
-      "description": "Resets an anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
+      "description": "Reset an anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
       "privileges": {
@@ -6703,7 +6703,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
+      "description": "Start a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
       "name": "ml.start_data_frame_analytics",
       "privileges": {
@@ -6753,7 +6753,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts one or more datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
+      "description": "Start datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
       "privileges": {
@@ -6796,7 +6796,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
+      "description": "Start a trained model deployment.\nIt allocates the model to every machine learning node.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html",
       "name": "ml.start_trained_model_deployment",
       "privileges": {
@@ -6839,7 +6839,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops one or more data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
+      "description": "Stop data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
       "privileges": {
@@ -6882,7 +6882,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops one or more datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
+      "description": "Stop datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html",
       "name": "ml.stop_datafeed",
       "privileges": {
@@ -6925,7 +6925,7 @@
           "stability": "stable"
         }
       },
-      "description": "Stops a trained model deployment.",
+      "description": "Stop a trained model deployment.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html",
       "name": "ml.stop_trained_model_deployment",
       "privileges": {
@@ -6968,7 +6968,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates an existing data frame analytics job.",
+      "description": "Update a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
       "name": "ml.update_data_frame_analytics",
       "privileges": {
@@ -7018,7 +7018,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates the properties of a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
+      "description": "Update a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html",
       "name": "ml.update_datafeed",
       "privileges": {
@@ -7061,7 +7061,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates the description of a filter, adds items, or removes items from the list.",
+      "description": "Update a filter.\nUpdates the description of a filter, adds items, or removes items from the list.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html",
       "name": "ml.update_filter",
       "privileges": {
@@ -7104,7 +7104,7 @@
           "stability": "stable"
         }
       },
-      "description": "Updates certain properties of an anomaly detection job.",
+      "description": "Update an anomaly detection job.\nUpdates certain properties of an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html",
       "name": "ml.update_job",
       "privileges": {
@@ -7147,7 +7147,7 @@
           "stability": "stable"
         }
       },
-      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
+      "description": "Update a trained model deployment.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html",
       "name": "ml.update_trained_model_deployment",
       "privileges": {
@@ -27132,7 +27132,7 @@
           }
         ]
       },
-      "description": "Forces any buffered data to be processed by the job.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
+      "description": "Force buffered data to be processed.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27265,7 +27265,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves information about the scheduled events in calendars.",
+      "description": "Get info about events in calendars.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27416,7 +27416,7 @@
           }
         ]
       },
-      "description": "Retrieves configuration information for calendars.",
+      "description": "Get calendar configuration info.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27517,7 +27517,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for data frame analytics jobs.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
+      "description": "Get data frame analytics job configuration info.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27645,7 +27645,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for data frame analytics jobs.",
+      "description": "Get data frame analytics jobs usage info.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27773,7 +27773,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for datafeeds.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
+      "description": "Get datafeeds usage info.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27860,7 +27860,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for datafeeds.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
+      "description": "Get datafeeds configuration info.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27960,7 +27960,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves filters.\nYou can get a single filter or all filters.",
+      "description": "Get filters.\nYou can get a single filter or all filters.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28061,7 +28061,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for anomaly detection jobs.",
+      "description": "Get anomaly detection jobs usage info.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28149,7 +28149,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for anomaly detection jobs.\nYou can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
+      "description": "Get anomaly detection jobs configuration info.\nYou can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28351,7 +28351,7 @@
           }
         ]
       },
-      "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
+      "description": "Get overall bucket results.\n\nRetrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28478,7 +28478,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_overall_buckets/MlGetOverallBucketsRequest.ts#L25-L143"
+      "specLocation": "ml/get_overall_buckets/MlGetOverallBucketsRequest.ts#L25-L145"
     },
     {
       "body": {
@@ -28526,7 +28526,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for a trained model.",
+      "description": "Get trained model configuration info.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28706,7 +28706,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for trained models. You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
+      "description": "Get trained models usage info.\nYou can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28773,7 +28773,7 @@
           }
         }
       ],
-      "specLocation": "ml/get_trained_models_stats/MlGetTrainedModelStatsRequest.ts#L24-L64"
+      "specLocation": "ml/get_trained_models_stats/MlGetTrainedModelStatsRequest.ts#L24-L65"
     },
     {
       "body": {
@@ -28858,7 +28858,7 @@
           }
         ]
       },
-      "description": "Evaluates a trained model.",
+      "description": "Evaluate a trained model.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28950,7 +28950,7 @@
           }
         ]
       },
-      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+      "description": "Open anomaly detection jobs.\nAn anomaly detection job must be opened to be ready to receive and analyze\ndata. It can be opened and closed multiple times throughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28991,7 +28991,7 @@
           }
         }
       ],
-      "specLocation": "ml/open_job/MlOpenJobRequest.ts#L24-L59"
+      "specLocation": "ml/open_job/MlOpenJobRequest.ts#L24-L58"
     },
     {
       "body": {
@@ -29053,7 +29053,7 @@
           }
         ]
       },
-      "description": "Adds scheduled events to a calendar.",
+      "description": "Add scheduled events to the calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29132,7 +29132,7 @@
           }
         ]
       },
-      "description": "Previews the extracted features used by a data frame analytics config.",
+      "description": "Preview features used by data frame analytics.\nPreviews the extracted features used by a data frame analytics config.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29159,7 +29159,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/preview_data_frame_analytics/MlPreviewDataFrameAnalyticsRequest.ts#L24-L47"
+      "specLocation": "ml/preview_data_frame_analytics/MlPreviewDataFrameAnalyticsRequest.ts#L24-L48"
     },
     {
       "body": {
@@ -29233,7 +29233,7 @@
           }
         ]
       },
-      "description": "Previews a datafeed.\nThis API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
+      "description": "Preview a datafeed.\nThis API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29350,7 +29350,7 @@
           }
         ]
       },
-      "description": "Creates a calendar.",
+      "description": "Create a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29435,7 +29435,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Adds an anomaly detection job to a calendar.",
+      "description": "Add anomaly detection job to calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -29669,7 +29669,7 @@
           }
         ]
       },
-      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
+      "description": "Create a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30061,7 +30061,7 @@
           }
         ]
       },
-      "description": "Instantiates a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
+      "description": "Create a datafeed.\nDatafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -30386,7 +30386,7 @@
           }
         ]
       },
-      "description": "Instantiates a filter.\nA filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
+      "description": "Create a filter.\nA filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31072,7 +31072,7 @@
           }
         ]
       },
-      "description": "Enables you to supply a trained model that is not created by data frame analytics.",
+      "description": "Create a trained model.\nEnable you to supply a trained model that is not created by data frame analytics.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31136,7 +31136,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_trained_model/MlPutTrainedModelRequest.ts#L29-L124"
+      "specLocation": "ml/put_trained_model/MlPutTrainedModelRequest.ts#L29-L125"
     },
     {
       "body": {
@@ -31163,7 +31163,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates or updates a trained model alias. A trained model alias is a logical\nname used to reference a single trained model.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
+      "description": "Create or update a trained model alias.\nA trained model alias is a logical name used to reference a single trained\nmodel.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31216,7 +31216,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_trained_model_alias/MlPutTrainedModelAliasRequest.ts#L23-L65"
+      "specLocation": "ml/put_trained_model_alias/MlPutTrainedModelAliasRequest.ts#L23-L66"
     },
     {
       "body": {
@@ -31281,7 +31281,7 @@
           }
         ]
       },
-      "description": "Creates part of a trained model definition.",
+      "description": "Create part of a trained model definition.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31406,7 +31406,7 @@
           }
         ]
       },
-      "description": "Creates a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
+      "description": "Create a trained model vocabulary.\nThis API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31460,7 +31460,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Resets an anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
+      "description": "Reset an anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31541,7 +31541,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Starts a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
+      "description": "Start a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31666,7 +31666,7 @@
           }
         ]
       },
-      "description": "Starts one or more datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
+      "description": "Start datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31777,7 +31777,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
+      "description": "Start a trained model deployment.\nIt allocates the model to every machine learning node.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -31894,7 +31894,7 @@
           }
         }
       ],
-      "specLocation": "ml/start_trained_model_deployment/MlStartTrainedModelDeploymentRequest.ts#L29-L92"
+      "specLocation": "ml/start_trained_model_deployment/MlStartTrainedModelDeploymentRequest.ts#L29-L93"
     },
     {
       "body": {
@@ -31927,7 +31927,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Stops one or more data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
+      "description": "Stop data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -32068,7 +32068,7 @@
           }
         ]
       },
-      "description": "Stops one or more datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
+      "description": "Stop datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -32168,7 +32168,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Stops a trained model deployment.",
+      "description": "Stop a trained model deployment.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -32312,7 +32312,7 @@
           }
         ]
       },
-      "description": "Updates an existing data frame analytics job.",
+      "description": "Update a data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -32680,7 +32680,7 @@
           }
         ]
       },
-      "description": "Updates the properties of a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
+      "description": "Update a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33020,7 +33020,7 @@
           }
         ]
       },
-      "description": "Updates the description of a filter, adds items, or removes items from the list.",
+      "description": "Update a filter.\nUpdates the description of a filter, adds items, or removes items from the list.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33047,7 +33047,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/update_filter/MlUpdateFilterRequest.ts#L23-L51"
+      "specLocation": "ml/update_filter/MlUpdateFilterRequest.ts#L23-L52"
     },
     {
       "body": {
@@ -33309,7 +33309,7 @@
           }
         ]
       },
-      "description": "Updates certain properties of an anomaly detection job.",
+      "description": "Update an anomaly detection job.\nUpdates certain properties of an anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -33336,7 +33336,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/update_job/MlUpdateJobRequest.ts#L33-L138"
+      "specLocation": "ml/update_job/MlUpdateJobRequest.ts#L33-L139"
     },
     {
       "body": {
@@ -33636,7 +33636,7 @@
           }
         ]
       },
-      "description": "Starts a trained model deployment, which allocates the model to every machine learning node.",
+      "description": "Update a trained model deployment.",
       "inherits": {
         "type": {
           "name": "RequestBase",
