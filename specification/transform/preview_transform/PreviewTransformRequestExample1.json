@@ -1,0 +1,28 @@
+{
+  "summary": "A request to preview a transform that uses the pivot method.",
+  "method_request": "POST _transform/_preview",
+  "description": "",
+  "type": "request",
+  "value": {
+    "source": {
+      "index": "kibana_sample_data_ecommerce"
+    },
+    "pivot": {
+      "group_by": {
+        "customer_id": {
+          "terms": {
+            "field": "customer_id",
+            "missing_bucket": true
+          }
+        }
+      },
+      "aggregations": {
+        "max_price": {
+          "max": {
+            "field": "taxful_total_price"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "summary": "A successful response when a transform starts.",
-  "value": {
-    "acknowledged": true
-  }
-}

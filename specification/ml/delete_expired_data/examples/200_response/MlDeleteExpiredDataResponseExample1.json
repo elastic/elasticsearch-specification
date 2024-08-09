@@ -1,6 +1,0 @@
-{
-  "summary": "A successful response when deleting expired and unused anomaly detection data.",
-  "value": {
-    "deleted": true
-  }
-}

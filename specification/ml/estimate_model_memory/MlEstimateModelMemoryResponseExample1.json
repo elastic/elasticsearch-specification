@@ -1,0 +1,9 @@
+{
+  "summary": "A successful response when estimating sufficent memory for a model.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": {
+    "model_memory_estimate": "21mb"
+  }
+}

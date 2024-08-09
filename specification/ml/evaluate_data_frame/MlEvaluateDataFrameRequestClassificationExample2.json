@@ -1,0 +1,19 @@
+{
+  "summary": "A request for evaluating a classification job with AUC ROC metrics for an annotated index.",
+  "method_request": "POST _ml/data_frame/_evaluate",
+  "description": "The `class_name` specifies the class name that is treated as positive during the evaluation, all the other classes are treated as negative.",
+  "type": "request",
+  "value": {
+    "index": "animal_classification",
+    "evaluation": {
+      "classification": {
+        "actual_field": "animal_class",
+        "metrics": {
+          "auc_roc": {
+            "class_name": "dog"
+          }
+        }
+      }
+    }
+  }
+}

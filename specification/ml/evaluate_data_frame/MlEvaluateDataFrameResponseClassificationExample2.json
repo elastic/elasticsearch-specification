@@ -1,0 +1,13 @@
+{
+  "summary": "A succesful response for evaluating a classification analysis job with the AUC ROC metrics for an annotated index.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": {
+    "classification": {
+      "auc_roc": {
+        "value": 0.8941788639536681
+      }
+    }
+  }
+}

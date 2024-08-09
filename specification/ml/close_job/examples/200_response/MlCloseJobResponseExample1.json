@@ -1,6 +1,0 @@
-{
-  "summary": "A successful response when closing anomaly detection jobs.",
-  "value": {
-    "closed": true
-  }
-}
