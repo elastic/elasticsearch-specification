@@ -60,6 +60,8 @@ export interface KnnQuery extends QueryBase {
   query_vector_builder?: QueryVectorBuilder
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /** The final number of nearest neighbors to return as top hits */
+  k?: integer
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */

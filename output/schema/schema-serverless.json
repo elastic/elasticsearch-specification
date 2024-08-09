@@ -54826,6 +54826,18 @@
           }
         },
         {
+          "description": "The final number of nearest neighbors to return as top hits",
+          "name": "k",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Filters for the kNN search query",
           "name": "filter",
           "required": false,
@@ -54865,7 +54877,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L54-L67"
+      "specLocation": "_types/Knn.ts#L54-L69"
     },
     {
       "kind": "type_alias",
@@ -54904,7 +54916,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L69-L72",
+      "specLocation": "_types/Knn.ts#L71-L74",
       "variants": {
         "kind": "container"
       }
@@ -54939,7 +54951,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L74-L77"
+      "specLocation": "_types/Knn.ts#L76-L79"
     },
     {
       "inherits": {
