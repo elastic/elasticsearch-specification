@@ -1,0 +1,7 @@
+{
+    "summary": "A succesful response when retrieving the status of a previously submitted and completed async search without the results.",
+    "description": "For an async search that has been completed, the status response has an additional `completion_status` field that shows the status code of the completed async search which was completed – in this case – with an error.",
+    "type": "response",
+    "response_code": 200,
+    "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_running\" : false,\n  \"is_partial\" : true,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 450,\n      \"skipped\" : 0,\n      \"failed\" : 112\n  },\n \"completion_status\" : 503 <1>\n}"
+}
