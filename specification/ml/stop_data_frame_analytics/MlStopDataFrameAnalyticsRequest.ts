@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Stop one or more data frame analytics jobs.
+ * Stop data frame analytics jobs.
  * A data frame analytics job can be started and stopped multiple times
  * throughout its lifecycle.
  * @rest_spec_name ml.stop_data_frame_analytics
