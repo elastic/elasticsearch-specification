@@ -1,6 +1,0 @@
-{
-  "summary": "A successful response when clearing the inference cache.",
-  "value": {
-    "cleared": true
-  }
-}

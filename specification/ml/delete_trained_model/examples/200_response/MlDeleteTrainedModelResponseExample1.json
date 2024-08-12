@@ -1,6 +1,0 @@
-{
-  "summary": "A successful response when deleting an existing trained inference model.",
-  "value": {
-    "acknowledged": true
-  }
-}

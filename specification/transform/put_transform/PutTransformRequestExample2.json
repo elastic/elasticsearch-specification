@@ -1,0 +1,26 @@
+{
+  "summary": "A request to create a transform that uses the latest method.",
+  "method_request": "PUT _transform/ecommerce_transform2",
+  "description": "",
+  "type": "request",
+  "value": {
+    "source": {
+      "index": "kibana_sample_data_ecommerce"
+    },
+    "latest": {
+      "unique_key": ["customer_id"],
+      "sort": "order_date"
+    },
+    "description": "Latest order for each customer",
+    "dest": {
+      "index": "kibana_sample_data_ecommerce_transform2"
+    },
+    "frequency": "5m",
+    "sync": {
+      "time": {
+        "field": "order_date",
+        "delay": "60s"
+      }
+    }
+  }
+}

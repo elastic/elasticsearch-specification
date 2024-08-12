@@ -1,0 +1,9 @@
+{
+  "summary": "A successful response when closing anomaly detection jobs.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": {
+    "closed": true
+  }
+}
