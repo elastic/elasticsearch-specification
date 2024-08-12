@@ -3,5 +3,5 @@
   "description": "For an async search that has been completed, the status response has an additional `completion_status` field that shows the status code of the completed async search which was – in this case – a success.",
   "type": "response",
   "response_code": 200,
-  "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_running\" : false,\n  \"is_partial\" : false,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 562,\n      \"skipped\" : 0,\n      \"failed\" : 0\n  },\n \"completion_status\" : 200 <1>\n}"
+  "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_running\" : false,\n  \"is_partial\" : false,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 562,\n      \"skipped\" : 0,\n      \"failed\" : 0\n  },\n \"completion_status\" : 200\n}"
 }
