@@ -18093,6 +18093,194 @@
         "x-available-since": "6.7.0"
       }
     },
+    "/_security/role/{name}": {
+      "get": {
+        "tags": [
+          "security.get_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
+        },
+        "operationId": "security-get-role",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.get_role#name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.get_role#200"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "security.put_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The create or update roles API cannot update roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
+        },
+        "operationId": "security-put-role",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.put_role#name"
+          },
+          {
+            "$ref": "#/components/parameters/security.put_role#refresh"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.put_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.put_role#200"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "security.put_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The create or update roles API cannot update roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html"
+        },
+        "operationId": "security-put-role-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.put_role#name"
+          },
+          {
+            "$ref": "#/components/parameters/security.put_role#refresh"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.put_role"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.put_role#200"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "security.delete_role"
+        ],
+        "summary": "Removes roles in the native realm",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role.html"
+        },
+        "operationId": "security-delete-role",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Role name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "found": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "found"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_security/privilege/_builtin": {
+      "get": {
+        "tags": [
+          "security.get_builtin_privileges"
+        ],
+        "summary": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-builtin-privileges.html"
+        },
+        "operationId": "security-get-builtin-privileges",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cluster": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "index": {
+                      "$ref": "#/components/schemas/_types:Indices"
+                    }
+                  },
+                  "required": [
+                    "cluster",
+                    "index"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "7.3.0"
+      }
+    },
+    "/_security/role": {
+      "get": {
+        "tags": [
+          "security.get_role"
+        ],
+        "summary": "The role management APIs are generally the preferred way to manage roles, rather than using file-based role management",
+        "description": "The get roles API cannot retrieve roles that are defined in roles files.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-role.html"
+        },
+        "operationId": "security-get-role-1",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.get_role#200"
+          }
+        }
+      }
+    },
     "/_security/user/_has_privileges": {
       "get": {
         "tags": [
@@ -22424,6 +22612,19 @@
           }
         }
       },
+      "security.get_role#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/security.get_role:Role"
+              }
+            }
+          }
+        }
+      },
       "security.has_privileges#200": {
         "description": "",
         "content": {
@@ -22459,6 +22660,24 @@
                 "has_all_requested",
                 "index",
                 "username"
+              ]
+            }
+          }
+        }
+      },
+      "security.put_role#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "$ref": "#/components/schemas/security._types:CreatedStatus"
+                }
+              },
+              "required": [
+                "role"
               ]
             }
           }
@@ -27622,6 +27841,17 @@
         },
         "style": "form"
       },
+      "security.get_role#name": {
+        "in": "path",
+        "name": "name",
+        "description": "The name of the role. You can specify multiple roles as a comma-separated list. If you do not specify this parameter, the API returns information about all roles.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Names"
+        },
+        "style": "simple"
+      },
       "security.has_privileges#user": {
         "in": "path",
         "name": "user",
@@ -27632,6 +27862,27 @@
           "$ref": "#/components/schemas/_types:Name"
         },
         "style": "simple"
+      },
+      "security.put_role#name": {
+        "in": "path",
+        "name": "name",
+        "description": "The name of the role.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Name"
+        },
+        "style": "simple"
+      },
+      "security.put_role#refresh": {
+        "in": "query",
+        "name": "refresh",
+        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Refresh"
+        },
+        "style": "form"
       },
       "security.query_api_keys#with_limited_by": {
         "in": "query",
@@ -29411,6 +29662,63 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/security.has_privileges:IndexPrivilegesCheck"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "security.put_role": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "applications": {
+                  "description": "A list of application privilege entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:ApplicationPrivileges"
+                  }
+                },
+                "cluster": {
+                  "description": "A list of cluster privileges. These privileges define the cluster-level actions for users with this role.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:ClusterPrivilege"
+                  }
+                },
+                "indices": {
+                  "description": "A list of indices permissions entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+                  }
+                },
+                "metadata": {
+                  "$ref": "#/components/schemas/_types:Metadata"
+                },
+                "run_as": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
+                  },
+                  "description": "A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "description": {
+                  "description": "Optional description of the role descriptor",
+                  "type": "string"
+                },
+                "transient_metadata": {
+                  "description": "Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
                   }
                 }
               }
@@ -61674,6 +61982,94 @@
           "name"
         ]
       },
+      "security.get_role:Role": {
+        "type": "object",
+        "properties": {
+          "cluster": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:IndicesPrivileges"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/_types:Metadata"
+          },
+          "run_as": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transient_metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "applications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:ApplicationPrivileges"
+            }
+          },
+          "role_templates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types:RoleTemplate"
+            }
+          },
+          "global": {
+            "x-available-since": "8.0.0",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "cluster",
+          "indices",
+          "metadata",
+          "run_as",
+          "applications"
+        ]
+      },
+      "security._types:RoleTemplate": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "$ref": "#/components/schemas/security._types:TemplateFormat"
+          },
+          "template": {
+            "$ref": "#/components/schemas/_types:Script"
+          }
+        },
+        "required": [
+          "template"
+        ]
+      },
+      "security._types:TemplateFormat": {
+        "type": "string",
+        "enum": [
+          "string",
+          "json"
+        ]
+      },
       "security.has_privileges:ApplicationPrivilegesCheck": {
         "type": "object",
         "properties": {
@@ -61742,6 +62138,17 @@
         "additionalProperties": {
           "type": "boolean"
         }
+      },
+      "security._types:CreatedStatus": {
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "created"
+        ]
       },
       "security.query_api_keys:ApiKeyAggregationContainer": {
         "allOf": [
