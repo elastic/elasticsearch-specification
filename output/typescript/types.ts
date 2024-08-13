@@ -13894,7 +13894,7 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export type MlPredictedValue = string | double | boolean | integer
+export type MlPredictedValue = string | double | double[] | boolean | integer | integer[]
 
 export interface MlQuestionAnsweringInferenceOptions {
   num_top_classes?: integer

@@ -91193,10 +91193,22 @@
             "type": "number"
           },
           {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
             "type": "boolean"
           },
           {
             "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         ]
       },

@@ -454,7 +454,13 @@ export class TrainedModelInferenceFeatureImportance {
   classes?: TrainedModelInferenceClassImportance[]
 }
 
-export type PredictedValue = string | double | boolean | integer
+export type PredictedValue =
+  | string
+  | double
+  | double[]
+  | boolean
+  | integer
+  | integer[]
 
 export class InferenceResponseResult {
   /**
