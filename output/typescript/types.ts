@@ -10427,13 +10427,13 @@ export interface IndicesDataStream {
   generation: integer
   hidden: boolean
   ilm_policy?: Name
-  next_generation_managed_by?: IndicesManagedBy
-  prefer_ilm?: boolean
+  next_generation_managed_by: IndicesManagedBy
+  prefer_ilm: boolean
   indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataStreamLifecycleWithRollover
   name: DataStreamName
   replicated?: boolean
-  rollover_on_write?: boolean
+  rollover_on_write: boolean
   status: HealthStatus
   system?: boolean
   template: Name
