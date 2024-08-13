@@ -11,8 +11,24 @@ actions:
         **Technical preview**  
         This functionality is in technical preview and may be changed or removed in a future release.
         Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+  - target: "$.components['requestBodies']['async_search.submit']"
+    description: "Add example for asynch search submit request"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+  - target: "$.components['responses']['async_search.submit#200']"
+    description: "Add example for asynch search submit response"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
   - target: "$.paths['/_transform/{transform_id}']['put']"
-    description: "Update create transform operation"
+    description: "Add examples for create transform operation"
     update: 
       requestBody: 
         content: 
@@ -29,5 +45,3 @@ actions:
               examples:
                 createTransformResponseExample1:
                   $ref: "../../specification/transform/put_transform/examples/200_response/PutTransformResponseExample1.json"
-               
-
