@@ -27,8 +27,8 @@ import { KuromojiAnalyzer } from './kuromoji-plugin'
 
 export class CustomAnalyzer {
   type: 'custom'
-  char_filter?: string[]
-  filter?: string[]
+  char_filter?: string | string[]
+  filter?: string | string[]
   position_increment_gap?: integer
   position_offset_gap?: integer
   tokenizer: string
