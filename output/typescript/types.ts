@@ -10423,15 +10423,17 @@ export interface IndicesCacheQueries {
 export interface IndicesDataStream {
   _meta?: Metadata
   allow_custom_routing?: boolean
+  failure_store?: IndicesFailureStore
   generation: integer
   hidden: boolean
   ilm_policy?: Name
-  next_generation_managed_by: IndicesManagedBy
-  prefer_ilm: boolean
+  next_generation_managed_by?: IndicesManagedBy
+  prefer_ilm?: boolean
   indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataStreamLifecycleWithRollover
   name: DataStreamName
   replicated?: boolean
+  rollover_on_write?: boolean
   status: HealthStatus
   system?: boolean
   template: Name
@@ -10442,8 +10444,8 @@ export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
   ilm_policy?: Name
-  managed_by: IndicesManagedBy
-  prefer_ilm: boolean
+  managed_by?: IndicesManagedBy
+  prefer_ilm?: boolean
 }
 
 export interface IndicesDataStreamLifecycle {
@@ -10489,6 +10491,12 @@ export interface IndicesDownsampleConfig {
 export interface IndicesDownsamplingRound {
   after: Duration
   config: IndicesDownsampleConfig
+}
+
+export interface IndicesFailureStore {
+  enabled: boolean
+  indices: IndicesDataStreamIndex[]
+  rollover_on_write: boolean
 }
 
 export interface IndicesFielddataFrequencyFilter {
