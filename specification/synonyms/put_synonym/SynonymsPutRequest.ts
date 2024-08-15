@@ -37,6 +37,6 @@ export interface Request extends RequestBase {
     /**
      * The synonym set information to update
      */
-    synonyms_set: SynonymRule[]
+    synonyms_set: SynonymRule | SynonymRule[]
   }
 }
