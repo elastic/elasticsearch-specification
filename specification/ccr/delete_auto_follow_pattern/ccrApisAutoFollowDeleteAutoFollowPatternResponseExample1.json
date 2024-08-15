@@ -1,7 +1,7 @@
 {
-    "summary": "A successful respons for deleting an auto-follow pattern.",
-    "description": "",
-    "type": "response",
-    "response_code": 200,
-    "value": "{\n  \"acknowledged\" : true\n}"
+  "summary": "A successful respons for deleting an auto-follow pattern.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"acknowledged\" : true\n}"
 }
