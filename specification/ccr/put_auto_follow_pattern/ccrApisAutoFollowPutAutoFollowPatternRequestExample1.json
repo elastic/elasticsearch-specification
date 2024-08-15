@@ -1,0 +1,7 @@
+{
+    "summary": "Creates an auto-follow pattern.",
+    "method_request": "PUT /_ccr/auto_follow/<auto_follow_pattern_name>",
+    "description": "The API method and path for this request: `PUT /_ccr/auto_follow/<auto_follow_pattern_name>`",
+    "type": "request",
+    "value": "{\n  \"remote_cluster\" : \"<remote_cluster>\",\n  \"leader_index_patterns\" :\n  [\n    \"<leader_index_pattern>\"\n  ],\n  \"leader_index_exclusion_patterns\":\n  [\n    \"<leader_index_exclusion_pattern>\"\n  ],\n  \"follow_index_pattern\" : \"<follow_index_pattern>\"\n}"
+}
