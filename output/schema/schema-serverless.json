@@ -41944,14 +41944,26 @@
             "name": "synonyms_set",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SynonymRule",
-                  "namespace": "synonyms._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SynonymRule",
+                    "namespace": "synonyms._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "SynonymRule",
+                      "namespace": "synonyms._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         ]

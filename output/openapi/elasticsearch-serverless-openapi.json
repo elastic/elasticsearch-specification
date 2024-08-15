@@ -18321,10 +18321,17 @@
                 "properties": {
                   "synonyms_set": {
                     "description": "The synonym set information to update",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/synonyms._types:SynonymRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
