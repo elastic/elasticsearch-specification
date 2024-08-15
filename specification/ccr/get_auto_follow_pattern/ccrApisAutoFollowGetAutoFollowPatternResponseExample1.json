@@ -1,0 +1,7 @@
+{
+    "summary": "A successful response for retrieving an auto-follow pattern.",
+    "description": "This may be a respons to `GET /_ccr/auto_follow/my_auto_follow_pattern`. ",
+    "type": "response",
+    "response_code": 200,
+    "value": "{\n  \"patterns\": [\n    {\n      \"name\": \"my_auto_follow_pattern\",\n      \"pattern\": {\n        \"active\": true,\n        \"remote_cluster\" : \"remote_cluster\",\n        \"leader_index_patterns\" :\n        [\n          \"leader_index*\"\n        ],\n        \"leader_index_exclusion_patterns\":\n        [\n          \"leader_index_001\"\n        ],\n        \"follow_index_pattern\" : \"{{leader_index}}-follower\"\n      }\n    }\n  ]\n}"
+}

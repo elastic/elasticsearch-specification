@@ -1,0 +1,7 @@
+{
+    "summary": "A successful response for pausing a follower index.",
+    "description": "",
+    "type": "response",
+    "response_code": 200,
+    "value": "{\n  \"acknowledged\" : true\n}"
+}
