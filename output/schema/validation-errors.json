@@ -1231,12 +1231,6 @@
       ],
       "response": []
     },
-    "update_by_query": {
-      "request": [
-        "Request: missing json spec query parameter 'q'"
-      ],
-      "response": []
-    },
     "watcher.execute_watch": {
       "request": [
         "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"

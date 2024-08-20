@@ -117,6 +117,10 @@ export interface Request extends RequestBase {
      */
     preference?: string
     /**
+     * Query in the Lucene query string syntax.
+     */
+    q?: string
+    /**
      * If `true`, Elasticsearch refreshes affected shards to make the operation visible to search.
      * @server_default false
      */
