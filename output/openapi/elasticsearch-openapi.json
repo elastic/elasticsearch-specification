@@ -39711,18 +39711,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "hot_threads": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/nodes.hot_threads:HotThread"
-                  }
-                }
-              },
-              "required": [
-                "hot_threads"
-              ]
+              "type": "object"
             }
           }
         }
@@ -92407,35 +92396,6 @@
           "block",
           "gpu",
           "mem"
-        ]
-      },
-      "nodes.hot_threads:HotThread": {
-        "type": "object",
-        "properties": {
-          "hosts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:Host"
-            }
-          },
-          "node_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "node_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "threads": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "hosts",
-          "node_id",
-          "node_name",
-          "threads"
         ]
       },
       "nodes.info:ResponseBase": {
