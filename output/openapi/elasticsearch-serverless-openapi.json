@@ -20226,6 +20226,16 @@
           },
           {
             "in": "query",
+            "name": "q",
+            "description": "Query in the Lucene query string syntax.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "refresh",
             "description": "If `true`, Elasticsearch refreshes affected shards to make the operation visible to search.",
             "deprecated": false,
