@@ -44118,6 +44118,18 @@
           }
         },
         {
+          "description": "Query in the Lucene query string syntax.",
+          "name": "q",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, Elasticsearch refreshes affected shards to make the operation visible to search.",
           "name": "refresh",
           "required": false,
@@ -44335,7 +44347,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L222"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L37-L226"
     },
     {
       "body": {
