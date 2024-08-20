@@ -1679,12 +1679,6 @@
         "response definition transform.stop_transform:Response / body / instance_of - Non-leaf type cannot be used here: '_types:AcknowledgedResponseBase'"
       ]
     },
-    "update_by_query": {
-      "request": [
-        "Request: missing json spec query parameter 'q'"
-      ],
-      "response": []
-    },
     "update_by_query_rethrottle": {
       "request": [],
       "response": [
