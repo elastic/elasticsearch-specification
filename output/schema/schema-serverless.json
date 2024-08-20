@@ -1157,48 +1157,6 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "8.12.0",
-          "stability": "experimental"
-        }
-      },
-      "description": "Updates last sync stats in the connector document",
-      "docId": "connector-last-sync",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/update-connector-last-sync-api.html",
-      "name": "connector.last_sync",
-      "request": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "requestBodyRequired": true,
-      "requestMediaType": [
-        "application/json"
-      ],
-      "response": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "since": "8.12.0",
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_connector/{connector_id}/_last_sync"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "availability": {
-        "serverless": {
           "stability": "beta",
           "visibility": "public"
         },
@@ -14008,9 +13966,9 @@
       ],
       "query": [
         {
-          "description": "Determines whether associated sync jobs are also deleted.",
+          "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
           "name": "delete_sync_jobs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -14020,7 +13978,7 @@
           }
         }
       ],
-      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L39"
+      "specLocation": "connector/delete/ConnectorDeleteRequest.ts#L22-L42"
     },
     {
       "body": {
@@ -14093,216 +14051,6 @@
         "namespace": "connector.get"
       },
       "specLocation": "connector/get/ConnectorGetResponse.ts#L22-L24"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "last_access_control_sync_error",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_access_control_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_deleted_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_incremental_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_indexed_document_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_seen",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DateTime",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_sync_error",
-            "required": false,
-            "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
-              }
-            }
-          },
-          {
-            "name": "last_sync_scheduled_at",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "last_sync_status",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncStatus",
-                "namespace": "connector._types"
-              }
-            }
-          },
-          {
-            "name": "last_synced",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateTime",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "description": "Updates last sync stats in the connector document",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "connector.last_sync"
-      },
-      "path": [
-        {
-          "description": "The unique identifier of the connector to be updated",
-          "name": "connector_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [],
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncRequest.ts#L26-L56"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "result",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Result",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "connector.last_sync"
-      },
-      "specLocation": "connector/last_sync/ConnectorUpdateLastSyncResponse.ts#L22-L26"
     },
     {
       "attachedBehaviors": [
@@ -14458,21 +14206,12 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },
@@ -14536,12 +14275,23 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "connector/post/ConnectorPostRequest.ts#L23-L43"
+      "specLocation": "connector/post/ConnectorPostRequest.ts#L22-L42"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "name": "result",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Result",
+                "namespace": "_types"
+              }
+            }
+          },
           {
             "name": "id",
             "required": true,
@@ -14560,7 +14310,7 @@
         "name": "Response",
         "namespace": "connector.post"
       },
-      "specLocation": "connector/post/ConnectorPostResponse.ts#L22-L26"
+      "specLocation": "connector/post/ConnectorPostResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14582,21 +14332,12 @@
           },
           {
             "name": "index_name",
-            "required": true,
+            "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },
@@ -14660,9 +14401,9 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the connector to be created or updated",
+          "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
           "name": "connector_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -14673,7 +14414,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/put/ConnectorPutRequest.ts#L23-L49"
+      "specLocation": "connector/put/ConnectorPutRequest.ts#L22-L48"
     },
     {
       "body": {
@@ -14689,6 +14430,17 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
           }
         ]
       },
@@ -14697,7 +14449,7 @@
         "name": "Response",
         "namespace": "connector.put"
       },
-      "specLocation": "connector/put/ConnectorPutResponse.ts#L22-L26"
+      "specLocation": "connector/put/ConnectorPutResponse.ts#L23-L28"
     },
     {
       "attachedBehaviors": [
@@ -14941,14 +14693,26 @@
           "name": "job_type",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SyncJobType",
-                "namespace": "connector._types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "SyncJobType",
+                  "namespace": "connector._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SyncJobType",
+                    "namespace": "connector._types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -15146,19 +14910,10 @@
             "name": "api_key_id",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           },
@@ -15166,19 +14921,10 @@
             "name": "api_key_secret_id",
             "required": false,
             "type": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              ],
               "kind": "instance_of",
               "type": {
-                "name": "WithNullValue",
-                "namespace": "_spec_utils"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           }
@@ -15211,7 +14957,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L23-L44"
+      "specLocation": "connector/update_api_key_id/ConnectorUpdateAPIKeyIDRequest.ts#L21-L42"
     },
     {
       "body": {
@@ -15675,7 +15421,7 @@
         "properties": [
           {
             "name": "name",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -34697,6 +34443,19 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+          "name": "include_named_queries_score",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Maximum number of concurrent searches the multi search API can execute.",
           "name": "max_concurrent_searches",
           "required": false,
@@ -34783,7 +34542,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L96"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L25-L106"
     },
     {
       "body": {
@@ -36776,7 +36535,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "InlineScript",
+                "name": "Script",
                 "namespace": "_types"
               }
             }
@@ -37704,6 +37463,19 @@
           }
         },
         {
+          "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+          "name": "include_named_queries_score",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.\nThis parameter can only be used when the `q` query string parameter is specified.",
           "name": "lenient",
           "required": false,
@@ -38098,7 +37870,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L520"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L530"
     },
     {
       "body": {
@@ -42172,14 +41944,26 @@
             "name": "synonyms_set",
             "required": true,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SynonymRule",
-                  "namespace": "synonyms._types"
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SynonymRule",
+                    "namespace": "synonyms._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "SynonymRule",
+                      "namespace": "synonyms._types"
+                    }
+                  }
                 }
-              }
+              ],
+              "kind": "union_of"
             }
           }
         ]
@@ -42879,7 +42663,7 @@
           },
           {
             "name": "_id",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -50611,49 +50395,55 @@
       "specLocation": "_types/query_dsl/compound.ts#L121-L126"
     },
     {
-      "codegenNames": [
-        "inline",
-        "stored"
-      ],
-      "kind": "type_alias",
+      "kind": "interface",
       "name": {
         "name": "Script",
         "namespace": "_types"
       },
-      "specLocation": "_types/Scripting.ts#L88-L89",
-      "type": {
-        "items": [
-          {
+      "properties": [
+        {
+          "description": "The script source.",
+          "name": "source",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineScript",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
-          },
-          {
+          }
+        },
+        {
+          "description": "The `id` for a stored script.",
+          "name": "id",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScriptId",
+              "name": "Id",
               "namespace": "_types"
             }
           }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "InlineScript",
-        "namespace": "_types"
-      },
-      "properties": [
+        },
+        {
+          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
         {
           "description": "Specifies the language the script is written in.",
           "name": "lang",
@@ -50688,51 +50478,10 @@
               }
             }
           }
-        },
-        {
-          "description": "The script source.",
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "_types/Scripting.ts#L67-L79"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptBase",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-          "name": "params",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Scripting.ts#L59-L65"
+      "specLocation": "_types/Scripting.ts#L73-L97"
     },
     {
       "isOpen": true,
@@ -50760,34 +50509,6 @@
         "namespace": "_types"
       },
       "specLocation": "_types/Scripting.ts#L24-L45"
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "StoredScriptId",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The `id` for a stored script.",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Scripting.ts#L81-L86"
     },
     {
       "kind": "enum",
@@ -52160,7 +51881,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L106-L140"
+      "specLocation": "_global/search/_types/hits.ts#L107-L141"
     },
     {
       "kind": "type_alias",
@@ -53981,7 +53702,7 @@
           }
         }
       ],
-      "specLocation": "_types/Scripting.ts#L91-L94"
+      "specLocation": "_types/Scripting.ts#L99-L102"
     },
     {
       "kind": "type_alias",
@@ -53989,7 +53710,7 @@
         "name": "Sort",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L104-L104",
+      "specLocation": "_types/sort.ts#L105-L105",
       "type": {
         "items": [
           {
@@ -54023,7 +53744,7 @@
         "name": "SortCombinations",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L98-L102",
+      "specLocation": "_types/sort.ts#L99-L103",
       "type": {
         "items": [
           {
@@ -54129,7 +53850,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L86-L96",
+      "specLocation": "_types/sort.ts#L87-L97",
       "variants": {
         "kind": "container"
       }
@@ -54286,7 +54007,7 @@
         "name": "SortMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L108-L117"
+      "specLocation": "_types/sort.ts#L109-L118"
     },
     {
       "kind": "interface",
@@ -54358,7 +54079,7 @@
         "name": "SortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L119-L128"
+      "specLocation": "_types/sort.ts#L120-L129"
     },
     {
       "kind": "enum",
@@ -54658,9 +54379,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/sort.ts#L59-L70"
+      "specLocation": "_types/sort.ts#L59-L71"
     },
     {
       "kind": "enum",
@@ -54771,7 +54503,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L72-L78"
+      "specLocation": "_types/sort.ts#L73-L79"
     },
     {
       "kind": "enum",
@@ -54790,7 +54522,7 @@
         "name": "ScriptSortType",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L80-L84"
+      "specLocation": "_types/sort.ts#L81-L85"
     },
     {
       "codegenNames": [
@@ -55769,6 +55501,18 @@
           }
         },
         {
+          "description": "The final number of nearest neighbors to return as top hits",
+          "name": "k",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Filters for the kNN search query",
           "name": "filter",
           "required": false,
@@ -55808,7 +55552,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L54-L67"
+      "specLocation": "_types/Knn.ts#L54-L69"
     },
     {
       "kind": "type_alias",
@@ -55847,7 +55591,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L69-L72",
+      "specLocation": "_types/Knn.ts#L71-L74",
       "variants": {
         "kind": "container"
       }
@@ -55882,7 +55626,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L74-L77"
+      "specLocation": "_types/Knn.ts#L76-L79"
     },
     {
       "inherits": {
@@ -67751,7 +67495,7 @@
         "name": "SortResults",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L106-L106",
+      "specLocation": "_types/sort.ts#L107-L107",
       "type": {
         "kind": "array_of",
         "value": {
@@ -67774,7 +67518,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L142-L150",
+      "specLocation": "_global/search/_types/hits.ts#L143-L151",
       "type": {
         "items": [
           {
@@ -69898,7 +69642,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L66-L72"
+      "specLocation": "_global/search/_types/hits.ts#L67-L73"
     },
     {
       "kind": "interface",
@@ -69930,7 +69674,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L94-L97"
+      "specLocation": "_global/search/_types/hits.ts#L95-L98"
     },
     {
       "kind": "enum",
@@ -69948,7 +69692,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L99-L104"
+      "specLocation": "_global/search/_types/hits.ts#L100-L105"
     },
     {
       "generics": [
@@ -70089,14 +69833,40 @@
           "name": "matched_queries",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              },
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "double",
+                      "namespace": "_types"
+                    }
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -70194,6 +69964,17 @@
           }
         },
         {
+          "name": "_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "_seq_no",
           "required": false,
           "type": {
@@ -70238,7 +70019,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L64"
+      "specLocation": "_global/search/_types/hits.ts#L40-L65"
     },
     {
       "kind": "interface",
@@ -70356,7 +70137,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L84-L86"
+      "specLocation": "_global/search/_types/hits.ts#L85-L87"
     },
     {
       "kind": "interface",
@@ -70399,7 +70180,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L88-L92"
+      "specLocation": "_global/search/_types/hits.ts#L89-L93"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
@@ -80832,7 +80613,7 @@
         },
         {
           "name": "language",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85465,7 +85246,7 @@
         },
         {
           "name": "m",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85476,7 +85257,7 @@
         },
         {
           "name": "ef_construction",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85484,9 +85265,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "confidence_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L26"
+      "specLocation": "_types/mapping/DenseVectorIndexOptions.ts#L22-L27"
     },
     {
       "inherits": {
@@ -89215,16 +89007,28 @@
           "name": "tooltip",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89235,7 +89039,7 @@
         },
         {
           "name": "ui_restrictions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -89249,7 +89053,7 @@
         },
         {
           "name": "validations",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -89265,11 +89069,7 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScalarValue",
-              "namespace": "_types"
-            }
+            "kind": "user_defined_value"
           }
         }
       ],
@@ -89356,8 +89156,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "ScalarValue",
+              "namespace": "_types"
             }
           }
         }
@@ -89515,13 +89315,10 @@
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScalarValue",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         }
@@ -89547,10 +89344,13 @@
           "name": "constraint",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScalarValue",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -89858,7 +89658,7 @@
         "name": "SyncJobTriggerMethod",
         "namespace": "connector._types"
       },
-      "specLocation": "connector/_types/SyncJob.ts#L47-L50"
+      "specLocation": "connector/_types/SyncJob.ts#L48-L51"
     },
     {
       "kind": "enum",
@@ -89877,7 +89677,7 @@
         "name": "SyncJobType",
         "namespace": "connector._types"
       },
-      "specLocation": "connector/_types/SyncJob.ts#L41-L45"
+      "specLocation": "connector/_types/SyncJob.ts#L42-L46"
     },
     {
       "kind": "enum",
@@ -89982,17 +89782,6 @@
           "name": "long",
           "namespace": "_types"
         }
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Actions",
-        "namespace": "ilm._types"
-      },
-      "specLocation": "ilm/_types/Phase.ts#L48-L48",
-      "type": {
-        "kind": "user_defined_value"
       }
     },
     {
@@ -99418,7 +99207,7 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L56-L69"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L67"
     },
     {
       "kind": "enum",
@@ -99431,7 +99220,7 @@
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L46-L48"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
     },
     {
       "kind": "enum",
@@ -99592,7 +99381,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L41-L198"
+      "specLocation": "security/_types/Privileges.ts#L42-L199"
     },
     {
       "kind": "enum",
@@ -99669,7 +99458,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L285-L327"
+      "specLocation": "security/_types/Privileges.ts#L296-L338"
     },
     {
       "codegenNames": [
@@ -99683,7 +99472,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L250-L258",
+      "specLocation": "security/_types/Privileges.ts#L251-L259",
       "type": {
         "items": [
           {
@@ -99733,55 +99522,62 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L260-L270"
+      "specLocation": "security/_types/Privileges.ts#L261-L271"
     },
     {
-      "codegenNames": [
-        "inline",
-        "stored"
-      ],
-      "kind": "type_alias",
+      "kind": "interface",
       "name": {
         "name": "RoleTemplateScript",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L282-L283",
-      "type": {
-        "items": [
-          {
+      "properties": [
+        {
+          "name": "source",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RoleTemplateInlineScript",
+              "name": "RoleTemplateInlineQuery",
               "namespace": "security._types"
             }
-          },
-          {
+          }
+        },
+        {
+          "description": "The `id` for a stored script.",
+          "name": "id",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "StoredScriptId",
+              "name": "Id",
               "namespace": "_types"
             }
           }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RoleTemplateInlineScript",
-        "namespace": "security._types"
-      },
-      "properties": [
+        },
         {
+          "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Specifies the language the script is written in.",
           "name": "lang",
           "required": false,
+          "serverDefault": "painless",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -99811,21 +99607,10 @@
               }
             }
           }
-        },
-        {
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleTemplateInlineQuery",
-              "namespace": "security._types"
-            }
-          }
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L272-L277"
+      "specLocation": "security/_types/Privileges.ts#L273-L291"
     },
     {
       "codegenNames": [
@@ -99837,7 +99622,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L279-L280",
+      "specLocation": "security/_types/Privileges.ts#L293-L294",
       "type": {
         "items": [
           {
@@ -112104,6 +111889,17 @@
           }
         },
         {
+          "name": "api_key_secret_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "configuration",
           "required": true,
           "type": {
@@ -112140,11 +111936,23 @@
           "name": "error",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -112187,11 +111995,23 @@
           "name": "index_name",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -112372,7 +112192,7 @@
         },
         {
           "name": "service_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112393,6 +112213,13 @@
           }
         },
         {
+          "name": "sync_cursor",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
           "name": "sync_now",
           "required": true,
           "type": {
@@ -112404,7 +112231,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L238-L267"
+      "specLocation": "connector/_types/Connector.ts#L237-L268"
     },
     {
       "kind": "interface",
@@ -112425,29 +112252,18 @@
           }
         },
         {
-          "name": "filtering_advanced_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "filtering_rules",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "name": "incremental_sync",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureEnabled",
+              "namespace": "connector._types"
+            }
+          }
+        },
+        {
+          "name": "native_connector_api_keys",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -112469,7 +112285,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L224-L230"
+      "specLocation": "connector/_types/Connector.ts#L224-L229"
     },
     {
       "kind": "interface",
@@ -112544,7 +112360,7 @@
         },
         {
           "name": "domain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112929,7 +112745,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/Connector.ts#L232-L236"
+      "specLocation": "connector/_types/Connector.ts#L231-L235"
     },
     {
       "kind": "interface",
@@ -113177,7 +112993,7 @@
           }
         }
       ],
-      "specLocation": "connector/_types/SyncJob.ts#L52-L71"
+      "specLocation": "connector/_types/SyncJob.ts#L53-L72"
     },
     {
       "kind": "interface",
@@ -113262,9 +113078,16 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "sync_cursor",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
         }
       ],
-      "specLocation": "connector/_types/SyncJob.ts#L31-L39"
+      "specLocation": "connector/_types/SyncJob.ts#L31-L40"
     },
     {
       "kind": "interface",
@@ -129120,10 +128943,13 @@
           "name": "nodes",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelDeploymentNodesStats",
-              "namespace": "ml._types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelDeploymentNodesStats",
+                "namespace": "ml._types"
+              }
             }
           }
         },
@@ -129561,9 +129387,18 @@
           "name": "timestamp",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "DateTime",
+              "name": "EpochTime",
               "namespace": "_types"
             }
           }
@@ -129597,7 +129432,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -132482,7 +132317,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132580,7 +132415,7 @@
       "properties": [
         {
           "name": "field_statistics",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -132857,7 +132692,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L38-L44"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L36-L42"
     },
     {
       "kind": "interface",
@@ -132899,7 +132734,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L50-L54"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
     },
     {
       "kind": "interface",
@@ -132937,7 +132772,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L71-L74"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L69-L72"
     },
     {
       "kind": "interface",
@@ -132974,7 +132809,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L27-L36"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L25-L34"
     },
     {
       "kind": "interface",
@@ -134006,7 +133841,7 @@
         },
         {
           "description": "Size of the individual result sets per query",
-          "name": "window_size",
+          "name": "rank_window_size",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -134441,7 +134276,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineScript",
+              "name": "Script",
               "namespace": "_types"
             }
           }
@@ -134849,33 +134684,6 @@
           }
         },
         {
-          "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
-          "name": "global",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GlobalPrivilege",
-                    "namespace": "security._types"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GlobalPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
           "description": "A list of application privilege entries",
           "name": "applications",
           "required": false,
@@ -134903,7 +134711,7 @@
           }
         },
         {
-          "description": "A list of users that the API keys can impersonate.",
+          "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
           "docId": "run-as-privilege",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/run-as-privilege.html",
           "name": "run_as",
@@ -134950,7 +134758,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L28-L60"
+      "specLocation": "security/_types/RoleDescriptor.ts#L28-L61"
     },
     {
       "kind": "interface",
@@ -135013,7 +134821,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L200-L224"
+      "specLocation": "security/_types/Privileges.ts#L201-L225"
     },
     {
       "kind": "interface",
@@ -135046,72 +134854,6 @@
         }
       ],
       "specLocation": "security/_types/FieldSecurity.ts#L22-L25"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "GlobalPrivilege",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ApplicationGlobalUserPrivileges",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L329-L331"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationGlobalUserPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "manage",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ManageUserPrivileges",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L333-L335"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ManageUserPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "applications",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L337-L339"
     },
     {
       "kind": "interface",
@@ -135163,7 +134905,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L26-L39"
+      "specLocation": "security/_types/Privileges.ts#L27-L40"
     },
     {
       "kind": "interface",
@@ -137009,7 +136751,7 @@
         },
         {
           "name": "docs_remaining",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -137020,7 +136762,7 @@
         },
         {
           "name": "percent_complete",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -137031,7 +136773,7 @@
         },
         {
           "name": "total_docs",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

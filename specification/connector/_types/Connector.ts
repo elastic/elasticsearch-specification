@@ -24,7 +24,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 interface SelectOption {
   label: string
-  value: string
+  value: ScalarValue
 }
 
 interface Dependency {
@@ -67,12 +67,12 @@ export interface GreaterThanValidation {
 
 export interface ListTypeValidation {
   type: 'list_type'
-  constraint: ScalarValue[]
+  constraint: string
 }
 
 export interface IncludedInValidation {
   type: 'included_in'
-  constraint: string
+  constraint: ScalarValue[]
 }
 
 export interface RegexValidation {
@@ -91,11 +91,11 @@ export interface ConnectorConfigProperties {
   placeholder?: string
   required: boolean
   sensitive: boolean
-  tooltip?: string
-  type: ConnectorFieldType
-  ui_restrictions: string[]
-  validations: Validation[]
-  value: ScalarValue
+  tooltip?: string | null
+  type?: ConnectorFieldType
+  ui_restrictions?: string[]
+  validations?: Validation[]
+  value: UserDefinedValue
 }
 
 export type ConnectorConfiguration = Dictionary<
@@ -208,7 +208,7 @@ export interface FilteringRules {
 
 export interface FilteringConfig {
   active: FilteringRules
-  domain: string
+  domain?: string
   draft: FilteringRules
 }
 
@@ -223,9 +223,8 @@ interface SyncRulesFeature {
 
 export interface ConnectorFeatures {
   document_level_security?: FeatureEnabled
-  filtering_advanced_config?: boolean
-  filtering_rules?: boolean
   incremental_sync?: FeatureEnabled
+  native_connector_api_keys?: FeatureEnabled
   sync_rules?: SyncRulesFeature
 }
 
@@ -237,14 +236,15 @@ export interface SchedulingConfiguration {
 
 export interface Connector {
   api_key_id?: string
+  api_key_secret_id?: string
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
   description?: string
-  error?: string
+  error?: string | null
   features?: ConnectorFeatures
   filtering: FilteringConfig[]
   id?: Id
-  index_name?: IndexName
+  index_name?: IndexName | null
   is_native: boolean
   language?: string
   last_access_control_sync_error?: string
@@ -261,7 +261,8 @@ export interface Connector {
   name?: string
   pipeline?: IngestPipelineParams
   scheduling: SchedulingConfiguration
-  service_type: string
+  service_type?: string
   status: ConnectorStatus
+  sync_cursor?: UserDefinedValue
   sync_now: boolean
 }

@@ -535,18 +535,6 @@
       ],
       "response": []
     },
-    "connector.last_sync": {
-      "request": [
-        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
-      ],
-      "response": []
-    },
-    "connector.put": {
-      "request": [
-        "Request: path parameter 'connector_id' is optional in the json spec"
-      ],
-      "response": []
-    },
     "connector.secret_delete": {
       "request": [
         "Missing request & response"
@@ -592,6 +580,12 @@
     "connector.sync_job_update_stats": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "connector.update_error": {
+      "request": [
+        "type_alias definition _spec_utils:WithNullValue / union_of / instance_of - No type definition for '_spec_utils.WithNullValue:T'"
       ],
       "response": []
     },
@@ -876,6 +870,24 @@
       ],
       "response": []
     },
+    "ingest.delete_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ingest.get_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ingest.put_geoip_database": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "license.delete": {
       "request": [
         "Request: missing json spec query parameter 'master_timeout'",
@@ -952,6 +964,7 @@
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
       ],
       "response": []
@@ -1013,7 +1026,6 @@
     },
     "search": {
       "request": [
-        "Request: missing json spec query parameter 'include_named_queries_score'",
         "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
@@ -1046,12 +1058,6 @@
         "Request: missing json spec query parameter 'index'",
         "request definition searchable_snapshots.clear_cache:Request / query - Property 'pretty' is already defined in an ancestor class",
         "request definition searchable_snapshots.clear_cache:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
-    },
-    "security.bulk_delete_role": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

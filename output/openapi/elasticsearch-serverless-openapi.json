@@ -1926,8 +1926,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "Determines whether associated sync jobs are also deleted.",
-            "required": true,
+            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -1942,117 +1941,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/_connector/{connector_id}/_last_sync": {
-      "put": {
-        "tags": [
-          "connector.last_sync"
-        ],
-        "summary": "Updates last sync stats in the connector document",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-connector-last-sync-api.html"
-        },
-        "operationId": "connector-last-sync",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "connector_id",
-            "description": "The unique identifier of the connector to be updated",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "last_access_control_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
-                  },
-                  "last_access_control_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_access_control_sync_status": {
-                    "$ref": "#/components/schemas/connector._types:SyncStatus"
-                  },
-                  "last_deleted_document_count": {
-                    "type": "number"
-                  },
-                  "last_incremental_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_indexed_document_count": {
-                    "type": "number"
-                  },
-                  "last_seen": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:DateTime"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
-                  },
-                  "last_sync_error": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
-                  },
-                  "last_sync_scheduled_at": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  },
-                  "last_sync_status": {
-                    "$ref": "#/components/schemas/connector._types:SyncStatus"
-                  },
-                  "last_synced": {
-                    "$ref": "#/components/schemas/_types:DateTime"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "$ref": "#/components/schemas/_types:Result"
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
                 }
               }
             }
@@ -2197,14 +2085,7 @@
                     "type": "string"
                   },
                   "index_name": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/_types:IndexName"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/_types:IndexName"
                   },
                   "is_native": {
                     "type": "boolean"
@@ -2218,10 +2099,7 @@
                   "service_type": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "index_name"
-                ]
+                }
               }
             }
           }
@@ -2234,11 +2112,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/_types:Result"
+                    },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"
                     }
                   },
                   "required": [
+                    "result",
                     "id"
                   ]
                 }
@@ -2422,10 +2304,17 @@
             "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/connector._types:SyncJobType"
-              }
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/connector._types:SyncJobType"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/connector._types:SyncJobType"
+                  }
+                }
+              ]
             },
             "style": "form"
           }
@@ -2588,24 +2477,10 @@
                 "type": "object",
                 "properties": {
                   "api_key_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   },
                   "api_key_secret_id": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/_spec_utils:NullValue"
-                      }
-                    ]
+                    "type": "string"
                   }
                 }
               }
@@ -3011,10 +2886,7 @@
                   "description": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               }
             }
           },
@@ -14463,6 +14335,9 @@
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
           },
           {
@@ -14517,6 +14392,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
@@ -14580,6 +14458,9 @@
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
           },
           {
@@ -14637,6 +14518,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
@@ -16116,6 +16000,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -16264,6 +16151,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -16421,6 +16311,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -16572,6 +16465,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -18425,10 +18321,17 @@
                 "properties": {
                   "synonyms_set": {
                     "description": "The synonym set information to update",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/synonyms._types:SynonymRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -20776,10 +20679,14 @@
               "properties": {
                 "result": {
                   "$ref": "#/components/schemas/_types:Result"
+                },
+                "id": {
+                  "$ref": "#/components/schemas/_types:Id"
                 }
               },
               "required": [
-                "result"
+                "result",
+                "id"
               ]
             }
           }
@@ -22245,7 +22152,6 @@
               },
               "required": [
                 "found",
-                "_id",
                 "_index",
                 "took",
                 "_version"
@@ -23413,7 +23319,7 @@
       "connector.put#connector_id": {
         "in": "path",
         "name": "connector_id",
-        "description": "The unique identifier of the connector to be created or updated",
+        "description": "The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -26020,6 +25926,16 @@
         },
         "style": "form"
       },
+      "msearch#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "msearch#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
@@ -26565,6 +26481,16 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "search#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -27705,14 +27631,7 @@
                   "type": "string"
                 },
                 "index_name": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/_types:IndexName"
-                    },
-                    {
-                      "$ref": "#/components/schemas/_spec_utils:NullValue"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/_types:IndexName"
                 },
                 "is_native": {
                   "type": "boolean"
@@ -27726,10 +27645,7 @@
                 "service_type": {
                   "type": "string"
                 }
-              },
-              "required": [
-                "index_name"
-              ]
+              }
             }
           }
         }
@@ -28620,7 +28536,7 @@
                   "$ref": "#/components/schemas/_global.scripts_painless_execute:PainlessContextSetup"
                 },
                 "script": {
-                  "$ref": "#/components/schemas/_types:InlineScript"
+                  "$ref": "#/components/schemas/_types:Script"
                 }
               }
             }
@@ -32363,10 +32279,23 @@
             }
           },
           "matched_queries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            ]
           },
           "_nested": {
             "$ref": "#/components/schemas/_global.search._types:NestedIdentity"
@@ -32397,6 +32326,9 @@
           },
           "_source": {
             "type": "object"
+          },
+          "_rank": {
+            "type": "number"
           },
           "_seq_no": {
             "$ref": "#/components/schemas/_types:SequenceNumber"
@@ -35310,42 +35242,32 @@
         ]
       },
       "_types:Script": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types:InlineScript"
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The script source.",
+            "type": "string"
           },
-          {
-            "$ref": "#/components/schemas/_types:StoredScriptId"
-          }
-        ]
-      },
-      "_types:InlineScript": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
           },
-          {
+          "params": {
+            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
             "type": "object",
-            "properties": {
-              "lang": {
-                "$ref": "#/components/schemas/_types:ScriptLanguage"
-              },
-              "options": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              },
-              "source": {
-                "description": "The script source.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "source"
-            ]
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "lang": {
+            "$ref": "#/components/schemas/_types:ScriptLanguage"
+          },
+          "options": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
-        ]
+        }
       },
       "_types:ScriptLanguage": {
         "anyOf": [
@@ -35360,36 +35282,6 @@
           },
           {
             "type": "string"
-          }
-        ]
-      },
-      "_types:ScriptBase": {
-        "type": "object",
-        "properties": {
-          "params": {
-            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          }
-        }
-      },
-      "_types:StoredScriptId": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "id": {
-                "$ref": "#/components/schemas/_types:Id"
-              }
-            },
-            "required": [
-              "id"
-            ]
           }
         ]
       },
@@ -36506,6 +36398,9 @@
           },
           "unit": {
             "$ref": "#/components/schemas/_types:DistanceUnit"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
           }
         }
       },
@@ -36531,6 +36426,26 @@
           "m",
           "cm",
           "mm"
+        ]
+      },
+      "_types:NestedSortValue": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          },
+          "max_children": {
+            "type": "number"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
+          },
+          "path": {
+            "$ref": "#/components/schemas/_types:Field"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "_types:ScriptSort": {
@@ -36562,26 +36477,6 @@
           "string",
           "number",
           "version"
-        ]
-      },
-      "_types:NestedSortValue": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "max_children": {
-            "type": "number"
-          },
-          "nested": {
-            "$ref": "#/components/schemas/_types:NestedSortValue"
-          },
-          "path": {
-            "$ref": "#/components/schemas/_types:Field"
-          }
-        },
-        "required": [
-          "path"
         ]
       },
       "_global.search._types:SourceConfig": {
@@ -36941,6 +36836,10 @@
               },
               "num_candidates": {
                 "description": "The number of nearest neighbor candidates to consider per shard",
+                "type": "number"
+              },
+              "k": {
+                "description": "The final number of nearest neighbors to return as top hits",
                 "type": "number"
               },
               "filter": {
@@ -46157,8 +46056,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]
@@ -49152,12 +49050,13 @@
           },
           "ef_construction": {
             "type": "number"
+          },
+          "confidence_interval": {
+            "type": "number"
           }
         },
         "required": [
-          "type",
-          "m",
-          "ef_construction"
+          "type"
         ]
       },
       "_types.mapping:FlattenedProperty": {
@@ -50738,6 +50637,9 @@
           "api_key_id": {
             "type": "string"
           },
+          "api_key_secret_id": {
+            "type": "string"
+          },
           "configuration": {
             "$ref": "#/components/schemas/connector._types:ConnectorConfiguration"
           },
@@ -50748,7 +50650,15 @@
             "type": "string"
           },
           "error": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "features": {
             "$ref": "#/components/schemas/connector._types:ConnectorFeatures"
@@ -50763,7 +50673,15 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "index_name": {
-            "$ref": "#/components/schemas/_types:IndexName"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types:IndexName"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "is_native": {
             "type": "boolean"
@@ -50819,6 +50737,9 @@
           "status": {
             "$ref": "#/components/schemas/connector._types:ConnectorStatus"
           },
+          "sync_cursor": {
+            "type": "object"
+          },
           "sync_now": {
             "type": "boolean"
           }
@@ -50829,7 +50750,6 @@
           "filtering",
           "is_native",
           "scheduling",
-          "service_type",
           "status",
           "sync_now"
         ]
@@ -50880,7 +50800,15 @@
             "type": "boolean"
           },
           "tooltip": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "type": {
             "$ref": "#/components/schemas/connector._types:ConnectorFieldType"
@@ -50898,7 +50826,7 @@
             }
           },
           "value": {
-            "$ref": "#/components/schemas/_types:ScalarValue"
+            "type": "object"
           }
         },
         "required": [
@@ -50909,9 +50837,6 @@
           "options",
           "required",
           "sensitive",
-          "type",
-          "ui_restrictions",
-          "validations",
           "value"
         ]
       },
@@ -50968,7 +50893,7 @@
             "type": "string"
           },
           "value": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:ScalarValue"
           }
         },
         "required": [
@@ -51053,10 +50978,7 @@
             ]
           },
           "constraint": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:ScalarValue"
-            }
+            "type": "string"
           }
         },
         "required": [
@@ -51074,7 +50996,10 @@
             ]
           },
           "constraint": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types:ScalarValue"
+            }
           }
         },
         "required": [
@@ -51167,13 +51092,10 @@
           "document_level_security": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
-          "filtering_advanced_config": {
-            "type": "boolean"
-          },
-          "filtering_rules": {
-            "type": "boolean"
-          },
           "incremental_sync": {
+            "$ref": "#/components/schemas/connector._types:FeatureEnabled"
+          },
+          "native_connector_api_keys": {
             "$ref": "#/components/schemas/connector._types:FeatureEnabled"
           },
           "sync_rules": {
@@ -51218,7 +51140,6 @@
         },
         "required": [
           "active",
-          "domain",
           "draft"
         ]
       },
@@ -51442,11 +51363,6 @@
           "error"
         ]
       },
-      "_spec_utils:NullValue": {
-        "nullable": true,
-        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
-        "type": "string"
-      },
       "connector._types:ConnectorSyncJob": {
         "type": "object",
         "properties": {
@@ -51545,6 +51461,9 @@
           },
           "service_type": {
             "type": "string"
+          },
+          "sync_cursor": {
+            "type": "object"
           }
         },
         "required": [
@@ -51569,6 +51488,11 @@
           "on_demand",
           "scheduled"
         ]
+      },
+      "_spec_utils:NullValue": {
+        "nullable": true,
+        "description": "A `null` value that is to be interpreted as an actual value, unless other uses of `null` that are equivalent\nto a missing value. It is used for exemple in settings, where using the `NullValue` for a setting will reset\nit to its default value.",
+        "type": "string"
       },
       "_types:WriteResponseBase": {
         "type": "object",
@@ -58172,7 +58096,11 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "nodes": {
-            "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            "description": "The deployment stats for each node that currently has the model allocated.\nIn serverless, stats are reported for a single unnamed virtual node.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            }
           },
           "number_of_allocations": {
             "description": "The number of allocations requested.",
@@ -58377,7 +58305,7 @@
             "type": "number"
           },
           "timestamp": {
-            "$ref": "#/components/schemas/_types:DateTime"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           }
         },
         "required": [
@@ -58395,8 +58323,7 @@
             "$ref": "#/components/schemas/_types:ByteSize"
           },
           "required_native_memory_bytes": {
-            "description": "The amount of memory required to load the model in bytes.",
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ByteSize"
           }
         },
         "required": [
@@ -59868,7 +59795,6 @@
           }
         },
         "required": [
-          "_id",
           "_index"
         ]
       },
@@ -59886,7 +59812,6 @@
           }
         },
         "required": [
-          "field_statistics",
           "terms"
         ]
       },
@@ -60512,7 +60437,7 @@
                 "description": "How much influence documents in individual result sets per query have over the final ranked result set",
                 "type": "number"
               },
-              "window_size": {
+              "rank_window_size": {
                 "description": "Size of the individual result sets per query",
                 "type": "number"
               }
@@ -60692,7 +60617,7 @@
         "type": "object",
         "properties": {
           "script": {
-            "$ref": "#/components/schemas/_types:InlineScript"
+            "$ref": "#/components/schemas/_types:Script"
           }
         },
         "required": [
@@ -60871,20 +60796,6 @@
               "$ref": "#/components/schemas/security._types:IndicesPrivileges"
             }
           },
-          "global": {
-            "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/security._types:GlobalPrivilege"
-                }
-              },
-              {
-                "$ref": "#/components/schemas/security._types:GlobalPrivilege"
-              }
-            ]
-          },
           "applications": {
             "description": "A list of application privilege entries",
             "type": "array",
@@ -60899,7 +60810,7 @@
             "externalDocs": {
               "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html"
             },
-            "description": "A list of users that the API keys can impersonate.",
+            "description": "A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
             "type": "array",
             "items": {
               "type": "string"
@@ -61043,41 +60954,31 @@
         }
       },
       "security._types:RoleTemplateScript": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/security._types:RoleTemplateInlineScript"
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
           },
-          {
-            "$ref": "#/components/schemas/_types:StoredScriptId"
-          }
-        ]
-      },
-      "security._types:RoleTemplateInlineScript": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:ScriptBase"
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
           },
-          {
+          "params": {
+            "description": "Specifies any named parameters that are passed into the script as variables.\nUse parameters instead of hard-coded values to decrease compile time.",
             "type": "object",
-            "properties": {
-              "lang": {
-                "$ref": "#/components/schemas/_types:ScriptLanguage"
-              },
-              "options": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
-              },
-              "source": {
-                "$ref": "#/components/schemas/security._types:RoleTemplateInlineQuery"
-              }
-            },
-            "required": [
-              "source"
-            ]
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "lang": {
+            "$ref": "#/components/schemas/_types:ScriptLanguage"
+          },
+          "options": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
-        ]
+        }
       },
       "security._types:RoleTemplateInlineQuery": {
         "oneOf": [
@@ -61087,42 +60988,6 @@
           {
             "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
           }
-        ]
-      },
-      "security._types:GlobalPrivilege": {
-        "type": "object",
-        "properties": {
-          "application": {
-            "$ref": "#/components/schemas/security._types:ApplicationGlobalUserPrivileges"
-          }
-        },
-        "required": [
-          "application"
-        ]
-      },
-      "security._types:ApplicationGlobalUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "manage": {
-            "$ref": "#/components/schemas/security._types:ManageUserPrivileges"
-          }
-        },
-        "required": [
-          "manage"
-        ]
-      },
-      "security._types:ManageUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "applications": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "applications"
         ]
       },
       "security._types:ApplicationPrivileges": {
@@ -61929,10 +61794,7 @@
         },
         "required": [
           "docs_indexed",
-          "docs_processed",
-          "docs_remaining",
-          "percent_complete",
-          "total_docs"
+          "docs_processed"
         ]
       },
       "transform.get_transform_stats:TransformStatsHealth": {

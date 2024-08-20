@@ -49,7 +49,7 @@ export class Hit<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
-  matched_queries?: string[]
+  matched_queries?: string[] | Dictionary<string, double[]>
   _nested?: NestedIdentity
   _ignored?: string[]
   ignored_field_values?: Dictionary<string, string[]>
@@ -57,6 +57,7 @@ export class Hit<TDocument> {
   _node?: string
   _routing?: string
   _source?: TDocument
+  _rank?: integer
   _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber

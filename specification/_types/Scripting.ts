@@ -62,31 +62,39 @@ export class ScriptBase {
    * Use parameters instead of hard-coded values to decrease compile time.
    */
   params?: Dictionary<string, UserDefinedValue>
-}
-
-/** @shortcut_property source */
-export class InlineScript extends ScriptBase {
   /**
    * Specifies the language the script is written in.
    * @server_default painless
    */
   lang?: ScriptLanguage
   options?: Dictionary<string, string>
+}
+
+/**
+ * @shortcut_property source
+ * */
+export class Script {
   /**
    * The script source.
    */
-  source: string
-}
-
-export class StoredScriptId extends ScriptBase {
+  source?: string
   /**
    * The `id` for a stored script.
    */
-  id: Id
-}
+  id?: Id
 
-/** @codegen_names inline, stored */
-export type Script = InlineScript | StoredScriptId
+  /**
+   * Specifies any named parameters that are passed into the script as variables.
+   * Use parameters instead of hard-coded values to decrease compile time.
+   */
+  params?: Dictionary<string, UserDefinedValue>
+  /**
+   * Specifies the language the script is written in.
+   * @server_default painless
+   */
+  lang?: ScriptLanguage
+  options?: Dictionary<string, string>
+}
 
 export class ScriptField {
   script: Script
