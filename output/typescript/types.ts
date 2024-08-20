@@ -1961,6 +1961,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   max_docs?: long
   pipeline?: string
   preference?: string
+  q?: string
   refresh?: boolean
   request_cache?: boolean
   requests_per_second?: float
