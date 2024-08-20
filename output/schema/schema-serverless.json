@@ -114808,6 +114808,18 @@
           }
         },
         {
+          "description": "Information about failure store backing indices",
+          "name": "failure_store",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FailureStore",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
           "description": "Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1.",
           "name": "generation",
           "required": true,
@@ -114928,6 +114940,18 @@
           }
         },
         {
+          "description": "If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.",
+          "name": "rollover_on_write",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Health status of the data stream.\nThis health status is based on the state of the primary and replica shards of the stream’s backing indices.",
           "name": "status",
           "required": true,
@@ -114982,7 +115006,53 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L39-L112"
+      "specLocation": "indices/_types/DataStream.ts#L45-L127"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FailureStore",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataStreamIndex",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "rollover_on_write",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/DataStream.ts#L39-L43"
     },
     {
       "kind": "interface",
@@ -115030,7 +115100,7 @@
         {
           "description": "Name of the lifecycle system that's currently managing this backing index.",
           "name": "managed_by",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115042,7 +115112,7 @@
         {
           "description": "Indicates if ILM should take precedence over DSL in case both are configured to manage this index.",
           "name": "prefer_ilm",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115052,7 +115122,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L121-L142"
+      "specLocation": "indices/_types/DataStream.ts#L136-L157"
     },
     {
       "kind": "interface",
@@ -115074,7 +115144,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L114-L119"
+      "specLocation": "indices/_types/DataStream.ts#L129-L134"
     },
     {
       "kind": "interface",
@@ -115530,7 +115600,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L144-L146"
+      "specLocation": "indices/_types/DataStream.ts#L159-L161"
     },
     {
       "kind": "interface",

@@ -82506,6 +82506,9 @@
             "description": "If `true`, the data stream allows custom routing on write request.",
             "type": "boolean"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/indices._types:FailureStore"
+          },
           "generation": {
             "description": "Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1.",
             "type": "number"
@@ -82541,6 +82544,10 @@
             "description": "If `true`, the data stream is created and managed by cross-cluster replication and the local cluster can not write into this data stream or change its mappings.",
             "type": "boolean"
           },
+          "rollover_on_write": {
+            "description": "If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.",
+            "type": "boolean"
+          },
           "status": {
             "$ref": "#/components/schemas/_types:HealthStatus"
           },
@@ -82563,17 +82570,32 @@
           "prefer_ilm",
           "indices",
           "name",
+          "rollover_on_write",
           "status",
           "template",
           "timestamp_field"
         ]
       },
-      "indices._types:ManagedBy": {
-        "type": "string",
-        "enum": [
-          "Index Lifecycle Management",
-          "Data stream lifecycle",
-          "Unmanaged"
+      "indices._types:FailureStore": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types:DataStreamIndex"
+            }
+          },
+          "rollover_on_write": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled",
+          "indices",
+          "rollover_on_write"
         ]
       },
       "indices._types:DataStreamIndex": {
@@ -82598,9 +82620,15 @@
         },
         "required": [
           "index_name",
-          "index_uuid",
-          "managed_by",
-          "prefer_ilm"
+          "index_uuid"
+        ]
+      },
+      "indices._types:ManagedBy": {
+        "type": "string",
+        "enum": [
+          "Index Lifecycle Management",
+          "Data stream lifecycle",
+          "Unmanaged"
         ]
       },
       "indices._types:DataStreamTimestampField": {
