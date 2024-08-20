@@ -498,6 +498,7 @@ export interface HealthReportIlmIndicator extends HealthReportBaseIndicator {
 export interface HealthReportIlmIndicatorDetails {
   ilm_status: LifecycleOperationMode
   policies: long
+  stagnating_indices: integer
 }
 
 export interface HealthReportImpact {
@@ -577,6 +578,7 @@ export interface HealthReportShardsAvailabilityIndicator extends HealthReportBas
 
 export interface HealthReportShardsAvailabilityIndicatorDetails {
   creating_primaries: long
+  creating_replicas: long
   initializing_primaries: long
   initializing_replicas: long
   restarting_primaries: long
@@ -608,7 +610,7 @@ export interface HealthReportSlmIndicator extends HealthReportBaseIndicator {
 export interface HealthReportSlmIndicatorDetails {
   slm_status: LifecycleOperationMode
   policies: long
-  unhealthy_policies: HealthReportSlmIndicatorUnhealthyPolicies
+  unhealthy_policies?: HealthReportSlmIndicatorUnhealthyPolicies
 }
 
 export interface HealthReportSlmIndicatorUnhealthyPolicies {
@@ -2243,9 +2245,10 @@ export interface GeoDistanceSortKeys {
   ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
+  nested?: NestedSortValue
 }
 export type GeoDistanceSort = GeoDistanceSortKeys
-  & { [property: string]: GeoLocation | GeoLocation[] | SortMode | GeoDistanceType | boolean | SortOrder | DistanceUnit }
+  & { [property: string]: GeoLocation | GeoLocation[] | SortMode | GeoDistanceType | boolean | SortOrder | DistanceUnit | NestedSortValue }
 
 export type GeoDistanceType = 'arc' | 'plane'
 
@@ -2528,7 +2531,6 @@ export interface RRFRetriever extends RetrieverBase {
 }
 
 export interface RankBase {
-  [key: string]: never
 }
 
 export interface RankContainer {
@@ -3053,7 +3055,6 @@ export interface AggregationsBoxplotAggregation extends AggregationsMetricAggreg
 }
 
 export interface AggregationsBucketAggregationBase {
-  [key: string]: never
 }
 
 export interface AggregationsBucketCorrelationAggregation extends AggregationsBucketPathAggregation {
@@ -3107,7 +3108,7 @@ export type AggregationsBuckets<TBucket = unknown> = Record<string, TBucket> | T
 
 export type AggregationsBucketsPath = string | string[] | Record<string, string>
 
-export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1Y'
+export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1y'
 
 export interface AggregationsCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -4154,6 +4155,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   value_type?: string
   order?: AggregationsAggregateOrder
   script?: Script
+  shard_min_doc_count?: long
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
@@ -4756,7 +4758,7 @@ export type AnalysisSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Dani
 
 export interface AnalysisSnowballTokenFilter extends AnalysisTokenFilterBase {
   type: 'snowball'
-  language: AnalysisSnowballLanguage
+  language?: AnalysisSnowballLanguage
 }
 
 export interface AnalysisStandardAnalyzer {
@@ -10603,6 +10605,7 @@ export interface IndicesMappingLimitSettingsNestedObjects {
 
 export interface IndicesMappingLimitSettingsTotalFields {
   limit?: long
+  ignore_dynamic_beyond_limit?: boolean
 }
 
 export interface IndicesMerge {
@@ -13503,7 +13506,7 @@ export interface MlInferenceConfigUpdateContainer {
 export interface MlInferenceResponseResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
-  predicted_value?: MlPredictedValue[]
+  predicted_value?: MlPredictedValue | MlPredictedValue[]
   predicted_value_sequence?: string
   prediction_probability?: double
   prediction_score?: double
@@ -13956,7 +13959,7 @@ export interface MlTrainedModelDeploymentStats {
   error_count: integer
   inference_count: integer
   model_id: Id
-  nodes: MlTrainedModelDeploymentNodesStats
+  nodes: MlTrainedModelDeploymentNodesStats[]
   number_of_allocations: integer
   queue_capacity: integer
   rejected_execution_count: integer
@@ -13991,7 +13994,7 @@ export interface MlTrainedModelInferenceStats {
   failure_count: integer
   inference_count: integer
   missing_all_fields_count: integer
-  timestamp: DateTime
+  timestamp: EpochTime<UnitMillis>
 }
 
 export interface MlTrainedModelLocation {
@@ -18440,7 +18443,7 @@ export interface SynonymsGetSynonymsSetsSynonymsSetItem {
 export interface SynonymsPutSynonymRequest extends RequestBase {
   id: Id
   body?: {
-    synonyms_set: SynonymsSynonymRule[]
+    synonyms_set: SynonymsSynonymRule | SynonymsSynonymRule[]
   }
 }
 

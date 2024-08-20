@@ -75,7 +75,7 @@ export class TrainedModelDeploymentStats {
    * The deployment stats for each node that currently has the model allocated.
    * In serverless, stats are reported for a single unnamed virtual node.
    */
-  nodes: TrainedModelDeploymentNodesStats
+  nodes: TrainedModelDeploymentNodesStats[]
   /** The number of allocations requested. */
   number_of_allocations: integer
   /** The number of inference requests that can be queued before new requests are rejected. */
@@ -120,7 +120,7 @@ export class TrainedModelInferenceStats {
   /** The number of inference calls where all the training features for the model were missing. */
   missing_all_fields_count: integer
   /** The time when the statistics were last updated. */
-  timestamp: DateTime
+  timestamp: EpochTime<UnitMillis>
 }
 
 export class TrainedModelSizeStats {

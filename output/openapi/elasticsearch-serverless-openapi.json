@@ -9154,7 +9154,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model",
+        "operationId": "inference-get-model-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.get_model#inference_id"
@@ -9249,7 +9249,7 @@
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
         },
-        "operationId": "inference-get-model-1",
+        "operationId": "inference-get-model-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.get_model#task_type"
@@ -9342,6 +9342,24 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/inference.delete_model#200"
+          }
+        }
+      }
+    },
+    "/_inference": {
+      "get": {
+        "tags": [
+          "inference.get_model"
+        ],
+        "summary": "Get a model in the Inference API",
+        "description": "Get a model in the Inference API",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html"
+        },
+        "operationId": "inference-get-model",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.get_model#200"
           }
         }
       }
@@ -18367,10 +18385,17 @@
                 "properties": {
                   "synonyms_set": {
                     "description": "The synonym set information to update",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/synonyms._types:SynonymRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -20076,8 +20101,8 @@
         "tags": [
           "update_by_query"
         ],
-        "summary": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
-        "description": "Updates documents that match the specified query. If no query is specified,\n performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "summary": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
+        "description": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html"
         },
@@ -36280,6 +36305,9 @@
           },
           "unit": {
             "$ref": "#/components/schemas/_types:DistanceUnit"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
           }
         }
       },
@@ -36305,6 +36333,26 @@
           "m",
           "cm",
           "mm"
+        ]
+      },
+      "_types:NestedSortValue": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+          },
+          "max_children": {
+            "type": "number"
+          },
+          "nested": {
+            "$ref": "#/components/schemas/_types:NestedSortValue"
+          },
+          "path": {
+            "$ref": "#/components/schemas/_types:Field"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "_types:ScriptSort": {
@@ -36336,26 +36384,6 @@
           "string",
           "number",
           "version"
-        ]
-      },
-      "_types:NestedSortValue": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
-          },
-          "max_children": {
-            "type": "number"
-          },
-          "nested": {
-            "$ref": "#/components/schemas/_types:NestedSortValue"
-          },
-          "path": {
-            "$ref": "#/components/schemas/_types:Field"
-          }
-        },
-        "required": [
-          "path"
         ]
       },
       "_global.search._types:SourceConfig": {
@@ -39254,7 +39282,7 @@
           "quarter",
           "1q",
           "year",
-          "1Y"
+          "1y"
         ]
       },
       "_types.aggregations:ExtendedBoundsFieldDateMath": {
@@ -41120,6 +41148,10 @@
               },
               "script": {
                 "$ref": "#/components/schemas/_types:Script"
+              },
+              "shard_min_doc_count": {
+                "description": "Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.\nTerms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.",
+                "type": "number"
               },
               "shard_size": {
                 "description": "The number of candidate terms produced by each shard.\nBy default, `shard_size` will be automatically estimated based on the number of shards and the `size` parameter.",
@@ -45697,8 +45729,7 @@
               }
             },
             "required": [
-              "type",
-              "language"
+              "type"
             ]
           }
         ]
@@ -47360,6 +47391,10 @@
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
             "type": "number"
+          },
+          "ignore_dynamic_beyond_limit": {
+            "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
+            "type": "boolean"
           }
         }
       },
@@ -57651,7 +57686,11 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "nodes": {
-            "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            "description": "The deployment stats for each node that currently has the model allocated.\nIn serverless, stats are reported for a single unnamed virtual node.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            }
           },
           "number_of_allocations": {
             "description": "The number of allocations requested.",
@@ -57856,7 +57895,7 @@
             "type": "number"
           },
           "timestamp": {
-            "$ref": "#/components/schemas/_types:DateTime"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           }
         },
         "required": [
@@ -58088,10 +58127,17 @@
           },
           "predicted_value": {
             "description": "If the model is trained for a text classification or zero shot classification task, the response is the\npredicted class.\nFor named entity recognition (NER) tasks, it contains the annotated text output.\nFor fill mask tasks, it contains the top prediction for replacing the mask token.\nFor text embedding tasks, it contains the raw numerical text embedding values.\nFor regression models, its a numerical value\nFor classification models, it may be an integer, double, boolean or string depending on prediction type",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ml._types:PredictedValue"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ml._types:PredictedValue"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ml._types:PredictedValue"
+                }
+              }
+            ]
           },
           "predicted_value_sequence": {
             "description": "For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted\nvalue.\nAdditionally",
