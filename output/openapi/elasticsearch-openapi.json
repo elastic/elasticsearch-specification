@@ -39711,18 +39711,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "hot_threads": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/nodes.hot_threads:HotThread"
-                  }
-                }
-              },
-              "required": [
-                "hot_threads"
-              ]
+              "type": "object"
             }
           }
         }
@@ -59660,526 +59649,10 @@
                 "$ref": "#/components/schemas/_types:Fields"
               },
               "analyzer": {
-                "$ref": "#/components/schemas/_types.analysis:Analyzer"
-              }
-            }
-          }
-        ]
-      },
-      "_types.analysis:Analyzer": {
-        "discriminator": {
-          "propertyName": "type"
-        },
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:CustomAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:FingerprintAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:PatternAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:SimpleAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:StandardAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:StopAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:WhitespaceAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:IcuAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:KuromojiAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:SnowballAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:DutchAnalyzer"
-          }
-        ]
-      },
-      "_types.analysis:CustomAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "custom"
-            ]
-          },
-          "char_filter": {
-            "oneOf": [
-              {
                 "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
               }
-            ]
-          },
-          "filter": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "position_increment_gap": {
-            "type": "number"
-          },
-          "position_offset_gap": {
-            "type": "number"
-          },
-          "tokenizer": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "tokenizer"
-        ]
-      },
-      "_types.analysis:FingerprintAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "fingerprint"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "max_output_size": {
-            "type": "number"
-          },
-          "preserve_original": {
-            "type": "boolean"
-          },
-          "separator": {
-            "type": "string"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
-        ]
-      },
-      "_types.analysis:StopWords": {
-        "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
             }
           }
-        ]
-      },
-      "_types.analysis:KeywordAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "keyword"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:LanguageAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "language"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:Language"
-          },
-          "stem_exclusion": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "language",
-          "stem_exclusion"
-        ]
-      },
-      "_types.analysis:Language": {
-        "type": "string",
-        "enum": [
-          "Arabic",
-          "Armenian",
-          "Basque",
-          "Brazilian",
-          "Bulgarian",
-          "Catalan",
-          "Chinese",
-          "Cjk",
-          "Czech",
-          "Danish",
-          "Dutch",
-          "English",
-          "Estonian",
-          "Finnish",
-          "French",
-          "Galician",
-          "German",
-          "Greek",
-          "Hindi",
-          "Hungarian",
-          "Indonesian",
-          "Irish",
-          "Italian",
-          "Latvian",
-          "Norwegian",
-          "Persian",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Sorani",
-          "Spanish",
-          "Swedish",
-          "Turkish",
-          "Thai"
-        ]
-      },
-      "_types.analysis:NoriAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "nori"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "decompound_mode": {
-            "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
-          },
-          "stoptags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "user_dictionary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:NoriDecompoundMode": {
-        "type": "string",
-        "enum": [
-          "discard",
-          "none",
-          "mixed"
-        ]
-      },
-      "_types.analysis:PatternAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "pattern"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "flags": {
-            "type": "string"
-          },
-          "lowercase": {
-            "type": "boolean"
-          },
-          "pattern": {
-            "type": "string"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type",
-          "pattern"
-        ]
-      },
-      "_types.analysis:SimpleAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "simple"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:StandardAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "standard"
-            ]
-          },
-          "max_token_length": {
-            "type": "number"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:StopAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "stop"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:WhitespaceAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "whitespace"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:IcuAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "icu_analyzer"
-            ]
-          },
-          "method": {
-            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationType"
-          },
-          "mode": {
-            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationMode"
-          }
-        },
-        "required": [
-          "type",
-          "method",
-          "mode"
-        ]
-      },
-      "_types.analysis:IcuNormalizationType": {
-        "type": "string",
-        "enum": [
-          "nfc",
-          "nfkc",
-          "nfkc_cf"
-        ]
-      },
-      "_types.analysis:IcuNormalizationMode": {
-        "type": "string",
-        "enum": [
-          "decompose",
-          "compose"
-        ]
-      },
-      "_types.analysis:KuromojiAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "kuromoji"
-            ]
-          },
-          "mode": {
-            "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizationMode"
-          },
-          "user_dictionary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "mode"
-        ]
-      },
-      "_types.analysis:KuromojiTokenizationMode": {
-        "type": "string",
-        "enum": [
-          "normal",
-          "search",
-          "extended"
-        ]
-      },
-      "_types.analysis:SnowballAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "snowball"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:SnowballLanguage"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type",
-          "language"
-        ]
-      },
-      "_types.analysis:SnowballLanguage": {
-        "type": "string",
-        "enum": [
-          "Armenian",
-          "Basque",
-          "Catalan",
-          "Danish",
-          "Dutch",
-          "English",
-          "Finnish",
-          "French",
-          "German",
-          "German2",
-          "Hungarian",
-          "Italian",
-          "Kp",
-          "Lovins",
-          "Norwegian",
-          "Porter",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Spanish",
-          "Swedish",
-          "Turkish"
-        ]
-      },
-      "_types.analysis:DutchAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "dutch"
-            ]
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type"
         ]
       },
       "_global.search._types:HighlightBase": {
@@ -61292,6 +60765,20 @@
           "external",
           "external_gte",
           "force"
+        ]
+      },
+      "_types.analysis:StopWords": {
+        "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         ]
       },
       "_types.query_dsl:MultiMatchQuery": {
@@ -71261,6 +70748,1513 @@
             }
           }
         }
+      },
+      "_types.analysis:Analyzer": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:CustomAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FingerprintAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PatternAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SimpleAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:StandardAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:StopAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:WhitespaceAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IcuAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:KuromojiAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SnowballAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ArabicAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ArmenianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BasqueAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BengaliAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BrazilianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BulgarianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CatalanAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ChineseAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CjkAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CzechAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:DanishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:DutchAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:EnglishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:EstonianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FinnishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FrenchAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GalicianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GermanAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GreekAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:HindiAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:HungarianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IndonesianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IrishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ItalianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LatvianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LithuanianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:NorwegianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PersianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PortugueseAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:RomanianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:RussianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SerbianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SoraniAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SpanishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SwedishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:TurkishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ThaiAnalyzer"
+          }
+        ]
+      },
+      "_types.analysis:CustomAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "custom"
+            ]
+          },
+          "char_filter": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "filter": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "position_increment_gap": {
+            "type": "number"
+          },
+          "position_offset_gap": {
+            "type": "number"
+          },
+          "tokenizer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "tokenizer"
+        ]
+      },
+      "_types.analysis:FingerprintAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "fingerprint"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "max_output_size": {
+            "type": "number"
+          },
+          "preserve_original": {
+            "type": "boolean"
+          },
+          "separator": {
+            "type": "string"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "max_output_size",
+          "preserve_original",
+          "separator"
+        ]
+      },
+      "_types.analysis:KeywordAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "keyword"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LanguageAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "language"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "language": {
+            "$ref": "#/components/schemas/_types.analysis:Language"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "language",
+          "stem_exclusion"
+        ]
+      },
+      "_types.analysis:Language": {
+        "type": "string",
+        "enum": [
+          "Arabic",
+          "Armenian",
+          "Basque",
+          "Brazilian",
+          "Bulgarian",
+          "Catalan",
+          "Chinese",
+          "Cjk",
+          "Czech",
+          "Danish",
+          "Dutch",
+          "English",
+          "Estonian",
+          "Finnish",
+          "French",
+          "Galician",
+          "German",
+          "Greek",
+          "Hindi",
+          "Hungarian",
+          "Indonesian",
+          "Irish",
+          "Italian",
+          "Latvian",
+          "Norwegian",
+          "Persian",
+          "Portuguese",
+          "Romanian",
+          "Russian",
+          "Sorani",
+          "Spanish",
+          "Swedish",
+          "Turkish",
+          "Thai"
+        ]
+      },
+      "_types.analysis:NoriAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "nori"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "decompound_mode": {
+            "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
+          },
+          "stoptags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_dictionary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:NoriDecompoundMode": {
+        "type": "string",
+        "enum": [
+          "discard",
+          "none",
+          "mixed"
+        ]
+      },
+      "_types.analysis:PatternAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "pattern"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "flags": {
+            "type": "string"
+          },
+          "lowercase": {
+            "type": "boolean"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type",
+          "pattern"
+        ]
+      },
+      "_types.analysis:SimpleAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "simple"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:StandardAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "standard"
+            ]
+          },
+          "max_token_length": {
+            "type": "number"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:StopAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "stop"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:WhitespaceAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "whitespace"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IcuAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "icu_analyzer"
+            ]
+          },
+          "method": {
+            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationType"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationMode"
+          }
+        },
+        "required": [
+          "type",
+          "method",
+          "mode"
+        ]
+      },
+      "_types.analysis:IcuNormalizationType": {
+        "type": "string",
+        "enum": [
+          "nfc",
+          "nfkc",
+          "nfkc_cf"
+        ]
+      },
+      "_types.analysis:IcuNormalizationMode": {
+        "type": "string",
+        "enum": [
+          "decompose",
+          "compose"
+        ]
+      },
+      "_types.analysis:KuromojiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "kuromoji"
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizationMode"
+          },
+          "user_dictionary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "mode"
+        ]
+      },
+      "_types.analysis:KuromojiTokenizationMode": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "search",
+          "extended"
+        ]
+      },
+      "_types.analysis:SnowballAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "snowball"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "language": {
+            "$ref": "#/components/schemas/_types.analysis:SnowballLanguage"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type",
+          "language"
+        ]
+      },
+      "_types.analysis:SnowballLanguage": {
+        "type": "string",
+        "enum": [
+          "Armenian",
+          "Basque",
+          "Catalan",
+          "Danish",
+          "Dutch",
+          "English",
+          "Finnish",
+          "French",
+          "German",
+          "German2",
+          "Hungarian",
+          "Italian",
+          "Kp",
+          "Lovins",
+          "Norwegian",
+          "Porter",
+          "Portuguese",
+          "Romanian",
+          "Russian",
+          "Spanish",
+          "Swedish",
+          "Turkish"
+        ]
+      },
+      "_types.analysis:ArabicAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "arabic"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ArmenianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "armenian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BasqueAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "basque"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BengaliAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bengali"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BrazilianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "brazilian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BulgarianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bulgarian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CatalanAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "catalan"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ChineseAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "chinese"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CjkAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "cjk"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CzechAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "czech"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:DanishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "danish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:DutchAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "dutch"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:EnglishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "english"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:EstonianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "estonian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:FinnishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "finnish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:FrenchAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "french"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GalicianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "galician"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GermanAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "german"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GreekAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "greek"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:HindiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "hindi"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:HungarianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "hungarian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IndonesianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "indonesian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IrishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "irish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ItalianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "italian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LatvianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "latvian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LithuanianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "lithuanian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:NorwegianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "norwegian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:PersianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "persian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:PortugueseAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "portuguese"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:RomanianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "romanian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:RussianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "russian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SerbianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "serbian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SoraniAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "sorani"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SpanishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "spanish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SwedishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "swedish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:TurkishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turkish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ThaiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "thai"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "_types.analysis:CharFilter": {
         "oneOf": [
@@ -92407,35 +93401,6 @@
           "block",
           "gpu",
           "mem"
-        ]
-      },
-      "nodes.hot_threads:HotThread": {
-        "type": "object",
-        "properties": {
-          "hosts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types:Host"
-            }
-          },
-          "node_id": {
-            "$ref": "#/components/schemas/_types:Id"
-          },
-          "node_name": {
-            "$ref": "#/components/schemas/_types:Name"
-          },
-          "threads": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "hosts",
-          "node_id",
-          "node_name",
-          "threads"
         ]
       },
       "nodes.info:ResponseBase": {
