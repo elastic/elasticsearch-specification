@@ -44723,6 +44723,20 @@
           }
         },
         {
+          "name": "_ignored",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
           "name": "found",
           "required": true,
           "type": {
@@ -44800,7 +44814,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/types.ts#L25-L35"
+      "specLocation": "_global/get/types.ts#L25-L36"
     },
     {
       "kind": "type_alias",

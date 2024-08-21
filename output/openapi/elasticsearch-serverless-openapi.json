@@ -52661,6 +52661,12 @@
               "type": "object"
             }
           },
+          "_ignored": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "found": {
             "type": "boolean"
           },
