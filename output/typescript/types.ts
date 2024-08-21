@@ -365,6 +365,7 @@ export interface FieldCapsResponse {
 export interface GetGetResult<TDocument = unknown> {
   _index: IndexName
   fields?: Record<string, any>
+  _ignored?: string[]
   found: boolean
   _id: Id
   _primary_term?: long
