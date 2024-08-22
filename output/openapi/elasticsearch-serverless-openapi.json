@@ -61607,7 +61607,8 @@
       "query_rules._types:QueryRuleType": {
         "type": "string",
         "enum": [
-          "pinned"
+          "pinned",
+          "exclude"
         ]
       },
       "query_rules._types:QueryRuleCriteria": {

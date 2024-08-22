@@ -16747,7 +16747,7 @@ export interface QueryRulesQueryRuleCriteria {
 
 export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
-export type QueryRulesQueryRuleType = 'pinned'
+export type QueryRulesQueryRuleType = 'pinned' | 'exclude'
 
 export interface QueryRulesQueryRuleset {
   ruleset_id: Id

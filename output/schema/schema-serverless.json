@@ -100812,20 +100812,23 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L67"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L55-L68"
     },
     {
       "kind": "enum",
       "members": [
         {
           "name": "pinned"
+        },
+        {
+          "name": "exclude"
         }
       ],
       "name": {
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L47"
     },
     {
       "kind": "enum",
@@ -134440,7 +134443,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L49-L53"
     },
     {
       "kind": "interface",
@@ -134478,7 +134481,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L69-L72"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L70-L73"
     },
     {
       "kind": "interface",
