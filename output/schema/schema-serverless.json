@@ -91196,67 +91196,6 @@
       "specLocation": "ml/_types/Model.ts#L88-L92"
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "PredictedValue",
-        "namespace": "ml._types"
-      },
-      "specLocation": "ml/_types/inference.ts#L457-L463",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -129631,8 +129570,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "PredictedValue",
-                  "namespace": "ml._types"
+                  "name": "ScalarValue",
+                  "namespace": "_types"
                 }
               },
               {
@@ -129640,8 +129579,8 @@
                 "value": {
                   "kind": "instance_of",
                   "type": {
-                    "name": "PredictedValue",
-                    "namespace": "ml._types"
+                    "name": "ScalarValue",
+                    "namespace": "_types"
                   }
                 }
               }
@@ -129728,7 +129667,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L465-L512"
+      "specLocation": "ml/_types/inference.ts#L457-L504"
     },
     {
       "kind": "interface",

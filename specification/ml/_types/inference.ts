@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field, IndexName } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import {Field, IndexName, ScalarValue} from '@_types/common'
+import {double, integer} from '@_types/Numeric'
 
 /**
  * Inference configuration provided when storing the model config
@@ -454,14 +454,6 @@ export class TrainedModelInferenceFeatureImportance {
   classes?: TrainedModelInferenceClassImportance[]
 }
 
-export type PredictedValue =
-  | string
-  | double
-  | double[]
-  | boolean
-  | integer
-  | integer[]
-
 export class InferenceResponseResult {
   /**
    * If the model is trained for named entity recognition (NER) tasks, the response contains the recognized entities.
@@ -481,7 +473,7 @@ export class InferenceResponseResult {
    * For regression models, its a numerical value
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
-  predicted_value?: PredictedValue | PredictedValue[]
+  predicted_value?: ScalarValue | ScalarValue[]
   /**
    * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
    * value.
