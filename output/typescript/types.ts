@@ -365,6 +365,7 @@ export interface FieldCapsResponse {
 export interface GetGetResult<TDocument = unknown> {
   _index: IndexName
   fields?: Record<string, any>
+  _ignored?: string[]
   found: boolean
   _id: Id
   _primary_term?: long
@@ -463,6 +464,16 @@ export interface HealthReportBaseIndicator {
   diagnosis?: HealthReportDiagnosis[]
 }
 
+export interface HealthReportDataStreamLifecycleDetails {
+  stagnating_backing_indices_count: integer
+  total_backing_indices_in_error: integer
+  stagnating_backing_indices?: HealthReportStagnatingBackingIndices[]
+}
+
+export interface HealthReportDataStreamLifecycleIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportDataStreamLifecycleDetails
+}
+
 export interface HealthReportDiagnosis {
   id: string
   action: string
@@ -522,6 +533,7 @@ export interface HealthReportIndicators {
   shards_availability?: HealthReportShardsAvailabilityIndicator
   disk?: HealthReportDiskIndicator
   repository_integrity?: HealthReportRepositoryIntegrityIndicator
+  data_stream_lifecycle?: HealthReportDataStreamLifecycleIndicator
   ilm?: HealthReportIlmIndicator
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
@@ -616,6 +628,12 @@ export interface HealthReportSlmIndicatorDetails {
 export interface HealthReportSlmIndicatorUnhealthyPolicies {
   count: long
   invocations_since_last_success?: Record<string, long>
+}
+
+export interface HealthReportStagnatingBackingIndices {
+  index_name: IndexName
+  first_occurrence_timestamp: long
+  retry_count: integer
 }
 
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
@@ -10670,6 +10688,7 @@ export interface IndicesCacheQueries {
 export interface IndicesDataStream {
   _meta?: Metadata
   allow_custom_routing?: boolean
+  failure_store?: IndicesFailureStore
   generation: integer
   hidden: boolean
   ilm_policy?: Name
@@ -10679,6 +10698,7 @@ export interface IndicesDataStream {
   lifecycle?: IndicesDataStreamLifecycleWithRollover
   name: DataStreamName
   replicated?: boolean
+  rollover_on_write: boolean
   status: HealthStatus
   system?: boolean
   template: Name
@@ -10689,8 +10709,8 @@ export interface IndicesDataStreamIndex {
   index_name: IndexName
   index_uuid: Uuid
   ilm_policy?: Name
-  managed_by: IndicesManagedBy
-  prefer_ilm: boolean
+  managed_by?: IndicesManagedBy
+  prefer_ilm?: boolean
 }
 
 export interface IndicesDataStreamLifecycle {
@@ -10736,6 +10756,12 @@ export interface IndicesDownsampleConfig {
 export interface IndicesDownsamplingRound {
   after: Duration
   config: IndicesDownsampleConfig
+}
+
+export interface IndicesFailureStore {
+  enabled: boolean
+  indices: IndicesDataStreamIndex[]
+  rollover_on_write: boolean
 }
 
 export interface IndicesFielddataFrequencyFilter {
@@ -14141,7 +14167,7 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export type MlPredictedValue = string | double | boolean | integer
+export type MlPredictedValue = string | double | double[] | boolean | integer | integer[]
 
 export interface MlQuestionAnsweringInferenceOptions {
   num_top_classes?: integer
@@ -16270,13 +16296,6 @@ export interface NodesGetRepositoriesMeteringInfoResponseBase extends NodesNodes
   nodes: Record<string, NodesRepositoryMeteringInformation>
 }
 
-export interface NodesHotThreadsHotThread {
-  hosts: Host[]
-  node_id: Id
-  node_name: Name
-  threads: string[]
-}
-
 export interface NodesHotThreadsRequest extends RequestBase {
   node_id?: NodeIds
   ignore_idle_threads?: boolean
@@ -16290,7 +16309,6 @@ export interface NodesHotThreadsRequest extends RequestBase {
 }
 
 export interface NodesHotThreadsResponse {
-  hot_threads: NodesHotThreadsHotThread[]
 }
 
 export interface NodesInfoDeprecationIndexing {

@@ -81851,6 +81851,12 @@
               "type": "object"
             }
           },
+          "_ignored": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "found": {
             "type": "boolean"
           },
@@ -82148,6 +82154,9 @@
           },
           "repository_integrity": {
             "$ref": "#/components/schemas/_global.health_report:RepositoryIntegrityIndicator"
+          },
+          "data_stream_lifecycle": {
+            "$ref": "#/components/schemas/_global.health_report:DataStreamLifecycleIndicator"
           },
           "ilm": {
             "$ref": "#/components/schemas/_global.health_report:IlmIndicator"
@@ -82531,6 +82540,61 @@
             }
           }
         }
+      },
+      "_global.health_report:DataStreamLifecycleIndicator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report:BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "$ref": "#/components/schemas/_global.health_report:DataStreamLifecycleDetails"
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report:DataStreamLifecycleDetails": {
+        "type": "object",
+        "properties": {
+          "stagnating_backing_indices_count": {
+            "type": "number"
+          },
+          "total_backing_indices_in_error": {
+            "type": "number"
+          },
+          "stagnating_backing_indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.health_report:StagnatingBackingIndices"
+            }
+          }
+        },
+        "required": [
+          "stagnating_backing_indices_count",
+          "total_backing_indices_in_error"
+        ]
+      },
+      "_global.health_report:StagnatingBackingIndices": {
+        "type": "object",
+        "properties": {
+          "index_name": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "first_occurrence_timestamp": {
+            "type": "number"
+          },
+          "retry_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index_name",
+          "first_occurrence_timestamp",
+          "retry_count"
+        ]
       },
       "_global.health_report:IlmIndicator": {
         "allOf": [
@@ -83511,6 +83575,9 @@
             "description": "If `true`, the data stream allows custom routing on write request.",
             "type": "boolean"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/indices._types:FailureStore"
+          },
           "generation": {
             "description": "Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1.",
             "type": "number"
@@ -83546,6 +83613,10 @@
             "description": "If `true`, the data stream is created and managed by cross-cluster replication and the local cluster can not write into this data stream or change its mappings.",
             "type": "boolean"
           },
+          "rollover_on_write": {
+            "description": "If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.",
+            "type": "boolean"
+          },
           "status": {
             "$ref": "#/components/schemas/_types:HealthStatus"
           },
@@ -83568,17 +83639,32 @@
           "prefer_ilm",
           "indices",
           "name",
+          "rollover_on_write",
           "status",
           "template",
           "timestamp_field"
         ]
       },
-      "indices._types:ManagedBy": {
-        "type": "string",
-        "enum": [
-          "Index Lifecycle Management",
-          "Data stream lifecycle",
-          "Unmanaged"
+      "indices._types:FailureStore": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types:DataStreamIndex"
+            }
+          },
+          "rollover_on_write": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled",
+          "indices",
+          "rollover_on_write"
         ]
       },
       "indices._types:DataStreamIndex": {
@@ -83603,9 +83689,15 @@
         },
         "required": [
           "index_name",
-          "index_uuid",
-          "managed_by",
-          "prefer_ilm"
+          "index_uuid"
+        ]
+      },
+      "indices._types:ManagedBy": {
+        "type": "string",
+        "enum": [
+          "Index Lifecycle Management",
+          "Data stream lifecycle",
+          "Unmanaged"
         ]
       },
       "indices._types:DataStreamTimestampField": {
@@ -92204,10 +92296,22 @@
             "type": "number"
           },
           {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
             "type": "boolean"
           },
           {
             "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         ]
       },
