@@ -59647,9 +59647,6 @@
               },
               "matched_fields": {
                 "$ref": "#/components/schemas/_types:Fields"
-              },
-              "analyzer": {
-                "type": "string"
               }
             }
           }

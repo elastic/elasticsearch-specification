@@ -1460,7 +1460,6 @@ export interface SearchHighlightBase {
 export interface SearchHighlightField extends SearchHighlightBase {
   fragment_offset?: integer
   matched_fields?: Fields
-  analyzer?: string
 }
 
 export type SearchHighlighterEncoder = 'default' | 'html'

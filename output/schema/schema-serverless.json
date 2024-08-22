@@ -51851,20 +51851,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "analyzer",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "_global/search/_types/highlighting.ts#L193-L197"
+      "specLocation": "_global/search/_types/highlighting.ts#L193-L196"
     },
     {
       "kind": "type_alias",
