@@ -1,7 +1,7 @@
 name: API Docs feedback
 description: Tell us about your experience with Elastic API documentation.
 title: "[Feedback]: "
-labels: ["Feedback"]
+labels: ["feedback"]
 body:
   - type: dropdown
     id: was-this-helpful
