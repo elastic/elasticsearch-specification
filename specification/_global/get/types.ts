@@ -25,7 +25,6 @@ import { long } from '@_types/Numeric'
 export class GetResult<TDocument> {
   _index: IndexName
   fields?: Dictionary<string, UserDefinedValue>
-  _ignored?: string[]
   found: boolean
   _id: Id
   _primary_term?: long
