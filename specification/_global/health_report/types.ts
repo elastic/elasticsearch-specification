@@ -155,7 +155,7 @@ export class DataStreamLifecycleDetails {
   stagnating_backing_indices?: StagnatingBackingIndices[]
 }
 export class StagnatingBackingIndices {
-  index_name: string
+  index_name: IndexName
   first_occurrence_timestamp: long
   retry_count: integer
 }
