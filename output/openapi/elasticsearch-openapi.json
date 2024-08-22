@@ -81150,6 +81150,9 @@
           "repository_integrity": {
             "$ref": "#/components/schemas/_global.health_report:RepositoryIntegrityIndicator"
           },
+          "data_stream_lifecycle": {
+            "$ref": "#/components/schemas/_global.health_report:DataStreamLifecycleIndicator"
+          },
           "ilm": {
             "$ref": "#/components/schemas/_global.health_report:IlmIndicator"
           },
@@ -81532,6 +81535,61 @@
             }
           }
         }
+      },
+      "_global.health_report:DataStreamLifecycleIndicator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report:BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "$ref": "#/components/schemas/_global.health_report:DataStreamLifecycleDetails"
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report:DataStreamLifecycleDetails": {
+        "type": "object",
+        "properties": {
+          "stagnating_backing_indices_count": {
+            "type": "number"
+          },
+          "total_backing_indices_in_error": {
+            "type": "number"
+          },
+          "stagnating_backing_indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.health_report:StagnatingBackingIndices"
+            }
+          }
+        },
+        "required": [
+          "stagnating_backing_indices_count",
+          "total_backing_indices_in_error"
+        ]
+      },
+      "_global.health_report:StagnatingBackingIndices": {
+        "type": "object",
+        "properties": {
+          "index_name": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "first_occurrence_timestamp": {
+            "type": "number"
+          },
+          "retry_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index_name",
+          "first_occurrence_timestamp",
+          "retry_count"
+        ]
       },
       "_global.health_report:IlmIndicator": {
         "allOf": [
