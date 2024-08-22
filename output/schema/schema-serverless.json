@@ -44610,7 +44610,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L72-L77"
+      "specLocation": "_global/health_report/types.ts#L73-L78"
     },
     {
       "kind": "enum",

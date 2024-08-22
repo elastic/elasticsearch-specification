@@ -464,6 +464,16 @@ export interface HealthReportBaseIndicator {
   diagnosis?: HealthReportDiagnosis[]
 }
 
+export interface HealthReportDataStreamLifecycleDetails {
+  stagnating_backing_indices_count: integer
+  total_backing_indices_in_error: integer
+  stagnating_backing_indices?: HealthReportStagnatingBackingIndices[]
+}
+
+export interface HealthReportDataStreamLifecycleIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportDataStreamLifecycleDetails
+}
+
 export interface HealthReportDiagnosis {
   id: string
   action: string
@@ -523,6 +533,7 @@ export interface HealthReportIndicators {
   shards_availability?: HealthReportShardsAvailabilityIndicator
   disk?: HealthReportDiskIndicator
   repository_integrity?: HealthReportRepositoryIntegrityIndicator
+  data_stream_lifecycle?: HealthReportDataStreamLifecycleIndicator
   ilm?: HealthReportIlmIndicator
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
@@ -617,6 +628,12 @@ export interface HealthReportSlmIndicatorDetails {
 export interface HealthReportSlmIndicatorUnhealthyPolicies {
   count: long
   invocations_since_last_success?: Record<string, long>
+}
+
+export interface HealthReportStagnatingBackingIndices {
+  index_name: string
+  first_occurrence_timestamp: integer
+  retry_count: integer
 }
 
 export interface IndexRequest<TDocument = unknown> extends RequestBase {

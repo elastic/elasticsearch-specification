@@ -34,6 +34,7 @@ export class Indicators {
   shards_availability?: ShardsAvailabilityIndicator
   disk?: DiskIndicator
   repository_integrity?: RepositoryIntegrityIndicator
+  data_stream_lifecycle?: DataStreamLifecycleIndicator
   ilm?: IlmIndicator
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
@@ -141,6 +142,22 @@ export class RepositoryIntegrityIndicatorDetails {
   total_repositories?: long
   corrupted_repositories?: long
   corrupted?: string[]
+}
+
+/** DATA_STREAM_LIFECYCLE */
+
+export class DataStreamLifecycleIndicator extends BaseIndicator {
+  details?: DataStreamLifecycleDetails
+}
+export class DataStreamLifecycleDetails {
+  stagnating_backing_indices_count: integer
+  total_backing_indices_in_error: integer
+  stagnating_backing_indices?: StagnatingBackingIndices[]
+}
+export class StagnatingBackingIndices {
+  index_name: string
+  first_occurrence_timestamp: integer
+  retry_count: integer
 }
 
 /** ILM */
