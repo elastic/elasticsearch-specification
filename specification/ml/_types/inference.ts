@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import {Field, IndexName, ScalarValue} from '@_types/common'
-import {double, integer} from '@_types/Numeric'
+import { Field, IndexName, ScalarValue } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
 
 /**
  * Inference configuration provided when storing the model config
