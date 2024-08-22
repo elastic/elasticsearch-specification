@@ -29,6 +29,10 @@
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open",
         "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)"
+      },
+      "master_timeout": {
+        "type": "time",
+        "description": "Specify timeout for connection to master"
       }
     }
   }

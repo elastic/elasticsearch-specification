@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Stops one or more datafeeds.
+ * Stop datafeeds.
  * A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped
  * multiple times throughout its lifecycle.
  * @rest_spec_name ml.stop_datafeed

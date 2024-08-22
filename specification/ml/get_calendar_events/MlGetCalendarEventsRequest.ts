@@ -23,7 +23,7 @@ import { integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
 /**
- * Retrieves information about the scheduled events in calendars.
+ * Get info about events in calendars.
  * @rest_spec_name ml.get_calendar_events
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

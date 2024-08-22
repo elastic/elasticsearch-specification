@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response for retrieving information about a paused follower index.",
+  "description": "",
+  "type": "response",
+  "response_code": "200",
+  "value": "{\n  \"follower_indices\": [\n    {\n      \"follower_index\": \"follower_index\",\n      \"remote_cluster\": \"remote_cluster\",\n      \"leader_index\": \"leader_index\",\n      \"status\": \"paused\"\n    }\n  ]\n}"
+}

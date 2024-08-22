@@ -25,7 +25,7 @@ import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Evaluates a trained model.
+ * Evaluate a trained model.
  * @rest_spec_name ml.infer_trained_model
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=public

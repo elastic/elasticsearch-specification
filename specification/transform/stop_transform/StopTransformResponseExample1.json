@@ -1,0 +1,9 @@
+{
+  "summary": "A successful response when a transform stops.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": {
+    "acknowledged": true
+  }
+}

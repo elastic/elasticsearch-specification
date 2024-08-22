@@ -28,7 +28,7 @@ import { HttpHeaders, Id, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Instantiates a data frame analytics job.
+ * Create a data frame analytics job.
  * This API creates a data frame analytics job that performs an analysis on the
  * source indices and stores the outcome in a destination index.
  * @rest_spec_name ml.put_data_frame_analytics

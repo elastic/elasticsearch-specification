@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
- * Sends data to an anomaly detection job for analysis.
+ * Send data to an anomaly detection job for analysis.
  *
  * IMPORTANT: For each job, data can be accepted from only a single connection at a time.
  * It is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.

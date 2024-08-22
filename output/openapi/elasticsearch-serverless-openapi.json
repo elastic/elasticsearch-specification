@@ -689,7 +689,7 @@
           "cat.aliases"
         ],
         "summary": "Get aliases",
-        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the /_alias endpoints.",
+        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
@@ -712,7 +712,7 @@
           "cat.aliases"
         ],
         "summary": "Get aliases",
-        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the /_alias endpoints.",
+        "description": "Retrieves the cluster’s index aliases, including filter and routing information.\nThe API does not return data stream aliases.\n\nCAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-alias.html"
         },
@@ -738,7 +738,7 @@
           "cat.component_templates"
         ],
         "summary": "Get component templates",
-        "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the /_component_template endpoints.",
+        "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
@@ -757,7 +757,7 @@
           "cat.component_templates"
         ],
         "summary": "Get component templates",
-        "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the /_component_template endpoints.",
+        "description": "Returns information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-component-templates.html"
         },
@@ -781,7 +781,7 @@
           "cat.count"
         ],
         "summary": "Get a document count",
-        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use /_count endpoints.",
+        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -799,7 +799,7 @@
           "cat.count"
         ],
         "summary": "Get a document count",
-        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.n/\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use /_count endpoints.",
+        "description": "Provides quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html"
         },
@@ -850,7 +850,7 @@
           "cat.indices"
         ],
         "summary": "Get index information",
-        "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the /_cat/count or _count endpoints.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+        "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
@@ -888,7 +888,7 @@
           "cat.indices"
         ],
         "summary": "Get index information",
-        "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the /_cat/count or _count endpoints.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+        "description": "Returns high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html"
         },
@@ -929,7 +929,7 @@
           "cat.ml_data_frame_analytics"
         ],
         "summary": "Get data frame analytics jobs",
-        "description": "Returns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/data_frame/analytics endpoints.",
+        "description": "Returns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
@@ -965,7 +965,7 @@
           "cat.ml_data_frame_analytics"
         ],
         "summary": "Get data frame analytics jobs",
-        "description": "Returns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/data_frame/analytics endpoints.",
+        "description": "Returns configuration and usage information about data frame analytics jobs.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get data frame analytics jobs statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-dfanalytics.html"
         },
@@ -1004,7 +1004,7 @@
           "cat.ml_datafeeds"
         ],
         "summary": "Get datafeeds",
-        "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/datafeeds endpoints.",
+        "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
@@ -1037,7 +1037,7 @@
           "cat.ml_datafeeds"
         ],
         "summary": "Get datafeeds",
-        "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/datafeeds endpoints.",
+        "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get datafeed statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html"
         },
@@ -1073,7 +1073,7 @@
           "cat.ml_jobs"
         ],
         "summary": "Get anomaly detection jobs",
-        "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/anomaly_detectors endpoints.",
+        "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
@@ -1109,7 +1109,7 @@
           "cat.ml_jobs"
         ],
         "summary": "Get anomaly detection jobs",
-        "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/anomaly_detectors endpoints.",
+        "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get anomaly detection job statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html"
         },
@@ -1148,7 +1148,7 @@
           "cat.ml_trained_models"
         ],
         "summary": "Get trained models",
-        "description": "Returns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/trained_models endpoints.",
+        "description": "Returns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
@@ -1187,7 +1187,7 @@
           "cat.ml_trained_models"
         ],
         "summary": "Get trained models",
-        "description": "Returns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_ml/trained_models endpoints.",
+        "description": "Returns configuration and usage information about inference trained models.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get trained models statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-trained-model.html"
         },
@@ -1229,7 +1229,7 @@
           "cat.transforms"
         ],
         "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_transform endpoints.",
+        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
@@ -1268,7 +1268,7 @@
           "cat.transforms"
         ],
         "summary": "Get transforms",
-        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the /_transform endpoints.",
+        "description": "Returns configuration and usage information about transforms.\n\nCAT APIs are only intended for human consumption using the Kibana\nconsole or command line. They are not intended for use by applications. For\napplication consumption, use the get transform statistics API.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-transforms.html"
         },
@@ -6753,6 +6753,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
           }
         ],
         "responses": {
@@ -6783,6 +6786,26 @@
               "$ref": "#/components/schemas/_types:DataStreamName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -6820,6 +6843,16 @@
               "$ref": "#/components/schemas/_types:DataStreamNames"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           },
           {
             "in": "query",
@@ -7206,6 +7239,16 @@
             "deprecated": false,
             "schema": {
               "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
             },
             "style": "form"
           }
@@ -7811,6 +7854,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
           }
         ],
         "responses": {
@@ -8296,6 +8342,26 @@
               "$ref": "#/components/schemas/_types:IndexName"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -10289,7 +10355,7 @@
         "tags": [
           "ml.get_calendars"
         ],
-        "summary": "Retrieves configuration information for calendars",
+        "summary": "Get calendar configuration info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
@@ -10319,7 +10385,7 @@
         "tags": [
           "ml.put_calendar"
         ],
-        "summary": "Creates a calendar",
+        "summary": "Create a calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html"
         },
@@ -10393,7 +10459,7 @@
         "tags": [
           "ml.get_calendars"
         ],
-        "summary": "Retrieves configuration information for calendars",
+        "summary": "Get calendar configuration info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
@@ -10511,7 +10577,7 @@
         "tags": [
           "ml.put_calendar_job"
         ],
-        "summary": "Adds an anomaly detection job to a calendar",
+        "summary": "Add anomaly detection job to calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html"
         },
@@ -10639,7 +10705,7 @@
         "tags": [
           "ml.get_data_frame_analytics"
         ],
-        "summary": "Retrieves configuration information for data frame analytics jobs",
+        "summary": "Get data frame analytics job configuration info",
         "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
@@ -10673,7 +10739,7 @@
         "tags": [
           "ml.put_data_frame_analytics"
         ],
-        "summary": "Instantiates a data frame analytics job",
+        "summary": "Create a data frame analytics job",
         "description": "This API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html"
@@ -10871,7 +10937,7 @@
         "tags": [
           "ml.get_datafeeds"
         ],
-        "summary": "Retrieves configuration information for datafeeds",
+        "summary": "Get datafeeds configuration info",
         "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
@@ -10899,7 +10965,7 @@
         "tags": [
           "ml.put_datafeed"
         ],
-        "summary": "Instantiates a datafeed",
+        "summary": "Create a datafeed",
         "description": "Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.\nYou can associate only one datafeed with each anomaly detection job.\nThe datafeed contains a query that runs at a defined interval (`frequency`).\nIf you are concerned about delayed data, you can add a delay (`query_delay') at each interval.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had\nat the time of creation and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.\nYou must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed\ndirectly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-datafeed.html"
@@ -11153,7 +11219,7 @@
         "tags": [
           "ml.get_filters"
         ],
-        "summary": "Retrieves filters",
+        "summary": "Get filters",
         "description": "You can get a single filter or all filters.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html"
@@ -11181,7 +11247,7 @@
         "tags": [
           "ml.put_filter"
         ],
-        "summary": "Instantiates a filter",
+        "summary": "Create a filter",
         "description": "A filter contains a list of strings. It can be used by one or more anomaly detection jobs.\nSpecifically, filters are referenced in the `custom_rules` property of detector configuration objects.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-filter.html"
@@ -11299,7 +11365,7 @@
         "tags": [
           "ml.get_jobs"
         ],
-        "summary": "Retrieves configuration information for anomaly detection jobs",
+        "summary": "Get anomaly detection jobs configuration info",
         "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
@@ -11582,7 +11648,7 @@
         "tags": [
           "ml.get_trained_models"
         ],
-        "summary": "Retrieves configuration information for a trained model",
+        "summary": "Get trained model configuration info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
         },
@@ -11624,7 +11690,8 @@
         "tags": [
           "ml.put_trained_model"
         ],
-        "summary": "Enables you to supply a trained model that is not created by data frame analytics",
+        "summary": "Create a trained model",
+        "description": "Enable you to supply a trained model that is not created by data frame analytics.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html"
         },
@@ -11783,8 +11850,8 @@
         "tags": [
           "ml.put_trained_model_alias"
         ],
-        "summary": "Creates or updates a trained model alias",
-        "description": "A trained model alias is a logical\nname used to reference a single trained model.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
+        "summary": "Create or update a trained model alias",
+        "description": "A trained model alias is a logical name used to reference a single trained\nmodel.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html"
         },
@@ -12016,7 +12083,7 @@
         "tags": [
           "ml.flush_job"
         ],
-        "summary": "Forces any buffered data to be processed by the job",
+        "summary": "Force buffered data to be processed",
         "description": "The flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html"
@@ -12144,7 +12211,7 @@
         "tags": [
           "ml.get_calendar_events"
         ],
-        "summary": "Retrieves information about the scheduled events in calendars",
+        "summary": "Get info about events in calendars",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html"
         },
@@ -12245,7 +12312,7 @@
         "tags": [
           "ml.post_calendar_events"
         ],
-        "summary": "Adds scheduled events to a calendar",
+        "summary": "Add scheduled events to the calendar",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-calendar-event.html"
         },
@@ -12316,7 +12383,7 @@
         "tags": [
           "ml.get_calendars"
         ],
-        "summary": "Retrieves configuration information for calendars",
+        "summary": "Get calendar configuration info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
@@ -12343,7 +12410,7 @@
         "tags": [
           "ml.get_calendars"
         ],
-        "summary": "Retrieves configuration information for calendars",
+        "summary": "Get calendar configuration info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar.html"
         },
@@ -12372,7 +12439,7 @@
         "tags": [
           "ml.get_data_frame_analytics"
         ],
-        "summary": "Retrieves configuration information for data frame analytics jobs",
+        "summary": "Get data frame analytics job configuration info",
         "description": "You can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html"
@@ -12405,7 +12472,7 @@
         "tags": [
           "ml.get_data_frame_analytics_stats"
         ],
-        "summary": "Retrieves usage information for data frame analytics jobs",
+        "summary": "Get data frame analytics jobs usage info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html"
         },
@@ -12437,7 +12504,7 @@
         "tags": [
           "ml.get_data_frame_analytics_stats"
         ],
-        "summary": "Retrieves usage information for data frame analytics jobs",
+        "summary": "Get data frame analytics jobs usage info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html"
         },
@@ -12472,7 +12539,7 @@
         "tags": [
           "ml.get_datafeed_stats"
         ],
-        "summary": "Retrieves usage information for datafeeds",
+        "summary": "Get datafeeds usage info",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
@@ -12499,7 +12566,7 @@
         "tags": [
           "ml.get_datafeed_stats"
         ],
-        "summary": "Retrieves usage information for datafeeds",
+        "summary": "Get datafeeds usage info",
         "description": "You can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html"
@@ -12523,7 +12590,7 @@
         "tags": [
           "ml.get_datafeeds"
         ],
-        "summary": "Retrieves configuration information for datafeeds",
+        "summary": "Get datafeeds configuration info",
         "description": "You can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html"
@@ -12550,7 +12617,7 @@
         "tags": [
           "ml.get_filters"
         ],
-        "summary": "Retrieves filters",
+        "summary": "Get filters",
         "description": "You can get a single filter or all filters.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html"
@@ -12577,7 +12644,7 @@
         "tags": [
           "ml.get_job_stats"
         ],
-        "summary": "Retrieves usage information for anomaly detection jobs",
+        "summary": "Get anomaly detection jobs usage info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html"
         },
@@ -12600,7 +12667,7 @@
         "tags": [
           "ml.get_job_stats"
         ],
-        "summary": "Retrieves usage information for anomaly detection jobs",
+        "summary": "Get anomaly detection jobs usage info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html"
         },
@@ -12626,7 +12693,7 @@
         "tags": [
           "ml.get_jobs"
         ],
-        "summary": "Retrieves configuration information for anomaly detection jobs",
+        "summary": "Get anomaly detection jobs configuration info",
         "description": "You can get information for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get information for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html"
@@ -12653,8 +12720,8 @@
         "tags": [
           "ml.get_overall_buckets"
         ],
-        "summary": "Retrieves overall bucket results that summarize the bucket results of\n",
-        "description": "multiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
+        "summary": "Get overall bucket results",
+        "description": "Retrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
         },
@@ -12699,8 +12766,8 @@
         "tags": [
           "ml.get_overall_buckets"
         ],
-        "summary": "Retrieves overall bucket results that summarize the bucket results of\n",
-        "description": "multiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
+        "summary": "Get overall bucket results",
+        "description": "Retrievs overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html"
         },
@@ -12747,7 +12814,7 @@
         "tags": [
           "ml.get_trained_models"
         ],
-        "summary": "Retrieves configuration information for a trained model",
+        "summary": "Get trained model configuration info",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html"
         },
@@ -12788,7 +12855,7 @@
         "tags": [
           "ml.get_trained_models_stats"
         ],
-        "summary": "Retrieves usage information for trained models",
+        "summary": "Get trained models usage info",
         "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
@@ -12821,7 +12888,7 @@
         "tags": [
           "ml.get_trained_models_stats"
         ],
-        "summary": "Retrieves usage information for trained models",
+        "summary": "Get trained models usage info",
         "description": "You can get usage information for multiple trained\nmodels in a single API request by using a comma-separated list of model IDs or a wildcard expression.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html"
@@ -12851,7 +12918,7 @@
         "tags": [
           "ml.infer_trained_model"
         ],
-        "summary": "Evaluates a trained model",
+        "summary": "Evaluate a trained model",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html"
         },
@@ -12880,7 +12947,7 @@
         "tags": [
           "ml.infer_trained_model"
         ],
-        "summary": "Evaluates a trained model",
+        "summary": "Evaluate a trained model",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model.html"
         },
@@ -12910,7 +12977,7 @@
           "ml.open_job"
         ],
         "summary": "Open anomaly detection jobs",
-        "description": "An anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
+        "description": "An anomaly detection job must be opened to be ready to receive and analyze\ndata. It can be opened and closed multiple times throughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html"
         },
@@ -12984,7 +13051,8 @@
         "tags": [
           "ml.preview_data_frame_analytics"
         ],
-        "summary": "Previews the extracted features used by a data frame analytics config",
+        "summary": "Preview features used by data frame analytics",
+        "description": "Previews the extracted features used by a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
@@ -13003,7 +13071,8 @@
         "tags": [
           "ml.preview_data_frame_analytics"
         ],
-        "summary": "Previews the extracted features used by a data frame analytics config",
+        "summary": "Preview features used by data frame analytics",
+        "description": "Previews the extracted features used by a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
@@ -13024,7 +13093,8 @@
         "tags": [
           "ml.preview_data_frame_analytics"
         ],
-        "summary": "Previews the extracted features used by a data frame analytics config",
+        "summary": "Preview features used by data frame analytics",
+        "description": "Previews the extracted features used by a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
@@ -13048,7 +13118,8 @@
         "tags": [
           "ml.preview_data_frame_analytics"
         ],
-        "summary": "Previews the extracted features used by a data frame analytics config",
+        "summary": "Preview features used by data frame analytics",
+        "description": "Previews the extracted features used by a data frame analytics config.",
         "externalDocs": {
           "url": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html"
         },
@@ -13074,7 +13145,7 @@
         "tags": [
           "ml.preview_datafeed"
         ],
-        "summary": "Previews a datafeed",
+        "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -13105,7 +13176,7 @@
         "tags": [
           "ml.preview_datafeed"
         ],
-        "summary": "Previews a datafeed",
+        "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -13138,7 +13209,7 @@
         "tags": [
           "ml.preview_datafeed"
         ],
-        "summary": "Previews a datafeed",
+        "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -13166,7 +13237,7 @@
         "tags": [
           "ml.preview_datafeed"
         ],
-        "summary": "Previews a datafeed",
+        "summary": "Preview a datafeed",
         "description": "This API returns the first \"page\" of search results from a datafeed.\nYou can preview an existing datafeed or provide configuration details for a datafeed\nand anomaly detection job in the API. The preview shows the structure of the data\nthat will be passed to the anomaly detection engine.\nIMPORTANT: When Elasticsearch security features are enabled, the preview uses the credentials of the user that\ncalled the API. However, when the datafeed starts it uses the roles of the last user that created or updated the\ndatafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.\nYou can also use secondary authorization headers to supply the credentials.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html"
@@ -13196,7 +13267,7 @@
         "tags": [
           "ml.put_trained_model_definition_part"
         ],
-        "summary": "Creates part of a trained model definition",
+        "summary": "Create part of a trained model definition",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html"
         },
@@ -13274,7 +13345,7 @@
         "tags": [
           "ml.put_trained_model_vocabulary"
         ],
-        "summary": "Creates a trained model vocabulary",
+        "summary": "Create a trained model vocabulary",
         "description": "This API is supported only for natural language processing (NLP) models.\nThe vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html"
@@ -13351,7 +13422,7 @@
         "tags": [
           "ml.reset_job"
         ],
-        "summary": "Resets an anomaly detection job",
+        "summary": "Reset an anomaly detection job",
         "description": "All model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html"
@@ -13410,7 +13481,7 @@
         "tags": [
           "ml.start_data_frame_analytics"
         ],
-        "summary": "Starts a data frame analytics job",
+        "summary": "Start a data frame analytics job",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html"
@@ -13471,7 +13542,7 @@
         "tags": [
           "ml.start_datafeed"
         ],
-        "summary": "Starts one or more datafeeds",
+        "summary": "Start datafeeds",
         "description": "A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html"
@@ -13573,7 +13644,8 @@
         "tags": [
           "ml.start_trained_model_deployment"
         ],
-        "summary": "Starts a trained model deployment, which allocates the model to every machine learning node",
+        "summary": "Start a trained model deployment",
+        "description": "It allocates the model to every machine learning node.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html"
         },
@@ -13689,7 +13761,7 @@
         "tags": [
           "ml.stop_data_frame_analytics"
         ],
-        "summary": "Stops one or more data frame analytics jobs",
+        "summary": "Stop data frame analytics jobs",
         "description": "A data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html"
@@ -13766,7 +13838,7 @@
         "tags": [
           "ml.stop_datafeed"
         ],
-        "summary": "Stops one or more datafeeds",
+        "summary": "Stop datafeeds",
         "description": "A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html"
@@ -13865,7 +13937,7 @@
         "tags": [
           "ml.stop_trained_model_deployment"
         ],
-        "summary": "Stops a trained model deployment",
+        "summary": "Stop a trained model deployment",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html"
         },
@@ -13931,7 +14003,7 @@
         "tags": [
           "ml.update_data_frame_analytics"
         ],
-        "summary": "Updates an existing data frame analytics job",
+        "summary": "Update a data frame analytics job",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html"
         },
@@ -14052,7 +14124,7 @@
         "tags": [
           "ml.update_datafeed"
         ],
-        "summary": "Updates the properties of a datafeed",
+        "summary": "Update a datafeed",
         "description": "You must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html"
@@ -14261,7 +14333,8 @@
         "tags": [
           "ml.update_filter"
         ],
-        "summary": "Updates the description of a filter, adds items, or removes items from the list",
+        "summary": "Update a filter",
+        "description": "Updates the description of a filter, adds items, or removes items from the list.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-filter.html"
         },
@@ -14348,7 +14421,8 @@
         "tags": [
           "ml.update_job"
         ],
-        "summary": "Updates certain properties of an anomaly detection job",
+        "summary": "Update an anomaly detection job",
+        "description": "Updates certain properties of an anomaly detection job.",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html"
         },
@@ -14557,7 +14631,7 @@
         "tags": [
           "ml.update_trained_model_deployment"
         ],
-        "summary": "Starts a trained model deployment, which allocates the model to every machine learning node",
+        "summary": "Update a trained model deployment",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html"
         },
@@ -14651,6 +14725,9 @@
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
           },
           {
@@ -14706,6 +14783,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
@@ -14770,6 +14850,9 @@
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
           },
           {
@@ -14828,6 +14911,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/msearch#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/msearch#max_concurrent_searches"
@@ -16334,6 +16420,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -16482,6 +16571,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -16639,6 +16731,9 @@
             "$ref": "#/components/parameters/search#ignore_unavailable"
           },
           {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
+          },
+          {
             "$ref": "#/components/parameters/search#lenient"
           },
           {
@@ -16790,6 +16885,9 @@
           },
           {
             "$ref": "#/components/parameters/search#ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/search#include_named_queries_score"
           },
           {
             "$ref": "#/components/parameters/search#lenient"
@@ -18694,10 +18792,17 @@
                 "properties": {
                   "synonyms_set": {
                     "description": "The synonym set information to update",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/synonyms._types:SynonymRule"
-                    }
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/synonyms._types:SynonymRule"
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -20564,6 +20669,16 @@
             "in": "query",
             "name": "preference",
             "description": "Specifies the node or shard the operation should be performed on.\nRandom by default.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "description": "Query in the Lucene query string syntax.",
             "deprecated": false,
             "schema": {
               "type": "string"
@@ -23681,7 +23796,7 @@
       "cluster.put_component_template#name": {
         "in": "path",
         "name": "name",
-        "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; 'logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
+        "description": "Name of the component template to create.\nElasticsearch includes the following built-in component templates: `logs-mappings`; `logs-settings`; `metrics-mappings`; `metrics-settings`;`synthetics-mapping`; `synthetics-settings`.\nElastic Agent uses these templates to configure backing indices for its data streams.\nIf you use Elastic Agent and want to overwrite one of these templates, set the `version` for your replacement template higher than the current version.\nIf you don’t use Elastic Agent and want to disable all built-in component and index templates, set `stack.templates.enabled` to `false` using the cluster update settings API.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -24668,6 +24783,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.get_data_stream#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
         },
         "style": "form"
       },
@@ -26319,6 +26444,16 @@
         },
         "style": "form"
       },
+      "msearch#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "msearch#max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
@@ -26864,6 +26999,16 @@
         "in": "query",
         "name": "ignore_unavailable",
         "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "search#include_named_queries_score": {
+        "in": "query",
+        "name": "include_named_queries_score",
+        "description": "Indicates whether hit.matched_queries should be rendered as a map that includes\nthe name of the matched query associated with its score (true)\nor as an array containing the name of the matched queries (false)\nThis functionality reruns each named query on every hit in a search response.\nTypically, this adds a small overhead to a request.\nHowever, using computationally expensive named queries on a large number of hits may add significant overhead.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -32654,10 +32799,23 @@
             }
           },
           "matched_queries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            ]
           },
           "_nested": {
             "$ref": "#/components/schemas/_global.search._types:NestedIdentity"
@@ -36030,514 +36188,9 @@
               },
               "matched_fields": {
                 "$ref": "#/components/schemas/_types:Fields"
-              },
-              "analyzer": {
-                "$ref": "#/components/schemas/_types.analysis:Analyzer"
               }
             }
           }
-        ]
-      },
-      "_types.analysis:Analyzer": {
-        "discriminator": {
-          "propertyName": "type"
-        },
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:CustomAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:FingerprintAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:PatternAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:SimpleAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:StandardAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:StopAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:WhitespaceAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:IcuAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:KuromojiAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:SnowballAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:DutchAnalyzer"
-          }
-        ]
-      },
-      "_types.analysis:CustomAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "custom"
-            ]
-          },
-          "char_filter": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "filter": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "position_increment_gap": {
-            "type": "number"
-          },
-          "position_offset_gap": {
-            "type": "number"
-          },
-          "tokenizer": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "tokenizer"
-        ]
-      },
-      "_types.analysis:FingerprintAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "fingerprint"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "max_output_size": {
-            "type": "number"
-          },
-          "preserve_original": {
-            "type": "boolean"
-          },
-          "separator": {
-            "type": "string"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
-        ]
-      },
-      "_types.analysis:StopWords": {
-        "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ]
-      },
-      "_types.analysis:KeywordAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "keyword"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:LanguageAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "language"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:Language"
-          },
-          "stem_exclusion": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "language",
-          "stem_exclusion"
-        ]
-      },
-      "_types.analysis:Language": {
-        "type": "string",
-        "enum": [
-          "Arabic",
-          "Armenian",
-          "Basque",
-          "Brazilian",
-          "Bulgarian",
-          "Catalan",
-          "Chinese",
-          "Cjk",
-          "Czech",
-          "Danish",
-          "Dutch",
-          "English",
-          "Estonian",
-          "Finnish",
-          "French",
-          "Galician",
-          "German",
-          "Greek",
-          "Hindi",
-          "Hungarian",
-          "Indonesian",
-          "Irish",
-          "Italian",
-          "Latvian",
-          "Norwegian",
-          "Persian",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Sorani",
-          "Spanish",
-          "Swedish",
-          "Turkish",
-          "Thai"
-        ]
-      },
-      "_types.analysis:NoriAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "nori"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "decompound_mode": {
-            "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
-          },
-          "stoptags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "user_dictionary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:NoriDecompoundMode": {
-        "type": "string",
-        "enum": [
-          "discard",
-          "none",
-          "mixed"
-        ]
-      },
-      "_types.analysis:PatternAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "pattern"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "flags": {
-            "type": "string"
-          },
-          "lowercase": {
-            "type": "boolean"
-          },
-          "pattern": {
-            "type": "string"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type",
-          "pattern"
-        ]
-      },
-      "_types.analysis:SimpleAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "simple"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:StandardAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "standard"
-            ]
-          },
-          "max_token_length": {
-            "type": "number"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:StopAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "stop"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:WhitespaceAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "whitespace"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:IcuAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "icu_analyzer"
-            ]
-          },
-          "method": {
-            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationType"
-          },
-          "mode": {
-            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationMode"
-          }
-        },
-        "required": [
-          "type",
-          "method",
-          "mode"
-        ]
-      },
-      "_types.analysis:IcuNormalizationType": {
-        "type": "string",
-        "enum": [
-          "nfc",
-          "nfkc",
-          "nfkc_cf"
-        ]
-      },
-      "_types.analysis:IcuNormalizationMode": {
-        "type": "string",
-        "enum": [
-          "decompose",
-          "compose"
-        ]
-      },
-      "_types.analysis:KuromojiAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "kuromoji"
-            ]
-          },
-          "mode": {
-            "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizationMode"
-          },
-          "user_dictionary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "mode"
-        ]
-      },
-      "_types.analysis:KuromojiTokenizationMode": {
-        "type": "string",
-        "enum": [
-          "normal",
-          "search",
-          "extended"
-        ]
-      },
-      "_types.analysis:SnowballAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "snowball"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:SnowballLanguage"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type",
-          "language"
-        ]
-      },
-      "_types.analysis:SnowballLanguage": {
-        "type": "string",
-        "enum": [
-          "Armenian",
-          "Basque",
-          "Catalan",
-          "Danish",
-          "Dutch",
-          "English",
-          "Finnish",
-          "French",
-          "German",
-          "German2",
-          "Hungarian",
-          "Italian",
-          "Kp",
-          "Lovins",
-          "Norwegian",
-          "Porter",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Spanish",
-          "Swedish",
-          "Turkish"
-        ]
-      },
-      "_types.analysis:DutchAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "dutch"
-            ]
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type"
         ]
       },
       "_global.search._types:HighlightBase": {
@@ -37202,6 +36855,10 @@
                 "description": "The number of nearest neighbor candidates to consider per shard",
                 "type": "number"
               },
+              "k": {
+                "description": "The final number of nearest neighbors to return as top hits",
+                "type": "number"
+              },
               "filter": {
                 "description": "Filters for the kNN search query",
                 "oneOf": [
@@ -37646,6 +37303,20 @@
           "external",
           "external_gte",
           "force"
+        ]
+      },
+      "_types.analysis:StopWords": {
+        "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         ]
       },
       "_types.query_dsl:MultiMatchQuery": {
@@ -45237,6 +44908,1513 @@
           }
         }
       },
+      "_types.analysis:Analyzer": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:CustomAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FingerprintAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PatternAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SimpleAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:StandardAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:StopAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:WhitespaceAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IcuAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:KuromojiAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SnowballAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ArabicAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ArmenianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BasqueAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BengaliAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BrazilianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BulgarianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CatalanAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ChineseAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CjkAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CzechAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:DanishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:DutchAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:EnglishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:EstonianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FinnishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FrenchAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GalicianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GermanAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GreekAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:HindiAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:HungarianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IndonesianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IrishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ItalianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LatvianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LithuanianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:NorwegianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PersianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PortugueseAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:RomanianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:RussianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SerbianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SoraniAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SpanishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SwedishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:TurkishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ThaiAnalyzer"
+          }
+        ]
+      },
+      "_types.analysis:CustomAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "custom"
+            ]
+          },
+          "char_filter": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "filter": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "position_increment_gap": {
+            "type": "number"
+          },
+          "position_offset_gap": {
+            "type": "number"
+          },
+          "tokenizer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "tokenizer"
+        ]
+      },
+      "_types.analysis:FingerprintAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "fingerprint"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "max_output_size": {
+            "type": "number"
+          },
+          "preserve_original": {
+            "type": "boolean"
+          },
+          "separator": {
+            "type": "string"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "max_output_size",
+          "preserve_original",
+          "separator"
+        ]
+      },
+      "_types.analysis:KeywordAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "keyword"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LanguageAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "language"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "language": {
+            "$ref": "#/components/schemas/_types.analysis:Language"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "language",
+          "stem_exclusion"
+        ]
+      },
+      "_types.analysis:Language": {
+        "type": "string",
+        "enum": [
+          "Arabic",
+          "Armenian",
+          "Basque",
+          "Brazilian",
+          "Bulgarian",
+          "Catalan",
+          "Chinese",
+          "Cjk",
+          "Czech",
+          "Danish",
+          "Dutch",
+          "English",
+          "Estonian",
+          "Finnish",
+          "French",
+          "Galician",
+          "German",
+          "Greek",
+          "Hindi",
+          "Hungarian",
+          "Indonesian",
+          "Irish",
+          "Italian",
+          "Latvian",
+          "Norwegian",
+          "Persian",
+          "Portuguese",
+          "Romanian",
+          "Russian",
+          "Sorani",
+          "Spanish",
+          "Swedish",
+          "Turkish",
+          "Thai"
+        ]
+      },
+      "_types.analysis:NoriAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "nori"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "decompound_mode": {
+            "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
+          },
+          "stoptags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_dictionary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:NoriDecompoundMode": {
+        "type": "string",
+        "enum": [
+          "discard",
+          "none",
+          "mixed"
+        ]
+      },
+      "_types.analysis:PatternAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "pattern"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "flags": {
+            "type": "string"
+          },
+          "lowercase": {
+            "type": "boolean"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type",
+          "pattern"
+        ]
+      },
+      "_types.analysis:SimpleAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "simple"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:StandardAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "standard"
+            ]
+          },
+          "max_token_length": {
+            "type": "number"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:StopAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "stop"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:WhitespaceAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "whitespace"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IcuAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "icu_analyzer"
+            ]
+          },
+          "method": {
+            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationType"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationMode"
+          }
+        },
+        "required": [
+          "type",
+          "method",
+          "mode"
+        ]
+      },
+      "_types.analysis:IcuNormalizationType": {
+        "type": "string",
+        "enum": [
+          "nfc",
+          "nfkc",
+          "nfkc_cf"
+        ]
+      },
+      "_types.analysis:IcuNormalizationMode": {
+        "type": "string",
+        "enum": [
+          "decompose",
+          "compose"
+        ]
+      },
+      "_types.analysis:KuromojiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "kuromoji"
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizationMode"
+          },
+          "user_dictionary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "mode"
+        ]
+      },
+      "_types.analysis:KuromojiTokenizationMode": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "search",
+          "extended"
+        ]
+      },
+      "_types.analysis:SnowballAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "snowball"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "language": {
+            "$ref": "#/components/schemas/_types.analysis:SnowballLanguage"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type",
+          "language"
+        ]
+      },
+      "_types.analysis:SnowballLanguage": {
+        "type": "string",
+        "enum": [
+          "Armenian",
+          "Basque",
+          "Catalan",
+          "Danish",
+          "Dutch",
+          "English",
+          "Finnish",
+          "French",
+          "German",
+          "German2",
+          "Hungarian",
+          "Italian",
+          "Kp",
+          "Lovins",
+          "Norwegian",
+          "Porter",
+          "Portuguese",
+          "Romanian",
+          "Russian",
+          "Spanish",
+          "Swedish",
+          "Turkish"
+        ]
+      },
+      "_types.analysis:ArabicAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "arabic"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ArmenianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "armenian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BasqueAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "basque"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BengaliAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bengali"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BrazilianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "brazilian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BulgarianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bulgarian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CatalanAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "catalan"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ChineseAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "chinese"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CjkAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "cjk"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CzechAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "czech"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:DanishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "danish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:DutchAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "dutch"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:EnglishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "english"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:EstonianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "estonian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:FinnishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "finnish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:FrenchAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "french"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GalicianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "galician"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GermanAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "german"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GreekAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "greek"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:HindiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "hindi"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:HungarianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "hungarian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IndonesianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "indonesian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IrishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "irish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ItalianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "italian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LatvianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "latvian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LithuanianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "lithuanian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:NorwegianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "norwegian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:PersianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "persian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:PortugueseAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "portuguese"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:RomanianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "romanian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:RussianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "russian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SerbianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "serbian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SoraniAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "sorani"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SpanishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "spanish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SwedishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "swedish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:TurkishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turkish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ThaiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "thai"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
       "_types.analysis:CharFilter": {
         "oneOf": [
           {
@@ -52485,6 +53663,12 @@
               "type": "object"
             }
           },
+          "_ignored": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "found": {
             "type": "boolean"
           },
@@ -53045,6 +54229,9 @@
             "description": "If `true`, the data stream allows custom routing on write request.",
             "type": "boolean"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/indices._types:FailureStore"
+          },
           "generation": {
             "description": "Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1.",
             "type": "number"
@@ -53080,6 +54267,10 @@
             "description": "If `true`, the data stream is created and managed by cross-cluster replication and the local cluster can not write into this data stream or change its mappings.",
             "type": "boolean"
           },
+          "rollover_on_write": {
+            "description": "If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.",
+            "type": "boolean"
+          },
           "status": {
             "$ref": "#/components/schemas/_types:HealthStatus"
           },
@@ -53102,17 +54293,32 @@
           "prefer_ilm",
           "indices",
           "name",
+          "rollover_on_write",
           "status",
           "template",
           "timestamp_field"
         ]
       },
-      "indices._types:ManagedBy": {
-        "type": "string",
-        "enum": [
-          "Index Lifecycle Management",
-          "Data stream lifecycle",
-          "Unmanaged"
+      "indices._types:FailureStore": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types:DataStreamIndex"
+            }
+          },
+          "rollover_on_write": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled",
+          "indices",
+          "rollover_on_write"
         ]
       },
       "indices._types:DataStreamIndex": {
@@ -53137,9 +54343,15 @@
         },
         "required": [
           "index_name",
-          "index_uuid",
-          "managed_by",
-          "prefer_ilm"
+          "index_uuid"
+        ]
+      },
+      "indices._types:ManagedBy": {
+        "type": "string",
+        "enum": [
+          "Index Lifecycle Management",
+          "Data stream lifecycle",
+          "Unmanaged"
         ]
       },
       "indices._types:DataStreamTimestampField": {
@@ -58559,7 +59771,11 @@
             "$ref": "#/components/schemas/_types:Id"
           },
           "nodes": {
-            "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            "description": "The deployment stats for each node that currently has the model allocated.\nIn serverless, stats are reported for a single unnamed virtual node.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types:TrainedModelDeploymentNodesStats"
+            }
           },
           "number_of_allocations": {
             "description": "The number of allocations requested.",
@@ -58764,7 +59980,7 @@
             "type": "number"
           },
           "timestamp": {
-            "$ref": "#/components/schemas/_types:DateTime"
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           }
         },
         "required": [
@@ -59075,10 +60291,22 @@
             "type": "number"
           },
           {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
             "type": "boolean"
           },
           {
             "type": "number"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           }
         ]
       },

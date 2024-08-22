@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
- * Retrieves usage information for datafeeds.
+ * Get datafeeds usage info.
  * You can get statistics for multiple datafeeds in a single API request by
  * using a comma-separated list of datafeeds or a wildcard expression. You can
  * get statistics for all datafeeds by using `_all`, by specifying `*` as the
