@@ -38,13 +38,13 @@ actions:
           application/json: 
             examples: 
               createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.json"
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
               createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.json"
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
       responses:
         200:
           content:
             application/json:
               examples:
                 createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/examples/200_response/PutTransformResponseExample1.json"
+                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
