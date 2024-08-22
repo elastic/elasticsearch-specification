@@ -631,8 +631,8 @@ export interface HealthReportSlmIndicatorUnhealthyPolicies {
 }
 
 export interface HealthReportStagnatingBackingIndices {
-  index_name: string
-  first_occurrence_timestamp: integer
+  index_name: IndexName
+  first_occurrence_timestamp: long
   retry_count: integer
 }
 

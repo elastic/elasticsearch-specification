@@ -19,7 +19,7 @@
 
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { integer, long } from '@_types/Numeric'
-import { Indices } from '@_types/common'
+import { IndexName, Indices } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export enum IndicatorHealthStatus {

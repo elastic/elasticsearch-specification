@@ -81576,7 +81576,7 @@
         "type": "object",
         "properties": {
           "index_name": {
-            "type": "string"
+            "$ref": "#/components/schemas/_types:IndexName"
           },
           "first_occurrence_timestamp": {
             "type": "number"
