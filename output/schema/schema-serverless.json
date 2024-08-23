@@ -91196,6 +91196,36 @@
       "specLocation": "ml/_types/Model.ts#L88-L92"
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "PredictedValue",
+        "namespace": "ml._types"
+      },
+      "specLocation": "ml/_types/inference.ts#L457-L457",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScalarValue",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScalarValue",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -129570,8 +129600,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ScalarValue",
-                  "namespace": "_types"
+                  "name": "PredictedValue",
+                  "namespace": "ml._types"
                 }
               },
               {
@@ -129579,8 +129609,8 @@
                 "value": {
                   "kind": "instance_of",
                   "type": {
-                    "name": "ScalarValue",
-                    "namespace": "_types"
+                    "name": "PredictedValue",
+                    "namespace": "ml._types"
                   }
                 }
               }
@@ -129667,7 +129697,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L457-L504"
+      "specLocation": "ml/_types/inference.ts#L459-L507"
     },
     {
       "kind": "interface",

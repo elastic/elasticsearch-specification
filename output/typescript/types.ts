@@ -13667,7 +13667,7 @@ export interface MlInferenceConfigUpdateContainer {
 export interface MlInferenceResponseResult {
   entities?: MlTrainedModelEntities[]
   is_truncated?: boolean
-  predicted_value?: ScalarValue | ScalarValue[]
+  predicted_value?: MlPredictedValue | MlPredictedValue[]
   predicted_value_sequence?: string
   prediction_probability?: double
   prediction_score?: double
@@ -13920,6 +13920,8 @@ export interface MlPerPartitionCategorization {
   enabled?: boolean
   stop_on_warn?: boolean
 }
+
+export type MlPredictedValue = ScalarValue | ScalarValue[]
 
 export interface MlQuestionAnsweringInferenceOptions {
   num_top_classes?: integer
