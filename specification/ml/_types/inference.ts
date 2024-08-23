@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, IndexName } from '@_types/common'
+import { Field, IndexName, ScalarValue } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 
 /**
@@ -454,13 +454,7 @@ export class TrainedModelInferenceFeatureImportance {
   classes?: TrainedModelInferenceClassImportance[]
 }
 
-export type PredictedValue =
-  | string
-  | double
-  | double[]
-  | boolean
-  | integer
-  | integer[]
+export type PredictedValue = ScalarValue | ScalarValue[]
 
 export class InferenceResponseResult {
   /**
@@ -482,6 +476,7 @@ export class InferenceResponseResult {
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
   predicted_value?: PredictedValue | PredictedValue[]
+
   /**
    * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
    * value.

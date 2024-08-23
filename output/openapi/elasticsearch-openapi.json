@@ -92287,27 +92287,12 @@
       "ml._types:PredictedValue": {
         "oneOf": [
           {
-            "type": "string"
-          },
-          {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ScalarValue"
           },
           {
             "type": "array",
             "items": {
-              "type": "number"
-            }
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "number"
+              "$ref": "#/components/schemas/_types:ScalarValue"
             }
           }
         ]

@@ -14166,7 +14166,7 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export type MlPredictedValue = string | double | double[] | boolean | integer | integer[]
+export type MlPredictedValue = ScalarValue | ScalarValue[]
 
 export interface MlQuestionAnsweringInferenceOptions {
   num_top_classes?: integer
