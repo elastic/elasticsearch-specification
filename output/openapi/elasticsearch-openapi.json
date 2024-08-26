@@ -96876,8 +96876,7 @@
         },
         "required": [
           "document",
-          "index",
-          "query"
+          "index"
         ]
       },
       "_types:RankContainer": {
