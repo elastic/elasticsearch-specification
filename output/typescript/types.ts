@@ -1136,7 +1136,7 @@ export interface RenderSearchTemplateResponse {
 export interface ScriptsPainlessExecutePainlessContextSetup {
   document: any
   index: IndexName
-  query: QueryDslQueryContainer
+  query?: QueryDslQueryContainer
 }
 
 export interface ScriptsPainlessExecuteRequest extends RequestBase {

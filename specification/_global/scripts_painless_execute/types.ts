@@ -35,7 +35,7 @@ export class PainlessContextSetup {
   /**
    * Use this parameter to specify a query for computing a score.
    */
-  query: QueryContainer
+  query?: QueryContainer
 }
 
 /**

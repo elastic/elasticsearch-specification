@@ -135456,7 +135456,7 @@
         {
           "description": "Use this parameter to specify a query for computing a score.",
           "name": "query",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
