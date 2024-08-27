@@ -17,6 +17,13 @@
  * under the License.
  */
 
+import { ShardStatistics } from '@_types/Stats'
+
+export class ReloadResult {
+  reload_details: ReloadDetails[]
+  _shards: ShardStatistics
+}
+
 export class ReloadDetails {
   index: string
   reloaded_analyzers: string[]

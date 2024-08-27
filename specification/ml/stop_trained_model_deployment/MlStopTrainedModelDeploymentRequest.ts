@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Stops a trained model deployment.
+ * Stop a trained model deployment.
  * @rest_spec_name ml.stop_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public

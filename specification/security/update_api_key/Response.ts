@@ -19,6 +19,10 @@
 
 export class Response {
   body: {
+    /**
+     * If `true`, the API key was updated.
+     * If `false`, the API key didn’t change because no change was detected.
+     */
     updated: boolean
   }
 }

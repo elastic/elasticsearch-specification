@@ -21,80 +21,80 @@ import { Id, NodeId, VersionString } from '@_types/common'
 
 export class TasksRecord {
   /**
-   * id of the task with the node
+   * The identifier of the task with the node.
    */
   'id'?: Id
   /**
-   * task action
+   * The task action.
    * @aliases ac
    */
   'action'?: string
   /**
-   * unique task id
+   * The unique task identifier.
    * @aliases ti
    */
   'task_id'?: Id
   /**
-   * parent task id
+   * The parent task identifier.
    * @aliases pti
    */
   'parent_task_id'?: string
   /**
-   * task type
+   * The task type.
    * @aliases ty
    */
   'type'?: string
   /**
-   * start time in ms
+   * The start time in milliseconds.
    * @aliases start
    */
   'start_time'?: string
   /**
-   * start time in HH:MM:SS
+   * The start time in `HH:MM:SS` format.
    * @aliases ts,hms,hhmmss
    */
   'timestamp'?: string
   /**
-   * running time ns
+   * The running time in nanoseconds.
    */
   'running_time_ns'?: string
   /**
-   * running time
+   * The running time.
    * @aliases time
    */
   'running_time'?: string
   /**
-   * unique node id
+   * The unique node identifier.
    * @aliases ni
    */
   'node_id'?: NodeId
   /**
-   * ip address
+   * The IP address for the node.
    * @aliases i
    */
   'ip'?: string
   /**
-   * bound transport port
+   * The bound transport port for the node.
    * @aliases po
    */
   'port'?: string
   /**
-   * node name
+   * The node name.
    * @aliases n
    */
   'node'?: string
   /**
-   * es version
+   * The Elasticsearch version.
    * @aliases v
    */
   'version'?: VersionString
   /**
-   * X-Opaque-ID header
+   * The X-Opaque-ID header.
    * @aliases x
    */
   'x_opaque_id'?: string
   /**
-   * task action
+   * The task action description.
    * @aliases desc
    */
   'description'?: string

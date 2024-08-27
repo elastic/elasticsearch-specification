@@ -21,12 +21,18 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Get an enrich policy.
+ * Returns information about an enrich policy.
  * @rest_spec_name enrich.get_policy
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of enrich policy names used to limit the request.
+     * To return information for all enrich policies, omit this parameter.
+     */
     name?: Names
   }
 }

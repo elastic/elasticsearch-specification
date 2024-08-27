@@ -35,7 +35,7 @@ import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
 
 /**
- * Instantiates a datafeed.
+ * Create a datafeed.
  * Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.
  * You can associate only one datafeed with each anomaly detection job.
  * The datafeed contains a query that runs at a defined interval (`frequency`).

@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes forecasts from a machine learning job.
+ * Delete forecasts from a job.
  * By default, forecasts are retained for 14 days. You can specify a
  * different retention period with the `expires_in` parameter in the forecast
  * jobs API. The delete forecast API enables you to delete one or more

@@ -23,7 +23,7 @@ import { float } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes expired and unused machine learning data.
+ * Delete expired ML data.
  * Deletes all job results, model snapshots and forecast data that have exceeded
  * their retention days period. Machine learning state documents that are not
  * associated with any job are also deleted.

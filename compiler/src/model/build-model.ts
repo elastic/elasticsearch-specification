@@ -44,7 +44,6 @@ import {
   modelBehaviors,
   modelEnumDeclaration,
   modelGenerics,
-  modelImplements,
   modelInherits,
   modelProperty,
   modelType,
@@ -77,8 +76,6 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
           visibility: spec.visibility
         }
       },
-      stability: spec.stability,
-      visibility: spec.visibility,
       request: null,
       requestBodyRequired: Boolean(spec.body?.required),
       response: null,
@@ -91,7 +88,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       })
     }
     if (typeof spec.feature_flag === 'string') {
-      map[api].featureFlag = spec.feature_flag
+      map[api].availability.stack.featureFlag = spec.feature_flag
     }
   }
   return map
@@ -270,14 +267,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(queryType.type, part.type)) {
             assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @codegen_name.`)
-            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in query_parameters.`)
+            assert(pathMember as Node, !type.query.map(p => p.codegenName ?? p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in query_parameters.`)
           }
         }
         if (bodyProperties.map(p => p.name).includes(part.name)) {
           const bodyType = bodyProperties.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(bodyType.type, part.type)) {
             assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the body with a different type, you should define an @codegen_name.`)
-            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in body.`)
+            assert(pathMember as Node, !bodyProperties.map(p => p.codegenName ?? p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in body.`)
           }
         }
       }
@@ -285,6 +282,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       // validate body
       // the body can either be a value (eg Array<string> or an object with properties)
       if (bodyValue != null) {
+        // Propagate required body value nature based on TS question token being present.
+        // Overrides the value set by spec files.
+        mapping.requestBodyRequired = !(bodyMember as PropertySignature).hasQuestionToken()
+
         if (bodyValue.kind === 'instance_of' && bodyValue.type.name === 'Void') {
           assert(bodyMember as Node, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
         } else {
@@ -296,9 +297,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           )
           assert(
             (bodyMember as PropertySignature).getJsDocs(),
-            !type.path.map(p => p.name).concat(type.query.map(p => p.name)).includes(tags.codegen_name),
+            !type.path.map(p => p.codegenName ?? p.name).concat(type.query.map(p => p.codegenName ?? p.name)).includes(tags.codegen_name),
             `The codegen_name '${tags.codegen_name}' already exists as a property in the path or query.`
           )
+
           type.body = {
             kind: 'value',
             value: bodyValue,
@@ -395,7 +397,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               )
               const jsDocs = child.getJsDocs()
               if (jsDocs.length > 0) {
-                exception.description = jsDocs[0].getDescription()
+                exception.description = jsDocs[0].getDescription().replace(/\r/g, '')
               }
               if (child.getName() === 'statusCodes') {
                 const value = child.getTypeNode()
@@ -439,7 +441,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat({
         name: modelGenerics(typeParameter),
-        namespace: type.name.namespace
+        namespace: type.name.namespace + '.' + type.name.name
       })
     }
 
@@ -454,7 +456,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       properties: new Array<model.Property>()
     }
 
-    hoistTypeAnnotations(type, declaration.getJsDocs())
+    const jsDocs = declaration.getJsDocs()
+    hoistTypeAnnotations(type, jsDocs)
 
     const variant = parseVariantNameTag(declaration.getJsDocs())
     if (typeof variant === 'string') {
@@ -474,15 +477,25 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
         'Class and interfaces can only have property declarations or signatures'
       )
-      const property = modelProperty(member)
-      if (type.variants?.kind === 'container' && property.containerProperty == null) {
-        assert(
-          member,
-          !property.required,
-          'All @variants container properties must be optional'
-        )
+      try {
+        const property = modelProperty(member)
+        if (type.variants?.kind === 'container' && property.containerProperty == null) {
+          assert(
+            member,
+            !property.required,
+            'All @variants container properties must be optional'
+          )
+        }
+        type.properties.push(property)
+      } catch (e) {
+        const name = declaration.getName()
+        if (name !== undefined) {
+          console.log(`failed to parse ${name}, reason:`, e.message)
+        } else {
+          console.log('failed to parse field, reason:', e.message)
+        }
+        process.exit(1)
       }
-      type.properties.push(property)
     }
 
     // The class or interface is extended, an extended class or interface could
@@ -517,9 +530,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     if (Node.isClassDeclaration(declaration)) {
       for (const implement of declaration.getImplements()) {
         if (isKnownBehavior(implement)) {
-          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement))
-        } else {
-          type.implements = (type.implements ?? []).concat(modelImplements(implement))
+          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement, jsDocs))
         }
       }
     }
@@ -527,7 +538,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     for (const typeParameter of declaration.getTypeParameters()) {
       type.generics = (type.generics ?? []).concat({
         name: modelGenerics(typeParameter),
-        namespace: type.name.namespace
+        namespace: type.name.namespace + '.' + type.name.name
       })
     }
 

@@ -26,7 +26,8 @@ import { Bytes, Indices } from '@_types/common'
  * For data streams, the API returns information about the stream’s backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index recovery API.
  * @rest_spec_name cat.recovery
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_id cat-recovery
  * @cluster_privileges monitor
  * @index_privileges monitor

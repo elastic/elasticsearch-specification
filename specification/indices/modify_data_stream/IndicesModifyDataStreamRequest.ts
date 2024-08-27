@@ -21,6 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { Action } from './types'
 
 /**
+ * Update data streams.
+ * Performs one or more data stream modification actions in a single atomic operation.
  * @rest_spec_name indices.modify_data_stream
  * @availability stack since=7.16.0 stability=stable
  * @availability serverless stability=stable visibility=public

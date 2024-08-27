@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Starts a data frame analytics job.
+ * Start a data frame analytics job.
  * A data frame analytics job can be started and stopped multiple times
  * throughout its lifecycle.
  * If the destination index does not exist, it is created automatically the

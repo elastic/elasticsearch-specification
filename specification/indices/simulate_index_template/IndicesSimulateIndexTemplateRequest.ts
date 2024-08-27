@@ -17,62 +17,34 @@
  * under the License.
  */
 
-import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
-import {
-  IndexName,
-  Indices,
-  Metadata,
-  Name,
-  VersionNumber
-} from '@_types/common'
+import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { integer } from '@_types/Numeric'
-import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
+ * Simulate an index.
+ * Returns the index configuration that would be applied to the specified index from an existing index template.
  * @rest_spec_name indices.simulate_index_template
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Index or template name to simulate */
+    /** Name of the index to simulate */
     name: Name
   }
   query_parameters: {
     /**
-     * If `true`, the template passed in the body is only used if no existing
-     * templates match the same index patterns. If `false`, the simulation uses
-     * the template with the highest priority. Note that the template is not
-     * permanently added or updated in either case; it is only used for the
-     * simulation.
-     * @server_default false
-     * */
-    create?: boolean
-    /**
-     * Period to wait for a connection to the master node. If no response is received
-     * before the timeout expires, the request fails and returns an error.
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
      * If true, returns all relevant default configurations for the index template.
      * @server_default false
-     * @availability stack since=8.8.0 stability=experimental
-     * @availability serverless stability=experimental
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
      */
     include_defaults?: boolean
-  }
-  body: {
-    allow_auto_create?: boolean
-    index_patterns?: Indices
-    composed_of?: Name[]
-    template?: IndexTemplateMapping
-    data_stream?: DataStreamVisibility
-    priority?: integer
-    version?: VersionNumber
-    /** @doc_id mapping-meta-field */
-    _meta?: Metadata
   }
 }

@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { double, integer, long } from '@_types/Numeric'
 
 export class TermVector {
-  field_statistics: FieldStatistics
+  field_statistics?: FieldStatistics
   terms: Dictionary<string, Term>
 }
 
@@ -47,11 +47,40 @@ export class Token {
 }
 
 export class Filter {
+  /**
+   * Ignore words which occur in more than this many docs.
+   * Defaults to unbounded.
+   */
   max_doc_freq?: integer
+  /**
+   * Maximum number of terms that must be returned per field.
+   * @server_default 25
+   */
   max_num_terms?: integer
+  /**
+   * Ignore words with more than this frequency in the source doc.
+   * Defaults to unbounded.
+   */
   max_term_freq?: integer
+  /**
+   * The maximum word length above which words will be ignored.
+   * Defaults to unbounded.
+   * @server_default 0
+   */
   max_word_length?: integer
+  /**
+   * Ignore terms which do not occur in at least this many docs.
+   * @server_default 1
+   */
   min_doc_freq?: integer
+  /**
+   * Ignore words with less than this frequency in the source doc.
+   * @server_default 1
+   */
   min_term_freq?: integer
+  /**
+   * The minimum word length below which words will be ignored.
+   * @server_default 0
+   */
   min_word_length?: integer
 }

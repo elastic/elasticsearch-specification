@@ -24,6 +24,7 @@ import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
+ * Estimate job model memory usage.
  * Makes an estimation of the memory usage for an anomaly detection job model.
  * It is based on analysis configuration details for the job and cardinality
  * estimates for the fields it references.

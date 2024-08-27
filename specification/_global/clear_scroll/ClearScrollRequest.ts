@@ -21,16 +21,25 @@ import { RequestBase } from '@_types/Base'
 import { Ids, ScrollIds } from '@_types/common'
 
 /**
+ * Clears the search context and results for a scrolling search.
  * @rest_spec_name clear_scroll
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id clear-scroll-api
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of scroll IDs to clear.
+     * To clear all scroll IDs, use `_all`.
+     */
     scroll_id?: ScrollIds
   }
   body: {
+    /**
+     * Scroll IDs to clear.
+     * To clear all scroll IDs, use `_all`.
+     */
     scroll_id?: ScrollIds
   }
 }

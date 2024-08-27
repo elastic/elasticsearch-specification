@@ -60,9 +60,9 @@ export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterB
 }
 
 export enum DelimitedPayloadEncoding {
-  int = 0,
-  float = 1,
-  identity = 2
+  int,
+  float,
+  identity
 }
 
 export class DelimitedPayloadTokenFilter extends TokenFilterBase {
@@ -72,8 +72,8 @@ export class DelimitedPayloadTokenFilter extends TokenFilterBase {
 }
 
 export enum EdgeNGramSide {
-  front = 0,
-  back = 1
+  front,
+  back
 }
 
 export class EdgeNGramTokenFilter extends TokenFilterBase {
@@ -81,7 +81,7 @@ export class EdgeNGramTokenFilter extends TokenFilterBase {
   max_gram?: integer
   min_gram?: integer
   side?: EdgeNGramSide
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class ShingleTokenFilter extends TokenFilterBase {
@@ -103,8 +103,8 @@ export class StopTokenFilter extends TokenFilterBase {
 }
 
 export enum SynonymFormat {
-  solr = 0,
-  wordnet = 1
+  solr,
+  wordnet
 }
 
 export class SynonymGraphTokenFilter extends TokenFilterBase {
@@ -114,6 +114,7 @@ export class SynonymGraphTokenFilter extends TokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -125,6 +126,7 @@ export class SynonymTokenFilter extends TokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -136,7 +138,7 @@ export class WordDelimiterTokenFilter extends TokenFilterBase {
   catenate_words?: boolean
   generate_number_parts?: boolean
   generate_word_parts?: boolean
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -155,7 +157,7 @@ export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
   generate_number_parts?: boolean
   generate_word_parts?: boolean
   ignore_keywords?: boolean
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
   protected_words?: string[]
   protected_words_path?: string
   split_on_case_change?: boolean
@@ -167,7 +169,7 @@ export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
   type: 'asciifolding'
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
@@ -188,7 +190,7 @@ export class ElisionTokenFilter extends TokenFilterBase {
   type: 'elision'
   articles?: string[]
   articles_path?: string
-  articles_case?: boolean
+  articles_case?: Stringified<boolean>
 }
 
 export class FingerprintTokenFilter extends TokenFilterBase {
@@ -211,8 +213,8 @@ export class JaStopTokenFilter extends TokenFilterBase {
 }
 
 export enum KeepTypesMode {
-  include = 0,
-  exclude = 1
+  include,
+  exclude
 }
 
 export class KeepTypesTokenFilter extends TokenFilterBase {
@@ -260,14 +262,14 @@ export class LowercaseTokenFilter extends TokenFilterBase {
 export class MultiplexerTokenFilter extends TokenFilterBase {
   type: 'multiplexer'
   filters: string[]
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class NGramTokenFilter extends TokenFilterBase {
   type: 'ngram'
   max_gram?: integer
   min_gram?: integer
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
@@ -278,7 +280,7 @@ export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
 export class PatternCaptureTokenFilter extends TokenFilterBase {
   type: 'pattern_capture'
   patterns: string[]
-  preserve_original?: boolean
+  preserve_original?: Stringified<boolean>
 }
 
 export class PatternReplaceTokenFilter extends TokenFilterBase {
@@ -308,7 +310,7 @@ export class ReverseTokenFilter extends TokenFilterBase {
 
 export class SnowballTokenFilter extends TokenFilterBase {
   type: 'snowball'
-  language: SnowballLanguage
+  language?: SnowballLanguage
 }
 
 export class StemmerOverrideTokenFilter extends TokenFilterBase {
@@ -392,7 +394,6 @@ export type TokenFilterDefinition =
   | KuromojiStemmerTokenFilter
   | KuromojiReadingFormTokenFilter
   | KuromojiPartOfSpeechTokenFilter
-  | IcuTokenizer
   | IcuCollationTokenFilter
   | IcuFoldingTokenFilter
   | IcuNormalizationTokenFilter

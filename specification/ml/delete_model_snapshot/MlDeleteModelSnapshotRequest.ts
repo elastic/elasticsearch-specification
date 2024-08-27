@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an existing model snapshot.
+ * Delete a model snapshot.
  * You cannot delete the active model snapshot. To delete that snapshot, first
  * revert to a different one. To identify the active model snapshot, refer to
  * the `model_snapshot_id` in the results from the get jobs API.

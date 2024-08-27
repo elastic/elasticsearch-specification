@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
- * Forces any buffered data to be processed by the job.
+ * Force buffered data to be processed.
  * The flush jobs API is only applicable when sending data for analysis using
  * the post data API. Depending on the content of the buffer, then it might
  * additionally calculate new results. Both flush and close operations are

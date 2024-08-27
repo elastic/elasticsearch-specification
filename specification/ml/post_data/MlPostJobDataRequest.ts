@@ -22,13 +22,12 @@ import { Id } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
- * Sends data to an anomaly detection job for analysis.
+ * Send data to an anomaly detection job for analysis.
  *
  * IMPORTANT: For each job, data can be accepted from only a single connection at a time.
  * It is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.
  * @rest_spec_name ml.post_data
  * @availability stack since=5.4.0 stability=stable
- * @availability serverless stability=stable visibility=private
  * @deprecated 7.11.0 Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.
  * @cluster_privileges manage_ml
  */

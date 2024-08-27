@@ -75,17 +75,44 @@ property: Dictionary<string, string | long>
 
 ### Enum
 
-Represents a set of allowed values:
+Represents a set of allowed values.
+
 
 ```ts
 enum MyEnum {
-  first = 0,
-  second = 1,
-  third = 2
+  first,
+  second,
+  third
 }
 
 property: MyEnum
 ```
+
+Note that you don't have to provide both identifiers and values as is common in TypeScript. When there's only an identifier, the API specification compiler will use it for both the identifier and the value of enum members.
+
+Also do not use identifiers and values for the sole purpose of providing upper-case identifiers (e.g. `FOO = 'foo'`). Each language generator will use the identifier casing that is expected by that language.
+
+Some enumerations contain values that aren't identifiers, or that are not explicit enough. In that case you can either assign values to enum members or use the `@codegen_name` jsdoc tag to define the identifier that will be used by code generators:
+
+```ts
+enum MyEnum {
+    percent_of_sum,
+    mean,
+    /** @codegen_name z_score */
+    'z-score',
+    softmax
+}
+
+export enum IntervalUnit {
+    second = 's',
+    minute = 'm',
+    hour = 'h',
+    day = 'd',
+    week = 'w'
+}
+```
+
+**Use custom identifiers for enum members sparingly**: we want to keep identifiers as close as possible to their value in JSON payloads to that usesr can easily map values found in the Elasticsearch reference documentation to code identifiers in the client libraries. 
 
 Some enumerations accept alternate values for some of their members. The `@aliases` jsdoc tac can be used to capture these values:
 
@@ -391,7 +418,7 @@ An annotation allows distinguishing these properties from container variants:
 
 For example:
 
-```
+```ts
 /**
  * @variants container
  */
@@ -406,6 +433,39 @@ class AggregationContainer {
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
   ...
+```
+
+#### Untagged
+
+The untagged variant is used for unions that can only be distinguished by the type of one or more fields.
+
+> [!WARNING]
+> This variant should only be used for legacy types and should otherwise be avoided as far as possible, as it leads to less optimal code generation in the client libraries.
+
+The syntax is:
+
+```ts
+/** @variants untagged */
+```
+
+Untagged variants must exactly follow a defined pattern.
+
+For example:
+
+```ts
+export class MyTypeBase<T1, T2, ...> { ... }
+
+export class MyTypeUntyped extends MyTypeBase<UserDefinedValue> {}
+export class MyTypeSpecialized1 extends MyTypeBase<int> {}
+export class MyTypeSpecialized2 extends MyTypeBase<string> {}
+export class MyTypeSpecialized3 extends MyTypeBase<bool> {}
+
+/**
+ * @codegen_names untyped, mytype1, mytypet2, mytype3 
+ * @variant untagged untyped=_types.MyTypeUntyped
+ */
+// Note: deserialization depends on value types
+export type MyType = MyTypeUntyped | MyTypeSpecialized1 | MyTypeSpecialized2 | MyTypeSpecialized3 
 ```
 
 ### Shortcut properties

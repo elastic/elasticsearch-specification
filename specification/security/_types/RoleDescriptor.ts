@@ -17,31 +17,79 @@
  * under the License.
  */
 
-import { GlobalPrivilege } from './Privileges'
+import { ClusterPrivilege, GlobalPrivilege } from './Privileges'
 import { IndicesPrivileges } from './Privileges'
 import { ApplicationPrivileges } from './Privileges'
-import { TransientMetadataConfig } from './TransientMetadataConfig'
 import { Metadata } from '@_types/common'
 import { OverloadOf } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RoleDescriptor {
-  cluster?: string[]
-  /** @aliases index */
+  /**
+   * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
+   */
+  cluster?: ClusterPrivilege[]
+  /**
+   * A list of indices permissions entries.
+   * @aliases index
+   */
   indices?: IndicesPrivileges[]
+  /**
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+   * @availability stack
+   */
   global?: GlobalPrivilege[] | GlobalPrivilege
+  /**
+   * A list of application privilege entries
+   */
   applications?: ApplicationPrivileges[]
+  /**
+   * Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.
+   */
   metadata?: Metadata
+  /**
+   * A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
+   * @doc_id run-as-privilege
+   */
   run_as?: string[]
-  transient_metadata?: TransientMetadataConfig
+  /**
+   * Optional description of the role descriptor
+   */
+  description?: string
+  transient_metadata?: Dictionary<string, UserDefinedValue>
 }
 
 export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
-  cluster: string[]
-  /** @aliases index */
+  /**
+   * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
+   */
+  cluster: ClusterPrivilege[]
+  /**
+   * A list of indices permissions entries.
+   * @aliases index
+   */
   indices: IndicesPrivileges[]
+  /**
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+   */
   global?: GlobalPrivilege[] | GlobalPrivilege
+  /**
+   * A list of application privilege entries
+   */
   applications?: ApplicationPrivileges[]
+  /**
+   * Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.
+   */
   metadata?: Metadata
+  /**
+   * A list of users that the API keys can impersonate.
+   * @doc_id run-as-privilege
+   */
   run_as?: string[]
-  transient_metadata?: TransientMetadataConfig
+  /**
+   * Optional description of the role descriptor
+   */
+  description?: string
+  transient_metadata?: Dictionary<string, UserDefinedValue>
 }

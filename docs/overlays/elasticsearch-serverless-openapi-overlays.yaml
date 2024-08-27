@@ -1,0 +1,47 @@
+# overlays.yaml
+overlay: 1.0.0
+info:
+  title: Overlays for the Elasticsearch Serverless OpenAPI document
+  version: 0.0.1
+actions:
+  - target: '$.info'
+    description: Add a document description
+    update:
+      description: >
+        **Technical preview**  
+        This functionality is in technical preview and may be changed or removed in a future release.
+        Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+  - target: "$.components['requestBodies']['async_search.submit']"
+    description: "Add example for asynch search submit request"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitRequestExample1.json"
+  - target: "$.components['responses']['async_search.submit#200']"
+    description: "Add example for asynch search submit response"
+    update: 
+      content:
+        application/json:
+          examples:
+            asyncSearchSubmitResponseExample1:
+              $ref: "../../specification/async_search/submit/AsyncSearchSubmitResponseExample1.json"
+  - target: "$.paths['/_transform/{transform_id}']['put']"
+    description: "Add examples for create transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              createTransformRequestExample1: 
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.json"
+              createTransformRequestExample2:
+                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                createTransformResponseExample1:
+                  $ref: "../../specification/transform/put_transform/examples/200_response/PutTransformResponseExample1.json"

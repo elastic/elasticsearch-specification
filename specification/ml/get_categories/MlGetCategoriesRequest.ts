@@ -23,7 +23,7 @@ import { CategoryId, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves anomaly detection job results for one or more categories.
+ * Get anomaly detection job results for categories.
  * @rest_spec_name ml.get_categories
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -61,6 +61,10 @@ export interface Request extends RequestBase {
     size?: integer
   }
   body: {
+    /**
+     * Configures pagination.
+     * This parameter has the `from` and `size` properties.
+     */
     page?: Page
   }
 }

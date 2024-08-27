@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an existing datafeed.
+ * Delete a datafeed.
  * @rest_spec_name ml.delete_datafeed
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public

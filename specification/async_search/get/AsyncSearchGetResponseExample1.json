@@ -1,0 +1,7 @@
+{
+  "summary": "A succesful response when retrieving the results of a previously submitted async search request given its identifier.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"id\" : \"FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\",\n  \"is_partial\" : false,\n  \"is_running\" : false,\n  \"start_time_in_millis\" : 1583945890986,\n  \"expiration_time_in_millis\" : 1584377890986,\n  \"completion_time_in_millis\" : 1583945903130,\n  \"response\" : {\n    \"took\" : 12144,\n    \"timed_out\" : false,\n    \"num_reduce_phases\" : 46,\n    \"_shards\" : {\n      \"total\" : 562,\n      \"successful\" : 188,\n      \"skipped\" : 0,\n      \"failed\" : 0\n    },\n    \"hits\" : {\n      \"total\" : {\n        \"value\" : 456433,\n        \"relation\" : \"eq\"\n      },\n      \"max_score\" : null,\n      \"hits\" : [ ]\n    },\n    \"aggregations\" : {\n      \"sale_date\" :  {\n        \"buckets\" : []\n      }\n    }\n  }\n}"
+}

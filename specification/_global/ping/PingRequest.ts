@@ -20,8 +20,10 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Ping the cluster.
+ * Returns whether the cluster is running.
  * @rest_spec_name ping
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {}

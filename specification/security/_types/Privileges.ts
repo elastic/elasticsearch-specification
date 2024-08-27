@@ -18,10 +18,11 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices } from '@_types/common'
+import { Id, Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldSecurity } from './FieldSecurity'
-import { ScriptLanguage, ScriptBase, StoredScriptId } from '@_types/Scripting'
+import { ScriptLanguage, ScriptBase, Script } from '@_types/Scripting'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ApplicationPrivileges {
   /**
@@ -42,41 +43,155 @@ export class ApplicationPrivileges {
 export enum ClusterPrivilege {
   all,
   cancel_task,
+  /**
+   * @availability stack
+   */
   create_snapshot,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication,
+  /**
+   * @availability stack
+   */
+  cross_cluster_search,
+  /**
+   * @availability stack
+   */
+  delegate_pki,
+  /**
+   * @availability stack
+   */
   grant_api_key,
   manage,
   manage_api_key,
+  /**
+   * @availability stack
+   */
+  manage_autoscaling,
+  manage_behavioral_analytics,
+  /**
+   * @availability stack
+   */
   manage_ccr,
+  /**
+   * @availability stack
+   */
+  manage_data_frame_transforms,
+  /**
+   * @availability stack
+   */
+  manage_data_stream_global_retention,
   manage_enrich,
+  /**
+   * @availability stack
+   */
   manage_ilm,
   manage_index_templates,
+  manage_inference,
   manage_ingest_pipelines,
   manage_logstash_pipelines,
   manage_ml,
+  /**
+   * @availability stack
+   */
   manage_oidc,
   manage_own_api_key,
   manage_pipeline,
+  /**
+   * @availability stack
+   */
   manage_rollup,
+  /**
+   * @availability stack
+   */
   manage_saml,
+  manage_search_application,
+  manage_search_query_rules,
+  manage_search_synonyms,
   manage_security,
+  /**
+   * @availability stack
+   */
   manage_service_account,
+  /**
+   * @availability stack
+   */
   manage_slm,
+  /**
+   * @availability stack
+   */
   manage_token,
   manage_transform,
+  /**
+   * @availability stack
+   */
   manage_user_profile,
+  /**
+   * @availability stack
+   */
   manage_watcher,
   monitor,
+  /**
+   * @availability stack
+   */
+  monitor_data_frame_transforms,
+  /**
+   * @availability stack
+   */
+  monitor_data_stream_global_retention,
+  monitor_enrich,
+  monitor_inference,
   monitor_ml,
+  /**
+   * @availability stack
+   */
   monitor_rollup,
+  /**
+   * @availability stack
+   */
   monitor_snapshot,
+  /**
+   * @availability stack
+   */
   monitor_text_structure,
   monitor_transform,
+  /**
+   * @availability stack
+   */
   monitor_watcher,
+  none,
+  post_behavioral_analytics_event,
+  /**
+   * @availability stack
+   */
   read_ccr,
+  /**
+   * @availability stack
+   */
+  read_fleet_secrets,
+  /**
+   * @availability stack
+   */
   read_ilm,
   read_pipeline,
+  read_security,
+  /**
+   * @availability stack
+   */
   read_slm,
-  transport_client
+  /**
+   * @availability stack
+   */
+  transport_client,
+  /**
+   * @availability stack
+   */
+  write_connector_secrets,
+  /**
+   * @availability stack
+   */
+  write_fleet_secrets
 }
 
 export class IndicesPrivileges {
@@ -100,6 +215,7 @@ export class IndicesPrivileges {
   /**
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    * @server_default false
+   * @availability stack
    */
   allow_restricted_indices?: boolean
 }
@@ -151,36 +267,67 @@ export class RoleTemplateQuery {
 }
 
 /** @shortcut_property source */
-export class RoleTemplateInlineScript extends ScriptBase {
+export class RoleTemplateScript {
+  source?: RoleTemplateInlineQuery
+  /**
+   * The `id` for a stored script.
+   */
+  id?: Id
+  /**
+   * Specifies any named parameters that are passed into the script as variables.
+   * Use parameters instead of hard-coded values to decrease compile time.
+   */
+  params?: Dictionary<string, UserDefinedValue>
+  /**
+   * Specifies the language the script is written in.
+   * @server_default painless
+   */
   lang?: ScriptLanguage
   options?: Dictionary<string, string>
-  source: RoleTemplateInlineQuery
 }
 
 /** @codegen_names query_string, query_object */
 export type RoleTemplateInlineQuery = string | QueryContainer
 
-/** @codegen_names inline, stored */
-export type RoleTemplateScript = RoleTemplateInlineScript | StoredScriptId
-
 /** @non_exhaustive */
 export enum IndexPrivilege {
-  none,
   all,
   auto_configure,
   create,
   create_doc,
   create_index,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication,
+  /**
+   * @availability stack
+   */
+  cross_cluster_replication_internal,
   delete,
   delete_index,
   index,
   maintenance,
   manage,
+  manage_data_stream_lifecycle,
+  /**
+   * @availability stack
+   */
   manage_follow_index,
+  /**
+   * @availability stack
+   */
   manage_ilm,
+  /**
+   * @availability stack
+   */
   manage_leader_index,
   monitor,
+  none,
   read,
+  /**
+   * @availability stack
+   */
   read_cross_cluster,
   view_index_metadata,
   write

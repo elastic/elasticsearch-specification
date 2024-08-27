@@ -20,9 +20,11 @@
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
+ * Get component templates.
  * Returns information about component templates in a cluster.
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
- * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
+ *
+ * CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the get component template API.
  * @rest_spec_name cat.component_templates
  * @availability stack since=5.1.0 stability=stable

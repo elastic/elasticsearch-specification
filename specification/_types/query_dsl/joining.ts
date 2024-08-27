@@ -27,52 +27,120 @@ import { QueryBase, QueryContainer } from './abstractions'
  */
 export enum ChildScoreMode {
   /* Do no scoring. */
-  none = 0,
+  none,
   /* Parent hit's score is the average of all child scores. */
-  avg = 1,
+  avg,
   /* Parent hit's score is the max of all child scores. */
-  sum = 2,
+  sum,
   /* Parent hit's score is the sum of all child scores. */
-  max = 3,
+  max,
   /* Parent hit's score is the min of all child scores. */
-  min = 4
+  min
 }
 
 export class HasChildQuery extends QueryBase {
-  /** @server_default false */
+  /**
+   * Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.
+   * @server_default false
+   */
   ignore_unmapped?: boolean
+  /**
+   * If defined, each search hit will contain inner hits.
+   * @doc_id inner-hits
+   */
   inner_hits?: InnerHits
+  /**
+   * Maximum number of child documents that match the query allowed for a returned parent document.
+   * If the parent document exceeds this limit, it is excluded from the search results.
+   */
   max_children?: integer
+  /**
+   * Minimum number of child documents that match the query required to match the query for a returned parent document.
+   * If the parent document does not meet this limit, it is excluded from the search results.
+   */
   min_children?: integer
+  /**
+   * Query you wish to run on child documents of the `type` field.
+   * If a child document matches the search, the query returns the parent document.
+   */
   query: QueryContainer
-  /** @server_default 'none' */
+  /**
+   * Indicates how scores for matching child documents affect the root parent document’s relevance score.
+   * @server_default 'none'
+   */
   score_mode?: ChildScoreMode
+  /**
+   * Name of the child relationship mapped for the `join` field.
+   */
   type: RelationName
 }
 
 export class HasParentQuery extends QueryBase {
-  /** @server_default false */
+  /**
+   * Indicates whether to ignore an unmapped `parent_type` and not return any documents instead of an error.
+   * You can use this parameter to query multiple indices that may not contain the `parent_type`.
+   * @server_default false
+   */
   ignore_unmapped?: boolean
+  /**
+   * If defined, each search hit will contain inner hits.
+   * @doc_id inner-hits
+   */
   inner_hits?: InnerHits
+  /**
+   * Name of the parent relationship mapped for the `join` field.
+   */
   parent_type: RelationName
+  /**
+   * Query you wish to run on parent documents of the `parent_type` field.
+   * If a parent document matches the search, the query returns its child documents.
+   */
   query: QueryContainer
-  /** @server_default false */
+  /**
+   *  Indicates whether the relevance score of a matching parent document is aggregated into its child documents.
+   * @server_default false
+   */
   score?: boolean
 }
 
 export class NestedQuery extends QueryBase {
-  /** @server_default false */
+  /**
+   * Indicates whether to ignore an unmapped path and not return any documents instead of an error.
+   * @server_default false
+   */
   ignore_unmapped?: boolean
+  /**
+   * If defined, each search hit will contain inner hits.
+   * @doc_id inner-hits
+   */
   inner_hits?: InnerHits
+  /**
+   * Path to the nested object you wish to search.
+   */
   path: Field
+  /**
+   * Query you wish to run on nested objects in the path.
+   */
   query: QueryContainer
-  /** @server_default 'avg' */
+  /**
+   * How scores for matching child objects affect the root parent document’s relevance score.
+   * @server_default 'avg'
+   */
   score_mode?: ChildScoreMode
 }
 
 export class ParentIdQuery extends QueryBase {
+  /**
+   * ID of the parent document.
+   */
   id?: Id
-  /** @server_default false */
+  /**
+   * Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.
+   * @server_default false
+   */
   ignore_unmapped?: boolean
+  /**
+   * Name of the child relationship mapped for the `join` field.
+   */
   type?: RelationName
 }

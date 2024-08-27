@@ -27,7 +27,8 @@ import {
 } from '../_types/TrainedModel'
 
 /**
- * Starts a trained model deployment, which allocates the model to every machine learning node.
+ * Start a trained model deployment.
+ * It allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -47,6 +48,11 @@ export interface Request extends RequestBase {
      * `0b` can be provided.
      */
     cache_size?: ByteSize
+    /**
+     * A unique identifier for the deployment of the model.
+     * @availability stack since=8.8.0
+     */
+    deployment_id?: string
     /**
      * The number of model allocations on each node where the model is deployed.
      * All allocations on a node share the same copy of the model in memory but use

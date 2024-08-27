@@ -35,10 +35,10 @@ export class NestedSortValue {
 }
 
 export enum FieldSortNumericType {
-  long = 0,
-  double = 1,
-  date = 2,
-  date_nanos = 3
+  long,
+  double,
+  date,
+  date_nanos
 }
 
 /** @shortcut_property order */
@@ -55,6 +55,10 @@ export class FieldSort {
 export class ScoreSort {
   order?: SortOrder
 }
+
+/**
+ * @behavior_meta AdditionalProperty key=field value=location
+ */
 export class GeoDistanceSort
   implements AdditionalProperty<Field, GeoLocation | GeoLocation[]>
 {
@@ -63,6 +67,7 @@ export class GeoDistanceSort
   ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
+  nested?: NestedSortValue
 }
 
 export class ScriptSort {
@@ -82,6 +87,7 @@ export enum ScriptSortType {
 /**
  * @doc_id sort-search-results
  * @variants container
+ * @behavior_meta AdditionalProperty key=field value=sort
  */
 export class SortOptions implements AdditionalProperty<Field, FieldSort> {
   _score?: ScoreSort
@@ -104,14 +110,20 @@ export type SortResults = FieldValue[]
  * Defines what values to pick in the case a document contains multiple values for a particular field.
  */
 export enum SortMode {
-  min = 0,
-  max = 1,
-  sum = 2,
-  avg = 3,
-  median = 4
+  min,
+  max,
+  sum,
+  avg,
+  median
 }
 
 export enum SortOrder {
-  asc = 0,
-  desc = 1
+  /**
+   * Ascending (smallest to largest)
+   */
+  asc,
+  /**
+   * Descending (largest to smallest)
+   */
+  desc
 }

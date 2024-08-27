@@ -71,8 +71,11 @@ export class TrainedModelDeploymentStats {
   inference_count: integer
   /** The unique identifier for the trained model. */
   model_id: Id
-  /** The deployent stats for each node that currently has the model allocated. */
-  nodes: TrainedModelDeploymentNodesStats
+  /**
+   * The deployment stats for each node that currently has the model allocated.
+   * In serverless, stats are reported for a single unnamed virtual node.
+   */
+  nodes: TrainedModelDeploymentNodesStats[]
   /** The number of allocations requested. */
   number_of_allocations: integer
   /** The number of inference requests that can be queued before new requests are rejected. */
@@ -117,14 +120,14 @@ export class TrainedModelInferenceStats {
   /** The number of inference calls where all the training features for the model were missing. */
   missing_all_fields_count: integer
   /** The time when the statistics were last updated. */
-  timestamp: DateTime
+  timestamp: EpochTime<UnitMillis>
 }
 
 export class TrainedModelSizeStats {
   /** The size of the model in bytes. */
   model_size_bytes: ByteSize
   /** The amount of memory required to load the model in bytes. */
-  required_native_memory_bytes: integer
+  required_native_memory_bytes: ByteSize
 }
 
 export class TrainedModelDeploymentNodesStats {
@@ -136,7 +139,10 @@ export class TrainedModelDeploymentNodesStats {
   inference_count: integer
   /** The epoch time stamp of the last inference call for the model on this node. */
   last_access: long
-  /** Information pertaining to the node. */
+  /**
+   * Information pertaining to the node.
+   * @availability stack
+   */
   node: DiscoveryNode
   /**
    * The number of allocations assigned to this node.
@@ -190,6 +196,7 @@ export class TrainedModelConfig {
   metadata?: TrainedModelConfigMetadata
   model_size_bytes?: ByteSize
   location?: TrainedModelLocation
+  prefix_strings?: TrainedModelPrefixStrings
 }
 
 export class TrainedModelConfigInput {
@@ -268,30 +275,30 @@ export enum DeploymentState {
   /**
    * The deployment is usable; at least one node has the model allocated.
    */
-  started = 0,
+  started,
   /**
    * The deployment has recently started but is not yet usable; the model is not allocated on any nodes.
    */
-  starting = 1,
+  starting,
   /**
    * The deployment is preparing to stop and deallocate the model from the relevant nodes.
    */
-  stopping = 2
+  stopping
 }
 
 export enum DeploymentAllocationState {
   /**
    * The trained model is started on at least one node.
    */
-  started = 0,
+  started,
   /**
    * Trained model deployment is starting but it is not yet deployed on any nodes.
    */
-  starting = 1,
+  starting,
   /**
    * Trained model deployment has started on all valid nodes.
    */
-  fully_allocated = 3
+  fully_allocated
 }
 
 export enum DeploymentAssignmentState {
@@ -345,23 +352,23 @@ export enum RoutingState {
   /**
    * The allocation attempt failed.
    */
-  failed = 0,
+  failed,
   /**
    * The trained model is allocated and ready to accept inference requests.
    */
-  started = 1,
+  started,
   /**
    * The trained model is attempting to allocate on this node; inference requests are not yet accepted.
    */
-  starting = 2,
+  starting,
   /**
    * The trained model is fully deallocated from this node.
    */
-  stopped = 3,
+  stopped,
   /**
    * The trained model is being deallocated from this node.
    */
-  stopping = 4
+  stopping
 }
 
 export class TrainedModelAssignmentRoutingTable {
@@ -416,4 +423,15 @@ export class TrainedModelLocation {
 
 export class TrainedModelLocationIndex {
   name: IndexName
+}
+
+export class TrainedModelPrefixStrings {
+  /**
+   * String prepended to input at ingest
+   */
+  ingest?: string
+  /**
+   * String prepended to input at search
+   */
+  search?: string
 }

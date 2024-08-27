@@ -40,8 +40,6 @@ node_modules
 # Build output directory
 dist/
 flight-recorder-generator/output
-*.d.ts
-java-generator/*.js
 specification/**/*.js
 specification/lib
 
@@ -58,6 +56,7 @@ report
 output/schema/import-*
 output/schema/schema-no-generics.json
 output/schema/routes.go
+output/schema/schema
 .github/**/package-lock.json
 
 # Editor lockfiles

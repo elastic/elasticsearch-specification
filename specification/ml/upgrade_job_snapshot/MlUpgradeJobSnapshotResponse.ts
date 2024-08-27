@@ -21,7 +21,9 @@ import { NodeId } from '@_types/common'
 
 export class Response {
   body: {
-    /** The ID of the assigned node for the upgrade task if it is still running. */
+    /**
+     * The ID of the node that the upgrade task was started on if it is still running. In serverless this will be the "serverless".
+     */
     node: NodeId
     /** When true, this means the task is complete. When false, it is still running. */
     completed: boolean

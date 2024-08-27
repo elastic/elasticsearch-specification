@@ -27,6 +27,9 @@ export class IndicesShardStores {
   shards: Dictionary<string, ShardStoreWrapper>
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=node_id value=node
+ */
 export class ShardStore implements AdditionalProperty<NodeId, ShardStoreNode> {
   allocation: ShardStoreAllocation
   allocation_id?: Id
@@ -43,9 +46,9 @@ export class ShardStoreNode {
 }
 
 export enum ShardStoreAllocation {
-  primary = 0,
-  replica = 1,
-  unused = 2
+  primary,
+  replica,
+  unused
 }
 
 export class ShardStoreException {
@@ -59,11 +62,11 @@ export class ShardStoreWrapper {
 
 export enum ShardStoreStatus {
   /** The primary shard and all replica shards are assigned. */
-  green = 0,
+  green,
   /** One or more replica shards are unassigned. */
-  yellow = 1,
+  yellow,
   /** The primary shard is unassigned. */
-  red = 2,
+  red,
   /** Return all shards, regardless of health status.  */
-  all = 3
+  all
 }

@@ -19,31 +19,34 @@
 
 import { IndexName, Name } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
-import { InlineScript } from '@_types/Scripting'
+import { Script } from '@_types/Scripting'
 
 export class SearchApplication {
   /**
-   * Search Application name
+   * Search Application name.
    */
   name: Name
   /**
-   * Indices that are part of the Search Application
+   * Indices that are part of the Search Application.
    */
   indices: IndexName[]
   /**
-   * Last time the Search Application was updated
+   * Last time the Search Application was updated.
    */
   updated_at_millis: EpochTime<UnitMillis>
   /**
-   * Analytics collection associated to the Search Application
+   * Analytics collection associated to the Search Application.
    */
   analytics_collection_name?: Name
   /**
-   * Search template to use on search operations
+   * Search template to use on search operations.
    */
   template?: SearchApplicationTemplate
 }
 
 export class SearchApplicationTemplate {
-  script: InlineScript
+  /**
+   * The associated mustache template.
+   */
+  script: Script
 }

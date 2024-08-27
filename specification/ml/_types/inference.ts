@@ -265,6 +265,12 @@ export class NerInferenceOptions {
 
 /** Fill mask inference options */
 export class FillMaskInferenceOptions {
+  /** The string/token which will be removed from incoming documents and replaced with the inference prediction(s).
+   * In a response, this field contains the mask token for the specified model/tokenizer. Each model and tokenizer
+   * has a predefined mask token which cannot be changed. Thus, it is recommended not to set this value in requests.
+   * However, if this field is present in a request, its value must match the predefined value for that model/tokenizer,
+   * otherwise the request will fail. */
+  mask_token?: string
   /** Specifies the number of top class predictions to return. Defaults to 0. */
   num_top_classes?: integer
   /** The tokenization options to update when inferring */
@@ -448,7 +454,13 @@ export class TrainedModelInferenceFeatureImportance {
   classes?: TrainedModelInferenceClassImportance[]
 }
 
-export type PredictedValue = string | double | boolean | integer
+export type PredictedValue =
+  | string
+  | double
+  | double[]
+  | boolean
+  | integer
+  | integer[]
 
 export class InferenceResponseResult {
   /**
@@ -469,7 +481,7 @@ export class InferenceResponseResult {
    * For regression models, its a numerical value
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
-  predicted_value?: PredictedValue[]
+  predicted_value?: PredictedValue | PredictedValue[]
   /**
    * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
    * value.

@@ -26,22 +26,47 @@ import { Hop } from '../_types/Hop'
 import { VertexDefinition } from '@graph/_types/Vertex'
 
 /**
+ * Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.
+ * @doc_id graph-explore-api
  * @rest_spec_name graph.explore
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Name of the index.
+     */
     index: Indices
   }
   query_parameters: {
+    /**
+     * Custom value used to route operations to a specific shard.
+     */
     routing?: Routing
+    /**
+     * Specifies the period of time to wait for a response from each shard.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * Defaults to no timeout.
+     */
     timeout?: Duration
   }
   body: {
+    /**
+     * Specifies or more fields from which you want to extract terms that are associated with the specified vertices.
+     */
     connections?: Hop
+    /**
+     * Direct the Graph API how to build the graph.
+     */
     controls?: ExploreControls
+    /**
+     * A seed query that identifies the documents of interest. Can be any valid Elasticsearch query.
+     */
     query?: QueryContainer
+    /**
+     * Specifies one or more fields that contain the terms you want to include in the graph as vertices.
+     */
     vertices?: VertexDefinition[]
   }
 }

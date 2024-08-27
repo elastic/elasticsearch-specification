@@ -23,17 +23,33 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Renders a search template as a search request body.
  * @rest_spec_name render_search_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * ID of the search template to render.
+     * If no `source` is specified, this or the `id` request body parameter is required.
+     */
     id?: Id
   }
   body: {
     file?: string
+    /**
+     * Key-value pairs used to replace Mustache variables in the template.
+     * The key is the variable name.
+     * The value is the variable value.
+     */
     params?: Dictionary<string, UserDefinedValue>
+    /**
+     * An inline search template.
+     * Supports the same parameters as the search API's request body.
+     * These parameters also support Mustache variables.
+     * If no `id` or `<templated-id>` is specified, this parameter is required.
+     */
     source?: string
   }
 }

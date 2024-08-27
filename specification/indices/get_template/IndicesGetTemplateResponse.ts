@@ -21,5 +21,6 @@ import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
+  /** @codegen_name templates */
   body: Dictionary<string, TemplateMapping>
 }

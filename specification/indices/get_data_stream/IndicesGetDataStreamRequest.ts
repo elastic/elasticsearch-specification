@@ -19,24 +19,42 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, DataStreamNames } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Get data streams.
+ * Retrieves information about one or more data streams.
  * @rest_spec_name indices.get_data_stream
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data stream names used to limit the request.
+     * Wildcard (`*`) expressions are supported. If omitted, all data streams are returned.
+     */
     name?: DataStreamNames
   }
   query_parameters: {
+    /**
+     * Type of data stream that wildcard patterns can match.
+     * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     /**
      * If true, returns all relevant default configurations for the index template.
      * @server_default false
-     * @availability stack since=8.8.0 stability=experimental
-     * @availability serverless stability=experimental
+     * @availability stack since=8.11.0 stability=stable
+     * @availability serverless stability=stable
      */
     include_defaults?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

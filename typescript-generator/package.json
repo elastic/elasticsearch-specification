@@ -10,7 +10,7 @@
     "kibana": "KIBANA=true ts-node src/client.ts",
     "lint": "ts-standard src",
     "lint:fix": "ts-standard --fix src",
-    "is-valid-output": "tsc --noEmit",
+    "is-valid-output": "tsc --noEmit ../output/typescript/types.ts",
     "test": "npm run lint",
     "build": "rm -rf lib && tsc"
   },

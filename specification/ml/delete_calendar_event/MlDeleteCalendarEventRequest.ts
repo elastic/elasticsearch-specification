@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes scheduled events from a calendar.
+ * Delete events from a calendar.
  * @rest_spec_name ml.delete_calendar_event
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -29,7 +29,14 @@ import { Id } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A string that uniquely identifies a calendar.
+     */
     calendar_id: Id
+    /**
+     * Identifier for the scheduled event.
+     * You can obtain this identifier by using the get calendar events API.
+     */
     event_id: Id
   }
 }

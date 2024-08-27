@@ -22,6 +22,7 @@ import { integer } from '@_types/Numeric'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
 import { TokenFilterDefinition } from '@_types/analysis/token_filters'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class TokenizerBase {
   version?: VersionString
@@ -44,12 +45,12 @@ export class NGramTokenizer extends TokenizerBase {
 }
 
 export enum TokenChar {
-  letter = 0,
-  digit = 1,
-  whitespace = 2,
-  punctuation = 3,
-  symbol = 4,
-  custom = 5
+  letter,
+  digit,
+  whitespace,
+  punctuation,
+  symbol,
+  custom
 }
 
 export class CharGroupTokenizer extends TokenizerBase {
@@ -72,9 +73,9 @@ export class LowercaseTokenizer extends TokenizerBase {
 }
 
 export enum NoriDecompoundMode {
-  discard = 0,
-  none = 1,
-  mixed = 2
+  discard,
+  none,
+  mixed
 }
 
 export class NoriTokenizer extends TokenizerBase {
@@ -87,18 +88,18 @@ export class NoriTokenizer extends TokenizerBase {
 
 export class PathHierarchyTokenizer extends TokenizerBase {
   type: 'path_hierarchy'
-  buffer_size: integer
-  delimiter: string
-  replacement: string
-  reverse: boolean
-  skip: integer
+  buffer_size?: Stringified<integer>
+  delimiter?: string
+  replacement?: string
+  reverse?: Stringified<boolean>
+  skip?: Stringified<integer>
 }
 
 export class PatternTokenizer extends TokenizerBase {
   type: 'pattern'
-  flags: string
-  group: integer
-  pattern: string
+  flags?: string
+  group?: integer
+  pattern?: string
 }
 
 export class StandardTokenizer extends TokenizerBase {
