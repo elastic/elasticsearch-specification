@@ -48320,10 +48320,7 @@
             },
             "required": [
               "type",
-              "encoder",
-              "languageset",
-              "name_type",
-              "rule_type"
+              "encoder"
             ]
           }
         ]
