@@ -81928,7 +81928,7 @@
         },
         {
           "name": "languageset",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -81965,7 +81965,7 @@
         },
         {
           "name": "name_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81987,7 +81987,7 @@
         },
         {
           "name": "rule_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
