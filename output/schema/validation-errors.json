@@ -876,7 +876,7 @@
     },
     "ingest.get_geoip_database": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
       ],
       "response": []
     },

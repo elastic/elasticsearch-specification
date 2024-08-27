@@ -12964,6 +12964,31 @@ export interface IngestGeoIpStatsResponse {
   nodes: Record<Id, IngestGeoIpStatsGeoIpNodeDatabases>
 }
 
+export interface IngestGetGeoipDatabaseDatabaseConfiguration {
+  name: Name
+  maxmind: IngestGetGeoipDatabaseMaxmind
+}
+
+export interface IngestGetGeoipDatabaseDatabaseConfigurationMetadata {
+  id: Id
+  version: long
+  modified_date_millis: EpochTime<UnitMillis>
+  database: IngestGetGeoipDatabaseDatabaseConfiguration
+}
+
+export interface IngestGetGeoipDatabaseMaxmind {
+  account_id: Id
+}
+
+export interface IngestGetGeoipDatabaseRequest extends RequestBase {
+  id?: Ids
+  master_timeout?: Duration
+}
+
+export interface IngestGetGeoipDatabaseResponse {
+  databases: IngestGetGeoipDatabaseDatabaseConfigurationMetadata[]
+}
+
 export interface IngestGetPipelineRequest extends RequestBase {
   id?: Id
   master_timeout?: Duration
