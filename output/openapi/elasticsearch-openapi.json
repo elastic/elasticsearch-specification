@@ -15654,6 +15654,53 @@
         }
       }
     },
+    "/_ingest/geoip/database": {
+      "get": {
+        "tags": [
+          "ingest.get_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-get-geoip-database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        }
+      }
+    },
+    "/_ingest/geoip/database/{id}": {
+      "get": {
+        "tags": [
+          "ingest.get_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-get-geoip-database-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#id"
+          },
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        }
+      }
+    },
     "/_ingest/pipeline": {
       "get": {
         "tags": [
@@ -38084,6 +38131,27 @@
           }
         }
       },
+      "ingest.get_geoip_database#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "databases": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest.get_geoip_database:DatabaseConfigurationMetadata"
+                  }
+                }
+              },
+              "required": [
+                "databases"
+              ]
+            }
+          }
+        }
+      },
       "ingest.get_pipeline#200": {
         "description": "",
         "content": {
@@ -45152,6 +45220,27 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
+      },
+      "ingest.get_geoip_database#id": {
+        "in": "path",
+        "name": "id",
+        "description": "Comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Ids"
+        },
+        "style": "simple"
+      },
+      "ingest.get_geoip_database#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "ingest.get_pipeline#id": {
         "in": "path",
@@ -83922,6 +84011,55 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "ingest.get_geoip_database:DatabaseConfigurationMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "version": {
+            "type": "number"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "database": {
+            "$ref": "#/components/schemas/ingest.get_geoip_database:DatabaseConfiguration"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "modified_date_millis",
+          "database"
+        ]
+      },
+      "ingest.get_geoip_database:DatabaseConfiguration": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "maxmind": {
+            "$ref": "#/components/schemas/ingest.get_geoip_database:Maxmind"
+          }
+        },
+        "required": [
+          "name",
+          "maxmind"
+        ]
+      },
+      "ingest.get_geoip_database:Maxmind": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "account_id"
         ]
       },
       "ingest._types:Pipeline": {
