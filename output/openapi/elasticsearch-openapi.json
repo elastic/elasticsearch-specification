@@ -15429,6 +15429,29 @@
       }
     },
     "/_ingest/geoip/database/{id}": {
+      "get": {
+        "tags": [
+          "ingest.get_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-get-geoip-database-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#id"
+          },
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "ingest.delete_geoip_database"
@@ -15722,31 +15745,6 @@
         },
         "operationId": "ingest-get-geoip-database",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ingest.get_geoip_database#200"
-          }
-        }
-      }
-    },
-    "/_ingest/geoip/database/{id}": {
-      "get": {
-        "tags": [
-          "ingest.get_geoip_database"
-        ],
-        "summary": "Returns information about one or more geoip database configurations",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
-        },
-        "operationId": "ingest-get-geoip-database-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ingest.get_geoip_database#id"
-          },
           {
             "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
           }
