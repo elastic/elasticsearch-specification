@@ -15452,6 +15452,83 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "ingest.put_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-put-geoip-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the database configuration to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "$ref": "#/components/schemas/_types:Name"
+                  },
+                  "maxmind": {
+                    "$ref": "#/components/schemas/ingest._types:Maxmind"
+                  }
+                },
+                "required": [
+                  "name",
+                  "maxmind"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "ingest.delete_geoip_database"
@@ -84086,7 +84163,7 @@
             "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
           },
           "database": {
-            "$ref": "#/components/schemas/ingest.get_geoip_database:DatabaseConfiguration"
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
           }
         },
         "required": [
@@ -84096,14 +84173,14 @@
           "database"
         ]
       },
-      "ingest.get_geoip_database:DatabaseConfiguration": {
+      "ingest._types:DatabaseConfiguration": {
         "type": "object",
         "properties": {
           "name": {
             "$ref": "#/components/schemas/_types:Name"
           },
           "maxmind": {
-            "$ref": "#/components/schemas/ingest.get_geoip_database:Maxmind"
+            "$ref": "#/components/schemas/ingest._types:Maxmind"
           }
         },
         "required": [
@@ -84111,7 +84188,7 @@
           "maxmind"
         ]
       },
-      "ingest.get_geoip_database:Maxmind": {
+      "ingest._types:Maxmind": {
         "type": "object",
         "properties": {
           "account_id": {
