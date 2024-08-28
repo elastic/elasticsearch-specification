@@ -86016,12 +86016,16 @@
           "total_download_time": {
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
           },
-          "database_count": {
+          "databases_count": {
             "description": "Current number of databases available for use.",
             "type": "number"
           },
           "skipped_updates": {
             "description": "Total number of database updates skipped.",
+            "type": "number"
+          },
+          "expired_databases": {
+            "description": "Total number of databases not updated after 30 days",
             "type": "number"
           }
         },
@@ -86029,8 +86033,9 @@
           "successful_downloads",
           "failed_downloads",
           "total_download_time",
-          "database_count",
-          "skipped_updates"
+          "databases_count",
+          "skipped_updates",
+          "expired_databases"
         ]
       },
       "ingest.geo_ip_stats:GeoIpNodeDatabases": {
