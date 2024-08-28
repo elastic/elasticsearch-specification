@@ -12940,6 +12940,14 @@ export interface IngestUserAgentProcessor extends IngestProcessorBase {
 
 export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
+export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
+  id?: Ids
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IngestDeleteGeoipDatabaseResponse = AcknowledgedResponseBase
+
 export interface IngestDeletePipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Duration

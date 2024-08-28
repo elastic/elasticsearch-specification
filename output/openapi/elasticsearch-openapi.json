@@ -15825,6 +15825,166 @@
         }
       }
     },
+    "/_ingest/geoip/database/{id}": {
+      "get": {
+        "tags": [
+          "ingest.get_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-get-geoip-database-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#id"
+          },
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        },
+        "x-available-since": "8.15.0"
+      },
+      "put": {
+        "tags": [
+          "ingest.put_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-put-geoip-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the database configuration to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "$ref": "#/components/schemas/_types:Name"
+                  },
+                  "maxmind": {
+                    "$ref": "#/components/schemas/ingest._types:Maxmind"
+                  }
+                },
+                "required": [
+                  "name",
+                  "maxmind"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.15.0"
+      },
+      "delete": {
+        "tags": [
+          "ingest.delete_geoip_database"
+        ],
+        "summary": "Deletes a geoip database configuration",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-delete-geoip-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "A comma-separated list of geoip database configurations to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Ids"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.15.0"
+      }
+    },
     "/_ingest/pipeline/{id}": {
       "get": {
         "tags": [
@@ -16073,110 +16233,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ingest.get_geoip_database#200"
-          }
-        },
-        "x-available-since": "8.15.0"
-      }
-    },
-    "/_ingest/geoip/database/{id}": {
-      "get": {
-        "tags": [
-          "ingest.get_geoip_database"
-        ],
-        "summary": "Returns information about one or more geoip database configurations",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
-        },
-        "operationId": "ingest-get-geoip-database-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/ingest.get_geoip_database#id"
-          },
-          {
-            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ingest.get_geoip_database#200"
-          }
-        },
-        "x-available-since": "8.15.0"
-      },
-      "put": {
-        "tags": [
-          "ingest.put_geoip_database"
-        ],
-        "summary": "Returns information about one or more geoip database configurations",
-        "externalDocs": {
-          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
-        },
-        "operationId": "ingest-put-geoip-database",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "ID of the database configuration to create or update.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Id"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "master_timeout",
-            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types:Duration"
-            },
-            "style": "form"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "$ref": "#/components/schemas/_types:Name"
-                  },
-                  "maxmind": {
-                    "$ref": "#/components/schemas/ingest._types:Maxmind"
-                  }
-                },
-                "required": [
-                  "name",
-                  "maxmind"
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
-                }
-              }
-            }
           }
         },
         "x-available-since": "8.15.0"
