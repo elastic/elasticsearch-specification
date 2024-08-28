@@ -21,6 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
 import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 import { DateTime } from '@_types/Time'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Stringified } from '@spec_utils/Stringified'
@@ -36,6 +37,7 @@ export class PipelineSimulation {
   tag?: string
   processor_type?: string
   status?: ActionStatusOptions
+  error?: ErrorCause
 }
 
 export class Document {

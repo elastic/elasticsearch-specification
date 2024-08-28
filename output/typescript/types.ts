@@ -13050,6 +13050,7 @@ export interface IngestSimulatePipelineSimulation {
   tag?: string
   processor_type?: string
   status?: WatcherActionStatusOptions
+  error?: ErrorCause
 }
 
 export interface IngestSimulateRequest extends RequestBase {

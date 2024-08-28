@@ -87539,6 +87539,9 @@
           },
           "status": {
             "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
           }
         }
       },
