@@ -12644,6 +12644,11 @@ export interface IngestCsvProcessor extends IngestProcessorBase {
   trim?: boolean
 }
 
+export interface IngestDatabaseConfiguration {
+  name: Name
+  maxmind: IngestMaxmind
+}
+
 export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
   date_formats: string[]
   date_rounding: string
@@ -12781,6 +12786,10 @@ export interface IngestLowercaseProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field
+}
+
+export interface IngestMaxmind {
+  account_id: Id
 }
 
 export interface IngestPipeline {
@@ -12964,20 +12973,11 @@ export interface IngestGeoIpStatsResponse {
   nodes: Record<Id, IngestGeoIpStatsGeoIpNodeDatabases>
 }
 
-export interface IngestGetGeoipDatabaseDatabaseConfiguration {
-  name: Name
-  maxmind: IngestGetGeoipDatabaseMaxmind
-}
-
 export interface IngestGetGeoipDatabaseDatabaseConfigurationMetadata {
   id: Id
   version: long
   modified_date_millis: EpochTime<UnitMillis>
-  database: IngestGetGeoipDatabaseDatabaseConfiguration
-}
-
-export interface IngestGetGeoipDatabaseMaxmind {
-  account_id: Id
+  database: IngestDatabaseConfiguration
 }
 
 export interface IngestGetGeoipDatabaseRequest extends RequestBase {
@@ -13003,6 +13003,18 @@ export interface IngestProcessorGrokRequest extends RequestBase {
 export interface IngestProcessorGrokResponse {
   patterns: Record<string, string>
 }
+
+export interface IngestPutGeoipDatabaseRequest extends RequestBase {
+  id: Id
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    name: Name
+    maxmind: IngestMaxmind
+  }
+}
+
+export type IngestPutGeoipDatabaseResponse = AcknowledgedResponseBase
 
 export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
