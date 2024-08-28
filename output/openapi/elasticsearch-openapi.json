@@ -15428,6 +15428,63 @@
         }
       }
     },
+    "/_ingest/geoip/database/{id}": {
+      "delete": {
+        "tags": [
+          "ingest.delete_geoip_database"
+        ],
+        "summary": "Deletes a geoip database configuration",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-delete-geoip-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "A comma-separated list of geoip database configurations to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Ids"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/_ingest/pipeline/{id}": {
       "get": {
         "tags": [
