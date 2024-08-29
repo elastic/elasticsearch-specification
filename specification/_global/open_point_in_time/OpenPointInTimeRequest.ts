@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * A search request by default executes against the most recent visible data of the target indices,
@@ -64,5 +65,11 @@ export interface Request extends RequestBase {
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+  }
+  body: {
+    /**
+     * Allows to filter indices if the provided query rewrites to `match_none` on every shard.
+     */
+    index_filter?: QueryContainer
   }
 }

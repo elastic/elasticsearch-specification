@@ -895,9 +895,13 @@ export interface OpenPointInTimeRequest extends RequestBase {
   preference?: string
   routing?: Routing
   expand_wildcards?: ExpandWildcards
+  body?: {
+    index_filter?: QueryDslQueryContainer
+  }
 }
 
 export interface OpenPointInTimeResponse {
+  _shards: ShardStatistics
   id: Id
 }
 
