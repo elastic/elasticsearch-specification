@@ -31,12 +31,19 @@ export class Ingest {
   pipeline?: Name
 }
 
+export class SimulateDocumentResult {
+  doc?: DocumentSimulation
+  error?: ErrorCause
+  processor_results?: PipelineSimulation[]
+}
+
 export class PipelineSimulation {
   doc?: DocumentSimulation
-  processor_results?: PipelineSimulation[]
   tag?: string
   processor_type?: string
   status?: ActionStatusOptions
+  description?: string
+  ignored_error?: ErrorCause
   error?: ErrorCause
 }
 
