@@ -31,7 +31,8 @@ import {
   BoostingQuery,
   ConstantScoreQuery,
   DisMaxQuery,
-  FunctionScoreQuery
+  FunctionScoreQuery,
+  RandomScoreFunction,
 } from './compound'
 import {
   CommonTermsQuery,
@@ -279,6 +280,11 @@ export class QueryContainer {
    * @doc_id query-dsl-query-string-query
    */
   query_string?: QueryStringQuery
+  /**
+   * Generates scores that are uniformly distributed from 0 up to but not including 1.
+   * @doc_id random-score-function
+   */
+  random_score?: RandomScoreFunction
   /**
    * Returns documents that contain terms within a provided range.
    * @doc_id query-dsl-range-query

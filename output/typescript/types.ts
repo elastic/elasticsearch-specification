@@ -6197,6 +6197,7 @@ export interface QueryDslQueryContainer {
   pinned?: QueryDslPinnedQuery
   prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
   query_string?: QueryDslQueryStringQuery
+  random_score?: QueryDslRandomScoreFunction
   range?: Partial<Record<Field, QueryDslRangeQuery>>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Partial<Record<Field, QueryDslRegexpQuery | string>>
