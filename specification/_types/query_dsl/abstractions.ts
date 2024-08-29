@@ -32,7 +32,7 @@ import {
   ConstantScoreQuery,
   DisMaxQuery,
   FunctionScoreQuery,
-  RandomScoreFunction,
+  RandomScoreFunction
 } from './compound'
 import {
   CommonTermsQuery,
