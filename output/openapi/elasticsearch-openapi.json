@@ -39131,7 +39131,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
                   }
                 }
               },
@@ -51623,7 +51623,10 @@
                 "pipeline": {
                   "$ref": "#/components/schemas/ingest._types:Pipeline"
                 }
-              }
+              },
+              "required": [
+                "docs"
+              ]
             }
           }
         },
@@ -87653,26 +87656,20 @@
           "_source"
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest.simulate:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
             "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
           },
           "processor_results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
             }
-          },
-          "tag": {
-            "type": "string"
-          },
-          "processor_type": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
           }
         }
       },
@@ -87737,6 +87734,32 @@
             "type": "string"
           }
         ]
+      },
+      "ingest.simulate:PipelineSimulation": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "processor_type": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
+          },
+          "description": {
+            "type": "string"
+          },
+          "ignored_error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        }
       },
       "watcher._types:ActionStatusOptions": {
         "type": "string",

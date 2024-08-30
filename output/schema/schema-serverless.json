@@ -25508,7 +25508,7 @@
           {
             "description": "Sample documents to test in the pipeline.",
             "name": "docs",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "array_of",
               "value": {
@@ -25574,7 +25574,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L57"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L26-L58"
     },
     {
       "body": {
@@ -25588,7 +25588,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "PipelineSimulation",
+                  "name": "SimulateDocumentResult",
                   "namespace": "ingest.simulate"
                 }
               }
@@ -122258,12 +122258,12 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L41-L55"
+      "specLocation": "ingest/simulate/types.ts#L50-L64"
     },
     {
       "kind": "interface",
       "name": {
-        "name": "PipelineSimulation",
+        "name": "SimulateDocumentResult",
         "namespace": "ingest.simulate"
       },
       "properties": [
@@ -122275,6 +122275,17 @@
             "type": {
               "name": "DocumentSimulation",
               "namespace": "ingest.simulate"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
             }
           }
         },
@@ -122291,42 +122302,9 @@
               }
             }
           }
-        },
-        {
-          "name": "tag",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "processor_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActionStatusOptions",
-              "namespace": "watcher._types"
-            }
-          }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L33-L39"
+      "specLocation": "ingest/simulate/types.ts#L34-L38"
     },
     {
       "attachedBehaviors": [
@@ -122466,7 +122444,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L57-L87"
+      "specLocation": "ingest/simulate/types.ts#L66-L96"
     },
     {
       "kind": "interface",
@@ -122498,7 +122476,94 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L28-L31"
+      "specLocation": "ingest/simulate/types.ts#L29-L32"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineSimulation",
+        "namespace": "ingest.simulate"
+      },
+      "properties": [
+        {
+          "name": "doc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentSimulation",
+              "namespace": "ingest.simulate"
+            }
+          }
+        },
+        {
+          "name": "tag",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionStatusOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "ignored_error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/simulate/types.ts#L40-L48"
     },
     {
       "kind": "interface",

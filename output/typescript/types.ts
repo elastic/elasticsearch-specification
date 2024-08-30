@@ -13066,23 +13066,31 @@ export interface IngestSimulateIngest {
 
 export interface IngestSimulatePipelineSimulation {
   doc?: IngestSimulateDocumentSimulation
-  processor_results?: IngestSimulatePipelineSimulation[]
   tag?: string
   processor_type?: string
   status?: WatcherActionStatusOptions
+  description?: string
+  ignored_error?: ErrorCause
+  error?: ErrorCause
 }
 
 export interface IngestSimulateRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
-    docs?: IngestSimulateDocument[]
+    docs: IngestSimulateDocument[]
     pipeline?: IngestPipeline
   }
 }
 
 export interface IngestSimulateResponse {
-  docs: IngestSimulatePipelineSimulation[]
+  docs: IngestSimulateSimulateDocumentResult[]
+}
+
+export interface IngestSimulateSimulateDocumentResult {
+  doc?: IngestSimulateDocumentSimulation
+  error?: ErrorCause
+  processor_results?: IngestSimulatePipelineSimulation[]
 }
 
 export interface LicenseLicense {
