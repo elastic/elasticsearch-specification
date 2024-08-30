@@ -872,7 +872,6 @@
     },
     "ingest.delete_geoip_database": {
       "request": [
-        "Request: path parameter 'id' is required in the json spec",
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
