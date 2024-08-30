@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of geoip database configurations to delete
      */
-    id?: Ids
+    id: Ids
   }
   query_parameters: {
     /**
