@@ -131,6 +131,12 @@ export class ProcessorContainer {
    */
   gsub?: GsubProcessor
   /**
+   * Removes HTML tags from the field.
+   * If the field is an array of strings, HTML tags will be removed from all members of the array.
+   * @doc_id htmlstrip-processor
+   */
+  html_strip?: HtmlStripProcessor
+  /**
    * Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.
    * @doc_id inference-processor
    */
@@ -230,6 +236,12 @@ export class ProcessorContainer {
    * @doc_id urldecode-processor
    */
   urldecode?: UrlDecodeProcessor
+  /**
+   * Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.
+   * This URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.
+   * @doc_id uri-parts-processor
+   */
+  uri_parts?: UriPartsProcessor
   /**
    * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.
    * This processor adds this information by default under the `user_agent` field.
@@ -722,6 +734,24 @@ export class GsubProcessor extends ProcessorBase {
   target_field?: Field
 }
 
+export class HtmlStripProcessor extends ProcessorBase {
+  /**
+   * The string-valued field to remove HTML tags from.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * The field to assign the converted value to
+   * By default, the `field` is updated in-place.
+   * @server_default field
+   */
+  target_field?: Field
+}
+
 export class InferenceProcessor extends ProcessorBase {
   /**
    * The ID or alias for the trained model, or the ID of the deployment.
@@ -1171,6 +1201,34 @@ export class UrlDecodeProcessor extends ProcessorBase {
    * The field to assign the converted value to.
    * By default, the field is updated in-place.
    * @server_default field
+   */
+  target_field?: Field
+}
+
+export class UriPartsProcessor extends ProcessorBase {
+  /**
+   * Field containing the URI string.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * If `true`, the processor copies the unparsed URI to `<target_field>.original`.
+   * @server_default true
+   */
+  keep_original?: boolean
+  /**
+   * If `true`, the processor removes the `field` after parsing the URI string.
+   * If parsing fails, the processor does not remove the `field`.
+   * @server_default false
+   */
+  remove_if_successful?: boolean
+  /**
+   * Output field for the URI object.
+   * @server_default url
    */
   target_field?: Field
 }
