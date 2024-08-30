@@ -13058,7 +13058,6 @@ export interface IngestSimulateRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
-    _source?: any
     docs: IngestSimulateDocument[]
     pipeline?: IngestPipeline
   }

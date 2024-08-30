@@ -51479,10 +51479,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_source": {
-                  "description": "JSON body for the document.",
-                  "type": "object"
-                },
                 "docs": {
                   "description": "Sample documents to test in the pipeline.",
                   "type": "array",

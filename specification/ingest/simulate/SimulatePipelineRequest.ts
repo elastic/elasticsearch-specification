@@ -45,10 +45,6 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * JSON body for the document.
-     */
-    _source?: UserDefinedValue
-    /**
      * Sample documents to test in the pipeline.
      */
     docs: Document[]

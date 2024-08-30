@@ -25506,14 +25506,6 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "JSON body for the document.",
-            "name": "_source",
-            "required": false,
-            "type": {
-              "kind": "user_defined_value"
-            }
-          },
-          {
             "description": "Sample documents to test in the pipeline.",
             "name": "docs",
             "required": true,
@@ -25582,7 +25574,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L26-L62"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L26-L58"
     },
     {
       "body": {
