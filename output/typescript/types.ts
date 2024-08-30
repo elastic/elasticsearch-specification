@@ -12957,7 +12957,7 @@ export interface IngestUserAgentProcessor extends IngestProcessorBase {
 export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
-  id?: Ids
+  id: Ids
   master_timeout?: Duration
   timeout?: Duration
 }
