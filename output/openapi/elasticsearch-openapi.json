@@ -86341,6 +86341,9 @@
           "gsub": {
             "$ref": "#/components/schemas/ingest._types:GsubProcessor"
           },
+          "html_strip": {
+            "$ref": "#/components/schemas/ingest._types:HtmlStripProcessor"
+          },
           "inference": {
             "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
           },
@@ -86391,6 +86394,9 @@
           },
           "urldecode": {
             "$ref": "#/components/schemas/ingest._types:UrlDecodeProcessor"
+          },
+          "uri_parts": {
+            "$ref": "#/components/schemas/ingest._types:UriPartsProcessor"
           },
           "user_agent": {
             "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
@@ -87012,6 +87018,31 @@
           }
         ]
       },
+      "ingest._types:HtmlStripProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
       "ingest._types:InferenceProcessor": {
         "allOf": [
           {
@@ -87576,6 +87607,39 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types:UriPartsProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "keep_original": {
+                "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+                "type": "boolean"
+              },
+              "remove_if_successful": {
+                "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
                 "type": "boolean"
               },
               "target_field": {
