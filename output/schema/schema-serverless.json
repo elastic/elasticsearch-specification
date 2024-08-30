@@ -91100,7 +91100,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L435-L443"
+      "specLocation": "ingest/_types/Processors.ts#L447-L455"
     },
     {
       "kind": "enum",
@@ -91118,7 +91118,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L849-L854"
+      "specLocation": "ingest/_types/Processors.ts#L879-L884"
     },
     {
       "kind": "enum",
@@ -91134,7 +91134,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1074-L1077"
+      "specLocation": "ingest/_types/Processors.ts#L1104-L1107"
     },
     {
       "kind": "enum",
@@ -91174,7 +91174,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L266-L277"
+      "specLocation": "ingest/_types/Processors.ts#L278-L289"
     },
     {
       "kind": "enum",
@@ -117604,6 +117604,19 @@
           }
         },
         {
+          "description": "Removes HTML tags from the field.\nIf the field is an array of strings, HTML tags will be removed from all members of the array.",
+          "docId": "htmlstrip-processor",
+          "name": "html_strip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HtmlStripProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.",
           "docId": "inference-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/inference-processor.html",
@@ -117842,6 +117855,19 @@
           }
         },
         {
+          "description": "Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.\nThis URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.",
+          "docId": "uri-parts-processor",
+          "name": "uri_parts",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UriPartsProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.\nThis processor adds this information by default under the `user_agent` field.",
           "docId": "user-agent-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-agent-processor.html",
@@ -117856,7 +117882,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L239",
+      "specLocation": "ingest/_types/Processors.ts#L27-L251",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -117912,7 +117938,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L279-L294"
+      "specLocation": "ingest/_types/Processors.ts#L291-L306"
     },
     {
       "kind": "interface",
@@ -117985,7 +118011,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L241-L264"
+      "specLocation": "ingest/_types/Processors.ts#L253-L276"
     },
     {
       "inherits": {
@@ -118105,7 +118131,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L296-L337"
+      "specLocation": "ingest/_types/Processors.ts#L308-L349"
     },
     {
       "inherits": {
@@ -118159,7 +118185,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L392-L408"
+      "specLocation": "ingest/_types/Processors.ts#L404-L420"
     },
     {
       "inherits": {
@@ -118236,7 +118262,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L410-L433"
+      "specLocation": "ingest/_types/Processors.ts#L422-L445"
     },
     {
       "inherits": {
@@ -118302,7 +118328,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L445-L465"
+      "specLocation": "ingest/_types/Processors.ts#L457-L477"
     },
     {
       "inherits": {
@@ -118400,7 +118426,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L467-L500"
+      "specLocation": "ingest/_types/Processors.ts#L479-L512"
     },
     {
       "inherits": {
@@ -118482,7 +118508,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L542-L569"
+      "specLocation": "ingest/_types/Processors.ts#L554-L581"
     },
     {
       "inherits": {
@@ -118588,7 +118614,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L502-L540"
+      "specLocation": "ingest/_types/Processors.ts#L514-L552"
     },
     {
       "inherits": {
@@ -118654,7 +118680,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L571-L590"
+      "specLocation": "ingest/_types/Processors.ts#L583-L602"
     },
     {
       "inherits": {
@@ -118694,7 +118720,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L592-L603"
+      "specLocation": "ingest/_types/Processors.ts#L604-L615"
     },
     {
       "inherits": {
@@ -118709,7 +118735,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L605-L605"
+      "specLocation": "ingest/_types/Processors.ts#L617-L617"
     },
     {
       "inherits": {
@@ -118813,7 +118839,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L607-L646"
+      "specLocation": "ingest/_types/Processors.ts#L619-L658"
     },
     {
       "inherits": {
@@ -118841,7 +118867,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L648-L654"
+      "specLocation": "ingest/_types/Processors.ts#L660-L666"
     },
     {
       "inherits": {
@@ -118894,7 +118920,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L656-L670"
+      "specLocation": "ingest/_types/Processors.ts#L668-L682"
     },
     {
       "inherits": {
@@ -118989,7 +119015,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L339-L368"
+      "specLocation": "ingest/_types/Processors.ts#L351-L380"
     },
     {
       "inherits": {
@@ -119081,7 +119107,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L672-L697"
+      "specLocation": "ingest/_types/Processors.ts#L684-L709"
     },
     {
       "inherits": {
@@ -119159,7 +119185,61 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L699-L723"
+      "specLocation": "ingest/_types/Processors.ts#L711-L735"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HtmlStripProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The string-valued field to remove HTML tags from.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the converted value to\nBy default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L737-L753"
     },
     {
       "inherits": {
@@ -119231,7 +119311,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L725-L744"
+      "specLocation": "ingest/_types/Processors.ts#L755-L774"
     },
     {
       "kind": "interface",
@@ -119265,7 +119345,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L746-L758",
+      "specLocation": "ingest/_types/Processors.ts#L776-L788",
       "variants": {
         "kind": "container"
       }
@@ -119304,7 +119384,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L760-L771"
+      "specLocation": "ingest/_types/Processors.ts#L790-L801"
     },
     {
       "kind": "interface",
@@ -119378,7 +119458,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L773-L799"
+      "specLocation": "ingest/_types/Processors.ts#L803-L829"
     },
     {
       "inherits": {
@@ -119431,7 +119511,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L801-L816"
+      "specLocation": "ingest/_types/Processors.ts#L831-L846"
     },
     {
       "inherits": {
@@ -119510,7 +119590,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L818-L847"
+      "specLocation": "ingest/_types/Processors.ts#L848-L877"
     },
     {
       "inherits": {
@@ -119667,7 +119747,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L856-L908"
+      "specLocation": "ingest/_types/Processors.ts#L886-L938"
     },
     {
       "inherits": {
@@ -119721,7 +119801,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L910-L926"
+      "specLocation": "ingest/_types/Processors.ts#L940-L956"
     },
     {
       "inherits": {
@@ -119762,7 +119842,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L928-L939"
+      "specLocation": "ingest/_types/Processors.ts#L958-L969"
     },
     {
       "inherits": {
@@ -119815,7 +119895,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L941-L955"
+      "specLocation": "ingest/_types/Processors.ts#L971-L985"
     },
     {
       "inherits": {
@@ -119868,7 +119948,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L957-L973"
+      "specLocation": "ingest/_types/Processors.ts#L987-L1003"
     },
     {
       "inherits": {
@@ -119950,7 +120030,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L975-L1003"
+      "specLocation": "ingest/_types/Processors.ts#L1005-L1033"
     },
     {
       "inherits": {
@@ -120022,7 +120102,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1005-L1025"
+      "specLocation": "ingest/_types/Processors.ts#L1035-L1055"
     },
     {
       "inherits": {
@@ -120108,7 +120188,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1027-L1061"
+      "specLocation": "ingest/_types/Processors.ts#L1057-L1091"
     },
     {
       "inherits": {
@@ -120151,7 +120231,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1063-L1072"
+      "specLocation": "ingest/_types/Processors.ts#L1093-L1102"
     },
     {
       "inherits": {
@@ -120204,7 +120284,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1079-L1095"
+      "specLocation": "ingest/_types/Processors.ts#L1109-L1125"
     },
     {
       "inherits": {
@@ -120283,7 +120363,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1097-L1122"
+      "specLocation": "ingest/_types/Processors.ts#L1127-L1152"
     },
     {
       "inherits": {
@@ -120337,7 +120417,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1124-L1140"
+      "specLocation": "ingest/_types/Processors.ts#L1154-L1170"
     },
     {
       "inherits": {
@@ -120391,7 +120471,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1142-L1158"
+      "specLocation": "ingest/_types/Processors.ts#L1172-L1188"
     },
     {
       "inherits": {
@@ -120445,7 +120525,87 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1160-L1176"
+      "specLocation": "ingest/_types/Processors.ts#L1190-L1206"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UriPartsProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Field containing the URI string.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+          "name": "keep_original",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+          "name": "remove_if_successful",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Output field for the URI object.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "url",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1208-L1234"
     },
     {
       "inherits": {
@@ -120525,7 +120685,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L370-L390"
+      "specLocation": "ingest/_types/Processors.ts#L382-L402"
     },
     {
       "kind": "interface",

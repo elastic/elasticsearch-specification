@@ -12430,6 +12430,12 @@ export interface IngestGsubProcessor extends IngestProcessorBase {
   target_field?: Field
 }
 
+export interface IngestHtmlStripProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+}
+
 export interface IngestInferenceConfig {
   regression?: IngestInferenceConfigRegression
   classification?: IngestInferenceConfigClassification
@@ -12540,6 +12546,7 @@ export interface IngestProcessorContainer {
   geoip?: IngestGeoIpProcessor
   grok?: IngestGrokProcessor
   gsub?: IngestGsubProcessor
+  html_strip?: IngestHtmlStripProcessor
   inference?: IngestInferenceProcessor
   join?: IngestJoinProcessor
   json?: IngestJsonProcessor
@@ -12557,6 +12564,7 @@ export interface IngestProcessorContainer {
   trim?: IngestTrimProcessor
   uppercase?: IngestUppercaseProcessor
   urldecode?: IngestUrlDecodeProcessor
+  uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
 }
 
@@ -12624,6 +12632,14 @@ export interface IngestTrimProcessor extends IngestProcessorBase {
 export interface IngestUppercaseProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
+  target_field?: Field
+}
+
+export interface IngestUriPartsProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  keep_original?: boolean
+  remove_if_successful?: boolean
   target_field?: Field
 }
 
