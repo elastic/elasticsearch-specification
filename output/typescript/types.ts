@@ -2466,6 +2466,9 @@ export interface NodeAttributes {
   transport_address: TransportAddress
   roles?: NodeRoles
   external_id?: string
+  version?: VersionString
+  min_index_version?: integer
+  max_index_version?: integer
 }
 
 export type NodeId = string

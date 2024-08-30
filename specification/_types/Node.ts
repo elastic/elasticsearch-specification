@@ -22,7 +22,7 @@ import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
-import { Id, IndexName, NodeId, NodeName } from './common'
+import { Id, IndexName, NodeId, NodeName, VersionString } from './common'
 import { TransportAddress } from './Networking'
 
 /**
@@ -55,6 +55,10 @@ export class NodeAttributes {
    * @availability serverless
    */
   external_id?: string
+  // version, min_index_version and max_index_version are set when using the search_shards API
+  version?: VersionString
+  min_index_version?: integer
+  max_index_version?: integer
 }
 
 export class NodeShard {

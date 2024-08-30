@@ -89958,6 +89958,15 @@
           "external_id": {
             "x-available-since": "8.3.0",
             "type": "string"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "min_index_version": {
+            "type": "number"
+          },
+          "max_index_version": {
+            "type": "number"
           }
         },
         "required": [
