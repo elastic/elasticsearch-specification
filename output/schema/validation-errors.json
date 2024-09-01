@@ -830,6 +830,12 @@
       ],
       "response": []
     },
+    "indices.get_data_stream": {
+      "request": [
+        "Request: missing json spec query parameter 'verbose'"
+      ],
+      "response": []
+    },
     "indices.put_settings": {
       "request": [
         "Request: missing json spec query parameter 'reopen'"
