@@ -10066,6 +10066,7 @@ export interface EnrichStatsCacheStats {
   hits: integer
   misses: integer
   evictions: integer
+  size_in_bytes: long
 }
 
 export interface EnrichStatsCoordinatorStats {
