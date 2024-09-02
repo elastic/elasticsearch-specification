@@ -115165,12 +115165,34 @@
           }
         },
         {
+          "name": "hits_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "misses",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "misses_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "_types"
             }
           }
@@ -115187,7 +115209,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L37-L43"
+      "specLocation": "enrich/stats/types.ts#L37-L47"
     },
     {
       "generics": [

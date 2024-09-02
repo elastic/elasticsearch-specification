@@ -81451,7 +81451,13 @@
           "hits": {
             "type": "number"
           },
+          "hits_time_in_millis": {
+            "type": "number"
+          },
           "misses": {
+            "type": "number"
+          },
+          "misses_time_in_millis": {
             "type": "number"
           },
           "evictions": {
@@ -81462,7 +81468,9 @@
           "node_id",
           "count",
           "hits",
+          "hits_time_in_millis",
           "misses",
+          "misses_time_in_millis",
           "evictions"
         ]
       },

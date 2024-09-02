@@ -10064,7 +10064,9 @@ export interface EnrichStatsCacheStats {
   node_id: Id
   count: integer
   hits: integer
+  hits_time_in_millis: long
   misses: integer
+  misses_time_in_millis: long
   evictions: integer
 }
 

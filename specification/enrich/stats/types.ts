@@ -38,6 +38,10 @@ export class CacheStats {
   node_id: Id
   count: integer
   hits: integer
+  /* The amount of time in milliseconds spent fetching data from the cache on successful cache hits only. */
+  hits_time_in_millis: long
   misses: integer
+  /* The amount of time in milliseconds spent fetching data from the enrich index and updating the cache, on cache misses only. */
+  misses_time_in_millis: long
   evictions: integer
 }
