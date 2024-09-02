@@ -21685,9 +21685,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+          "name": "verbose",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L60"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L65"
     },
     {
       "body": {

@@ -11360,6 +11360,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -13163,6 +13166,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -44781,6 +44787,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "indices.get_data_stream#verbose": {
+        "in": "query",
+        "name": "verbose",
+        "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
