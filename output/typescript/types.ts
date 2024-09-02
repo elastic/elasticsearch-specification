@@ -1783,9 +1783,21 @@ export interface SearchShardsRequest extends RequestBase {
 }
 
 export interface SearchShardsResponse {
-  nodes: Record<string, NodeAttributes>
+  nodes: Record<NodeId, SearchShardsSearchShardsNodeAttributes>
   shards: NodeShard[][]
   indices: Record<IndexName, SearchShardsShardStoreIndex>
+}
+
+export interface SearchShardsSearchShardsNodeAttributes {
+  name: NodeName
+  ephemeral_id: Id
+  transport_address: TransportAddress
+  external_id: string
+  attributes: Record<string, string>
+  roles: NodeRoles
+  version: VersionString
+  min_index_version: integer
+  max_index_version: integer
 }
 
 export interface SearchShardsShardStoreIndex {
@@ -2447,8 +2459,6 @@ export interface NodeAttributes {
   id?: NodeId
   name: NodeName
   transport_address: TransportAddress
-  roles?: NodeRoles
-  external_id?: string
 }
 
 export type NodeId = string

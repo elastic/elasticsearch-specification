@@ -18,16 +18,45 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName, Name } from '@_types/common'
-import { NodeAttributes, NodeShard } from '@_types/Node'
+import {
+  Id,
+  IndexName,
+  Name,
+  NodeId,
+  NodeName,
+  VersionString
+} from '@_types/common'
+import { NodeRoles, NodeShard } from '@_types/Node'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { TransportAddress } from '@_types/Networking'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
-    nodes: Dictionary<string, NodeAttributes>
+    nodes: Dictionary<NodeId, SearchShardsNodeAttributes>
     shards: NodeShard[][]
     indices: Dictionary<IndexName, ShardStoreIndex>
   }
+}
+
+class SearchShardsNodeAttributes {
+  /** The human-readable identifier of the node. */
+  name: NodeName
+  /** The ephemeral ID of the node. */
+  ephemeral_id: Id
+  /** The host and port where transport HTTP connections are accepted. */
+  transport_address: TransportAddress
+  /**
+   * @availability stack since=8.3.0
+   * @availability serverless
+   */
+  external_id: string
+  /** Lists node attributes. */
+  attributes: Dictionary<string, string>
+  roles: NodeRoles
+  version: VersionString
+  min_index_version: integer
+  max_index_version: integer
 }
 
 export class ShardStoreIndex {

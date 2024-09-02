@@ -39278,7 +39278,7 @@
                 "nodes": {
                   "type": "object",
                   "additionalProperties": {
-                    "$ref": "#/components/schemas/_types:NodeAttributes"
+                    "$ref": "#/components/schemas/_global.search_shards:SearchShardsNodeAttributes"
                   }
                 },
                 "shards": {
@@ -87818,12 +87818,6 @@
           },
           "transport_address": {
             "$ref": "#/components/schemas/_types:TransportAddress"
-          },
-          "roles": {
-            "$ref": "#/components/schemas/_types:NodeRoles"
-          },
-          "external_id": {
-            "type": "string"
           }
         },
         "required": [
@@ -87831,32 +87825,6 @@
           "ephemeral_id",
           "name",
           "transport_address"
-        ]
-      },
-      "_types:NodeRoles": {
-        "description": "* @doc_id node-roles",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:NodeRole"
-        }
-      },
-      "_types:NodeRole": {
-        "type": "string",
-        "enum": [
-          "master",
-          "data",
-          "data_cold",
-          "data_content",
-          "data_frozen",
-          "data_hot",
-          "data_warm",
-          "client",
-          "ingest",
-          "ml",
-          "voting_only",
-          "transform",
-          "remote_cluster_client",
-          "coordinating_only"
         ]
       },
       "ml._types:DataframeAnalyticsStatsProgress": {
@@ -92059,6 +92027,32 @@
           "refresh_interval_in_millis"
         ]
       },
+      "_types:NodeRoles": {
+        "description": "* @doc_id node-roles",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:NodeRole"
+        }
+      },
+      "_types:NodeRole": {
+        "type": "string",
+        "enum": [
+          "master",
+          "data",
+          "data_cold",
+          "data_content",
+          "data_frozen",
+          "data_hot",
+          "data_warm",
+          "client",
+          "ingest",
+          "ml",
+          "voting_only",
+          "transform",
+          "remote_cluster_client",
+          "coordinating_only"
+        ]
+      },
       "nodes.info:NodeInfoSettings": {
         "type": "object",
         "properties": {
@@ -95321,6 +95315,53 @@
       },
       "_types:MapboxVectorTiles": {
         "type": "object"
+      },
+      "_global.search_shards:SearchShardsNodeAttributes": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:NodeName"
+          },
+          "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "external_id": {
+            "type": "string"
+          },
+          "attributes": {
+            "description": "Lists node attributes.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "min_index_version": {
+            "type": "number"
+          },
+          "max_index_version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "ephemeral_id",
+          "transport_address",
+          "external_id",
+          "attributes",
+          "roles",
+          "version",
+          "min_index_version",
+          "max_index_version"
+        ]
       },
       "_types:NodeShard": {
         "type": "object",
