@@ -42494,8 +42494,7 @@
             ]
           },
           "dataset.size": {
-            "description": "total size of dataset (includes the cache for partially mounted indices)",
-            "x-available-since": "8.11.0",
+            "description": "total size of dataset (including the cache for partially mounted indices)",
             "oneOf": [
               {
                 "type": "string"

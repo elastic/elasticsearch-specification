@@ -103863,9 +103863,11 @@
               "stability": "stable"
             }
           },
-          "description": "total size of dataset (includes the cache for partially mounted indices)",
+          "description": "total size of dataset (including the cache for partially mounted indices)",
           "name": "dataset.size",
           "required": false,
+          "since": "8.11.0",
+          "stability": "stable",
           "type": {
             "items": [
               {
