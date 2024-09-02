@@ -21687,9 +21687,10 @@
           }
         },
         {
-          "description": "When set to true, the maximum_timestamp for the data stream will be retrieved and returned for each data stream retrieved.",
+          "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
           "name": "verbose",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21699,7 +21700,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L64"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L65"
     },
     {
       "body": {
