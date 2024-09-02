@@ -105427,6 +105427,40 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "stability": "stable",
+              "visibility": "public"
+            },
+            "stack": {
+              "since": "8.11.0",
+              "stability": "stable"
+            }
+          },
+          "description": "total size of dataset (includes the cache for partially mounted indices)",
+          "name": "dataset.size",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "aliases": [
             "cs",
             "completionSize"
@@ -107232,7 +107266,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/types.ts#L20-L801"
+      "specLocation": "cat/indices/types.ts#L20-L808"
     },
     {
       "kind": "interface",
