@@ -22,7 +22,7 @@ import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
-import { Id, IndexName, NodeId, NodeName } from './common'
+import { Id, IndexName, NodeId, NodeName, VersionString } from './common'
 import { TransportAddress } from './Networking'
 
 /**
@@ -49,12 +49,6 @@ export class NodeAttributes {
   name: NodeName
   /** The host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
-  roles?: NodeRoles
-  /**
-   * @availability stack since=8.3.0
-   * @availability serverless
-   */
-  external_id?: string
 }
 
 export class NodeShard {
