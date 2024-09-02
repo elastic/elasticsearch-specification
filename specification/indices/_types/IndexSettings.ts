@@ -401,7 +401,7 @@ export class IndexSettingsLifecycle {
   /**
    * The name of the policy to use to manage the index. For information about how Elasticsearch applies policy changes, see Policy updates.
    */
-  name: Name
+  name?: Name
   /**
    * Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.
    * You can explicitly set it to skip rollover.

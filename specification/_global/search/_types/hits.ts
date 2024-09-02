@@ -44,7 +44,7 @@ export class Hit<TDocument> {
    * @es_quirk '_id' is not available when using 'stored_fields: _none_'
    * on a search request. Otherwise the field is always present on hits.
    */
-  _id: Id
+  _id?: Id
 
   _score?: double
   _type?: Type

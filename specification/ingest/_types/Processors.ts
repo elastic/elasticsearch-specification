@@ -297,6 +297,7 @@ export class PipelineProcessor extends ProcessorBase {
 
 export class RemoveProcessor extends ProcessorBase {
   field: Fields
+  keep?: Fields
   ignore_missing?: boolean
 }
 

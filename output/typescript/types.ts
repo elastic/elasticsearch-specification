@@ -1276,7 +1276,7 @@ export type SearchHighlighterType = SearchBuiltinHighlighterType | string
 
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
-  _id: Id
+  _id?: Id
   _score?: double
   _type?: Type
   _explanation?: ExplainExplanation
@@ -2242,14 +2242,14 @@ export interface PluginStats {
 export type PropertyName = string
 
 export interface QueryCacheStats {
-  cache_count: integer
-  cache_size: integer
-  evictions: integer
-  hit_count: integer
+  cache_count: long
+  cache_size: long
+  evictions: long
+  hit_count: long
   memory_size?: ByteSize
   memory_size_in_bytes: long
-  miss_count: integer
-  total_count: integer
+  miss_count: long
+  total_count: long
 }
 
 export interface RecoveryStats {
@@ -2559,6 +2559,7 @@ export interface AggregationsAdjacencyMatrixAggregate extends AggregationsMultiB
 
 export interface AggregationsAdjacencyMatrixAggregation extends AggregationsBucketAggregationBase {
   filters?: Record<string, QueryDslQueryContainer>
+  separator?: string
 }
 
 export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMultiBucketBase {
@@ -2740,7 +2741,7 @@ export type AggregationsBuckets<TBucket = unknown> = Record<string, TBucket> | T
 
 export type AggregationsBucketsPath = string | string[] | Record<string, string>
 
-export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1Y'
+export type AggregationsCalendarInterval = 'second' | '1s' | 'minute' | '1m' | 'hour' | '1h' | 'day' | '1d' | 'week' | '1w' | 'month' | '1M' | 'quarter' | '1q' | 'year' | '1y'
 
 export interface AggregationsCardinalityAggregate extends AggregationsAggregateBase {
   value: long
@@ -2920,8 +2921,8 @@ export interface AggregationsEwmaMovingAverageAggregation extends AggregationsMo
 }
 
 export interface AggregationsExtendedBounds<T = unknown> {
-  max: T
-  min: T
+  max?: T
+  min?: T
 }
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
@@ -3712,6 +3713,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   value_type?: string
   order?: AggregationsAggregateOrder
   script?: Script
+  shard_min_doc_count?: long
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
@@ -3808,6 +3810,7 @@ export interface AggregationsVariableWidthHistogramAggregation {
   buckets?: integer
   shard_size?: integer
   initial_buffer?: integer
+  script?: Script
 }
 
 export interface AggregationsVariableWidthHistogramBucketKeys extends AggregationsMultiBucketBase {
@@ -3957,6 +3960,7 @@ export interface AnalysisFingerprintTokenFilter extends AnalysisTokenFilterBase 
 
 export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
   type: 'html_strip'
+  escaped_tags?: string[]
 }
 
 export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
@@ -4260,11 +4264,11 @@ export type AnalysisPhoneticRuleType = 'approx' | 'exact'
 export interface AnalysisPhoneticTokenFilter extends AnalysisTokenFilterBase {
   type: 'phonetic'
   encoder: AnalysisPhoneticEncoder
-  languageset: AnalysisPhoneticLanguage[]
+  languageset?: AnalysisPhoneticLanguage[]
   max_code_len?: integer
-  name_type: AnalysisPhoneticNameType
+  name_type?: AnalysisPhoneticNameType
   replace?: boolean
-  rule_type: AnalysisPhoneticRuleType
+  rule_type?: AnalysisPhoneticRuleType
 }
 
 export interface AnalysisPorterStemTokenFilter extends AnalysisTokenFilterBase {
@@ -4362,6 +4366,7 @@ export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -4373,6 +4378,7 @@ export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
+  synonyms_set?: string
   tokenizer?: string
   updateable?: boolean
 }
@@ -4558,6 +4564,7 @@ export interface MappingDenseVectorIndexOptions {
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
+  element_type?: string
   dims?: integer
   similarity?: string
   index?: boolean
@@ -4582,7 +4589,7 @@ export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
 export type MappingDynamicMapping = boolean | 'strict' | 'runtime' | 'true' | 'false'
 
 export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
-  type: '{dynamic_property}'
+  type: '{dynamic_type}'
   enabled?: boolean
   null_value?: FieldValue
   boost?: double
@@ -4630,7 +4637,7 @@ export interface MappingFieldNamesField {
   enabled: boolean
 }
 
-export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'match_only_text'
+export type MappingFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 'binary' | 'keyword' | 'text' | 'search_as_you_type' | 'date' | 'date_nanos' | 'boolean' | 'completion' | 'nested' | 'object' | 'version' | 'murmur3' | 'token_count' | 'percolator' | 'integer' | 'long' | 'short' | 'byte' | 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer_range' | 'float_range' | 'long_range' | 'double_range' | 'date_range' | 'ip_range' | 'alias' | 'join' | 'rank_feature' | 'rank_features' | 'flattened' | 'shape' | 'histogram' | 'constant_keyword' | 'aggregate_metric_double' | 'dense_vector' | 'match_only_text'
 
 export interface MappingFlattenedProperty extends MappingPropertyBase {
   boost?: double
@@ -4724,6 +4731,8 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: MappingIndexOptions
+  script?: Script
+  on_script_error?: MappingOnScriptError
   normalizer?: string
   norms?: boolean
   null_value?: string
@@ -9201,7 +9210,7 @@ export interface IndicesIndexSettingsAnalysis {
 }
 
 export interface IndicesIndexSettingsLifecycle {
-  name: Name
+  name?: Name
   indexing_complete?: boolean
   origination_date?: long
   parse_origination_date?: boolean
@@ -10896,6 +10905,7 @@ export interface IngestProcessorContainer {
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
   field: Fields
+  keep?: Fields
   ignore_missing?: boolean
 }
 
@@ -13803,13 +13813,6 @@ export interface NodesGetRepositoriesMeteringInfoResponse extends NodesNodesResp
   nodes: Record<string, NodesRepositoryMeteringInformation>
 }
 
-export interface NodesHotThreadsHotThread {
-  hosts: Host[]
-  node_id: Id
-  node_name: Name
-  threads: string[]
-}
-
 export interface NodesHotThreadsRequest extends RequestBase {
   node_id?: NodeIds
   ignore_idle_threads?: boolean
@@ -13822,7 +13825,6 @@ export interface NodesHotThreadsRequest extends RequestBase {
 }
 
 export interface NodesHotThreadsResponse {
-  hot_threads: NodesHotThreadsHotThread[]
 }
 
 export interface NodesInfoDeprecationIndexing {
@@ -14547,7 +14549,7 @@ export interface SecurityGlobalPrivilege {
 export type SecurityIndexPrivilege = 'none' | 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
 
 export interface SecurityIndicesPrivileges {
-  field_security?: SecurityFieldSecurity | SecurityFieldSecurity[]
+  field_security?: SecurityFieldSecurity
   names: Indices
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery
