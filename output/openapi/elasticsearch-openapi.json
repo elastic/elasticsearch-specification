@@ -66266,6 +66266,19 @@
               }
             ]
           },
+          "dataset.size": {
+            "description": "total size of dataset (includes the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "completion.size": {
             "description": "size of completion",
             "type": "string"
@@ -68286,6 +68299,19 @@
           },
           "store": {
             "description": "The disk space used by the shard.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "dataset": {
+            "description": "total size of dataset (includes the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
             "oneOf": [
               {
                 "type": "string"

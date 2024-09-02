@@ -6701,6 +6701,7 @@ export interface CatIndicesIndicesRecord {
   ss?: string | null
   storeSize?: string | null
   'pri.store.size'?: string | null
+  'dataset.size'?: string | null
   'completion.size'?: string
   cs?: string
   completionSize?: string
@@ -7818,6 +7819,7 @@ export interface CatShardsShardsRecord {
   dc?: string | null
   store?: string | null
   sto?: string | null
+  dataset?: string | null
   ip?: string | null
   id?: string
   node?: string | null
