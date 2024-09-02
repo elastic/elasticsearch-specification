@@ -49,16 +49,6 @@ export class NodeAttributes {
   name: NodeName
   /** The host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
-  roles?: NodeRoles
-  /**
-   * @availability stack since=8.3.0
-   * @availability serverless
-   */
-  external_id?: string
-  // version, min_index_version and max_index_version are set when using the search_shards API
-  version?: VersionString
-  min_index_version?: integer
-  max_index_version?: integer
 }
 
 export class NodeShard {

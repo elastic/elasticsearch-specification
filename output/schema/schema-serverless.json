@@ -75571,7 +75571,7 @@
         "name": "NodeRole",
         "namespace": "_types"
       },
-      "specLocation": "_types/Node.ts#L81-L99"
+      "specLocation": "_types/Node.ts#L71-L89"
     },
     {
       "description": "* @doc_id node-roles",
@@ -75580,7 +75580,7 @@
         "name": "NodeRoles",
         "namespace": "_types"
       },
-      "specLocation": "_types/Node.ts#L101-L104",
+      "specLocation": "_types/Node.ts#L91-L94",
       "type": {
         "kind": "array_of",
         "value": {
