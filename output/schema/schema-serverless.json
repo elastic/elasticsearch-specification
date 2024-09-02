@@ -115185,9 +115185,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L37-L43"
+      "specLocation": "enrich/stats/types.ts#L37-L45"
     },
     {
       "generics": [
