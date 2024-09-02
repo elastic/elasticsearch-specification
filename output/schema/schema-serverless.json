@@ -21685,9 +21685,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "When set to true, the maximum_timestamp for the data stream will be retrieved and returned for each data stream retrieved.",
+          "name": "verbose",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L60"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L64"
     },
     {
       "body": {

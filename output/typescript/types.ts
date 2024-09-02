@@ -11620,6 +11620,7 @@ export interface IndicesGetDataStreamRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   include_defaults?: boolean
   master_timeout?: Duration
+  verbose?: boolean
 }
 
 export interface IndicesGetDataStreamResponse {
