@@ -21,6 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
 import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 import { DateTime } from '@_types/Time'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Stringified } from '@spec_utils/Stringified'
@@ -30,12 +31,20 @@ export class Ingest {
   pipeline?: Name
 }
 
+export class SimulateDocumentResult {
+  doc?: DocumentSimulation
+  error?: ErrorCause
+  processor_results?: PipelineSimulation[]
+}
+
 export class PipelineSimulation {
   doc?: DocumentSimulation
-  processor_results?: PipelineSimulation[]
   tag?: string
   processor_type?: string
   status?: ActionStatusOptions
+  description?: string
+  ignored_error?: ErrorCause
+  error?: ErrorCause
 }
 
 export class Document {

@@ -1800,9 +1800,21 @@ export interface SearchShardsRequest extends RequestBase {
 }
 
 export interface SearchShardsResponse {
-  nodes: Record<string, NodeAttributes>
+  nodes: Record<NodeId, SearchShardsSearchShardsNodeAttributes>
   shards: NodeShard[][]
   indices: Record<IndexName, SearchShardsShardStoreIndex>
+}
+
+export interface SearchShardsSearchShardsNodeAttributes {
+  name: NodeName
+  ephemeral_id: Id
+  transport_address: TransportAddress
+  external_id: string
+  attributes: Record<string, string>
+  roles: NodeRoles
+  version: VersionString
+  min_index_version: integer
+  max_index_version: integer
 }
 
 export interface SearchShardsShardStoreIndex {
@@ -2464,8 +2476,6 @@ export interface NodeAttributes {
   id?: NodeId
   name: NodeName
   transport_address: TransportAddress
-  roles?: NodeRoles
-  external_id?: string
 }
 
 export type NodeId = string
@@ -6780,39 +6790,39 @@ export interface CatAliasesRequest extends CatCatRequestBase {
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
 
 export interface CatAllocationAllocationRecord {
-  shards: string
-  s: string
-  'shards.undesired': string | null
-  'write_load.forecast': double | null
-  wlf: double | null
-  writeLoadForecast: double | null
-  'disk.indices.forecast': ByteSize | null
-  dif: ByteSize | null
-  diskIndicesForecast: ByteSize | null
-  'disk.indices': ByteSize | null
-  di: ByteSize | null
-  diskIndices: ByteSize | null
-  'disk.used': ByteSize | null
-  du: ByteSize | null
-  diskUsed: ByteSize | null
-  'disk.avail': ByteSize | null
-  da: ByteSize | null
-  diskAvail: ByteSize | null
-  'disk.total': ByteSize | null
-  dt: ByteSize | null
-  diskTotal: ByteSize | null
-  'disk.percent': Percentage | null
-  dp: Percentage | null
-  diskPercent: Percentage | null
-  host: Host | null
-  h: Host | null
-  ip: Ip | null
-  node: string
-  n: string
-  'node.role': string | null
-  r: string | null
-  role: string | null
-  nodeRole: string | null
+  shards?: string
+  s?: string
+  'shards.undesired'?: string | null
+  'write_load.forecast'?: SpecUtilsStringified<double> | null
+  wlf?: SpecUtilsStringified<double> | null
+  writeLoadForecast?: SpecUtilsStringified<double> | null
+  'disk.indices.forecast'?: ByteSize | null
+  dif?: ByteSize | null
+  diskIndicesForecast?: ByteSize | null
+  'disk.indices'?: ByteSize | null
+  di?: ByteSize | null
+  diskIndices?: ByteSize | null
+  'disk.used'?: ByteSize | null
+  du?: ByteSize | null
+  diskUsed?: ByteSize | null
+  'disk.avail'?: ByteSize | null
+  da?: ByteSize | null
+  diskAvail?: ByteSize | null
+  'disk.total'?: ByteSize | null
+  dt?: ByteSize | null
+  diskTotal?: ByteSize | null
+  'disk.percent'?: Percentage | null
+  dp?: Percentage | null
+  diskPercent?: Percentage | null
+  host?: Host | null
+  h?: Host | null
+  ip?: Ip | null
+  node?: string
+  n?: string
+  'node.role'?: string | null
+  r?: string | null
+  role?: string | null
+  nodeRole?: string | null
 }
 
 export interface CatAllocationRequest extends CatCatRequestBase {
@@ -6974,6 +6984,7 @@ export interface CatIndicesIndicesRecord {
   ss?: string | null
   storeSize?: string | null
   'pri.store.size'?: string | null
+  'dataset.size'?: string | null
   'completion.size'?: string
   cs?: string
   completionSize?: string
@@ -8091,6 +8102,7 @@ export interface CatShardsShardsRecord {
   dc?: string | null
   store?: string | null
   sto?: string | null
+  dataset?: string | null
   ip?: string | null
   id?: string
   node?: string | null
@@ -10062,8 +10074,11 @@ export interface EnrichStatsCacheStats {
   node_id: Id
   count: integer
   hits: integer
+  hits_time_in_millis: DurationValue<UnitMillis>
   misses: integer
+  misses_time_in_millis: DurationValue<UnitMillis>
   evictions: integer
+  size_in_bytes: long
 }
 
 export interface EnrichStatsCoordinatorStats {
@@ -11628,6 +11643,7 @@ export interface IndicesGetDataStreamRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   include_defaults?: boolean
   master_timeout?: Duration
+  verbose?: boolean
 }
 
 export interface IndicesGetDataStreamResponse {
@@ -12712,6 +12728,22 @@ export interface IngestForeachProcessor extends IngestProcessorBase {
   processor: IngestProcessorContainer
 }
 
+export interface IngestGeoGridProcessor extends IngestProcessorBase {
+  field: string
+  tile_type: IngestGeoGridTileType
+  target_field?: Field
+  parent_field?: Field
+  children_field?: Field
+  non_children_field?: Field
+  precision_field?: Field
+  ignore_missing?: boolean
+  target_format?: IngestGeoGridTargetFormat
+}
+
+export type IngestGeoGridTargetFormat = 'geojson' | 'wkt'
+
+export type IngestGeoGridTileType = 'geotile' | 'geohex' | 'geohash'
+
 export interface IngestGeoIpProcessor extends IngestProcessorBase {
   database_file?: string
   field: Field
@@ -12734,6 +12766,12 @@ export interface IngestGsubProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
   pattern: string
   replacement: string
+  target_field?: Field
+}
+
+export interface IngestHtmlStripProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
   target_field?: Field
 }
 
@@ -12844,9 +12882,11 @@ export interface IngestProcessorContainer {
   enrich?: IngestEnrichProcessor
   fail?: IngestFailProcessor
   foreach?: IngestForeachProcessor
+  geo_grid?: IngestGeoGridProcessor
   geoip?: IngestGeoIpProcessor
   grok?: IngestGrokProcessor
   gsub?: IngestGsubProcessor
+  html_strip?: IngestHtmlStripProcessor
   inference?: IngestInferenceProcessor
   join?: IngestJoinProcessor
   json?: IngestJsonProcessor
@@ -12864,6 +12904,7 @@ export interface IngestProcessorContainer {
   trim?: IngestTrimProcessor
   uppercase?: IngestUppercaseProcessor
   urldecode?: IngestUrlDecodeProcessor
+  uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
 }
 
@@ -12934,6 +12975,14 @@ export interface IngestUppercaseProcessor extends IngestProcessorBase {
   target_field?: Field
 }
 
+export interface IngestUriPartsProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  keep_original?: boolean
+  remove_if_successful?: boolean
+  target_field?: Field
+}
+
 export interface IngestUrlDecodeProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
@@ -12951,7 +13000,7 @@ export interface IngestUserAgentProcessor extends IngestProcessorBase {
 export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
-  id?: Ids
+  id: Ids
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -13076,23 +13125,31 @@ export interface IngestSimulateIngest {
 
 export interface IngestSimulatePipelineSimulation {
   doc?: IngestSimulateDocumentSimulation
-  processor_results?: IngestSimulatePipelineSimulation[]
   tag?: string
   processor_type?: string
   status?: WatcherActionStatusOptions
+  description?: string
+  ignored_error?: ErrorCause
+  error?: ErrorCause
 }
 
 export interface IngestSimulateRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
-    docs?: IngestSimulateDocument[]
+    docs: IngestSimulateDocument[]
     pipeline?: IngestPipeline
   }
 }
 
 export interface IngestSimulateResponse {
-  docs: IngestSimulatePipelineSimulation[]
+  docs: IngestSimulateSimulateDocumentResult[]
+}
+
+export interface IngestSimulateSimulateDocumentResult {
+  doc?: IngestSimulateDocumentSimulation
+  error?: ErrorCause
+  processor_results?: IngestSimulatePipelineSimulation[]
 }
 
 export interface LicenseLicense {

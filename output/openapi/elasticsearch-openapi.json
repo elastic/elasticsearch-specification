@@ -11360,6 +11360,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -13163,6 +13166,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -39131,7 +39137,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
                   }
                 }
               },
@@ -40179,7 +40185,7 @@
                 "nodes": {
                   "type": "object",
                   "additionalProperties": {
-                    "$ref": "#/components/schemas/_types:NodeAttributes"
+                    "$ref": "#/components/schemas/_global.search_shards:SearchShardsNodeAttributes"
                   }
                 },
                 "shards": {
@@ -44781,6 +44787,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "indices.get_data_stream#verbose": {
+        "in": "query",
+        "name": "verbose",
+        "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -51623,7 +51639,10 @@
                 "pipeline": {
                   "$ref": "#/components/schemas/ingest._types:Pipeline"
                 }
-              }
+              },
+              "required": [
+                "docs"
+              ]
             }
           }
         },
@@ -66175,7 +66194,7 @@
             "description": "Sum of index write load forecasts",
             "oneOf": [
               {
-                "type": "number"
+                "$ref": "#/components/schemas/_spec_utils:Stringifieddouble"
               },
               {
                 "nullable": true,
@@ -66295,21 +66314,17 @@
               }
             ]
           }
-        },
-        "required": [
-          "shards",
-          "shards.undesired",
-          "write_load.forecast",
-          "disk.indices.forecast",
-          "disk.indices",
-          "disk.used",
-          "disk.avail",
-          "disk.total",
-          "disk.percent",
-          "host",
-          "ip",
-          "node",
-          "node.role"
+        }
+      },
+      "_spec_utils:Stringifieddouble": {
+        "description": "Some APIs will return values such as numbers also as a string (notably epoch timestamps). This behavior\nis used to capture this behavior while keeping the semantics of the field type.\n\nDepending on the target language, code generators can keep the union or remove it and leniently parse\nstrings to the target type.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "_types:ByteSize": {
@@ -66612,6 +66627,19 @@
           },
           "pri.store.size": {
             "description": "store size of primaries",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "dataset.size": {
+            "description": "total size of dataset (including the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -68643,6 +68671,19 @@
           },
           "store": {
             "description": "The disk space used by the shard.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "dataset": {
+            "description": "total size of dataset (including the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -81406,10 +81447,19 @@
           "hits": {
             "type": "number"
           },
+          "hits_time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
           "misses": {
             "type": "number"
           },
+          "misses_time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
           "evictions": {
+            "type": "number"
+          },
+          "size_in_bytes": {
             "type": "number"
           }
         },
@@ -81417,8 +81467,11 @@
           "node_id",
           "count",
           "hits",
+          "hits_time_in_millis",
           "misses",
-          "evictions"
+          "misses_time_in_millis",
+          "evictions",
+          "size_in_bytes"
         ]
       },
       "eql._types:EqlSearchResponseBase": {
@@ -86329,6 +86382,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "geo_grid": {
+            "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
+          },
           "geoip": {
             "$ref": "#/components/schemas/ingest._types:GeoIpProcessor"
           },
@@ -86337,6 +86393,9 @@
           },
           "gsub": {
             "$ref": "#/components/schemas/ingest._types:GsubProcessor"
+          },
+          "html_strip": {
+            "$ref": "#/components/schemas/ingest._types:HtmlStripProcessor"
           },
           "inference": {
             "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
@@ -86388,6 +86447,9 @@
           },
           "urldecode": {
             "$ref": "#/components/schemas/ingest._types:UrlDecodeProcessor"
+          },
+          "uri_parts": {
+            "$ref": "#/components/schemas/ingest._types:UriPartsProcessor"
           },
           "user_agent": {
             "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
@@ -86893,6 +86955,66 @@
           }
         ]
       },
+      "ingest._types:GeoGridProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+                "type": "string"
+              },
+              "tile_type": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTileType"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "parent_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "non_children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "precision_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_format": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTargetFormat"
+              }
+            },
+            "required": [
+              "field",
+              "tile_type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:GeoGridTileType": {
+        "type": "string",
+        "enum": [
+          "geotile",
+          "geohex",
+          "geohash"
+        ]
+      },
+      "ingest._types:GeoGridTargetFormat": {
+        "type": "string",
+        "enum": [
+          "geojson",
+          "wkt"
+        ]
+      },
       "ingest._types:GeoIpProcessor": {
         "allOf": [
           {
@@ -87005,6 +87127,31 @@
               "field",
               "pattern",
               "replacement"
+            ]
+          }
+        ]
+      },
+      "ingest._types:HtmlStripProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -87585,6 +87732,39 @@
           }
         ]
       },
+      "ingest._types:UriPartsProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "keep_original": {
+                "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+                "type": "boolean"
+              },
+              "remove_if_successful": {
+                "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
       "ingest._types:UserAgentProcessor": {
         "allOf": [
           {
@@ -87653,26 +87833,20 @@
           "_source"
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest.simulate:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
             "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
           },
           "processor_results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
             }
-          },
-          "tag": {
-            "type": "string"
-          },
-          "processor_type": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
           }
         }
       },
@@ -87737,6 +87911,32 @@
             "type": "string"
           }
         ]
+      },
+      "ingest.simulate:PipelineSimulation": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "processor_type": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
+          },
+          "description": {
+            "type": "string"
+          },
+          "ignored_error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        }
       },
       "watcher._types:ActionStatusOptions": {
         "type": "string",
@@ -89951,13 +90151,6 @@
           },
           "transport_address": {
             "$ref": "#/components/schemas/_types:TransportAddress"
-          },
-          "roles": {
-            "$ref": "#/components/schemas/_types:NodeRoles"
-          },
-          "external_id": {
-            "x-available-since": "8.3.0",
-            "type": "string"
           }
         },
         "required": [
@@ -89965,32 +90158,6 @@
           "ephemeral_id",
           "name",
           "transport_address"
-        ]
-      },
-      "_types:NodeRoles": {
-        "description": "* @doc_id node-roles",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:NodeRole"
-        }
-      },
-      "_types:NodeRole": {
-        "type": "string",
-        "enum": [
-          "master",
-          "data",
-          "data_cold",
-          "data_content",
-          "data_frozen",
-          "data_hot",
-          "data_warm",
-          "client",
-          "ingest",
-          "ml",
-          "voting_only",
-          "transform",
-          "remote_cluster_client",
-          "coordinating_only"
         ]
       },
       "ml._types:DataframeAnalyticsStatsProgress": {
@@ -94191,6 +94358,32 @@
           "refresh_interval_in_millis"
         ]
       },
+      "_types:NodeRoles": {
+        "description": "* @doc_id node-roles",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:NodeRole"
+        }
+      },
+      "_types:NodeRole": {
+        "type": "string",
+        "enum": [
+          "master",
+          "data",
+          "data_cold",
+          "data_content",
+          "data_frozen",
+          "data_hot",
+          "data_warm",
+          "client",
+          "ingest",
+          "ml",
+          "voting_only",
+          "transform",
+          "remote_cluster_client",
+          "coordinating_only"
+        ]
+      },
       "nodes.info:NodeInfoSettings": {
         "type": "object",
         "properties": {
@@ -97453,6 +97646,54 @@
       },
       "_types:MapboxVectorTiles": {
         "type": "object"
+      },
+      "_global.search_shards:SearchShardsNodeAttributes": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:NodeName"
+          },
+          "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "external_id": {
+            "x-available-since": "8.3.0",
+            "type": "string"
+          },
+          "attributes": {
+            "description": "Lists node attributes.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "min_index_version": {
+            "type": "number"
+          },
+          "max_index_version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "ephemeral_id",
+          "transport_address",
+          "external_id",
+          "attributes",
+          "roles",
+          "version",
+          "min_index_version",
+          "max_index_version"
+        ]
       },
       "_types:NodeShard": {
         "type": "object",

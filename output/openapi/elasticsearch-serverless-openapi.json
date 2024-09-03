@@ -6756,6 +6756,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -7857,6 +7860,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -21770,7 +21776,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
                   }
                 }
               },
@@ -24793,6 +24799,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
+      "indices.get_data_stream#verbose": {
+        "in": "query",
+        "name": "verbose",
+        "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
@@ -28778,7 +28794,10 @@
                 "pipeline": {
                   "$ref": "#/components/schemas/ingest._types:Pipeline"
                 }
-              }
+              },
+              "required": [
+                "docs"
+              ]
             }
           }
         },
@@ -42530,6 +42549,19 @@
               }
             ]
           },
+          "dataset.size": {
+            "description": "total size of dataset (including the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
           "completion.size": {
             "description": "size of completion",
             "type": "string"
@@ -53329,10 +53361,19 @@
           "hits": {
             "type": "number"
           },
+          "hits_time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
           "misses": {
             "type": "number"
           },
+          "misses_time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
           "evictions": {
+            "type": "number"
+          },
+          "size_in_bytes": {
             "type": "number"
           }
         },
@@ -53340,8 +53381,11 @@
           "node_id",
           "count",
           "hits",
+          "hits_time_in_millis",
           "misses",
-          "evictions"
+          "misses_time_in_millis",
+          "evictions",
+          "size_in_bytes"
         ]
       },
       "eql._types:EqlSearchResponseBase": {
@@ -55138,6 +55182,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "geo_grid": {
+            "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
+          },
           "geoip": {
             "$ref": "#/components/schemas/ingest._types:GeoIpProcessor"
           },
@@ -55146,6 +55193,9 @@
           },
           "gsub": {
             "$ref": "#/components/schemas/ingest._types:GsubProcessor"
+          },
+          "html_strip": {
+            "$ref": "#/components/schemas/ingest._types:HtmlStripProcessor"
           },
           "inference": {
             "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
@@ -55197,6 +55247,9 @@
           },
           "urldecode": {
             "$ref": "#/components/schemas/ingest._types:UrlDecodeProcessor"
+          },
+          "uri_parts": {
+            "$ref": "#/components/schemas/ingest._types:UriPartsProcessor"
           },
           "user_agent": {
             "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
@@ -55702,6 +55755,66 @@
           }
         ]
       },
+      "ingest._types:GeoGridProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+                "type": "string"
+              },
+              "tile_type": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTileType"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "parent_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "non_children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "precision_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_format": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTargetFormat"
+              }
+            },
+            "required": [
+              "field",
+              "tile_type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:GeoGridTileType": {
+        "type": "string",
+        "enum": [
+          "geotile",
+          "geohex",
+          "geohash"
+        ]
+      },
+      "ingest._types:GeoGridTargetFormat": {
+        "type": "string",
+        "enum": [
+          "geojson",
+          "wkt"
+        ]
+      },
       "ingest._types:GeoIpProcessor": {
         "allOf": [
           {
@@ -55814,6 +55927,31 @@
               "field",
               "pattern",
               "replacement"
+            ]
+          }
+        ]
+      },
+      "ingest._types:HtmlStripProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -56394,6 +56532,39 @@
           }
         ]
       },
+      "ingest._types:UriPartsProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "keep_original": {
+                "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+                "type": "boolean"
+              },
+              "remove_if_successful": {
+                "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
       "ingest._types:UserAgentProcessor": {
         "allOf": [
           {
@@ -56462,26 +56633,20 @@
           "_source"
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest.simulate:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
             "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
           },
           "processor_results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
             }
-          },
-          "tag": {
-            "type": "string"
-          },
-          "processor_type": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
           }
         }
       },
@@ -56546,6 +56711,32 @@
             "type": "string"
           }
         ]
+      },
+      "ingest.simulate:PipelineSimulation": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "processor_type": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
+          },
+          "description": {
+            "type": "string"
+          },
+          "ignored_error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        }
       },
       "watcher._types:ActionStatusOptions": {
         "type": "string",

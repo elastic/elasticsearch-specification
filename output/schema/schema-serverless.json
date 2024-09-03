@@ -21685,9 +21685,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+          "name": "verbose",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L60"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L65"
     },
     {
       "body": {
@@ -25508,7 +25521,7 @@
           {
             "description": "Sample documents to test in the pipeline.",
             "name": "docs",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "array_of",
               "value": {
@@ -25574,7 +25587,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L57"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L26-L58"
     },
     {
       "body": {
@@ -25588,7 +25601,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "PipelineSimulation",
+                  "name": "SimulateDocumentResult",
                   "namespace": "ingest.simulate"
                 }
               }
@@ -75571,7 +75584,7 @@
         "name": "NodeRole",
         "namespace": "_types"
       },
-      "specLocation": "_types/Node.ts#L77-L95"
+      "specLocation": "_types/Node.ts#L71-L89"
     },
     {
       "description": "* @doc_id node-roles",
@@ -75580,7 +75593,7 @@
         "name": "NodeRoles",
         "namespace": "_types"
       },
-      "specLocation": "_types/Node.ts#L97-L100",
+      "specLocation": "_types/Node.ts#L91-L94",
       "type": {
         "kind": "array_of",
         "value": {
@@ -92689,7 +92702,42 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L435-L443"
+      "specLocation": "ingest/_types/Processors.ts#L507-L515"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geojson"
+        },
+        {
+          "name": "wkt"
+        }
+      ],
+      "name": {
+        "name": "GeoGridTargetFormat",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L406-L409"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geotile"
+        },
+        {
+          "name": "geohex"
+        },
+        {
+          "name": "geohash"
+        }
+      ],
+      "name": {
+        "name": "GeoGridTileType",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L400-L404"
     },
     {
       "kind": "enum",
@@ -92707,7 +92755,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L849-L854"
+      "specLocation": "ingest/_types/Processors.ts#L939-L944"
     },
     {
       "kind": "enum",
@@ -92723,7 +92771,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1074-L1077"
+      "specLocation": "ingest/_types/Processors.ts#L1164-L1167"
     },
     {
       "kind": "enum",
@@ -92763,7 +92811,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L266-L277"
+      "specLocation": "ingest/_types/Processors.ts#L284-L295"
     },
     {
       "kind": "enum",
@@ -105427,6 +105475,40 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "stability": "stable",
+              "visibility": "public"
+            },
+            "stack": {
+              "since": "8.11.0",
+              "stability": "stable"
+            }
+          },
+          "description": "total size of dataset (including the cache for partially mounted indices)",
+          "name": "dataset.size",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "aliases": [
             "cs",
             "completionSize"
@@ -107232,7 +107314,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/types.ts#L20-L801"
+      "specLocation": "cat/indices/types.ts#L20-L808"
     },
     {
       "kind": "interface",
@@ -115043,7 +115125,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L29-L35"
+      "specLocation": "enrich/stats/types.ts#L30-L36"
     },
     {
       "kind": "interface",
@@ -115075,7 +115157,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L24-L27"
+      "specLocation": "enrich/stats/types.ts#L25-L28"
     },
     {
       "kind": "interface",
@@ -115118,12 +115200,52 @@
           }
         },
         {
+          "name": "hits_time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "misses",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "misses_time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
               "namespace": "_types"
             }
           }
@@ -115138,9 +115260,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L37-L43"
+      "specLocation": "enrich/stats/types.ts#L38-L50"
     },
     {
       "generics": [
@@ -119253,6 +119386,20 @@
           }
         },
         {
+          "description": "Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.\nThis is useful if there is a need to interact with the tile shapes as spatially indexable fields.",
+          "docId": "geo-grid-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html",
+          "name": "geo_grid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.",
           "docId": "geoip-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html",
@@ -119290,6 +119437,19 @@
             "kind": "instance_of",
             "type": {
               "name": "GsubProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Removes HTML tags from the field.\nIf the field is an array of strings, HTML tags will be removed from all members of the array.",
+          "docId": "htmlstrip-processor",
+          "name": "html_strip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HtmlStripProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -119533,6 +119693,19 @@
           }
         },
         {
+          "description": "Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.\nThis URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.",
+          "docId": "uri-parts-processor",
+          "name": "uri_parts",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UriPartsProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.\nThis processor adds this information by default under the `user_agent` field.",
           "docId": "user-agent-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-agent-processor.html",
@@ -119547,7 +119720,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L239",
+      "specLocation": "ingest/_types/Processors.ts#L27-L257",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -119603,7 +119776,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L279-L294"
+      "specLocation": "ingest/_types/Processors.ts#L297-L312"
     },
     {
       "kind": "interface",
@@ -119676,7 +119849,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L241-L264"
+      "specLocation": "ingest/_types/Processors.ts#L259-L282"
     },
     {
       "inherits": {
@@ -119796,7 +119969,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L296-L337"
+      "specLocation": "ingest/_types/Processors.ts#L314-L355"
     },
     {
       "inherits": {
@@ -119850,7 +120023,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L392-L408"
+      "specLocation": "ingest/_types/Processors.ts#L464-L480"
     },
     {
       "inherits": {
@@ -119927,7 +120100,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L410-L433"
+      "specLocation": "ingest/_types/Processors.ts#L482-L505"
     },
     {
       "inherits": {
@@ -119993,7 +120166,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L445-L465"
+      "specLocation": "ingest/_types/Processors.ts#L517-L537"
     },
     {
       "inherits": {
@@ -120091,7 +120264,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L467-L500"
+      "specLocation": "ingest/_types/Processors.ts#L539-L572"
     },
     {
       "inherits": {
@@ -120173,7 +120346,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L542-L569"
+      "specLocation": "ingest/_types/Processors.ts#L614-L641"
     },
     {
       "inherits": {
@@ -120279,7 +120452,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L502-L540"
+      "specLocation": "ingest/_types/Processors.ts#L574-L612"
     },
     {
       "inherits": {
@@ -120345,7 +120518,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L571-L590"
+      "specLocation": "ingest/_types/Processors.ts#L643-L662"
     },
     {
       "inherits": {
@@ -120385,7 +120558,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L592-L603"
+      "specLocation": "ingest/_types/Processors.ts#L664-L675"
     },
     {
       "inherits": {
@@ -120400,7 +120573,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L605-L605"
+      "specLocation": "ingest/_types/Processors.ts#L677-L677"
     },
     {
       "inherits": {
@@ -120504,7 +120677,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L607-L646"
+      "specLocation": "ingest/_types/Processors.ts#L679-L718"
     },
     {
       "inherits": {
@@ -120532,7 +120705,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L648-L654"
+      "specLocation": "ingest/_types/Processors.ts#L720-L726"
     },
     {
       "inherits": {
@@ -120585,7 +120758,134 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L656-L670"
+      "specLocation": "ingest/_types/Processors.ts#L728-L742"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoGridProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Three tile formats are understood: geohash, geotile and geohex.",
+          "name": "tile_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridTileType",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the polygon shape to, by default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and a parent tile exists, save that tile address to this field.",
+          "name": "parent_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and children tiles exist, save those tile addresses to this field as an array of strings.",
+          "name": "children_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and intersecting non-child tiles exist, save their addresses to this field as an array of strings.",
+          "name": "non_children_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified, save the tile precision (zoom) as an integer to this field.",
+          "name": "precision_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Which format to save the generated polygon in.",
+          "name": "target_format",
+          "required": false,
+          "serverDefault": "geojson",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridTargetFormat",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L357-L398"
     },
     {
       "inherits": {
@@ -120680,7 +120980,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L339-L368"
+      "specLocation": "ingest/_types/Processors.ts#L411-L440"
     },
     {
       "inherits": {
@@ -120772,7 +121072,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L672-L697"
+      "specLocation": "ingest/_types/Processors.ts#L744-L769"
     },
     {
       "inherits": {
@@ -120850,7 +121150,61 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L699-L723"
+      "specLocation": "ingest/_types/Processors.ts#L771-L795"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HtmlStripProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The string-valued field to remove HTML tags from.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the converted value to\nBy default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L797-L813"
     },
     {
       "inherits": {
@@ -120922,7 +121276,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L725-L744"
+      "specLocation": "ingest/_types/Processors.ts#L815-L834"
     },
     {
       "kind": "interface",
@@ -120956,7 +121310,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L746-L758",
+      "specLocation": "ingest/_types/Processors.ts#L836-L848",
       "variants": {
         "kind": "container"
       }
@@ -120995,7 +121349,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L760-L771"
+      "specLocation": "ingest/_types/Processors.ts#L850-L861"
     },
     {
       "kind": "interface",
@@ -121069,7 +121423,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L773-L799"
+      "specLocation": "ingest/_types/Processors.ts#L863-L889"
     },
     {
       "inherits": {
@@ -121122,7 +121476,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L801-L816"
+      "specLocation": "ingest/_types/Processors.ts#L891-L906"
     },
     {
       "inherits": {
@@ -121201,7 +121555,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L818-L847"
+      "specLocation": "ingest/_types/Processors.ts#L908-L937"
     },
     {
       "inherits": {
@@ -121358,7 +121712,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L856-L908"
+      "specLocation": "ingest/_types/Processors.ts#L946-L998"
     },
     {
       "inherits": {
@@ -121412,7 +121766,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L910-L926"
+      "specLocation": "ingest/_types/Processors.ts#L1000-L1016"
     },
     {
       "inherits": {
@@ -121453,7 +121807,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L928-L939"
+      "specLocation": "ingest/_types/Processors.ts#L1018-L1029"
     },
     {
       "inherits": {
@@ -121506,7 +121860,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L941-L955"
+      "specLocation": "ingest/_types/Processors.ts#L1031-L1045"
     },
     {
       "inherits": {
@@ -121559,7 +121913,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L957-L973"
+      "specLocation": "ingest/_types/Processors.ts#L1047-L1063"
     },
     {
       "inherits": {
@@ -121641,7 +121995,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L975-L1003"
+      "specLocation": "ingest/_types/Processors.ts#L1065-L1093"
     },
     {
       "inherits": {
@@ -121713,7 +122067,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1005-L1025"
+      "specLocation": "ingest/_types/Processors.ts#L1095-L1115"
     },
     {
       "inherits": {
@@ -121799,7 +122153,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1027-L1061"
+      "specLocation": "ingest/_types/Processors.ts#L1117-L1151"
     },
     {
       "inherits": {
@@ -121842,7 +122196,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1063-L1072"
+      "specLocation": "ingest/_types/Processors.ts#L1153-L1162"
     },
     {
       "inherits": {
@@ -121895,7 +122249,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1079-L1095"
+      "specLocation": "ingest/_types/Processors.ts#L1169-L1185"
     },
     {
       "inherits": {
@@ -121974,7 +122328,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1097-L1122"
+      "specLocation": "ingest/_types/Processors.ts#L1187-L1212"
     },
     {
       "inherits": {
@@ -122028,7 +122382,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1124-L1140"
+      "specLocation": "ingest/_types/Processors.ts#L1214-L1230"
     },
     {
       "inherits": {
@@ -122082,7 +122436,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1142-L1158"
+      "specLocation": "ingest/_types/Processors.ts#L1232-L1248"
     },
     {
       "inherits": {
@@ -122136,7 +122490,87 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1160-L1176"
+      "specLocation": "ingest/_types/Processors.ts#L1250-L1266"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UriPartsProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Field containing the URI string.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+          "name": "keep_original",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+          "name": "remove_if_successful",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Output field for the URI object.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "url",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1268-L1294"
     },
     {
       "inherits": {
@@ -122216,7 +122650,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L370-L390"
+      "specLocation": "ingest/_types/Processors.ts#L442-L462"
     },
     {
       "kind": "interface",
@@ -122258,12 +122692,12 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L41-L55"
+      "specLocation": "ingest/simulate/types.ts#L50-L64"
     },
     {
       "kind": "interface",
       "name": {
-        "name": "PipelineSimulation",
+        "name": "SimulateDocumentResult",
         "namespace": "ingest.simulate"
       },
       "properties": [
@@ -122275,6 +122709,17 @@
             "type": {
               "name": "DocumentSimulation",
               "namespace": "ingest.simulate"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
             }
           }
         },
@@ -122291,42 +122736,9 @@
               }
             }
           }
-        },
-        {
-          "name": "tag",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "processor_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActionStatusOptions",
-              "namespace": "watcher._types"
-            }
-          }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L33-L39"
+      "specLocation": "ingest/simulate/types.ts#L34-L38"
     },
     {
       "attachedBehaviors": [
@@ -122466,7 +122878,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L57-L87"
+      "specLocation": "ingest/simulate/types.ts#L66-L96"
     },
     {
       "kind": "interface",
@@ -122498,7 +122910,94 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L28-L31"
+      "specLocation": "ingest/simulate/types.ts#L29-L32"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineSimulation",
+        "namespace": "ingest.simulate"
+      },
+      "properties": [
+        {
+          "name": "doc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentSimulation",
+              "namespace": "ingest.simulate"
+            }
+          }
+        },
+        {
+          "name": "tag",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionStatusOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "ignored_error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/simulate/types.ts#L40-L48"
     },
     {
       "kind": "interface",
