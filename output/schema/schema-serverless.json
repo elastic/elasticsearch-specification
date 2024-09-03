@@ -119162,7 +119162,7 @@
           "description": "Which format to save the generated polygon in.",
           "name": "target_format",
           "required": false,
-          "serverDefault": "GeoJSON",
+          "serverDefault": "geojson",
           "type": {
             "kind": "instance_of",
             "type": {
