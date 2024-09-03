@@ -77885,8 +77885,16 @@
           },
           "rollover": {
             "$ref": "#/components/schemas/indices._types:DataStreamLifecycleRolloverConditions"
+          },
+          "enabled": {
+            "description": "If `false`, lifecycle management is disabled",
+            "x-available-since": "8.10.0",
+            "type": "boolean"
           }
-        }
+        },
+        "required": [
+          "enabled"
+        ]
       },
       "indices._types:DataStreamLifecycleDownsampling": {
         "type": "object",
@@ -78489,6 +78497,9 @@
           },
           "downsampling": {
             "$ref": "#/components/schemas/indices._types:DataStreamLifecycleDownsampling"
+          },
+          "enabled": {
+            "type": "boolean"
           }
         }
       },

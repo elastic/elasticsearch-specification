@@ -10727,6 +10727,7 @@ export interface IndicesDataStreamIndex {
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
   downsampling?: IndicesDataStreamLifecycleDownsampling
+  enabled?: boolean
 }
 
 export interface IndicesDataStreamLifecycleDownsampling {
@@ -10750,6 +10751,7 @@ export interface IndicesDataStreamLifecycleWithRollover {
   data_retention?: Duration
   downsampling?: IndicesDataStreamLifecycleDownsampling
   rollover?: IndicesDataStreamLifecycleRolloverConditions
+  enabled: boolean
 }
 
 export interface IndicesDataStreamTimestampField {

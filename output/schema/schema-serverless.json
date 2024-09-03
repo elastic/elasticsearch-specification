@@ -113064,9 +113064,28 @@
               "namespace": "indices._types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.10.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If `false`, lifecycle management is disabled",
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L33-L55"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L34-L62"
     },
     {
       "kind": "interface",
@@ -113267,7 +113286,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L57-L69"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L64-L76"
     },
     {
       "kind": "interface",
@@ -113480,9 +113499,20 @@
               "namespace": "indices._types"
             }
           }
+        },
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L25-L31"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L25-L32"
     },
     {
       "kind": "interface",

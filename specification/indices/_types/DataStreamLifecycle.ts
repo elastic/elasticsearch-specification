@@ -28,6 +28,7 @@ import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifec
 export class DataStreamLifecycle {
   data_retention?: Duration
   downsampling?: DataStreamLifecycleDownsampling
+  enabled?: boolean
 }
 
 /**
@@ -52,6 +53,12 @@ export class DataStreamLifecycleWithRollover {
    * The contents of this field are subject to change.
    */
   rollover?: DataStreamLifecycleRolloverConditions
+  /**
+   * If `false`, lifecycle management is disabled
+   * @availability stack since=8.10.0 stability=stable
+   * @availability serverless
+   */
+  enabled: boolean
 }
 
 class DataStreamLifecycleRolloverConditions {
