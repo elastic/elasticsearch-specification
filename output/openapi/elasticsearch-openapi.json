@@ -66194,7 +66194,7 @@
             "description": "Sum of index write load forecasts",
             "oneOf": [
               {
-                "type": "string"
+                "$ref": "#/components/schemas/_spec_utils:Stringifieddouble"
               },
               {
                 "nullable": true,
@@ -66315,6 +66315,17 @@
             ]
           }
         }
+      },
+      "_spec_utils:Stringifieddouble": {
+        "description": "Some APIs will return values such as numbers also as a string (notably epoch timestamps). This behavior\nis used to capture this behavior while keeping the semantics of the field type.\n\nDepending on the target language, code generators can keep the union or remove it and leniently parse\nstrings to the target type.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "_types:ByteSize": {
         "externalDocs": {

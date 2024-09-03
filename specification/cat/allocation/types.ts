@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Stringified } from '@spec_utils/Stringified'
 import { ByteSize } from '@_types/common'
 import { Host, Ip } from '@_types/Networking'
 import { double, Percentage } from '@_types/Numeric'
@@ -37,7 +38,7 @@ export class AllocationRecord {
    * Sum of index write load forecasts
    * @aliases wlf,writeLoadForecast
    */
-  'write_load.forecast'?: string | null
+  'write_load.forecast'?: Stringified<double> | null
 
   /**
    * Sum of shard size forecasts

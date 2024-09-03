@@ -6783,9 +6783,9 @@ export interface CatAllocationAllocationRecord {
   shards?: string
   s?: string
   'shards.undesired'?: string | null
-  'write_load.forecast'?: string | null
-  wlf?: string | null
-  writeLoadForecast?: string | null
+  'write_load.forecast'?: SpecUtilsStringified<double> | null
+  wlf?: SpecUtilsStringified<double> | null
+  writeLoadForecast?: SpecUtilsStringified<double> | null
   'disk.indices.forecast'?: ByteSize | null
   dif?: ByteSize | null
   diskIndicesForecast?: ByteSize | null
