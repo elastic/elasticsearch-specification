@@ -40,4 +40,6 @@ export class CacheStats {
   hits: integer
   misses: integer
   evictions: integer
+  /* An _approximation_ of the size in bytes that the enrich cache takes up on the heap. */
+  size_in_bytes: long
 }
