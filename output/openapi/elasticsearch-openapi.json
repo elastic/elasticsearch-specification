@@ -84305,6 +84305,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "geo_grid": {
+            "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
+          },
           "geoip": {
             "$ref": "#/components/schemas/ingest._types:GeoIpProcessor"
           },
@@ -84873,6 +84876,66 @@
               "processor"
             ]
           }
+        ]
+      },
+      "ingest._types:GeoGridProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+                "type": "string"
+              },
+              "tile_type": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTileType"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "parent_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "non_children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "precision_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_format": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTargetFormat"
+              }
+            },
+            "required": [
+              "field",
+              "tile_type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:GeoGridTileType": {
+        "type": "string",
+        "enum": [
+          "geotile",
+          "geohex",
+          "geohash"
+        ]
+      },
+      "ingest._types:GeoGridTargetFormat": {
+        "type": "string",
+        "enum": [
+          "geojson",
+          "wkt"
         ]
       },
       "ingest._types:GeoIpProcessor": {
