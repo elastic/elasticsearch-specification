@@ -90,19 +90,24 @@ export class DisMaxQuery extends QueryBase {
   tie_breaker?: double
 }
 
+/** @codegen_names single, multi */
+export type FunctionScore = SingleFunctionScoreContainer | MultiFunctionScoreQuery
+
 /**
  * @shortcut_property functions
  */
-export class FunctionScoreQuery extends QueryBase {
+export class MultiFunctionScoreQuery extends QueryBase {
+  /**
+   * One or more functions that compute a new score for each document returned by the query.
+   */
+  functions?: FunctionScoreContainer[]
+
+  // WARNING: keep below properties in sync with SingleFunctionScoreContainer
   /**
    * Defines how he newly computed score is combined with the score of the query
    * @server_default multiply
    */
   boost_mode?: FunctionBoostMode
-  /**
-   * One or more functions that compute a new score for each document returned by the query.
-   */
-  functions?: FunctionScoreContainer[]
   /**
    * Restricts the new score to not exceed the provided limit.
    */
@@ -250,6 +255,39 @@ export class FunctionScoreContainer {
   filter?: QueryContainer
   /** @variant container_property */
   weight?: double
+}
+
+/**
+ * @variants container
+ */
+export class SingleFunctionScoreContainer extends FunctionScoreContainer {
+  // WARNING: keep below properties in sync with MultiFunctionScoreQuery
+  /**
+   * Defines how he newly computed score is combined with the score of the query
+   * @server_default multiply
+   * @variant container_property
+   */
+  boost_mode?: FunctionBoostMode
+  /**
+   * Restricts the new score to not exceed the provided limit.
+   * @variant container_property
+   */
+  max_boost?: double
+  /**
+   * Excludes documents that do not meet the provided score threshold.
+   * @variant container_property
+   */
+  min_score?: double
+  /**
+   * A query that determines the documents for which a new score is computed.
+   * @variant container_property
+   */
+  query?: QueryContainer
+  /** Specifies how the computed scores are combined
+   * @server_default multiply
+   * @variant container_property
+   */
+  score_mode?: FunctionScoreMode
 }
 
 export enum FunctionScoreMode {

@@ -31,7 +31,7 @@ import {
   BoostingQuery,
   ConstantScoreQuery,
   DisMaxQuery,
-  FunctionScoreQuery
+  FunctionScore
 } from './compound'
 import {
   CommonTermsQuery,
@@ -150,7 +150,7 @@ export class QueryContainer {
    * The `function_score` enables you to modify the score of documents that are retrieved by a query.
    * @doc_id query-dsl-function-score-query
    */
-  function_score?: FunctionScoreQuery
+  function_score?: FunctionScore
   /**
    * Returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance.
    * @doc_id query-dsl-fuzzy-query

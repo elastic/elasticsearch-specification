@@ -5823,6 +5823,8 @@ export interface QueryDslFieldValueFactorScoreFunction {
 
 export type QueryDslFunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' | 'min'
 
+export type QueryDslFunctionScore = QueryDslSingleFunctionScoreContainer | QueryDslMultiFunctionScoreQuery | QueryDslFunctionScoreContainer[]
+
 export interface QueryDslFunctionScoreContainer {
   exp?: QueryDslDecayFunction
   gauss?: QueryDslDecayFunction
@@ -5835,15 +5837,6 @@ export interface QueryDslFunctionScoreContainer {
 }
 
 export type QueryDslFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
-
-export interface QueryDslFunctionScoreQuery extends QueryDslQueryBase {
-  boost_mode?: QueryDslFunctionBoostMode
-  functions?: QueryDslFunctionScoreContainer[]
-  max_boost?: double
-  min_score?: double
-  query?: QueryDslQueryContainer
-  score_mode?: QueryDslFunctionScoreMode
-}
 
 export interface QueryDslFuzzyQuery extends QueryDslQueryBase {
   max_expansions?: integer
@@ -6083,6 +6076,15 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   version_type?: VersionType
 }
 
+export interface QueryDslMultiFunctionScoreQuery extends QueryDslQueryBase {
+  functions?: QueryDslFunctionScoreContainer[]
+  boost_mode?: QueryDslFunctionBoostMode
+  max_boost?: double
+  min_score?: double
+  query?: QueryDslQueryContainer
+  score_mode?: QueryDslFunctionScoreMode
+}
+
 export interface QueryDslMultiMatchQuery extends QueryDslQueryBase {
   analyzer?: string
   auto_generate_synonyms_phrase_query?: boolean
@@ -6172,7 +6174,7 @@ export interface QueryDslQueryContainer {
   dis_max?: QueryDslDisMaxQuery
   distance_feature?: QueryDslDistanceFeatureQuery
   exists?: QueryDslExistsQuery
-  function_score?: QueryDslFunctionScoreQuery | QueryDslFunctionScoreContainer[]
+  function_score?: QueryDslFunctionScore
   fuzzy?: Partial<Record<Field, QueryDslFuzzyQuery | string | double | boolean>>
   geo_bounding_box?: QueryDslGeoBoundingBoxQuery
   geo_distance?: QueryDslGeoDistanceQuery
@@ -6365,6 +6367,14 @@ export interface QueryDslSimpleQueryStringQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   query: string
   quote_field_suffix?: string
+}
+
+export interface QueryDslSingleFunctionScoreContainer extends QueryDslFunctionScoreContainer {
+  boost_mode?: QueryDslFunctionBoostMode
+  max_boost?: double
+  min_score?: double
+  query?: QueryDslQueryContainer
+  score_mode?: QueryDslFunctionScoreMode
 }
 
 export interface QueryDslSpanContainingQuery extends QueryDslQueryBase {
