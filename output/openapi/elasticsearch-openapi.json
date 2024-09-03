@@ -66514,6 +66514,10 @@
             "description": "number of initializing nodes",
             "type": "string"
           },
+          "unassign.pri": {
+            "description": "number of unassigned primary shards",
+            "type": "string"
+          },
           "unassign": {
             "description": "number of unassigned shards",
             "type": "string"
@@ -78043,6 +78047,10 @@
             "description": "If false the response returned within the period of time that is specified by the timeout parameter (30s by default)",
             "type": "boolean"
           },
+          "unassigned_primary_shards": {
+            "description": "The number of primary shards that are not allocated.",
+            "type": "number"
+          },
           "unassigned_shards": {
             "description": "The number of shards that are not allocated.",
             "type": "number"
@@ -78063,6 +78071,7 @@
           "status",
           "task_max_waiting_in_queue_millis",
           "timed_out",
+          "unassigned_primary_shards",
           "unassigned_shards"
         ]
       },
