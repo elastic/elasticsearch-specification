@@ -113512,7 +113512,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L29-L35"
+      "specLocation": "enrich/stats/types.ts#L30-L36"
     },
     {
       "kind": "interface",
@@ -113544,7 +113544,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L24-L27"
+      "specLocation": "enrich/stats/types.ts#L25-L28"
     },
     {
       "kind": "interface",
@@ -113587,12 +113587,52 @@
           }
         },
         {
+          "name": "hits_time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "misses",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "misses_time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
               "namespace": "_types"
             }
           }
@@ -113609,7 +113649,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L37-L43"
+      "specLocation": "enrich/stats/types.ts#L38-L48"
     },
     {
       "generics": [
