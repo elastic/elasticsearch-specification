@@ -392,7 +392,7 @@ export class GeoGridProcessor extends ProcessorBase {
   ignore_missing?: boolean
   /**
    * Which format to save the generated polygon in.
-   * @server_default GeoJSON
+   * @server_default geojson
    */
   target_format?: GeoGridTargetFormat
 }
