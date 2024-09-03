@@ -81462,6 +81462,9 @@
           },
           "evictions": {
             "type": "number"
+          },
+          "size_in_bytes": {
+            "type": "number"
           }
         },
         "required": [
@@ -81471,7 +81474,8 @@
           "hits_time_in_millis",
           "misses",
           "misses_time_in_millis",
-          "evictions"
+          "evictions",
+          "size_in_bytes"
         ]
       },
       "eql._types:EqlSearchResponseBase": {

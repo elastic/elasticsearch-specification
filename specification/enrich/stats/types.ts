@@ -44,4 +44,6 @@ export class CacheStats {
   /* The amount of time in milliseconds spent fetching data from the enrich index and updating the cache, on cache misses only. */
   misses_time_in_millis: long
   evictions: integer
+  /* An _approximation_ of the size in bytes that the enrich cache takes up on the heap. */
+  size_in_bytes: long
 }
