@@ -112,6 +112,12 @@ export class ProcessorContainer {
    */
   foreach?: ForeachProcessor
   /**
+   * Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.
+   * This is useful if there is a need to interact with the tile shapes as spatially indexable fields.
+   * @doc_id geo-grid-processor
+   */
+  geo_grid?: GeoGridProcessor
+  /**
    * The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.
    * @doc_id geoip-processor
    */
@@ -346,6 +352,60 @@ export class AttachmentProcessor extends ProcessorBase {
    * If specified, the processor passes this resource name to the underlying Tika library to enable Resource Name Based Detection.
    */
   resource_name?: string
+}
+
+export class GeoGridProcessor extends ProcessorBase {
+  /**
+   * The field to interpret as a geo-tile.=
+   * The field format is determined by the `tile_type`.
+   */
+  field: string
+  /**
+   * Three tile formats are understood: geohash, geotile and geohex.
+   */
+  tile_type: GeoGridTileType
+  /**
+   * The field to assign the polygon shape to, by default, the `field` is updated in-place.
+   * @server_default field
+   */
+  target_field?: Field
+  /**
+   * If specified and a parent tile exists, save that tile address to this field.
+   */
+  parent_field?: Field
+  /**
+   * If specified and children tiles exist, save those tile addresses to this field as an array of strings.
+   */
+  children_field?: Field
+  /**
+   * If specified and intersecting non-child tiles exist, save their addresses to this field as an array of strings.
+   */
+  non_children_field?: Field
+  /**
+   * If specified, save the tile precision (zoom) as an integer to this field.
+   */
+  precision_field?: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * Which format to save the generated polygon in.
+   * @server_default geojson
+   */
+  target_format?: GeoGridTargetFormat
+}
+
+export enum GeoGridTileType {
+  geotile,
+  geohex,
+  geohash
+}
+
+export enum GeoGridTargetFormat {
+  geojson,
+  wkt
 }
 
 export class GeoIpProcessor extends ProcessorBase {

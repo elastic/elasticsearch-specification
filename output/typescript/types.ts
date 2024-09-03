@@ -12417,6 +12417,22 @@ export interface IngestForeachProcessor extends IngestProcessorBase {
   processor: IngestProcessorContainer
 }
 
+export interface IngestGeoGridProcessor extends IngestProcessorBase {
+  field: string
+  tile_type: IngestGeoGridTileType
+  target_field?: Field
+  parent_field?: Field
+  children_field?: Field
+  non_children_field?: Field
+  precision_field?: Field
+  ignore_missing?: boolean
+  target_format?: IngestGeoGridTargetFormat
+}
+
+export type IngestGeoGridTargetFormat = 'geojson' | 'wkt'
+
+export type IngestGeoGridTileType = 'geotile' | 'geohex' | 'geohash'
+
 export interface IngestGeoIpProcessor extends IngestProcessorBase {
   database_file?: string
   field: Field
@@ -12555,6 +12571,7 @@ export interface IngestProcessorContainer {
   enrich?: IngestEnrichProcessor
   fail?: IngestFailProcessor
   foreach?: IngestForeachProcessor
+  geo_grid?: IngestGeoGridProcessor
   geoip?: IngestGeoIpProcessor
   grok?: IngestGrokProcessor
   gsub?: IngestGsubProcessor

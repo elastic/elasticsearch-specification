@@ -160,6 +160,7 @@ foreach-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branc
 fuzziness,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/common-options.html#fuzziness
 gap-policy,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-pipeline.html#gap-policy
 geo-shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geo-shape.html
+geo-grid-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html
 geoip-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html
 geoip-stats-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-stats-api.html
 get-async-sql-search-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-async-sql-search-api.html

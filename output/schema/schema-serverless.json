@@ -91100,7 +91100,42 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L447-L455"
+      "specLocation": "ingest/_types/Processors.ts#L507-L515"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geojson"
+        },
+        {
+          "name": "wkt"
+        }
+      ],
+      "name": {
+        "name": "GeoGridTargetFormat",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L406-L409"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geotile"
+        },
+        {
+          "name": "geohex"
+        },
+        {
+          "name": "geohash"
+        }
+      ],
+      "name": {
+        "name": "GeoGridTileType",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L400-L404"
     },
     {
       "kind": "enum",
@@ -91118,7 +91153,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L879-L884"
+      "specLocation": "ingest/_types/Processors.ts#L939-L944"
     },
     {
       "kind": "enum",
@@ -91134,7 +91169,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1104-L1107"
+      "specLocation": "ingest/_types/Processors.ts#L1164-L1167"
     },
     {
       "kind": "enum",
@@ -91174,7 +91209,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L278-L289"
+      "specLocation": "ingest/_types/Processors.ts#L284-L295"
     },
     {
       "kind": "enum",
@@ -117598,6 +117633,20 @@
           }
         },
         {
+          "description": "Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.\nThis is useful if there is a need to interact with the tile shapes as spatially indexable fields.",
+          "docId": "geo-grid-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html",
+          "name": "geo_grid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.",
           "docId": "geoip-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html",
@@ -117918,7 +117967,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L251",
+      "specLocation": "ingest/_types/Processors.ts#L27-L257",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -117974,7 +118023,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L291-L306"
+      "specLocation": "ingest/_types/Processors.ts#L297-L312"
     },
     {
       "kind": "interface",
@@ -118047,7 +118096,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L253-L276"
+      "specLocation": "ingest/_types/Processors.ts#L259-L282"
     },
     {
       "inherits": {
@@ -118167,7 +118216,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L308-L349"
+      "specLocation": "ingest/_types/Processors.ts#L314-L355"
     },
     {
       "inherits": {
@@ -118221,7 +118270,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L404-L420"
+      "specLocation": "ingest/_types/Processors.ts#L464-L480"
     },
     {
       "inherits": {
@@ -118298,7 +118347,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L422-L445"
+      "specLocation": "ingest/_types/Processors.ts#L482-L505"
     },
     {
       "inherits": {
@@ -118364,7 +118413,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L457-L477"
+      "specLocation": "ingest/_types/Processors.ts#L517-L537"
     },
     {
       "inherits": {
@@ -118462,7 +118511,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L479-L512"
+      "specLocation": "ingest/_types/Processors.ts#L539-L572"
     },
     {
       "inherits": {
@@ -118544,7 +118593,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L554-L581"
+      "specLocation": "ingest/_types/Processors.ts#L614-L641"
     },
     {
       "inherits": {
@@ -118650,7 +118699,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L514-L552"
+      "specLocation": "ingest/_types/Processors.ts#L574-L612"
     },
     {
       "inherits": {
@@ -118716,7 +118765,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L583-L602"
+      "specLocation": "ingest/_types/Processors.ts#L643-L662"
     },
     {
       "inherits": {
@@ -118756,7 +118805,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L604-L615"
+      "specLocation": "ingest/_types/Processors.ts#L664-L675"
     },
     {
       "inherits": {
@@ -118771,7 +118820,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L617-L617"
+      "specLocation": "ingest/_types/Processors.ts#L677-L677"
     },
     {
       "inherits": {
@@ -118875,7 +118924,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L619-L658"
+      "specLocation": "ingest/_types/Processors.ts#L679-L718"
     },
     {
       "inherits": {
@@ -118903,7 +118952,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L660-L666"
+      "specLocation": "ingest/_types/Processors.ts#L720-L726"
     },
     {
       "inherits": {
@@ -118956,7 +119005,134 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L668-L682"
+      "specLocation": "ingest/_types/Processors.ts#L728-L742"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoGridProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Three tile formats are understood: geohash, geotile and geohex.",
+          "name": "tile_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridTileType",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the polygon shape to, by default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and a parent tile exists, save that tile address to this field.",
+          "name": "parent_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and children tiles exist, save those tile addresses to this field as an array of strings.",
+          "name": "children_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and intersecting non-child tiles exist, save their addresses to this field as an array of strings.",
+          "name": "non_children_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified, save the tile precision (zoom) as an integer to this field.",
+          "name": "precision_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Which format to save the generated polygon in.",
+          "name": "target_format",
+          "required": false,
+          "serverDefault": "GeoJSON",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridTargetFormat",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L357-L398"
     },
     {
       "inherits": {
@@ -119051,7 +119227,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L351-L380"
+      "specLocation": "ingest/_types/Processors.ts#L411-L440"
     },
     {
       "inherits": {
@@ -119143,7 +119319,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L684-L709"
+      "specLocation": "ingest/_types/Processors.ts#L744-L769"
     },
     {
       "inherits": {
@@ -119221,7 +119397,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L711-L735"
+      "specLocation": "ingest/_types/Processors.ts#L771-L795"
     },
     {
       "inherits": {
@@ -119275,7 +119451,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L737-L753"
+      "specLocation": "ingest/_types/Processors.ts#L797-L813"
     },
     {
       "inherits": {
@@ -119347,7 +119523,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L755-L774"
+      "specLocation": "ingest/_types/Processors.ts#L815-L834"
     },
     {
       "kind": "interface",
@@ -119381,7 +119557,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L776-L788",
+      "specLocation": "ingest/_types/Processors.ts#L836-L848",
       "variants": {
         "kind": "container"
       }
@@ -119420,7 +119596,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L790-L801"
+      "specLocation": "ingest/_types/Processors.ts#L850-L861"
     },
     {
       "kind": "interface",
@@ -119494,7 +119670,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L803-L829"
+      "specLocation": "ingest/_types/Processors.ts#L863-L889"
     },
     {
       "inherits": {
@@ -119547,7 +119723,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L831-L846"
+      "specLocation": "ingest/_types/Processors.ts#L891-L906"
     },
     {
       "inherits": {
@@ -119626,7 +119802,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L848-L877"
+      "specLocation": "ingest/_types/Processors.ts#L908-L937"
     },
     {
       "inherits": {
@@ -119783,7 +119959,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L886-L938"
+      "specLocation": "ingest/_types/Processors.ts#L946-L998"
     },
     {
       "inherits": {
@@ -119837,7 +120013,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L940-L956"
+      "specLocation": "ingest/_types/Processors.ts#L1000-L1016"
     },
     {
       "inherits": {
@@ -119878,7 +120054,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L958-L969"
+      "specLocation": "ingest/_types/Processors.ts#L1018-L1029"
     },
     {
       "inherits": {
@@ -119931,7 +120107,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L971-L985"
+      "specLocation": "ingest/_types/Processors.ts#L1031-L1045"
     },
     {
       "inherits": {
@@ -119984,7 +120160,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L987-L1003"
+      "specLocation": "ingest/_types/Processors.ts#L1047-L1063"
     },
     {
       "inherits": {
@@ -120066,7 +120242,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1005-L1033"
+      "specLocation": "ingest/_types/Processors.ts#L1065-L1093"
     },
     {
       "inherits": {
@@ -120138,7 +120314,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1035-L1055"
+      "specLocation": "ingest/_types/Processors.ts#L1095-L1115"
     },
     {
       "inherits": {
@@ -120224,7 +120400,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1057-L1091"
+      "specLocation": "ingest/_types/Processors.ts#L1117-L1151"
     },
     {
       "inherits": {
@@ -120267,7 +120443,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1093-L1102"
+      "specLocation": "ingest/_types/Processors.ts#L1153-L1162"
     },
     {
       "inherits": {
@@ -120320,7 +120496,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1109-L1125"
+      "specLocation": "ingest/_types/Processors.ts#L1169-L1185"
     },
     {
       "inherits": {
@@ -120399,7 +120575,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1127-L1152"
+      "specLocation": "ingest/_types/Processors.ts#L1187-L1212"
     },
     {
       "inherits": {
@@ -120453,7 +120629,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1154-L1170"
+      "specLocation": "ingest/_types/Processors.ts#L1214-L1230"
     },
     {
       "inherits": {
@@ -120507,7 +120683,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1172-L1188"
+      "specLocation": "ingest/_types/Processors.ts#L1232-L1248"
     },
     {
       "inherits": {
@@ -120561,7 +120737,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1190-L1206"
+      "specLocation": "ingest/_types/Processors.ts#L1250-L1266"
     },
     {
       "inherits": {
@@ -120641,7 +120817,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1208-L1234"
+      "specLocation": "ingest/_types/Processors.ts#L1268-L1294"
     },
     {
       "inherits": {
@@ -120721,7 +120897,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L382-L402"
+      "specLocation": "ingest/_types/Processors.ts#L442-L462"
     },
     {
       "kind": "interface",
