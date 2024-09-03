@@ -78107,6 +78107,9 @@
           },
           "unassigned_shards": {
             "type": "number"
+          },
+          "unassigned_primary_shards": {
+            "type": "number"
           }
         },
         "required": [
@@ -78117,7 +78120,8 @@
           "number_of_shards",
           "relocating_shards",
           "status",
-          "unassigned_shards"
+          "unassigned_shards",
+          "unassigned_primary_shards"
         ]
       },
       "cluster.health:ShardHealthStats": {
@@ -78140,6 +78144,9 @@
           },
           "unassigned_shards": {
             "type": "number"
+          },
+          "unassigned_primary_shards": {
+            "type": "number"
           }
         },
         "required": [
@@ -78148,7 +78155,8 @@
           "primary_active",
           "relocating_shards",
           "status",
-          "unassigned_shards"
+          "unassigned_shards",
+          "unassigned_primary_shards"
         ]
       },
       "_types:ClusterInfoTargets": {

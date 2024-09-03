@@ -8996,6 +8996,7 @@ export interface ClusterHealthIndexHealthStats {
   shards?: Record<string, ClusterHealthShardHealthStats>
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
 
 export interface ClusterHealthRequest extends RequestBase {
@@ -9022,6 +9023,7 @@ export interface ClusterHealthShardHealthStats {
   relocating_shards: integer
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
 
 export interface ClusterInfoRequest extends RequestBase {
