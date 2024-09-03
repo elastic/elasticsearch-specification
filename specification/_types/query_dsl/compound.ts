@@ -91,7 +91,9 @@ export class DisMaxQuery extends QueryBase {
 }
 
 /** @codegen_names single, multi */
-export type FunctionScore = SingleFunctionScoreContainer | MultiFunctionScoreQuery
+export type FunctionScore =
+  | SingleFunctionScoreContainer
+  | MultiFunctionScoreQuery
 
 /**
  * @shortcut_property functions
