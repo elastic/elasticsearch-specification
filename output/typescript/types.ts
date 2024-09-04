@@ -6911,6 +6911,10 @@ export interface CatHealthHealthRecord {
   i?: string
   'shards.initializing'?: string
   shardsInitializing?: string
+  'unassign.pri'?: string
+  up?: string
+  'shards.unassigned.primary'?: string
+  shardsUnassignedPrimary?: string
   unassign?: string
   u?: string
   'shards.unassigned'?: string
@@ -8978,6 +8982,7 @@ export interface ClusterHealthHealthResponseBody {
   task_max_waiting_in_queue?: Duration
   task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
   timed_out: boolean
+  unassigned_primary_shards: integer
   unassigned_shards: integer
 }
 
@@ -8991,6 +8996,7 @@ export interface ClusterHealthIndexHealthStats {
   shards?: Record<string, ClusterHealthShardHealthStats>
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
 
 export interface ClusterHealthRequest extends RequestBase {
@@ -9017,6 +9023,7 @@ export interface ClusterHealthShardHealthStats {
   relocating_shards: integer
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
 
 export interface ClusterInfoRequest extends RequestBase {

@@ -31,6 +31,7 @@ export class IndexHealthStats {
   shards?: Dictionary<string, ShardHealthStats>
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
 
 export class ShardHealthStats {
@@ -40,4 +41,5 @@ export class ShardHealthStats {
   relocating_shards: integer
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
