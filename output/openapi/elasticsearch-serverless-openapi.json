@@ -8657,6 +8657,16 @@
               "$ref": "#/components/schemas/_types:ExpandWildcards"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ignore_unavailable",
+            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {

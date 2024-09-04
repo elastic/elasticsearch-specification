@@ -44,5 +44,10 @@ export interface Request extends RequestBase {
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
   }
 }
