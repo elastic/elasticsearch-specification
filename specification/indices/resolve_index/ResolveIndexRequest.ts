@@ -43,6 +43,11 @@ export interface Request extends RequestBase {
      * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
-    expand_wildcards?: ExpandWildcards
+    expand_wildcards?: ExpandWildcards,
+     /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
+     ignore_unavailable?: boolean
   }
 }

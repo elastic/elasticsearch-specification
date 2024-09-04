@@ -12038,6 +12038,7 @@ export type IndicesResolveClusterResponse = Record<ClusterAlias, IndicesResolveC
 export interface IndicesResolveIndexRequest extends RequestBase {
   name: Names
   expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
