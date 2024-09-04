@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, MinimumShouldMatch } from '@_types/common'
 import { Distance, GeoLocation } from '@_types/Geo'
-import { double, float, long } from '@_types/Numeric'
+import { double, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
 import { QueryBase, QueryContainer } from './abstractions'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class BoolQuery extends QueryBase {
   /**

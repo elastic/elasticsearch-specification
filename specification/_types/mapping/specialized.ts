@@ -18,17 +18,17 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Name } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
-import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
-import { PropertyBase } from './Property'
-import { Script } from '@_types/Scripting'
 import {
   IcuCollationAlternate,
   IcuCollationCaseFirst,
   IcuCollationDecomposition,
   IcuCollationStrength
 } from '@_types/analysis/icu-plugin'
+import { Field, Name } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
+import { PropertyBase } from './Property'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string

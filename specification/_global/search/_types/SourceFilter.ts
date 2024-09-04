@@ -18,7 +18,7 @@
  */
 // TODO: move singular names to aliases
 
-import { Field, Fields } from '@_types/common'
+import { Fields } from '@_types/common'
 
 /**
  * @shortcut_property includes

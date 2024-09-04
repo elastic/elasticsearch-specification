@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Metadata, Name } from '@_types/common'
+import { Metadata } from '@_types/common'
 import { Phases } from './Phase'
 
 export class Policy {

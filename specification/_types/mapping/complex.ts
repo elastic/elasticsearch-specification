@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
 import { DenseVectorIndexOptions } from './DenseVectorIndexOptions'
 import { PropertyBase } from './Property'
-import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 
 export class FlattenedProperty extends PropertyBase {
   boost?: double

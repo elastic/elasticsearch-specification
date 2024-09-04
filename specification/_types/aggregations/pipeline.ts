@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Sort } from '@_types/sort'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, Field, EmptyObject } from '@_types/common'
-import { integer, double, float } from '@_types/Numeric'
-import { Script } from '@_types/Scripting'
-import { Aggregation } from './Aggregation'
 import {
-  RegressionInferenceOptions,
-  ClassificationInferenceOptions
+  ClassificationInferenceOptions,
+  RegressionInferenceOptions
 } from '@ml/_types/inference'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { EmptyObject, Name } from '@_types/common'
+import { double, float, integer } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { Sort } from '@_types/sort'
+import { Aggregation } from './Aggregation'
 
 export class BucketPathAggregation extends Aggregation {
   /**

@@ -18,15 +18,15 @@
  */
 
 import { IndexRouting } from '@indices/_types/IndexRouting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ByteSize, Name, VersionString } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
+import { NodeRoles } from '@_types/Node'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
-import { NodeRoles } from '@_types/Node'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>

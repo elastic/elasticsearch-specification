@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { long } from '@_types/Numeric'
 import { OperationType, ResponseItem } from './types'
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {

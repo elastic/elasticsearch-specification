@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SearchApplication } from '../_types/SearchApplication'
 import { ResponseBody } from '@global/search/SearchResponse'
 
 export class Response<TDocument> {

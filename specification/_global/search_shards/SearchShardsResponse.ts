@@ -26,10 +26,10 @@ import {
   NodeName,
   VersionString
 } from '@_types/common'
-import { NodeRoles, NodeShard } from '@_types/Node'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { TransportAddress } from '@_types/Networking'
+import { NodeRoles, NodeShard } from '@_types/Node'
 import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class Response {
   body: {

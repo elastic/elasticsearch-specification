@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { QueryWatch } from '../_types/Watch'
 import { integer } from '@_types/Numeric'
+import { QueryWatch } from '../_types/Watch'
 
 export class Response {
   body: {

@@ -18,8 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Namespace, Service } from '@_types/common'
-import { Refresh } from '@_types/common'
+import { Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
  * Creates a service accounts token for access without requiring basic authentication.

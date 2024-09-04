@@ -18,9 +18,11 @@
  */
 
 import { HitsMetadata } from '@global/search/_types/hits'
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Void } from '@spec_utils/VoidValue'
+import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
 import {
   GeoBounds,
@@ -32,8 +34,6 @@ import {
 } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
-import { Void } from '@spec_utils/VoidValue'
-import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 
 /**
  * @variants external

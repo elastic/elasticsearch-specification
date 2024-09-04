@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TokenPruningConfig } from './TokenPruningConfig'
 import { QueryBase } from './abstractions'
+import { TokenPruningConfig } from './TokenPruningConfig'
 
 export class TextExpansionQuery extends QueryBase {
   /** The text expansion NLP model to use */

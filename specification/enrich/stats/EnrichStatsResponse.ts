@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ExecutingPolicy, CoordinatorStats, CacheStats } from './types'
+import { CacheStats, CoordinatorStats, ExecutingPolicy } from './types'
 
 export class Response {
   body: {

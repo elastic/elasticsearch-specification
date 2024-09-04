@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Password, Username } from '@_types/common'
-import { GrantApiKey, ApiKeyGrantType } from './types'
+import { ApiKeyGrantType, GrantApiKey } from './types'
 
 /**
  * Creates an API key on behalf of another user.

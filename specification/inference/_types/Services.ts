@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TaskType } from '../_types/TaskType'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { TaskType } from '../_types/TaskType'
 
 /**
  * Configuration options when storing the inference endpoint

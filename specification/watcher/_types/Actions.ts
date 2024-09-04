@@ -32,7 +32,7 @@ import {
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
-import { Duration, DateTime, EpochTime, UnitSeconds } from '@_types/Time'
+import { DateTime, Duration, EpochTime, UnitSeconds } from '@_types/Time'
 import { HttpInputRequestDefinition } from './Input'
 
 // PagerDuty ----------------------------- //

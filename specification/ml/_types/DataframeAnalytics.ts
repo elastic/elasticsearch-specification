@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
-  ByteSize,
   Field,
   Id,
   IndexName,
@@ -32,9 +32,8 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { UnitMillis, DurationValue, EpochTime } from '@_types/Time'
+import { DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 import { DataframeState } from './Dataframe'
-import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 
 export class DataframeAnalyticsSource {
   /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. NOTE: If your source indices contain documents with the same IDs, only the document that is indexed last appears in the destination index.*/

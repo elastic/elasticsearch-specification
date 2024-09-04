@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ErrorCause } from '@_types/Errors'
-import { integer } from '@_types/Numeric'
 import { BulkError } from '@security/_types/Bulk'
 
 export class Response {

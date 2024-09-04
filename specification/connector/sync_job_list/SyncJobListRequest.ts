@@ -19,8 +19,8 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { SyncJobType } from '../_types/SyncJob'
 import { SyncStatus } from '../_types/Connector'
+import { SyncJobType } from '../_types/SyncJob'
 
 /**
  * Lists connector sync jobs.

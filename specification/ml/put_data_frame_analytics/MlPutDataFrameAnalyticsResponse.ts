@@ -25,7 +25,7 @@ import {
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
 import { Id, VersionString } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
 import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {

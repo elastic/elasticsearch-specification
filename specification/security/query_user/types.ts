@@ -17,10 +17,12 @@
  * under the License.
  */
 
+import { User } from '@security/_types/User'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { BoolQuery } from '@_types/query_dsl/compound'
-import { SortResults } from '@_types/sort'
+import { MatchQuery, SimpleQueryStringQuery } from '@_types/query_dsl/fulltext'
+import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
 import {
   ExistsQuery,
   IdsQuery,
@@ -30,9 +32,7 @@ import {
   TermsQuery,
   WildcardQuery
 } from '@_types/query_dsl/term'
-import { MatchQuery, SimpleQueryStringQuery } from '@_types/query_dsl/fulltext'
-import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
-import { User } from '@security/_types/User'
+import { SortResults } from '@_types/sort'
 
 /**
  * @variants container

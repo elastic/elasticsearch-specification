@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field, Id } from '@_types/common'
-import { QueryBase } from './abstractions'
-import { float } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Field, Id } from '@_types/common'
+import { float } from '@_types/Numeric'
+import { QueryBase } from './abstractions'
 import { TokenPruningConfig } from './TokenPruningConfig'
 
 /**

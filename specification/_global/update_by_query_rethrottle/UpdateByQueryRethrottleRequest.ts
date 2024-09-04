@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { float, long } from '@_types/Numeric'
+import { float } from '@_types/Numeric'
 
 /**
  * @rest_spec_name update_by_query_rethrottle

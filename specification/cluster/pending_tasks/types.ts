@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer, long } from '@_types/Numeric'
-import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { integer } from '@_types/Numeric'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class PendingTask {
   /** Indicates whether the pending tasks are currently executing or not. */

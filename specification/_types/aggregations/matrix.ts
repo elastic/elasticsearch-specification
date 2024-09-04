@@ -18,10 +18,10 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Fields, Field } from '@_types/common'
+import { Field, Fields } from '@_types/common'
 import { double } from '@_types/Numeric'
-import { Aggregation } from './Aggregation'
 import { SortMode } from '@_types/sort'
+import { Aggregation } from './Aggregation'
 
 export class MatrixAggregation extends Aggregation {
   /**

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, IndexAlias } from '@_types/common'
+import { IndexAlias, IndexName } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
