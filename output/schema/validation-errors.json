@@ -848,6 +848,13 @@
       ],
       "response": []
     },
+    "indices.resolve_index": {
+      "request": [
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'allow_no_indices' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "indices.rollover": {
       "request": [
         "Request: missing json spec query parameter 'lazy'",

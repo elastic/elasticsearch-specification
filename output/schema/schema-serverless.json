@@ -23610,9 +23610,35 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L48"
+      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L60"
     },
     {
       "body": {
