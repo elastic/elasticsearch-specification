@@ -9649,6 +9649,10 @@
                   },
                   "version": {
                     "$ref": "#/components/schemas/_types:VersionNumber"
+                  },
+                  "deprecated": {
+                    "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
+                    "type": "boolean"
                   }
                 }
               }
@@ -55132,6 +55136,10 @@
           "version": {
             "$ref": "#/components/schemas/_types:VersionNumber"
           },
+          "deprecated": {
+            "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
+            "type": "boolean"
+          },
           "_meta": {
             "$ref": "#/components/schemas/_types:Metadata"
           }
@@ -55271,10 +55279,17 @@
               },
               "value": {
                 "description": "The value to be appended. Supports template snippets.",
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                ]
               },
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
@@ -55638,6 +55653,10 @@
               "field": {
                 "$ref": "#/components/schemas/_types:Field"
               },
+              "override": {
+                "description": "Controls the behavior when there is already an existing nested object that conflicts with the expanded field.\nWhen `false`, the processor will merge conflicts by combining the old and the new values into an array.\nWhen `true`, the value from the expanded field will overwrite the existing value.",
+                "type": "boolean"
+              },
               "path": {
                 "description": "The field that contains the field to expand.\nOnly required if the field to expand is part another object field, because the `field` option can only understand leaf fields.",
                 "type": "string"
@@ -55847,6 +55866,10 @@
               },
               "target_field": {
                 "$ref": "#/components/schemas/_types:Field"
+              },
+              "download_database_on_pipeline_creation": {
+                "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+                "type": "boolean"
               }
             },
             "required": [
@@ -56592,6 +56615,19 @@
               },
               "target_field": {
                 "$ref": "#/components/schemas/_types:Field"
+              },
+              "properties": {
+                "description": "Controls what properties are added to `target_field`.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "extract_device_type": {
+                "description": "Extracts device type from the user agent string on a best-effort basis.",
+                "x-available-since": "8.9.0",
+                "x-beta": true,
+                "type": "boolean"
               }
             },
             "required": [

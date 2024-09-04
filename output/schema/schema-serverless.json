@@ -23092,7 +23092,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L42-L150"
+      "specLocation": "indices/put_mapping/IndicesPutMappingRequest.ts#L41-L149"
     },
     {
       "body": {
@@ -25422,6 +25422,19 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
+            "name": "deprecated",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -25491,7 +25504,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L25-L77"
+      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L25-L83"
     },
     {
       "body": {
@@ -25587,7 +25600,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L26-L58"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L57"
     },
     {
       "body": {
@@ -27777,7 +27790,7 @@
         "name": "Response",
         "namespace": "ml.get_data_frame_analytics_stats"
       },
-      "specLocation": "ml/get_data_frame_analytics_stats/MlGetDataFrameAnalyticsStatsResponse.ts#L24-L30"
+      "specLocation": "ml/get_data_frame_analytics_stats/MlGetDataFrameAnalyticsStatsResponse.ts#L23-L29"
     },
     {
       "attachedBehaviors": [
@@ -31149,7 +31162,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_trained_model/MlPutTrainedModelRequest.ts#L29-L125"
+      "specLocation": "ml/put_trained_model/MlPutTrainedModelRequest.ts#L31-L127"
     },
     {
       "body": {
@@ -37749,7 +37762,7 @@
         "name": "Response",
         "namespace": "search_application.put_behavioral_analytics"
       },
-      "specLocation": "search_application/put_behavioral_analytics/BehavioralAnalyticsPutResponse.ts#L24-L26"
+      "specLocation": "search_application/put_behavioral_analytics/BehavioralAnalyticsPutResponse.ts#L23-L25"
     },
     {
       "attachedBehaviors": [
@@ -37859,7 +37872,7 @@
         "name": "Response",
         "namespace": "search_application.search"
       },
-      "specLocation": "search_application/search/SearchApplicationsSearchResponse.ts#L23-L25"
+      "specLocation": "search_application/search/SearchApplicationsSearchResponse.ts#L22-L24"
     },
     {
       "attachedBehaviors": [
@@ -40307,7 +40320,7 @@
         }
       ],
       "query": [],
-      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L24-L36"
+      "specLocation": "sql/get_async_status/SqlGetAsyncStatusRequest.ts#L23-L35"
     },
     {
       "body": {
@@ -40925,7 +40938,7 @@
         "name": "Response",
         "namespace": "sql.translate"
       },
-      "specLocation": "sql/translate/TranslateSqlResponse.ts#L28-L38"
+      "specLocation": "sql/translate/TranslateSqlResponse.ts#L27-L37"
     },
     {
       "attachedBehaviors": [
@@ -47042,7 +47055,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L55-L65"
+      "specLocation": "_types/aggregations/bucket.ts#L60-L70"
     },
     {
       "description": "Base type for bucket aggregations. These aggregations also accept sub-aggregations.",
@@ -47058,7 +47071,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/bucket.ts#L48-L53"
+      "specLocation": "_types/aggregations/bucket.ts#L53-L58"
     },
     {
       "kind": "interface",
@@ -48769,7 +48782,7 @@
         "name": "DistanceFeatureQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L77-L85",
+      "specLocation": "_types/query_dsl/specialized.ts#L76-L84",
       "type": {
         "items": [
           {
@@ -48825,7 +48838,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L62-L65"
+      "specLocation": "_types/query_dsl/specialized.ts#L61-L64"
     },
     {
       "generics": [
@@ -48887,7 +48900,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L40-L60"
+      "specLocation": "_types/query_dsl/specialized.ts#L39-L59"
     },
     {
       "inherits": {
@@ -48918,7 +48931,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L67-L70"
+      "specLocation": "_types/query_dsl/specialized.ts#L66-L69"
     },
     {
       "inherits": {
@@ -48949,7 +48962,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L72-L75"
+      "specLocation": "_types/query_dsl/specialized.ts#L71-L74"
     },
     {
       "inherits": {
@@ -51440,7 +51453,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/highlighting.ts#L153-L156"
+      "specLocation": "_global/search/_types/highlighting.ts#L152-L155"
     },
     {
       "kind": "interface",
@@ -51724,7 +51737,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/highlighting.ts#L48-L151"
+      "specLocation": "_global/search/_types/highlighting.ts#L47-L150"
     },
     {
       "isOpen": true,
@@ -51748,7 +51761,7 @@
         "name": "HighlighterType",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L176-L191"
+      "specLocation": "_global/search/_types/highlighting.ts#L175-L190"
     },
     {
       "kind": "enum",
@@ -51770,7 +51783,7 @@
         "name": "BoundaryScanner",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L27-L46"
+      "specLocation": "_global/search/_types/highlighting.ts#L26-L45"
     },
     {
       "kind": "enum",
@@ -51786,7 +51799,7 @@
         "name": "HighlighterFragmenter",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L163-L166"
+      "specLocation": "_global/search/_types/highlighting.ts#L162-L165"
     },
     {
       "kind": "enum",
@@ -51799,7 +51812,7 @@
         "name": "HighlighterOrder",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L168-L170"
+      "specLocation": "_global/search/_types/highlighting.ts#L167-L169"
     },
     {
       "kind": "enum",
@@ -51812,7 +51825,7 @@
         "name": "HighlighterTagsSchema",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L172-L174"
+      "specLocation": "_global/search/_types/highlighting.ts#L171-L173"
     },
     {
       "kind": "enum",
@@ -51828,7 +51841,7 @@
         "name": "HighlighterEncoder",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L158-L161"
+      "specLocation": "_global/search/_types/highlighting.ts#L157-L160"
     },
     {
       "inherits": {
@@ -51866,7 +51879,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/highlighting.ts#L193-L196"
+      "specLocation": "_global/search/_types/highlighting.ts#L192-L195"
     },
     {
       "kind": "type_alias",
@@ -51936,7 +51949,7 @@
         "name": "Sort",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L105-L105",
+      "specLocation": "_types/sort.ts#L104-L104",
       "type": {
         "items": [
           {
@@ -51970,7 +51983,7 @@
         "name": "SortCombinations",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L99-L103",
+      "specLocation": "_types/sort.ts#L98-L102",
       "type": {
         "items": [
           {
@@ -52076,7 +52089,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L87-L97",
+      "specLocation": "_types/sort.ts#L86-L96",
       "variants": {
         "kind": "container"
       }
@@ -52167,7 +52180,7 @@
         }
       ],
       "shortcutProperty": "order",
-      "specLocation": "_types/sort.ts#L44-L53"
+      "specLocation": "_types/sort.ts#L43-L52"
     },
     {
       "kind": "type_alias",
@@ -52233,7 +52246,7 @@
         "name": "SortMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L109-L118"
+      "specLocation": "_types/sort.ts#L108-L117"
     },
     {
       "kind": "interface",
@@ -52287,7 +52300,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L30-L35"
+      "specLocation": "_types/sort.ts#L29-L34"
     },
     {
       "kind": "enum",
@@ -52305,7 +52318,7 @@
         "name": "SortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L120-L129"
+      "specLocation": "_types/sort.ts#L119-L128"
     },
     {
       "kind": "enum",
@@ -52475,7 +52488,7 @@
         "name": "FieldSortNumericType",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L37-L42"
+      "specLocation": "_types/sort.ts#L36-L41"
     },
     {
       "kind": "interface",
@@ -52496,7 +52509,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L55-L57"
+      "specLocation": "_types/sort.ts#L54-L56"
     },
     {
       "attachedBehaviors": [
@@ -52618,7 +52631,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L59-L71"
+      "specLocation": "_types/sort.ts#L58-L70"
     },
     {
       "kind": "enum",
@@ -52729,7 +52742,7 @@
           }
         }
       ],
-      "specLocation": "_types/sort.ts#L73-L79"
+      "specLocation": "_types/sort.ts#L72-L78"
     },
     {
       "kind": "enum",
@@ -52748,7 +52761,7 @@
         "name": "ScriptSortType",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L81-L85"
+      "specLocation": "_types/sort.ts#L80-L84"
     },
     {
       "codegenNames": [
@@ -54673,7 +54686,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L87-L169"
+      "specLocation": "_types/query_dsl/specialized.ts#L86-L168"
     },
     {
       "codegenNames": [
@@ -54688,7 +54701,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L195-L200",
+      "specLocation": "_types/query_dsl/specialized.ts#L194-L199",
       "type": {
         "items": [
           {
@@ -54820,7 +54833,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L171-L193"
+      "specLocation": "_types/query_dsl/specialized.ts#L170-L192"
     },
     {
       "kind": "enum",
@@ -55403,7 +55416,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L202-L239"
+      "specLocation": "_types/query_dsl/specialized.ts#L201-L238"
     },
     {
       "inherits": {
@@ -55462,7 +55475,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L241-L260",
+      "specLocation": "_types/query_dsl/specialized.ts#L240-L259",
       "variants": {
         "kind": "container"
       }
@@ -55499,7 +55512,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L262-L271"
+      "specLocation": "_types/query_dsl/specialized.ts#L261-L270"
     },
     {
       "inherits": {
@@ -56357,7 +56370,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L302-L325"
+      "specLocation": "_types/query_dsl/specialized.ts#L301-L324"
     },
     {
       "inherits": {
@@ -56385,7 +56398,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L284-L289"
+      "specLocation": "_types/query_dsl/specialized.ts#L283-L288"
     },
     {
       "kind": "interface",
@@ -56394,7 +56407,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L273-L273"
+      "specLocation": "_types/query_dsl/specialized.ts#L272-L272"
     },
     {
       "inherits": {
@@ -56422,7 +56435,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L277-L282"
+      "specLocation": "_types/query_dsl/specialized.ts#L276-L281"
     },
     {
       "inherits": {
@@ -56437,7 +56450,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L275-L275"
+      "specLocation": "_types/query_dsl/specialized.ts#L274-L274"
     },
     {
       "inherits": {
@@ -56477,7 +56490,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L291-L300"
+      "specLocation": "_types/query_dsl/specialized.ts#L290-L299"
     },
     {
       "inherits": {
@@ -56616,7 +56629,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L381-L385"
+      "specLocation": "_types/query_dsl/specialized.ts#L380-L384"
     },
     {
       "inherits": {
@@ -56644,7 +56657,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L327-L333"
+      "specLocation": "_types/query_dsl/specialized.ts#L326-L332"
     },
     {
       "inherits": {
@@ -56696,7 +56709,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L335-L349"
+      "specLocation": "_types/query_dsl/specialized.ts#L334-L348"
     },
     {
       "inherits": {
@@ -56795,7 +56808,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L351-L364"
+      "specLocation": "_types/query_dsl/specialized.ts#L350-L363"
     },
     {
       "kind": "interface",
@@ -56841,7 +56854,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L366-L379"
+      "specLocation": "_types/query_dsl/specialized.ts#L365-L378"
     },
     {
       "inherits": {
@@ -58219,7 +58232,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/WeightedTokensQuery.ts#L27-L32"
+      "specLocation": "_types/query_dsl/WeightedTokensQuery.ts#L25-L30"
     },
     {
       "inherits": {
@@ -58477,7 +58490,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L67-L102"
+      "specLocation": "_types/aggregations/bucket.ts#L72-L107"
     },
     {
       "kind": "enum",
@@ -58505,7 +58518,7 @@
         "name": "MinimumInterval",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L104-L111"
+      "specLocation": "_types/aggregations/bucket.ts#L109-L116"
     },
     {
       "description": "A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a\nnumber of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string\nrepresentation.",
@@ -59377,7 +59390,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1045-L1109"
+      "specLocation": "_types/aggregations/bucket.ts#L1050-L1114"
     },
     {
       "codegenNames": [
@@ -59389,7 +59402,7 @@
         "name": "CategorizeTextAnalyzer",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1111-L1114",
+      "specLocation": "_types/aggregations/bucket.ts#L1116-L1119",
       "type": {
         "items": [
           {
@@ -59457,7 +59470,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1116-L1120"
+      "specLocation": "_types/aggregations/bucket.ts#L1121-L1125"
     },
     {
       "inherits": {
@@ -59485,7 +59498,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L113-L118"
+      "specLocation": "_types/aggregations/bucket.ts#L118-L123"
     },
     {
       "inherits": {
@@ -59552,7 +59565,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L122-L138"
+      "specLocation": "_types/aggregations/bucket.ts#L127-L143"
     },
     {
       "kind": "type_alias",
@@ -59560,7 +59573,7 @@
         "name": "CompositeAggregateKey",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L120-L120",
+      "specLocation": "_types/aggregations/bucket.ts#L125-L125",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -59636,7 +59649,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L140-L157"
+      "specLocation": "_types/aggregations/bucket.ts#L145-L162"
     },
     {
       "inherits": {
@@ -59651,7 +59664,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/bucket.ts#L170-L170"
+      "specLocation": "_types/aggregations/bucket.ts#L175-L175"
     },
     {
       "kind": "interface",
@@ -59729,7 +59742,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L159-L168"
+      "specLocation": "_types/aggregations/bucket.ts#L164-L173"
     },
     {
       "kind": "enum",
@@ -59815,7 +59828,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L172-L174"
+      "specLocation": "_types/aggregations/bucket.ts#L177-L179"
     },
     {
       "inherits": {
@@ -59888,7 +59901,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L176-L184"
+      "specLocation": "_types/aggregations/bucket.ts#L181-L189"
     },
     {
       "description": "A date histogram interval. Similar to `Duration` with additional units: `w` (week), `M` (month), `q` (quarter) and\n`y` (year)",
@@ -59973,7 +59986,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L186-L189"
+      "specLocation": "_types/aggregations/bucket.ts#L191-L194"
     },
     {
       "inherits": {
@@ -60225,7 +60238,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L191-L249"
+      "specLocation": "_types/aggregations/bucket.ts#L196-L254"
     },
     {
       "kind": "enum",
@@ -60283,7 +60296,7 @@
         "name": "CalendarInterval",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L251-L268"
+      "specLocation": "_types/aggregations/bucket.ts#L256-L273"
     },
     {
       "generics": [
@@ -60323,7 +60336,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L491-L500"
+      "specLocation": "_types/aggregations/bucket.ts#L496-L505"
     },
     {
       "kind": "type_alias",
@@ -60331,7 +60344,7 @@
         "name": "AggregateOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L983-L985",
+      "specLocation": "_types/aggregations/bucket.ts#L988-L990",
       "type": {
         "items": [
           {
@@ -60466,7 +60479,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L270-L296"
+      "specLocation": "_types/aggregations/bucket.ts#L275-L301"
     },
     {
       "kind": "interface",
@@ -60512,7 +60525,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L307-L320"
+      "specLocation": "_types/aggregations/bucket.ts#L312-L325"
     },
     {
       "codegenNames": [
@@ -60525,7 +60538,7 @@
         "name": "FieldDateMath",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L298-L305",
+      "specLocation": "_types/aggregations/bucket.ts#L303-L310",
       "type": {
         "items": [
           {
@@ -60652,7 +60665,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L322-L343"
+      "specLocation": "_types/aggregations/bucket.ts#L327-L348"
     },
     {
       "kind": "enum",
@@ -60674,7 +60687,7 @@
         "name": "SamplerAggregationExecutionHint",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L345-L358"
+      "specLocation": "_types/aggregations/bucket.ts#L350-L363"
     },
     {
       "inherits": {
@@ -60806,7 +60819,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1167-L1191"
+      "specLocation": "_types/aggregations/bucket.ts#L1172-L1196"
     },
     {
       "kind": "interface",
@@ -60851,7 +60864,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1153-L1165"
+      "specLocation": "_types/aggregations/bucket.ts#L1158-L1170"
     },
     {
       "codegenNames": [
@@ -60863,7 +60876,7 @@
         "name": "TermsExclude",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1008-L1009",
+      "specLocation": "_types/aggregations/bucket.ts#L1013-L1014",
       "type": {
         "items": [
           {
@@ -60898,7 +60911,7 @@
         "name": "TermsInclude",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L1005-L1006",
+      "specLocation": "_types/aggregations/bucket.ts#L1010-L1011",
       "type": {
         "items": [
           {
@@ -60961,7 +60974,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1011-L1020"
+      "specLocation": "_types/aggregations/bucket.ts#L1016-L1025"
     },
     {
       "inherits": {
@@ -61036,7 +61049,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L360-L380"
+      "specLocation": "_types/aggregations/bucket.ts#L365-L385"
     },
     {
       "codegenNames": [
@@ -61236,7 +61249,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L382-L405"
+      "specLocation": "_types/aggregations/bucket.ts#L387-L410"
     },
     {
       "kind": "interface",
@@ -61282,7 +61295,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L674-L687"
+      "specLocation": "_types/aggregations/bucket.ts#L679-L692"
     },
     {
       "inherits": {
@@ -61360,7 +61373,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L407-L432"
+      "specLocation": "_types/aggregations/bucket.ts#L412-L437"
     },
     {
       "codegenNames": [
@@ -61586,7 +61599,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L434-L460"
+      "specLocation": "_types/aggregations/bucket.ts#L439-L465"
     },
     {
       "kind": "type_alias",
@@ -61679,7 +61692,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L462-L487"
+      "specLocation": "_types/aggregations/bucket.ts#L467-L492"
     },
     {
       "inherits": {
@@ -61694,7 +61707,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/bucket.ts#L489-L489"
+      "specLocation": "_types/aggregations/bucket.ts#L494-L494"
     },
     {
       "inherits": {
@@ -61859,7 +61872,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L502-L548"
+      "specLocation": "_types/aggregations/bucket.ts#L507-L553"
     },
     {
       "inherits": {
@@ -61902,7 +61915,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L550-L559"
+      "specLocation": "_types/aggregations/bucket.ts#L555-L564"
     },
     {
       "kind": "interface",
@@ -61972,7 +61985,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L561-L574"
+      "specLocation": "_types/aggregations/bucket.ts#L566-L579"
     },
     {
       "inherits": {
@@ -62063,7 +62076,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1122-L1151"
+      "specLocation": "_types/aggregations/bucket.ts#L1127-L1156"
     },
     {
       "inherits": {
@@ -62458,7 +62471,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L576-L582"
+      "specLocation": "_types/aggregations/bucket.ts#L581-L587"
     },
     {
       "kind": "type_alias",
@@ -63116,7 +63129,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L584-L624"
+      "specLocation": "_types/aggregations/bucket.ts#L589-L629"
     },
     {
       "kind": "enum",
@@ -63134,7 +63147,7 @@
         "name": "TermsAggregationCollectMode",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L987-L996"
+      "specLocation": "_types/aggregations/bucket.ts#L992-L1001"
     },
     {
       "kind": "interface",
@@ -63168,7 +63181,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L626-L636"
+      "specLocation": "_types/aggregations/bucket.ts#L631-L641"
     },
     {
       "inherits": {
@@ -63196,7 +63209,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L638-L643"
+      "specLocation": "_types/aggregations/bucket.ts#L643-L648"
     },
     {
       "inherits": {
@@ -63287,7 +63300,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L645-L650"
+      "specLocation": "_types/aggregations/bucket.ts#L650-L655"
     },
     {
       "inherits": {
@@ -63599,7 +63612,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L652-L672"
+      "specLocation": "_types/aggregations/bucket.ts#L657-L677"
     },
     {
       "inherits": {
@@ -63700,7 +63713,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L689-L719"
+      "specLocation": "_types/aggregations/bucket.ts#L694-L724"
     },
     {
       "inherits": {
@@ -63787,7 +63800,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L721-L727"
+      "specLocation": "_types/aggregations/bucket.ts#L726-L732"
     },
     {
       "inherits": {
@@ -63816,7 +63829,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L729-L735"
+      "specLocation": "_types/aggregations/bucket.ts#L734-L740"
     },
     {
       "inherits": {
@@ -64124,7 +64137,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L772-L836"
+      "specLocation": "_types/aggregations/bucket.ts#L777-L841"
     },
     {
       "kind": "interface",
@@ -64158,7 +64171,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L737-L746"
+      "specLocation": "_types/aggregations/bucket.ts#L742-L751"
     },
     {
       "kind": "enum",
@@ -64180,7 +64193,7 @@
         "name": "TermsAggregationExecutionHint",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/bucket.ts#L998-L1003"
+      "specLocation": "_types/aggregations/bucket.ts#L1003-L1008"
     },
     {
       "kind": "interface",
@@ -64202,7 +64215,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L748-L753"
+      "specLocation": "_types/aggregations/bucket.ts#L753-L758"
     },
     {
       "kind": "interface",
@@ -64236,7 +64249,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L755-L764"
+      "specLocation": "_types/aggregations/bucket.ts#L760-L769"
     },
     {
       "kind": "interface",
@@ -64245,7 +64258,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/bucket.ts#L766-L766"
+      "specLocation": "_types/aggregations/bucket.ts#L771-L771"
     },
     {
       "kind": "interface",
@@ -64266,7 +64279,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L768-L770"
+      "specLocation": "_types/aggregations/bucket.ts#L773-L775"
     },
     {
       "inherits": {
@@ -64487,7 +64500,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L838-L910"
+      "specLocation": "_types/aggregations/bucket.ts#L843-L915"
     },
     {
       "inherits": {
@@ -64794,7 +64807,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L912-L977"
+      "specLocation": "_types/aggregations/bucket.ts#L917-L982"
     },
     {
       "inherits": {
@@ -65418,7 +65431,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/bucket.ts#L1022-L1043"
+      "specLocation": "_types/aggregations/bucket.ts#L1027-L1048"
     },
     {
       "kind": "interface",
@@ -65742,7 +65755,7 @@
         "name": "SortResults",
         "namespace": "_types"
       },
-      "specLocation": "_types/sort.ts#L107-L107",
+      "specLocation": "_types/sort.ts#L106-L106",
       "type": {
         "kind": "array_of",
         "value": {
@@ -77118,7 +77131,7 @@
         "name": "NoriDecompoundMode",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L75-L79"
+      "specLocation": "_types/analysis/tokenizers.ts#L74-L78"
     },
     {
       "kind": "interface",
@@ -79847,7 +79860,7 @@
         "name": "DelimitedPayloadEncoding",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/token_filters.ts#L62-L66"
+      "specLocation": "_types/analysis/token_filters.ts#L61-L65"
     },
     {
       "kind": "enum",
@@ -79863,7 +79876,7 @@
         "name": "EdgeNGramSide",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/token_filters.ts#L74-L77"
+      "specLocation": "_types/analysis/token_filters.ts#L73-L76"
     },
     {
       "kind": "enum",
@@ -79968,7 +79981,7 @@
         "name": "KeepTypesMode",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/token_filters.ts#L215-L218"
+      "specLocation": "_types/analysis/token_filters.ts#L214-L217"
     },
     {
       "docId": "analysis-normalizers",
@@ -80209,7 +80222,7 @@
         "name": "SynonymFormat",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/token_filters.ts#L105-L108"
+      "specLocation": "_types/analysis/token_filters.ts#L104-L107"
     },
     {
       "kind": "enum",
@@ -80237,7 +80250,7 @@
         "name": "TokenChar",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L47-L54"
+      "specLocation": "_types/analysis/tokenizers.ts#L46-L53"
     },
     {
       "codegenNames": [
@@ -80249,7 +80262,7 @@
         "name": "TokenFilter",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/token_filters.ts#L346-L348",
+      "specLocation": "_types/analysis/token_filters.ts#L345-L347",
       "type": {
         "items": [
           {
@@ -80276,7 +80289,7 @@
         "name": "TokenFilterDefinition",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/token_filters.ts#L350-L402",
+      "specLocation": "_types/analysis/token_filters.ts#L349-L401",
       "type": {
         "items": [
           {
@@ -80659,7 +80672,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L170-L173"
+      "specLocation": "_types/analysis/token_filters.ts#L169-L172"
     },
     {
       "kind": "interface",
@@ -80680,7 +80693,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L40-L42"
+      "specLocation": "_types/analysis/token_filters.ts#L39-L41"
     },
     {
       "inherits": {
@@ -80751,7 +80764,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L175-L181"
+      "specLocation": "_types/analysis/token_filters.ts#L174-L180"
     },
     {
       "inherits": {
@@ -80800,7 +80813,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L183-L187"
+      "specLocation": "_types/analysis/token_filters.ts#L182-L186"
     },
     {
       "inherits": {
@@ -80846,7 +80859,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L68-L72"
+      "specLocation": "_types/analysis/token_filters.ts#L67-L71"
     },
     {
       "inherits": {
@@ -80923,7 +80936,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L79-L85"
+      "specLocation": "_types/analysis/token_filters.ts#L78-L84"
     },
     {
       "inherits": {
@@ -80992,7 +81005,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L189-L194"
+      "specLocation": "_types/analysis/token_filters.ts#L188-L193"
     },
     {
       "inherits": {
@@ -81038,7 +81051,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L196-L200"
+      "specLocation": "_types/analysis/token_filters.ts#L195-L199"
     },
     {
       "inherits": {
@@ -81106,7 +81119,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L202-L208"
+      "specLocation": "_types/analysis/token_filters.ts#L201-L207"
     },
     {
       "inherits": {
@@ -81130,7 +81143,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L58-L60"
+      "specLocation": "_types/analysis/token_filters.ts#L57-L59"
     },
     {
       "inherits": {
@@ -81226,7 +81239,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L44-L52"
+      "specLocation": "_types/analysis/token_filters.ts#L43-L51"
     },
     {
       "inherits": {
@@ -81275,7 +81288,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L220-L224"
+      "specLocation": "_types/analysis/token_filters.ts#L219-L223"
     },
     {
       "inherits": {
@@ -81335,7 +81348,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L226-L231"
+      "specLocation": "_types/analysis/token_filters.ts#L225-L230"
     },
     {
       "inherits": {
@@ -81406,7 +81419,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L233-L239"
+      "specLocation": "_types/analysis/token_filters.ts#L232-L238"
     },
     {
       "inherits": {
@@ -81430,7 +81443,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L241-L243"
+      "specLocation": "_types/analysis/token_filters.ts#L240-L242"
     },
     {
       "inherits": {
@@ -81476,7 +81489,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L245-L249"
+      "specLocation": "_types/analysis/token_filters.ts#L244-L248"
     },
     {
       "inherits": {
@@ -81531,7 +81544,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L251-L255"
+      "specLocation": "_types/analysis/token_filters.ts#L250-L254"
     },
     {
       "inherits": {
@@ -81566,7 +81579,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L257-L260"
+      "specLocation": "_types/analysis/token_filters.ts#L256-L259"
     },
     {
       "inherits": {
@@ -81624,7 +81637,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L262-L266"
+      "specLocation": "_types/analysis/token_filters.ts#L261-L265"
     },
     {
       "inherits": {
@@ -81690,7 +81703,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L268-L273"
+      "specLocation": "_types/analysis/token_filters.ts#L267-L272"
     },
     {
       "inherits": {
@@ -81728,7 +81741,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L275-L278"
+      "specLocation": "_types/analysis/token_filters.ts#L274-L277"
     },
     {
       "inherits": {
@@ -81786,7 +81799,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L280-L284"
+      "specLocation": "_types/analysis/token_filters.ts#L279-L283"
     },
     {
       "inherits": {
@@ -81854,7 +81867,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L286-L292"
+      "specLocation": "_types/analysis/token_filters.ts#L285-L291"
     },
     {
       "inherits": {
@@ -81878,7 +81891,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L294-L296"
+      "specLocation": "_types/analysis/token_filters.ts#L293-L295"
     },
     {
       "inherits": {
@@ -81913,7 +81926,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L298-L301"
+      "specLocation": "_types/analysis/token_filters.ts#L297-L300"
     },
     {
       "inherits": {
@@ -81937,7 +81950,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L303-L305"
+      "specLocation": "_types/analysis/token_filters.ts#L302-L304"
     },
     {
       "inherits": {
@@ -81961,7 +81974,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L307-L309"
+      "specLocation": "_types/analysis/token_filters.ts#L306-L308"
     },
     {
       "inherits": {
@@ -82075,7 +82088,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L87-L95"
+      "specLocation": "_types/analysis/token_filters.ts#L86-L94"
     },
     {
       "inherits": {
@@ -82110,7 +82123,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L311-L314"
+      "specLocation": "_types/analysis/token_filters.ts#L310-L313"
     },
     {
       "inherits": {
@@ -82159,7 +82172,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L316-L320"
+      "specLocation": "_types/analysis/token_filters.ts#L315-L319"
     },
     {
       "inherits": {
@@ -82197,7 +82210,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L322-L326"
+      "specLocation": "_types/analysis/token_filters.ts#L321-L325"
     },
     {
       "inherits": {
@@ -82265,7 +82278,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L97-L103"
+      "specLocation": "_types/analysis/token_filters.ts#L96-L102"
     },
     {
       "inherits": {
@@ -82380,7 +82393,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L110-L120"
+      "specLocation": "_types/analysis/token_filters.ts#L109-L119"
     },
     {
       "inherits": {
@@ -82495,7 +82508,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L122-L132"
+      "specLocation": "_types/analysis/token_filters.ts#L121-L131"
     },
     {
       "inherits": {
@@ -82519,7 +82532,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L328-L330"
+      "specLocation": "_types/analysis/token_filters.ts#L327-L329"
     },
     {
       "inherits": {
@@ -82554,7 +82567,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L332-L335"
+      "specLocation": "_types/analysis/token_filters.ts#L331-L334"
     },
     {
       "inherits": {
@@ -82589,7 +82602,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L337-L340"
+      "specLocation": "_types/analysis/token_filters.ts#L336-L339"
     },
     {
       "inherits": {
@@ -82613,7 +82626,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L342-L344"
+      "specLocation": "_types/analysis/token_filters.ts#L341-L343"
     },
     {
       "inherits": {
@@ -82817,7 +82830,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L151-L168"
+      "specLocation": "_types/analysis/token_filters.ts#L150-L167"
     },
     {
       "inherits": {
@@ -82999,7 +83012,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L134-L149"
+      "specLocation": "_types/analysis/token_filters.ts#L133-L148"
     },
     {
       "inherits": {
@@ -83508,7 +83521,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/token_filters.ts#L54-L56"
+      "specLocation": "_types/analysis/token_filters.ts#L53-L55"
     },
     {
       "codegenNames": [
@@ -83520,7 +83533,7 @@
         "name": "Tokenizer",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L120-L122",
+      "specLocation": "_types/analysis/tokenizers.ts#L119-L121",
       "type": {
         "items": [
           {
@@ -83547,7 +83560,7 @@
         "name": "TokenizerDefinition",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/tokenizers.ts#L124-L142",
+      "specLocation": "_types/analysis/tokenizers.ts#L123-L141",
       "type": {
         "items": [
           {
@@ -83704,7 +83717,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L56-L60"
+      "specLocation": "_types/analysis/tokenizers.ts#L55-L59"
     },
     {
       "kind": "interface",
@@ -83725,7 +83738,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L27-L29"
+      "specLocation": "_types/analysis/tokenizers.ts#L26-L28"
     },
     {
       "inherits": {
@@ -83796,7 +83809,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L31-L37"
+      "specLocation": "_types/analysis/tokenizers.ts#L30-L36"
     },
     {
       "inherits": {
@@ -83831,7 +83844,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L62-L65"
+      "specLocation": "_types/analysis/tokenizers.ts#L61-L64"
     },
     {
       "inherits": {
@@ -83855,7 +83868,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L67-L69"
+      "specLocation": "_types/analysis/tokenizers.ts#L66-L68"
     },
     {
       "inherits": {
@@ -83879,7 +83892,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L71-L73"
+      "specLocation": "_types/analysis/tokenizers.ts#L70-L72"
     },
     {
       "inherits": {
@@ -83950,7 +83963,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L39-L45"
+      "specLocation": "_types/analysis/tokenizers.ts#L38-L44"
     },
     {
       "inherits": {
@@ -84021,7 +84034,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L81-L87"
+      "specLocation": "_types/analysis/tokenizers.ts#L80-L86"
     },
     {
       "inherits": {
@@ -84127,7 +84140,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L89-L96"
+      "specLocation": "_types/analysis/tokenizers.ts#L88-L95"
     },
     {
       "inherits": {
@@ -84162,7 +84175,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L105-L108"
+      "specLocation": "_types/analysis/tokenizers.ts#L104-L107"
     },
     {
       "inherits": {
@@ -84197,7 +84210,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L110-L113"
+      "specLocation": "_types/analysis/tokenizers.ts#L109-L112"
     },
     {
       "inherits": {
@@ -84232,7 +84245,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L115-L118"
+      "specLocation": "_types/analysis/tokenizers.ts#L114-L117"
     },
     {
       "inherits": {
@@ -84393,7 +84406,7 @@
           }
         }
       ],
-      "specLocation": "_types/analysis/tokenizers.ts#L98-L103"
+      "specLocation": "_types/analysis/tokenizers.ts#L97-L102"
     },
     {
       "inherits": {
@@ -90010,7 +90023,7 @@
         "name": "FollowerIndexStatus",
         "namespace": "ccr.follow_info"
       },
-      "specLocation": "ccr/follow_info/types.ts#L30-L33"
+      "specLocation": "ccr/follow_info/types.ts#L32-L35"
     },
     {
       "kind": "enum",
@@ -92498,7 +92511,7 @@
         "name": "ShardStoreAllocation",
         "namespace": "indices.shard_stores"
       },
-      "specLocation": "indices/shard_stores/types.ts#L48-L52"
+      "specLocation": "indices/shard_stores/types.ts#L47-L51"
     },
     {
       "kind": "enum",
@@ -92524,7 +92537,7 @@
         "name": "ShardStoreStatus",
         "namespace": "indices.shard_stores"
       },
-      "specLocation": "indices/shard_stores/types.ts#L63-L72"
+      "specLocation": "indices/shard_stores/types.ts#L62-L71"
     },
     {
       "kind": "enum",
@@ -92702,7 +92715,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L507-L515"
+      "specLocation": "ingest/_types/Processors.ts#L524-L532"
     },
     {
       "kind": "enum",
@@ -92755,7 +92768,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L939-L944"
+      "specLocation": "ingest/_types/Processors.ts#L963-L968"
     },
     {
       "kind": "enum",
@@ -92771,7 +92784,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1164-L1167"
+      "specLocation": "ingest/_types/Processors.ts#L1188-L1191"
     },
     {
       "kind": "enum",
@@ -93159,7 +93172,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L289-L302"
+      "specLocation": "ml/_types/TrainedModel.ts#L288-L301"
     },
     {
       "kind": "enum",
@@ -93181,7 +93194,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L304-L309"
+      "specLocation": "ml/_types/TrainedModel.ts#L303-L308"
     },
     {
       "kind": "enum",
@@ -93203,7 +93216,7 @@
         "name": "DeploymentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L274-L287"
+      "specLocation": "ml/_types/TrainedModel.ts#L273-L286"
     },
     {
       "kind": "enum",
@@ -93399,7 +93412,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L351-L372"
+      "specLocation": "ml/_types/TrainedModel.ts#L350-L371"
     },
     {
       "kind": "enum",
@@ -93480,7 +93493,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L258-L272"
+      "specLocation": "ml/_types/TrainedModel.ts#L257-L271"
     },
     {
       "kind": "enum",
@@ -93496,7 +93509,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L311-L314"
+      "specLocation": "ml/_types/TrainedModel.ts#L310-L313"
     },
     {
       "codegenNames": [
@@ -101290,7 +101303,7 @@
         "name": "UserProfileId",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/UserProfile.ts#L26-L26",
+      "specLocation": "security/_types/UserProfile.ts#L25-L25",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -101421,7 +101434,7 @@
         "name": "ApiKeyAggregate",
         "namespace": "security.query_api_keys"
       },
-      "specLocation": "security/query_api_keys/types.ts#L123-L140",
+      "specLocation": "security/query_api_keys/types.ts#L122-L139",
       "type": {
         "items": [
           {
@@ -102733,7 +102746,7 @@
         "name": "AcknowledgementOptions",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Action.ts#L109-L113"
+      "specLocation": "watcher/_types/Action.ts#L103-L107"
     },
     {
       "kind": "enum",
@@ -102763,7 +102776,7 @@
         "name": "ActionExecutionMode",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Action.ts#L73-L94"
+      "specLocation": "watcher/_types/Action.ts#L67-L88"
     },
     {
       "kind": "enum",
@@ -102785,7 +102798,7 @@
         "name": "ActionStatusOptions",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Action.ts#L102-L107"
+      "specLocation": "watcher/_types/Action.ts#L96-L101"
     },
     {
       "kind": "enum",
@@ -102813,7 +102826,7 @@
         "name": "ActionType",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Action.ts#L64-L71"
+      "specLocation": "watcher/_types/Action.ts#L58-L65"
     },
     {
       "kind": "type_alias",
@@ -102821,7 +102834,7 @@
         "name": "Actions",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Action.ts#L62-L62",
+      "specLocation": "watcher/_types/Action.ts#L56-L56",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -102893,7 +102906,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Action.ts#L131-L136"
+      "specLocation": "watcher/_types/Action.ts#L125-L130"
     },
     {
       "kind": "interface",
@@ -102925,7 +102938,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Action.ts#L115-L118"
+      "specLocation": "watcher/_types/Action.ts#L109-L112"
     },
     {
       "kind": "interface",
@@ -102968,7 +102981,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Action.ts#L120-L124"
+      "specLocation": "watcher/_types/Action.ts#L114-L118"
     },
     {
       "kind": "interface",
@@ -103000,7 +103013,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Action.ts#L126-L129"
+      "specLocation": "watcher/_types/Action.ts#L120-L123"
     },
     {
       "kind": "enum",
@@ -109597,7 +109610,7 @@
           }
         }
       ],
-      "specLocation": "cluster/_types/ComponentTemplate.ts#L30-L33"
+      "specLocation": "cluster/_types/ComponentTemplate.ts#L27-L30"
     },
     {
       "kind": "interface",
@@ -109642,7 +109655,7 @@
           }
         }
       ],
-      "specLocation": "cluster/_types/ComponentTemplate.ts#L35-L40"
+      "specLocation": "cluster/_types/ComponentTemplate.ts#L32-L37"
     },
     {
       "kind": "interface",
@@ -109751,7 +109764,7 @@
           }
         }
       ],
-      "specLocation": "cluster/_types/ComponentTemplate.ts#L42-L54"
+      "specLocation": "cluster/_types/ComponentTemplate.ts#L39-L51"
     },
     {
       "attachedBehaviors": [
@@ -115379,7 +115392,7 @@
           }
         }
       ],
-      "specLocation": "eql/_types/EqlSearchResponseBase.ts#L25-L50"
+      "specLocation": "eql/_types/EqlSearchResponseBase.ts#L24-L49"
     },
     {
       "generics": [
@@ -117523,7 +117536,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L31-L70"
+      "specLocation": "indices/_types/IndexTemplate.ts#L28-L67"
     },
     {
       "kind": "interface",
@@ -117600,7 +117613,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L85-L107"
+      "specLocation": "indices/_types/IndexTemplate.ts#L82-L104"
     },
     {
       "kind": "interface",
@@ -117636,7 +117649,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L72-L83"
+      "specLocation": "indices/_types/IndexTemplate.ts#L69-L80"
     },
     {
       "kind": "interface",
@@ -119168,6 +119181,19 @@
           }
         },
         {
+          "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
+          "name": "deprecated",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Arbitrary metadata about the ingest pipeline. This map is not automatically generated by Elasticsearch.",
           "name": "_meta",
           "required": false,
@@ -119180,7 +119206,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Pipeline.ts#L23-L45"
+      "specLocation": "ingest/_types/Pipeline.ts#L23-L51"
     },
     {
       "kind": "interface",
@@ -119756,10 +119782,18 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
+            "items": [
+              {
+                "kind": "user_defined_value"
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "user_defined_value"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -120023,7 +120057,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L464-L480"
+      "specLocation": "ingest/_types/Processors.ts#L481-L497"
     },
     {
       "inherits": {
@@ -120100,7 +120134,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L482-L505"
+      "specLocation": "ingest/_types/Processors.ts#L499-L522"
     },
     {
       "inherits": {
@@ -120166,7 +120200,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L517-L537"
+      "specLocation": "ingest/_types/Processors.ts#L534-L554"
     },
     {
       "inherits": {
@@ -120264,7 +120298,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L539-L572"
+      "specLocation": "ingest/_types/Processors.ts#L556-L589"
     },
     {
       "inherits": {
@@ -120346,7 +120380,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L614-L641"
+      "specLocation": "ingest/_types/Processors.ts#L631-L658"
     },
     {
       "inherits": {
@@ -120452,7 +120486,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L574-L612"
+      "specLocation": "ingest/_types/Processors.ts#L591-L629"
     },
     {
       "inherits": {
@@ -120518,7 +120552,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L643-L662"
+      "specLocation": "ingest/_types/Processors.ts#L660-L679"
     },
     {
       "inherits": {
@@ -120546,6 +120580,19 @@
           }
         },
         {
+          "description": "Controls the behavior when there is already an existing nested object that conflicts with the expanded field.\nWhen `false`, the processor will merge conflicts by combining the old and the new values into an array.\nWhen `true`, the value from the expanded field will overwrite the existing value.",
+          "name": "override",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "The field that contains the field to expand.\nOnly required if the field to expand is part another object field, because the `field` option can only understand leaf fields.",
           "name": "path",
           "required": false,
@@ -120558,7 +120605,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L664-L675"
+      "specLocation": "ingest/_types/Processors.ts#L681-L699"
     },
     {
       "inherits": {
@@ -120573,7 +120620,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L677-L677"
+      "specLocation": "ingest/_types/Processors.ts#L701-L701"
     },
     {
       "inherits": {
@@ -120677,7 +120724,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L679-L718"
+      "specLocation": "ingest/_types/Processors.ts#L703-L742"
     },
     {
       "inherits": {
@@ -120705,7 +120752,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L720-L726"
+      "specLocation": "ingest/_types/Processors.ts#L744-L750"
     },
     {
       "inherits": {
@@ -120758,7 +120805,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L728-L742"
+      "specLocation": "ingest/_types/Processors.ts#L752-L766"
     },
     {
       "inherits": {
@@ -120978,9 +121025,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.\nElse, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.",
+          "name": "download_database_on_pipeline_creation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L411-L440"
+      "specLocation": "ingest/_types/Processors.ts#L411-L445"
     },
     {
       "inherits": {
@@ -121072,7 +121131,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L744-L769"
+      "specLocation": "ingest/_types/Processors.ts#L768-L793"
     },
     {
       "inherits": {
@@ -121150,7 +121209,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L771-L795"
+      "specLocation": "ingest/_types/Processors.ts#L795-L819"
     },
     {
       "inherits": {
@@ -121204,7 +121263,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L797-L813"
+      "specLocation": "ingest/_types/Processors.ts#L821-L837"
     },
     {
       "inherits": {
@@ -121276,7 +121335,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L815-L834"
+      "specLocation": "ingest/_types/Processors.ts#L839-L858"
     },
     {
       "kind": "interface",
@@ -121310,7 +121369,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L836-L848",
+      "specLocation": "ingest/_types/Processors.ts#L860-L872",
       "variants": {
         "kind": "container"
       }
@@ -121349,7 +121408,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L850-L861"
+      "specLocation": "ingest/_types/Processors.ts#L874-L885"
     },
     {
       "kind": "interface",
@@ -121423,7 +121482,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L863-L889"
+      "specLocation": "ingest/_types/Processors.ts#L887-L913"
     },
     {
       "inherits": {
@@ -121476,7 +121535,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L891-L906"
+      "specLocation": "ingest/_types/Processors.ts#L915-L930"
     },
     {
       "inherits": {
@@ -121555,7 +121614,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L908-L937"
+      "specLocation": "ingest/_types/Processors.ts#L932-L961"
     },
     {
       "inherits": {
@@ -121712,7 +121771,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L946-L998"
+      "specLocation": "ingest/_types/Processors.ts#L970-L1022"
     },
     {
       "inherits": {
@@ -121766,7 +121825,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1000-L1016"
+      "specLocation": "ingest/_types/Processors.ts#L1024-L1040"
     },
     {
       "inherits": {
@@ -121807,7 +121866,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1018-L1029"
+      "specLocation": "ingest/_types/Processors.ts#L1042-L1053"
     },
     {
       "inherits": {
@@ -121860,7 +121919,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1031-L1045"
+      "specLocation": "ingest/_types/Processors.ts#L1055-L1069"
     },
     {
       "inherits": {
@@ -121913,7 +121972,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1047-L1063"
+      "specLocation": "ingest/_types/Processors.ts#L1071-L1087"
     },
     {
       "inherits": {
@@ -121995,7 +122054,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1065-L1093"
+      "specLocation": "ingest/_types/Processors.ts#L1089-L1117"
     },
     {
       "inherits": {
@@ -122067,7 +122126,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1095-L1115"
+      "specLocation": "ingest/_types/Processors.ts#L1119-L1139"
     },
     {
       "inherits": {
@@ -122153,7 +122212,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1117-L1151"
+      "specLocation": "ingest/_types/Processors.ts#L1141-L1175"
     },
     {
       "inherits": {
@@ -122196,7 +122255,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1153-L1162"
+      "specLocation": "ingest/_types/Processors.ts#L1177-L1186"
     },
     {
       "inherits": {
@@ -122249,7 +122308,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1169-L1185"
+      "specLocation": "ingest/_types/Processors.ts#L1193-L1209"
     },
     {
       "inherits": {
@@ -122328,7 +122387,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1187-L1212"
+      "specLocation": "ingest/_types/Processors.ts#L1211-L1236"
     },
     {
       "inherits": {
@@ -122382,7 +122441,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1214-L1230"
+      "specLocation": "ingest/_types/Processors.ts#L1238-L1254"
     },
     {
       "inherits": {
@@ -122436,7 +122495,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1232-L1248"
+      "specLocation": "ingest/_types/Processors.ts#L1256-L1272"
     },
     {
       "inherits": {
@@ -122490,7 +122549,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1250-L1266"
+      "specLocation": "ingest/_types/Processors.ts#L1274-L1290"
     },
     {
       "inherits": {
@@ -122570,7 +122629,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1268-L1294"
+      "specLocation": "ingest/_types/Processors.ts#L1292-L1318"
     },
     {
       "inherits": {
@@ -122648,9 +122707,56 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Controls what properties are added to `target_field`.",
+          "name": "properties",
+          "required": false,
+          "serverDefault": [
+            "name",
+            "major",
+            "minor",
+            "patch",
+            "build",
+            "os",
+            "os_name",
+            "os_major",
+            "os_minor",
+            "device"
+          ],
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.9.0",
+              "stability": "beta"
+            }
+          },
+          "description": "Extracts device type from the user agent string on a best-effort basis.",
+          "name": "extract_device_type",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L442-L462"
+      "specLocation": "ingest/_types/Processors.ts#L447-L479"
     },
     {
       "kind": "interface",
@@ -125405,7 +125511,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L306-L322"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L305-L321"
     },
     {
       "kind": "interface",
@@ -125457,7 +125563,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L84-L101",
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L83-L100",
       "variants": {
         "kind": "container"
       }
@@ -125500,7 +125606,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L227-L236"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L226-L235"
     },
     {
       "kind": "interface",
@@ -125735,7 +125841,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L134-L213"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L133-L212"
     },
     {
       "kind": "interface",
@@ -125805,7 +125911,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L246-L258",
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L245-L257",
       "variants": {
         "kind": "container"
       }
@@ -125864,7 +125970,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L260-L267"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L259-L266"
     },
     {
       "kind": "interface",
@@ -125889,7 +125995,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L269-L272"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L268-L271"
     },
     {
       "kind": "interface",
@@ -125973,7 +126079,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L274-L286"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L273-L285"
     },
     {
       "kind": "interface",
@@ -126007,7 +126113,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L288-L293"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L287-L292"
     },
     {
       "kind": "interface",
@@ -126072,7 +126178,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L295-L304"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L294-L303"
     },
     {
       "kind": "interface",
@@ -126158,7 +126264,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L103-L132"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L102-L131"
     },
     {
       "inherits": {
@@ -126199,7 +126305,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L215-L225"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L214-L224"
     },
     {
       "kind": "interface",
@@ -126240,7 +126346,7 @@
         }
       ],
       "shortcutProperty": "includes",
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L238-L244"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L237-L243"
     },
     {
       "kind": "interface",
@@ -126357,7 +126463,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L77-L82"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L76-L81"
     },
     {
       "kind": "interface",
@@ -126417,7 +126523,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L39-L53"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L38-L52"
     },
     {
       "kind": "interface",
@@ -126514,7 +126620,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L324-L344"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L323-L343"
     },
     {
       "kind": "interface",
@@ -126560,7 +126666,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L373-L381",
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L372-L380",
       "variants": {
         "kind": "container"
       }
@@ -126642,7 +126748,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L383-L402"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L382-L401"
     },
     {
       "kind": "interface",
@@ -126820,7 +126926,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L419-L525"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L418-L524"
     },
     {
       "kind": "interface",
@@ -126872,7 +126978,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L563-L568"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L562-L567"
     },
     {
       "kind": "interface",
@@ -126909,7 +127015,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L570-L575"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L569-L574"
     },
     {
       "kind": "interface",
@@ -126964,7 +127070,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L404-L417"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L403-L416"
     },
     {
       "kind": "interface",
@@ -127049,7 +127155,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L527-L561"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L526-L560"
     },
     {
       "kind": "interface",
@@ -127095,7 +127201,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L364-L371"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L363-L370"
     },
     {
       "kind": "interface",
@@ -127162,7 +127268,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L353-L362"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L352-L361"
     },
     {
       "kind": "interface",
@@ -127196,7 +127302,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/DataframeAnalytics.ts#L346-L351"
+      "specLocation": "ml/_types/DataframeAnalytics.ts#L345-L350"
     },
     {
       "kind": "interface",
@@ -129403,7 +129509,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Bucket.ts#L130-L145"
+      "specLocation": "ml/_types/Bucket.ts#L129-L144"
     },
     {
       "kind": "interface",
@@ -129435,7 +129541,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Bucket.ts#L146-L149"
+      "specLocation": "ml/_types/Bucket.ts#L145-L148"
     },
     {
       "kind": "interface",
@@ -129683,7 +129789,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L165-L200"
+      "specLocation": "ml/_types/TrainedModel.ts#L164-L199"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -130585,7 +130691,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L202-L205"
+      "specLocation": "ml/_types/TrainedModel.ts#L201-L204"
     },
     {
       "kind": "interface",
@@ -130662,7 +130768,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L207-L215"
+      "specLocation": "ml/_types/TrainedModel.ts#L206-L214"
     },
     {
       "kind": "interface",
@@ -130734,7 +130840,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L217-L231"
+      "specLocation": "ml/_types/TrainedModel.ts#L216-L230"
     },
     {
       "kind": "interface",
@@ -130786,7 +130892,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L233-L240"
+      "specLocation": "ml/_types/TrainedModel.ts#L232-L239"
     },
     {
       "kind": "interface",
@@ -130832,7 +130938,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L249-L256"
+      "specLocation": "ml/_types/TrainedModel.ts#L248-L255"
     },
     {
       "kind": "interface",
@@ -130869,7 +130975,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L242-L247"
+      "specLocation": "ml/_types/TrainedModel.ts#L241-L246"
     },
     {
       "kind": "interface",
@@ -130890,7 +130996,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L420-L422"
+      "specLocation": "ml/_types/TrainedModel.ts#L419-L421"
     },
     {
       "kind": "interface",
@@ -130911,7 +131017,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L424-L426"
+      "specLocation": "ml/_types/TrainedModel.ts#L423-L425"
     },
     {
       "kind": "interface",
@@ -130945,7 +131051,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L428-L437"
+      "specLocation": "ml/_types/TrainedModel.ts#L427-L436"
     },
     {
       "kind": "interface",
@@ -131036,7 +131142,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L42-L60"
+      "specLocation": "ml/_types/TrainedModel.ts#L41-L59"
     },
     {
       "kind": "interface",
@@ -131237,7 +131343,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L62-L102"
+      "specLocation": "ml/_types/TrainedModel.ts#L61-L101"
     },
     {
       "kind": "interface",
@@ -131283,7 +131389,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L394-L401"
+      "specLocation": "ml/_types/TrainedModel.ts#L393-L400"
     },
     {
       "kind": "interface",
@@ -131443,7 +131549,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L133-L163"
+      "specLocation": "ml/_types/TrainedModel.ts#L132-L162"
     },
     {
       "kind": "interface",
@@ -131501,7 +131607,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L374-L392"
+      "specLocation": "ml/_types/TrainedModel.ts#L373-L391"
     },
     {
       "kind": "interface",
@@ -131582,7 +131688,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L104-L124"
+      "specLocation": "ml/_types/TrainedModel.ts#L103-L123"
     },
     {
       "kind": "interface",
@@ -131616,7 +131722,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L126-L131"
+      "specLocation": "ml/_types/TrainedModel.ts#L125-L130"
     },
     {
       "kind": "interface",
@@ -134034,7 +134140,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L403-L418"
+      "specLocation": "ml/_types/TrainedModel.ts#L402-L417"
     },
     {
       "kind": "interface",
@@ -134145,7 +134251,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L316-L349"
+      "specLocation": "ml/_types/TrainedModel.ts#L315-L348"
     },
     {
       "kind": "interface",
@@ -136601,7 +136707,7 @@
           }
         }
       ],
-      "specLocation": "search_application/put_behavioral_analytics/BehavioralAnalyticsPutResponse.ts#L28-L33"
+      "specLocation": "search_application/put_behavioral_analytics/BehavioralAnalyticsPutResponse.ts#L27-L32"
     },
     {
       "kind": "interface",
@@ -136815,7 +136921,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/ApiKey.ts#L27-L89"
+      "specLocation": "security/_types/ApiKey.ts#L26-L88"
     },
     {
       "kind": "interface",
@@ -136932,7 +137038,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L28-L61"
+      "specLocation": "security/_types/RoleDescriptor.ts#L31-L64"
     },
     {
       "kind": "interface",
@@ -137420,7 +137526,7 @@
           }
         }
       ],
-      "specLocation": "security/query_api_keys/types.ts#L64-L121",
+      "specLocation": "security/query_api_keys/types.ts#L63-L120",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -137643,7 +137749,7 @@
           }
         }
       ],
-      "specLocation": "security/query_api_keys/types.ts#L142-L206",
+      "specLocation": "security/query_api_keys/types.ts#L141-L205",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -137722,7 +137828,7 @@
           }
         }
       ],
-      "specLocation": "security/query_api_keys/types.ts#L208-L228"
+      "specLocation": "security/query_api_keys/types.ts#L207-L227"
     },
     {
       "kind": "interface",

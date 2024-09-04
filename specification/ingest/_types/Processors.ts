@@ -303,7 +303,7 @@ export class AppendProcessor extends ProcessorBase {
   /**
    * The value to be appended. Supports template snippets.
    */
-  value: UserDefinedValue[]
+  value: UserDefinedValue | UserDefinedValue[]
   /**
    * If `false`, the processor does not append values already present in the field.
    * @server_default true
@@ -437,6 +437,11 @@ export class GeoIpProcessor extends ProcessorBase {
    * @server_default geoip
    */
   target_field?: Field
+  /**
+   * If `true` (and if `ingest.geoip.downloader.eager.download` is `false`), the missing database is downloaded when the pipeline is created.
+   * Else, the download is triggered by when the pipeline is used as the `default_pipeline` or `final_pipeline` in an index.
+   */
+  download_database_on_pipeline_creation?: boolean
 }
 
 export class UserAgentProcessor extends ProcessorBase {
@@ -459,6 +464,18 @@ export class UserAgentProcessor extends ProcessorBase {
    * @server_default user_agent
    */
   target_field?: Field
+  /**
+   * Controls what properties are added to `target_field`.
+   * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
+   */
+  properties?: string[]
+  /**
+   * Extracts device type from the user agent string on a best-effort basis.
+   * @server_default false
+   * @availability stack since=8.9.0 stability=beta
+   * @availability serverless
+   */
+  extract_device_type?: boolean
 }
 
 export class BytesProcessor extends ProcessorBase {
@@ -667,6 +684,13 @@ export class DotExpanderProcessor extends ProcessorBase {
    * If set to `*`, all top-level fields will be expanded.
    */
   field: Field
+  /**
+   * Controls the behavior when there is already an existing nested object that conflicts with the expanded field.
+   * When `false`, the processor will merge conflicts by combining the old and the new values into an array.
+   * When `true`, the value from the expanded field will overwrite the existing value.
+   * @server_default false
+   */
+  override?: boolean
   /**
    * The field that contains the field to expand.
    * Only required if the field to expand is part another object field, because the `field` option can only understand leaf fields.
