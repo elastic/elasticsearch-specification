@@ -29,10 +29,6 @@
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open",
         "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)"
-      },
-      "ignore_unavailable": {
-        "type": "boolean",
-        "description": "Ignore unavailable indexes (default: false)"
       }
     }
   }
