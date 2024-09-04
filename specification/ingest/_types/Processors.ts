@@ -175,6 +175,13 @@ export class ProcessorContainer {
    */
   pipeline?: PipelineProcessor
   /**
+   * The Redact processor uses the Grok rules engine to obscure text in the input document matching the given Grok patterns.
+   * The processor can be used to obscure Personal Identifying Information (PII) by configuring it to detect known patterns such as email or IP addresses.
+   * Text that matches a Grok pattern is replaced with a configurable string such as `<EMAIL>` where an email address is matched or simply replace all matches with the text `<REDACTED>` if preferred.
+   * @doc_id redact-processor
+   */
+  redact?: RedactProcessor
+  /**
    * Removes existing fields.
    * If one field doesn’t exist, an exception will be thrown.
    * @doc_id remove-processor
@@ -1026,6 +1033,42 @@ export class PipelineProcessor extends ProcessorBase {
    * @server_default false
    */
   ignore_missing_pipeline?: boolean
+}
+
+export class RedactProcessor extends ProcessorBase {
+  /**
+   * The field to be redacted
+   */
+  field: Field
+  /**
+   * A list of grok expressions to match and redact named captures with
+   */
+  patterns: string[]
+  /*
+   * A map of pattern-name and pattern tuples defining custom patterns to be used by the processor.
+   * Patterns matching existing names will override the pre-existing definition
+   */
+  pattern_definitions?: Dictionary<string, string>
+  /**
+   * Start a redacted section with this token
+   * @server_default <
+   */
+  prefix?: string
+  /**
+   * End a redacted section with this token
+   * @server_default >
+   */
+  suffix?: string
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document
+   * @server_default false
+   */
+  skip_if_unlicensed?: boolean
 }
 
 export class RemoveProcessor extends ProcessorBase {

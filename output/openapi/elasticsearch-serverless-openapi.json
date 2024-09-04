@@ -55235,6 +55235,9 @@
           "pipeline": {
             "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
           },
+          "redact": {
+            "$ref": "#/components/schemas/ingest._types:RedactProcessor"
+          },
           "remove": {
             "$ref": "#/components/schemas/ingest._types:RemoveProcessor"
           },
@@ -56228,6 +56231,54 @@
             },
             "required": [
               "name"
+            ]
+          }
+        ]
+      },
+      "ingest._types:RedactProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "patterns": {
+                "description": "A list of grok expressions to match and redact named captures with",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "pattern_definitions": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "prefix": {
+                "description": "Start a redacted section with this token",
+                "type": "string"
+              },
+              "suffix": {
+                "description": "End a redacted section with this token",
+                "type": "string"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "skip_if_unlicensed": {
+                "description": "If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field",
+              "patterns"
             ]
           }
         ]

@@ -92728,7 +92728,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L507-L515"
+      "specLocation": "ingest/_types/Processors.ts#L514-L522"
     },
     {
       "kind": "enum",
@@ -92744,7 +92744,7 @@
         "name": "GeoGridTargetFormat",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L406-L409"
+      "specLocation": "ingest/_types/Processors.ts#L413-L416"
     },
     {
       "kind": "enum",
@@ -92763,7 +92763,7 @@
         "name": "GeoGridTileType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L400-L404"
+      "specLocation": "ingest/_types/Processors.ts#L407-L411"
     },
     {
       "kind": "enum",
@@ -92781,7 +92781,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L939-L944"
+      "specLocation": "ingest/_types/Processors.ts#L946-L951"
     },
     {
       "kind": "enum",
@@ -92797,7 +92797,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1164-L1167"
+      "specLocation": "ingest/_types/Processors.ts#L1207-L1210"
     },
     {
       "kind": "enum",
@@ -92837,7 +92837,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L284-L295"
+      "specLocation": "ingest/_types/Processors.ts#L291-L302"
     },
     {
       "kind": "enum",
@@ -119565,6 +119565,20 @@
           }
         },
         {
+          "description": "The Redact processor uses the Grok rules engine to obscure text in the input document matching the given Grok patterns.\nThe processor can be used to obscure Personal Identifying Information (PII) by configuring it to detect known patterns such as email or IP addresses.\nText that matches a Grok pattern is replaced with a configurable string such as `<EMAIL>` where an email address is matched or simply replace all matches with the text `<REDACTED>` if preferred.",
+          "docId": "redact-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/redact-processor.html",
+          "name": "redact",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RedactProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Removes existing fields.\nIf one field doesn’t exist, an exception will be thrown.",
           "docId": "remove-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/remove-processor.html",
@@ -119746,7 +119760,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L257",
+      "specLocation": "ingest/_types/Processors.ts#L27-L264",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -119802,7 +119816,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L297-L312"
+      "specLocation": "ingest/_types/Processors.ts#L304-L319"
     },
     {
       "kind": "interface",
@@ -119875,7 +119889,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L259-L282"
+      "specLocation": "ingest/_types/Processors.ts#L266-L289"
     },
     {
       "inherits": {
@@ -119995,7 +120009,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L314-L355"
+      "specLocation": "ingest/_types/Processors.ts#L321-L362"
     },
     {
       "inherits": {
@@ -120049,7 +120063,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L464-L480"
+      "specLocation": "ingest/_types/Processors.ts#L471-L487"
     },
     {
       "inherits": {
@@ -120126,7 +120140,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L482-L505"
+      "specLocation": "ingest/_types/Processors.ts#L489-L512"
     },
     {
       "inherits": {
@@ -120192,7 +120206,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L517-L537"
+      "specLocation": "ingest/_types/Processors.ts#L524-L544"
     },
     {
       "inherits": {
@@ -120290,7 +120304,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L539-L572"
+      "specLocation": "ingest/_types/Processors.ts#L546-L579"
     },
     {
       "inherits": {
@@ -120372,7 +120386,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L614-L641"
+      "specLocation": "ingest/_types/Processors.ts#L621-L648"
     },
     {
       "inherits": {
@@ -120478,7 +120492,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L574-L612"
+      "specLocation": "ingest/_types/Processors.ts#L581-L619"
     },
     {
       "inherits": {
@@ -120544,7 +120558,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L643-L662"
+      "specLocation": "ingest/_types/Processors.ts#L650-L669"
     },
     {
       "inherits": {
@@ -120584,7 +120598,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L664-L675"
+      "specLocation": "ingest/_types/Processors.ts#L671-L682"
     },
     {
       "inherits": {
@@ -120599,7 +120613,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L677-L677"
+      "specLocation": "ingest/_types/Processors.ts#L684-L684"
     },
     {
       "inherits": {
@@ -120703,7 +120717,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L679-L718"
+      "specLocation": "ingest/_types/Processors.ts#L686-L725"
     },
     {
       "inherits": {
@@ -120731,7 +120745,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L720-L726"
+      "specLocation": "ingest/_types/Processors.ts#L727-L733"
     },
     {
       "inherits": {
@@ -120784,7 +120798,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L728-L742"
+      "specLocation": "ingest/_types/Processors.ts#L735-L749"
     },
     {
       "inherits": {
@@ -120911,7 +120925,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L357-L398"
+      "specLocation": "ingest/_types/Processors.ts#L364-L405"
     },
     {
       "inherits": {
@@ -121006,7 +121020,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L411-L440"
+      "specLocation": "ingest/_types/Processors.ts#L418-L447"
     },
     {
       "inherits": {
@@ -121098,7 +121112,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L744-L769"
+      "specLocation": "ingest/_types/Processors.ts#L751-L776"
     },
     {
       "inherits": {
@@ -121176,7 +121190,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L771-L795"
+      "specLocation": "ingest/_types/Processors.ts#L778-L802"
     },
     {
       "inherits": {
@@ -121230,7 +121244,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L797-L813"
+      "specLocation": "ingest/_types/Processors.ts#L804-L820"
     },
     {
       "inherits": {
@@ -121302,7 +121316,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L815-L834"
+      "specLocation": "ingest/_types/Processors.ts#L822-L841"
     },
     {
       "kind": "interface",
@@ -121336,7 +121350,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L836-L848",
+      "specLocation": "ingest/_types/Processors.ts#L843-L855",
       "variants": {
         "kind": "container"
       }
@@ -121375,7 +121389,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L850-L861"
+      "specLocation": "ingest/_types/Processors.ts#L857-L868"
     },
     {
       "kind": "interface",
@@ -121449,7 +121463,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L863-L889"
+      "specLocation": "ingest/_types/Processors.ts#L870-L896"
     },
     {
       "inherits": {
@@ -121502,7 +121516,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L891-L906"
+      "specLocation": "ingest/_types/Processors.ts#L898-L913"
     },
     {
       "inherits": {
@@ -121581,7 +121595,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L908-L937"
+      "specLocation": "ingest/_types/Processors.ts#L915-L944"
     },
     {
       "inherits": {
@@ -121738,7 +121752,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L946-L998"
+      "specLocation": "ingest/_types/Processors.ts#L953-L1005"
     },
     {
       "inherits": {
@@ -121792,7 +121806,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1000-L1016"
+      "specLocation": "ingest/_types/Processors.ts#L1007-L1023"
     },
     {
       "inherits": {
@@ -121833,7 +121847,124 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1018-L1029"
+      "specLocation": "ingest/_types/Processors.ts#L1025-L1036"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RedactProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field to be redacted",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A list of grok expressions to match and redact named captures with",
+          "name": "patterns",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "pattern_definitions",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "Start a redacted section with this token",
+          "name": "prefix",
+          "required": false,
+          "serverDefault": "<",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "End a redacted section with this token",
+          "name": "suffix",
+          "required": false,
+          "serverDefault": ">",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document",
+          "name": "skip_if_unlicensed",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1038-L1072"
     },
     {
       "inherits": {
@@ -121886,7 +122017,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1031-L1045"
+      "specLocation": "ingest/_types/Processors.ts#L1074-L1088"
     },
     {
       "inherits": {
@@ -121939,7 +122070,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1047-L1063"
+      "specLocation": "ingest/_types/Processors.ts#L1090-L1106"
     },
     {
       "inherits": {
@@ -122021,7 +122152,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1065-L1093"
+      "specLocation": "ingest/_types/Processors.ts#L1108-L1136"
     },
     {
       "inherits": {
@@ -122093,7 +122224,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1095-L1115"
+      "specLocation": "ingest/_types/Processors.ts#L1138-L1158"
     },
     {
       "inherits": {
@@ -122179,7 +122310,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1117-L1151"
+      "specLocation": "ingest/_types/Processors.ts#L1160-L1194"
     },
     {
       "inherits": {
@@ -122222,7 +122353,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1153-L1162"
+      "specLocation": "ingest/_types/Processors.ts#L1196-L1205"
     },
     {
       "inherits": {
@@ -122275,7 +122406,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1169-L1185"
+      "specLocation": "ingest/_types/Processors.ts#L1212-L1228"
     },
     {
       "inherits": {
@@ -122354,7 +122485,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1187-L1212"
+      "specLocation": "ingest/_types/Processors.ts#L1230-L1255"
     },
     {
       "inherits": {
@@ -122408,7 +122539,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1214-L1230"
+      "specLocation": "ingest/_types/Processors.ts#L1257-L1273"
     },
     {
       "inherits": {
@@ -122462,7 +122593,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1232-L1248"
+      "specLocation": "ingest/_types/Processors.ts#L1275-L1291"
     },
     {
       "inherits": {
@@ -122516,7 +122647,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1250-L1266"
+      "specLocation": "ingest/_types/Processors.ts#L1293-L1309"
     },
     {
       "inherits": {
@@ -122596,7 +122727,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1268-L1294"
+      "specLocation": "ingest/_types/Processors.ts#L1311-L1337"
     },
     {
       "inherits": {
@@ -122676,7 +122807,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L442-L462"
+      "specLocation": "ingest/_types/Processors.ts#L449-L469"
     },
     {
       "kind": "interface",

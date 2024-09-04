@@ -12892,6 +12892,7 @@ export interface IngestProcessorContainer {
   kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
   pipeline?: IngestPipelineProcessor
+  redact?: IngestRedactProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
   reroute?: IngestRerouteProcessor
@@ -12905,6 +12906,16 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRedactProcessor extends IngestProcessorBase {
+  field: Field
+  patterns: string[]
+  pattern_definitions?: Record<string, string>
+  prefix?: string
+  suffix?: string
+  ignore_missing?: boolean
+  skip_if_unlicensed?: boolean
 }
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
