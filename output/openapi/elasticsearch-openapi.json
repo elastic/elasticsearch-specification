@@ -87803,12 +87803,6 @@
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
                 "type": "boolean"
               },
-              "options": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ingest._types:UserAgentProperty"
-                }
-              },
               "regex_file": {
                 "description": "The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.",
                 "type": "string"
@@ -87820,7 +87814,7 @@
                 "description": "Controls what properties are added to `target_field`.",
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/ingest._types:UserAgentProperty"
                 }
               },
               "extract_device_type": {
@@ -87839,16 +87833,11 @@
       "ingest._types:UserAgentProperty": {
         "type": "string",
         "enum": [
-          "NAME",
-          "MAJOR",
-          "MINOR",
-          "PATCH",
-          "OS",
-          "OS_NAME",
-          "OS_MAJOR",
-          "OS_MINOR",
-          "DEVICE",
-          "BUILD"
+          "name",
+          "os",
+          "device",
+          "original",
+          "version"
         ]
       },
       "ingest.simulate:Document": {

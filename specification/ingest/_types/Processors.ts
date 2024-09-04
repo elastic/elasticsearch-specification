@@ -281,19 +281,6 @@ export class ProcessorBase {
   tag?: string
 }
 
-export enum UserAgentProperty {
-  NAME,
-  MAJOR,
-  MINOR,
-  PATCH,
-  OS,
-  OS_NAME,
-  OS_MAJOR,
-  OS_MINOR,
-  DEVICE,
-  BUILD
-}
-
 export class AppendProcessor extends ProcessorBase {
   /**
    * The field to be appended to.
@@ -454,7 +441,6 @@ export class UserAgentProcessor extends ProcessorBase {
    * @server_default false
    */
   ignore_missing?: boolean
-  options?: UserAgentProperty[]
   /**
    * The name of the file in the `config/ingest-user-agent` directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, ingest-user-agent will use the `regexes.yaml` from uap-core it ships with.
    */
@@ -468,7 +454,7 @@ export class UserAgentProcessor extends ProcessorBase {
    * Controls what properties are added to `target_field`.
    * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
    */
-  properties?: string[]
+  properties?: UserAgentProperty[]
   /**
    * Extracts device type from the user agent string on a best-effort basis.
    * @server_default false
@@ -476,6 +462,14 @@ export class UserAgentProcessor extends ProcessorBase {
    * @availability serverless
    */
   extract_device_type?: boolean
+}
+
+export enum UserAgentProperty {
+  name,
+  os,
+  device,
+  original,
+  version
 }
 
 export class BytesProcessor extends ProcessorBase {

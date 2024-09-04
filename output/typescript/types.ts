@@ -12985,14 +12985,13 @@ export interface IngestUrlDecodeProcessor extends IngestProcessorBase {
 export interface IngestUserAgentProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
-  options?: IngestUserAgentProperty[]
   regex_file?: string
   target_field?: Field
-  properties?: string[]
+  properties?: IngestUserAgentProperty[]
   extract_device_type?: boolean
 }
 
-export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
+export type IngestUserAgentProperty = 'name' | 'os' | 'device' | 'original' | 'version'
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
