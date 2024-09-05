@@ -65927,10 +65927,7 @@
             "description": "For type `composite`",
             "type": "object",
             "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/components/schemas/_types.mapping:RuntimeFieldType"
-              }
+              "$ref": "#/components/schemas/_types.mapping:CompositeSubField"
             }
           },
           "fetch_fields": {
@@ -65959,6 +65956,17 @@
           "script": {
             "$ref": "#/components/schemas/_types:Script"
           },
+          "type": {
+            "$ref": "#/components/schemas/_types.mapping:RuntimeFieldType"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.mapping:CompositeSubField": {
+        "type": "object",
+        "properties": {
           "type": {
             "$ref": "#/components/schemas/_types.mapping:RuntimeFieldType"
           }

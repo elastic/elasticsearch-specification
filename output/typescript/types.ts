@@ -4958,6 +4958,10 @@ export interface MappingCompletionProperty extends MappingDocValuesPropertyBase 
   type: 'completion'
 }
 
+export interface MappingCompositeSubField {
+  type: MappingRuntimeFieldType
+}
+
 export interface MappingConstantKeywordProperty extends MappingPropertyBase {
   value?: any
   type: 'constant_keyword'
@@ -5301,7 +5305,7 @@ export interface MappingRoutingField {
 }
 
 export interface MappingRuntimeField {
-  fields?: Record<string, Record<string, MappingRuntimeFieldType>>
+  fields?: Record<string, MappingCompositeSubField>
   fetch_fields?: (MappingRuntimeFieldFetchFields | Field)[]
   format?: string
   input_field?: Field

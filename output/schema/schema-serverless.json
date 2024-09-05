@@ -66964,21 +66964,10 @@
             "kind": "dictionary_of",
             "singleKey": false,
             "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RuntimeFieldType",
-                  "namespace": "_types.mapping"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "CompositeSubField",
+                "namespace": "_types.mapping"
               }
             }
           }
@@ -67076,6 +67065,27 @@
       "specLocation": "_types/mapping/RuntimeFields.ts#L26-L50"
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "CompositeSubField",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFieldType",
+              "namespace": "_types.mapping"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/mapping/RuntimeFields.ts#L52-L54"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -67110,7 +67120,7 @@
         "name": "RuntimeFieldType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/RuntimeFields.ts#L58-L68"
+      "specLocation": "_types/mapping/RuntimeFields.ts#L62-L72"
     },
     {
       "kind": "interface",
@@ -67143,7 +67153,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/mapping/RuntimeFields.ts#L52-L56"
+      "specLocation": "_types/mapping/RuntimeFields.ts#L56-L60"
     },
     {
       "kind": "interface",
