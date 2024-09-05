@@ -12621,7 +12621,7 @@ export type InferencePutResponse = InferenceInferenceEndpointInfo
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
-  value: any[]
+  value: any | any[]
   allow_duplicates?: boolean
 }
 
@@ -12701,6 +12701,7 @@ export interface IngestDissectProcessor extends IngestProcessorBase {
 
 export interface IngestDotExpanderProcessor extends IngestProcessorBase {
   field: Field
+  override?: boolean
   path?: string
 }
 
@@ -12750,6 +12751,7 @@ export interface IngestGeoIpProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
   properties?: string[]
   target_field?: Field
+  download_database_on_pipeline_creation?: boolean
 }
 
 export interface IngestGrokProcessor extends IngestProcessorBase {
@@ -12844,6 +12846,7 @@ export interface IngestPipeline {
   on_failure?: IngestProcessorContainer[]
   processors?: IngestProcessorContainer[]
   version?: VersionNumber
+  deprecated?: boolean
   _meta?: Metadata
 }
 
@@ -12991,12 +12994,13 @@ export interface IngestUrlDecodeProcessor extends IngestProcessorBase {
 export interface IngestUserAgentProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
-  options?: IngestUserAgentProperty[]
   regex_file?: string
   target_field?: Field
+  properties?: IngestUserAgentProperty[]
+  extract_device_type?: boolean
 }
 
-export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
+export type IngestUserAgentProperty = 'name' | 'os' | 'device' | 'original' | 'version'
 
 export interface IngestDeleteGeoipDatabaseRequest extends RequestBase {
   id: Ids
@@ -13094,6 +13098,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
     on_failure?: IngestProcessorContainer[]
     processors?: IngestProcessorContainer[]
     version?: VersionNumber
+    deprecated?: boolean
   }
 }
 

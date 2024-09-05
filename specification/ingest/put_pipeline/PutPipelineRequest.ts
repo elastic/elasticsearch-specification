@@ -73,5 +73,11 @@ export interface Request extends RequestBase {
      * Version number used by external systems to track ingest pipelines. This parameter is intended for external systems only. Elasticsearch does not use or validate pipeline version numbers.
      */
     version?: VersionNumber
+    /**
+     * Marks this ingest pipeline as deprecated.
+     * When a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.
+     * @server_default false
+     */
+    deprecated?: boolean
   }
 }
