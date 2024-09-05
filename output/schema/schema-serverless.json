@@ -44927,7 +44927,7 @@
         "name": "SequenceNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L128-L128",
+      "specLocation": "_types/common.ts#L129-L129",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -44942,7 +44942,7 @@
         "name": "VersionNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L102-L102",
+      "specLocation": "_types/common.ts#L103-L103",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -45296,7 +45296,7 @@
         "name": "ExpandWildcards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L217-L217",
+      "specLocation": "_types/common.ts#L218-L218",
       "type": {
         "items": [
           {
@@ -45348,7 +45348,7 @@
         "name": "ExpandWildcard",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L201-L215"
+      "specLocation": "_types/common.ts#L202-L216"
     },
     {
       "kind": "type_alias",
@@ -45411,7 +45411,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L275-L280"
+      "specLocation": "_types/common.ts#L276-L281"
     },
     {
       "kind": "interface",
@@ -47024,7 +47024,7 @@
         "name": "Metadata",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L99-L99",
+      "specLocation": "_types/common.ts#L100-L100",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -48379,7 +48379,7 @@
         "name": "MinimumShouldMatch",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L163-L167",
+      "specLocation": "_types/common.ts#L164-L168",
       "type": {
         "items": [
           {
@@ -48489,7 +48489,7 @@
         "name": "Field",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L138-L139",
+      "specLocation": "_types/common.ts#L139-L140",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -50091,7 +50091,7 @@
         "name": "MultiTermQueryRewrite",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L135-L136",
+      "specLocation": "_types/common.ts#L136-L137",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -50108,7 +50108,7 @@
         "name": "Fuzziness",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L133-L134",
+      "specLocation": "_types/common.ts#L134-L135",
       "type": {
         "items": [
           {
@@ -51921,7 +51921,7 @@
         "name": "Fields",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L140-L140",
+      "specLocation": "_types/common.ts#L141-L141",
       "type": {
         "items": [
           {
@@ -52899,7 +52899,7 @@
         "name": "RelationName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L131-L131",
+      "specLocation": "_types/common.ts#L132-L132",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -54892,7 +54892,7 @@
         "name": "VersionType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L106-L122"
+      "specLocation": "_types/common.ts#L107-L123"
     },
     {
       "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
@@ -62651,7 +62651,7 @@
         "namespace": "_types"
       },
       "properties": [],
-      "specLocation": "_types/common.ts#L160-L161"
+      "specLocation": "_types/common.ts#L161-L162"
     },
     {
       "inherits": {
@@ -67052,7 +67052,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L282-L295"
+      "specLocation": "_types/common.ts#L283-L296"
     },
     {
       "kind": "interface",
@@ -68527,7 +68527,7 @@
         "name": "AggregateName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L145-L149",
+      "specLocation": "_types/common.ts#L146-L150",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -74070,7 +74070,7 @@
         "name": "SuggestionName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L151-L155",
+      "specLocation": "_types/common.ts#L152-L156",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -74947,7 +74947,7 @@
         "name": "ByteSize",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L96-L97",
+      "specLocation": "_types/common.ts#L97-L98",
       "type": {
         "items": [
           {
@@ -75000,7 +75000,7 @@
         "name": "Bytes",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L169-L181"
+      "specLocation": "_types/common.ts#L170-L182"
     },
     {
       "kind": "type_alias",
@@ -75040,7 +75040,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L381-L387"
+      "specLocation": "_types/common.ts#L382-L388"
     },
     {
       "kind": "type_alias",
@@ -75048,7 +75048,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L389-L389",
+      "specLocation": "_types/common.ts#L390-L390",
       "type": {
         "items": [
           {
@@ -75088,7 +75088,7 @@
         "name": "Conflicts",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L183-L192"
+      "specLocation": "_types/common.ts#L184-L193"
     },
     {
       "kind": "enum",
@@ -75167,7 +75167,7 @@
         "name": "DataStreamName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L91-L92",
+      "specLocation": "_types/common.ts#L92-L93",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -75182,7 +75182,7 @@
         "name": "DataStreamNames",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L94-L94",
+      "specLocation": "_types/common.ts#L95-L95",
       "type": {
         "items": [
           {
@@ -75254,6 +75254,21 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "GrokPattern",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L87-L87",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -75282,7 +75297,7 @@
         "name": "HealthStatus",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L219-L239"
+      "specLocation": "_types/common.ts#L220-L240"
     },
     {
       "kind": "type_alias",
@@ -75305,7 +75320,7 @@
         "name": "HttpHeaders",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L158-L158",
+      "specLocation": "_types/common.ts#L159-L159",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -75452,7 +75467,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L249-L253"
+      "specLocation": "_types/common.ts#L250-L254"
     },
     {
       "kind": "enum",
@@ -75616,7 +75631,7 @@
         "name": "NodeName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L88-L89",
+      "specLocation": "_types/common.ts#L89-L90",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -75737,7 +75752,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L255-L264"
+      "specLocation": "_types/common.ts#L256-L265"
     },
     {
       "kind": "type_alias",
@@ -75745,7 +75760,7 @@
         "name": "Password",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L195-L195",
+      "specLocation": "_types/common.ts#L196-L196",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -75802,7 +75817,7 @@
         "name": "PropertyName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L130-L130",
+      "specLocation": "_types/common.ts#L131-L131",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -75829,7 +75844,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L266-L273"
+      "specLocation": "_types/common.ts#L267-L274"
     },
     {
       "kind": "enum",
@@ -75969,7 +75984,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L364-L369",
+      "specLocation": "_types/common.ts#L365-L370",
       "type": {
         "items": [
           {
@@ -76002,7 +76017,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L371-L379"
+      "specLocation": "_types/common.ts#L372-L380"
     },
     {
       "kind": "type_alias",
@@ -76010,7 +76025,7 @@
         "name": "TaskId",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L132-L132",
+      "specLocation": "_types/common.ts#L133-L133",
       "type": {
         "items": [
           {
@@ -76054,7 +76069,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L297-L303"
+      "specLocation": "_types/common.ts#L298-L304"
     },
     {
       "description": "Time of day, expressed as HH:MM:SS",
@@ -76195,7 +76210,7 @@
         "name": "Username",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L194-L194",
+      "specLocation": "_types/common.ts#L195-L195",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -76210,7 +76225,7 @@
         "name": "Uuid",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L125-L125",
+      "specLocation": "_types/common.ts#L126-L126",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -76225,7 +76240,7 @@
         "name": "VersionString",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L104-L104",
+      "specLocation": "_types/common.ts#L105-L105",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -76248,7 +76263,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L305-L309"
+      "specLocation": "_types/common.ts#L306-L310"
     },
     {
       "codegenNames": [
@@ -76260,7 +76275,7 @@
         "name": "WaitForActiveShards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L142-L143",
+      "specLocation": "_types/common.ts#L143-L144",
       "type": {
         "items": [
           {
@@ -76307,7 +76322,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L311-L318"
+      "specLocation": "_types/common.ts#L312-L319"
     },
     {
       "kind": "type_alias",
@@ -104890,7 +104905,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L320-L333"
+      "specLocation": "_types/common.ts#L321-L334"
     },
     {
       "attachedBehaviors": [
@@ -121188,8 +121203,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "GrokPattern",
+                "namespace": "_types"
               }
             }
           }
@@ -121979,8 +121994,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "_builtins"
+                "name": "GrokPattern",
+                "namespace": "_types"
               }
             }
           }
@@ -128180,7 +128195,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L335-L362"
+      "specLocation": "_types/common.ts#L336-L363"
     },
     {
       "kind": "interface",

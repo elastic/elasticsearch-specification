@@ -55960,7 +55960,7 @@
                 "description": "An ordered list of grok expression to match and extract named captures with.\nReturns on the first expression in the list that matches.",
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:GrokPattern"
                 }
               },
               "trace_match": {
@@ -55974,6 +55974,9 @@
             ]
           }
         ]
+      },
+      "_types:GrokPattern": {
+        "type": "string"
       },
       "ingest._types:GsubProcessor": {
         "allOf": [
@@ -56306,7 +56309,7 @@
                 "description": "A list of grok expressions to match and redact named captures with",
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:GrokPattern"
                 }
               },
               "pattern_definitions": {

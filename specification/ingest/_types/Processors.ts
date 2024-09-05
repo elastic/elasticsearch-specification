@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Fields, Id, Name } from '@_types/common'
+import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { SortOrder } from '@_types/sort'
@@ -785,7 +785,7 @@ export class GrokProcessor extends ProcessorBase {
    * An ordered list of grok expression to match and extract named captures with.
    * Returns on the first expression in the list that matches.
    */
-  patterns: string[]
+  patterns: GrokPattern[]
   /**
    * When `true`, `_ingest._grok_match_index` will be inserted into your matched document’s metadata with the index into the pattern found in `patterns` that matched.
    * @server_default false
@@ -1061,7 +1061,7 @@ export class RedactProcessor extends ProcessorBase {
   /**
    * A list of grok expressions to match and redact named captures with
    */
-  patterns: string[]
+  patterns: GrokPattern[]
   /*
    * A map of pattern-name and pattern tuples defining custom patterns to be used by the processor.
    * Patterns matching existing names will override the pre-existing definition
