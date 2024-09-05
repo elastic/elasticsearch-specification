@@ -34400,7 +34400,21 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Allows to filter indices if the provided query rewrites to `match_none` on every shard.",
+            "name": "index_filter",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        ]
       },
       "description": "A search request by default executes against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.",
       "inherits": {
@@ -34492,12 +34506,24 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L24-L68"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L25-L75"
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "description": "Shards used to create the PIT",
+            "name": "_shards",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
           {
             "name": "id",
             "required": true,
@@ -34516,7 +34542,7 @@
         "name": "Response",
         "namespace": "_global.open_point_in_time"
       },
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeResponse.ts#L22-L24"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeResponse.ts#L23-L29"
     },
     {
       "attachedBehaviors": [
@@ -36348,24 +36374,6 @@
             }
           },
           {
-            "availability": {
-              "serverless": {},
-              "stack": {
-                "since": "8.8.0"
-              }
-            },
-            "description": "Defines the Reciprocal Rank Fusion (RRF) to use.",
-            "name": "rank",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RankContainer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "description": "Minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in the search results.",
             "name": "min_score",
             "required": false,
@@ -37290,7 +37298,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L54-L530"
+      "specLocation": "_global/search/SearchRequest.ts#L54-L529"
     },
     {
       "body": {
@@ -136244,80 +136252,6 @@
         }
       ],
       "specLocation": "_global/scripts_painless_execute/types.ts#L25-L39"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RankContainer",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The reciprocal rank fusion parameters",
-          "name": "rrf",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RrfRank",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Rank.ts#L22-L28",
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "RankBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RrfRank",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "How much influence documents in individual result sets per query have over the final ranked result set",
-          "name": "rank_constant",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Size of the individual result sets per query",
-          "name": "rank_window_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Rank.ts#L32-L37"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RankBase",
-        "namespace": "_types"
-      },
-      "properties": [],
-      "specLocation": "_types/Rank.ts#L30-L30"
     },
     {
       "kind": "interface",

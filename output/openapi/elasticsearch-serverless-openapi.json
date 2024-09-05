@@ -15441,6 +15441,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "index_filter": {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -15449,11 +15463,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "_shards": {
+                      "$ref": "#/components/schemas/_types:ShardStatistics"
+                    },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"
                     }
                   },
                   "required": [
+                    "_shards",
                     "id"
                   ]
                 }
@@ -29193,9 +29211,6 @@
                       }
                     }
                   ]
-                },
-                "rank": {
-                  "$ref": "#/components/schemas/_types:RankContainer"
                 },
                 "min_score": {
                   "description": "Minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in the search results.",
@@ -62389,39 +62404,6 @@
           "document",
           "index"
         ]
-      },
-      "_types:RankContainer": {
-        "type": "object",
-        "properties": {
-          "rrf": {
-            "$ref": "#/components/schemas/_types:RrfRank"
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types:RrfRank": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types:RankBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "rank_constant": {
-                "description": "How much influence documents in individual result sets per query have over the final ranked result set",
-                "type": "number"
-              },
-              "rank_window_size": {
-                "description": "Size of the individual result sets per query",
-                "type": "number"
-              }
-            }
-          }
-        ]
-      },
-      "_types:RankBase": {
-        "type": "object"
       },
       "_types:RetrieverContainer": {
         "type": "object",

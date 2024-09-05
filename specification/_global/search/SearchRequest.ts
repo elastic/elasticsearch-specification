@@ -399,7 +399,6 @@ export interface Request extends RequestBase {
     /**
      * Defines the Reciprocal Rank Fusion (RRF) to use.
      * @availability stack since=8.8.0
-     * @availability serverless
      */
     rank?: RankContainer
     /**
