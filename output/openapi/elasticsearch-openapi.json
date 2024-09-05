@@ -65686,6 +65686,13 @@
       "_types.mapping:RuntimeField": {
         "type": "object",
         "properties": {
+          "fields": {
+            "description": "For type `composite`",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.mapping:CompositeSubField"
+            }
+          },
           "fetch_fields": {
             "description": "For type `lookup`",
             "type": "array",
@@ -65720,18 +65727,15 @@
           "type"
         ]
       },
-      "_types.mapping:RuntimeFieldFetchFields": {
+      "_types.mapping:CompositeSubField": {
         "type": "object",
         "properties": {
-          "field": {
-            "$ref": "#/components/schemas/_types:Field"
-          },
-          "format": {
-            "type": "string"
+          "type": {
+            "$ref": "#/components/schemas/_types.mapping:RuntimeFieldType"
           }
         },
         "required": [
-          "field"
+          "type"
         ]
       },
       "_types.mapping:RuntimeFieldType": {
@@ -65746,6 +65750,20 @@
           "keyword",
           "long",
           "lookup"
+        ]
+      },
+      "_types.mapping:RuntimeFieldFetchFields": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/_types:Field"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "field"
         ]
       },
       "autoscaling.get_autoscaling_capacity:AutoscalingDeciders": {

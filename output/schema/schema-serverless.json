@@ -65859,6 +65859,29 @@
       },
       "properties": [
         {
+          "description": "For type `composite`",
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CompositeSubField",
+                "namespace": "_types.mapping"
+              }
+            }
+          }
+        },
+        {
           "description": "For type `lookup`",
           "name": "fetch_fields",
           "required": false,
@@ -65948,40 +65971,28 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/RuntimeFields.ts#L26-L48"
+      "specLocation": "_types/mapping/RuntimeFields.ts#L26-L50"
     },
     {
       "kind": "interface",
       "name": {
-        "name": "RuntimeFieldFetchFields",
+        "name": "CompositeSubField",
         "namespace": "_types.mapping"
       },
       "properties": [
         {
-          "name": "field",
+          "name": "type",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "RuntimeFieldType",
+              "namespace": "_types.mapping"
             }
           }
         }
       ],
-      "shortcutProperty": "field",
-      "specLocation": "_types/mapping/RuntimeFields.ts#L50-L54"
+      "specLocation": "_types/mapping/RuntimeFields.ts#L52-L54"
     },
     {
       "kind": "enum",
@@ -66018,7 +66029,40 @@
         "name": "RuntimeFieldType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/RuntimeFields.ts#L56-L66"
+      "specLocation": "_types/mapping/RuntimeFields.ts#L62-L72"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RuntimeFieldFetchFields",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "shortcutProperty": "field",
+      "specLocation": "_types/mapping/RuntimeFields.ts#L56-L60"
     },
     {
       "kind": "interface",
