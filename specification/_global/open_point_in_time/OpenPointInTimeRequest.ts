@@ -19,8 +19,8 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing } from '@_types/common'
-import { Duration } from '@_types/Time'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Duration } from '@_types/Time'
 
 /**
  * A search request by default executes against the most recent visible data of the target indices,
