@@ -21,7 +21,7 @@ import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { Duration, DateTime } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 
 /**
  * Retrieves information about model snapshots.

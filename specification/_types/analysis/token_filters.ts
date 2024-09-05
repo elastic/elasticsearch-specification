@@ -17,25 +17,24 @@
  * under the License.
  */
 
+import { Stringified } from '@spec_utils/Stringified'
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { SnowballLanguage } from './languages'
-import { StopWords } from './StopWords'
-import {
-  KuromojiStemmerTokenFilter,
-  KuromojiReadingFormTokenFilter,
-  KuromojiPartOfSpeechTokenFilter
-} from './kuromoji-plugin'
 import {
   IcuCollationTokenFilter,
   IcuFoldingTokenFilter,
   IcuNormalizationTokenFilter,
-  IcuTokenizer,
   IcuTransformTokenFilter
 } from './icu-plugin'
+import {
+  KuromojiPartOfSpeechTokenFilter,
+  KuromojiReadingFormTokenFilter,
+  KuromojiStemmerTokenFilter
+} from './kuromoji-plugin'
+import { SnowballLanguage } from './languages'
 import { PhoneticTokenFilter } from './phonetic-plugin'
-import { Stringified } from '@spec_utils/Stringified'
+import { StopWords } from './StopWords'
 
 export class TokenFilterBase {
   version?: VersionString

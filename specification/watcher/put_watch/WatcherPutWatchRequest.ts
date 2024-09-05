@@ -23,7 +23,7 @@ import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
 import { TriggerContainer } from '@watcher/_types/Trigger'
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata, VersionNumber, SequenceNumber } from '@_types/common'
+import { Id, Metadata, SequenceNumber, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { TransformContainer } from '@_types/Transform'
 

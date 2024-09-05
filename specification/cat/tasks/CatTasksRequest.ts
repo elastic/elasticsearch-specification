@@ -18,7 +18,6 @@
  */
 
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { long } from '@_types/Numeric'
 
 /**
  * Returns information about tasks currently executing in the cluster.

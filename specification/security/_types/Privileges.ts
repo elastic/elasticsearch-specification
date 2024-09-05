@@ -20,8 +20,8 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { ScriptBase, ScriptLanguage, StoredScriptId } from '@_types/Scripting'
 import { FieldSecurity } from './FieldSecurity'
-import { ScriptLanguage, ScriptBase, StoredScriptId } from '@_types/Scripting'
 
 export class ApplicationPrivileges {
   /**

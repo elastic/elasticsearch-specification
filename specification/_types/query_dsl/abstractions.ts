@@ -25,6 +25,7 @@ import {
   MinimumShouldMatch,
   Routing
 } from '@_types/common'
+import { KnnQuery } from '@_types/Knn'
 import { float } from '@_types/Numeric'
 import {
   BoolQuery,
@@ -95,7 +96,6 @@ import {
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
 import { WeightedTokensQuery } from './WeightedTokensQuery'
-import { KnnQuery } from '@_types/Knn'
 
 /**
  * @variants container

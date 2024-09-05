@@ -17,13 +17,15 @@
  * under the License.
  */
 
-import { GlobalPrivilege } from './Privileges'
-import { IndicesPrivileges } from './Privileges'
-import { ApplicationPrivileges } from './Privileges'
-import { Metadata } from '@_types/common'
 import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata } from '@_types/common'
+import {
+  ApplicationPrivileges,
+  GlobalPrivilege,
+  IndicesPrivileges
+} from './Privileges'
 
 export class RoleDescriptor {
   /**

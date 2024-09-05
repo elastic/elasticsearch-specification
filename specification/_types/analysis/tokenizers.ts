@@ -17,12 +17,11 @@
  * under the License.
  */
 
+import { Stringified } from '@spec_utils/Stringified'
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
-import { TokenFilterDefinition } from '@_types/analysis/token_filters'
-import { Stringified } from '@spec_utils/Stringified'
 
 export class TokenizerBase {
   version?: VersionString

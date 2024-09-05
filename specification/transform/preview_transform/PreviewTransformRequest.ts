@@ -23,8 +23,8 @@ import {
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  SyncContainer,
-  Source
+  Source,
+  SyncContainer
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'

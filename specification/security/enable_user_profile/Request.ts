@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { UserProfileId } from '@security/_types/UserProfile'
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
-import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
  * Enables a user profile so it's visible in user profile searches.

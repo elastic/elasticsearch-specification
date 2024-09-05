@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, NodeId } from './common'
 import { integer, long } from './Numeric'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 
 /**
  * Cause and details about a request failure. This class defines the properties common to all error types.

@@ -18,9 +18,9 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, Id } from '@_types/common'
+import { Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
-import { long, double, integer } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
 export class AllocationDecision {

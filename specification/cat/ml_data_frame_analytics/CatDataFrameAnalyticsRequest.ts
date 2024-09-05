@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase, CatDfaColumns } from '@cat/_types/CatBase'
+import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 

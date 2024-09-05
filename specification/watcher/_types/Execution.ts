@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { integer, long } from '@_types/Numeric'
+import { long } from '@_types/Numeric'
 import { DateTime, DurationValue, UnitMillis } from '@_types/Time'
 import { ActionStatusOptions, ActionType } from './Action'
 import {

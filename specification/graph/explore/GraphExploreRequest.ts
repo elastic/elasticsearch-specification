@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { VertexDefinition } from '@graph/_types/Vertex'
 import { RequestBase } from '@_types/Base'
 import { Indices, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { ExploreControls } from '../_types/ExploreControls'
 import { Hop } from '../_types/Hop'
-import { VertexDefinition } from '@graph/_types/Vertex'
 
 /**
  * Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.

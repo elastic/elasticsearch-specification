@@ -17,16 +17,13 @@
  * under the License.
  */
 
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, Names, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
-import {
-  DataStreamLifecycle,
-  DataStreamLifecycleWithRollover
-} from '@indices/_types/DataStreamLifecycle'
 
 export class IndexTemplate {
   /**

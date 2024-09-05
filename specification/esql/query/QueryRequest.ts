@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScalarValue } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * Executes an ES|QL request

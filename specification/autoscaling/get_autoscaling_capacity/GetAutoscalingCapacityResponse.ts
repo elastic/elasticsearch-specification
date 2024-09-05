@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeName } from '@_types/common'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { NodeName } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {

@@ -18,11 +18,15 @@
  */
 
 import { IndexRouting } from '@indices/_types/IndexRouting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Analyzer } from '@_types/analysis/analyzers'
-import { TokenFilter } from '@_types/analysis/token_filters'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
+import { Tokenizer } from '@_types/analysis/tokenizers'
+import { TokenFilter } from '@_types/analysis/token_filters'
 import {
   ByteSize,
   Name,
@@ -31,9 +35,7 @@ import {
   VersionString
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
-import { Tokenizer } from '@_types/analysis/tokenizers'
-import { IndexSegmentSort } from './IndexSegmentSort'
+import { Script } from '@_types/Scripting'
 import {
   DFIIndependenceMeasure,
   DFRAfterEffect,
@@ -42,10 +44,8 @@ import {
   IBLambda,
   Normalization
 } from '@_types/Similarity'
-import { Script } from '@_types/Scripting'
-import { Stringified } from '@spec_utils/Stringified'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { IndexSegmentSort } from './IndexSegmentSort'
 
 export class SoftDeletes {
   /**
