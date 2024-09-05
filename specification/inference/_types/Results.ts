@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { float, byte, integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
+import { byte, float, integer } from '@_types/Numeric'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary

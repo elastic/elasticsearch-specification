@@ -18,6 +18,7 @@
  */
 
 import { Destination } from '@global/reindex/types'
+import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
   Latest,
   Pivot,
@@ -26,7 +27,6 @@ import {
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { TransformAuthorization } from '@ml/_types/Authorization'
 import { Id, Metadata, VersionString } from '@_types/common'
 import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 

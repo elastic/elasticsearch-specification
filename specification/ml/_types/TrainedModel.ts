@@ -29,12 +29,11 @@ import {
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
-  Duration,
   DateTime,
   DurationValue,
+  EpochTime,
   UnitFloatMillis,
-  UnitMillis,
-  EpochTime
+  UnitMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'

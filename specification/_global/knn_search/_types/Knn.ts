@@ -18,8 +18,8 @@
  */
 
 import { Field } from '@_types/common'
-import { integer } from '@_types/Numeric'
 import { QueryVector } from '@_types/Knn'
+import { integer } from '@_types/Numeric'
 
 export interface Query {
   /** The name of the vector field to search against */

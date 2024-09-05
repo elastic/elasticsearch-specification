@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
 import { GrantType } from '@security/_types/GrantType'
+import { RequestBase } from '@_types/Base'
 
 /**
  * Creates or updates a user profile on behalf of another user.

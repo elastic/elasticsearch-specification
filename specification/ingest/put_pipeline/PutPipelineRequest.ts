@@ -19,7 +19,7 @@
 
 import { ProcessorContainer } from '@ingest/_types/Processors'
 import { RequestBase } from '@_types/Base'
-import { Id, VersionNumber, Metadata } from '@_types/common'
+import { Id, Metadata, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**

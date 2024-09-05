@@ -19,8 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
-import { Include } from '@ml/_types/Include'
 
 /**
  * Clear trained model deployment cache.

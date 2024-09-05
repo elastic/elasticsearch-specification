@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '@_types/Numeric'
 import { ErrorCause } from '@_types/Errors'
+import { long } from '@_types/Numeric'
 
 export class Response {
   body: {

@@ -20,9 +20,9 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import {
-  QueryRuleType,
+  QueryRuleActions,
   QueryRuleCriteria,
-  QueryRuleActions
+  QueryRuleType
 } from '../_types/QueryRuleset'
 
 /**

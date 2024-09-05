@@ -18,9 +18,9 @@
  */
 
 import {
-  IndicesPrivileges,
+  ApplicationPrivileges,
   ClusterPrivilege,
-  ApplicationPrivileges
+  IndicesPrivileges
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

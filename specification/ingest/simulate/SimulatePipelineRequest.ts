@@ -21,7 +21,6 @@ import { Pipeline } from '@ingest/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Document } from './types'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Executes an ingest pipeline against a set of provided documents.

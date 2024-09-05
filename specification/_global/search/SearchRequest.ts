@@ -17,7 +17,9 @@
  * under the License.
  */
 
+import { TrackHits } from '@global/search/_types/hits'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -31,25 +33,23 @@ import {
   SuggestMode,
   VersionString
 } from '@_types/common'
+import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
+import { RankContainer } from '@_types/Rank'
+import { RetrieverContainer } from '@_types/Retriever'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
+import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
 import { FieldCollapse } from './_types/FieldCollapse'
 import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'
 import { Rescore } from './_types/rescoring'
-import { SourceConfigParam, SourceConfig } from './_types/SourceFilter'
+import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
-import { TrackHits } from '@global/search/_types/hits'
-import { Operator } from '@_types/query_dsl/Operator'
-import { Sort, SortResults } from '@_types/sort'
-import { KnnSearch } from '@_types/Knn'
-import { RankContainer } from '@_types/Rank'
-import { RetrieverContainer } from '@_types/Retriever'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Returns search hits that match the query defined in the request.

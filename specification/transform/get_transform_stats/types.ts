@@ -22,10 +22,10 @@ import { NodeAttributes } from '@_types/Node'
 import { double, long } from '@_types/Numeric'
 import {
   DateTime,
-  UnitMillis,
   DurationValue,
+  EpochTime,
   UnitFloatMillis,
-  EpochTime
+  UnitMillis
 } from '@_types/Time'
 
 export class TransformStats {

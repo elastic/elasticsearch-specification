@@ -18,14 +18,12 @@
  */
 
 import { Phases } from '@ilm/_types/Phase'
+import { JobStatistics } from '@ml/_types/Job'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
-import { Job, JobStatistics } from '@ml/_types/Job'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ByteSize, Field, Name } from '@_types/common'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Base {
   available: boolean

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Sort, SortResults } from '@_types/sort'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Sort, SortResults } from '@_types/sort'
 
 /**
  * @rest_spec_name watcher.query_watches

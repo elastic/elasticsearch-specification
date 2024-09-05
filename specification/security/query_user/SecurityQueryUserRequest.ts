@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { UserQueryContainer } from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { UserQueryContainer } from './types'
 
 /**
  * Retrieves information for Users in a paginated manner. You can optionally filter the results with a query.

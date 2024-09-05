@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { integer } from '@_types/Numeric'
 
 export class MatchedField {
   match: string
