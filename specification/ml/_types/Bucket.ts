@@ -21,11 +21,10 @@ import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import {
   DateTime,
-  Duration,
   DurationValue,
-  UnitSeconds,
+  EpochTime,
   UnitMillis,
-  EpochTime
+  UnitSeconds
 } from '@_types/Time'
 
 export class BucketSummary {

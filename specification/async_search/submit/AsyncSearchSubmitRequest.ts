@@ -17,7 +17,18 @@
  * under the License.
  */
 
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -31,26 +42,15 @@ import {
   SuggestMode,
   VersionString
 } from '@_types/common'
+import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Duration } from '@_types/Time'
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
 import { Sort, SortResults } from '@_types/sort'
-import {
-  SourceConfigParam,
-  SourceConfig
-} from '@global/search/_types/SourceFilter'
-import { Suggester } from '@global/search/_types/suggester'
-import { TrackHits } from '@global/search/_types/hits'
-import { Operator } from '@_types/query_dsl/Operator'
-import { KnnSearch } from '@_types/Knn'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Duration } from '@_types/Time'
 
 /**
  * Runs a search request asynchronously.

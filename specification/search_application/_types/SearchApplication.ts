@@ -18,8 +18,8 @@
  */
 
 import { IndexName, Name } from '@_types/common'
-import { EpochTime, UnitMillis } from '@_types/Time'
 import { Script } from '@_types/Scripting'
+import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class SearchApplication {
   /**

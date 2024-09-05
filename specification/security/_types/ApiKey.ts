@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Role } from '@security/get_role/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Metadata, Name, Username } from '@_types/common'
 import { long } from '@_types/Numeric'

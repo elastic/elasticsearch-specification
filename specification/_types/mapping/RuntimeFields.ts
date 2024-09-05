@@ -24,6 +24,8 @@ import { Script } from '@_types/Scripting'
 export type RuntimeFields = Dictionary<Field, RuntimeField>
 
 export class RuntimeField {
+  /** For type `composite` */
+  fields?: Dictionary<string, CompositeSubField>
   /** For type `lookup` */
   fetch_fields?: RuntimeFieldFetchFields[]
   /**
@@ -44,6 +46,10 @@ export class RuntimeField {
   /**
    * Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.
    */
+  type: RuntimeFieldType
+}
+
+class CompositeSubField {
   type: RuntimeFieldType
 }
 

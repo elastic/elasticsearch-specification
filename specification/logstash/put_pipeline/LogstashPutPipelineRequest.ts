@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Pipeline } from '@logstash/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Pipeline } from '@logstash/_types/Pipeline'
 
 /** Creates or updates a pipeline used for Logstash Central Management.
  * @rest_spec_name logstash.put_pipeline

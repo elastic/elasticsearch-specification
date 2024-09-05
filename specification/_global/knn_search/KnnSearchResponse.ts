@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { HitsMetadata } from '@global/search/_types/hits'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { double, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
-import { HitsMetadata } from '@global/search/_types/hits'
 
 export class Response<TDocument> {
   body: {

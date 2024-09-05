@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { FileCountSnapshotStats } from './FileCountSnapshotStats'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { FileCountSnapshotStats } from './FileCountSnapshotStats'
 
 export class SnapshotStats {
   incremental: FileCountSnapshotStats

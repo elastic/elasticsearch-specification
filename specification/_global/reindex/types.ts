@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   IndexName,
@@ -33,8 +33,8 @@ import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
+import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
   /**

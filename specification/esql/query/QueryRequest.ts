@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { FieldValue } from '@_types/common'
-import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * Executes an ES|QL request

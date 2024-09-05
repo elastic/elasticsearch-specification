@@ -18,8 +18,8 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { long, integer } from '@_types/Numeric'
 import { ByteSize } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 
 export class Response {
   body: {

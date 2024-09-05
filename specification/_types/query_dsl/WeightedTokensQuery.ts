@@ -17,12 +17,10 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { TokenPruningConfig } from './TokenPruningConfig'
-import { QueryBase } from './abstractions'
-import { Field, FieldValue } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { float } from '@_types/Numeric'
+import { QueryBase } from './abstractions'
+import { TokenPruningConfig } from './TokenPruningConfig'
 
 export class WeightedTokensQuery extends QueryBase {
   /** The tokens representing this query */

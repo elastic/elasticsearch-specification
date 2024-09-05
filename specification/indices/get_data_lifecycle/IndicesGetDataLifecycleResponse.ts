@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DataStreamName } from '@_types/common'
 import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamName } from '@_types/common'
 
 export class Response {
   body: { data_streams: DataStreamWithLifecycle[] }

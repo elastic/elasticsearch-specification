@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer, long } from '@_types/Numeric'
 import { Id } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 
 /**
  * Create part of a trained model definition.
