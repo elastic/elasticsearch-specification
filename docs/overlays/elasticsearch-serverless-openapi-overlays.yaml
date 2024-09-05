@@ -5,12 +5,18 @@ info:
   version: 0.0.1
 actions:
   - target: '$.info'
-    description: Add a document description
+    description: Add a document description and feedback link
     update:
       description: >
         **Technical preview**  
         This functionality is in technical preview and may be changed or removed in a future release.
         Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+      license:
+        name: Attribution-NonCommercial-NoDerivatives 4.0 International
+        url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+      x-feedbackLink:
+        label: Feedback
+        url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
   - target: "$.components['requestBodies']['async_search.submit']"
     description: "Add example for asynch search submit request"
     update: 
@@ -35,13 +41,45 @@ actions:
           application/json: 
             examples: 
               createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.json"
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample1.json"
               createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.json"
+                $ref: "../../specification/transform/put_transform/PutTransformRequestExample2.json"
       responses:
         200:
           content:
             application/json:
               examples:
                 createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/examples/200_response/PutTransformResponseExample1.json"
+                  $ref: "../../specification/transform/put_transform/PutTransformResponseExample1.json"
+  - target: "$.components['requestBodies']['transform.preview_transform']"
+    description: "Add examples for preview transform operation"
+    update: 
+      content: 
+        application/json: 
+          examples: 
+            previewTransformRequestExample1: 
+              $ref: "../../specification/transform/preview_transform/PreviewTransformRequestExample1.json"
+  - target: "$.components['reponses']['transform.preview_transform#200']"
+    description: "Add examples for preview transform operation"
+    update: 
+      content:
+        application/json:
+          examples:
+            previewTransformResponseExample1:
+              $ref: "../../specification/transform/preview_transform/PreviewTransformResponseExample1.json"
+  - target: "$.paths['/_transform/{transform_id}/_update']['post']"
+    description: "Add examples for update transform operation"
+    update: 
+      requestBody: 
+        content: 
+          application/json: 
+            examples: 
+              updateTransformRequestExample1: 
+                $ref: "../../specification/transform/update_transform/UpdateTransformRequestExample1.json"
+      responses:
+        200:
+          content:
+            application/json:
+              examples:
+                updateTransformResponseExample1:
+                  $ref: "../../specification/transform/update_transform/UpdateTransformResponseExample1.json"

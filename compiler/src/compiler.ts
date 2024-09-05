@@ -62,10 +62,24 @@ export default class Compiler {
       this.model = await step(this.model, this.jsonSpec, this.errors)
     }
 
+    const customStringify = stringify.configure(
+      {
+        deterministic: (a, b) => {
+          // Make sure the discriminator property is always emitted first
+          if (a === 'kind') {
+            return -1
+          }
+          if (b === 'kind') {
+            return 1
+          }
+          return a.localeCompare(b)
+        }
+      })
+
     await mkdir(join(this.outputFolder, 'schema'), { recursive: true })
     await writeFile(
       join(this.outputFolder, 'schema', 'schema.json'),
-      stringify(this.model, null, 2),
+      customStringify(this.model, null, 2),
       'utf8'
     )
 

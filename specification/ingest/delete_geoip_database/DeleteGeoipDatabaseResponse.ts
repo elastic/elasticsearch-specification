@@ -17,25 +17,8 @@
  * under the License.
  */
 
-import { LifecycleOperationMode } from '@_types/Lifecycle'
-import { Phases } from '@ilm/_types/Phase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { HttpHeaders, IndexName, VersionNumber } from '@_types/common'
-import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class ClusterStateIndexLifecycle {
-  policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>
-  operation_mode: LifecycleOperationMode
-}
-
-export class ClusterStateIndexLifecycleSummary {
-  policy: ClusterStateIndexLifecyclePolicy
-  headers: HttpHeaders
-  version: VersionNumber
-  modified_date: EpochTime<UnitMillis>
-  modified_date_string?: DateTime
-}
-
-export class ClusterStateIndexLifecyclePolicy {
-  phases: Phases
+export class Response {
+  body: AcknowledgedResponseBase
 }

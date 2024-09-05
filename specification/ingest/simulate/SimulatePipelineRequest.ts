@@ -21,6 +21,7 @@ import { Pipeline } from '@ingest/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Document } from './types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Executes an ingest pipeline against a set of provided documents.
@@ -46,7 +47,7 @@ export interface Request extends RequestBase {
     /**
      * Sample documents to test in the pipeline.
      */
-    docs?: Document[]
+    docs: Document[]
     /**
      * Pipeline to test.
      * If you don’t specify the `pipeline` request path parameter, this parameter is required.

@@ -1,0 +1,7 @@
+{
+  "summary": "Creates a follower index.",
+  "method_request": "PUT /<follower_index>/_ccr/follow?wait_for_active_shards=1",
+  "description": "The API method and path for this request: `PUT /<follower_index>/_ccr/follow?wait_for_active_shards=1`.",
+  "type": "request",
+  "value": "{\n  \"remote_cluster\" : \"<remote_cluster>\",\n  \"leader_index\" : \"<leader_index>\"\n}"
+}

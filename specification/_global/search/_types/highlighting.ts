@@ -193,5 +193,4 @@ export enum HighlighterType {
 export class HighlightField extends HighlightBase {
   fragment_offset?: integer
   matched_fields?: Fields
-  analyzer?: Analyzer
 }

@@ -42,7 +42,8 @@ export class QueryRule {
 }
 
 export enum QueryRuleType {
-  pinned
+  pinned,
+  exclude
 }
 
 export class QueryRuleCriteria {

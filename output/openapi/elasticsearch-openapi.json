@@ -11360,6 +11360,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -13163,6 +13166,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_data_stream#master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_data_stream#verbose"
           }
         ],
         "responses": {
@@ -14346,6 +14352,26 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types:ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ignore_unavailable",
+            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "allow_no_indices",
+            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           }
@@ -15825,6 +15851,166 @@
         }
       }
     },
+    "/_ingest/geoip/database/{id}": {
+      "get": {
+        "tags": [
+          "ingest.get_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-get-geoip-database-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#id"
+          },
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        },
+        "x-available-since": "8.15.0"
+      },
+      "put": {
+        "tags": [
+          "ingest.put_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-put-geoip-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the database configuration to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "$ref": "#/components/schemas/_types:Name"
+                  },
+                  "maxmind": {
+                    "$ref": "#/components/schemas/ingest._types:Maxmind"
+                  }
+                },
+                "required": [
+                  "name",
+                  "maxmind"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.15.0"
+      },
+      "delete": {
+        "tags": [
+          "ingest.delete_geoip_database"
+        ],
+        "summary": "Deletes a geoip database configuration",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-delete-geoip-database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "A comma-separated list of geoip database configurations to delete",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Ids"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types:Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types:AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-available-since": "8.15.0"
+      }
+    },
     "/_ingest/pipeline/{id}": {
       "get": {
         "tags": [
@@ -16053,6 +16239,29 @@
           }
         },
         "x-available-since": "7.13.0"
+      }
+    },
+    "/_ingest/geoip/database": {
+      "get": {
+        "tags": [
+          "ingest.get_geoip_database"
+        ],
+        "summary": "Returns information about one or more geoip database configurations",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/TODO.html"
+        },
+        "operationId": "ingest-get-geoip-database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ingest.get_geoip_database#master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ingest.get_geoip_database#200"
+          }
+        },
+        "x-available-since": "8.15.0"
       }
     },
     "/_ingest/pipeline": {
@@ -38904,6 +39113,27 @@
           }
         }
       },
+      "ingest.get_geoip_database#200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "databases": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest.get_geoip_database:DatabaseConfigurationMetadata"
+                  }
+                }
+              },
+              "required": [
+                "databases"
+              ]
+            }
+          }
+        }
+      },
       "ingest.get_pipeline#200": {
         "description": "",
         "content": {
@@ -38927,7 +39157,7 @@
                 "docs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
+                    "$ref": "#/components/schemas/ingest.simulate:SimulateDocumentResult"
                   }
                 }
               },
@@ -39975,7 +40205,7 @@
                 "nodes": {
                   "type": "object",
                   "additionalProperties": {
-                    "$ref": "#/components/schemas/_types:NodeAttributes"
+                    "$ref": "#/components/schemas/_global.search_shards:SearchShardsNodeAttributes"
                   }
                 },
                 "shards": {
@@ -44580,6 +44810,16 @@
         },
         "style": "form"
       },
+      "indices.get_data_stream#verbose": {
+        "in": "query",
+        "name": "verbose",
+        "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "indices.get_field_mapping#fields": {
         "in": "path",
         "name": "fields",
@@ -45984,6 +46224,27 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
+      },
+      "ingest.get_geoip_database#id": {
+        "in": "path",
+        "name": "id",
+        "description": "Comma-separated list of database configuration IDs to retrieve.\nWildcard (`*`) expressions are supported.\nTo get all database configurations, omit this parameter or use `*`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Ids"
+        },
+        "style": "simple"
+      },
+      "ingest.get_geoip_database#master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "ingest.get_pipeline#id": {
         "in": "path",
@@ -51398,7 +51659,10 @@
                 "pipeline": {
                   "$ref": "#/components/schemas/ingest._types:Pipeline"
                 }
-              }
+              },
+              "required": [
+                "docs"
+              ]
             }
           }
         },
@@ -59647,528 +59911,9 @@
               },
               "matched_fields": {
                 "$ref": "#/components/schemas/_types:Fields"
-              },
-              "analyzer": {
-                "$ref": "#/components/schemas/_types.analysis:Analyzer"
               }
             }
           }
-        ]
-      },
-      "_types.analysis:Analyzer": {
-        "discriminator": {
-          "propertyName": "type"
-        },
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.analysis:CustomAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:FingerprintAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:PatternAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:SimpleAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:StandardAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:StopAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:WhitespaceAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:IcuAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:KuromojiAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:SnowballAnalyzer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.analysis:DutchAnalyzer"
-          }
-        ]
-      },
-      "_types.analysis:CustomAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "custom"
-            ]
-          },
-          "char_filter": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "filter": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            ]
-          },
-          "position_increment_gap": {
-            "type": "number"
-          },
-          "position_offset_gap": {
-            "type": "number"
-          },
-          "tokenizer": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "tokenizer"
-        ]
-      },
-      "_types.analysis:FingerprintAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "fingerprint"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "max_output_size": {
-            "type": "number"
-          },
-          "preserve_original": {
-            "type": "boolean"
-          },
-          "separator": {
-            "type": "string"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "max_output_size",
-          "preserve_original",
-          "separator"
-        ]
-      },
-      "_types.analysis:StopWords": {
-        "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ]
-      },
-      "_types.analysis:KeywordAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "keyword"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:LanguageAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "language"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:Language"
-          },
-          "stem_exclusion": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "language",
-          "stem_exclusion"
-        ]
-      },
-      "_types.analysis:Language": {
-        "type": "string",
-        "enum": [
-          "Arabic",
-          "Armenian",
-          "Basque",
-          "Brazilian",
-          "Bulgarian",
-          "Catalan",
-          "Chinese",
-          "Cjk",
-          "Czech",
-          "Danish",
-          "Dutch",
-          "English",
-          "Estonian",
-          "Finnish",
-          "French",
-          "Galician",
-          "German",
-          "Greek",
-          "Hindi",
-          "Hungarian",
-          "Indonesian",
-          "Irish",
-          "Italian",
-          "Latvian",
-          "Norwegian",
-          "Persian",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Sorani",
-          "Spanish",
-          "Swedish",
-          "Turkish",
-          "Thai"
-        ]
-      },
-      "_types.analysis:NoriAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "nori"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "decompound_mode": {
-            "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
-          },
-          "stoptags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "user_dictionary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:NoriDecompoundMode": {
-        "type": "string",
-        "enum": [
-          "discard",
-          "none",
-          "mixed"
-        ]
-      },
-      "_types.analysis:PatternAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "pattern"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "flags": {
-            "type": "string"
-          },
-          "lowercase": {
-            "type": "boolean"
-          },
-          "pattern": {
-            "type": "string"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type",
-          "pattern"
-        ]
-      },
-      "_types.analysis:SimpleAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "simple"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:StandardAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "standard"
-            ]
-          },
-          "max_token_length": {
-            "type": "number"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:StopAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "stop"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          },
-          "stopwords_path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:WhitespaceAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "whitespace"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.analysis:IcuAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "icu_analyzer"
-            ]
-          },
-          "method": {
-            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationType"
-          },
-          "mode": {
-            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationMode"
-          }
-        },
-        "required": [
-          "type",
-          "method",
-          "mode"
-        ]
-      },
-      "_types.analysis:IcuNormalizationType": {
-        "type": "string",
-        "enum": [
-          "nfc",
-          "nfkc",
-          "nfkc_cf"
-        ]
-      },
-      "_types.analysis:IcuNormalizationMode": {
-        "type": "string",
-        "enum": [
-          "decompose",
-          "compose"
-        ]
-      },
-      "_types.analysis:KuromojiAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "kuromoji"
-            ]
-          },
-          "mode": {
-            "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizationMode"
-          },
-          "user_dictionary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "mode"
-        ]
-      },
-      "_types.analysis:KuromojiTokenizationMode": {
-        "type": "string",
-        "enum": [
-          "normal",
-          "search",
-          "extended"
-        ]
-      },
-      "_types.analysis:SnowballAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "snowball"
-            ]
-          },
-          "version": {
-            "$ref": "#/components/schemas/_types:VersionString"
-          },
-          "language": {
-            "$ref": "#/components/schemas/_types.analysis:SnowballLanguage"
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type",
-          "language"
-        ]
-      },
-      "_types.analysis:SnowballLanguage": {
-        "type": "string",
-        "enum": [
-          "Armenian",
-          "Basque",
-          "Catalan",
-          "Danish",
-          "Dutch",
-          "English",
-          "Finnish",
-          "French",
-          "German",
-          "German2",
-          "Hungarian",
-          "Italian",
-          "Kp",
-          "Lovins",
-          "Norwegian",
-          "Porter",
-          "Portuguese",
-          "Romanian",
-          "Russian",
-          "Spanish",
-          "Swedish",
-          "Turkish"
-        ]
-      },
-      "_types.analysis:DutchAnalyzer": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "dutch"
-            ]
-          },
-          "stopwords": {
-            "$ref": "#/components/schemas/_types.analysis:StopWords"
-          }
-        },
-        "required": [
-          "type"
         ]
       },
       "_global.search._types:HighlightBase": {
@@ -61281,6 +61026,20 @@
           "external",
           "external_gte",
           "force"
+        ]
+      },
+      "_types.analysis:StopWords": {
+        "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         ]
       },
       "_types.query_dsl:MultiMatchQuery": {
@@ -66473,7 +66232,7 @@
             "description": "Sum of index write load forecasts",
             "oneOf": [
               {
-                "type": "number"
+                "$ref": "#/components/schemas/_spec_utils:Stringifieddouble"
               },
               {
                 "nullable": true,
@@ -66593,21 +66352,17 @@
               }
             ]
           }
-        },
-        "required": [
-          "shards",
-          "shards.undesired",
-          "write_load.forecast",
-          "disk.indices.forecast",
-          "disk.indices",
-          "disk.used",
-          "disk.avail",
-          "disk.total",
-          "disk.percent",
-          "host",
-          "ip",
-          "node",
-          "node.role"
+        }
+      },
+      "_spec_utils:Stringifieddouble": {
+        "description": "Some APIs will return values such as numbers also as a string (notably epoch timestamps). This behavior\nis used to capture this behavior while keeping the semantics of the field type.\n\nDepending on the target language, code generators can keep the union or remove it and leniently parse\nstrings to the target type.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "_types:ByteSize": {
@@ -66797,6 +66552,10 @@
             "description": "number of initializing nodes",
             "type": "string"
           },
+          "unassign.pri": {
+            "description": "number of unassigned primary shards",
+            "type": "string"
+          },
           "unassign": {
             "description": "number of unassigned shards",
             "type": "string"
@@ -66910,6 +66669,19 @@
           },
           "pri.store.size": {
             "description": "store size of primaries",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "dataset.size": {
+            "description": "total size of dataset (including the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -68941,6 +68713,19 @@
           },
           "store": {
             "description": "The disk space used by the shard.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "dataset": {
+            "description": "total size of dataset (including the cache for partially mounted indices)",
+            "x-available-since": "8.11.0",
             "oneOf": [
               {
                 "type": "string"
@@ -71269,6 +71054,1513 @@
           }
         }
       },
+      "_types.analysis:Analyzer": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis:CustomAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FingerprintAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:KeywordAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LanguageAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:NoriAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PatternAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SimpleAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:StandardAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:StopAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:WhitespaceAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IcuAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:KuromojiAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SnowballAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ArabicAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ArmenianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BasqueAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BengaliAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BrazilianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:BulgarianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CatalanAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ChineseAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CjkAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:CzechAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:DanishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:DutchAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:EnglishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:EstonianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FinnishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:FrenchAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GalicianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GermanAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:GreekAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:HindiAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:HungarianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IndonesianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:IrishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ItalianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LatvianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:LithuanianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:NorwegianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PersianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:PortugueseAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:RomanianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:RussianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SerbianAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SoraniAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SpanishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:SwedishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:TurkishAnalyzer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis:ThaiAnalyzer"
+          }
+        ]
+      },
+      "_types.analysis:CustomAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "custom"
+            ]
+          },
+          "char_filter": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "filter": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "position_increment_gap": {
+            "type": "number"
+          },
+          "position_offset_gap": {
+            "type": "number"
+          },
+          "tokenizer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "tokenizer"
+        ]
+      },
+      "_types.analysis:FingerprintAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "fingerprint"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "max_output_size": {
+            "type": "number"
+          },
+          "preserve_original": {
+            "type": "boolean"
+          },
+          "separator": {
+            "type": "string"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "max_output_size",
+          "preserve_original",
+          "separator"
+        ]
+      },
+      "_types.analysis:KeywordAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "keyword"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LanguageAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "language"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "language": {
+            "$ref": "#/components/schemas/_types.analysis:Language"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "language",
+          "stem_exclusion"
+        ]
+      },
+      "_types.analysis:Language": {
+        "type": "string",
+        "enum": [
+          "Arabic",
+          "Armenian",
+          "Basque",
+          "Brazilian",
+          "Bulgarian",
+          "Catalan",
+          "Chinese",
+          "Cjk",
+          "Czech",
+          "Danish",
+          "Dutch",
+          "English",
+          "Estonian",
+          "Finnish",
+          "French",
+          "Galician",
+          "German",
+          "Greek",
+          "Hindi",
+          "Hungarian",
+          "Indonesian",
+          "Irish",
+          "Italian",
+          "Latvian",
+          "Norwegian",
+          "Persian",
+          "Portuguese",
+          "Romanian",
+          "Russian",
+          "Sorani",
+          "Spanish",
+          "Swedish",
+          "Turkish",
+          "Thai"
+        ]
+      },
+      "_types.analysis:NoriAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "nori"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "decompound_mode": {
+            "$ref": "#/components/schemas/_types.analysis:NoriDecompoundMode"
+          },
+          "stoptags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_dictionary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:NoriDecompoundMode": {
+        "type": "string",
+        "enum": [
+          "discard",
+          "none",
+          "mixed"
+        ]
+      },
+      "_types.analysis:PatternAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "pattern"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "flags": {
+            "type": "string"
+          },
+          "lowercase": {
+            "type": "boolean"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type",
+          "pattern"
+        ]
+      },
+      "_types.analysis:SimpleAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "simple"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:StandardAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "standard"
+            ]
+          },
+          "max_token_length": {
+            "type": "number"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:StopAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "stop"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:WhitespaceAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "whitespace"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IcuAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "icu_analyzer"
+            ]
+          },
+          "method": {
+            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationType"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/_types.analysis:IcuNormalizationMode"
+          }
+        },
+        "required": [
+          "type",
+          "method",
+          "mode"
+        ]
+      },
+      "_types.analysis:IcuNormalizationType": {
+        "type": "string",
+        "enum": [
+          "nfc",
+          "nfkc",
+          "nfkc_cf"
+        ]
+      },
+      "_types.analysis:IcuNormalizationMode": {
+        "type": "string",
+        "enum": [
+          "decompose",
+          "compose"
+        ]
+      },
+      "_types.analysis:KuromojiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "kuromoji"
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/_types.analysis:KuromojiTokenizationMode"
+          },
+          "user_dictionary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "mode"
+        ]
+      },
+      "_types.analysis:KuromojiTokenizationMode": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "search",
+          "extended"
+        ]
+      },
+      "_types.analysis:SnowballAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "snowball"
+            ]
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "language": {
+            "$ref": "#/components/schemas/_types.analysis:SnowballLanguage"
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          }
+        },
+        "required": [
+          "type",
+          "language"
+        ]
+      },
+      "_types.analysis:SnowballLanguage": {
+        "type": "string",
+        "enum": [
+          "Armenian",
+          "Basque",
+          "Catalan",
+          "Danish",
+          "Dutch",
+          "English",
+          "Finnish",
+          "French",
+          "German",
+          "German2",
+          "Hungarian",
+          "Italian",
+          "Kp",
+          "Lovins",
+          "Norwegian",
+          "Porter",
+          "Portuguese",
+          "Romanian",
+          "Russian",
+          "Spanish",
+          "Swedish",
+          "Turkish"
+        ]
+      },
+      "_types.analysis:ArabicAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "arabic"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ArmenianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "armenian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BasqueAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "basque"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BengaliAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bengali"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BrazilianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "brazilian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:BulgarianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "bulgarian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CatalanAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "catalan"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ChineseAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "chinese"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CjkAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "cjk"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:CzechAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "czech"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:DanishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "danish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:DutchAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "dutch"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:EnglishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "english"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:EstonianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "estonian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:FinnishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "finnish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:FrenchAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "french"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GalicianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "galician"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GermanAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "german"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:GreekAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "greek"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:HindiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "hindi"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:HungarianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "hungarian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IndonesianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "indonesian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:IrishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "irish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ItalianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "italian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LatvianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "latvian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:LithuanianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "lithuanian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:NorwegianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "norwegian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:PersianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "persian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:PortugueseAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "portuguese"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:RomanianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "romanian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:RussianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "russian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SerbianAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "serbian"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SoraniAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "sorani"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SpanishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "spanish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:SwedishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "swedish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:TurkishAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "turkish"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          },
+          "stem_exclusion": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.analysis:ThaiAnalyzer": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "thai"
+            ]
+          },
+          "stopwords": {
+            "$ref": "#/components/schemas/_types.analysis:StopWords"
+          },
+          "stopwords_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
       "_types.analysis:CharFilter": {
         "oneOf": [
           {
@@ -73174,10 +74466,7 @@
             },
             "required": [
               "type",
-              "encoder",
-              "languageset",
-              "name_type",
-              "rule_type"
+              "encoder"
             ]
           }
         ]
@@ -76796,6 +78085,10 @@
             "description": "If false the response returned within the period of time that is specified by the timeout parameter (30s by default)",
             "type": "boolean"
           },
+          "unassigned_primary_shards": {
+            "description": "The number of primary shards that are not allocated.",
+            "type": "number"
+          },
           "unassigned_shards": {
             "description": "The number of shards that are not allocated.",
             "type": "number"
@@ -76816,6 +78109,7 @@
           "status",
           "task_max_waiting_in_queue_millis",
           "timed_out",
+          "unassigned_primary_shards",
           "unassigned_shards"
         ]
       },
@@ -76851,6 +78145,9 @@
           },
           "unassigned_shards": {
             "type": "number"
+          },
+          "unassigned_primary_shards": {
+            "type": "number"
           }
         },
         "required": [
@@ -76861,7 +78158,8 @@
           "number_of_shards",
           "relocating_shards",
           "status",
-          "unassigned_shards"
+          "unassigned_shards",
+          "unassigned_primary_shards"
         ]
       },
       "cluster.health:ShardHealthStats": {
@@ -76884,6 +78182,9 @@
           },
           "unassigned_shards": {
             "type": "number"
+          },
+          "unassigned_primary_shards": {
+            "type": "number"
           }
         },
         "required": [
@@ -76892,7 +78193,8 @@
           "primary_active",
           "relocating_shards",
           "status",
-          "unassigned_shards"
+          "unassigned_shards",
+          "unassigned_primary_shards"
         ]
       },
       "_types:ClusterInfoTargets": {
@@ -80200,10 +81502,19 @@
           "hits": {
             "type": "number"
           },
+          "hits_time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
           "misses": {
             "type": "number"
           },
+          "misses_time_in_millis": {
+            "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
+          },
           "evictions": {
+            "type": "number"
+          },
+          "size_in_bytes": {
             "type": "number"
           }
         },
@@ -80211,8 +81522,11 @@
           "node_id",
           "count",
           "hits",
+          "hits_time_in_millis",
           "misses",
-          "evictions"
+          "misses_time_in_millis",
+          "evictions",
+          "size_in_bytes"
         ]
       },
       "eql._types:EqlSearchResponseBase": {
@@ -81168,6 +82482,9 @@
           "repository_integrity": {
             "$ref": "#/components/schemas/_global.health_report:RepositoryIntegrityIndicator"
           },
+          "data_stream_lifecycle": {
+            "$ref": "#/components/schemas/_global.health_report:DataStreamLifecycleIndicator"
+          },
           "ilm": {
             "$ref": "#/components/schemas/_global.health_report:IlmIndicator"
           },
@@ -81550,6 +82867,61 @@
             }
           }
         }
+      },
+      "_global.health_report:DataStreamLifecycleIndicator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report:BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "$ref": "#/components/schemas/_global.health_report:DataStreamLifecycleDetails"
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report:DataStreamLifecycleDetails": {
+        "type": "object",
+        "properties": {
+          "stagnating_backing_indices_count": {
+            "type": "number"
+          },
+          "total_backing_indices_in_error": {
+            "type": "number"
+          },
+          "stagnating_backing_indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.health_report:StagnatingBackingIndices"
+            }
+          }
+        },
+        "required": [
+          "stagnating_backing_indices_count",
+          "total_backing_indices_in_error"
+        ]
+      },
+      "_global.health_report:StagnatingBackingIndices": {
+        "type": "object",
+        "properties": {
+          "index_name": {
+            "$ref": "#/components/schemas/_types:IndexName"
+          },
+          "first_occurrence_timestamp": {
+            "type": "number"
+          },
+          "retry_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index_name",
+          "first_occurrence_timestamp",
+          "retry_count"
+        ]
       },
       "_global.health_report:IlmIndicator": {
         "allOf": [
@@ -84886,12 +86258,16 @@
           "total_download_time": {
             "$ref": "#/components/schemas/_types:DurationValueUnitMillis"
           },
-          "database_count": {
+          "databases_count": {
             "description": "Current number of databases available for use.",
             "type": "number"
           },
           "skipped_updates": {
             "description": "Total number of database updates skipped.",
+            "type": "number"
+          },
+          "expired_databases": {
+            "description": "Total number of databases not updated after 30 days",
             "type": "number"
           }
         },
@@ -84899,8 +86275,9 @@
           "successful_downloads",
           "failed_downloads",
           "total_download_time",
-          "database_count",
-          "skipped_updates"
+          "databases_count",
+          "skipped_updates",
+          "expired_databases"
         ]
       },
       "ingest.geo_ip_stats:GeoIpNodeDatabases": {
@@ -84935,6 +86312,55 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "ingest.get_geoip_database:DatabaseConfigurationMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "version": {
+            "type": "number"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types:EpochTimeUnitMillis"
+          },
+          "database": {
+            "$ref": "#/components/schemas/ingest._types:DatabaseConfiguration"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "modified_date_millis",
+          "database"
+        ]
+      },
+      "ingest._types:DatabaseConfiguration": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:Name"
+          },
+          "maxmind": {
+            "$ref": "#/components/schemas/ingest._types:Maxmind"
+          }
+        },
+        "required": [
+          "name",
+          "maxmind"
+        ]
+      },
+      "ingest._types:Maxmind": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          }
+        },
+        "required": [
+          "account_id"
         ]
       },
       "ingest._types:Pipeline": {
@@ -85011,6 +86437,9 @@
           "foreach": {
             "$ref": "#/components/schemas/ingest._types:ForeachProcessor"
           },
+          "geo_grid": {
+            "$ref": "#/components/schemas/ingest._types:GeoGridProcessor"
+          },
           "geoip": {
             "$ref": "#/components/schemas/ingest._types:GeoIpProcessor"
           },
@@ -85019,6 +86448,9 @@
           },
           "gsub": {
             "$ref": "#/components/schemas/ingest._types:GsubProcessor"
+          },
+          "html_strip": {
+            "$ref": "#/components/schemas/ingest._types:HtmlStripProcessor"
           },
           "inference": {
             "$ref": "#/components/schemas/ingest._types:InferenceProcessor"
@@ -85070,6 +86502,9 @@
           },
           "urldecode": {
             "$ref": "#/components/schemas/ingest._types:UrlDecodeProcessor"
+          },
+          "uri_parts": {
+            "$ref": "#/components/schemas/ingest._types:UriPartsProcessor"
           },
           "user_agent": {
             "$ref": "#/components/schemas/ingest._types:UserAgentProcessor"
@@ -85575,6 +87010,66 @@
           }
         ]
       },
+      "ingest._types:GeoGridProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+                "type": "string"
+              },
+              "tile_type": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTileType"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "parent_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "non_children_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "precision_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "target_format": {
+                "$ref": "#/components/schemas/ingest._types:GeoGridTargetFormat"
+              }
+            },
+            "required": [
+              "field",
+              "tile_type"
+            ]
+          }
+        ]
+      },
+      "ingest._types:GeoGridTileType": {
+        "type": "string",
+        "enum": [
+          "geotile",
+          "geohex",
+          "geohash"
+        ]
+      },
+      "ingest._types:GeoGridTargetFormat": {
+        "type": "string",
+        "enum": [
+          "geojson",
+          "wkt"
+        ]
+      },
       "ingest._types:GeoIpProcessor": {
         "allOf": [
           {
@@ -85687,6 +87182,31 @@
               "field",
               "pattern",
               "replacement"
+            ]
+          }
+        ]
+      },
+      "ingest._types:HtmlStripProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
             ]
           }
         ]
@@ -86267,6 +87787,39 @@
           }
         ]
       },
+      "ingest._types:UriPartsProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "keep_original": {
+                "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+                "type": "boolean"
+              },
+              "remove_if_successful": {
+                "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+                "type": "boolean"
+              },
+              "target_field": {
+                "$ref": "#/components/schemas/_types:Field"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
       "ingest._types:UserAgentProcessor": {
         "allOf": [
           {
@@ -86335,26 +87888,20 @@
           "_source"
         ]
       },
-      "ingest.simulate:PipelineSimulation": {
+      "ingest.simulate:SimulateDocumentResult": {
         "type": "object",
         "properties": {
           "doc": {
             "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
           },
           "processor_results": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ingest.simulate:PipelineSimulation"
             }
-          },
-          "tag": {
-            "type": "string"
-          },
-          "processor_type": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
           }
         }
       },
@@ -86419,6 +87966,32 @@
             "type": "string"
           }
         ]
+      },
+      "ingest.simulate:PipelineSimulation": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "$ref": "#/components/schemas/ingest.simulate:DocumentSimulation"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "processor_type": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/watcher._types:ActionStatusOptions"
+          },
+          "description": {
+            "type": "string"
+          },
+          "ignored_error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          },
+          "error": {
+            "$ref": "#/components/schemas/_types:ErrorCause"
+          }
+        }
       },
       "watcher._types:ActionStatusOptions": {
         "type": "string",
@@ -88633,13 +90206,6 @@
           },
           "transport_address": {
             "$ref": "#/components/schemas/_types:TransportAddress"
-          },
-          "roles": {
-            "$ref": "#/components/schemas/_types:NodeRoles"
-          },
-          "external_id": {
-            "x-available-since": "8.3.0",
-            "type": "string"
           }
         },
         "required": [
@@ -88647,32 +90213,6 @@
           "ephemeral_id",
           "name",
           "transport_address"
-        ]
-      },
-      "_types:NodeRoles": {
-        "description": "* @doc_id node-roles",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types:NodeRole"
-        }
-      },
-      "_types:NodeRole": {
-        "type": "string",
-        "enum": [
-          "master",
-          "data",
-          "data_cold",
-          "data_content",
-          "data_frozen",
-          "data_hot",
-          "data_warm",
-          "client",
-          "ingest",
-          "ml",
-          "voting_only",
-          "transform",
-          "remote_cluster_client",
-          "coordinating_only"
         ]
       },
       "ml._types:DataframeAnalyticsStatsProgress": {
@@ -91245,27 +92785,12 @@
       "ml._types:PredictedValue": {
         "oneOf": [
           {
-            "type": "string"
-          },
-          {
-            "type": "number"
+            "$ref": "#/components/schemas/_types:ScalarValue"
           },
           {
             "type": "array",
             "items": {
-              "type": "number"
-            }
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "number"
+              "$ref": "#/components/schemas/_types:ScalarValue"
             }
           }
         ]
@@ -92886,6 +94411,32 @@
           "id",
           "mlockall",
           "refresh_interval_in_millis"
+        ]
+      },
+      "_types:NodeRoles": {
+        "description": "* @doc_id node-roles",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types:NodeRole"
+        }
+      },
+      "_types:NodeRole": {
+        "type": "string",
+        "enum": [
+          "master",
+          "data",
+          "data_cold",
+          "data_content",
+          "data_frozen",
+          "data_hot",
+          "data_warm",
+          "client",
+          "ingest",
+          "ml",
+          "voting_only",
+          "transform",
+          "remote_cluster_client",
+          "coordinating_only"
         ]
       },
       "nodes.info:NodeInfoSettings": {
@@ -94831,7 +96382,8 @@
       "query_rules._types:QueryRuleType": {
         "type": "string",
         "enum": [
-          "pinned"
+          "pinned",
+          "exclude"
         ]
       },
       "query_rules._types:QueryRuleCriteria": {
@@ -95848,8 +97400,7 @@
         },
         "required": [
           "document",
-          "index",
-          "query"
+          "index"
         ]
       },
       "_types:RankContainer": {
@@ -96150,6 +97701,54 @@
       },
       "_types:MapboxVectorTiles": {
         "type": "object"
+      },
+      "_global.search_shards:SearchShardsNodeAttributes": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types:NodeName"
+          },
+          "ephemeral_id": {
+            "$ref": "#/components/schemas/_types:Id"
+          },
+          "transport_address": {
+            "$ref": "#/components/schemas/_types:TransportAddress"
+          },
+          "external_id": {
+            "x-available-since": "8.3.0",
+            "type": "string"
+          },
+          "attributes": {
+            "description": "Lists node attributes.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "roles": {
+            "$ref": "#/components/schemas/_types:NodeRoles"
+          },
+          "version": {
+            "$ref": "#/components/schemas/_types:VersionString"
+          },
+          "min_index_version": {
+            "type": "number"
+          },
+          "max_index_version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "ephemeral_id",
+          "transport_address",
+          "external_id",
+          "attributes",
+          "roles",
+          "version",
+          "min_index_version",
+          "max_index_version"
+        ]
       },
       "_types:NodeShard": {
         "type": "object",

@@ -112,6 +112,12 @@ export class ProcessorContainer {
    */
   foreach?: ForeachProcessor
   /**
+   * Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.
+   * This is useful if there is a need to interact with the tile shapes as spatially indexable fields.
+   * @doc_id geo-grid-processor
+   */
+  geo_grid?: GeoGridProcessor
+  /**
    * The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.
    * @doc_id geoip-processor
    */
@@ -130,6 +136,12 @@ export class ProcessorContainer {
    * @doc_id gsub-processor
    */
   gsub?: GsubProcessor
+  /**
+   * Removes HTML tags from the field.
+   * If the field is an array of strings, HTML tags will be removed from all members of the array.
+   * @doc_id htmlstrip-processor
+   */
+  html_strip?: HtmlStripProcessor
   /**
    * Uses a pre-trained data frame analytics model or a model deployed for natural language processing tasks to infer against the data that is being ingested in the pipeline.
    * @doc_id inference-processor
@@ -230,6 +242,12 @@ export class ProcessorContainer {
    * @doc_id urldecode-processor
    */
   urldecode?: UrlDecodeProcessor
+  /**
+   * Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.
+   * This URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.
+   * @doc_id uri-parts-processor
+   */
+  uri_parts?: UriPartsProcessor
   /**
    * The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.
    * This processor adds this information by default under the `user_agent` field.
@@ -334,6 +352,60 @@ export class AttachmentProcessor extends ProcessorBase {
    * If specified, the processor passes this resource name to the underlying Tika library to enable Resource Name Based Detection.
    */
   resource_name?: string
+}
+
+export class GeoGridProcessor extends ProcessorBase {
+  /**
+   * The field to interpret as a geo-tile.=
+   * The field format is determined by the `tile_type`.
+   */
+  field: string
+  /**
+   * Three tile formats are understood: geohash, geotile and geohex.
+   */
+  tile_type: GeoGridTileType
+  /**
+   * The field to assign the polygon shape to, by default, the `field` is updated in-place.
+   * @server_default field
+   */
+  target_field?: Field
+  /**
+   * If specified and a parent tile exists, save that tile address to this field.
+   */
+  parent_field?: Field
+  /**
+   * If specified and children tiles exist, save those tile addresses to this field as an array of strings.
+   */
+  children_field?: Field
+  /**
+   * If specified and intersecting non-child tiles exist, save their addresses to this field as an array of strings.
+   */
+  non_children_field?: Field
+  /**
+   * If specified, save the tile precision (zoom) as an integer to this field.
+   */
+  precision_field?: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * Which format to save the generated polygon in.
+   * @server_default geojson
+   */
+  target_format?: GeoGridTargetFormat
+}
+
+export enum GeoGridTileType {
+  geotile,
+  geohex,
+  geohash
+}
+
+export enum GeoGridTargetFormat {
+  geojson,
+  wkt
 }
 
 export class GeoIpProcessor extends ProcessorBase {
@@ -714,6 +786,24 @@ export class GsubProcessor extends ProcessorBase {
    * The string to replace the matching patterns with.
    */
   replacement: string
+  /**
+   * The field to assign the converted value to
+   * By default, the `field` is updated in-place.
+   * @server_default field
+   */
+  target_field?: Field
+}
+
+export class HtmlStripProcessor extends ProcessorBase {
+  /**
+   * The string-valued field to remove HTML tags from.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,
+   * @server_default false
+   */
+  ignore_missing?: boolean
   /**
    * The field to assign the converted value to
    * By default, the `field` is updated in-place.
@@ -1171,6 +1261,34 @@ export class UrlDecodeProcessor extends ProcessorBase {
    * The field to assign the converted value to.
    * By default, the field is updated in-place.
    * @server_default field
+   */
+  target_field?: Field
+}
+
+export class UriPartsProcessor extends ProcessorBase {
+  /**
+   * Field containing the URI string.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * If `true`, the processor copies the unparsed URI to `<target_field>.original`.
+   * @server_default true
+   */
+  keep_original?: boolean
+  /**
+   * If `true`, the processor removes the `field` after parsing the URI string.
+   * If parsing fails, the processor does not remove the `field`.
+   * @server_default false
+   */
+  remove_if_successful?: boolean
+  /**
+   * Output field for the URI object.
+   * @server_default url
    */
   target_field?: Field
 }

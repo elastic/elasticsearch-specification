@@ -56,5 +56,10 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * Whether the maximum timestamp for each data stream should be calculated and returned.
+     * @server_default false
+     */
+    verbose?: boolean
   }
 }

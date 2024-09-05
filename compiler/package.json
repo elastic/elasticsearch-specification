@@ -34,10 +34,10 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
+    "compiler-wasm-lib": "file:../compiler-rs/compiler-wasm-lib/pkg",
     "fastest-levenshtein": "^1.0.12",
     "ora": "^5.4.1",
-    "safe-stable-stringify": "^2.3.1",
-    "compiler-wasm-lib": "file:../compiler-rs/compiler-wasm-lib/pkg",
+    "safe-stable-stringify": "^2.5.0",
     "semver": "^7.5.2",
     "ts-morph": "^13.0.3",
     "zx": "^4.3.0"

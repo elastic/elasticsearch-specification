@@ -17,10 +17,18 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeShard } from '@_types/Node'
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { EpochTime, UnitMillis } from '@_types/Time'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
 
-export class ClusterStateRoutingNodes {
-  unassigned: NodeShard[]
-  nodes: Dictionary<string, NodeShard[]>
+export class Response {
+  body: { databases: DatabaseConfigurationMetadata[] }
+}
+
+class DatabaseConfigurationMetadata {
+  id: Id
+  version: long
+  modified_date_millis: EpochTime<UnitMillis>
+  database: DatabaseConfiguration
 }

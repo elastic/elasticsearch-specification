@@ -21685,9 +21685,22 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Whether the maximum timestamp for each data stream should be calculated and returned.",
+          "name": "verbose",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L60"
+      "specLocation": "indices/get_data_stream/IndicesGetDataStreamRequest.ts#L24-L65"
     },
     {
       "body": {
@@ -23597,9 +23610,35 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L48"
+      "specLocation": "indices/resolve_index/ResolveIndexRequest.ts#L23-L60"
     },
     {
       "body": {
@@ -25508,7 +25547,7 @@
           {
             "description": "Sample documents to test in the pipeline.",
             "name": "docs",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "array_of",
               "value": {
@@ -25574,7 +25613,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L25-L57"
+      "specLocation": "ingest/simulate/SimulatePipelineRequest.ts#L26-L58"
     },
     {
       "body": {
@@ -25588,7 +25627,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "PipelineSimulation",
+                  "name": "SimulateDocumentResult",
                   "namespace": "ingest.simulate"
                 }
               }
@@ -44610,7 +44649,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L72-L77"
+      "specLocation": "_global/health_report/types.ts#L73-L78"
     },
     {
       "kind": "enum",
@@ -51851,20 +51890,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "analyzer",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Analyzer",
-              "namespace": "_types.analysis"
-            }
-          }
         }
       ],
-      "specLocation": "_global/search/_types/highlighting.ts#L193-L197"
+      "specLocation": "_global/search/_types/highlighting.ts#L193-L196"
     },
     {
       "kind": "type_alias",
@@ -51895,1169 +51923,6 @@
         ],
         "kind": "union_of"
       }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Analyzer",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/analyzers.ts#L113-L131",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "CustomAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "FingerprintAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "KeywordAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "LanguageAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "NoriAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "PatternAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "SimpleAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "StandardAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "WhitespaceAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IcuAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "KuromojiAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "SnowballAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "DutchAnalyzer",
-              "namespace": "_types.analysis"
-            }
-          }
-        ],
-        "kind": "union_of"
-      },
-      "variants": {
-        "defaultTag": "custom",
-        "kind": "internal_tag",
-        "nonExhaustive": true,
-        "tag": "type"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CustomAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "custom"
-          }
-        },
-        {
-          "name": "char_filter",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "filter",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "position_increment_gap",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "position_offset_gap",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "tokenizer",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L28-L35"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FingerprintAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "fingerprint"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_output_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "preserve_original",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "separator",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "stopwords_path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L37-L45"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "VersionString",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L104-L104",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
-      "kind": "type_alias",
-      "name": {
-        "name": "StopWords",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/StopWords.ts#L20-L26",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "KeywordAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "keyword"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L47-L50"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LanguageAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "language"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "language",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Language",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "stem_exclusion",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "stopwords_path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L52-L59"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "Arabic"
-        },
-        {
-          "name": "Armenian"
-        },
-        {
-          "name": "Basque"
-        },
-        {
-          "name": "Brazilian"
-        },
-        {
-          "name": "Bulgarian"
-        },
-        {
-          "name": "Catalan"
-        },
-        {
-          "name": "Chinese"
-        },
-        {
-          "name": "Cjk"
-        },
-        {
-          "name": "Czech"
-        },
-        {
-          "name": "Danish"
-        },
-        {
-          "name": "Dutch"
-        },
-        {
-          "name": "English"
-        },
-        {
-          "name": "Estonian"
-        },
-        {
-          "name": "Finnish"
-        },
-        {
-          "name": "French"
-        },
-        {
-          "name": "Galician"
-        },
-        {
-          "name": "German"
-        },
-        {
-          "name": "Greek"
-        },
-        {
-          "name": "Hindi"
-        },
-        {
-          "name": "Hungarian"
-        },
-        {
-          "name": "Indonesian"
-        },
-        {
-          "name": "Irish"
-        },
-        {
-          "name": "Italian"
-        },
-        {
-          "name": "Latvian"
-        },
-        {
-          "name": "Norwegian"
-        },
-        {
-          "name": "Persian"
-        },
-        {
-          "name": "Portuguese"
-        },
-        {
-          "name": "Romanian"
-        },
-        {
-          "name": "Russian"
-        },
-        {
-          "name": "Sorani"
-        },
-        {
-          "name": "Spanish"
-        },
-        {
-          "name": "Swedish"
-        },
-        {
-          "name": "Turkish"
-        },
-        {
-          "name": "Thai"
-        }
-      ],
-      "name": {
-        "name": "Language",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/languages.ts#L20-L55"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NoriAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "nori"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "decompound_mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NoriDecompoundMode",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "stoptags",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "name": "user_dictionary",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L66-L72"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "discard"
-        },
-        {
-          "name": "none"
-        },
-        {
-          "name": "mixed"
-        }
-      ],
-      "name": {
-        "name": "NoriDecompoundMode",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/tokenizers.ts#L75-L79"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PatternAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "pattern"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "flags",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "lowercase",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "pattern",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L74-L81"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SimpleAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "simple"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L83-L86"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "StandardAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "standard"
-          }
-        },
-        {
-          "name": "max_token_length",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L95-L99"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "StopAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "stop"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "stopwords_path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L101-L106"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "WhitespaceAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "whitespace"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L108-L111"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IcuAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "icu_analyzer"
-          }
-        },
-        {
-          "name": "method",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IcuNormalizationType",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "mode",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IcuNormalizationMode",
-              "namespace": "_types.analysis"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/icu-plugin.ts#L67-L71"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "nfc"
-        },
-        {
-          "name": "nfkc"
-        },
-        {
-          "name": "nfkc_cf"
-        }
-      ],
-      "name": {
-        "name": "IcuNormalizationType",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/icu-plugin.ts#L83-L87"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "decompose"
-        },
-        {
-          "name": "compose"
-        }
-      ],
-      "name": {
-        "name": "IcuNormalizationMode",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/icu-plugin.ts#L78-L81"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "KuromojiAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "kuromoji"
-          }
-        },
-        {
-          "name": "mode",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "KuromojiTokenizationMode",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "user_dictionary",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/kuromoji-plugin.ts#L25-L29"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "normal"
-        },
-        {
-          "name": "search"
-        },
-        {
-          "name": "extended"
-        }
-      ],
-      "name": {
-        "name": "KuromojiTokenizationMode",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/kuromoji-plugin.ts#L52-L56"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnowballAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "snowball"
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "language",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SnowballLanguage",
-              "namespace": "_types.analysis"
-            }
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L88-L93"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "Armenian"
-        },
-        {
-          "name": "Basque"
-        },
-        {
-          "name": "Catalan"
-        },
-        {
-          "name": "Danish"
-        },
-        {
-          "name": "Dutch"
-        },
-        {
-          "name": "English"
-        },
-        {
-          "name": "Finnish"
-        },
-        {
-          "name": "French"
-        },
-        {
-          "name": "German"
-        },
-        {
-          "name": "German2"
-        },
-        {
-          "name": "Hungarian"
-        },
-        {
-          "name": "Italian"
-        },
-        {
-          "name": "Kp"
-        },
-        {
-          "name": "Lovins"
-        },
-        {
-          "name": "Norwegian"
-        },
-        {
-          "name": "Porter"
-        },
-        {
-          "name": "Portuguese"
-        },
-        {
-          "name": "Romanian"
-        },
-        {
-          "name": "Russian"
-        },
-        {
-          "name": "Spanish"
-        },
-        {
-          "name": "Swedish"
-        },
-        {
-          "name": "Turkish"
-        }
-      ],
-      "name": {
-        "name": "SnowballLanguage",
-        "namespace": "_types.analysis"
-      },
-      "specLocation": "_types/analysis/languages.ts#L57-L80"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "DutchAnalyzer",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "dutch"
-          }
-        },
-        {
-          "name": "stopwords",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StopWords",
-              "namespace": "_types.analysis"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/analysis/analyzers.ts#L61-L64"
     },
     {
       "kind": "interface",
@@ -56007,6 +54872,37 @@
         "namespace": "_types"
       },
       "specLocation": "_types/common.ts#L106-L122"
+    },
+    {
+      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
+      "kind": "type_alias",
+      "name": {
+        "name": "StopWords",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/StopWords.ts#L20-L26",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "inherits": {
@@ -76758,7 +75654,7 @@
         "name": "NodeRole",
         "namespace": "_types"
       },
-      "specLocation": "_types/Node.ts#L77-L95"
+      "specLocation": "_types/Node.ts#L71-L89"
     },
     {
       "description": "* @doc_id node-roles",
@@ -76767,7 +75663,7 @@
         "name": "NodeRoles",
         "namespace": "_types"
       },
-      "specLocation": "_types/Node.ts#L97-L100",
+      "specLocation": "_types/Node.ts#L91-L94",
       "type": {
         "kind": "array_of",
         "value": {
@@ -77303,6 +76199,21 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "VersionString",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L104-L104",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -77421,6 +76332,3232 @@
           "namespace": "_builtins"
         }
       }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Analyzer",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/analyzers.ts#L359-L413",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FingerprintAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KeywordAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LanguageAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PatternAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StandardAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WhitespaceAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnowballAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ArabicAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ArmenianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BasqueAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BengaliAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BrazilianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BulgarianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CatalanAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChineseAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CjkAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CzechAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DanishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DutchAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EnglishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EstonianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FinnishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FrenchAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GalicianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GermanAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GreekAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HindiAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HungarianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndonesianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IrishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ItalianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LatvianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LithuanianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NorwegianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PersianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PortugueseAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RomanianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RussianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SerbianAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SoraniAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SpanishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SwedishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TurkishAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ThaiAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "defaultTag": "custom",
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CustomAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "custom"
+          }
+        },
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "position_increment_gap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "position_offset_gap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "tokenizer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L28-L35"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FingerprintAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "fingerprint"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_output_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "preserve_original",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "separator",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L37-L45"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KeywordAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L47-L50"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LanguageAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "language"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Language",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L52-L59"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Arabic"
+        },
+        {
+          "name": "Armenian"
+        },
+        {
+          "name": "Basque"
+        },
+        {
+          "name": "Brazilian"
+        },
+        {
+          "name": "Bulgarian"
+        },
+        {
+          "name": "Catalan"
+        },
+        {
+          "name": "Chinese"
+        },
+        {
+          "name": "Cjk"
+        },
+        {
+          "name": "Czech"
+        },
+        {
+          "name": "Danish"
+        },
+        {
+          "name": "Dutch"
+        },
+        {
+          "name": "English"
+        },
+        {
+          "name": "Estonian"
+        },
+        {
+          "name": "Finnish"
+        },
+        {
+          "name": "French"
+        },
+        {
+          "name": "Galician"
+        },
+        {
+          "name": "German"
+        },
+        {
+          "name": "Greek"
+        },
+        {
+          "name": "Hindi"
+        },
+        {
+          "name": "Hungarian"
+        },
+        {
+          "name": "Indonesian"
+        },
+        {
+          "name": "Irish"
+        },
+        {
+          "name": "Italian"
+        },
+        {
+          "name": "Latvian"
+        },
+        {
+          "name": "Norwegian"
+        },
+        {
+          "name": "Persian"
+        },
+        {
+          "name": "Portuguese"
+        },
+        {
+          "name": "Romanian"
+        },
+        {
+          "name": "Russian"
+        },
+        {
+          "name": "Sorani"
+        },
+        {
+          "name": "Spanish"
+        },
+        {
+          "name": "Swedish"
+        },
+        {
+          "name": "Turkish"
+        },
+        {
+          "name": "Thai"
+        }
+      ],
+      "name": {
+        "name": "Language",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/languages.ts#L20-L55"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NoriAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "decompound_mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriDecompoundMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stoptags",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L312-L318"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "discard"
+        },
+        {
+          "name": "none"
+        },
+        {
+          "name": "mixed"
+        }
+      ],
+      "name": {
+        "name": "NoriDecompoundMode",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/tokenizers.ts#L75-L79"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PatternAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "flags",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "lowercase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L320-L327"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SimpleAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "simple"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L329-L332"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StandardAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "standard"
+          }
+        },
+        {
+          "name": "max_token_length",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L341-L345"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StopAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stop"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L347-L352"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WhitespaceAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "whitespace"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L354-L357"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IcuAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "icu_analyzer"
+          }
+        },
+        {
+          "name": "method",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuNormalizationType",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuNormalizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/icu-plugin.ts#L67-L71"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "nfc"
+        },
+        {
+          "name": "nfkc"
+        },
+        {
+          "name": "nfkc_cf"
+        }
+      ],
+      "name": {
+        "name": "IcuNormalizationType",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/icu-plugin.ts#L83-L87"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "decompose"
+        },
+        {
+          "name": "compose"
+        }
+      ],
+      "name": {
+        "name": "IcuNormalizationMode",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/icu-plugin.ts#L78-L81"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji"
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/kuromoji-plugin.ts#L25-L29"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "normal"
+        },
+        {
+          "name": "search"
+        },
+        {
+          "name": "extended"
+        }
+      ],
+      "name": {
+        "name": "KuromojiTokenizationMode",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/kuromoji-plugin.ts#L52-L56"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnowballAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "snowball"
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SnowballLanguage",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L334-L339"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Armenian"
+        },
+        {
+          "name": "Basque"
+        },
+        {
+          "name": "Catalan"
+        },
+        {
+          "name": "Danish"
+        },
+        {
+          "name": "Dutch"
+        },
+        {
+          "name": "English"
+        },
+        {
+          "name": "Finnish"
+        },
+        {
+          "name": "French"
+        },
+        {
+          "name": "German"
+        },
+        {
+          "name": "German2"
+        },
+        {
+          "name": "Hungarian"
+        },
+        {
+          "name": "Italian"
+        },
+        {
+          "name": "Kp"
+        },
+        {
+          "name": "Lovins"
+        },
+        {
+          "name": "Norwegian"
+        },
+        {
+          "name": "Porter"
+        },
+        {
+          "name": "Portuguese"
+        },
+        {
+          "name": "Romanian"
+        },
+        {
+          "name": "Russian"
+        },
+        {
+          "name": "Spanish"
+        },
+        {
+          "name": "Swedish"
+        },
+        {
+          "name": "Turkish"
+        }
+      ],
+      "name": {
+        "name": "SnowballLanguage",
+        "namespace": "_types.analysis"
+      },
+      "specLocation": "_types/analysis/languages.ts#L57-L80"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ArabicAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "arabic"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L61-L66"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ArmenianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "armenian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L68-L73"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BasqueAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "basque"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L75-L80"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BengaliAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "bengali"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L82-L87"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BrazilianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "brazilian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L89-L93"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BulgarianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "bulgarian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L95-L100"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CatalanAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "catalan"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L102-L107"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ChineseAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "chinese"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L109-L113"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CjkAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "cjk"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L115-L119"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CzechAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "czech"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L121-L126"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DanishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "danish"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L128-L132"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DutchAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "dutch"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L134-L139"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EnglishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "english"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L141-L146"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EstonianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "estonian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L148-L152"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FinnishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "finnish"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L154-L159"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FrenchAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "french"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L161-L166"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GalicianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "galician"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L168-L173"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GermanAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "german"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L175-L180"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GreekAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "greek"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L182-L186"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "HindiAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "hindi"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L188-L193"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "HungarianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "hungarian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L195-L200"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndonesianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "indonesian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L202-L207"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IrishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "irish"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L209-L214"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ItalianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "italian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L216-L221"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LatvianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "latvian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L223-L228"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LithuanianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "lithuanian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L230-L235"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NorwegianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "norwegian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L237-L242"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PersianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "persian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L244-L248"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PortugueseAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "portuguese"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L250-L255"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RomanianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "romanian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L257-L262"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RussianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "russian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L264-L269"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SerbianAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "serbian"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L271-L276"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SoraniAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "sorani"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L278-L283"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SpanishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "spanish"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L285-L290"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SwedishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "swedish"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L292-L297"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TurkishAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "turkish"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L299-L304"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ThaiAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "thai"
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/analysis/analyzers.ts#L306-L310"
     },
     {
       "codegenNames": [
@@ -81348,7 +83485,7 @@
         },
         {
           "name": "languageset",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
@@ -81385,7 +83522,7 @@
         },
         {
           "name": "name_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -81407,7 +83544,7 @@
         },
         {
           "name": "rule_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90635,7 +92772,42 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L435-L443"
+      "specLocation": "ingest/_types/Processors.ts#L507-L515"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geojson"
+        },
+        {
+          "name": "wkt"
+        }
+      ],
+      "name": {
+        "name": "GeoGridTargetFormat",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L406-L409"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geotile"
+        },
+        {
+          "name": "geohex"
+        },
+        {
+          "name": "geohash"
+        }
+      ],
+      "name": {
+        "name": "GeoGridTileType",
+        "namespace": "ingest._types"
+      },
+      "specLocation": "ingest/_types/Processors.ts#L400-L404"
     },
     {
       "kind": "enum",
@@ -90653,7 +92825,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L849-L854"
+      "specLocation": "ingest/_types/Processors.ts#L939-L944"
     },
     {
       "kind": "enum",
@@ -90669,7 +92841,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1074-L1077"
+      "specLocation": "ingest/_types/Processors.ts#L1164-L1167"
     },
     {
       "kind": "enum",
@@ -90709,7 +92881,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L266-L277"
+      "specLocation": "ingest/_types/Processors.ts#L284-L295"
     },
     {
       "kind": "enum",
@@ -91245,20 +93417,13 @@
         "name": "PredictedValue",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L457-L463",
+      "specLocation": "ml/_types/inference.ts#L457-L457",
       "type": {
         "items": [
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
+              "name": "ScalarValue",
               "namespace": "_types"
             }
           },
@@ -91267,31 +93432,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
+                "name": "ScalarValue",
                 "namespace": "_types"
               }
             }
@@ -98758,20 +100899,23 @@
         "name": "QueryRuleCriteriaType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L54-L67"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L55-L68"
     },
     {
       "kind": "enum",
       "members": [
         {
           "name": "pinned"
+        },
+        {
+          "name": "exclude"
         }
       ],
       "name": {
         "name": "QueryRuleType",
         "namespace": "query_rules._types"
       },
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L46"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L44-L47"
     },
     {
       "kind": "enum",
@@ -103401,6 +105545,40 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "stability": "stable",
+              "visibility": "public"
+            },
+            "stack": {
+              "since": "8.11.0",
+              "stability": "stable"
+            }
+          },
+          "description": "total size of dataset (including the cache for partially mounted indices)",
+          "name": "dataset.size",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "aliases": [
             "cs",
             "completionSize"
@@ -105206,7 +107384,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/types.ts#L20-L801"
+      "specLocation": "cat/indices/types.ts#L20-L808"
     },
     {
       "kind": "interface",
@@ -113017,7 +115195,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L29-L35"
+      "specLocation": "enrich/stats/types.ts#L30-L36"
     },
     {
       "kind": "interface",
@@ -113049,7 +115227,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L24-L27"
+      "specLocation": "enrich/stats/types.ts#L25-L28"
     },
     {
       "kind": "interface",
@@ -113092,12 +115270,52 @@
           }
         },
         {
+          "name": "hits_time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "misses",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "misses_time_in_millis",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
               "namespace": "_types"
             }
           }
@@ -113112,9 +115330,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "enrich/stats/types.ts#L37-L43"
+      "specLocation": "enrich/stats/types.ts#L38-L50"
     },
     {
       "generics": [
@@ -117227,6 +119456,20 @@
           }
         },
         {
+          "description": "Converts geo-grid definitions of grid tiles or cells to regular bounding boxes or polygons which describe their shape.\nThis is useful if there is a need to interact with the tile shapes as spatially indexable fields.",
+          "docId": "geo-grid-processor",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/ingest-geo-grid-processor.html",
+          "name": "geo_grid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `geoip` processor adds information about the geographical location of an IPv4 or IPv6 address.",
           "docId": "geoip-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/geoip-processor.html",
@@ -117264,6 +119507,19 @@
             "kind": "instance_of",
             "type": {
               "name": "GsubProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "Removes HTML tags from the field.\nIf the field is an array of strings, HTML tags will be removed from all members of the array.",
+          "docId": "htmlstrip-processor",
+          "name": "html_strip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HtmlStripProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -117507,6 +119763,19 @@
           }
         },
         {
+          "description": "Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.\nThis URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.",
+          "docId": "uri-parts-processor",
+          "name": "uri_parts",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UriPartsProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "The `user_agent` processor extracts details from the user agent string a browser sends with its web requests.\nThis processor adds this information by default under the `user_agent` field.",
           "docId": "user-agent-processor",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/user-agent-processor.html",
@@ -117521,7 +119790,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L27-L239",
+      "specLocation": "ingest/_types/Processors.ts#L27-L257",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -117577,7 +119846,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L279-L294"
+      "specLocation": "ingest/_types/Processors.ts#L297-L312"
     },
     {
       "kind": "interface",
@@ -117650,7 +119919,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L241-L264"
+      "specLocation": "ingest/_types/Processors.ts#L259-L282"
     },
     {
       "inherits": {
@@ -117770,7 +120039,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L296-L337"
+      "specLocation": "ingest/_types/Processors.ts#L314-L355"
     },
     {
       "inherits": {
@@ -117824,7 +120093,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L392-L408"
+      "specLocation": "ingest/_types/Processors.ts#L464-L480"
     },
     {
       "inherits": {
@@ -117901,7 +120170,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L410-L433"
+      "specLocation": "ingest/_types/Processors.ts#L482-L505"
     },
     {
       "inherits": {
@@ -117967,7 +120236,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L445-L465"
+      "specLocation": "ingest/_types/Processors.ts#L517-L537"
     },
     {
       "inherits": {
@@ -118065,7 +120334,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L467-L500"
+      "specLocation": "ingest/_types/Processors.ts#L539-L572"
     },
     {
       "inherits": {
@@ -118147,7 +120416,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L542-L569"
+      "specLocation": "ingest/_types/Processors.ts#L614-L641"
     },
     {
       "inherits": {
@@ -118253,7 +120522,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L502-L540"
+      "specLocation": "ingest/_types/Processors.ts#L574-L612"
     },
     {
       "inherits": {
@@ -118319,7 +120588,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L571-L590"
+      "specLocation": "ingest/_types/Processors.ts#L643-L662"
     },
     {
       "inherits": {
@@ -118359,7 +120628,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L592-L603"
+      "specLocation": "ingest/_types/Processors.ts#L664-L675"
     },
     {
       "inherits": {
@@ -118374,7 +120643,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L605-L605"
+      "specLocation": "ingest/_types/Processors.ts#L677-L677"
     },
     {
       "inherits": {
@@ -118478,7 +120747,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L607-L646"
+      "specLocation": "ingest/_types/Processors.ts#L679-L718"
     },
     {
       "inherits": {
@@ -118506,7 +120775,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L648-L654"
+      "specLocation": "ingest/_types/Processors.ts#L720-L726"
     },
     {
       "inherits": {
@@ -118559,7 +120828,134 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L656-L670"
+      "specLocation": "ingest/_types/Processors.ts#L728-L742"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoGridProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The field to interpret as a geo-tile.=\nThe field format is determined by the `tile_type`.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Three tile formats are understood: geohash, geotile and geohex.",
+          "name": "tile_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridTileType",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the polygon shape to, by default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and a parent tile exists, save that tile address to this field.",
+          "name": "parent_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and children tiles exist, save those tile addresses to this field as an array of strings.",
+          "name": "children_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified and intersecting non-child tiles exist, save their addresses to this field as an array of strings.",
+          "name": "non_children_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If specified, save the tile precision (zoom) as an integer to this field.",
+          "name": "precision_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Which format to save the generated polygon in.",
+          "name": "target_format",
+          "required": false,
+          "serverDefault": "geojson",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoGridTargetFormat",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L357-L398"
     },
     {
       "inherits": {
@@ -118654,7 +121050,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L339-L368"
+      "specLocation": "ingest/_types/Processors.ts#L411-L440"
     },
     {
       "inherits": {
@@ -118746,7 +121142,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L672-L697"
+      "specLocation": "ingest/_types/Processors.ts#L744-L769"
     },
     {
       "inherits": {
@@ -118824,7 +121220,61 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L699-L723"
+      "specLocation": "ingest/_types/Processors.ts#L771-L795"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HtmlStripProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "The string-valued field to remove HTML tags from.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The field to assign the converted value to\nBy default, the `field` is updated in-place.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "field",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L797-L813"
     },
     {
       "inherits": {
@@ -118896,7 +121346,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L725-L744"
+      "specLocation": "ingest/_types/Processors.ts#L815-L834"
     },
     {
       "kind": "interface",
@@ -118930,7 +121380,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L746-L758",
+      "specLocation": "ingest/_types/Processors.ts#L836-L848",
       "variants": {
         "kind": "container"
       }
@@ -118969,7 +121419,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L760-L771"
+      "specLocation": "ingest/_types/Processors.ts#L850-L861"
     },
     {
       "kind": "interface",
@@ -119043,7 +121493,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L773-L799"
+      "specLocation": "ingest/_types/Processors.ts#L863-L889"
     },
     {
       "inherits": {
@@ -119096,7 +121546,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L801-L816"
+      "specLocation": "ingest/_types/Processors.ts#L891-L906"
     },
     {
       "inherits": {
@@ -119175,7 +121625,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L818-L847"
+      "specLocation": "ingest/_types/Processors.ts#L908-L937"
     },
     {
       "inherits": {
@@ -119332,7 +121782,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L856-L908"
+      "specLocation": "ingest/_types/Processors.ts#L946-L998"
     },
     {
       "inherits": {
@@ -119386,7 +121836,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L910-L926"
+      "specLocation": "ingest/_types/Processors.ts#L1000-L1016"
     },
     {
       "inherits": {
@@ -119427,7 +121877,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L928-L939"
+      "specLocation": "ingest/_types/Processors.ts#L1018-L1029"
     },
     {
       "inherits": {
@@ -119480,7 +121930,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L941-L955"
+      "specLocation": "ingest/_types/Processors.ts#L1031-L1045"
     },
     {
       "inherits": {
@@ -119533,7 +121983,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L957-L973"
+      "specLocation": "ingest/_types/Processors.ts#L1047-L1063"
     },
     {
       "inherits": {
@@ -119615,7 +122065,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L975-L1003"
+      "specLocation": "ingest/_types/Processors.ts#L1065-L1093"
     },
     {
       "inherits": {
@@ -119687,7 +122137,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1005-L1025"
+      "specLocation": "ingest/_types/Processors.ts#L1095-L1115"
     },
     {
       "inherits": {
@@ -119773,7 +122223,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1027-L1061"
+      "specLocation": "ingest/_types/Processors.ts#L1117-L1151"
     },
     {
       "inherits": {
@@ -119816,7 +122266,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1063-L1072"
+      "specLocation": "ingest/_types/Processors.ts#L1153-L1162"
     },
     {
       "inherits": {
@@ -119869,7 +122319,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1079-L1095"
+      "specLocation": "ingest/_types/Processors.ts#L1169-L1185"
     },
     {
       "inherits": {
@@ -119948,7 +122398,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1097-L1122"
+      "specLocation": "ingest/_types/Processors.ts#L1187-L1212"
     },
     {
       "inherits": {
@@ -120002,7 +122452,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1124-L1140"
+      "specLocation": "ingest/_types/Processors.ts#L1214-L1230"
     },
     {
       "inherits": {
@@ -120056,7 +122506,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1142-L1158"
+      "specLocation": "ingest/_types/Processors.ts#L1232-L1248"
     },
     {
       "inherits": {
@@ -120110,7 +122560,87 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1160-L1176"
+      "specLocation": "ingest/_types/Processors.ts#L1250-L1266"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UriPartsProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "description": "Field containing the URI string.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+          "name": "ignore_missing",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+          "name": "keep_original",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+          "name": "remove_if_successful",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Output field for the URI object.",
+          "name": "target_field",
+          "required": false,
+          "serverDefault": "url",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/_types/Processors.ts#L1268-L1294"
     },
     {
       "inherits": {
@@ -120190,7 +122720,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L370-L390"
+      "specLocation": "ingest/_types/Processors.ts#L442-L462"
     },
     {
       "kind": "interface",
@@ -120232,12 +122762,12 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L41-L55"
+      "specLocation": "ingest/simulate/types.ts#L50-L64"
     },
     {
       "kind": "interface",
       "name": {
-        "name": "PipelineSimulation",
+        "name": "SimulateDocumentResult",
         "namespace": "ingest.simulate"
       },
       "properties": [
@@ -120249,6 +122779,17 @@
             "type": {
               "name": "DocumentSimulation",
               "namespace": "ingest.simulate"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
             }
           }
         },
@@ -120265,42 +122806,9 @@
               }
             }
           }
-        },
-        {
-          "name": "tag",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "processor_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActionStatusOptions",
-              "namespace": "watcher._types"
-            }
-          }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L33-L39"
+      "specLocation": "ingest/simulate/types.ts#L34-L38"
     },
     {
       "attachedBehaviors": [
@@ -120440,7 +122948,7 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L57-L87"
+      "specLocation": "ingest/simulate/types.ts#L66-L96"
     },
     {
       "kind": "interface",
@@ -120472,7 +122980,94 @@
           }
         }
       ],
-      "specLocation": "ingest/simulate/types.ts#L28-L31"
+      "specLocation": "ingest/simulate/types.ts#L29-L32"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineSimulation",
+        "namespace": "ingest.simulate"
+      },
+      "properties": [
+        {
+          "name": "doc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentSimulation",
+              "namespace": "ingest.simulate"
+            }
+          }
+        },
+        {
+          "name": "tag",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "processor_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionStatusOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "ignored_error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "ingest/simulate/types.ts#L40-L48"
     },
     {
       "kind": "interface",
@@ -129772,7 +132367,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L465-L512"
+      "specLocation": "ml/_types/inference.ts#L459-L507"
     },
     {
       "kind": "interface",
@@ -132386,7 +134981,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L48-L52"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L49-L53"
     },
     {
       "kind": "interface",
@@ -132424,7 +135019,7 @@
           }
         }
       ],
-      "specLocation": "query_rules/_types/QueryRuleset.ts#L69-L72"
+      "specLocation": "query_rules/_types/QueryRuleset.ts#L70-L73"
     },
     {
       "kind": "interface",
@@ -133430,7 +136025,7 @@
         {
           "description": "Use this parameter to specify a query for computing a score.",
           "name": "query",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
