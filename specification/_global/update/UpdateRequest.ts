@@ -18,8 +18,8 @@
  */
 
 import {
-  SourceConfigParam,
-  SourceConfig
+  SourceConfig,
+  SourceConfigParam
 } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {

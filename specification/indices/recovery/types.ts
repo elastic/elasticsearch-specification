@@ -25,14 +25,14 @@ import {
   Uuid,
   VersionString
 } from '@_types/common'
-import { Host, TransportAddress, Ip } from '@_types/Networking'
+import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { long, Percentage } from '@_types/Numeric'
 import {
-  Duration,
   DateTime,
+  Duration,
   DurationValue,
-  UnitMillis,
-  EpochTime
+  EpochTime,
+  UnitMillis
 } from '@_types/Time'
 
 export class RecoveryBytes {

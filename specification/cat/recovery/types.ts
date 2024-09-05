@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { long, Percentage } from '@_types/Numeric'
+import { Percentage } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RecoveryRecord {

@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { double, integer, long } from './Numeric'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 
 /**
  * A field value.

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { VersionNumber, Metadata } from '@_types/common'
+import { Metadata, VersionNumber } from '@_types/common'
 import { ProcessorContainer } from './Processors'
 
 export class Pipeline {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase, CatDatafeedColumns } from '@cat/_types/CatBase'
+import { CatDatafeedColumns, CatRequestBase } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 

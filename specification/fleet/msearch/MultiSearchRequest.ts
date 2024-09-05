@@ -20,13 +20,12 @@
 import { RequestItem } from '@global/msearch/types'
 import { RequestBase } from '@_types/Base'
 import {
-  IndexName,
-  IndexAlias,
   ExpandWildcards,
+  IndexAlias,
+  IndexName,
   SearchType
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**

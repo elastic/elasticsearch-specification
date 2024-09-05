@@ -28,18 +28,19 @@ import {
 } from '@global/search/_types/SourceFilter'
 import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
-  IndexName,
-  IndexAlias,
-  Fields,
   ExpandWildcards,
-  VersionString,
+  Field,
+  Fields,
+  IndexAlias,
+  IndexName,
   Routing,
   SearchType,
-  Field,
-  SuggestMode
+  SuggestMode,
+  VersionString
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
@@ -50,7 +51,6 @@ import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * The purpose of the fleet search api is to provide a search api where the search will only be executed

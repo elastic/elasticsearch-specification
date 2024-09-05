@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase, CatAnonalyDetectorColumns } from '@cat/_types/CatBase'
+import { CatAnonalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 

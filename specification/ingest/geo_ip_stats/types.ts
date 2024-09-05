@@ -18,7 +18,7 @@
  */
 
 import { Name } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
 
 export class GeoIpDownloadStatistics {

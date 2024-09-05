@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RoleQueryContainer } from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { RoleQueryContainer } from './types'
 
 /**
  * Retrieves roles in a paginated manner. You can optionally filter the results with a query.

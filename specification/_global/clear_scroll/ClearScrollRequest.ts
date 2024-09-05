@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids, ScrollIds } from '@_types/common'
+import { ScrollIds } from '@_types/common'
 
 /**
  * Clears the search context and results for a scrolling search.

@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices, IndicesOptions } from '@_types/common'
@@ -27,11 +28,10 @@ import { ScriptField } from '@_types/Scripting'
 import {
   Duration,
   DurationValue,
-  UnitMillis,
-  UnitFloatMillis
+  UnitFloatMillis,
+  UnitMillis
 } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
-import { DatafeedAuthorization } from '@ml/_types/Authorization'
 
 export class Datafeed {
   /** @aliases aggs */

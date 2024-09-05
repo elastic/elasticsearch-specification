@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { GroupBy } from '@tasks/_types/GroupBy'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * The task management API returns information about tasks currently executing on one or more nodes in the cluster.

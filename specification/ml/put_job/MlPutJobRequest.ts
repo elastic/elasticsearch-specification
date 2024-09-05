@@ -18,6 +18,7 @@
  */
 
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { CustomSettings } from '@ml/_types/Settings'
@@ -25,7 +26,6 @@ import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
-import { DatafeedConfig } from '@ml/_types/Datafeed'
 
 /**
  * Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.

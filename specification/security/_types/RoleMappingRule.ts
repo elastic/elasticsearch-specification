@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Name, Names } from '@_types/common'
+import { Names } from '@_types/common'
 
 /**
  * @variants container

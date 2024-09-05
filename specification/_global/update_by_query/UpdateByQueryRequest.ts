@@ -29,10 +29,10 @@ import {
 } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Duration } from '@_types/Time'
-import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Updates documents that match the specified query.

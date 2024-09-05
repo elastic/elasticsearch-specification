@@ -36,10 +36,10 @@ import {
   short,
   ulong
 } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
 import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
-import { Script } from '@_types/Scripting'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
 export class CorePropertyBase extends PropertyBase {

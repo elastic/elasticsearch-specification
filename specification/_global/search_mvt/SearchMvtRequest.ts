@@ -17,18 +17,18 @@
  * under the License.
  */
 
+import { TrackHits } from '@global/search/_types/hits'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import { Field, Fields, Indices } from '@_types/common'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { GridAggregationType, GridType } from './_types/GridType'
-import { Coordinate } from './_types/Coordinate'
-import { Sort } from '@_types/sort'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Sort } from '@_types/sort'
+import { Coordinate } from './_types/Coordinate'
+import { GridAggregationType, GridType } from './_types/GridType'
 import { ZoomLevel } from './_types/ZoomLevel'
-import { TrackHits } from '@global/search/_types/hits'
 
 /**
  * @rest_spec_name search_mvt
