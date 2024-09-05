@@ -25216,6 +25216,20 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "index_filter": {
+                    "$ref": "#/components/schemas/_types.query_dsl:QueryContainer"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -25224,11 +25238,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "_shards": {
+                      "$ref": "#/components/schemas/_types:ShardStatistics"
+                    },
                     "id": {
                       "$ref": "#/components/schemas/_types:Id"
                     }
                   },
                   "required": [
+                    "_shards",
                     "id"
                   ]
                 }
