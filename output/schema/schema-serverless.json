@@ -36374,24 +36374,6 @@
             }
           },
           {
-            "availability": {
-              "serverless": {},
-              "stack": {
-                "since": "8.8.0"
-              }
-            },
-            "description": "Defines the Reciprocal Rank Fusion (RRF) to use.",
-            "name": "rank",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RankContainer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "description": "Minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in the search results.",
             "name": "min_score",
             "required": false,
@@ -136139,80 +136121,6 @@
         }
       ],
       "specLocation": "_global/scripts_painless_execute/types.ts#L25-L39"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RankContainer",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The reciprocal rank fusion parameters",
-          "name": "rrf",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RrfRank",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Rank.ts#L22-L28",
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "RankBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RrfRank",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "How much influence documents in individual result sets per query have over the final ranked result set",
-          "name": "rank_constant",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Size of the individual result sets per query",
-          "name": "rank_window_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Rank.ts#L32-L37"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RankBase",
-        "namespace": "_types"
-      },
-      "properties": [],
-      "specLocation": "_types/Rank.ts#L30-L30"
     },
     {
       "kind": "interface",
