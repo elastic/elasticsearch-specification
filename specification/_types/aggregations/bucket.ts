@@ -680,7 +680,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double
+  from?: double | null
   /**
    * Custom key to return the range with.
    */
@@ -688,7 +688,7 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double
+  to?: double | null
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {

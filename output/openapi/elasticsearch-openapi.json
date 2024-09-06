@@ -63776,7 +63776,15 @@
         "properties": {
           "from": {
             "description": "Start of the range (inclusive).",
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "key": {
             "description": "Custom key to return the range with.",
@@ -63784,7 +63792,15 @@
           },
           "to": {
             "description": "End of the range (exclusive).",
-            "type": "number"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },

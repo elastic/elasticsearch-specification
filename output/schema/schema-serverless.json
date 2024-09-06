@@ -61297,11 +61297,23 @@
           "name": "from",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -61321,11 +61333,23 @@
           "name": "to",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],

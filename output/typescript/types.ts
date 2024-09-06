@@ -3024,9 +3024,9 @@ export interface AggregationsAggregationContainer {
 }
 
 export interface AggregationsAggregationRange {
-  from?: double
+  from?: double | null
   key?: string
-  to?: double
+  to?: double | null
 }
 
 export interface AggregationsArrayPercentilesItem {
