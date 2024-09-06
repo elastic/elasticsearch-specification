@@ -680,7 +680,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double
+  from?: double | null
   /**
    * Custom key to return the range with.
    */
@@ -688,7 +688,7 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double
+  to?: double | null
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
@@ -979,6 +979,18 @@ export class TermsAggregation extends BucketAggregationBase {
    */
   size?: integer
   format?: string
+}
+
+export class TimeSeriesAggregation extends BucketAggregationBase {
+  /**
+   * The maximum number of results to return.
+   * @server_default 10000
+   */
+  size?: integer
+  /**
+   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   */
+  keyed?: boolean
 }
 
 // Note: ES is very lazy when parsing this data type: it accepts any number of properties in the objects below,
