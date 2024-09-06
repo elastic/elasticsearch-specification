@@ -108,6 +108,7 @@ export type Aggregate =
   | UnmappedSignificantTermsAggregate
   | CompositeAggregate
   | FrequentItemSetsAggregate
+  | TimeSeriesAggregate
   //
   | ScriptedMetricAggregate
   | TopHitsAggregate
@@ -646,6 +647,13 @@ export class FrequentItemSetsAggregate extends MultiBucketAggregateBase<Frequent
 export class FrequentItemSetsBucket extends MultiBucketBase {
   key: Dictionary<Field, string[]>
   support: double
+}
+
+/** @variant name=time_series */
+export class TimeSeriesAggregate extends MultiBucketAggregateBase<TimeSeriesBucket> {}
+
+export class TimeSeriesBucket extends MultiBucketBase {
+  key: Dictionary<Field, FieldValue>
 }
 
 //----- Misc
