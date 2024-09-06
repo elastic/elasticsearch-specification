@@ -2326,6 +2326,8 @@ export interface GetStats {
   total: long
 }
 
+export type GrokPattern = string
+
 export type HealthStatus = 'green' | 'GREEN' | 'yellow' | 'YELLOW' | 'red' | 'RED'
 
 export type Host = string
@@ -12783,7 +12785,7 @@ export interface IngestGrokProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
   pattern_definitions?: Record<string, string>
-  patterns: string[]
+  patterns: GrokPattern[]
   trace_match?: boolean
 }
 
@@ -12920,6 +12922,7 @@ export interface IngestProcessorContainer {
   kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
   pipeline?: IngestPipelineProcessor
+  redact?: IngestRedactProcessor
   remove?: IngestRemoveProcessor
   rename?: IngestRenameProcessor
   reroute?: IngestRerouteProcessor
@@ -12933,6 +12936,16 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRedactProcessor extends IngestProcessorBase {
+  field: Field
+  patterns: GrokPattern[]
+  pattern_definitions?: Record<string, string>
+  prefix?: string
+  suffix?: string
+  ignore_missing?: boolean
+  skip_if_unlicensed?: boolean
 }
 
 export interface IngestRemoveProcessor extends IngestProcessorBase {
@@ -13532,7 +13545,7 @@ export type MlCategorizationStatus = 'ok' | 'warn'
 export interface MlCategory {
   category_id: ulong
   examples: string[]
-  grok_pattern?: string
+  grok_pattern?: GrokPattern
   job_id: Id
   max_matching_length: ulong
   partition_field_name?: string
@@ -19235,7 +19248,7 @@ export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   ecs_compatibility?: string
   explain?: boolean
   format?: string
-  grok_pattern?: string
+  grok_pattern?: GrokPattern
   has_header_row?: boolean
   line_merge_size_limit?: uint
   lines_to_sample?: uint
@@ -19262,7 +19275,7 @@ export interface TextStructureFindStructureResponse {
   num_lines_analyzed: integer
   column_names?: string[]
   explanation?: string[]
-  grok_pattern?: string
+  grok_pattern?: GrokPattern
   multiline_start_pattern?: string
   exclude_lines_pattern?: string
   java_timestamp_formats?: string[]
@@ -19291,7 +19304,7 @@ export interface TextStructureTestGrokPatternMatchedText {
 export interface TextStructureTestGrokPatternRequest extends RequestBase {
   ecs_compatibility?: string
   body?: {
-    grok_pattern: string
+    grok_pattern: GrokPattern
     text: string[]
   }
 }

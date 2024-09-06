@@ -35015,7 +35015,7 @@
             "description": "If you have set format to semi_structured_text, you can specify a Grok pattern that is used to extract fields from every message in the text. The name of the timestamp field in the Grok pattern must match what is specified in the timestamp_field parameter. If that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\". If grok_pattern is not specified, the structure finder creates a Grok pattern.",
             "deprecated": false,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/_types:GrokPattern"
             },
             "style": "form"
           },
@@ -35173,7 +35173,7 @@
                       }
                     },
                     "grok_pattern": {
-                      "type": "string"
+                      "$ref": "#/components/schemas/_types:GrokPattern"
                     },
                     "multiline_start_pattern": {
                       "type": "string"
@@ -53255,8 +53255,7 @@
               "type": "object",
               "properties": {
                 "grok_pattern": {
-                  "description": "Grok pattern to run on the text.",
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:GrokPattern"
                 },
                 "text": {
                   "description": "Lines of text to run the Grok pattern on.",
@@ -86608,6 +86607,9 @@
           "pipeline": {
             "$ref": "#/components/schemas/ingest._types:PipelineProcessor"
           },
+          "redact": {
+            "$ref": "#/components/schemas/ingest._types:RedactProcessor"
+          },
           "remove": {
             "$ref": "#/components/schemas/ingest._types:RemoveProcessor"
           },
@@ -87289,7 +87291,7 @@
                 "description": "An ordered list of grok expression to match and extract named captures with.\nReturns on the first expression in the list that matches.",
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/_types:GrokPattern"
                 }
               },
               "trace_match": {
@@ -87303,6 +87305,9 @@
             ]
           }
         ]
+      },
+      "_types:GrokPattern": {
+        "type": "string"
       },
       "ingest._types:GsubProcessor": {
         "allOf": [
@@ -87616,6 +87621,54 @@
             },
             "required": [
               "name"
+            ]
+          }
+        ]
+      },
+      "ingest._types:RedactProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types:ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "$ref": "#/components/schemas/_types:Field"
+              },
+              "patterns": {
+                "description": "A list of grok expressions to match and redact named captures with",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types:GrokPattern"
+                }
+              },
+              "pattern_definitions": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "prefix": {
+                "description": "Start a redacted section with this token",
+                "type": "string"
+              },
+              "suffix": {
+                "description": "End a redacted section with this token",
+                "type": "string"
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "type": "boolean"
+              },
+              "skip_if_unlicensed": {
+                "description": "If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field",
+              "patterns"
             ]
           }
         ]
@@ -89926,8 +89979,7 @@
             }
           },
           "grok_pattern": {
-            "description": "[experimental] A Grok pattern that could be used in Logstash or an ingest pipeline to extract fields from messages that match the category. This field is experimental and may be changed or removed in a future release. The Grok patterns that are found are not optimal, but are often a good starting point for manual tweaking.",
-            "type": "string"
+            "$ref": "#/components/schemas/_types:GrokPattern"
           },
           "job_id": {
             "$ref": "#/components/schemas/_types:Id"
