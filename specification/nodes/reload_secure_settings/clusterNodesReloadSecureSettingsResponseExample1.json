@@ -1,0 +1,7 @@
+{
+  "summary": "A successful response when reloading keystore on nodes in your cluster.",
+  "description": "",
+  "type": "response",
+  "response_code": 200,
+  "value": "{\n  \"_nodes\": {\n    \"total\": 1,\n    \"successful\": 1,\n    \"failed\": 0\n  },\n  \"cluster_name\": \"my_cluster\",\n  \"nodes\": {\n    \"pQHNt5rXTTWNvUgOrdynKg\": {\n      \"name\": \"node-0\"\n    }\n  }\n}"
+}
