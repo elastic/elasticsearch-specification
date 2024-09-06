@@ -18,7 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Void } from '@spec_utils/VoidValue'
 
 /**
  * The cluster remote info API allows you to retrieve all of the configured

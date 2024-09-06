@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**

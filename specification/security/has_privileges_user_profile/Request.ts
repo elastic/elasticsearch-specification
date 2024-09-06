@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
 import { UserProfileId } from '@security/_types/UserProfile'
+import { RequestBase } from '@_types/Base'
 import { PrivilegesCheck } from './types'
 
 /**

@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { Duration, DateTime } from '@_types/Time'
-import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
+import { DateTime } from '@_types/Time'
 
 export class ModelSnapshot {
   /** An optional description of the job. */

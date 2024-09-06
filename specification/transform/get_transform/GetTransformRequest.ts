@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**

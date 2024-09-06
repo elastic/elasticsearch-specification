@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Duration } from '@_types/Time'
 
 /**

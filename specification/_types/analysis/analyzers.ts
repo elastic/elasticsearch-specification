@@ -19,11 +19,11 @@
 
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { IcuAnalyzer } from './icu-plugin'
+import { KuromojiAnalyzer } from './kuromoji-plugin'
 import { Language, SnowballLanguage } from './languages'
 import { StopWords } from './StopWords'
 import { NoriDecompoundMode } from './tokenizers'
-import { IcuAnalyzer } from './icu-plugin'
-import { KuromojiAnalyzer } from './kuromoji-plugin'
 
 export class CustomAnalyzer {
   type: 'custom'

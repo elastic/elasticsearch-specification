@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, DataStreamNames } from '@_types/common'
+import { DataStreamNames, ExpandWildcards } from '@_types/common'
 
 /**
  * Retrieves information about one or more data streams.

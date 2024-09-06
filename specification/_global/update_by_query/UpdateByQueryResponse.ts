@@ -19,7 +19,7 @@
 
 import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
-import { float, long, ulong } from '@_types/Numeric'
+import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 

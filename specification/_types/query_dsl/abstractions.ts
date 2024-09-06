@@ -25,6 +25,7 @@ import {
   MinimumShouldMatch,
   Routing
 } from '@_types/common'
+import { KnnQuery } from '@_types/Knn'
 import { float } from '@_types/Numeric'
 import {
   BoolQuery,
@@ -58,6 +59,7 @@ import {
 } from './joining'
 import { MatchAllQuery } from './MatchAllQuery'
 import { MatchNoneQuery } from './MatchNoneQuery'
+import { SemanticQuery } from './SemanticQuery'
 import {
   SpanContainingQuery,
   SpanFieldMaskingQuery,
@@ -69,6 +71,7 @@ import {
   SpanTermQuery,
   SpanWithinQuery
 } from './span'
+import { SparseVectorQuery } from './SparseVectorQuery'
 import {
   DistanceFeatureQuery,
   MoreLikeThisQuery,
@@ -95,9 +98,6 @@ import {
 } from './term'
 import { TextExpansionQuery } from './TextExpansionQuery'
 import { WeightedTokensQuery } from './WeightedTokensQuery'
-import { KnnQuery } from '@_types/Knn'
-import { SemanticQuery } from './SemanticQuery'
-import { SparseVectorQuery } from './SparseVectorQuery'
 
 /**
  * @variants container

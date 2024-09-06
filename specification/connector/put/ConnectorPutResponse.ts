@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Result } from '@_types/Result'
 import { Id } from '@_types/common'
+import { Result } from '@_types/Result'
 
 export class Response {
   body: {

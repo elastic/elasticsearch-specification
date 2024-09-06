@@ -22,7 +22,7 @@ import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
-import { Id, IndexName, NodeId, NodeName, VersionString } from './common'
+import { Id, IndexName, NodeId, NodeName } from './common'
 import { TransportAddress } from './Networking'
 
 /**

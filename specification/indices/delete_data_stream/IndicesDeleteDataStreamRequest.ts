@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, DataStreamNames } from '@_types/common'
+import { DataStreamNames, ExpandWildcards } from '@_types/common'
 
 /**
  * Deletes one or more data streams and their backing indices.

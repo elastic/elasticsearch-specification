@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions } from '@watcher/_types/Action'
 import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
 import { DateTime } from '@_types/Time'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Stringified } from '@spec_utils/Stringified'
 
 export class Ingest {
   timestamp: DateTime

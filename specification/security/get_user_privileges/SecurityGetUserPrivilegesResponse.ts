@@ -18,9 +18,8 @@
  */
 
 import {
-  IndicesPrivileges,
-  GlobalPrivilege,
   ApplicationPrivileges,
+  GlobalPrivilege,
   UserIndicesPrivileges
 } from '@security/_types/Privileges'
 
