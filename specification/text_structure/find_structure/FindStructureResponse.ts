@@ -19,7 +19,7 @@
 
 import { PipelineConfig } from '@ingest/_types/Pipeline'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Field } from '@_types/common'
+import { Field, GrokPattern } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 import { FieldStat } from './types'
@@ -40,7 +40,7 @@ export class Response {
     num_lines_analyzed: integer
     column_names?: string[]
     explanation?: string[]
-    grok_pattern?: string
+    grok_pattern?: GrokPattern
     multiline_start_pattern?: string
     exclude_lines_pattern?: string
     java_timestamp_formats?: string[]
