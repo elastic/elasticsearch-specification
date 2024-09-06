@@ -52841,6 +52841,9 @@
             "$ref": "#/components/schemas/_types.aggregations:FrequentItemSetsAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations:TimeSeriesAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations:ScriptedMetricAggregate"
           },
           {
@@ -55525,6 +55528,76 @@
           }
         ]
       },
+      "_types.aggregations:TimeSeriesAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:MultiBucketAggregateBaseTimeSeriesBucket"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations:MultiBucketAggregateBaseTimeSeriesBucket": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "buckets": {
+                "$ref": "#/components/schemas/_types.aggregations:BucketsTimeSeriesBucket"
+              }
+            },
+            "required": [
+              "buckets"
+            ]
+          }
+        ]
+      },
+      "_types.aggregations:BucketsTimeSeriesBucket": {
+        "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.aggregations:TimeSeriesBucket"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.aggregations:TimeSeriesBucket"
+            }
+          }
+        ]
+      },
+      "_types.aggregations:TimeSeriesBucket": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:MultiBucketBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/_types:FieldValue"
+                }
+              },
+              "doc_count": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "key",
+              "doc_count"
+            ]
+          }
+        ]
+      },
       "_types.aggregations:ScriptedMetricAggregate": {
         "allOf": [
           {
@@ -57596,6 +57669,9 @@
               },
               "terms": {
                 "$ref": "#/components/schemas/_types.aggregations:TermsAggregation"
+              },
+              "time_series": {
+                "$ref": "#/components/schemas/_types.aggregations:TimeSeriesAggregation"
               },
               "top_hits": {
                 "$ref": "#/components/schemas/_types.aggregations:TopHitsAggregation"
@@ -64879,6 +64955,26 @@
               },
               "format": {
                 "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "_types.aggregations:TimeSeriesAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations:BucketAggregationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "size": {
+                "description": "The maximum number of results to return.",
+                "type": "number"
+              },
+              "keyed": {
+                "description": "Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.",
+                "type": "boolean"
               }
             }
           }

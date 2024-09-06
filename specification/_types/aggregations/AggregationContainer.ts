@@ -51,6 +51,7 @@ import {
   SignificantTermsAggregation,
   SignificantTextAggregation,
   TermsAggregation,
+  TimeSeriesAggregation,
   VariableWidthHistogramAggregation
 } from './bucket'
 import { MatrixStatsAggregation } from './matrix'
@@ -481,6 +482,14 @@ export class AggregationContainer {
    * @doc_id search-aggregations-bucket-terms-aggregation
    */
   terms?: TermsAggregation
+  /**
+   * The time series aggregation queries data created using a time series index.
+   * This is typically data such as metrics or other data streams with a time component, and requires creating an index using the time series mode.
+   * @doc_id search-aggregations-bucket-time-series-aggregation
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series?: TimeSeriesAggregation
   /**
    * A metric aggregation that returns the top matching documents per bucket.
    * @doc_id search-aggregations-metrics-top-hits-aggregation
