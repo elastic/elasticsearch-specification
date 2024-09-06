@@ -18,10 +18,10 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 
 /**
  * Retrieves information for API keys in a paginated manner. You can optionally filter the results with a query.

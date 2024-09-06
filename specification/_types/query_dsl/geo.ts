@@ -18,6 +18,7 @@
  */
 
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Field } from '@_types/common'
 import {
   Distance,
   GeoBounds,
@@ -27,7 +28,6 @@ import {
   GeoShapeRelation
 } from '@_types/Geo'
 import { FieldLookup, QueryBase } from './abstractions'
-import { Field } from '@_types/common'
 
 export class GeoBoundingBoxQuery
   extends QueryBase

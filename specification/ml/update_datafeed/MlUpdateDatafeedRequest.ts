@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Duration } from '@_types/Time'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { ScriptField } from '@_types/Scripting'
+import { Duration } from '@_types/Time'
 
 /**
  * Updates the properties of a datafeed.

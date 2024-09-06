@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HealthStatus, IndexName, Name } from '@_types/common'
-import { double, integer, Percentage } from '@_types/Numeric'
+import { integer, Percentage } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { IndexHealthStats } from './types'
 

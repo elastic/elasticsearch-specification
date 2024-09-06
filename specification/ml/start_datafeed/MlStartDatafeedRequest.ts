@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Duration, DateTime } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 /**
  * Starts one or more datafeeds.

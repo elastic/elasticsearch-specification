@@ -17,21 +17,21 @@
  * under the License.
  */
 
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import {
   Field,
+  FieldValue,
   Fuzziness,
   Id,
   Ids,
   IndexName,
   MultiTermQueryRewrite,
-  Routing,
-  FieldValue
+  Routing
 } from '@_types/common'
-import { double, float, integer, long } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
 import { QueryBase } from './abstractions'
-import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class ExistsQuery extends QueryBase {
   /**

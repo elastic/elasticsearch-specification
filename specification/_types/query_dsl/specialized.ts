@@ -17,12 +17,12 @@
  * under the License.
  */
 
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { StopWords } from '@_types/analysis/StopWords'
 import {
   Field,
-  Fields,
   Id,
   IndexName,
   MinimumShouldMatch,
@@ -31,11 +31,10 @@ import {
   VersionType
 } from '@_types/common'
 import { Distance, GeoLocation, GeoShape, GeoShapeRelation } from '@_types/Geo'
-import { double, float, integer, long } from '@_types/Numeric'
+import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
 import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
-import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
   /**

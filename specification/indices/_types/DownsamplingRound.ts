@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
 import { DownsampleConfig } from '@indices/_types/Downsample'
+import { Duration } from '@_types/Time'
 
 export class DownsamplingRound {
   /**

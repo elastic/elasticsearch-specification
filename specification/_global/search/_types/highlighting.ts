@@ -18,11 +18,11 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Analyzer } from '@_types/analysis/analyzers'
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Analyzer } from '@_types/analysis/analyzers'
 
 export enum BoundaryScanner {
   /**

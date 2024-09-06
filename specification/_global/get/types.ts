@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, IndexName, SequenceNumber, VersionNumber } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, IndexName, SequenceNumber, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class GetResult<TDocument> {

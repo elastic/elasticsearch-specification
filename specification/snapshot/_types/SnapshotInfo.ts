@@ -28,11 +28,11 @@ import {
 } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 import {
-  Duration,
   DateTime,
+  Duration,
   DurationValue,
-  UnitMillis,
-  EpochTime
+  EpochTime,
+  UnitMillis
 } from '@_types/Time'
 import { IndexDetails } from './SnapshotIndexDetails'
 import { InfoFeatureState } from './SnapshotInfoFeatureState'

@@ -18,9 +18,8 @@
  */
 
 import { Id } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-import { EqlHits } from './EqlHits'
 import { DurationValue, UnitMillis } from '@_types/Time'
+import { EqlHits } from './EqlHits'
 
 export class EqlSearchResponseBase<TEvent> {
   /**

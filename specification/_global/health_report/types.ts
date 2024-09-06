@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Indices } from '@_types/common'
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { integer, long } from '@_types/Numeric'
-import { Indices } from '@_types/common'
-import { Dictionary } from '@spec_utils/Dictionary'
 
 export enum IndicatorHealthStatus {
   green,

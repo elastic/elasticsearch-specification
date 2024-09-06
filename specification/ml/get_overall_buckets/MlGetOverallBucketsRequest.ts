@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { Duration, DateTime } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 /**
  * Retrieves overall bucket results that summarize the bucket results of

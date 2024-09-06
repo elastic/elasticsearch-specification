@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { StatsLevel } from '../_types/stats'
 import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
+import { StatsLevel } from '../_types/stats'
 
 /**
  * @rest_spec_name searchable_snapshots.stats

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '@_types/Numeric'
 import { IndexName, Name } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {

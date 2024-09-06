@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RolloverConditions } from '@indices/rollover/types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer, long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 
 export class Phase {
   actions?: Actions

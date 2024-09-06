@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { WithNullValue } from '@spec_utils/utils'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SyncStatus } from '../_types/Connector'
 import { long } from '@_types/Numeric'
-import { WithNullValue } from '@spec_utils/utils'
 import { DateTime } from '@_types/Time'
+import { SyncStatus } from '../_types/Connector'
 
 /**
  * Updates last sync stats in the connector document

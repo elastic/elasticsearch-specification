@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Names, Indices } from '@_types/common'
+import { Indices, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**

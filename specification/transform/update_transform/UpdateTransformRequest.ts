@@ -18,11 +18,11 @@
  */
 
 import {
+  Destination,
   RetentionPolicyContainer,
   Settings,
-  SyncContainer,
-  Destination,
-  Source
+  Source,
+  SyncContainer
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
