@@ -654,7 +654,6 @@ export class TimeSeriesAggregate extends MultiBucketAggregateBase<TimeSeriesBuck
 
 export class TimeSeriesBucket extends MultiBucketBase {
   key: Dictionary<Field, FieldValue>
-  doc_count: long
 }
 
 //----- Misc

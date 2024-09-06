@@ -55586,14 +55586,10 @@
                 "additionalProperties": {
                   "$ref": "#/components/schemas/_types:FieldValue"
                 }
-              },
-              "doc_count": {
-                "type": "number"
               }
             },
             "required": [
-              "key",
-              "doc_count"
+              "key"
             ]
           }
         ]

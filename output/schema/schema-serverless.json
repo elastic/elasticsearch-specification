@@ -72652,7 +72652,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L792-L793",
+      "specLocation": "_types/aggregations/Aggregate.ts#L791-L792",
       "variantName": "children"
     },
     {
@@ -72671,7 +72671,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L795-L796",
+      "specLocation": "_types/aggregations/Aggregate.ts#L794-L795",
       "variantName": "parent"
     },
     {
@@ -73183,7 +73183,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L662-L665",
+      "specLocation": "_types/aggregations/Aggregate.ts#L661-L664",
       "variantName": "scripted_metric"
     },
     {
@@ -73216,7 +73216,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L667-L670",
+      "specLocation": "_types/aggregations/Aggregate.ts#L666-L669",
       "variantName": "top_hits"
     },
     {
@@ -73310,7 +73310,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L672-L686",
+      "specLocation": "_types/aggregations/Aggregate.ts#L671-L685",
       "variantName": "inference"
     },
     {
@@ -73357,7 +73357,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L694-L698"
+      "specLocation": "_types/aggregations/Aggregate.ts#L693-L697"
     },
     {
       "kind": "interface",
@@ -73389,7 +73389,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L700-L703"
+      "specLocation": "_types/aggregations/Aggregate.ts#L699-L702"
     },
     {
       "kind": "interface",
@@ -73432,7 +73432,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L688-L692"
+      "specLocation": "_types/aggregations/Aggregate.ts#L687-L691"
     },
     {
       "inherits": {
@@ -73618,7 +73618,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L709-L720",
+      "specLocation": "_types/aggregations/Aggregate.ts#L708-L719",
       "variantName": "string_stats"
     },
     {
@@ -73789,7 +73789,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L722-L738",
+      "specLocation": "_types/aggregations/Aggregate.ts#L721-L737",
       "variantName": "boxplot"
     },
     {
@@ -73820,7 +73820,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L740-L743",
+      "specLocation": "_types/aggregations/Aggregate.ts#L739-L742",
       "variantName": "top_metrics"
     },
     {
@@ -73891,7 +73891,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L745-L749"
+      "specLocation": "_types/aggregations/Aggregate.ts#L744-L748"
     },
     {
       "inherits": {
@@ -73941,7 +73941,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L751-L755",
+      "specLocation": "_types/aggregations/Aggregate.ts#L750-L754",
       "variantName": "t_test"
     },
     {
@@ -73980,7 +73980,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L757-L761",
+      "specLocation": "_types/aggregations/Aggregate.ts#L756-L760",
       "variantName": "rate"
     },
     {
@@ -74020,7 +74020,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L763-L771",
+      "specLocation": "_types/aggregations/Aggregate.ts#L762-L770",
       "variantName": "simple_long_value"
     },
     {
@@ -74062,7 +74062,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L773-L777",
+      "specLocation": "_types/aggregations/Aggregate.ts#L772-L776",
       "variantName": "matrix_stats"
     },
     {
@@ -74183,7 +74183,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L779-L788"
+      "specLocation": "_types/aggregations/Aggregate.ts#L778-L787"
     },
     {
       "inherits": {
@@ -74228,7 +74228,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L800-L807",
+      "specLocation": "_types/aggregations/Aggregate.ts#L799-L806",
       "variantName": "geo_line"
     },
     {
